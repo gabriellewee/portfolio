@@ -310,6 +310,22 @@ a:hover, a:active, a:focus {
 					opacity: .4;
 					filter: alpha(opacity=40);
 				}
+				#thumb-mcclun a {
+					background: #8d8f8b;
+				}
+					#thumb-mcclun a > span {
+						color: $white;
+						background: rgba(141,143,139,.7);
+						box-shadow: inset 0 0 2rem rgb(141,143,139);
+					}
+				#thumb-dillon a {
+					background: #47343c;
+				}
+					#thumb-dillon a > span {
+						color: $white;
+						background: rgba(71,52,60,.1);
+						box-shadow: inset 0 0 2rem rgb(71,52,60);
+					}
 				#thumb-schaff a {
 					background: #4b4d52;
 				}
@@ -544,6 +560,12 @@ a:hover, a:active, a:focus {
 	.carousel .slick-prev:before, .carousel .slick-next:before {
 		font-size: 30px;
 	}
+	.carousel.project-mcclun {
+		background: rgb(85,81,72);
+	}
+	.carousel.project-dillon {
+		background: rgb(145,136,141);
+	}
 	.carousel.project-schaff {
 		background: rgb(118,123,121);
 	}
@@ -603,6 +625,7 @@ a:hover, a:active, a:focus {
 }
 	.title h2 {
 		margin: 0;
+		padding-top: .7rem;
 		font: 400 3rem "Jaapokki Regular", $font;
 		text-rendering: geometricPrecision;
 		letter-spacing: .2rem;
@@ -987,6 +1010,21 @@ iframe {
 #content, #error, .description, #art, #individual, .about-me, #bottom {
 	background: $background;
 }
+#art {
+	margin: 0 2rem 2rem;
+}
+#concept-art {
+	margin: .2rem 2rem 2rem;
+}
+	#concept-art p {
+		margin: 2rem 0;
+	}
+	#concept-art p:first-child {
+		margin-top: 0;
+	}
+	#concept-art p:last-child {
+		margin-bottom: 0;
+	}
 #individual {
 	margin: 2rem auto;
 	max-width: 192rem;
