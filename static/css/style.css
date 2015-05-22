@@ -829,6 +829,10 @@ p + .image-grid {
   .skeleton-large {
     width: 75% !important; } }
 
+#parallax {
+  position: absolute;
+}
+
 /*---------- INDIVIDUAL PAGES ----------*/
 *[class*="body-"] {
   background: transparent !important; }
