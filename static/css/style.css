@@ -829,22 +829,13 @@ p + .image-grid {
   .skeleton-large {
     width: 75% !important; } }
 
-#parallax {
-  position: absolute;
-}
-
 /*---------- INDIVIDUAL PAGES ----------*/
 #parallax {
   position: absolute; }
 
 *[class*="body-"] {
-<<<<<<< HEAD
   background: transparent !important;
   z-index: -2; }
-=======
-  z-index: -2 !important;
-  background: transparent !important; }
->>>>>>> origin/gh-pages
   *[class*="body-"] #parallax {
     z-index: -1;
     top: 0;
@@ -1071,8 +1062,6 @@ p + .image-grid {
     background: rgba(71, 52, 60, 0.1);
     box-shadow: inset 0 0 2rem #47343c; }
 
-.body-dillon {
-  background: #433039 !important; }
 .body-dillon #parallax div {
   background-image: url(/static/images/screenshots/dillon-blur.jpg); }
 
@@ -1285,8 +1274,6 @@ p + .image-grid {
     background: rgba(106, 178, 212, 0.7);
     box-shadow: inset 0 0 2rem #6ab2d4; }
 
-.body-bvrg {
-  background: #6AB2D4 !important; }
 .body-bvrg #parallax div {
   background-image: url(/static/images/screenshots/bvrg-blur.jpg); }
 
