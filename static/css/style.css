@@ -954,10 +954,13 @@ p + .image-grid {
     text-align: center;
     color: rgba(255, 255, 255, 0.5);
     font: italic 2.4rem "Playfair Display", Georgia, serif; }
+    *[class*="body-"] .website-links .bullet + a {
+      margin-bottom: .5rem; }
     *[class*="body-"] .website-links a {
-      color: #fff;
       filter: alpha(opacity=50);
-      opacity: 0.5; }
+      opacity: 0.5;
+      display: block;
+      color: #fff; }
     *[class*="body-"] .website-links a:active, *[class*="body-"] .website-links a:focus, *[class*="body-"] .website-links a:hover {
       filter: alpha(opacity=100);
       opacity: 1; }
@@ -967,6 +970,12 @@ p + .image-grid {
       margin-top: 5rem; }
   *[class*="body-"] #bottom {
     color: #fff; }
+
+@media only screen and (min-width: 40.063em) {
+  .bullet + a {
+    margin-bottom: 0; }
+  .website-links a {
+    display: inline !important; } }
 
 @-webkit-keyframes opacity-pulse {
   0% {

@@ -1072,9 +1072,13 @@ p + .image-grid {
 		text-align: center;
 		color: rgba(255,255,255,.5);
 		font: italic 2.4rem "Playfair Display", Georgia, serif;
+		.bullet + a {
+			margin-bottom: .5rem;
+		}
 		a {
-			color: $white;
 			@include opacity(.5);
+			display: block;
+			color: $white;
 		}
 		#{$links} {
 			@include opacity(1);
@@ -1088,6 +1092,14 @@ p + .image-grid {
 	}
 	#bottom {
 		color: $white;
+	}
+}
+@media only screen and (min-width: 40.063em) {
+	.bullet + a {
+		margin-bottom: 0;
+	}
+	.website-links a {
+		display: inline!important;
 	}
 }
 // bottom links animation
