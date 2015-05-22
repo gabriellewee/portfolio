@@ -968,13 +968,15 @@ p + .image-grid {
       margin-bottom: 5rem; }
     *[class*="body-"] .website-links .bullet:last-child {
       margin-top: 5rem; }
+    *[class*="body-"] .website-links span {
+      display: none !important; }
   *[class*="body-"] #bottom {
     color: #fff; }
 
 @media only screen and (min-width: 40.063em) {
-  .bullet + a {
+  .website-links .bullet + a {
     margin-bottom: 0; }
-  .website-links a {
+  .website-links a, .website-links span {
     display: inline !important; } }
 
 @-webkit-keyframes opacity-pulse {

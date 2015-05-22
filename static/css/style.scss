@@ -1089,17 +1089,22 @@ p + .image-grid {
 		.bullet:last-child {
 			margin-top: 5rem;
 		}
+		span {
+			display: none!important;
+		}
 	}
 	#bottom {
 		color: $white;
 	}
 }
 @media only screen and (min-width: 40.063em) {
-	.bullet + a {
-		margin-bottom: 0;
-	}
-	.website-links a {
-		display: inline!important;
+	.website-links {
+		.bullet + a {
+			margin-bottom: 0;
+		}
+		a, span {
+			display: inline!important;
+		}
 	}
 }
 // bottom links animation
