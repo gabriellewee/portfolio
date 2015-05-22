@@ -904,11 +904,14 @@ p + .image-grid {
 }
 
 /*---------- INDIVIDUAL PAGES ----------*/
+#parallax {
+	position: absolute;
+}
 *[class*="body-"] {
 	background: transparent!important;
+	z-index: -2;
 	// parallax styles
 	#parallax {
-		position: absolute;
 		z-index: -1;
 		top: 0;
 		left: 0;
@@ -953,6 +956,10 @@ p + .image-grid {
 		text-transform: none!important;
 		opacity: .3;
 		filter: alpha(opacity=30);
+		svg {
+			width: 2.4rem;
+			fill: #fff;
+		}
 	}
 	.title {
 		h2 {
@@ -1133,6 +1140,7 @@ p + .image-grid {
 	}
 }
 .body-mcclun {
+	background: #b6a289!important;
 	#parallax div {
 		background-image: url(/static/images/screenshots/mcclun-blur.jpg);
 	}
@@ -1186,8 +1194,9 @@ p + .image-grid {
 	#top {
 		background: rgba(213,32,39,.7)!important;
 	}
-	h2, h4, .bullet, #bottom, .website-links, .website-links a {
+	h2, h4, .bullet svg, #bottom, .website-links, .website-links a {
 		color: #d52027!important;
+		fill: #d52027!important;
 	}
 	.description {
 		a {
@@ -1230,8 +1239,9 @@ p + .image-grid {
 	#top {
 		background: rgba(75,77,82,.2)!important;
 	}
-	h2, h4, .bullet, #bottom, .website-links, .website-links a {
+	h2, h4, .bullet svg, #bottom, .website-links, .website-links a {
 		color: #4b4d52!important;
+		fill: #4b4d52!important;
 	}
 	.description {
 		a {
@@ -1280,8 +1290,9 @@ p + .image-grid {
 	#top {
 		background: rgba(208,10,41,.7)!important;
 	}
-	h2, h4, .bullet, #bottom, .website-links, .website-links a {
+	h2, h4, .bullet svg, #bottom, .website-links, .website-links a {
 		color: #d00a29!important;
+		fill: #d00a29!important;
 	}
 	.description {
 		a {
@@ -1330,8 +1341,9 @@ p + .image-grid {
 	#top {
 		background: rgba(14,52,75,.3)!important;
 	}
-	h2, h4, .bullet, #bottom, .website-links, .website-links a {
+	h2, h4, .bullet svg, #bottom, .website-links, .website-links a {
 		color: #0E344B!important;
+		fill: #0E344B!important;
 	}
 	.description {
 		a {
@@ -1424,8 +1436,9 @@ p + .image-grid {
 	#top {
 		background: rgba(72,0,0,.4)!important;
 	}
-	h2, h4, .bullet, #bottom, .website-links, .website-links a {
-		color: #480000;
+	h2, h4, .bullet svg, #bottom, .website-links, .website-links a {
+		color: #480000!important;
+		fill: #480000!important;
 	}
 	.tools {
 		overflow: hidden;
@@ -1467,8 +1480,9 @@ p + .image-grid {
 	#top {
 		background: rgba(39,53,60,.7)!important;
 	}
-	h2, h4, .bullet, #bottom, .website-links, .website-links a {
+	h2, h4, .bullet svg, #bottom, .website-links, .website-links a {
 		color: #27353c!important;
+		fill: #27353c!important;
 	}
 	.description, #bottom {
 		color: #000;
@@ -1584,8 +1598,9 @@ p + .image-grid {
 	#top {
 		background: rgba(213,32,39,.7)!important;
 	}
-	h2, h4, .bullet, #bottom, .website-links, .website-links a {
+	h2, h4, .bullet svg, #bottom, .website-links, .website-links a {
 		color: #d52027!important;
+		fill: #d52027!important;
 	}
 	.description {
 		a {
@@ -1638,8 +1653,9 @@ p + .image-grid {
 	#top {
 		background: rgba(104,82,110,.9)!important;
 	}
-	h2, h4, .bullet, #bottom, .website-links, .website-links a, .tools li {
+	h2, h4, .bullet svg, #bottom, .website-links, .website-links a, .tools li {
 		color: #68526e!important;
+		fill: #68526e!important;
 	}
 	.tools {
 		background: rgba(104,82,110,.9)!important;
@@ -1701,8 +1717,9 @@ p + .image-grid {
 	#top {
 		background: rgba(42,93,176,.7)!important;
 	}
-	h2, h4, .bullet, #bottom, .website-links, .website-links a, .tools li {
+	h2, h4, .bullet svg, #bottom, .website-links, .website-links a, .tools li {
 		color: #000026!important;
+		fill: #000026!important;
 	}
 	.tools {
 		background: rgba(42,93,176,.7)!important;

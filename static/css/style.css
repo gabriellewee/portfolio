@@ -830,10 +830,13 @@ p + .image-grid {
     width: 75% !important; } }
 
 /*---------- INDIVIDUAL PAGES ----------*/
+#parallax {
+  position: absolute; }
+
 *[class*="body-"] {
-  background: transparent !important; }
+  background: transparent !important;
+  z-index: -2; }
   *[class*="body-"] #parallax {
-    position: absolute;
     z-index: -1;
     top: 0;
     left: 0;
@@ -873,6 +876,9 @@ p + .image-grid {
     text-transform: none !important;
     opacity: .3;
     filter: alpha(opacity=30); }
+    *[class*="body-"] .bullet svg {
+      width: 2.4rem;
+      fill: #fff; }
   *[class*="body-"] .title h2 {
     margin: 4rem 0 0; }
   *[class*="body-"] .title h4 {
@@ -1033,19 +1039,20 @@ p + .image-grid {
     background: rgba(141, 143, 139, 0.7);
     box-shadow: inset 0 0 2rem #8d8f8b; }
 
-.body-mcclun #parallax div {
-  background-image: url(/static/images/screenshots/mcclun-blur.jpg); }
-
-.body-mcclun .tools {
-  overflow: hidden;
-  background: rgba(50, 37, 37, 0.8) !important; }
-  .body-mcclun .tools li {
-    color: #322525; }
-  .body-mcclun .tools .feature {
-    top: 22rem;
-    left: -10rem;
-    max-width: 45rem !important;
-    position: absolute; }
+.body-mcclun {
+  background: #b6a289 !important; }
+  .body-mcclun #parallax div {
+    background-image: url(/static/images/screenshots/mcclun-blur.jpg); }
+  .body-mcclun .tools {
+    overflow: hidden;
+    background: rgba(50, 37, 37, 0.8) !important; }
+    .body-mcclun .tools li {
+      color: #322525; }
+    .body-mcclun .tools .feature {
+      top: 22rem;
+      left: -10rem;
+      max-width: 45rem !important;
+      position: absolute; }
 
 /* Tracy Dillon */
 #thumb-dillon a {
@@ -1077,8 +1084,9 @@ p + .image-grid {
 .body-nameplate #top {
   background: rgba(213, 32, 39, 0.7) !important; }
 
-.body-nameplate h2, .body-nameplate h4, .body-nameplate .bullet, .body-nameplate #bottom, .body-nameplate .website-links, .body-nameplate .website-links a {
-  color: #d52027 !important; }
+.body-nameplate h2, .body-nameplate h4, .body-nameplate .bullet svg, .body-nameplate #bottom, .body-nameplate .website-links, .body-nameplate .website-links a {
+  color: #d52027 !important;
+  fill: #d52027 !important; }
 
 .body-nameplate .description a {
   color: #d52027 !important; }
@@ -1111,8 +1119,9 @@ p + .image-grid {
 .body-schaff #top {
   background: rgba(75, 77, 82, 0.2) !important; }
 
-.body-schaff h2, .body-schaff h4, .body-schaff .bullet, .body-schaff #bottom, .body-schaff .website-links, .body-schaff .website-links a {
-  color: #4b4d52 !important; }
+.body-schaff h2, .body-schaff h4, .body-schaff .bullet svg, .body-schaff #bottom, .body-schaff .website-links, .body-schaff .website-links a {
+  color: #4b4d52 !important;
+  fill: #4b4d52 !important; }
 
 .body-schaff .description a {
   color: #4b4d52 !important; }
@@ -1153,8 +1162,9 @@ p + .image-grid {
 .body-koo #top {
   background: rgba(208, 10, 41, 0.7) !important; }
 
-.body-koo h2, .body-koo h4, .body-koo .bullet, .body-koo #bottom, .body-koo .website-links, .body-koo .website-links a {
-  color: #d00a29 !important; }
+.body-koo h2, .body-koo h4, .body-koo .bullet svg, .body-koo #bottom, .body-koo .website-links, .body-koo .website-links a {
+  color: #d00a29 !important;
+  fill: #d00a29 !important; }
 
 .body-koo .description a {
   color: #d00a29 !important; }
@@ -1192,8 +1202,9 @@ p + .image-grid {
 .body-psych2go #top {
   background: rgba(14, 52, 75, 0.3) !important; }
 
-.body-psych2go h2, .body-psych2go h4, .body-psych2go .bullet, .body-psych2go #bottom, .body-psych2go .website-links, .body-psych2go .website-links a {
-  color: #0E344B !important; }
+.body-psych2go h2, .body-psych2go h4, .body-psych2go .bullet svg, .body-psych2go #bottom, .body-psych2go .website-links, .body-psych2go .website-links a {
+  color: #0E344B !important;
+  fill: #0E344B !important; }
 
 .body-psych2go .description a {
   color: #0E344B !important; }
@@ -1269,8 +1280,9 @@ p + .image-grid {
 .body-bvrg #top {
   background: rgba(72, 0, 0, 0.4) !important; }
 
-.body-bvrg h2, .body-bvrg h4, .body-bvrg .bullet, .body-bvrg #bottom, .body-bvrg .website-links, .body-bvrg .website-links a {
-  color: #480000; }
+.body-bvrg h2, .body-bvrg h4, .body-bvrg .bullet svg, .body-bvrg #bottom, .body-bvrg .website-links, .body-bvrg .website-links a {
+  color: #480000 !important;
+  fill: #480000 !important; }
 
 .body-bvrg .tools {
   overflow: hidden;
@@ -1305,8 +1317,9 @@ p + .image-grid {
 .body-melgar #top {
   background: rgba(39, 53, 60, 0.7) !important; }
 
-.body-melgar h2, .body-melgar h4, .body-melgar .bullet, .body-melgar #bottom, .body-melgar .website-links, .body-melgar .website-links a {
-  color: #27353c !important; }
+.body-melgar h2, .body-melgar h4, .body-melgar .bullet svg, .body-melgar #bottom, .body-melgar .website-links, .body-melgar .website-links a {
+  color: #27353c !important;
+  fill: #27353c !important; }
 
 .body-melgar .description, .body-melgar #bottom {
   color: #000; }
@@ -1402,8 +1415,9 @@ p + .image-grid {
 .body-resume #top {
   background: rgba(213, 32, 39, 0.7) !important; }
 
-.body-resume h2, .body-resume h4, .body-resume .bullet, .body-resume #bottom, .body-resume .website-links, .body-resume .website-links a {
-  color: #d52027 !important; }
+.body-resume h2, .body-resume h4, .body-resume .bullet svg, .body-resume #bottom, .body-resume .website-links, .body-resume .website-links a {
+  color: #d52027 !important;
+  fill: #d52027 !important; }
 
 .body-resume .description a {
   color: #d52027 !important; }
@@ -1441,8 +1455,9 @@ p + .image-grid {
 .body-fleux #top {
   background: rgba(104, 82, 110, 0.9) !important; }
 
-.body-fleux h2, .body-fleux h4, .body-fleux .bullet, .body-fleux #bottom, .body-fleux .website-links, .body-fleux .website-links a, .body-fleux .tools li {
-  color: #68526e !important; }
+.body-fleux h2, .body-fleux h4, .body-fleux .bullet svg, .body-fleux #bottom, .body-fleux .website-links, .body-fleux .website-links a, .body-fleux .tools li {
+  color: #68526e !important;
+  fill: #68526e !important; }
 
 .body-fleux .tools {
   background: rgba(104, 82, 110, 0.9) !important; }
@@ -1492,8 +1507,9 @@ p + .image-grid {
 .body-excelle #top {
   background: rgba(42, 93, 176, 0.7) !important; }
 
-.body-excelle h2, .body-excelle h4, .body-excelle .bullet, .body-excelle #bottom, .body-excelle .website-links, .body-excelle .website-links a, .body-excelle .tools li {
-  color: #000026 !important; }
+.body-excelle h2, .body-excelle h4, .body-excelle .bullet svg, .body-excelle #bottom, .body-excelle .website-links, .body-excelle .website-links a, .body-excelle .tools li {
+  color: #000026 !important;
+  fill: #000026 !important; }
 
 .body-excelle .tools {
   background: rgba(42, 93, 176, 0.7) !important; }
