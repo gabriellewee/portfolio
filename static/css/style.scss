@@ -1098,12 +1098,14 @@ p + .image-grid {
 	}
 }
 @media only screen and (min-width: 40.063em) {
-	.website-links {
-		.bullet + a {
-			margin-bottom: 0;
-		}
-		a, span {
-			display: inline!important;
+	*[class*="body-"] {
+		.website-links {
+			.bullet + a {
+				margin-bottom: 0;
+			}
+			a, span {
+				display: inline-block!important;
+			}
 		}
 	}
 }

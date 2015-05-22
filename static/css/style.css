@@ -974,10 +974,10 @@ p + .image-grid {
     color: #fff; }
 
 @media only screen and (min-width: 40.063em) {
-  .website-links .bullet + a {
+  *[class*="body-"] .website-links .bullet + a {
     margin-bottom: 0; }
-  .website-links a, .website-links span {
-    display: inline !important; } }
+  *[class*="body-"] .website-links a, *[class*="body-"] .website-links span {
+    display: inline-block !important; } }
 
 @-webkit-keyframes opacity-pulse {
   0% {
