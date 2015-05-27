@@ -988,7 +988,7 @@ p + .image-grid {
 		img {
 			width: 100%;
 		}
-		div {
+		.slick-active {
 			box-shadow: 0 0 10rem rgba(0,0,0,.1);
 		}
 	}
@@ -1407,7 +1407,7 @@ p + .image-grid {
 }
 .body-ratchet {
 	#parallax div {
-		background-image: url(/static/images/screenshots/ratchet-blur.jpg);
+		background-image: url(/static/images/screenshots/ratchet-blur@2x.jpg);
 	}
 	.tools {
 		overflow: hidden;
@@ -1430,7 +1430,7 @@ p + .image-grid {
 		}
 		.carousel {
 			padding: 4rem 0!important;
-			div {
+			.slick-active {
 				box-shadow: none!important;
 			}
 		}
@@ -1779,7 +1779,7 @@ p + .image-grid {
 		background-image: url(/static/images/screenshots/acc-blur.jpg);
 	}
 	.carousel {
-		div {
+		.slick-active {
 			box-shadow: 0 0 20rem rgba(198,93,40,.3);
 		}
 	}
@@ -1832,7 +1832,7 @@ p + .image-grid {
 		background-image: url(/static/images/screenshots/fung-blur.jpg);
 	}
 	.carousel {
-		div {
+		.slick-active {
 			box-shadow: none!important;
 		}
 		img {
@@ -1868,7 +1868,7 @@ p + .image-grid {
 		background-image: url(/static/images/screenshots/eevee-blur.jpg);
 	}
 	.carousel {
-		div {
+		.slick-active {
 			box-shadow: 0 0 10rem rgba(0,0,0,.3);
 		}
 	}

@@ -898,7 +898,7 @@ p + .image-grid {
       right: 40px; }
     *[class*="body-"] .carousel img {
       width: 100%; }
-    *[class*="body-"] .carousel div {
+    *[class*="body-"] .carousel .slick-active {
       box-shadow: 0 0 10rem rgba(0, 0, 0, 0.1); }
   *[class*="body-"] #show-all {
     background: rgba(255, 255, 255, 0.3); }
@@ -1250,7 +1250,7 @@ p + .image-grid {
     box-shadow: inset 0 0 2rem #1b1e21; }
 
 .body-ratchet #parallax div {
-  background-image: url(/static/images/screenshots/ratchet-blur.jpg); }
+  background-image: url(/static/images/screenshots/ratchet-blur@2x.jpg); }
 
 .body-ratchet .tools {
   overflow: hidden;
@@ -1271,7 +1271,7 @@ p + .image-grid {
 
 .body-ratchet .description .carousel {
   padding: 4rem 0 !important; }
-  .body-ratchet .description .carousel div {
+  .body-ratchet .description .carousel .slick-active {
     box-shadow: none !important; }
 
 .body-ratchet .description a:active, .body-ratchet .description a:focus, .body-ratchet .description a:hover {
@@ -1551,7 +1551,7 @@ p + .image-grid {
 .body-acc #parallax div {
   background-image: url(/static/images/screenshots/acc-blur.jpg); }
 
-.body-acc .carousel div {
+.body-acc .carousel .slick-active {
   box-shadow: 0 0 20rem rgba(198, 93, 40, 0.3); }
 
 .body-acc .tools {
@@ -1592,7 +1592,7 @@ p + .image-grid {
 .body-fung #parallax div {
   background-image: url(/static/images/screenshots/fung-blur.jpg); }
 
-.body-fung .carousel div {
+.body-fung .carousel .slick-active {
   box-shadow: none !important; }
 
 .body-fung .carousel img {
@@ -1621,7 +1621,7 @@ p + .image-grid {
 .body-eevee #parallax div {
   background-image: url(/static/images/screenshots/eevee-blur.jpg); }
 
-.body-eevee .carousel div {
+.body-eevee .carousel .slick-active {
   box-shadow: 0 0 10rem rgba(0, 0, 0, 0.3); }
 
 .body-eevee .tools {
