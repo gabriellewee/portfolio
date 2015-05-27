@@ -1060,8 +1060,9 @@ p + .image-grid {
     .body-mcclun .tools li {
       color: #322525; }
     .body-mcclun .tools .feature {
-      top: 22rem;
+      top: 20rem;
       left: -10rem;
+      min-width: 40rem !important;
       max-width: 45rem !important;
       position: absolute; }
 
@@ -1263,6 +1264,7 @@ p + .image-grid {
     opacity: 0.5;
     top: 2rem;
     left: -8rem;
+    min-width: 40rem !important;
     max-width: 45rem !important;
     position: absolute; }
 
@@ -1304,6 +1306,7 @@ p + .image-grid {
   .body-bvrg .tools .feature {
     top: 4rem;
     left: -16rem;
+    min-width: 40rem !important;
     max-width: 45rem !important;
     position: absolute; }
 
@@ -1402,6 +1405,7 @@ p + .image-grid {
   .body-penaflor .tools .feature {
     top: 0rem;
     left: -13rem;
+    min-width: 40rem !important;
     max-width: 45rem !important;
     position: absolute; }
     .body-penaflor .tools .feature img {

@@ -1170,8 +1170,9 @@ p + .image-grid {
 			color: #322525;
 		}
 		.feature {
-			top: 22rem;
+			top: 20rem;
 			left: -10rem;
+			min-width: 40rem!important;
 			max-width: 45rem!important;
 			position: absolute;
 		}
@@ -1420,6 +1421,7 @@ p + .image-grid {
 			@include opacity(.5);
 			top: 2rem;
 			left: -8rem;
+			min-width: 40rem!important;
 			max-width: 45rem!important;
 			position: absolute;
 		}
@@ -1469,6 +1471,7 @@ p + .image-grid {
 		.feature {
 			top: 4rem;
 			left: -16rem;
+			min-width: 40rem!important;
 			max-width: 45rem!important;
 			position: absolute;
 		}
@@ -1588,6 +1591,7 @@ p + .image-grid {
 		.feature {
 			top: 0rem;
 			left: -13rem;
+			min-width: 40rem!important;
 			max-width: 45rem!important;
 			position: absolute;
 			img {
