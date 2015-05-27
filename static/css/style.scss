@@ -988,8 +988,8 @@ p + .image-grid {
 		img {
 			width: 100%;
 		}
-		.slick-active {
-			box-shadow: 0 0 10rem rgba(0,0,0,.1);
+		.slick-list {
+			box-shadow: 0 0 10rem rgba(0,0,0,.1)!important;
 		}
 	}
 	#show-all {
@@ -1161,7 +1161,7 @@ p + .image-grid {
 .body-mcclun {
 	background: #b6a289!important;
 	#parallax div {
-		background-image: url(/static/images/screenshots/mcclun-blur.jpg);
+		background-image: url(/static/images/screenshots/mcclun-blur@2x.jpg);
 	}
 	.tools {
 		overflow: hidden;
@@ -1189,7 +1189,7 @@ p + .image-grid {
 }
 .body-dillon {
 	#parallax div {
-		background-image: url(/static/images/screenshots/dillon-blur.jpg);
+		background-image: url(/static/images/screenshots/dillon-blur@2x.jpg);
 	}
 	.tools {
 		background: rgba(0,0,0,.4)!important;
@@ -1209,7 +1209,7 @@ p + .image-grid {
 }
 .body-nameplate {
 	#parallax div {
-		background-image: url(/static/images/screenshots/nameplate-blur.jpg);
+		background-image: url(/static/images/screenshots/nameplate-blur@2x.jpg);
 	}
 	#top {
 		background: rgba(213,32,39,.7)!important;
@@ -1254,7 +1254,7 @@ p + .image-grid {
 }
 .body-schaff {
 	#parallax div {
-		background-image: url(/static/images/screenshots/schaff-blur.jpg);
+		background-image: url(/static/images/screenshots/schaff-blur@2x.jpg);
 	}
 	#top {
 		background: rgba(75,77,82,.2)!important;
@@ -1305,7 +1305,7 @@ p + .image-grid {
 }
 .body-koo {
 	#parallax div {
-		background-image: url(/static/images/screenshots/koo-blur.jpg);
+		background-image: url(/static/images/screenshots/koo-blur@2x.jpg);
 	}
 	#top {
 		background: rgba(208,10,41,.7)!important;
@@ -1356,7 +1356,7 @@ p + .image-grid {
 }
 .body-psych2go {
 	#parallax div {
-		background-image: url(/static/images/screenshots/psych2go-blur.jpg);
+		background-image: url(/static/images/screenshots/psych2go-blur@2x.jpg);
 	}
 	#top {
 		background: rgba(14,52,75,.3)!important;
@@ -1432,7 +1432,7 @@ p + .image-grid {
 		}
 		.carousel {
 			padding: 4rem 0!important;
-			.slick-active {
+			.slick-list {
 				box-shadow: none!important;
 			}
 		}
@@ -1452,7 +1452,7 @@ p + .image-grid {
 }
 .body-bvrg {
 	#parallax div {
-		background-image: url(/static/images/screenshots/bvrg-blur.jpg);
+		background-image: url(/static/images/screenshots/bvrg-blur@2x.jpg);
 	}
 	#top {
 		background: rgba(72,0,0,.4)!important;
@@ -1497,7 +1497,7 @@ p + .image-grid {
 }
 .body-melgar {
 	#parallax div {
-		background-image: url(/static/images/screenshots/melgar-blur.jpg);
+		background-image: url(/static/images/screenshots/melgar-blur@2x.jpg);
 	}
 	#top {
 		background: rgba(39,53,60,.7)!important;
@@ -1543,7 +1543,7 @@ p + .image-grid {
 }
 .body-marchesi {
 	#parallax div {
-		background-image: url(/static/images/screenshots/marchesi-blur.jpg);
+		background-image: url(/static/images/screenshots/marchesi-blur@2x.jpg);
 	}
 	.tools {
 		overflow: hidden;
@@ -1576,7 +1576,7 @@ p + .image-grid {
 }
 .body-penaflor {
 	#parallax div {
-		background-image: url(/static/images/screenshots/penaflor-blur.jpg);
+		background-image: url(/static/images/screenshots/penaflor-blur@2x.jpg);
 	}
 	#top.dark {
 		background: rgba(33,43,37,.2)!important;
@@ -1616,7 +1616,7 @@ p + .image-grid {
 }
 .body-resume {
 	#parallax div {
-		background-image: url(/static/images/screenshots/resume-blur.jpg);
+		background-image: url(/static/images/screenshots/resume-blur@2x.jpg);
 	}
 	#top {
 		background: rgba(213,32,39,.7)!important;
@@ -1671,7 +1671,7 @@ p + .image-grid {
 }
 .body-fleux {
 	#parallax div {
-		background-image: url(/static/images/screenshots/fleux-blur.jpg);
+		background-image: url(/static/images/screenshots/fleux-blur@2x.jpg);
 	}
 	#top {
 		background: rgba(104,82,110,.9)!important;
@@ -1705,7 +1705,7 @@ p + .image-grid {
 }
 .body-transistor {
 	#parallax div {
-		background-image: url(/static/images/screenshots/transistor-blur.jpg);
+		background-image: url(/static/images/screenshots/transistor-blur@2x.jpg);
 	}
 	#top {
 		background: rgba(216,241,228,.3)!important;
@@ -1735,7 +1735,7 @@ p + .image-grid {
 }
 .body-excelle {
 	#parallax div {
-		background-image: url(/static/images/screenshots/excelle-blur.jpg);
+		background-image: url(/static/images/screenshots/excelle-blur@2x.jpg);
 	}
 	#top {
 		background: rgba(42,93,176,.7)!important;
@@ -1780,10 +1780,10 @@ p + .image-grid {
 }
 .body-acc {
 	#parallax div {
-		background-image: url(/static/images/screenshots/acc-blur.jpg);
+		background-image: url(/static/images/screenshots/acc-blur@2x.jpg);
 	}
 	.carousel {
-		.slick-active {
+		.slick-list {
 			box-shadow: 0 0 20rem rgba(198,93,40,.3);
 		}
 	}
@@ -1813,7 +1813,7 @@ p + .image-grid {
 }
 .body-ys {
 	#parallax div {
-		background-image: url(/static/images/screenshots/ys-blur.jpg);
+		background-image: url(/static/images/screenshots/ys-blur@2x.jpg);
 	}
 	.tools {
 		background: rgba(255,255,255,.2)!important;
@@ -1833,10 +1833,10 @@ p + .image-grid {
 }
 .body-fung {
 	#parallax div {
-		background-image: url(/static/images/screenshots/fung-blur.jpg);
+		background-image: url(/static/images/screenshots/fung-blur@2x.jpg);
 	}
 	.carousel {
-		.slick-active {
+		.slick-list {
 			box-shadow: none!important;
 		}
 		img {
@@ -1869,10 +1869,10 @@ p + .image-grid {
 }
 .body-eevee {
 	#parallax div {
-		background-image: url(/static/images/screenshots/eevee-blur.jpg);
+		background-image: url(/static/images/screenshots/eevee-blur@2x.jpg);
 	}
 	.carousel {
-		.slick-active {
+		.slick-list {
 			box-shadow: 0 0 10rem rgba(0,0,0,.3);
 		}
 	}
