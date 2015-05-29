@@ -927,16 +927,17 @@ p + .image-grid {
       max-height: 25rem; }
   *[class*="body-"] #tools li {
     background: rgba(255, 255, 255, 0.6); }
-  *[class*="body-"] #tools img {
-    display: block;
-    text-align: center;
-    margin-bottom: 2rem; }
   *[class*="body-"] #tools .platform, *[class*="body-"] #tools .programs, *[class*="body-"] #tools .languages {
     position: relative;
     z-index: 2; }
   *[class*="body-"] #tools .info {
     position: relative;
     z-index: 2; }
+  *[class*="body-"] #tools .mobile-version {
+    text-align: right; }
+    *[class*="body-"] #tools .mobile-version img {
+      max-height: 52rem;
+      margin-bottom: 2rem; }
   *[class*="body-"] .cards {
     background: rgba(255, 255, 255, 0.1);
     padding: 2rem 0; }
