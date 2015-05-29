@@ -831,7 +831,7 @@ p + .image-grid {
 
 /*---------- INDIVIDUAL PAGES ----------*/
 #parallax {
-  position: absolute; }
+  position: fixed; }
 
 *[class*="body-"] {
   background: transparent !important;
