@@ -75,6 +75,9 @@ a:active, a:focus, a:hover {
   height: 0 !important;
   padding: 0 !important; }
 
+.js body {
+  display: none; }
+
 /*---------- HEADER ----------*/
 #top {
   padding: 2.5rem 0rem;
@@ -429,21 +432,21 @@ a:active, a:focus, a:hover {
   #show-all div {
     padding: 1rem 2rem; }
 
-.tools {
+#tools {
   background: #A3A3A0;
   padding: 2rem 0 0;
   color: #fff; }
-  .tools .row > div:only-child {
+  #tools .row > div:only-child {
     width: 100% !important; }
-  .tools h3 {
+  #tools h3 {
     margin: 0;
     font-size: 2rem;
     font-weight: 400; }
-  .tools p {
+  #tools p {
     margin: 0 0 2rem;
     font-size: 1.8rem;
     line-height: 2.6rem; }
-  .tools ul {
+  #tools ul {
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -457,7 +460,7 @@ a:active, a:focus, a:hover {
     list-style: none;
     padding: 0 0 2rem;
     margin: 0 -1rem; }
-    .tools ul li {
+    #tools ul li {
       background: #444349;
       padding: 1rem 2rem;
       margin: 1rem;
@@ -855,7 +858,7 @@ p + .image-grid {
       width: 2560px;
       height: 100%;
       background-size: 2560px 3566px !important; }
-  *[class*="body-"] .parallax {
+  *[class*="body-"] .parallax, *[class*="body-"] .parallax * {
     -webkit-transition: all 0.3s ease-in;
     -o-transition: all 0.3s ease-in;
     -ms-transition: all 0.3s ease-in;
@@ -906,7 +909,7 @@ p + .image-grid {
     margin: 8rem auto;
     padding: 0 2rem;
     max-width: 80rem; }
-    *[class*="body-"] #settings.hide + .tools {
+    *[class*="body-"] #settings.hide + #tools {
       margin-top: 2rem; }
     *[class*="body-"] #settings .row {
       display: table;
@@ -922,16 +925,16 @@ p + .image-grid {
       width: auto !important;
       max-width: none !important;
       max-height: 25rem; }
-  *[class*="body-"] .tools li {
+  *[class*="body-"] #tools li {
     background: rgba(255, 255, 255, 0.6); }
-  *[class*="body-"] .tools img {
+  *[class*="body-"] #tools img {
     display: block;
     text-align: center;
     margin-bottom: 2rem; }
-  *[class*="body-"] .tools .platform, *[class*="body-"] .tools .programs, *[class*="body-"] .tools .languages {
+  *[class*="body-"] #tools .platform, *[class*="body-"] #tools .programs, *[class*="body-"] #tools .languages {
     position: relative;
     z-index: 2; }
-  *[class*="body-"] .tools .info {
+  *[class*="body-"] #tools .info {
     position: relative;
     z-index: 2; }
   *[class*="body-"] .cards {
@@ -1054,12 +1057,12 @@ p + .image-grid {
   background: #b6a289 !important; }
   .body-mcclun #parallax div {
     background-image: url(/static/images/screenshots/mcclun-blur@2x.jpg); }
-  .body-mcclun .tools {
+  .body-mcclun #tools {
     overflow: hidden;
     background: rgba(50, 37, 37, 0.8) !important; }
-    .body-mcclun .tools li {
+    .body-mcclun #tools li {
       color: #322525; }
-    .body-mcclun .tools .feature {
+    .body-mcclun #tools .feature {
       top: 20rem;
       left: -10rem;
       min-width: 40rem !important;
@@ -1077,9 +1080,9 @@ p + .image-grid {
 .body-dillon #parallax div {
   background-image: url(/static/images/screenshots/dillon-blur@2x.jpg); }
 
-.body-dillon .tools {
+.body-dillon #tools {
   background: rgba(0, 0, 0, 0.4) !important; }
-  .body-dillon .tools li {
+  .body-dillon #tools li {
     color: #433039; }
 
 /* Personal Nameplate */
@@ -1112,9 +1115,9 @@ p + .image-grid {
 .body-nameplate .slick-next:before {
   content: url("/static/svg/right_black.svg") !important; }
 
-.body-nameplate .tools {
+.body-nameplate #tools {
   background: rgba(0, 0, 0, 0.4) !important; }
-  .body-nameplate .tools li {
+  .body-nameplate #tools li {
     color: #000; }
 
 /* Hayley Schaff */
@@ -1155,9 +1158,9 @@ p + .image-grid {
 .body-schaff .slick-next:active:before, .body-schaff .slick-next:hover:before, .body-schaff .slick-next:focus:before {
   opacity: 1; }
 
-.body-schaff .tools {
+.body-schaff #tools {
   background: rgba(0, 0, 0, 0.4) !important; }
-  .body-schaff .tools li {
+  .body-schaff #tools li {
     color: #000; }
 
 /* Constance Koo */
@@ -1187,13 +1190,13 @@ p + .image-grid {
 .body-koo .slick-next:before {
   content: url("/static/svg/right_black.svg") !important; }
 
-.body-koo .tools {
+.body-koo #tools {
   overflow: hidden;
   background: rgba(0, 0, 0, 0.4) !important; }
-  .body-koo .tools li {
+  .body-koo #tools li {
     color: #000;
     background: rgba(255, 255, 255, 0.9); }
-  .body-koo .tools .feature {
+  .body-koo #tools .feature {
     position: absolute;
     top: -2rem;
     left: -30rem;
@@ -1227,13 +1230,13 @@ p + .image-grid {
 .body-psych2go .slick-next:before {
   content: url("/static/svg/right_black.svg") !important; }
 
-.body-psych2go .tools {
+.body-psych2go #tools {
   overflow: hidden;
   background: rgba(14, 52, 75, 0.4) !important; }
-  .body-psych2go .tools li {
+  .body-psych2go #tools li {
     color: #0E344B;
     background: rgba(255, 255, 255, 0.9); }
-  .body-psych2go .tools .feature {
+  .body-psych2go #tools .feature {
     filter: alpha(opacity=50);
     opacity: 0.5;
     position: absolute;
@@ -1253,13 +1256,13 @@ p + .image-grid {
 .body-ratchet #parallax div {
   background-image: url(/static/images/screenshots/ratchet-blur@2x.jpg); }
 
-.body-ratchet .tools {
+.body-ratchet #tools {
   overflow: hidden;
   background: rgba(52, 57, 62, 0.5) !important; }
-  .body-ratchet .tools li {
+  .body-ratchet #tools li {
     color: #322525;
     background: rgba(255, 255, 255, 0.9); }
-  .body-ratchet .tools .feature {
+  .body-ratchet #tools .feature {
     filter: alpha(opacity=50);
     opacity: 0.5;
     top: 2rem;
@@ -1297,13 +1300,13 @@ p + .image-grid {
   color: #480000 !important;
   fill: #480000 !important; }
 
-.body-bvrg .tools {
+.body-bvrg #tools {
   overflow: hidden;
   background: rgba(72, 0, 0, 0.5) !important; }
-  .body-bvrg .tools li {
+  .body-bvrg #tools li {
     color: #480000;
     background: rgba(255, 255, 255, 0.7); }
-  .body-bvrg .tools .feature {
+  .body-bvrg #tools .feature {
     top: 4rem;
     left: -16rem;
     min-width: 40rem !important;
@@ -1348,9 +1351,9 @@ p + .image-grid {
 .body-melgar .slick-next:before {
   content: url("/static/svg/right_black.svg") !important; }
 
-.body-melgar .tools {
+.body-melgar #tools {
   background: rgba(39, 53, 60, 0.4) !important; }
-  .body-melgar .tools li {
+  .body-melgar #tools li {
     color: #27353c; }
 
 /* David Marchesi */
@@ -1364,13 +1367,13 @@ p + .image-grid {
 .body-marchesi #parallax div {
   background-image: url(/static/images/screenshots/marchesi-blur@2x.jpg); }
 
-.body-marchesi .tools {
+.body-marchesi #tools {
   overflow: hidden;
   background: rgba(255, 255, 255, 0.2) !important; }
-  .body-marchesi .tools li {
+  .body-marchesi #tools li {
     color: #322525;
     background: rgba(255, 255, 255, 0.9); }
-  .body-marchesi .tools .feature {
+  .body-marchesi #tools .feature {
     filter: alpha(opacity=50);
     opacity: 0.5;
     position: absolute;
@@ -1396,19 +1399,19 @@ p + .image-grid {
 .body-penaflor #top.dark {
   background: rgba(33, 43, 37, 0.2) !important; }
 
-.body-penaflor .tools {
+.body-penaflor #tools {
   overflow: hidden;
   background: rgba(33, 43, 37, 0.3) !important; }
-  .body-penaflor .tools li {
+  .body-penaflor #tools li {
     color: #212b25;
     background: rgba(255, 255, 255, 0.9); }
-  .body-penaflor .tools .feature {
+  .body-penaflor #tools .feature {
     top: 0rem;
     left: -13rem;
     min-width: 40rem !important;
     max-width: 45rem !important;
     position: absolute; }
-    .body-penaflor .tools .feature img {
+    .body-penaflor #tools .feature img {
       -moz-transform: scaleX(-1);
       -webkit-transform: scaleX(-1);
       -o-transform: scaleX(-1);
@@ -1446,13 +1449,13 @@ p + .image-grid {
 .body-resume .slick-next:before {
   content: url("/static/svg/right_black.svg") !important; }
 
-.body-resume .tools {
+.body-resume #tools {
   background: rgba(0, 0, 0, 0.4) !important; }
-  .body-resume .tools li {
+  .body-resume #tools li {
     color: #000; }
-  .body-resume .tools .row > div:first-child {
+  .body-resume #tools .row > div:first-child {
     width: 100% !important; }
-  .body-resume .tools .row > div:nth-child(2) {
+  .body-resume #tools .row > div:nth-child(2) {
     display: none !important; }
 
 /*---------- INDIVIDUAL THEME STYLES ----------*/
@@ -1470,11 +1473,11 @@ p + .image-grid {
 .body-fleux #top {
   background: rgba(104, 82, 110, 0.9) !important; }
 
-.body-fleux h2, .body-fleux h4, .body-fleux .bullet svg, .body-fleux #bottom, .body-fleux .website-links, .body-fleux .website-links a, .body-fleux .tools li {
+.body-fleux h2, .body-fleux h4, .body-fleux .bullet svg, .body-fleux #bottom, .body-fleux .website-links, .body-fleux .website-links a, .body-fleux #tools li {
   color: #68526e !important;
   fill: #68526e !important; }
 
-.body-fleux .tools {
+.body-fleux #tools {
   background: rgba(104, 82, 110, 0.9) !important; }
 
 .body-fleux .slick-prev:before {
@@ -1497,12 +1500,12 @@ p + .image-grid {
 .body-transistor #top {
   background: rgba(216, 241, 228, 0.3) !important; }
 
-.body-transistor .tools {
+.body-transistor #tools {
   overflow: hidden;
   background: rgba(216, 241, 228, 0.3) !important; }
-  .body-transistor .tools li {
+  .body-transistor #tools li {
     color: #2e2b31; }
-  .body-transistor .tools .feature {
+  .body-transistor #tools .feature {
     top: 22rem;
     left: -15rem;
     width: 110rem !important;
@@ -1522,11 +1525,11 @@ p + .image-grid {
 .body-excelle #top {
   background: rgba(42, 93, 176, 0.7) !important; }
 
-.body-excelle h2, .body-excelle h4, .body-excelle .bullet svg, .body-excelle #bottom, .body-excelle .website-links, .body-excelle .website-links a, .body-excelle .tools li {
+.body-excelle h2, .body-excelle h4, .body-excelle .bullet svg, .body-excelle #bottom, .body-excelle .website-links, .body-excelle .website-links a, .body-excelle #tools li {
   color: #000026 !important;
   fill: #000026 !important; }
 
-.body-excelle .tools {
+.body-excelle #tools {
   background: rgba(42, 93, 176, 0.7) !important; }
 
 .body-excelle .slick-prev:before {
@@ -1558,9 +1561,9 @@ p + .image-grid {
 .body-acc .carousel .slick-list {
   box-shadow: 0 0 20rem rgba(198, 93, 40, 0.3); }
 
-.body-acc .tools {
+.body-acc #tools {
   background: rgba(255, 255, 255, 0.2) !important; }
-  .body-acc .tools li {
+  .body-acc #tools li {
     color: #283d4c; }
 
 .body-acc .description a {
@@ -1580,9 +1583,9 @@ p + .image-grid {
 .body-ys #parallax div {
   background-image: url(/static/images/screenshots/ys-blur@2x.jpg); }
 
-.body-ys .tools {
+.body-ys #tools {
   background: rgba(255, 255, 255, 0.2) !important; }
-  .body-ys .tools li {
+  .body-ys #tools li {
     color: #283d4c; }
 
 /* Catherine Fung's Save the Date */
@@ -1604,9 +1607,9 @@ p + .image-grid {
   width: auto !important;
   box-shadow: 0 0 10rem rgba(0, 0, 0, 0.1); }
 
-.body-fung .tools {
+.body-fung #tools {
   background: rgba(92, 34, 80, 0.2) !important; }
-  .body-fung .tools li {
+  .body-fung #tools li {
     color: #5c2250; }
 
 .body-fung .website-links {
@@ -1628,9 +1631,9 @@ p + .image-grid {
 .body-eevee .carousel .slick-list {
   box-shadow: 0 0 10rem rgba(0, 0, 0, 0.3); }
 
-.body-eevee .tools {
+.body-eevee #tools {
   background: rgba(64, 64, 64, 0.2) !important; }
-  .body-eevee .tools li {
+  .body-eevee #tools li {
     color: #404040; }
 
 .body-eevee .description a {

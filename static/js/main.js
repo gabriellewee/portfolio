@@ -29,10 +29,12 @@ function isRetina(){var mediaQuery="(-webkit-min-device-pixel-ratio:1.5),\
 
 // scripts
 $(function () {
+	// back button
     $('.dynamic-back').click(function() {
         parent.history.back();
         return false;
     });
+    //layouts
 	var $container = $('#portfolio-grid');
 	$container.isotope({
 		itemSelector: '#portfolio-grid li',
@@ -46,6 +48,7 @@ $(function () {
 	$grid.imagesLoaded( function() {
 		$grid.isotope('layout');
 	});
+	// filters
 	$('#filters, #art-filters').isotope({
 		layoutMode: 'fitRows'
 	});
@@ -63,9 +66,7 @@ $(function () {
 		});
 		return false
 	});
-});
-
-$(function(){
+	// slideshows
 	$('.carousel').imagesLoaded(function() {
 		$('.carousel').animate({opacity: 1});
 		$('.carousel').each(function() {
@@ -81,6 +82,7 @@ $(function(){
 			}
 		});
 	});
+	// parallax height
 	$(window).load(function(){
 		$(window).imagesLoaded(function() {
 			$("*[class*='body-'] #parallax").height( $("#all").height() );
@@ -89,6 +91,7 @@ $(function(){
 	$(window).resize(function(){
 		$("*[class*='body-'] #parallax").height( $("#all").height() );
 	});
+	// menu
 	$('.selector').on('click', function(e) {
 		e.stopPropagation();
 		$('.menu, .selector, .pop').toggleClass("active");
@@ -108,4 +111,21 @@ $(function(){
 		$('.menu, .selector, .pop').removeClass("active");
 		e.preventDefault();
 	});
+});
+
+$(document).ready(function() {
+	$('body').fadeIn();
+	$('a').on('click',function(event){
+		var thetarget = this.getAttribute('target')
+		if (thetarget != "_blank"){
+			var thehref = this.getAttribute('href')
+			event.preventDefault();
+			jQuery('body').fadeOut(function(){
+				window.location = thehref
+			});
+		}
+	});
+});
+setTimeout(function(){
+	jQuery('body').fadeIn();
 });

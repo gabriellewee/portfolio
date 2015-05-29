@@ -127,6 +127,10 @@ a, a:visited {
 	padding: 0!important;
 }
 
+.js body {
+	display: none;
+}
+
 /*---------- HEADER ----------*/
 #top {
 	padding: 2.5rem 0rem;
@@ -500,7 +504,7 @@ a, a:visited {
 	}
 }
 // tools
-.tools {
+#tools {
 	background: #A3A3A0;
 	padding: 2rem 0 0;
 	color: $white;
@@ -932,7 +936,7 @@ p + .image-grid {
 			background-size: 2560px 3566px!important;
 		}
 	}
-	.parallax {
+	.parallax, .parallax * {
 		@include transition(.3s ease-in);
 	}
 	// dark and light styles
@@ -1000,7 +1004,7 @@ p + .image-grid {
 		margin: 8rem auto;
 		padding: 0 2rem;
 		max-width: 80rem;
-		&.hide + .tools {
+		&.hide + #tools {
 			margin-top: 2rem;
 		}
 		.row {
@@ -1024,7 +1028,7 @@ p + .image-grid {
 		}
 	}
 	// tools
-	.tools {
+	#tools {
 		li {
 			background: rgba(255,255,255,.6);
 		}
@@ -1163,7 +1167,7 @@ p + .image-grid {
 	#parallax div {
 		background-image: url(/static/images/screenshots/mcclun-blur@2x.jpg);
 	}
-	.tools {
+	#tools {
 		overflow: hidden;
 		background: rgba(50,37,37,.8)!important;
 		li {
@@ -1191,7 +1195,7 @@ p + .image-grid {
 	#parallax div {
 		background-image: url(/static/images/screenshots/dillon-blur@2x.jpg);
 	}
-	.tools {
+	#tools {
 		background: rgba(0,0,0,.4)!important;
 		li {
 			color: #433039;
@@ -1236,7 +1240,7 @@ p + .image-grid {
 			content: url("/static/svg/right_black.svg")!important;
 		}
 	}
-	.tools {
+	#tools {
 		background: rgba(0,0,0,.4)!important;
 		li {
 			color: #000;
@@ -1287,7 +1291,7 @@ p + .image-grid {
 	.slick-next:active:before, .slick-next:hover:before, .slick-next:focus:before {
 		opacity: 1;
 	}
-	.tools {
+	#tools {
 		background: rgba(0,0,0,.4)!important;
 		li {
 			color: #000;
@@ -1329,7 +1333,7 @@ p + .image-grid {
 			content: url("/static/svg/right_black.svg")!important;
 		}
 	}
-	.tools {
+	#tools {
 		overflow: hidden;
 		background: rgba(0,0,0,.4)!important;
 		li {
@@ -1380,7 +1384,7 @@ p + .image-grid {
 			content: url("/static/svg/right_black.svg")!important;
 		}
 	}
-	.tools {
+	#tools {
 		overflow: hidden;
 		background: rgba(14,52,75,.4)!important;
 		li {
@@ -1410,7 +1414,7 @@ p + .image-grid {
 	#parallax div {
 		background-image: url(/static/images/screenshots/ratchet-blur@2x.jpg);
 	}
-	.tools {
+	#tools {
 		overflow: hidden;
 		background: rgba(52,57,62,.5)!important;
 		li {
@@ -1461,7 +1465,7 @@ p + .image-grid {
 		color: #480000!important;
 		fill: #480000!important;
 	}
-	.tools {
+	#tools {
 		overflow: hidden;
 		background: rgba(72,0,0,.5)!important;
 		li {
@@ -1525,7 +1529,7 @@ p + .image-grid {
 			content: url("/static/svg/right_black.svg")!important;
 		}
 	}
-	.tools {
+	#tools {
 		background: rgba(39,53,60,.4)!important;
 		li {
 			color: #27353c;
@@ -1545,7 +1549,7 @@ p + .image-grid {
 	#parallax div {
 		background-image: url(/static/images/screenshots/marchesi-blur@2x.jpg);
 	}
-	.tools {
+	#tools {
 		overflow: hidden;
 		background: rgba(255,255,255,.2)!important;
 		li {
@@ -1581,7 +1585,7 @@ p + .image-grid {
 	#top.dark {
 		background: rgba(33,43,37,.2)!important;
 	}
-	.tools {
+	#tools {
 		overflow: hidden;
 		background: rgba(33,43,37,.3)!important;
 		li {
@@ -1643,7 +1647,7 @@ p + .image-grid {
 			content: url("/static/svg/right_black.svg")!important;
 		}
 	}
-	.tools {
+	#tools {
 		background: rgba(0,0,0,.4)!important;
 		li {
 			color: #000;
@@ -1676,11 +1680,11 @@ p + .image-grid {
 	#top {
 		background: rgba(104,82,110,.9)!important;
 	}
-	h2, h4, .bullet svg, #bottom, .website-links, .website-links a, .tools li {
+	h2, h4, .bullet svg, #bottom, .website-links, .website-links a, #tools li {
 		color: #68526e!important;
 		fill: #68526e!important;
 	}
-	.tools {
+	#tools {
 		background: rgba(104,82,110,.9)!important;
 	}
 	.slick-prev {
@@ -1710,7 +1714,7 @@ p + .image-grid {
 	#top {
 		background: rgba(216,241,228,.3)!important;
 	}
-	.tools {
+	#tools {
 		overflow: hidden;
 		background: rgba(216,241,228,.3)!important;
 		li {
@@ -1740,11 +1744,11 @@ p + .image-grid {
 	#top {
 		background: rgba(42,93,176,.7)!important;
 	}
-	h2, h4, .bullet svg, #bottom, .website-links, .website-links a, .tools li {
+	h2, h4, .bullet svg, #bottom, .website-links, .website-links a, #tools li {
 		color: #000026!important;
 		fill: #000026!important;
 	}
-	.tools {
+	#tools {
 		background: rgba(42,93,176,.7)!important;
 	}
 	.slick-prev {
@@ -1787,7 +1791,7 @@ p + .image-grid {
 			box-shadow: 0 0 20rem rgba(198,93,40,.3);
 		}
 	}
-	.tools {
+	#tools {
 		background: rgba(255,255,255,.2)!important;
 		li {
 			color: #283d4c;
@@ -1815,7 +1819,7 @@ p + .image-grid {
 	#parallax div {
 		background-image: url(/static/images/screenshots/ys-blur@2x.jpg);
 	}
-	.tools {
+	#tools {
 		background: rgba(255,255,255,.2)!important;
 		li {
 			color: #283d4c;
@@ -1845,7 +1849,7 @@ p + .image-grid {
 			box-shadow: 0 0 10rem rgba(0,0,0,.1);
 		}
 	}
-	.tools {
+	#tools {
 		background: rgba(92,34,80,.2)!important;
 		li {
 			color: #5c2250;
@@ -1876,7 +1880,7 @@ p + .image-grid {
 			box-shadow: 0 0 10rem rgba(0,0,0,.3);
 		}
 	}
-	.tools {
+	#tools {
 		background: rgba(64,64,64,.2)!important;
 		li {
 			color: #404040;
