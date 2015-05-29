@@ -35,9 +35,9 @@
 }
 @mixin rotate($angle) {
 	-webkit-transform: rotate($angle+deg);
-	-o-transform: rotate($angle+deg);
-	-ms-transform: rotate($angle+deg);
 	-moz-transform: rotate($angle+deg);
+	-ms-transform: rotate($angle+deg);
+	-o-transform: rotate($angle+deg);
 	transform: rotate($angle+deg);
 }
 
@@ -112,13 +112,6 @@ a, a:visited {
 	padding: 0;
 	list-style: none;
 }
-.dnt * {
-	-webkit-transform:translate3d(0,0,0);
-	-o-transform:translate3d(0,0,0);
-	-ms-transform:translate3d(0,0,0);
-	-moz-transform:translate3d(0,0,0);
-	transform:translate3d(0,0,0);
-}
 .hide {
 	display: none!important;
 	visibility: hidden!important;
@@ -129,6 +122,12 @@ a, a:visited {
 
 .js body {
 	display: none;
+}
+#all * {
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	backface-visibility: hidden;
 }
 
 /*---------- HEADER ----------*/
@@ -154,6 +153,8 @@ a, a:visited {
 			top: 50%;
 			right: 2rem;
 			-webkit-transform: translateY(-50%);
+			-moz-transform: translateY(-50%);
+			-ms-transform: translateY(-50%);
 			-o-transform: translateY(-50%);
 			transform: translateY(-50%);
 		}
@@ -166,9 +167,9 @@ a, a:visited {
 			display: block;
 			margin-top: 4px;
 			-webkit-transform-origin: 50% 50%;
-			-o-transform-origin: 50% 50%;
-			-ms-transform-origin: 50% 50%;
 			-moz-transform-origin: 50% 50%;
+			-ms-transform-origin: 50% 50%;
+			-o-transform-origin: 50% 50%;
 			transform-origin: 50% 50%;
 			&:nth-child(2) {
 				@include transition(.1s linear);
@@ -183,9 +184,9 @@ a, a:visited {
 		.bar-icon {
 			&:nth-child(1) {
 				-webkit-transform: rotate(45deg) translate3d(5px,5px,0);
-				-o-transform: rotate(45deg) translate3d(5px,5px,0);
-				-ms-transform: rotate(45deg) translate3d(5px,5px,0);
 				-moz-transform: rotate(45deg) translate3d(5px,5px,0);
+				-ms-transform: rotate(45deg) translate3d(5px,5px,0);
+				-o-transform: rotate(45deg) translate3d(5px,5px,0);
 				transform: rotate(45deg) translate3d(5px,5px,0);
 			}
 			&:nth-child(2) {
@@ -193,9 +194,9 @@ a, a:visited {
 			}
 			&:nth-child(3) {
 				-webkit-transform: rotate(-45deg) translate3d(5px,-5px,0);
-				-o-transform: rotate(-45deg) translate3d(5px,-5px,0);
-				-ms-transform: rotate(-45deg) translate3d(5px,-5px,0);
 				-moz-transform: rotate(-45deg) translate3d(5px,-5px,0);
+				-ms-transform: rotate(-45deg) translate3d(5px,-5px,0);
+				-o-transform: rotate(-45deg) translate3d(5px,-5px,0);
 				transform: rotate(-45deg) translate3d(5px,-5px,0);
 			}
 		}
@@ -333,6 +334,8 @@ a, a:visited {
 					position: absolute;
 					top: 50%;
 					-webkit-transform: translateY(-50%);
+					-moz-transform: translateY(-50%);
+					-ms-transform: translateY(-50%);
 					-o-transform: translateY(-50%);
 					transform: translateY(-50%);
 					width: 100%;
@@ -399,6 +402,8 @@ a, a:visited {
 		bottom: 2rem;
 		left: 50%;
 		-webkit-transform: translateX(-50%);
+		-moz-transform: translateX(-50%);
+		-ms-transform: translateX(-50%);
 		-o-transform: translateX(-50%);
 		transform: translateX(-50%);
 		padding: 1rem 2rem;
@@ -909,7 +914,7 @@ p + .image-grid {
 
 /*---------- INDIVIDUAL PAGES ----------*/
 #parallax {
-	position: fixed;
+	position: absolute;
 }
 *[class*="body-"] {
 	background: transparent!important;
@@ -928,16 +933,25 @@ p + .image-grid {
 			position: absolute;
 			top: 0;
 			left: 50%;
+			width: 2560px;
+			height: 120%;
+			background-size: 2560px 3566px!important;
+		}
+		div:not(.skrollable) {
 			-webkit-transform: translateX(-50%);
+			-moz-transform: translateX(-50%);
+			-ms-transform: translateX(-50%);
 			-o-transform: translateX(-50%);
 			transform: translateX(-50%);
-			width: 2560px;
-			height: 100%;
-			background-size: 2560px 3566px!important;
 		}
 	}
 	.parallax, .parallax * {
 		@include transition(.3s ease-in);
+		-webkit-transform: translateZ(0);
+		-moz-transform: translateZ(0);
+		-ms-transform: translateZ(0);
+		-o-transform: translateZ(0);
+		transform: translateZ(0);
 	}
 	// dark and light styles
 	.dark {
@@ -1165,7 +1179,6 @@ p + .image-grid {
 	}
 }
 .body-mcclun {
-	background: #b6a289!important;
 	#parallax div {
 		background-image: url(/static/images/screenshots/mcclun-blur@2x.jpg);
 	}
@@ -1601,8 +1614,8 @@ p + .image-grid {
 			max-width: 45rem!important;
 			position: absolute;
 			img {
-			    -moz-transform: scaleX(-1);
 			    -webkit-transform: scaleX(-1);
+			    -moz-transform: scaleX(-1);
 			    -o-transform: scaleX(-1);
 			    transform: scaleX(-1);
 			    -ms-filter: fliph;
