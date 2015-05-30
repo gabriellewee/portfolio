@@ -120,7 +120,7 @@ $(function () {
 
 $(document).ready(function() {
 	$('body').animate({opacity: 1});
-	$('a').on('click',function(event){
+	$('a').not('.filter a, .selector').on('click',function(event){
 		var thetarget = this.getAttribute('target')
 		if (window.location.hash) { }
 		else if (thetarget != "_blank"){
