@@ -1,4 +1,3 @@
-/*---------- MIXINS ----------*/
 @mixin opacity($opacity) {
 	filter: alpha(opacity=$opacity * 100);
 	opacity: $opacity;
@@ -41,7 +40,6 @@
 	transform: rotate($angle+deg);
 }
 
-/*---------- VARIABLES ----------*/
 $links: 'a:active, a:focus, a:hover';
 
 $main: #444349;
@@ -51,7 +49,8 @@ $background: #d2d3cc;
 $white: #fff;
 $grey: #ebebeb;
 $font: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
-$monospace: "Inconsolata", Consolas, Menlo, "Courier New", Courier, Mono, monospace;
+$monospace: "Inconsolata", "Inconsolata LGC", Consolas, Menlo, "Courier New", Courier, Mono, monospace;
+$italic: "Playfair Display", Baskerville, "Bodoni 72", "Alegreya", Georgia, serif;
 
 // text alignments
 .text-left {
@@ -313,6 +312,11 @@ a, a:visited {
 			position: relative;
 			display: block;
 			overflow: hidden;
+			-webkit-transform: translate3d(0, 0, 0);
+			-moz-transform: translate3d(0, 0, 0);
+			-ms-transform: translate3d(0, 0, 0);
+			-o-transform: translate3d(0, 0, 0);
+			transform: translate3d(0, 0, 0);
 			img {
 				@include opacity(.8);
 				@include blur(5, blur);
@@ -890,7 +894,7 @@ p + .image-grid {
 	.extra .image-grid li {
 		width: 25%!important;
 	}
-	.figure, .medium {
+	.figure, .image-grid .medium {
 		width: 66.6666%!important;
 	}
 	.skeleton-large, .image-grid.models-full li, #themes-grid li, .image-grid li.large {
@@ -985,7 +989,7 @@ p + .image-grid {
 		}
 		h4 {
 			margin: 0 0 4rem;
-			font-family: "Playfair Display", Georgia, serif;
+			font-family: $italic;
 			font-style: italic;
 			font-weight: 400;
 			text-transform: lowercase;
@@ -1091,7 +1095,7 @@ p + .image-grid {
 		padding: 2rem 0 0;
 		text-align: center;
 		color: rgba(255,255,255,.5);
-		font: italic 2.4rem "Playfair Display", Georgia, serif;
+		font: italic 2.4rem $italic;
 		.bullet + a {
 			margin-bottom: .5rem;
 		}
@@ -1179,6 +1183,9 @@ p + .image-grid {
 	}
 }
 .body-mcclun {
+	#all {
+		background: rgba(181,162,136,.5);
+	}
 	#parallax div {
 		background-image: url(/static/images/screenshots/mcclun-blur@2x.jpg);
 	}
@@ -1207,6 +1214,9 @@ p + .image-grid {
 	}
 }
 .body-dillon {
+	#all {
+		background: rgba(67,48,57,.5);
+	}
 	#parallax div {
 		background-image: url(/static/images/screenshots/dillon-blur@2x.jpg);
 	}
@@ -1227,6 +1237,9 @@ p + .image-grid {
 	}
 }
 .body-nameplate {
+	#all {
+		background: rgba(255,255,255,.5);
+	}
 	#parallax div {
 		background-image: url(/static/images/screenshots/nameplate-blur@2x.jpg);
 	}
@@ -1272,6 +1285,9 @@ p + .image-grid {
 	}
 }
 .body-schaff {
+	#all {
+		background: rgba(255,255,255,.5);
+	}
 	#parallax div {
 		background-image: url(/static/images/screenshots/schaff-blur@2x.jpg);
 	}
@@ -1323,6 +1339,9 @@ p + .image-grid {
 	}
 }
 .body-koo {
+	#all {
+		background: rgba(255,255,255,.5);
+	}
 	#parallax div {
 		background-image: url(/static/images/screenshots/koo-blur@2x.jpg);
 	}
@@ -1374,6 +1393,9 @@ p + .image-grid {
 	}
 }
 .body-psych2go {
+	#all {
+		background: rgba(255,255,255,.5);
+	}
 	#parallax div {
 		background-image: url(/static/images/screenshots/psych2go-blur@2x.jpg);
 	}
@@ -1426,6 +1448,9 @@ p + .image-grid {
 	}
 }
 .body-ratchet {
+	#all {
+		background: rgba(28,31,33,.5);
+	}
 	#parallax div {
 		background-image: url(/static/images/screenshots/ratchet-blur@2x.jpg);
 	}
@@ -1470,6 +1495,9 @@ p + .image-grid {
 	}
 }
 .body-bvrg {
+	#all {
+		background: rgba(88,161,195,.5);
+	}
 	#parallax div {
 		background-image: url(/static/images/screenshots/bvrg-blur@2x.jpg);
 	}
@@ -1515,6 +1543,9 @@ p + .image-grid {
 	}
 }
 .body-melgar {
+	#all {
+		background: rgba(255,255,255,.5);
+	}
 	#parallax div {
 		background-image: url(/static/images/screenshots/melgar-blur@2x.jpg);
 	}
@@ -1561,6 +1592,9 @@ p + .image-grid {
 	}
 }
 .body-marchesi {
+	#all {
+		background: rgba(24,23,26,.5);
+	}
 	#parallax div {
 		background-image: url(/static/images/screenshots/marchesi-blur@2x.jpg);
 	}
@@ -1594,6 +1628,9 @@ p + .image-grid {
 	}
 }
 .body-penaflor {
+	#all {
+		background: rgba(60,73,65,.5);
+	}
 	#parallax div {
 		background-image: url(/static/images/screenshots/penaflor-blur@2x.jpg);
 	}
@@ -1634,6 +1671,9 @@ p + .image-grid {
 	}
 }
 .body-resume {
+	#all {
+		background: rgba(255,255,255,.5);
+	}
 	#parallax div {
 		background-image: url(/static/images/screenshots/resume-blur@2x.jpg);
 	}
@@ -1689,6 +1729,9 @@ p + .image-grid {
 	}
 }
 .body-fleux {
+	#all {
+		background: rgba(255,255,255,.5);
+	}
 	#parallax div {
 		background-image: url(/static/images/screenshots/fleux-blur@2x.jpg);
 	}
@@ -1723,6 +1766,9 @@ p + .image-grid {
 	}
 }
 .body-transistor {
+	#all {
+		background: rgba(46,43,49,.5);
+	}
 	#parallax div {
 		background-image: url(/static/images/screenshots/transistor-blur@2x.jpg);
 	}
@@ -1753,6 +1799,9 @@ p + .image-grid {
 	}
 }
 .body-excelle {
+	#all {
+		background: rgba(255,255,255,.5);
+	}
 	#parallax div {
 		background-image: url(/static/images/screenshots/excelle-blur@2x.jpg);
 	}
@@ -1798,6 +1847,9 @@ p + .image-grid {
 	}
 }
 .body-acc {
+	#all {
+		background: rgba(4,3,3,.5);
+	}
 	#parallax div {
 		background-image: url(/static/images/screenshots/acc-blur@2x.jpg);
 	}
@@ -1831,6 +1883,9 @@ p + .image-grid {
 	}
 }
 .body-ys {
+	#all {
+		background: rgba(42,60,70,.5);
+	}
 	#parallax div {
 		background-image: url(/static/images/screenshots/ys-blur@2x.jpg);
 	}
@@ -1851,6 +1906,9 @@ p + .image-grid {
 	}
 }
 .body-fung {
+	#all {
+		background: rgba(74,82,69,.5);
+	}
 	#parallax div {
 		background-image: url(/static/images/screenshots/fung-blur@2x.jpg);
 	}
@@ -1870,12 +1928,6 @@ p + .image-grid {
 			color: #5c2250;
 		}
 	}
-	.website-links {
-		color: #5c2250;
-		a {
-			color: #5c2250;
-		}
-	}
 }
 /* Eevee Pixels */
 #thumb-eevee a {
@@ -1887,6 +1939,9 @@ p + .image-grid {
 	}
 }
 .body-eevee {
+	#all {
+		background: rgba(64,64,64,.5);
+	}
 	#parallax div {
 		background-image: url(/static/images/screenshots/eevee-blur@2x.jpg);
 	}
@@ -1896,7 +1951,7 @@ p + .image-grid {
 		}
 	}
 	#tools {
-		background: rgba(64,64,64,.2)!important;
+		background: rgba(0,0,0,.2)!important;
 		li {
 			color: #404040;
 		}
