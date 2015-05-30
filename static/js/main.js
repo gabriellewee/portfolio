@@ -119,10 +119,11 @@ $(function () {
 });
 
 $(document).ready(function() {
-	$('body').fadeIn();
+	$('body').animate({opacity: 1});
 	$('a').on('click',function(event){
 		var thetarget = this.getAttribute('target')
-		if (thetarget != "_blank"){
+		if (window.location.hash) { }
+		else if (thetarget != "_blank"){
 			var thehref = this.getAttribute('href')
 			event.preventDefault();
 			$('body').fadeOut(function(){
@@ -132,5 +133,5 @@ $(document).ready(function() {
 	});
 });
 setTimeout(function(){
-	$('body').fadeIn();
+	$('body').animate({opacity: 1});
 });

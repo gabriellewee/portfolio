@@ -121,7 +121,7 @@ a, a:visited {
 }
 
 .js body {
-	display: none;
+	@include opacity(0);
 }
 #all * {
 	-webkit-backface-visibility: hidden;
@@ -1803,7 +1803,7 @@ p + .image-grid {
 	}
 	.carousel {
 		.slick-list {
-			box-shadow: 0 0 20rem rgba(198,93,40,.3);
+			box-shadow: 0 0 20rem rgba(179,159,138,.2)!important;
 		}
 	}
 	#tools {
@@ -1892,7 +1892,7 @@ p + .image-grid {
 	}
 	.carousel {
 		.slick-list {
-			box-shadow: 0 0 10rem rgba(0,0,0,.3);
+			box-shadow: 0 0 10rem rgba(0,0,0,.3)!important;
 		}
 	}
 	#tools {

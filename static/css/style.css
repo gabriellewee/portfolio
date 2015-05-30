@@ -69,7 +69,8 @@ a:active, a:focus, a:hover {
   padding: 0 !important; }
 
 .js body {
-  display: none; }
+  filter: alpha(opacity=0);
+  opacity: 0; }
 
 #all * {
   -webkit-backface-visibility: hidden;
@@ -1572,7 +1573,7 @@ p + .image-grid {
   background-image: url(/static/images/screenshots/acc-blur@2x.jpg); }
 
 .body-acc .carousel .slick-list {
-  box-shadow: 0 0 20rem rgba(198, 93, 40, 0.3); }
+  box-shadow: 0 0 20rem rgba(179, 159, 138, 0.2) !important; }
 
 .body-acc #tools {
   background: rgba(255, 255, 255, 0.2) !important; }
@@ -1642,7 +1643,7 @@ p + .image-grid {
   background-image: url(/static/images/screenshots/eevee-blur@2x.jpg); }
 
 .body-eevee .carousel .slick-list {
-  box-shadow: 0 0 10rem rgba(0, 0, 0, 0.3); }
+  box-shadow: 0 0 10rem rgba(0, 0, 0, 0.3) !important; }
 
 .body-eevee #tools {
   background: rgba(64, 64, 64, 0.2) !important; }
