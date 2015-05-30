@@ -353,7 +353,12 @@ a, a:visited {
 						letter-spacing: .2rem;
 					}
 					span {
-						@include opacity(.4);
+						display: block;
+						padding: 0 .5rem;
+						font-family: $italic;
+						font-style: italic;
+						text-transform: lowercase;
+						@include opacity(.6);
 					}
 				}
 			}

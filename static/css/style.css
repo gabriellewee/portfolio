@@ -304,8 +304,13 @@ a:active, a:focus, a:hover {
             text-transform: uppercase;
             letter-spacing: .2rem; }
           .thumbnails li a > span > span span {
-            filter: alpha(opacity=40);
-            opacity: 0.4; }
+            display: block;
+            padding: 0 0.5rem;
+            font-family: "Playfair Display", Baskerville, "Bodoni 72", "Alegreya", Georgia, serif;
+            font-style: italic;
+            text-transform: lowercase;
+            filter: alpha(opacity=60);
+            opacity: 0.6; }
     .thumbnails li a:active > span, .thumbnails li a:focus > span, .thumbnails li a:hover > span {
       filter: alpha(opacity=0);
       opacity: 0; }
