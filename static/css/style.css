@@ -12,7 +12,10 @@
 
 /*---------- DEFAULT ----------*/
 * {
-  -webkit-backface-visibility: hidden; }
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden; }
 
 *:focus {
   outline: none !important; }
@@ -69,12 +72,6 @@ a:active, a:focus, a:hover {
 .js body {
   filter: alpha(opacity=0);
   opacity: 0; }
-
-#all * {
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -o-backface-visibility: hidden;
-  backface-visibility: hidden; }
 
 /*---------- HEADER ----------*/
 #top {

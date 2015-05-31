@@ -69,6 +69,9 @@ $italic: "Playfair Display", Baskerville, "Bodoni 72", "Alegreya", Georgia, seri
 /*---------- DEFAULT ----------*/
 * {
 	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	backface-visibility: hidden;
 }
 *:focus {
 	outline: none!important;
@@ -121,12 +124,6 @@ a, a:visited {
 
 .js body {
 	@include opacity(0);
-}
-#all * {
-	-webkit-backface-visibility: hidden;
-	-moz-backface-visibility: hidden;
-	-o-backface-visibility: hidden;
-	backface-visibility: hidden;
 }
 
 /*---------- HEADER ----------*/

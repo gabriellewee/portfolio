@@ -53,6 +53,10 @@ $(function () {
 	$grid.isotope( 'on', 'layoutComplete', function( laidOutItems ) {
 		$parallax.height( $all.height() );
 	});
+	$(window).resize(function(){
+		$container.isotope('layout');
+		$grid.isotope('layout');
+	});
 	// filters
 	$('#filters, #art-filters').isotope({
 		layoutMode: 'fitRows'
