@@ -122,7 +122,7 @@ a, a:visited {
 	padding: 0!important;
 }
 
-.js body {
+.no-touch.js body {
 	@include opacity(0);
 }
 
