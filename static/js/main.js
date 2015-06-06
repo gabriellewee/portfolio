@@ -122,20 +122,22 @@ $(function () {
 	});
 });
 
-$(document).ready(function() {
-	$('body').animate({opacity: 1});
-	$('a').not('.filter a, .selector').on('click',function(event){
-		var thetarget = this.getAttribute('target')
-		if (window.location.hash) { }
-		else if (thetarget != "_blank"){
-			var thehref = this.getAttribute('href')
-			event.preventDefault();
-			$('body').fadeOut(function(){
-				window.location = thehref
-			});
-		}
+if(!(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)){
+	$(document).ready(function() {
+		$('body').animate({opacity: 1});
+		$('a').not('.filter a, .selector').on('click',function(event){
+			var thetarget = this.getAttribute('target')
+			if (window.location.hash) { }
+			else if (thetarget != "_blank"){
+				var thehref = this.getAttribute('href')
+				event.preventDefault();
+				$('body').fadeOut(function(){
+					window.location = thehref
+				});
+			}
+		});
 	});
-});
-setTimeout(function(){
-	$('body').animate({opacity: 1});
-});
+	setTimeout(function(){
+		$('body').animate({opacity: 1});
+	});
+}
