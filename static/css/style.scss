@@ -52,6 +52,10 @@ $font: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu San
 $monospace: "Inconsolata", "Inconsolata LGC", Consolas, Menlo, "Courier New", Courier, Mono, monospace;
 $italic: "Playfair Display", Baskerville, "Bodoni 72", "Alegreya", Georgia, serif;
 
+@import url("//hello.myfonts.net/count/2e4c5d");
+@font-face {font-family: 'LuloCleanOne-Bold';src: url('/static/fonts/2E4C5D_0_0.eot');src: url('/static/fonts/2E4C5D_0_0.eot?#iefix') format('embedded-opentype'),url('/static/fonts/2E4C5D_0_0.woff2') format('woff2'),url('/static/fonts/2E4C5D_0_0.woff') format('woff'),url('/static/fonts/2E4C5D_0_0.ttf') format('truetype'),url('/static/fonts/2E4C5D_0_0.svg#wf') format('svg');}
+@font-face {font-family: 'LuloCleanOutline-Bold';src: url('/static/fonts/2E4C5D_1_0.eot');src: url('/static/fonts/2E4C5D_1_0.eot?#iefix') format('embedded-opentype'),url('/static/fonts/2E4C5D_1_0.woff2') format('woff2'),url('/static/fonts/2E4C5D_1_0.woff') format('woff'),url('/static/fonts/2E4C5D_1_0.ttf') format('truetype'),url('/static/fonts/2E4C5D_1_0.svg#wf') format('svg');}
+
 // text alignments
 .text-left {
 	text-align: left;
@@ -131,16 +135,44 @@ a, a:visited {
 	padding: 2.5rem 0rem;
 	background: $main;
 	h1 {
+		position: relative;
 		margin: 0;
 		padding-top: .8rem;
-		font: 400 2.4rem "Jaapokki Subtract", $font;
+		font: 400 2rem "LuloCleanOutline-Bold", $font;
 		text-rendering: geometricPrecision;
-		letter-spacing: .2rem;
+		letter-spacing: -.1rem;
 		text-transform: uppercase;
 		line-height: 1;
 		a {
 			color: $white;
 		}
+		#{$links} {
+			@include opacity(.7);
+		}
+	}
+	.header-large a:before {
+		content: "The Portfolio of Gabrielle Wee";
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 0;
+		padding-top: .8rem;
+		font-family: "LuloCleanOne-Bold";
+		color: $white;
+		@include opacity(.3);
+	}
+	.header-small a:before {
+		content: "gabriellew.ee";
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 0;
+		padding-top: .8rem;
+		font-family: "LuloCleanOne-Bold";
+		color: $white;
+		@include opacity(.3);
 	}
 	// navigation icon
 	.selector {
@@ -174,6 +206,9 @@ a, a:visited {
 				margin-bottom: 4px;
 			}
 		}
+	}
+	.selector:active, .selector:focus, .selector:hover {
+		@include opacity(.7);
 	}
 	// navigation icon on click
 	.active {
@@ -344,10 +379,10 @@ a, a:visited {
 					.thumb-title {
 						display: block;
 						padding: 0 1rem;
-						font: 400 2.4rem/1.3 "Jaapokki Regular", $font;
+						font: 700 2.4rem/1.3 "LuloCleanOne-Bold", $font;
 						text-rendering: geometricPrecision;
 						text-transform: uppercase;
-						letter-spacing: .2rem;
+						letter-spacing: -.2rem;
 					}
 					span {
 						display: block;
@@ -464,21 +499,21 @@ a, a:visited {
 	h2 {
 		margin: 0;
 		padding-top: .7rem;
-		font: 400 3rem "Jaapokki Regular", $font;
+		font: 700 3rem "LuloCleanOne-Bold", $font;
 		text-rendering: geometricPrecision;
-		letter-spacing: .2rem;
+		letter-spacing: -.5rem;
 		color: $white;
 		text-align: center;
 	}
 	h3 {
 		margin: 0;
-		font: 400 2.4rem "Jaapokki Regular", $font;
+		font: 700 2.4rem "LuloCleanOne-Bold", $font;
 		text-rendering: geometricPrecision;
-		letter-spacing: .1rem;
+		letter-spacing: -.3rem;
 		color: $white;
 		text-align: center;
 	}
-	span {
+	.polycount {
 		display: block;
 		text-align: center;
 		color: $white;
@@ -877,10 +912,15 @@ p + .image-grid {
 /*---------- MEDIUM SCREENS ----------*/
 @media only screen and (min-width: 40.063em) {
 	#top h1 {
-		font-size: 2.8rem;
+		font-size: 2.4rem;
+		letter-spacing: -.2rem;
 	}
 	.title h2 {
 		font-size: 4rem;
+	}
+	.thumb-title {
+		font: 700 2rem/1.2 "LuloCleanOne-Bold", $font!important;
+		letter-spacing: -.2rem!important;
 	}
 	.bar-chart {
 		margin: -2rem 0 0;
@@ -982,7 +1022,7 @@ p + .image-grid {
 		filter: alpha(opacity=30);
 		svg {
 			width: 2.4rem;
-			fill: #fff;
+			fill: $white;
 		}
 	}
 	.title {
@@ -1526,7 +1566,7 @@ p + .image-grid {
 		}
 	}
 	.description, #bottom {
-		color: #fff;
+		color: $white;
 		a {
 			color: #480000;
 		}
@@ -1829,6 +1869,86 @@ p + .image-grid {
 	}
 }
 
+/*---------- INDIVIDUAL INTERFACE STYLES ----------*/
+/* My Passionate Guild Romance */
+#thumb-guild a {
+	background: #392111;
+	> span {
+		color: $white;
+		background: rgba(57,33,17,.7);
+		box-shadow: inset 0 0 2rem rgb(57,33,17);
+
+	}
+}
+.body-guild {
+	#all {
+		background: rgba(57,33,17,.5);
+	}
+	#parallax div {
+		background-image: url(/static/images/screenshots/guild-blur@2x.jpg);
+	}
+	.description {
+		a {
+			color: #ffdf7a!important;
+		}
+		#{$links} {
+			color: #d9bcac!important;
+		}
+	}
+	#tools {
+		background: rgba(255,255,255,.3)!important;
+		li {
+			color: #392111;
+		}
+	}
+}
+/* Quake Quiz */
+#thumb-quake a {
+	background: rgb(233,141,90);
+	> span {
+		color: $white;
+		background: rgba(233,141,90,.7);
+		box-shadow: inset 0 0 2rem rgb(233,141,90);
+
+	}
+}
+.body-quake {
+	#all {
+		background: $white;
+	}
+	#top {
+		background: rgba(247,107,28,.7)!important;
+	}
+	h2, h4, .bullet svg, #bottom, .website-links, .website-links a {
+		color: #F76B1C!important;
+		fill: #F76B1C!important;
+	}
+	.description {
+		a {
+			color: #F76B1C!important;
+		}
+		#{$links} {
+			color: #f99839!important;
+		}
+	}
+	.slick-prev {
+		&:before {
+			content: url("/static/svg/left_black.svg")!important;
+		}
+	}
+	.slick-next {
+		&:before {
+			content: url("/static/svg/right_black.svg")!important;
+		}
+	}
+	#tools {
+		background: rgba(247,107,28,.7)!important;
+		li {
+			color: #333;
+		}
+	}
+}
+
 /*---------- INDIVIDUAL GRAPHIC STYLES ----------*/
 /* Scissor Blade */
 #thumb-scissor-blade a {
@@ -1871,7 +1991,7 @@ p + .image-grid {
 			color: #d3c4b6;
 		}
 		#{$links} {
-			color: #fff;
+			color: $white;
 		}
 	}
 }
