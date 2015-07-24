@@ -696,6 +696,8 @@ a:active, a:focus, a:hover {
         background: #ff7734; }
       #skills .bar-chart .bar#bar-fl .percent {
         background: #d12a27; }
+      #skills .bar-chart .bar#bar-sk .percent {
+        background: #FCB70A; }
       #skills .bar-chart .bar#bar-maya .percent {
         background: #097373; }
       #skills .bar-chart .bar#bar-zbrush .percent {
