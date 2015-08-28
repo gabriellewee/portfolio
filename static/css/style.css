@@ -1,13 +1,13 @@
-@import url("//hello.myfonts.net/count/2e4c5d");
+@import url("//hello.myfonts.net/count/2F07E6");
 @font-face {
   font-family: 'LuloCleanOne-Bold';
-  src: url("/static/fonts/2E4C5D_0_0.eot");
-  src: url("/static/fonts/2E4C5D_0_0.eot?#iefix") format("embedded-opentype"), url("/static/fonts/2E4C5D_0_0.woff2") format("woff2"), url("/static/fonts/2E4C5D_0_0.woff") format("woff"), url("/static/fonts/2E4C5D_0_0.ttf") format("truetype"), url("/static/fonts/2E4C5D_0_0.svg#wf") format("svg"); }
+  src: url("/static/fonts/2F07E6_0_0.eot");
+  src: url("/static/fonts/2F07E6_0_0.eot?#iefix") format("embedded-opentype"), url("/static/fonts/2F07E6_0_0.woff2") format("woff2"), url("/static/fonts/2F07E6_0_0.woff") format("woff"), url("/static/fonts/2F07E6_0_0.ttf") format("truetype"), url("/static/fonts/2F07E6_0_0.svg#wf") format("svg"); }
 
 @font-face {
   font-family: 'LuloCleanOutline-Bold';
-  src: url("/static/fonts/2E4C5D_1_0.eot");
-  src: url("/static/fonts/2E4C5D_1_0.eot?#iefix") format("embedded-opentype"), url("/static/fonts/2E4C5D_1_0.woff2") format("woff2"), url("/static/fonts/2E4C5D_1_0.woff") format("woff"), url("/static/fonts/2E4C5D_1_0.ttf") format("truetype"), url("/static/fonts/2E4C5D_1_0.svg#wf") format("svg"); }
+  src: url("/static/fonts/2F07E6_1_0.eot");
+  src: url("/static/fonts/2F07E6_1_0.eot?#iefix") format("embedded-opentype"), url("/static/fonts/2F07E6_1_0.woff2") format("woff2"), url("/static/fonts/2F07E6_1_0.woff") format("woff"), url("/static/fonts/2F07E6_1_0.ttf") format("truetype"), url("/static/fonts/2F07E6_1_0.svg#wf") format("svg"); }
 
 .text-left {
   text-align: left; }
@@ -110,7 +110,7 @@ a:active, a:focus, a:hover {
     left: 0;
     z-index: 0;
     padding-top: .8rem;
-    font-family: "LuloCleanOne-Bold";
+    font-family: "LuloCleanOne-Bold", "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
     color: #fff;
     filter: alpha(opacity=30);
     opacity: 0.3; }
@@ -122,7 +122,7 @@ a:active, a:focus, a:hover {
     left: 0;
     z-index: 0;
     padding-top: .8rem;
-    font-family: "LuloCleanOne-Bold";
+    font-family: "LuloCleanOne-Bold", "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
     color: #fff;
     filter: alpha(opacity=30);
     opacity: 0.3; }

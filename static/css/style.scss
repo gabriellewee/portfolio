@@ -52,9 +52,9 @@ $font: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu San
 $monospace: "Inconsolata", "Inconsolata LGC", Consolas, Menlo, "Courier New", Courier, Mono, monospace;
 $italic: "Playfair Display", Baskerville, "Bodoni 72", "Alegreya", Georgia, serif;
 
-@import url("//hello.myfonts.net/count/2e4c5d");
-@font-face {font-family: 'LuloCleanOne-Bold';src: url('/static/fonts/2E4C5D_0_0.eot');src: url('/static/fonts/2E4C5D_0_0.eot?#iefix') format('embedded-opentype'),url('/static/fonts/2E4C5D_0_0.woff2') format('woff2'),url('/static/fonts/2E4C5D_0_0.woff') format('woff'),url('/static/fonts/2E4C5D_0_0.ttf') format('truetype'),url('/static/fonts/2E4C5D_0_0.svg#wf') format('svg');}
-@font-face {font-family: 'LuloCleanOutline-Bold';src: url('/static/fonts/2E4C5D_1_0.eot');src: url('/static/fonts/2E4C5D_1_0.eot?#iefix') format('embedded-opentype'),url('/static/fonts/2E4C5D_1_0.woff2') format('woff2'),url('/static/fonts/2E4C5D_1_0.woff') format('woff'),url('/static/fonts/2E4C5D_1_0.ttf') format('truetype'),url('/static/fonts/2E4C5D_1_0.svg#wf') format('svg');}
+@import url("//hello.myfonts.net/count/2F07E6");
+@font-face {font-family: 'LuloCleanOne-Bold';src: url('/static/fonts/2F07E6_0_0.eot');src: url('/static/fonts/2F07E6_0_0.eot?#iefix') format('embedded-opentype'),url('/static/fonts/2F07E6_0_0.woff2') format('woff2'),url('/static/fonts/2F07E6_0_0.woff') format('woff'),url('/static/fonts/2F07E6_0_0.ttf') format('truetype'),url('/static/fonts/2F07E6_0_0.svg#wf') format('svg');}
+@font-face {font-family: 'LuloCleanOutline-Bold';src: url('/static/fonts/2F07E6_1_0.eot');src: url('/static/fonts/2F07E6_1_0.eot?#iefix') format('embedded-opentype'),url('/static/fonts/2F07E6_1_0.woff2') format('woff2'),url('/static/fonts/2F07E6_1_0.woff') format('woff'),url('/static/fonts/2F07E6_1_0.ttf') format('truetype'),url('/static/fonts/2F07E6_1_0.svg#wf') format('svg');}
 
 // text alignments
 .text-left {
@@ -158,7 +158,7 @@ a, a:visited {
 		left: 0;
 		z-index: 0;
 		padding-top: .8rem;
-		font-family: "LuloCleanOne-Bold";
+		font-family: "LuloCleanOne-Bold", $font;
 		color: $white;
 		@include opacity(.3);
 	}
@@ -170,7 +170,7 @@ a, a:visited {
 		left: 0;
 		z-index: 0;
 		padding-top: .8rem;
-		font-family: "LuloCleanOne-Bold";
+		font-family: "LuloCleanOne-Bold", $font;
 		color: $white;
 		@include opacity(.3);
 	}
