@@ -1996,6 +1996,26 @@ p + .image-grid {
 		}
 	}
 }
+/* Library */
+#thumb-lib a {
+	background: #474438;
+	> span {
+		color: $white;
+		background: rgba(71,68,56,.6);
+		box-shadow: inset 0 0 2rem rgb(71,68,56);
+	}
+}
+.body-lib {
+	#all {
+		background: #474438;
+	}
+	#tools {
+		background: rgba(255,255,255,.2)!important;
+		li {
+			color: #19100f!important;
+		}
+	}
+}
 /* Yurei Shrine */
 #thumb-ys a {
 	background: #2C4857;
