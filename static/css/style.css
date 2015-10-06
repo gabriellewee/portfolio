@@ -102,7 +102,7 @@ a:active, a:focus, a:hover {
     #top h1 a:active, #top h1 a:focus, #top h1 a:hover {
       filter: alpha(opacity=70);
       opacity: 0.7; }
-  #top .header-large a:before {
+  #top .header-large a::before {
     content: "The Portfolio of Gabrielle Wee";
     display: block;
     position: absolute;
@@ -114,7 +114,7 @@ a:active, a:focus, a:hover {
     color: #fff;
     filter: alpha(opacity=30);
     opacity: 0.3; }
-  #top .header-small a:before {
+  #top .header-small a::before {
     content: "gabriellew.ee";
     display: block;
     position: absolute;
@@ -204,7 +204,7 @@ a:active, a:focus, a:hover {
         background: #fff; }
       #top .pop ul li a:active, #top .pop ul li a:focus, #top .pop ul li a:hover {
         background: #ebebeb; }
-      #top .pop ul li:first-child a:after {
+      #top .pop ul li:first-child a::after {
         -webkit-transition: all 0.3s ease-in-out;
         -o-transition: all 0.3s ease-in-out;
         -ms-transition: all 0.3s ease-in-out;
@@ -217,7 +217,7 @@ a:active, a:focus, a:hover {
         right: -14px;
         border: 7px solid transparent;
         border-left-color: #fff; }
-      #top .pop ul li:first-child a:active:after, #top .pop ul li:first-child a:focus:after, #top .pop ul li:first-child a:hover:after {
+      #top .pop ul li:first-child a:active::after, #top .pop ul li:first-child a:focus::after, #top .pop ul li:first-child a:hover::after {
         border-left-color: #ebebeb; }
   #top .active.pop {
     filter: alpha(opacity=100);
@@ -265,7 +265,7 @@ a:active, a:focus, a:hover {
 
 #filters {
   margin: -1rem -1rem 1rem; }
-  #filters li:not(.no-hash) a:before {
+  #filters li:not(.no-hash) a::before {
     content: "#"; }
 
 #art-filters {
@@ -414,7 +414,7 @@ a:active, a:focus, a:hover {
       width: 30px;
       height: 30px;
       margin-top: -15px; }
-      #slideshow .carousel .slick-prev:before, #slideshow .carousel .slick-next:before, .slideshow .carousel .slick-prev:before, .slideshow .carousel .slick-next:before {
+      #slideshow .carousel .slick-prev::before, #slideshow .carousel .slick-next::before, .slideshow .carousel .slick-prev::before, .slideshow .carousel .slick-next::before {
         -webkit-transition: all 0.3s ease-in-out;
         -o-transition: all 0.3s ease-in-out;
         -ms-transition: all 0.3s ease-in-out;
@@ -422,14 +422,14 @@ a:active, a:focus, a:hover {
         transition: all 0.3s ease-in-out; }
     #slideshow .carousel .slick-prev, .slideshow .carousel .slick-prev {
       left: 20px; }
-      #slideshow .carousel .slick-prev:before, .slideshow .carousel .slick-prev:before {
+      #slideshow .carousel .slick-prev::before, .slideshow .carousel .slick-prev::before {
         content: url("/static/svg/left.svg"); }
     #slideshow .carousel .slick-next, .slideshow .carousel .slick-next {
       right: 20px; }
-      #slideshow .carousel .slick-next:before, .slideshow .carousel .slick-next:before {
+      #slideshow .carousel .slick-next::before, .slideshow .carousel .slick-next::before {
         content: url("/static/svg/right.svg"); }
 
-.touch .slick-prev:before, .touch .slick-next:before {
+.touch .slick-prev::before, .touch .slick-next::before {
   display: none; }
 
 .title, #chinese-intro {
@@ -1185,10 +1185,10 @@ p + .image-grid {
 .body-nameplate .description a:active, .body-nameplate .description a:focus, .body-nameplate .description a:hover {
   color: #d3862a !important; }
 
-.body-nameplate .slick-prev:before {
+.body-nameplate .slick-prev::before {
   content: url("/static/svg/left_black.svg") !important; }
 
-.body-nameplate .slick-next:before {
+.body-nameplate .slick-next::before {
   content: url("/static/svg/right_black.svg") !important; }
 
 .body-nameplate #tools {
@@ -1223,18 +1223,18 @@ p + .image-grid {
 .body-schaff .cards ul {
   padding-bottom: 2rem; }
 
-.body-schaff .slick-prev:before {
+.body-schaff .slick-prev::before {
   filter: alpha(opacity=50);
   opacity: 0.5;
   content: url("/static/svg/left_black.svg") !important; }
 
-.body-schaff .slick-next:before {
+.body-schaff .slick-next::before {
   filter: alpha(opacity=50);
   opacity: 0.5;
   content: url("/static/svg/right_black.svg") !important; }
 
-.body-schaff .slick-prev:active:before, .body-schaff .slick-prev:hover:before, .body-schaff .slick-prev:focus:before,
-.body-schaff .slick-next:active:before, .body-schaff .slick-next:hover:before, .body-schaff .slick-next:focus:before {
+.body-schaff .slick-prev:active::before, .body-schaff .slick-prev:hover::before, .body-schaff .slick-prev:focus::before,
+.body-schaff .slick-next:active::before, .body-schaff .slick-next:hover::before, .body-schaff .slick-next:focus::before {
   opacity: 1; }
 
 .body-schaff #tools {
@@ -1266,10 +1266,10 @@ p + .image-grid {
 .body-koo .description a {
   color: #d00a29 !important; }
 
-.body-koo .slick-prev:before {
+.body-koo .slick-prev::before {
   content: url("/static/svg/left_black.svg") !important; }
 
-.body-koo .slick-next:before {
+.body-koo .slick-next::before {
   content: url("/static/svg/right_black.svg") !important; }
 
 .body-koo #tools {
@@ -1309,10 +1309,10 @@ p + .image-grid {
 .body-psych2go .description a {
   color: #0E344B !important; }
 
-.body-psych2go .slick-prev:before {
+.body-psych2go .slick-prev::before {
   content: url("/static/svg/left_black.svg") !important; }
 
-.body-psych2go .slick-next:before {
+.body-psych2go .slick-next::before {
   content: url("/static/svg/right_black.svg") !important; }
 
 .body-psych2go #tools {
@@ -1439,10 +1439,10 @@ p + .image-grid {
   .body-melgar .description a:active, .body-melgar .description a:focus, .body-melgar .description a:hover, .body-melgar #bottom a:active, .body-melgar #bottom a:focus, .body-melgar #bottom a:hover {
     color: #506169 !important; }
 
-.body-melgar .slick-prev:before {
+.body-melgar .slick-prev::before {
   content: url("/static/svg/left_black.svg") !important; }
 
-.body-melgar .slick-next:before {
+.body-melgar .slick-next::before {
   content: url("/static/svg/right_black.svg") !important; }
 
 .body-melgar #tools {
@@ -1546,10 +1546,10 @@ p + .image-grid {
 .body-resume .description a:active, .body-resume .description a:focus, .body-resume .description a:hover {
   color: #d3862a !important; }
 
-.body-resume .slick-prev:before {
+.body-resume .slick-prev::before {
   content: url("/static/svg/left_black.svg") !important; }
 
-.body-resume .slick-next:before {
+.body-resume .slick-next::before {
   content: url("/static/svg/right_black.svg") !important; }
 
 .body-resume #tools {
@@ -1586,10 +1586,10 @@ p + .image-grid {
 .body-fleux #tools {
   background: rgba(104, 82, 110, 0.9) !important; }
 
-.body-fleux .slick-prev:before {
+.body-fleux .slick-prev::before {
   content: url("/static/svg/left_black.svg") !important; }
 
-.body-fleux .slick-next:before {
+.body-fleux .slick-next::before {
   content: url("/static/svg/right_black.svg") !important; }
 
 /* Transistor Tumblr Theme */
@@ -1644,10 +1644,10 @@ p + .image-grid {
 .body-excelle #tools {
   background: rgba(42, 93, 176, 0.7) !important; }
 
-.body-excelle .slick-prev:before {
+.body-excelle .slick-prev::before {
   content: url("/static/svg/left_black.svg") !important; }
 
-.body-excelle .slick-next:before {
+.body-excelle .slick-next::before {
   content: url("/static/svg/right_black.svg") !important; }
 
 /*---------- INDIVIDUAL INTERFACE STYLES ----------*/
@@ -1700,10 +1700,10 @@ p + .image-grid {
 .body-quake .description a:active, .body-quake .description a:focus, .body-quake .description a:hover {
   color: #f99839 !important; }
 
-.body-quake .slick-prev:before {
+.body-quake .slick-prev::before {
   content: url("/static/svg/left_black.svg") !important; }
 
-.body-quake .slick-next:before {
+.body-quake .slick-next::before {
   content: url("/static/svg/right_black.svg") !important; }
 
 .body-quake #tools {

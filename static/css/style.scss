@@ -150,7 +150,7 @@ a, a:visited {
 			@include opacity(.7);
 		}
 	}
-	.header-large a:before {
+	.header-large a::before {
 		content: "The Portfolio of Gabrielle Wee";
 		display: block;
 		position: absolute;
@@ -162,7 +162,7 @@ a, a:visited {
 		color: $white;
 		@include opacity(.3);
 	}
-	.header-small a:before {
+	.header-small a::before {
 		content: "gabriellew.ee";
 		display: block;
 		position: absolute;
@@ -257,7 +257,7 @@ a, a:visited {
 					background: $grey;
 				}
 				&:first-child {
-					a:after {
+					a::after {
 						@include transition(.3s ease-in-out);
 						content: "";
 						display: block;
@@ -268,7 +268,7 @@ a, a:visited {
 						border-left-color: $white;
 					}
 					#{$links} {
-						&:after {
+						&::after {
 							border-left-color: $grey;
 						}
 					}
@@ -322,7 +322,7 @@ a, a:visited {
 }
 #filters {
 	margin: -1rem -1rem 1rem;
-	li:not(.no-hash) a:before {
+	li:not(.no-hash) a::before {
 		content: "#";
 	}
 }
@@ -466,25 +466,25 @@ a, a:visited {
 			width: 30px;
 			height: 30px;
 			margin-top: -15px;
-			&:before {
+			&::before {
 				@include transition(.3s ease-in-out);
 			}
 		}
 		.slick-prev {
 			left: 20px;
-			&:before {
+			&::before {
 				content: url("/static/svg/left.svg");
 			}
 		}
 		.slick-next {
 			right: 20px;
-			&:before {
+			&::before {
 				content: url("/static/svg/right.svg");
 			}
 		}
 	}
 }
-.touch .slick-prev:before, .touch .slick-next:before {
+.touch .slick-prev::before, .touch .slick-next::before {
 	display: none;
 }
 // project headers
@@ -1302,12 +1302,12 @@ p + .image-grid {
 		}
 	}
 	.slick-prev {
-		&:before {
+		&::before {
 			content: url("/static/svg/left_black.svg")!important;
 		}
 	}
 	.slick-next {
-		&:before {
+		&::before {
 			content: url("/static/svg/right_black.svg")!important;
 		}
 	}
@@ -1350,19 +1350,19 @@ p + .image-grid {
 		padding-bottom: 2rem;
 	}
 	.slick-prev {
-		&:before {
+		&::before {
 			@include opacity(.5);
 			content: url("/static/svg/left_black.svg")!important;
 		}
 	}
 	.slick-next {
-		&:before {
+		&::before {
 			@include opacity(.5);
 			content: url("/static/svg/right_black.svg")!important;
 		}
 	}
-	.slick-prev:active:before, .slick-prev:hover:before, .slick-prev:focus:before,
-	.slick-next:active:before, .slick-next:hover:before, .slick-next:focus:before {
+	.slick-prev:active::before, .slick-prev:hover::before, .slick-prev:focus::before,
+	.slick-next:active::before, .slick-next:hover::before, .slick-next:focus::before {
 		opacity: 1;
 	}
 	#tools {
@@ -1401,12 +1401,12 @@ p + .image-grid {
 		}
 	}
 	.slick-prev {
-		&:before {
+		&::before {
 			content: url("/static/svg/left_black.svg")!important;
 		}
 	}
 	.slick-next {
-		&:before {
+		&::before {
 			content: url("/static/svg/right_black.svg")!important;
 		}
 	}
@@ -1455,12 +1455,12 @@ p + .image-grid {
 		}
 	}
 	.slick-prev {
-		&:before {
+		&::before {
 			content: url("/static/svg/left_black.svg")!important;
 		}
 	}
 	.slick-next {
-		&:before {
+		&::before {
 			content: url("/static/svg/right_black.svg")!important;
 		}
 	}
@@ -1609,12 +1609,12 @@ p + .image-grid {
 		}
 	}
 	.slick-prev {
-		&:before {
+		&::before {
 			content: url("/static/svg/left_black.svg")!important;
 		}
 	}
 	.slick-next {
-		&:before {
+		&::before {
 			content: url("/static/svg/right_black.svg")!important;
 		}
 	}
@@ -1736,12 +1736,12 @@ p + .image-grid {
 		}
 	}
 	.slick-prev {
-		&:before {
+		&::before {
 			content: url("/static/svg/left_black.svg")!important;
 		}
 	}
 	.slick-next {
-		&:before {
+		&::before {
 			content: url("/static/svg/right_black.svg")!important;
 		}
 	}
@@ -1789,12 +1789,12 @@ p + .image-grid {
 		background: rgba(104,82,110,.9)!important;
 	}
 	.slick-prev {
-		&:before {
+		&::before {
 			content: url("/static/svg/left_black.svg")!important;
 		}
 	}
 	.slick-next {
-		&:before {
+		&::before {
 			content: url("/static/svg/right_black.svg")!important;
 		}
 	}
@@ -1859,12 +1859,12 @@ p + .image-grid {
 		background: rgba(42,93,176,.7)!important;
 	}
 	.slick-prev {
-		&:before {
+		&::before {
 			content: url("/static/svg/left_black.svg")!important;
 		}
 	}
 	.slick-next {
-		&:before {
+		&::before {
 			content: url("/static/svg/right_black.svg")!important;
 		}
 	}
@@ -1933,12 +1933,12 @@ p + .image-grid {
 		}
 	}
 	.slick-prev {
-		&:before {
+		&::before {
 			content: url("/static/svg/left_black.svg")!important;
 		}
 	}
 	.slick-next {
-		&:before {
+		&::before {
 			content: url("/static/svg/right_black.svg")!important;
 		}
 	}
