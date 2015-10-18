@@ -131,9 +131,7 @@ if(!(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAg
 			else if (thetarget != "_blank"){
 				var thehref = this.getAttribute('href')
 				event.preventDefault();
-				$('body').fadeOut(function(){
-					window.location = thehref
-				});
+				$('body').velocity({opacity: 0}, function() { window.location = thehref });
 			}
 		});
 	});
@@ -143,3 +141,10 @@ if(!(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAg
 		});
 	});
 }
+
+$(window).unload(function () { $(window).unbind('unload'); });
+$(window).bind('pageshow', function(event) {
+    if (event.originalEvent.persisted) {
+        window.location.reload() 
+    }
+});
