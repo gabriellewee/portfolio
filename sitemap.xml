@@ -76,6 +76,11 @@
         <priority>1.0</priority>
     </url>
     <url>
+        <loc>/portfolio/ps/</loc>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
         <loc>/portfolio/psych2go/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -97,6 +102,11 @@
     </url>
     <url>
         <loc>/portfolio/schaff/</loc>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>/portfolio/xbox/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
