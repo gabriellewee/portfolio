@@ -1,0 +1,9 @@
+<svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<g fill="none" stroke="#000000" stroke-width="3" stroke-linecap="square" stroke-linejoin="round">
+		<path d="M55.0081305,43.6756051 L45.6266945,66.3243949" class="slash"></path>
+		<path d="M63,46 L72,55 L63,64" class="right-bracket"></path>
+		<path d="M38,46 L29,55 L38,64" class="left-bracket"></path>
+		<rect class="browser" x="15" y="19" width="70" height="62" rx="3"></rect>
+        <path d="M15,30 L85,30" class="browser-line"></path>
+	</g>
+</svg>

@@ -1,0 +1,105 @@
+@import 'mixin';
+
+@keyframes loader-fadeOut {
+	0% {
+		z-index: 1000;
+		opacity: 1;
+		display: flex;
+	}
+	99% {
+		z-index: 1000;
+		opacity: 0;
+		display: flex;
+	}
+	100% {
+		z-index: -1000;
+		opacity: 0;
+		display: none;
+	}
+}
+
+@keyframes logo-line {
+	0% { stroke-dashoffset: 400; }
+	100% { stroke-dashoffset: 0; }
+}
+
+@keyframes logo-circle {
+	0% { stroke-dashoffset: 1100; }
+	100% { stroke-dashoffset: 0; }
+}
+
+@keyframes logo-letter {
+	0% { opacity: 1; stroke-dashoffset: 614; }
+	100% { opacity: 1; stroke-dashoffset: 0; }
+}
+
+@keyframes logo-rectCircle {
+	0% { border-radius: 0; }
+	100% { border-radius: 200px; }
+}
+
+@keyframes logo-fillPink {
+	0% { background: rgba(#495453, 0.1); }
+	100% { background: rgba(#F5C8BF, 0.25); }
+}
+
+@keyframes logo-fadeIn-translateDown {
+	0% {
+		opacity: 0;
+		transform: translate3d(0,5%,0);
+	}
+	100% {
+		opacity: 1;
+		transform: translate3d(0,0,0);
+	}
+}
+
+@keyframes logo-bg {
+	0% {
+		opacity: 1;
+		transform: scale(0.5) translateZ(0);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1) translateZ(0);
+	}
+}
+
+@keyframes logo-fadeIn {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+@keyframes logo-fadeOut {
+	0% { opacity: 1; }
+	100% { opacity: 0; }
+}
+
+@keyframes logo-translateUp {
+	0% { transform: translate3d(0,-5%,0); }
+	100% { transform: translate3d(0,0,0); }
+}
+
+@keyframes logo-translateLeft {
+	0% { transform: translate3d(-5%,0,0); }
+	100% { transform: translate3d(0,0,0); }
+}
+
+@keyframes logo-translateDown {
+	0% { transform: translate3d(0,5%,0); }
+	100% { transform: translate3d(0,0,0); }
+}
+
+@keyframes logo-translateRight {
+	0% { transform: translate3d(5%,0,0); }
+	100% { transform: translate3d(0,0,0); }
+}
+
+@keyframes hover {
+	0% {
+		transform: translateY(3px);
+	}
+	100% {
+		transform: translateY(3px);
+	}
+}
