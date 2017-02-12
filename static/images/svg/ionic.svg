@@ -1,7 +1,0 @@
-<svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-	<g fill="none" stroke="#000000" stroke-width="3" stroke-linecap="square" stroke-linejoin="round">
-		<circle class="oval-1" cx="50" cy="50" r="14"></circle>
-		<path d="M70.6487517,20.5105264 C54.3621652,9.10653573 31.9145171,13.0646617 20.5105264,29.3512483 C9.10653573,45.6378348 13.0646617,68.0854829 29.3512483,79.4894736 C45.6378348,90.8934643 68.0854829,86.9353383 79.4894736,70.6487517 C88.4800746,57.8088427 87.9199982,41.1399994 79.3000031,29.0699997" class="oval-2"></path>
-		<circle class="oval-3" cx="75" cy="25" r="6"></circle>
-	</g>
-</svg>

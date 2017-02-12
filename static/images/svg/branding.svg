@@ -1,9 +1,0 @@
-<svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-	<g fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-		<rect class="card-1" x="22" y="41" width="64" height="40" rx="3"></rect>
-		<circle class="logo" cx="36" cy="55" r="7"></circle>
-		<path d="M22,59 L18.9983345,59 L17.0016655,59 C15.3438914,59 14,57.6576906 14,55.9934988 L14,22.0065012 C14,20.3460564 15.336731,19 17.0010118,19 L74.9989882,19 C76.6564012,19 78,20.3430813 78,22.0013869 L78,41" class="card-2"></path>
-		<path d="M77.5,64.5 L59.5,64.5" class="line-1"></path>
-		<path d="M77.5,72.5 L52.5,72.5" class="line-2"></path>
-	</g>
-</svg>
