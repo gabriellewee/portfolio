@@ -1,0 +1,1660 @@
+@import 'mixin';
+
+// Page: Design
+#page-design {
+	background: lighten($pink, 10%);
+	.loader {
+		background: lighten($pink, 10%);
+	}
+	#art {
+		padding-bottom: 0;
+		h1 {
+			padding-top: $padding*3;
+		}
+		.project-back {
+			background: $pink;
+			&:hover, &:focus {
+				background: $forest;
+			}
+			&:active {
+				background: $grey;
+			}
+		}
+	}
+}
+
+// Project: Jeselle Obina
+#page-obina {
+	background: #4D496A;
+	.loader {
+		background: #4D496A;
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: #ECACA4;
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: #D6F0F8;
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: #9DA5BA;
+					}
+				}
+			}
+		}
+	}
+}
+#project-obina {
+	.project-tag {
+		background: mix(#4D496A, #99B3CC, 75%);
+	}
+	figcaption {
+		background: mix(#4D496A, #99B3CC, 75%);
+	}
+	.fluidbox__overlay {
+		background: #4D496A;
+	}
+	a {
+		color: #ECACA4;
+		&:hover, &:focus {
+			color: #D6F0F8;
+		}
+		&:active {
+			color: #9DA5BA;
+		}
+	}
+	footer {
+		a {
+			background: #ECACA4;
+			color: white;
+			&:hover, &:focus {
+				background: #D6F0F8;
+				color: #4D496A!important;
+			}
+			&:active {
+				background: #17324A;
+				color: white!important;
+			}
+		}
+	}
+}
+
+.svg-animate {
+	animation-play-state: paused;
+	&.animated {
+		animation-play-state: running;
+	}
+}
+
+@keyframes clip-animate {
+	0%, 25%, 100% { transform: scale(1); }
+	75%, 95% { transform: scaleX(2.5) scaleY(3); }
+}
+.clip-window {
+	transform-origin: center center;
+	animation: 3000ms clip-animate $easeOutQuart infinite both;
+}
+
+@keyframes flick-animate {
+	0%, 5%, 100% {
+		transform: translateX(0);
+		animation-timing-function: cubic-bezier(.58,.24,.33,1.22);
+	}
+	25%, 30%, 75%, 80% {
+		transform: translateX(-20%);
+		animation-timing-function: cubic-bezier(.58,.24,.33,1.22);
+	}
+	50%, 55% {
+		transform: translateX(-40%);
+		animation-timing-function: cubic-bezier(.58,.24,.33,1.22);
+	}
+}
+.flick-group {
+	animation: 12000ms flick-animate linear infinite both;
+	.flick-pre {
+		transform: translateX(-100%);
+	}
+	.flick-two {
+		transform: translateX(100%);
+	}
+	.flick-three {
+		transform: translateX(200%);
+	}
+	.flick-post {
+		transform: translateX(300%);
+	}
+}
+
+
+// Project: XBox One Revamp
+#page-xbox {
+	background: #111;
+	.loader {
+		background: #111;
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: #79BA3C;
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: #fff;
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: #aaa;
+					}
+				}
+			}
+		}
+	}
+}
+#project-xbox {
+	.project-tag {
+		background: #222;
+	}
+	.project-style-colors {
+		max-width: calc(100% - 153px);
+	}
+	a {
+		color: #79BA3C;
+		&:hover, &:focus {
+			color: #444;
+		}
+		&:active {
+			color: #000;
+		}
+	}
+	footer {
+		a {
+			background: #79BA3C;
+			color: white;
+			&:hover, &:focus {
+				background: #444;
+			}
+			&:active {
+				background: #000;
+			}
+		}
+	}
+}
+
+// Project: PS Playstation 4 Revamp
+#page-ps {
+	background: desaturate(#01aefd, 30%);
+	.loader {
+		background: desaturate(#01aefd, 30%);
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: #FFFFFF;
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: #000000;
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: #00296b;
+					}
+				}
+			}
+		}
+	}
+}
+#project-ps {
+	.project-tag {
+		background: mix(white, desaturate(#01aefd, 30%), 15%);
+	}
+	.project-style-colors {
+		max-width: calc(100% - 163px);
+	}
+	a {
+		color: #0062A9;
+		&:hover, &:focus {
+			color: #000000;
+		}
+		&:active {
+			color: #00296b;
+		}
+	}
+	footer {
+		a {
+			background: #0062A9;
+			color: white;
+			&:hover, &:focus {
+				background: #000000;
+			}
+			&:active {
+				background: #00296b;
+			}
+		}
+	}
+}
+
+// Project: My Passionate Guild Romance
+#page-guild {
+	background: #585499;
+	.loader {
+		background: #585499;
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: #A6B3A5;
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: #E9D28B;
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: white;
+					}
+				}
+			}
+		}
+	}
+}
+#project-guild {
+	.project-tag {
+		background: mix(#A6B3A5, #585499);
+	}
+	.project-style-colors {
+		max-width: calc(100% - 144px);
+	}
+	a {
+		color: #A6B3A5;
+		&:hover, &:focus {
+			color: #E9D28B;
+		}
+		&:active {
+			color: white;
+		}
+	}
+	footer {
+		a {
+			background: #A6B3A5;
+			color: white;
+			&:hover, &:focus {
+				background: #E9D28B;
+			}
+			&:active {
+				background: mix(white, #585499);
+			}
+		}
+	}
+}
+
+// Project: Quake Quiz
+#page-quake {
+	background: #41ced6;
+	.loader {
+		background: #41ced6;
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: white;
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: #986BCD;
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: #F8A74D;
+					}
+				}
+			}
+		}
+	}
+	footer {
+		color: white;
+	}
+}
+#project-quake {
+	.project-tag {
+		background: mix(white, #41ced6, 75%);
+		color: white;
+	}
+	.project-style-colors {
+		max-width: calc(100% - 165px);
+	}
+	a {
+		color: mix(white, #41ced6);
+		&:hover, &:focus {
+			color: #986BCD;
+		}
+		&:active {
+			color: #F8A74D;
+		}
+	}
+	footer {
+		a {
+			background: white;
+			color: #41ced6!important;
+			&:hover, &:focus {
+				background: #986BCD;
+				color: white!important;
+			}
+			&:active {
+				background: #F8A74D;
+				color: white;
+			}
+		}
+	}
+}
+
+// Project: Nathan McClun
+#page-mcclun {
+	background: lighten(#8D8F8B, 15%);
+	.loader {
+		background: lighten(#8D8F8B, 15%);
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: #423C33;
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: darken(#A38074, 15%);
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: lighten(#B3A28A, 15%);
+					}
+				}
+			}
+		}
+	}
+	.project-feature {
+		width: 400px;
+		bottom: 0;
+		right: 0;
+	}
+}
+#project-mcclun {
+	.project-tag {
+		background: #B3A28A;
+	}
+	.project-style-colors {
+		max-width: calc(100% - 126px);
+	}
+	a {
+		color: #423C33;
+		&:hover, &:focus {
+			color: darken(#A38074, 15%);
+		}
+		&:active {
+			color: lighten(#B3A28A, 15%);
+		}
+	}
+	footer {
+		a {
+			background: darken(#A38074, 15%);
+			color: white;
+			&:hover, &:focus {
+				background: #423C33;
+			}
+			&:active {
+				background: lighten(#B3A28A, 15%);
+				color: #423C33;
+			}
+		}
+	}
+}
+
+// Project: Tracy Dillon
+#page-dillon {
+	background: desaturate(#70494A, 15%);
+	.loader {
+		background: desaturate(#70494A, 15%);
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: mix(desaturate(#70494A, 15%), white, 40%);
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: #433039;
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: mix(#433039, lighten(#70494A, 15%), 75%);
+					}
+				}
+			}
+		}
+	}
+}
+#project-dillon {
+	.project-tag {
+		background: #433039;
+	}
+	.project-style-colors {
+		max-width: calc(100% - 126px);
+	}
+	a {
+		color: mix(#BFAEA6, #70494A, 15%);
+		&:hover, &:focus {
+			color: lighten(#70494A, 30%);
+		}
+		&:active {
+			color: lighten(#BFAEA6, 15%);
+		}
+	}
+	footer {
+		a {
+			background: mix(#BFAEA6, #70494A, 15%);
+			color: white;
+			&:hover, &:focus {
+				background: #433039;
+			}
+			&:active {
+				background: lighten(#BFAEA6, 15%);
+				color: mix(#433039, lighten(#70494A, 15%), 75%);
+			}
+		}
+	}
+}
+
+// Project: Nameplate
+#page-nameplate {
+	background: darken(#919297, 35%);
+	.loader {
+		background: darken(#919297, 35%);
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: saturate(#d52027, 15%);
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: saturate(#d4a029, 15%);
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: saturate(#d44c27, 15%);
+					}
+				}
+			}
+		}
+	}
+}
+#project-nameplate {
+	.project-tag {
+		background: #aaa;
+	}
+	.project-style-colors {
+		max-width: calc(100% - 188px);
+	}
+	a {
+		color: #d4a029;
+		&:hover, &:focus {
+			color: #d56527;
+		}
+		&:active {
+			color: #d5be29;
+		}
+	}
+	footer {
+		a {
+			background: #d52027;
+			color: white;
+			&:hover, &:focus {
+				background: #d4a029;
+			}
+			&:active {
+				background: #d56527;
+				color: white;
+			}
+		}
+	}
+}
+
+// Project: Hayley Schaff
+#page-schaff {
+	background: #222;
+	.loader {
+		background: #222;
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: #43F7CC;
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: #6FF8A0;
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: #E3FD4A;
+					}
+				}
+			}
+		}
+	}
+}
+#project-schaff {
+	.project-tag {
+		background: #4B4D52;
+	}
+	.project-style-colors {
+		max-width: calc(100% - 201px);
+	}
+	.project-desc > li.project-cards {
+		padding-top: 24px;
+	}
+	a {
+		color: #43F7CC;
+		&:hover, &:focus {
+			color: #6FF8A0;
+		}
+		&:active {
+			color: #E3FD4A;
+		}
+	}
+	footer {
+		a {
+			background: desaturate(darken(#43F7CC, 15%), 15%);
+			color: white;
+			&:hover, &:focus {
+				background: desaturate(darken(#6FF8A0, 15%), 15%);
+			}
+			&:active {
+				background: desaturate(darken(#E3FD4A, 15%), 15%);
+				color: white;
+			}
+		}
+	}
+}
+
+// Project: Constance Koo
+#page-koo {
+	background: mix(#aaa, #D00A29, 98%);
+	.loader {
+		background: mix(#aaa, #D00A29, 98%);
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: #D00A29;
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: #121212;
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: mix(#D00A29, #aaa);
+					}
+				}
+			}
+		}
+	}
+}
+#project-koo {
+	.project-tag {
+		background: lighten(#aaa, 10%);
+	}
+	.project-style-colors {
+		max-width: calc(100% - 184px);
+	}
+	a {
+		color: #D00A29;
+		&:hover, &:focus {
+			color: #121212;
+		}
+		&:active {
+			color: mix(#D00A29, #aaa);
+		}
+	}
+	footer {
+		a {
+			background: #D00A29;
+			color: white;
+			&:hover, &:focus {
+				background: #121212;
+			}
+			&:active {
+				background: mix(#D00A29, #aaa);
+				color: white;
+			}
+		}
+	}
+}
+
+// Project: Psych2go
+#page-psych2go {
+	background: desaturate(darken(#803033, 15%), 10%);
+	.loader {
+		background: desaturate(darken(#803033, 15%), 10%);
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: #C1C1C1;
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: lighten(#0E344B, 40%);
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: lighten(mix(#803033, #0E344B), 15%);
+					}
+				}
+			}
+		}
+	}
+}
+#project-psych2go {
+	.project-tag {
+		background: desaturate(lighten(#803033, 15%), 40%);
+	}
+	.project-style-colors {
+		max-width: calc(100% - 184px);
+	}
+	a {
+		color: lighten(mix(#803033, #0E344B), 25%);
+		&:hover, &:focus {
+			color: mix(lighten(mix(#803033, #0E344B), 25%), #0E344B);
+		}
+		&:active {
+			color: mix(lighten(mix(#803033, #0E344B), 15%), #C1C1C1);
+		}
+	}
+	footer {
+		a {
+			background: #803033;
+			color: white;
+			&:hover, &:focus {
+				background: #0E344B;
+			}
+			&:active {
+				background: mix(lighten(#803033, 15%), #C1C1C1);
+				color: white;
+			}
+		}
+	}
+}
+
+// Project: Ratchet Games
+#page-ratchet {
+	background: mix(#31363B, #777F87);
+	.loader {
+		background: mix(#31363B, #777F87);
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: lighten(#A82030, 15%);
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: #B4AF35;
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: #57B250;
+					}
+				}
+			}
+		}
+	}
+}
+#project-ratchet {
+	.project-tag {
+		background: #838896;
+	}
+	.project-style-colors {
+		max-width: calc(100% - 196px);
+	}
+	a {
+		color: #B4AF35;
+		&:hover, &:focus {
+			color: #57B250;
+		}
+		&:active {
+			color: lighten(#A82030, 15%);
+		}
+	}
+	footer {
+		a {
+			background: #B4AF35;
+			color: white;
+			&:hover, &:focus {
+				background: #57B250;
+			}
+			&:active {
+				background: lighten(#A82030, 15%);
+				color: white;
+			}
+		}
+	}
+}
+
+// Project: Burgundy Apparel
+#page-bvrg {
+	background: darken(mix(#480000, #6AB2D4), 5%);
+	.loader {
+		background: darken(mix(#480000, #6AB2D4), 5%);
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: #6AB2D4;
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: #480000;
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: mix(#BA125C, #6AB2D4);
+					}
+				}
+			}
+		}
+	}
+}
+#project-bvrg {
+	.project-tag {
+		background: lighten(mix(#480000, #6AB2D4), 15%);
+	}
+	.project-style-colors {
+		max-width: calc(100% - 111px);
+	}
+	a {
+		color: #6AB2D4;
+		&:hover, &:focus {
+			color: #480000;
+		}
+		&:active {
+			color: mix(#BA125C, #6AB2D4);
+		}
+	}
+	footer {
+		a {
+			background: #6AB2D4;
+			color: white;
+			&:hover, &:focus {
+				background: #480000;
+			}
+			&:active {
+				background: mix(#BA125C, #6AB2D4);
+				color: white;
+			}
+		}
+	}
+}
+
+// Project: David Marchesi
+#page-marchesi {
+	background: mix(#141217, #7198A1);
+	.loader {
+		background: mix(#141217, #7198A1);
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: #FF9800;
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: #A8A8A8;
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: #000000;
+					}
+				}
+			}
+		}
+	}
+}
+#project-marchesi {
+	.project-tag {
+		background: lighten(#27353C, 20%);
+	}
+	.project-style-colors {
+		max-width: calc(100% - 173px);
+	}
+	a {
+		color: #FF9800;
+		&:hover, &:focus {
+			color: #A8A8A8;
+		}
+		&:active {
+			color: #CCCCCC;
+		}
+	}
+	footer {
+		a {
+			background: #FF9800;
+			color: white;
+			&:hover, &:focus {
+				background: #A8A8A8;
+			}
+			&:active {
+				background: #000000;
+				color: white;
+			}
+		}
+	}
+}
+
+// Project: Resume Builder
+#page-resume {
+	background: mix(#D34836, #D7D7D7);
+	.loader {
+		background: mix(#D34836, #D7D7D7);
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: #D34836;
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: #343434;
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: #121212;
+					}
+				}
+			}
+		}
+	}
+}
+#project-resume {
+	.project-tag {
+		background: lighten(mix(#D34836, #D7D7D7), 15%);
+	}
+	.project-style-colors {
+		max-width: calc(100% - 183px);
+	}
+	a {
+		color: #D34836;
+		&:hover, &:focus {
+			color: #343434;
+		}
+		&:active {
+			color: #CCCCCC;
+		}
+	}
+	footer {
+		a {
+			background: #D34836;
+			color: white;
+			&:hover, &:focus {
+				background: #343434;
+			}
+			&:active {
+				background: #121212;
+				color: white;
+			}
+		}
+	}
+}
+
+// Graphic: CIBC ACC All Church Camp Poster
+#page-acc {
+	background: desaturate(darken(mix(#AAAAAA, #D46A32), 25%), 20%);
+	.loader, .fluidbox__overlay {
+		background: desaturate(darken(mix(#AAAAAA, #D46A32), 25%), 20%);
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: #D46A32;
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: #343434;
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: #121212;
+					}
+				}
+			}
+		}
+	}
+}
+#project-acc {
+	a {
+		color: #D46A32;
+		&:hover, &:focus {
+			color: #343434;
+		}
+		&:active {
+			color: #CCCCCC;
+		}
+	}
+	footer {
+		a {
+			background: #D46A32;
+			color: white;
+			&:hover, &:focus {
+				background: #343434;
+			}
+			&:active {
+				background: #121212;
+				color: white;
+			}
+		}
+	}
+}
+
+// Graphic: Eeveelutions
+#page-eevee {
+	background: darken(#404040, 10%);
+	.loader, .fluidbox__overlay {
+		background: darken(#404040, 10%);
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: #DF7F90;
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: #D4B5CF;
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: #BDE3DE;
+					}
+				}
+			}
+		}
+	}
+}
+#project-eevee {
+	a {
+		color: #DF7F90;
+		&:hover, &:focus {
+			color: #D4B5CF;
+		}
+		&:active {
+			color: #BDE3DE;
+		}
+	}
+	footer {
+		a {
+			background: #DF7F90;
+			color: white;
+			&:hover, &:focus {
+				background: #D4B5CF;
+			}
+			&:active {
+				background: #BDE3DE;
+				color: white;
+			}
+		}
+	}
+}
+
+// Graphic: YAC Game Night Poster
+#page-yacgn {
+	background: darken(#778172, 20%);
+	.loader, .fluidbox__overlay {
+		background: darken(#778172, 20%);
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: #8F9288;
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: #707163;
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: #7D7563;
+					}
+				}
+			}
+		}
+	}
+}
+#project-yacgn {
+	a {
+		color: #8F9288;
+		&:hover, &:focus {
+			color: #707163;
+		}
+		&:active {
+			color: #7D7563;
+		}
+	}
+	footer {
+		a {
+			background: #8F9288;
+			color: white;
+			&:hover, &:focus {
+				background: #707163;
+			}
+			&:active {
+				background: #7D7563;
+				color: white;
+			}
+		}
+	}
+}
+
+
+// Graphic: Bagamasbad Save the Date
+#page-bagamasbad {
+	background: desaturate(#5B2450, 20%);
+	.loader, .fluidbox__overlay {
+		background: desaturate(#5B2450, 20%);
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: #AA5895;
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: lighten(#2A4F73, 15%);
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: #F6F8F8;
+					}
+				}
+			}
+		}
+	}
+}
+#project-bagamasbad {
+	a {
+		color: #AA5895;
+		&:hover, &:focus {
+			color: lighten(#2A4F73, 15%);
+		}
+		&:active {
+			color: mix(#AA5895, lighten(#2A4F73, 15%));
+		}
+	}
+	footer {
+		a {
+			background: #AA5895;
+			color: white;
+			&:hover, &:focus {
+				background: lighten(#2A4F73, 15%);
+			}
+			&:active {
+				background: mix(#AA5895, lighten(#2A4F73, 15%));
+				color: white;
+			}
+		}
+	}
+}
+
+// Jailbreak Theme: Arketyp
+#page-arketyp {
+	background: #4C5965;
+	.loader, .fluidbox__overlay {
+		background: #4C5965;
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: lighten(#7C7B81, 15%);
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: #80B8A5;
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: #9299BD;
+					}
+				}
+			}
+		}
+	}
+}
+#project-arketyp {
+	a {
+		color: lighten(#7C7B81, 15%);
+		&:hover, &:focus {
+			color: #80B8A5;
+		}
+		&:active {
+			color: #9299BD;
+		}
+	}
+	footer {
+		a {
+			background: lighten(#7C7B81, 15%);
+			color: white;
+			&:hover, &:focus {
+				background: #80B8A5;
+			}
+			&:active {
+				background: #9299BD;
+				color: white;
+			}
+		}
+	}
+}
+
+// Jailbreak Theme: Monument Valley Wall
+#page-mvwall {
+	background: desaturate(darken(#4F8090, 10%), 15%);
+	.loader, .fluidbox__overlay {
+		background: desaturate(darken(#4F8090, 10%), 15%);
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: #DD6361;
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: #678E7E;
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: #4F8090;
+					}
+				}
+			}
+		}
+	}
+}
+#project-mvwall {
+	a {
+		color: #DD6361;
+		&:hover, &:focus {
+			color: #678E7E;
+		}
+		&:active {
+			color: #4F8090;
+		}
+	}
+	footer {
+		a {
+			background: #DD6361;
+			color: white;
+			&:hover, &:focus {
+				background: #678E7E;
+			}
+			&:active {
+				background: #4F8090;
+				color: white;
+			}
+		}
+	}
+}
+
+// Jailbreak Theme: Monument Valley Redux
+#page-mvredux {
+	background: #334139;
+	.loader, .fluidbox__overlay {
+		background: #334139;
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: #DD8339;
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: #479C96;
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: #82653E;
+					}
+				}
+			}
+		}
+	}
+}
+#project-mvredux {
+	a {
+		color: #DD8339;
+		&:hover, &:focus {
+			color: #479C96;
+		}
+		&:active {
+			color: #82653E;
+		}
+	}
+	footer {
+		a {
+			background: #DD8339;
+			color: white;
+			&:hover, &:focus {
+				background: #479C96;
+			}
+			&:active {
+				background: #82653E;
+				color: white;
+			}
+		}
+	}
+}
+
+// Jailbreak Theme: Trinite
+#page-trinite {
+	background: #666666;
+	.loader, .fluidbox__overlay {
+		background: #334139;
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: #A3AB7E;
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: #ABC0D2;
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: #41ADB7;
+					}
+				}
+			}
+		}
+	}
+}
+#project-trinite {
+	a {
+		color: #A3AB7E;
+		&:hover, &:focus {
+			color: #ABC0D2;
+		}
+		&:active {
+			color: #41ADB7;
+		}
+	}
+	footer {
+		a {
+			background: #A3AB7E;
+			color: white;
+			&:hover, &:focus {
+				background: #ABC0D2;
+			}
+			&:active {
+				background: #41ADB7;
+				color: white;
+			}
+		}
+	}
+}
+
+// Tumblr Theme: Fleux
+#page-fleux {
+	background: desaturate(#805A7A, 10%);
+	.loader {
+		background: desaturate(#805A7A, 10%);
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: #819FA1;
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: #69536D;
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: #332C26;
+					}
+				}
+			}
+		}
+	}
+}
+#project-fleux {
+	a {
+		color: #819FA1;
+		&:hover, &:focus {
+			color: #69536D;
+		}
+		&:active {
+			color: #332C26;
+		}
+	}
+	footer {
+		a {
+			background: #819FA1;
+			color: white;
+			&:hover, &:focus {
+				background: #69536D;
+			}
+			&:active {
+				background: #332C26;
+				color: white;
+			}
+		}
+	}
+}
+
+// Tumblr Theme: Transistor
+#page-transistor {
+	background: mix(#524D47, #2E2B32, 30%);
+	.loader {
+		background: mix(#524D47, #2E2B32, 30%);
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: #8CCEB3;
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: #F3D363;
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: #91282E;
+					}
+				}
+			}
+		}
+	}
+}
+#project-transistor {
+	a {
+		color: #8CCEB3;
+		&:hover, &:focus {
+			color: #F3D363;
+		}
+		&:active {
+			color: #91282E;
+		}
+	}
+	footer {
+		a {
+			background: #8CCEB3;
+			color: white;
+			&:hover, &:focus {
+				background: #F3D363;
+			}
+			&:active {
+				background: #91282E;
+				color: white;
+			}
+		}
+	}
+}
+
+// Tumblr Theme: Excelle
+#page-excelle {
+	background: lighten(desaturate(#305EB3, 25%), 15%);
+	.loader {
+		background: lighten(desaturate(#305EB3, 25%), 15%);
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: #305EB3;
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: #84494A;
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: #000125;
+					}
+				}
+			}
+		}
+	}
+}
+#project-excelle {
+	a {
+		color: #305EB3;
+		&:hover, &:focus {
+			color: #84494A;
+		}
+		&:active {
+			color: #000125;
+		}
+	}
+	footer {
+		a {
+			background: #305EB3;
+			color: white;
+			&:hover, &:focus {
+				background: #84494A;
+			}
+			&:active {
+				background: #000125;
+				color: white;
+			}
+		}
+	}
+}
+
+// 3d Project: Yurei Shrine
+#page-shrine {
+	background: #243542;
+	.loader, .fluidbox__overlay {
+		background: #243542;
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: #fff;
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: lighten(#320F10, 20%);
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: #0D0B18;
+					}
+				}
+			}
+		}
+	}
+}
+#project-shrine {
+	a {
+		color: lighten(#320F10, 20%);
+		&:hover, &:focus {
+			color: #1C2834;
+		}
+		&:active {
+			color: #0D0B18;
+		}
+	}
+	footer {
+		a {
+			background: lighten(#320F10, 20%);
+			color: white;
+			&:hover, &:focus {
+				background: #1C2834;
+			}
+			&:active {
+				background: #0D0B18;
+				color: white;
+			}
+		}
+	}
+}
+
+// 3d Project: Scissor Blade
+#page-sb {
+	background: #340B0B;
+	.loader, .fluidbox__overlay {
+		background: #340B0B;
+	}
+	header {
+		a {
+			svg {
+				&:nth-child(1) {
+					* {
+						fill: #756864;
+					}
+				}
+				&:nth-child(2) {
+					* {
+						fill: #831A1C;
+					}
+				}
+				&:nth-child(3) {
+					* {
+						fill: #FFFFFF;
+					}
+				}
+			}
+		}
+	}
+}
+#project-sb {
+	a {
+		color: #756864;
+		&:hover, &:focus {
+			color: #831A1C;
+		}
+		&:active {
+			color: #4F4844;
+		}
+	}
+	footer {
+		a {
+			background: #756864;
+			color: white;
+			&:hover, &:focus {
+				background: #831A1C;
+			}
+			&:active {
+				background: #4F4844;
+				color: white;
+			}
+		}
+	}
+}
