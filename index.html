@@ -109,13 +109,13 @@
 		data-top="opacity: 1; transform: translate3d(0, 0, 0)"
 		data-top-bottom="opacity: 0.1; transform: translate3d(0, 0, 0);">I'm&nbsp;a&nbsp;UI&nbsp;designer&nbsp;and&nbsp;front-end&nbsp;developer who&nbsp;likes&nbsp;to&nbsp;make&nbsp;pretty&nbsp;things.</h3>
 
-    <span id="scroll-down"
+    <a id="scroll-down" href="#summary"
 		data-bottom="opacity: 1; translate3d(0, 0, 0);"
 		data--100-bottom="opacity: 0.1; transform: translate3d(0, 0, 0);">
         <svg viewBox="0 0 100 100">
             <path d="M27,62 L51,86 L75,62 M51.5,86 L51.5,14"></path>
         </svg>
-    </span>
+    </a>
 </section>
 
 <section id="summary">
@@ -1566,7 +1566,10 @@
     </footer>
 </section>
 
-<div id="skip">
+<div id="skip" style="z-index: -1;"
+	data-start="z-index: !-1;"
+	data-200-start="z-index: !1000;"
+	data-200-end="z-index: !-1;">
 	<div style="opacity: 0; transition: all 300ms ease-out;"
 		data-start="opacity: !0;"
 		data-200-start="opacity: !1;"
