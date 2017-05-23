@@ -18,7 +18,7 @@
 	<meta name="theme-color" content="#f5c8bf">
 
 	<meta name="application-name" content="Gabrielle Wee · Portfolio"/>
-	<meta name="description" content="I'm a UI designer and front-end developer who likes to make pretty things"/>
+	<meta name="description" content="I’m a UI designer and front-end developer who likes to make pretty things"/>
 
 	
 	<title>Gabrielle Wee · Personal Nameplate</title>
@@ -325,7 +325,7 @@
 					<h4>Process</h4>
 					<div>
 						
-<p>I already had a design for this portal showing my online presence, but I knew that I needed a revamp. Since this site isn't my main portfolio, I was free to try something new and experimental.</p>
+<p>I already had a design for this portal showing my online presence, but I knew that I needed a revamp. Since this site isn’t my main portfolio, I was free to try something new and experimental.</p>
 
 <figure class="figure-small">
 	<a class="fluid" href="/static/images/screenshots/nameplate-old-home@2x.jpg">
@@ -336,13 +336,13 @@
 
 <p>One of the interesting web design topics for me is how to create functional user interactions using only CSS, with little to no Javascript. My more recent tinkering led to a study in 3d transforms and how to create the illusion of depth in a 2d environment.</p>
 
-<p>For each link, I created a cube using <code>&lt;div&gt;</code> elements as sides, then tinted each side using the linked website's main color to mimic lighting. On top of each cube is four <code>&lt;a&gt;</code> elements, each representing a different detection area. I use <code>&lt;a&gt;</code> in place of specifying detection areas using Javascript. Each <code>&lt;a&gt;</code> is clipped into a triangle using <code>clip-path</code>.</p>
+<p>For each link, I created a cube using <code>&lt;div&gt;</code> elements as sides, then tinted each side using the linked website’s main color to mimic lighting. On top of each cube is four <code>&lt;a&gt;</code> elements, each representing a different detection area. I use <code>&lt;a&gt;</code> in place of specifying detection areas using Javascript. Each <code>&lt;a&gt;</code> is clipped into a triangle using <code>clip-path</code>.</p>
 
 <figure class="figure-small">
 	<a class="fluid" href="/static/images/screenshots/nameplate-diagram@2x.jpg">
 		<img class="2x" src="/static/images/screenshots/nameplate-diagram.jpg" alt=""/>
 	</a>
-	<figcaption>Diagram of each link's parts</figcaption>
+	<figcaption>Diagram of each link’s parts</figcaption>
 </figure>
 
 <p>Using the general <code>~</code> selector, each <code>&lt;a&gt;</code> causes the cube to rotate in a different direction. I found that the most realistic rotate was away from the mouse interaction. So if the mouse enters from the left side, the cube should rotate from left to right. After a short delay, the <code>&lt;a&gt;</code> being hovered over will cover the other detection areas to prevent extra movement.</p>
@@ -353,7 +353,7 @@
 	<iframe class="tiny" scrolling='no' title='CSS-Only Direction-Aware Cube Links' src='//codepen.io/gabriellewee/embed/Qdpgwx/?height=300&theme-id=27637&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true'>See the Pen <a href='http://codepen.io/gabriellewee/pen/Qdpgwx/'>CSS-Only Direction-Aware Cube Links</a> by Gabrielle Wee (<a href='http://codepen.io/gabriellewee'>@gabriellewee</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
 </div>
 
-<p>For my "archived" links, I used a simpler version of the cube - each link only rotates in one direction and doesn't have an icon.</p>
+<p>For my "archived" links, I used a simpler version of the cube - each link only rotates in one direction and doesn’t have an icon.</p>
 
 <p>I wrote an article that elaborates on my process as well as provide some visual examples - you can check it out on <a href="http://codepen.io/gabriellewee/post/how-to-create-direction-aware-css-only-hover-effects" target="_blank">Codepen</a> and on <a href="https://medium.com/@gabriellewee/how-to-create-direction-aware-css-only-hover-effects-2bbf0e13ad5b" target="_blank">Medium</a>. If you visit the site, definitely try sweeping your cursor over several cubes at once!</p>
 
