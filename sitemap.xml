@@ -206,11 +206,6 @@
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/uguru/icons/</loc>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    <url>
         <loc>/uguru/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
