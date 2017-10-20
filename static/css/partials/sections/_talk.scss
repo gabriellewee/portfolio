@@ -1,0 +1,153 @@
+#talk {
+	padding-top: $p*4;
+	padding-bottom: $p*6;
+	background: $green;
+	color: white;
+	.angle {
+		* {
+			fill: lighten($pink, 10%);
+		}
+	}
+	.grid-talk {
+		margin: $p auto;
+		padding: $p/2 $p;
+		max-width: $w + $p*4;
+		li {
+			width: 100%;
+			div {
+				display: flex;
+				align-items: stretch;
+				align-content: stretch;
+				overflow: hidden;
+				min-height: 60px;
+				a {
+					display: flex;
+					align-items: center;
+					align-content: center;
+					min-height: 60px;
+					padding: $p;
+					.stroke {
+						stroke: white;
+					}
+					.fill {
+						fill: white;
+					}
+					&.talk-codepen {
+						background: #fcd000;
+						&:hover, &:focus {
+							background: lighten(#fcd000, 25%);
+						}
+						&:active {
+							background: lighten(#fcd000, 15%);
+						}
+					}
+					&.talk-medium {
+						background: #00AB6C;
+						&:hover, &:focus {
+							background: lighten(#00AB6C, 25%);
+						}
+						&:active {
+							background: lighten(#00AB6C, 15%);
+						}
+					}
+					&.talk-itunes {
+						background: #B580AF;
+						&:hover, &:focus {
+							background: lighten(#B580AF, 25%);
+						}
+						&:active {
+							background: lighten(#B580AF, 15%);
+						}
+					}
+					&.talk-soundcloud {
+						background: #f76700;
+						&:hover, &:focus {
+							background: lighten(#f76700, 25%);
+						}
+						&:active {
+							background: lighten(#f76700, 15%);
+						}
+					}
+				}
+				> a {
+					&:last-child {
+						border-radius: 0 2px 2px 0;
+					}
+				}
+				h3 {
+					text-align: left;
+					&:first-child {
+						a {
+							border-radius: 2px 0 0 2px;
+						}
+					}
+					&:only-child {
+						a {
+							border-radius: 2px;
+						}
+					}
+					a {
+						// display: block;
+						padding: $p $p*1.5;
+						background: white;
+						color: $green;
+						&:hover, &:focus {
+							background: lighten($pink, 5%);
+							color: white;
+						}
+						&:active {
+							background: $forest;
+							color: $grey;
+						}
+					}
+				}
+				svg {
+					display: block;
+					width: 36px;
+					height: auto;
+				}
+			}
+		}
+	}
+	.grid-talk-links {
+		a {
+			background: white;
+			font-size: 20px;
+			span {
+				color: $green;
+				&:nth-child(2) {
+					display: none;
+				}
+			}
+			&:hover, &:focus {
+				background: lighten($pink, 5%);
+				span {
+					color: white;
+				}
+			}
+			&:active {
+				background: $forest;
+				span {
+					color: $grey;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	#talk {
+		padding-bottom: $p*9;
+		.grid-talk {
+			margin: $p*2 auto $p;
+		}
+	}
+}
+
+@media only screen and (min-width: 1920px) {
+	#talk {
+		.grid-talk, .grid-snippet-links {
+			max-width: $lw + $p*4;
+		}
+	}
+}

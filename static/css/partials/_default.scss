@@ -1,0 +1,301 @@
+.browser-support {
+	position: fixed;
+	z-index: 2000;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: $p;
+	background: $mint;
+	div {
+		position: absolute;
+		left: 0;
+		top: 50%;
+		margin-top: -50px;
+		width: 100%;
+		height: 100px;
+		p {
+			width: 100%;
+			max-width: 600px;
+			margin: 0 auto;
+			font-size: 24px;
+			line-height: 1.4;
+			text-align: center;
+		}
+		a {
+			transition: 150ms ease-out;
+			will-change: background;
+			display: inline-block;
+			padding: 0 $p/2;
+			border-radius: $p/4;
+			color: white;
+			font-weight: 500;
+			background: $green;
+			&:hover, &:focus {
+				background: $grey;
+			}
+			&:active {
+				background: $iron;
+			}
+		}
+	}
+}
+.csstransforms .browser-support {
+	display: none;
+}
+
+#top {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	padding: $p;
+}
+.top {
+	-webkit-perspective: 1000px;
+	perspective: 1000px;
+	width: 100%;
+	text-align: center;
+	* {
+		transform-style: preserve-3d;
+	}
+	a {
+		display: block;
+		position: relative;
+		margin: 0 auto;
+		width: 50px;
+		height: 50px;
+		cursor: n-resize;
+		transform-origin: center center;
+		svg {
+			transition: 300ms cubic-bezier(0,.5,.25,1);
+			will-change: opacity, transform;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 50px;
+			height: 50px;
+			* {
+				will-change: fill;
+			}
+			&:nth-child(1) {
+				opacity: 1;
+				* {
+					fill: $pink;
+				}
+			}
+			&:nth-child(2) {
+				opacity: 0;
+				* {
+					fill: $grey;
+				}
+			}
+			&:nth-child(3) {
+				opacity: 0;
+				* {
+					fill: $forest;
+				}
+			}
+			path {
+				fill: none!important;
+			}
+		}
+		&:hover, &:focus {
+			svg {
+				transform: rotate(1turn);
+				&:nth-child(1) {
+					opacity: 0;
+				}
+				&:nth-child(2) {
+					opacity: 1;
+				}
+				&:nth-child(3) {
+					opacity: 0;
+				}
+			}
+		}
+		&:active {
+			svg {
+				&:nth-child(1) {
+					opacity: 0;
+				}
+				&:nth-child(2) {
+					opacity: 0;
+				}
+				&:nth-child(3) {
+					opacity: 1;
+				}
+			}
+		}
+	}
+}
+
+#bottom {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	width: 100%;
+	padding-bottom: $p*6;
+	div {
+		width: 100%;
+		text-align: center;
+	}
+	ul {
+		display: flex;
+		padding: $p/4 $p/2 0;
+		li {
+			padding: $p/2 $p/2 0;
+		}
+	}
+	a {
+		display: block;
+		border-radius: 2px;
+		width: 48px;
+		height: 48px;
+		padding: $p;
+		background: rgba(white, .25);
+	}
+	svg {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+	.footer-link-twitter {
+		&:hover, &:focus {
+			background: #2daae1;
+		}
+		&:active {
+			background: darken(#2daae1, 15%);
+		}
+	}
+	.footer-link-dribbble {
+		&:hover, &:focus {
+			background: #ea4c89;
+		}
+		&:active {
+			background: darken(#ea4c89, 15%);
+		}
+	}
+	.footer-link-codepen {
+		&:hover, &:focus {
+			background: #fcd000;
+		}
+		&:active {
+			background: darken(#fcd000, 10%);
+		}
+	}
+	.footer-link-linkedin {
+		&:hover, &:focus {
+			background: #069;
+		}
+		&:active {
+			background: darken(#069, 10%);
+		}
+	}
+	.footer-link-email {
+		&:hover, &:focus {
+			background: $green;
+		}
+		&:active {
+			background: darken($green, 10%);
+		}
+	}
+}
+.project + #bottom {
+	color: white;
+}
+
+.loader, #loader {
+	position: fixed;
+	z-index: 1000;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: $mint;
+	will-change: opacity, display, z-index;
+	&.hide {
+		opacity: 0;
+		display: none;
+	}
+}
+.no-js {
+	.loader, #loader {
+		opacity: 0;
+		display: none;
+	}
+}
+.loader {
+	&.active {
+		animation: loader-fadeOut 1000ms ease-out 1000ms forwards;
+	}
+}
+
+#skip {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	padding: $p;
+	a {
+		display: block;
+		padding: $p $p*2;
+		background: white;
+		color: $grey!important;
+	}
+}
+
+#error {
+	width: 100%;
+	height: 100%;
+	padding: $p;
+	background: url('../images/error.gif') center center / cover;
+	img {
+		display: block;
+		max-width: 100%;
+		border-radius: 2px;
+		margin-bottom: $p;
+		filter: url(#warm);
+		overflow: hidden;
+	}
+	h2, h3 {
+		background: white;
+		border-radius: 2px;
+		width: auto!important;
+		padding: 0 $p/2;
+	}
+	div {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		padding: $p/6;
+	}
+}
+#page-error {
+	#bottom {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		padding-bottom: $p;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	#bottom {
+		padding-top: $p;
+		padding-bottom: $p*6;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	#bottom a {
+		width: 24px;
+		height: 24px;
+		padding: $p/3;
+	}
+	#error {
+		h2 {
+			font-weight: 400;
+			font-size: 36px;
+		}
+	}
+}

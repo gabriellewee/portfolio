@@ -1,0 +1,143 @@
+#contact {
+	padding-top: $p*4;
+	padding-bottom: $p*6;
+	background: $forest;
+	color: $beige;
+	p {
+		padding: $p;
+		max-width: $w + $p*2;
+		font-size: 24px;
+		line-height: 1.4;
+		text-align: left;
+		#social-facebook {
+			background: #3b5997;
+			&:hover, &:focus {
+				background: lighten(#3b5997, 25%);
+			}
+			&:active {
+				background: lighten(#3b5997, 15%);
+			}
+		}
+		#social-twitter {
+			background: #2daae1;
+			&:hover, &:focus {
+				background: lighten(#2daae1, 25%);
+			}
+			&:active {
+				background: lighten(#2daae1, 15%);
+			}
+		}
+		#social-linkedin {
+			background: #069;
+			&:hover, &:focus {
+				background: lighten(#069, 25%);
+			}
+			&:active {
+				background: lighten(#069, 15%);
+			}
+		}
+		#social-instagram {
+			background: #cd486b;
+			&:hover, &:focus {
+				background: lighten(#cd486b, 25%);
+			}
+			&:active {
+				background: lighten(#cd486b, 15%);
+			}
+		}
+		#social-tumblr {
+			background: #3a5976;
+			&:hover, &:focus {
+				background: lighten(#3a5976, 25%);
+			}
+			&:active {
+				background: lighten(#3a5976, 15%);
+			}
+		}
+		#social-skype {
+			background: #00AFF0;
+			&:hover, &:focus {
+				background: lighten(#00AFF0, 25%);
+			}
+			&:active {
+				background: lighten(#00AFF0, 15%);
+			}
+		}
+		#social-resource {
+			background: #d34836;
+			&:hover, &:focus {
+				background: lighten(#d34836, 25%);
+			}
+			&:active {
+				background: lighten(#d34836, 15%);
+			}
+		}
+		#social-dribbble {
+			background: #ea4c89;
+			&:hover, &:focus {
+				background: lighten(#ea4c89, 15%);
+			}
+			&:active {
+				background: lighten(#ea4c89, 5%);
+			}
+		}
+		#social-codepen {
+			background: #222;
+			&:hover, &:focus {
+				background: lighten(#222, 10%);
+			}
+			&:active {
+				background: lighten(#222, 5%);
+			}
+		}
+		#social-email, #social-bg {
+			background: $green;
+			&:hover, &:focus {
+				background: lighten($green, 10%);
+			}
+			&:active {
+				background: lighten($green, 5%);
+			}
+		}
+		.social-link {
+			transition: 150ms ease-out;
+			will-change: background;
+			display: inline-block;
+			padding: 0 $p/2;
+			border-radius: $p/4;
+			color: white;
+			font-weight: 500;
+		}
+		a:not(.social-link) {
+			color: $green;
+			&:hover, &:focus {
+				color: $grey;
+			}
+			&:active {
+				color: white;
+			}
+		}
+	}
+	.button {
+		background: $green;
+		cursor: s-resize;
+		&:hover, &:focus {
+			background: $grey;
+		}
+		&:active {
+			background: $iron;
+		}
+	}
+	footer {
+		width: 100%;
+		padding-top: $p*6;
+	}
+}
+
+@media only screen and (min-width: 1920px) {
+	#contact {
+		p {
+			max-width: $lw + $p*2;
+		}
+	}
+}

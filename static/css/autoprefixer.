@@ -1,0 +1,2 @@
+cd /Users/Gabrielle/Git/bearandgoose/gabrielle/static/css
+postcss %s *.min.css --use autoprefixer -r

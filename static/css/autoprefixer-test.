@@ -1,0 +1,2 @@
+cd "`dirname $0`"
+postcss %s *.min.css --use autoprefixer -r

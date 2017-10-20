@@ -1,0 +1,199 @@
+[class*="user-icon"] {
+	border-radius: 100%;
+	display: block;
+	background-image: url('/static/images/uguru/avatars/default.jpg');
+	background-position: center;
+	background-size: cover;
+	background-color: #E3E3E3;
+	border-style: solid;
+	border-color: white;
+	&.retina {
+		background-image: url('/static/images/uguru/avatars/default@2x.jpg');
+	}
+}
+.user-icon, .user-icon-128 {
+	width: 128px;
+	height: 128px;
+	border-width: 5px;
+}
+.user-icon-96 {
+	width: 96px;
+	height: 96px;
+	border-width: 4px;
+}
+.user-icon-84 {
+	width: 84px;
+	height: 84px;
+	border-width: 3px;
+}
+.user-icon-72 {
+	width: 72px;
+	height: 72px;
+	border-width: 3px;
+}
+.user-icon-64 {
+	width: 64px;
+	height: 64px;
+	border-width: 3px;
+}
+.user-icon-48 {
+	width: 48px;
+	height: 48px;
+	border-width: 3px;
+}
+.user-icon-36 {
+	width: 36px;
+	height: 36px;
+	border-width: 2px;
+}
+.user-icon-32 {
+	width: 32px;
+	height: 32px;
+	border-width: 2px;
+}
+.user-icon-28 {
+	width: 28px;
+	height: 28px;
+	border-width: 2px;
+}
+.user-icon-24 {
+	width: 24px;
+	height: 24px;
+	border-width: 2px;
+}
+
+.verified {
+	display: flex;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	span {
+		svg {
+			display: inline-block!important;
+			margin-left: 5px;
+			width: 20px;
+			height: 20px;
+			path:first-child {
+				fill: $lake;
+			}
+		}
+	}
+}
+
+.rating-stars {
+	display: flex;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	width: 100%;
+	max-width: 100px;
+	margin: 0 auto;
+	li {
+		width: 20%;
+		transform-origin: center center;
+		svg {
+			display: block;
+			polygon {
+				fill: none;
+				stroke: $gold;
+				stroke-width: 7px;
+				&:nth-child(2) {
+					opacity: 0;
+					stroke-width: 0;
+					fill: $gold;
+				}
+			}
+		}
+	}
+	&[data-rating^="1"] {
+		li:nth-child(1) {
+			svg {
+				polygon {
+					fill: $gold;
+				}
+			}
+		}
+		&[data-half="true"],
+		&[data-rating*="."] {
+			li:nth-child(2) {
+				svg {
+					polygon:nth-child(2) {
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+	&[data-rating^="2"] {
+		li:nth-child(1),
+		li:nth-child(2) {
+			svg {
+				polygon {
+					fill: $gold;
+				}
+			}
+		}
+		&[data-half="true"],
+		&[data-rating*="."] {
+			li:nth-child(3) {
+				svg {
+					polygon:nth-child(2) {
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+	&[data-rating^="3"] {
+		li:nth-child(1),
+		li:nth-child(2),
+		li:nth-child(3) {
+			svg {
+				polygon {
+					fill: $gold;
+				}
+			}
+		}
+		&[data-half="true"],
+		&[data-rating*="."] {
+			li:nth-child(4) {
+				svg {
+					polygon:nth-child(2) {
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+	&[data-rating^="4"] {
+		li:nth-child(1),
+		li:nth-child(2),
+		li:nth-child(3),
+		li:nth-child(4) {
+			svg {
+				polygon {
+					fill: $gold;
+				}
+			}
+		}
+		&[data-half="true"],
+		&[data-rating*="."] {
+			li:nth-child(5) {
+				svg {
+					polygon:nth-child(2) {
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+	&[data-rating^="5"] {
+		li {
+			svg {
+				polygon {
+					fill: $gold;
+				}
+			}
+		}
+	}
+}

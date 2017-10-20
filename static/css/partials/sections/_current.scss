@@ -1,0 +1,270 @@
+#current {
+	padding-top: $p*4;
+	padding-bottom: $p*9;
+	background: mix($beige, $green);
+	color: white;
+	h2 {
+		font-size: 32px;
+		font-weight: 400;
+	}
+	.angle {
+		* {
+			fill: $beige;
+		}
+	}
+	a {
+		color: darken($grey, 15%);
+	}
+	h3 + h3 {
+		margin-top: $p;
+	}
+	.apple {
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	}
+	ul {
+		display: flex;
+		flex-flow: row wrap;
+		align-items: center;
+		align-content: center;
+		justify-content: center;
+		width: 100%;
+		max-width: $w;
+		margin: $p auto 0;
+		padding: $p/2;
+		li {
+			padding: $p/2;
+			div {
+				position: relative;
+				width: 100%;
+				> svg {
+					display: block;
+					width: 100%;
+				}
+			}
+			figure {
+				display: flex;
+				flex-flow: row wrap;
+				align-items: center;
+				align-content: center;
+				justify-content: center;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				border-radius: $p/4;
+				span {
+					display: block;
+					margin-top: -($p);
+					padding: $p;
+					font-size: 18px;
+					font-weight: 500;
+				}
+				svg {
+					display: block;
+					padding: $p $p 0;
+					width: 100%;
+					height: calc(100% - 42px);
+					g {
+						fill: none;
+						stroke-width: 3px;
+						stroke-linecap: round;
+						stroke-linejoin: round;
+					}
+					+ svg {
+						opacity: .25;
+						position: absolute;
+						top: $p/2;
+						left: 0;
+					}
+				}
+			}
+		}
+		&.current-principles {
+			li {
+				width: 33.3333%;
+				width: calc(100% / 3);
+			}
+			figure {
+				background: rgba(white,.2);
+			}
+			g {
+				stroke: white;
+			}
+			+ h3 {
+				padding: $p 0 0;
+			}
+		}
+		&.current-frameworks {
+			li {
+				width: 25%;
+			}
+			figure {
+				background: white;
+				span {
+					display: none;
+				}
+				svg {
+					padding: $p/2;
+					height: 100%;
+					+ svg {
+						top: 0;
+					}
+				}
+			}
+			.current-angular {
+				color: lighten(#DA0B37, 40%);
+				g {
+					stroke: lighten(#DA0B37, 40%);
+				}
+				// test stuff
+				figure {
+					-webkit-clip-path: url(#test);
+					clip-path: url(#test);
+				}
+			}
+			.current-react {
+				color: lighten(#25D8FD, 20%);
+				g {
+					stroke: lighten(#25D8FD, 20%);
+				}
+			}
+			.current-ionic {
+				color: lighten(#4B8DFB, 20%);
+				g {
+					stroke: lighten(#4B8DFB, 20%);
+				}
+			}
+			.current-bootstrap {
+				color: lighten(#5B437F, 30%);
+				g {
+					stroke: lighten(#5B437F, 30%);
+				}
+			}
+			.current-foundation {
+				color: desaturate(lighten(#0E4E67, 40%), 25%);
+				g {
+					stroke: desaturate(lighten(#0E4E67, 40%), 25%);
+				}
+			}
+			.current-tumblr {
+				color: lighten(#3a5976, 25%);
+				g {
+					stroke: lighten(#3a5976, 25%);
+				}
+			}
+			.current-wordpress {
+				color: lighten(#21759b, 25%);
+				g {
+					stroke: lighten(#21759b, 25%);
+				}
+			}
+			.current-squarespace {
+				color: lighten(#121212, 50%);
+				g {
+					stroke: lighten(#121212, 50%);
+				}
+			}
+			.current-django {
+				color: lighten(#0B2E20, 50%);
+				g {
+					stroke: lighten(#0B2E20, 50%);
+				}
+			}
+			.current-node {
+				color: lighten(#6A9E65, 20%);
+				g {
+					stroke: lighten(#6A9E65, 20%);
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 480px) {
+	#current {
+		ul.current-frameworks {
+			li {
+				figure {
+					span {
+						display: block;
+					}
+					svg {
+						height: calc(100% - 42px);
+						padding: $p $p 0;
+						+ svg {
+							top: $p/2;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 540px) {
+	#current {
+		ul {
+			&.current-principles {
+				li {
+					width: 25%;
+					&:nth-child(4) {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	#current {
+		h2 {
+			font-size: 48px;
+			font-weight: 300;
+		}
+		ul {
+			margin-top: 0;
+			padding: $p;
+			li {
+				padding: $p;
+			}
+			&.current-principles, &.current-frameworks {
+				li {
+					width: 20%;
+				}
+			}
+			&.current-principles {
+				li {
+					&:nth-child(4) {
+						display: block;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 1920px) {
+	#current {
+		ul {
+			margin-top: $p;
+			max-width: $lw + $p*4;
+			li {
+				div {
+					figure {
+						svg {
+							g {
+								fill: none;
+								stroke: white;
+								stroke-width: 2px;
+								stroke-linecap: round;
+								stroke-linejoin: round;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

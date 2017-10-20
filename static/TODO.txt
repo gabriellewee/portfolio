@@ -1,0 +1,38 @@
+TODO for Website Q4 Changes:
+
+INDEX
+1.	Complete mobile version of code section
+	-	Overlay for SVG versions
+	-	Icon for opening the Codepen links
+	-	Custom video controls for the CSS Dev Conf animation
+2.	Custom icons for Pokémon sprite sorter and calculators
+3.	Line height for talk section full-width links is incorrect
+4.	Design custom icons for external web mentions
+5.	Remove jailbreak themes from index and move to /design
+6.	Redesign "More" link to be more prominent/separated from content
+7.	Add photo of myself to contact section somehow
+8.	See if there's a way to streamline Isotope resizing (buggy when resizing the window), low priority
+9.	Find animation framework (or create one? possible?) to replace Skrollr
+
+DESIGN
+1.	Redesign page to have separate sections
+	-	Maybe a full-width layout
+2.	Create a layout to explain concept art, etc
+3.	Add additional figure sketches
+
+UGURU
+1.	Create separate directory tree for animation
+2.	Streamline scene animations
+	-	Guru loaders
+	-	School map point-and-click
+	-	Possibly some of the other Dribbble-inspired animations
+
+UIGURU
+1.	Pull assets from hard drive
+	-	Find cable
+2.	Discuss with Jeselle what we want to show off
+3.	Logo concept work
+
+ADD LINKS
+-	Gyroscope
+-	Ello
