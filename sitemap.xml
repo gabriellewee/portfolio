@@ -1,247 +1,247 @@
-<?xml version="1.0" encoding="UTF-8"?> 
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.google.com/schemas/sitemap/0.84">
     <url>
-        <loc>/design/index.html</loc>
+        <loc>/design/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/3d/sb/index.html</loc>
+        <loc>/3d/sb/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/3d/shrine/index.html</loc>
+        <loc>/3d/shrine/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/index.html</loc>
+        <loc>/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/setup/trinite/index.html</loc>
+        <loc>/setup/trinite/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/setup/arketyp/index.html</loc>
+        <loc>/setup/arketyp/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/setup/mvwall/index.html</loc>
+        <loc>/setup/mvwall/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/setup/mvredux/index.html</loc>
+        <loc>/setup/mvredux/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/graphic/eevee/index.html</loc>
+        <loc>/graphic/eevee/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/graphic/bagamasbad/index.html</loc>
+        <loc>/graphic/bagamasbad/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/graphic/yacgn/index.html</loc>
+        <loc>/graphic/yacgn/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/graphic/acc/index.html</loc>
+        <loc>/graphic/acc/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/uguru/branding/index.html</loc>
+        <loc>/uguru/branding/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/uguru/index.html</loc>
+        <loc>/uguru/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/uguru/styles/index.html</loc>
+        <loc>/uguru/styles/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/uguru/components/profile-tile/index.html</loc>
+        <loc>/uguru/components/profile-tile/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/uguru/components/index.html</loc>
+        <loc>/uguru/components/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/uguru/components/team-card/index.html</loc>
+        <loc>/uguru/components/team-card/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/uguru/components/category-tile/index.html</loc>
+        <loc>/uguru/components/category-tile/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/uguru/components/profile-cardlet/index.html</loc>
+        <loc>/uguru/components/profile-cardlet/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/uguru/components/request-card/index.html</loc>
+        <loc>/uguru/components/request-card/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/uguru/components/profile-widget/index.html</loc>
+        <loc>/uguru/components/profile-widget/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/uguru/components/place-marker/index.html</loc>
+        <loc>/uguru/components/place-marker/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/uguru/components/demographic-tile/index.html</loc>
+        <loc>/uguru/components/demographic-tile/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/uguru/components/course-card/index.html</loc>
+        <loc>/uguru/components/course-card/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/uguru/profiles/index.html</loc>
+        <loc>/uguru/profiles/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/uguru/profiles/photography/index.html</loc>
+        <loc>/uguru/profiles/photography/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/uguru/profiles/baking/index.html</loc>
+        <loc>/uguru/profiles/baking/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/uguru/profiles/academic/index.html</loc>
+        <loc>/uguru/profiles/academic/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/uguru/profiles/household/index.html</loc>
+        <loc>/uguru/profiles/household/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/uguru/profiles/tech/index.html</loc>
+        <loc>/uguru/profiles/tech/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/theme/transistor/index.html</loc>
+        <loc>/theme/transistor/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/theme/fleux/index.html</loc>
+        <loc>/theme/fleux/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/theme/excelle/index.html</loc>
+        <loc>/theme/excelle/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/portfolio/quake/index.html</loc>
+        <loc>/portfolio/quake/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/portfolio/obina/index.html</loc>
+        <loc>/portfolio/obina/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/portfolio/dillon/index.html</loc>
+        <loc>/portfolio/dillon/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/portfolio/xbox/index.html</loc>
+        <loc>/portfolio/xbox/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/portfolio/ratchet/index.html</loc>
+        <loc>/portfolio/ratchet/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/portfolio/resume/index.html</loc>
+        <loc>/portfolio/resume/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/portfolio/schaff/index.html</loc>
+        <loc>/portfolio/schaff/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/portfolio/bvrg/index.html</loc>
+        <loc>/portfolio/bvrg/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/portfolio/marchesi/index.html</loc>
+        <loc>/portfolio/marchesi/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/portfolio/ps/index.html</loc>
+        <loc>/portfolio/ps/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/portfolio/psych2go/index.html</loc>
+        <loc>/portfolio/psych2go/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/portfolio/nameplate/index.html</loc>
+        <loc>/portfolio/nameplate/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/portfolio/mcclun/index.html</loc>
+        <loc>/portfolio/mcclun/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/portfolio/koo/index.html</loc>
+        <loc>/portfolio/koo/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>/portfolio/guild/index.html</loc>
+        <loc>/portfolio/guild/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
