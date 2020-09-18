@@ -1,2 +1,2 @@
 # gabriellew.ee
-Personal portfolio built with Cactus for Mac
+Personal portfolio site.
