@@ -722,11 +722,11 @@ a:hover, a:active, a:focus {
 
 #avatar div {
   height: 30rem;
-  background: url(http://gravatar.com/avatar/38e2fcfaf45484c178d079eba7596bb1.png?s=500) no-repeat center center; }
+  background: url(https://gravatar.com/avatar/38e2fcfaf45484c178d079eba7596bb1.png?s=500) no-repeat center center; }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
   #avatar div {
-    background: url(http://gravatar.com/avatar/38e2fcfaf45484c178d079eba7596bb1.png?s=1000) no-repeat center center;
+    background: url(https://gravatar.com/avatar/38e2fcfaf45484c178d079eba7596bb1.png?s=1000) no-repeat center center;
     background-size: 500px 500px; } }
 
 iframe {
