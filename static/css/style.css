@@ -112,6 +112,14 @@ a.reddit {
   color: #FC471E;
   width: 132px;
 }
+a.pinterest {
+  color: #cb2027;
+  width: 185px;
+}
+a.music {
+  color: #fa2d48;
+  width: 119px;
+}
 a.email {
   color: rgba(0, 0, 0, 0.5);
   width: 115px;
@@ -124,6 +132,14 @@ a.email {
 a.text {
   color: #34C6D8;
   width: 87px;
+}
+a.imessage {
+  color: #0d84ff;
+  width: 185px;
+}
+a.discord {
+  color: #8ea1e1;
+  width: 158px;
 }
 
 @media only screen and (min-width: 600px) {
@@ -162,11 +178,23 @@ a.text {
   a.reddit {
     width: 176px;
   }
+  a.pinterest {
+    width: 247px;
+  }
+  a.music {
+    width: 157px;
+  }
   a.email {
     width: 153px;
   }
   a.text {
     width: 116px;
+  }
+  a.imessage {
+    width: 247px;
+  }
+  a.discord {
+    width: 210px;
   }
 }
 @media only screen and (min-width: 1000px) {
@@ -205,11 +233,23 @@ a.text {
   a.reddit {
     width: 231px;
   }
+  a.pinterest {
+    width: 324px;
+  }
+  a.music {
+    width: 216px;
+  }
   a.email {
     width: 201px;
   }
   a.text {
     width: 152px;
+  }
+  a.imessage {
+    width: 324px;
+  }
+  a.discord {
+    width: 276px;
   }
 }
 .error {
