@@ -249,6 +249,7 @@ a:active {
 }
 
 main {
+  max-width: 1700px;
   padding: 12px 18px;
   font-size: 32px;
 }
