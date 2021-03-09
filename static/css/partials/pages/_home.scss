@@ -45,8 +45,8 @@ header {
 		font-family: $mono;
 		font-size: 16px;
 		font-weight: bold;
-		background: #fafafa;
-		color: #39adb5;
+		background: #253238;
+		color: #73d1c8;
 		h2 {
 			padding: $p $p*1.5;
 		}
@@ -58,10 +58,10 @@ header {
 			padding-top: $p;
 		}
 		.css {
-			color: #ffb62c;
+			color: #ffcb6b;
 		}
 		.animation {
-			color: #7c4dff;
+			color: #c792ea;
 		}
 		ul {
 			display: grid;
@@ -181,13 +181,6 @@ header {
 		}
 		@media (prefers-color-scheme: dark) {
 			background: darken(#1e282c, 2%);
-			color: #73d1c8;
-			.css {
-				color: #ffcb6b;
-			}
-			.animation {
-				color: #c792ea;
-			}
 		}
 	}
 	&-links {
