@@ -18,10 +18,20 @@ header {
 
 .grid-item {
 	padding: $p $p*1.5;
-	font-size: 32px;
+	font-size: 28px;
+	@media only screen and (min-width: 600px) {
+		font-size: 32px;
+	}
 	&-intro {
 		background: lighten($pink, 5%);
 		color: $iron;
+		padding-right: $p*5.5;
+		@media only screen and (min-width: 600px) {
+			padding-right: $p*5;
+		}
+		@media only screen and (min-width: 1000px) {
+			padding-right: unset;
+		}
 		h1 {
 			span {
 				display: inline-block;
@@ -259,6 +269,7 @@ header {
 						left: 0;
 						width: 100%;
 						height: 100%;
+						text-align: center;
 					}
 					a {
 						will-change: transform;
