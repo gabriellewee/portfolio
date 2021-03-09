@@ -766,7 +766,7 @@ body {
   }
 }
 .page-home .grid-item-links {
-  background: #fafafa;
+  background: white;
   font-size: 28px;
 }
 .page-home .grid-item-links a.codepen {
