@@ -1,0 +1,92 @@
+@import '../fonts/dank-mono';
+@import '../fonts/faune';
+
+$mono: "dm", "Inconsolata", "Consolas", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, Courier, monospace;
+$faune: faune, sans-serif;
+
+$p: 12px;
+$w: 1800px;
+
+// default colors
+$iron: #263238;
+$pink: #F5C8BF;
+$mauve: #75605B;
+$russet: #8F5F36;
+$lilac: #8497C2;
+
+// ui colors
+$message: #e9e9eb;
+
+// nameplate
+$discord: #7289da;
+$em: #666;
+$skype: #00AFF0;
+$gv: #34C6D8;
+$cp: #fcd000;
+$gh: #4183c4;
+$insta: #cd486b;
+$tu: #3a5976;
+$tw: #2daae1;
+$li: #069;
+$fb: #3b5997;
+$peach: #F96B82;
+$snap: #FFFC00;
+$elle: #fdbf54;
+$reddit: #FC471E;
+$pin: #cb2027;
+$da: #46574c;
+$plus: #dc4b39;
+$yt: #af2b26;
+$gr: #382110;
+$steam: #171a21;
+$as: #121d21;
+$bbb: #ea4c89;
+$pc: #37864d;
+$etsy: #f76700;
+$oo: #0063dc;
+$vimeo: #4bf;
+$sc: #f76700;
+$gyro: #151E26;
+$med: #00AB6C;
+$quora: #b92b27;
+$ph: #DA552F;
+
+$gaia: #61526f;
+$exp: #e27b6a;
+$wp: #21759B;
+$cb: #25355c;
+$lb: #000;
+$ms: #039;
+$xanga: #4684c3;
+
+$music: #fa2d48;
+$discord: #8ea1e1;
+$im: #0d84ff;
+
+// easing
+$easeInQuad: cubic-bezier(0.550, 0.085, 0.680, 0.530);
+$easeInCubic: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+$easeInQuart: cubic-bezier(0.895, 0.030, 0.685, 0.220);
+$easeInQuint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+$easeInSine: cubic-bezier(0.470, 0.000, 0.745, 0.715);
+$easeInExpo: cubic-bezier(0.950, 0.050, 0.795, 0.035);
+$easeInCirc: cubic-bezier(0.600, 0.040, 0.980, 0.335);
+$easeInBack: cubic-bezier(0.600, -0.280, 0.735, 0.045);
+
+$easeOutQuad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+$easeOutCubic: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+$easeOutQuart: cubic-bezier(0.165, 0.840, 0.440, 1.000);
+$easeOutQuint: cubic-bezier(0.230, 1.000, 0.320, 1.000);
+$easeOutSine: cubic-bezier(0.390, 0.575, 0.565, 1.000);
+$easeOutExpo: cubic-bezier(0.190, 1.000, 0.220, 1.000);
+$easeOutCirc: cubic-bezier(0.075, 0.820, 0.165, 1.000);
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+
+$easeInOutQuad: cubic-bezier(0.455, 0.030, 0.515, 0.955);
+$easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1.000);
+$easeInOutQuart: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+$easeInOutQuint: cubic-bezier(0.860, 0.000, 0.070, 1.000);
+$easeInOutSine: cubic-bezier(0.445, 0.050, 0.550, 0.950);
+$easeInOutExpo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+$easeInOutCirc: cubic-bezier(0.785, 0.135, 0.150, 0.860);
+$easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);

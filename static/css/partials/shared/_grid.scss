@@ -1,0 +1,36 @@
+.grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	list-style: none;
+	.grid-item {
+		width: 100%;
+		overflow: hidden;
+	}
+}
+
+@media only screen and (min-width: 1000px) {
+	.grid {
+		grid-template-columns: 1fr 1fr;
+		&[style] .grid-item {
+			width: 50%;
+		}
+	}
+}
+
+@media only screen and (min-width: 2000px) {
+	.grid {
+		grid-template-columns: 1fr 1fr 1fr;
+		&[style] .grid-item {
+			width: calc(100% / 3);
+		}
+	}
+}
+
+@media only screen and (min-width: 3000px) {
+	.grid {
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		&[style] .grid-item {
+			width: 25%;
+		}
+	}
+}

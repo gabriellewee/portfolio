@@ -1,0 +1,19 @@
+---
+layout: layouts/base.njk
+templateClass: home
+title: Portfolio
+description: I’m a front‑end developer working at Apple .
+eleventyNavigation:
+  key: Home
+  order: 1
+---
+
+<section class="home-grid">
+	<ul class="grid grid-isotope">
+		{% for tile in home %}
+			<li class="grid-item grid-item-{{tile.name}}">
+				{% include 'pages/home/' + tile.name + '.html' %}
+			</li>
+		{% endfor %}
+	</ul>
+</section>

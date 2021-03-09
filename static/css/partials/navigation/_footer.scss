@@ -1,0 +1,24 @@
+footer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	text-align: center;
+	padding: $p;
+	div {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	h2 {
+		&:after {
+			content: " ";
+		}
+	}
+	@media (prefers-color-scheme: dark) {
+		a {
+			color: white;
+		}
+	}
+}

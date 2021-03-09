@@ -1,0 +1,25 @@
+<svg viewBox="0 0 200 125" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs>
+		<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="gradient-doortem">
+			<stop stop-color="#2C4A87" offset="0%"></stop>
+			<stop stop-color="#1F2E4C" offset="100%"></stop>
+		</linearGradient>
+	</defs>
+	<rect fill="url(#gradient-doortem)" x="0" y="0" width="100%" height="100%"></rect>
+	<g fill="#6AD8DA">
+		<rect x="90.5" y="16.5" width="20" height="20" rx="2"></rect>
+		<rect x="90.5" y="40.5" width="20" height="20" rx="2"></rect>
+		<rect x="90.5" y="64.5" width="20" height="44" rx="2"></rect>
+	</g>
+	<g fill="#EC9D93">
+		<path d="M90.5,25.039 C91.993,22.927 93.854,21.057 95.999,19.5 L102.014,19.5 C96.562,21.881 92.336,26.213 90.5,31.53 L90.5,25.039 L90.5,25.039 Z"></path>
+		<path d="M92.532,36.5 C93.094,27.893 100.86,21.066 110.5,20.533 L110.5,23.539 C102.463,24.052 96.106,29.619 95.541,36.5 L92.533,36.5 L92.533,36.5 Z"></path>
+		<path d="M98.555,36.5 C99.127,31.316 104.101,27.031 110.5,26.546 L110.5,29.555 C105.784,29.999 102.167,32.981 101.583,36.5 L98.555,36.5 L98.555,36.5 Z"></path>
+	</g>
+	<circle fill="#FFFFFF" cx="100.5" cy="50.5" r="7"></circle>
+	<circle fill="#20634C" cx="100.5" cy="50.5" r="4"></circle>
+	<circle fill="#A5F0F1" cx="100.5" cy="74.5" r="6"></circle>
+	<circle fill="#5A6E91" cx="100.5" cy="74.5" r="3"></circle>
+	<circle fill="#A5F0F1" cx="100.5" cy="98.5" r="6"></circle>
+	<circle fill="#5A6E91" cx="100.5" cy="98.5" r="3"></circle>
+</svg>

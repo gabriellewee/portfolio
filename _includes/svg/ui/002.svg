@@ -1,0 +1,20 @@
+<svg viewBox="0 0 150 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<rect fill="#E8E6E8" x="0" y="0" width="150" height="16"></rect>
+	<circle fill="#FC645F" cx="10" cy="8" r="3"></circle>
+	<circle fill="#FDBD41" cx="21" cy="8" r="3"></circle>
+	<circle fill="#35CC4B" cx="32" cy="8" r="3"></circle>
+	<rect fill="#1C2B34" x="0" y="16" width="50" height="84"></rect>
+	<rect fill="#52504E" x="50" y="16" width="100" height="84"></rect>
+	<path d="M72,32 L87,32 L87,49 L70,49 L70,34 C70,32.8954305 70.8954305,32 72,32 Z" fill="#AD8C54"></path>
+	<path d="M87,32 L128,32 C129.104569,32 130,32.8954305 130,34 L130,49 L87,49 L87,32 Z" fill="#FFFFFF"></path>
+	<rect fill="#DFB72C" x="90" y="38" width="37" height="6" rx="3"></rect>
+	<polygon fill="#DFB72C" points="70 49 130 49 130 64 70 64"></polygon>
+	<rect fill="#FFFFFF" x="73" y="55" width="16" height="3" rx="1.5"></rect>
+	<rect fill="#FFFFFF" x="92" y="55" width="16" height="3" rx="1.5"></rect>
+	<rect fill="#FFFFFF" x="111" y="55" width="16" height="3" rx="1.5"></rect>
+	<path d="M70,64 L130,64 L130,82 C130,83.1045695 129.104569,84 128,84 L72,84 C70.8954305,84 70,83.1045695 70,82 L70,64 Z" fill="#857567"></path>
+	<rect fill="#FFFFFF" x="73" y="68" width="16" height="3" rx="1.5"></rect>
+	<rect fill="#FFFFFF" x="92" y="68" width="16" height="3" rx="1.5"></rect>
+	<rect fill="#FFFFFF" x="111" y="68" width="16" height="3" rx="1.5"></rect>
+	<rect fill="#DFB72C" x="93" y="75" width="14" height="5" rx="1"></rect>
+</svg>

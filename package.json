@@ -1,0 +1,37 @@
+{
+	"name": "gabrielle-wee-portfolio",
+	"version": "4.0.0",
+	"description": "The portfolio of Gabrielle Wee",
+	"scripts": {
+		"sass": "sass static/css/style.scss static/css/style.css && npx postcss --use autoprefixer -o static/css/style.css static/css/style.css",
+		"build": "npm run sass && eleventy",
+		"watch:eleventy": "eleventy --serve",
+		"watch:sass": "sass --watch static/css/style.scss static/css/style.css",
+		"start": "npm-run-all sass --parallel watch:*",
+		"debug": "DEBUG=* eleventy"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/gabriellewee/portfolio.git"
+	},
+	"author": {
+		"name": "Gabrielle Wee",
+		"email": "mail@gabriellew.ee",
+		"url": "https://gabriellew.ee/"
+	},
+	"license": "MIT",
+	"homepage": "https://gabriellew.ee",
+	"devDependencies": {
+		"@11ty/eleventy": "^0.11.0",
+		"@11ty/eleventy-navigation": "^0.1.6",
+		"@11ty/eleventy-plugin-syntaxhighlight": "^3.0.1",
+		"autoprefixer": "^10.2.5",
+		"luxon": "^1.21.3",
+		"markdown-it": "^8.4.2",
+		"markdown-it-anchor": "^5.2.5",
+		"npm-run-all": "^4.1.5",
+		"postcss": "^8.2.7",
+		"postcss-cli": "^8.3.1",
+		"sass": "^1.32.8"
+	}
+}

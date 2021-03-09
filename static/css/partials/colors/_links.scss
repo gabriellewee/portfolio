@@ -1,0 +1,68 @@
+a {
+	&.v1 {
+		color: #737375;
+	}
+	&.v2 {
+		color: $pink;
+	}
+	&.codepen {
+		color: $cp;
+		text-decoration-color: $cp;
+	}
+	&.dribbble {
+		color: $bbb;
+		text-decoration-color: $bbb;
+	}
+	&.github {
+		color: $gh;
+		text-decoration-color: $gh;
+	}
+	&.linkedin {
+		color: $li;
+		text-decoration-color: $li;
+	}
+	&.instagram {
+		color: $insta;
+		text-decoration-color: $insta;
+	}
+	&.twitter {
+		color: $tw;
+		text-decoration-color: $tw;
+	}
+	&.medium {
+		color: $med;
+		text-decoration-color: $med;
+	}
+	&.reddit {
+		color: $reddit;
+		text-decoration-color: $reddit;
+	}
+	&.pinterest {
+		color: $pin;
+		text-decoration-color: $pin;
+	}
+	&.music {
+		color: $music;
+		text-decoration-color: $music;
+	}
+	&.email {
+		color: rgba(black, .5);
+		text-decoration-color: rgba(black, .5);
+		@media (prefers-color-scheme: dark) {
+			color: rgba(white, .4);
+			text-decoration-color: rgba(white, .4);
+		}
+	}
+	&.text {
+		color: $gv;
+		text-decoration-color: $gv;
+	}
+	&.imessage {
+		color: $im;
+		text-decoration-color: $im;
+	}
+	&.discord {
+		color: $discord;
+		text-decoration-color: $discord;
+	}
+}

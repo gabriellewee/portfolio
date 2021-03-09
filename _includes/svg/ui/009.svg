@@ -1,0 +1,21 @@
+<svg viewBox="0 0 150 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<rect fill="#E8E6E8" x="0" y="0" width="150" height="16"></rect>
+	<circle fill="#FC645F" cx="10" cy="8" r="3"></circle>
+	<circle fill="#FDBD41" cx="21" cy="8" r="3"></circle>
+	<circle fill="#35CC4B" cx="32" cy="8" r="3"></circle>
+	<rect fill="#1C2B34" x="0" y="16" width="50" height="84"></rect>
+	<rect fill="#D8D3D4" x="50" y="16" width="100" height="84"></rect>
+	<path d="M80,67 L120,67 L120,87.5 C120,88.8807119 118.880712,90 117.5,90 L82.5,90 C81.1192881,90 80,88.8807119 80,87.5 L80,67 L80,67 Z" fill="#FFFFFF"></path>
+	<rect fill="#0B0B0B" x="92.5" y="78" width="16" height="2" rx="1"></rect>
+	<path d="M82.5,26 L117.5,26 C118.880712,26 120,27.1192881 120,28.5 L120,66 L120,66 L80,66 L80,28.5 C80,27.1192881 81.1192881,26 82.5,26 Z" fill="#F3F3F3"></path>
+	<circle fill="#F9C9D2" cx="84.5" cy="85.5" r="1.5"></circle>
+	<circle fill="#F9C9D2" cx="95" cy="85.5" r="1.5"></circle>
+	<circle fill="#F9C9D2" cx="105" cy="85.5" r="1.5"></circle>
+	<circle fill="#C3C3C3" cx="115.5" cy="85.5" r="1.5"></circle>
+	<circle fill="#060606" cx="100" cy="46" r="8"></circle>
+	<rect fill="#EB2045" x="80" y="66" width="40" height="1"></rect>
+	<rect fill="#EB2045" x="85" y="65" width="3" height="3" rx="1"></rect>
+	<circle fill="#0B0B0B" cx="91" cy="72.5" r="1.5"></circle>
+	<circle fill="#0B0B0B" cx="110" cy="72.5" r="1.5"></circle>
+	<circle fill="#0B0B0B" cx="100.5" cy="72.5" r="2.5"></circle>
+</svg>

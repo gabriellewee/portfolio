@@ -1,0 +1,195 @@
+.code-link {
+	&-quadrant {
+		.overlay {
+			background: rgba(mix(mix(red, blue), mix(orange, yellow)), .9);
+			@supports (-webkit-backdrop-filter: blur(5px)) {
+				background: rgba(mix(mix(red, blue), mix(orange, yellow)), .7);
+			}
+		}
+	}
+	&-starter-icons {
+		.overlay {
+			background: rgba(#849896, .9);
+			@supports (-webkit-backdrop-filter: blur(5px)) {
+				background: rgba(#849896, .7);
+			}
+		}
+	}
+	&-dark-mode {
+		.overlay {
+			background: rgba(#3E4860, .9);
+			@supports (-webkit-backdrop-filter: blur(5px)) {
+				background: rgba(#3E4860, .7);
+			}
+		}
+	}
+	&-gradient {
+		.overlay {
+			background: rgba(#f9a23f, .9);
+			@supports (-webkit-backdrop-filter: blur(5px)) {
+				background: rgba(#f9a23f, .7);
+			}
+		}
+	}
+	&-instagram {
+		.overlay {
+			background: rgba(#ADA6AF, .9);
+			@supports (-webkit-backdrop-filter: blur(5px)) {
+				background: rgba(#ADA6AF, .7);
+			}
+		}
+	}
+	&-lotus {
+		.overlay {
+			background: rgba(#363A40, .9);
+			@supports (-webkit-backdrop-filter: blur(5px)) {
+				background: rgba(#363A40, .7);
+			}
+		}
+	}
+	&-css-dev-conf {
+		.overlay {
+			background: rgba(#304047, .9);
+			@supports (-webkit-backdrop-filter: blur(5px)) {
+				background: rgba(#304047, .7);
+			}
+		}
+	}
+	&-elletem {
+		.overlay {
+			background: rgba(#FEBFC0, .9);
+			@supports (-webkit-backdrop-filter: blur(5px)) {
+				background: rgba(#FEBFC0, .7);
+			}
+		}
+	}
+	&-doortem {
+		.overlay {
+			background: rgba(#EC9D93, .9);
+			@supports (-webkit-backdrop-filter: blur(5px)) {
+				background: rgba(#EC9D93, .7);
+			}
+		}
+	}
+	&-totem {
+		.overlay {
+			background: rgba(#3E4F53, .9);
+			@supports (-webkit-backdrop-filter: blur(5px)) {
+				background: rgba(#3E4F53, .7);
+			}
+		}
+	}
+	&-nested-nav {
+		.overlay {
+			background: rgba(#AEBFAF, .9);
+			@supports (-webkit-backdrop-filter: blur(5px)) {
+				background: rgba(#AEBFAF, .7);
+			}
+		}
+	}
+	&-sprites {
+		.overlay {
+			background: rgba(#F59477, .9);
+			@supports (-webkit-backdrop-filter: blur(5px)) {
+				background: rgba(#F59477, .7);
+			}
+		}
+	}
+	&-cubes {
+		.overlay {
+			background: rgba(#53A0FE, .9);
+			@supports (-webkit-backdrop-filter: blur(5px)) {
+				background: rgba(#53A0FE, .7);
+			}
+		}
+	}
+	&-cards {
+		.overlay {
+			background: rgba(#F04F54, .9);
+			@supports (-webkit-backdrop-filter: blur(5px)) {
+				background: rgba(#F04F54, .7);
+			}
+		}
+	}
+
+	&-011 {
+		.overlay {
+			background: rgba(#4B5E6B, .9);
+			@supports (-webkit-backdrop-filter: blur(5px)) {
+				background: rgba(#4B5E6B, .7);
+			}
+		}
+	}
+	&-010 {
+		.overlay {
+			background: rgba(#43CB9D, .9);
+			@supports (-webkit-backdrop-filter: blur(5px)) {
+				background: rgba(#43CB9D, .7);
+			}
+		}
+	}
+	&-009 {
+		.overlay {
+			background: rgba(#EB2045, .9);
+			@supports (-webkit-backdrop-filter: blur(5px)) {
+				background: rgba(#EB2045, .7);
+			}
+		}
+	}
+	&-008 {
+		.overlay {
+			background: rgba(#F04F54, .9);
+			@supports (-webkit-backdrop-filter: blur(5px)) {
+				background: rgba(#F04F54, .7);
+			}
+		}
+	}
+	&-007 {
+		.overlay {
+			background: rgba(#725767, .9);
+			@supports (-webkit-backdrop-filter: blur(5px)) {
+				background: rgba(#725767, .7);
+			}
+		}
+	}
+	&-006 {
+		.overlay {
+			background: rgba(#F5515F, .9);
+			@supports (-webkit-backdrop-filter: blur(5px)) {
+				background: rgba(#F5515F, .7);
+			}
+		}
+	}
+	&-005 {
+		.overlay {
+			background: rgba(#C96DD8, .9);
+			@supports (-webkit-backdrop-filter: blur(5px)) {
+				background: rgba(#C96DD8, .7);
+			}
+		}
+	}
+	&-004 {
+		.overlay {
+			background: rgba(#FC9D6B, .9);
+			@supports (-webkit-backdrop-filter: blur(5px)) {
+				background: rgba(#FC9D6B, .7);
+			}
+		}
+	}
+	&-003 {
+		.overlay {
+			background: rgba(#ADA295, .9);
+			@supports (-webkit-backdrop-filter: blur(5px)) {
+				background: rgba(#ADA295, .7);
+			}
+		}
+	}
+	&-001, &-002 {
+		.overlay {
+			background: rgba(#DFB72C, .9);
+			@supports (-webkit-backdrop-filter: blur(5px)) {
+				background: rgba(#DFB72C, .7);
+			}
+		}
+	}
+}
