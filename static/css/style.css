@@ -347,8 +347,35 @@ footer div {
 footer h2:after {
   content: " ";
 }
+footer a {
+  will-change: transform;
+  transition: 0.1s ease-out;
+}
+footer a.v1 {
+  color: #737375;
+  text-decoration-color: #737375;
+}
+footer a.v2 {
+  color: #F5C8BF;
+  text-decoration-color: #F5C8BF;
+}
+footer a:hover, footer a:focus {
+  color: #263238;
+  transform: scale(1.05);
+}
+footer a:focus {
+  text-decoration: underline;
+  -webkit-text-decoration-skip: edges;
+  text-decoration-style: wavy;
+}
+footer a:active {
+  transform: scale(0.95);
+}
 @media (prefers-color-scheme: dark) {
   footer a {
+    color: white;
+  }
+  footer a:hover, footer a:focus {
     color: white;
   }
 }
@@ -741,12 +768,6 @@ body {
 .page-home .grid-item-links {
   background: #fafafa;
   font-size: 28px;
-}
-.page-home .grid-item-links a.v1 {
-  color: #737375;
-}
-.page-home .grid-item-links a.v2 {
-  color: #F5C8BF;
 }
 .page-home .grid-item-links a.codepen {
   color: #fcd000;

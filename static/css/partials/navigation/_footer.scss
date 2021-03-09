@@ -16,9 +16,36 @@ footer {
 			content: " ";
 		}
 	}
+	a {
+		will-change: transform;
+		transition: .1s ease-out;
+		&.v1 {
+			color: #737375;
+			text-decoration-color: #737375;
+		}
+		&.v2 {
+			color: $pink;
+			text-decoration-color: $pink;
+		}
+		&:hover, &:focus {
+			color: $iron;
+			transform: scale(1.05);
+		}
+		&:focus {
+			text-decoration: underline;
+			-webkit-text-decoration-skip: edges;
+			text-decoration-style: wavy;
+		}
+		&:active {
+			transform: scale(0.95);
+		}
+	}
 	@media (prefers-color-scheme: dark) {
 		a {
 			color: white;
+			&:hover, &:focus {
+				color: white;
+			}
 		}
 	}
 }
