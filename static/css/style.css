@@ -434,8 +434,8 @@ body {
   font-family: "dm", "Inconsolata", "Consolas", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, Courier, monospace;
   font-size: 16px;
   font-weight: bold;
-  background: #fafafa;
-  color: #39adb5;
+  background: #253238;
+  color: #73d1c8;
 }
 .page-home .grid-item-code .code-link-quadrant .overlay {
   background: rgba(192, 105, 64, 0.9);
@@ -640,10 +640,10 @@ body {
   padding-top: 12px;
 }
 .page-home .grid-item-code .css {
-  color: #ffb62c;
+  color: #ffcb6b;
 }
 .page-home .grid-item-code .animation {
-  color: #7c4dff;
+  color: #c792ea;
 }
 .page-home .grid-item-code ul {
   display: grid;
@@ -756,13 +756,6 @@ body {
 @media (prefers-color-scheme: dark) {
   .page-home .grid-item-code {
     background: #1a2226;
-    color: #73d1c8;
-  }
-  .page-home .grid-item-code .css {
-    color: #ffcb6b;
-  }
-  .page-home .grid-item-code .animation {
-    color: #c792ea;
   }
 }
 .page-home .grid-item-links {
