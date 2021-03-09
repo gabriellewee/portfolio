@@ -1,0 +1,28 @@
+main {
+	background: rgba($iron, .2);
+	height: 100%;
+	padding: $p $p*1.5;
+	font-size: 32px;
+	color: white;
+	h1 {
+		max-width: $w;
+		font-size: 52px;
+		font-weight: 700;
+		font-style: italic;
+		line-height: 1;
+	}
+	p {
+		max-width: $w;
+		padding-top: $p;
+	}
+}
+
+@media only screen and (min-width: 600px) {
+	main {
+		font-size: 48px;
+		padding: $p $p*2;
+		h1 {
+			font-size: 72px;
+		}
+	}
+}

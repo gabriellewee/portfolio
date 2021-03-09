@@ -1,0 +1,147 @@
+.photo-grid {
+	position: relative;
+	font-style: italic;
+	figure, picture, img {
+		display: block;
+		max-width: 100%;
+	}
+	figure {
+		position: relative;
+	}
+	figcaption {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+	fieldset {
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-end;
+		width: 100%;
+		height: 100%;
+	}
+	.photo-close {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+	}
+	label, .photo-link {
+		cursor: pointer;
+	}
+	.photo-link {
+		will-change: opacity;
+		transition: .3s ease-out;
+		display: block;
+		position: relative;
+		z-index: 1;
+		padding: $p/4;
+	}
+	label.photo-link {
+		padding: $p/2;
+	}
+	svg {
+		display: block;
+		width: 25px;
+		height: 25px;
+		group, path, polyline, polygon, circle, ellipse, rect {
+			stroke-width: 7px;
+		}
+	}
+	input {
+		display: none;
+		~ label.photo-link {
+			display: none;
+		}
+		&:checked {
+			~ dl {
+				transform: none;
+				opacity: 1;
+				z-index: 2;
+			}
+			~ .photo-close {
+				z-index: unset;
+			}
+			~ label.photo-link {
+				opacity: 0;
+			}
+		}
+	}
+	dl {
+		transform: translateY(25%);
+		opacity: 0;
+		z-index: 0;
+		transition: all .3s ease-out;
+		will-change: opacity, transform;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		padding: $p;
+		font-size: 24px;
+		color: white;
+		background-color: rgba(darken($iron, 10%), .9);
+		label, .photo-link {
+			position: absolute;
+			right: 0;
+			z-index: 1;
+			padding: $p/2;
+		}
+		label {
+			top: 0;
+		}
+		.photo-link {
+			bottom: 0;
+		}
+		div {
+			position: relative;
+			z-index: 0;
+		}
+		dt, dd {
+			display: inline;
+		}
+		dt {
+			opacity: 0.7;
+			font-weight: bold;
+			&:after {
+				content: ": "
+			}
+		}
+	}
+}
+
+@supports (-webkit-backdrop-filter: blur(5px)) {
+	.photo-grid {
+		dl {
+			background-color: rgba(darken($iron, 10%), .4);
+			-webkit-backdrop-filter: blur(5px);
+			backdrop-filter: blur(5px);
+		}
+	}
+}
+
+@media only screen and (min-width: 600px) {
+	.photo-grid {
+		input ~ label.photo-link {
+			opacity: 0;
+		}
+		li:hover input {
+			~ label.photo-link {
+				opacity: 1;
+			}
+			&:checked ~ label.photo-link {
+				opacity: 0;
+			}
+		}
+		input {
+			~ label.photo-link {
+				display: block;
+			}
+		}
+	}
+}

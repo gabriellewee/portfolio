@@ -1,0 +1,21 @@
+<svg viewBox="0 0 150 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs>
+		<linearGradient x1="0%" y1="14.72%" x2="100%" y2="85.28%" id="gradient-004-1">
+			<stop stop-color="#B4ED50" offset="0%"></stop>
+			<stop stop-color="#07F7BF" offset="100%"></stop>
+		</linearGradient>
+		<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="gradient-004-2">
+			<stop stop-color="#F4D063" offset="0%"></stop>
+			<stop stop-color="#FC9D6B" offset="100%"></stop>
+		</linearGradient>
+	</defs>
+	<rect fill="#E8E6E8" x="0" y="0" width="150" height="16"></rect>
+	<circle fill="#FC645F" cx="10" cy="8" r="3"></circle>
+	<circle fill="#FDBD41" cx="21" cy="8" r="3"></circle>
+	<circle fill="#35CC4B" cx="32" cy="8" r="3"></circle>
+	<rect fill="#1C2B34" x="0" y="16" width="50" height="84"></rect>
+	<rect fill="url(#gradient-004-1)" x="50" y="16" width="100" height="84"></rect>
+	<path d="M83,32 L117,32 C118.104569,32 119,32.8954305 119,34 L119,43 L119,43 L81,43 L81,34 C81,32.8954305 81.8954305,32 83,32 Z" fill="#FFFFFF"></path>
+	<path d="M108,44 L119,44 L119,82 C119,83.1045695 118.104569,84 117,84 L108,84 L108,84 L108,44 Z" fill="url(#gradient-004-2)"></path>
+	<path d="M81,44 L107,44 L107,84 L83,84 C81.8954305,84 81,83.1045695 81,82 L81,44 L81,44 Z" fill="#DFF6E4"></path>
+</svg>

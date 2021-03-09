@@ -1,0 +1,56 @@
+---
+templateClass: photography
+title: Photography
+description: Photos I’ve taken over the years.
+
+tags: pages
+eleventyNavigation:
+  key: Photography
+  order: 2
+---
+
+{% extends 'layouts/base.njk' %}
+
+{% block menu %}
+	<span class="message">Photos I’ve taken over the years.</span>
+{% endblock %}
+
+{% block content %}
+	<section class="photo-grid">
+		<ul class="grid grid-isotope">
+			{% for photo in photography %}
+				<li class="grid-item">
+					<figure>
+						<picture>
+							<source srcset="/static/images/photography/{{photo.date|safe}}-{{photo.name}}.jpg, /static/images/photography/{{photo.date|safe}}-{{photo.name}}@2x.jpg 2x" media="(max-width: 3000px)"/>
+							<img src="/static/images/photography/{{photo.date|safe}}-{{photo.name}}-full.jpg" alt=""/>
+						</picture>
+						<figcaption>
+							<fieldset>
+								<input id="{{photo.date|safe}}-{{photo.name}}" type="checkbox"/>
+								<label class="photo-close" for="{{photo.date|safe}}-{{photo.name}}"></label>
+								<label class="photo-link" for="{{photo.date|safe}}-{{photo.name}}">{% include 'svg/icons/info.svg' %}</label>
+								<dl>
+									<label for="{{photo.date|safe}}-{{photo.name}}">{% include 'svg/icons/caret-down.svg' %}</label>
+									<div>
+										<dt>Date</dt><dd>{{photo.date|readableDataDate}}</dd>
+									</div>
+									<div>
+										<dt>Location</dt><dd>{{photo.location}}</dd>
+									</div>
+									<div>
+										<dt>Camera</dt><dd>{{photo.camera}}</dd>
+									</div>
+									<div>
+										<dt>Editor</dt><dd>{{photo.editor}}</dd>
+									</div>
+									<a class="photo-link" target="_blank" href="/static/images/photography/{{photo.date|safe}}-{{photo.name}}-full.jpg" tabindex="-1">{% include 'svg/icons/external.svg' %}</a>
+								</dl>
+							</fieldset>
+						</figcaption>
+					</figure>
+				</li>
+			{% endfor %}
+		</ul>
+	</section>
+{% endblock %}

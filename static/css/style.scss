@@ -1,0 +1,29 @@
+@import 'partials/shared/utilities';
+@import 'partials/shared/reset';
+@import 'partials/shared/core';
+@import 'partials/shared/grid';
+
+@import 'partials/navigation/header';
+@import 'partials/navigation/footer';
+
+body {
+	font-family: $faune;
+}
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background: darken($iron, 1%);
+		color: white;
+	}
+}
+
+.page-home {
+	@import 'partials/pages/home';
+}
+.page-photography {
+	@import 'partials/pages/photography';
+}
+.page-error {
+	@import 'partials/pages/error';
+	background: url('../images/error.gif') center center / cover;
+}
