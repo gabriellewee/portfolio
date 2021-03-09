@@ -8,7 +8,7 @@
 	bundle = true
 	minify = true
 [build.processing.js]
-	bundle = false
+	bundle = true
 	minify = true
 [build.processing.images]
 	compress = true
