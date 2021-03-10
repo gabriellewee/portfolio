@@ -34,8 +34,6 @@ footer {
 		}
 		&:focus {
 			text-decoration: underline;
-			-webkit-text-decoration-skip: edges;
-			text-decoration-style: wavy;
 		}
 		&:active {
 			transform: scale(0.9);

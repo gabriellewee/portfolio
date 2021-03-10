@@ -40,6 +40,9 @@
 	}
 	label.photo-link {
 		padding: $p/2;
+		&:focus {
+			opacity: 1;
+		}
 	}
 	svg {
 		display: block;
