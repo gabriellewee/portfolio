@@ -26,7 +26,7 @@ eleventyNavigation:
 							<fieldset>
 								<input id="{{photo.date|safe}}-{{photo.name}}" type="checkbox"/>
 								<label class="photo-close" for="{{photo.date|safe}}-{{photo.name}}"></label>
-								<label class="photo-link" for="{{photo.date|safe}}-{{photo.name}}">{% include 'svg/icons/info.svg' %}</label>
+								<label class="photo-link" for="{{photo.date|safe}}-{{photo.name}}" tabindex="0">{% include 'svg/icons/info.svg' %}</label>
 								<dl>
 									<label for="{{photo.date|safe}}-{{photo.name}}">{% include 'svg/icons/caret-down.svg' %}</label>
 									<div>
