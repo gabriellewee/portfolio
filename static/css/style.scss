@@ -10,6 +10,12 @@ body {
 	font-family: $faune;
 }
 
+figure, picture, img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
 @media (prefers-color-scheme: dark) {
 	body {
 		background: darken($iron, 1%);

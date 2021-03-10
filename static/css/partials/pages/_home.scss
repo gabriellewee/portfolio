@@ -75,18 +75,24 @@ header {
 		}
 		ul {
 			display: grid;
+			grid-gap: $p;
+			grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
 			list-style: none;
 			padding: 0 $p $p;
-			grid-gap: $p;
 			&.regular {
-				grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+				@media only screen and (min-width: 600px) {
+					grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+					a {
+						.overlay {
+							font-size: 24px;
+						}
+					}
+				}
 			}
 			&.ui {
-				grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
 				a {
 					.overlay {
 						flex-direction: column;
-						font-size: 20px;
 						span {
 							&:first-child {
 								font-size: 12px;
@@ -166,7 +172,7 @@ header {
 					height: 100%;
 					padding: $p $p*1.5;
 					font-family: $faune;
-					font-size: 24px;
+					font-size: 20px;
 					font-weight: normal;
 					font-style: italic;
 					text-align: center;

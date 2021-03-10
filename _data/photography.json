@@ -4,209 +4,239 @@
 		"date": "2021-03-02",
 		"location": "San Francisco, CA, USA",
 		"camera": "iPhone 12 Pro Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "horizontal"
 	},
 	{
 		"name": "agate-beach",
 		"date": "2021-03-01",
 		"location": "Patrick’s Point State Park, Trinidad, CA, USA",
 		"camera": "iPhone 12 Pro Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "horizontal"
 	},
 	{
 		"name": "sunset",
 		"date": "2021-02-28",
 		"location": "Crescent Harbor, Crescent City, CA, USA",
 		"camera": "iPhone 12 Pro Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "horizontal"
 	},
 	{
 		"name": "sunset",
 		"date": "2021-02-27",
 		"location": "Waldport, OR, USA",
 		"camera": "iPhone 12 Pro Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "horizontal"
 	},
 	{
 		"name": "squad",
 		"date": "2021-02-27",
 		"location": "Waldport, OR, USA",
 		"camera": "iPhone 12 Pro Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "vertical"
 	},
 	{
 		"name": "hayden",
 		"date": "2021-02-27",
 		"location": "Waldport, OR, USA",
 		"camera": "iPhone 12 Pro Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "vertical"
 	},
 	{
 		"name": "sunset",
 		"date": "2021-02-26",
 		"location": "Waldport, OR, USA",
 		"camera": "iPhone 12 Pro Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "horizontal"
 	},
 	{
 		"name": "rainforest",
 		"date": "2021-02-26",
 		"location": "Cascadia, OR, USA",
 		"camera": "iPhone 12 Pro Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "horizontal"
 	},
 	{
 		"name": "snow-3",
 		"date": "2021-02-26",
 		"location": "Willamette National Forest, OR, USA",
 		"camera": "iPhone 12 Pro Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "vertical"
 	},
 	{
 		"name": "snow-2",
 		"date": "2021-02-26",
 		"location": "Willamette National Forest, OR, USA",
 		"camera": "iPhone 12 Pro Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "horizontal"
 	},
 	{
 		"name": "snow-1",
 		"date": "2021-02-26",
 		"location": "Willamette National Forest, OR, USA",
 		"camera": "iPhone 12 Pro Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "vertical"
 	},
 	{
 		"name": "hayden",
 		"date": "2021-02-26",
 		"location": "Waldport, OR, USA",
 		"camera": "iPhone 12 Pro Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "vertical"
 	},
 	{
 		"name": "baby-kitty",
 		"date": "2021-02-18",
 		"location": "San Jose, CA, USA",
 		"camera": "iPhone 12 Pro Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "vertical"
 	},
 	{
 		"name": "twin-peaks",
 		"date": "2021-02-14",
 		"location": "Twin Peaks, San Francisco, CA, USA",
 		"camera": "iPhone 12 Pro Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "horizontal"
 	},
 	{
 		"name": "glen-canyon-flowers",
 		"date": "2021-02-13",
 		"location": "Glen Canyon Park, San Francisco, CA, USA",
 		"camera": "iPhone 12 Pro Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "vertical"
 	},
 	{
 		"name": "jeselle",
 		"date": "2021-02-11",
 		"location": "Chinatown, San Francisco, CA, USA",
 		"camera": "iPhone 12 Pro Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "vertical"
 	},
 	{
 		"name": "chinatown",
 		"date": "2021-02-11",
 		"location": "Chinatown, San Francisco, CA, USA",
 		"camera": "iPhone 12 Pro Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "horizontal"
 	},
 	{
 		"name": "bay-bridge",
 		"date": "2021-02-07",
 		"location": "Embarcadero Waterfront, San Francisco, CA, USA",
 		"camera": "iPhone 12 Pro Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "vertical"
 	},
 	{
 		"name": "ocean-beach",
 		"date": "2021-01-31",
 		"location": "Ocean Beach, San Francisco, CA, USA",
 		"camera": "iPhone 12 Pro Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "horizontal"
 	},
 	{
 		"name": "lands-end",
 		"date": "2021-01-24",
 		"location": "Lands End, San Francisco, CA, USA",
 		"camera": "iPhone 12 Pro Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "vertical"
 	},
 	{
 		"name": "hayden",
 		"date": "2021-01-15",
 		"location": "Legion of Honor, San Francisco, CA, USA",
 		"camera": "iPhone 12 Pro Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "vertical"
 	},
 	{
 		"name": "home",
 		"date": "2021-01-12",
 		"location": "San Francisco, CA, USA",
 		"camera": "iPhone 12 Pro Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "horizontal"
 	},
 	{
 		"name": "hayden",
 		"date": "2021-01-10",
 		"location": "Point Lobos, San Francisco, CA, USA",
 		"camera": "iPhone XS Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "horizontal"
 	},
 	{
 		"name": "golden-gate",
 		"date": "2020-12-20",
 		"location": "Marshall’s Beach, San Francisco, CA, USA",
 		"camera": "iPhone XS Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "horizontal"
 	},
 	{
 		"name": "lone-mountain",
 		"date": "2020-12-08",
 		"location": "Lone Mountain, San Francisco, CA, USA",
 		"camera": "iPhone XS Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "horizontal"
 	},
 	{
 		"name": "hayden",
 		"date": "2020-10-30",
 		"location": "Santa Clara, CA, USA",
 		"camera": "iPhone XS Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "vertical"
 	},
 	{
 		"name": "salt-ponds",
 		"date": "2020-08-29",
 		"location": "Alviso Marina County Park, San Jose, CA, USA",
 		"camera": "iPhone XS Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "horizontal"
 	},
 	{
 		"name": "sunset",
 		"date": "2019-11-16",
 		"location": "Black Rock Beach, Kaanapali, HI, USA",
 		"camera": "iPhone XS Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "horizontal"
 	},
 	{
 		"name": "thoreau",
 		"date": "2019-10-05",
 		"location": "Thoreau, NM, USA",
 		"camera": "iPhone XS Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "vertical"
 	},
 	{
 		"name": "palm-trees",
 		"date": "2019-09-18",
 		"location": "Fairchild Tropical Botanic Garden, Coral Gables, FL, USA",
 		"camera": "iPhone XS Max",
-		"editor": "VSCO"
+		"editor": "VSCO",
+		"aspect": "vertical"
 	}
 ]

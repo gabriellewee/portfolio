@@ -10,10 +10,36 @@ eleventyNavigation:
 
 <section class="home-grid">
 	<ul class="grid grid-isotope">
-		{% for tile in home %}
-			<li class="grid-item grid-item-{{tile.name}}">
-				{% include 'pages/home/' + tile.name + '.html' %}
-			</li>
-		{% endfor %}
+		<li class="grid-item grid-item-intro">
+			{% include 'pages/home/intro.html' %}
+		</li>
+		<li class="grid-item grid-item-links">
+			{% include 'pages/home/links.html' %}
+		</li>
+		<li class="grid-item grid-item-code">
+			{% include 'pages/home/code.html' %}
+		</li>
+		<li class="grid-item grid-item-photography">
+			<h2>I like taking photos of the world around me.</h2>
+			<ul>
+				{% for photo in photography | limit(5) %}
+					<li>
+						{% image './static/images/photography/' + photo.date + '-' + photo.name + '-thumbnail.jpg', photo.location, photo.aspect, 'thumbnail' %}
+					</li>
+				{% endfor %}
+				<li>
+					<div>
+						<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"></svg>
+						<span><a href="/photography/" target="_blank">View more</a></span>
+					</div>
+				</li>
+			</ul>
+		</li>
+		<li class="grid-item grid-item-plants">
+			{% include 'pages/home/plants.html' %}
+		</li>
+		<li class="grid-item grid-item-more">
+			<h2>More coming soon!</h2>
+		</li>
 	</ul>
 </section>

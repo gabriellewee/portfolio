@@ -19,6 +19,7 @@ footer {
 	a {
 		will-change: transform;
 		transition: .1s ease-out;
+		display: inline-block;
 		&.v1 {
 			color: #737375;
 			text-decoration-color: #737375;
@@ -29,7 +30,7 @@ footer {
 		}
 		&:hover, &:focus {
 			color: $iron;
-			transform: scale(1.05);
+			transform: scale(1.1);
 		}
 		&:focus {
 			text-decoration: underline;
@@ -37,7 +38,7 @@ footer {
 			text-decoration-style: wavy;
 		}
 		&:active {
-			transform: scale(0.95);
+			transform: scale(0.9);
 		}
 	}
 	@media (prefers-color-scheme: dark) {
