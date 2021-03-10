@@ -4,6 +4,8 @@ const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginNavigation = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
+const Image = require("@11ty/eleventy-img");
+const sharp = require("sharp");
 
 module.exports = function(eleventyConfig) {
 	eleventyConfig.addPlugin(pluginSyntaxHighlight);
@@ -36,6 +38,60 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("v2");
 	eleventyConfig.addPassthroughCopy("robots.txt");
 	eleventyConfig.addPassthroughCopy("sitemap.xml");
+
+	eleventyConfig.addNunjucksAsyncShortcode("image", async (src, alt, aspect, type) => {
+		if (!alt) {
+			throw new Error(`Missing \`alt\` on myImage from: ${src}`);
+		}
+
+		let newWidths;
+
+		if(type === "full") {
+			if(aspect === 'horizontal') {
+				newWidths = [100, 1512, 3024, null];
+			} else if(aspect === 'vertical') {
+				newWidths = [100, 1134, 2268, null];
+			}
+		} else if(type === "thumbnail") {
+			newWidths = [50, 400, null];
+		}
+
+		let stats = await Image(src, {
+			widths: newWidths,
+			formats: ["webp", "jpeg"],
+			urlPath: "/static/images/photography/built",
+			outputDir: "./_site/static/images/photography/built",
+		});
+
+
+		let lowest = stats["jpeg"][0];
+		let basic = stats["jpeg"][1];
+
+		const placeholder = await sharp(lowest.outputPath)
+			.resize({ fit: sharp.fit.inside })
+			.blur()
+			.toBuffer();
+
+		const base64Placeholder = `data:image/png;base64,${placeholder.toString(
+			"base64"
+		)}`;
+
+		const webpset = `${stats["webp"][1].url}, ${stats["webp"][2].url} 2x`;
+		const jpegset = `${stats["jpeg"][1].url}, ${stats["jpeg"][2].url} 2x`;
+
+		const source = `<source type="image/webp" srcset="${webpset}" >`;
+
+		const img = `<img
+			class="lazy"
+			loading="lazy"
+			alt="${alt}"
+			src="${base64Placeholder}"
+			srcset="${jpegset}"
+			width="${basic.width}"
+			height="${basic.height}">`;
+
+		return `<picture>${source}${img}</picture>`;
+	});
 
 	/* Markdown Overrides */
 	// let markdownLibrary = markdownIt({

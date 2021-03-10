@@ -21,10 +21,7 @@ eleventyNavigation:
 			{% for photo in photography %}
 				<li class="grid-item">
 					<figure>
-						<picture>
-							<source srcset="/static/images/photography/{{photo.date|safe}}-{{photo.name}}.jpg, /static/images/photography/{{photo.date|safe}}-{{photo.name}}@2x.jpg 2x" media="(max-width: 3000px)"/>
-							<img src="/static/images/photography/{{photo.date|safe}}-{{photo.name}}-full.jpg" alt=""/>
-						</picture>
+						{% image './static/images/photography/' + photo.date + '-' + photo.name + '.jpg', photo.location, photo.aspect, 'full' %}
 						<figcaption>
 							<fieldset>
 								<input id="{{photo.date|safe}}-{{photo.name}}" type="checkbox"/>

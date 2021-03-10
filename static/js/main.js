@@ -1,3 +1,4 @@
+var lazyLoadInstance = new LazyLoad();
 let iso = new Isotope(document.querySelector('.grid-isotope'), {
 	percentPosition: true,
 	layoutMode: 'packery',

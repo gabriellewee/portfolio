@@ -344,6 +344,7 @@ footer h2:after {
 footer a {
   will-change: transform;
   transition: 0.1s ease-out;
+  display: inline-block;
 }
 footer a.v1 {
   color: #737375;
@@ -355,7 +356,7 @@ footer a.v2 {
 }
 footer a:hover, footer a:focus {
   color: #263238;
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 footer a:focus {
   text-decoration: underline;
@@ -363,7 +364,7 @@ footer a:focus {
   text-decoration-style: wavy;
 }
 footer a:active {
-  transform: scale(0.95);
+  transform: scale(0.9);
 }
 @media (prefers-color-scheme: dark) {
   footer a {
@@ -376,6 +377,12 @@ footer a:active {
 
 body {
   font-family: faune, sans-serif;
+}
+
+figure, picture, img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -657,19 +664,21 @@ body {
 }
 .page-home .grid-item-code ul {
   display: grid;
+  grid-gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   list-style: none;
   padding: 0 12px 12px;
-  grid-gap: 12px;
 }
-.page-home .grid-item-code ul.regular {
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-}
-.page-home .grid-item-code ul.ui {
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+@media only screen and (min-width: 600px) {
+  .page-home .grid-item-code ul.regular {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+  .page-home .grid-item-code ul.regular a .overlay {
+    font-size: 24px;
+  }
 }
 .page-home .grid-item-code ul.ui a .overlay {
   flex-direction: column;
-  font-size: 20px;
 }
 .page-home .grid-item-code ul.ui a .overlay span:first-child {
   font-size: 12px;
@@ -742,7 +751,7 @@ body {
   height: 100%;
   padding: 12px 18px;
   font-family: faune, sans-serif;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: normal;
   font-style: italic;
   text-align: center;
@@ -950,10 +959,6 @@ body {
 .page-photography .photo-grid {
   position: relative;
   font-style: italic;
-}
-.page-photography .photo-grid figure, .page-photography .photo-grid picture, .page-photography .photo-grid img {
-  display: block;
-  max-width: 100%;
 }
 .page-photography .photo-grid figure {
   position: relative;
