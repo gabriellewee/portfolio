@@ -331,7 +331,7 @@ footer {
   justify-content: center;
   width: 100%;
   text-align: center;
-  padding: 12px;
+  padding: 18px;
 }
 footer div {
   display: flex;
@@ -360,6 +360,8 @@ footer a:hover, footer a:focus {
 }
 footer a:focus {
   text-decoration: underline;
+  -webkit-text-decoration-skip: edges;
+  text-decoration-style: wavy;
 }
 footer a:active {
   transform: scale(0.9);
@@ -747,11 +749,23 @@ figure, picture, img {
   }
 }
 .page-home .grid-item-code h2 {
-  padding: 12px 18px;
+  padding: 18px;
 }
 .page-home .grid-item-code p {
   padding: 0 18px 12px;
   font-size: 24px;
+}
+.page-home .grid-item-code p a {
+  color: #73d1c8;
+  font-style: italic;
+  font-weight: normal;
+}
+.page-home .grid-item-code p a:hover, .page-home .grid-item-code p a:focus {
+  color: #F78C6A;
+  text-decoration: underline;
+}
+.page-home .grid-item-code p a:active {
+  color: #82AAFF;
 }
 .page-home .grid-item-code ul + p {
   padding-top: 12px;
@@ -762,12 +776,21 @@ figure, picture, img {
 .page-home .grid-item-code .animation {
   color: #c792ea;
 }
+.page-home .grid-item-code .cubes {
+  padding: 0 18px 12px;
+}
+.page-home .grid-item-code .cubes .cp_embed_wrapper {
+  border-radius: 6px;
+  clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
+  -webkit-clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
+  overflow: hidden;
+}
 .page-home .grid-item-code ul {
   display: grid;
-  grid-gap: 12px;
+  grid-gap: 18px;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   list-style: none;
-  padding: 0 12px 12px;
+  padding: 0 18px 18px;
 }
 @media only screen and (min-width: 600px) {
   .page-home .grid-item-code ul.regular {
@@ -788,17 +811,17 @@ figure, picture, img {
 .page-home .grid-item-code ul a {
   will-change: transform;
   transition: 0.2s ease-out;
-  border-radius: 6px;
 }
 .page-home .grid-item-code ul a, .page-home .grid-item-code ul a svg {
   display: block;
 }
 .page-home .grid-item-code ul a .inside {
-  display: block;
-  position: relative;
   border-radius: 6px;
   clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
   -webkit-clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
+  overflow: hidden;
+  display: block;
+  position: relative;
 }
 .page-home .grid-item-code ul a .inside:before, .page-home .grid-item-code ul a .inside:after {
   display: block;
@@ -889,19 +912,19 @@ figure, picture, img {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   list-style: none;
-  padding: 0 12px 12px;
-  grid-gap: 12px;
+  padding: 0 18px 18px;
+  grid-gap: 18px;
 }
 .page-home .grid-item-photography ul li picture, .page-home .grid-item-photography ul li picture img {
   display: block;
   width: 100%;
 }
 .page-home .grid-item-photography ul li div {
-  position: relative;
   border-radius: 6px;
   clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
   -webkit-clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
   overflow: hidden;
+  position: relative;
 }
 .page-home .grid-item-photography ul li span {
   display: flex;
@@ -929,6 +952,7 @@ figure, picture, img {
   font-size: 24px;
   font-style: italic;
   font-weight: bold;
+  text-transform: lowercase;
   color: #8f9eb8;
 }
 @media only screen and (min-width: 1000px) {

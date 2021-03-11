@@ -99,11 +99,23 @@ header {
 		background: #253238;
 		color: #73d1c8;
 		h2 {
-			padding: $p $p*1.5;
+			padding: $p*1.5;
 		}
 		p {
 			padding: 0 $p*1.5 $p;
 			font-size: 24px;
+			a {
+				color: #73d1c8;
+				font-style: italic;
+				font-weight: normal;
+				&:hover, &:focus {
+					color: #F78C6A;
+					text-decoration: underline;
+				}
+				&:active {
+					color: #82AAFF;
+				}
+			}
 		}
 		ul + p {
 			padding-top: $p;
@@ -114,12 +126,18 @@ header {
 		.animation {
 			color: #c792ea;
 		}
+		.cubes {
+			padding: 0 $p*1.5 $p;
+			.cp_embed_wrapper {
+				@include border-radius($p/2);
+			}
+		}
 		ul {
 			display: grid;
-			grid-gap: $p;
+			grid-gap: $p*1.5;
 			grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
 			list-style: none;
-			padding: 0 $p $p;
+			padding: 0 $p*1.5 $p*1.5;
 			&.regular {
 				@media only screen and (min-width: 600px) {
 					grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
@@ -147,16 +165,13 @@ header {
 			a {
 				will-change: transform;
 				transition: .2s ease-out;
-				border-radius: $p/2;
 				&, svg {
 					display: block;
 				}
 				.inside {
+					@include border-radius($p/2);
 					display: block;
 					position: relative;
-					border-radius: $p/2;
-					clip-path: inset(0 0 0 0 round $p/2 $p/2 $p/2 $p/2);
-					-webkit-clip-path: inset(0 0 0 0 round $p/2 $p/2 $p/2 $p/2);
 					&:before, &:after {
 						display: block;
 						position: absolute;
@@ -251,8 +266,8 @@ header {
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);
 			list-style: none;
-			padding: 0 $p $p;
-			grid-gap: $p;
+			padding: 0 $p*1.5 $p*1.5;
+			grid-gap: $p*1.5;
 			li {
 				picture {
 					&, img {
@@ -261,11 +276,8 @@ header {
 					}
 				}
 				div {
+					@include border-radius($p/2);
 					position: relative;
-					border-radius: $p/2;
-					clip-path: inset(0 0 0 0 round $p/2 $p/2 $p/2 $p/2);
-					-webkit-clip-path: inset(0 0 0 0 round $p/2 $p/2 $p/2 $p/2);
-					overflow: hidden;
 				}
 				span {
 					display: flex;
@@ -291,6 +303,7 @@ header {
 					font-size: 24px;
 					font-style: italic;
 					font-weight: bold;
+					text-transform: lowercase;
 					color: #8f9eb8;
 					@media only screen and (min-width: 1000px) {
 						font-size: 28px;
