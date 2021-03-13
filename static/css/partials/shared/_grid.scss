@@ -12,6 +12,7 @@
 	position: relative;
 	list-style: none;
 	.grid-item {
+		position: relative;
 		width: 100%;
 		overflow: hidden;
 	}
@@ -193,6 +194,120 @@
 			input {
 				~ label.grid-link {
 					display: block;
+				}
+			}
+		}
+	}
+}
+
+.grid-filters {
+	position: fixed;
+	position: -webkit-sticky;
+	position: sticky;
+	bottom: 0;
+	bottom: env(safe-area-inset-bottom);
+	left: 0;
+	z-index: 2;
+	max-width: 100%;
+	@media only screen and (min-width: 1000px) {
+		padding: $p;
+	}
+	&, ul {
+		display: flex;
+		align-items: center;
+	}
+	ul {
+		border-radius: $p/2;
+		-webkit-clip-path: inset($p 0 $p 0 round $p/2 $p/2 $p/2 $p/2);
+		clip-path: inset($p 0 $p 0 round $p/2 $p/2 $p/2 $p/2);
+		list-style: none;
+		padding: $p/2 $p/2 $p/2 0;
+		overflow: auto;
+		overflow: -moz-scrollbars-none;
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+		-webkit-overflow-scrolling: touch;
+		::-webkit-scrollbar {
+			height: 0;
+			width: 0;
+			display: none;
+		}
+	}
+	li {
+		will-change: opacity, transform;
+		transition: .1s ease-out;
+		transform: translateX(-100%);
+		opacity: 0;
+		visibility: hidden;
+		padding: $p/2;
+		&:first-child {
+			padding-left: 0;
+		}
+		@for $i from 1 through 6 {
+			&:nth-last-child(#{$i}) {
+				transition-delay: ($i - 1) * .05s;
+			}
+		}
+	}
+	h2 {
+		margin: 0 $p;
+		text-transform: uppercase;
+	}
+	label, a {
+		@include blur-all(5px, darken($iron, 10%), .9, .8);
+		border-radius: $p/2;
+		display: block;
+		padding: $p $p*1.25;
+		color: white;
+	}
+	a {
+		will-change: background-color, transform;
+		font-style: italic;
+		transition: .1s ease-out;
+		&.active:not(.reset) {
+			@include blur-bg($mauve, .9, .8);
+			color: white;
+		}
+		&:hover, &:focus {
+			@include blur-bg($message, .9, .8);
+			transform: scale(1.05);
+			color: $iron;
+		}
+		&:active {
+			@include blur-bg($mauve, .9, .8);
+			transform: scale(0.95);
+			color: white;
+		}
+	}
+	label {
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+		&:after {
+			content: " ›";
+			font-size: 24px;
+			line-height: 19px;
+			margin-top: -4px;
+		}
+	}
+	input {
+		display: none;
+		&:checked {
+			~ h2 > label {
+				&:after {
+					content: " ‹";
+				}
+			}
+			~ ul {
+				li {
+					transform: translateX(0);
+					opacity: 1;
+					visibility: visible;
+					@for $i from 1 through 6 {
+						&:nth-child(#{$i}) {
+							transition-delay: ($i - 1) * .05s;
+						}
+					}
 				}
 			}
 		}

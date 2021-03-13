@@ -21,6 +21,12 @@ module.exports = function(eleventyConfig) {
 		return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("dd LLLL yyyy");
 	});
 
+	eleventyConfig.addFilter("isoFilter", function(filterObj) {
+		let array = filterObj.split(' ');
+		let result = array.map(el => 'filter-' + el);
+		return result.join(' ');
+	});
+
 	eleventyConfig.addFilter("limit", function(array, limit) {
 		return array.slice(0, limit);
 	});

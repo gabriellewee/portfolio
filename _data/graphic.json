@@ -4,59 +4,68 @@
 		"date": "2017-11-11",
 		"title": "#dailyui 011",
 		"url": "https://dribbble.com/shots/3940740--dailyui-011-Flash-Messages",
-		"tools": "Sketch"
+		"tools": "Sketch",
+		"tags": "ui 2d sketch vector"
 	},
 	{
 		"name": "desk-setup",
 		"date": "2017-05-18",
 		"title": "Desk Setup",
 		"url": "https://dribbble.com/shots/3508741-Desk-Setup",
-		"tools": "Sketch"
+		"tools": "Sketch",
+		"tags": "illustration 2d sketch vector"
 	},
 	{
 		"name": "crystal-carillon",
 		"date": "2017-05-10",
 		"title": "Crystal Carillon",
 		"url": "https://dribbble.com/shots/3490913-Sailor-Moon-Crystal-Carillon",
-		"tools": "Sketch"
+		"tools": "Sketch",
+		"tags": "illustration 2d sketch vector"
 	},
 	{
 		"name": "easing-graphs",
 		"date": "2017-02-27",
 		"title": "Easing Graphs",
 		"url": "https://dribbble.com/shots/3325157-Easing-Graphs-Freebie",
-		"tools": "Sketch"
+		"tools": "Sketch",
+		"tags": "ui 2d sketch vector"
 	},
 	{
 		"name": "portfolio-icons",
 		"date": "2017-02-15",
 		"title": "Portfolio Icons",
 		"url": "https://dribbble.com/3278273-Self-Portrait",
-		"tools": "Sketch"
+		"tools": "Sketch",
+		"tags": "ui 2d sketch vector"
 	},
 	{
 		"name": "self-portrait",
 		"date": "2017-02-09",
 		"title": "Self-Portrait",
 		"url": "https://dribbble.com/3278273-Self-Portrait",
-		"tools": "Sketch"
+		"tools": "Sketch",
+		"tags": "illustration 2d sketch vector"
 	},
 	{
 		"name": "scissor-blade",
 		"date": "2015-03-01",
 		"title": "Scissor Blade",
-		"tools": "Maya 2015, Photoshop CS6, Quixel Suite"
+		"tools": "Maya 2015, Photoshop CS6, Quixel Suite",
+		"tags": "3d maya"
 	},
 	{
 		"name": "transistor",
 		"date": "2015-01-13",
 		"title": "Transistor Blade",
-		"tools": "Illustrator CS6"
+		"tools": "Illustrator CS6",
+		"tags": "illustration 2d illustrator vector"
 	},
 	{
 		"name": "shrine",
 		"date": "2014-07-14",
 		"title": "Shrine Tower",
-		"tools": "Maya 2014"
+		"tools": "Maya 2014",
+		"tags": "3d maya"
 	}
 ]

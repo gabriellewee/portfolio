@@ -16,11 +16,12 @@ eleventyNavigation:
 	<span class="message">Photos I’ve taken over the years.</span>
 {% endblock %}
 
+
 {% block content %}
 	<section class="photography-grid">
 		<ul class="grid-isotope">
 			{% for photo in photography %}
-				<li class="grid-item">
+				<li class="grid-item {{photo.tags|isoFilter}}">
 					<figure>
 						{% image './static/images/photography/' + photo.date + '-' + photo.name + '.jpg', photo.location, photo.aspect, 'full' %}
 						<figcaption>
@@ -51,4 +52,16 @@ eleventyNavigation:
 			{% endfor %}
 		</ul>
 	</section>
+	<nav class="grid-filters">
+		<input id="grid-filters" type="checkbox"/>
+		<h2><label for="grid-filters"><span>Tags</span></label></h2>
+		<ul>
+			<li><a class="grid-filter" href="#" data-filter=".filter-portrait">#portrait</a></li>
+			<li><a class="grid-filter" href="#" data-filter=".filter-landscape">#landscape</a></li>
+			<li><a class="grid-filter" href="#" data-filter=".filter-indoor">#indoor</a></li>
+			<li><a class="grid-filter" href="#" data-filter=".filter-outdoor">#outdoor</a></li>
+			<li><a class="grid-filter" href="#" data-filter=".filter-people">#people</a></li>
+			<li><a class="grid-filter reset" href="#" data-filter="*">reset</a></li>
+		</ul>
+	</nav>
 {% endblock %}

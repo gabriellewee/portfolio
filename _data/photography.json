@@ -5,7 +5,8 @@
 		"location": "Oakland, CA, USA",
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
-		"aspect": "vertical"
+		"aspect": "vertical",
+		"tags": "cat animal portrait indoor"
 	},
 	{
 		"name": "home",
@@ -13,7 +14,8 @@
 		"location": "San Francisco, CA, USA",
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
-		"aspect": "horizontal"
+		"aspect": "horizontal",
+		"tags": "sunset landscape city outdoor"
 	},
 	{
 		"name": "agate-beach",
@@ -21,7 +23,8 @@
 		"location": "Patrick’s Point State Park, Trinidad, CA, USA",
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
-		"aspect": "horizontal"
+		"aspect": "horizontal",
+		"tags": "beach landscape outdoor park nature"
 	},
 	{
 		"name": "sunset",
@@ -29,7 +32,8 @@
 		"location": "Crescent Harbor, Crescent City, CA, USA",
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
-		"aspect": "horizontal"
+		"aspect": "horizontal",
+		"tags": "sunset beach landscape outdoor water nature"
 	},
 	{
 		"name": "sunset",
@@ -37,7 +41,8 @@
 		"location": "Waldport, OR, USA",
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
-		"aspect": "horizontal"
+		"aspect": "horizontal",
+		"tags": "sunset beach landscape outdoor water nature"
 	},
 	{
 		"name": "squad",
@@ -45,7 +50,8 @@
 		"location": "Waldport, OR, USA",
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
-		"aspect": "vertical"
+		"aspect": "vertical",
+		"tags": "sunset beach people landscape outdoor water nature"
 	},
 	{
 		"name": "hayden",
@@ -53,7 +59,8 @@
 		"location": "Waldport, OR, USA",
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
-		"aspect": "vertical"
+		"aspect": "vertical",
+		"tags": "portrait people beach outdoor"
 	},
 	{
 		"name": "sunset",
@@ -61,7 +68,8 @@
 		"location": "Waldport, OR, USA",
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
-		"aspect": "horizontal"
+		"aspect": "horizontal",
+		"tags": "sunset beach landscape outdoor water nature"
 	},
 	{
 		"name": "rainforest",
@@ -69,7 +77,8 @@
 		"location": "Cascadia, OR, USA",
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
-		"aspect": "horizontal"
+		"aspect": "horizontal",
+		"tags": "forest road trees plants landscape outdoor water nature"
 	},
 	{
 		"name": "snow-3",
@@ -77,7 +86,8 @@
 		"location": "Willamette National Forest, OR, USA",
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
-		"aspect": "vertical"
+		"aspect": "vertical",
+		"tags": "forest road trees snow landscape outdoor nature"
 	},
 	{
 		"name": "snow-2",
@@ -85,7 +95,8 @@
 		"location": "Willamette National Forest, OR, USA",
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
-		"aspect": "horizontal"
+		"aspect": "horizontal",
+		"tags": "forest road trees snow landscape outdoor nature"
 	},
 	{
 		"name": "snow-1",
@@ -93,7 +104,8 @@
 		"location": "Willamette National Forest, OR, USA",
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
-		"aspect": "vertical"
+		"aspect": "vertical",
+		"tags": "forest road trees snow landscape outdoor nature"
 	},
 	{
 		"name": "hayden",
@@ -101,7 +113,8 @@
 		"location": "Waldport, OR, USA",
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
-		"aspect": "vertical"
+		"aspect": "vertical",
+		"tags": "portrait people beach indoor"
 	},
 	{
 		"name": "baby-kitty",
@@ -109,7 +122,8 @@
 		"location": "San Jose, CA, USA",
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
-		"aspect": "vertical"
+		"aspect": "vertical",
+		"tags": "cat animal portrait indoor"
 	},
 	{
 		"name": "twin-peaks",
@@ -117,7 +131,8 @@
 		"location": "Twin Peaks, San Francisco, CA, USA",
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
-		"aspect": "horizontal"
+		"aspect": "horizontal",
+		"tags": "fog landscape city outdoor"
 	},
 	{
 		"name": "glen-canyon-flowers",
@@ -125,7 +140,8 @@
 		"location": "Glen Canyon Park, San Francisco, CA, USA",
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
-		"aspect": "vertical"
+		"aspect": "vertical",
+		"tags": "park flower plants outdoor nature"
 	},
 	{
 		"name": "jeselle",
@@ -133,7 +149,8 @@
 		"location": "Chinatown, San Francisco, CA, USA",
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
-		"aspect": "vertical"
+		"aspect": "vertical",
+		"tags": "portrait people outdoor city night"
 	},
 	{
 		"name": "chinatown",
@@ -141,7 +158,8 @@
 		"location": "Chinatown, San Francisco, CA, USA",
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
-		"aspect": "horizontal"
+		"aspect": "horizontal",
+		"tags": "outdoor city night rain landscape water"
 	},
 	{
 		"name": "bay-bridge",
@@ -149,7 +167,8 @@
 		"location": "Embarcadero Waterfront, San Francisco, CA, USA",
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
-		"aspect": "vertical"
+		"aspect": "vertical",
+		"tags": "outdoor city bridge water"
 	},
 	{
 		"name": "ocean-beach",
@@ -157,7 +176,8 @@
 		"location": "Ocean Beach, San Francisco, CA, USA",
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
-		"aspect": "horizontal"
+		"aspect": "horizontal",
+		"tags": "sunset landscape outdoor beach water nature people"
 	},
 	{
 		"name": "lands-end",
@@ -165,7 +185,8 @@
 		"location": "Lands End, San Francisco, CA, USA",
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
-		"aspect": "vertical"
+		"aspect": "vertical",
+		"tags": "forest sunset landscape park outdoor nature"
 	},
 	{
 		"name": "hayden",
@@ -173,7 +194,8 @@
 		"location": "Legion of Honor, San Francisco, CA, USA",
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
-		"aspect": "vertical"
+		"aspect": "vertical",
+		"tags": "landscape city outdoor beach water bridge people"
 	},
 	{
 		"name": "home",
@@ -181,7 +203,8 @@
 		"location": "San Francisco, CA, USA",
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
-		"aspect": "horizontal"
+		"aspect": "horizontal",
+		"tags": "sunset landscape city outdoor"
 	},
 	{
 		"name": "hayden",
@@ -189,7 +212,8 @@
 		"location": "Point Lobos, San Francisco, CA, USA",
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
-		"aspect": "horizontal"
+		"aspect": "horizontal",
+		"tags": "landscape city outdoor water people"
 	},
 	{
 		"name": "golden-gate",
@@ -197,7 +221,8 @@
 		"location": "Marshall’s Beach, San Francisco, CA, USA",
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
-		"aspect": "horizontal"
+		"aspect": "horizontal",
+		"tags": "sunset landscape city outdoor beach water bridge"
 	},
 	{
 		"name": "lone-mountain",
@@ -205,7 +230,8 @@
 		"location": "Lone Mountain, San Francisco, CA, USA",
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
-		"aspect": "horizontal"
+		"aspect": "horizontal",
+		"tags": "landscape city outdoor"
 	},
 	{
 		"name": "hayden",
@@ -213,7 +239,8 @@
 		"location": "Santa Clara, CA, USA",
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
-		"aspect": "vertical"
+		"aspect": "vertical",
+		"tags": "people indoor perspective"
 	},
 	{
 		"name": "salt-ponds",
@@ -221,7 +248,8 @@
 		"location": "Alviso Marina County Park, San Jose, CA, USA",
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
-		"aspect": "horizontal"
+		"aspect": "horizontal",
+		"tags": "sunset landscape outdoor people"
 	},
 	{
 		"name": "sunset",
@@ -229,7 +257,8 @@
 		"location": "Black Rock Beach, Kaanapali, HI, USA",
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
-		"aspect": "horizontal"
+		"aspect": "horizontal",
+		"tags": "sunset landscape outdoor beach water nature people"
 	},
 	{
 		"name": "thoreau",
@@ -237,7 +266,8 @@
 		"location": "Thoreau, NM, USA",
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
-		"aspect": "vertical"
+		"aspect": "vertical",
+		"tags": "landscape outdoor aerial nature"
 	},
 	{
 		"name": "palm-trees",
@@ -245,6 +275,7 @@
 		"location": "Fairchild Tropical Botanic Garden, Coral Gables, FL, USA",
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
-		"aspect": "vertical"
+		"aspect": "vertical",
+		"tags": "landscape outdoor water trees plants nature"
 	}
 ]
