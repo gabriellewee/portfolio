@@ -20,6 +20,16 @@ footer {
 		will-change: transform;
 		transition: .1s ease-out;
 		display: inline-block;
+		&:hover, &:focus {
+			color: $iron;
+			transform: scale(1.1);
+		}
+		&:focus {
+			@include wavy;
+		}
+		&:active {
+			transform: scale(0.9);
+		}
 		&.v1 {
 			color: #737375;
 			text-decoration-color: #737375;
@@ -27,18 +37,6 @@ footer {
 		&.v2 {
 			color: $pink;
 			text-decoration-color: $pink;
-		}
-		&:hover, &:focus {
-			color: $iron;
-			transform: scale(1.1);
-		}
-		&:focus {
-			text-decoration: underline;
-			-webkit-text-decoration-skip: edges;
-			text-decoration-style: wavy;
-		}
-		&:active {
-			transform: scale(0.9);
 		}
 	}
 	@media (prefers-color-scheme: dark) {

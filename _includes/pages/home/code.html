@@ -1,8 +1,13 @@
 <h2>Coding is my passion. I like to experiment, especially with <span class="css">CSS</span> and <span class="animation">animation</span>.<span class="cursor"></span></h2>
 
-<p>Check out some code snippets:</p>
+<p>Check out some <a href="https://codepen.io/gabriellewee" target="blank">code snippets</a>:</p>
 
-<ul class="regular">
+<div class="cubes">
+	<p data-height="300" data-theme-id="27637" data-slug-hash="Qdpgwx" data-default-tab="result" data-user="gabriellewee" data-embed-version="2" data-pen-title="CSS-Only Direction-Aware Cube Links" class="codepen">See the Pen <a href="https://codepen.io/gabriellewee/pen/Qdpgwx/">CSS-Only Direction-Aware Cube Links</a> by Gabrielle Wee (<a href="https://codepen.io/gabriellewee">@gabriellewee</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+	<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+</div>
+
+<ul class="regular grid">
 	{% for link in code %}
 		<li>
 			<a class="code-link-{{link.name}} {{link.style}}" href="https://codepen.io/gabriellewee/pen/{{link.uri}}/" target="_blank">
@@ -16,7 +21,7 @@
 </ul>
 
 <p>I also started a #dailyui challenge:</p>
-<ul class="ui">
+<ul class="ui grid">
 	{% for link in ui %}
 		<li>
 			<a class="code-link-{{link.name}}" href="https://codepen.io/gabriellewee/pen/{{link.uri}}/" target="_blank">

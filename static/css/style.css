@@ -213,36 +213,194 @@ a {
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-gap: 18px;
+  padding-left: 18px;
+  padding-right: 18px;
   list-style: none;
 }
-.grid .grid-item {
+
+.grid-isotope {
+  display: grid;
+  grid-template-columns: 1fr;
+  position: relative;
+  list-style: none;
+}
+.grid-isotope .grid-item {
   width: 100%;
   overflow: hidden;
 }
 
 @media only screen and (min-width: 1000px) {
-  .grid {
+  .grid-isotope {
     grid-template-columns: 1fr 1fr;
   }
-  .grid[style] .grid-item {
+  .grid-isotope[style] .grid-item {
     width: 50%;
   }
 }
 @media only screen and (min-width: 2000px) {
-  .grid {
+  .grid-isotope {
     grid-template-columns: 1fr 1fr 1fr;
   }
-  .grid[style] .grid-item {
+  .grid-isotope[style] .grid-item {
     width: calc(100% / 3);
   }
 }
 @media only screen and (min-width: 3000px) {
-  .grid {
+  .grid-isotope {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
-  .grid[style] .grid-item {
+  .grid-isotope[style] .grid-item {
     width: 25%;
+  }
+}
+.grid-item figure {
+  position: relative;
+  font-style: italic;
+}
+.grid-item figure figcaption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.grid-item figure fieldset {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+}
+.grid-item figure .upscale {
+  image-rendering: pixelated;
+}
+.grid-item figure .grid-close {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+.grid-item figure label, .grid-item figure .grid-link {
+  cursor: pointer;
+}
+.grid-item figure .grid-link {
+  will-change: opacity;
+  transition: 0.3s ease-out;
+  display: block;
+  position: relative;
+  z-index: 1;
+  padding: 3px;
+}
+.grid-item figure label.grid-link {
+  padding: 6px;
+}
+.grid-item figure label.grid-link:focus {
+  opacity: 1;
+}
+.grid-item figure svg {
+  display: block;
+  width: 25px;
+  height: 25px;
+}
+.grid-item figure svg group, .grid-item figure svg path, .grid-item figure svg polyline, .grid-item figure svg polygon, .grid-item figure svg circle, .grid-item figure svg ellipse, .grid-item figure svg rect {
+  stroke-width: 7px;
+}
+.grid-item figure input {
+  display: none;
+}
+.grid-item figure input ~ label.grid-link {
+  display: none;
+}
+.grid-item figure input:checked ~ dl {
+  transform: none;
+  opacity: 1;
+  z-index: 2;
+}
+.grid-item figure input:checked ~ .grid-close {
+  z-index: unset;
+}
+.grid-item figure input:checked ~ label.grid-link {
+  opacity: 0;
+}
+.grid-item figure dl {
+  background: rgba(17, 23, 26, 0.9);
+  transform: translateY(25%);
+  opacity: 0;
+  z-index: 0;
+  transition: all 0.3s ease-out;
+  will-change: opacity, transform;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px;
+  font-size: 24px;
+  color: white;
+}
+@supports (-webkit-backdrop-filter: blur(5px)) {
+  .grid-item figure dl {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    background: rgba(17, 23, 26, 0.4);
+  }
+}
+.grid-item figure dl > label, .grid-item figure dl > .grid-link {
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  padding: 6px;
+}
+.grid-item figure dl > label {
+  top: 0;
+}
+.grid-item figure dl > .grid-link {
+  bottom: 0;
+}
+.grid-item figure dl div {
+  position: relative;
+  z-index: 0;
+}
+.grid-item figure dl dt, .grid-item figure dl dd {
+  display: inline;
+}
+.grid-item figure dl dt {
+  opacity: 0.7;
+  font-weight: bold;
+}
+.grid-item figure dl dt:after {
+  content: ": ";
+}
+.grid-item figure dl dt.title {
+  display: none;
+}
+.grid-item figure dl dt.title + dd {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 28px;
+  font-weight: bold;
+  font-style: normal;
+}
+.grid-item figure dl dt.title + dd .grid-link {
+  padding: 5px 0 0 4px;
+}
+
+@media only screen and (min-width: 600px) {
+  .grid-item figure input ~ label.grid-link {
+    opacity: 0;
+  }
+  .grid-item figure:hover input ~ label.grid-link {
+    opacity: 1;
+  }
+  .grid-item figure:hover input:checked ~ label.grid-link {
+    opacity: 0;
+  }
+  .grid-item figure input ~ label.grid-link {
+    display: block;
   }
 }
 header {
@@ -263,6 +421,7 @@ header .memoji, header .memoji img {
   height: auto;
 }
 header span {
+  background: rgba(233, 233, 235, 0.9);
   will-change: opacity, transform;
   transition: 0.3s ease-out;
   transform: translateY(100%);
@@ -274,6 +433,24 @@ header span {
   color: #11171a;
   background: rgba(233, 233, 235, 0.9);
   border-radius: 2em;
+}
+@supports (-webkit-backdrop-filter: blur(5px)) {
+  header span {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    background: rgba(233, 233, 235, 0.8);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  header span {
+    background: rgba(17, 23, 26, 0.9);
+    color: white;
+  }
+  @supports (-webkit-backdrop-filter: blur(5px)) {
+    header span {
+      background: rgba(17, 23, 26, 0.8);
+    }
+  }
 }
 header .go-home {
   position: absolute;
@@ -297,25 +474,6 @@ header.active .message {
   opacity: 1;
 }
 
-@media (prefers-color-scheme: dark) {
-  header span {
-    color: white;
-    background: rgba(17, 23, 26, 0.9);
-  }
-}
-@supports (-webkit-backdrop-filter: blur(5px)) {
-  header span {
-    background-color: rgba(233, 233, 235, 0.8);
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    header span {
-      background: rgba(17, 23, 26, 0.8);
-    }
-  }
-}
 @media only screen and (min-width: 1000px) {
   header {
     padding: 24px;
@@ -346,14 +504,6 @@ footer a {
   transition: 0.1s ease-out;
   display: inline-block;
 }
-footer a.v1 {
-  color: #737375;
-  text-decoration-color: #737375;
-}
-footer a.v2 {
-  color: #F5C8BF;
-  text-decoration-color: #F5C8BF;
-}
 footer a:hover, footer a:focus {
   color: #263238;
   transform: scale(1.1);
@@ -361,10 +511,19 @@ footer a:hover, footer a:focus {
 footer a:focus {
   text-decoration: underline;
   -webkit-text-decoration-skip: edges;
+  text-decoration-skip: edges;
   text-decoration-style: wavy;
 }
 footer a:active {
   transform: scale(0.9);
+}
+footer a.v1 {
+  color: #737375;
+  text-decoration-color: #737375;
+}
+footer a.v2 {
+  color: #F5C8BF;
+  text-decoration-color: #F5C8BF;
 }
 @media (prefers-color-scheme: dark) {
   footer a {
@@ -409,13 +568,18 @@ figure, picture, img {
   }
 }
 .page-home .grid-item {
-  padding: 12px 18px;
   font-size: 28px;
 }
 @media only screen and (min-width: 600px) {
   .page-home .grid-item {
     font-size: 32px;
   }
+}
+.page-home .grid-item.text-only {
+  padding: 12px 18px;
+}
+.page-home .grid-item.grid-only h2 {
+  padding: 12px 18px;
 }
 .page-home .grid-item-intro {
   background: #f8dbd5;
@@ -549,7 +713,6 @@ figure, picture, img {
   }
 }
 .page-home .grid-item-code {
-  padding: 0;
   font-family: "dm", "Inconsolata", "Consolas", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, Courier, monospace;
   font-size: 16px;
   font-weight: bold;
@@ -748,6 +911,11 @@ figure, picture, img {
     background: rgba(223, 183, 44, 0.7);
   }
 }
+@media (prefers-color-scheme: dark) {
+  .page-home .grid-item-code {
+    background: #1a2226;
+  }
+}
 .page-home .grid-item-code h2 {
   padding: 18px;
 }
@@ -777,20 +945,17 @@ figure, picture, img {
   color: #c792ea;
 }
 .page-home .grid-item-code .cubes {
-  padding: 0 18px 12px;
+  padding: 0 18px 18px;
 }
 .page-home .grid-item-code .cubes .cp_embed_wrapper {
   border-radius: 6px;
-  clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
   -webkit-clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
+  clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
   overflow: hidden;
 }
 .page-home .grid-item-code ul {
-  display: grid;
-  grid-gap: 18px;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  list-style: none;
-  padding: 0 18px 18px;
+  padding-bottom: 18px;
 }
 @media only screen and (min-width: 600px) {
   .page-home .grid-item-code ul.regular {
@@ -811,25 +976,30 @@ figure, picture, img {
 .page-home .grid-item-code ul a {
   will-change: transform;
   transition: 0.2s ease-out;
+  display: block;
+  border-radius: 6px;
+}
+.page-home .grid-item-code ul a:focus {
+  box-shadow: 0 0 0 3px #5E9ED6;
 }
 .page-home .grid-item-code ul a, .page-home .grid-item-code ul a svg {
   display: block;
 }
 .page-home .grid-item-code ul a .inside {
   border-radius: 6px;
-  clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
   -webkit-clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
+  clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
   overflow: hidden;
   display: block;
   position: relative;
 }
 .page-home .grid-item-code ul a .inside:before, .page-home .grid-item-code ul a .inside:after {
+  background: rgba(255, 255, 255, 0.9);
   display: block;
   position: absolute;
   z-index: 0;
   bottom: 0;
   padding: 6px 9px;
-  background: rgba(255, 255, 255, 0.9);
   font-family: faune, sans-serif;
   font-size: 12px;
   font-weight: bold;
@@ -837,9 +1007,9 @@ figure, picture, img {
 }
 @supports (-webkit-backdrop-filter: blur(5px)) {
   .page-home .grid-item-code ul a .inside:before, .page-home .grid-item-code ul a .inside:after {
-    background: rgba(255, 255, 255, 0.8);
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.8);
   }
 }
 .page-home .grid-item-code ul a .inside:before {
@@ -889,44 +1059,32 @@ figure, picture, img {
 .page-home .grid-item-code ul a:hover .overlay, .page-home .grid-item-code ul a:focus .overlay {
   opacity: 1;
 }
-.page-home .grid-item-code ul a:focus {
-  box-shadow: 0 0 0 3px #5E9ED6;
-}
 .page-home .grid-item-code ul a:active {
   transform: scale(0.95);
 }
-@media (prefers-color-scheme: dark) {
-  .page-home .grid-item-code {
-    background: #1a2226;
+.page-home .grid-item-photography ul, .page-home .grid-item-graphic ul {
+  grid-template-columns: repeat(2, 1fr);
+  padding-bottom: 18px;
+}
+@media only screen and (min-width: 600px) {
+  .page-home .grid-item-photography ul, .page-home .grid-item-graphic ul {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
-.page-home .grid-item-photography {
-  padding: 0;
-  background: #8f9eb8;
-  color: #121f2b;
+.page-home .grid-item-photography picture, .page-home .grid-item-graphic picture {
+  border-radius: 6px;
+  -webkit-clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
+  clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
+  overflow: hidden;
 }
-.page-home .grid-item-photography h2 {
-  padding: 12px 18px;
-}
-.page-home .grid-item-photography ul {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  list-style: none;
-  padding: 0 18px 18px;
-  grid-gap: 18px;
-}
-.page-home .grid-item-photography ul li picture, .page-home .grid-item-photography ul li picture img {
+.page-home .grid-item-photography picture, .page-home .grid-item-photography picture img, .page-home .grid-item-graphic picture, .page-home .grid-item-graphic picture img {
   display: block;
   width: 100%;
 }
-.page-home .grid-item-photography ul li div {
-  border-radius: 6px;
-  clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
-  -webkit-clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
-  overflow: hidden;
+.page-home .grid-item-photography div, .page-home .grid-item-graphic div {
   position: relative;
 }
-.page-home .grid-item-photography ul li span {
+.page-home .grid-item-photography a, .page-home .grid-item-graphic a {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -935,44 +1093,81 @@ figure, picture, img {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(18, 31, 43, 0.8);
+  border-radius: 6px;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: bold;
   text-align: center;
+  text-transform: lowercase;
 }
 @supports (-webkit-backdrop-filter: blur(5px)) {
-  .page-home .grid-item-photography ul li span {
-    background: rgba(18, 31, 43, 0.5);
+  .page-home .grid-item-photography a, .page-home .grid-item-graphic a {
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
   }
 }
-.page-home .grid-item-photography ul li a {
-  will-change: transform;
-  transition: 0.1s ease-out;
-  display: inline-block;
-  font-size: 24px;
-  font-style: italic;
-  font-weight: bold;
-  text-transform: lowercase;
-  color: #8f9eb8;
+.page-home .grid-item-photography a:focus, .page-home .grid-item-graphic a:focus {
+  box-shadow: 0 0 0 3px #5E9ED6;
 }
 @media only screen and (min-width: 1000px) {
-  .page-home .grid-item-photography ul li a {
+  .page-home .grid-item-photography a, .page-home .grid-item-graphic a {
     font-size: 28px;
   }
 }
-.page-home .grid-item-photography ul li a:hover, .page-home .grid-item-photography ul li a:focus {
-  color: white;
+.page-home .grid-item-photography a:hover span, .page-home .grid-item-photography a:focus span, .page-home .grid-item-graphic a:hover span, .page-home .grid-item-graphic a:focus span {
   transform: scale(1.05);
 }
-.page-home .grid-item-photography ul li a:focus {
+.page-home .grid-item-photography a:focus, .page-home .grid-item-graphic a:focus {
   text-decoration: underline;
-  text-decoration-color: #8f9eb8;
   -webkit-text-decoration-skip: edges;
   text-decoration-skip: edges;
   text-decoration-style: wavy;
 }
-.page-home .grid-item-photography ul li a:active {
-  transform: scale(0.95);
+.page-home .grid-item-photography a:active span, .page-home .grid-item-graphic a:active span {
+  transform: scale(1.05);
+}
+.page-home .grid-item-photography span, .page-home .grid-item-graphic span {
+  will-change: transform;
+  transition: 0.1s ease-out;
+  display: block;
+}
+.page-home .grid-item-photography {
+  background: #8f9eb8;
+  color: #121f2b;
+}
+.page-home .grid-item-photography a {
+  background: rgba(18, 31, 43, 0.9);
+  color: #8f9eb8;
+}
+@supports (-webkit-backdrop-filter: blur(5px)) {
+  .page-home .grid-item-photography a {
+    background: rgba(18, 31, 43, 0.5);
+  }
+}
+.page-home .grid-item-photography a:hover, .page-home .grid-item-photography a:focus {
+  color: white;
+}
+.page-home .grid-item-photography a:focus {
+  text-decoration-color: #8f9eb8;
+}
+.page-home .grid-item-graphic {
+  background: #c46465;
+  color: white;
+}
+.page-home .grid-item-graphic a {
+  background: rgba(52, 52, 52, 0.9);
+  color: #F5C8BF;
+}
+@supports (-webkit-backdrop-filter: blur(5px)) {
+  .page-home .grid-item-graphic a {
+    background: rgba(52, 52, 52, 0.5);
+  }
+}
+.page-home .grid-item-graphic a:hover, .page-home .grid-item-graphic a:focus {
+  color: white;
+}
+.page-home .grid-item-graphic a:focus {
+  text-decoration-color: #F5C8BF;
 }
 .page-home .grid-item-plants {
   background: #d1e7d6;
@@ -990,141 +1185,6 @@ figure, picture, img {
 .page-home .grid-item-more h2 {
   font-style: italic;
   font-weight: bold;
-}
-
-.page-photography .photo-grid {
-  position: relative;
-  font-style: italic;
-}
-.page-photography .photo-grid figure {
-  position: relative;
-}
-.page-photography .photo-grid figcaption {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-.page-photography .photo-grid fieldset {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  width: 100%;
-  height: 100%;
-}
-.page-photography .photo-grid .photo-close {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-}
-.page-photography .photo-grid label, .page-photography .photo-grid .photo-link {
-  cursor: pointer;
-}
-.page-photography .photo-grid .photo-link {
-  will-change: opacity;
-  transition: 0.3s ease-out;
-  display: block;
-  position: relative;
-  z-index: 1;
-  padding: 3px;
-}
-.page-photography .photo-grid label.photo-link {
-  padding: 6px;
-}
-.page-photography .photo-grid label.photo-link:focus {
-  opacity: 1;
-}
-.page-photography .photo-grid svg {
-  display: block;
-  width: 25px;
-  height: 25px;
-}
-.page-photography .photo-grid svg group, .page-photography .photo-grid svg path, .page-photography .photo-grid svg polyline, .page-photography .photo-grid svg polygon, .page-photography .photo-grid svg circle, .page-photography .photo-grid svg ellipse, .page-photography .photo-grid svg rect {
-  stroke-width: 7px;
-}
-.page-photography .photo-grid input {
-  display: none;
-}
-.page-photography .photo-grid input ~ label.photo-link {
-  display: none;
-}
-.page-photography .photo-grid input:checked ~ dl {
-  transform: none;
-  opacity: 1;
-  z-index: 2;
-}
-.page-photography .photo-grid input:checked ~ .photo-close {
-  z-index: unset;
-}
-.page-photography .photo-grid input:checked ~ label.photo-link {
-  opacity: 0;
-}
-.page-photography .photo-grid dl {
-  transform: translateY(25%);
-  opacity: 0;
-  z-index: 0;
-  transition: all 0.3s ease-out;
-  will-change: opacity, transform;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 12px;
-  font-size: 24px;
-  color: white;
-  background-color: rgba(17, 23, 26, 0.9);
-}
-.page-photography .photo-grid dl label, .page-photography .photo-grid dl .photo-link {
-  position: absolute;
-  right: 0;
-  z-index: 1;
-  padding: 6px;
-}
-.page-photography .photo-grid dl label {
-  top: 0;
-}
-.page-photography .photo-grid dl .photo-link {
-  bottom: 0;
-}
-.page-photography .photo-grid dl div {
-  position: relative;
-  z-index: 0;
-}
-.page-photography .photo-grid dl dt, .page-photography .photo-grid dl dd {
-  display: inline;
-}
-.page-photography .photo-grid dl dt {
-  opacity: 0.7;
-  font-weight: bold;
-}
-.page-photography .photo-grid dl dt:after {
-  content: ": ";
-}
-@supports (-webkit-backdrop-filter: blur(5px)) {
-  .page-photography .photo-grid dl {
-    background-color: rgba(17, 23, 26, 0.4);
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
-  }
-}
-@media only screen and (min-width: 600px) {
-  .page-photography .photo-grid input ~ label.photo-link {
-    opacity: 0;
-  }
-  .page-photography .photo-grid li:hover input ~ label.photo-link {
-    opacity: 1;
-  }
-  .page-photography .photo-grid li:hover input:checked ~ label.photo-link {
-    opacity: 0;
-  }
-  .page-photography .photo-grid input ~ label.photo-link {
-    display: block;
-  }
 }
 
 .page-error {

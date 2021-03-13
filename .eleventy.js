@@ -40,10 +40,6 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("sitemap.xml");
 
 	eleventyConfig.addNunjucksAsyncShortcode("image", async (src, alt, aspect, type) => {
-		if (!alt) {
-			throw new Error(`Missing \`alt\` on myImage from: ${src}`);
-		}
-
 		let newWidths;
 
 		if(type === "full") {
@@ -62,7 +58,6 @@ module.exports = function(eleventyConfig) {
 			urlPath: "/static/images/photography/built",
 			outputDir: "./_site/static/images/photography/built",
 		});
-
 
 		let lowest = stats["jpeg"][0];
 		let basic = stats["jpeg"][1];
@@ -87,6 +82,51 @@ module.exports = function(eleventyConfig) {
 			alt="${alt}"
 			src="${base64Placeholder}"
 			srcset="${jpegset}"
+			width="${basic.width}"
+			height="${basic.height}">`;
+
+		return `<picture>${source}${img}</picture>`;
+	});
+
+	eleventyConfig.addNunjucksAsyncShortcode("graphic", async (src, alt, type) => {
+		let stats = await Image(src, {
+			widths: [100, 400, 800, 1500, null],
+			formats: ["webp", "png"],
+			urlPath: "/static/images/graphic/built",
+			outputDir: "./_site/static/images/graphic/built",
+		});
+
+		let lowest = stats["png"][0];
+		let basic = stats["png"][3];
+
+		const placeholder = await sharp(lowest.outputPath)
+			.resize({ fit: sharp.fit.inside })
+			.blur()
+			.toBuffer();
+
+		const base64Placeholder = `data:image/png;base64,${placeholder.toString(
+			"base64"
+		)}`;
+
+		let pngset;
+		let webpset;
+
+		if(type === "full") {
+			webpset = `${stats["webp"][3].url}, ${src.substring(1).slice(0, -4)}.webp 2x`;
+			pngset = `${stats["png"][3].url}, ${src.substring(1)} 2x`;
+		} else if(type === "thumbnail") {
+			webpset = `${stats["webp"][1].url}, ${stats["webp"][2].url} 2x`;
+			pngset = `${stats["png"][1].url}, ${stats["png"][2].url} 2x`;
+		}
+
+		const source = `<source type="image/webp" srcset="${webpset}" >`;
+
+		const img = `<img
+			class="lazy"
+			loading="lazy"
+			alt="${alt}"
+			src="${base64Placeholder}"
+			srcset="${pngset}"
 			width="${basic.width}"
 			height="${basic.height}">`;
 

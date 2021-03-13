@@ -17,10 +17,17 @@ header {
 }
 
 .grid-item {
-	padding: $p $p*1.5;
 	font-size: 28px;
 	@media only screen and (min-width: 600px) {
 		font-size: 32px;
+	}
+	&.text-only {
+		 padding: $p $p*1.5;
+	}
+	&.grid-only {
+		h2 {
+			padding: $p $p*1.5;
+		}
 	}
 	&-intro {
 		background: lighten($pink, 5%);
@@ -68,10 +75,7 @@ header {
 				transform: scale(1.05);
 			}
 			&:focus {
-				text-decoration: underline;
-				-webkit-text-decoration-skip: edges;
-				text-decoration-skip: edges;
-				text-decoration-style: wavy;
+				@include wavy;
 			}
 			&:active {
 				transform: scale(0.95);
@@ -92,12 +96,14 @@ header {
 	}
 	&-code {
 		@import '../colors/thumbnails';
-		padding: 0;
 		font-family: $mono;
 		font-size: 16px;
 		font-weight: bold;
 		background: #253238;
 		color: #73d1c8;
+		@media (prefers-color-scheme: dark) {
+			background: darken(#1e282c, 2%);
+		}
 		h2 {
 			padding: $p*1.5;
 		}
@@ -127,17 +133,14 @@ header {
 			color: #c792ea;
 		}
 		.cubes {
-			padding: 0 $p*1.5 $p;
+			padding: 0 $p*1.5 $p*1.5;
 			.cp_embed_wrapper {
 				@include border-radius($p/2);
 			}
 		}
 		ul {
-			display: grid;
-			grid-gap: $p*1.5;
 			grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
-			list-style: none;
-			padding: 0 $p*1.5 $p*1.5;
+			padding-bottom: $p*1.5;
 			&.regular {
 				@media only screen and (min-width: 600px) {
 					grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
@@ -163,8 +166,11 @@ header {
 				}
 			}
 			a {
+				@include focus-round;
 				will-change: transform;
 				transition: .2s ease-out;
+				display: block;
+				border-radius: $p/2;
 				&, svg {
 					display: block;
 				}
@@ -173,21 +179,16 @@ header {
 					display: block;
 					position: relative;
 					&:before, &:after {
+						@include blur-all(5px, white, .9, .8);
 						display: block;
 						position: absolute;
 						z-index: 0;
 						bottom: 0;
 						padding: $p/2 $p*.75;
-						background: rgba(white, .9);
 						font-family: $faune;
 						font-size: 12px;
 						font-weight: bold;
 						text-transform: uppercase;
-						@supports (-webkit-backdrop-filter: blur(5px)) {
-							background: rgba(white, .8);
-							-webkit-backdrop-filter: blur(5px);
-							backdrop-filter: blur(5px);
-						}
 					}
 					&:before {
 						left: 0;
@@ -214,6 +215,7 @@ header {
 					}
 				}
 				.overlay {
+					@include blur(5px);
 					opacity: 0;
 					will-change: opacity;
 					transition: .2s ease-out;
@@ -233,96 +235,101 @@ header {
 					font-style: italic;
 					text-align: center;
 					color: white;
-					@supports (-webkit-backdrop-filter: blur(5px)) {
-						-webkit-backdrop-filter: blur(5px);
-						backdrop-filter: blur(5px);
-					}
 				}
 				&:hover, &:focus {
 					.overlay {
 						opacity: 1;
 					}
 				}
-				&:focus {
-					box-shadow: 0 0 0 $p/4 #5E9ED6;
-				}
 				&:active {
 					transform: scale(0.95);
 				}
 			}
 		}
-		@media (prefers-color-scheme: dark) {
-			background: darken(#1e282c, 2%);
+	}
+	&-photography, &-graphic {
+		ul {
+			grid-template-columns: repeat(2, 1fr);
+			padding-bottom: $p*1.5;
+			@media only screen and (min-width: 600px) {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+		picture {
+			@include border-radius($p/2);
+			&, img {
+				display: block;
+				width: 100%;
+			}
+		}
+		div {
+			position: relative;
+		}
+		a {
+			@include blur(5px);
+			@include focus-round;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			border-radius: $p/2;
+			font-size: 24px;
+			font-style: italic;
+			font-weight: bold;
+			text-align: center;
+			text-transform: lowercase;
+			@media only screen and (min-width: 1000px) {
+				font-size: 28px;
+			}
+			&:hover, &:focus {
+				span {
+					transform: scale(1.05);
+				}
+			}
+			&:focus {
+				@include wavy;
+			}
+			&:active {
+				span {
+					transform: scale(1.05);
+				}
+			}
+		}
+		span {
+			will-change: transform;
+			transition: .1s ease-out;
+			display: block;
 		}
 	}
 	&-photography {
-		padding: 0;
 		background: #8f9eb8;
 		color: #121f2b;
-		h2 {
-			padding: $p $p*1.5;
+		a {
+			@include blur-bg(#121f2b, .9, .5);
+			color: #8f9eb8;
+			&:hover, &:focus {
+				color: white;
+			}
+			&:focus {
+				text-decoration-color: #8f9eb8;
+			}
 		}
-		ul {
-			display: grid;
-			grid-template-columns: repeat(3, 1fr);
-			list-style: none;
-			padding: 0 $p*1.5 $p*1.5;
-			grid-gap: $p*1.5;
-			li {
-				picture {
-					&, img {
-						display: block;
-						width: 100%;
-					}
-				}
-				div {
-					@include border-radius($p/2);
-					position: relative;
-				}
-				span {
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					background: rgba(#121f2b, .8);
-					text-align: center;
-					@supports (-webkit-backdrop-filter: blur(5px)) {
-						background: rgba(#121f2b, .5);
-						-webkit-backdrop-filter: blur(5px);
-						backdrop-filter: blur(5px);
-					}
-				}
-				a {
-					will-change: transform;
-					transition: .1s ease-out;
-					display: inline-block;
-					font-size: 24px;
-					font-style: italic;
-					font-weight: bold;
-					text-transform: lowercase;
-					color: #8f9eb8;
-					@media only screen and (min-width: 1000px) {
-						font-size: 28px;
-					}
-					&:hover, &:focus {
-						color: white;
-						transform: scale(1.05);
-					}
-					&:focus {
-						text-decoration: underline;
-						text-decoration-color: #8f9eb8;
-						-webkit-text-decoration-skip: edges;
-						text-decoration-skip: edges;
-						text-decoration-style: wavy;
-					}
-					&:active {
-						transform: scale(0.95);
-					}
-				}
+	}
+	&-graphic {
+		background: #c46465;
+		color: white;
+		a {
+			@include blur-bg(#343434, .9, .5);
+			color: $pink;
+			&:hover, &:focus {
+				color: white;
+			}
+			&:focus {
+				text-decoration-color: $pink;
 			}
 		}
 	}
