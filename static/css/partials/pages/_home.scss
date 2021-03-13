@@ -251,9 +251,6 @@ header {
 		ul {
 			grid-template-columns: repeat(2, 1fr);
 			padding-bottom: $p*1.5;
-			@media only screen and (min-width: 600px) {
-				grid-template-columns: repeat(3, 1fr);
-			}
 		}
 		picture {
 			@include border-radius($p/2);
@@ -266,17 +263,10 @@ header {
 			position: relative;
 		}
 		a {
-			@include blur(5px);
-			@include focus-round;
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			border-radius: $p/2;
+			padding: $p/2 $p $p;
 			font-size: 24px;
 			font-style: italic;
 			font-weight: bold;
@@ -295,7 +285,7 @@ header {
 			}
 			&:active {
 				span {
-					transform: scale(1.05);
+					transform: scale(.95);
 				}
 			}
 		}
