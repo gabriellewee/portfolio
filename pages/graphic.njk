@@ -1,0 +1,84 @@
+---
+templateClass: graphic
+title: Graphic
+description: My 2D/3D graphic &amp; illustration work.
+permalink: "/graphic/index.html"
+
+tags: pages
+eleventyNavigation:
+  key: Graphic
+  order: 2
+---
+
+{% extends 'layouts/base.njk' %}
+
+{% block menu %}
+	<span class="message">My 2D/3D graphic &amp; illustration work.</span>
+{% endblock %}
+
+{% block content %}
+	<section class="graphic-grid">
+		<ul class="grid-isotope">
+			{% for design in graphic %}
+				<li class="grid-item">
+					<figure>
+						{% graphic './static/images/graphic/' + design.date + '-' + design.name + '.png', design.title, 'full' %}
+						<figcaption>
+							<fieldset>
+								<input id="{{design.date|safe}}-{{design.name}}" type="checkbox"/>
+								<label class="grid-close" for="{{design.date|safe}}-{{design.name}}"></label>
+								<label class="grid-link" for="{{design.date|safe}}-{{design.name}}" tabindex="0">{% include 'svg/icons/info.svg' %}</label>
+								<dl>
+									<label for="{{design.date|safe}}-{{design.name}}">{% include 'svg/icons/caret-down.svg' %}</label>
+									<div>
+										<dt class="title">Title</dt>
+										<dd>
+											<span>{{design.title}}</span>
+											{% if design.url %}
+												<a class="grid-link external" target="_blank" href="{{design.url}}" tabindex="-1">{% include 'svg/icons/dribbble.svg' %}</a>
+											{% endif %}
+										</dd>
+									</div>
+									<div>
+										<dt>Date</dt><dd>{{design.date|readableDataDate}}</dd>
+									</div>
+									<div>
+										<dt>Tools</dt><dd>{{design.tools}}</dd>
+									</div>
+									<a class="grid-link" target="_blank" href="/static/images/graphic/{{design.date|safe}}-{{design.name}}.png" tabindex="-1">{% include 'svg/icons/external.svg' %}</a>
+								</dl>
+							</fieldset>
+						</figcaption>
+					</figure>
+				</li>
+			{% endfor %}
+			<li class="grid-item">
+				<figure>
+					<picture>
+						<img class="upscale" src="{% include 'svg/eeveelutions.txt' %}" width="100" height="100" alt="Pixel Eeveelutions"/>
+					</picture>
+					<figcaption>
+						<fieldset>
+							<input id="2013-07-08-eeveelutions" type="checkbox"/>
+							<label class="grid-close" for="2013-07-08-eeveelutions"></label>
+							<label class="grid-link" for="2013-07-08-eeveelutions" tabindex="0">{% include 'svg/icons/info.svg' %}</label>
+							<dl>
+								<label for="2013-07-08-eeveelutions">{% include 'svg/icons/caret-down.svg' %}</label>
+								<div>
+									<dt class="title">Title</dt><dd>Pixel Eeveelutions</dd>
+								</div>
+								<div>
+									<dt>Date</dt><dd>08 July 2013</dd>
+								</div>
+								<div>
+									<dt>Tools</dt><dd>Photoshop CS6</dd>
+								</div>
+								<a class="grid-link" target="_blank" href="/static/images/graphic/2013-07-08-eeveelutions.png" tabindex="-1">{% include 'svg/icons/external.svg' %}</a>
+							</dl>
+						</fieldset>
+					</figcaption>
+				</figure>
+			</li>
+		</ul>
+	</section>
+{% endblock %}

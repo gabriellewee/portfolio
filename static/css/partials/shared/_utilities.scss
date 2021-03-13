@@ -7,6 +7,8 @@ $faune: faune, sans-serif;
 $p: 12px;
 $w: 1800px;
 
+$focus: #5E9ED6;
+
 // default colors
 $iron: #263238;
 $pink: #F5C8BF;
@@ -94,7 +96,48 @@ $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
 // mixins
 @mixin border-radius($radius) {
 	border-radius: $radius;
-	clip-path: inset(0 0 0 0 round $radius $radius $radius $radius);
 	-webkit-clip-path: inset(0 0 0 0 round $radius $radius $radius $radius);
+	clip-path: inset(0 0 0 0 round $radius $radius $radius $radius);
 	overflow: hidden;
+}
+
+@mixin blur($blur) {
+	@supports (-webkit-backdrop-filter: blur($blur)) {
+		-webkit-backdrop-filter: blur($blur);
+		backdrop-filter: blur($blur);
+		@content;
+	}
+}
+
+@mixin blur-all($blur, $bg, $crisp, $blurry) {
+	background: rgba($bg, $crisp);
+	@supports (-webkit-backdrop-filter: blur($blur)) {
+		-webkit-backdrop-filter: blur($blur);
+		backdrop-filter: blur($blur);
+		background: rgba($bg, $blurry);
+		@content;
+	}
+}
+
+@mixin blur-bg($bg, $crisp, $blur) {
+	background: rgba($bg, $crisp);
+	@supports (-webkit-backdrop-filter: blur(5px)) {
+		background: rgba($bg, $blur);
+	}
+}
+
+@mixin focus-round {
+	&:focus {
+		box-shadow: 0 0 0 $p/4 $focus;
+	}
+}
+
+@mixin wavy($color: "") {
+	text-decoration: underline;
+	-webkit-text-decoration-skip: edges;
+	text-decoration-skip: edges;
+	text-decoration-style: wavy;
+	@if $color != "" {
+		text-decoration-color: $color;
+	}
 }
