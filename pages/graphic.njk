@@ -20,7 +20,7 @@ eleventyNavigation:
 	<section class="graphic-grid">
 		<ul class="grid-isotope">
 			{% for design in graphic %}
-				<li class="grid-item">
+				<li class="grid-item {{design.tags|isoFilter}}">
 					<figure>
 						{% graphic './static/images/graphic/' + design.date + '-' + design.name + '.png', design.title, 'full' %}
 						<figcaption>
@@ -81,4 +81,13 @@ eleventyNavigation:
 			</li>
 		</ul>
 	</section>
+	<nav class="grid-filters">
+		<input id="grid-filters" type="checkbox"/>
+		<h2><label for="grid-filters"><span>Tags</span></label></h2>
+		<ul>
+			<li><a class="grid-filter" href="#" data-filter=".filter-2d">#2d</a></li>
+			<li><a class="grid-filter" href="#" data-filter=".filter-3d">#3d</a></li>
+			<li><a class="grid-filter reset" href="#" data-filter="*">reset</a></li>
+		</ul>
+	</nav>
 {% endblock %}

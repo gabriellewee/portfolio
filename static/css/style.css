@@ -226,6 +226,7 @@ a {
   list-style: none;
 }
 .grid-isotope .grid-item {
+  position: relative;
   width: 100%;
   overflow: hidden;
 }
@@ -403,6 +404,164 @@ a {
     display: block;
   }
 }
+.grid-filters {
+  position: fixed;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  bottom: env(safe-area-inset-bottom);
+  left: 0;
+  z-index: 2;
+  max-width: 100%;
+}
+@media only screen and (min-width: 1000px) {
+  .grid-filters {
+    padding: 12px;
+  }
+}
+.grid-filters, .grid-filters ul {
+  display: flex;
+  align-items: center;
+}
+.grid-filters ul {
+  border-radius: 6px;
+  -webkit-clip-path: inset(12px 0 12px 0 round 6px 6px 6px 6px);
+  clip-path: inset(12px 0 12px 0 round 6px 6px 6px 6px);
+  list-style: none;
+  padding: 6px 6px 6px 0;
+  overflow: auto;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.grid-filters ul ::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+  display: none;
+}
+.grid-filters li {
+  will-change: opacity, transform;
+  transition: 0.1s ease-out;
+  transform: translateX(-100%);
+  opacity: 0;
+  visibility: hidden;
+  padding: 6px;
+}
+.grid-filters li:first-child {
+  padding-left: 0;
+}
+.grid-filters li:nth-last-child(1) {
+  transition-delay: 0s;
+}
+.grid-filters li:nth-last-child(2) {
+  transition-delay: 0.05s;
+}
+.grid-filters li:nth-last-child(3) {
+  transition-delay: 0.1s;
+}
+.grid-filters li:nth-last-child(4) {
+  transition-delay: 0.15s;
+}
+.grid-filters li:nth-last-child(5) {
+  transition-delay: 0.2s;
+}
+.grid-filters li:nth-last-child(6) {
+  transition-delay: 0.25s;
+}
+.grid-filters h2 {
+  margin: 0 12px;
+  text-transform: uppercase;
+}
+.grid-filters label, .grid-filters a {
+  background: rgba(17, 23, 26, 0.9);
+  border-radius: 6px;
+  display: block;
+  padding: 12px 15px;
+  color: white;
+}
+@supports (-webkit-backdrop-filter: blur(5px)) {
+  .grid-filters label, .grid-filters a {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    background: rgba(17, 23, 26, 0.8);
+  }
+}
+.grid-filters a {
+  will-change: background-color, transform;
+  font-style: italic;
+  transition: 0.1s ease-out;
+}
+.grid-filters a.active:not(.reset) {
+  background: rgba(117, 96, 91, 0.9);
+  color: white;
+}
+@supports (-webkit-backdrop-filter: blur(5px)) {
+  .grid-filters a.active:not(.reset) {
+    background: rgba(117, 96, 91, 0.8);
+  }
+}
+.grid-filters a:hover, .grid-filters a:focus {
+  background: rgba(233, 233, 235, 0.9);
+  transform: scale(1.05);
+  color: #263238;
+}
+@supports (-webkit-backdrop-filter: blur(5px)) {
+  .grid-filters a:hover, .grid-filters a:focus {
+    background: rgba(233, 233, 235, 0.8);
+  }
+}
+.grid-filters a:active {
+  background: rgba(117, 96, 91, 0.9);
+  transform: scale(0.95);
+  color: white;
+}
+@supports (-webkit-backdrop-filter: blur(5px)) {
+  .grid-filters a:active {
+    background: rgba(117, 96, 91, 0.8);
+  }
+}
+.grid-filters label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.grid-filters label:after {
+  content: " ›";
+  font-size: 24px;
+  line-height: 19px;
+  margin-top: -4px;
+}
+.grid-filters input {
+  display: none;
+}
+.grid-filters input:checked ~ h2 > label:after {
+  content: " ‹";
+}
+.grid-filters input:checked ~ ul li {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+}
+.grid-filters input:checked ~ ul li:nth-child(1) {
+  transition-delay: 0s;
+}
+.grid-filters input:checked ~ ul li:nth-child(2) {
+  transition-delay: 0.05s;
+}
+.grid-filters input:checked ~ ul li:nth-child(3) {
+  transition-delay: 0.1s;
+}
+.grid-filters input:checked ~ ul li:nth-child(4) {
+  transition-delay: 0.15s;
+}
+.grid-filters input:checked ~ ul li:nth-child(5) {
+  transition-delay: 0.2s;
+}
+.grid-filters input:checked ~ ul li:nth-child(6) {
+  transition-delay: 0.25s;
+}
+
 header {
   display: flex;
   align-items: center;
