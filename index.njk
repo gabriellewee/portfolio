@@ -23,28 +23,28 @@ eleventyNavigation:
 		<li class="grid-item grid-item-photography grid-only">
 			<h2>I like taking photos of the world around me.</h2>
 			<ul class="grid">
-				{% for photo in photography | limit(6) %}
+				{% for photo in photography | limit(4) %}
 					<li>
 						<div>
 							{% image './static/images/photography/' + photo.date + '-' + photo.name + '-thumbnail.jpg', photo.location, photo.aspect, 'thumbnail' %}
-							{% if loop.last %}<a href="/photography/"><span>View more</span></a>{% endif %}
 						</div>
 					</li>
 				{% endfor %}
 			</ul>
+			<a href="/photography/"><span>View more</span></a>
 		</li>
 		<li class="grid-item grid-item-graphic grid-only">
 			<h2>I dabble in illustration and design.</h2>
 			<ul class="grid">
-				{% for design in graphic | limit(6) %}
+				{% for design in graphic | limit(4) %}
 					<li>
 						<div>
 							{% graphic './static/images/graphic/' + design.date + '-' + design.name + '.png', design.title, 'thumbnail' %}
-							{% if loop.last %}<a href="/graphic/"><span>View more</span></a>{% endif %}
 						</div>
 					</li>
 				{% endfor %}
 			</ul>
+			<a href="/graphic/"><span>View more</span></a>
 		</li>
 		<li class="grid-item grid-item-plants text-only">
 			{% include 'pages/home/plants.html' %}

@@ -1225,11 +1225,6 @@ figure, picture, img {
   grid-template-columns: repeat(2, 1fr);
   padding-bottom: 18px;
 }
-@media only screen and (min-width: 600px) {
-  .page-home .grid-item-photography ul, .page-home .grid-item-graphic ul {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
 .page-home .grid-item-photography picture, .page-home .grid-item-graphic picture {
   border-radius: 6px;
   -webkit-clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
@@ -1247,26 +1242,12 @@ figure, picture, img {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 6px;
+  padding: 6px 12px 12px;
   font-size: 24px;
   font-style: italic;
   font-weight: bold;
   text-align: center;
   text-transform: lowercase;
-}
-@supports (-webkit-backdrop-filter: blur(5px)) {
-  .page-home .grid-item-photography a, .page-home .grid-item-graphic a {
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
-  }
-}
-.page-home .grid-item-photography a:focus, .page-home .grid-item-graphic a:focus {
-  box-shadow: 0 0 0 3px #5E9ED6;
 }
 @media only screen and (min-width: 1000px) {
   .page-home .grid-item-photography a, .page-home .grid-item-graphic a {
@@ -1283,7 +1264,7 @@ figure, picture, img {
   text-decoration-style: wavy;
 }
 .page-home .grid-item-photography a:active span, .page-home .grid-item-graphic a:active span {
-  transform: scale(1.05);
+  transform: scale(0.95);
 }
 .page-home .grid-item-photography span, .page-home .grid-item-graphic span {
   will-change: transform;
