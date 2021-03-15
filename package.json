@@ -19,7 +19,6 @@
 		"email": "mail@gabriellew.ee",
 		"url": "https://gabriellew.ee/"
 	},
-	"license": "MIT",
 	"homepage": "https://gabriellew.ee",
 	"devDependencies": {
 		"@11ty/eleventy": "^0.11.0",
