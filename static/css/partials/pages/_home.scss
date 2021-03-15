@@ -200,11 +200,21 @@ header {
 				}
 			}
 			a {
-				@include focus-round;
 				will-change: transform;
 				transition: .2s ease-out;
 				display: block;
 				border-radius: $p/2;
+				&:hover, &:focus {
+					.overlay {
+						opacity: 1;
+					}
+				}
+				&:focus {
+					@include focus-round;
+				}
+				&:active {
+					transform: scale(0.95);
+				}
 				&, svg {
 					display: block;
 				}
@@ -269,14 +279,6 @@ header {
 					font-style: italic;
 					text-align: center;
 					color: white;
-				}
-				&:hover, &:focus {
-					.overlay {
-						opacity: 1;
-					}
-				}
-				&:active {
-					transform: scale(0.95);
 				}
 			}
 		}

@@ -21,15 +21,15 @@ eleventyNavigation:
 		<ul class="grid-isotope">
 			{% for art in art %}
 				<li class="grid-item {{art.tags|isoFilter}}">
-					<figure>
+					<figure role="group" aria-label="Art, {{art.title}}">
 						{% image './static/images/art/' + art.date + '-' + art.name + '.jpg', art.title, art.aspect, 'full', 'art' %}
 						<figcaption>
 							<fieldset>
-								<input id="{{art.date|safe}}-{{art.name}}" type="checkbox"/>
+								<input class="grid-input" id="{{art.date|safe}}-{{art.name}}" type="checkbox" tabindex="0" aria-label="Show information about this art"/>
 								<label class="grid-close" for="{{art.date|safe}}-{{art.name}}"></label>
-								<label class="grid-link" for="{{art.date|safe}}-{{art.name}}" tabindex="0">{% include 'svg/icons/info.svg' %}</label>
+								<label class="grid-link" for="{{art.date|safe}}-{{art.name}}">{% include 'svg/icons/info.svg' %}</label>
 								<dl>
-									<label for="{{art.date|safe}}-{{art.name}}">{% include 'svg/icons/caret-down.svg' %}</label>
+									<label class="grid-down" for="{{art.date|safe}}-{{art.name}}">{% include 'svg/icons/caret-down.svg' %}</label>
 									<div>
 										<dt class="title">Title</dt><dd>{{art.title}}</dd>
 									</div>
@@ -39,7 +39,7 @@ eleventyNavigation:
 									<div>
 										<dt>Tools</dt><dd>{{art.tools}}</dd>
 									</div>
-									<a class="grid-link" target="_blank" href="/static/images/graphic/{{art.date|safe}}-{{art.name}}.png" tabindex="-1">{% include 'svg/icons/external.svg' %}</a>
+									<a class="grid-external" target="_blank" href="/static/images/graphic/{{art.date|safe}}-{{art.name}}.png" tabindex="-1">{% include 'svg/icons/external.svg' %}</a>
 								</dl>
 							</fieldset>
 						</figcaption>
@@ -48,8 +48,8 @@ eleventyNavigation:
 			{% endfor %}
 		</ul>
 	</section>
-	<nav class="grid-filters">
-		<input id="grid-filters" type="checkbox"/>
+	<nav class="grid-filters" role="navigation" aria-label="Tags List">
+		<input id="grid-filters" type="checkbox" tabindex="0" aria-label="Show tags"/>
 		<h2><label for="grid-filters"><span>Tags</span></label></h2>
 		<ul>
 			<li><a class="grid-filter" href="#" data-filter=".filter-digital">#digital</a></li>
