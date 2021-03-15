@@ -28,22 +28,24 @@ eleventyNavigation:
 								<input class="grid-input" id="{{photo.date|safe}}-{{photo.name}}" type="checkbox" tabindex="0" aria-label="Show information about this photo"/>
 								<label class="grid-close" for="{{photo.date|safe}}-{{photo.name}}"></label>
 								<label class="grid-link" for="{{photo.date|safe}}-{{photo.name}}">{% include 'svg/icons/info.svg' %}</label>
-								<dl>
+								<div class="grid-info">
 									<label class="grid-down" for="{{photo.date|safe}}-{{photo.name}}">{% include 'svg/icons/caret-down.svg' %}</label>
-									<div>
-										<dt>Date</dt><dd>{{photo.date|readableDataDate}}</dd>
-									</div>
-									<div>
-										<dt>Location</dt><dd>{{photo.location}}</dd>
-									</div>
-									<div>
-										<dt>Camera</dt><dd>{{photo.camera}}</dd>
-									</div>
-									<div>
-										<dt>Editor</dt><dd>{{photo.editor}}</dd>
-									</div>
+									<dl>
+										<div>
+											<dt>Date</dt><dd>{{photo.date|readableDataDate}}</dd>
+										</div>
+										<div>
+											<dt>Location</dt><dd>{{photo.location}}</dd>
+										</div>
+										<div>
+											<dt>Camera</dt><dd>{{photo.camera}}</dd>
+										</div>
+										<div>
+											<dt>Editor</dt><dd>{{photo.editor}}</dd>
+										</div>
+									</dl>
 									<a class="grid-external" target="_blank" href="/static/images/photography/{{photo.date|safe}}-{{photo.name}}.jpg" tabindex="-1">{% include 'svg/icons/external.svg' %}</a>
-								</dl>
+								</div>
 							</fieldset>
 						</figcaption>
 					</figure>
@@ -51,7 +53,7 @@ eleventyNavigation:
 			{% endfor %}
 		</ul>
 	</section>
-	<nav class="grid-filters" role="navigation" aria-label="Tags List">
+	<nav class="grid-filters" aria-label="Tags List">
 		<input id="grid-filters" type="checkbox" tabindex="0" aria-label="Show tags"/>
 		<h2><label for="grid-filters"><span>Tags</span></label></h2>
 		<ul>

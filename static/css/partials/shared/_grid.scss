@@ -110,14 +110,14 @@
 					box-shadow: inset 0 0 0 $p/4 $focus;
 					opacity: 1;
 				}
-				~ dl {
+				~ .grid-info {
 					.grid-down {
 						box-shadow: inset 0 0 0 $p/4 $focus;
 					}
 				}
 			}
 			&:checked {
-				~ dl {
+				~ .grid-info {
 					transform: none;
 					opacity: 1;
 					z-index: 2;
@@ -130,8 +130,7 @@
 				}
 			}
 		}
-		dl {
-			@include blur-all(5px, darken($iron, 10%), .9, .4);
+		.grid-info {
 			transform: translateY(25%);
 			opacity: 0;
 			z-index: 0;
@@ -141,9 +140,6 @@
 			bottom: 0;
 			left: 0;
 			width: 100%;
-			padding: $p;
-			font-size: 24px;
-			color: white;
 			.grid-down, .grid-external {
 				position: absolute;
 				right: 0;
@@ -159,6 +155,13 @@
 					box-shadow: inset 0 0 0 $p/4 $focus;
 				}
 			}
+		}
+		dl {
+			@include blur-all(5px, darken($iron, 10%), .9, .4);
+			width: 100%;
+			padding: $p;
+			font-size: 24px;
+			color: white;
 			div {
 				position: relative;
 				z-index: 0;

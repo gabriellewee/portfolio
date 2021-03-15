@@ -28,19 +28,21 @@ eleventyNavigation:
 								<input class="grid-input" id="{{art.date|safe}}-{{art.name}}" type="checkbox" tabindex="0" aria-label="Show information about this art"/>
 								<label class="grid-close" for="{{art.date|safe}}-{{art.name}}"></label>
 								<label class="grid-link" for="{{art.date|safe}}-{{art.name}}">{% include 'svg/icons/info.svg' %}</label>
-								<dl>
+								<div class="grid-info">
 									<label class="grid-down" for="{{art.date|safe}}-{{art.name}}">{% include 'svg/icons/caret-down.svg' %}</label>
-									<div>
-										<dt class="title">Title</dt><dd>{{art.title}}</dd>
-									</div>
-									<div>
-										<dt>Date</dt><dd>{{art.date|readableDataDate}}</dd>
-									</div>
-									<div>
-										<dt>Tools</dt><dd>{{art.tools}}</dd>
-									</div>
+									<dl>
+										<div>
+											<dt class="title">Title</dt><dd>{{art.title}}</dd>
+										</div>
+										<div>
+											<dt>Date</dt><dd>{{art.date|readableDataDate}}</dd>
+										</div>
+										<div>
+											<dt>Tools</dt><dd>{{art.tools}}</dd>
+										</div>
+									</dl>
 									<a class="grid-external" target="_blank" href="/static/images/graphic/{{art.date|safe}}-{{art.name}}.png" tabindex="-1">{% include 'svg/icons/external.svg' %}</a>
-								</dl>
+								</div>
 							</fieldset>
 						</figcaption>
 					</figure>
@@ -48,7 +50,7 @@ eleventyNavigation:
 			{% endfor %}
 		</ul>
 	</section>
-	<nav class="grid-filters" role="navigation" aria-label="Tags List">
+	<nav class="grid-filters" aria-label="Tags List">
 		<input id="grid-filters" type="checkbox" tabindex="0" aria-label="Show tags"/>
 		<h2><label for="grid-filters"><span>Tags</span></label></h2>
 		<ul>
