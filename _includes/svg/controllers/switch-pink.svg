@@ -1,0 +1,26 @@
+<svg viewBox="0 0 255 107" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<g stroke="none">
+		<g class="screen">
+			<rect fill="#313131" x="42.5" y="0" width="170" height="107"></rect>
+			<rect fill="#000000" x="49.5" y="9.5" width="156" height="88" rx="9"></rect>
+			<rect fill="#FFFFFF" x="59.5" y="17.5" width="136" height="72"></rect>
+		</g>
+		<g class="left">
+			<path d="M42.5,1.5 C35.2879261,1.5 28.401249,1.5 21.8399688,1.5 C11.3679008,1.5 1.5,12.0096493 1.5,23.9864865 C1.5,43.6621622 1.5,63.3378378 1.5,83.0135135 C1.5,94.9903507 11.3679008,105.5 21.8399688,105.5 L42.5,105.5" stroke="#93807C" stroke-width="3" fill="#F2CACA"></path>
+			<rect fill="#FBF0EE" x="18.5" y="52.5" width="8" height="23" rx="1"></rect>
+			<rect fill="#FBF0EE" x="11" y="60" width="23" height="8" rx="1"></rect>
+			<rect fill="#FBF0EE" x="21.5" y="12.5" width="15" height="5" rx="1"></rect>
+			<circle fill="#FBF0EE" cx="22.5" cy="36.5" r="8"></circle>
+		</g>
+		<g class="right">
+			<path d="M212.5,1.5 C219.712074,1.5 226.598751,1.5 233.160031,1.5 C243.632099,1.5 253.5,12.0096493 253.5,23.9864865 C253.5,43.6621622 253.5,63.3378378 253.5,83.0135135 C253.5,94.9903507 243.632099,105.5 233.160031,105.5 L212.5,105.5" stroke="#93807C" stroke-width="3" fill="#F2CACA"></path>
+			<rect fill="#FBF0EE" x="223.5" y="7.5" width="5" height="15" rx="1"></rect>
+			<rect fill="#FBF0EE" x="218.5" y="12.5" width="15" height="5" rx="1"></rect>
+			<circle fill="#FBF0EE" cx="232.5" cy="32.5" r="4"></circle>
+			<circle fill="#FBF0EE" cx="232.5" cy="48.5" r="4"></circle>
+			<circle fill="#FBF0EE" cx="224.5" cy="40.5" r="4"></circle>
+			<circle fill="#FBF0EE" cx="240.5" cy="40.5" r="4"></circle>
+			<circle fill="#FBF0EE" cx="232.5" cy="68.5" r="8"></circle>
+		</g>
+	</g>
+</svg>

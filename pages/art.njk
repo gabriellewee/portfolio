@@ -1,0 +1,61 @@
+---
+templateClass: art
+title: Art
+description: I like to draw things.
+permalink: "/art/index.html"
+
+tags: pages
+eleventyNavigation:
+  key: Art
+  order: 2
+---
+
+{% extends 'layouts/base.njk' %}
+
+{% block menu %}
+	<span class="message">I like to draw things.</span>
+{% endblock %}
+
+{% block content %}
+	<section class="graphic-grid">
+		<ul class="grid-isotope">
+			{% for art in art %}
+				<li class="grid-item {{art.tags|isoFilter}}">
+					<figure>
+						{% image './static/images/art/' + art.date + '-' + art.name + '.jpg', art.title, art.aspect, 'full', 'art' %}
+						<figcaption>
+							<fieldset>
+								<input id="{{art.date|safe}}-{{art.name}}" type="checkbox"/>
+								<label class="grid-close" for="{{art.date|safe}}-{{art.name}}"></label>
+								<label class="grid-link" for="{{art.date|safe}}-{{art.name}}" tabindex="0">{% include 'svg/icons/info.svg' %}</label>
+								<dl>
+									<label for="{{art.date|safe}}-{{art.name}}">{% include 'svg/icons/caret-down.svg' %}</label>
+									<div>
+										<dt class="title">Title</dt><dd>{{art.title}}</dd>
+									</div>
+									<div>
+										<dt>Date</dt><dd>{{art.date|readableDataDate}}</dd>
+									</div>
+									<div>
+										<dt>Tools</dt><dd>{{art.tools}}</dd>
+									</div>
+									<a class="grid-link" target="_blank" href="/static/images/graphic/{{art.date|safe}}-{{art.name}}.png" tabindex="-1">{% include 'svg/icons/external.svg' %}</a>
+								</dl>
+							</fieldset>
+						</figcaption>
+					</figure>
+				</li>
+			{% endfor %}
+		</ul>
+	</section>
+	<nav class="grid-filters">
+		<input id="grid-filters" type="checkbox"/>
+		<h2><label for="grid-filters"><span>Tags</span></label></h2>
+		<ul>
+			<li><a class="grid-filter" href="#" data-filter=".filter-digital">#digital</a></li>
+			<li><a class="grid-filter" href="#" data-filter=".filter-traditional">#traditional</a></li>
+			<li><a class="grid-filter" href="#" data-filter=".filter-figure">#figure drawing</a></li>
+			<li><a class="grid-filter reset" href="#" data-filter="*">reset</a></li>
+		</ul>
+	</nav>
+{% endblock %}

@@ -21,36 +21,69 @@ eleventyNavigation:
 			{% include 'pages/home/code.html' %}
 		</li>
 		<li class="grid-item grid-item-photography grid-only">
-			<h2>I like taking photos of the world around me.</h2>
+			<h2>I enjoy taking photos of the world around me.</h2>
 			<ul class="grid">
 				{% for photo in photography | limit(4) %}
 					<li>
 						<div>
-							{% image './static/images/photography/' + photo.date + '-' + photo.name + '-thumbnail.jpg', photo.location, photo.aspect, 'thumbnail' %}
+							{% image './static/images/photography/' + photo.date + '-' + photo.name + '-thumbnail.jpg', photo.location, photo.aspect, 'thumbnail', 'photography' %}
 						</div>
 					</li>
 				{% endfor %}
 			</ul>
-			<a href="/photography/"><span>View more</span></a>
+			<a class="more" href="/photography/"><span>more</span></a>
 		</li>
 		<li class="grid-item grid-item-graphic grid-only">
 			<h2>I dabble in illustration and design.</h2>
 			<ul class="grid">
-				{% for design in graphic | limit(4) %}
+				{% for graphic in graphic | limit(4) %}
 					<li>
 						<div>
-							{% graphic './static/images/graphic/' + design.date + '-' + design.name + '.png', design.title, 'thumbnail' %}
+							{% graphic './static/images/graphic/' + graphic.date + '-' + graphic.name + '.png', graphic.title, 'thumbnail' %}
 						</div>
 					</li>
 				{% endfor %}
 			</ul>
-			<a href="/graphic/"><span>View more</span></a>
+			<a class="more" href="/graphic/"><span>more</span></a>
 		</li>
-		<li class="grid-item grid-item-plants text-only">
-			{% include 'pages/home/plants.html' %}
+		<li class="grid-item grid-item-art grid-only">
+			<h2>I like to draw things.</h2>
+			<ul class="grid">
+				{% for art in art | limit(4) %}
+					<li>
+						<div>
+							{% image './static/images/art/' + art.date + '-' + art.name + '-thumbnail.jpg', art.title, art.aspect, 'thumbnail', 'art' %}
+						</div>
+					</li>
+				{% endfor %}
+			</ul>
+			<a class="more" href="/art/"><span>more</span></a>
 		</li>
-		<li class="grid-item grid-item-more text-only">
-			<h2>More coming soon!</h2>
+		<li class="grid-item grid-item-plants">
+			<div class="text">
+				<h2>I’m an avid plant collector with over 200 plants, including aroids and succulents! 🪴</h2>
+				<p>My favorites are <span>philodendron</span>, <span>monstera</span>, and <span>anthurium</span>.</p>
+			</div>
+			<div class="image">
+				{% image './static/images/photography/xanthosoma.jpg', 'Variegated “Mickey Mouse” Xanthosoma Sagittifolium', 'vertical', 'thumbnail', 'photography' %}
+			</div>
+			<a class="more" href="https://instagram.com/ellocasia" target="_blank"><span>my plant Instagram</span></a>
+		</li>
+		<li class="grid-item grid-item-gaming">
+			<div>
+				<h2>I love gaming and modding my controllers.</h2>
+				<p class="friend-code">Nintendo Friend Code: <span>SW‑0918‑7153‑9794</span></p>
+			</div>
+			<div>
+				{% include 'svg/controllers/switch-pink.svg' %}
+			</div>
+			<ul>
+				<li>{% include 'svg/controllers/joy-con-white.svg' %}</li>
+				<li>{% include 'svg/controllers/joy-con-black.svg' %}</li>
+				<li>{% include 'svg/controllers/pro-pink.svg' %}</li>
+				<li>{% include 'svg/controllers/joy-con-pink.svg' %}</li>
+				<li>{% include 'svg/controllers/pro-violet.svg' %}</li>
+			</ul>
 		</li>
 	</ul>
 </section>
