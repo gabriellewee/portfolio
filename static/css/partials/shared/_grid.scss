@@ -78,19 +78,15 @@
 		label, .grid-link {
 			cursor: pointer;
 		}
-		.grid-link {
+		.grid-link, .grid-external {
 			will-change: opacity;
-			transition: .3s ease-out;
 			display: block;
 			position: relative;
 			z-index: 1;
 			padding: $p/4;
 		}
-		label.grid-link {
+		.grid-link {
 			padding: $p/2;
-			&:focus {
-				opacity: 1;
-			}
 		}
 		svg {
 			display: block;
@@ -101,9 +97,24 @@
 			}
 		}
 		input {
-			display: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 0;
+			z-index: -1;
 			~ label.grid-link {
 				display: none;
+			}
+			&:focus {
+				~ .grid-link {
+					box-shadow: inset 0 0 0 $p/4 $focus;
+					opacity: 1;
+				}
+				~ dl {
+					.grid-down {
+						box-shadow: inset 0 0 0 $p/4 $focus;
+					}
+				}
 			}
 			&:checked {
 				~ dl {
@@ -114,7 +125,7 @@
 				~ .grid-close {
 					z-index: unset;
 				}
-				~ label.grid-link {
+				~ .grid-link {
 					opacity: 0;
 				}
 			}
@@ -133,17 +144,20 @@
 			padding: $p;
 			font-size: 24px;
 			color: white;
-			> label, > .grid-link {
+			.grid-down, .grid-external {
 				position: absolute;
 				right: 0;
 				z-index: 1;
 				padding: $p/2;
 			}
-			> label {
+			.grid-down {
 				top: 0;
 			}
-			> .grid-link {
+			.grid-external {
 				bottom: 0;
+				&:focus {
+					box-shadow: inset 0 0 0 $p/4 $focus;
+				}
 			}
 			div {
 				position: relative;
@@ -273,6 +287,10 @@
 			transform: scale(1.05);
 			color: $iron;
 		}
+		&:focus {
+			@include wavy;
+			text-decoration-color: $iron;
+		}
 		&:active {
 			@include blur-bg($mauve, .9, .8);
 			transform: scale(0.95);
@@ -291,7 +309,16 @@
 		}
 	}
 	input {
-		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
+		z-index: -1;
+		&:focus {
+			~ h2 > label {
+				@include focus-round;
+			}
+		}
 		&:checked {
 			~ h2 > label {
 				&:after {

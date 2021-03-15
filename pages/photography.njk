@@ -16,21 +16,20 @@ eleventyNavigation:
 	<span class="message">Photos I’ve taken over the years.</span>
 {% endblock %}
 
-
 {% block content %}
 	<section class="photography-grid">
 		<ul class="grid-isotope">
 			{% for photo in photography %}
 				<li class="grid-item {{photo.tags|isoFilter}}">
-					<figure>
+					<figure role="group" aria-label="Photo, {{photo.location}}">
 						{% image './static/images/photography/' + photo.date + '-' + photo.name + '.jpg', photo.location, photo.aspect, 'full', 'photography' %}
 						<figcaption>
 							<fieldset>
-								<input id="{{photo.date|safe}}-{{photo.name}}" type="checkbox"/>
+								<input class="grid-input" id="{{photo.date|safe}}-{{photo.name}}" type="checkbox" tabindex="0" aria-label="Show information about this photo"/>
 								<label class="grid-close" for="{{photo.date|safe}}-{{photo.name}}"></label>
-								<label class="grid-link" for="{{photo.date|safe}}-{{photo.name}}" tabindex="0">{% include 'svg/icons/info.svg' %}</label>
+								<label class="grid-link" for="{{photo.date|safe}}-{{photo.name}}">{% include 'svg/icons/info.svg' %}</label>
 								<dl>
-									<label for="{{photo.date|safe}}-{{photo.name}}">{% include 'svg/icons/caret-down.svg' %}</label>
+									<label class="grid-down" for="{{photo.date|safe}}-{{photo.name}}">{% include 'svg/icons/caret-down.svg' %}</label>
 									<div>
 										<dt>Date</dt><dd>{{photo.date|readableDataDate}}</dd>
 									</div>
@@ -43,7 +42,7 @@ eleventyNavigation:
 									<div>
 										<dt>Editor</dt><dd>{{photo.editor}}</dd>
 									</div>
-									<a class="grid-link" target="_blank" href="/static/images/photography/{{photo.date|safe}}-{{photo.name}}.jpg" tabindex="-1">{% include 'svg/icons/external.svg' %}</a>
+									<a class="grid-external" target="_blank" href="/static/images/photography/{{photo.date|safe}}-{{photo.name}}.jpg" tabindex="-1">{% include 'svg/icons/external.svg' %}</a>
 								</dl>
 							</fieldset>
 						</figcaption>
@@ -52,8 +51,8 @@ eleventyNavigation:
 			{% endfor %}
 		</ul>
 	</section>
-	<nav class="grid-filters">
-		<input id="grid-filters" type="checkbox"/>
+	<nav class="grid-filters" role="navigation" aria-label="Tags List">
+		<input id="grid-filters" type="checkbox" tabindex="0" aria-label="Show tags"/>
 		<h2><label for="grid-filters"><span>Tags</span></label></h2>
 		<ul>
 			<li><a class="grid-filter" href="#" data-filter=".filter-portrait">#portrait</a></li>

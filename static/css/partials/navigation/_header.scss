@@ -8,10 +8,17 @@ header {
 	padding: $p;
 	z-index: 10;
 	.memoji {
+		will-change: opacity;
 		display: block;
 		&, img {
 			width: $p*4;
 			height: auto;
+		}
+		&-hm {
+			opacity: 0;
+			position: absolute;
+			right: 0;
+			top: 0;
 		}
 	}
 	span {
@@ -38,8 +45,20 @@ header {
 		z-index: 2;
 	}
 	.logo {
+		position: relative;
 		order: 2;
 		display: block;
+		&:focus {
+			@include focus-round;
+			.memoji {
+				&-default {
+					opacity: 0;
+				}
+				&-hm {
+					opacity: 1;
+				}
+			}
+		}
 		&:hover, &:focus, &:active {
 			~ .go-home {
 				transform: none;
