@@ -10,6 +10,16 @@ body {
 	font-family: $faune;
 }
 
+::-moz-selection {
+	background: $iron;
+	color:  white;
+}
+
+::selection {
+	background: $iron;
+	color:  white;
+}
+
 figure, picture, img {
 	display: block;
 	width: 100%;
