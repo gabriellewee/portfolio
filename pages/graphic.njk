@@ -28,25 +28,27 @@ eleventyNavigation:
 								<input class="grid-input" id="{{graphic.date|safe}}-{{graphic.name}}" type="checkbox" tabindex="0" aria-label="Show information about this graphic"/>
 								<label class="grid-close" for="{{graphic.date|safe}}-{{graphic.name}}"></label>
 								<label class="grid-link" for="{{graphic.date|safe}}-{{graphic.name}}">{% include 'svg/icons/info.svg' %}</label>
-								<dl>
+								<div class="grid-info">
 									<label class="grid-down" for="{{graphic.date|safe}}-{{graphic.name}}">{% include 'svg/icons/caret-down.svg' %}</label>
-									<div>
-										<dt class="title">Title</dt>
-										<dd>
-											<span>{{graphic.title}}</span>
-											{% if graphic.url %}
-												<a class="grid-link external" target="_blank" href="{{graphic.url}}" tabindex="-1">{% include 'svg/icons/dribbble.svg' %}</a>
-											{% endif %}
-										</dd>
-									</div>
-									<div>
-										<dt>Date</dt><dd>{{graphic.date|readableDataDate}}</dd>
-									</div>
-									<div>
-										<dt>Tools</dt><dd>{{graphic.tools}}</dd>
-									</div>
+									<dl>
+										<div>
+											<dt class="title">Title</dt>
+											<dd>
+												<span>{{graphic.title}}</span>
+												{% if graphic.url %}
+													<a class="grid-link external" target="_blank" href="{{graphic.url}}" tabindex="-1">{% include 'svg/icons/dribbble.svg' %}</a>
+												{% endif %}
+											</dd>
+										</div>
+										<div>
+											<dt>Date</dt><dd>{{graphic.date|readableDataDate}}</dd>
+										</div>
+										<div>
+											<dt>Tools</dt><dd>{{graphic.tools}}</dd>
+										</div>
+									</dl>
 									<a class="grid-external" target="_blank" href="/static/images/graphic/{{graphic.date|safe}}-{{graphic.name}}.png" tabindex="-1">{% include 'svg/icons/external.svg' %}</a>
-								</dl>
+								</div>
 							</fieldset>
 						</figcaption>
 					</figure>
@@ -81,7 +83,7 @@ eleventyNavigation:
 			</li>
 		</ul>
 	</section>
-	<nav class="grid-filters" role="navigation" aria-label="Tags List">
+	<nav class="grid-filters" aria-label="Tags List">
 		<input id="grid-filters" type="checkbox" tabindex="0" aria-label="Show tags"/>
 		<h2><label for="grid-filters"><span>Tags</span></label></h2>
 		<ul>

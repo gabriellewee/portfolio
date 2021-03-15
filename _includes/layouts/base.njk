@@ -44,7 +44,7 @@
 	<script src="{{'/static/js/modernizr.min.js' | url}}"></script>
 </head>
 <body ontouchstart{% if templateClass %} class="page-{{templateClass}}"{% endif %}>
-	<header role="navigation" aria-label="Header">
+	<header aria-label="Header">
 		<a class="logo" href="/" aria-label="Go home?">
 			<picture class="memoji memoji-default">
 				<img src="/static/images/memoji.png" alt="" />
@@ -59,7 +59,7 @@
 	<main>
 		{% block content %}{{content | safe}}{% endblock %}
 	</main>
-	<footer role="contentinfo" aria-label="Footer">
+	<footer aria-label="Footer">
 		<div>
 			<h2>Previous versions of this website:</h2>
 			<p>

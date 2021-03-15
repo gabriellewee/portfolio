@@ -9,18 +9,18 @@ eleventyNavigation:
 ---
 
 <section class="home-grid">
-	<ul class="grid-isotope">
-		<li class="grid-item grid-item-intro text-only" aria-role="group" aria-label="Introduction">
+	<ul class="grid-isotope" role="list">
+		<li class="grid-item grid-item-intro text-only" role="listitem" aria-label="Introduction">
 			<h1>Hello, stranger. My name is <span>Gabrielle Wee.</span></h1>
 			<p>I’m a front‑end developer working at <span class="apple">Apple {% include 'svg/apple.svg' %}.</span></p>
 		</li>
-		<li class="grid-item grid-item-links text-only" aria-role="group" aria-label="Links">
+		<li class="grid-item grid-item-links text-only" role="listitem" aria-label="Links">
 			{% include 'pages/home/links.html' %}
 		</li>
-		<li class="grid-item grid-item-code grid-only" aria-role="group" aria-label="Code">
+		<li class="grid-item grid-item-code grid-only" role="listitem" aria-label="Code">
 			{% include 'pages/home/code.html' %}
 		</li>
-		<li class="grid-item grid-item-photography grid-only" aria-role="group" aria-label="Photography">
+		<li class="grid-item grid-item-photography grid-only" role="listitem" aria-label="Photography">
 			<h2>I enjoy taking photos of the world around me.</h2>
 			<ul class="grid">
 				{% for photo in photography | limit(4) %}
@@ -33,7 +33,7 @@ eleventyNavigation:
 			</ul>
 			<a class="more" href="/photography/"><span>more</span></a>
 		</li>
-		<li class="grid-item grid-item-graphic grid-only" aria-role="group" aria-label="Graphic">
+		<li class="grid-item grid-item-graphic grid-only" role="listitem" aria-label="Graphic">
 			<h2>I dabble in illustration and design.</h2>
 			<ul class="grid">
 				{% for graphic in graphic | limit(4) %}
@@ -46,7 +46,7 @@ eleventyNavigation:
 			</ul>
 			<a class="more" href="/graphic/"><span>more</span></a>
 		</li>
-		<li class="grid-item grid-item-art grid-only" aria-role="group" aria-label="Art">
+		<li class="grid-item grid-item-art grid-only" role="listitem" aria-label="Art">
 			<h2>I like to draw things.</h2>
 			<ul class="grid">
 				{% for art in art | limit(4) %}
@@ -59,7 +59,7 @@ eleventyNavigation:
 			</ul>
 			<a class="more" href="/art/"><span>more</span></a>
 		</li>
-		<li class="grid-item grid-item-plants" aria-role="group" aria-label="Plants">
+		<li class="grid-item grid-item-plants" role="listitem" aria-label="Plants">
 			<div class="text">
 				<h2>I’m an avid plant collector with over 200 plants, including aroids and succulents! 🪴</h2>
 				<p>My favorites are <span>philodendron</span>, <span>monstera</span>, and <span>anthurium</span>.</p>
@@ -69,7 +69,7 @@ eleventyNavigation:
 			</div>
 			<a class="more" href="https://instagram.com/ellocasia" target="_blank"><span>my plant Instagram</span></a>
 		</li>
-		<li class="grid-item grid-item-gaming" aria-role="group" aria-label="Gaming and Modding">
+		<li class="grid-item grid-item-gaming" role="listitem" aria-label="Gaming and Modding">
 			<div>
 				<h2>I love gaming and modding my controllers.</h2>
 				<p class="friend-code">Nintendo Friend Code: <span>SW‑0918‑7153‑9794</span></p>

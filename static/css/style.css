@@ -320,10 +320,10 @@ a {
   box-shadow: inset 0 0 0 3px #5E9ED6;
   opacity: 1;
 }
-.grid-item figure input:focus ~ dl .grid-down {
+.grid-item figure input:focus ~ .grid-info .grid-down {
   box-shadow: inset 0 0 0 3px #5E9ED6;
 }
-.grid-item figure input:checked ~ dl {
+.grid-item figure input:checked ~ .grid-info {
   transform: none;
   opacity: 1;
   z-index: 2;
@@ -334,8 +334,7 @@ a {
 .grid-item figure input:checked ~ .grid-link {
   opacity: 0;
 }
-.grid-item figure dl {
-  background: rgba(17, 23, 26, 0.9);
+.grid-item figure .grid-info {
   transform: translateY(25%);
   opacity: 0;
   z-index: 0;
@@ -344,6 +343,25 @@ a {
   position: absolute;
   bottom: 0;
   left: 0;
+  width: 100%;
+}
+.grid-item figure .grid-info .grid-down, .grid-item figure .grid-info .grid-external {
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  padding: 6px;
+}
+.grid-item figure .grid-info .grid-down {
+  top: 0;
+}
+.grid-item figure .grid-info .grid-external {
+  bottom: 0;
+}
+.grid-item figure .grid-info .grid-external:focus {
+  box-shadow: inset 0 0 0 3px #5E9ED6;
+}
+.grid-item figure dl {
+  background: rgba(17, 23, 26, 0.9);
   width: 100%;
   padding: 12px;
   font-size: 24px;
@@ -355,21 +373,6 @@ a {
     backdrop-filter: blur(5px);
     background: rgba(17, 23, 26, 0.4);
   }
-}
-.grid-item figure dl .grid-down, .grid-item figure dl .grid-external {
-  position: absolute;
-  right: 0;
-  z-index: 1;
-  padding: 6px;
-}
-.grid-item figure dl .grid-down {
-  top: 0;
-}
-.grid-item figure dl .grid-external {
-  bottom: 0;
-}
-.grid-item figure dl .grid-external:focus {
-  box-shadow: inset 0 0 0 3px #5E9ED6;
 }
 .grid-item figure dl div {
   position: relative;
