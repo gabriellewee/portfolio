@@ -45,24 +45,32 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("robots.txt");
 	eleventyConfig.addPassthroughCopy("sitemap.xml");
 
-	eleventyConfig.addNunjucksAsyncShortcode("image", async (src, alt, aspect, type) => {
+	eleventyConfig.addNunjucksAsyncShortcode("image", async (src, alt, aspect, type, category) => {
 		let newWidths;
 
-		if(type === "full") {
-			if(aspect === 'horizontal') {
-				newWidths = [100, 1512, 3024, null];
-			} else if(aspect === 'vertical') {
-				newWidths = [100, 1134, 2268, null];
+		if(category === "photography") {
+			if(type === "full") {
+				if(aspect === 'horizontal') {
+					newWidths = [100, 1512, 3024, null];
+				} else if(aspect === 'vertical') {
+					newWidths = [100, 1134, 2268, null];
+				}
+			} else if(type === "thumbnail") {
+				newWidths = [50, 400, null];
 			}
-		} else if(type === "thumbnail") {
-			newWidths = [50, 400, null];
+		} else if(category === "art") {
+			if(type === "full") {
+				newWidths = [100, 1500, null]
+			} else if(type === "thumbnail") {
+				newWidths = [50, 400, 800];
+			}
 		}
 
 		let stats = await Image(src, {
 			widths: newWidths,
 			formats: ["webp", "jpeg"],
-			urlPath: "/static/images/photography/built",
-			outputDir: "./_site/static/images/photography/built",
+			urlPath: `/static/images/${category}/built`,
+			outputDir: `./_site/static/images/${category}/built`,
 		});
 
 		let lowest = stats["jpeg"][0];

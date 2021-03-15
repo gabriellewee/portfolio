@@ -29,6 +29,40 @@ header {
 			padding: $p $p*1.5;
 		}
 	}
+	.more {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: $p/2 $p $p;
+		background: rgba(black, .5);
+		font-size: 24px;
+		font-style: italic;
+		font-weight: bold;
+		text-align: center;
+		text-transform: lowercase;
+		@media only screen and (min-width: 1000px) {
+			font-size: 28px;
+		}
+		&:hover, &:focus {
+			color: white;
+			span {
+				transform: scale(1.05);
+			}
+		}
+		&:focus {
+			@include wavy;
+		}
+		&:active {
+			span {
+				transform: scale(.95);
+			}
+		}
+		span {
+			will-change: transform;
+			transition: .1s ease-out;
+			display: block;
+		}
+	}
 	&-intro {
 		background: lighten($pink, 5%);
 		color: $iron;
@@ -247,7 +281,7 @@ header {
 			}
 		}
 	}
-	&-photography, &-graphic {
+	&-photography, &-graphic, &-art {
 		ul {
 			grid-template-columns: repeat(2, 1fr);
 			padding-bottom: $p*1.5;
@@ -262,48 +296,12 @@ header {
 		div {
 			position: relative;
 		}
-		a {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			padding: $p/2 $p $p;
-			font-size: 24px;
-			font-style: italic;
-			font-weight: bold;
-			text-align: center;
-			text-transform: lowercase;
-			@media only screen and (min-width: 1000px) {
-				font-size: 28px;
-			}
-			&:hover, &:focus {
-				span {
-					transform: scale(1.05);
-				}
-			}
-			&:focus {
-				@include wavy;
-			}
-			&:active {
-				span {
-					transform: scale(.95);
-				}
-			}
-		}
-		span {
-			will-change: transform;
-			transition: .1s ease-out;
-			display: block;
-		}
 	}
 	&-photography {
 		background: #8f9eb8;
 		color: #121f2b;
 		a {
-			@include blur-bg(#121f2b, .9, .5);
 			color: #8f9eb8;
-			&:hover, &:focus {
-				color: white;
-			}
 			&:focus {
 				text-decoration-color: #8f9eb8;
 			}
@@ -313,31 +311,137 @@ header {
 		background: #c46465;
 		color: white;
 		a {
-			@include blur-bg(#343434, .9, .5);
 			color: $pink;
-			&:hover, &:focus {
-				color: white;
-			}
 			&:focus {
 				text-decoration-color: $pink;
+			}
+		}
+	}
+	&-art {
+		background: $mauve;
+		color: white;
+		a {
+			color: lighten(#938c8c, 10%);
+			&:focus {
+				text-decoration-color: lighten(#938c8c, 10%);
 			}
 		}
 	}
 	&-plants {
 		background: #d1e7d6;
 		color: #272f29;
+		font-size: 24px;
+		@media only screen and (min-width: 600px) {
+			display: grid;
+			grid-template-columns: 1fr 200px;
+			grid-template-rows: 1fr 51px;
+		}
+		@media only screen and (min-width: 1500px) {
+			font-size: 28px;
+		}
+		h2, a {
+			padding: $p $p*1.5;
+		}
+		p {
+			width: 100%;
+			padding: 0 $p*1.5 $p*1.5;
+		}
 		span {
 			font-style: italic;
 			font-weight: bold;
 		}
+		.image {
+			display: none;
+			@media only screen and (min-width: 600px) {
+				display: block;
+			}
+			@media only screen and (min-width: 1500px) {
+				grid-row: span 2;
+			}
+		}
+		.more {
+			color: #8ec39a;
+			grid-column: span 2;
+			@media only screen and (min-width: 1500px) {
+				grid-column: unset;
+			}
+			&:focus {
+				text-decoration-color: #8ec39a;
+			}
+		}
 	}
-	&-more {
-		background: $mauve;
-		color: white;
-		text-align: center;
+	&-gaming {
+		background: #f0f0f0;
+		color: #2d2d2d;
+		@media only screen and (min-width: 600px) {
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: space-between;
+		}
 		h2 {
-			font-style: italic;
-			font-weight: bold;
+			position: relative;
+			z-index: 1;
+			padding-bottom: $p/3;
+		}
+		svg {
+			display: block;
+		}
+		.friend-code {
+			position: relative;
+			z-index: 0;
+			font-size: 20px;
+			color: #717171;
+			span {
+				display: inline-block;
+				background: white;
+				color: #2d2d2d;
+				border-radius: $p/3;
+				padding: $p/2 $p*.75;
+			}
+		}
+		div {
+			&:first-child {
+				padding: $p $p*1.5 0;
+				width: 100%;
+				@media only screen and (min-width: 600px) {
+					width: calc(100% - 200px);
+				}
+				@media only screen and (min-width: 1500px) {
+					width: calc(100% - 255px);
+				}
+			}
+			&:nth-child(2) {
+				width: 100%;
+				padding: $p*1.5 $p*1.5 0;
+				@media only screen and (min-width: 600px) {
+					padding: $p*1.5 $p*1.5 0 0;
+					width: 200px;
+				}
+				@media only screen and (min-width: 1500px) {
+					width: 255px;
+				}
+				svg {
+					max-width: 255px;
+					margin: 0 auto;
+				}
+			}
+		}
+		ul {
+			display: flex;
+			flex-flow: row wrap;
+			list-style: none;
+			width: 100%;
+			padding: $p*.75;
+			li {
+				width: calc(100% / 3);
+				padding: $p*.75;
+				@media only screen and (min-width: 600px) {
+					width: 20%;
+				}
+			}
+			svg {
+				border-radius: $p/2;
+			}
 		}
 	}
 }

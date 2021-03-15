@@ -19,33 +19,33 @@ eleventyNavigation:
 {% block content %}
 	<section class="graphic-grid">
 		<ul class="grid-isotope">
-			{% for design in graphic %}
-				<li class="grid-item {{design.tags|isoFilter}}">
+			{% for graphic in graphic %}
+				<li class="grid-item {{graphic.tags|isoFilter}}">
 					<figure>
-						{% graphic './static/images/graphic/' + design.date + '-' + design.name + '.png', design.title, 'full' %}
+						{% graphic './static/images/graphic/' + graphic.date + '-' + graphic.name + '.png', graphic.title, 'full' %}
 						<figcaption>
 							<fieldset>
-								<input id="{{design.date|safe}}-{{design.name}}" type="checkbox"/>
-								<label class="grid-close" for="{{design.date|safe}}-{{design.name}}"></label>
-								<label class="grid-link" for="{{design.date|safe}}-{{design.name}}" tabindex="0">{% include 'svg/icons/info.svg' %}</label>
+								<input id="{{graphic.date|safe}}-{{graphic.name}}" type="checkbox"/>
+								<label class="grid-close" for="{{graphic.date|safe}}-{{graphic.name}}"></label>
+								<label class="grid-link" for="{{graphic.date|safe}}-{{graphic.name}}" tabindex="0">{% include 'svg/icons/info.svg' %}</label>
 								<dl>
-									<label for="{{design.date|safe}}-{{design.name}}">{% include 'svg/icons/caret-down.svg' %}</label>
+									<label for="{{graphic.date|safe}}-{{graphic.name}}">{% include 'svg/icons/caret-down.svg' %}</label>
 									<div>
 										<dt class="title">Title</dt>
 										<dd>
-											<span>{{design.title}}</span>
-											{% if design.url %}
-												<a class="grid-link external" target="_blank" href="{{design.url}}" tabindex="-1">{% include 'svg/icons/dribbble.svg' %}</a>
+											<span>{{graphic.title}}</span>
+											{% if graphic.url %}
+												<a class="grid-link external" target="_blank" href="{{graphic.url}}" tabindex="-1">{% include 'svg/icons/dribbble.svg' %}</a>
 											{% endif %}
 										</dd>
 									</div>
 									<div>
-										<dt>Date</dt><dd>{{design.date|readableDataDate}}</dd>
+										<dt>Date</dt><dd>{{graphic.date|readableDataDate}}</dd>
 									</div>
 									<div>
-										<dt>Tools</dt><dd>{{design.tools}}</dd>
+										<dt>Tools</dt><dd>{{graphic.tools}}</dd>
 									</div>
-									<a class="grid-link" target="_blank" href="/static/images/graphic/{{design.date|safe}}-{{design.name}}.png" tabindex="-1">{% include 'svg/icons/external.svg' %}</a>
+									<a class="grid-link" target="_blank" href="/static/images/graphic/{{graphic.date|safe}}-{{graphic.name}}.png" tabindex="-1">{% include 'svg/icons/external.svg' %}</a>
 								</dl>
 							</fieldset>
 						</figcaption>
