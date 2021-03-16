@@ -42,6 +42,8 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("static");
 	eleventyConfig.addPassthroughCopy("v1");
 	eleventyConfig.addPassthroughCopy("v2");
+	eleventyConfig.addPassthroughCopy("v3");
+	eleventyConfig.addPassthroughCopy("v4");
 	eleventyConfig.addPassthroughCopy("robots.txt");
 	eleventyConfig.addPassthroughCopy("sitemap.xml");
 

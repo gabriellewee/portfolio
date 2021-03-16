@@ -1,0 +1,375 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+*:focus {
+  outline: none !important;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body, html {
+  height: 100%;
+}
+
+body {
+  line-height: 1.2;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-overflow-scrolling: touch;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.apple {
+  display: inline-block;
+}
+.apple svg {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+a.v1 {
+  color: #737375;
+  width: 21px;
+}
+a.v2 {
+  color: #F5C8BF;
+  width: 25px;
+}
+a.codepen {
+  color: #fcd000;
+  width: 176px;
+}
+a.dribbble {
+  color: #ea4c89;
+  width: 178px;
+}
+a.github {
+  color: #4183c4;
+  width: 138px;
+}
+a.linkedin {
+  color: #069;
+  width: 178px;
+}
+a.instagram {
+  color: #cd486b;
+  width: 212px;
+}
+a.twitter {
+  color: #2daae1;
+  width: 146px;
+}
+a.medium {
+  color: #00AB6C;
+  width: 169px;
+}
+a.reddit {
+  color: #FC471E;
+  width: 132px;
+}
+a.pinterest {
+  color: #cb2027;
+  width: 185px;
+}
+a.music {
+  color: #fa2d48;
+  width: 119px;
+}
+a.email {
+  color: rgba(0, 0, 0, 0.5);
+  width: 115px;
+}
+@media (prefers-color-scheme: dark) {
+  a.email {
+    color: rgba(255, 255, 255, 0.3);
+  }
+}
+a.text {
+  color: #34C6D8;
+  width: 87px;
+}
+a.imessage {
+  color: #0d84ff;
+  width: 185px;
+}
+a.discord {
+  color: #8ea1e1;
+  width: 158px;
+}
+
+@media only screen and (min-width: 600px) {
+  .apple svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  a.v1 {
+    width: 25px;
+  }
+  a.v2 {
+    width: 30px;
+  }
+  a.codepen {
+    width: 235px;
+  }
+  a.dribbble {
+    width: 237px;
+  }
+  a.github {
+    width: 185px;
+  }
+  a.linkedin {
+    width: 238px;
+  }
+  a.instagram {
+    width: 282px;
+  }
+  a.twitter {
+    width: 195px;
+  }
+  a.medium {
+    width: 226px;
+  }
+  a.reddit {
+    width: 176px;
+  }
+  a.pinterest {
+    width: 247px;
+  }
+  a.music {
+    width: 157px;
+  }
+  a.email {
+    width: 153px;
+  }
+  a.text {
+    width: 116px;
+  }
+  a.imessage {
+    width: 247px;
+  }
+  a.discord {
+    width: 210px;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  .apple svg {
+    width: 42px;
+    height: 42px;
+  }
+
+  a.v1 {
+    width: 30px;
+  }
+  a.v2 {
+    width: 35px;
+  }
+  a.codepen {
+    width: 309px;
+  }
+  a.dribbble {
+    width: 311px;
+  }
+  a.github {
+    width: 242px;
+  }
+  a.linkedin {
+    width: 312px;
+  }
+  a.instagram {
+    width: 370px;
+  }
+  a.twitter {
+    width: 256px;
+  }
+  a.medium {
+    width: 296px;
+  }
+  a.reddit {
+    width: 231px;
+  }
+  a.pinterest {
+    width: 324px;
+  }
+  a.music {
+    width: 216px;
+  }
+  a.email {
+    width: 201px;
+  }
+  a.text {
+    width: 152px;
+  }
+  a.imessage {
+    width: 324px;
+  }
+  a.discord {
+    width: 276px;
+  }
+}
+.error {
+  background: url("../images/error.gif") center center/cover;
+  color: white;
+}
+.error p:not(:first-child) {
+  padding-top: 0;
+}
+
+body {
+  font-family: alga, serif;
+  font-weight: 500;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #242f35;
+    color: white;
+  }
+
+  a {
+    color: white;
+  }
+}
+a:hover, a:focus {
+  font-style: italic;
+  letter-spacing: 1px;
+}
+a:active {
+  color: black;
+}
+@media (prefers-color-scheme: dark) {
+  a:active {
+    color: white;
+  }
+}
+
+main {
+  max-width: 1700px;
+  padding: 12px 18px;
+  font-size: 32px;
+}
+main .intro {
+  font-size: 52px;
+  font-weight: 700;
+}
+main .links a, main .versions a {
+  display: inline-flex;
+  justify-content: center;
+}
+main .links {
+  font-size: 48px;
+  font-weight: 600;
+}
+main .links a:not(:last-child) {
+  margin-right: 18px;
+}
+main .versions {
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+main .versions > *:not(:last-child) {
+  margin-right: 12px;
+}
+main .desc {
+  font-size: 28px;
+}
+
+p:not(:first-child) {
+  padding-top: 18px;
+}
+p:not(:first-child).links {
+  padding-top: 0;
+}
+
+@media only screen and (min-width: 600px) {
+  main {
+    font-size: 48px;
+    padding: 12px 24px;
+  }
+  main p:not(:first-child) {
+    padding-top: 24px;
+  }
+  main .intro {
+    font-size: 72px;
+  }
+  main .links {
+    font-size: 64px;
+  }
+  main .links a:not(:last-child) {
+    margin-right: 24px;
+  }
+  main .versions {
+    font-size: 30px;
+  }
+  main .desc {
+    font-size: 32px;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  main {
+    font-size: 64px;
+  }
+  main p:not(:first-child) {
+    padding-top: 36px;
+  }
+  main .intro {
+    font-size: 96px;
+  }
+  main .links {
+    font-size: 84px;
+  }
+  main .links a:not(:last-child) {
+    margin-right: 36px;
+  }
+  main .versions {
+    font-size: 36px;
+  }
+  main .desc {
+    font-size: 52px;
+  }
+}

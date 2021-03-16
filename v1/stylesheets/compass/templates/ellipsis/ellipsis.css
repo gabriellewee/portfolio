@@ -1,0 +1,108 @@
+/*
+Error: Did not recognize your adapter specification (cannot load such file -- multi_json/adapters/json_gem). for `browsers'
+        on line 7 of /Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/compass-core-1.0.1/stylesheets/compass/_support.scss
+        from line 1 of /Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/compass-core-1.0.1/stylesheets/compass/css3/_deprecated-support.scss
+        from line 1 of /Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/compass-core-1.0.1/stylesheets/compass/typography/text/_ellipsis.scss
+        from line 4 of /Users/Gabrielle/Dropbox/gabriellew.ee/_sass/compass/templates/ellipsis/ellipsis.sass
+
+2: // $use-mozilla-ellipsis-binding to true before importing.
+3: $use-mozilla-ellipsis-binding: true
+4: @import compass/typography/text/ellipsis
+5: 
+6: // You can delete this sass file if you want, it's just an example of how to use the ellipsis mixin.
+7: // By default, ellipsis text is no-wrap. Pass false as the first argument if you don't want that.
+8: .ellipsis
+9:   +ellipsis
+
+Backtrace:
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/compass-core-1.0.1/stylesheets/compass/_support.scss:7
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/compass-core-1.0.1/stylesheets/compass/css3/_deprecated-support.scss:1
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/compass-core-1.0.1/stylesheets/compass/typography/text/_ellipsis.scss:1
+/Users/Gabrielle/Dropbox/gabriellew.ee/_sass/compass/templates/ellipsis/ellipsis.sass:4
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/script/tree/funcall.rb:303:in `reformat_argument_error'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/script/tree/funcall.rb:146:in `rescue in _perform'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/script/tree/funcall.rb:123:in `_perform'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/script/tree/node.rb:50:in `perform'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:458:in `visit_variable'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/stack.rb:79:in `block in with_base'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/stack.rb:115:in `with_frame'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/stack.rb:79:in `with_base'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:315:in `block (2 levels) in visit_import'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:315:in `map'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:315:in `block in visit_import'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/stack.rb:88:in `block in with_import'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/stack.rb:115:in `with_frame'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/stack.rb:88:in `with_import'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:312:in `visit_import'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/stack.rb:79:in `block in with_base'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/stack.rb:115:in `with_frame'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/stack.rb:79:in `with_base'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:315:in `block (2 levels) in visit_import'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:315:in `map'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:315:in `block in visit_import'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/stack.rb:88:in `block in with_import'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/stack.rb:115:in `with_frame'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/stack.rb:88:in `with_import'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:312:in `visit_import'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/stack.rb:79:in `block in with_base'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/stack.rb:115:in `with_frame'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/stack.rb:79:in `with_base'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:315:in `block (2 levels) in visit_import'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:315:in `map'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:315:in `block in visit_import'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/stack.rb:88:in `block in with_import'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/stack.rb:115:in `with_frame'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/stack.rb:88:in `with_import'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:312:in `visit_import'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/stack.rb:79:in `block in with_base'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/stack.rb:115:in `with_frame'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/stack.rb:79:in `with_base'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/base.rb:52:in `map'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:157:in `visit'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/tree/root_node.rb:20:in `render'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/engine.rb:268:in `render'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/plugin/compiler.rb:491:in `update_stylesheet'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/plugin/compiler.rb:209:in `each'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/sass-3.4.5/lib/sass/plugin/compiler.rb:293:in `watch'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/compass-1.0.1/lib/compass/sass_compiler.rb:46:in `watch!'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/compass-1.0.1/lib/compass/commands/watch_project.rb:41:in `perform'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/compass-1.0.1/lib/compass/commands/base.rb:18:in `execute'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/compass-1.0.1/lib/compass/commands/project_base.rb:19:in `execute'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/compass-1.0.1/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/compass-1.0.1/lib/compass/exec/sub_command_ui.rb:15:in `run!'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/compass-1.0.1/bin/compass:30:in `block in <top (required)>'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/compass-1.0.1/bin/compass:44:in `call'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/compass-1.0.1/bin/compass:44:in `<top (required)>'
+/Users/Gabrielle/.rvm/rubies/ruby-2.1.3/bin/compass:23:in `load'
+/Users/Gabrielle/.rvm/rubies/ruby-2.1.3/bin/compass:23:in `<main>'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3/bin/ruby_executable_hooks:15:in `eval'
+/Users/Gabrielle/.rvm/gems/ruby-2.1.3/bin/ruby_executable_hooks:15:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Did not recognize your adapter specification (cannot load such file -- multi_json/adapters/json_gem). for `browsers'\A         on line 7 of /Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/compass-core-1.0.1/stylesheets/compass/_support.scss\A         from line 1 of /Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/compass-core-1.0.1/stylesheets/compass/css3/_deprecated-support.scss\A         from line 1 of /Users/Gabrielle/.rvm/gems/ruby-2.1.3@global/gems/compass-core-1.0.1/stylesheets/compass/typography/text/_ellipsis.scss\A         from line 4 of /Users/Gabrielle/Dropbox/gabriellew.ee/_sass/compass/templates/ellipsis/ellipsis.sass\A \A 2: // $use-mozilla-ellipsis-binding to true before importing.\A 3: $use-mozilla-ellipsis-binding: true\A 4: @import compass/typography/text/ellipsis\A 5: \A 6: // You can delete this sass file if you want, it's just an example of how to use the ellipsis mixin.\A 7: // By default, ellipsis text is no-wrap. Pass false as the first argument if you don't want that.\A 8: .ellipsis\A 9:   +ellipsis"; }
