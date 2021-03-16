@@ -31,10 +31,14 @@ footer {
 			transform: scale(0.9);
 		}
 		&.v1 {
+			color: #d34836;
+			text-decoration-color: #d34836;
+		}
+		&.v2 {
 			color: #737375;
 			text-decoration-color: #737375;
 		}
-		&.v2 {
+		&.v3 {
 			color: $pink;
 			text-decoration-color: $pink;
 		}

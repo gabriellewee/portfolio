@@ -1,0 +1,70 @@
+/*
+Syntax error: File to import not found or unreadable: foundation/foundation-global.
+              Load paths:
+                /Users/Gabrielle/Dropbox/gabriellew.ee/_sass
+                /Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/frameworks/blueprint/stylesheets
+                /Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/frameworks/compass/stylesheets
+                Compass::SpriteImporter
+        on line 2 of /Users/Gabrielle/Dropbox/gabriellew.ee/_sass/mixins/_settings.scss
+        from line 2 of /Users/Gabrielle/Dropbox/gabriellew.ee/_sass/mixins/app.scss
+
+1: /Users/Gabrielle/Dropbox/gabriellew.ee/_sass/mixins/app.scss
+
+Backtrace:
+/Users/Gabrielle/Dropbox/gabriellew.ee/_sass/mixins/_settings.scss:2
+/Users/Gabrielle/Dropbox/gabriellew.ee/_sass/mixins/app.scss:2
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/tree/import_node.rb:67:in `rescue in import'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/tree/import_node.rb:45:in `import'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/tree/import_node.rb:28:in `imported_file'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/tree/import_node.rb:37:in `css_import?'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/tree/visitors/perform.rb:217:in `visit_import'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/tree/visitors/perform.rb:227:in `block in visit_import'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/tree/visitors/perform.rb:227:in `map'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/tree/visitors/perform.rb:227:in `visit_import'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/tree/visitors/perform.rb:128:in `visit_root'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/tree/root_node.rb:20:in `render'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/engine.rb:315:in `_render'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/sass-3.2.6/lib/sass/engine.rb:262:in `render'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/compiler.rb:140:in `block (2 levels) in compile'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/compiler.rb:139:in `block in compile'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/logger.rb:45:in `red'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/compiler.rb:138:in `compile'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/compiler.rb:118:in `compile_if_required'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/compiler.rb:103:in `block (2 levels) in run'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `each'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `block in run'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/compiler.rb:100:in `run'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:147:in `recompile'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:68:in `perform'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/commands/base.rb:18:in `execute'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/commands/project_base.rb:19:in `execute'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:15:in `run!'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/bin/compass:30:in `block in <top (required)>'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/bin/compass:44:in `call'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/bin/compass:44:in `<top (required)>'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/bin/compass:19:in `load'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/bin/compass:19:in `<main>'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/bin/ruby_noexec_wrapper:14:in `eval'
+/Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/bin/ruby_noexec_wrapper:14:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: File to import not found or unreadable: foundation/foundation-global.\A               Load paths:\A                 /Users/Gabrielle/Dropbox/gabriellew.ee/_sass\A                 /Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/frameworks/blueprint/stylesheets\A                 /Users/Gabrielle/.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/frameworks/compass/stylesheets\A                 Compass::SpriteImporter\A         on line 2 of /Users/Gabrielle/Dropbox/gabriellew.ee/_sass/mixins/_settings.scss\A         from line 2 of /Users/Gabrielle/Dropbox/gabriellew.ee/_sass/mixins/app.scss\A \A 1: /Users/Gabrielle/Dropbox/gabriellew.ee/_sass/mixins/app.scss"; }
