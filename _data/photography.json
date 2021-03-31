@@ -1,5 +1,32 @@
 [
 	{
+		"name": "sunset",
+		"date": "2021-03-30",
+		"location": "Lands End Lookout, San Francisco, CA, USA",
+		"camera": "iPhone 12 Pro Max",
+		"editor": "VSCO",
+		"aspect": "horizontal",
+		"tags": "sunset beach landscape outdoor water nature"
+	},
+	{
+		"name": "cherry-blossom",
+		"date": "2021-03-21",
+		"location": "Japantown, San Francisco, CA, USA",
+		"camera": "iPhone 12 Pro Max",
+		"editor": "VSCO",
+		"aspect": "vertical",
+		"tags": "trees flower plants outdoor nature"
+	},
+	{
+		"name": "fern-tree",
+		"date": "2021-03-20",
+		"location": "Nopa, San Francisco, CA, USA",
+		"camera": "iPhone 12 Pro Max",
+		"editor": "VSCO",
+		"aspect": "vertical",
+		"tags": "trees plants outdoor nature"
+	},
+	{
 		"name": "neddy",
 		"date": "2021-03-07",
 		"location": "Oakland, CA, USA",
