@@ -696,6 +696,7 @@ footer div {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 }
 footer h2:after {
   content: " ";
