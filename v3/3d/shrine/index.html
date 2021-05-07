@@ -49,6 +49,7 @@
 
 
 	<script src="/v3/static/js/modernizr.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/static/css/back.css"/>
 </head>
 
@@ -105,11 +106,21 @@
 			</li>
 			<li class="project-screenshots">
 				<div class="project-carousel">
-
-<div class="project-carousel-item"><img class="2x" src="/v3/static/images/screenshots/shrine-main.jpg" alt=""/></div>
-<div class="project-carousel-item"><img class="2x" src="/v3/static/images/screenshots/shrine-lamps.jpg" alt=""/></div>
-<div class="project-carousel-item"><img class="2x" src="/v3/static/images/screenshots/shrine-gates.jpg" alt=""/></div>
-
+					<div class="project-carousel-item">
+						<picture>
+							<img loading="lazy" alt="" src="/v3/static/images/screenshots/shrine-main.jpg" srcset="/v3/static/images/screenshots/shrine-main.jpg, /v3/static/images/screenshots/shrine-main@2x.jpg 2x"/>
+						</picture>
+					</div>
+					<div class="project-carousel-item">
+						<picture>
+							<img loading="lazy" alt="" src="/v3/static/images/screenshots/shrine-lamps.jpg" srcset="/v3/static/images/screenshots/shrine-lamps.jpg, /v3/static/images/screenshots/shrine-lamps@2x.jpg 2x"/>
+						</picture>
+					</div>
+					<div class="project-carousel-item">
+						<picture>
+							<img loading="lazy" alt="" src="/v3/static/images/screenshots/shrine-gates.jpg" srcset="/v3/static/images/screenshots/shrine-gates.jpg, /v3/static/images/screenshots/shrine-gates@2x.jpg 2x"/>
+						</picture>
+					</div>
 				</div>
 			</li>
 			<li class="project-tools" data-bottom-center="opacity: 0.1" data-center="opacity: 1" data-top="opacity: 1">
@@ -145,33 +156,45 @@
 
 <li class="full">
 	<a class="fluid" href="/v3/static/images/screenshots/shrine-detail-02.png">
-		<img src="/v3/static/images/screenshots/shrine-detail-02.png" alt="">
+		<picture>
+			<img loading="lazy" src="/v3/static/images/screenshots/shrine-detail-02.png" alt="">
+		</picture>
 	</a>
 </li>
 <li class="full">
 	<a class="fluid" href="/v3/static/images/screenshots/shrine-detail-04.png">
-		<img src="/v3/static/images/screenshots/shrine-detail-04.png" alt="">
+		<picture>
+			<img loading="lazy" src="/v3/static/images/screenshots/shrine-detail-04.png" alt="">
+		</picture>
 	</a>
 </li>
 <li class="default">
 	<a class="fluid" href="/v3/static/images/screenshots/shrine-detail-05.png">
-		<img src="/v3/static/images/screenshots/shrine-detail-05.png" alt="">
+		<picture>
+			<img loading="lazy" src="/v3/static/images/screenshots/shrine-detail-05.png" alt="">
+		</picture>
 	</a>
 </li>
 <li class="default">
 	<a class="fluid" href="/v3/static/images/screenshots/shrine-detail-06.png">
-		<img src="/v3/static/images/screenshots/shrine-detail-06.png" alt="">
+		<picture>
+			<img loading="lazy" src="/v3/static/images/screenshots/shrine-detail-06.png" alt="">
+		</picture>
 	</a>
 </li>
 <li class="default">
 	<a class="fluid" href="/v3/static/images/screenshots/shrine-detail-07.png">
-		<img src="/v3/static/images/screenshots/shrine-detail-07.png" alt="">
+		<picture>
+			<img loading="lazy" src="/v3/static/images/screenshots/shrine-detail-07.png" alt="">
+		</picture>
 	</a>
 </li>
 <li class="default">
 	<div class="polycount-container">
 		<a class="fluid" href="/v3/static/images/screenshots/shrine-detail-09.png">
-			<img src="/v3/static/images/screenshots/shrine-detail-09.png" alt="">
+			<picture>
+				<img loading="lazy" src="/v3/static/images/screenshots/shrine-detail-09.png" alt="">
+			</picture>
 		</a>
 		<span>594 tris</span>
 	</div>
@@ -179,7 +202,9 @@
 <li class="default">
 	<div class="polycount-container">
 		<a class="fluid" href="/v3/static/images/screenshots/shrine-detail-11.png">
-			<img src="/v3/static/images/screenshots/shrine-detail-11.png" alt="">
+			<picture>
+				<img loading="lazy" src="/v3/static/images/screenshots/shrine-detail-11.png" alt="">
+			</picture>
 		</a>
 		<span>852 tris</span>
 	</div>
@@ -187,7 +212,9 @@
 <li class="default">
 	<div class="polycount-container">
 		<a class="fluid" href="/v3/static/images/screenshots/shrine-detail-12.png">
-			<img src="/v3/static/images/screenshots/shrine-detail-12.png" alt="">
+			<picture>
+				<img loading="lazy" src="/v3/static/images/screenshots/shrine-detail-12.png" alt="">
+			</picture>
 		</a>
 		<span>936 tris</span>
 	</div>
@@ -195,7 +222,9 @@
 <li class="default">
 	<div class="polycount-container">
 		<a class="fluid" href="/v3/static/images/screenshots/shrine-detail-14.png">
-			<img src="/v3/static/images/screenshots/shrine-detail-14.png" alt="">
+			<picture>
+				<img loading="lazy" src="/v3/static/images/screenshots/shrine-detail-14.png" alt="">
+			</picture>
 		</a>
 		<span>2244 tris</span>
 	</div>
@@ -203,7 +232,9 @@
 <li class="default">
 	<div class="polycount-container">
 		<a class="fluid" href="/v3/static/images/screenshots/shrine-detail-16.png">
-			<img src="/v3/static/images/screenshots/shrine-detail-16.png" alt="">
+			<picture>
+				<img loading="lazy" src="/v3/static/images/screenshots/shrine-detail-16.png" alt="">
+			</picture>
 		</a>
 		<span>1986 tris</span>
 	</div>
@@ -290,7 +321,6 @@
 		<script>try{Typekit.load({ async: true });}catch(e){}</script>
 
 		<script src="/v3/static/js/skrollr.min.js"></script>
-		<script src="/v3/static/js/jquery.min.js"></script>
 		<script src="/v3/static/js/debounce.min.js"></script>
 		<script src="/v3/static/js/fluidbox.min.js"></script>
 		<script src="/v3/static/js/isotope.min.js"></script>
