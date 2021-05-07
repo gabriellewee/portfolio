@@ -49,6 +49,7 @@
 
 
 	<script src="/v3/static/js/modernizr.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/static/css/back.css"/>
 </head>
 
@@ -148,14 +149,36 @@
 			</li>
 			<li class="project-screenshots">
 				<div class="project-carousel">
-
-<div class="project-carousel-item"><img class="2x" src="/v3/static/images/screenshots/obina-home.jpg" alt=""/></div>
-<div class="project-carousel-item"><img class="2x" src="/v3/static/images/screenshots/obina-menu.jpg" alt=""/></div>
-<div class="project-carousel-item"><img class="2x" src="/v3/static/images/screenshots/obina-canopy.jpg" alt=""/></div>
-<div class="project-carousel-item"><img class="2x" src="/v3/static/images/screenshots/obina-grid.jpg" alt=""/></div>
-<div class="project-carousel-item"><img class="2x" src="/v3/static/images/screenshots/obina-error.jpg" alt=""/></div>
-<div class="project-carousel-item"><img class="2x" src="/v3/static/images/screenshots/obina-splash.jpg" alt=""/></div>
-
+					<div class="project-carousel-item">
+						<picture>
+							<img loading="lazy" alt="" src="/v3/static/images/screenshots/obina-home.jpg" srcset="/v3/static/images/screenshots/obina-home.jpg, /v3/static/images/screenshots/obina-home@2x.jpg 2x"/>
+						</picture>
+					</div>
+					<div class="project-carousel-item">
+						<picture>
+							<img loading="lazy" alt="" src="/v3/static/images/screenshots/obina-menu.jpg" srcset="/v3/static/images/screenshots/obina-menu.jpg, /v3/static/images/screenshots/obina-menu@2x.jpg 2x"/>
+						</picture>
+					</div>
+					<div class="project-carousel-item">
+						<picture>
+							<img loading="lazy" alt="" src="/v3/static/images/screenshots/obina-canopy.jpg" srcset="/v3/static/images/screenshots/obina-canopy.jpg, /v3/static/images/screenshots/obina-canopy@2x.jpg 2x"/>
+						</picture>
+					</div>
+					<div class="project-carousel-item">
+						<picture>
+							<img loading="lazy" alt="" src="/v3/static/images/screenshots/obina-grid.jpg" srcset="/v3/static/images/screenshots/obina-grid.jpg, /v3/static/images/screenshots/obina-grid@2x.jpg 2x"/>
+						</picture>
+					</div>
+					<div class="project-carousel-item">
+						<picture>
+							<img loading="lazy" alt="" src="/v3/static/images/screenshots/obina-error.jpg" srcset="/v3/static/images/screenshots/obina-error.jpg, /v3/static/images/screenshots/obina-error@2x.jpg 2x"/>
+						</picture>
+					</div>
+					<div class="project-carousel-item">
+						<picture>
+							<img loading="lazy" alt="" src="/v3/static/images/screenshots/obina-splash.jpg" srcset="/v3/static/images/screenshots/obina-splash.jpg, /v3/static/images/screenshots/obina-splash@2x.jpg 2x"/>
+						</picture>
+					</div>
 				</div>
 			</li>
 			<li class="project-tools" data-bottom-center="opacity: 0.1" data-center="opacity: 1" data-top="opacity: 1">
@@ -201,7 +224,9 @@
 
 <figure>
 	<a class="fluid" href="/v3/static/images/screenshots/obina-mockup@2x.jpg">
-		<img class="2x" src="/v3/static/images/screenshots/obina-mockup.jpg" alt=""/>
+		<picture>
+			<img loading="lazy" alt="" src="/v3/static/images/screenshots/obina-mockup.jpg" srcset="/v3/static/images/screenshots/obina-mockup.jpg, /v3/static/images/screenshots/obina-mockup@2x.jpg 2x"/>
+		</picture>
 	</a>
 	<figcaption>Jeselle’s original mockup</figcaption>
 </figure>
@@ -212,13 +237,17 @@
 	<ul>
 		<li>
 			<a class="fluid" href="/v3/static/images/screenshots/obina-wireframe@2x.jpg">
-				<img class="2x" src="/v3/static/images/screenshots/obina-wireframe.jpg" alt=""/>
+				<picture>
+					<img loading="lazy" alt="" src="/v3/static/images/screenshots/obina-wireframe.jpg" srcset="/v3/static/images/screenshots/obina-wireframe.jpg, /v3/static/images/screenshots/obina-wireframe@2x.jpg 2x"/>
+				</picture>
 			</a>
 			<figcaption>Jeselle’s wireframe for project details</figcaption>
 		</li>
 		<li>
 			<a class="fluid" href="/v3/static/images/screenshots/obina-details@2x.jpg">
-				<img class="2x" src="/v3/static/images/screenshots/obina-details.jpg" alt=""/>
+				<picture>
+					<img loading="lazy" alt="" src="/v3/static/images/screenshots/obina-details.jpg" srcset="/v3/static/images/screenshots/obina-details.jpg, /v3/static/images/screenshots/obina-details@2x.jpg 2x"/>
+				</picture>
 			</a>
 			<figcaption>The completed version with custom colors</figcaption>
 		</li>
@@ -355,7 +384,9 @@
 
 <figure>
 	<a class="fluid" href="/v3/static/images/screenshots/obina-uguru@2x.jpg">
-		<img class="2x" src="/v3/static/images/screenshots/obina-uguru.jpg" alt=""/>
+		<picture>
+			<img loading="lazy" alt="" src="/v3/static/images/screenshots/obina-uguru.jpg" srcset="/v3/static/images/screenshots/obina-uguru.jpg, /v3/static/images/screenshots/obina-uguru@2x.jpg 2x"/>
+		</picture>
 	</a>
 	<figcaption>Jeselle created this zig-zag layout using her utility classes and I created a standard class for the style so she could use it elsewhere.</figcaption>
 </figure>
@@ -370,7 +401,7 @@
 					<svg class="responsive-desktop" viewBox="0 0 512 422">
 						<defs>
 							<pattern id="pattern-desktop-obina" patternUnits="userSpaceOnUse" preserveAspectRatio="xMidYMin slice" width="100%" height="100%" viewBox="0 0 512 422">
-								<image class="2x" xlink:href="/v3/static/images/screenshots/obina-home.jpg" preserveAspectRatio="xMidYMin slice" x="24" y="24" width="466" height="260"/>
+								<image xlink:href="/v3/static/images/screenshots/obina-home@2x.jpg" preserveAspectRatio="xMidYMin slice" x="24" y="24" width="466" height="260"/>
 							</pattern>
 						</defs>
 						<g fill="none" fill-rule="evenodd">
@@ -384,7 +415,7 @@
 					<svg class="responsive-mobile" viewBox="0 0 63 126">
 						<defs>
 							<pattern id="pattern-mobile-obina" patternUnits="userSpaceOnUse" preserveAspectRatio="xMidYMin slice" width="63" height="126" viewBox="0 0 63 126">
-								<image class="2x" xlink:href="/v3/static/images/screenshots/obina-mobile.jpg" preserveAspectRatio="xMidYMin slice" x="4.5" y="15.1" width="54" height="95.8"/>
+								<image xlink:href="/v3/static/images/screenshots/obina-mobile@2x.jpg" preserveAspectRatio="xMidYMin slice" x="4.5" y="15.1" width="54" height="95.8"/>
 							</pattern>
 						</defs>
 						<g fill="none" fill-rule="evenodd">
@@ -476,7 +507,6 @@
 	<script>try{Typekit.load({ async: true });}catch(e){}</script>
 
 	<script src="/v3/static/js/skrollr.min.js"></script>
-	<script src="/v3/static/js/jquery.min.js"></script>
 	<script src="/v3/static/js/debounce.min.js"></script>
 	<script src="/v3/static/js/fluidbox.min.js"></script>
 	<script src="/v3/static/js/flickity.min.js"></script>

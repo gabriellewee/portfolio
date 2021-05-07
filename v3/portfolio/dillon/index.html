@@ -49,6 +49,7 @@
 
 
 	<script src="/v3/static/js/modernizr.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/static/css/back.css"/>
 </head>
 
@@ -157,12 +158,26 @@
 			</li>
 			<li class="project-screenshots">
 				<div class="project-carousel">
-
-<div class="project-carousel-item"><img class="2x" src="/v3/static/images/screenshots/dillon-mockup.jpg" alt=""/></div>
-<div class="project-carousel-item"><img class="2x" src="/v3/static/images/screenshots/dillon-home.jpg" alt=""/></div>
-<div class="project-carousel-item"><img class="2x" src="/v3/static/images/screenshots/dillon-lightbox.jpg" alt=""/></div>
-<div class="project-carousel-item"><img class="2x" src="/v3/static/images/screenshots/dillon-resume.jpg" alt=""/></div>
-
+					<div class="project-carousel-item">
+						<picture>
+							<img loading="lazy" alt="" src="/v3/static/images/screenshots/dillon-mockup.jpg" srcset="/v3/static/images/screenshots/dillon-mockup.jpg, /v3/static/images/screenshots/dillon-mockup@2x.jpg 2x"/>
+						</picture>
+					</div>
+					<div class="project-carousel-item">
+						<picture>
+							<img loading="lazy" alt="" src="/v3/static/images/screenshots/dillon-home.jpg" srcset="/v3/static/images/screenshots/dillon-home.jpg, /v3/static/images/screenshots/dillon-home@2x.jpg 2x"/>
+						</picture>
+					</div>
+					<div class="project-carousel-item">
+						<picture>
+							<img loading="lazy" alt="" src="/v3/static/images/screenshots/dillon-lightbox.jpg" srcset="/v3/static/images/screenshots/dillon-lightbox.jpg, /v3/static/images/screenshots/dillon-lightbox@2x.jpg 2x"/>
+						</picture>
+					</div>
+					<div class="project-carousel-item">
+						<picture>
+							<img loading="lazy" alt="" src="/v3/static/images/screenshots/dillon-resume.jpg" srcset="/v3/static/images/screenshots/dillon-resume.jpg, /v3/static/images/screenshots/dillon-resume@2x.jpg 2x"/>
+						</picture>
+					</div>
 				</div>
 			</li>
 			<li class="project-styles" data-bottom-center="opacity: 0.1" data-center="opacity: 1" data-top="opacity: 1">
@@ -287,7 +302,7 @@
 		<svg class="responsive-desktop" viewBox="0 0 512 422">
 			<defs>
 				<pattern id="pattern-desktop-dillon" patternUnits="userSpaceOnUse" preserveAspectRatio="xMidYMin slice" width="100%" height="100%" viewBox="0 0 512 422">
-					<image class="2x" xlink:href="/v3/static/images/screenshots/dillon-home.jpg" preserveAspectRatio="xMidYMin slice" x="24" y="24" width="466" height="260"/>
+					<image xlink:href="/v3/static/images/screenshots/dillon-home@2x.jpg" preserveAspectRatio="xMidYMin slice" x="24" y="24" width="466" height="260"/>
 				</pattern>
 			</defs>
 			<g fill="none" fill-rule="evenodd">
@@ -301,7 +316,7 @@
 		<svg class="responsive-mobile" viewBox="0 0 63 126">
 			<defs>
 				<pattern id="pattern-mobile-dillon" patternUnits="userSpaceOnUse" preserveAspectRatio="xMidYMin slice" width="63" height="126" viewBox="0 0 63 126">
-					<image class="2x" xlink:href="/v3/static/images/screenshots/dillon-mobile.jpg" preserveAspectRatio="xMidYMin slice" x="4.5" y="15.1" width="54" height="95.8"/>
+					<image xlink:href="/v3/static/images/screenshots/dillon-mobile@2x.jpg" preserveAspectRatio="xMidYMin slice" x="4.5" y="15.1" width="54" height="95.8"/>
 				</pattern>
 			</defs>
 			<g fill="none" fill-rule="evenodd">
@@ -396,6 +411,7 @@
 	<script src="/v3/static/js/skrollr.min.js"></script>
 	<script src="/v3/static/js/flickity.min.js"></script>
 	<script src="/v3/static/js/imagesloaded.min.js"></script>
+	<script src="/v3/static/js/fluidbox.min.js"></script>
 	<script src="/v3/static/js/main.min.js"></script>
 
 <a class="current-site v3" href="/">back to current</a>

@@ -49,6 +49,7 @@
 
 
 	<script src="/v3/static/js/modernizr.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/static/css/back.css"/>
 </head>
 
@@ -142,13 +143,31 @@
 			</li>
 			<li class="project-screenshots">
 				<div class="project-carousel">
-
-<div class="project-carousel-item"><img class="2x" src="/v3/static/images/screenshots/quake-home.jpg" alt=""/></div>
-<div class="project-carousel-item"><img class="2x" src="/v3/static/images/screenshots/quake-tf.jpg" alt=""/></div>
-<div class="project-carousel-item"><img class="2x" src="/v3/static/images/screenshots/quake-fill.jpg" alt=""/></div>
-<div class="project-carousel-item"><img class="2x" src="/v3/static/images/screenshots/quake-score.jpg" alt=""/></div>
-<div class="project-carousel-item"><img class="2x" src="/v3/static/images/screenshots/quake-buttons.jpg" alt=""/></div>
-
+					<div class="project-carousel-item">
+						<picture>
+							<img loading="lazy" alt="" src="/v3/static/images/screenshots/quake-home.jpg" srcset="/v3/static/images/screenshots/quake-home.jpg, /v3/static/images/screenshots/quake-home@2x.jpg 2x"/>
+						</picture>
+					</div>
+					<div class="project-carousel-item">
+						<picture>
+							<img loading="lazy" alt="" src="/v3/static/images/screenshots/quake-tf.jpg" srcset="/v3/static/images/screenshots/quake-tf.jpg, /v3/static/images/screenshots/quake-tf@2x.jpg 2x"/>
+						</picture>
+					</div>
+					<div class="project-carousel-item">
+						<picture>
+							<img loading="lazy" alt="" src="/v3/static/images/screenshots/quake-fill.jpg" srcset="/v3/static/images/screenshots/quake-fill.jpg, /v3/static/images/screenshots/quake-fill@2x.jpg 2x"/>
+						</picture>
+					</div>
+					<div class="project-carousel-item">
+						<picture>
+							<img loading="lazy" alt="" src="/v3/static/images/screenshots/quake-score.jpg" srcset="/v3/static/images/screenshots/quake-score.jpg, /v3/static/images/screenshots/quake-score@2x.jpg 2x"/>
+						</picture>
+					</div>
+					<div class="project-carousel-item">
+						<picture>
+							<img loading="lazy" alt="" src="/v3/static/images/screenshots/quake-buttons.jpg" srcset="/v3/static/images/screenshots/quake-buttons.jpg, /v3/static/images/screenshots/quake-buttons@2x.jpg 2x"/>
+						</picture>
+					</div>
 				</div>
 			</li>
 			<li class="project-styles" data-bottom-center="opacity: 0.1" data-center="opacity: 1" data-top="opacity: 1">
@@ -347,6 +366,7 @@
 	<script src="/v3/static/js/skrollr.min.js"></script>
 	<script src="/v3/static/js/flickity.min.js"></script>
 	<script src="/v3/static/js/imagesloaded.min.js"></script>
+	<script src="/v3/static/js/fluidbox.min.js"></script>
 	<script src="/v3/static/js/main.min.js"></script>
 
 <a class="current-site v3" href="/">back to current</a>
