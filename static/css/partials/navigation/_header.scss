@@ -6,6 +6,10 @@ header {
 	top: 0;
 	right: 0;
 	padding: $p;
+	padding-right: calc(#{$p} + env(safe-area-inset-left));
+	@include max {
+		padding-right: max(#{$p}, env(safe-area-inset-left));
+	}
 	z-index: 10;
 	.memoji {
 		will-change: opacity;

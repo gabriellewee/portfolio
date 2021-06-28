@@ -216,6 +216,12 @@ a {
   padding-right: calc(18px + env(safe-area-inset-left));
   list-style: none;
 }
+@supports (padding: max(0px)) {
+  .grid {
+    padding-left: max(18px, env(safe-area-inset-left));
+    padding-right: max(18px, env(safe-area-inset-left));
+  }
+}
 
 .grid-isotope {
   display: grid;
@@ -229,6 +235,14 @@ a {
   overflow: hidden;
 }
 
+@media only screen and (min-width: 568px) and (max-height: 450px) {
+  .subpage-grid .grid-isotope {
+    grid-template-columns: 1fr 1fr;
+  }
+  .subpage-grid .grid-isotope[style] .grid-item {
+    width: 50%;
+  }
+}
 @media only screen and (min-width: 1000px) {
   .grid-isotope {
     grid-template-columns: 1fr 1fr;
@@ -348,6 +362,12 @@ a {
   right: 0;
   z-index: 1;
   padding: 6px;
+  padding-right: calc(6px + env(safe-area-inset-left));
+}
+@supports (padding: max(0px)) {
+  .grid-item figure .grid-info .grid-down, .grid-item figure .grid-info .grid-external {
+    padding-right: max(6px, env(safe-area-inset-left));
+  }
 }
 .grid-item figure .grid-info .grid-down {
   top: 0;
@@ -361,15 +381,20 @@ a {
 .grid-item figure dl {
   background: rgba(17, 23, 26, 0.9);
   width: 100%;
-  padding: 12px;
+  padding: 12px calc(12px + env(safe-area-inset-left));
   font-size: 24px;
   color: white;
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .grid-item figure dl {
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     background: rgba(17, 23, 26, 0.4);
+  }
+}
+@supports (padding: max(0px)) {
+  .grid-item figure dl {
+    padding: 12px max(12px, env(safe-area-inset-left));
   }
 }
 .grid-item figure dl div {
@@ -491,7 +516,7 @@ a {
   padding: 12px 15px;
   color: white;
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .grid-filters label, .grid-filters a {
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
@@ -507,7 +532,7 @@ a {
   background: rgba(117, 96, 91, 0.9);
   color: white;
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .grid-filters a.active:not(.reset) {
     background: rgba(117, 96, 91, 0.8);
   }
@@ -517,7 +542,7 @@ a {
   transform: scale(1.05);
   color: #263238;
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .grid-filters a:hover, .grid-filters a:focus {
     background: rgba(233, 233, 235, 0.8);
   }
@@ -534,7 +559,7 @@ a {
   transform: scale(0.95);
   color: white;
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .grid-filters a:active {
     background: rgba(117, 96, 91, 0.8);
   }
@@ -595,7 +620,13 @@ header {
   top: 0;
   right: 0;
   padding: 12px;
+  padding-right: calc(12px + env(safe-area-inset-left));
   z-index: 10;
+}
+@supports (padding: max(0px)) {
+  header {
+    padding-right: max(12px, env(safe-area-inset-left));
+  }
 }
 header .memoji {
   will-change: opacity;
@@ -625,7 +656,7 @@ header span {
   background: rgba(233, 233, 235, 0.9);
   border-radius: 2em;
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   header span {
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
@@ -637,7 +668,7 @@ header span {
     background: rgba(17, 23, 26, 0.9);
     color: white;
   }
-  @supports (-webkit-backdrop-filter: blur(5px)) {
+  @supports (-webkit-backdrop-filter: blur(0px)) {
     header span {
       background: rgba(17, 23, 26, 0.8);
     }
@@ -811,8 +842,18 @@ figure, picture, img {
 .page-home .grid-item.text-only {
   padding: 12px calc(18px + env(safe-area-inset-left));
 }
+@supports (padding: max(0px)) {
+  .page-home .grid-item.text-only {
+    padding: 12px max(18px, env(safe-area-inset-left));
+  }
+}
 .page-home .grid-item.grid-only h2 {
   padding: 12px calc(18px + env(safe-area-inset-left));
+}
+@supports (padding: max(0px)) {
+  .page-home .grid-item.grid-only h2 {
+    padding: 12px max(18px, env(safe-area-inset-left));
+  }
 }
 .page-home .grid-item .more {
   display: flex;
@@ -992,7 +1033,7 @@ figure, picture, img {
 .page-home .grid-item-code .code-link-quadrant .overlay {
   background: rgba(192, 105, 64, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code .code-link-quadrant .overlay {
     background: rgba(192, 105, 64, 0.7);
   }
@@ -1000,7 +1041,7 @@ figure, picture, img {
 .page-home .grid-item-code .code-link-starter-icons .overlay {
   background: rgba(132, 152, 150, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code .code-link-starter-icons .overlay {
     background: rgba(132, 152, 150, 0.7);
   }
@@ -1008,7 +1049,7 @@ figure, picture, img {
 .page-home .grid-item-code .code-link-dark-mode .overlay {
   background: rgba(62, 72, 96, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code .code-link-dark-mode .overlay {
     background: rgba(62, 72, 96, 0.7);
   }
@@ -1016,7 +1057,7 @@ figure, picture, img {
 .page-home .grid-item-code .code-link-gradient .overlay {
   background: rgba(249, 162, 63, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code .code-link-gradient .overlay {
     background: rgba(249, 162, 63, 0.7);
   }
@@ -1024,7 +1065,7 @@ figure, picture, img {
 .page-home .grid-item-code .code-link-instagram .overlay {
   background: rgba(173, 166, 175, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code .code-link-instagram .overlay {
     background: rgba(173, 166, 175, 0.7);
   }
@@ -1032,7 +1073,7 @@ figure, picture, img {
 .page-home .grid-item-code .code-link-lotus .overlay {
   background: rgba(54, 58, 64, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code .code-link-lotus .overlay {
     background: rgba(54, 58, 64, 0.7);
   }
@@ -1040,7 +1081,7 @@ figure, picture, img {
 .page-home .grid-item-code .code-link-css-dev-conf .overlay {
   background: rgba(48, 64, 71, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code .code-link-css-dev-conf .overlay {
     background: rgba(48, 64, 71, 0.7);
   }
@@ -1048,7 +1089,7 @@ figure, picture, img {
 .page-home .grid-item-code .code-link-elletem .overlay {
   background: rgba(254, 191, 192, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code .code-link-elletem .overlay {
     background: rgba(254, 191, 192, 0.7);
   }
@@ -1056,7 +1097,7 @@ figure, picture, img {
 .page-home .grid-item-code .code-link-doortem .overlay {
   background: rgba(236, 157, 147, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code .code-link-doortem .overlay {
     background: rgba(236, 157, 147, 0.7);
   }
@@ -1064,7 +1105,7 @@ figure, picture, img {
 .page-home .grid-item-code .code-link-totem .overlay {
   background: rgba(62, 79, 83, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code .code-link-totem .overlay {
     background: rgba(62, 79, 83, 0.7);
   }
@@ -1072,7 +1113,7 @@ figure, picture, img {
 .page-home .grid-item-code .code-link-nested-nav .overlay {
   background: rgba(174, 191, 175, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code .code-link-nested-nav .overlay {
     background: rgba(174, 191, 175, 0.7);
   }
@@ -1080,7 +1121,7 @@ figure, picture, img {
 .page-home .grid-item-code .code-link-sprites .overlay {
   background: rgba(245, 148, 119, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code .code-link-sprites .overlay {
     background: rgba(245, 148, 119, 0.7);
   }
@@ -1088,7 +1129,7 @@ figure, picture, img {
 .page-home .grid-item-code .code-link-cubes .overlay {
   background: rgba(83, 160, 254, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code .code-link-cubes .overlay {
     background: rgba(83, 160, 254, 0.7);
   }
@@ -1096,7 +1137,7 @@ figure, picture, img {
 .page-home .grid-item-code .code-link-cards .overlay {
   background: rgba(240, 79, 84, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code .code-link-cards .overlay {
     background: rgba(240, 79, 84, 0.7);
   }
@@ -1104,7 +1145,7 @@ figure, picture, img {
 .page-home .grid-item-code .code-link-011 .overlay {
   background: rgba(75, 94, 107, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code .code-link-011 .overlay {
     background: rgba(75, 94, 107, 0.7);
   }
@@ -1112,7 +1153,7 @@ figure, picture, img {
 .page-home .grid-item-code .code-link-010 .overlay {
   background: rgba(67, 203, 157, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code .code-link-010 .overlay {
     background: rgba(67, 203, 157, 0.7);
   }
@@ -1120,7 +1161,7 @@ figure, picture, img {
 .page-home .grid-item-code .code-link-009 .overlay {
   background: rgba(235, 32, 69, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code .code-link-009 .overlay {
     background: rgba(235, 32, 69, 0.7);
   }
@@ -1128,7 +1169,7 @@ figure, picture, img {
 .page-home .grid-item-code .code-link-008 .overlay {
   background: rgba(240, 79, 84, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code .code-link-008 .overlay {
     background: rgba(240, 79, 84, 0.7);
   }
@@ -1136,7 +1177,7 @@ figure, picture, img {
 .page-home .grid-item-code .code-link-007 .overlay {
   background: rgba(114, 87, 103, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code .code-link-007 .overlay {
     background: rgba(114, 87, 103, 0.7);
   }
@@ -1144,7 +1185,7 @@ figure, picture, img {
 .page-home .grid-item-code .code-link-006 .overlay {
   background: rgba(245, 81, 95, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code .code-link-006 .overlay {
     background: rgba(245, 81, 95, 0.7);
   }
@@ -1152,7 +1193,7 @@ figure, picture, img {
 .page-home .grid-item-code .code-link-005 .overlay {
   background: rgba(201, 109, 216, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code .code-link-005 .overlay {
     background: rgba(201, 109, 216, 0.7);
   }
@@ -1160,7 +1201,7 @@ figure, picture, img {
 .page-home .grid-item-code .code-link-004 .overlay {
   background: rgba(252, 157, 107, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code .code-link-004 .overlay {
     background: rgba(252, 157, 107, 0.7);
   }
@@ -1168,7 +1209,7 @@ figure, picture, img {
 .page-home .grid-item-code .code-link-003 .overlay {
   background: rgba(173, 162, 149, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code .code-link-003 .overlay {
     background: rgba(173, 162, 149, 0.7);
   }
@@ -1176,7 +1217,7 @@ figure, picture, img {
 .page-home .grid-item-code .code-link-001 .overlay, .page-home .grid-item-code .code-link-002 .overlay {
   background: rgba(223, 183, 44, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code .code-link-001 .overlay, .page-home .grid-item-code .code-link-002 .overlay {
     background: rgba(223, 183, 44, 0.7);
   }
@@ -1189,9 +1230,19 @@ figure, picture, img {
 .page-home .grid-item-code h2 {
   padding: 18px calc(18px + env(safe-area-inset-left));
 }
+@supports (padding: max(0px)) {
+  .page-home .grid-item-code h2 {
+    padding: 18px max(18px, env(safe-area-inset-left));
+  }
+}
 .page-home .grid-item-code p {
   padding: 0 calc(18px + env(safe-area-inset-left)) 12px;
   font-size: 24px;
+}
+@supports (padding: max(0px)) {
+  .page-home .grid-item-code p {
+    padding: 0 max(18px, env(safe-area-inset-left)) 12px;
+  }
 }
 .page-home .grid-item-code p a {
   color: #73d1c8;
@@ -1216,6 +1267,11 @@ figure, picture, img {
 }
 .page-home .grid-item-code .cubes {
   padding: 0 calc(18px + env(safe-area-inset-left)) 18px;
+}
+@supports (padding: max(0px)) {
+  .page-home .grid-item-code .cubes {
+    padding: 0 max(18px, env(safe-area-inset-left)) 18px;
+  }
 }
 .page-home .grid-item-code .cubes .cp_embed_wrapper {
   border-radius: 6px;
@@ -1281,7 +1337,7 @@ figure, picture, img {
   font-weight: bold;
   text-transform: uppercase;
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code ul a .inside:before, .page-home .grid-item-code ul a .inside:after {
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
@@ -1326,7 +1382,7 @@ figure, picture, img {
   text-align: center;
   color: white;
 }
-@supports (-webkit-backdrop-filter: blur(5px)) {
+@supports (-webkit-backdrop-filter: blur(0px)) {
   .page-home .grid-item-code ul a .overlay {
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
@@ -1399,9 +1455,19 @@ figure, picture, img {
 .page-home .grid-item-plants h2, .page-home .grid-item-plants a {
   padding: 12px calc(18px + env(safe-area-inset-left));
 }
+@supports (padding: max(0px)) {
+  .page-home .grid-item-plants h2, .page-home .grid-item-plants a {
+    padding: 12px max(18px, env(safe-area-inset-left));
+  }
+}
 .page-home .grid-item-plants p {
   width: 100%;
   padding: 0 calc(18px + env(safe-area-inset-left)) 18px;
+}
+@supports (padding: max(0px)) {
+  .page-home .grid-item-plants p {
+    padding: 0 max(18px, env(safe-area-inset-left)) 18px;
+  }
 }
 .page-home .grid-item-plants span {
   font-style: italic;
@@ -1468,6 +1534,11 @@ figure, picture, img {
   padding: 12px calc(18px + env(safe-area-inset-left)) 0;
   width: 100%;
 }
+@supports (padding: max(0px)) {
+  .page-home .grid-item-gaming div:first-child {
+    padding: 12px max(18px, env(safe-area-inset-left)) 0;
+  }
+}
 @media only screen and (min-width: 600px) {
   .page-home .grid-item-gaming div:first-child {
     width: calc(100% - 200px);
@@ -1482,10 +1553,20 @@ figure, picture, img {
   width: 100%;
   padding: 18px calc(18px + env(safe-area-inset-left)) 0;
 }
+@supports (padding: max(0px)) {
+  .page-home .grid-item-gaming div:nth-child(2) {
+    padding: 18px max(18px, env(safe-area-inset-left)) 0;
+  }
+}
 @media only screen and (min-width: 600px) {
   .page-home .grid-item-gaming div:nth-child(2) {
     padding: 18px calc(18px + env(safe-area-inset-left)) 0 0;
     width: 200px;
+  }
+  @supports (padding: max(0px)) {
+    .page-home .grid-item-gaming div:nth-child(2) {
+      padding: 18px max(18px, env(safe-area-inset-left)) 0 0;
+    }
   }
 }
 @media only screen and (min-width: 1500px) {
@@ -1498,19 +1579,21 @@ figure, picture, img {
   margin: 0 auto;
 }
 .page-home .grid-item-gaming ul {
-  display: flex;
-  flex-flow: row wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 18px;
   list-style: none;
   width: 100%;
-  padding: 9px calc(9px + env(safe-area-inset-left));
+  padding: 18px calc(18px + env(safe-area-inset-left));
 }
-.page-home .grid-item-gaming ul li {
-  width: calc(100% / 3);
-  padding: 9px;
+@supports (padding: max(0px)) {
+  .page-home .grid-item-gaming ul {
+    padding: 18px max(18px, env(safe-area-inset-left));
+  }
 }
 @media only screen and (min-width: 600px) {
-  .page-home .grid-item-gaming ul li {
-    width: 20%;
+  .page-home .grid-item-gaming ul {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 }
 .page-home .grid-item-gaming ul svg {
