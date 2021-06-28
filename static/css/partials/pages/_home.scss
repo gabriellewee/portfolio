@@ -33,7 +33,7 @@ header {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: $p/2 $p $p;
+		padding: $p*.5 $p $p;
 		background: rgba(black, .5);
 		font-size: 24px;
 		font-style: italic;
@@ -169,7 +169,7 @@ header {
 		.cubes {
 			padding: 0 calc(#{$p*1.5} + env(safe-area-inset-left)) $p*1.5;
 			.cp_embed_wrapper {
-				@include border-radius($p/2);
+				@include border-radius($p*.5);
 			}
 		}
 		ul {
@@ -203,7 +203,7 @@ header {
 				will-change: transform;
 				transition: .2s ease-out;
 				display: block;
-				border-radius: $p/2;
+				border-radius: $p*.5;
 				&:hover, &:focus {
 					.overlay {
 						opacity: 1;
@@ -219,7 +219,7 @@ header {
 					display: block;
 				}
 				.inside {
-					@include border-radius($p/2);
+					@include border-radius($p*.5);
 					display: block;
 					position: relative;
 					&:before, &:after {
@@ -228,7 +228,7 @@ header {
 						position: absolute;
 						z-index: 0;
 						bottom: 0;
-						padding: $p/2 $p*.75;
+						padding: $p*.5 $p*.75;
 						font-family: $faune;
 						font-size: 12px;
 						font-weight: bold;
@@ -236,11 +236,11 @@ header {
 					}
 					&:before {
 						left: 0;
-						border-top-right-radius: $p/2;
+						border-top-right-radius: $p*.5;
 					}
 					&:after {
 						right: 0;
-						border-top-left-radius: $p/2;
+						border-top-left-radius: $p*.5;
 					}
 				}
 				&.award {
@@ -289,7 +289,7 @@ header {
 			padding-bottom: $p*1.5;
 		}
 		picture {
-			@include border-radius($p/2);
+			@include border-radius($p*.5);
 			&, img {
 				display: block;
 				width: 100%;
@@ -398,7 +398,7 @@ header {
 				background: white;
 				color: #2d2d2d;
 				border-radius: $p/3;
-				padding: $p/2 $p*.75;
+				padding: $p*.5 $p*.75;
 			}
 		}
 		div {
@@ -442,7 +442,7 @@ header {
 				}
 			}
 			svg {
-				border-radius: $p/2;
+				border-radius: $p*.5;
 			}
 		}
 	}

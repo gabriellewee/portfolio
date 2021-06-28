@@ -127,7 +127,7 @@ $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
 }
 
 @mixin focus-round {
-	box-shadow: 0 0 0 $p/4 $focus;
+	box-shadow: 0 0 0 $p*.25 $focus;
 }
 
 @mixin wavy($color: "") {

@@ -23,7 +23,7 @@ footer {
 		display: inline-block;
 		color: white;
 		border-radius: $p/6;
-		padding: $p/3 $p/2;
+		padding: $p/3 $p*.5;
 		&.v1 {
 			background: #d34836;
 			&:hover, &:focus {
