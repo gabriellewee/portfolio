@@ -17,7 +17,7 @@ eleventyNavigation:
 {% endblock %}
 
 {% block content %}
-	<section class="photography-grid">
+	<section class="photography-grid subpage-grid">
 		<ul class="grid-isotope">
 			{% for photo in photography %}
 				<li class="grid-item {{photo.tags|isoFilter}}">

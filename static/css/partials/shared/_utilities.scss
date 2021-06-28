@@ -101,8 +101,14 @@ $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
 	overflow: hidden;
 }
 
+@mixin max {
+	@supports (padding: max(0px)) {
+		@content;
+	}
+}
+
 @mixin blur($blur) {
-	@supports (-webkit-backdrop-filter: blur($blur)) {
+	@supports (-webkit-backdrop-filter: blur(0px)) {
 		-webkit-backdrop-filter: blur($blur);
 		backdrop-filter: blur($blur);
 		@content;
@@ -111,7 +117,7 @@ $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
 
 @mixin blur-all($blur, $bg, $crisp, $blurry) {
 	background: rgba($bg, $crisp);
-	@supports (-webkit-backdrop-filter: blur($blur)) {
+	@supports (-webkit-backdrop-filter: blur(0px)) {
 		-webkit-backdrop-filter: blur($blur);
 		backdrop-filter: blur($blur);
 		background: rgba($bg, $blurry);
@@ -121,7 +127,7 @@ $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
 
 @mixin blur-bg($bg, $crisp, $blur) {
 	background: rgba($bg, $crisp);
-	@supports (-webkit-backdrop-filter: blur(5px)) {
+	@supports (-webkit-backdrop-filter: blur(0px)) {
 		background: rgba($bg, $blur);
 	}
 }

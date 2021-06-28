@@ -22,11 +22,17 @@ header {
 		font-size: 32px;
 	}
 	&.text-only {
-		 padding: $p calc(#{$p*1.5} + env(safe-area-inset-left));
+		padding: $p calc(#{$p*1.5} + env(safe-area-inset-left));
+		@include max {
+	 		padding: $p max(#{$p*1.5}, env(safe-area-inset-left));
+	 	}
 	}
 	&.grid-only {
 		h2 {
 			padding: $p calc(#{$p*1.5} + env(safe-area-inset-left));
+			@include max {
+				padding: $p max(#{$p*1.5}, env(safe-area-inset-left));
+			}
 		}
 	}
 	.more {
@@ -140,10 +146,16 @@ header {
 		}
 		h2 {
 			padding: $p*1.5 calc(#{$p*1.5} + env(safe-area-inset-left));
+			@include max {
+				padding: $p*1.5 max(#{$p*1.5}, env(safe-area-inset-left));
+			}
 		}
 		p {
 			padding: 0 calc(#{$p*1.5} + env(safe-area-inset-left)) $p;
 			font-size: 24px;
+			@include max {
+				padding: 0 max(#{$p*1.5}, env(safe-area-inset-left)) $p;
+			}
 			a {
 				color: #73d1c8;
 				font-style: italic;
@@ -168,6 +180,9 @@ header {
 		}
 		.cubes {
 			padding: 0 calc(#{$p*1.5} + env(safe-area-inset-left)) $p*1.5;
+			@include max {
+				padding: 0 max(#{$p*1.5}, env(safe-area-inset-left)) $p*1.5;
+			}
 			.cp_embed_wrapper {
 				@include border-radius($p*.5);
 			}
@@ -343,10 +358,16 @@ header {
 		}
 		h2, a {
 			padding: $p calc(#{$p*1.5} + env(safe-area-inset-left));
+			@include max {
+				padding: $p max(#{$p*1.5}, env(safe-area-inset-left));
+			}
 		}
 		p {
 			width: 100%;
 			padding: 0 calc(#{$p*1.5} + env(safe-area-inset-left)) $p*1.5;
+			@include max {
+				padding: 0 max(#{$p*1.5}, env(safe-area-inset-left)) $p*1.5;
+			}
 		}
 		span {
 			font-style: italic;
@@ -405,6 +426,9 @@ header {
 			&:first-child {
 				padding: $p calc(#{$p*1.5} + env(safe-area-inset-left)) 0;
 				width: 100%;
+				@include max {
+					padding: $p max(#{$p*1.5}, env(safe-area-inset-left)) 0;
+				}
 				@media only screen and (min-width: 600px) {
 					width: calc(100% - 200px);
 				}
@@ -415,8 +439,14 @@ header {
 			&:nth-child(2) {
 				width: 100%;
 				padding: $p*1.5 calc(#{$p*1.5} + env(safe-area-inset-left)) 0;
+				@include max {
+					padding: $p*1.5 max(#{$p*1.5}, env(safe-area-inset-left)) 0;
+				}
 				@media only screen and (min-width: 600px) {
 					padding: $p*1.5 calc(#{$p*1.5} + env(safe-area-inset-left)) 0 0;
+					@include max {
+						padding: $p*1.5 max(#{$p*1.5}, env(safe-area-inset-left)) 0 0;
+					}
 					width: 200px;
 				}
 				@media only screen and (min-width: 1500px) {
@@ -429,17 +459,17 @@ header {
 			}
 		}
 		ul {
-			display: flex;
-			flex-flow: row wrap;
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-gap: $p*1.5;
 			list-style: none;
 			width: 100%;
-			padding: $p*.75 calc(#{$p*.75} + env(safe-area-inset-left));
-			li {
-				width: calc(100% / 3);
-				padding: $p*.75;
-				@media only screen and (min-width: 600px) {
-					width: 20%;
-				}
+			padding: $p*1.5 calc(#{$p*1.5} + env(safe-area-inset-left));
+			@include max {
+				padding: $p*1.5 max(#{$p*1.5}, env(safe-area-inset-left));
+			}
+			@media only screen and (min-width: 600px) {
+				grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 			}
 			svg {
 				border-radius: $p*.5;
