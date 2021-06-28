@@ -5,7 +5,7 @@ footer {
 	justify-content: center;
 	width: 100%;
 	text-align: center;
-	padding: $p*1.5;
+	padding: $p*1.5 $p*1.5 calc(#{$p*1.5} + env(safe-area-inset-bottom));
 	div {
 		display: flex;
 		align-items: center;

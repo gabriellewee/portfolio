@@ -22,11 +22,11 @@ header {
 		font-size: 32px;
 	}
 	&.text-only {
-		 padding: $p $p*1.5;
+		 padding: $p calc(#{$p*1.5} + env(safe-area-inset-left));
 	}
 	&.grid-only {
 		h2 {
-			padding: $p $p*1.5;
+			padding: $p calc(#{$p*1.5} + env(safe-area-inset-left));
 		}
 	}
 	.more {
@@ -139,10 +139,10 @@ header {
 			background: darken(#1e282c, 2%);
 		}
 		h2 {
-			padding: $p*1.5;
+			padding: $p*1.5 calc(#{$p*1.5} + env(safe-area-inset-left));
 		}
 		p {
-			padding: 0 $p*1.5 $p;
+			padding: 0 calc(#{$p*1.5} + env(safe-area-inset-left)) $p;
 			font-size: 24px;
 			a {
 				color: #73d1c8;
@@ -167,7 +167,7 @@ header {
 			color: #c792ea;
 		}
 		.cubes {
-			padding: 0 $p*1.5 $p*1.5;
+			padding: 0 calc(#{$p*1.5} + env(safe-area-inset-left)) $p*1.5;
 			.cp_embed_wrapper {
 				@include border-radius($p/2);
 			}
@@ -342,11 +342,11 @@ header {
 			font-size: 28px;
 		}
 		h2, a {
-			padding: $p $p*1.5;
+			padding: $p calc(#{$p*1.5} + env(safe-area-inset-left));
 		}
 		p {
 			width: 100%;
-			padding: 0 $p*1.5 $p*1.5;
+			padding: 0 calc(#{$p*1.5} + env(safe-area-inset-left)) $p*1.5;
 		}
 		span {
 			font-style: italic;
@@ -403,7 +403,7 @@ header {
 		}
 		div {
 			&:first-child {
-				padding: $p $p*1.5 0;
+				padding: $p calc(#{$p*1.5} + env(safe-area-inset-left)) 0;
 				width: 100%;
 				@media only screen and (min-width: 600px) {
 					width: calc(100% - 200px);
@@ -414,9 +414,9 @@ header {
 			}
 			&:nth-child(2) {
 				width: 100%;
-				padding: $p*1.5 $p*1.5 0;
+				padding: $p*1.5 calc(#{$p*1.5} + env(safe-area-inset-left)) 0;
 				@media only screen and (min-width: 600px) {
-					padding: $p*1.5 $p*1.5 0 0;
+					padding: $p*1.5 calc(#{$p*1.5} + env(safe-area-inset-left)) 0 0;
 					width: 200px;
 				}
 				@media only screen and (min-width: 1500px) {
@@ -433,7 +433,7 @@ header {
 			flex-flow: row wrap;
 			list-style: none;
 			width: 100%;
-			padding: $p*.75;
+			padding: $p*.75 calc(#{$p*.75} + env(safe-area-inset-left));
 			li {
 				width: calc(100% / 3);
 				padding: $p*.75;
