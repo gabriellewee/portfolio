@@ -344,6 +344,87 @@ header {
 			}
 		}
 	}
+	&-writing {
+		background: #efd6cf;
+		h2 {
+			padding: $p calc(#{$p*1.5} + env(safe-area-inset-left));
+			@include max {
+				padding: $p max(#{$p*1.5}, env(safe-area-inset-left));
+			}
+		}
+		div {
+			padding: 0 calc(#{$p*1.5} + env(safe-area-inset-left)) $p;
+			@include max {
+				padding: 0 max(#{$p*1.5}, env(safe-area-inset-left)) $p;
+			}
+		}
+		h3 {
+			margin-bottom: $p/2;
+			font-size: 24px;
+			font-weight: bold;
+			font-style: italic;
+			text-transform: lowercase;
+		}
+		ul {
+			list-style: none;
+			li {
+				display: flex;
+				flex-flow: row wrap;
+				align-items: center;
+				align-content: center;
+			}
+		}
+		a {
+			@include border-radius($p*.25);
+			will-change: background-color, color, transform;
+			transition: .1s ease-out;
+			display: block;
+			padding: $p*.5 $p $p*.75;
+			margin-bottom: $p;
+			background-color: #dd7355;
+			color: white;
+			font-size: 24px;
+			&:hover, &:focus {
+				background-color: white;
+				color: #dd7355;
+			}
+			&:not(:last-child) {
+				margin-right: $p;
+			}
+			&.link {
+				padding: $p*.5 $p;
+				font-size: 18px;
+				font-weight: bold;
+				text-transform: uppercase;
+			}
+			&.link-podcasts {
+				background-color: $ap;
+				&:hover, &:focus {
+					background-color: white;
+					color: $ap;
+				}
+			}
+			&.link-spotify {
+				background-color: $sp;
+				&:hover, &:focus {
+					background-color: white;
+					color: $sp;
+				}
+			}
+			&.link-medium {
+				background-color: $med;
+				&:hover, &:focus {
+					background-color: white;
+					color: $med;
+				}
+			}
+			&:active {
+				background-color: rgba(black, .5)!important;
+				color: white!important;
+				transform: scale(0.975);
+			}
+		}
+	}
 	&-plants {
 		background: #d1e7d6;
 		color: #272f29;

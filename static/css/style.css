@@ -926,8 +926,8 @@ figure, picture, img {
   font-size: 28px;
 }
 .page-home .grid-item-links a.codepen {
-  color: #fcd000;
-  text-decoration-color: #fcd000;
+  color: #ffdd40;
+  text-decoration-color: #ffdd40;
 }
 .page-home .grid-item-links a.dribbble {
   color: #ea4c89;
@@ -1434,6 +1434,94 @@ figure, picture, img {
 }
 .page-home .grid-item-art a:focus {
   text-decoration-color: #aca6a6;
+}
+.page-home .grid-item-writing {
+  background: #efd6cf;
+}
+.page-home .grid-item-writing h2 {
+  padding: 12px calc(18px + env(safe-area-inset-left));
+}
+@supports (padding: max(0px)) {
+  .page-home .grid-item-writing h2 {
+    padding: 12px max(18px, env(safe-area-inset-left));
+  }
+}
+.page-home .grid-item-writing div {
+  padding: 0 calc(18px + env(safe-area-inset-left)) 12px;
+}
+@supports (padding: max(0px)) {
+  .page-home .grid-item-writing div {
+    padding: 0 max(18px, env(safe-area-inset-left)) 12px;
+  }
+}
+.page-home .grid-item-writing h3 {
+  margin-bottom: 6px;
+  font-size: 24px;
+  font-weight: bold;
+  font-style: italic;
+  text-transform: lowercase;
+}
+.page-home .grid-item-writing ul {
+  list-style: none;
+}
+.page-home .grid-item-writing ul li {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  align-content: center;
+}
+.page-home .grid-item-writing a {
+  border-radius: 3px;
+  -webkit-clip-path: inset(0 0 0 0 round 3px 3px 3px 3px);
+  clip-path: inset(0 0 0 0 round 3px 3px 3px 3px);
+  overflow: hidden;
+  will-change: background-color, color, transform;
+  transition: 0.1s ease-out;
+  display: block;
+  padding: 6px 12px 9px;
+  margin-bottom: 12px;
+  background-color: #dd7355;
+  color: white;
+  font-size: 24px;
+}
+.page-home .grid-item-writing a:hover, .page-home .grid-item-writing a:focus {
+  background-color: white;
+  color: #dd7355;
+}
+.page-home .grid-item-writing a:not(:last-child) {
+  margin-right: 12px;
+}
+.page-home .grid-item-writing a.link {
+  padding: 6px 12px;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.page-home .grid-item-writing a.link-podcasts {
+  background-color: #7d50df;
+}
+.page-home .grid-item-writing a.link-podcasts:hover, .page-home .grid-item-writing a.link-podcasts:focus {
+  background-color: white;
+  color: #7d50df;
+}
+.page-home .grid-item-writing a.link-spotify {
+  background-color: #1cb954;
+}
+.page-home .grid-item-writing a.link-spotify:hover, .page-home .grid-item-writing a.link-spotify:focus {
+  background-color: white;
+  color: #1cb954;
+}
+.page-home .grid-item-writing a.link-medium {
+  background-color: #00AB6C;
+}
+.page-home .grid-item-writing a.link-medium:hover, .page-home .grid-item-writing a.link-medium:focus {
+  background-color: white;
+  color: #00AB6C;
+}
+.page-home .grid-item-writing a:active {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  color: white !important;
+  transform: scale(0.975);
 }
 .page-home .grid-item-plants {
   background: #d1e7d6;
