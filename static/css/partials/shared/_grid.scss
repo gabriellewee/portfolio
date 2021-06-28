@@ -1,8 +1,8 @@
 .grid {
 	display: grid;
 	grid-gap: $p*1.5;
-	padding-left: $p*1.5;
-	padding-right: $p*1.5;
+	padding-left: calc(#{$p*1.5} + env(safe-area-inset-left));
+	padding-right: calc(#{$p*1.5} + env(safe-area-inset-left));
 	list-style: none;
 }
 
