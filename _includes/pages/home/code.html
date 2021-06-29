@@ -10,8 +10,8 @@
 <ul class="regular grid">
 	{% for link in code %}
 		<li>
-			<a class="code-link-{{link.name}} {{link.style}}" href="https://codepen.io/gabriellewee/pen/{{link.uri}}/" target="_blank">
-				<span class="inside">
+			<a class="code-link-{{link.name}} {{link.style}}" href="https://codepen.io/gabriellewee/pen/{{link.uri}}/" target="_blank" aria-label="{{link.title}}">
+				<span class="inside" aria-hidden="true">
 					{% include 'svg/thumbnails/' + link.name + '.svg' %}
 					<span class="overlay">{{link.title}}</span>
 				</span>
@@ -24,8 +24,8 @@
 <ul class="ui grid">
 	{% for link in ui %}
 		<li>
-			<a class="code-link-{{link.name}}" href="https://codepen.io/gabriellewee/pen/{{link.uri}}/" target="_blank">
-				<span class="inside">
+			<a class="code-link-{{link.name}}" href="https://codepen.io/gabriellewee/pen/{{link.uri}}/" target="_blank" aria-label="Daily UI #{{link.name}}: {{link.title}}">
+				<span class="inside" aria-hidden="true">
 					{% include 'svg/ui/' + link.name + '.svg' %}
 					<span class="overlay">
 						<span>#{{link.name}}</span>
