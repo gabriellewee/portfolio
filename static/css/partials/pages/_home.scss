@@ -318,9 +318,9 @@ header {
 		background: #8f9eb8;
 		color: #121f2b;
 		a {
-			color: lighten(#8f9eb8, 5%);
+			color: lighten(#8f9eb8, 10%);
 			&:focus {
-				text-decoration-color: lighten(#8f9eb8, 5%);
+				text-decoration-color: lighten(#8f9eb8, 10%);
 			}
 		}
 	}

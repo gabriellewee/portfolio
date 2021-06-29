@@ -958,8 +958,8 @@ figure, picture, img {
   text-decoration-color: #FC471E;
 }
 .page-home .grid-item-links a.pinterest {
-  color: #cb2027;
-  text-decoration-color: #cb2027;
+  color: #e60023;
+  text-decoration-color: #e60023;
 }
 .page-home .grid-item-links a.music {
   color: #fa2d48;
@@ -976,16 +976,16 @@ figure, picture, img {
   }
 }
 .page-home .grid-item-links a.text {
-  color: #34C6D8;
-  text-decoration-color: #34C6D8;
+  color: #34a853;
+  text-decoration-color: #34a853;
 }
 .page-home .grid-item-links a.imessage {
   color: #0d84ff;
   text-decoration-color: #0d84ff;
 }
 .page-home .grid-item-links a.discord {
-  color: #8ea1e1;
-  text-decoration-color: #8ea1e1;
+  color: #5865F2;
+  text-decoration-color: #5865F2;
 }
 .page-home .grid-item-links a {
   will-change: transform;
@@ -1410,10 +1410,10 @@ figure, picture, img {
   color: #121f2b;
 }
 .page-home .grid-item-photography a {
-  color: #9facc2;
+  color: #aeb9cc;
 }
 .page-home .grid-item-photography a:focus {
-  text-decoration-color: #9facc2;
+  text-decoration-color: #aeb9cc;
 }
 .page-home .grid-item-graphic {
   background: #c46465;
