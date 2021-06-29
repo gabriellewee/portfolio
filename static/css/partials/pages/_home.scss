@@ -318,9 +318,9 @@ header {
 		background: #8f9eb8;
 		color: #121f2b;
 		a {
-			color: #8f9eb8;
+			color: lighten(#8f9eb8, 5%);
 			&:focus {
-				text-decoration-color: #8f9eb8;
+				text-decoration-color: lighten(#8f9eb8, 5%);
 			}
 		}
 	}
@@ -346,6 +346,7 @@ header {
 	}
 	&-writing {
 		background: #efd6cf;
+		color: $iron;
 		h2 {
 			padding: $p calc(#{$p*1.5} + env(safe-area-inset-left));
 			@include max {
