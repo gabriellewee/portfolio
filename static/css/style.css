@@ -733,57 +733,36 @@ footer h2:after {
   content: " ";
 }
 footer a {
-  will-change: transform;
+  will-change: transform, background-color, color;
   transition: 0.1s ease-out;
   display: inline-block;
+  background-color: #263238;
   color: white;
   border-radius: 2px;
   padding: 4px 6px;
 }
-footer a.v1 {
-  background: #d34836;
-}
-footer a.v1:hover, footer a.v1:focus {
-  color: #d34836;
-}
-footer a.v2 {
-  background: #737375;
-}
-footer a.v2:hover, footer a.v2:focus {
-  color: #737375;
-}
-footer a.v3 {
-  background: #eea293;
-}
-footer a.v3:hover, footer a.v3:focus {
-  color: #eea293;
-}
-footer a.v4 {
-  background: #75605B;
-}
-footer a.v4:hover, footer a.v4:focus {
-  color: #75605B;
-}
-footer a:hover, footer a:focus {
-  background: #f1f1f1;
-}
 footer a:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 footer a:focus {
   box-shadow: 0 0 0 3px #5E9ED6;
 }
+footer a:hover, footer a:focus {
+  background: #f1f1f1;
+  color: #263238;
+}
 footer a:active {
-  transform: scale(0.9);
-  background: #263238;
-  color: white !important;
+  transform: scale(0.95);
+  background-color: #F5C8BF;
+  color: #263238;
 }
 @media (prefers-color-scheme: dark) {
-  footer a:hover, footer a:focus {
-    background: white;
+  footer a {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #263238;
   }
   footer a:active {
-    background: #11171a;
+    background-color: #1c2429;
     color: white;
   }
 }
@@ -1687,6 +1666,129 @@ figure, picture, img {
 }
 .page-home .grid-item-gaming ul svg {
   border-radius: 6px;
+}
+
+.page-about main {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 12px 24px;
+}
+.page-about h1 {
+  font-size: 48px;
+  font-style: italic;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+.page-about h2 {
+  font-size: 32px;
+  margin-bottom: 6px;
+}
+.page-about section {
+  border-radius: 6px;
+  -webkit-clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
+  clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
+  overflow: hidden;
+  margin-bottom: 24px;
+  padding: 12px 24px;
+  background-color: #f1f1f1;
+}
+@media (prefers-color-scheme: dark) {
+  .page-about section {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+.page-about section a {
+  will-change: transform, background-color, color;
+  transition: 0.1s ease-out;
+  display: inline-block;
+  margin-bottom: 6px;
+  background-color: #5c656a;
+  color: white;
+  border-radius: 2px;
+  padding: 4px 6px;
+}
+.page-about section a:hover {
+  transform: scale(1.05);
+}
+.page-about section a:focus {
+  box-shadow: 0 0 0 3px #5E9ED6;
+}
+.page-about section a:hover, .page-about section a:focus {
+  background: white;
+  color: #263238;
+}
+.page-about section a:active {
+  transform: scale(0.95);
+  background-color: #263238;
+  color: white;
+}
+@media (prefers-color-scheme: dark) {
+  .page-about section a {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #263238;
+  }
+}
+.page-about .about-timeline ol {
+  position: relative;
+  list-style: none;
+  padding-left: 24px;
+}
+.page-about .about-timeline ol:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background-color: #263238;
+  border-radius: 2px;
+}
+.page-about .about-timeline li {
+  margin-bottom: 12px;
+}
+.page-about .about-timeline h3 {
+  position: relative;
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+.page-about .about-timeline h3:before, .page-about .about-timeline h3:after {
+  content: "";
+  display: block;
+  position: absolute;
+  background-color: #263238;
+}
+.page-about .about-timeline h3:before {
+  top: calc(50% + 2px);
+  left: -24px;
+  width: 24px;
+  height: 2px;
+  border-radius: 2px;
+}
+.page-about .about-timeline h3:after {
+  top: calc(50% + 2px - 3px);
+  left: -27px;
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
+}
+.page-about .about-timeline p {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+.page-about .about-credits ul {
+  list-style: none;
+  font-size: 18px;
+}
+.page-about .about-credits li {
+  display: inline;
+}
+.page-about .about-credits li:not(:last-child):after {
+  content: "·";
+  display: inline-block;
+  margin-left: 6px;
+  margin-right: 6px;
 }
 
 .page-error {

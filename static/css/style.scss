@@ -36,6 +36,9 @@ figure, picture, img {
 .page-home {
 	@import 'partials/pages/home';
 }
+.page-about {
+	@import 'partials/pages/about';
+}
 .page-error {
 	@import 'partials/pages/error';
 	background: url('../images/error.gif') center center / cover;
