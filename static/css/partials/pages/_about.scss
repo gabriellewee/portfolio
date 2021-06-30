@@ -1,0 +1,126 @@
+main {
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: $p $p*2;
+}
+
+h1 {
+	font-size: 48px;
+	font-style: italic;
+	font-weight: bold;
+	margin-bottom: $p;
+}
+
+h2 {
+	font-size: 32px;
+	margin-bottom: $p*.5;
+}
+
+section {
+	@include border-radius($p*.5);
+	margin-bottom: $p*2;
+	padding: $p $p*2;
+	background-color: #f1f1f1;
+	@media (prefers-color-scheme: dark) {
+		background-color: rgba(white, .2);
+	}
+	a {
+		will-change: transform, background-color, color;
+		transition: .1s ease-out;
+		display: inline-block;
+		margin-bottom: $p*.5;
+		background-color: mix($iron, white, 75%);
+		color: white;
+		border-radius: $p/6;
+		padding: $p/3 $p*.5;
+		&:hover {
+			transform: scale(1.05);
+		}
+		&:focus {
+			@include focus-round;
+		}
+		&:hover, &:focus {
+			background: white;
+			color: $iron;
+		}
+		&:active {
+			transform: scale(0.95);
+			background-color: $iron;
+			color: white;
+		}
+		@media (prefers-color-scheme: dark) {
+			background-color: rgba(white, .8);
+			color: $iron;
+		}
+	}
+}
+
+.about-timeline {
+	ol {
+		position: relative;
+		list-style: none;
+		padding-left: $p*2;
+		&:before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 2px;
+			height: 100%;
+			background-color: $iron;
+			border-radius: 2px;
+		}
+	}
+	li {
+		margin-bottom: $p;
+	}
+	h3 {
+		position: relative;
+		font-size: 24px;
+		margin-bottom: $p*.5;
+		&:before, &:after {
+			content: "";
+			display: block;
+			position: absolute;
+			background-color: $iron;
+		}
+		&:before {
+			top: calc(50% + 2px);
+			left: -$p*2;
+			width: $p*2;
+			height: 2px;
+			border-radius: 2px;
+		}
+		&:after {
+			top: calc(50% + 2px - 3px);
+			left: -$p*2 - 3px;
+			width: 8px;
+			height: 8px;
+			border-radius: 8px;
+		}
+	}
+	p {
+		font-size: 18px;
+		margin-bottom: $p*.5;
+	}
+}
+
+.about-credits {
+	ul {
+		list-style: none;
+		font-size: 18px;
+	}
+	li {
+		display: inline;
+		&:not(:last-child) {
+			&:after {
+				content: "\00B7";
+				display: inline-block;
+				margin-left: $p*.5;
+				margin-right: $p*.5;
+			}
+		}
+	}
+}
