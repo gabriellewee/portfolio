@@ -21,7 +21,7 @@ eleventyNavigation:
 
 {% block content %}
 	<section class="photography-grid subpage-grid">
-		<ul class="grid-isotope">
+		<ul class="grid-pack grid-isotope" role="list">
 			{% for photo in photography %}
 				<li class="grid-item {{photo.tags|isoFilter}}">
 					<figure role="group" aria-label="Photo, {{photo.location}}">
