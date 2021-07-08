@@ -43,6 +43,12 @@ header {
 			color: white;
 		}
 	}
+	.message {
+		.no-js & {
+			opacity: 1;
+			transform: none;
+		}
+	}
 	.go-home {
 		position: absolute;
 		right: $p*5;

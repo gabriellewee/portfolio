@@ -144,6 +144,11 @@ header {
 		@media (prefers-color-scheme: dark) {
 			background: darken(#1e282c, 2%);
 		}
+		.codepen {
+			@include border-radius($p*.5);
+			background: rgba(white, .1);
+			padding-top: $p;
+		}
 		h2 {
 			padding: $p*1.5 calc(#{$p*1.5} + env(safe-area-inset-left));
 			@include max {
