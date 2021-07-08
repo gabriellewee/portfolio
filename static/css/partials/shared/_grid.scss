@@ -251,6 +251,10 @@
 	@media only screen and (min-width: 1000px) {
 		padding: $p;
 	}
+	.no-js & {
+		visibility: hidden;
+		z-index: -1;
+	}
 	&, ul {
 		display: flex;
 		align-items: center;
