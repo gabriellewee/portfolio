@@ -21,7 +21,7 @@ eleventyNavigation:
 
 {% block content %}
 	<section class="graphic-grid subpage-grid">
-		<ul class="grid-isotope">
+		<ul class="grid-pack grid-isotope" role="list">
 			{% for graphic in graphic %}
 				<li class="grid-item {{graphic.tags|isoFilter}}">
 					<figure role="group" aria-label="Graphic, {{graphic.title}}">

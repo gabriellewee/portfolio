@@ -10,7 +10,7 @@
 	}
 }
 
-.grid-isotope {
+.grid-pack {
 	display: grid;
 	grid-template-columns: 1fr;
 	position: relative;
@@ -24,7 +24,7 @@
 
 @media only screen and (min-width: 568px) and (max-height: 450px) {
 	.subpage-grid {
-		.grid-isotope {
+		.grid-pack {
 			grid-template-columns: 1fr 1fr;
 			&[style] .grid-item {
 				width: 50%;
@@ -34,7 +34,7 @@
 }
 
 @media only screen and (min-width: 1000px) {
-	.grid-isotope {
+	.grid-pack {
 		grid-template-columns: 1fr 1fr;
 		&[style] .grid-item {
 			width: 50%;
@@ -43,7 +43,7 @@
 }
 
 @media only screen and (min-width: 2000px) {
-	.grid-isotope {
+	.grid-pack {
 		grid-template-columns: 1fr 1fr 1fr;
 		&[style] .grid-item {
 			width: calc(100% / 3);
@@ -52,7 +52,7 @@
 }
 
 @media only screen and (min-width: 3000px) {
-	.grid-isotope {
+	.grid-pack {
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 		&[style] .grid-item {
 			width: 25%;
