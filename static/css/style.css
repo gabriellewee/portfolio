@@ -286,9 +286,6 @@ a {
   width: 100%;
   height: 100%;
 }
-.grid-item figure .upscale {
-  image-rendering: pixelated;
-}
 .grid-item figure .grid-close {
   position: absolute;
   top: 0;
@@ -300,7 +297,7 @@ a {
 .grid-item figure label, .grid-item figure .grid-link {
   cursor: pointer;
 }
-.grid-item figure .grid-link, .grid-item figure .grid-external {
+.grid-item figure .grid-link, .grid-item figure .grid-expand {
   will-change: opacity;
   display: block;
   position: relative;
@@ -357,7 +354,7 @@ a {
   left: 0;
   width: 100%;
 }
-.grid-item figure .grid-info .grid-down, .grid-item figure .grid-info .grid-external {
+.grid-item figure .grid-info .grid-down, .grid-item figure .grid-info .grid-expand {
   position: absolute;
   right: 0;
   z-index: 1;
@@ -365,17 +362,17 @@ a {
   padding-right: calc(6px + env(safe-area-inset-left));
 }
 @supports (padding: max(0px)) {
-  .grid-item figure .grid-info .grid-down, .grid-item figure .grid-info .grid-external {
+  .grid-item figure .grid-info .grid-down, .grid-item figure .grid-info .grid-expand {
     padding-right: max(6px, env(safe-area-inset-left));
   }
 }
 .grid-item figure .grid-info .grid-down {
   top: 0;
 }
-.grid-item figure .grid-info .grid-external {
+.grid-item figure .grid-info .grid-expand {
   bottom: 0;
 }
-.grid-item figure .grid-info .grid-external:focus {
+.grid-item figure .grid-info .grid-expand:focus {
   box-shadow: inset 0 0 0 3px #5E9ED6;
 }
 .grid-item figure dl {
@@ -616,6 +613,86 @@ a {
   transition-delay: 0.25s;
 }
 
+.upscale {
+  image-rendering: pixelated;
+}
+
+.lightbox {
+  will-change: opacity, visibility, z-index;
+  transition: 0.2s opacity ease-out, 0s visibility 0.2s, 0s z-index 0.2s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: -999;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  background-color: rgba(17, 23, 26, 0.95);
+}
+@media only screen and (min-width: 1000px) {
+  .lightbox {
+    padding: 24px;
+  }
+}
+.lightbox:before {
+  animation: loading 1s linear infinite forwards;
+  content: "";
+  display: none;
+  position: absolute;
+  z-index: 0;
+  width: 50px;
+  height: 50px;
+  background-image: url(../images/icons/loading.svg);
+}
+.lightbox span {
+  opacity: 0;
+  will-change: opacity, display;
+  transition: 0.2s opacity ease-out 0.1s, 0s display 0.2s;
+  display: none;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.no-js .lightbox:target, .lightbox.active {
+  transition: 0.2s opacity ease-out;
+  opacity: 1;
+  visibility: visible;
+  z-index: 999;
+}
+.no-js .lightbox:target:before, .lightbox.active:before {
+  display: block;
+}
+.lightbox.active span.active {
+  transition: 0.2s opacity ease-out 0.1s;
+  display: block;
+  opacity: 1;
+}
+.no-js .lightbox:target span {
+  transition: 0.2s opacity ease-out 0.1s;
+  display: block;
+  opacity: 1;
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 header {
   display: flex;
   align-items: center;
