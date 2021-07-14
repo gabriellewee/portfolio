@@ -617,12 +617,9 @@ a {
   image-rendering: pixelated;
 }
 
-.lightbox {
-  will-change: opacity, visibility, z-index;
-  transition: 0.2s opacity ease-out, 0s visibility 0.2s, 0s z-index 0.2s;
+.lightbox, .lightbox-background {
   opacity: 0;
   visibility: hidden;
-  z-index: -999;
   display: flex;
   align-items: center;
   align-content: center;
@@ -634,23 +631,44 @@ a {
   right: 0;
   width: 100%;
   height: 100%;
-  padding: 12px;
-  background-color: rgba(17, 23, 26, 0.95);
 }
-@media only screen and (min-width: 1000px) {
-  .lightbox {
-    padding: 24px;
+
+.lightbox-background {
+  background: rgba(17, 23, 26, 0.95);
+  will-change: opacity, visibility, z-index;
+  transition: 0.2s opacity ease-out, 0s visibility 0.2s, 0s z-index 0.2s;
+  z-index: -999;
+}
+@supports (-webkit-backdrop-filter: blur(0px)) {
+  .lightbox-background {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    background: rgba(17, 23, 26, 0.9);
   }
 }
-.lightbox:before {
+.lightbox-background:before {
+  opacity: 0;
+  will-change: opacity, transform;
   animation: loading 1s linear infinite forwards;
   content: "";
-  display: none;
+  display: block;
   position: absolute;
   z-index: 0;
   width: 50px;
   height: 50px;
   background-image: url(../images/icons/loading.svg);
+}
+
+.lightbox {
+  will-change: visibility, z-index;
+  transition: 0s visibility 0.2s, 0s z-index 0.2s;
+  z-index: -998;
+  padding: 12px;
+}
+@media only screen and (min-width: 1000px) {
+  .lightbox {
+    padding: 24px;
+  }
 }
 .lightbox span {
   opacity: 0;
@@ -671,8 +689,14 @@ a {
   visibility: visible;
   z-index: 999;
 }
-.no-js .lightbox:target:before, .lightbox.active:before {
-  display: block;
+.no-js .lightbox:target ~ .lightbox-background, .lightbox.active ~ .lightbox-background {
+  transition: 0.2s opacity ease-out;
+  opacity: 1;
+  visibility: visible;
+  z-index: 998;
+}
+.no-js .lightbox:target ~ .lightbox-background:before, .lightbox.active ~ .lightbox-background:before {
+  opacity: 1;
 }
 .lightbox.active span.active {
   transition: 0.2s opacity ease-out 0.1s;

@@ -1,9 +1,6 @@
-.lightbox {
-	will-change: opacity, visibility, z-index;
-	transition: .2s opacity ease-out, 0s visibility .2s, 0s z-index .2s;
+.lightbox, .lightbox-background {
 	opacity: 0;
 	visibility: hidden;
-	z-index: -999;
 	display: flex;
 	align-items: center;
 	align-content: center;
@@ -15,20 +12,34 @@
 	right: 0;
 	width: 100%;
 	height: 100%;
-	padding: $p;
-	background-color: rgba(darken($iron, 10%), .95);
-	@media only screen and (min-width: 1000px) {
-		padding: $p*2;
-	}
+}
+
+.lightbox-background {
+	@include blur-all(5px, darken($iron, 10%), .95, .9);
+	will-change: opacity, visibility, z-index;
+	transition: .2s opacity ease-out, 0s visibility .2s, 0s z-index .2s;
+	z-index: -999;
 	&:before {
+		opacity: 0;
+		will-change: opacity, transform;
 		animation: loading 1s linear infinite forwards;
 		content: "";
-		display: none;
+		display: block;
 		position: absolute;
 		z-index: 0;
 		width: 50px;
 		height: 50px;
 		background-image: url(../images/icons/loading.svg);
+	}
+}
+
+.lightbox {
+	will-change: visibility, z-index;
+	transition: 0s visibility .2s, 0s z-index .2s;
+	z-index: -998;
+	padding: $p;
+	@media only screen and (min-width: 1000px) {
+		padding: $p*2;
 	}
 	span {
 		opacity: 0;
@@ -48,8 +59,14 @@
 		opacity: 1;
 		visibility: visible;
 		z-index: 999;
-		&:before {
-			display: block;
+		~ .lightbox-background {
+			transition: .2s opacity ease-out;
+			opacity: 1;
+			visibility: visible;
+			z-index: 998;
+			&:before {
+				opacity: 1;
+			}
 		}
 	}
 	&.active {
