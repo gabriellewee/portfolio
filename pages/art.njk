@@ -25,7 +25,7 @@ eleventyNavigation:
 			{% for art in art %}
 				<li class="grid-item {{art.tags|isoFilter}}" id="{{art.date|safe}}-{{art.name}}">
 					<figure role="group" aria-label="Art, {{art.title}}">
-						{% image './static/images/art/' + art.date + '-' + art.name + '.jpg', art.title, art.aspect, 'full', 'art' %}
+						{% image './static/images/art/' + art.date + '-' + art.name + '.jpg', art.description, art.aspect, 'full', 'art' %}
 						<figcaption>
 							<fieldset>
 								<input class="grid-input" id="{{art.date|safe}}-{{art.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this artwork"/>

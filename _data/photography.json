@@ -6,7 +6,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "vertical",
-		"tags": "portrait people outdoor"
+		"tags": "portrait people outdoor",
+		"description": "A man in a leather jacket, black hat, and black mask looking at his phone and earbuds leaning against a train station wall in SeaTac, Washington."
 	},
 	{
 		"name": "de-young",
@@ -15,7 +16,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "horizontal",
-		"tags": "art indoor nature"
+		"tags": "art indoor nature",
+		"description": "An art gallery empty of people in the de Young Museum in San Francisco."
 	},
 	{
 		"name": "pimz",
@@ -24,7 +26,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "vertical",
-		"tags": "portrait people outdoor nature"
+		"tags": "portrait people outdoor nature",
+		"description": "A blonde woman kneeling on a tree stump with her OneWheel in Sonora, California."
 	},
 	{
 		"name": "two-trees",
@@ -33,7 +36,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "vertical",
-		"tags": "trees park plants outdoor nature"
+		"tags": "trees park plants outdoor nature",
+		"description": "A dark tree and a light tree growing next to each other in San Francisco’s Golden Gate Park"
 	},
 	{
 		"name": "hills",
@@ -42,7 +46,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "horizontal",
-		"tags": "hills landscape park plants outdoor nature"
+		"tags": "hills landscape park plants outdoor nature",
+		"description": "Hills in the Marin Headlands in Sausalito, California."
 	},
 	{
 		"name": "orange-flower",
@@ -51,7 +56,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "vertical",
-		"tags": "park flower plants outdoor nature"
+		"tags": "park flower plants outdoor nature",
+		"description": "An orange flower in the Marin Headlands in Sausalito, California."
 	},
 	{
 		"name": "white-iris",
@@ -60,7 +66,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "vertical",
-		"tags": "park flower plants outdoor nature"
+		"tags": "park flower plants outdoor nature",
+		"description": "A white iris in the Marin Headlands in Sausalito, California."
 	},
 	{
 		"name": "sunset",
@@ -69,7 +76,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "horizontal",
-		"tags": "sunset beach landscape outdoor water nature"
+		"tags": "sunset beach landscape outdoor water nature",
+		"description": "Sunset over Lands End Lookout in San Francisco."
 	},
 	{
 		"name": "cherry-blossom",
@@ -78,7 +86,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "vertical",
-		"tags": "trees flower plants outdoor nature"
+		"tags": "trees flower plants outdoor nature",
+		"description": "Cherry blossoms lit by fairy lights during an evening in San Francisco’s Japantown."
 	},
 	{
 		"name": "fern-tree",
@@ -87,7 +96,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "vertical",
-		"tags": "trees plants outdoor nature"
+		"tags": "trees plants outdoor nature",
+		"description": "An unknown fern tree with delicate red edges along the fronds."
 	},
 	{
 		"name": "neddy",
@@ -96,7 +106,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "vertical",
-		"tags": "cat animal portrait indoor"
+		"tags": "cat animal portrait indoor",
+		"description": "A black and white tuxedo cat sitting on a pink velvet chair next to a red tablecloth."
 	},
 	{
 		"name": "home",
@@ -105,7 +116,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "horizontal",
-		"tags": "sunset landscape city outdoor"
+		"tags": "sunset landscape city outdoor",
+		"description": "Sunset in San Francisco."
 	},
 	{
 		"name": "agate-beach",
@@ -114,7 +126,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "horizontal",
-		"tags": "beach landscape outdoor park nature"
+		"tags": "beach landscape outdoor park nature",
+		"description": "Agate Beach at Patrick’s Point State Park in Trinidad, California."
 	},
 	{
 		"name": "sunset",
@@ -123,7 +136,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "horizontal",
-		"tags": "sunset beach landscape outdoor water nature"
+		"tags": "sunset beach landscape outdoor water nature",
+		"description": "Sunset over the harbor at Crescent City, California."
 	},
 	{
 		"name": "sunset",
@@ -132,7 +146,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "horizontal",
-		"tags": "sunset beach landscape outdoor water nature"
+		"tags": "sunset beach landscape outdoor water nature",
+		"description": "Sunset over a beach in Waldport, Oregon."
 	},
 	{
 		"name": "squad",
@@ -141,7 +156,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "vertical",
-		"tags": "sunset beach people landscape outdoor water nature"
+		"tags": "sunset beach people landscape outdoor water nature",
+		"description": "Four people in the distance walking towards the camera from the water’s edge at a beach in Waldport, Oregon."
 	},
 	{
 		"name": "hayden",
@@ -150,7 +166,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "vertical",
-		"tags": "portrait people beach outdoor"
+		"tags": "portrait people beach outdoor",
+		"description": "A portrait of a man in a gray poncho at a beach in Waldport, Oregon."
 	},
 	{
 		"name": "sunset",
@@ -159,7 +176,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "horizontal",
-		"tags": "sunset beach landscape outdoor water nature"
+		"tags": "sunset beach landscape outdoor water nature",
+		"description": "Sunset over a beach in Waldport, Oregon."
 	},
 	{
 		"name": "rainforest",
@@ -168,7 +186,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "horizontal",
-		"tags": "forest road trees plants landscape outdoor water nature"
+		"tags": "forest road trees plants landscape outdoor water nature",
+		"description": "Trees covered with moss by the side of a road in Cascadia, Oregon."
 	},
 	{
 		"name": "snow-3",
@@ -177,7 +196,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "vertical",
-		"tags": "forest road trees snow landscape outdoor nature"
+		"tags": "forest road trees snow landscape outdoor nature",
+		"description": "A snow-covered road in Willamette National Forest in Oregon."
 	},
 	{
 		"name": "snow-2",
@@ -186,7 +206,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "horizontal",
-		"tags": "forest road trees snow landscape outdoor nature"
+		"tags": "forest road trees snow landscape outdoor nature",
+		"description": "A snow-covered road in Willamette National Forest in Oregon."
 	},
 	{
 		"name": "snow-1",
@@ -195,7 +216,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "vertical",
-		"tags": "forest road trees snow landscape outdoor nature"
+		"tags": "forest road trees snow landscape outdoor nature",
+		"description": "Snow-covered trees by the side of a road in Willamette National Forest in Oregon."
 	},
 	{
 		"name": "hayden",
@@ -204,7 +226,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "vertical",
-		"tags": "portrait people beach indoor"
+		"tags": "portrait people beach indoor",
+		"description": "A man sitting in a vacation home by a beach in Waldport, Oregon."
 	},
 	{
 		"name": "baby-kitty",
@@ -213,7 +236,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "vertical",
-		"tags": "cat animal portrait indoor"
+		"tags": "cat animal portrait indoor",
+		"decsription": "A white and gray cat with green eyes laying down."
 	},
 	{
 		"name": "twin-peaks",
@@ -222,7 +246,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "horizontal",
-		"tags": "fog landscape city outdoor"
+		"tags": "fog landscape city outdoor",
+		"description": "Fog coming towards the camera from the top of Twin Peaks in San Francisco."
 	},
 	{
 		"name": "glen-canyon-flowers",
@@ -231,7 +256,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "vertical",
-		"tags": "park flower plants outdoor nature"
+		"tags": "park flower plants outdoor nature",
+		"description": "Unknown white flowers at Glen Canyon Park in San Francisco."
 	},
 	{
 		"name": "jeselle",
@@ -240,7 +266,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "vertical",
-		"tags": "portrait people outdoor city night"
+		"tags": "portrait people outdoor city night",
+		"description": "A person with long hair and a Britney Spears face mask holding an iridescent umbrells over their head."
 	},
 	{
 		"name": "chinatown",
@@ -249,7 +276,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "horizontal",
-		"tags": "outdoor city night rain landscape water"
+		"tags": "outdoor city night rain landscape water",
+		"description": "San Francsico Chinatown during a rainy night, decorated with red lanterns for Lunar New Year."
 	},
 	{
 		"name": "bay-bridge",
@@ -258,7 +286,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "vertical",
-		"tags": "outdoor city bridge water"
+		"tags": "outdoor city bridge water",
+		"description": "The San Francisco side of the Bay Bridge."
 	},
 	{
 		"name": "ocean-beach",
@@ -267,7 +296,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "horizontal",
-		"tags": "sunset landscape outdoor beach water nature people"
+		"tags": "sunset landscape outdoor beach water nature people",
+		"description": "Sunset over Ocean Beach in San Francisco."
 	},
 	{
 		"name": "lands-end",
@@ -276,7 +306,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "vertical",
-		"tags": "forest sunset landscape park outdoor nature"
+		"tags": "forest sunset landscape park outdoor nature",
+		"description": "Sunset through the trees at Lands End in San Francisco."
 	},
 	{
 		"name": "hayden",
@@ -285,7 +316,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "vertical",
-		"tags": "landscape city outdoor beach water bridge people"
+		"tags": "landscape city outdoor beach water bridge people",
+		"description": "A man with a helmet and protective gear with his back to the camera, facing an overlook for the Golden Gate Bridge in San Francisco."
 	},
 	{
 		"name": "home",
@@ -294,7 +326,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "horizontal",
-		"tags": "sunset landscape city outdoor"
+		"tags": "sunset landscape city outdoor",
+		"description": "Clouds and golden light over San Francisco."
 	},
 	{
 		"name": "hayden",
@@ -303,7 +336,8 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"aspect": "horizontal",
-		"tags": "landscape city outdoor water people"
+		"tags": "landscape city outdoor water people",
+		"description": "A man with his back to the camera, facing a rocky overlook and white ocean waves."
 	},
 	{
 		"name": "golden-gate",
@@ -312,7 +346,8 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"aspect": "horizontal",
-		"tags": "sunset landscape city outdoor beach water bridge"
+		"tags": "sunset landscape city outdoor beach water bridge",
+		"description": "San Francisco’s Golden Gate Bridge at sunset facing Sausalito."
 	},
 	{
 		"name": "lone-mountain",
@@ -321,7 +356,8 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"aspect": "horizontal",
-		"tags": "landscape city outdoor"
+		"tags": "landscape city outdoor",
+		"description": "San Francisco at golden hour from the top of Lone Mountain."
 	},
 	{
 		"name": "hayden",
@@ -330,7 +366,8 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"aspect": "vertical",
-		"tags": "people indoor perspective"
+		"tags": "people indoor perspective",
+		"description": "A man in a striped shirt standing in the center of a long aisle of white metal storage units."
 	},
 	{
 		"name": "salt-ponds",
@@ -339,7 +376,8 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"aspect": "horizontal",
-		"tags": "sunset landscape outdoor people"
+		"tags": "sunset landscape outdoor people",
+		"description": "Sunset over the salt ponds at Alviso Marina County Park in San Jose, California."
 	},
 	{
 		"name": "sunset",
@@ -348,7 +386,8 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"aspect": "horizontal",
-		"tags": "sunset landscape outdoor beach water nature people"
+		"tags": "sunset landscape outdoor beach water nature people",
+		"description": "Sunset at Black Rock Beach in Kaanapali, Hawaii"
 	},
 	{
 		"name": "thoreau",
@@ -357,7 +396,8 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"aspect": "vertical",
-		"tags": "landscape outdoor aerial nature"
+		"tags": "landscape outdoor aerial nature",
+		"description": "Red rock formations from a bird’s eye view of Thoreau, New Mexico."
 	},
 	{
 		"name": "palm-trees",
@@ -366,6 +406,7 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"aspect": "vertical",
-		"tags": "landscape outdoor water trees plants nature"
+		"tags": "landscape outdoor water trees plants nature",
+		"description": "Blue palm trees at Fairchild Tropical Botanic Garden in Coral Gables, Florida."
 	}
 ]
