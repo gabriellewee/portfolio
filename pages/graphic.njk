@@ -23,16 +23,16 @@ eleventyNavigation:
 	<section class="graphic-grid subpage-grid">
 		<ul class="grid-pack grid-isotope" role="list">
 			{% for graphic in graphic %}
-				<li class="grid-item {{graphic.tags|isoFilter}}">
+				<li class="grid-item {{graphic.tags|isoFilter}}" id="{{graphic.date|safe}}-{{graphic.name}}">
 					<figure role="group" aria-label="Graphic, {{graphic.title}}">
 						{% graphic './static/images/graphic/' + graphic.date + '-' + graphic.name + '.png', graphic.title, 'full' %}
 						<figcaption>
 							<fieldset>
-								<input class="grid-input" id="{{graphic.date|safe}}-{{graphic.name}}" type="checkbox" tabindex="0" aria-label="Show information about this graphic"/>
-								<label class="grid-close" for="{{graphic.date|safe}}-{{graphic.name}}"></label>
-								<label class="grid-link" for="{{graphic.date|safe}}-{{graphic.name}}">{% include 'svg/icons/info.svg' %}</label>
+								<input class="grid-input" id="{{graphic.date|safe}}-{{graphic.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this graphic"/>
+								<label class="grid-close" for="{{graphic.date|safe}}-{{graphic.name}}-info"></label>
+								<label class="grid-link" for="{{graphic.date|safe}}-{{graphic.name}}-info">{% include 'svg/icons/info.svg' %}</label>
 								<div class="grid-info">
-									<label class="grid-down" for="{{graphic.date|safe}}-{{graphic.name}}">{% include 'svg/icons/caret-down.svg' %}</label>
+									<label class="grid-down" for="{{graphic.date|safe}}-{{graphic.name}}-info">{% include 'svg/icons/caret-down.svg' %}</label>
 									<dl>
 										<div>
 											<dt class="title">Title</dt>
@@ -50,25 +50,25 @@ eleventyNavigation:
 											<dt>Tools</dt><dd>{{graphic.tools}}</dd>
 										</div>
 									</dl>
-									<a class="grid-external" target="_blank" href="/static/images/graphic/{{graphic.date|safe}}-{{graphic.name}}.png" tabindex="-1">{% include 'svg/icons/external.svg' %}</a>
+									<a class="grid-expand" href="#{{graphic.date|safe}}-{{graphic.name}}-lightbox" aria-label="Expand graphic" tabindex="-1">{% include 'svg/icons/expand.svg' %}</a>
 								</div>
 							</fieldset>
 						</figcaption>
 					</figure>
 				</li>
 			{% endfor %}
-			<li class="grid-item">
+			<li class="grid-item" id="2013-07-08-eeveelutions">
 				<figure>
 					<picture>
 						<img class="upscale" src="{% include 'svg/eeveelutions.txt' %}" width="100" height="100" alt="Pixel Eeveelutions"/>
 					</picture>
 					<figcaption>
 						<fieldset>
-							<input id="2013-07-08-eeveelutions" type="checkbox"/>
-							<label class="grid-close" for="2013-07-08-eeveelutions"></label>
-							<label class="grid-link" for="2013-07-08-eeveelutions" tabindex="0">{% include 'svg/icons/info.svg' %}</label>
+							<input id="2013-07-08-eeveelutions-info" type="checkbox"/>
+							<label class="grid-close" for="2013-07-08-eeveelutions-info"></label>
+							<label class="grid-link" for="2013-07-08-eeveelutions-info" tabindex="0">{% include 'svg/icons/info.svg' %}</label>
 							<div class="grid-info">
-								<label class="grid-down" for="2013-07-08-eeveelutions">{% include 'svg/icons/caret-down.svg' %}</label>
+								<label class="grid-down" for="2013-07-08-eeveelutions-info">{% include 'svg/icons/caret-down.svg' %}</label>
 								<dl>
 									<div>
 										<dt class="title">Title</dt><dd>Pixel Eeveelutions</dd>
@@ -80,7 +80,7 @@ eleventyNavigation:
 										<dt>Tools</dt><dd>Photoshop CS6</dd>
 									</div>
 								</dl>
-								<a class="grid-external" target="blank" href="/static/images/graphic/2013-07-08-eeveelutions.png" tabindex="-1">{% include 'svg/icons/external.svg' %}</a>
+								<a class="grid-expand" href="#2013-07-08-eeveelutions-lightbox" aria-label="Expand graphic" tabindex="-1">{% include 'svg/icons/expand.svg' %}</a>
 							</div>
 						</fieldset>
 					</figcaption>
@@ -88,6 +88,7 @@ eleventyNavigation:
 			</li>
 		</ul>
 	</section>
+
 	<nav class="grid-filters" aria-label="Tags List">
 		<input id="grid-filters" type="checkbox" tabindex="0" aria-label="Show tags"/>
 		<h2><label for="grid-filters"><span>Tags</span></label></h2>
@@ -97,4 +98,15 @@ eleventyNavigation:
 			<li><a class="grid-filter reset" href="#" data-filter="*">reset</a></li>
 		</ul>
 	</nav>
+
+	<div class="lightbox-group">
+		{% for graphic in graphic %}
+			<a class="lightbox" id="{{graphic.date|safe}}-{{graphic.name}}-lightbox" href="#{{graphic.date|safe}}-{{graphic.name}}">
+				<span style="background-image: url('/static/images/graphic/{{graphic.date|safe}}-{{graphic.name}}.png')"></span>
+			</a>
+		{% endfor %}
+		<a class="lightbox" id="2013-07-08-eeveelutions-lightbox" href="#2013-07-08-eeveelutions">
+			<span class="upscale" style="background-image: url('/static/images/graphic/2013-07-08-eeveelutions.png')"></span>
+		</a>
+	</div>
 {% endblock %}

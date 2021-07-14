@@ -1,0 +1,73 @@
+.lightbox {
+	will-change: opacity, visibility, z-index;
+	transition: .2s opacity ease-out, 0s visibility .2s, 0s z-index .2s;
+	opacity: 0;
+	visibility: hidden;
+	z-index: -999;
+	display: flex;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	padding: $p;
+	background-color: rgba(darken($iron, 10%), .95);
+	@media only screen and (min-width: 1000px) {
+		padding: $p*2;
+	}
+	&:before {
+		animation: loading 1s linear infinite forwards;
+		content: "";
+		display: none;
+		position: absolute;
+		z-index: 0;
+		width: 50px;
+		height: 50px;
+		background-image: url(../images/icons/loading.svg);
+	}
+	span {
+		opacity: 0;
+		will-change: opacity, display;
+		transition: .2s opacity ease-out .1s, 0s display .2s;
+		display: none;
+		position: relative;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+	.no-js &:target, &.active {
+		transition: .2s opacity ease-out;
+		opacity: 1;
+		visibility: visible;
+		z-index: 999;
+		&:before {
+			display: block;
+		}
+	}
+	&.active {
+		span.active {
+			transition: .2s opacity ease-out .1s;
+			display: block;
+			opacity: 1;
+		}
+	}
+	.no-js &:target {
+		span {
+			transition: .2s opacity ease-out .1s;
+			display: block;
+			opacity: 1;
+		}
+	}
+}
+
+@keyframes loading {
+	from { transform: rotate(0deg) } to { transform: rotate(360deg); }
+}

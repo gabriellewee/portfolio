@@ -23,16 +23,16 @@ eleventyNavigation:
 	<section class="graphic-grid subpage-grid">
 		<ul class="grid-pack grid-isotope" role="list">
 			{% for art in art %}
-				<li class="grid-item {{art.tags|isoFilter}}">
+				<li class="grid-item {{art.tags|isoFilter}}" id="{{art.date|safe}}-{{art.name}}">
 					<figure role="group" aria-label="Art, {{art.title}}">
 						{% image './static/images/art/' + art.date + '-' + art.name + '.jpg', art.title, art.aspect, 'full', 'art' %}
 						<figcaption>
 							<fieldset>
-								<input class="grid-input" id="{{art.date|safe}}-{{art.name}}" type="checkbox" tabindex="0" aria-label="Show information about this art"/>
-								<label class="grid-close" for="{{art.date|safe}}-{{art.name}}"></label>
-								<label class="grid-link" for="{{art.date|safe}}-{{art.name}}">{% include 'svg/icons/info.svg' %}</label>
+								<input class="grid-input" id="{{art.date|safe}}-{{art.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this artwork"/>
+								<label class="grid-close" for="{{art.date|safe}}-{{art.name}}-info"></label>
+								<label class="grid-link" for="{{art.date|safe}}-{{art.name}}-info">{% include 'svg/icons/info.svg' %}</label>
 								<div class="grid-info">
-									<label class="grid-down" for="{{art.date|safe}}-{{art.name}}">{% include 'svg/icons/caret-down.svg' %}</label>
+									<label class="grid-down" for="{{art.date|safe}}-{{art.name}}-info">{% include 'svg/icons/caret-down.svg' %}</label>
 									<dl>
 										<div>
 											<dt class="title">Title</dt><dd>{{art.title}}</dd>
@@ -44,7 +44,7 @@ eleventyNavigation:
 											<dt>Tools</dt><dd>{{art.tools}}</dd>
 										</div>
 									</dl>
-									<a class="grid-external" target="blank" href="/static/images/graphic/{{art.date|safe}}-{{art.name}}.png" tabindex="-1">{% include 'svg/icons/external.svg' %}</a>
+									<a class="grid-expand" href="#{{art.date|safe}}-{{art.name}}-lightbox" aria-label="Expand artwork" tabindex="-1">{% include 'svg/icons/expand.svg' %}</a>
 								</div>
 							</fieldset>
 						</figcaption>
@@ -53,6 +53,7 @@ eleventyNavigation:
 			{% endfor %}
 		</ul>
 	</section>
+
 	<nav class="grid-filters" aria-label="Tags List">
 		<input id="grid-filters" type="checkbox" tabindex="0" aria-label="Show tags"/>
 		<h2><label for="grid-filters"><span>Tags</span></label></h2>
@@ -63,4 +64,12 @@ eleventyNavigation:
 			<li><a class="grid-filter reset" href="#" data-filter="*">reset</a></li>
 		</ul>
 	</nav>
+
+	<div class="lightbox-group">
+		{% for art in art %}
+			<a class="lightbox" id="{{art.date|safe}}-{{art.name}}-lightbox" href="#{{art.date|safe}}-{{art.name}}">
+				<span style="background-image: url('/static/images/art/{{art.date|safe}}-{{art.name}}.jpg')"></span>
+			</a>
+		{% endfor %}
+	</div>
 {% endblock %}

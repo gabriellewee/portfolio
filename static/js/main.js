@@ -39,17 +39,17 @@ if (filterList != null) {
 let infoInputs = Array.from(document.querySelectorAll('.grid-input'));
 infoInputs.forEach(el=>{
 	let info = el.nextElementSibling.nextElementSibling.nextElementSibling;
-	let external = info.querySelector('.grid-external');
+	let expand = info.querySelector('.grid-expand');
 	info.setAttribute('aria-hidden', 'false');
 	el.addEventListener('keypress', e => {
 		if (e.keyCode == 13) {
 			if(el.checked){
 				el.checked = false;
-				external.tabIndex = -1;
+				expand.tabIndex = -1;
 				info.setAttribute('aria-hidden', 'true');
 			} else {
 				el.checked = true;
-				external.tabIndex = 0;
+				expand.tabIndex = 0;
 				info.setAttribute('aria-hidden', 'false');
 			}
 		}
@@ -67,3 +67,29 @@ tagsInput.addEventListener('keypress',  e => {
 	}
 });
 
+let expandLinks = document.querySelectorAll('.grid-expand');
+let lightboxLinks = document.querySelectorAll('.lightbox');
+expandLinks.forEach((el, index)=>{
+	let spanLink = lightboxLinks[index].querySelector('span');
+	el.addEventListener('click', e => {
+		e.preventDefault();
+		lightboxLinks[index].classList.add("active");
+		imagesLoaded(spanLink, { background: true }, function(){
+			spanLink.classList.add("active");
+		});
+	});
+});
+lightboxLinks.forEach(el=>{
+	el.addEventListener('click', e => {
+		e.preventDefault();
+		el.classList.remove("active");
+		el.querySelector('span').classList.remove("active");
+	});
+	document.addEventListener('keydown', e => {
+		let keyCode = e.keyCode;
+		if (keyCode === 27) {
+			el.classList.remove("active");
+			el.querySelector('span').classList.remove("active");
+		}
+	});
+});
