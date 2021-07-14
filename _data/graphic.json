@@ -5,7 +5,8 @@
 		"title": "#dailyui 011",
 		"url": "https://dribbble.com/shots/3940740--dailyui-011-Flash-Messages",
 		"tools": "Sketch",
-		"tags": "ui 2d sketch vector"
+		"tags": "ui 2d sketch vector",
+		"description": "Mockup of flash messages for success, loading, and error dialogs."
 	},
 	{
 		"name": "desk-setup",
@@ -13,7 +14,8 @@
 		"title": "Desk Setup",
 		"url": "https://dribbble.com/shots/3508741-Desk-Setup",
 		"tools": "Sketch",
-		"tags": "illustration 2d sketch vector"
+		"tags": "illustration 2d sketch vector",
+		"description": "Vector art of my desk setup. From left to right - phone on phone stand, laptop, monitor, takeout coffee, lamp, Sailor Moon figurines, tissue box."
 	},
 	{
 		"name": "crystal-carillon",
@@ -21,15 +23,17 @@
 		"title": "Crystal Carillon",
 		"url": "https://dribbble.com/shots/3490913-Sailor-Moon-Crystal-Carillon",
 		"tools": "Sketch",
-		"tags": "illustration 2d sketch vector"
+		"tags": "illustration 2d sketch vector",
+		"description": "Vector art inspired by the Crystal Carillon from Sailor Moon, a heart-shaped weapon with a bell at the bottom."
 	},
 	{
 		"name": "portfolio-icons",
 		"date": "2017-02-15",
 		"title": "Portfolio Icons",
-		"url": "https://dribbble.com/3278273-Self-Portrait",
+		"url": "https://dribbble.com/shots/3295593-Portfolio-Icons",
 		"tools": "Sketch",
-		"tags": "ui 2d sketch vector"
+		"tags": "ui 2d sketch vector",
+		"description": "Icons I created in Sketch to represent the different projects in my portfolio. Each icon is a simiplified version of the project’s home page."
 	},
 	{
 		"name": "easing-graphs",
@@ -37,35 +41,40 @@
 		"title": "Easing Graphs",
 		"url": "https://dribbble.com/shots/3325157-Easing-Graphs-Freebie",
 		"tools": "Sketch",
-		"tags": "ui 2d sketch vector"
+		"tags": "ui 2d sketch vector",
+		"description": "Easing graphs useful for web development and animation, specifically highlighting easeInOut, eaesOutCirc, and easeInOutCirc."
 	},
 	{
 		"name": "self-portrait",
 		"date": "2017-02-09",
 		"title": "Self-Portrait",
-		"url": "https://dribbble.com/3278273-Self-Portrait",
+		"url": "https://dribbble.com/shots/3278273-Self-Portrait",
 		"tools": "Sketch",
-		"tags": "illustration 2d sketch vector"
+		"tags": "illustration 2d sketch vector",
+		"description": "Self-portrait done with vector art, where I’m wearing a pink turtleneck and purple lipstick."
 	},
 	{
 		"name": "scissor-blade",
 		"date": "2015-03-01",
 		"title": "Scissor Blade",
 		"tools": "Maya 2015, Photoshop CS6, Quixel Suite",
-		"tags": "3d maya"
+		"tags": "3d maya",
+		"description": "A 3d model inspired by the Scissor Blade from Studio Trigger’s Kill la Kill anime."
 	},
 	{
 		"name": "transistor",
 		"date": "2015-01-13",
 		"title": "Transistor Blade",
 		"tools": "Illustrator CS6",
-		"tags": "illustration 2d illustrator vector"
+		"tags": "illustration 2d illustrator vector",
+		"description": "Vector art inspired by the blade from Supergiant Games’ Transistor."
 	},
 	{
 		"name": "shrine",
 		"date": "2014-07-14",
 		"title": "Shrine Tower",
 		"tools": "Maya 2014",
-		"tags": "3d maya"
+		"tags": "3d maya",
+		"description": "A shrine tower 3d model based off of the Fushimi Inari shrine in Kyoto, Japan."
 	}
 ]

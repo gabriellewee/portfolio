@@ -5,7 +5,8 @@
 		"date": "2020-03-12",
 		"tools": "Procreate",
 		"aspect": "horizontal",
-		"tags": "typography digital plants"
+		"tags": "typography digital plants",
+		"description": "A sketch of a philodendron Melanochrysum leaf using digital brushes to imitate color pencils."
 	},
 	{
 		"name": "slow-down",
@@ -13,7 +14,8 @@
 		"date": "2020-07-31",
 		"tools": "Procreate",
 		"aspect": "horizontal",
-		"tags": "typography digital nature"
+		"tags": "typography digital nature",
+		"description": "White cursive text that reads “Slow Down” over a faded photograph of trees."
 	},
 	{
 		"name": "therapy",
@@ -21,7 +23,8 @@
 		"date": "2020-07-28",
 		"tools": "Procreate",
 		"aspect": "horizontal",
-		"tags": "typography digital plants"
+		"tags": "typography digital plants",
+		"description": "White text that reads “Therapy” on a pink background, with white “Silent Princess” flowers inspired by the Legend of Zelda franchise curled around the letters."
 	},
 	{
 		"name": "portrait",
@@ -29,7 +32,8 @@
 		"date": "2020-03-16",
 		"tools": "Procreate",
 		"aspect": "vertical",
-		"tags": "digital portrait monochrome"
+		"tags": "digital portrait monochrome",
+		"description": "A monochrome black and white digital portrait of a friend."
 	},
 	{
 		"name": "skeletons",
@@ -37,15 +41,17 @@
 		"date": "2013-03-19",
 		"tools": "charcoal, pencil, conté crayon",
 		"aspect": "horizontal",
-		"tags": "traditional monochrome"
+		"tags": "traditional monochrome",
+		"description": "A fantasy-inspired traditional sketch of human skeletons with magical fire in their hands riding on large cheetah skeletons."
 	},
 	{
 		"name": "figure",
-		"title": "Figure based on art by Pierre-Paul Prud'hon",
+		"title": "Figure based on art by Pierre-Paul Prud’hon",
 		"date": "2013-03-09",
 		"tools": "pencil, conté crayon",
 		"aspect": "vertical",
-		"tags": "traditional monochrome"
+		"tags": "traditional monochrome",
+		"description": "Figure based on art by Pierre-Paul Prud’hon"
 	},
 	{
 		"name": "figure-drawing-08",
@@ -54,7 +60,7 @@
 		"tools": "pencil",
 		"aspect": "vertical",
 		"tags": "traditional figure monochrome",
-		"year": true
+		"description": "Figure drawing of a woman done in pencil"
 	},
 	{
 		"name": "figure-drawing-07",
@@ -63,7 +69,7 @@
 		"tools": "pencil",
 		"aspect": "vertical",
 		"tags": "traditional figure monochrome",
-		"year": true
+		"description": "Figure drawing of a woman done in pencil"
 	},
 	{
 		"name": "figure-drawing-06",
@@ -72,7 +78,7 @@
 		"tools": "pencil",
 		"aspect": "vertical",
 		"tags": "traditional figure monochrome",
-		"year": true
+		"description": "Figure drawing of a woman done in pencil"
 	},
 	{
 		"name": "figure-drawing-05",
@@ -81,7 +87,7 @@
 		"tools": "pencil",
 		"aspect": "vertical",
 		"tags": "traditional figure monochrome",
-		"year": true
+		"description": "Figure drawing of a woman done in pencil"
 	},
 	{
 		"name": "figure-drawing-04",
@@ -90,7 +96,7 @@
 		"tools": "pencil",
 		"aspect": "vertical",
 		"tags": "traditional figure monochrome",
-		"year": true
+		"description": "Figure drawing of a woman done in pencil"
 	},
 	{
 		"name": "figure-drawing-03",
@@ -99,7 +105,7 @@
 		"tools": "pencil",
 		"aspect": "vertical",
 		"tags": "traditional figure monochrome",
-		"year": true
+		"description": "Figure drawing of a woman done in pencil"
 	},
 	{
 		"name": "figure-drawing-02",
@@ -108,7 +114,7 @@
 		"tools": "pencil",
 		"aspect": "vertical",
 		"tags": "traditional figure monochrome",
-		"year": true
+		"description": "Figure drawing of a woman done in pencil"
 	},
 	{
 		"name": "figure-drawing-01",
@@ -117,6 +123,6 @@
 		"tools": "pencil",
 		"aspect": "vertical",
 		"tags": "traditional figure monochrome",
-		"year": true
+		"description": "Figure drawing of a woman done in pencil"
 	}
 ]
