@@ -1481,47 +1481,84 @@ figure, picture, img {
   grid-template-columns: repeat(2, 1fr);
   padding-bottom: 18px;
 }
-.page-home .grid-item-photography picture, .page-home .grid-item-graphic picture, .page-home .grid-item-art picture {
-  border-radius: 6px;
-  -webkit-clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
-  clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
-  overflow: hidden;
-}
 .page-home .grid-item-photography picture, .page-home .grid-item-photography picture img, .page-home .grid-item-graphic picture, .page-home .grid-item-graphic picture img, .page-home .grid-item-art picture, .page-home .grid-item-art picture img {
   display: block;
   width: 100%;
 }
-.page-home .grid-item-photography div, .page-home .grid-item-graphic div, .page-home .grid-item-art div {
+.page-home .grid-item-photography .expand, .page-home .grid-item-photography div, .page-home .grid-item-graphic .expand, .page-home .grid-item-graphic div, .page-home .grid-item-art .expand, .page-home .grid-item-art div {
+  display: block;
   position: relative;
+}
+.page-home .grid-item-photography .expand, .page-home .grid-item-graphic .expand, .page-home .grid-item-art .expand {
+  border-radius: 6px;
+  -webkit-clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
+  clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+.page-home .grid-item-photography .expand:before, .page-home .grid-item-photography .expand:after, .page-home .grid-item-graphic .expand:before, .page-home .grid-item-graphic .expand:after, .page-home .grid-item-art .expand:before, .page-home .grid-item-art .expand:after {
+  opacity: 0;
+  will-change: opacity;
+  transition: 0.2s ease-out;
+  content: "";
+  display: block;
+  position: absolute;
+}
+.page-home .grid-item-photography .expand:before, .page-home .grid-item-graphic .expand:before, .page-home .grid-item-art .expand:before {
+  z-index: 2;
+  background-image: url(../images/icons/expand.svg);
+  width: 25px;
+  height: 25px;
+}
+.page-home .grid-item-photography .expand:after, .page-home .grid-item-graphic .expand:after, .page-home .grid-item-art .expand:after {
+  background: rgba(17, 23, 26, 0.9);
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+@supports (-webkit-backdrop-filter: blur(0px)) {
+  .page-home .grid-item-photography .expand:after, .page-home .grid-item-graphic .expand:after, .page-home .grid-item-art .expand:after {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    background: rgba(17, 23, 26, 0.4);
+  }
+}
+.page-home .grid-item-photography .expand:hover:before, .page-home .grid-item-photography .expand:hover:after, .page-home .grid-item-photography .expand:focus:before, .page-home .grid-item-photography .expand:focus:after, .page-home .grid-item-graphic .expand:hover:before, .page-home .grid-item-graphic .expand:hover:after, .page-home .grid-item-graphic .expand:focus:before, .page-home .grid-item-graphic .expand:focus:after, .page-home .grid-item-art .expand:hover:before, .page-home .grid-item-art .expand:hover:after, .page-home .grid-item-art .expand:focus:before, .page-home .grid-item-art .expand:focus:after {
+  opacity: 1;
 }
 .page-home .grid-item-photography {
   background: #8f9eb8;
   color: #121f2b;
 }
-.page-home .grid-item-photography a {
+.page-home .grid-item-photography .more {
   color: #aeb9cc;
 }
-.page-home .grid-item-photography a:focus {
+.page-home .grid-item-photography .more:focus {
   text-decoration-color: #aeb9cc;
 }
 .page-home .grid-item-graphic {
   background: #c46465;
   color: white;
 }
-.page-home .grid-item-graphic a {
+.page-home .grid-item-graphic .more {
   color: #F5C8BF;
 }
-.page-home .grid-item-graphic a:focus {
+.page-home .grid-item-graphic .more:focus {
   text-decoration-color: #F5C8BF;
 }
 .page-home .grid-item-art {
   background: #75605B;
   color: white;
 }
-.page-home .grid-item-art a {
+.page-home .grid-item-art .more {
   color: #aca6a6;
 }
-.page-home .grid-item-art a:focus {
+.page-home .grid-item-art .more:focus {
   text-decoration-color: #aca6a6;
 }
 .page-home .grid-item-writing {
