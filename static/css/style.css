@@ -1515,6 +1515,10 @@ figure, picture, img {
 }
 .page-home .grid-item-photography .expand, .page-home .grid-item-graphic .expand, .page-home .grid-item-art .expand {
   border-radius: 6px;
+  overflow: hidden;
+}
+.page-home .grid-item-photography .expand picture, .page-home .grid-item-graphic .expand picture, .page-home .grid-item-art .expand picture {
+  border-radius: 6px;
   -webkit-clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
   clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
   overflow: hidden;
@@ -1523,7 +1527,7 @@ figure, picture, img {
   align-content: center;
   justify-content: center;
 }
-.page-home .grid-item-photography .expand:before, .page-home .grid-item-photography .expand:after, .page-home .grid-item-graphic .expand:before, .page-home .grid-item-graphic .expand:after, .page-home .grid-item-art .expand:before, .page-home .grid-item-art .expand:after {
+.page-home .grid-item-photography .expand picture:before, .page-home .grid-item-photography .expand picture:after, .page-home .grid-item-graphic .expand picture:before, .page-home .grid-item-graphic .expand picture:after, .page-home .grid-item-art .expand picture:before, .page-home .grid-item-art .expand picture:after {
   opacity: 0;
   will-change: opacity;
   transition: 0.2s ease-out;
@@ -1531,13 +1535,13 @@ figure, picture, img {
   display: block;
   position: absolute;
 }
-.page-home .grid-item-photography .expand:before, .page-home .grid-item-graphic .expand:before, .page-home .grid-item-art .expand:before {
+.page-home .grid-item-photography .expand picture:before, .page-home .grid-item-graphic .expand picture:before, .page-home .grid-item-art .expand picture:before {
   z-index: 2;
   background-image: url(../images/icons/expand.svg);
   width: 25px;
   height: 25px;
 }
-.page-home .grid-item-photography .expand:after, .page-home .grid-item-graphic .expand:after, .page-home .grid-item-art .expand:after {
+.page-home .grid-item-photography .expand picture:after, .page-home .grid-item-graphic .expand picture:after, .page-home .grid-item-art .expand picture:after {
   background: rgba(17, 23, 26, 0.9);
   z-index: 1;
   top: 0;
@@ -1546,14 +1550,17 @@ figure, picture, img {
   height: 100%;
 }
 @supports (-webkit-backdrop-filter: blur(0px)) {
-  .page-home .grid-item-photography .expand:after, .page-home .grid-item-graphic .expand:after, .page-home .grid-item-art .expand:after {
+  .page-home .grid-item-photography .expand picture:after, .page-home .grid-item-graphic .expand picture:after, .page-home .grid-item-art .expand picture:after {
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     background: rgba(17, 23, 26, 0.4);
   }
 }
-.page-home .grid-item-photography .expand:hover:before, .page-home .grid-item-photography .expand:hover:after, .page-home .grid-item-photography .expand:focus:before, .page-home .grid-item-photography .expand:focus:after, .page-home .grid-item-graphic .expand:hover:before, .page-home .grid-item-graphic .expand:hover:after, .page-home .grid-item-graphic .expand:focus:before, .page-home .grid-item-graphic .expand:focus:after, .page-home .grid-item-art .expand:hover:before, .page-home .grid-item-art .expand:hover:after, .page-home .grid-item-art .expand:focus:before, .page-home .grid-item-art .expand:focus:after {
+.page-home .grid-item-photography .expand:hover picture:before, .page-home .grid-item-photography .expand:hover picture:after, .page-home .grid-item-photography .expand:focus picture:before, .page-home .grid-item-photography .expand:focus picture:after, .page-home .grid-item-graphic .expand:hover picture:before, .page-home .grid-item-graphic .expand:hover picture:after, .page-home .grid-item-graphic .expand:focus picture:before, .page-home .grid-item-graphic .expand:focus picture:after, .page-home .grid-item-art .expand:hover picture:before, .page-home .grid-item-art .expand:hover picture:after, .page-home .grid-item-art .expand:focus picture:before, .page-home .grid-item-art .expand:focus picture:after {
   opacity: 1;
+}
+.page-home .grid-item-photography .expand:focus, .page-home .grid-item-graphic .expand:focus, .page-home .grid-item-art .expand:focus {
+  box-shadow: 0 0 0 3px #5E9ED6;
 }
 .page-home .grid-item-photography {
   background: #8f9eb8;

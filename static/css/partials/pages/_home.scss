@@ -336,37 +336,46 @@ header {
 			position: relative;
 		}
 		.expand {
-			@include border-radius($p*.5);
-			display: flex;
-			align-items: center;
-			align-content: center;
-			justify-content: center;
-			&:before, &:after {
-				opacity: 0;
-				will-change: opacity;
-				transition: .2s ease-out;
-				content: "";
-				display: block;
-				position: absolute;
-			}
-			&:before {
-				z-index: 2;
-				background-image: url(../images/icons/expand.svg);
-				width: 25px;
-				height: 25px;
-			}
-			&:after {
-				@include blur-all(5px, darken($iron, 10%), .9, .4);
-				z-index: 1;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
+			border-radius: $p*.5;
+			overflow: hidden;
+			picture {
+				@include border-radius($p*.5);
+				display: flex;
+				align-items: center;
+				align-content: center;
+				justify-content: center;
+				&:before, &:after {
+					opacity: 0;
+					will-change: opacity;
+					transition: .2s ease-out;
+					content: "";
+					display: block;
+					position: absolute;
+				}
+				&:before {
+					z-index: 2;
+					background-image: url(../images/icons/expand.svg);
+					width: 25px;
+					height: 25px;
+				}
+				&:after {
+					@include blur-all(5px, darken($iron, 10%), .9, .4);
+					z-index: 1;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+				}
 			}
 			&:hover, &:focus {
-				&:before, &:after {
-					opacity: 1;
+				picture {
+					&:before, &:after {
+						opacity: 1;
+					}
 				}
+			}
+			&:focus {
+				@include focus-round;
 			}
 		}
 	}
