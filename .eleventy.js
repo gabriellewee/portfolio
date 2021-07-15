@@ -33,17 +33,6 @@ module.exports = function(eleventyConfig) {
 	});
 
 	eleventyConfig.addPassthroughCopy("static");
-	eleventyConfig.addPassthroughCopy("v1");
-	eleventyConfig.addPassthroughCopy("v2");
-	eleventyConfig.addPassthroughCopy("v3");
-	eleventyConfig.addPassthroughCopy("v4");
-	eleventyConfig.addPassthroughCopy("nameplate/v1/static");
-	eleventyConfig.addPassthroughCopy("nameplate/v1/about");
-	eleventyConfig.addPassthroughCopy("nameplate/v1/disclaimer");
-	eleventyConfig.addPassthroughCopy("nameplate/v1/email");
-	eleventyConfig.addPassthroughCopy("nameplate/v1/lists");
-	eleventyConfig.addPassthroughCopy("nameplate/v1/other");
-	eleventyConfig.addPassthroughCopy("nameplate/v2/static");
 	eleventyConfig.addPassthroughCopy("robots.txt");
 	eleventyConfig.addPassthroughCopy("sitemap.xml");
 
