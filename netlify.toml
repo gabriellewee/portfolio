@@ -12,3 +12,39 @@
 	minify = true
 [build.processing.images]
 	compress = true
+
+[[redirects]]
+	from = "/v1/"
+	to = "https://archive.gabriellew.ee/v1/"
+	status = 200
+	force = true
+
+[[redirects]]
+	from = "/v2/"
+	to = "https://archive.gabriellew.ee/v2/"
+	status = 200
+	force = true
+
+[[redirects]]
+	from = "/v3/"
+	to = "https://archive.gabriellew.ee/v3/"
+	status = 200
+	force = true
+
+[[redirects]]
+	from = "/v4/"
+	to = "https://archive.gabriellew.ee/v4/"
+	status = 200
+	force = true
+
+[[redirects]]
+	from = "/nameplate/v1/"
+	to = "https://archive.gabriellew.ee/nameplate/v1/"
+	status = 200
+	force = true
+
+[[redirects]]
+	from = "/nameplate/v2/"
+	to = "https://archive.gabriellew.ee/nameplate/v2/"
+	status = 200
+	force = true

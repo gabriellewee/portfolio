@@ -1,8 +1,0 @@
-<svg class="clips" viewbox="0 0 0 0" xmlns="http://www.w3.org/2000/svg">
-	<defs>
-		<clippath id="clip-right"><polygon id="right" points="48 0 48 96 0 48"></polygon></clippath>
-		<clippath id="clip-left"><polygon id="left" points="0 0 0 96 48 48"></polygon></clippath>
-		<clippath id="clip-bottom"><polygon id="bottom" points="96 48 0 48 48 0"></polygon></clippath>
-		<clippath id="clip-top"><polygon id="top" points="0 0 96 0 48 48"></polygon></clippath>
-	</defs>
-</svg>
