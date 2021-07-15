@@ -1,15 +1,15 @@
 const { DateTime } = require("luxon");
 const fs = require("fs");
-const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const pluginNavigation = require("@11ty/eleventy-navigation");
-const markdownIt = require("markdown-it");
-const markdownItAnchor = require("markdown-it-anchor");
+// const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+// const pluginNavigation = require("@11ty/eleventy-navigation");
+// const markdownIt = require("markdown-it");
+// const markdownItAnchor = require("markdown-it-anchor");
 const Image = require("@11ty/eleventy-img");
 const sharp = require("sharp");
 
 module.exports = function(eleventyConfig) {
-	eleventyConfig.addPlugin(pluginSyntaxHighlight);
-	eleventyConfig.addPlugin(pluginNavigation);
+	// eleventyConfig.addPlugin(pluginSyntaxHighlight);
+	// eleventyConfig.addPlugin(pluginNavigation);
 
 	eleventyConfig.setDataDeepMerge(true);
 
@@ -44,6 +44,13 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("v2");
 	eleventyConfig.addPassthroughCopy("v3");
 	eleventyConfig.addPassthroughCopy("v4");
+	eleventyConfig.addPassthroughCopy("nameplate/v1/static");
+	eleventyConfig.addPassthroughCopy("nameplate/v1/about");
+	eleventyConfig.addPassthroughCopy("nameplate/v1/disclaimer");
+	eleventyConfig.addPassthroughCopy("nameplate/v1/email");
+	eleventyConfig.addPassthroughCopy("nameplate/v1/lists");
+	eleventyConfig.addPassthroughCopy("nameplate/v1/other");
+	eleventyConfig.addPassthroughCopy("nameplate/v2/static");
 	eleventyConfig.addPassthroughCopy("robots.txt");
 	eleventyConfig.addPassthroughCopy("sitemap.xml");
 

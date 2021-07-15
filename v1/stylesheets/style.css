@@ -730,7 +730,7 @@ code { font-family: "Inconsolata", "Consolas", "Menlo", "Courier", monospace; }
 
 @media only screen and (min-width: 48em) { html, body { height: 100%; }
   #content { display: table; height: 100%; }
-  #content #sidebar, #content #faux { display: table-column; position: fixed; height: 100%; border-bottom: 0; }
+  #content #sidebar, #content #faux { display: table-column; position: fixed; top: 0; height: 100%; border-bottom: 0; }
   #content #sidebar { background: transparent; }
   #content #faux { border-right: 0.1rem solid #fff; background: #D34836; }
   #content #posts { display: table-cell; height: 100%; border-top: 0; border-left: 0.1rem solid #D34836; }
