@@ -10,6 +10,11 @@ header {
 		will-change: opacity;
 		animation: blink 1s cubic-bezier(1,0,0,1) infinite forwards;
 		display: inline-block;
+		@media (prefers-reduced-motion) {
+			content: unset;
+			display: unset;
+			animation: unset;
+		}
 	}
 }
 @keyframes blink {

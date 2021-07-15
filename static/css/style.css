@@ -658,6 +658,13 @@ a {
   height: 50px;
   background-image: url(../images/icons/loading.svg);
 }
+@media (prefers-reduced-motion) {
+  .lightbox-background:before {
+    content: unset;
+    display: unset;
+    animation: unset;
+  }
+}
 
 .lightbox {
   will-change: visibility, z-index;
@@ -910,6 +917,13 @@ figure, picture, img {
   will-change: opacity;
   animation: blink 1s cubic-bezier(1, 0, 0, 1) infinite forwards;
   display: inline-block;
+}
+@media (prefers-reduced-motion) {
+  .page-home .cursor:after {
+    content: unset;
+    display: unset;
+    animation: unset;
+  }
 }
 @keyframes blink {
   from {
