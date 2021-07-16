@@ -45,6 +45,6 @@
 
 [[redirects]]
 	from = "/nameplate/v2/*"
-	to = "https://archive.gabriellew.ee/nameplate/v2/:splat*"
+	to = "https://archive.gabriellew.ee/nameplate/v2/:splat"
 	status = 200
 	force = true
