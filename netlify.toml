@@ -14,37 +14,37 @@
 	compress = true
 
 [[redirects]]
-	from = "/v1/"
-	to = "https://archive.gabriellew.ee/v1/"
+	from = "/v1/*"
+	to = "https://archive.gabriellew.ee/v1/:splat"
 	status = 200
 	force = true
 
 [[redirects]]
-	from = "/v2/"
-	to = "https://archive.gabriellew.ee/v2/"
+	from = "/v2/*"
+	to = "https://archive.gabriellew.ee/v2/:splat"
 	status = 200
 	force = true
 
 [[redirects]]
-	from = "/v3/"
-	to = "https://archive.gabriellew.ee/v3/"
+	from = "/v3/*"
+	to = "https://archive.gabriellew.ee/v3/:splat"
 	status = 200
 	force = true
 
 [[redirects]]
-	from = "/v4/"
-	to = "https://archive.gabriellew.ee/v4/"
+	from = "/v4/*"
+	to = "https://archive.gabriellew.ee/v4/:splat"
 	status = 200
 	force = true
 
 [[redirects]]
-	from = "/nameplate/v1/"
-	to = "https://archive.gabriellew.ee/nameplate/v1/"
+	from = "/nameplate/v1/*"
+	to = "https://archive.gabriellew.ee/nameplate/v1/:splat"
 	status = 200
 	force = true
 
 [[redirects]]
-	from = "/nameplate/v2/"
-	to = "https://archive.gabriellew.ee/nameplate/v2/"
+	from = "/nameplate/v2/*"
+	to = "https://archive.gabriellew.ee/nameplate/v2/:splat*"
 	status = 200
 	force = true
