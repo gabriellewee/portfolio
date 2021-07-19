@@ -48,9 +48,9 @@
 	}
 	span {
 		opacity: 0;
-		will-change: opacity, display;
-		transition: .2s opacity ease-out .1s, 0s display .2s;
-		display: none;
+		will-change: opacity;
+		transition: .2s opacity ease-out .1s;
+		display: block;
 		position: relative;
 		z-index: 1;
 		width: 100%;
@@ -74,19 +74,8 @@
 			}
 		}
 	}
-	&.active {
-		span.active {
-			transition: .2s opacity ease-out .1s;
-			display: block;
-			opacity: 1;
-		}
-	}
-	.no-js &:target {
-		span {
-			transition: .2s opacity ease-out .1s;
-			display: block;
-			opacity: 1;
-		}
+	&.active span.active, .no-js &:target span {
+		opacity: 1;
 	}
 }
 

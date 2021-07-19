@@ -19,17 +19,17 @@ if (filterList != null) {
 	let filterLinks = filterList.querySelectorAll('[data-filter]');
 	filterLinks.forEach(el=>{
 		let value = el.getAttribute('data-filter');
-		el.addEventListener('click', function(event) {
-			event.preventDefault();
+		el.addEventListener('click', function(e) {
+			e.preventDefault();
 			iso.arrange({ filter: value });
 			let active = filterList.querySelector('.active');
 			if (active != null && value == '*') {
 				active.classList.remove('active');
 			} else if (active != null) {
 				active.classList.remove('active');
-				event.target.classList.add('active');
+				e.target.classList.add('active');
 			} else {
-				event.target.classList.add('active');
+				e.target.classList.add('active');
 			};
 			iso.layout();
 		});

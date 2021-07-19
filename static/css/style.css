@@ -190,14 +190,12 @@ table {
 html {
   -webkit-text-size-adjust: 100%;
   height: -webkit-fill-available;
+  scroll-behavior: smooth;
 }
 
 body {
   min-height: 100vh;
   min-height: -webkit-fill-available;
-}
-
-body {
   line-height: 1.2;
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
@@ -686,9 +684,9 @@ a {
 }
 .lightbox span {
   opacity: 0;
-  will-change: opacity, display;
-  transition: 0.2s opacity ease-out 0.1s, 0s display 0.2s;
-  display: none;
+  will-change: opacity;
+  transition: 0.2s opacity ease-out 0.1s;
+  display: block;
   position: relative;
   z-index: 1;
   width: 100%;
@@ -712,14 +710,7 @@ a {
 .no-js .lightbox:target ~ .lightbox-background:before, .lightbox.active ~ .lightbox-background:before {
   opacity: 1;
 }
-.lightbox.active span.active {
-  transition: 0.2s opacity ease-out 0.1s;
-  display: block;
-  opacity: 1;
-}
-.no-js .lightbox:target span {
-  transition: 0.2s opacity ease-out 0.1s;
-  display: block;
+.lightbox.active span.active, .no-js .lightbox:target span {
   opacity: 1;
 }
 
