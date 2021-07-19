@@ -1,4 +1,11 @@
+html {
+	-webkit-text-size-adjust: 100%;
+	height: -webkit-fill-available;
+	scroll-behavior: smooth;
+}
 body {
+	min-height: 100vh;
+	min-height: -webkit-fill-available;
 	line-height: 1.2;
 	overflow-x: hidden;
 	text-rendering: optimizeLegibility;
