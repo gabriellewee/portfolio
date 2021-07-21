@@ -9,7 +9,12 @@ article {
 		font-variation-settings: "CASL" 1;
 		line-height: 1.2;
 	}
-	h2 {
+	h3 {
+		font-size: 24px;
+		font-weight: 700;
+		font-variation-settings: "wght" 700, "CASL" 1;
+	}
+	h2, &.archive h3 {
 		font-size: 26px;
 		font-weight: 800;
 		font-variation-settings: "wght" 800, "CASL" 1;
@@ -19,22 +24,18 @@ article {
 		font-weight: 900;
 		font-variation-settings: "wght" 900, "CASL" 1;
 	}
-	h3 {
-		font-size: 24px;
-		font-weight: 700;
-		font-variation-settings: "wght" 700, "CASL" 1;
-	}
 
 	h1, h2, h3 {
 		&[id] {
 			display: flex;
-			align-items: center;
-			align-content: center;
+			align-items: flex-start;
+			align-content: flex-start;
 			justify-content: space-between;
 		}
 	}
 	.direct-link {
 		opacity: 0.3;
+		padding-left: $p;
 		&:hover, &:focus {
 			opacity: 1;
 		}
@@ -274,5 +275,14 @@ article {
 		&:not(:last-child) {
 			padding-bottom: $p*2;
 		}
+		&.year:not(:first-child) {
+			margin-top: $p*2;
+		}
+	}
+	h2 {
+		opacity: 0.5;
+		font-size: 48px;
+		font-weight: 900;
+		font-variation-settings: "wght" 900, "CASL" 1;
 	}
 }

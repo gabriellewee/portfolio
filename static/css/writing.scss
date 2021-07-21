@@ -48,9 +48,9 @@ a, pre {
 		font-variation-settings: "wght" 1000, "CASL" 1;
 		line-height: 1.4;
 		@media only screen and (min-width: 600px) {
-			font-size: 48px;
+			font-size: 7vw;
 		}
-		@media only screen and (min-width: 800px) {
+		@media only screen and (min-width: 1000px) {
 			font-size: 72px;
 		}
 		&:hover, &:focus {
