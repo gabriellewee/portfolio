@@ -41,7 +41,7 @@ figure, picture, img {
 	content-visibility: auto;
 }
 
-@media (prefers-color-scheme: dark) {
+@include dark {
 	body {
 		background: darken($iron, 1%);
 		color: white;

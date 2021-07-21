@@ -9,24 +9,13 @@ $w: 1800px;
 
 $focus: #5E9ED6;
 
-$green: #17e47e;
-$blue: #17b0e4;
-$indigo: #177de4;
-
-// color scheme
-// $color-1: #17e47e;
-// $color-2: #17e4b1;
-// $color-3: #17e4e4;
-// $color-4: #17b0e4;
-// $color-5: #177de4;
-// $color-6: #174ae4;
+$red: #ff706a;
+$orange: #FF956A;
+$violet: #BA6AFF;
 
 // default colors
 $iron: #263238;
 $pink: #F5C8BF;
-$mauve: #75605B;
-$russet: #8F5F36;
-$lilac: #8497C2;
 
 // ui colors
 $message: #e9e9eb;
@@ -108,16 +97,30 @@ $easeInOutCirc: cubic-bezier(0.785, 0.135, 0.150, 0.860);
 $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
 
 // mixins
-@mixin border-radius($radius) {
-	border-radius: $radius;
-	-webkit-clip-path: inset(0 0 0 0 round $radius $radius $radius $radius);
-	clip-path: inset(0 0 0 0 round $radius $radius $radius $radius);
-	overflow: hidden;
-}
-
 @mixin max {
 	@supports (padding: max(0px)) {
 		@content;
+	}
+}
+
+@mixin dark {
+	@media (prefers-color-scheme: dark) {
+		@content;
+	}
+}
+
+@mixin clip-path {
+	@supports(-webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%)) or (clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%)) {
+	  	@content;
+	}
+}
+
+@mixin border-radius($radius) {
+	border-radius: $radius;
+	overflow: hidden;
+	@include clip-path {
+		-webkit-clip-path: inset(0 0 0 0 round $radius $radius $radius $radius);
+		clip-path: inset(0 0 0 0 round $radius $radius $radius $radius);
 	}
 }
 
@@ -146,8 +149,11 @@ $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
 	}
 }
 
-@mixin focus-round {
+@mixin focus-round($color: "") {
 	box-shadow: 0 0 0 $p*.25 $focus;
+	@if $color != "" {
+		box-shadow: 0 0 0 $p*.25 $color;
+	}
 }
 
 @mixin wavy($color: "") {

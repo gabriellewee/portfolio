@@ -42,7 +42,7 @@ a {
 	&.email {
 		color: rgba(black, .5);
 		text-decoration-color: rgba(black, .5);
-		@media (prefers-color-scheme: dark) {
+		@include dark {
 			color: rgba(white, .4);
 			text-decoration-color: rgba(white, .4);
 		}

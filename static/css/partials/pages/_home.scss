@@ -108,7 +108,7 @@ header {
 		background: white;
 		font-size: 28px;
 		a {
-			will-change: transform;
+			will-change: transform, color;
 			transition: .1s ease-out;
 			display: inline-block;
 			font-size: 40px;
@@ -131,7 +131,7 @@ header {
 		p:not(:last-child) {
 			padding-bottom: $p;
 		}
-		@media (prefers-color-scheme: dark) {
+		@include dark {
 			background: darken($iron, 2%);
 			color: white;
 			a {
@@ -148,7 +148,7 @@ header {
 		font-weight: bold;
 		background: #253238;
 		color: #73d1c8;
-		@media (prefers-color-scheme: dark) {
+		@include dark {
 			background: darken(#1e282c, 2%);
 		}
 		.codepen {
@@ -407,7 +407,7 @@ header {
 		}
 	}
 	&-art {
-		background: $mauve;
+		background: #75605B;
 		color: white;
 		.more {
 			color: lighten(#938c8c, 10%);

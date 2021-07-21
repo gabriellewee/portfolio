@@ -27,7 +27,7 @@ tags: pages
 			{% endif %}
 			<li>
 				<h3><a href="{{post.url | url}}">{{post.data.title}}</a></h3>
-				<time datetime="{{post.date | htmlDateString}}"><span>{{post.date|readableDate}}</span></time>
+				<time datetime="{{post.date | htmlDateString}}">{{post.date|readableDate}}</time>
 			</li>
 		{% endfor %}
 	</ul>

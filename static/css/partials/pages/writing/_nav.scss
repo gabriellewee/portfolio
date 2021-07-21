@@ -7,7 +7,7 @@
 	justify-content: center;
 	width: 100%;
 	text-align: center;
-	padding: $p*1.5 $p*1.5 calc(#{$p*1.5} + env(safe-area-inset-bottom));
+	padding: $p*1.5 $p*1.5 calc(#{$p*3} + env(safe-area-inset-bottom));
 	div {
 		display: flex;
 		align-items: center;
@@ -21,28 +21,33 @@
 	}
 	a {
 		will-change: transform, background-color, color;
-		transition: .1s ease-out;
+		transition: transform .1s ease-out;
 		display: inline-block;
 		background-color: $iron;
 		color: white;
-		border-radius: math.div($p, 6);
 		padding: math.div($p, 3) $p*.5;
-		&:focus {
-			@include focus-round;
+		@include clip-path {
+			clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
 		}
 		&:hover, &:focus {
-			background-color: rgba($iron, .7);
+			background-color: $red;
 		}
 		@include dark {
 			background-color: rgba(white, .8);
 			color: $iron;
 			&:hover, &:focus {
-				background-color: white;
+				background-color: $red;
 			}
 		}
 		&:active {
 			transform: scale(0.95);
-			background-color: $pink;
 		}
 	}
+}
+
+.top, .bottom {
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 1.2;
+	font-variation-settings: "wght" 500, "CASL" 0.5;
 }

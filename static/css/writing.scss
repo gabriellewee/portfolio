@@ -10,7 +10,7 @@
 @import 'partials/shared/syntax';
 
 @import 'partials/navigation/header';
-@import 'partials/navigation/footer';
+@import 'partials/pages/writing/nav';
 
 body {
 	font-family: $recursive;
@@ -21,10 +21,7 @@ body {
 
 a, pre {
 	&:focus {
-		box-shadow: 0 0 0 $p*.25 rgba($blue, .4);
-		@media (prefers-color-scheme: dark) {
-			box-shadow: 0 0 0 $p*.25 rgba($blue, .7);
-		}
+		@include focus-round(rgba($violet, .5));
 	}
 }
 
@@ -64,7 +61,7 @@ a, pre {
 		opacity: 0.75;
 		font-size: 36px;
 		margin-bottom: -$p;
-		@media (prefers-color-scheme: dark) {
+		@include dark {
 			opacity: 0.5;
 		}
 		@media only screen and (min-width: 600px) {
@@ -85,31 +82,14 @@ main {
 .header, h1, h2, h3, h4, h5, h6 {
 	a {
 		will-change: transform;
-		transition: transform .2s ease-out;
+		transition: transform .1s ease-out;
 		display: inline-block;
 		&:hover, &:focus {
-			color: $green;
+			color: $red;
 		}
 		&:active {
 			transform: scale(0.98);
 		}
-	}
-}
-
-.top, .bottom {
-	font-weight: 500;
-	font-size: 16px;
-	line-height: 1.2;
-	font-variation-settings: "wght" 500, "CASL" 0.5;
-	a {
-		border-radius: unset;
-		clip-path: unset;
-	}
-}
-
-.page-writing, .page-post {
-	.bottom {
-		padding-bottom: calc(#{$p*3} + env(safe-area-inset-bottom));
 	}
 }
 

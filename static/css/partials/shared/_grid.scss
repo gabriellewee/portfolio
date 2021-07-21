@@ -260,8 +260,6 @@
 	}
 	ul {
 		border-radius: $p*.5;
-		-webkit-clip-path: inset($p 0 $p 0 round $p*.5 $p*.5 $p*.5 $p*.5);
-		clip-path: inset($p 0 $p 0 round $p*.5 $p*.5 $p*.5 $p*.5);
 		list-style: none;
 		padding: $p*.5 $p*.5 $p*.5 0;
 		overflow: auto;
@@ -269,6 +267,10 @@
 		-ms-overflow-style: none;
 		scrollbar-width: none;
 		-webkit-overflow-scrolling: touch;
+		@include clip-path {
+			-webkit-clip-path: inset($p 0 $p 0 round $p*.5 $p*.5 $p*.5 $p*.5);
+			clip-path: inset($p 0 $p 0 round $p*.5 $p*.5 $p*.5 $p*.5);
+		}
 		::-webkit-scrollbar {
 			height: 0;
 			width: 0;
@@ -307,12 +309,11 @@
 		font-style: italic;
 		transition: .1s ease-out;
 		&.active:not(.reset) {
-			@include blur-bg($mauve, .9, .8);
+			@include blur-bg($red, .9, .8);
 			color: white;
 		}
 		&:hover, &:focus {
 			@include blur-bg($message, .9, .8);
-			transform: scale(1.05);
 			color: $iron;
 		}
 		&:focus {
@@ -320,7 +321,7 @@
 			text-decoration-color: $iron;
 		}
 		&:active {
-			@include blur-bg($mauve, .9, .8);
+			@include blur-bg($red, .9, .8);
 			transform: scale(0.95);
 			color: white;
 		}
