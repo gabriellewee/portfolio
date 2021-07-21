@@ -10,11 +10,23 @@ customStyles: writing
 tags: pages
 ---
 
+{% set showYear = true %}
+{% set currentYear = "" %}
+
 <article class="archive">
 	<ul>
-		{% for post in collections.writes %}
+		{% for post in collections.writes | reverse %}
+			{% if showYear %}
+				{% set postYear = post.date.getFullYear() %}
+				{% if currentYear != postYear %}
+					{% set currentYear = postYear %}
+					<li class="year">
+						<h2>{{ postYear }}</h2>
+					</li>
+				{% endif %}
+			{% endif %}
 			<li>
-				<h2><a href="{{post.url | url}}">{{post.data.title}}</a></h2>
+				<h3><a href="{{post.url | url}}">{{post.data.title}}</a></h3>
 				<time datetime="{{post.date | htmlDateString}}"><span>{{post.date|readableDate}}</span></time>
 			</li>
 		{% endfor %}
