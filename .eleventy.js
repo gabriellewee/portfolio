@@ -21,7 +21,8 @@ module.exports = function(eleventyConfig) {
 	let markdownLibrary = markdownIt({
 		html: true,
 		breaks: true,
-		linkify: true
+		linkify: true,
+		typographer: true
 	}).use(markdownItAnchor, {
 		slugify: string => string.trim().toLowerCase().replace(/\s+/g, '-').replace(/[!"#$%&'()*+,./:;<=>?@[\]^_`{|}~]/g, ''),
 		permalink: true,
