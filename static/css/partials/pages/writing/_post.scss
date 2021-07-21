@@ -10,7 +10,7 @@ article {
 		line-height: 1.2;
 	}
 	h3 {
-		font-size: 24px;
+		font-size: 2#{$p};
 		font-weight: 700;
 		font-variation-settings: "wght" 700, "CASL" 1;
 	}
@@ -47,7 +47,7 @@ article {
 		border: 0;
 		height: 2px;
 		background-color: rgba($iron, .2);
-		@media (prefers-color-scheme: dark) {
+		@include dark {
 			background-color: rgba(white, .2);
 		}
 	}
@@ -66,18 +66,18 @@ article {
 			padding-left: $p*.25;
 			padding-right: $p*.25;
 			background: rgba($iron, .2);
-			@media (prefers-color-scheme: dark) {
+			@include dark {
 				background-color: darken($iron, 5%);
 			}
 		}
 		a {
 			text-decoration: underline;
-			color: $blue;
+			color: $red;
 			&:hover, &:focus {
-				color: $green;
+				color: $orange;
 			}
 			&:active {
-				color: $indigo;
+				color: $violet;
 			}
 		}
 		strong {
@@ -97,7 +97,7 @@ article {
 		padding: $p*1.5 $p*2;
 		background: $iron;
 		color: white;
-		@media (prefers-color-scheme: dark) {
+		@include dark {
 			background-color: darken($iron, 5%);
 		}
 	}
@@ -113,7 +113,7 @@ article {
 			position: absolute;
 			top: -$p*2.5;
 			left: -$p*1.5;
-			font-size: 64px;
+			font-size: 6#{$p};
 			font-variation-settings: "wght" 400, "CASL" 1, "CRSV" 1;
 		}
 	}
@@ -140,7 +140,7 @@ article {
 	}
 	figcaption {
 		margin-top: $p*.5;
-		font-size: 14px;
+		font-size: 1#{$p};
 		text-align: center;
 	}
 
@@ -164,54 +164,30 @@ article {
 			}
 			a {
 				color: mix($iron, white, 30%);
-				@media (prefers-color-scheme: dark) {
+				@include dark {
 					color: mix($iron, white, 70%);
 				}
 			}
 		}
 		time {
 			order: 1;
-			display: inline-flex;
+			display: block;
 			margin-bottom: $p;
+			padding: $p*.5 $p;
+			background-color: rgba(darken($iron, 1%), .75);
+			color: white;
+			font-weight: 600;
+			@include clip-path {
+				clip-path: polygon(#{$p*1.25} 0%, calc(100% - #{$p*1.25}) 0%, 100% 45%, 100% 55%, calc(100% - #{$p*1.25}) 100%, #{$p*1.25} 100%, 0 55%, 0 45%);
+				padding: $p*.5 $p*1.75;
+			}
+			@include dark {
+				background-color: rgba(white, .75);
+				color: $iron;
+			}
 			@media only screen and (min-width: 1000px) {
 				order: 2;
 				margin-bottom: 0;
-			}
-			&:before, &:after {
-				content: "";
-				display: inline-block;
-				border: 20px solid rgba(white, .75);
-				@media (prefers-color-scheme: dark) {
-					border-color: rgba(darken($iron, 1%), .75);
-				}
-			}
-			&:before {
-				display: inline-block;
-				border-left-width: 0;
-				border-right-width: 15px;
-				border-right-color: rgba(darken($iron, 1%), .75);
-				@media (prefers-color-scheme: dark) {
-					border-right-color: rgba(white, .75);
-				}
-			}
-			&:after {
-				border-left-width: 15px;
-				border-right-width: 0;
-				border-left-color: rgba(darken($iron, 1%), .75);
-				@media (prefers-color-scheme: dark) {
-					border-left-color: rgba(white, .75);
-				}
-			}
-			span {
-				display: inline-block;
-				padding: $p*.5;
-				background-color: rgba(darken($iron, 1%), .75);
-				color: white;
-				font-weight: 600;
-				@media (prefers-color-scheme: dark) {
-					background-color: rgba(white, .75);
-					color: $iron;
-				}
 			}
 		}
 	}
@@ -226,7 +202,7 @@ article {
 				}
 			}
 			&:active {
-				color: $green;
+				color: $red;
 			}
 			&.more {
 				font-style: italic;
@@ -261,7 +237,7 @@ article {
 			}
 		}
 		&:active {
-			color: $green;
+			color: $red;
 		}
 	}
 }
