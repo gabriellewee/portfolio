@@ -4,7 +4,8 @@
 	"description": "Gabrielle Wee’s personal website and portfolio.",
 	"scripts": {
 		"sass": "sass static/css/style.scss:static/css/style.css static/css/writing.scss:static/css/writing.css && npx postcss --use autoprefixer -o static/css/style.css static/css/style.css && npx postcss --use autoprefixer -o static/css/writing.css static/css/writing.css",
-		"build": "npm run sass && eleventy",
+		"autoprefixer": "npx postcss --use autoprefixer -o static/css/style.css static/css/style.css && npx postcss --use autoprefixer -o static/css/writing.css static/css/writing.css",
+		"build": "npm run autoprefixer && eleventy",
 		"watch:eleventy": "eleventy --serve",
 		"watch:sass": "sass --watch static/css/style.scss:static/css/style.css static/css/writing.scss:static/css/writing.css",
 		"start": "npm-run-all sass --parallel watch:*",
