@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 header {
 	.go-home {
 		display: none;
@@ -430,7 +432,7 @@ header {
 			}
 		}
 		h3 {
-			margin-bottom: $p/2;
+			margin-bottom: $p*.5;
 			font-size: 24px;
 			font-weight: bold;
 			font-style: italic;
@@ -556,7 +558,7 @@ header {
 		h2 {
 			position: relative;
 			z-index: 1;
-			padding-bottom: $p/3;
+			padding-bottom: math.div($p, 3);
 		}
 		svg {
 			display: block;
@@ -570,7 +572,7 @@ header {
 				display: inline-block;
 				background: white;
 				color: #2d2d2d;
-				border-radius: $p/3;
+				border-radius: math.div($p, 3);
 				padding: $p*.5 $p*.75;
 			}
 		}

@@ -24,7 +24,7 @@
 
 	<meta property="og:site_name" content="{{title}} · Gabrielle Wee"/>
 	<meta property="og:type" content="website"/>
-	<meta property="og:url" content="https://gabriellew.ee{{permalink}}"/>
+	<meta property="og:url" content="{{permalink}}"/>
 	<meta property="og:image" content="https://gabriellew.ee/static/images/og/{% if ogImage %}{{ogImage}}{% else %}default{% endif %}.jpg"/>
 	<meta property="og:image:width" content="1200"/>
 	<meta property="og:image:height" content="630"/>
@@ -37,7 +37,7 @@
 	<meta property="fb:admins" content="504790226"/>
 	<meta property="article:author" content="Gabrielle Wee"/>
 
-	<link rel="stylesheet" href="{% if customStyles %}{{ '/static/css/' + customStyles + '.css' | url }}{% else %}{{'/static/css/style.css' | url}}{% endif %}"/>
+	<link rel="stylesheet" href="{{'/static/css/writing.css' | url}}"/>
 
 	<script src="{{'/static/js/modernizr.min.js' | url}}"></script>
 </head>
@@ -54,18 +54,19 @@
 		<span class="go-home" aria-hidden="true">Go home?</span>
 		{% block menu %}{% endblock %}
 	</header>
+	<header class="header">
+		<h1><a href="/writes/"><span>gabriellew.ee</span>/writes</a></h1>
+	</header>
 	<main>
 		{% block content %}{{content | safe}}{% endblock %}
 	</main>
 	<footer class="bottom" aria-label="Footer">
-		<p class="copyright">{% if aboutLink %}<a href="/about/">About this website</a> {% endif %}&copy; Gabrielle Wee 2012–2021</p>
+		<p class="copyright"><a href="/writes/archive/">Archive</a> · <a href="/writes/feed.xml">RSS</a> &copy; Gabrielle Wee 2012–2021</p>
 	</footer>
 	<script src="{{'/static/js/lazyload.min.js' | url}}"></script>
-	<script src="{{'/static/js/isotope.min.js' | url}}"></script>
-	<script src="{{'/static/js/packery.min.js' | url}}"></script>
 	<script src="{{'/static/js/imagesloaded.min.js' | url}}"></script>
 	<script src="{{'/static/js/smoothscroll.min.js' | url}}"></script>
 	<script src="{{'/static/js/lightbox.js' | url}}"></script>
-	<script src="{{'/static/js/main.js' | url}}"></script>
+	<script src="{{'/static/js/writing.js' | url}}"></script>
 </body>
 </html>

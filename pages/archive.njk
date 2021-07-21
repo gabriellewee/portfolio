@@ -1,0 +1,22 @@
+---
+title: Archive · Writing
+description: Gabrielle Wee’s personal blog and photo journal archive.
+
+permalink: /writes/archive/
+layout: layouts/writing.njk
+templateClass: writing
+customStyles: writing
+
+tags: pages
+---
+
+<article class="archive">
+	<ul>
+		{% for post in collections.writes %}
+			<li>
+				<h2><a href="{{post.url | url}}">{{post.data.title}}</a></h2>
+				<time datetime="{{post.date | htmlDateString}}"><span>{{post.date|readableDate}}</span></time>
+			</li>
+		{% endfor %}
+	</ul>
+</article>

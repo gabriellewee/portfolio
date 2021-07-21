@@ -1,6 +1,8 @@
+@use 'sass:math';
+
 main {
-	background: rgba($iron, .2);
-	height: 100%;
+	background-color: rgba($iron, .2);
+	height: calc(100vh - 63px);
 	padding: $p $p*1.5;
 	font-size: 32px;
 	color: white;
@@ -15,6 +17,11 @@ main {
 		max-width: $w;
 		padding-top: $p;
 	}
+}
+
+footer {
+	background-color: rgba($iron, .2);
+	color: white;
 }
 
 @media only screen and (min-width: 600px) {

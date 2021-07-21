@@ -2,25 +2,52 @@ const { DateTime } = require("luxon");
 const fs = require("fs");
 const Image = require("@11ty/eleventy-img");
 const sharp = require("sharp");
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const markdownIt = require("markdown-it");
+const markdownItAnchor = require("markdown-it-anchor");
+const pluginRss = require("@11ty/eleventy-plugin-rss");
 
 module.exports = function(eleventyConfig) {
 	eleventyConfig.setDataDeepMerge(true);
+
+	eleventyConfig.addPlugin(pluginRss);
+
+	eleventyConfig.addPlugin(syntaxHighlight, {
+		preAttributes: {
+			tabindex: 0
+		},
+ 	});
+
+	let markdownLibrary = markdownIt({
+		html: true,
+		breaks: true,
+		linkify: true
+	}).use(markdownItAnchor, {
+		permalink: true,
+		permalinkClass: "direct-link",
+		permalinkSymbol: "¶"
+	});
+	eleventyConfig.setLibrary("md", markdownLibrary);
 
 	eleventyConfig.addFilter("readableDataDate", dateObj => {
 		return DateTime.fromISO(dateObj, {zone: 'utc'}).toFormat("dd LLLL yyyy");
 	});
 
-	eleventyConfig.addFilter("readableDate", dateObj => {
-		return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("dd LLLL yyyy");
+	eleventyConfig.addFilter('htmlDateString', dateObj => {
+		return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
 	});
 
-	eleventyConfig.addFilter("isoFilter", function(filterObj) {
+	eleventyConfig.addFilter("readableDate", dateObj => {
+		return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("dd LLLL yyyy");
+	});
+
+	eleventyConfig.addFilter("isoFilter", filterObj => {
 		let array = filterObj.split(' ');
 		let result = array.map(el => 'filter-' + el);
 		return result.join(' ');
 	});
 
-	eleventyConfig.addFilter("limit", function(array, limit) {
+	eleventyConfig.addFilter("limit", (array, limit) => {
 		return array.slice(0, limit);
 	});
 
@@ -30,6 +57,28 @@ module.exports = function(eleventyConfig) {
 		}
 
 		return array.slice(0, n);
+	});
+
+	eleventyConfig.addFilter("stripAttr", stripObj => {
+		stripObj = stripObj
+			.replace(/<\/?span[^>]*>/g, '')
+			.replace(/<\/?div[^>]*>/g, '')
+			.replace(/<\/?script[^>]*>/g, '')
+			.replace(/<\/?a class="expand"[^>]*>/g, '')
+			.replace(/<\s*p .*?data-slug-hash="([^<]*)" data-default.*?>([^<]*)<\s*a.*?>([^<]*)<\/p>/g, '<iframe src="https://codepen.io/gabriellewee/embed/$1">')
+			.replace(/(<a(?: \w+="[^"]+")* class="lightbox"(?: \w+="[^"]+")*>([^<]*)<\/a>)/g, '')
+			.replace(/(<a(?: \w+="[^"]+")* class="direct-link"(?: \w+="[^"]+")*>([^<]*)<\/a>)/g, '')
+			.replace(/<\s*h1.*?>/g, '<h1>')
+			.replace(/<\s*h2.*?>/g, '<h2>')
+			.replace(/<\s*h3.*?>/g, '<h3>')
+			.replace(/<\s*h4.*?>/g, '<h4>')
+			.replace(/<\s*h5.*?>/g, '<h5>')
+			.replace(/<\s*h6.*?>/g, '<h6>')
+			.replace(/<\s*figure.*?>/g, '<figure>')
+			.replace(/<\s*pre.*?>/g, '<pre>')
+			.replace(/<\s*code.*?>/g, '<code>')
+			.replace(/<\s*p data-height.*?>/g, '<p>');
+		return stripObj;
 	});
 
 	eleventyConfig.addPassthroughCopy("static");
@@ -84,6 +133,7 @@ module.exports = function(eleventyConfig) {
 		const img = `<img
 			class="lazy"
 			loading="lazy"
+			decoding="async"
 			alt="${alt}"
 			src="${base64Placeholder}"
 			srcset="${jpegset}"
@@ -129,6 +179,7 @@ module.exports = function(eleventyConfig) {
 		const img = `<img
 			class="lazy"
 			loading="lazy"
+			decoding="async"
 			alt="${alt}"
 			src="${base64Placeholder}"
 			srcset="${pngset}"
@@ -138,14 +189,33 @@ module.exports = function(eleventyConfig) {
 		return `<picture>${source}${img}</picture>`;
 	});
 
-	// Browsersync Overrides
+	eleventyConfig.addShortcode('excerpt', post => {
+		if (!post.hasOwnProperty('templateContent')) {
+			console.warn('❌ Failed to extract excerpt: Document has no property `templateContent`.');
+			return;
+		}
+
+		const excerptSeparator = '<!--more-->';
+		const content = post.templateContent;
+
+		if (content.includes(excerptSeparator)) {
+			return content.substring(0, content.indexOf(excerptSeparator)).trim();
+		}
+
+		const pCloseTag = '</p>';
+			if (content.includes(pCloseTag)) {
+			return content.substring(0, content.indexOf(pCloseTag) + pCloseTag.length);
+		}
+
+		return content;
+	});
+
 	eleventyConfig.setBrowserSyncConfig({
 		callbacks: {
 			ready: function(err, browserSync) {
 				const content_404 = fs.readFileSync('_site/404.html');
 
 				browserSync.addMiddleware("*", (req, res) => {
-					// Provides the 404 content without redirect.
 					res.write(content_404);
 					res.end();
 				});
@@ -162,27 +232,8 @@ module.exports = function(eleventyConfig) {
 			"html",
 			"liquid"
 		],
-
-		// If your site lives in a different subdirectory, change this.
-		// Leading or trailing slashes are all normalized away, so don’t worry about those.
-
-		// If you don’t have a subdirectory, use "" or "/" (they do the same thing)
-		// This is only used for link URLs (it does not affect your file structure)
-		// Best paired with the `url` filter: https://www.11ty.dev/docs/filters/url/
-
-		// You can also pass this in on the command line using `--pathprefix`
-		// pathPrefix: "/",
-
 		markdownTemplateEngine: "liquid",
 		htmlTemplateEngine: "njk",
 		dataTemplateEngine: "njk",
-
-		// These are all optional, defaults are shown:
-		dir: {
-			input: ".",
-			includes: "_includes",
-			data: "_data",
-			output: "_site"
-		}
 	};
 };

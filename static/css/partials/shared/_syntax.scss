@@ -1,0 +1,226 @@
+@use 'sass:math';
+
+// labels
+pre[class$="js"] {
+	&:before {
+		content: "JavaScript";
+	}
+}
+pre[class$="css"] {
+	&:before {
+		content: "CSS";
+	}
+}
+pre[class$="scss"] {
+	&:before {
+		content: "SCSS";
+	}
+}
+pre[class$="html"] {
+	&:before {
+		content: "HTML";
+	}
+}
+pre[class$="haml"] {
+	&:before {
+		content: "Haml";
+	}
+}
+pre[class$="markdown"] {
+	&:before {
+		content: "Markdown";
+	}
+}
+
+pre {
+	&:before {
+		position: absolute;
+		top: math.div($p, 3);
+		right: $p*.5;
+		color: $green;
+		font-size: 10px;
+		font-weight: 500;
+		font-variation-settings: "wght" 500, "MONO" 1, "CASL" 0;
+		line-height: 1.4;
+	}
+}
+
+// prism theme
+code[class*="language-"],
+pre[class*="language-"] {
+	text-align: left;
+	white-space: pre-wrap;
+	word-spacing: normal;
+	word-break: break-word;
+	word-wrap: break-word;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"] {
+	overflow: auto;
+	position: relative;
+}
+
+.language-css > code,
+.language-sass > code,
+.language-scss > code {
+	color: #fd9170;
+}
+
+[class*="language-"] .namespace {
+	opacity: 0.7;
+}
+
+.token.atrule {
+	color: #c792ea;
+}
+
+.token.attr-name {
+	color: #ffcb6b;
+}
+
+.token.attr-value {
+	color: #a5e844;
+}
+
+.token.attribute {
+	color: #a5e844;
+}
+
+.token.boolean {
+	color: #c792ea;
+}
+
+.token.builtin {
+	color: #ffcb6b;
+}
+
+.token.cdata {
+	color: #80cbc4;
+}
+
+.token.char {
+	color: #80cbc4;
+}
+
+.token.class {
+	color: #ffcb6b;
+}
+
+.token.class-name {
+	color: #f2ff00;
+}
+
+.token.comment {
+	color: #616161;
+}
+
+.token.constant {
+	color: #c792ea;
+}
+
+.token.deleted {
+	color: #ff6666;
+}
+
+.token.doctype {
+	color: #616161;
+}
+
+.token.entity {
+	color: #ff6666;
+}
+
+.token.function {
+	color: #c792ea;
+}
+
+.token.hexcode {
+	color: #f2ff00;
+}
+
+.token.id {
+	color: #c792ea;
+	font-weight: bold;
+}
+
+.token.important {
+	color: #c792ea;
+	font-weight: bold;
+}
+
+.token.inserted {
+	color: #80cbc4;
+}
+
+.token.keyword {
+	color: #c792ea;
+}
+
+.token.number {
+	color: #fd9170;
+}
+
+.token.operator {
+	color: #89ddff;
+}
+
+.token.prolog {
+	color: #616161;
+}
+
+.token.property {
+	color: #80cbc4;
+}
+
+.token.pseudo-class {
+	color: #a5e844;
+}
+
+.token.pseudo-element {
+	color: #a5e844;
+}
+
+.token.punctuation {
+	color: #89ddff;
+}
+
+.token.regex {
+	color: #f2ff00;
+}
+
+.token.selector {
+	color: #ff6666;
+}
+
+.token.string {
+	color: #a5e844;
+}
+
+.token.symbol {
+	color: #c792ea;
+}
+
+.token.tag {
+	color: #ff6666;
+}
+
+.token.unit {
+	color: #fd9170;
+}
+
+.token.url {
+	color: #ff6666;
+}
+
+.token.variable {
+	color: #ff6666;
+}
