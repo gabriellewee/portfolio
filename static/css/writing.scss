@@ -42,16 +42,6 @@ a, pre {
 	@media only screen and (min-width: 1000px) {
 		padding-top: $p*2.5;
 	}
-	span {
-		display: none;
-		opacity: 0.75;
-		@media (prefers-color-scheme: dark) {
-			opacity: 0.5;
-		}
-		@media only screen and (min-width: 600px) {
-			display: unset;
-		}
-	}
 	a {
 		font-size: 64px;
 		font-weight: 1000;
@@ -67,6 +57,20 @@ a, pre {
 			span {
 				opacity: 1;
 			}
+		}
+	}
+	span {
+		display: block;
+		opacity: 0.75;
+		font-size: 36px;
+		margin-bottom: -$p;
+		@media (prefers-color-scheme: dark) {
+			opacity: 0.5;
+		}
+		@media only screen and (min-width: 600px) {
+			display: unset;
+			margin-bottom: unset;
+			font-size: unset;
 		}
 	}
 }
