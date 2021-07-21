@@ -1,4 +1,6 @@
-footer {
+@use 'sass:math';
+
+.bottom {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -23,8 +25,8 @@ footer {
 		display: inline-block;
 		background-color: $iron;
 		color: white;
-		border-radius: $p/6;
-		padding: $p/3 $p*.5;
+		border-radius: math.div($p, 6);
+		padding: math.div($p, 3) $p*.5;
 		&:hover {
 			transform: scale(1.05);
 		}

@@ -1,13 +1,25 @@
-@import '../fonts/dank-mono';
-@import '../fonts/faune';
-
 $mono: "dm", "Inconsolata", "Consolas", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, Courier, monospace;
-$faune: faune, sans-serif;
+$faune: 'faune', sans-serif;
+$recursive: 'Recursive', 'faune', sans-serif;
+
+$writing-width: 900px;
 
 $p: 12px;
 $w: 1800px;
 
 $focus: #5E9ED6;
+
+$green: #17e47e;
+$blue: #17b0e4;
+$indigo: #177de4;
+
+// color scheme
+// $color-1: #17e47e;
+// $color-2: #17e4b1;
+// $color-3: #17e4e4;
+// $color-4: #17b0e4;
+// $color-5: #177de4;
+// $color-6: #174ae4;
 
 // default colors
 $iron: #263238;

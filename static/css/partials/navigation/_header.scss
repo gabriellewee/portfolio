@@ -1,4 +1,6 @@
-header {
+@use 'sass:math';
+
+.top {
 	display: flex;
 	align-items: center;
 	align-content: center;
@@ -7,6 +9,9 @@ header {
 	right: 0;
 	padding: $p;
 	padding-right: calc(#{$p} + env(safe-area-inset-left));
+	@media only screen and (min-width: 1000px) {
+		padding: $p*2;
+	}
 	@include max {
 		padding-right: max(#{$p}, env(safe-area-inset-left));
 	}
@@ -53,6 +58,9 @@ header {
 		position: absolute;
 		right: $p*5;
 		z-index: 2;
+		@media only screen and (min-width: 1000px) {
+			right: $p*6;
+		}
 	}
 	.logo {
 		position: relative;
@@ -85,15 +93,6 @@ header {
 		.message {
 			transform: none;
 			opacity: 1;
-		}
-	}
-}
-
-@media only screen and (min-width: 1000px) {
-	header {
-		padding: $p*2;
-		.go-home {
-			right: $p*6;
 		}
 	}
 }

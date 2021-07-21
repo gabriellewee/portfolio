@@ -1,38 +1,20 @@
+@import 'partials/fonts/dank-mono';
+@import 'partials/fonts/faune';
+
 @import 'partials/shared/utilities';
 @import 'partials/shared/reset';
 @import 'partials/shared/core';
+
+body {
+	font-family: $faune;
+	line-height: 1.2;
+}
+
 @import 'partials/shared/grid';
 @import 'partials/shared/lightbox';
 
 @import 'partials/navigation/header';
 @import 'partials/navigation/footer';
-
-body {
-	font-family: $faune;
-}
-
-::-moz-selection {
-	background: $iron;
-	color:  white;
-}
-
-::selection {
-	background: $iron;
-	color:  white;
-}
-
-figure, picture, img {
-	display: block;
-	width: 100%;
-	height: auto;
-}
-
-@media (prefers-color-scheme: dark) {
-	body {
-		background: darken($iron, 1%);
-		color: white;
-	}
-}
 
 .page-home {
 	@import 'partials/pages/home';
@@ -43,4 +25,10 @@ figure, picture, img {
 .page-error {
 	@import 'partials/pages/error';
 	background: url('../images/error.gif') center center / cover;
+}
+
+@media (inverted-colors: inverted) {
+	header .logo, .subpage-grid li figure, .subpage-grid li figcaption, iframe, .lightbox, .grid-item-expand, .inside svg, .grid-item-gaming svg {
+		filter: invert(100%);
+	}
 }

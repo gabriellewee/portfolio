@@ -1,0 +1,33 @@
+---
+title: Writing
+description: Gabrielle Wee’s personal blog and photo journal.
+
+layout: layouts/writing.njk
+templateClass: writing
+customStyles: writing
+
+tags: pages
+
+pagination:
+  data: collections.writes
+  size: 3
+  reverse: true
+---
+
+{% for post in pagination.items %}
+<article>
+	<header>
+		<h2><a href="{{post.url | url}}">{{post.data.title}}</a></h2>
+		<time datetime="{{post.date | htmlDateString}}"><span>{{post.date|readableDate}}</span></time>
+	</header>
+	<div>{% excerpt post %}</div>
+	<!-- <footer>
+		<a class="more" href="{{post.url | url}}"><span>Continue</span></a>
+	</footer> -->
+</article>
+{% endfor %}
+
+<nav class="pagination">
+	{% if pagination.href.previous %}<a class="previous" href="{{ pagination.href.previous }}"><span>Previous</span></a>{% else %}<span></span>{% endif %}
+	{% if pagination.href.next %}<a class="next" href="{{ pagination.href.next }}"><span>Next</span></a>{% else %}<span></span>{% endif %}
+</nav>

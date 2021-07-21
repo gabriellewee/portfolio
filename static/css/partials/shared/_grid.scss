@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 .grid {
 	display: grid;
 	grid-gap: $p*1.5;
@@ -204,7 +206,7 @@
 						font-weight: bold;
 						font-style: normal;
 						.grid-link {
-							padding: 5px 0 0 $p/3;
+							padding: 5px 0 0 math.div($p, 3);
 						}
 					}
 				}

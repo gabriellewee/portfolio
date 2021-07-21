@@ -1,0 +1,112 @@
+@font-face {
+	font-family: 'Recursive';
+	src: url('../fonts/recursive/recursive.woff2') format('woff2');
+}
+
+@import 'partials/shared/utilities';
+@import 'partials/shared/reset';
+@import 'partials/shared/core';
+@import 'partials/shared/lightbox';
+@import 'partials/shared/syntax';
+
+@import 'partials/navigation/header';
+@import 'partials/navigation/footer';
+
+body {
+	font-family: $recursive;
+	font-size: 18px;
+	font-feature-settings: 'dlig' 1, 'liga' 1;
+	line-height: 1.6;
+}
+
+a, pre {
+	&:focus {
+		box-shadow: 0 0 0 $p*.25 rgba($blue, .4);
+		@media (prefers-color-scheme: dark) {
+			box-shadow: 0 0 0 $p*.25 rgba($blue, .7);
+		}
+	}
+}
+
+.header, main {
+	max-width: $writing-width;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.header {
+	padding: $p calc(#{$p*2} + env(safe-area-inset-left)) 0;
+	@include max {
+		padding: $p max(#{$p*2}, env(safe-area-inset-left)) 0;
+	}
+	@media only screen and (min-width: 1000px) {
+		padding-top: $p*2.5;
+	}
+	span {
+		display: none;
+		opacity: 0.75;
+		@media (prefers-color-scheme: dark) {
+			opacity: 0.5;
+		}
+		@media only screen and (min-width: 600px) {
+			display: unset;
+		}
+	}
+	a {
+		font-size: 64px;
+		font-weight: 1000;
+		font-variation-settings: "wght" 1000, "CASL" 1;
+		line-height: 1.4;
+		@media only screen and (min-width: 600px) {
+			font-size: 48px;
+		}
+		@media only screen and (min-width: 800px) {
+			font-size: 72px;
+		}
+		&:hover, &:focus {
+			span {
+				opacity: 1;
+			}
+		}
+	}
+}
+
+main {
+	padding: calc(#{$p*2} + env(safe-area-inset-left));
+	@include max {
+		padding: max(#{$p*2}, env(safe-area-inset-left));
+	}
+}
+
+.header, h1, h2, h3, h4, h5, h6 {
+	a {
+		will-change: transform;
+		transition: transform .2s ease-out;
+		display: inline-block;
+		&:hover, &:focus {
+			color: $green;
+		}
+		&:active {
+			transform: scale(0.98);
+		}
+	}
+}
+
+.top, .bottom {
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 1.2;
+	font-variation-settings: "wght" 500, "CASL" 0.5;
+	a {
+		border-radius: unset;
+		clip-path: unset;
+	}
+}
+
+.page-writing, .page-post {
+	.bottom {
+		padding-bottom: calc(#{$p*3} + env(safe-area-inset-bottom));
+	}
+}
+
+@import 'partials/pages/writing/post';

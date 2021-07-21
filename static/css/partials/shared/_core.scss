@@ -1,26 +1,62 @@
+@use 'sass:math';
+
 html {
 	-webkit-text-size-adjust: 100%;
 	height: -webkit-fill-available;
 	scroll-behavior: smooth;
+	@media screen and (prefers-reduced-motion: reduce) {
+		scroll-behavior: auto;
+	}
 }
 body {
 	min-height: 100vh;
 	min-height: -webkit-fill-available;
-	line-height: 1.2;
 	overflow-x: hidden;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-overflow-scrolling: touch;
+	color: $iron;
 }
 
 a {
-	color: black;
+	color: $iron;
 	text-decoration: none;
 }
 
-@media (inverted-colors: inverted) {
-	header .logo, .subpage-grid li figure, .subpage-grid li figcaption, iframe, .lightbox, .grid-item-expand, .inside svg, .grid-item-gaming svg {
-		filter: invert(100%);
+::-moz-selection {
+	background: $iron;
+	color:  white;
+}
+
+::selection {
+	background: $iron;
+	color:  white;
+}
+
+figure, picture, img {
+	display: block;
+	width: 100%;
+	height: auto;
+	content-visibility: auto;
+}
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background: darken($iron, 1%);
+		color: white;
+	}
+	a {
+		color: white;
+	}
+
+	::-moz-selection {
+		background: white;
+		color: $iron;
+	}
+
+	::selection {
+		background: white;
+		color: $iron;
 	}
 }

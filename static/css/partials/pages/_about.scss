@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 main {
 	max-width: 1200px;
 	margin-left: auto;
@@ -36,8 +38,8 @@ section {
 		margin-bottom: $p*.5;
 		background-color: mix($iron, white, 75%);
 		color: white;
-		border-radius: $p/6;
-		padding: $p/3 $p*.5;
+		border-radius: math.div($p, 6);
+		padding: math.div($p, 3) $p*.5;
 		&:hover {
 			transform: scale(1.05);
 		}

@@ -3,10 +3,10 @@
 	"version": "4.0.0",
 	"description": "Gabrielle Wee’s personal website and portfolio.",
 	"scripts": {
-		"sass": "sass static/css/style.scss static/css/style.css && npx postcss --use autoprefixer -o static/css/style.css static/css/style.css",
+		"sass": "sass static/css/style.scss:static/css/style.css static/css/writing.scss:static/css/writing.css && npx postcss --use autoprefixer -o static/css/style.css static/css/style.css && npx postcss --use autoprefixer -o static/css/writing.css static/css/writing.css",
 		"build": "npm run sass && eleventy",
 		"watch:eleventy": "eleventy --serve",
-		"watch:sass": "sass --watch static/css/style.scss static/css/style.css",
+		"watch:sass": "sass --watch static/css/style.scss:static/css/style.css static/css/writing.scss:static/css/writing.css",
 		"start": "npm-run-all sass --parallel watch:*",
 		"debug": "DEBUG=* eleventy"
 	},
@@ -23,8 +23,12 @@
 	"devDependencies": {
 		"@11ty/eleventy": "^0.12.1",
 		"@11ty/eleventy-img": "^0.9.0",
+		"@11ty/eleventy-plugin-rss": "^1.1.1",
+		"@11ty/eleventy-plugin-syntaxhighlight": "^3.1.2",
 		"autoprefixer": "^10.2.6",
 		"luxon": "^1.27.0",
+		"markdown-it": "^12.0.4",
+		"markdown-it-anchor": "^7.1.0",
 		"npm-run-all": "^4.1.5",
 		"postcss": "^8.3.5",
 		"postcss-cli": "^8.3.1",

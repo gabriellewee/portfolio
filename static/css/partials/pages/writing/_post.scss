@@ -1,0 +1,278 @@
+@use 'sass:math';
+
+article {
+	&:not(:last-child) {
+		margin-bottom: $p*4;
+	}
+
+	h1, h2, h3 {
+		font-variation-settings: "CASL" 1;
+		line-height: 1.2;
+	}
+	h2 {
+		font-size: 26px;
+		font-weight: 800;
+		font-variation-settings: "wght" 800, "CASL" 1;
+	}
+	h1, header h2 {
+		font-size: 32px;
+		font-weight: 900;
+		font-variation-settings: "wght" 900, "CASL" 1;
+	}
+	h3 {
+		font-size: 24px;
+		font-weight: 700;
+		font-variation-settings: "wght" 700, "CASL" 1;
+	}
+
+	h1, h2, h3 {
+		&[id] {
+			display: flex;
+			align-items: center;
+			align-content: center;
+			justify-content: space-between;
+		}
+	}
+	.direct-link {
+		opacity: 0.3;
+		&:hover, &:focus {
+			opacity: 1;
+		}
+	}
+
+	hr {
+		padding: 0;
+		margin: 0 0 $p*2;
+		border: 0;
+		height: 2px;
+		background-color: rgba($iron, .2);
+		@media (prefers-color-scheme: dark) {
+			background-color: rgba(white, .2);
+		}
+	}
+	div {
+		p, blockquote, pre, ul, ol, figure, h1, h2, h3, h4, h5, h6 {
+			&:not(:last-child) {
+				margin-bottom: $p*2;
+			}
+		}
+	}
+	p {
+		font-weight: 350;
+		font-variation-settings: "wght" 350, "CASL" 0.5, "CRSV" 1;
+		> code {
+			display: inline-block;
+			padding-left: $p*.25;
+			padding-right: $p*.25;
+			background: rgba($iron, .2);
+			@media (prefers-color-scheme: dark) {
+				background-color: darken($iron, 5%);
+			}
+		}
+		a {
+			text-decoration: underline;
+			color: $blue;
+			&:hover, &:focus {
+				color: $green;
+			}
+			&:active {
+				color: $indigo;
+			}
+		}
+		strong {
+			font-variation-settings: "wght" 800, "CASL" 0.5, "CRSV" 1;
+		}
+		em {
+			font-style: italic;
+		}
+	}
+	pre, p > code {
+		font-size: 17px;
+		font-weight: 400;
+		font-variation-settings: "wght" 400, "MONO" 1, "CASL" 0;
+		line-height: 28px;
+	}
+	pre {
+		padding: $p*1.5 $p*2;
+		background: $iron;
+		color: white;
+		@media (prefers-color-scheme: dark) {
+			background-color: darken($iron, 5%);
+		}
+	}
+	blockquote {
+		quotes: auto;
+		position: relative;
+		padding: 0 $p*2;
+		font-style: italic;
+		&:before {
+			content: open-quote;
+			opacity: 0.2;
+			display: block;
+			position: absolute;
+			top: -$p*2.5;
+			left: -$p*1.5;
+			font-size: 64px;
+			font-variation-settings: "wght" 400, "CASL" 1, "CRSV" 1;
+		}
+	}
+	ul, ol {
+		padding-left: $p*2;
+		ul, ol {
+			padding-top: $p*.5;
+		}
+		li {
+			&:not(:last-child) {
+				padding-bottom: $p*.5;
+			}
+		}
+	}
+	.row-double, .row-triple {
+		display: grid;
+		grid-gap: $p*2;
+	}
+	.row-double {
+		grid-template-columns: 1fr 1fr;
+	}
+	.row-triple {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+	figcaption {
+		margin-top: $p*.5;
+		font-size: 14px;
+		text-align: center;
+	}
+
+	header {
+		display: flex;
+		flex-wrap: wrap;
+		margin-bottom: $p;
+		@media only screen and (min-width: 1000px) {
+			flex-wrap: nowrap;
+			align-items: center;
+			justify-content: space-between;
+		}
+		h1 {
+			order: 2;
+			width: 100%;
+			font-weight: 800;
+			@media only screen and (min-width: 1000px) {
+				order: 1;
+				padding-right: $p*2;
+				width: unset;
+			}
+			a {
+				color: mix($iron, white, 30%);
+				@media (prefers-color-scheme: dark) {
+					color: mix($iron, white, 70%);
+				}
+			}
+		}
+		time {
+			order: 1;
+			display: inline-flex;
+			margin-bottom: $p;
+			@media only screen and (min-width: 1000px) {
+				order: 2;
+				margin-bottom: 0;
+			}
+			&:before, &:after {
+				content: "";
+				display: inline-block;
+				border: 20px solid rgba(white, .75);
+				@media (prefers-color-scheme: dark) {
+					border-color: rgba(darken($iron, 1%), .75);
+				}
+			}
+			&:before {
+				display: inline-block;
+				border-left-width: 0;
+				border-right-width: 15px;
+				border-right-color: rgba(darken($iron, 1%), .75);
+				@media (prefers-color-scheme: dark) {
+					border-right-color: rgba(white, .75);
+				}
+			}
+			&:after {
+				border-left-width: 15px;
+				border-right-width: 0;
+				border-left-color: rgba(darken($iron, 1%), .75);
+				@media (prefers-color-scheme: dark) {
+					border-left-color: rgba(white, .75);
+				}
+			}
+			span {
+				display: inline-block;
+				padding: $p*.5;
+				background-color: rgba(darken($iron, 1%), .75);
+				color: white;
+				font-weight: 600;
+				@media (prefers-color-scheme: dark) {
+					background-color: rgba(white, .75);
+					color: $iron;
+				}
+			}
+		}
+	}
+	footer {
+		margin-top: $p;
+		a {
+			opacity: 0.4;
+			&:hover, &:focus {
+				opacity: 1;
+				span {
+					text-decoration: underline;
+				}
+			}
+			&:active {
+				color: $green;
+			}
+			&.more {
+				font-style: italic;
+				&:after {
+					content: " \2192"
+				}
+			}
+		}
+	}
+}
+
+.pagination {
+	display: flex;
+	justify-content: space-between;
+	.previous {
+		&:before {
+			content: "\2190 "
+		}
+	}
+	.next {
+		&:after {
+			content: " \2192"
+		}
+	}
+	a {
+		opacity: 0.4;
+		display: block;
+		&:hover, &:focus {
+			opacity: 1;
+			span {
+				text-decoration: underline;
+			}
+		}
+		&:active {
+			color: $green;
+		}
+	}
+}
+
+.archive {
+	ul {
+		list-style: none;
+		padding: 0;
+	}
+	li {
+		&:not(:last-child) {
+			padding-bottom: $p*2;
+		}
+	}
+}
