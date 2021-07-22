@@ -5,7 +5,7 @@
 	color: $iron;
 	font-family: $recursive;
 	@include dark {
-		background-color: $iron;
+		background-color: mix($red, $iron, 10%);
 		color: white;
 	}
 	h2 {
@@ -47,6 +47,15 @@
 			}
 			&:active {
 				color: $iron;
+			}
+			@include dark {
+				&:hover, &:focus {
+					color: white;
+					opacity: 1;
+				}
+				&:active {
+					color: $red;
+				}
 			}
 			&:after {
 				content: " \2192"
@@ -103,7 +112,7 @@
 			}
 		}
 		.link, time {
-			padding: $p*.5 $p math.div($p, 3);
+			padding: $p*.5 $p;
 			font-size: 18px;
 			font-weight: 700;
 			font-variation-settings: "wght" 700, "CASL" 1;

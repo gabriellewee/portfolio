@@ -1650,7 +1650,7 @@ body {
 }
 @media (prefers-color-scheme: dark) {
   .page-home .grid-item-writing {
-    background-color: #263238;
+    background-color: #3c383d;
     color: white;
   }
 }
@@ -1699,6 +1699,15 @@ body {
 }
 .page-home .grid-item-writing .writes a:active {
   color: #263238;
+}
+@media (prefers-color-scheme: dark) {
+  .page-home .grid-item-writing .writes a:hover, .page-home .grid-item-writing .writes a:focus {
+    color: white;
+    opacity: 1;
+  }
+  .page-home .grid-item-writing .writes a:active {
+    color: #ff706a;
+  }
 }
 .page-home .grid-item-writing .writes a:after {
   content: " →";
@@ -1756,7 +1765,7 @@ body {
   }
 }
 .page-home .grid-item-writing li .link, .page-home .grid-item-writing li time {
-  padding: 6px 12px 4px;
+  padding: 6px 12px;
   font-size: 18px;
   font-weight: 700;
   font-variation-settings: "wght" 700, "CASL" 1;
