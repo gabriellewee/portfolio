@@ -1,0 +1,147 @@
+@use 'sass:math';
+
+.grid-item-writing {
+	background-color: mix($red, white, 10%);
+	color: $iron;
+	font-family: $recursive;
+	@include dark {
+		background-color: $iron;
+		color: white;
+	}
+	h2 {
+		font-weight: 1000;
+		font-variation-settings: "wght" 1000, "CASL" 1;
+		padding: $p calc(#{$p*1.5} + env(safe-area-inset-left));
+		@include max {
+			padding: $p max(#{$p*1.5}, env(safe-area-inset-left));
+		}
+	}
+	div {
+		padding: 0 calc(#{$p*1.5} + env(safe-area-inset-left)) $p;
+		@include max {
+			padding: 0 max(#{$p*1.5}, env(safe-area-inset-left)) $p;
+		}
+	}
+	h3 {
+		opacity: 0.5;
+		margin-bottom: $p*.5;
+		font-size: 24px;
+		font-weight: 900;
+		font-variation-settings: "wght" 900, "CASL" 1;
+	}
+	a {
+		will-change: background-color, color, transform;
+		transition: .1s ease-out;
+		&:active {
+			transform: scale(0.98);
+		}
+	}
+	.writes {
+		opacity: 1;
+		a {
+			display: inline-block;
+			opacity: 0.5;
+			&:hover, &:focus {
+				color: $red;
+				opacity: 1;
+			}
+			&:active {
+				color: $iron;
+			}
+			&:after {
+				content: " \2192"
+			}
+		}
+	}
+	ul {
+		list-style: none;
+	}
+	li {
+		display: flex;
+		flex-flow: row wrap;
+		align-items: center;
+		align-content: center;
+		a, time {
+			border-radius: $p*.25;
+			display: block;
+			padding: $p*.5 $p;
+			margin-bottom: $p;
+		}
+		a {
+			background-color: $red;
+			color: white;
+			font-size: 24px;
+			font-weight: 600;
+			font-variation-settings: "wght" 600, "CASL" 0.5;
+			&:focus {
+				@include focus-round;
+			}
+			&:hover, &:focus {
+				background-color: rgba($iron, .4);
+			}
+			&:active {
+				background-color: $iron;
+				transform: scale(0.98);
+			}
+			&:not(:last-child) {
+				margin-right: $p;
+			}
+			@include dark {
+				&:hover, &:focus {
+					background-color: white;
+					color: $red;
+				}
+				&:active {
+					background-color: darken($iron, 5%);
+				}
+			}
+		}
+		time {
+			background-color: rgba($iron, .2);
+			@include dark {
+				background-color: rgba(white, .2);
+			}
+		}
+		.link, time {
+			padding: $p*.5 $p math.div($p, 3);
+			font-size: 18px;
+			font-weight: 700;
+			font-variation-settings: "wght" 700, "CASL" 1;
+			text-transform: uppercase;
+		}
+		.link {
+			&.link-podcasts {
+				background-color: $ap;
+				&:hover, &:focus {
+					color: $ap;
+				}
+			}
+			&.link-spotify {
+				background-color: $sp;
+				&:hover, &:focus {
+					color: $sp;
+				}
+			}
+			&.link-medium {
+				background-color: $med;
+				&:hover, &:focus {
+					color: $med;
+				}
+			}
+			&:hover, &:focus {
+				background-color: $grey;
+			}
+			&:active {
+				background-color: $iron;
+			}
+			@include dark {
+				&:hover, &:focus {
+					background-color: white;
+				}
+				&:active {
+					background-color: darken($iron, 5%);
+				}
+			}
+		}
+	}
+}

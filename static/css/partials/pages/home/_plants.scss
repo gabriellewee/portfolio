@@ -1,0 +1,49 @@
+.grid-item-plants {
+	background-color: #d1e7d6;
+	color: #272f29;
+	font-size: 24px;
+	@media only screen and (min-width: 600px) {
+		display: grid;
+		grid-template-columns: 1fr 200px;
+		grid-template-rows: 1fr 51px;
+	}
+	@media only screen and (min-width: 1500px) {
+		font-size: 28px;
+	}
+	h2, a {
+		padding: $p calc(#{$p*1.5} + env(safe-area-inset-left));
+		@include max {
+			padding: $p max(#{$p*1.5}, env(safe-area-inset-left));
+		}
+	}
+	p {
+		width: 100%;
+		padding: 0 calc(#{$p*1.5} + env(safe-area-inset-left)) $p*1.5;
+		@include max {
+			padding: 0 max(#{$p*1.5}, env(safe-area-inset-left)) $p*1.5;
+		}
+	}
+	span {
+		font-style: italic;
+		font-weight: bold;
+	}
+	.image {
+		display: none;
+		@media only screen and (min-width: 600px) {
+			display: block;
+		}
+		@media only screen and (min-width: 1500px) {
+			grid-row: span 2;
+		}
+	}
+	.more {
+		color: #8ec39a;
+		grid-column: span 2;
+		@media only screen and (min-width: 1500px) {
+			grid-column: unset;
+		}
+		&:focus {
+			text-decoration-color: #8ec39a;
+		}
+	}
+}

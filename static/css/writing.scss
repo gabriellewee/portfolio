@@ -1,7 +1,4 @@
-@font-face {
-	font-family: 'Recursive';
-	src: url('../fonts/recursive/recursive.woff2') format('woff2');
-}
+@import 'partials/fonts/recursive';
 
 @import 'partials/shared/utilities';
 @import 'partials/shared/reset';

@@ -1,0 +1,38 @@
+.grid-item-links {
+	@import '../../colors/links';
+	background-color: white;
+	font-size: 28px;
+	a {
+		will-change: transform, color;
+		transition: .1s ease-out;
+		display: inline-block;
+		font-size: 40px;
+		font-style: italic;
+		font-weight: bold;
+		&:not(:last-child) {
+			margin-right: $p;
+		}
+		&:hover, &:focus {
+			color: $iron;
+			transform: scale(1.05);
+		}
+		&:focus {
+			@include wavy;
+		}
+		&:active {
+			transform: scale(0.95);
+		}
+	}
+	p:not(:last-child) {
+		padding-bottom: $p;
+	}
+	@include dark {
+		background-color: darken($iron, 2%);
+		color: white;
+		a {
+			&:hover, &:focus {
+				color: white;
+			}
+		}
+	}
+}

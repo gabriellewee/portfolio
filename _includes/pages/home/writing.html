@@ -1,16 +1,17 @@
-<h2>Sometimes I talk about the things I’ve made over the years.</h2>
+<h2>Sometimes I write a word or two.</h2>
 <div>
-	<h3>Audio</h3>
+	<h3 class="writes"><a href="/writes/">Latest blog posts</a></h3>
 	<ul>
-		<li>
-			<a href="https://itunes.apple.com/us/podcast/7-gabrielle-wee/id1190447982?i=1000382998257&mt=2" target="_blank">Friends Talk Frontend: Episode 7</a>
-			<a class="link link-podcasts" href="https://itunes.apple.com/us/podcast/7-gabrielle-wee/id1190447982?i=1000382998257&mt=2" target="_blank">Apple Podcasts</a>
-			<a class="link link-spotify" href="https://open.spotify.com/episode/7oEcqfovAS8N6q4z6Ct04e" target="_blank">Spotify</a>
-		</li>
+		{% for post in collections.writes | reverse | limit(3) %}
+			<li>
+				<a href="{{post.url | url}}" target="_blank">{{post.data.title}}</a>
+				<time datetime="{{post.date | htmlDateString}}">{{post.date|readableDate}}</time>
+			</li>
+		{% endfor %}
 	</ul>
 </div>
 <div>
-	<h3>Writing</h3>
+	<h3>Elsewhere on the Internet</h3>
 	<ul>
 		<li>
 			<a href="https://webdesign.tutsplus.com/tutorials/mastering-general-sibling-selectors-custom-tab-navigation--cms-29193" target="_blank">Mastering General Sibling Selectors: Custom Tab Navigation</a>
@@ -21,6 +22,16 @@
 		<li>
 			<a href="https://codepen.io/gabriellewee/post/how-to-create-direction-aware-css-only-hover-effects" target="_blank">How to Create Direction-Aware CSS-Only Hover Effects</a>
 			<a class="link link-medium" href="https://medium.com/@gabriellewee/how-to-create-direction-aware-css-only-hover-effects-2bbf0e13ad5b" target="_blank">Medium</a>
+		</li>
+	</ul>
+</div>
+<div>
+	<h3>Audio</h3>
+	<ul>
+		<li>
+			<a href="https://itunes.apple.com/us/podcast/7-gabrielle-wee/id1190447982?i=1000382998257&mt=2" target="_blank">Friends Talk Frontend: Episode 7</a>
+			<a class="link link-podcasts" href="https://itunes.apple.com/us/podcast/7-gabrielle-wee/id1190447982?i=1000382998257&mt=2" target="_blank">Apple Podcasts</a>
+			<a class="link link-spotify" href="https://open.spotify.com/episode/7oEcqfovAS8N6q4z6Ct04e" target="_blank">Spotify</a>
 		</li>
 	</ul>
 </div>

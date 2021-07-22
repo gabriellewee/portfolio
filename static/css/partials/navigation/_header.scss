@@ -41,7 +41,7 @@
 		padding: $p*.75 $p*1.5;
 		margin-right: $p;
 		color: darken($iron, 10%);
-		background: rgba($message, .9);
+		background-color: rgba($message, .9);
 		border-radius: 2em;
 		@include dark {
 			@include blur-bg(darken($iron, 10%), .9, .8);

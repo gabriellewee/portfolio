@@ -7,17 +7,19 @@ $writing-width: 900px;
 $p: 12px;
 $w: 1800px;
 
-$focus: #5E9ED6;
-
-$red: #ff706a;
-$orange: #FF956A;
-$violet: #BA6AFF;
 
 // default colors
 $iron: #263238;
 $pink: #F5C8BF;
 
+$red: #ff706a;
+$orange: #FF956A;
+$violet: #BA6AFF;
+
+$grey: #f1f1f1;
+
 // ui colors
+$focus: #5E9ED6;
 $message: #e9e9eb;
 
 // nameplate
@@ -133,19 +135,19 @@ $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
 }
 
 @mixin blur-all($blur, $bg, $crisp, $blurry) {
-	background: rgba($bg, $crisp);
+	background-color: rgba($bg, $crisp);
 	@supports (-webkit-backdrop-filter: blur(0px)) {
 		-webkit-backdrop-filter: blur($blur);
 		backdrop-filter: blur($blur);
-		background: rgba($bg, $blurry);
+		background-color: rgba($bg, $blurry);
 		@content;
 	}
 }
 
 @mixin blur-bg($bg, $crisp, $blur) {
-	background: rgba($bg, $crisp);
+	background-color: rgba($bg, $crisp);
 	@supports (-webkit-backdrop-filter: blur(0px)) {
-		background: rgba($bg, $blur);
+		background-color: rgba($bg, $blur);
 	}
 }
 

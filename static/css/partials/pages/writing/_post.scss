@@ -59,13 +59,13 @@ article {
 		}
 	}
 	p {
-		font-weight: 350;
-		font-variation-settings: "wght" 350, "CASL" 0.5, "CRSV" 1;
+		font-weight: 375;
+		font-variation-settings: "wght" 375, "CASL" 0.5, "CRSV" 1;
 		> code {
 			display: inline-block;
 			padding-left: $p*.25;
 			padding-right: $p*.25;
-			background: rgba($iron, .2);
+			background-color: rgba($iron, .2);
 			@include dark {
 				background-color: darken($iron, 5%);
 			}
@@ -95,7 +95,7 @@ article {
 	}
 	pre {
 		padding: $p*1.5 $p*2;
-		background: $iron;
+		background-color: $iron;
 		color: white;
 		@include dark {
 			background-color: darken($iron, 5%);

@@ -25,12 +25,12 @@ a {
 }
 
 ::-moz-selection {
-	background: $iron;
+	background-color: $iron;
 	color:  white;
 }
 
 ::selection {
-	background: $iron;
+	background-color: $iron;
 	color:  white;
 }
 
@@ -43,7 +43,7 @@ figure, picture, img {
 
 @include dark {
 	body {
-		background: darken($iron, 1%);
+		background-color: darken($iron, 1%);
 		color: white;
 	}
 	a {
@@ -51,12 +51,12 @@ figure, picture, img {
 	}
 
 	::-moz-selection {
-		background: white;
+		background-color: white;
 		color: $iron;
 	}
 
 	::selection {
-		background: white;
+		background-color: white;
 		color: $iron;
 	}
 }
