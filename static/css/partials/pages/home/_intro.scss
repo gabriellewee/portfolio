@@ -1,0 +1,27 @@
+.grid-item-intro {
+	background-color: lighten($pink, 5%);
+	color: $iron;
+	padding-right: $p*5.5;
+	@media only screen and (min-width: 600px) {
+		padding-right: $p*5;
+	}
+	@media only screen and (min-width: 1000px) {
+		padding-right: unset;
+	}
+	h1 {
+		span {
+			display: inline-block;
+			font-weight: bold;
+			font-style: italic;
+		}
+	}
+	.apple {
+		display: inline-block;
+		svg {
+			position: relative;
+			top: 2px;
+			width: 30px;
+			height: 30px;
+		}
+	}
+}

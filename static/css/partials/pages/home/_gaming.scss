@@ -1,0 +1,83 @@
+.grid-item-gaming {
+	background-color: #f0f0f0;
+	color: #2d2d2d;
+	@media only screen and (min-width: 600px) {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
+	}
+	h2 {
+		position: relative;
+		z-index: 1;
+		padding-bottom: math.div($p, 3);
+	}
+	svg {
+		display: block;
+	}
+	.friend-code {
+		position: relative;
+		z-index: 0;
+		font-size: 20px;
+		color: #717171;
+		span {
+			display: inline-block;
+			background-color: white;
+			color: #2d2d2d;
+			border-radius: math.div($p, 3);
+			padding: $p*.5 $p*.75;
+		}
+	}
+	div {
+		&:first-child {
+			padding: $p calc(#{$p*1.5} + env(safe-area-inset-left)) 0;
+			width: 100%;
+			@include max {
+				padding: $p max(#{$p*1.5}, env(safe-area-inset-left)) 0;
+			}
+			@media only screen and (min-width: 600px) {
+				width: calc(100% - 200px);
+			}
+			@media only screen and (min-width: 1500px) {
+				width: calc(100% - 255px);
+			}
+		}
+		&:nth-child(2) {
+			width: 100%;
+			padding: $p*1.5 calc(#{$p*1.5} + env(safe-area-inset-left)) 0;
+			@include max {
+				padding: $p*1.5 max(#{$p*1.5}, env(safe-area-inset-left)) 0;
+			}
+			@media only screen and (min-width: 600px) {
+				padding: $p*1.5 calc(#{$p*1.5} + env(safe-area-inset-left)) 0 0;
+				@include max {
+					padding: $p*1.5 max(#{$p*1.5}, env(safe-area-inset-left)) 0 0;
+				}
+				width: 200px;
+			}
+			@media only screen and (min-width: 1500px) {
+				width: 255px;
+			}
+			svg {
+				max-width: 255px;
+				margin: 0 auto;
+			}
+		}
+	}
+	ul {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-gap: $p*1.5;
+		list-style: none;
+		width: 100%;
+		padding: $p*1.5 calc(#{$p*1.5} + env(safe-area-inset-left));
+		@include max {
+			padding: $p*1.5 max(#{$p*1.5}, env(safe-area-inset-left));
+		}
+		@media only screen and (min-width: 600px) {
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+		}
+		svg {
+			border-radius: $p*.5;
+		}
+	}
+}

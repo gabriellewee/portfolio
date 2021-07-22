@@ -1,0 +1,91 @@
+.grid-item {
+	&-photography, &-graphic, &-art {
+		ul {
+			grid-template-columns: repeat(2, 1fr);
+			padding-bottom: $p*1.5;
+		}
+		picture {
+			&, img {
+				display: block;
+				width: 100%;
+			}
+		}
+		.expand, div {
+			display: block;
+			position: relative;
+		}
+		.expand {
+			border-radius: $p*.5;
+			overflow: hidden;
+			picture {
+				@include border-radius($p*.5);
+				display: flex;
+				align-items: center;
+				align-content: center;
+				justify-content: center;
+				&:before, &:after {
+					opacity: 0;
+					will-change: opacity;
+					transition: .2s ease-out;
+					content: "";
+					display: block;
+					position: absolute;
+				}
+				&:before {
+					z-index: 2;
+					background-image: url(../images/icons/expand.svg);
+					width: 25px;
+					height: 25px;
+				}
+				&:after {
+					@include blur-all(5px, darken($iron, 10%), .9, .4);
+					z-index: 1;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+				}
+			}
+			&:hover, &:focus {
+				picture {
+					&:before, &:after {
+						opacity: 1;
+					}
+				}
+			}
+			&:focus {
+				@include focus-round;
+			}
+		}
+	}
+	&-photography {
+		background-color: #8f9eb8;
+		color: #121f2b;
+		.more {
+			color: lighten(#8f9eb8, 10%);
+			&:focus {
+				text-decoration-color: lighten(#8f9eb8, 10%);
+			}
+		}
+	}
+	&-graphic {
+		background-color: #c46465;
+		color: white;
+		.more {
+			color: $pink;
+			&:focus {
+				text-decoration-color: $pink;
+			}
+		}
+	}
+	&-art {
+		background-color: #75605B;
+		color: white;
+		.more {
+			color: lighten(#938c8c, 10%);
+			&:focus {
+				text-decoration-color: lighten(#938c8c, 10%);
+			}
+		}
+	}
+}

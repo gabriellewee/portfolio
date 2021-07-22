@@ -27,7 +27,7 @@ section {
 	@include border-radius($p*.5);
 	margin-bottom: $p*2;
 	padding: $p $p*2;
-	background-color: #f1f1f1;
+	background-color: $grey;
 	@include dark {
 		background-color: rgba(white, .1);
 	}

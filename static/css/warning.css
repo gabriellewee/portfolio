@@ -13,7 +13,7 @@
   text-decoration: underline;
 }
 .current-warning.nameplate-v1.list {
-  background: white;
+  background-color: white;
   color: #8f8896;
 }
 .current-warning.nameplate-v1.list a {
@@ -60,7 +60,7 @@
   text-decoration: underline;
 }
 .current-warning.v4 {
-  background: black;
+  background-color: black;
   color: white;
   font-size: 18px;
 }
