@@ -1730,9 +1730,9 @@ body {
 .page-home .grid-item-writing li a {
   background-color: #ff706a;
   color: white;
-  font-size: 24px;
-  font-weight: 600;
-  font-variation-settings: "wght" 600, "CASL" 0.5;
+  font-size: 20px;
+  font-weight: 500;
+  font-variation-settings: "wght" 500, "CASL" 0.5;
 }
 .page-home .grid-item-writing li a:focus {
   box-shadow: 0 0 0 3px #5E9ED6;
@@ -1766,7 +1766,7 @@ body {
 }
 .page-home .grid-item-writing li .link, .page-home .grid-item-writing li time {
   padding: 6px 12px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   font-variation-settings: "wght" 700, "CASL" 1;
   text-transform: uppercase;
@@ -1790,7 +1790,7 @@ body {
   color: #00AB6C;
 }
 .page-home .grid-item-writing li .link:hover, .page-home .grid-item-writing li .link:focus {
-  background-color: #f1f1f1;
+  background-color: white;
 }
 .page-home .grid-item-writing li .link:active {
   background-color: #263238;

@@ -79,9 +79,9 @@
 		a {
 			background-color: $red;
 			color: white;
-			font-size: 24px;
-			font-weight: 600;
-			font-variation-settings: "wght" 600, "CASL" 0.5;
+			font-size: 20px;
+			font-weight: 500;
+			font-variation-settings: "wght" 500, "CASL" 0.5;
 			&:focus {
 				@include focus-round;
 			}
@@ -113,7 +113,7 @@
 		}
 		.link, time {
 			padding: $p*.5 $p;
-			font-size: 18px;
+			font-size: 16px;
 			font-weight: 700;
 			font-variation-settings: "wght" 700, "CASL" 1;
 			text-transform: uppercase;
@@ -138,7 +138,7 @@
 				}
 			}
 			&:hover, &:focus {
-				background-color: $grey;
+				background-color: white;
 			}
 			&:active {
 				background-color: $iron;
