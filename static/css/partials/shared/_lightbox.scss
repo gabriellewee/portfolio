@@ -2,9 +2,11 @@
 
 .expand {
 	display: block;
+	cursor: zoom-in;
 }
 
 .lightbox, .lightbox-background {
+	cursor: zoom-out;
 	opacity: 0;
 	visibility: hidden;
 	display: flex;
@@ -54,9 +56,9 @@
 	}
 	span {
 		opacity: 0;
-		will-change: opacity;
-		transition: .2s opacity ease-out .1s;
-		display: block;
+		will-change: opacity, display;;
+		transition: .2s opacity ease-out .1s, 0s display .2s;
+		display: none;
 		position: relative;
 		z-index: 1;
 		width: 100%;
@@ -82,6 +84,7 @@
 	}
 	&.active span.active, .no-js &:target span {
 		opacity: 1;
+		display: block;
 	}
 }
 

@@ -673,9 +673,11 @@ body {
 
 .expand {
   display: block;
+  cursor: zoom-in;
 }
 
 .lightbox, .lightbox-background {
+  cursor: zoom-out;
   opacity: 0;
   visibility: hidden;
   display: flex;
@@ -737,9 +739,9 @@ body {
 }
 .lightbox span {
   opacity: 0;
-  will-change: opacity;
-  transition: 0.2s opacity ease-out 0.1s;
-  display: block;
+  will-change: opacity, display;
+  transition: 0.2s opacity ease-out 0.1s, 0s display 0.2s;
+  display: none;
   position: relative;
   z-index: 1;
   width: 100%;
@@ -765,6 +767,7 @@ body {
 }
 .lightbox.active span.active, .no-js .lightbox:target span {
   opacity: 1;
+  display: block;
 }
 
 @keyframes loading {

@@ -110,9 +110,11 @@ figure, picture, img {
 }
 .expand {
   display: block;
+  cursor: zoom-in;
 }
 
 .lightbox, .lightbox-background {
+  cursor: zoom-out;
   opacity: 0;
   visibility: hidden;
   display: flex;
@@ -174,9 +176,9 @@ figure, picture, img {
 }
 .lightbox span {
   opacity: 0;
-  will-change: opacity;
-  transition: 0.2s opacity ease-out 0.1s;
-  display: block;
+  will-change: opacity, display;
+  transition: 0.2s opacity ease-out 0.1s, 0s display 0.2s;
+  display: none;
   position: relative;
   z-index: 1;
   width: 100%;
@@ -202,6 +204,7 @@ figure, picture, img {
 }
 .lightbox.active span.active, .no-js .lightbox:target span {
   opacity: 1;
+  display: block;
 }
 
 @keyframes loading {
@@ -684,7 +687,7 @@ article h1, article h2, article h3 {
   line-height: 1.2;
 }
 article h3 {
-  font-size: 2 12px;
+  font-size: 22px;
   font-weight: 700;
   font-variation-settings: "wght" 700, "CASL" 1;
 }
@@ -726,7 +729,7 @@ article hr {
 article div p:not(:last-child), article div blockquote:not(:last-child), article div pre:not(:last-child), article div ul:not(:last-child), article div ol:not(:last-child), article div figure:not(:last-child), article div h1:not(:last-child), article div h2:not(:last-child), article div h3:not(:last-child), article div h4:not(:last-child), article div h5:not(:last-child), article div h6:not(:last-child) {
   margin-bottom: 24px;
 }
-article p {
+article p, article ol, article ul {
   font-weight: 375;
   font-variation-settings: "wght" 375, "CASL" 0.5, "CRSV" 1;
 }
@@ -786,7 +789,7 @@ article blockquote:before {
   position: absolute;
   top: -30px;
   left: -18px;
-  font-size: 6 12px;
+  font-size: 64px;
   font-variation-settings: "wght" 400, "CASL" 1, "CRSV" 1;
 }
 article ul, article ol {
@@ -798,7 +801,13 @@ article ul ul, article ul ol, article ol ul, article ol ol {
 article ul li:not(:last-child), article ol li:not(:last-child) {
   padding-bottom: 6px;
 }
-article .row-double, article .row-triple {
+article [class*=row] {
+  margin-bottom: 24px;
+}
+article [class*=row] > *:not(:last-child) {
+  margin-bottom: 0;
+}
+article .row-double, article .row-triple, article .row-quad, article .row-quint {
   display: grid;
   grid-gap: 24px;
 }
@@ -808,10 +817,21 @@ article .row-double {
 article .row-triple {
   grid-template-columns: 1fr 1fr 1fr;
 }
+article .row-quad {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+article .row-quint {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
 article figcaption {
-  margin-top: 6px;
-  font-size: 1 12px;
+  font-size: 14px;
   text-align: center;
+}
+article figcaption:first-child {
+  margin-bottom: 6px;
+}
+article figcaption:last-child {
+  margin-top: 6px;
 }
 article header {
   display: flex;

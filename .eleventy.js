@@ -64,11 +64,13 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addFilter("stripAttr", stripObj => {
 		stripObj = stripObj
 			.replace(/<\/?span[^>]*>/g, '')
+			.replace(/<\/?picture[^>]*>/g, '')
+			.replace(/<\/?source[^>]*>/g, '')
 			.replace(/<\/?div[^>]*>/g, '')
 			.replace(/<\/?script[^>]*>/g, '')
 			.replace(/<\/?a class="expand"[^>]*>/g, '')
 			.replace(/<\s*p .*?data-slug-hash="([^<]*)" data-default.*?>([^<]*)<\s*a.*?>([^<]*)<\/p>/g, '<iframe src="https://codepen.io/gabriellewee/embed/$1">')
-			.replace(/(<a(?: \w+="[^"]+")* class="lightbox"(?: \w+="[^"]+")*>([^<]*)<\/a>)/g, '')
+			.replace(/(<a(?: \w+="[^"]+")* class="lightbox-group"(?: \w+="[^"]+")*>([^<]*)<\/a>)/g, '')
 			.replace(/(<a(?: \w+="[^"]+")* class="direct-link"(?: \w+="[^"]+")*>([^<]*)<\/a>)/g, '')
 			.replace(/<\s*h1.*?>/g, '<h1>')
 			.replace(/<\s*h2.*?>/g, '<h2>')
@@ -106,6 +108,8 @@ module.exports = function(eleventyConfig) {
 			} else if(type === "thumbnail") {
 				newWidths = [50, 400, 800];
 			}
+		} else if(category === "archive") {
+			newWidths = [100, null, null]
 		}
 
 		let stats = await Image(src, {

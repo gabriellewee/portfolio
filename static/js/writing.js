@@ -8,10 +8,13 @@ anchorLinks.forEach(el=>{
 	});
 });
 
-if(window.location.hash) {
-	imagesLoaded(mainContent, { background: true }, function(){
-		setTimeout(() => {
-			document.querySelector(window.location.hash).scrollIntoView({ behavior: 'smooth' });
-		}, 300);
-	});
+if(window.location.hash && anchorLinks) {
+	let scrollLocation = document.querySelector(window.location.hash);
+	if(scrollLocation) {
+		imagesLoaded(mainContent, { background: true }, () =>{
+			setTimeout(() => {
+				scrollLocation.scrollIntoView({ behavior: 'smooth' });
+			}, 300);
+		});
+	}
 }

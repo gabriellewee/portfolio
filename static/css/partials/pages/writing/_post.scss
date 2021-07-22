@@ -10,7 +10,7 @@ article {
 		line-height: 1.2;
 	}
 	h3 {
-		font-size: 2#{$p};
+		font-size: 22px;
 		font-weight: 700;
 		font-variation-settings: "wght" 700, "CASL" 1;
 	}
@@ -58,9 +58,11 @@ article {
 			}
 		}
 	}
-	p {
+	p, ol, ul {
 		font-weight: 375;
 		font-variation-settings: "wght" 375, "CASL" 0.5, "CRSV" 1;
+	}
+	p {
 		> code {
 			display: inline-block;
 			padding-left: $p*.25;
@@ -113,7 +115,7 @@ article {
 			position: absolute;
 			top: -$p*2.5;
 			left: -$p*1.5;
-			font-size: 6#{$p};
+			font-size: 64px;
 			font-variation-settings: "wght" 400, "CASL" 1, "CRSV" 1;
 		}
 	}
@@ -128,7 +130,13 @@ article {
 			}
 		}
 	}
-	.row-double, .row-triple {
+	[class*="row"] {
+		margin-bottom: $p*2;
+		> *:not(:last-child) {
+			margin-bottom: 0;
+		}
+	}
+	.row-double, .row-triple, .row-quad, .row-quint {
 		display: grid;
 		grid-gap: $p*2;
 	}
@@ -138,10 +146,21 @@ article {
 	.row-triple {
 		grid-template-columns: 1fr 1fr 1fr;
 	}
+	.row-quad {
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
+	.row-quint {
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	}
 	figcaption {
-		margin-top: $p*.5;
-		font-size: 1#{$p};
+		font-size: 14px;
 		text-align: center;
+		&:first-child {
+			margin-bottom: $p*.5;
+		}
+		&:last-child {
+			margin-top: $p*.5;
+		}
 	}
 
 	header {

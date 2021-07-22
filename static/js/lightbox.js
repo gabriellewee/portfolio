@@ -18,6 +18,14 @@ if(expandLinks != null && lightboxLinks != null) {
 			el.classList.remove("active");
 			el.querySelector('span').classList.remove("active");
 		});
+		document.addEventListener('scroll', e => {
+			if(el.classList.contains("active")) {
+				setTimeout(() => {
+					el.classList.remove("active");
+					el.querySelector('span').classList.remove("active");
+				}, 300);
+			}
+		});
 		document.addEventListener('keydown', e => {
 			let keyCode = e.keyCode;
 			if(el.classList.contains("active")) {
