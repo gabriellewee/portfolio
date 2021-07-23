@@ -1610,11 +1610,11 @@ body {
     background-color: rgba(17, 23, 26, 0.4);
   }
 }
-.page-home .grid-item-photography .expand:hover picture:before, .page-home .grid-item-photography .expand:hover picture:after, .page-home .grid-item-photography .expand:focus picture:before, .page-home .grid-item-photography .expand:focus picture:after, .page-home .grid-item-graphic .expand:hover picture:before, .page-home .grid-item-graphic .expand:hover picture:after, .page-home .grid-item-graphic .expand:focus picture:before, .page-home .grid-item-graphic .expand:focus picture:after, .page-home .grid-item-art .expand:hover picture:before, .page-home .grid-item-art .expand:hover picture:after, .page-home .grid-item-art .expand:focus picture:before, .page-home .grid-item-art .expand:focus picture:after {
-  opacity: 1;
-}
 .page-home .grid-item-photography .expand:focus, .page-home .grid-item-graphic .expand:focus, .page-home .grid-item-art .expand:focus {
   box-shadow: 0 0 0 3px #5E9ED6;
+}
+.page-home .grid-item-photography .expand:focus picture:before, .page-home .grid-item-photography .expand:focus picture:after, .page-home .grid-item-graphic .expand:focus picture:before, .page-home .grid-item-graphic .expand:focus picture:after, .page-home .grid-item-art .expand:focus picture:before, .page-home .grid-item-art .expand:focus picture:after {
+  opacity: 1;
 }
 .page-home .grid-item-photography {
   background-color: #8f9eb8;
