@@ -1,6 +1,5 @@
+Sitemap: https://gabriellew.ee/sitemap.xml
 
 User-agent: *
 Disallow:
-
-Sitemap: sitemap.xml
 
