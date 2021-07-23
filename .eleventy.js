@@ -43,6 +43,18 @@ module.exports = function(eleventyConfig) {
 		return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("dd LLLL yyyy");
 	});
 
+	eleventyConfig.addNunjucksAsyncShortcode("year", async (yearObj) => {
+		let year;
+		if(yearObj === "start") {
+			year = "2012";
+		} else if(yearObj === "current") {
+			year = DateTime.fromJSDate(new Date(), {zone: 'utc'}).toFormat("yyyy");
+		} else {
+			year = "";
+		}
+		return year;
+	});
+
 	eleventyConfig.addFilter("isoFilter", filterObj => {
 		let array = filterObj.split(' ');
 		let result = array.map(el => 'filter-' + el);
@@ -87,7 +99,6 @@ module.exports = function(eleventyConfig) {
 
 	eleventyConfig.addPassthroughCopy("static");
 	eleventyConfig.addPassthroughCopy("robots.txt");
-	eleventyConfig.addPassthroughCopy("sitemap.xml");
 
 	eleventyConfig.addNunjucksAsyncShortcode("image", async (src, alt, aspect, type, category) => {
 		let newWidths;
