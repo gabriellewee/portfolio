@@ -46,15 +46,13 @@
 					height: 100%;
 				}
 			}
-			&:hover, &:focus {
+			&:focus {
+				@include focus-round;
 				picture {
 					&:before, &:after {
 						opacity: 1;
 					}
 				}
-			}
-			&:focus {
-				@include focus-round;
 			}
 		}
 	}
