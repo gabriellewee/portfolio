@@ -20,27 +20,36 @@
 		}
 	}
 	a {
-		will-change: transform, background-color, color;
-		transition: transform .1s ease-out;
 		display: inline-block;
-		background-color: $iron;
-		color: white;
-		padding: math.div($p, 3) $p*.5;
-		@include clip-path {
-			clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
+		span {
+			display: inline-block;
+			will-change: transform, background-color, color;
+			transition: transform .1s ease-out;
+			background-color: $iron;
+			color: white;
+			padding: math.div($p, 3) $p*.5;
+			@include clip-path {
+				clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
+			}
 		}
 		&:hover, &:focus {
-			background-color: $red;
-		}
-		@include dark {
-			background-color: rgba(white, .8);
-			color: $iron;
-			&:hover, &:focus {
+			span {
 				background-color: $red;
 			}
 		}
+		@include dark {
+			span {
+				background-color: rgba(white, .8);
+				color: $iron;
+				&:hover, &:focus {
+					background-color: $red;
+				}
+			}
+		}
 		&:active {
-			transform: scale(0.95);
+			span {
+				transform: scale(0.95);
+			}
 		}
 	}
 }
