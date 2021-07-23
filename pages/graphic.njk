@@ -27,6 +27,7 @@ tags: pages
 							<fieldset>
 								<input class="grid-input" id="{{graphic.date|safe}}-{{graphic.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this graphic"/>
 								<label class="grid-close" for="{{graphic.date|safe}}-{{graphic.name}}-info"></label>
+								<label class="grid-overlay" for="{{photo.date|safe}}-{{photo.name}}-info">{% include 'svg/icons/info.svg' %}</label>
 								<label class="grid-link" for="{{graphic.date|safe}}-{{graphic.name}}-info">{% include 'svg/icons/info.svg' %}</label>
 								<div class="grid-info">
 									<label class="grid-down" for="{{graphic.date|safe}}-{{graphic.name}}-info">{% include 'svg/icons/caret-down.svg' %}</label>

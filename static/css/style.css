@@ -337,13 +337,45 @@ body {
   width: 100%;
   height: 100%;
 }
-.grid-item figure .grid-close {
+.grid-item figure svg {
+  display: block;
+  width: 25px;
+  height: 25px;
+}
+.grid-item figure svg group, .grid-item figure svg path, .grid-item figure svg polyline, .grid-item figure svg polygon, .grid-item figure svg circle, .grid-item figure svg ellipse, .grid-item figure svg rect {
+  stroke-width: 7px;
+}
+.grid-item figure .grid-close, .grid-item figure .grid-overlay {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 1;
   width: 100%;
   height: 100%;
+}
+.grid-item figure .grid-overlay {
+  background-color: rgba(17, 23, 26, 0.9);
+  will-change: opacity;
+  transition: 0.2s ease-out;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+@supports (-webkit-backdrop-filter: blur(0px)) {
+  .grid-item figure .grid-overlay {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    background-color: rgba(17, 23, 26, 0.4);
+  }
+}
+.grid-item figure .grid-overlay svg {
+  width: 50px;
+  height: 50px;
+}
+.grid-item figure .grid-overlay svg group, .grid-item figure .grid-overlay svg path, .grid-item figure .grid-overlay svg polyline, .grid-item figure .grid-overlay svg polygon, .grid-item figure .grid-overlay svg circle, .grid-item figure .grid-overlay svg ellipse, .grid-item figure .grid-overlay svg rect {
+  stroke-width: 5px;
 }
 .grid-item figure label, .grid-item figure .grid-link {
   cursor: pointer;
@@ -358,27 +390,29 @@ body {
 .grid-item figure .grid-link {
   padding: 6px;
 }
-.grid-item figure svg {
-  display: block;
-  width: 25px;
-  height: 25px;
-}
-.grid-item figure svg group, .grid-item figure svg path, .grid-item figure svg polyline, .grid-item figure svg polygon, .grid-item figure svg circle, .grid-item figure svg ellipse, .grid-item figure svg rect {
-  stroke-width: 7px;
-}
 .grid-item figure input {
   position: absolute;
   top: 0;
   left: 0;
   opacity: 0;
-  z-index: -1;
 }
 .grid-item figure input ~ label.grid-link {
   display: none;
 }
+@media only screen and (min-width: 600px) {
+  .grid-item figure input ~ label.grid-link {
+    opacity: 0;
+    display: block;
+  }
+}
 .grid-item figure input:focus ~ .grid-link {
-  box-shadow: inset 0 0 0 3px #5E9ED6;
+  opacity: 0;
+}
+.grid-item figure input:focus ~ .grid-overlay {
   opacity: 1;
+}
+.grid-item figure input:focus ~ .grid-overlay svg {
+  box-shadow: inset 0 0 0 3px #5E9ED6;
 }
 .grid-item figure input:focus ~ .grid-info .grid-down {
   box-shadow: inset 0 0 0 3px #5E9ED6;
@@ -388,11 +422,22 @@ body {
   opacity: 1;
   z-index: 2;
 }
+.grid-item figure input:checked ~ .grid-overlay {
+  opacity: 0;
+}
 .grid-item figure input:checked ~ .grid-close {
   z-index: unset;
 }
 .grid-item figure input:checked ~ .grid-link {
   opacity: 0;
+}
+@media only screen and (min-width: 600px) {
+  .grid-item figure:hover input ~ label.grid-link {
+    opacity: 1;
+  }
+  .grid-item figure:hover input:focus ~ label.grid-link, .grid-item figure:hover input:checked ~ label.grid-link {
+    opacity: 0;
+  }
 }
 .grid-item figure .grid-info {
   transform: translateY(25%);
@@ -409,12 +454,11 @@ body {
   position: absolute;
   right: 0;
   z-index: 1;
-  padding: 6px;
-  padding-right: calc(6px + env(safe-area-inset-left));
+  padding: 6px calc(6px + env(safe-area-inset-left));
 }
 @supports (padding: max(0px)) {
   .grid-item figure .grid-info .grid-down, .grid-item figure .grid-info .grid-expand {
-    padding-right: max(6px, env(safe-area-inset-left));
+    padding: 6px max(6px, env(safe-area-inset-left));
   }
 }
 .grid-item figure .grid-info .grid-down {
@@ -474,20 +518,6 @@ body {
   padding: 5px 0 0 4px;
 }
 
-@media only screen and (min-width: 600px) {
-  .grid-item figure input ~ label.grid-link {
-    opacity: 0;
-  }
-  .grid-item figure:hover input ~ label.grid-link {
-    opacity: 1;
-  }
-  .grid-item figure:hover input:checked ~ label.grid-link {
-    opacity: 0;
-  }
-  .grid-item figure input ~ label.grid-link {
-    display: block;
-  }
-}
 .grid-filters {
   position: fixed;
   position: -webkit-sticky;
