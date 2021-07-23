@@ -81,13 +81,38 @@
 			width: 100%;
 			height: 100%;
 		}
-		.grid-close {
+		svg {
+			display: block;
+			width: 25px;
+			height: 25px;
+			group, path, polyline, polygon, circle, ellipse, rect {
+				stroke-width: 7px;
+			}
+		}
+		.grid-close, .grid-overlay {
 			position: absolute;
 			top: 0;
 			left: 0;
 			z-index: 1;
 			width: 100%;
 			height: 100%;
+		}
+		.grid-overlay {
+			@include blur-all(5px, darken($iron, 10%), .9, .4);
+			will-change: opacity;
+			transition: .2s ease-out;
+			opacity: 0;
+			display: flex;
+			align-items: center;
+			align-content: center;
+			justify-content: center;
+			svg {
+				width: 50px;
+				height: 50px;
+				group, path, polyline, polygon, circle, ellipse, rect {
+					stroke-width: 5px;
+				}
+			}
 		}
 		label, .grid-link {
 			cursor: pointer;
@@ -102,27 +127,27 @@
 		.grid-link {
 			padding: $p*.5;
 		}
-		svg {
-			display: block;
-			width: 25px;
-			height: 25px;
-			group, path, polyline, polygon, circle, ellipse, rect {
-				stroke-width: 7px;
-			}
-		}
 		input {
 			position: absolute;
 			top: 0;
 			left: 0;
 			opacity: 0;
-			z-index: -1;
 			~ label.grid-link {
 				display: none;
+				@media only screen and (min-width: 600px) {
+					opacity: 0;
+					display: block;
+				}
 			}
 			&:focus {
 				~ .grid-link {
-					box-shadow: inset 0 0 0 $p*.25 $focus;
+					opacity: 0;
+				}
+				~ .grid-overlay {
 					opacity: 1;
+					svg {
+						box-shadow: inset 0 0 0 $p*.25 $focus;
+					}
 				}
 				~ .grid-info {
 					.grid-down {
@@ -136,10 +161,23 @@
 					opacity: 1;
 					z-index: 2;
 				}
+				~ .grid-overlay {
+					opacity: 0;
+				}
 				~ .grid-close {
 					z-index: unset;
 				}
 				~ .grid-link {
+					opacity: 0;
+				}
+			}
+		}
+		@media only screen and (min-width: 600px) {
+			&:hover input {
+				~ label.grid-link {
+					opacity: 1;
+				}
+				&:focus ~ label.grid-link, &:checked ~ label.grid-link {
 					opacity: 0;
 				}
 			}
@@ -158,10 +196,9 @@
 				position: absolute;
 				right: 0;
 				z-index: 1;
-				padding: $p*.5;
-				padding-right: calc(#{$p*.5} + env(safe-area-inset-left));
+				padding: $p*.5 calc(#{$p*.5} + env(safe-area-inset-left));
 				@include max {
-					padding-right: max(#{$p*.5}, env(safe-area-inset-left));
+					padding: $p*.5 max(#{$p*.5}, env(safe-area-inset-left));
 				}
 			}
 			.grid-down {
@@ -209,29 +246,6 @@
 							padding: 5px 0 0 math.div($p, 3);
 						}
 					}
-				}
-			}
-		}
-	}
-}
-
-@media only screen and (min-width: 600px) {
-	.grid-item {
-		figure {
-			input ~ label.grid-link {
-				opacity: 0;
-			}
-			&:hover input {
-				~ label.grid-link {
-					opacity: 1;
-				}
-				&:checked ~ label.grid-link {
-					opacity: 0;
-				}
-			}
-			input {
-				~ label.grid-link {
-					display: block;
 				}
 			}
 		}
