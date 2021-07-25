@@ -1,20 +1,23 @@
 backend:
   name: git-gateway
   branch: netlify
-media_folder: "_site/static/images/uploads"
-public_folder: "/static/images/uploads"
+media_folder: '_site/static/images/uploads'
+public_folder: '/static/images/uploads'
 publish_mode: editorial_workflow
 site_url: https://gabriellew.ee
 logo_url: https://gabriellew.ee/static/images/favicons/netlify-cms.svg
+show_preview_links: true
 
 collections:
-  - name: "writes"
-    label: "Posts"
-    folder: "writes"
+  - name: 'writes'
+    label: 'Posts'
+    label_singular: 'Post'
+    folder: 'writes'
     create: true
-    slug: "{{year}}/{{month}}/{{day}}/{{slug}}"
+    slug: '{{year}}/{{month}}/{{day}}/{{slug}}'
+    preview_path: 'writes/{{year}}/{{month}}/{{day}}/{{slug}}'
     fields:
-      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/post.njk" }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Date", name: "date", widget: "date", default: "" }
-      - { label: "Content", name: "body", widget: "markdown" }
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'layouts/post.njk' }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Date', name: 'date', widget: 'date', format: 'DD MMMM YYYY', default: '' }
+      - { label: 'Content', name: 'body', widget: 'markdown' }
