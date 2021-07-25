@@ -1,0 +1,18 @@
+backend:
+  name: git-gateway
+  branch: master
+media_folder: "_site/static/images/uploads"
+public_folder: "/static/images/uploads"
+
+collections:
+  - name: "writes"
+    label: "Writing"
+    folder: "writes"
+    create: true
+    slug: "{{year}}/{{month}}/{{day}}/{{slug}}"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/post.njk" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Date", name: "date", widget: "date", default: "" }
+      - { label: "Content", name: "body", widget: "markdown" }
