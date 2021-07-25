@@ -97,6 +97,7 @@ module.exports = function(eleventyConfig) {
 		return stripObj;
 	});
 
+	eleventyConfig.addPassthroughCopy("admin");
 	eleventyConfig.addPassthroughCopy("static");
 	eleventyConfig.addPassthroughCopy("robots.txt");
 
