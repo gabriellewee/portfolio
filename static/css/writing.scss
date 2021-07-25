@@ -22,7 +22,7 @@ a, pre {
 	}
 }
 
-.header, main {
+.header, main, .frame-content {
 	max-width: $writing-width;
 	margin-left: auto;
 	margin-right: auto;
@@ -69,7 +69,7 @@ a, pre {
 	}
 }
 
-main {
+main, .frame-content {
 	padding: calc(#{$p*2} + env(safe-area-inset-left));
 	@include max {
 		padding: max(#{$p*2}, env(safe-area-inset-left));

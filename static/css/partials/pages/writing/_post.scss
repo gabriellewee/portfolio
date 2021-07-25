@@ -189,24 +189,26 @@ article {
 			}
 		}
 		time {
-			order: 1;
-			display: block;
-			margin-bottom: $p;
-			padding: $p*.5 $p;
-			background-color: rgba(darken($iron, 1%), .75);
-			color: white;
-			font-weight: 600;
-			@include clip-path {
-				clip-path: polygon(#{$p*1.25} 0%, calc(100% - #{$p*1.25}) 0%, 100% 45%, 100% 55%, calc(100% - #{$p*1.25}) 100%, #{$p*1.25} 100%, 0 55%, 0 45%);
-				padding: $p*.5 $p*1.75;
-			}
-			@include dark {
-				background-color: rgba(white, .75);
-				color: $iron;
-			}
-			@media only screen and (min-width: 1000px) {
-				order: 2;
-				margin-bottom: 0;
+			&:not(:empty) {
+				order: 1;
+				display: block;
+				margin-bottom: $p;
+				padding: $p*.5 $p;
+				background-color: rgba(darken($iron, 1%), .75);
+				color: white;
+				font-weight: 600;
+				@include clip-path {
+					clip-path: polygon(#{$p*1.25} 0%, calc(100% - #{$p*1.25}) 0%, 100% 45%, 100% 55%, calc(100% - #{$p*1.25}) 100%, #{$p*1.25} 100%, 0 55%, 0 45%);
+					padding: $p*.5 $p*1.75;
+				}
+				@include dark {
+					background-color: rgba(white, .75);
+					color: $iron;
+				}
+				@media only screen and (min-width: 1000px) {
+					order: 2;
+					margin-bottom: 0;
+				}
 			}
 		}
 	}

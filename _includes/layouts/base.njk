@@ -40,7 +40,6 @@
 	<link rel="stylesheet" href="{% if customStyles %}{{ '/static/css/' + customStyles + '.css' | url }}{% else %}{{'/static/css/style.css' | url}}{% endif %}"/>
 
 	<script src="{{'/static/js/modernizr.min.js' | url}}"></script>
-	<script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body ontouchstart{% if templateClass %} class="page-{{templateClass}}"{% endif %}>
 	<header class="top" aria-label="Header">
