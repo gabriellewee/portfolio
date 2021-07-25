@@ -1,12 +1,13 @@
 let mainContent = document.querySelector("main");
 let anchorLinks = document.querySelectorAll(".direct-link");
-
-anchorLinks.forEach(el=>{
-	let targetLink = el.getAttribute("href");
-	el.addEventListener('click', e => {
-		document.querySelector(targetLink).scrollIntoView({ behavior: 'smooth' });
+if(anchorLinks) {
+	anchorLinks.forEach(el=>{
+		let targetLink = el.getAttribute("href");
+		el.addEventListener('click', e => {
+			document.querySelector(targetLink).scrollIntoView({ behavior: 'smooth' });
+		});
 	});
-});
+}
 
 if(window.location.hash && anchorLinks) {
 	let scrollLocation = document.querySelector(window.location.hash);
@@ -19,5 +20,10 @@ if(window.location.hash && anchorLinks) {
 	}
 }
 
-// Open the modal
-netlifyIdentity.open();
+let adminLink = document.querySelector(".admin-link");
+if(adminLink) {
+	adminLink.addEventListener('click', e => {
+		e.preventDefault();
+		netlifyIdentity.open();
+	});
+}
