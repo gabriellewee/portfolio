@@ -101,8 +101,9 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("static");
 	eleventyConfig.addPassthroughCopy("robots.txt");
 
-	eleventyConfig.addNunjucksAsyncShortcode("image", async (src, alt, aspect, type, category) => {
+	eleventyConfig.addNunjucksAsyncShortcode("image", async (src, alt, aspect, type, category, lightbox) => {
 		let newWidths;
+		let newFormats;
 
 		if(category === "photography") {
 			if(type === "full") {
@@ -122,17 +123,29 @@ module.exports = function(eleventyConfig) {
 			}
 		} else if(category === "archive") {
 			newWidths = [100, null, null]
+		} else if(category === "graphic") {
+			newWidths = [100, 400, 800, 1500, null]
 		}
+
+		(category === "graphic") ? newFormats = ["webp", "png"]: newFormats = ["webp", "jpeg"];
 
 		let stats = await Image(src, {
 			widths: newWidths,
-			formats: ["webp", "jpeg"],
+			formats: newFormats,
 			urlPath: `/static/images/${category}/built`,
 			outputDir: `./_site/static/images/${category}/built`,
 		});
 
-		let lowest = stats["jpeg"][0];
-		let basic = stats["jpeg"][1];
+		let lowest;
+		let basic;
+
+		if(category === "graphic") {
+			lowest = stats["png"][0];
+			basic = stats["png"][3];
+		} else {
+			lowest = stats["jpeg"][0];
+			basic = stats["jpeg"][1];
+		}
 
 		const placeholder = await sharp(lowest.outputPath)
 			.resize({ fit: sharp.fit.inside })
@@ -143,53 +156,20 @@ module.exports = function(eleventyConfig) {
 			"base64"
 		)}`;
 
-		const webpset = `${stats["webp"][1].url}, ${stats["webp"][2].url} 2x`;
-		const jpegset = `${stats["jpeg"][1].url}, ${stats["jpeg"][2].url} 2x`;
-
-		const source = `<source type="image/webp" srcset="${webpset}" >`;
-
-		const img = `<img
-			class="lazy"
-			loading="lazy"
-			decoding="async"
-			alt="${alt}"
-			src="${base64Placeholder}"
-			srcset="${jpegset}"
-			width="${basic.width}"
-			height="${basic.height}">`;
-
-		return `<picture>${source}${img}</picture>`;
-	});
-
-	eleventyConfig.addNunjucksAsyncShortcode("graphic", async (src, alt, type) => {
-		let stats = await Image(src, {
-			widths: [100, 400, 800, 1500, null],
-			formats: ["webp", "png"],
-			urlPath: "/static/images/graphic/built",
-			outputDir: "./_site/static/images/graphic/built",
-		});
-
-		let lowest = stats["png"][0];
-		let basic = stats["png"][3];
-
-		const placeholder = await sharp(lowest.outputPath)
-			.resize({ fit: sharp.fit.inside })
-			.blur()
-			.toBuffer();
-
-		const base64Placeholder = `data:image/png;base64,${placeholder.toString(
-			"base64"
-		)}`;
-
-		let pngset;
 		let webpset;
+		let regset;
 
-		if(type === "full") {
-			webpset = `${stats["webp"][3].url}, ${src.substring(1).slice(0, -4)}.webp 2x`;
-			pngset = `${stats["png"][3].url}, ${src.substring(1)} 2x`;
-		} else if(type === "thumbnail") {
+		if(category === "graphic") {
+			if(type === "full") {
+				webpset = `${stats["webp"][3].url}, ${src.substring(1).slice(0, -4)}.webp 2x`;
+				regset = `${stats["png"][3].url}, ${src.substring(1)} 2x`;
+			} else if(type === "thumbnail") {
+				webpset = `${stats["webp"][1].url}, ${stats["webp"][2].url} 2x`;
+				regset = `${stats["png"][1].url}, ${stats["png"][2].url} 2x`;
+			}
+		} else {
 			webpset = `${stats["webp"][1].url}, ${stats["webp"][2].url} 2x`;
-			pngset = `${stats["png"][1].url}, ${stats["png"][2].url} 2x`;
+			regset = `${stats["jpeg"][1].url}, ${stats["jpeg"][2].url} 2x`;
 		}
 
 		const source = `<source type="image/webp" srcset="${webpset}" >`;
@@ -200,11 +180,27 @@ module.exports = function(eleventyConfig) {
 			decoding="async"
 			alt="${alt}"
 			src="${base64Placeholder}"
-			srcset="${pngset}"
+			srcset="${regset}"
 			width="${basic.width}"
 			height="${basic.height}">`;
 
-		return `<picture>${source}${img}</picture>`;
+		const url = src.substring(1);
+
+		if(lightbox) {
+			return `<figure id="${lightbox}">
+				<a class="expand" href="#${lightbox}-lightbox" aria-label="Expand image">
+					<picture>${source}${img}</picture>
+				</a>
+			</figure>
+			<div class="lightbox-group">
+				<a class="lightbox" id="${lightbox}-lightbox" href="#${lightbox}">
+					<span style="background-image: url('${url}')"></span>
+				</a>
+				<div class="lightbox-background"></div>
+			</div>`;
+		} else {
+			return `<picture>${source}${img}</picture>`;
+		}
 	});
 
 	eleventyConfig.addShortcode('excerpt', post => {

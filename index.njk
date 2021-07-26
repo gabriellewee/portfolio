@@ -45,7 +45,7 @@ tags: pages
 				{% for graphic in graphic | limit(4) %}
 					<li id="{{graphic.date|safe}}-{{graphic.name}}">
 						<a class="grid-item-expand expand" href="#{{graphic.date|safe}}-{{graphic.name}}-lightbox" aria-label="Expand graphic">
-							{% graphic './static/images/graphic/' + graphic.date + '-' + graphic.name + '.png', graphic.description, 'thumbnail' %}
+							{% image './static/images/graphic/' + graphic.date + '-' + graphic.name + '.png', graphic.description, null, 'thumbnail', 'graphic' %}
 						</a>
 					</li>
 				{% endfor %}
