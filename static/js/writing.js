@@ -1,29 +1,27 @@
-let mainContent = document.querySelector("main");
-let anchorLinks = document.querySelectorAll(".direct-link");
-if(anchorLinks) {
-	anchorLinks.forEach(el=>{
+const smoothScrollLinks = ((links = Array.from(document.querySelectorAll(".direct-link"))) => {
+	let mainContent = document.querySelector("main");
+	links.forEach(el=>{
 		let targetLink = el.getAttribute("href");
-		el.addEventListener('click', e => {
-			document.querySelector(targetLink).scrollIntoView({ behavior: 'smooth' });
+		el.addEventListener("click", e => {
+			document.getElementById(targetLink).scrollIntoView({ behavior: "smooth" });
 		});
 	});
-}
-
-if(window.location.hash && anchorLinks) {
-	let scrollLocation = document.querySelector(window.location.hash);
-	if(scrollLocation) {
-		imagesLoaded(mainContent, { background: true }, () =>{
-			setTimeout(() => {
-				scrollLocation.scrollIntoView({ behavior: 'smooth' });
-			}, 300);
-		});
+	if(window.location.hash) {
+		let scrollLocation = document.querySelector(window.location.hash);
+		if(scrollLocation) {
+			imagesLoaded(mainContent, { background: true }, () =>{
+				setTimeout(() => {
+					scrollLocation.scrollIntoView({ behavior: "smooth" });
+				}, 300);
+			});
+		}
 	}
-}
+})();
 
-let adminLink = document.querySelector(".admin-link");
-if(adminLink) {
-	adminLink.addEventListener('click', e => {
-		e.preventDefault();
-		netlifyIdentity.open();
-	});
-}
+const targetBlankLinks = ((links = document.getElementsByTagName("a")) => {
+	for (var i = 0; i < links.length; i++) {
+		if (/^(https?:)?\/\//.test(links[i].getAttribute("href"))) {
+			links[i].target = "_blank";
+		}
+	}
+})();

@@ -5,7 +5,6 @@ media_folder: '_site/static/images/uploads'
 public_folder: '/static/images/uploads'
 publish_mode: editorial_workflow
 site_url: https://gabriellew.ee
-logo_url: https://gabriellew.ee/static/images/favicons/netlify-cms.svg
 show_preview_links: true
 
 collections:

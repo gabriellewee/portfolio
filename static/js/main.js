@@ -1,72 +1,71 @@
-let lazyLoadInstance = new LazyLoad();
+const lazyLoadInstance = new LazyLoad();
 
-let iso = new Isotope(document.querySelector('.grid-isotope'), {
+const iso = new Isotope(document.querySelector(".grid-isotope"), {
 	percentPosition: true,
-	layoutMode: 'packery',
-	itemSelector: '.grid-item'
+	layoutMode: "packery",
+	itemSelector: ".grid-item"
 });
-new imagesLoaded(window, { background: true }, function(){
+new imagesLoaded(window, { background: true }, () => {
 	setTimeout(() => {
 		iso.layout();
 		setTimeout(() => {
-			document.querySelector('header').classList.add('active')
+			document.querySelector("header").classList.add("active")
 		}, 500);
 	}, 100);
 });
 
-let filterList = document.querySelector('.grid-filters');
-if (filterList != null) {
-	let filterLinks = filterList.querySelectorAll('[data-filter]');
-	filterLinks.forEach(el=>{
-		let value = el.getAttribute('data-filter');
-		el.addEventListener('click', function(e) {
-			e.preventDefault();
-			iso.arrange({ filter: value });
-			let active = filterList.querySelector('.active');
-			if (active != null && value == '*') {
-				active.classList.remove('active');
-			} else if (active != null) {
-				active.classList.remove('active');
-				e.target.classList.add('active');
-			} else {
-				e.target.classList.add('active');
-			};
-			iso.layout();
-		});
-	});
-}
-
-let infoInputs = Array.from(document.querySelectorAll('.grid-input'));
-if(infoInputs != null) {
-	infoInputs.forEach(el=>{
-		let info = el.nextElementSibling.nextElementSibling.nextElementSibling;
-		let expand = info.querySelector('.grid-expand');
-		info.setAttribute('aria-hidden', 'false');
-		el.addEventListener('keypress', e => {
+const visualFilters = ((filters = document.querySelector(".grid-filters")) => {
+	if (filters) {
+		let tagTrigger = filters.querySelector("#grid-filters");
+		tagTrigger.addEventListener("keypress",  e => {
 			if (e.keyCode == 13) {
-				if(el.checked){
-					el.checked = false;
-					expand.tabIndex = -1;
-					info.setAttribute('aria-hidden', 'true');
-				} else {
-					el.checked = true;
-					expand.tabIndex = 0;
-					info.setAttribute('aria-hidden', 'false');
-				}
+				tagTrigger.checked ? tagTrigger.checked = false : tagTrigger.checked = true;
 			}
 		});
-	});
-}
+		let links = filters.querySelectorAll("[data-filter]");
+		links.forEach(link=>{
+			let value = link.getAttribute("data-filter");
+			link.addEventListener("click", function(e) {
+				e.preventDefault();
+				iso.arrange({ filter: value });
+				let active = filters.querySelector(".active");
+				if (active && value == "*") {
+					active.classList.remove("active");
+				} else if (active) {
+					active.classList.remove("active");
+					e.target.classList.add("active");
+				} else {
+					e.target.classList.add("active");
+				};
+				iso.layout();
+			});
+		});
+	}
+})();
 
-let tagsInput = document.querySelector('#grid-filters');
-if(tagsInput != null) {
-	tagsInput.addEventListener('keypress',  e => {
-		if (e.keyCode == 13) {
-			if(tagsInput.checked){
-				tagsInput.checked = false;
-			} else {
-				tagsInput.checked = true;
-			}
-		}
-	});
-}
+const visualInfoTriggers = ((buttons = Array.from(document.querySelectorAll(".grid-input"))) => {
+	if(buttons) {
+		buttons.forEach(button=>{
+			let info = button.nextElementSibling.nextElementSibling.nextElementSibling;
+			let name = button.getAttribute("id").slice(0, -5);
+			let expand = info.querySelector(".grid-expand");
+			info.setAttribute("aria-hidden", "false");
+			button.addEventListener("focus", e => {
+				document.getElementById(name).scrollIntoView({ behavior: "smooth" });
+			});
+			button.addEventListener("keypress", e => {
+				if (e.keyCode == 13) {
+					if(button.checked){
+						button.checked = false;
+						expand.tabIndex = -1;
+						info.setAttribute("aria-hidden", "true");
+					} else {
+						button.checked = true;
+						expand.tabIndex = 0;
+						info.setAttribute("aria-hidden", "false");
+					}
+				}
+			});
+		});
+	}
+})();
