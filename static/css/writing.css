@@ -897,6 +897,7 @@ article .animation button {
   margin-right: auto;
   border: 0;
   padding: 0;
+  background-color: transparent;
 }
 article .animation button span {
   will-change: transform, background-color, color;

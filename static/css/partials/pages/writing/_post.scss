@@ -171,6 +171,7 @@ article {
 			margin-right: auto;
 			border: 0;
 			padding: 0;
+			background-color: transparent;
 			span {
 				will-change: transform, background-color, color;
 				transition: transform .1s ease-out;
