@@ -63,15 +63,18 @@ module.exports = function(eleventyConfig) {
 
 	eleventyConfig.addFilter("stripAttr", stripObj => {
 		stripObj = stripObj
+			.replace(/(<div class="lightbox-group">([\s\S]*?)<\/div>)/g, '')
+			.replace(/(<figure class="animation">([\s\S]*?)<\/figure>)/g, '')
+			.replace(/<\/?a class="expand"[^>]*>/g, '')
+			.replace(/<\/?a class="expand "[^>]*>/g, '')
+			.replace(/<\s*p .*?data-slug-hash="([^<]*)" data-default.*?>([^<]*)<\s*a.*?>([^<]*)<\/p>/g, '<iframe src="https://codepen.io/gabriellewee/embed/$1">')
+			.replace(/<\s*img class="lazy" loading="lazy" decoding="async" alt="([^<]*)" src="data:image\/png;base64,([\s\S]*?)" srcset="([^<]*), ([^<]*) 2x" width="([^<]*)" height="([^<]*)">/g, '<img alt="$1" src="$4" width="$5" height="$6">')
+			.replace(/(<a(?: \w+="[^"]+")* class="direct-link"(?: \w+="[^"]+")*>([^<]*)<\/a>)/g, '')
 			.replace(/<\/?span[^>]*>/g, '')
 			.replace(/<\/?picture[^>]*>/g, '')
 			.replace(/<\/?source[^>]*>/g, '')
 			.replace(/<\/?div[^>]*>/g, '')
 			.replace(/<\/?script[^>]*>/g, '')
-			.replace(/<\/?a class="expand"[^>]*>/g, '')
-			.replace(/<\s*p .*?data-slug-hash="([^<]*)" data-default.*?>([^<]*)<\s*a.*?>([^<]*)<\/p>/g, '<iframe src="https://codepen.io/gabriellewee/embed/$1">')
-			.replace(/(<a(?: \w+="[^"]+")* class="lightbox-group"(?: \w+="[^"]+")*>([^<]*)<\/a>)/g, '')
-			.replace(/(<a(?: \w+="[^"]+")* class="direct-link"(?: \w+="[^"]+")*>([^<]*)<\/a>)/g, '')
 			.replace(/<\s*h1.*?>/g, '<h1>')
 			.replace(/<\s*h2.*?>/g, '<h2>')
 			.replace(/<\s*h3.*?>/g, '<h3>')
@@ -80,8 +83,7 @@ module.exports = function(eleventyConfig) {
 			.replace(/<\s*h6.*?>/g, '<h6>')
 			.replace(/<\s*figure.*?>/g, '<figure>')
 			.replace(/<\s*pre.*?>/g, '<pre>')
-			.replace(/<\s*code.*?>/g, '<code>')
-			.replace(/<\s*p data-height.*?>/g, '<p>');
+			.replace(/<\s*code.*?>/g, '<code>');
 		return stripObj;
 	});
 
@@ -162,15 +164,7 @@ module.exports = function(eleventyConfig) {
 
 		const source = `<source type="image/webp" srcset="${webpset}" >`;
 
-		const img = `<img
-			class="lazy"
-			loading="lazy"
-			decoding="async"
-			alt="${alt}"
-			src="${base64Placeholder}"
-			srcset="${regset}"
-			width="${basic.width}"
-			height="${basic.height}">`;
+		const img = `<img class="lazy" loading="lazy" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" width="${basic.width}" height="${basic.height}">`;
 
 		const url = src.substring(1);
 
