@@ -1,0 +1,14 @@
+.font-variation-settings {
+	will-change: font-variation-settings;
+	display: block;
+	font-size: 48px;
+	font-variation-settings: "wght" 800, "CASL" 1, "MONO" 0;
+	animation: variable 2s linear alternate infinite both;
+	@media only screen and (min-width: 1000px) {
+		font-size: 72px;
+	}
+}
+@keyframes variable {
+	from { font-variation-settings: "wght" 800, "CASL" 1, "MONO" 0 }
+	to { font-variation-settings: "wght" 800, "CASL" 0, "MONO" 1 }
+}

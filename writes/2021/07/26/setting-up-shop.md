@@ -153,7 +153,7 @@ Last but not least, I have this blog. The layout I'm using for the other pages w
 <figure class="animation">
 	<figcaption>Animation of font variable settings</figcaption>
 	<div>
-		<span class="animating">recursive.design</span>
+		<span class="animating font-variation-settings">recursive.design</span>
 	</div>
 	<figcaption>
 		<button class="pause"><span>Pause animation</span></button>

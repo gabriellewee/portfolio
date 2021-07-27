@@ -871,6 +871,7 @@ article .animation div {
   align-items: center;
   align-content: center;
   justify-content: center;
+  overflow: hidden;
   padding-top: 12px;
   font-weight: 700;
   background-color: rgba(38, 50, 56, 0.1);
@@ -880,15 +881,8 @@ article .animation div {
     background-color: rgba(255, 255, 255, 0.1);
   }
 }
-article .animation div span {
-  will-change: font-variation-settings;
-  display: block;
-  font-size: 72px;
-  font-variation-settings: "wght" 800, "CASL" 1, "MONO" 0;
-  animation: variable 2s linear alternate infinite both;
-}
 @media (prefers-reduced-motion) {
-  article .animation div span {
+  article .animation div .animating {
     animation-play-state: paused;
   }
 }
@@ -953,14 +947,6 @@ article .animation button.play {
 @media (prefers-reduced-motion) {
   article .animation button.play {
     display: block;
-  }
-}
-@keyframes variable {
-  from {
-    font-variation-settings: "wght" 800, "CASL" 1, "MONO" 0;
-  }
-  to {
-    font-variation-settings: "wght" 800, "CASL" 0, "MONO" 1;
   }
 }
 article .codepen {
@@ -1169,6 +1155,28 @@ article header time:not(:empty) {
     background: linear-gradient(135deg, #ff706a 0%, #FF956A 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: rgba(255, 112, 106, 0.5);
+  }
+}
+
+.font-variation-settings {
+  will-change: font-variation-settings;
+  display: block;
+  font-size: 48px;
+  font-variation-settings: "wght" 800, "CASL" 1, "MONO" 0;
+  animation: variable 2s linear alternate infinite both;
+}
+@media only screen and (min-width: 1000px) {
+  .font-variation-settings {
+    font-size: 72px;
+  }
+}
+
+@keyframes variable {
+  from {
+    font-variation-settings: "wght" 800, "CASL" 1, "MONO" 0;
+  }
+  to {
+    font-variation-settings: "wght" 800, "CASL" 0, "MONO" 1;
   }
 }
 
