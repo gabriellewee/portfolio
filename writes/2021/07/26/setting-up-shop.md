@@ -59,7 +59,7 @@ Something I'm really proud of is the no-JS functionality. On my visual pages ([P
 
 <figure>
 	<figcaption>CSS-only photo info popup; doesn’t include Javascript.</figcaption>
-	<p class="codepen" data-height="500" data-theme-id="39292" data-default-tab="result" data-slug-hash="rNWZJgy" data-user="gabriellewee" style="height: 500px"><span>See the Pen <a href="https://codepen.io/gabriellewee/pen/rNWZJgy">CSS-Only Photo Info Popup</a> by Gabrielle Wee (<a href="https://codepen.io/gabriellewee">@gabriellewee</a>) on <a href="https://codepen.io">CodePen</a>.</span></p>
+	<p data-slug-hash="rNWZJgy" data-default-tab="result" class="codepen" data-height="500" data-theme-id="39292" data-user="gabriellewee" style="height: 500px"><span>See the Pen <a href="https://codepen.io/gabriellewee/pen/rNWZJgy">CSS-Only Photo Info Popup</a> by Gabrielle Wee (<a href="https://codepen.io/gabriellewee">@gabriellewee</a>) on <a href="https://codepen.io">CodePen</a>.</span></p>
 </figure>
 
 I used a bit of Javascript to enhance the trigger. It creates some additional functionality like being able to tab through the triggers and scroll to the correct image when the trigger is focused.
@@ -93,7 +93,7 @@ Another no-JS component is the lightbox. I found this ingenious solution that us
 
 <figure>
 <figcaption>Pure CSS Lightbox by <a href="https://codepen.io/gschier">Gregory Schier</a></figcaption>
-<p class="codepen" data-height="375" data-theme-id="39292" data-default-tab="result" data-slug-hash="HCoqh" data-user="gschier" style="height: 375px"><span>See the Pen <a href="https://codepen.io/gschier/pen/HCoqh">Pure CSS Lightbox</a> by Gregory Schier (<a href="https://codepen.io/gschier">@gschier</a>) on <a href="https://codepen.io">CodePen</a>.</span></p>
+<p data-slug-hash="HCoqh" data-default-tab="result" class="codepen" data-height="375" data-theme-id="39292" data-user="gschier" style="height: 375px"><span>See the Pen <a href="https://codepen.io/gschier/pen/HCoqh">Pure CSS Lightbox</a> by Gregory Schier (<a href="https://codepen.io/gschier">@gschier</a>) on <a href="https://codepen.io">CodePen</a>.</span></p>
 </figure>
 
 I styled it with some basic CSS transitions and a loading icon, then added enhanced Javascript functionality on top to cycle through images and use keyboard shortcuts. The background is separate from the image so that it doesn't fade in and out when you use the arrow key to tab to another image.
@@ -151,11 +151,11 @@ These days, I'm loath to lose any previous website content, even content that is
 Last but not least, I have this blog. The layout I'm using for the other pages wasn't really conducive to a blog format, so I created an entirely separate set of styles. One of the things I really love about this site is the font, [Recursive](https://www.recursive.design). It's a variable font that I'm using for every single part of the blog site, including the code snippets. You can even animate between the proportional and monospace versions!
 
 <figure class="animation">
-	<figcaption>Animation of font variable settings</figcaption>
+	<figcaption class="animation-caption">Animation of font variable settings</figcaption>
 	<div>
 		<span class="animating font-variation-settings">recursive.design</span>
 	</div>
-	<figcaption>
+	<figcaption class="animation-buttons">
 		<button class="pause"><span>Pause animation</span></button>
 		<button class="play"><span>Play animation</span></button>
 	</figcaption>
