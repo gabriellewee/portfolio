@@ -147,18 +147,14 @@ article {
 			align-items: center;
 			align-content: center;
 			justify-content: center;
+			overflow: hidden;
 			padding-top: $p;
 			font-weight: 700;
 			background-color: rgba($iron, .1);
 			@include dark {
 				background-color: rgba(white, .1);
 			}
-			span {
-				will-change: font-variation-settings;
-				display: block;
-				font-size: 72px;
-				font-variation-settings: "wght" 800, "CASL" 1, "MONO" 0;
-				animation: variable 2s linear alternate infinite both;
+			.animating {
 				@media (prefers-reduced-motion) {
 					animation-play-state: paused;
 				}
@@ -227,10 +223,6 @@ article {
 				}
 			}
 		}
-	}
-	@keyframes variable {
-		from { font-variation-settings: "wght" 800, "CASL" 1, "MONO" 0 }
-		to { font-variation-settings: "wght" 800, "CASL" 0, "MONO" 1 }
 	}
 	.codepen {
 		display: flex;
