@@ -23,7 +23,7 @@
 }
 
 .lightbox-background {
-	@include blur-all(5px, darken($iron, 10%), .95, .9);
+	@include blur-all(5px, darken($iron, 12%), .95, .9);
 	will-change: opacity, visibility, z-index;
 	transition: .2s opacity ease-out, 0s visibility .2s, 0s z-index .2s;
 	z-index: -999;
@@ -85,6 +85,22 @@
 	&.active span.active, .no-js &:target span {
 		opacity: 1;
 		display: block;
+	}
+	&.light-dark {
+		&.active span.active, .no-js &:target span {
+			&:nth-of-type(1) {
+				display: block;
+				@include dark {
+					display: none;
+				}
+			}
+			&:nth-of-type(2) {
+				display: none;
+				@include dark {
+					display: block;
+				}
+			}
+		}
 	}
 }
 

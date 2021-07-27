@@ -8,11 +8,6 @@
 	@include dark {
 		background-color: darken(#1e282c, 2%);
 	}
-	.codepen {
-		@include border-radius($p*.5);
-		background-color: rgba(white, .1);
-		padding-top: $p;
-	}
 	h2 {
 		padding: $p*1.5 calc(#{$p*1.5} + env(safe-area-inset-left));
 		@include max {
@@ -57,6 +52,21 @@
 	}
 	ul + p {
 		padding-top: $p;
+	}
+	.codepen {
+		@include border-radius($p*.5);
+		display: flex;
+		align-items: center;
+		align-content: center;
+		justify-content: center;
+		padding-top: $p;
+		font-size: 17px;
+		font-weight: 700;
+		background-color: rgba(white, .1);
+		span {
+			display: block;
+			max-width: 400px;
+		}
 	}
 	.css {
 		color: #ffcb6b;
@@ -123,6 +133,9 @@
 				@include border-radius($p*.5);
 				display: block;
 				position: relative;
+				@include dark {
+					color: $iron;
+				}
 				&:before, &:after {
 					@include blur-all(5px, white, .9, .8);
 					display: block;

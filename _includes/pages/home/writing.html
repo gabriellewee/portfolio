@@ -4,7 +4,7 @@
 	<ul>
 		{% for post in collections.writes | reverse | limit(3) %}
 			<li>
-				<a href="{{post.url | url}}" target="_blank">{{post.data.title}}</a>
+				<a href="{{post.url | url}}">{{post.data.title}}</a>
 				<time datetime="{{post.date | htmlDateString}}">{{post.date|readableDate}}</time>
 			</li>
 		{% endfor %}

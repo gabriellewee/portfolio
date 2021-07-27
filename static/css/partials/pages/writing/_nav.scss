@@ -1,5 +1,11 @@
 @use 'sass:math';
 
+.top {
+	.logo:focus {
+		@include focus-round(rgba($violet, .5));
+	}
+}
+
 .bottom {
 	display: flex;
 	flex-direction: column;
@@ -35,14 +41,18 @@
 		&:hover, &:focus {
 			span {
 				background-color: $red;
+				background: linear-gradient(135deg, $red 0%, $orange 100%);
 			}
 		}
 		@include dark {
 			span {
 				background-color: rgba(white, .8);
 				color: $iron;
-				&:hover, &:focus {
+			}
+			&:hover, &:focus {
+				span {
 					background-color: $red;
+					background: linear-gradient(135deg, $red 0%, $orange 100%);
 				}
 			}
 		}

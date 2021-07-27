@@ -1,13 +1,16 @@
 const smoothScrollLinks = ((links = Array.from(document.querySelectorAll(".direct-link"))) => {
 	let mainContent = document.querySelector("main");
-	links.forEach(el=>{
-		let targetLink = el.getAttribute("href");
-		el.addEventListener("click", e => {
-			document.getElementById(targetLink).scrollIntoView({ behavior: "smooth" });
+	links.forEach(link=>{
+		link.setAttribute("aria-hidden", "true");
+		let linkHref = link.getAttribute("href").substring(1);
+		let targetLink = document.getElementById(linkHref);
+		link.addEventListener("click", e => {
+			targetLink.scrollIntoView({ behavior: "smooth" });
 		});
 	});
 	if(window.location.hash) {
-		let scrollLocation = document.querySelector(window.location.hash);
+		let scrollHash = window.location.hash.substring(1);
+		let scrollLocation = document.getElementById(scrollHash);
 		if(scrollLocation) {
 			imagesLoaded(mainContent, { background: true }, () =>{
 				setTimeout(() => {
@@ -24,4 +27,28 @@ const targetBlankLinks = ((links = document.getElementsByTagName("a")) => {
 			links[i].target = "_blank";
 		}
 	}
+})();
+
+const animationPlayPause = ((animations = Array.from(document.querySelectorAll(".animation"))) => {
+	animations.forEach(animation=>{
+		let play = animation.querySelector(".play");
+		let pause = animation.querySelector(".pause");
+		let elements = animation.querySelectorAll(".animating");
+		play.addEventListener("click", e => {
+			elements.forEach(el=>{
+				el.style.animationPlayState = "running";
+				play.style.display = "none";
+				pause.style.display = "block";
+				pause.focus();
+			});
+		});
+		pause.addEventListener("click", e => {
+			elements.forEach(el=>{
+				el.style.animationPlayState = "paused";
+				play.style.display = "block";
+				pause.style.display = "none";
+				play.focus();
+			});
+		});
+	});
 })();

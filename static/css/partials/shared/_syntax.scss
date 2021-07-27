@@ -1,7 +1,7 @@
 @use 'sass:math';
 
 // labels
-pre[class$="js"] {
+pre[class$="js"], pre[class$="javascript"] {
 	&:before {
 		content: "JavaScript";
 	}
