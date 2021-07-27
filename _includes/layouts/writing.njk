@@ -8,8 +8,8 @@
 
 	{% if hidden %}<meta name="robots" content="noindex,nofollow">{% endif %}
 
-	<link rel="canonical" href="{{site.url}}{{page.url}}"/>
-	<link rel="alternate" type="application/rss+xml" title="RSS" href="/writes/feed.xml" />
+	<link rel="canonical" href="{{site.url}}{{page.url}}">
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="/writes/feed.xml">
 
 	<link rel="icon" href="/static/images/favicons/favicon.ico">
 	<link rel="icon" type="image/svg+xml" href="/static/images/favicons/favicon.svg">
@@ -17,28 +17,31 @@
 	<link rel="manifest" href="/static/images/favicons/manifest.webmanifest">
 
 	<meta name="theme-color" content="#f5c8bf">
-	<meta name="application-name" content="{{site.author}}"/>
-	<meta name="description" content="{{description}}"/>
+	<meta name="application-name" content="{{site.author}}">
+	<meta name="description" content="{{description}}">
+
+	<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+	<meta name="theme-color" content="#263238" media="(prefers-color-scheme: dark)">
 
 	<title>{{title}} · {{site.author}}</title>
-	<meta property="og:title" content="{{title}} · {{site.author}}"/>
+	<meta property="og:title" content="{{title}} · {{site.author}}">
 
-	<meta property="og:site_name" content="{{title}} · {{site.author}}"/>
-	<meta property="og:type" content="website"/>
-	<meta property="og:url" content="{{permalink}}"/>
-	<meta property="og:image" content="{{site.url}}/static/images/og/{% if ogImage %}{{ogImage}}{% else %}writing{% endif %}.jpg"/>
-	<meta property="og:image:width" content="1200"/>
-	<meta property="og:image:height" content="630"/>
-	<meta property="og:description" content="{{description}}"/>
+	<meta property="og:site_name" content="{{title}} · {{site.author}}">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="{{permalink}}">
+	<meta property="og:image" content="{{site.url}}/static/images/og/{% if ogImage %}{{ogImage}}{% else %}writing{% endif %}.jpg">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:description" content="{{description}}">
 
-	<meta name="twitter:card" content="summary_large_image"/>
-	<meta name="twitter:site" content="@gabriewee"/>
-	<meta name="twitter:creator" content="@gabriewee"/>
-	<meta property="fb:app_id" content="1291587600924107"/>
-	<meta property="fb:admins" content="504790226"/>
-	<meta property="article:author" content="{{site.author}}"/>
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@gabriewee">
+	<meta name="twitter:creator" content="@gabriewee">
+	<meta property="fb:app_id" content="1291587600924107">
+	<meta property="fb:admins" content="504790226">
+	<meta property="article:author" content="{{site.author}}">
 
-	<link rel="stylesheet" href="{{'/static/css/writing.css' | url}}"/>
+	<link rel="stylesheet" href="{{'/static/css/writing.css' | url}}">
 
 	<script src="{{'/static/js/modernizr.min.js' | url}}"></script>
 </head>

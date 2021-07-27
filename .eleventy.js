@@ -12,11 +12,7 @@ module.exports = function(eleventyConfig) {
 
 	eleventyConfig.addPlugin(pluginRss);
 
-	eleventyConfig.addPlugin(syntaxHighlight, {
-		preAttributes: {
-			tabindex: 0
-		},
- 	});
+	eleventyConfig.addPlugin(syntaxHighlight);
 
 	let markdownLibrary = markdownIt({
 		html: true,
@@ -65,14 +61,6 @@ module.exports = function(eleventyConfig) {
 		return array.slice(0, limit);
 	});
 
-	eleventyConfig.addFilter("head", (array, n) => {
-		if( n < 0 ) {
-			return array.slice(n);
-		}
-
-		return array.slice(0, n);
-	});
-
 	eleventyConfig.addFilter("stripAttr", stripObj => {
 		stripObj = stripObj
 			.replace(/<\/?span[^>]*>/g, '')
@@ -101,11 +89,11 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("static");
 	eleventyConfig.addPassthroughCopy("robots.txt");
 
-	eleventyConfig.addNunjucksAsyncShortcode("image", async (src, alt, aspect, type, category, lightbox) => {
+	eleventyConfig.addNunjucksAsyncShortcode("image", async (src, alt, aspect, type, category, lightbox, caption) => {
 		let newWidths;
 		let newFormats;
 
-		if(category === "photography") {
+		if(category === "photography" || category === "posts") {
 			if(type === "full") {
 				if(aspect === 'horizontal') {
 					newWidths = [100, 1512, 3024, null];
@@ -186,18 +174,15 @@ module.exports = function(eleventyConfig) {
 
 		const url = src.substring(1);
 
+		let figcaption;
+		caption ? figcaption = `<figcaption>${alt}</figcaption>` : figcaption = ``;
+
 		if(lightbox) {
-			return `<figure id="${lightbox}">
+			return `<figure id="${lightbox}">${figcaption}
 				<a class="expand" href="#${lightbox}-lightbox" aria-label="Expand image">
 					<picture>${source}${img}</picture>
 				</a>
-			</figure>
-			<div class="lightbox-group">
-				<a class="lightbox" id="${lightbox}-lightbox" href="#${lightbox}">
-					<span style="background-image: url('${url}')"></span>
-				</a>
-				<div class="lightbox-background"></div>
-			</div>`;
+			</figure>`;
 		} else {
 			return `<picture>${source}${img}</picture>`;
 		}

@@ -21,9 +21,6 @@ pagination:
 		<time datetime="{{post.date | htmlDateString}}">{{post.date|readableDate}}</time>
 	</header>
 	<div>{% excerpt post %}</div>
-	<!-- <footer>
-		<a class="more" href="{{post.url | url}}"><span>Continue</span></a>
-	</footer> -->
 </article>
 {% endfor %}
 

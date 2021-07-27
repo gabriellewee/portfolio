@@ -16,7 +16,7 @@ body {
 	line-height: 1.6;
 }
 
-a, pre {
+a, pre, button {
 	&:focus {
 		@include focus-round(rgba($violet, .5));
 	}
@@ -82,7 +82,7 @@ main, .frame-content {
 		transition: transform .1s ease-out;
 		display: inline-block;
 		&:hover, &:focus {
-			color: $red;
+			@include gradient-text($red, $orange, false);
 		}
 		&:active {
 			transform: scale(0.98);
