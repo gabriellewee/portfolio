@@ -123,7 +123,7 @@ h2 {
 				position: relative;
 				margin-top: $p;
 				padding: $p*.5 $p;
-				border-radius: 2px;
+				border-radius: math.div($p, 3);
 				background-color: #e5e5e5;
 				color: $iron;
 				font-family: $mono;
@@ -171,6 +171,89 @@ h2 {
 		}
 		&-violet span:first-child {
 			background-color: $violet;
+		}
+	}
+}
+
+.about-fonts {
+	li {
+		&:first-child {
+			margin-top: $p;
+		}
+		&:not(:last-child) {
+			margin-bottom: $p*2;
+		}
+	}
+	.font {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.label {
+		@include border-radius(math.div($p, 3));
+		display: flex;
+		margin-bottom: $p*.5;
+		font-family: $mono;
+		font-size: 12px;
+		font-weight: bold;
+		span {
+			display: flex;
+			align-items: center;
+			padding: $p*.5 $p;
+			&:first-child {
+				background-color: $red;
+				background: linear-gradient(135deg, $red 0%, $orange 100%);
+				color: white;
+			}
+			&:last-child {
+				background-color: $grey;
+				@include dark {
+					background-color: rgba(white, .1);
+				}
+			}
+		}
+	}
+	.pangram {
+		display: block;
+		width: 100%;
+		font-size: 32px;
+	}
+	.faune {
+		.pangram {
+			font-family: $faune;
+		}
+	}
+	.faune-italic {
+		.pangram {
+			font-family: $faune;
+			font-style: italic;
+			font-weight: bold;
+		}
+	}
+	.dank-mono {
+		.pangram {
+			font-family: $mono;
+			font-weight: bold;
+		}
+	}
+	.dank-mono-italic {
+		.pangram {
+			font-family: $mono;
+			font-style: italic;
+			font-weight: bold;
+		}
+	}
+	.recursive {
+		.pangram {
+			font-family: $recursive;
+			font-weight: 300;
+			font-variation-settings: "wght" 300, "CASL" 0.5, "CRSV" 1;
+		}
+	}
+	.recursive-bold {
+		.pangram {
+			font-family: $recursive;
+			font-weight: 1000;
+			font-variation-settings: "wght" 1000, "CASL" 1, "CRSV" 1;
 		}
 	}
 }
