@@ -2177,7 +2177,7 @@ body {
   position: relative;
   margin-top: 12px;
   padding: 6px 12px;
-  border-radius: 2px;
+  border-radius: 4px;
   background-color: #e5e5e5;
   color: #263238;
   font-family: "dm", "Inconsolata", "Consolas", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, Courier, monospace;
@@ -2224,6 +2224,81 @@ body {
 }
 .page-about .about-colors .color-violet span:first-child {
   background-color: #BA6AFF;
+}
+.page-about .about-fonts li:first-child {
+  margin-top: 12px;
+}
+.page-about .about-fonts li:not(:last-child) {
+  margin-bottom: 24px;
+}
+.page-about .about-fonts .font {
+  display: flex;
+  flex-wrap: wrap;
+}
+.page-about .about-fonts .label {
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  margin-bottom: 6px;
+  font-family: "dm", "Inconsolata", "Consolas", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, Courier, monospace;
+  font-size: 12px;
+  font-weight: bold;
+}
+@supports (-webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%)) or (clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%)) {
+  .page-about .about-fonts .label {
+    -webkit-clip-path: inset(0 0 0 0 round 4px 4px 4px 4px);
+    clip-path: inset(0 0 0 0 round 4px 4px 4px 4px);
+  }
+}
+.page-about .about-fonts .label span {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+}
+.page-about .about-fonts .label span:first-child {
+  background-color: #ff706a;
+  background: linear-gradient(135deg, #ff706a 0%, #FF956A 100%);
+  color: white;
+}
+.page-about .about-fonts .label span:last-child {
+  background-color: #f1f1f1;
+}
+@media (prefers-color-scheme: dark) {
+  .page-about .about-fonts .label span:last-child {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+.page-about .about-fonts .pangram {
+  display: block;
+  width: 100%;
+  font-size: 32px;
+}
+.page-about .about-fonts .faune .pangram {
+  font-family: "faune", sans-serif;
+}
+.page-about .about-fonts .faune-italic .pangram {
+  font-family: "faune", sans-serif;
+  font-style: italic;
+  font-weight: bold;
+}
+.page-about .about-fonts .dank-mono .pangram {
+  font-family: "dm", "Inconsolata", "Consolas", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, Courier, monospace;
+  font-weight: bold;
+}
+.page-about .about-fonts .dank-mono-italic .pangram {
+  font-family: "dm", "Inconsolata", "Consolas", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, Courier, monospace;
+  font-style: italic;
+  font-weight: bold;
+}
+.page-about .about-fonts .recursive .pangram {
+  font-family: "Recursive", "faune", sans-serif;
+  font-weight: 300;
+  font-variation-settings: "wght" 300, "CASL" 0.5, "CRSV" 1;
+}
+.page-about .about-fonts .recursive-bold .pangram {
+  font-family: "Recursive", "faune", sans-serif;
+  font-weight: 1000;
+  font-variation-settings: "wght" 1000, "CASL" 1, "CRSV" 1;
 }
 .page-about .about-timeline ol {
   position: relative;
