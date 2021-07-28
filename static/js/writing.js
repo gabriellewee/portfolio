@@ -39,16 +39,28 @@ const animationPlayPause = ((animations = Array.from(document.querySelectorAll("
 				el.style.animationPlayState = "running";
 				play.style.display = "none";
 				pause.style.display = "block";
-				pause.focus();
 			});
+		});
+		play.addEventListener("keydown", e => {
+			if (e.keyCode == 13) {
+				setTimeout(() => {
+					pause.focus();
+				}, 50);
+			}
 		});
 		pause.addEventListener("click", e => {
 			elements.forEach(el=>{
 				el.style.animationPlayState = "paused";
 				play.style.display = "block";
 				pause.style.display = "none";
-				play.focus();
 			});
+		});
+		pause.addEventListener("keydown", e => {
+			if (e.keyCode == 13) {
+				setTimeout(() => {
+					play.focus();
+				}, 50);
+			}
 		});
 	});
 })();
