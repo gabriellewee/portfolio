@@ -454,14 +454,20 @@ pre[class*=language-] {
   padding-right: calc(12px + env(safe-area-inset-left));
   z-index: 10;
 }
-@media only screen and (min-width: 1000px) {
-  .top {
-    padding: 24px;
-  }
-}
 @supports (padding: max(0px)) {
   .top {
     padding-right: max(12px, env(safe-area-inset-left));
+  }
+}
+@media only screen and (min-width: 1000px) {
+  .top {
+    padding: 24px;
+    padding-right: calc(24px + env(safe-area-inset-left));
+  }
+  @supports (padding: max(0px)) {
+    .top {
+      padding-right: max(24px, env(safe-area-inset-left));
+    }
   }
 }
 .top .memoji {
@@ -590,22 +596,20 @@ pre[class*=language-] {
     clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
   }
 }
-.bottom a:hover span, .bottom a:focus span {
-  background-color: #ff706a;
-  background: linear-gradient(135deg, #ff706a 0%, #FF956A 100%);
-}
 @media (prefers-color-scheme: dark) {
   .bottom a span {
     background-color: rgba(255, 255, 255, 0.8);
     color: #263238;
   }
-  .bottom a:hover span, .bottom a:focus span {
-    background-color: #ff706a;
-    background: linear-gradient(135deg, #ff706a 0%, #FF956A 100%);
-  }
+}
+.bottom a:hover span, .bottom a:focus span {
+  background-color: #ff706a;
+  background: linear-gradient(135deg, #ff706a 0%, #FF956A 100%);
 }
 .bottom a:active span {
   transform: scale(0.95);
+  background-color: #706AFF;
+  background: linear-gradient(135deg, #706AFF 0%, #BA6AFF 100%);
 }
 
 .top, .bottom {
@@ -710,7 +714,60 @@ main, .frame-content {
   }
 }
 .header a:active, h1 a:active, h2 a:active, h3 a:active, h4 a:active, h5 a:active, h6 a:active {
+  color: #706AFF;
   transform: scale(0.98);
+}
+@supports (-webkit-text-fill-color: transparent) {
+  .header a:active, h1 a:active, h2 a:active, h3 a:active, h4 a:active, h5 a:active, h6 a:active {
+    background-color: #706AFF;
+    background: linear-gradient(135deg, #706AFF 0%, #BA6AFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+button {
+  -webkit-appearance: none;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+}
+button span {
+  will-change: transform, background-color, color;
+  transition: transform 0.1s ease-out;
+  display: inline-block;
+  padding: 4px 6px;
+  background-color: #263238;
+  color: white;
+  font-family: "Recursive", "faune", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  font-variation-settings: "wght" 500, "CASL" 0.5;
+  line-height: 1.2;
+}
+@supports (-webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%)) or (clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%)) {
+  button span {
+    clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  button span {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #263238;
+  }
+}
+button:hover span, button:focus span {
+  background-color: #ff706a;
+  background: linear-gradient(135deg, #ff706a 0%, #FF956A 100%);
+}
+button:active span {
+  transform: scale(0.95);
+  background-color: #706AFF;
+  background: linear-gradient(135deg, #706AFF 0%, #BA6AFF 100%);
 }
 
 article:not(:last-child) {
@@ -786,14 +843,14 @@ article p a, article figcaption a, article ul a, article ol a {
   }
 }
 article p a:hover, article p a:focus, article figcaption a:hover, article figcaption a:focus, article ul a:hover, article ul a:focus, article ol a:hover, article ol a:focus {
-  color: #FF956A;
+  color: #BA6AFF;
 }
 @supports (-webkit-text-fill-color: transparent) {
   article p a:hover, article p a:focus, article figcaption a:hover, article figcaption a:focus, article ul a:hover, article ul a:focus, article ol a:hover, article ol a:focus {
-    background-color: #FF956A;
-    background: linear-gradient(135deg, #FF956A 0%, #BA6AFF 100%);
+    background-color: #BA6AFF;
+    background: linear-gradient(135deg, #BA6AFF 0%, #6AF9FF 100%);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: rgba(255, 149, 106, 0.5);
+    -webkit-text-fill-color: rgba(186, 106, 255, 0.5);
   }
 }
 article p a:active, article figcaption a:active, article ul a:active, article ol a:active {
@@ -888,51 +945,6 @@ article .animation div {
 }
 article .animation div + figcaption {
   margin-top: 12px;
-}
-article .animation button {
-  -webkit-appearance: none;
-  cursor: pointer;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  border: 0;
-  padding: 0;
-  background-color: transparent;
-}
-article .animation button span {
-  will-change: transform, background-color, color;
-  transition: transform 0.1s ease-out;
-  display: inline-block;
-  padding: 4px 6px;
-  background-color: #263238;
-  color: white;
-  font-family: "Recursive", "faune", sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  font-variation-settings: "wght" 500, "CASL" 0.5;
-  line-height: 1.2;
-}
-@supports (-webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%)) or (clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%)) {
-  article .animation button span {
-    clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
-  }
-}
-article .animation button:hover span, article .animation button:focus span {
-  background-color: #ff706a;
-  background: linear-gradient(135deg, #ff706a 0%, #FF956A 100%);
-}
-@media (prefers-color-scheme: dark) {
-  article .animation button span {
-    background-color: rgba(255, 255, 255, 0.8);
-    color: #263238;
-  }
-  article .animation button:hover span, article .animation button:focus span {
-    background-color: #ff706a;
-    background: linear-gradient(135deg, #ff706a 0%, #FF956A 100%);
-  }
-}
-article .animation button:active span {
-  transform: scale(0.95);
 }
 article .animation button.pause {
   display: block;
@@ -1157,6 +1169,9 @@ article header time:not(:empty) {
     -webkit-background-clip: text;
     -webkit-text-fill-color: rgba(255, 112, 106, 0.5);
   }
+}
+.archive a {
+  text-decoration-thickness: 2px;
 }
 
 .font-variation-settings {

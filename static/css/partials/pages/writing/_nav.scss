@@ -38,27 +38,23 @@
 				clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
 			}
 		}
+		@include dark {
+			span {
+				background-color: rgba(white, .8);
+				color: $iron;
+			}
+		}
 		&:hover, &:focus {
 			span {
 				background-color: $red;
 				background: linear-gradient(135deg, $red 0%, $orange 100%);
 			}
 		}
-		@include dark {
-			span {
-				background-color: rgba(white, .8);
-				color: $iron;
-			}
-			&:hover, &:focus {
-				span {
-					background-color: $red;
-					background: linear-gradient(135deg, $red 0%, $orange 100%);
-				}
-			}
-		}
 		&:active {
 			span {
 				transform: scale(0.95);
+				background-color: $indigo;
+				background: linear-gradient(135deg, $indigo 0%, $violet 100%);
 			}
 		}
 	}

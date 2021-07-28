@@ -835,14 +835,20 @@ body {
   padding-right: calc(12px + env(safe-area-inset-left));
   z-index: 10;
 }
-@media only screen and (min-width: 1000px) {
-  .top {
-    padding: 24px;
-  }
-}
 @supports (padding: max(0px)) {
   .top {
     padding-right: max(12px, env(safe-area-inset-left));
+  }
+}
+@media only screen and (min-width: 1000px) {
+  .top {
+    padding: 24px;
+    padding-right: calc(24px + env(safe-area-inset-left));
+  }
+  @supports (padding: max(0px)) {
+    .top {
+      padding-right: max(24px, env(safe-area-inset-left));
+    }
   }
 }
 .top .memoji {
@@ -2032,79 +2038,197 @@ body {
   border-radius: 6px;
 }
 
-.page-about main {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 12px calc(24px + env(safe-area-inset-left));
-  width: 100%;
+.page-about {
+  font-size: 18px;
+  line-height: 1.3;
+  background-color: #f1f1f1;
 }
-@supports (padding: max(0px)) {
-  .page-about main {
-    padding: 12px max(24px, env(safe-area-inset-left));
+@media (prefers-color-scheme: dark) {
+  .page-about {
+    background-color: #1c2429;
   }
-}
-.page-about h1 {
-  font-size: 48px;
-  font-style: italic;
-  font-weight: bold;
-  margin-bottom: 12px;
 }
 .page-about h2 {
   font-size: 32px;
+  font-style: italic;
+  font-weight: bold;
   margin-bottom: 6px;
 }
-.page-about section {
-  border-radius: 6px;
-  overflow: hidden;
-  margin-bottom: 24px;
+.page-about .about-grid {
+  padding: 12px;
+}
+.page-about .grid-item {
+  padding: 12px;
+}
+.page-about .grid-item > div {
   padding: 12px 24px;
-  background-color: #f1f1f1;
-}
-@supports (-webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%)) or (clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%)) {
-  .page-about section {
-    -webkit-clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
-    clip-path: inset(0 0 0 0 round 6px 6px 6px 6px);
-  }
+  border-radius: 6px;
+  background-color: white;
 }
 @media (prefers-color-scheme: dark) {
-  .page-about section {
-    background-color: rgba(255, 255, 255, 0.1);
+  .page-about .grid-item > div {
+    background-color: #263238;
   }
 }
-.page-about section a {
-  will-change: transform, background-color, color;
-  transition: 0.1s ease-out;
-  display: inline-block;
-  margin-bottom: 6px;
-  background-color: #515b60;
-  color: white;
-  border-radius: 2px;
-  padding: 4px 6px;
+.page-about .grid-item > div + div {
+  margin-top: 24px;
 }
-.page-about section a:focus {
+.page-about .grid-item ul, .page-about .grid-item ol {
+  list-style: none;
+}
+.page-about .grid-item a:focus {
   box-shadow: 0 0 0 3px #5E9ED6;
+  box-shadow: 0 0 0 3px rgba(186, 106, 255, 0.5);
 }
-.page-about section a:hover, .page-about section a:focus {
-  background-color: #93999c;
+.page-about .grid-item:not(.about-sitemap) a {
+  color: #ff706a;
+  display: inline-block;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+}
+@supports (-webkit-text-fill-color: transparent) {
+  .page-about .grid-item:not(.about-sitemap) a {
+    background-color: #ff706a;
+    background: linear-gradient(135deg, #ff706a 0%, #FFBB6A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgba(255, 112, 106, 0.5);
+  }
+}
+.page-about .grid-item:not(.about-sitemap) a:hover, .page-about .grid-item:not(.about-sitemap) a:focus {
+  color: #BA6AFF;
+}
+@supports (-webkit-text-fill-color: transparent) {
+  .page-about .grid-item:not(.about-sitemap) a:hover, .page-about .grid-item:not(.about-sitemap) a:focus {
+    background-color: #BA6AFF;
+    background: linear-gradient(135deg, #BA6AFF 0%, #6AF9FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgba(186, 106, 255, 0.5);
+  }
+}
+.page-about .grid-item:not(.about-sitemap) a:active {
+  color: #706AFF;
+}
+@supports (-webkit-text-fill-color: transparent) {
+  .page-about .grid-item:not(.about-sitemap) a:active {
+    background-color: #706AFF;
+    background: linear-gradient(135deg, #706AFF 0%, #BA6AFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgba(112, 106, 255, 0.5);
+  }
+}
+.page-about .about-sitemap ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.page-about .about-sitemap li {
+  margin-bottom: 12px;
+}
+.page-about .about-sitemap li:not(:last-child) {
+  margin-right: 12px;
+}
+.page-about .about-sitemap a {
+  will-change: transform, background-color, color;
+  transition: transform 0.1s ease-out;
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 4px;
+  background-color: #263238;
+  color: white;
 }
 @media (prefers-color-scheme: dark) {
-  .page-about section a {
+  .page-about .about-sitemap a {
     background-color: rgba(255, 255, 255, 0.8);
     color: #263238;
   }
-  .page-about section a:hover, .page-about section a:focus {
-    background-color: white;
-  }
 }
-.page-about section a:active {
+.page-about .about-sitemap a:hover, .page-about .about-sitemap a:focus {
+  background-color: #ff706a;
+  background: linear-gradient(135deg, #ff706a 0%, #FF956A 100%);
+}
+.page-about .about-sitemap a:active {
   transform: scale(0.95);
+  background-color: #706AFF;
+  background: linear-gradient(135deg, #706AFF 0%, #BA6AFF 100%);
+}
+.page-about .about-colors ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+.page-about .about-colors li {
+  display: flex;
+  margin-bottom: 12px;
+}
+.page-about .about-colors li:not(:last-child) {
+  margin-right: 12px;
+}
+.page-about .about-colors .color span {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.page-about .about-colors .color span:first-child {
+  width: 36px;
+  height: 36px;
+  border-radius: 100%;
+  border: 3px solid #e5e5e5;
+}
+.page-about .about-colors .color span:last-child {
+  position: relative;
+  margin-top: 12px;
+  padding: 6px 12px;
+  border-radius: 2px;
+  background-color: #e5e5e5;
+  color: #263238;
+  font-family: "dm", "Inconsolata", "Consolas", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, Courier, monospace;
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+.page-about .about-colors .color span:last-child:before {
+  transform: rotate(45deg);
+  content: "";
+  display: block;
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: #e5e5e5;
+  border-top-left-radius: 2px;
+  top: -6px;
+  left: 50%;
+  margin-left: -6px;
+}
+.page-about .about-colors .color-iron span:first-child {
+  background-color: #263238;
+}
+.page-about .about-colors .color-pink span:first-child {
   background-color: #F5C8BF;
+}
+.page-about .about-colors .color-grey span:first-child {
+  background-color: #f1f1f1;
+}
+.page-about .about-colors .color-red span:first-child {
+  background-color: #ff706a;
+}
+.page-about .about-colors .color-orange span:first-child {
+  background-color: #FF956A;
+}
+.page-about .about-colors .color-light-orange span:first-child {
+  background-color: #FFBB6A;
+}
+.page-about .about-colors .color-blue span:first-child {
+  background-color: #6AF9FF;
+}
+.page-about .about-colors .color-indigo span:first-child {
+  background-color: #706AFF;
+}
+.page-about .about-colors .color-violet span:first-child {
+  background-color: #BA6AFF;
 }
 .page-about .about-timeline ol {
   position: relative;
-  list-style: none;
   padding-left: 24px;
+  margin-top: 12px;
 }
 .page-about .about-timeline ol:before {
   content: "";
@@ -2119,7 +2243,7 @@ body {
 }
 @media (prefers-color-scheme: dark) {
   .page-about .about-timeline ol:before {
-    background-color: #11171a;
+    background-color: #93999c;
   }
 }
 .page-about .about-timeline li {
@@ -2138,7 +2262,7 @@ body {
 }
 @media (prefers-color-scheme: dark) {
   .page-about .about-timeline h3:before, .page-about .about-timeline h3:after {
-    background-color: #11171a;
+    background-color: #93999c;
   }
 }
 .page-about .about-timeline h3:before {
@@ -2156,17 +2280,10 @@ body {
   border-radius: 8px;
 }
 .page-about .about-timeline p {
-  font-size: 18px;
-  line-height: 1.3;
   margin-bottom: 6px;
-}
-.page-about .about-credits ul {
-  list-style: none;
-  font-size: 18px;
 }
 .page-about .about-credits li {
   display: inline;
-  line-height: 1.3;
 }
 .page-about .about-credits li:not(:last-child):after {
   content: "·";
