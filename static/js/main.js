@@ -46,10 +46,10 @@ const visualFilters = ((filters = document.querySelector(".grid-filters")) => {
 const visualInfoTriggers = ((buttons = Array.from(document.querySelectorAll(".grid-input"))) => {
 	if(buttons) {
 		buttons.forEach(button=>{
-			let info = button.nextElementSibling.nextElementSibling.nextElementSibling;
+			let info = button.parentNode.querySelector(".grid-info");
 			let name = button.getAttribute("id").slice(0, -5);
 			let expand = info.querySelector(".grid-expand");
-			info.setAttribute("aria-hidden", "false");
+			info.setAttribute("aria-hidden", "true");
 			button.addEventListener("focus", e => {
 				document.getElementById(name).scrollIntoView({ behavior: "smooth" });
 			});
