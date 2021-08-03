@@ -1,3 +1,8 @@
+const noJS = (() => {
+	document.documentElement.classList.remove("no-js");
+	document.documentElement.classList.add("js");
+})();
+
 const smoothScrollLinks = ((links = Array.from(document.querySelectorAll(".direct-link"))) => {
 	let mainContent = document.querySelector("main");
 	links.forEach(link=>{

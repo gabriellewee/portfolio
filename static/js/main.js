@@ -1,3 +1,8 @@
+const noJS = (() => {
+	document.documentElement.classList.remove("no-js");
+	document.documentElement.classList.add("js");
+})();
+
 const lazyLoadInstance = new LazyLoad();
 
 const iso = new Isotope(document.querySelector(".grid-isotope"), {
