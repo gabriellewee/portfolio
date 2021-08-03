@@ -1791,7 +1791,7 @@ body {
 }
 .page-home .grid-item-writing li {
   display: flex;
-  flex-flow: row wrap;
+  flex-wrap: wrap;
   align-items: center;
   align-content: center;
 }
@@ -1944,10 +1944,16 @@ body {
   background-color: #f0f0f0;
   color: #2d2d2d;
 }
+@media (prefers-color-scheme: dark) {
+  .page-home .grid-item-gaming {
+    background-color: #3e3e3e;
+    color: #f0f0f0;
+  }
+}
 @media only screen and (min-width: 600px) {
   .page-home .grid-item-gaming {
     display: flex;
-    flex-flow: row wrap;
+    flex-wrap: wrap;
     justify-content: space-between;
   }
 }
@@ -1962,86 +1968,146 @@ body {
   height: auto;
 }
 .page-home .grid-item-gaming .friend-code {
+  display: flex;
+  flex-wrap: wrap;
   position: relative;
   z-index: 0;
   font-size: 20px;
   color: #717171;
 }
-.page-home .grid-item-gaming .friend-code span {
+@media only screen and (min-width: 600px) {
+  .page-home .grid-item-gaming .friend-code {
+    display: block;
+  }
+}
+.page-home .grid-item-gaming .friend-code span:first-child {
+  width: 100%;
+}
+@media only screen and (min-width: 600px) {
+  .page-home .grid-item-gaming .friend-code span:first-child {
+    width: unset;
+  }
+}
+.page-home .grid-item-gaming .friend-code span:last-child {
+  display: block;
+  margin-top: 6px;
+  background-color: white;
+  color: #2d2d2d;
+  border-radius: 4px;
+  padding: 6px 9px;
+}
+@media (prefers-color-scheme: dark) {
+  .page-home .grid-item-gaming .friend-code span:last-child {
+    background-color: #2d2d2d;
+    color: white;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .page-home .grid-item-gaming .friend-code span:last-child {
+    display: inline-block;
+    margin-top: 0;
+  }
+}
+.page-home .grid-item-gaming .header {
+  padding: 12px calc(18px + env(safe-area-inset-left)) 0;
+  width: 100%;
+}
+@supports (padding: max(0px)) {
+  .page-home .grid-item-gaming .header {
+    padding: 12px max(18px, env(safe-area-inset-left)) 0;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .page-home .grid-item-gaming .header {
+    width: calc(100% - 200px);
+  }
+}
+@media only screen and (min-width: 1500px) {
+  .page-home .grid-item-gaming .header {
+    width: calc(100% - 255px);
+  }
+}
+.page-home .grid-item-gaming .console {
+  display: none;
+  padding: 18px calc(18px + env(safe-area-inset-left)) 0 0;
+  width: 200px;
+}
+@supports (padding: max(0px)) {
+  .page-home .grid-item-gaming .console {
+    padding: 18px max(18px, env(safe-area-inset-left)) 0 0;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .page-home .grid-item-gaming .console {
+    display: block;
+  }
+}
+@media only screen and (min-width: 1500px) {
+  .page-home .grid-item-gaming .console {
+    width: 255px;
+  }
+}
+.page-home .grid-item-gaming .console svg {
+  max-width: 255px;
+  margin: 0 auto;
+}
+.page-home .grid-item-gaming .modding {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 18px;
+  list-style: none;
+  width: 100%;
+  padding: 18px calc(18px + env(safe-area-inset-left)) 12px;
+}
+@supports (padding: max(0px)) {
+  .page-home .grid-item-gaming .modding {
+    padding: 18px max(18px, env(safe-area-inset-left)) 12px;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .page-home .grid-item-gaming .modding {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+.page-home .grid-item-gaming .modding svg {
+  border-radius: 6px;
+}
+@media (prefers-color-scheme: dark) {
+  .page-home .grid-item-gaming .modding svg .background {
+    fill: #777;
+  }
+}
+.page-home .grid-item-gaming .playing {
+  width: 100%;
+  padding: 0 calc(18px + env(safe-area-inset-left)) 18px;
+  font-size: 20px;
+}
+.page-home .grid-item-gaming .playing h3, .page-home .grid-item-gaming .playing li {
+  display: inline-block;
+}
+.page-home .grid-item-gaming .playing ul {
+  display: inline;
+  padding: 0;
+  list-style: none;
+}
+.page-home .grid-item-gaming .playing li {
+  margin-top: 6px;
+}
+.page-home .grid-item-gaming .playing li:not(:last-child) {
+  margin-right: 6px;
+}
+.page-home .grid-item-gaming .playing li span {
   display: inline-block;
   background-color: white;
   color: #2d2d2d;
   border-radius: 4px;
   padding: 6px 9px;
 }
-.page-home .grid-item-gaming div:first-child {
-  padding: 12px calc(18px + env(safe-area-inset-left)) 0;
-  width: 100%;
-}
-@supports (padding: max(0px)) {
-  .page-home .grid-item-gaming div:first-child {
-    padding: 12px max(18px, env(safe-area-inset-left)) 0;
+@media (prefers-color-scheme: dark) {
+  .page-home .grid-item-gaming .playing li span {
+    background-color: #2d2d2d;
+    color: white;
   }
-}
-@media only screen and (min-width: 600px) {
-  .page-home .grid-item-gaming div:first-child {
-    width: calc(100% - 200px);
-  }
-}
-@media only screen and (min-width: 1500px) {
-  .page-home .grid-item-gaming div:first-child {
-    width: calc(100% - 255px);
-  }
-}
-.page-home .grid-item-gaming div:nth-child(2) {
-  width: 100%;
-  padding: 18px calc(18px + env(safe-area-inset-left)) 0;
-}
-@supports (padding: max(0px)) {
-  .page-home .grid-item-gaming div:nth-child(2) {
-    padding: 18px max(18px, env(safe-area-inset-left)) 0;
-  }
-}
-@media only screen and (min-width: 600px) {
-  .page-home .grid-item-gaming div:nth-child(2) {
-    padding: 18px calc(18px + env(safe-area-inset-left)) 0 0;
-    width: 200px;
-  }
-  @supports (padding: max(0px)) {
-    .page-home .grid-item-gaming div:nth-child(2) {
-      padding: 18px max(18px, env(safe-area-inset-left)) 0 0;
-    }
-  }
-}
-@media only screen and (min-width: 1500px) {
-  .page-home .grid-item-gaming div:nth-child(2) {
-    width: 255px;
-  }
-}
-.page-home .grid-item-gaming div:nth-child(2) svg {
-  max-width: 255px;
-  margin: 0 auto;
-}
-.page-home .grid-item-gaming ul {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 18px;
-  list-style: none;
-  width: 100%;
-  padding: 18px calc(18px + env(safe-area-inset-left));
-}
-@supports (padding: max(0px)) {
-  .page-home .grid-item-gaming ul {
-    padding: 18px max(18px, env(safe-area-inset-left));
-  }
-}
-@media only screen and (min-width: 600px) {
-  .page-home .grid-item-gaming ul {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  }
-}
-.page-home .grid-item-gaming ul svg {
-  border-radius: 6px;
 }
 
 .page-about {
