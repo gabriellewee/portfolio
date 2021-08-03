@@ -17,7 +17,7 @@ tags: pages
 {% endblock %}
 
 {% block content %}
-	<section class="graphic-grid subpage-grid">
+	<section class="art-grid subpage-grid">
 		<ul class="grid-pack grid-isotope" role="list">
 			{% for art in art %}
 				<li class="grid-item {{art.tags|isoFilter}}" id="{{art.date|safe}}-{{art.name}}">
@@ -27,7 +27,7 @@ tags: pages
 							<fieldset>
 								<input class="grid-input" id="{{art.date|safe}}-{{art.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this artwork"/>
 								<label class="grid-close" for="{{art.date|safe}}-{{art.name}}-info"></label>
-								<label class="grid-overlay" for="{{photo.date|safe}}-{{photo.name}}-info">{% include 'svg/icons/info.svg' %}</label>
+								<label class="grid-overlay" for="{{art.date|safe}}-{{art.name}}-info">{% include 'svg/icons/info.svg' %}</label>
 								<label class="grid-link" for="{{art.date|safe}}-{{art.name}}-info">{% include 'svg/icons/info.svg' %}</label>
 								<div class="grid-info">
 									<label class="grid-down" for="{{art.date|safe}}-{{art.name}}-info">{% include 'svg/icons/caret-down.svg' %}</label>
