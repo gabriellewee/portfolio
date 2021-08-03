@@ -41,8 +41,6 @@
 	<meta property="article:author" content="{{site.author}}">
 
 	<link rel="stylesheet" href="{% if customStyles %}{{ '/static/css/' + customStyles + '.css' | url }}{% else %}{{'/static/css/style.css' | url}}{% endif %}">
-
-	<script src="{{'/static/js/modernizr.min.js' | url}}"></script>
 </head>
 <body ontouchstart{% if templateClass %} class="page-{{templateClass}}"{% endif %}>
 	<header class="top" aria-label="Header">
