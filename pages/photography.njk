@@ -17,10 +17,10 @@ tags: pages
 {% endblock %}
 
 {% block content %}
-	<section class="photography-grid subpage-grid">
-		<ul class="grid-pack grid-isotope" role="list">
+	<div class="photography-grid subpage-grid">
+		<div class="grid-pack grid-isotope" role="list">
 			{% for photo in photography %}
-				<li class="grid-item {{photo.tags|isoFilter}}" id="{{photo.date|safe}}-{{photo.name}}">
+				<div class="grid-item {{photo.tags|isoFilter}}" id="{{photo.date|safe}}-{{photo.name}}">
 					<figure role="group" aria-label="Photo, {{photo.location}}">
 						{% image './static/images/photography/' + photo.date + '-' + photo.name + '.jpg', photo.description, photo.aspect, 'full', 'photography' %}
 						<figcaption>
@@ -50,10 +50,10 @@ tags: pages
 							</fieldset>
 						</figcaption>
 					</figure>
-				</li>
+				</div>
 			{% endfor %}
-		</ul>
-	</section>
+		</div>
+	</div>
 
 	<nav class="grid-filters" aria-label="Tags List">
 		<input id="grid-filters" type="checkbox" tabindex="0" aria-label="Show tags"/>
