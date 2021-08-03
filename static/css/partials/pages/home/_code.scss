@@ -129,6 +129,10 @@
 			&, svg {
 				display: block;
 			}
+			svg {
+				width: 100%;
+				height: auto;
+			}
 			.inside {
 				@include border-radius($p*.5);
 				display: block;

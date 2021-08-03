@@ -1,4 +1,4 @@
-<svg viewBox="0 0 200 125" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg viewBox="0 0 200 125" width="200" height="125" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 	<rect fill="#304047" x="0" y="0" width="200" height="125"></rect>
 	<rect fill="#FFFFFF" x="40" y="33" width="120" height="60" rx="2"></rect>
 	<rect fill="#000000" x="46" y="47" width="108" height="40" rx="1.5"></rect>

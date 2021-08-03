@@ -130,8 +130,13 @@ module.exports = function(eleventyConfig) {
 		let basic;
 
 		if(category === "graphic") {
-			lowest = stats["png"][0];
-			basic = stats["png"][3];
+			if(type === "full") {
+				lowest = stats["png"][0];
+				basic = stats["png"][3];
+			} else if(type === "thumbnail") {
+				lowest = stats["png"][0];
+				basic = stats["png"][1];
+			}
 		} else {
 			lowest = stats["jpeg"][0];
 			basic = stats["jpeg"][1];

@@ -1,4 +1,4 @@
-<svg viewBox="0 0 150 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg viewBox="0 0 150 100" width="150" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 	<defs>
 	<linearGradient x1="100%" y1="85.28%" x2="0%" y2="14.72%" id="gradient-007">
 		<stop stop-color="#CD908B" offset="0%"></stop>
