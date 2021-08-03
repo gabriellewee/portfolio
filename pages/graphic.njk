@@ -17,17 +17,17 @@ tags: pages
 {% endblock %}
 
 {% block content %}
-	<section class="graphic-grid subpage-grid">
-		<ul class="grid-pack grid-isotope" role="list">
+	<div class="graphic-grid subpage-grid">
+		<div class="grid-pack grid-isotope" role="list">
 			{% for graphic in graphic %}
-				<li class="grid-item {{graphic.tags|isoFilter}}" id="{{graphic.date|safe}}-{{graphic.name}}">
+				<div class="grid-item {{graphic.tags|isoFilter}}" id="{{graphic.date|safe}}-{{graphic.name}}">
 					<figure role="group" aria-label="Graphic, {{graphic.title}}">
 						{% image './static/images/graphic/' + graphic.date + '-' + graphic.name + '.png', graphic.description, null, 'full', 'graphic' %}
 						<figcaption>
 							<fieldset>
 								<input class="grid-input" id="{{graphic.date|safe}}-{{graphic.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this graphic"/>
 								<label class="grid-close" for="{{graphic.date|safe}}-{{graphic.name}}-info"></label>
-								<label class="grid-overlay" for="{{art.date|safe}}-{{art.name}}-info">{% include 'svg/icons/info.svg' %}</label>
+								<label class="grid-overlay" for="{{graphic.date|safe}}-{{graphic.name}}-info">{% include 'svg/icons/info.svg' %}</label>
 								<label class="grid-link" for="{{graphic.date|safe}}-{{graphic.name}}-info">{% include 'svg/icons/info.svg' %}</label>
 								<div class="grid-info">
 									<label class="grid-down" for="{{graphic.date|safe}}-{{graphic.name}}-info">{% include 'svg/icons/caret-down.svg' %}</label>
@@ -53,9 +53,9 @@ tags: pages
 							</fieldset>
 						</figcaption>
 					</figure>
-				</li>
+				</div>
 			{% endfor %}
-			<li class="grid-item" id="2013-07-08-eeveelutions">
+			<div class="grid-item" id="2013-07-08-eeveelutions">
 				<figure>
 					<picture>
 						<img class="upscale" src="{% include 'svg/eeveelutions.txt' %}" width="100" height="100" alt="Pixel Eeveelutions"/>
@@ -83,9 +83,9 @@ tags: pages
 						</fieldset>
 					</figcaption>
 				</figure>
-			</li>
-		</ul>
-	</section>
+			</div>
+		</div>
+	</div>
 
 	<nav class="grid-filters" aria-label="Tags List">
 		<input id="grid-filters" type="checkbox" tabindex="0" aria-label="Show tags"/>
