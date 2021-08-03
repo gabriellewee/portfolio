@@ -1,4 +1,4 @@
-<svg class="icon" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg class="icon" viewBox="0 0 100 100" width="25" height="25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g stroke="#fff" stroke-width="3px" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="50.5" cy="50.5" r="36"></circle>
         <path d="M66.5333333,81.5555556 C66.6222222,69.8222222 64.9333333,59.5111111 61.3777778,50.5333333 C59.8666667,46.7111111 57.9111111,43.0666667 55.6888889,39.6888889 C50.0888889,31.3333333 42.2666667,24.6666667 32.2222222,19.6888889"></path>

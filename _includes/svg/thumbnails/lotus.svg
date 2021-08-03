@@ -1,4 +1,4 @@
-<svg viewBox="0 0 200 125" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg viewBox="0 0 200 125" width="200" height="125" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 	<defs>
 		<radialGradient cx="50%" cy="100%" fx="50%" fy="100%" r="250%" gradientTransform="scale(1,0.4),rotate(-90)" id="lotus-gradient">
 			<stop stop-color="#E9BABA" offset="0%"></stop>

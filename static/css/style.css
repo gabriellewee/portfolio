@@ -1538,6 +1538,10 @@ body {
 .page-home .grid-item-code ul a, .page-home .grid-item-code ul a svg {
   display: block;
 }
+.page-home .grid-item-code ul a svg {
+  width: 100%;
+  height: auto;
+}
 .page-home .grid-item-code ul a .inside {
   border-radius: 6px;
   overflow: hidden;
@@ -1954,6 +1958,8 @@ body {
 }
 .page-home .grid-item-gaming svg {
   display: block;
+  width: 100%;
+  height: auto;
 }
 .page-home .grid-item-gaming .friend-code {
   position: relative;
