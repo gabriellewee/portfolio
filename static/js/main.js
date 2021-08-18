@@ -10,7 +10,7 @@ const iso = new Isotope(document.querySelector(".grid-isotope"), {
 	layoutMode: "packery",
 	itemSelector: ".grid-item"
 });
-const isoLayout = new imagesLoaded(window, { background: true }, () => {
+const loading = new imagesLoaded(window, { background: true }, () => {
 	setTimeout(() => {
 		iso.layout();
 		setTimeout(() => {
