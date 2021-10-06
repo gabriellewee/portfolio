@@ -41,6 +41,10 @@
 	<meta property="article:author" content="{{site.author}}">
 
 	<link rel="stylesheet" href="{% if customStyles %}{{ '/static/css/' + customStyles + '.css' | url }}{% else %}{{'/static/css/style.css' | url}}{% endif %}">
+
+	<noscript>
+		<link rel="stylesheet" href="{{'/static/css/no-js.css' | url}}">
+	</noscript>
 </head>
 <body ontouchstart{% if templateClass %} class="page-{{templateClass}}"{% endif %}>
 	<header class="top" aria-label="Header">

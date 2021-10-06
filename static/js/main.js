@@ -14,8 +14,8 @@ const loading = new imagesLoaded(window, { background: true }, () => {
 	setTimeout(() => {
 		iso.layout();
 		setTimeout(() => {
-			document.querySelector("header").classList.add("active")
-		}, 500);
+			document.documentElement.classList.add("loaded")
+		}, 250);
 	}, 100);
 });
 
