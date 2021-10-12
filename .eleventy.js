@@ -90,6 +90,7 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("admin");
 	eleventyConfig.addPassthroughCopy("static");
 	eleventyConfig.addPassthroughCopy("robots.txt");
+	eleventyConfig.addPassthroughCopy("contact.vcf");
 
 	eleventyConfig.addNunjucksAsyncShortcode("image", async (src, alt, aspect, type, category, lightbox, caption) => {
 		let newWidths;

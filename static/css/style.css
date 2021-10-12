@@ -2230,7 +2230,9 @@ body {
     background-color: #ff706a;
     background: linear-gradient(135deg, #ff706a 0%, #FFBB6A 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: rgba(255, 112, 106, 0.5);
+    text-fill-color: rgba(255, 112, 106, 0.5);
   }
 }
 .page-about .grid-item:not(.about-sitemap) a:hover, .page-about .grid-item:not(.about-sitemap) a:focus {
@@ -2241,7 +2243,9 @@ body {
     background-color: #BA6AFF;
     background: linear-gradient(135deg, #BA6AFF 0%, #6AF9FF 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: rgba(186, 106, 255, 0.5);
+    text-fill-color: rgba(186, 106, 255, 0.5);
   }
 }
 .page-about .grid-item:not(.about-sitemap) a:active {
@@ -2252,7 +2256,9 @@ body {
     background-color: #706AFF;
     background: linear-gradient(135deg, #706AFF 0%, #BA6AFF 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: rgba(112, 106, 255, 0.5);
+    text-fill-color: rgba(112, 106, 255, 0.5);
   }
 }
 .page-about .about-sitemap ul {

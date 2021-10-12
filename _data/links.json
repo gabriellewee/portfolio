@@ -2,7 +2,7 @@
 	{
 		"name": "contact",
 		"title": "Download contact card",
-		"url": "https://archive.gabriellew.ee/contact.vcf"
+		"url": "/contact.vcf"
 	},
 	{
 		"name": "imessage",
@@ -22,7 +22,7 @@
 	{
 		"name": "portfolio",
 		"title": "Portfolio",
-		"url": "https://gabriellew.ee/",
+		"url": "/",
 		"target": ""
 	},
 	{

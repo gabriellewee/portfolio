@@ -707,7 +707,9 @@ main, .frame-content {
     background-color: #ff706a;
     background: linear-gradient(135deg, #ff706a 0%, #FF956A 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
   }
 }
 .header a:active, h1 a:active, h2 a:active, h3 a:active, h4 a:active, h5 a:active, h6 a:active {
@@ -719,7 +721,9 @@ main, .frame-content {
     background-color: #706AFF;
     background: linear-gradient(135deg, #706AFF 0%, #BA6AFF 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
   }
 }
 
@@ -836,7 +840,9 @@ article p a, article figcaption a, article ul a, article ol a {
     background-color: #ff706a;
     background: linear-gradient(135deg, #ff706a 0%, #FFBB6A 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: rgba(255, 112, 106, 0.5);
+    text-fill-color: rgba(255, 112, 106, 0.5);
   }
 }
 article p a:hover, article p a:focus, article figcaption a:hover, article figcaption a:focus, article ul a:hover, article ul a:focus, article ol a:hover, article ol a:focus {
@@ -847,7 +853,9 @@ article p a:hover, article p a:focus, article figcaption a:hover, article figcap
     background-color: #BA6AFF;
     background: linear-gradient(135deg, #BA6AFF 0%, #6AF9FF 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: rgba(186, 106, 255, 0.5);
+    text-fill-color: rgba(186, 106, 255, 0.5);
   }
 }
 article p a:active, article figcaption a:active, article ul a:active, article ol a:active {
@@ -858,7 +866,9 @@ article p a:active, article figcaption a:active, article ul a:active, article ol
     background-color: #706AFF;
     background: linear-gradient(135deg, #706AFF 0%, #BA6AFF 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: rgba(112, 106, 255, 0.5);
+    text-fill-color: rgba(112, 106, 255, 0.5);
   }
 }
 article p > code {
@@ -1053,7 +1063,9 @@ article header h2 {
     background-color: #ff706a;
     background: linear-gradient(135deg, #ff706a 0%, #FF956A 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
   }
 }
 @media only screen and (min-width: 1000px) {
@@ -1122,7 +1134,9 @@ article header time:not(:empty) {
     background-color: #ff706a;
     background: linear-gradient(135deg, #ff706a 0%, #FF956A 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: rgba(255, 112, 106, 0.5);
+    text-fill-color: rgba(255, 112, 106, 0.5);
   }
 }
 .pagination a:hover span, .pagination a:focus span {
@@ -1137,7 +1151,9 @@ article header time:not(:empty) {
     background-color: #706AFF;
     background: linear-gradient(135deg, #706AFF 0%, #BA6AFF 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: rgba(112, 106, 255, 0.5);
+    text-fill-color: rgba(112, 106, 255, 0.5);
   }
 }
 
