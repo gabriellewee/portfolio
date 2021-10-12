@@ -47,7 +47,7 @@
 	</noscript>
 </head>
 <body ontouchstart{% if templateClass %} class="page-{{templateClass}}"{% endif %}>
-	<header class="top" aria-label="Header">
+	{% if headerLink %}<header class="top" aria-label="Header">
 		<a class="logo" href="/" aria-label="Go home?">
 			<picture class="memoji memoji-default">
 				<img src="/static/images/memoji.png" alt="" width="48px" height="68px">
@@ -58,7 +58,7 @@
 		</a>
 		<span class="go-home" aria-hidden="true">Go home?</span>
 		{% block menu %}{% endblock %}
-	</header>
+	</header>{% endif %}
 	<main>
 		{% block content %}{{content | safe}}{% endblock %}
 	</main>
@@ -68,12 +68,12 @@
 			&copy; {{site.author}} {% year 'start' %}–{% year 'current' %}
 		</p>
 	</footer>
-	<script src="{{'/static/js/lazyload.min.js' | url}}"></script>
+	{% if siteScripts %}<script src="{{'/static/js/lazyload.min.js' | url}}"></script>
 	<script src="{{'/static/js/isotope.min.js' | url}}"></script>
 	<script src="{{'/static/js/packery.min.js' | url}}"></script>
 	<script src="{{'/static/js/imagesloaded.min.js' | url}}"></script>
 	<script src="{{'/static/js/smoothscroll.min.js' | url}}"></script>
 	<script src="{{'/static/js/lightbox.js' | url}}"></script>
-	<script src="{{'/static/js/main.js' | url}}"></script>
+	<script src="{{'/static/js/main.js' | url}}"></script>{% endif %}
 </body>
 </html>
