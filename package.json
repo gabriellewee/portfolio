@@ -3,11 +3,11 @@
 	"version": "4.0.0",
 	"description": "Gabrielle Wee’s personal website and portfolio.",
 	"scripts": {
-		"sass": "sass static/css/style.scss:static/css/style.css static/css/writing.scss:static/css/writing.css && npx postcss --use autoprefixer -o static/css/style.css static/css/style.css && npx postcss --use autoprefixer -o static/css/writing.css static/css/writing.css",
-		"autoprefixer": "npx postcss --use autoprefixer -o static/css/style.css static/css/style.css && npx postcss --use autoprefixer -o static/css/writing.css static/css/writing.css",
+		"sass": "sass static/css/style.scss:static/css/style.css static/css/writing.scss:static/css/writing.css static/css/links.scss:static/css/links.css && npx postcss --use autoprefixer -o static/css/style.css static/css/style.css && npx postcss --use autoprefixer -o static/css/writing.css static/css/writing.css && npx postcss --use autoprefixer -o static/css/links.css static/css/links.css",
+		"autoprefixer": "npx postcss --use autoprefixer -o static/css/style.css static/css/style.css && npx postcss --use autoprefixer -o static/css/writing.css static/css/writing.css && npx postcss --use autoprefixer -o static/css/links.css static/css/links.css",
 		"build": "npm run autoprefixer && eleventy",
 		"watch:eleventy": "eleventy --serve",
-		"watch:sass": "sass --watch static/css/style.scss:static/css/style.css static/css/writing.scss:static/css/writing.css",
+		"watch:sass": "sass --watch static/css/style.scss:static/css/style.css static/css/writing.scss:static/css/writing.css static/css/links.scss:static/css/links.css",
 		"start": "npm-run-all sass --parallel watch:*",
 		"debug": "DEBUG=* eleventy"
 	},
