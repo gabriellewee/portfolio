@@ -70,10 +70,10 @@
 			&copy; <a href="/"><span>{{site.author}}</span></a> {% year 'start' %}–{% year 'current' %}
 		</p>
 	</footer>
-	<script src="{{'/static/js/lazyload.min.js' | url}}"></script>
+	{% if siteScripts %}<script src="{{'/static/js/lazyload.min.js' | url}}"></script>
 	<script src="{{'/static/js/imagesloaded.min.js' | url}}"></script>
 	<script src="{{'/static/js/smoothscroll.min.js' | url}}"></script>
 	<script src="{{'/static/js/lightbox.js' | url}}"></script>
-	<script src="{{'/static/js/writing.js' | url}}"></script>
+	<script src="{{'/static/js/writing.js' | url}}"></script>{% endif %}
 </body>
 </html>
