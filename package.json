@@ -36,5 +36,8 @@
 		"sass": "^1.43.2",
 		"sharp": "^0.29.1",
 		"vanilla-lazyload": "^17.5.0"
+	},
+	"engines": {
+		"node" : ">=14.11.0"
 	}
 }

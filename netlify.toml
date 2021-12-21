@@ -13,6 +13,9 @@
 [build.processing.images]
 	compress = true
 
+[context.branch-deploy.environment]
+	NODE_VERSION = "14.11.0"
+
 [[redirects]]
 	from = "/v1/*"
 	to = "https://archive.gabriellew.ee/v1/:splat"
