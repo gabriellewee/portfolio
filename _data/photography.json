@@ -1,25 +1,5 @@
 [
 	{
-		"name": "sunset-mist",
-		"date": "2021-12-25",
-		"location": "Oakland, CA, USA",
-		"camera": "iPhone 12 Pro Max",
-		"editor": "VSCO",
-		"aspect": "horizontal",
-		"tags": "sunset forest landscape outdoor nature",
-		"description": "A vast forest at sunset, with mist winding around the tops of the trees."
-	},
-	{
-		"name": "kelp-forest",
-		"date": "2021-12-12",
-		"location": "Monterey Bay Aquarium, Monterey, CA, USA",
-		"camera": "iPhone 12 Pro Max",
-		"editor": "VSCO",
-		"aspect": "vertical",
-		"tags": "indoor outdoor forest plants nature water animal",
-		"description": "An aquarium tank filled by a seemingly endless kelp forest, with fish swimming through the plants."
-	},
-	{
 		"name": "alfie",
 		"date": "2021-10-25",
 		"location": "San Francisco, CA, USA",
