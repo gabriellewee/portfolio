@@ -20,6 +20,16 @@
 		"description": "A grey kitten sitting on top of a wood desk in front of a computer monitor with a bright desktop background."
 	},
 	{
+		"name": "alfie",
+		"date": "2021-09-25",
+		"location": "San Francisco, CA, USA",
+		"camera": "iPhone 12 Pro Max",
+		"editor": "VSCO",
+		"aspect": "vertical",
+		"tags": "cat animal portrait indoor",
+		"description": "A grey kitten lying down inside a cubby on a cat tower with his head sticking out."
+	},
+	{
 		"name": "pier-14",
 		"date": "2021-08-25",
 		"location": "Pier 14, San Francisco, CA, USA",
