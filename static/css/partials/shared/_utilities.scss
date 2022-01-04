@@ -147,7 +147,7 @@ $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
 }
 
 @mixin blur($blur) {
-	@supports (-webkit-backdrop-filter: blur(0px)) {
+	@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
 		-webkit-backdrop-filter: blur($blur);
 		backdrop-filter: blur($blur);
 		@content;
@@ -156,7 +156,7 @@ $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
 
 @mixin blur-all($blur, $bg, $crisp, $blurry) {
 	background-color: rgba($bg, $crisp);
-	@supports (-webkit-backdrop-filter: blur(0px)) {
+	@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
 		-webkit-backdrop-filter: blur($blur);
 		backdrop-filter: blur($blur);
 		background-color: rgba($bg, $blurry);
@@ -166,7 +166,7 @@ $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
 
 @mixin blur-bg($bg, $crisp, $blur) {
 	background-color: rgba($bg, $crisp);
-	@supports (-webkit-backdrop-filter: blur(0px)) {
+	@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
 		background-color: rgba($bg, $blur);
 	}
 }
