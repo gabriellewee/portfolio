@@ -14,23 +14,6 @@
 			padding: $p*1.5 max(#{$p*1.5}, env(safe-area-inset-left));
 		}
 	}
-	h3 {
-		padding-bottom: $p;
-		font-weight: bold;
-		a {
-			color: #73d1c8;
-			&:hover, &:focus {
-				color: #F78C6A;
-				text-decoration: underline;
-			}
-			&:active {
-				color: #82AAFF;
-			}
-			&:after {
-				content: " \2192";
-			}
-		}
-	}
 	p {
 		padding: 0 calc(#{$p*1.5} + env(safe-area-inset-left)) $p;
 		font-size: 24px;
@@ -47,6 +30,25 @@
 			}
 			&:active {
 				color: #82AAFF;
+			}
+		}
+	}
+	h3, .links p {
+		padding-bottom: $p;
+		font-weight: bold;
+		font-size: 16px;
+		a {
+			font-style: normal;
+			color: #73d1c8;
+			&:hover, &:focus {
+				color: #F78C6A;
+				text-decoration: underline;
+			}
+			&:active {
+				color: #82AAFF;
+			}
+			&:after {
+				content: " \2192";
 			}
 		}
 	}
@@ -82,6 +84,9 @@
 		.cp_embed_wrapper {
 			@include border-radius($p*.5);
 		}
+	}
+	.links {
+		margin-bottom: $p;
 	}
 	ul {
 		grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
