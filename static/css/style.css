@@ -391,10 +391,12 @@ body {
 }
 .grid-item figure {
   position: relative;
+  z-index: 1;
   font-style: italic;
 }
 .grid-item figure figcaption {
   position: absolute;
+  z-index: 1;
   top: 0;
   left: 0;
   width: 100%;
@@ -434,10 +436,8 @@ body {
   align-content: center;
   justify-content: center;
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .grid-item figure .grid-overlay {
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
     background-color: rgba(17, 23, 26, 0.4);
   }
 }
@@ -481,6 +481,12 @@ body {
 }
 .grid-item figure input:focus ~ .grid-overlay {
   opacity: 1;
+}
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .grid-item figure input:focus ~ .grid-overlay {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+  }
 }
 .grid-item figure input:focus ~ .grid-overlay svg {
   box-shadow: inset 0 0 0 3px #5E9ED6;
@@ -548,7 +554,7 @@ body {
   font-size: 24px;
   color: white;
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .grid-item figure dl {
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
@@ -673,7 +679,7 @@ body {
   padding: 12px 15px;
   color: white;
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .grid-filters label, .grid-filters a {
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
@@ -689,7 +695,7 @@ body {
   background-color: rgba(255, 112, 106, 0.9);
   color: white;
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .grid-filters a.active:not(.reset) {
     background-color: rgba(255, 112, 106, 0.8);
   }
@@ -698,7 +704,7 @@ body {
   background-color: rgba(233, 233, 235, 0.9);
   color: #263238;
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .grid-filters a:hover, .grid-filters a:focus {
     background-color: rgba(233, 233, 235, 0.8);
   }
@@ -715,7 +721,7 @@ body {
   transform: scale(0.95);
   color: white;
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .grid-filters a:active {
     background-color: rgba(255, 112, 106, 0.8);
   }
@@ -800,7 +806,7 @@ body {
   transition: 0.2s opacity ease-out, 0s visibility 0.2s, 0s z-index 0.2s;
   z-index: -999;
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .lightbox-background {
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
@@ -950,7 +956,7 @@ body {
   background-color: rgba(233, 233, 235, 0.9);
   border-radius: 2em;
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .top span {
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
@@ -962,7 +968,7 @@ body {
     background-color: rgba(17, 23, 26, 0.9);
     color: white;
   }
-  @supports (-webkit-backdrop-filter: blur(0px)) {
+  @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
     .top span {
       background-color: rgba(17, 23, 26, 0.8);
     }
@@ -1278,7 +1284,7 @@ body {
 .page-home .grid-item-code .code-link-quadrant .overlay {
   background-color: rgba(192, 105, 64, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code .code-link-quadrant .overlay {
     background-color: rgba(192, 105, 64, 0.7);
   }
@@ -1286,7 +1292,7 @@ body {
 .page-home .grid-item-code .code-link-starter-icons .overlay {
   background-color: rgba(132, 152, 150, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code .code-link-starter-icons .overlay {
     background-color: rgba(132, 152, 150, 0.7);
   }
@@ -1294,7 +1300,7 @@ body {
 .page-home .grid-item-code .code-link-dark-mode .overlay {
   background-color: rgba(62, 72, 96, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code .code-link-dark-mode .overlay {
     background-color: rgba(62, 72, 96, 0.7);
   }
@@ -1302,7 +1308,7 @@ body {
 .page-home .grid-item-code .code-link-gradient .overlay {
   background-color: rgba(249, 162, 63, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code .code-link-gradient .overlay {
     background-color: rgba(249, 162, 63, 0.7);
   }
@@ -1310,7 +1316,7 @@ body {
 .page-home .grid-item-code .code-link-instagram .overlay {
   background-color: rgba(173, 166, 175, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code .code-link-instagram .overlay {
     background-color: rgba(173, 166, 175, 0.7);
   }
@@ -1318,7 +1324,7 @@ body {
 .page-home .grid-item-code .code-link-lotus .overlay {
   background-color: rgba(54, 58, 64, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code .code-link-lotus .overlay {
     background-color: rgba(54, 58, 64, 0.7);
   }
@@ -1326,7 +1332,7 @@ body {
 .page-home .grid-item-code .code-link-css-dev-conf .overlay {
   background-color: rgba(48, 64, 71, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code .code-link-css-dev-conf .overlay {
     background-color: rgba(48, 64, 71, 0.7);
   }
@@ -1334,7 +1340,7 @@ body {
 .page-home .grid-item-code .code-link-elletem .overlay {
   background-color: rgba(254, 191, 192, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code .code-link-elletem .overlay {
     background-color: rgba(254, 191, 192, 0.7);
   }
@@ -1342,7 +1348,7 @@ body {
 .page-home .grid-item-code .code-link-doortem .overlay {
   background-color: rgba(236, 157, 147, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code .code-link-doortem .overlay {
     background-color: rgba(236, 157, 147, 0.7);
   }
@@ -1350,7 +1356,7 @@ body {
 .page-home .grid-item-code .code-link-totem .overlay {
   background-color: rgba(62, 79, 83, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code .code-link-totem .overlay {
     background-color: rgba(62, 79, 83, 0.7);
   }
@@ -1358,7 +1364,7 @@ body {
 .page-home .grid-item-code .code-link-nested-nav .overlay {
   background-color: rgba(174, 191, 175, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code .code-link-nested-nav .overlay {
     background-color: rgba(174, 191, 175, 0.7);
   }
@@ -1366,7 +1372,7 @@ body {
 .page-home .grid-item-code .code-link-sprites .overlay {
   background-color: rgba(245, 148, 119, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code .code-link-sprites .overlay {
     background-color: rgba(245, 148, 119, 0.7);
   }
@@ -1374,7 +1380,7 @@ body {
 .page-home .grid-item-code .code-link-cubes .overlay {
   background-color: rgba(83, 160, 254, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code .code-link-cubes .overlay {
     background-color: rgba(83, 160, 254, 0.7);
   }
@@ -1382,7 +1388,7 @@ body {
 .page-home .grid-item-code .code-link-cards .overlay {
   background-color: rgba(240, 79, 84, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code .code-link-cards .overlay {
     background-color: rgba(240, 79, 84, 0.7);
   }
@@ -1390,7 +1396,7 @@ body {
 .page-home .grid-item-code .code-link-011 .overlay {
   background-color: rgba(75, 94, 107, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code .code-link-011 .overlay {
     background-color: rgba(75, 94, 107, 0.7);
   }
@@ -1398,7 +1404,7 @@ body {
 .page-home .grid-item-code .code-link-010 .overlay {
   background-color: rgba(67, 203, 157, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code .code-link-010 .overlay {
     background-color: rgba(67, 203, 157, 0.7);
   }
@@ -1406,7 +1412,7 @@ body {
 .page-home .grid-item-code .code-link-009 .overlay {
   background-color: rgba(235, 32, 69, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code .code-link-009 .overlay {
     background-color: rgba(235, 32, 69, 0.7);
   }
@@ -1414,7 +1420,7 @@ body {
 .page-home .grid-item-code .code-link-008 .overlay {
   background-color: rgba(240, 79, 84, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code .code-link-008 .overlay {
     background-color: rgba(240, 79, 84, 0.7);
   }
@@ -1422,7 +1428,7 @@ body {
 .page-home .grid-item-code .code-link-007 .overlay {
   background-color: rgba(114, 87, 103, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code .code-link-007 .overlay {
     background-color: rgba(114, 87, 103, 0.7);
   }
@@ -1430,7 +1436,7 @@ body {
 .page-home .grid-item-code .code-link-006 .overlay {
   background-color: rgba(245, 81, 95, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code .code-link-006 .overlay {
     background-color: rgba(245, 81, 95, 0.7);
   }
@@ -1438,7 +1444,7 @@ body {
 .page-home .grid-item-code .code-link-005 .overlay {
   background-color: rgba(201, 109, 216, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code .code-link-005 .overlay {
     background-color: rgba(201, 109, 216, 0.7);
   }
@@ -1446,7 +1452,7 @@ body {
 .page-home .grid-item-code .code-link-004 .overlay {
   background-color: rgba(252, 157, 107, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code .code-link-004 .overlay {
     background-color: rgba(252, 157, 107, 0.7);
   }
@@ -1454,7 +1460,7 @@ body {
 .page-home .grid-item-code .code-link-003 .overlay {
   background-color: rgba(173, 162, 149, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code .code-link-003 .overlay {
     background-color: rgba(173, 162, 149, 0.7);
   }
@@ -1462,7 +1468,7 @@ body {
 .page-home .grid-item-code .code-link-001 .overlay, .page-home .grid-item-code .code-link-002 .overlay {
   background-color: rgba(223, 183, 44, 0.9);
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code .code-link-001 .overlay, .page-home .grid-item-code .code-link-002 .overlay {
     background-color: rgba(223, 183, 44, 0.7);
   }
@@ -1643,7 +1649,7 @@ body {
   font-weight: bold;
   text-transform: uppercase;
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code ul a .inside:before, .page-home .grid-item-code ul a .inside:after {
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
@@ -1688,7 +1694,7 @@ body {
   text-align: center;
   color: white;
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-code ul a .overlay {
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
@@ -1746,7 +1752,7 @@ body {
   width: 100%;
   height: 100%;
 }
-@supports (-webkit-backdrop-filter: blur(0px)) {
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .page-home .grid-item-photography .expand picture:after, .page-home .grid-item-graphic .expand picture:after, .page-home .grid-item-art .expand picture:after {
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);

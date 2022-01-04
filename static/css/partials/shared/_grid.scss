@@ -65,9 +65,11 @@
 .grid-item {
 	figure {
 		position: relative;
+		z-index: 1;
 		font-style: italic;
 		figcaption {
 			position: absolute;
+			z-index: 1;
 			top: 0;
 			left: 0;
 			width: 100%;
@@ -98,7 +100,7 @@
 			height: 100%;
 		}
 		.grid-overlay {
-			@include blur-all(5px, darken($iron, 10%), .9, .4);
+			@include blur-bg(darken($iron, 10%), .9, .4);
 			will-change: opacity;
 			transition: .2s ease-out;
 			opacity: 0;
@@ -144,6 +146,7 @@
 					opacity: 0;
 				}
 				~ .grid-overlay {
+					@include blur(5px);
 					opacity: 1;
 					svg {
 						box-shadow: inset 0 0 0 $p*.25 $focus;
