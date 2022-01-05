@@ -6,9 +6,45 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
+const sass = require("sass");
+const path = require("path");
 
 module.exports = function(eleventyConfig) {
 	eleventyConfig.setDataDeepMerge(true);
+
+	eleventyConfig.addPassthroughCopy("admin");
+	eleventyConfig.addPassthroughCopy("robots.txt");
+	eleventyConfig.addPassthroughCopy("contact.vcf");
+	eleventyConfig.addPassthroughCopy("static/css/no-js.css");
+	eleventyConfig.addPassthroughCopy("static/fonts");
+	eleventyConfig.addPassthroughCopy("static/images/favicons");
+	eleventyConfig.addPassthroughCopy("static/images/icons");
+	eleventyConfig.addPassthroughCopy("static/images/og");
+	eleventyConfig.addPassthroughCopy("static/images/error.gif");
+	eleventyConfig.addPassthroughCopy("static/images/memoji-hm.png");
+	eleventyConfig.addPassthroughCopy("static/images/memoji.png");
+	eleventyConfig.addPassthroughCopy("static/js");
+
+	eleventyConfig.addTemplateFormats("scss");
+
+	eleventyConfig.addExtension("scss", {
+		outputFileExtension: "css",
+		compile: async function(inputContent, inputPath) {
+			let parsed = path.parse(inputPath);
+			if(parsed.name.startsWith("_")) {
+				return;
+			}
+			let result = sass.compileString(inputContent, {
+				style: "compressed",
+				loadPaths: [
+					parsed.dir || "."
+				]
+			});
+			return async (data) => {
+				return result.css;
+			};
+		}
+	});
 
 	eleventyConfig.addPlugin(pluginRss);
 
@@ -86,11 +122,6 @@ module.exports = function(eleventyConfig) {
 			.replace(/<\s*code.*?>/g, '<code>');
 		return stripObj;
 	});
-
-	eleventyConfig.addPassthroughCopy("admin");
-	eleventyConfig.addPassthroughCopy("static");
-	eleventyConfig.addPassthroughCopy("robots.txt");
-	eleventyConfig.addPassthroughCopy("contact.vcf");
 
 	eleventyConfig.addNunjucksAsyncShortcode("image", async (src, alt, aspect, type, category, lightbox, caption) => {
 		let newWidths;

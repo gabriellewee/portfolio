@@ -113,14 +113,11 @@ $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
 	@supports (-webkit-text-fill-color: transparent) {
 		background-color: $one;
 		background: linear-gradient(135deg, $one 0%, $two 100%);
-		-webkit-background-clip: text;
 		background-clip: text;
 		@if $underline == true {
 			-webkit-text-fill-color: rgba($one, .5);
-			text-fill-color: rgba($one, .5);
 		} @else {
 			-webkit-text-fill-color: transparent;
-			text-fill-color: transparent;
 		}
 	}
 }
@@ -171,11 +168,8 @@ $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
 	}
 }
 
-@mixin focus-round($color: "") {
-	box-shadow: 0 0 0 $p*.25 $focus;
-	@if $color != "" {
-		box-shadow: 0 0 0 $p*.25 $color;
-	}
+@mixin focus-round($color: $focus) {
+	box-shadow: 0 0 0 $p*.25 $color;
 }
 
 @mixin wavy($color: "") {
