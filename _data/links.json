@@ -17,7 +17,7 @@
 	{
 		"name": "discord",
 		"title": "Message me on Discord",
-		"url": "https://discordapp.com/users/694064940826230865"
+		"url": "discord://discordapp.com/users/694064940826230865"
 	},
 	{
 		"name": "portfolio",

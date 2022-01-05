@@ -155,7 +155,7 @@ ul {
 			}
 		}
 		&:focus {
-			@include focus-round(darken($pink, 10%))
+			@include focus-round(darken($pink, 10%));
 		}
 		&:active {
 			.link-inside {
