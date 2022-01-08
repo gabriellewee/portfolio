@@ -17,6 +17,9 @@
 	grid-template-columns: 1fr;
 	position: relative;
 	list-style: none;
+	@supports (grid-template-rows: masonry) {
+		grid-template-rows: masonry;
+	}
 	.grid-item {
 		position: relative;
 		width: 100%;
