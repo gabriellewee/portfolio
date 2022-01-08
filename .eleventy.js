@@ -17,12 +17,7 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("contact.vcf");
 	eleventyConfig.addPassthroughCopy("static/css/no-js.css");
 	eleventyConfig.addPassthroughCopy("static/fonts");
-	eleventyConfig.addPassthroughCopy("static/images/favicons");
-	eleventyConfig.addPassthroughCopy("static/images/icons");
-	eleventyConfig.addPassthroughCopy("static/images/og");
-	eleventyConfig.addPassthroughCopy("static/images/error.gif");
-	eleventyConfig.addPassthroughCopy("static/images/memoji-hm.png");
-	eleventyConfig.addPassthroughCopy("static/images/memoji.png");
+	eleventyConfig.addPassthroughCopy("static/images");
 	eleventyConfig.addPassthroughCopy("static/js");
 
 	eleventyConfig.addTemplateFormats("scss");
