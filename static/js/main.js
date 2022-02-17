@@ -1,18 +1,39 @@
 const noJS = (() => {
-	document.documentElement.classList.remove("no-js");
-	document.documentElement.classList.add("js");
+	document.documentElement.classList.remove("no-js")
+	document.documentElement.classList.add("js")
 })();
 
 const lazyLoadInstance = new LazyLoad();
 
-const iso = new Isotope(document.querySelector(".grid-isotope"), {
-	percentPosition: true,
-	layoutMode: "packery",
-	itemSelector: ".grid-item"
+let iso;
+let container = document.querySelector(".grid-isotope");
+const isoTrigger = ((el) => {
+	iso = new Isotope(el, {
+		percentPosition: true,
+		layoutMode: "packery",
+		itemSelector: ".grid-item"
+	});
 });
+const isoContainer = (() => {
+	if(document.body.clientWidth >= 834) {
+		container ? isoTrigger(container) : null
+	}
+	window.addEventListener("resize", function() {
+		setTimeout(() => {
+			if(document.body.clientWidth >= 834) {
+				if(container && iso === undefined) {
+					isoTrigger(container);
+				}
+			}
+		}, 500);
+	});
+})();
+
 const loading = new imagesLoaded(document.body, { background: true }, () => {
 	setTimeout(() => {
-		iso.layout();
+		if(container && iso != undefined) {
+			iso.layout();
+		}
 		setTimeout(() => {
 			document.documentElement.classList.add("loaded")
 		}, 250);

@@ -51,7 +51,7 @@
 	transition: 0s visibility .2s, 0s z-index .2s;
 	z-index: -998;
 	padding: $p;
-	@media only screen and (min-width: 1000px) {
+	@media only screen and (min-width: $ipad-11) {
 		padding: $p*2;
 	}
 	span {
