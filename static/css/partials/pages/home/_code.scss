@@ -92,7 +92,7 @@
 		grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
 		padding-bottom: $p*1.5;
 		&.regular {
-			@media only screen and (min-width: 600px) {
+			@media only screen and (min-width: 1366px) {
 				grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
 				a {
 					.overlay {
