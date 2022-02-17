@@ -53,7 +53,7 @@ header {
 		font-weight: bold;
 		text-align: center;
 		text-transform: lowercase;
-		@media only screen and (min-width: 1000px) {
+		@media only screen and (min-width: $ipad-11) {
 			font-size: 28px;
 		}
 		&:hover, &:focus {

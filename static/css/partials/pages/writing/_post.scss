@@ -250,7 +250,7 @@ article {
 		display: flex;
 		flex-wrap: wrap;
 		margin-bottom: $p;
-		@media only screen and (min-width: 1000px) {
+		@media only screen and (min-width: $ipad-11) {
 			flex-wrap: nowrap;
 			align-items: center;
 			justify-content: space-between;
@@ -262,7 +262,7 @@ article {
 			.page-post & {
 				@include gradient-text($red, $orange, false);
 			}
-			@media only screen and (min-width: 1000px) {
+			@media only screen and (min-width: $ipad-11) {
 				order: 1;
 				padding-right: $p*2;
 				width: unset;
@@ -291,7 +291,7 @@ article {
 					background-color: rgba(white, .75);
 					color: $iron;
 				}
-				@media only screen and (min-width: 1000px) {
+				@media only screen and (min-width: $ipad-11) {
 					order: 2;
 					margin-bottom: 0;
 				}

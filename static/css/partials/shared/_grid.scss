@@ -38,7 +38,7 @@
 	}
 }
 
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: $ipad-11) {
 	.grid-pack {
 		grid-template-columns: 1fr 1fr;
 		&[style] .grid-item {
@@ -47,7 +47,7 @@
 	}
 }
 
-@media only screen and (min-width: 2000px) {
+@media only screen and (min-width: $mbp-16) {
 	.grid-pack {
 		grid-template-columns: 1fr 1fr 1fr;
 		&[style] .grid-item {
@@ -267,7 +267,7 @@
 	left: 0;
 	z-index: 2;
 	max-width: 100%;
-	@media only screen and (min-width: 1000px) {
+	@media only screen and (min-width: $ipad-11) {
 		padding: $p;
 	}
 	.no-js & {

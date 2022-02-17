@@ -35,7 +35,7 @@ a, pre, button {
 	@include max {
 		padding: $p max(#{$p*2}, env(safe-area-inset-left)) 0;
 	}
-	@media only screen and (min-width: 1000px) {
+	@media only screen and (min-width: $ipad-11) {
 		padding-top: $p*2.5;
 	}
 	a {
@@ -46,7 +46,7 @@ a, pre, button {
 		@media only screen and (min-width: 600px) {
 			font-size: 7vw;
 		}
-		@media only screen and (min-width: 1000px) {
+		@media only screen and (min-width: $ipad-11) {
 			font-size: 72px;
 		}
 		&:hover, &:focus {

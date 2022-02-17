@@ -5,7 +5,7 @@
 	@media only screen and (min-width: 600px) {
 		padding-right: $p*5;
 	}
-	@media only screen and (min-width: 1000px) {
+	@media only screen and (min-width: $ipad-11) {
 		padding-right: unset;
 	}
 	h1 {
