@@ -14,7 +14,7 @@
 	compress = true
 
 [context.branch-deploy.environment]
-	NODE_VERSION = "14.11.0"
+	NODE_VERSION = "16.0.0"
 
 [[redirects]]
 	from = "/v1/*"
