@@ -6,9 +6,7 @@
 		"autoprefixer": "npx postcss _site/static/css/*.css --use autoprefixer --dir _site/static/css/",
 		"build": "eleventy && npm run autoprefixer",
 		"watch:eleventy": "eleventy --serve",
-		"sass": "sass static/css:_site/static/css && npm run autoprefixer",
-		"watch:sass": "sass --watch static/css:_site/static/css",
-		"start": "run-s sass watch:* autoprefixer",
+		"start": "npm run watch:eleventy",
 		"debug": "DEBUG=* eleventy"
 	},
 	"repository": {
@@ -22,7 +20,7 @@
 	},
 	"homepage": "https://gabriellew.ee",
 	"devDependencies": {
-		"@11ty/eleventy": "^1.0.0-beta.10",
+		"@11ty/eleventy": "^1.0.0",
 		"@11ty/eleventy-img": "^0.10.0",
 		"@11ty/eleventy-plugin-rss": "^1.1.1",
 		"@11ty/eleventy-plugin-syntaxhighlight": "^3.1.3",

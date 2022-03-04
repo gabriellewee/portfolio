@@ -8,6 +8,8 @@
 		grid-template-rows: 1fr 51px;
 	}
 	@media only screen and (min-width: 1500px) {
+		grid-template-columns: 1fr 215px;
+		grid-template-rows: unset;
 		font-size: 28px;
 	}
 	h2, a {
@@ -39,9 +41,6 @@
 	.more {
 		color: #8ec39a;
 		grid-column: span 2;
-		@media only screen and (min-width: 1500px) {
-			grid-column: unset;
-		}
 		&:focus {
 			text-decoration-color: #8ec39a;
 		}
