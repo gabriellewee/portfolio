@@ -8,6 +8,8 @@ const markdownItAnchor = require("markdown-it-anchor");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const sass = require("sass");
 const path = require("path");
+const postcss = require("postcss");
+const autoprefixer = require("autoprefixer");
 
 module.exports = function(eleventyConfig) {
 	eleventyConfig.setDataDeepMerge(true);
@@ -29,14 +31,14 @@ module.exports = function(eleventyConfig) {
 			if(parsed.name.startsWith("_")) {
 				return;
 			}
-			let result = sass.compileString(inputContent, {
-				style: "compressed",
-				loadPaths: [
-					parsed.dir || "."
-				]
-			});
 			return async (data) => {
-				return result.css;
+				let result = sass.compileString(inputContent, {
+					style: "compressed",
+					loadPaths: [
+						parsed.dir || "."
+					]
+				});
+				return result.css.toString("utf8");
 			};
 		}
 	});
