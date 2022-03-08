@@ -48,7 +48,7 @@
 </head>
 <body ontouchstart{% if templateClass %} class="page-{{templateClass}}"{% endif %}>
 	{% if headerLink %}<header class="top" aria-label="Header">
-		<a class="logo" href="/" aria-label="Go home?">
+		<a class="logo" href="/" aria-label="Go home?"{% if home %} tabindex="-1"{% endif %}>
 			<picture class="memoji memoji-default">
 				<img src="/static/images/memoji.png" alt="" width="48px" height="68px">
 			</picture>

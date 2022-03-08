@@ -1,6 +1,9 @@
 @use 'sass:math';
 
 header {
+	.logo {
+		pointer-events: none;
+	}
 	.go-home {
 		display: none;
 	}
