@@ -183,3 +183,9 @@ $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
 		text-decoration-color: $color;
 	}
 }
+
+@mixin svg-path {
+	group, path, line, polyline, polygon, circle, ellipse, rect {
+		@content;
+	}
+}

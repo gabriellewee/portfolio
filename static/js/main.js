@@ -5,6 +5,37 @@ const noJS = (() => {
 
 const lazyLoadInstance = new LazyLoad();
 
+const clipboardCopy = (() => {
+	let container = document.querySelector(".discord");
+	if(container) {
+		let copyTrigger = container.querySelector("input");
+		let closeTrigger = container.querySelector(".close");
+		copyTrigger.addEventListener("keypress",  e => {
+			if (e.keyCode == 13) {
+				copyTrigger.checked ? copyTrigger.checked = false : copyTrigger.checked = true;
+			} else if (e.keyCode == 27) {
+				copyTrigger.checked = false;
+			}
+		});
+		closeTrigger.addEventListener("keypress",  e => {
+			if (e.keyCode == 13) {
+				copyTrigger.checked ? copyTrigger.checked = false : copyTrigger.checked = true;
+			} else if (e.keyCode == 27) {
+				copyTrigger.checked = false;
+			}
+			if(copyTrigger.checked = false) {
+				copyTrigger.focus();
+			}
+		});
+		let clipboard = new ClipboardJS('.copy-button');
+		clipboard.on('success', function(e) {
+			let copy = container.querySelector(e.trigger.getAttribute("data-clipboard-target"));
+			copy.parentNode.classList.add("copied");
+		    e.clearSelection();
+		});
+	}
+})();
+
 let iso;
 let container = document.querySelector(".grid-isotope");
 const isoTrigger = ((el) => {

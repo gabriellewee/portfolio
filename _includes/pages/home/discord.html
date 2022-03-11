@@ -1,0 +1,39 @@
+<span class="discord">
+	<input type="checkbox" id="discord" tabindex="0" role="button" aria-haspopup="true" aria-controls="discord-window"/>
+	<label class="discord-label" for="discord">
+		<span>Discord</span>
+	</label>
+	<span id="discord-window" class="discord-window">
+		<span class="inside">
+			<span class="header">
+				<label class="close" for="discord" tabindex="0">{% include 'svg/icons/close.svg' %}</label>
+				<picture class="avatar">
+					<img src="https://cdn.discordapp.com/avatars/694064940826230865/763caaf81616caa5e1d105e863791019.png?size=240" width="120px" height="120px" aria-hidden="true" role="presentation"/>
+				</picture>
+			</span>
+			<span class="username">
+				<span class="username-aria">Discord username: kaladin#0758</span>
+				<span id="username-input" aria-hidden="true">kaladin<span class="number">#0758</span></span>
+				<span class="tooltip" aria-hidden="true">Copied</span>
+			</span>
+			<span class="description">
+				<span class="about-header">About Me</span>
+				<code class="about-content">I might be the droid you're looking for.</code>
+				<span class="links">
+					<a class="no-touch" target="_blank" href="discord://discordapp.com/users/694064940826230865">
+						<span>Discord profile</span>
+						{% include 'svg/icons/external.svg' %}
+					</a>
+					<a class="touch" target="_blank" href="https://discordapp.com/users/694064940826230865">
+						<span>Discord profile</span>
+						{% include 'svg/icons/external.svg' %}
+					</a>
+					<button class="copy-button" data-clipboard-target="#username-input">
+						<span>Copy username</span>
+						{% include 'svg/icons/copy.svg' %}
+					</button>
+				</span>
+			</span>
+		</span>
+	</span>
+</span>
