@@ -175,7 +175,7 @@ Once I had the video uploaded, I could finally put it on the site. I know that `
 
 ## Conclusion
 
-I threw together this website the week before my grandmother’s funeral. It was a madwoman’s dash to the finish line, and yet I’m proud of the work I did. I’m also happy that I was able to put it together in a way that will be easy to maintain for my family - I moderate the guestbook submissions through Netlify and all they have to pay for is the domain name - $12 a year, much more inexpensive than the other monthly subscriptions that don’t include a domain name. I don’t know if anybody has needs as specific as mine, but hopefully this helps someone out there!
+I threw together this website the week before my grandmother’s funeral. It was a madwoman’s dash to the finish line, and yet I’m proud of the work I did. I’m also happy that I was able to put it together in a way that will be easy to maintain for my family - I moderate the guestbook submissions through Netlify and all they have to pay for is the domain name - $12 a year, much more inexpensive than the other monthly subscriptions that don’t include a domain name. I don’t know if anybody has needs as specific as mine, but hopefully this helps someone out there.
 
 <div class="lightbox-group">
 	<a class="lightbox" id="2022-03-11-baby-lightbox" href="#2022-03-11-baby">
