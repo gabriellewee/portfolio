@@ -100,6 +100,7 @@ module.exports = function(eleventyConfig) {
 			.replace(/(<figure class="animation">([\s\S]*?)<\/figure>)/g, '')
 			.replace(/<\/?a class="expand"[^>]*>/g, '')
 			.replace(/<\/?a class="expand "[^>]*>/g, '')
+			.replace(/<\/?div class="highlight "[^>]*>/g, '')
 			.replace(/<\s*p .*?data-slug-hash="([^<]*)" data-default.*?>([^<]*)<\s*a.*?>([^<]*)<\/p>/g, '<iframe src="https://codepen.io/gabriellewee/embed/$1">')
 			.replace(/<\s*img class="lazy" loading="lazy" decoding="async" alt="([^<]*)" src="data:image\/png;base64,([\s\S]*?)" srcset="([^<]*), ([^<]*) 2x" width="([^<]*)" height="([^<]*)">/g, '<img alt="$1" src="$4" width="$5" height="$6">')
 			.replace(/(<a(?: \w+="[^"]+")* class="direct-link"(?: \w+="[^"]+")*>([^<]*)<\/a>)/g, '')
@@ -182,6 +183,8 @@ module.exports = function(eleventyConfig) {
 
 		let webpset;
 		let regset;
+		
+		let large = stats["webp"][2].url || src.substring(1).slice(0, -4);
 
 		if(category === "graphic") {
 			if(type === "full") {
@@ -192,11 +195,11 @@ module.exports = function(eleventyConfig) {
 				regset = `${stats["png"][1].url}, ${stats["png"][2].url} 2x`;
 			}
 		} else {
-			webpset = `${stats["webp"][1].url}, ${stats["webp"][2].url} 2x`;
-			regset = `${stats["jpeg"][1].url}, ${stats["jpeg"][2].url} 2x`;
+			webpset = `${stats["webp"][1].url}, ${large} 2x`;
+			regset = `${stats["jpeg"][1].url}, ${large} 2x`;
 		}
 
-		const source = `<source type="image/webp" srcset="${webpset}" >`;
+		const source = `<source type="image/webp" srcset="${webpset}">`;
 
 		const img = `<img class="lazy" loading="lazy" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" width="${basic.width}" height="${basic.height}">`;
 
