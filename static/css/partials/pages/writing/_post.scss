@@ -44,8 +44,9 @@ article {
 	}
 
 	hr {
+		width: 100px;
 		padding: 0;
-		margin: 0 0 $p*2;
+		margin: $p*3 auto;
 		border: 0;
 		height: 2px;
 		background-color: rgba($iron, .2);
@@ -109,7 +110,8 @@ article {
 		padding: $p*1.5 $p*2;
 		background-color: $iron;
 		color: white;
-		font-size: 16px;
+		font-size: 14px;
+		line-height: 24px;
 		@include dark {
 			background-color: darken($iron, 5%);
 		}
@@ -140,6 +142,23 @@ article {
 				padding-bottom: $p*.5;
 			}
 		}
+	}
+	.highlight {
+		position: relative;
+		padding: $p $p*2.5;
+		margin-bottom: $p*2;
+		background-color: rgba($iron, .2);
+		border-radius: 3px;
+		font-size: 20px;
+		@include dark {
+			background-color: rgba(white, .2);
+		}
+		> * {
+			font-variation-settings: "wght" 600, "CASL" 0.5, "CRSV" 1;
+		}
+	}
+	img {
+		border-radius: 3px;
 	}
 	.animation {
 		div {
