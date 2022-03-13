@@ -108,7 +108,7 @@ Next, I installed Eleventy Fetch with `npm install @11ty/eleventy-fetch`. Then, 
 3. You can create a personal access token in your [Applications settings](https://app.netlify.com/user/applications?_ga=2.201187694.1144438264.1647038881-1877924727.1646553096#personal-access-tokens).
 
 ``` js
-const Cache = require('@11ty/eleventy-cache-assets');
+const Cache = require('@11ty/eleventy-fetch');
 
 /**
  * Grabs the remote data and returns back an array of objects
