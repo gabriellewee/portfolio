@@ -90,6 +90,9 @@ article {
 			padding-right: $p*.25;
 			background-color: rgba($iron, .2);
 			font-size: 17px;
+			@include clip-path {
+				clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
+			}
 			@include dark {
 				background-color: darken($iron, 5%);
 			}
@@ -112,6 +115,9 @@ article {
 		color: white;
 		font-size: 14px;
 		line-height: 24px;
+		@include clip-path {
+			clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
+		}
 		@include dark {
 			background-color: darken($iron, 5%);
 		}
@@ -158,7 +164,9 @@ article {
 		}
 	}
 	img {
-		border-radius: 3px;
+		@include clip-path {
+			clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
+		}
 	}
 	.animation {
 		div {
