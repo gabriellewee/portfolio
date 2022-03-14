@@ -75,6 +75,12 @@
 			display: block;
 			padding: $p*.5 $p;
 			margin-bottom: $p;
+			@include clip-path {
+				clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
+			}
+			@include clip-path-alt {
+				border-radius: $p*.25;
+			}
 		}
 		a {
 			background-color: $red;

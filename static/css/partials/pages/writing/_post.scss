@@ -93,6 +93,9 @@ article {
 			@include clip-path {
 				clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
 			}
+			@include clip-path-alt {
+				border-radius: $p*.25;
+			}
 			@include dark {
 				background-color: darken($iron, 5%);
 			}
@@ -117,6 +120,9 @@ article {
 		line-height: 24px;
 		@include clip-path {
 			clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
+		}
+		@include clip-path-alt {
+			border-radius: $p*.25;
 		}
 		@include dark {
 			background-color: darken($iron, 5%);
@@ -166,6 +172,9 @@ article {
 	img {
 		@include clip-path {
 			clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
+		}
+		@include clip-path-alt {
+			@include border-radius($p*.25);
 		}
 	}
 	.animation {
@@ -313,6 +322,9 @@ article {
 				@include clip-path {
 					clip-path: polygon(#{$p*1.25} 0%, calc(100% - #{$p*1.25}) 0%, 100% 45%, 100% 55%, calc(100% - #{$p*1.25}) 100%, #{$p*1.25} 100%, 0 55%, 0 45%);
 					padding: $p*.5 $p*1.75;
+				}
+				@include clip-path-alt {
+					@include border-radius($p*.25);
 				}
 				@include dark {
 					background-color: rgba(white, .75);
