@@ -39,7 +39,7 @@ const lightbox = ((links = Array.from(document.querySelectorAll(".expand"))) => 
 					if (keycode === 27) {
 						lightbox.classList.remove("active");
 						backgrounds.forEach(background=>{
-							background.classList.classList.remove("active");
+							background.classList.remove("active");
 						});
 					} else if(keycode === 39 || keycode === 37) {
 						setTimeout(() => {

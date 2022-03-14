@@ -8,30 +8,56 @@ const lazyLoadInstance = new LazyLoad();
 const clipboardCopy = (() => {
 	let container = document.querySelector(".discord");
 	if(container) {
+		let discordWindow = container.querySelector(".discord-window");
+		let discordArrow = container.querySelector(".discord-label");
+
 		let copyTrigger = container.querySelector("input");
 		let closeTrigger = container.querySelector(".close");
-		copyTrigger.addEventListener("keypress",  e => {
-			if (e.keyCode == 13) {
-				copyTrigger.checked ? copyTrigger.checked = false : copyTrigger.checked = true;
-			} else if (e.keyCode == 27) {
-				copyTrigger.checked = false;
-			}
+		let triggers = Array.from([copyTrigger, closeTrigger]);
+		
+		let copyElem = container.querySelector(".username");
+		
+		triggers.forEach(trigger =>{
+			trigger.addEventListener("keypress",  e => {
+				if (e.keyCode === 13) {
+					if(copyTrigger.checked) {
+						copyTrigger.checked = false;
+						copyElem.classList.remove("copied");
+						copyTrigger.focus();
+					} else {
+						copyTrigger.checked = true;
+					}
+				}
+			});
 		});
-		closeTrigger.addEventListener("keypress",  e => {
-			if (e.keyCode == 13) {
-				copyTrigger.checked ? copyTrigger.checked = false : copyTrigger.checked = true;
-			} else if (e.keyCode == 27) {
+
+		document.addEventListener("keypress",  e => {
+			if (e.keyCode === 27) {
 				copyTrigger.checked = false;
-			}
-			if(copyTrigger.checked = false) {
+				copyElem.classList.remove("copied");
 				copyTrigger.focus();
 			}
 		});
+
 		let clipboard = new ClipboardJS('.copy-button');
-		clipboard.on('success', function(e) {
+		clipboard.on("success", e => {
 			let copy = container.querySelector(e.trigger.getAttribute("data-clipboard-target"));
 			copy.parentNode.classList.add("copied");
 		    e.clearSelection();
+			setTimeout(() => {
+				closeTrigger.focus();
+			}, 50);
+		});
+
+		document.addEventListener("scroll", e => {
+			if(copyTrigger.checked) {
+				setTimeout(() => {
+					copyTrigger.checked = false;
+					discordWindow.classList.remove("active");
+					discordArrow.classList.remove("active");
+					copyElem.classList.remove("copied");
+				}, 300);
+			}
 		});
 	}
 })();

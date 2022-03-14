@@ -37,7 +37,7 @@
 	@include dark {
 		background-color: darken($iron, 2%);
 		color: white;
-		a {
+		p > a {
 			&:hover, &:focus {
 				color: white;
 			}
@@ -119,7 +119,7 @@
 				cursor: pointer;
 				display: inline-flex;
 				position: absolute;
-				top: 3px;
+				top: 9px;
 				right: 3px;
 				width: 17px;
 				height: 20px;
