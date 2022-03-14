@@ -31,6 +31,21 @@ const clipboardCopy = (() => {
 			});
 		});
 
+		let copyButton = container.querySelector(".copy-button");
+		let clipboard = new ClipboardJS(copyButton);
+		clipboard.on("success", e => {
+			let copy = container.querySelector(e.trigger.getAttribute("data-clipboard-target"));
+			copy.parentNode.classList.add("copied");
+		    e.clearSelection();
+		});
+		copyButton.addEventListener("keypress", e => {
+			if (e.keyCode === 13) {
+				setTimeout(() => {
+					closeTrigger.focus();
+				}, 50);
+			}
+		})
+
 		document.addEventListener("keypress",  e => {
 			if (e.keyCode === 27) {
 				copyTrigger.checked = false;
@@ -38,17 +53,6 @@ const clipboardCopy = (() => {
 				copyTrigger.focus();
 			}
 		});
-
-		let clipboard = new ClipboardJS('.copy-button');
-		clipboard.on("success", e => {
-			let copy = container.querySelector(e.trigger.getAttribute("data-clipboard-target"));
-			copy.parentNode.classList.add("copied");
-		    e.clearSelection();
-			setTimeout(() => {
-				closeTrigger.focus();
-			}, 50);
-		});
-
 		document.addEventListener("scroll", e => {
 			if(copyTrigger.checked) {
 				setTimeout(() => {
