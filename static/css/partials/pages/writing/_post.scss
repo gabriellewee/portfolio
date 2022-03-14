@@ -37,7 +37,7 @@ article {
 	}
 	.direct-link {
 		opacity: 0.3;
-		padding-left: $p;
+		margin-left: $p;
 		&:hover, &:focus {
 			opacity: 1;
 		}
@@ -167,6 +167,32 @@ article {
 		}
 		> * {
 			font-variation-settings: "wght" 600, "CASL" 0.5, "CRSV" 1;
+		}
+	}
+	.expand {
+		position: relative;
+		&:before {
+			opacity: 0;
+			content: "";
+			display: block;
+			position: absolute;
+			top: -$p*.25;
+			left: -$p*.25;
+			height: calc(100% + #{$p*.5});
+			width: calc(100% + #{$p*.5});
+			background-color: rgba($violet, .5);
+			@include clip-path {
+				clip-path: polygon(3px 0%, calc(100% - 3px) 0%, 100% 3px, 100% calc(100% - 3px), calc(100% - 3px) 100%, 3px 100%, 0% calc(100% - 3px), 0% 3px);
+			}
+			@include clip-path-alt {
+				border-radius: $p*.25;
+			}
+		}
+		&:focus {
+			box-shadow: none;
+			&:before {
+				opacity: 1;
+			}
 		}
 	}
 	img {

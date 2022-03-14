@@ -131,16 +131,16 @@ $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
 }
 
 @mixin clip-path {
-	@supports (-webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%)) or (clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%)) {
+	@supports (-webkit-clip-path: polygon(0 0)) or (clip-path: polygon(0 0)) {
 	  	@content;
 	}
 }
 
 @mixin clip-path-alt {
-	@supports not (-webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%)) {
+	@supports not (-webkit-clip-path: polygon(0 0)) {
 	  	@content;
 	}
-	@supports not (clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%)) {
+	@supports not (clip-path: polygon(0 0)) {
 	  	@content;
 	}
 }

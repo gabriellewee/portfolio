@@ -41,6 +41,11 @@
 		a {
 			display: inline-block;
 			opacity: 0.5;
+			&:focus {
+				span {
+					text-decoration: underline;
+				}
+			}
 			&:hover, &:focus {
 				color: $red;
 				opacity: 1;
@@ -71,10 +76,12 @@
 		align-items: center;
 		align-content: center;
 		a, time {
-			border-radius: $p*.25;
+			display: block;
+			margin-bottom: $p;
+		}
+		a span, time {
 			display: block;
 			padding: $p*.5 $p;
-			margin-bottom: $p;
 			@include clip-path {
 				clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
 			}
@@ -82,32 +89,62 @@
 				border-radius: $p*.25;
 			}
 		}
-		a {
+		> *:not(:last-child) {
+			margin-right: $p;
+		}
+		span {
 			background-color: $red;
+		}
+		a {
+			position: relative;
 			color: white;
 			font-size: 20px;
 			font-weight: 500;
 			font-variation-settings: "wght" 500, "CASL" 0.5;
+			&:before {
+				opacity: 0;
+				content: "";
+				display: block;
+				position: absolute;
+				top: -$p*.25;
+				left: -$p*.25;
+				height: calc(100% + #{$p*.5});
+				width: calc(100% + #{$p*.5});
+				background-color: $focus;
+				@include clip-path {
+					clip-path: polygon(3px 0%, calc(100% - 3px) 0%, 100% 3px, 100% calc(100% - 3px), calc(100% - 3px) 100%, 3px 100%, 0% calc(100% - 3px), 0% 3px);
+				}
+				@include clip-path-alt {
+					border-radius: $p*.25;
+				}
+			}
 			&:focus {
-				@include focus-round;
+				&:before {
+					opacity: 1;
+				}
 			}
 			&:hover, &:focus {
-				background-color: rgba($iron, .4);
+				span {
+					background-color: mix(mix($red, white, 10%), $iron, 30%);
+				}
 			}
 			&:active {
-				background-color: $iron;
 				transform: scale(0.98);
-			}
-			&:not(:last-child) {
-				margin-right: $p;
+				span {
+					background-color: $iron;
+				}
 			}
 			@include dark {
 				&:hover, &:focus {
-					background-color: white;
 					color: $red;
+					span {
+						background-color: white;
+					}
 				}
 				&:active {
-					background-color: darken($iron, 5%);
+					span {
+						background-color: darken($iron, 5%);
+					}
 				}
 			}
 		}
@@ -117,7 +154,7 @@
 				background-color: rgba(white, .2);
 			}
 		}
-		.link, time {
+		.link span, time {
 			padding: $p*.5 $p;
 			font-size: 16px;
 			font-weight: 700;
@@ -126,35 +163,49 @@
 		}
 		.link {
 			&.link-podcasts {
-				background-color: $ap;
 				&:hover, &:focus {
 					color: $ap;
 				}
+				span {
+					background-color: $ap;
+				}
 			}
 			&.link-spotify {
-				background-color: $sp;
 				&:hover, &:focus {
 					color: $sp;
 				}
+				span {
+					background-color: $sp;
+				}
 			}
 			&.link-medium {
-				background-color: $med;
 				&:hover, &:focus {
 					color: $med;
 				}
+				span {
+					background-color: $med;
+				}
 			}
 			&:hover, &:focus {
-				background-color: white;
+				span {
+					background-color: white;
+				}
 			}
 			&:active {
-				background-color: $iron;
+				span {
+					background-color: $iron;
+				}
 			}
 			@include dark {
 				&:hover, &:focus {
-					background-color: white;
+					span {
+						background-color: white;
+					}
 				}
 				&:active {
-					background-color: darken($iron, 5%);
+					span {
+						background-color: darken($iron, 5%);
+					}
 				}
 			}
 		}

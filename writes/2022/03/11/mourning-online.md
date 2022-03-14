@@ -3,6 +3,7 @@ date: 2022-03-11
 title: Mourning online.
 layout: layouts/post.njk
 templateEngineOverride: md,njk
+medium: https://gabriellewee.medium.com/mourning-online-ac086c4eb87e
 ---
 
 Late last year, my paternal grandmother passed away. She was an incredible woman, flaws and all. I wrote a short eulogy for her funeral.

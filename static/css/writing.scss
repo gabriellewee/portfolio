@@ -97,11 +97,29 @@ button {
 	-webkit-appearance: none;
 	cursor: pointer;
 	display: block;
+	position: relative;
 	margin-left: auto;
 	margin-right: auto;
 	border: 0;
 	padding: 0;
 	background-color: transparent;
+	&:before {
+		opacity: 0;
+		content: "";
+		display: block;
+		position: absolute;
+		top: -$p*.25;
+		left: -$p*.25;
+		height: calc(100% + #{$p*.5});
+		width: calc(100% + #{$p*.5});
+		background-color: rgba($violet, .5);
+		@include clip-path {
+			clip-path: polygon(3px 0%, calc(100% - 3px) 0%, 100% 3px, 100% calc(100% - 3px), calc(100% - 3px) 100%, 3px 100%, 0% calc(100% - 3px), 0% 3px);
+		}
+		@include clip-path-alt {
+			border-radius: $p*.25;
+		}
+	}
 	span {
 		will-change: transform, background-color, color;
 		transition: transform .1s ease-out;
@@ -122,6 +140,12 @@ button {
 		span {
 			background-color: rgba(white, .8);
 			color: $iron;
+		}
+	}
+	&:focus {
+		box-shadow: none;
+		&:before {
+			opacity: 1;
 		}
 	}
 	&:hover, &:focus {
