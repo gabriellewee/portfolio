@@ -1,0 +1,37 @@
+*, *:before, *:after { box-sizing: border-box; }
+body, html { height: 100%; }
+
+body {
+	background: #A3C4D0;
+	background: linear-gradient(to bottom, #f8f5da 0%,#FFF4E2 20%,#A3C4D0 50%,#3e4f53 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f5da', endColorstr='#3e4f53',GradientType=0 );
+	overflow: hidden;
+}
+
+main {
+	display: flex;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	height: 100%;
+	@media only screen and (max-height: 470px) {
+		transform: scale(0.75);
+	}
+}
+
+canvas {
+	transform: translateZ(40px) translateY(100vh);
+	animation: enter 2000ms cubic-bezier(.075,.820,.165,1) 500ms forwards;
+	will-change: transform;
+	// border: 1px dashed rgba(black, .2);
+	cursor: move;
+}
+
+@keyframes enter {
+	0% {
+		transform: translateZ(40px) translateY(100vh);
+	}
+	100% {
+		transform: translateZ(40px);
+	}
+}
