@@ -102,7 +102,7 @@ module.exports = function(eleventyConfig) {
 			.replace(/<\/?a class="expand "[^>]*>/g, '')
 			.replace(/<\/?div class="highlight "[^>]*>/g, '')
 			.replace(/<\s*p .*?data-slug-hash="([^<]*)" data-default.*?>([^<]*)<\s*a.*?>([^<]*)<\/p>/g, '<iframe src="https://codepen.io/gabriellewee/embed/$1">')
-			.replace(/<\s*img class="lazy" loading="lazy" decoding="async" alt="([^<]*)" src="data:image\/png;base64,([\s\S]*?)" srcset="([^<]*), ([^<]*) 2x" width="([^<]*)" height="([^<]*)">/g, '<img alt="$1" src="$4" width="$5" height="$6">')
+			.replace(/<\s*img loading="lazy" decoding="async" alt="([^<]*)" src="data:image\/png;base64,([\s\S]*?)" srcset="([^<]*), ([^<]*) 2x" width="([^<]*)" height="([^<]*)">/g, '<img alt="$1" src="$4" width="$5" height="$6">')
 			.replace(/(<a(?: \w+="[^"]+")* class="direct-link"(?: \w+="[^"]+")*>([^<]*)<\/a>)/g, '')
 			.replace(/<\/?span[^>]*>/g, '')
 			.replace(/<\/?picture[^>]*>/g, '')
@@ -201,7 +201,7 @@ module.exports = function(eleventyConfig) {
 
 		const source = `<source type="image/webp" srcset="${webpset}">`;
 
-		const img = `<img class="lazy" loading="lazy" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" width="${basic.width}" height="${basic.height}">`;
+		const img = `<img loading="lazy" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" width="${basic.width}" height="${basic.height}">`;
 
 		const url = src.substring(1);
 
