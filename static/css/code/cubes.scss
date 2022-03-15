@@ -17,6 +17,7 @@ body {
 	align-items: center;
 	align-content: center;
 	justify-content: center;
+	overflow: hidden;
 	padding: $p;
 	background: mix($iris, $lime);
 	background: linear-gradient(135deg, $indigo 0%, $iris 50%, $lime 100%);
