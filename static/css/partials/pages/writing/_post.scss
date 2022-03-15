@@ -114,10 +114,13 @@ article {
 	}
 	pre {
 		padding: $p*1.5 $p*2;
-		background-color: $iron;
-		color: white;
+		color: #90a4ae;
+		background: #f9f9f9;
 		font-size: 14px;
 		line-height: 24px;
+		// light mode
+		// color: #90a4ae;
+		// background: #f9f9f9;
 		@include clip-path {
 			clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
 		}
@@ -125,7 +128,8 @@ article {
 			border-radius: $p*.25;
 		}
 		@include dark {
-			background-color: darken($iron, 5%);
+			background-color: darken($iron, 3%);
+			color: white;
 		}
 	}
 	blockquote {
