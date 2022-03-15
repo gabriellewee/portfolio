@@ -3,8 +3,6 @@ const noJS = (() => {
 	document.documentElement.classList.add("js")
 })();
 
-const lazyLoadInstance = new LazyLoad();
-
 const clipboardCopy = (() => {
 	let container = document.querySelector(".discord");
 	if(container) {
