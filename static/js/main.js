@@ -128,28 +128,44 @@ const visualFilters = ((filters = document.querySelector(".grid-filters")) => {
 	}
 })();
 
-const visualInfoTriggers = ((buttons = Array.from(document.querySelectorAll(".grid-input"))) => {
-	if(buttons) {
-		buttons.forEach(button=>{
-			let info = button.parentNode.querySelector(".grid-info");
+const visualInfoTriggers = ((figures = Array.from(document.querySelectorAll(".grid-figure"))) => {
+	if(figures) {
+		figures.forEach(figure=>{
+			let button = figure.querySelector(".grid-input")
+			let info = figure.querySelector(".grid-info");
+			let expand = figure.querySelector(".grid-expand");
+			let external = figure.querySelector(".external");
 			let name = button.getAttribute("id").slice(0, -5);
-			let expand = info.querySelector(".grid-expand");
+			let labels = Array.from(figure.querySelectorAll("label"));
 			info.setAttribute("aria-hidden", "true");
 			button.addEventListener("focus", e => {
 				document.getElementById(name).scrollIntoView({ behavior: "smooth" });
 			});
+			let _checked = (check => {
+				if(button.checked){
+					expand.tabIndex = -1;
+					external.tabIndex = -1;
+					info.setAttribute("aria-hidden", "true");
+				} else {
+					expand.tabIndex = 0;
+					external.tabIndex = 0;
+					info.setAttribute("aria-hidden", "false");
+				}
+			});
 			button.addEventListener("keypress", e => {
 				if (e.keyCode == 13) {
+					_checked();
 					if(button.checked){
 						button.checked = false;
-						expand.tabIndex = -1;
-						info.setAttribute("aria-hidden", "true");
 					} else {
 						button.checked = true;
-						expand.tabIndex = 0;
-						info.setAttribute("aria-hidden", "false");
 					}
 				}
+			});
+			labels.forEach(label=>{
+				label.addEventListener("click", e => {
+					_checked();
+				});
 			});
 		});
 	}
