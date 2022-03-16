@@ -63,11 +63,15 @@
 		{% block content %}{{content | safe}}{% endblock %}
 	</main>
 	<footer class="bottom" aria-label="Footer">
-		<p class="copyright">
-			<a href="/writes/archive/"><span>Archive</span></a> ·
-			<a href="/writes/feed.xml"><span>RSS</span></a> ·
+		<p>
+			<a href="/writes/archive/"><span>Archive</span></a> <span>·</span>
+			<a href="/writes/feed.xml"><span>RSS</span></a> <span>·</span>
 			{% if aboutLink %}<a href="/about/"><span>About</span></a>{% endif %}
-			&copy; <a href="/"><span>{{site.author}}</span></a> {% year 'start' %}–{% year 'current' %}
+			<span class="copyright">
+				<span>&copy;</span>
+				<a href="/"><span>{{site.author}}</span></a>
+				<span>{% year 'start' %}–{% year 'current' %}</span>
+			</span>
 		</p>
 	</footer>
 	{% if siteScripts %}<script src="{{'/static/js/lazyload.min.js' | url}}"></script>
