@@ -112,10 +112,11 @@
 			align-content: center;
 			justify-content: center;
 			svg {
-				width: 50px;
-				height: 50px;
-				group, path, line, polyline, polygon, circle, ellipse, rect {
-					stroke-width: 5px;
+				width: 38px;
+				height: 38px;
+				border-radius: 100%;
+				@mixin svg-path {
+					stroke-width: 7px;
 				}
 			}
 		}
@@ -131,6 +132,11 @@
 		}
 		.grid-link {
 			padding: $p*.5;
+		}
+		a.grid-link {
+			&:focus {
+				@include focus-round;
+			}
 		}
 		label:active, input:active ~label, a:active {
 			transform: scale(0.95);
@@ -156,12 +162,12 @@
 					@include blur(5px);
 					opacity: 1;
 					svg {
-						box-shadow: inset 0 0 0 $p*.25 $focus;
+						@include focus-round;
 					}
 				}
 				~ .grid-info {
 					.grid-down {
-						box-shadow: inset 0 0 0 $p*.25 $focus;
+						@include focus-round($inset: inset);
 					}
 				}
 			}
@@ -217,7 +223,7 @@
 			.grid-expand {
 				bottom: 0;
 				&:focus {
-					box-shadow: inset 0 0 0 $p*.25 $focus;
+					@include focus-round($inset: inset);
 				}
 			}
 		}
@@ -234,26 +240,33 @@
 				position: relative;
 				z-index: 0;
 			}
-			dt, dd {
-				display: inline;
+		}
+		dt, dd {
+			display: inline;
+		}
+		dt {
+			opacity: 0.7;
+			font-weight: bold;
+			&:after {
+				content: ": "
 			}
-			dt {
-				opacity: 0.7;
-				font-weight: bold;
-				&:after {
-					content: ": "
-				}
-				&.title {
-					display: none;
-					+ dd {
-						display: flex;
-						align-items: center;
-						justify-content: flex-start;
-						font-size: 28px;
-						font-weight: bold;
-						font-style: normal;
-						.grid-link {
-							padding: 5px 0 0 math.div($p, 3);
+			&.title {
+				display: none;
+				+ dd {
+					display: flex;
+					align-items: center;
+					justify-content: flex-start;
+					font-size: 28px;
+					font-weight: bold;
+					font-style: normal;
+					.grid-link {
+						margin: 5px 0 0 math.div($p, 3);
+						padding: 0;
+						&.dribbble {
+							border-radius: 100%;
+							&:focus {
+								@include focus-round($inset: inset);
+							}
 						}
 					}
 				}
@@ -341,8 +354,7 @@
 			color: $iron;
 		}
 		&:focus {
-			@include wavy;
-			text-decoration-color: $iron;
+			@include focus-round($inset: inset);
 		}
 		&:active {
 			@include blur-bg($red, .9, .8);
@@ -369,7 +381,7 @@
 		z-index: -1;
 		&:focus {
 			~ h2 > label {
-				@include focus-round;
+				@include focus-round($inset: inset);
 			}
 		}
 		&:checked {

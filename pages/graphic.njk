@@ -23,13 +23,13 @@ tags: pages
 		<div class="grid-pack grid-isotope" role="list">
 			{% for graphic in graphic %}
 				<div class="grid-item {{graphic.tags|isoFilter}}" id="{{graphic.date|safe}}-{{graphic.name}}">
-					<figure role="group" aria-label="Graphic, {{graphic.title}}">
+					<figure class="grid-figure" role="group" aria-label="Graphic, {{graphic.title}}">
 						{% image './static/images/graphic/' + graphic.date + '-' + graphic.name + '.png', graphic.description, null, 'full', 'graphic' %}
 						<figcaption>
 							<fieldset>
 								<input class="grid-input" id="{{graphic.date|safe}}-{{graphic.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this graphic"/>
 								<label class="grid-close" for="{{graphic.date|safe}}-{{graphic.name}}-info"></label>
-								<label class="grid-overlay" for="{{graphic.date|safe}}-{{graphic.name}}-info">{% include 'svg/icons/info.svg' %}</label>
+								<label class="grid-overlay" for="{{graphic.date|safe}}-{{graphic.name}}-info">{% include 'svg/icons/info-large.svg' %}</label>
 								<label class="grid-link" for="{{graphic.date|safe}}-{{graphic.name}}-info">{% include 'svg/icons/info.svg' %}</label>
 								<div class="grid-info">
 									<label class="grid-down" for="{{graphic.date|safe}}-{{graphic.name}}-info">{% include 'svg/icons/caret-down.svg' %}</label>
@@ -39,7 +39,7 @@ tags: pages
 											<dd>
 												<span>{{graphic.title}}</span>
 												{% if graphic.url %}
-													<a class="grid-link external" target="_blank" href="{{graphic.url}}" tabindex="-1">{% include 'svg/icons/dribbble.svg' %}</a>
+													<a class="grid-link external dribbble" target="_blank" href="{{graphic.url}}" tabindex="-1">{% include 'svg/icons/dribbble.svg' %}</a>
 												{% endif %}
 											</dd>
 										</div>
