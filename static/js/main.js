@@ -143,13 +143,13 @@ const visualInfoTriggers = ((figures = Array.from(document.querySelectorAll(".gr
 			});
 			let _checked = (check => {
 				if(button.checked){
-					expand.tabIndex = -1;
-					external.tabIndex = -1;
 					info.setAttribute("aria-hidden", "true");
+					expand.tabIndex = -1;
+					if(external) external.tabIndex = -1
 				} else {
-					expand.tabIndex = 0;
-					external.tabIndex = 0;
 					info.setAttribute("aria-hidden", "false");
+					expand.tabIndex = 0;
+					if(external) external.tabIndex = 0
 				}
 			});
 			button.addEventListener("keypress", e => {
