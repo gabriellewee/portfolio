@@ -114,8 +114,8 @@ article {
 	}
 	pre {
 		padding: $p*1.5 $p*2;
-		color: #90a4ae;
-		background: #f9f9f9;
+		color: white;
+		background: $iron;
 		font-size: 14px;
 		line-height: 24px;
 		// light mode
@@ -129,7 +129,6 @@ article {
 		}
 		@include dark {
 			background-color: darken($iron, 3%);
-			color: white;
 		}
 	}
 	blockquote {

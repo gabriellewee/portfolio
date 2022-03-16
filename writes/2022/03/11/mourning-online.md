@@ -168,7 +168,7 @@ In order to upload the video file, I had to enable [Git LFS](https://git-lfs.git
 
 Once I had the video uploaded, I could finally put it on the site. I know that `preload="metadata"` is only really a _suggestion_, but it’s better than nothing `¯\_(ツ)_/¯`
 
-```
+``` html
 <video width="1280" height="720" controls preload="metadata" poster="poster.jpg">
 	<source src="video.mp4" type="video/mp4">
 </video>
