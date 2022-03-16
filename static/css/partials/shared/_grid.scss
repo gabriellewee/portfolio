@@ -132,6 +132,10 @@
 		.grid-link {
 			padding: $p*.5;
 		}
+		label:active, input:active ~label, a:active {
+			transform: scale(0.95);
+			box-shadow: none;
+		}
 		input {
 			position: absolute;
 			top: 0;

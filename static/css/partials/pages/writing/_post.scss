@@ -414,17 +414,9 @@ article {
 	}
 	h2 {
 		display: inline-block;
-		opacity: 0.5;
 		font-size: 48px;
 		font-weight: 900;
 		font-variation-settings: "wght" 900, "CASL" 1;
-		@supports (-webkit-text-fill-color: transparent) {
-			opacity: 1;
-			background-color: $red;
-			background: linear-gradient(135deg, $red 0%, $orange 100%);
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: rgba($red, .5);
-		}
 	}
 	a {
 		text-decoration-thickness: 2px;

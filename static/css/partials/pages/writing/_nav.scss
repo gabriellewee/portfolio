@@ -13,18 +13,7 @@
 	justify-content: center;
 	width: 100%;
 	text-align: center;
-	padding: $p*1.5 $p*1.5 calc(#{$p*3} + env(safe-area-inset-bottom));
-	div {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-wrap: wrap;
-	}
-	h2 {
-		&:after {
-			content: " ";
-		}
-	}
+	padding: $p*.5 $p*1.5 calc(#{$p*3} + env(safe-area-inset-bottom));
 	a {
 		display: inline-block;
 		position: relative;
@@ -79,6 +68,17 @@
 				transform: scale(0.95);
 				background-color: $indigo;
 				background: linear-gradient(135deg, $indigo 0%, $violet 100%);
+			}
+		}
+	}
+	p {
+		> a, > span {
+			margin-top: $p;
+		}
+		> span {
+			display: inline-block;
+			&:not(.copyright) {
+				padding: math.div($p, 3) 0;
 			}
 		}
 	}
