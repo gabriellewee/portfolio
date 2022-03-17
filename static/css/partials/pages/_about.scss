@@ -17,11 +17,17 @@ h2 {
 }
 
 .about-grid {
-	padding: $p;
+	padding: calc(#{$p*.5} + env(safe-area-inset-left));
+	@media only screen and (min-width: $iphone) {
+		padding: calc(#{$p} + env(safe-area-inset-left));
+	}
 }
 
 .grid-item {
-	padding: $p;
+	padding: $p*.5;
+	@media only screen and (min-width: $iphone) {
+		padding: $p;
+	}
 	> div {
 		padding: $p $p*2;
 		border-radius: $p*.5;

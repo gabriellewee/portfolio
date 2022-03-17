@@ -27,7 +27,7 @@
 	}
 }
 
-@media only screen and (min-width: 568px) and (max-height: 450px) {
+@media only screen and (min-width: $iphone) and (max-height: 450px) {
 	.subpage-grid {
 		.grid-pack {
 			grid-template-columns: 1fr 1fr;
@@ -38,7 +38,7 @@
 	}
 }
 
-@media only screen and (min-width: $ipad-11) {
+@media only screen and (min-width: $ipad-mini) {
 	.grid-pack {
 		grid-template-columns: 1fr 1fr;
 		&[style] .grid-item {
@@ -56,7 +56,7 @@
 	}
 }
 
-@media only screen and (min-width: 3000px) {
+@media only screen and (min-width: $lg-5k) {
 	.grid-pack {
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 		&[style] .grid-item {
@@ -149,7 +149,7 @@
 			opacity: 0;
 			~ label.grid-link {
 				display: none;
-				@media only screen and (min-width: 600px) {
+				@media only screen and (min-width: $ipad-mini) {
 					opacity: 0;
 					display: block;
 				}
@@ -188,7 +188,7 @@
 				}
 			}
 		}
-		@media only screen and (min-width: 600px) {
+		@media only screen and (min-width: $ipad-mini) {
 			&:hover input {
 				~ label.grid-link {
 					opacity: 1;
