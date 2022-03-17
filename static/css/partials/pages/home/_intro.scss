@@ -2,7 +2,7 @@
 	background-color: lighten($pink, 5%);
 	color: $iron;
 	padding-right: $p*5.5;
-	@media only screen and (min-width: 600px) {
+	@media only screen and (min-width: $ipad-mini) {
 		padding-right: $p*5;
 	}
 	@media only screen and (min-width: $ipad-11) {

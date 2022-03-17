@@ -24,7 +24,7 @@ footer {
 	color: white;
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: $ipad-mini) {
 	main {
 		font-size: 48px;
 		padding: $p $p*2;
