@@ -22,7 +22,7 @@ tags: pages
 	<div class="art-grid subpage-grid">
 		<div class="grid-pack grid-isotope" role="list">
 			{% for art in art %}
-				<div class="grid-item {{art.tags|isoFilter}}" id="{{art.date|safe}}-{{art.name}}">
+				<div class="grid-item {{art.tags|isoFilter}}" id="{{art.date|safe}}-{{art.name}}" role="listitem">
 					<figure class="grid-figure" role="group" aria-label="Art, {{art.title}}">
 						{% image './static/images/art/' + art.date + '-' + art.name + '.jpg', art.description, art.aspect, 'full', 'art' %}
 						<figcaption>
