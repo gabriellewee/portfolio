@@ -8,8 +8,6 @@ const markdownItAnchor = require("markdown-it-anchor");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const sass = require("sass");
 const path = require("path");
-const postcss = require("postcss");
-const autoprefixer = require("autoprefixer");
 
 module.exports = function(eleventyConfig) {
 	eleventyConfig.setDataDeepMerge(true);
