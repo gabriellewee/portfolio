@@ -40,6 +40,11 @@ figure, picture, img {
 	height: auto;
 }
 
+img {
+	font-style: normal;
+	font-size: 18px;
+}
+
 @include dark {
 	body {
 		background-color: darken($iron, 1%);
