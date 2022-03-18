@@ -64,6 +64,10 @@
 	&-photography {
 		background-color: #8f9eb8;
 		color: #121f2b;
+		@include dark {
+			background-color: #444A56;
+			color: white;
+		}
 		.more {
 			color: lighten(#8f9eb8, 10%);
 			&:focus {
@@ -74,6 +78,9 @@
 	&-graphic {
 		background-color: #c46465;
 		color: white;
+		@include dark {
+			background-color: #704444;
+		}
 		.more {
 			color: $pink;
 			&:focus {
@@ -84,6 +91,9 @@
 	&-art {
 		background-color: #75605B;
 		color: white;
+		@include dark {
+			background-color: #3E3837;
+		}
 		.more {
 			color: lighten(#938c8c, 10%);
 			&:focus {
