@@ -2,6 +2,10 @@
 	background-color: #d1e7d6;
 	color: #272f29;
 	font-size: 24px;
+	@include dark {
+		background-color: #49574D;
+		color: white;
+	}
 	@media only screen and (min-width: $ipad-mini) {
 		display: grid;
 		grid-template-columns: 1fr 200px;
