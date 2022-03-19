@@ -37,4 +37,22 @@ The entire experience has left me grateful for my current life. I’ve started t
 {% image './static/images/writing/2022-03-18-jaw-cooper.jpg', 'Art poster by JAW Cooper from a Kickstarter I supported', 'horizontal', 'full', 'posts', '2022-03-18-jaw-cooper', true %}
 
 {% image './static/images/writing/2022-03-18-soeymilk.jpg', 'Original art by soeymilk that I purchased at Comic Con', 'horizontal', 'full', 'posts', '2022-03-18-soeymilk', true %}
+
+<div class="lightbox-group">
+	<a class="lightbox" id="2022-03-18-er-iv-lightbox" href="#2022-03-18-er-iv">
+		<span style="background-image: url('/static/images/writing/2022-03-18-er-iv.jpg')"></span>
+	</a>
+	<a class="lightbox" id="2022-03-18-cat-lightbox" href="#2022-03-18-cat-toddler">
+		<span style="background-image: url('/static/images/writing/2022-03-18-cat.jpg')"></span>
+	</a>
+	<a class="lightbox" id="2022-03-18-selfie-lightbox" href="#2022-03-18-selfie">
+		<span style="background-image: url('/static/images/writing/2022-03-18-selfie.jpg')"></span>
+	</a>
+	<a class="lightbox" id="2022-03-18-jaw-cooper-lightbox" href="#2022-03-18-jaw-cooper">
+		<span style="background-image: url('/static/images/writing/2022-03-18-jaw-cooper.jpg')"></span>
+	</a>
+	<a class="lightbox" id="2022-03-18-soeymilk-lightbox" href="#2022-03-18-soeymilk">
+		<span style="background-image: url('/static/images/writing/2022-03-18-soeymilk.jpg')"></span>
+	</a>
+	<div class="lightbox-background"></div>
 </div>
