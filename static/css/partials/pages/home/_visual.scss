@@ -49,7 +49,7 @@
 				}
 			}
 			&:focus {
-				@include focus-round;
+				@include focus-round(rgba(white, .75));
 				picture {
 					&:before, &:after {
 						opacity: 1;
