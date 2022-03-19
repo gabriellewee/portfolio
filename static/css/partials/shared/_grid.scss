@@ -27,7 +27,7 @@
 	}
 }
 
-@media only screen and (min-width: $iphone) and (max-height: 450px) {
+@media only screen and (min-width: $mobile) and (max-height: 450px) {
 	.subpage-grid {
 		.grid-pack {
 			grid-template-columns: 1fr 1fr;
