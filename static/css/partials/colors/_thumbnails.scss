@@ -21,7 +21,7 @@
 	}
 	&-instagram {
 		.overlay {
-			@include blur-bg(#ADA6AF, .9, .7);
+			@include blur-bg(desaturate(darken(#ADA6AF, 20%), 5%), .9, .7);
 		}
 	}
 	&-lotus {
@@ -36,12 +36,12 @@
 	}
 	&-elletem {
 		.overlay {
-			@include blur-bg(#FEBFC0, .9, .7);
+			@include blur-bg(#FF7C8E, .9, .7);
 		}
 	}
 	&-doortem {
 		.overlay {
-			@include blur-bg(#EC9D93, .9, .7);
+			@include blur-bg(#2C4A87, .9, .7);
 		}
 	}
 	&-totem {
@@ -51,12 +51,12 @@
 	}
 	&-nested-nav {
 		.overlay {
-			@include blur-bg(#AEBFAF, .9, .7);
+			@include blur-bg(desaturate(darken(#AEBFAF, 20%), 5%), .9, .7);
 		}
 	}
 	&-sprites {
 		.overlay {
-			@include blur-bg(#F59477, .9, .7);
+			@include blur-bg(desaturate(darken(#6FC6C5, 20%), 5%), .9, .7);
 		}
 	}
 	&-cubes {
@@ -77,7 +77,7 @@
 	}
 	&-010 {
 		.overlay {
-			@include blur-bg(#43CB9D, .9, .7);
+			@include blur-bg(desaturate(darken(#43CB9D, 15%), 5%), .9, .7);
 		}
 	}
 	&-009 {
@@ -107,17 +107,17 @@
 	}
 	&-004 {
 		.overlay {
-			@include blur-bg(#FC9D6B, .9, .7);
+			@include blur-bg(desaturate(darken(#FC9D6B, 15%), 5%), .9, .7);
 		}
 	}
 	&-003 {
 		.overlay {
-			@include blur-bg(#ADA295, .9, .7);
+			@include blur-bg(desaturate(darken(#ADA295, 15%), 5%), .9, .7);
 		}
 	}
 	&-001, &-002 {
 		.overlay {
-			@include blur-bg(#DFB72C, .9, .7);
+			@include blur-bg(desaturate(darken(#DFB72C, 15%), 5%), .9, .7);
 		}
 	}
 }
