@@ -95,7 +95,7 @@
 			}
 			.inside {
 				@include border-radius(3px);
-				// @include blur-all(10px, "hexToHSL(#18191C)", .9, .8);
+				@include blur-all(10px, null, .9, .8, #18191C);
 				display: block;
 				position: relative;
 				margin-top: calc(var(--p)/2);
