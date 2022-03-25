@@ -266,18 +266,21 @@ article {
 	.row-double, .row-triple, .row-quad, .row-quint {
 		display: grid;
 		grid-gap: calc(var(--p)*2);
+		grid-template-columns: 1fr;
 	}
-	.row-double {
-		grid-template-columns: 1fr 1fr;
-	}
-	.row-triple {
-		grid-template-columns: 1fr 1fr 1fr;
-	}
-	.row-quad {
-		grid-template-columns: 1fr 1fr 1fr 1fr;
-	}
-	.row-quint {
-		grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	@media only screen and (min-width: $mobile) {
+		.row-double {
+			 grid-template-columns: 1fr 1fr;
+		}
+		.row-triple {
+			 grid-template-columns: 1fr 1fr 1fr;
+		}
+		.row-quad {
+			 grid-template-columns: 1fr 1fr 1fr 1fr;
+		}
+		.row-quint {
+			 grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+		}
 	}
 	.light-dark {
 		picture {
