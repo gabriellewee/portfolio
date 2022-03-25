@@ -1,6 +1,6 @@
 .grid-item-code {
 	@import '../../colors/thumbnails';
-	font-family: $mono;
+	font-family: var(--font-mono);
 	font-size: 16px;
 	font-weight: bold;
 	background-color: #253238;
@@ -9,16 +9,16 @@
 		background-color: darken(#1e282c, 2%);
 	}
 	h2 {
-		padding: $p*1.5 calc(#{$p*1.5} + env(safe-area-inset-left));
+		padding: calc(var(--p)*1.5) calc((var(--p)*1.5) + env(safe-area-inset-left));
 		@include max {
-			padding: $p*1.5 max(#{$p*1.5}, env(safe-area-inset-left));
+			padding:  calc(var(--p)*1.5) max((var(--p)*1.5), env(safe-area-inset-left));
 		}
 	}
 	p {
-		padding: 0 calc(#{$p*1.5} + env(safe-area-inset-left)) $p;
+		padding: 0 calc((var(--p)*1.5) + env(safe-area-inset-left)) var(--p);
 		font-size: 24px;
 		@include max {
-			padding: 0 max(#{$p*1.5}, env(safe-area-inset-left)) $p;
+			padding: 0 max((var(--p)*1.5), env(safe-area-inset-left)) var(--p);
 		}
 		a {
 			color: #73d1c8;
@@ -34,7 +34,7 @@
 		}
 	}
 	h3, .links p {
-		padding-bottom: $p;
+		padding-bottom: var(--p);
 		font-weight: bold;
 		font-size: 16px;
 		a {
@@ -53,10 +53,10 @@
 		}
 	}
 	ul + p {
-		padding-top: $p;
+		padding-top: var(--p);
 	}
 	.codepen {
-		@include border-radius($p*.5);
+		@include border-radius(calc(var(--p)/2));
 	}
 	.css {
 		color: #ffcb6b;
@@ -65,20 +65,17 @@
 		color: #c792ea;
 	}
 	.embed {
-		padding: 0 calc(#{$p*1.5} + env(safe-area-inset-left)) $p*1.5;
+		padding: 0 calc((var(--p)*1.5) + env(safe-area-inset-left)) calc(var(--p)*1.5);
 		@include max {
-			padding: 0 max(#{$p*1.5}, env(safe-area-inset-left)) $p*1.5;
-		}
-		.cp_embed_wrapper {
-			@include border-radius($p*.5);
+			padding: 0 max(calc(var(--p)*1.5), env(safe-area-inset-left)) calc(var(--p)*1.5);
 		}
 	}
 	.links {
-		margin-bottom: $p;
+		margin-bottom: var(--p);
 	}
 	ul {
 		grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
-		padding-bottom: $p*1.5;
+		padding-bottom: calc(var(--p)*1.5);
 		&.regular {
 			@media only screen and (min-width: 1366px) {
 				grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
@@ -107,14 +104,15 @@
 			will-change: transform;
 			transition: .2s ease-out;
 			display: block;
-			border-radius: $p*.5;
+			border-radius: calc(var(--p)/2);
+			color: var(--color-iron);
 			&:hover, &:focus {
 				.overlay {
 					opacity: 1;
 				}
 			}
 			&:focus {
-				@include focus-round(rgba(white, .75));
+				@include focus-round(hsla(var(--color-white-hsl), .75));
 			}
 			&:active {
 				transform: scale(0.95);
@@ -127,31 +125,28 @@
 				height: auto;
 			}
 			.inside {
-				@include border-radius($p*.5);
+				@include border-radius(calc(var(--p)/2));
 				display: block;
 				position: relative;
-				@include dark {
-					color: $iron;
-				}
 				&:before, &:after {
-					@include blur-all(5px, white, .9, .8);
+					@include blur-all(5px, null, .9, .8, white);
 					display: block;
 					position: absolute;
 					z-index: 0;
 					bottom: 0;
-					padding: $p*.5 $p*.75;
-					font-family: $faune;
+					padding: calc(var(--p)/2) calc(var(--p)*.75);
+					font-family: var(--font-faune);
 					font-size: 12px;
 					font-weight: bold;
 					text-transform: uppercase;
 				}
 				&:before {
 					left: 0;
-					border-top-right-radius: $p*.5;
+					border-top-right-radius: calc(var(--p)/2);
 				}
 				&:after {
 					right: 0;
-					border-top-left-radius: $p*.5;
+					border-top-left-radius: calc(var(--p)/2);
 				}
 			}
 			&.award {
@@ -166,7 +161,7 @@
 			}
 			&.dark {
 				.overlay {
-					color: $iron;
+					color: var(--color-iron);
 				}
 			}
 			.overlay {
@@ -183,8 +178,8 @@
 				left: 0;
 				width: 100%;
 				height: 100%;
-				padding: $p $p*1.5;
-				font-family: $faune;
+				padding: var(--p) calc(var(--p)*1.5);
+				font-family: var(--font-faune);
 				font-size: 20px;
 				font-weight: normal;
 				font-style: italic;

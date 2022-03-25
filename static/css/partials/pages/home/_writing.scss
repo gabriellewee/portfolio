@@ -1,30 +1,28 @@
-@use 'sass:math';
-
 .grid-item-writing {
-	background-color: mix($red, white, 20%);
-	color: $iron;
-	font-family: $recursive;
+	background-color: var(--color-writing-light);
+	color: var(--color-iron);
+	font-family: var(--font-recursive);
 	@include dark {
-		background-color: mix($red, $iron, 10%);
+		background-color: var(--color-writing-dark);
 		color: white;
 	}
 	h2 {
 		font-weight: 1000;
 		font-variation-settings: "wght" 1000, "CASL" 1;
-		padding: $p calc(#{$p*1.5} + env(safe-area-inset-left));
+		padding: var(--p) calc((var(--p)*1.5) + env(safe-area-inset-left));
 		@include max {
-			padding: $p max(#{$p*1.5}, env(safe-area-inset-left));
+			padding: var(--p) max(calc(var(--p)*1.5), env(safe-area-inset-left));
 		}
 	}
 	div {
-		padding: 0 calc(#{$p*1.5} + env(safe-area-inset-left)) $p;
+		padding: 0 calc((var(--p)*1.5) + env(safe-area-inset-left)) var(--p);
 		@include max {
-			padding: 0 max(#{$p*1.5}, env(safe-area-inset-left)) $p;
+			padding: 0 max((var(--p)*1.5), env(safe-area-inset-left)) var(--p);
 		}
 	}
 	h3 {
 		opacity: 0.5;
-		margin-bottom: $p*.5;
+		margin-bottom: calc(var(--p)/2);
 		font-size: 24px;
 		font-weight: 900;
 		font-variation-settings: "wght" 900, "CASL" 1;
@@ -47,11 +45,11 @@
 				}
 			}
 			&:hover, &:focus {
-				color: $red;
+				color: var(--color-red);
 				opacity: 1;
 			}
 			&:active {
-				color: $iron;
+				color: var(--color-iron);
 			}
 			@include dark {
 				&:hover, &:focus {
@@ -59,7 +57,7 @@
 					opacity: 1;
 				}
 				&:active {
-					color: $red;
+					color: var(--color-red);
 				}
 			}
 			&:after {
@@ -77,23 +75,23 @@
 		align-content: center;
 		a, time {
 			display: block;
-			margin-bottom: $p;
+			margin-bottom: var(--p);
 		}
 		a span, time {
 			display: block;
-			padding: $p*.5 $p;
+			padding: calc(var(--p)/2) var(--p);
 			@include clip-path {
 				clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
 			}
 			@include clip-path-alt {
-				border-radius: $p*.25;
+				border-radius: calc(var(--p)/4);
 			}
 		}
 		> *:not(:last-child) {
-			margin-right: $p;
+			margin-right: var(--p);
 		}
 		span {
-			background-color: $red;
+			background-color: var(--color-red);
 		}
 		a {
 			position: relative;
@@ -106,16 +104,19 @@
 				content: "";
 				display: block;
 				position: absolute;
-				top: -$p*.25;
-				left: -$p*.25;
-				height: calc(100% + #{$p*.5});
-				width: calc(100% + #{$p*.5});
-				background-color: rgba($red, .5);
+				top: calc(var(--p)/-4);
+				left: calc(var(--p)/-4);
+				height: calc(100% + (var(--p)/2));
+				width: calc(100% + (var(--p)/2));
+				background-color: hsla(var(--color-red-hsl), .5);
+				@include dark {
+					background-color: var(--color-red);
+				}
 				@include clip-path {
 					clip-path: polygon(3px 0%, calc(100% - 3px) 0%, 100% 3px, 100% calc(100% - 3px), calc(100% - 3px) 100%, 3px 100%, 0% calc(100% - 3px), 0% 3px);
 				}
 				@include clip-path-alt {
-					border-radius: $p*.25;
+					border-radius: calc(var(--p)/4);
 				}
 			}
 			&:focus {
@@ -124,7 +125,7 @@
 				}
 			}
 			&:hover, &:focus {
-				color: $red;
+				color: var(--color-red);
 				span {
 					background-color: white;
 				}
@@ -132,25 +133,25 @@
 			&:active {
 				transform: scale(0.98);
 				span {
-					background-color: $iron;
+					background-color: var(--color-iron);
 				}
 			}
 			@include dark {
 				&:active {
 					span {
-						background-color: darken($iron, 5%);
+						background-color: var(--color-iron-5);
 					}
 				}
 			}
 		}
 		time {
-			background-color: rgba($iron, .2);
+			background-color: hsla(var(--color-iron-hsl), .2);
 			@include dark {
-				background-color: rgba(white, .2);
+				background-color: hsla(var(--color-white-hsl), .2);
 			}
 		}
 		.link span, time {
-			padding: $p*.5 $p;
+			padding: calc(var(--p)/2) var(--p);
 			font-size: 16px;
 			font-weight: 700;
 			font-variation-settings: "wght" 700, "CASL" 1;
@@ -159,41 +160,50 @@
 		.link {
 			&.link-podcasts {
 				&:hover, &:focus {
-					color: $ap;
+					color: var(--color-ap);
 				}
 				&:focus {
 					&:before {
-						background-color: rgba($ap, .5);
+						background-color: hsla(var(--color-ap-hsl), .5);
+						@include dark {
+							background-color: var(--color-ap);
+						}
 					}
 				}
 				span {
-					background-color: $ap;
+					background-color: var(--color-ap);
 				}
 			}
 			&.link-spotify {
 				&:hover, &:focus {
-					color: $sp;
+					color: var(--color-sp);
 				}
 				&:focus {
 					&:before {
-						background-color: rgba($sp, .5);
+						background-color: hsla(var(--color-sp-hsl), .5);
+						@include dark {
+							background-color: var(--color-sp);
+						}
 					}
 				}
 				span {
-					background-color: $sp;
+					background-color: var(--color-sp);
 				}
 			}
 			&.link-medium {
 				&:hover, &:focus {
-					color: $med;
+					color: var(--color-med);
 				}
 				&:focus {
 					&:before {
-						background-color: rgba($med, .5);
+						background-color: hsla(var(--color-med-hsl), .5);
+						@include dark {
+							background-color: var(--color-med);
+						}
 					}
 				}
 				span {
-					background-color: $med;
+					background-color: var(--color-med);
 				}
 			}
 			&:hover, &:focus {
@@ -203,7 +213,7 @@
 			}
 			&:active {
 				span {
-					background-color: $iron;
+					background-color: var(--color-iron);
 				}
 			}
 			@include dark {
@@ -214,7 +224,7 @@
 				}
 				&:active {
 					span {
-						background-color: darken($iron, 5%);
+						background-color: var(--color-iron-5);
 					}
 				}
 			}

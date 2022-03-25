@@ -1,11 +1,9 @@
-@use 'sass:math';
-
 & {
 	font-size: 18px;
 	line-height: 1.3;
-	background-color: $grey;
+	background-color: var(--color-grey);
 	@include dark {
-		background-color: darken($iron, 5%);
+		background-color: var(--color-iron-5);
 	}
 }
 
@@ -13,30 +11,30 @@ h2 {
 	font-size: 32px;
 	font-style: italic;
 	font-weight: bold;
-	margin-bottom: $p*.5;
+	margin-bottom: calc(var(--p)/2);
 }
 
 .about-grid {
-	padding: calc(#{$p*.5} + env(safe-area-inset-left));
+	padding: calc((var(--p)/2) + env(safe-area-inset-left));
 	@media only screen and (min-width: $mobile) {
-		padding: calc(#{$p} + env(safe-area-inset-left));
+		padding: calc(var(--p) + env(safe-area-inset-left));
 	}
 }
 
 .grid-item {
-	padding: $p*.5;
+	padding: calc(var(--p)/2);
 	@media only screen and (min-width: $mobile) {
-		padding: $p;
+		padding: var(--p);
 	}
 	> div {
-		padding: $p $p*2;
-		border-radius: $p*.5;
+		padding: var(--p) calc(var(--p)*2);
+		border-radius: calc(var(--p)/2);
 		background-color: white;
 		@include dark {
-			background-color: $iron;
+			background-color: var(--color-iron);
 		}
 		+ div {
-			margin-top: $p*2;
+			margin-top: calc(var(--p)*2);
 		}
 	}
 
@@ -46,21 +44,21 @@ h2 {
 
 	a {
 		&:focus {
-			@include focus-round(rgba($violet, .5));
+			@include focus-round(hsla(var(--color-violet-hsl), .5));
 		}
 	}
 
 	&:not(.about-sitemap) {
 		a {
-			@include gradient-text($red, $light-orange, true);
+			@include gradient-text(var(--color-red-hsl), var(--color-light-orange-hsl), true);
 			display: inline-block;
 			text-decoration: underline;
 			text-decoration-thickness: 1.5px;
 			&:hover, &:focus {
-				@include gradient-text($violet, $blue, true);
+				@include gradient-text(var(--color-violet-hsl), var(--color-blue-hsl), true);
 			}
 			&:active {
-				@include gradient-text($indigo, $violet, true);
+				@include gradient-text(var(--color-indigo-hsl), var(--color-violet-hsl), true);
 			}
 		}
 	}
@@ -70,34 +68,34 @@ h2 {
 	ul {
 		display: flex;
 		flex-wrap: wrap;
-		margin-top: $p;
+		margin-top: var(--p);
 	}
 	li {
-		margin-bottom: $p;
+		margin-bottom: var(--p);
 		&:not(:last-child) {
-			margin-right: $p;
+			margin-right: var(--p);
 		}
 	}
 	a {
 		will-change: transform, background-color, color;
 		transition: transform .1s ease-out;
 		display: inline-block;
-		padding: $p*.5 $p;
-		border-radius: math.div($p, 3);
-		background-color: $iron;
+		padding: calc(var(--p)/2) var(--p);
+		border-radius: calc(var(--p)/3);
+		background-color: var(--color-iron);
 		color: white;
 		@include dark {
-			background-color: rgba(white, .8);
-			color: $iron;
+			background-color: hsla(var(--color-white-hsl), .8);
+			color: var(--color-iron);
 		}
 		&:hover, &:focus {
-			background-color: $red;
-			background: linear-gradient(135deg, $red 0%, $orange 100%);
+			background-color: var(--color-red);
+			background: linear-gradient(135deg, var(--color-red) 0%, var(--color-orange) 100%);
 		}
 		&:active {
 			transform: scale(0.95);
-			background-color: $indigo;
-			background: linear-gradient(135deg, $indigo 0%, $violet 100%);
+			background-color: var(--color-indigo);
+			background: linear-gradient(135deg, var(--color-indigo) 0%, var(--color-violet) 100%);
 		}
 	}
 }
@@ -109,9 +107,9 @@ h2 {
 	}
 	li {
 		display: flex;
-		margin-bottom: $p;
+		margin-bottom: var(--p);
 		&:not(:last-child) {
-			margin-right: $p;
+			margin-right: var(--p);
 		}
 	}
 	.color {
@@ -123,16 +121,16 @@ h2 {
 				width: 36px;
 				height: 36px;
 				border-radius: 100%;
-				border: $p*.25 solid #e5e5e5;
+				border: calc(var(--p)/4) solid var(--color-grey-dark);
 			}
 			&:last-child {
 				position: relative;
-				margin-top: $p;
-				padding: $p*.5 $p;
-				border-radius: math.div($p, 3);
-				background-color: #e5e5e5;
-				color: $iron;
-				font-family: $mono;
+				margin-top: var(--p);
+				padding: calc(var(--p)/2) var(--p);
+				border-radius: calc(var(--p)/3);
+				background-color: var(--color-grey-dark);
+				color: var(--color-iron);
+				font-family: var(--font-mono);
 				font-weight: bold;
 				font-size: 16px;
 				text-transform: uppercase;
@@ -141,42 +139,42 @@ h2 {
 					content: "";
 					display: block;
 					position: absolute;
-					width: $p;
-					height: $p;
-					background-color: #e5e5e5;
+					width: var(--p);
+					height: var(--p);
+					background-color: var(--color-grey-dark);
 					border-top-left-radius: 2px;
-					top: -$p*.5;
+					top: calc(var(--p)/-2);
 					left: 50%;
-					margin-left: -$p*.5;
+					margin-left: calc(var(--p)/-2);
 				}
 			}
 		}
 		&-iron span:first-child {
-			background-color: $iron;
+			background-color: var(--color-iron);
 		}
 		&-pink span:first-child {
-			background-color: $pink;
+			background-color: var(--color-pink);
 		}
 		&-grey span:first-child {
-			background-color: $grey;
+			background-color: var(--color-grey);
 		}
 		&-red span:first-child {
-			background-color: $red;
+			background-color: var(--color-red);
 		}
 		&-orange span:first-child {
-			background-color: $orange;
+			background-color: var(--color-orange);
 		}
 		&-light-orange span:first-child {
-			background-color: $light-orange;
+			background-color: var(--color-light-orange);
 		}
 		&-blue span:first-child {
-			background-color: $blue;
+			background-color: var(--color-blue);
 		}
 		&-indigo span:first-child {
-			background-color: $indigo;
+			background-color: var(--color-indigo);
 		}
 		&-violet span:first-child {
-			background-color: $violet;
+			background-color: var(--color-violet);
 		}
 	}
 }
@@ -184,10 +182,10 @@ h2 {
 .about-fonts {
 	li {
 		&:first-child {
-			margin-top: $p;
+			margin-top: var(--p);
 		}
 		&:not(:last-child) {
-			margin-bottom: $p*2;
+			margin-bottom: calc(var(--p)*2);
 		}
 	}
 	.font {
@@ -195,25 +193,25 @@ h2 {
 		flex-wrap: wrap;
 	}
 	.label {
-		@include border-radius(math.div($p, 3));
+		@include border-radius(calc(var(--p)/3));
 		display: flex;
-		margin-bottom: $p*.5;
-		font-family: $mono;
+		margin-bottom: calc(var(--p)/2);
+		font-family: var(--font-mono);
 		font-size: 12px;
 		font-weight: bold;
 		span {
 			display: flex;
 			align-items: center;
-			padding: $p*.5 $p;
+			padding: calc(var(--p)/2) var(--p);
 			&:first-child {
-				background-color: $red;
-				background: linear-gradient(135deg, $red 0%, $orange 100%);
+				background-color: var(--color-red);
+				background: linear-gradient(135deg, var(--color-red) 0%, var(--color-orange) 100%);
 				color: white;
 			}
 			&:last-child {
-				background-color: $grey;
+				background-color: var(--color-grey);
 				@include dark {
-					background-color: rgba(white, .1);
+					background-color: hsla(var(--color-white-hsl), .1);
 				}
 			}
 		}
@@ -225,39 +223,39 @@ h2 {
 	}
 	.faune {
 		.pangram {
-			font-family: $faune;
+			font-family: var(--font-faune);
 		}
 	}
 	.faune-italic {
 		.pangram {
-			font-family: $faune;
+			font-family: var(--font-faune);
 			font-style: italic;
 			font-weight: bold;
 		}
 	}
 	.dank-mono {
 		.pangram {
-			font-family: $mono;
+			font-family: var(--font-mono);
 			font-weight: bold;
 		}
 	}
 	.dank-mono-italic {
 		.pangram {
-			font-family: $mono;
+			font-family: var(--font-mono);
 			font-style: italic;
 			font-weight: bold;
 		}
 	}
 	.recursive {
 		.pangram {
-			font-family: $recursive;
+			font-family: var(--font-recursive);
 			font-weight: 300;
 			font-variation-settings: "wght" 300, "CASL" 0.5, "CRSV" 1;
 		}
 	}
 	.recursive-bold {
 		.pangram {
-			font-family: $recursive;
+			font-family: var(--font-recursive);
 			font-weight: 1000;
 			font-variation-settings: "wght" 1000, "CASL" 1, "CRSV" 1;
 		}
@@ -267,8 +265,8 @@ h2 {
 .about-timeline {
 	ol {
 		position: relative;
-		padding-left: $p*2;
-		margin-top: $p;
+		padding-left: calc(var(--p)*2);
+		margin-top: var(--p);
 		&:before {
 			content: "";
 			display: block;
@@ -277,46 +275,46 @@ h2 {
 			left: 0;
 			width: 2px;
 			height: 100%;
-			background-color: $iron;
+			background-color: var(--color-iron);
 			border-radius: 2px;
 			@include dark {
-				background-color: mix($iron, white);
+				background-color: var(--color-iron-white);
 			}
 		}
 	}
 	li {
-		margin-bottom: $p;
+		margin-bottom: var(--p);
 	}
 	h3 {
 		position: relative;
 		font-size: 24px;
-		margin-bottom: $p*.5;
+		margin-bottom: calc(var(--p)/2);
 		&:before, &:after {
 			content: "";
 			display: block;
 			position: absolute;
-			background-color: $iron;
+			background-color: var(--color-iron);
 			@include dark {
-				background-color: mix($iron, white);
+				background-color: var(--color-iron-white);
 			}
 		}
 		&:before {
 			top: calc(50% + 2px);
-			left: -$p*2;
-			width: ($p*2) - 4px;
+			left: calc(var(--p)*-2);
+			width: calc((var(--p)*2) - 4px);
 			height: 2px;
 			border-radius: 2px;
 		}
 		&:after {
 			top: calc(50% + 2px - 3px);
-			left: -$p*2 - 3px;
+			left: calc((var(--p)*-2) - 3px);
 			width: 8px;
 			height: 8px;
 			border-radius: 8px;
 		}
 	}
 	p {
-		margin-bottom: $p*.5;
+		margin-bottom: calc(var(--p)/2);
 	}
 }
 
@@ -327,8 +325,8 @@ h2 {
 			&:after {
 				content: "\00B7";
 				display: inline-block;
-				margin-left: $p*.5;
-				margin-right: $p*.5;
+				margin-left: calc(var(--p)/2);
+				margin-right: calc(var(--p)/2);
 			}
 		}
 	}

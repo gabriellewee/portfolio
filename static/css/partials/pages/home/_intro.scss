@@ -1,9 +1,9 @@
 .grid-item-intro {
-	background-color: lighten($pink, 5%);
-	color: $iron;
-	padding-right: $p*5.5;
+	background-color: var(--color-pink-5);
+	color: var(--color-iron);
+	padding-right: calc(var(--p)*5.5);
 	@media only screen and (min-width: $ipad-mini) {
-		padding-right: $p*5;
+		padding-right: calc(var(--p)*5);
 	}
 	@media only screen and (min-width: $ipad-11) {
 		padding-right: unset;

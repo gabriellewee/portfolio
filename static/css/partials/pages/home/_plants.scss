@@ -17,16 +17,16 @@
 		font-size: 28px;
 	}
 	h2, a {
-		padding: $p calc(#{$p*1.5} + env(safe-area-inset-left));
+		padding: var(--p) calc((var(--p)*1.5) + env(safe-area-inset-left));
 		@include max {
-			padding: $p max(#{$p*1.5}, env(safe-area-inset-left));
+			padding: var(--p) max(calc(var(--p)*1.5), env(safe-area-inset-left));
 		}
 	}
 	p {
 		width: 100%;
-		padding: 0 calc(#{$p*1.5} + env(safe-area-inset-left)) $p*1.5;
+		padding: 0 calc((var(--p)*1.5) + env(safe-area-inset-left)) calc(var(--p)*1.5);
 		@include max {
-			padding: 0 max(#{$p*1.5}, env(safe-area-inset-left)) $p*1.5;
+			padding: 0 max(calc(var(--p)*1.5), env(safe-area-inset-left)) calc(var(--p)*1.5);
 		}
 	}
 	span {

@@ -8,7 +8,7 @@
 @import 'partials/shared/loading';
 
 body {
-	font-family: $faune;
+	font-family: var(--font-faune);
 	line-height: 1.2;
 }
 

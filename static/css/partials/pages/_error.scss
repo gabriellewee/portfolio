@@ -1,33 +1,32 @@
-@use 'sass:math';
-
 main {
-	background-color: rgba($iron, .2);
-	height: calc(100vh - 63px);
-	padding: $p $p*1.5;
+	background-color: hsla(var(--color-iron-hsl), .2);
+	height: calc(100vh - 55px);
+	padding: var(--p) calc(var(--p)*1.5);
 	font-size: 32px;
 	color: white;
+	h1, p {
+		max-width: 1800px;
+	}
 	h1 {
-		max-width: $w;
 		font-size: 52px;
 		font-weight: 700;
 		font-style: italic;
 		line-height: 1;
 	}
 	p {
-		max-width: $w;
-		padding-top: $p;
+		padding-top: var(--p);
 	}
 }
 
 footer {
-	background-color: rgba($iron, .2);
+	background-color: hsla(var(--color-iron-hsl), .2);
 	color: white;
 }
 
 @media only screen and (min-width: $ipad-mini) {
 	main {
 		font-size: 48px;
-		padding: $p $p*2;
+		padding: var(--p) calc(var(--p)*2);
 		h1 {
 			font-size: 72px;
 		}

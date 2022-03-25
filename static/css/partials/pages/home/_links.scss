@@ -18,10 +18,10 @@
 	}
 	p > a {
 		&:not(:last-child) {
-			margin-right: $p;
+			margin-right: var(--p);
 		}
 		&:hover, &:focus {
-			color: $iron;
+			color: var(--color-iron);
 			transform: scale(1.05);
 		}
 		&:focus {
@@ -32,10 +32,10 @@
 		}
 	}
 	p:not(:last-child) {
-		padding-bottom: $p;
+		padding-bottom: var(--p);
 	}
 	@include dark {
-		background-color: darken($iron, 2%);
+		background-color: var(--color-iron-2);
 		color: white;
 		p > a {
 			&:hover, &:focus {
@@ -52,9 +52,9 @@
 			justify-content: center;
 			position: relative;
 			cursor: pointer;
-			color: $discord;
+			color: var(--color-discord);
 			&:hover {
-				color: $iron;
+				color: var(--color-iron);
 				transform: scale(1.05);
 				@include dark {
 					color: white;
@@ -69,7 +69,7 @@
 				width: 16px;
 				height: 16px;
 				border-top-left-radius: 2px;
-				transform: translateY($p*2) rotate(45deg);
+				transform: translateY(calc(var(--p)*2)) rotate(45deg);
 				transform-origin: center center;
 			}
 		}
@@ -84,10 +84,10 @@
 			right: 0;
 			display: block;
 			width: 100vw;
-			padding-left: calc($p + env(safe-area-inset-left));
-			padding-right: calc($p + env(safe-area-inset-left));
+			padding-left: calc(var(--p) + env(safe-area-inset-left));
+			padding-right: calc(var(--p) + env(safe-area-inset-left));
 			color: white;
-			transform: translateY($p*2);
+			transform: translateY(calc(var(--p)*2));
 			@media only screen and (min-width: 570px) {
 				max-width: 500px;
 				padding-left: 0;
@@ -95,10 +95,10 @@
 			}
 			.inside {
 				@include border-radius(3px);
-				@include blur-all(10px, #18191C, .9, .8);
+				// @include blur-all(10px, "hexToHSL(#18191C)", .9, .8);
 				display: block;
 				position: relative;
-				margin-top: $p*.5;
+				margin-top: calc(var(--p)/2);
 				width: 100%;
 				min-height: 250px;
 				overflow: hidden;
@@ -140,7 +140,7 @@
 			.avatar {
 				position: absolute;
 				bottom: -30px;
-				left: $p + 8px;
+				left: calc(var(--p) + 8px);
 				border-radius: 100%;
 				overflow: hidden;
 				width: 60px;
@@ -152,7 +152,7 @@
 				align-content: center;
 				position: relative;
 				margin-top: 38px;
-				margin-left: $p;
+				margin-left: var(--p);
 				font-size: 20px;
 				font-weight: normal;
 				font-style: normal;
@@ -202,7 +202,7 @@
 			}
 			.description {
 				display: block;
-				border-top: 1px solid rgba(white, .1);
+				border-top: 1px solid hsla(var(--color-white-hsl), .1);
 				margin-top: 16px;
 				padding: 16px;
 			}
@@ -219,7 +219,7 @@
 				display: inline-block;
 				padding: 2px 4px;
 				background: #2f3136;
-				font-family: $mono;
+				font-family: var(--font-mono);
 				font-size: 12px;
 				line-height: 18px;
 				white-space: pre-wrap;
@@ -227,7 +227,7 @@
 			.links {
 				display: flex;
 				justify-content: space-between;
-				border-top: 1px solid rgba(white, .1);
+				border-top: 1px solid hsla(var(--color-white-hsl), .1);
 				margin-top: 16px;
 				padding-top: 16px;
 				a, button {
@@ -242,10 +242,10 @@
 					margin: 0;
 					padding: 8px;
 					border-radius: 3px;
-					border: 1px solid rgba(white, .1);
+					border: 1px solid hsla(var(--color-white-hsl), .1);
 					background: none;
 					color: white;
-					font-family: $faune;
+					font-family: var(--font-faune);
 					font-size: 16px;
 					text-align: left;
 					svg {
@@ -257,7 +257,7 @@
 						}
 					}
 					&:hover, &:focus {
-						background: rgba(white, .1);
+						background: hsla(var(--color-white-hsl), .1);
 						border-color: transparent;
 						svg {
 							opacity: 1;
@@ -299,8 +299,8 @@
 			&:focus {
 				+ .discord-label {
 					@include wavy;
-					color: $iron;
-					text-decoration-color: $discord;
+					color: var(--color-iron);
+					text-decoration-color: var(--color-discord);
 					@include dark {
 						color: white;
 					}

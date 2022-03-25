@@ -2,7 +2,7 @@
 	&-photography, &-graphic, &-art {
 		ul {
 			grid-template-columns: repeat(2, 1fr);
-			padding-bottom: $p*1.5;
+			padding-bottom: calc(var(--p)*1.5);
 		}
 		picture {
 			&, img {
@@ -17,10 +17,10 @@
 		.expand {
 			will-change: transform;
 			transition: .2s ease-out;
-			border-radius: $p*.5;
+			border-radius: calc(var(--p)/2);
 			overflow: hidden;
 			picture {
-				@include border-radius($p*.5);
+				@include border-radius(calc(var(--p)/2));
 				display: flex;
 				align-items: center;
 				align-content: center;
@@ -40,7 +40,7 @@
 					height: 25px;
 				}
 				&:after {
-					@include blur-all(5px, darken($iron, 10%), .9, .4);
+					@include blur-all(5px, "var(--color-iron-10-hsl)", .9, .4);
 					z-index: 1;
 					top: 0;
 					left: 0;
@@ -49,7 +49,7 @@
 				}
 			}
 			&:focus {
-				@include focus-round(rgba(white, .75));
+				@include focus-round(hsla(var(--color-white-hsl), .75));
 				picture {
 					&:before, &:after {
 						opacity: 1;
@@ -82,9 +82,9 @@
 			background-color: #704444;
 		}
 		.more {
-			color: $pink;
+			color: var(--color-pink);
 			&:focus {
-				text-decoration-color: $pink;
+				text-decoration-color: var(--color-pink);
 			}
 		}
 	}
