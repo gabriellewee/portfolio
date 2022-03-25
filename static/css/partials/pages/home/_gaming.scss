@@ -13,7 +13,7 @@
 	h2 {
 		position: relative;
 		z-index: 1;
-		padding-bottom: math.div($p, 3);
+		padding-bottom: calc(var(--p)/3);
 	}
 	svg {
 		display: block;
@@ -33,15 +33,15 @@
 		}
 		span {
 			&:first-child {
-				margin-right: $p*.5;
+				margin-right: calc(var(--p)/2);
 			}
 			&:last-child {
 				display: inline-block;
-				margin-top: $p*.5;
+				margin-top: calc(var(--p)/2);
 				background-color: white;
 				color: #2d2d2d;
-				border-radius: math.div($p, 3);
-				padding: $p*.5 $p*.75;
+				border-radius: calc(var(--p)/3);
+				padding: calc(var(--p)/2) calc(var(--p)*.75);
 				@include dark {
 					background-color: #2d2d2d;
 					color: white;
@@ -50,10 +50,10 @@
 		}
 	}
 	.header {
-		padding: $p calc(#{$p*1.5} + env(safe-area-inset-left)) 0;
+		padding: var(--p) calc((var(--p)*1.5) + env(safe-area-inset-left)) 0;
 		width: 100%;
 		@include max {
-			padding: $p max(#{$p*1.5}, env(safe-area-inset-left)) 0;
+			padding: var(--p) max(calc(var(--p)*1.5), env(safe-area-inset-left)) 0;
 		}
 		@media only screen and (min-width: $ipad-mini) {
 			width: calc(100% - 200px);
@@ -64,10 +64,10 @@
 	}
 	.console {
 		display: none;
-		padding: $p*1.5 calc(#{$p*1.5} + env(safe-area-inset-left)) 0 0;
+		padding: calc(var(--p)*1.5) calc((var(--p)*1.5) + env(safe-area-inset-left)) 0 0;
 		width: 200px;
 		@include max {
-			padding: $p*1.5 max(#{$p*1.5}, env(safe-area-inset-left)) 0 0;
+			padding: calc(var(--p)*1.5) max(calc(var(--p)*1.5), env(safe-area-inset-left)) 0 0;
 		}
 		@media only screen and (min-width: $ipad-mini) {
 			display: block;
@@ -83,18 +83,18 @@
 	.modding {
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
-		grid-gap: $p*1.5;
+		grid-gap: calc(var(--p)*1.5);
 		list-style: none;
 		width: 100%;
-		padding: $p*1.5 calc(#{$p*1.5} + env(safe-area-inset-left)) $p;
+		padding: calc(var(--p)*1.5) calc((var(--p)*1.5) + env(safe-area-inset-left)) var(--p);
 		@include max {
-			padding: $p*1.5 max(#{$p*1.5}, env(safe-area-inset-left)) $p;
+			padding: calc(var(--p)*1.5) max(calc(var(--p)*1.5), env(safe-area-inset-left)) var(--p);
 		}
 		@media only screen and (min-width: $ipad-mini) {
 			grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 		}
 		svg {
-			border-radius: $p*.5;
+			border-radius: calc(var(--p)/2);
 			@include dark {
 				.background {
 					fill: #777;
@@ -104,7 +104,7 @@
 	}
 	.playing {
 		width: 100%;
-		padding: 0 calc(#{$p*1.5} + env(safe-area-inset-left)) $p*1.5;
+		padding: 0 calc((var(--p)*1.5) + env(safe-area-inset-left)) calc(var(--p)*1.5);
 		font-size: 20px;
 		h3, li {
 			display: inline-block;
@@ -115,16 +115,16 @@
 			list-style: none;
 		}
 		li {
-			margin-top: $p*.5;
+			margin-top: calc(var(--p)/2);
 			&:not(:last-child) {
-				margin-right: $p*.5;
+				margin-right: calc(var(--p)/2);
 			}
 			span {
 				display: inline-block;
 				background-color: white;
 				color: #2d2d2d;
-				border-radius: math.div($p, 3);
-				padding: $p*.5 $p*.75;
+				border-radius: calc(var(--p)/3);
+				padding: calc(var(--p)/2) calc(var(--p)*.75);
 				@include dark {
 					background-color: #2d2d2d;
 					color: white;

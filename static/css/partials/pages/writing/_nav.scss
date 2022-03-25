@@ -1,8 +1,6 @@
-@use 'sass:math';
-
 .top {
 	.logo:focus {
-		@include focus-round(rgba($violet, .5));
+		@include focus-round(hsla(var(--color-violet-hsl), .5));
 	}
 }
 
@@ -13,7 +11,7 @@
 	justify-content: center;
 	width: 100%;
 	text-align: center;
-	padding: $p*.5 $p*1.5 calc(#{$p*3} + env(safe-area-inset-bottom));
+	padding: calc(var(--p)/2) calc(var(--p)*1.5) calc((var(--p)*3) + env(safe-area-inset-bottom));
 	a {
 		display: inline-block;
 		position: relative;
@@ -22,33 +20,33 @@
 			content: "";
 			display: block;
 			position: absolute;
-			top: -$p*.25;
-			left: -$p*.25;
-			height: calc(100% + #{$p*.5});
-			width: calc(100% + #{$p*.5});
-			background-color: rgba($violet, .5);
+			top: calc(var(--p)/-4);
+			left: calc(var(--p)/-4);
+			height: calc(100% + (var(--p)/2));
+			width: calc(100% + (var(--p)/2));
+			background-color: hsla(var(--color-violet-hsl), .5);
 			@include clip-path {
 				clip-path: polygon(3px 0%, calc(100% - 3px) 0%, 100% 3px, 100% calc(100% - 3px), calc(100% - 3px) 100%, 3px 100%, 0% calc(100% - 3px), 0% 3px);
 			}
 			@include clip-path-alt {
-				border-radius: $p*.25;
+				border-radius: calc(var(--p)/4);
 			}
 		}
 		span {
 			display: inline-block;
 			will-change: transform, background-color, color;
 			transition: transform .1s ease-out;
-			background-color: $iron;
+			background-color: var(--color-iron);
 			color: white;
-			padding: math.div($p, 3) $p*.5;
+			padding: calc(var(--p)/3) calc(var(--p)/2);
 			@include clip-path {
 				clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
 			}
 		}
 		@include dark {
 			span {
-				background-color: rgba(white, .8);
-				color: $iron;
+				background-color: hsla(var(--color-white-hsl), .8);
+				color: var(--color-iron);
 			}
 		}
 		&:focus {
@@ -59,26 +57,26 @@
 		}
 		&:hover, &:focus {
 			span {
-				background-color: $red;
-				background: linear-gradient(135deg, $red 0%, $orange 100%);
+				background-color: var(--color-red);
+				background: linear-gradient(135deg, var(--color-red) 0%, var(--color-orange) 100%);
 			}
 		}
 		&:active {
 			span {
 				transform: scale(0.95);
-				background-color: $indigo;
-				background: linear-gradient(135deg, $indigo 0%, $violet 100%);
+				background-color: var(--color-indigo);
+				background: linear-gradient(135deg, var(--color-indigo) 0%, var(--color-violet) 100%);
 			}
 		}
 	}
 	p {
 		> a, > span {
-			margin-top: $p;
+			margin-top: var(--p);
 		}
 		> span {
 			display: inline-block;
 			&:not(.copyright) {
-				padding: math.div($p, 3) 0;
+				padding: calc(var(--p)/3) 0;
 			}
 		}
 	}

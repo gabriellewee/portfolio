@@ -1,8 +1,6 @@
-@use 'sass:math';
-
 article {
 	&:not(:last-child) {
-		margin-bottom: $p*4;
+		margin-bottom: calc(var(--p)*4);
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -37,7 +35,7 @@ article {
 	}
 	.direct-link {
 		opacity: 0.3;
-		margin-left: $p;
+		margin-left: var(--p);
 		&:hover, &:focus {
 			opacity: 1;
 		}
@@ -46,23 +44,23 @@ article {
 	hr {
 		width: 100px;
 		padding: 0;
-		margin: $p*3 auto;
+		margin: calc(var(--p)*3) auto;
 		border: 0;
 		height: 2px;
-		background-color: rgba($iron, .2);
+		background-color: hsla(var(--color-iron-hsl), .2);
 		@include dark {
-			background-color: rgba(white, .2);
+			background-color: hsla(var(--color-white-hsl), .2);
 		}
 	}
 	div {
 		p, blockquote, pre, ul, ol, figure, h1, h2, h3, h4, h5, h6 {
 			&:not(:last-child) {
-				margin-bottom: $p*2;
+				margin-bottom: calc(var(--p)*2);
 			}
 		}
 		h2, h3, h4, h5, h6 {
 			&:not(:first-child) {
-				padding-top: $p;
+				padding-top: var(--p);
 			}
 		}
 	}
@@ -72,32 +70,32 @@ article {
 	}
 	p, figcaption, ul, ol {
 		a {
-			@include gradient-text($red, $light-orange, true);
+			@include gradient-text(var(--color-red-hsl), var(--color-light-orange-hsl), true);
 			text-decoration: underline;
 			text-decoration-thickness: 1.5px;
 			&:hover, &:focus {
-				@include gradient-text($violet, $blue, true);
+				@include gradient-text(var(--violet-hsl), var(--color-blue-hsl), true);
 			}
 			&:active {
-				@include gradient-text($indigo, $violet, true);
+				@include gradient-text(var(--color-indigo-hsl), var(--color-violet-hsl), true);
 			}
 		}
 	}
 	p {
 		> code {
 			display: inline-block;
-			padding-left: $p*.25;
-			padding-right: $p*.25;
-			background-color: rgba($iron, .2);
+			padding-left: calc(var(--p)/4);
+			padding-right: calc(var(--p)/4);
+			background-color: hsla(var(--color-iron-hsl), .2);
 			font-size: 17px;
 			@include clip-path {
 				clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
 			}
 			@include clip-path-alt {
-				border-radius: $p*.25;
+				border-radius: calc(var(--p)/4);
 			}
 			@include dark {
-				background-color: darken($iron, 5%);
+				background-color: var(--color-iron-5);
 			}
 		}
 		strong {
@@ -113,9 +111,9 @@ article {
 		line-height: 28px;
 	}
 	pre {
-		padding: $p*1.5 $p*2;
+		padding: calc(var(--p)*1.5) calc(var(--p)*2);
 		color: white;
-		background: $iron;
+		background: var(--color-iron);
 		font-size: 14px;
 		line-height: 24px;
 		// light mode
@@ -125,48 +123,48 @@ article {
 			clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
 		}
 		@include clip-path-alt {
-			border-radius: $p*.25;
+			border-radius: calc(var(--p)/4);
 		}
 		@include dark {
-			background-color: darken($iron, 3%);
+			background-color: var(--color-iron-3);
 		}
 	}
 	blockquote {
 		quotes: auto;
 		position: relative;
-		padding: 0 $p*2;
+		padding: 0 calc(var(--p)*2);
 		font-style: italic;
 		&:before {
 			content: open-quote;
 			opacity: 0.2;
 			display: block;
 			position: absolute;
-			top: -$p*2.5;
-			left: -$p*1.5;
+			top: calc(var(--p)*-2.5);
+			left: calc(var(--p)*-1.5);
 			font-size: 64px;
 			font-variation-settings: "wght" 400, "CASL" 1, "CRSV" 1;
 		}
 	}
 	ul, ol {
-		padding-left: $p*2;
+		padding-left: calc(var(--p)*2);
 		ul, ol {
-			padding-top: $p*.5;
+			padding-top: calc(var(--p)/2);
 		}
 		li {
 			&:not(:last-child) {
-				padding-bottom: $p*.5;
+				padding-bottom: calc(var(--p)/2);
 			}
 		}
 	}
 	.highlight {
 		position: relative;
-		padding: $p $p*2.5;
-		margin-bottom: $p*2;
-		background-color: rgba($iron, .2);
+		padding: var(--p) calc(var(--p)*2.5);
+		margin-bottom: calc(var(--p)*2);
+		background-color: hsla(var(--color-iron-hsl), .2);
 		border-radius: 3px;
 		font-size: 20px;
 		@include dark {
-			background-color: rgba(white, .2);
+			background-color: hsla(var(--color-white-hsl), .2);
 		}
 		> * {
 			font-variation-settings: "wght" 600, "CASL" 0.5, "CRSV" 1;
@@ -179,16 +177,16 @@ article {
 			content: "";
 			display: block;
 			position: absolute;
-			top: -$p*.25;
-			left: -$p*.25;
-			height: calc(100% + #{$p*.5});
-			width: calc(100% + #{$p*.5});
-			background-color: rgba($violet, .5);
+			top: calc(var(--p)/-4);
+			left: calc(var(--p)/-4);
+			height: calc(100% + (var(--p)/2));
+			width: calc(100% + (var(--p)/2));
+			background-color: hsla(var(--color-violet-hsl), .5);
 			@include clip-path {
 				clip-path: polygon(3px 0%, calc(100% - 3px) 0%, 100% 3px, 100% calc(100% - 3px), calc(100% - 3px) 100%, 3px 100%, 0% calc(100% - 3px), 0% 3px);
 			}
 			@include clip-path-alt {
-				border-radius: $p*.25;
+				border-radius: calc(var(--p)/4);
 			}
 		}
 		&:focus {
@@ -203,7 +201,7 @@ article {
 			clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
 		}
 		@include clip-path-alt {
-			@include border-radius($p*.25);
+			@include border-radius(calc(var(--p)/4));
 		}
 	}
 	.animation {
@@ -213,11 +211,11 @@ article {
 			align-content: center;
 			justify-content: center;
 			overflow: hidden;
-			padding-top: $p;
+			padding-top: var(--p);
 			font-weight: 700;
-			background-color: rgba($iron, .1);
+			background-color: hsla(var(--color-iron-hsl), .1);
 			@include dark {
-				background-color: rgba(white, .1);
+				background-color: hsla(var(--color-white-hsl), .1);
 			}
 			.animating {
 				@media (prefers-reduced-motion) {
@@ -226,7 +224,7 @@ article {
 			}
 		}
 		div + figcaption {
-			margin-top: $p;
+			margin-top: var(--p);
 		}
 		button {
 			&.pause {
@@ -248,11 +246,11 @@ article {
 		align-items: center;
 		align-content: center;
 		justify-content: center;
-		padding-top: $p;
+		padding-top: var(--p);
 		font-weight: 700;
-		background-color: rgba($iron, .1);
+		background-color: hsla(var(--color-iron-hsl), .1);
 		@include dark {
-			background-color: rgba(white, .1);
+			background-color: hsla(var(--color-white-hsl), .1);
 		}
 		span {
 			display: block;
@@ -260,14 +258,14 @@ article {
 		}
 	}
 	[class*="row"] {
-		margin-bottom: $p*2;
+		margin-bottom: calc(var(--p)*2);
 		> *:not(:last-child) {
 			margin-bottom: 0;
 		}
 	}
 	.row-double, .row-triple, .row-quad, .row-quint {
 		display: grid;
-		grid-gap: $p*2;
+		grid-gap: calc(var(--p)*2);
 	}
 	.row-double {
 		grid-template-columns: 1fr 1fr;
@@ -301,20 +299,20 @@ article {
 		font-size: 14px;
 		text-align: center;
 		&:first-child {
-			margin-bottom: $p*.5;
+			margin-bottom: calc(var(--p)/2);
 		}
 		&:last-child {
-			margin-top: $p*.5;
+			margin-top: calc(var(--p)/2);
 		}
 	}
 	p.caption:not(:last-child) {
-		margin-bottom: $p*.5;
+		margin-bottom: calc(var(--p)/2);
 	}
 
 	header {
 		display: flex;
 		flex-wrap: wrap;
-		margin-bottom: $p;
+		margin-bottom: var(--p);
 		@media only screen and (min-width: $ipad-11) {
 			flex-wrap: nowrap;
 			align-items: center;
@@ -325,17 +323,17 @@ article {
 			width: 100%;
 			font-weight: 800;
 			.page-post & {
-				@include gradient-text($red, $orange, false);
+				@include gradient-text(var(--color-red-hsl), var(--color-orange-hsl), false);
 			}
 			@media only screen and (min-width: $ipad-11) {
 				order: 1;
-				padding-right: $p*2;
+				padding-right: calc(var(--p)*2);
 				width: unset;
 			}
 			a {
-				color: mix($iron, white, 30%);
+				color: var(--color-iron-white-30);
 				@include dark {
-					color: mix($iron, white, 70%);
+					color: var(--color-iron-white-70);
 				}
 			}
 		}
@@ -343,21 +341,21 @@ article {
 			&:not(:empty) {
 				order: 1;
 				display: block;
-				margin-bottom: $p;
-				padding: $p*.5 $p;
-				background-color: rgba(darken($iron, 1%), .75);
+				margin-bottom: var(--p);
+				padding: calc(var(--p)/2) var(--p);
+				background-color: hsla(var(--color-iron-1-hsl), .75);
 				color: white;
 				font-weight: 600;
 				@include clip-path {
-					clip-path: polygon(#{$p*1.25} 0%, calc(100% - #{$p*1.25}) 0%, 100% 45%, 100% 55%, calc(100% - #{$p*1.25}) 100%, #{$p*1.25} 100%, 0 55%, 0 45%);
-					padding: $p*.5 $p*1.75;
+					clip-path: polygon(calc(var(--p)*1.25) 0%, calc(100% - calc(var(--p)*1.25)) 0%, 100% 45%, 100% 55%, calc(100% - calc(var(--p)*1.25)) 100%, calc(var(--p)*1.25) 100%, 0 55%, 0 45%);
+					padding: calc(var(--p)/2) calc(var(--p)*1.75);
 				}
 				@include clip-path-alt {
-					@include border-radius($p*.25);
+					@include border-radius(calc(var(--p)/4));
 				}
 				@include dark {
-					background-color: rgba(white, .75);
-					color: $iron;
+					background-color: hsla(var(--color-white-hsl), .75);
+					color: var(--color-iron);
 				}
 				@media only screen and (min-width: $ipad-11) {
 					order: 2;
@@ -385,7 +383,7 @@ article {
 		opacity: 0.4;
 		display: block;
 		&:hover, &:focus {
-			@include gradient-text($red, $orange, true);
+			@include gradient-text(var(--color-red-hsl), var(--color-orange-hsl), true);
 			opacity: 1;
 			span {
 				text-decoration: underline;
@@ -393,7 +391,7 @@ article {
 			}
 		}
 		&:active {
-			@include gradient-text($indigo, $violet, true);
+			@include gradient-text(var(--color-indigo-hsl), var(--color-violet-hsl), true);
 		}
 	}
 }
@@ -405,10 +403,10 @@ article {
 	}
 	li {
 		&:not(:last-child) {
-			padding-bottom: $p*2;
+			padding-bottom: calc(var(--p)*2);
 		}
 		&.year:not(:first-child) {
-			margin-top: $p*2;
+			margin-top: calc(var(--p)*2);
 		}
 	}
 	h2 {

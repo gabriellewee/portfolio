@@ -1,5 +1,3 @@
-@use 'sass:math';
-
 @import 'partials/fonts/recursive';
 
 @import 'partials/shared/utilities';
@@ -12,7 +10,7 @@
 @import 'partials/pages/writing/nav';
 
 body {
-	font-family: $recursive;
+	font-family: var(--font-recursive);
 	font-size: 18px;
 	font-feature-settings: 'dlig' 1, 'liga' 1;
 	line-height: 1.6;
@@ -20,23 +18,23 @@ body {
 
 a, pre, button {
 	&:focus {
-		@include focus-round(rgba($violet, .5));
+		@include focus-round(hsla(var(--color-violet-hsl), .5));
 	}
 }
 
 .header, main, .frame-content {
-	max-width: $writing-width;
+	max-width: 900px;
 	margin-left: auto;
 	margin-right: auto;
 }
 
 .header {
-	padding: $p calc(#{$p*2} + env(safe-area-inset-left)) 0;
+	padding: var(--p) calc((var(--p)*2) + env(safe-area-inset-left)) 0;
 	@include max {
-		padding: $p max(#{$p*2}, env(safe-area-inset-left)) 0;
+		padding: var(--p) max((var(--p)*2), env(safe-area-inset-left)) 0;
 	}
 	@media only screen and (min-width: $ipad-11) {
-		padding-top: $p*2.5;
+		padding-top: calc(var(--p)*2.5);
 	}
 	a {
 		font-size: 64px;
@@ -59,7 +57,7 @@ a, pre, button {
 		display: block;
 		opacity: 0.75;
 		font-size: 36px;
-		margin-bottom: -$p;
+		margin-bottom: calc(var(--p)*-1);
 		@include dark {
 			opacity: 0.5;
 		}
@@ -72,9 +70,9 @@ a, pre, button {
 }
 
 main, .frame-content {
-	padding: calc(#{$p*2} + env(safe-area-inset-left));
+	padding: calc((var(--p)*2) + env(safe-area-inset-left));
 	@include max {
-		padding: max(#{$p*2}, env(safe-area-inset-left));
+		padding: max(calc(var(--p)*2), env(safe-area-inset-left));
 	}
 }
 
@@ -84,10 +82,10 @@ main, .frame-content {
 		transition: transform .1s ease-out;
 		display: inline-block;
 		&:hover, &:focus {
-			@include gradient-text($red, $orange, false);
+			@include gradient-text(var(--color-red-hsl), var(--color-orange-hsl), false);
 		}
 		&:active {
-			@include gradient-text($indigo, $violet, false);
+			@include gradient-text(var(--color-indigo-hsl), var(--color-violet-hsl), false);
 			transform: scale(0.98);
 		}
 	}
@@ -108,26 +106,26 @@ button {
 		content: "";
 		display: block;
 		position: absolute;
-		top: -$p*.25;
-		left: -$p*.25;
-		height: calc(100% + #{$p*.5});
-		width: calc(100% + #{$p*.5});
-		background-color: rgba($violet, .5);
+		top: calc(var(--p)/-4);
+		left: calc(var(--p)/-4);
+		height: calc(100% + (var(--p)/2));
+		width: calc(100% + (var(--p)/2));
+		background-color: hsla(var(--color-violet-hsl), .5);
 		@include clip-path {
 			clip-path: polygon(3px 0%, calc(100% - 3px) 0%, 100% 3px, 100% calc(100% - 3px), calc(100% - 3px) 100%, 3px 100%, 0% calc(100% - 3px), 0% 3px);
 		}
 		@include clip-path-alt {
-			border-radius: $p*.25;
+			border-radius: calc(var(--p)/4);
 		}
 	}
 	span {
 		will-change: transform, background-color, color;
 		transition: transform .1s ease-out;
 		display: inline-block;
-		padding: math.div($p, 3) $p*.5;
-		background-color: $iron;
+		padding: calc(var(--p)/3) calc(var(--p)/2);
+		background-color: var(--color-iron);
 		color: white;
-		font-family: $recursive;
+		font-family: var(--font-recursive);
 		font-weight: 500;
 		font-size: 16px;
 		font-variation-settings: "wght" 500, "CASL" 0.5;
@@ -138,8 +136,8 @@ button {
 	}
 	@include dark {
 		span {
-			background-color: rgba(white, .8);
-			color: $iron;
+			background-color: hsla(var(--color-white-hsl), .8);
+			color: var(--color-iron);
 		}
 	}
 	&:focus {
@@ -150,15 +148,15 @@ button {
 	}
 	&:hover, &:focus {
 		span {
-			background-color: $red;
-			background: linear-gradient(135deg, $red 0%, $orange 100%);
+			background-color: var(--color-red);
+			background: linear-gradient(135deg, var(--color-red) 0%, var(--color-orange) 100%);
 		}
 	}
 	&:active {
 		span {
 			transform: scale(0.95);
-			background-color: $indigo;
-			background: linear-gradient(135deg, $indigo 0%, $violet 100%);
+			background-color: var(--color-indigo);
+			background: linear-gradient(135deg, var(--color-indigo) 0%, var(--color-violet) 100%);
 		}
 	}
 }

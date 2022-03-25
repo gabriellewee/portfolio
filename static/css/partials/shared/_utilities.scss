@@ -1,12 +1,3 @@
-$mono: "dm", "Inconsolata", "Consolas", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, Courier, monospace;
-$faune: 'faune', sans-serif;
-$recursive: 'Recursive', 'faune', sans-serif;
-
-$writing-width: 900px;
-
-$p: 12px;
-$w: 1800px;
-
 $ipad-11: 834px;
 $ipad-mini: 768px;
 $mobile: 568px;
@@ -14,9 +5,9 @@ $mbp-16: 1728px;
 $mbp-14: 1512px;
 $lg-5k: 2560px;
 
-// default colors
 $iron: #263238;
 $pink: #F5C8BF;
+$message: #e9e9eb;
 
 $red: #ff706a;
 $orange: #FF956A;
@@ -25,87 +16,80 @@ $blue: #6AF9FF;
 $indigo: #706AFF;
 $violet: #BA6AFF;
 
-$grey: #f1f1f1;
+@function hexToHSL($color) {
+	@return "#{hue($color)},#{saturation($color)},#{lightness($color)}";
+}
 
-// ui colors
-$focus: #5E9ED6;
-$message: #e9e9eb;
+:root {
+	--p: 12px;
 
-// nameplate
-$discord: #5865F2;
-$em: #666;
-$skype: #00AFF0;
-$gv: #34a853;
-$cp: #ffdd40;
-$gh: #4969ed;
-$insta: #cd486b;
-$tu: #3a5976;
-$tw: #2daae1;
-$li: #069;
-$fb: #3b5997;
-$peach: #F96B82;
-$snap: #FFFC00;
-$elle: #fdbf54;
-$reddit: #FC471E;
-$pin: #e60023;
-$da: #46574c;
-$plus: #dc4b39;
-$yt: #af2b26;
-$gr: #382110;
-$steam: #171a21;
-$as: #121d21;
-$bbb: #ea4c89;
-$pc: #37864d;
-$etsy: #f76700;
-$oo: #0063dc;
-$vimeo: #4bf;
-$sc: #f76700;
-$gyro: #151E26;
-$med: #00AB6C; // #1A8917
-$quora: #b92b27;
-$ph: #DA552F;
+	--font-mono: 'dm', 'Inconsolata', 'Consolas', Monaco, 'Bitstream Vera Sans Mono', 'Lucida Console', Terminal, Courier, monospace;
+	--font-faune: 'faune', sans-serif;
+	--font-recursive: 'Recursive', 'faune', sans-serif;
+	
+	--color-white-hsl: #{hexToHSL(#fff)};
+	--color-iron: #{$iron};
+	--color-iron-white: #{mix($iron, white)};
+	--color-iron-white-30: #{mix($iron, white, 30%)};
+	--color-iron-white-70: #{mix($iron, white, 70%)};
+	--color-iron-1: #{darken($iron, 1%)};
+	--color-iron-2: #{darken($iron, 2%)};
+	--color-iron-3: #{darken($iron, 3%)};
+	--color-iron-5: #{darken($iron, 5%)};
+	--color-iron-10: #{darken($iron, 10%)};
+	
+	--color-iron-hsl: #{hexToHSL($iron)};
+	--color-iron-1-hsl: #{hexToHSL(darken($iron, 1%))};
+	--color-iron-10-hsl: #{hexToHSL(darken($iron, 10%))};
+	--color-iron-12-hsl: #{hexToHSL(darken($iron, 12%))};
+	
+	--color-pink: #{$pink};
+	--color-pink-5: #{lighten($pink, 5%)};
+	
+	--color-message: #{$message};
+	--color-message-hsl: #{hexToHSL($message)};
+	
+	--color-red: #{$red};
+	--color-orange: #{$orange};
+	--color-light-orange: #{$light-orange};
+	--color-blue: #{$blue};
+	--color-indigo: #{$indigo};
+	--color-violet: #{$violet};
+	
+	--color-red-hsl: #{hexToHSL($red)};
+	--color-orange-hsl: #{hexToHSL($orange)};
+	--color-light-orange-hsl: #{hexToHSL($light-orange)};
+	--color-blue-hsl: #{hexToHSL($blue)};
+	--color-indigo-hsl: #{hexToHSL($indigo)};
+	--color-violet-hsl: #{hexToHSL($violet)};
+	
+	--color-grey: #f1f1f1;
+	--color-grey-dark: #e5e5e5;
+	
+	--color-focus: #5E9ED6;
+	
+	--color-writing-light: #{mix($red, white, 20%)};
+	--color-writing-dark: #{mix($red, $iron, 10%)};
 
-$gaia: #61526f;
-$exp: #e27b6a;
-$wp: #21759B;
-$cb: #25355c;
-$lb: #000;
-$ms: #039;
-$xanga: #4684c3;
+	--color-discord: #5865F2;
+	--color-gv: #34a853;
+	--color-cp: #ffdd40;
+	--color-gh: #4969ed;
+	--color-insta: #cd486b;
+	--color-tw: #2daae1;
+	--color-pin: #e60023;
+	--color-bbb: #ea4c89;
+	--color-am: #fa2d48;
+	--color-im: #0d84ff;
 
-$music: #fa2d48;
-$im: #0d84ff;
-
-$ap: #7d50df;
-$sp: #1cb954;
-
-// easing
-$easeInQuad: cubic-bezier(0.550, 0.085, 0.680, 0.530);
-$easeInCubic: cubic-bezier(0.550, 0.055, 0.675, 0.190);
-$easeInQuart: cubic-bezier(0.895, 0.030, 0.685, 0.220);
-$easeInQuint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
-$easeInSine: cubic-bezier(0.470, 0.000, 0.745, 0.715);
-$easeInExpo: cubic-bezier(0.950, 0.050, 0.795, 0.035);
-$easeInCirc: cubic-bezier(0.600, 0.040, 0.980, 0.335);
-$easeInBack: cubic-bezier(0.600, -0.280, 0.735, 0.045);
-
-$easeOutQuad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
-$easeOutCubic: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-$easeOutQuart: cubic-bezier(0.165, 0.840, 0.440, 1.000);
-$easeOutQuint: cubic-bezier(0.230, 1.000, 0.320, 1.000);
-$easeOutSine: cubic-bezier(0.390, 0.575, 0.565, 1.000);
-$easeOutExpo: cubic-bezier(0.190, 1.000, 0.220, 1.000);
-$easeOutCirc: cubic-bezier(0.075, 0.820, 0.165, 1.000);
-$easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
-
-$easeInOutQuad: cubic-bezier(0.455, 0.030, 0.515, 0.955);
-$easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1.000);
-$easeInOutQuart: cubic-bezier(0.770, 0.000, 0.175, 1.000);
-$easeInOutQuint: cubic-bezier(0.860, 0.000, 0.070, 1.000);
-$easeInOutSine: cubic-bezier(0.445, 0.050, 0.550, 0.950);
-$easeInOutExpo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
-$easeInOutCirc: cubic-bezier(0.785, 0.135, 0.150, 0.860);
-$easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
+	--color-med: #00AB6C; // #1A8917
+	--color-ap: #7d50df;
+	--color-sp: #1cb954;
+	
+	--color-med-hsl: #{hexToHSL(#00AB6C)}; // #1A8917
+	--color-ap-hsl: #{hexToHSL(#7d50df)};
+	--color-sp-hsl: #{hexToHSL(#1cb954)};
+}
 
 // mixins
 @mixin max {
@@ -117,11 +101,11 @@ $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
 @mixin gradient-text($one, $two, $underline) {
 	color: $one;
 	@supports (-webkit-text-fill-color: transparent) {
-		background-color: $one;
-		background: linear-gradient(135deg, $one 0%, $two 100%);
+		background-color: hsl($one);
+		background: linear-gradient(135deg, hsl($one) 0%, hsl($two) 100%);
 		background-clip: text;
 		@if $underline == true {
-			-webkit-text-fill-color: rgba($one, .5);
+			-webkit-text-fill-color: hsla($one, .5);
 		} @else {
 			-webkit-text-fill-color: transparent;
 		}
@@ -166,25 +150,32 @@ $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
 	}
 }
 
-@mixin blur-all($blur, $bg, $crisp, $blurry) {
-	background-color: rgba($bg, $crisp);
+@mixin blur-bg($bg, $crisp, $blur, $rgb: null) {
+	@if $rgb != null {
+		background-color: rgba($rgb, $crisp);
+	} @else {
+		background-color: hsla(#{$bg}, $crisp);
+	}
+	@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+		@if $rgb != null {
+			background-color: rgba($rgb, $blur);
+		} @else {
+			background-color: hsla(#{$bg}, $blur);
+		}
+	}
+}
+
+@mixin blur-all($blur, $bg, $crisp, $blurry, $rgb: null) {
+	@include blur-bg($bg, $crisp, $blurry, $rgb);
 	@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
 		-webkit-backdrop-filter: blur($blur);
 		backdrop-filter: blur($blur);
-		background-color: rgba($bg, $blurry);
 		@content;
 	}
 }
 
-@mixin blur-bg($bg, $crisp, $blur) {
-	background-color: rgba($bg, $crisp);
-	@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
-		background-color: rgba($bg, $blur);
-	}
-}
-
-@mixin focus-round($color: $focus, $inset: null) {
-	box-shadow: $inset 0 0 0 $p*.25 $color;
+@mixin focus-round($color: var(--color-focus), $inset: null) {
+	box-shadow: $inset 0 0 0 calc(var(--p)/4) $color;
 }
 
 @mixin wavy($color: "") {

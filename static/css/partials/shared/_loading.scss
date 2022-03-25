@@ -26,9 +26,9 @@
 		.grid-item {
 			@for $i from 1 through 6 {
 				&:nth-child(#{$i}n) {
-					background: rgba($iron, ($i * .05));
+					background: hsla(var(--color-iron-hsl), ($i * .05));
 					@include dark {
-						background: rgba(white, ($i * .05));
+						background: hsla(var(--color-white-hsl), ($i * .05));
 					}
 				}
 			}

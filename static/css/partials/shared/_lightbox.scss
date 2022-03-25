@@ -1,5 +1,3 @@
-@use 'sass:math';
-
 .expand {
 	display: block;
 	cursor: zoom-in;
@@ -23,7 +21,7 @@
 }
 
 .lightbox-background {
-	@include blur-all(5px, darken($iron, 12%), .95, .9);
+	@include blur-all(5px, "var(--color-iron-12-hsl)", .95, .9);
 	will-change: opacity, visibility, z-index;
 	transition: .2s opacity ease-out, 0s visibility .2s, 0s z-index .2s;
 	z-index: -999;
@@ -50,9 +48,9 @@
 	will-change: visibility, z-index;
 	transition: 0s visibility .2s, 0s z-index .2s;
 	z-index: -998;
-	padding: $p;
+	padding: var(--p);
 	@media only screen and (min-width: $ipad-11) {
-		padding: $p*2;
+		padding: calc(var(--p)*2);
 	}
 	span {
 		opacity: 0;
