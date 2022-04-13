@@ -25,19 +25,25 @@
 	<title>{{title}} · {{site.author}}</title>
 	<meta property="og:title" content="{{title}}">
 
+	<meta property="og:description" content="{{description}}">
 	<meta property="og:site_name" content="{{site.author}}">
 	<meta property="og:type" content="website"/>
 	<meta property="og:url" content="{{site.url}}{{permalink}}">
 	<meta property="og:image" content="{{site.url}}/static/images/og/{% if ogImage %}{{ogImage}}{% else %}default{% endif %}.jpg">
+	<meta property="og:image:type" content="image/jpg">
 	<meta property="og:image:width" content="1200">
 	<meta property="og:image:height" content="630">
-	<meta property="og:description" content="{{description}}">
-
+	
+	<meta name="twitter:title" content="{{title}}">
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:site" content="@gabriewee">
 	<meta name="twitter:creator" content="@gabriewee">
+	<meta name="twitter:description" content="{{description}}">
+	<meta property="twitter:image" content="{{site.url}}/static/images/og/{% if ogImage %}{{ogImage}}{% else %}default{% endif %}.jpg">
+
 	<meta property="fb:app_id" content="1291587600924107">
 	<meta property="fb:admins" content="504790226">
+
 	<meta property="article:author" content="{{site.author}}">
 
 	<link rel="stylesheet" href="{% if customStyles %}{{ '/static/css/' + customStyles + '.css' | url }}{% else %}{{'/static/css/style.css' | url}}{% endif %}">
