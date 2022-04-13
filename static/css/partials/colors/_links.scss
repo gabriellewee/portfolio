@@ -27,6 +27,10 @@ a {
 		color: var(--color-med);
 		text-decoration-color: var(--color-med);
 	}
+	&.tumblr {
+		color: var(--color-tum);
+		text-decoration-color: var(--color-tum);
+	}
 	&.music {
 		color: var(--color-am);
 		text-decoration-color: var(--color-am);
