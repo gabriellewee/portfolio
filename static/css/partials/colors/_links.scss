@@ -30,6 +30,10 @@ a {
 	&.tumblr {
 		color: var(--color-tum);
 		text-decoration-color: var(--color-tum);
+		@include dark {
+			color: var(--color-tum-light);
+			text-decoration-color: var(--color-tum-light);
+		}
 	}
 	&.music {
 		color: var(--color-am);
