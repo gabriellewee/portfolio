@@ -2,6 +2,10 @@ a {
 	&.codepen {
 		color: var(--color-cp);
 		text-decoration-color: var(--color-cp);
+		@include dark {
+			color: var(--color-cp-light);
+			text-decoration-color: var(--color-cp-light);
+		}
 	}
 	&.dribbble {
 		color: var(--color-bbb);
