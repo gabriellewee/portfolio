@@ -62,42 +62,57 @@
 		}
 	}
 	&-photography {
-		background-color: #8f9eb8;
-		color: #121f2b;
+		$photography: #8f9eb8;
+		background-color: $photography;
+		color: desaturate(darken($photography, 50%), 15%);
 		@include dark {
-			background-color: #444A56;
+			background-color: desaturate(darken($photography, 30%), 5%);
 			color: white;
 		}
 		.more {
-			color: lighten(#8f9eb8, 10%);
+			background-color: darken($photography, 20%);
+			color: mix($photography, white, 25%);
+			@include dark {
+				background-color: desaturate(darken($photography, 40%), 5%);
+			}
 			&:focus {
-				text-decoration-color: lighten(#8f9eb8, 10%);
+				text-decoration-color: mix($photography, white, 25%);
 			}
 		}
 	}
 	&-graphic {
-		background-color: #c46465;
+		$graphic: #c46465;
+		background-color: $graphic;
 		color: white;
 		@include dark {
-			background-color: #704444;
+			background-color: desaturate(darken($graphic, 25%), 15%);
 		}
 		.more {
-			color: var(--color-pink);
+			background-color: darken($graphic, 20%);
+			color: mix($graphic, white, 25%);
+			@include dark {
+				background-color: desaturate(darken($graphic, 35%), 15%);
+			}
 			&:focus {
-				text-decoration-color: var(--color-pink);
+				text-decoration-color: mix($graphic, white, 25%);
 			}
 		}
 	}
 	&-art {
-		background-color: #75605B;
+		$art: #75605B;
+		background-color: $art;
 		color: white;
 		@include dark {
-			background-color: #3E3837;
+			background-color: desaturate(darken($art, 22.5%), 5%);
 		}
 		.more {
-			color: lighten(#938c8c, 10%);
+			background-color: darken($art, 10%);
+			color: mix($art, white, 25%);
+			@include dark {
+				background-color: desaturate(darken($art, 25%), 5%);
+			}
 			&:focus {
-				text-decoration-color: lighten(#938c8c, 10%);
+				text-decoration-color: mix($art, white, 25%);
 			}
 		}
 	}

@@ -1,9 +1,10 @@
 .grid-item-plants {
-	background-color: #d1e7d6;
-	color: #272f29;
+	$plants: #d1e7d6;
+	background-color: $plants;
+	color: desaturate(darken($plants, 60%), 15%);
 	font-size: 24px;
 	@include dark {
-		background-color: #49574D;
+		background-color: desaturate(darken($plants, 60%), 5%);
 		color: white;
 	}
 	@media only screen and (min-width: $ipad-mini) {
@@ -43,10 +44,14 @@
 		}
 	}
 	.more {
-		color: #8ec39a;
+		background-color: desaturate(darken($plants, 30%), 10%);
+		color: mix($plants, white, 40%);
 		grid-column: span 2;
+		@include dark {
+			background-color: desaturate(darken($plants, 70%), 5%);
+		}
 		&:focus {
-			text-decoration-color: #8ec39a;
+			text-decoration-color: mix($plants, white, 40%);
 		}
 	}
 }
