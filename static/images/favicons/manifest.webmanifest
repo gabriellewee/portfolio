@@ -12,6 +12,9 @@
 			"type": "image/png"
 		}
 	],
+	"start_url": "/",
 	"theme_color": "#fcf1ef",
-	"display": "standalone"
+	"background_color": "#fcf1ef",
+	"display": "standalone",
+	"prefer_related_applications": true
 }
