@@ -131,7 +131,7 @@ module.exports = function(eleventyConfig) {
 					newWidths = [100, 1134, 2268, null];
 				}
 			} else if(type === "thumbnail") {
-				newWidths = [50, 400, null];
+				newWidths = [50, 400, 800];
 			}
 		} else if(category === "art") {
 			if(type === "full") {
