@@ -15,11 +15,11 @@
 	<link rel="apple-touch-icon" sizes="180x180" href="/static/images/favicons/apple-touch-icon-180x180.png">
 	<link rel="manifest" href="/static/images/favicons/manifest.webmanifest">
 
-	<meta name="theme-color" content="#f5c8bf">
+	<meta name="theme-color" content="#fcf1ef">
 	<meta name="application-name" content="{{site.author}}">
 	<meta name="description" content="{{description}}">
 
-	<meta name="theme-color" content="#f5c8bf" media="(prefers-color-scheme: light)">
+	<meta name="theme-color" content="#fcf1ef" media="(prefers-color-scheme: light)">
 	<meta name="theme-color" content="#263238" media="(prefers-color-scheme: dark)">
 
 	<title>{{title}} · {{site.author}}</title>
@@ -56,9 +56,13 @@
 	{% if headerLink %}<header class="top" aria-label="Header"{% if home %} aria-hidden="true"{% endif %}>
 		<a class="logo" href="/" aria-label="Go home?"{% if home %} tabindex="-1"{% endif %}>
 			<picture class="memoji memoji-default">
+				<source srcset="/static/images/memoji.webp" type="image/webp">
+				<source srcset="/static/images/memoji.png" type="image/png"> 
 				<img src="/static/images/memoji.png" alt="" width="48px" height="68px">
 			</picture>
 			<picture class="memoji memoji-hm">
+				<source srcset="/static/images/memoji-hm.webp" type="image/webp">
+				<source srcset="/static/images/memoji-hm.png" type="image/png"> 
 				<img src="/static/images/memoji-hm.png" alt="" width="48px" height="68px">
 			</picture>
 		</a>
