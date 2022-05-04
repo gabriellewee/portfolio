@@ -1,123 +1,128 @@
 .code-link {
+	&-pokemon-quest {
+		.overlay {
+			@include blur-bg(null, .9, .8, #52514D);
+		}
+	}
 	&-quadrant {
 		.overlay {
-			@include blur-bg(null, .9, .7, mix(mix(red, blue), mix(orange, yellow)));
+			@include blur-bg(null, .9, .8, mix(mix(red, blue), mix(orange, yellow)));
 		}
 	}
 	&-starter-icons {
 		.overlay {
-			@include blur-bg(null, .9, .7, #849896);
+			@include blur-bg(null, .9, .8, #849896);
 		}
 	}
 	&-dark-mode {
 		.overlay {
-			@include blur-bg(null, .9, .7, #3E4860);
+			@include blur-bg(null, .9, .8, #3E4860);
 		}
 	}
 	&-gradient {
 		.overlay {
-			@include blur-bg(null, .9, .7, #f9a23f);
+			@include blur-bg(null, .9, .8, #f9a23f);
 		}
 	}
 	&-instagram {
 		.overlay {
-			@include blur-bg(null, .9, .7, desaturate(darken(#ADA6AF, 20%), 5%));
+			@include blur-bg(null, .9, .8, desaturate(darken(#ADA6AF, 20%), 5%));
 		}
 	}
 	&-lotus {
 		.overlay {
-			@include blur-bg(null, .9, .7, #363A40);
+			@include blur-bg(null, .9, .8, #363A40);
 		}
 	}
 	&-css-dev-conf {
 		.overlay {
-			@include blur-bg(null, .9, .7, #304047);
+			@include blur-bg(null, .9, .8, #304047);
 		}
 	}
 	&-elletem {
 		.overlay {
-			@include blur-bg(null, .9, .7, #FF7C8E);
+			@include blur-bg(null, .9, .8, #FF7C8E);
 		}
 	}
 	&-doortem {
 		.overlay {
-			@include blur-bg(null, .9, .7, #2C4A87);
+			@include blur-bg(null, .9, .8, #2C4A87);
 		}
 	}
 	&-totem {
 		.overlay {
-			@include blur-bg(null, .9, .7, #3E4F53);
+			@include blur-bg(null, .9, .8, #3E4F53);
 		}
 	}
 	&-nested-nav {
 		.overlay {
-			@include blur-bg(null, .9, .7, desaturate(darken(#AEBFAF, 20%), 5%));
+			@include blur-bg(null, .9, .8, desaturate(darken(#AEBFAF, 20%), 5%));
 		}
 	}
 	&-sprites {
 		.overlay {
-			@include blur-bg(null, .9, .7, desaturate(darken(#6FC6C5, 20%), 5%));
+			@include blur-bg(null, .9, .8, desaturate(darken(#6FC6C5, 20%), 5%));
 		}
 	}
 	&-cubes {
 		.overlay {
-			@include blur-bg(null, .9, .7, #53A0FE);
+			@include blur-bg(null, .9, .8, #53A0FE);
 		}
 	}
 	&-cards {
 		.overlay {
-			@include blur-bg(null, .9, .7, #F04F54);
+			@include blur-bg(null, .9, .8, #F04F54);
 		}
 	}
 
 	&-011 {
 		.overlay {
-			@include blur-bg(null, .9, .7, #4B5E6B);
+			@include blur-bg(null, .9, .8, #4B5E6B);
 		}
 	}
 	&-010 {
 		.overlay {
-			@include blur-bg(null, .9, .7, desaturate(darken(#43CB9D, 15%), 5%));
+			@include blur-bg(null, .9, .8, desaturate(darken(#43CB9D, 15%), 5%));
 		}
 	}
 	&-009 {
 		.overlay {
-			@include blur-bg(null, .9, .7, #EB2045);
+			@include blur-bg(null, .9, .8, #EB2045);
 		}
 	}
 	&-008 {
 		.overlay {
-			@include blur-bg(null, .9, .7, #F04F54);
+			@include blur-bg(null, .9, .8, #F04F54);
 		}
 	}
 	&-007 {
 		.overlay {
-			@include blur-bg(null, .9, .7, #725767);
+			@include blur-bg(null, .9, .8, #725767);
 		}
 	}
 	&-006 {
 		.overlay {
-			@include blur-bg(null, .9, .7, #F5515F);
+			@include blur-bg(null, .9, .8, #F5515F);
 		}
 	}
 	&-005 {
 		.overlay {
-			@include blur-bg(null, .9, .7, #C96DD8);
+			@include blur-bg(null, .9, .8, #C96DD8);
 		}
 	}
 	&-004 {
 		.overlay {
-			@include blur-bg(null, .9, .7, desaturate(darken(#FC9D6B, 15%), 5%));
+			@include blur-bg(null, .9, .8, desaturate(darken(#FC9D6B, 15%), 5%));
 		}
 	}
 	&-003 {
 		.overlay {
-			@include blur-bg(null, .9, .7, desaturate(darken(#ADA295, 15%), 5%));
+			@include blur-bg(null, .9, .8, desaturate(darken(#ADA295, 15%), 5%));
 		}
 	}
 	&-001, &-002 {
 		.overlay {
-			@include blur-bg(null, .9, .7, desaturate(darken(#DFB72C, 15%), 5%));
+			@include blur-bg(null, .9, .8, desaturate(darken(#DFB72C, 15%), 5%));
 		}
 	}
 }

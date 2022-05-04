@@ -73,6 +73,7 @@ article {
 			@include gradient-text(var(--color-red-hsl), var(--color-light-orange-hsl), true);
 			text-decoration: underline;
 			text-decoration-thickness: 1.5px;
+			text-underline-offset: 2px;
 			&:hover, &:focus {
 				@include gradient-text(var(--violet-hsl), var(--color-blue-hsl), true);
 			}
@@ -391,6 +392,7 @@ article {
 			span {
 				text-decoration: underline;
 				text-decoration-thickness: 1.5px;
+				text-underline-offset: 2px;
 			}
 		}
 		&:active {

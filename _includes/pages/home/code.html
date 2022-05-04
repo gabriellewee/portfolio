@@ -26,8 +26,9 @@
 </ul>
 
 <div class="links">
-	<p><a href="https://codepen.io/gabriellewee/pen/XMEEda/" target="_blank">Line Length Calculator</a></p>
-	<p><a href="https://codepen.io/gabriellewee/pen/wgjOKP/" target="_blank">Stranger Things 404</a></p>
+	{% for link in codelink %}
+		<p><a href="https://codepen.io/gabriellewee/pen/{{link.uri}}/" target="_blank">{{link.title}}</a></p>
+	{% endfor %}
 </div>
 
 <p>I also have some #dailyui challenges:</p>

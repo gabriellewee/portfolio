@@ -1,14 +1,14 @@
 [
 	{
-		"name": "quadrant",
-		"title": "Four-Quadrant CSS-Only Gradient",
-		"uri": "zYGxNKa",
+		"name": "pokemon-quest",
+		"title": "CSS-Only Pokémon Quest Icon Sorter",
+		"uri": "KKQwydY",
 		"style": "css-only"
 	},
 	{
-		"name": "starter-icons",
-		"title": "Pokémon Quest Starter Icons",
-		"uri": "VqBvvo",
+		"name": "quadrant",
+		"title": "Four-Quadrant CSS-Only Gradient",
+		"uri": "zYGxNKa",
 		"style": "css-only"
 	},
 	{
@@ -48,22 +48,10 @@
 		"style": "css-only"
 	},
 	{
-		"name": "totem",
-		"title": "Monument Valley Totem",
-		"uri": "zNBMmW",
-		"style": "css-only"
-	},
-	{
 		"name": "nested-nav",
 		"title": "Nested Dropdown Navigation",
 		"uri": "oWyObX",
 		"style": "css-only"
-	},
-	{
-		"name": "sprites",
-		"title": "Pokémon Sprite Sorter",
-		"uri": "dWRgmJ",
-		"style": ""
 	},
 	{
 		"name": "cards",

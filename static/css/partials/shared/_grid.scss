@@ -280,6 +280,7 @@
 	bottom: 0;
 	bottom: env(safe-area-inset-bottom);
 	left: 0;
+	left: env(safe-area-inset-left);
 	z-index: 2;
 	max-width: 100%;
 	@media only screen and (min-width: $ipad-11) {
