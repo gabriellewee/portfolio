@@ -54,6 +54,7 @@ h2 {
 			display: inline-block;
 			text-decoration: underline;
 			text-decoration-thickness: 1.5px;
+			text-underline-offset: 2px;
 			&:hover, &:focus {
 				@include gradient-text(var(--color-violet-hsl), var(--color-blue-hsl), true);
 			}

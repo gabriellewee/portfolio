@@ -54,6 +54,7 @@ header {
 		font-weight: bold;
 		text-align: center;
 		text-transform: lowercase;
+		text-underline-offset: 4px;
 		@media only screen and (min-width: $ipad-11) {
 			font-size: 28px;
 		}

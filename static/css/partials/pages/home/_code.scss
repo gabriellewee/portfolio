@@ -27,6 +27,7 @@
 			&:hover, &:focus {
 				color: #F78C6A;
 				text-decoration: underline;
+				text-underline-offset: 4px;
 			}
 			&:active {
 				color: #82AAFF;
@@ -35,20 +36,24 @@
 	}
 	h3, .links p {
 		padding-bottom: var(--p);
-		font-weight: bold;
+		font-style: normal;
 		font-size: 16px;
 		a {
-			font-style: normal;
 			color: #73d1c8;
 			&:hover, &:focus {
 				color: #F78C6A;
 				text-decoration: underline;
+				text-underline-offset: 4px;
 			}
 			&:active {
 				color: #82AAFF;
 			}
 			&:after {
-				content: " \2192";
+				content: "\2197";
+				display: inline-block;
+				margin-left: 6px;
+				font-size: 22px;
+				line-height: 19px;
 			}
 		}
 	}

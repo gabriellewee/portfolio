@@ -1,0 +1,18 @@
+<svg viewBox="0 0 200 125" width="200" height="125" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <rect fill="#52514D" x="0" y="0" width="200" height="125"></rect>
+    <rect fill="#78D9AA" x="-20" y="-8" width="40" height="40"></rect>
+    <rect fill="#82BBC4" x="30" y="-8" width="40" height="40"></rect>
+    <rect fill="#8AC7C2" x="80" y="-8" width="40" height="40"></rect>
+    <rect fill="#F1AF86" x="130" y="-8" width="40" height="40"></rect>
+    <rect fill="#C79F69" x="130" y="92" width="40" height="40"></rect>
+    <rect fill="#F3DB61" x="80" y="92" width="40" height="40"></rect>
+    <rect fill="#EDAA62" x="-20" y="42" width="40" height="40"></rect>
+    <rect fill="#82C6D7" x="30" y="42" width="40" height="40"></rect>
+    <rect fill="#74A5DB" x="80" y="42" width="40" height="40"></rect>
+    <rect fill="#8EC769" x="130" y="42" width="40" height="40"></rect>
+    <rect fill="#DFC969" x="30" y="92" width="40" height="40"></rect>
+    <rect fill="#75708A" x="-20" y="92" width="40" height="40"></rect>
+    <rect fill="#EF8B75" x="180" y="-8" width="40" height="40"></rect>
+    <rect fill="#B7D973" x="180" y="42" width="40" height="40"></rect>
+    <rect fill="#BE8B47" x="180" y="92" width="40" height="40"></rect>
+</svg>

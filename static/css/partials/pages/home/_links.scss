@@ -17,6 +17,7 @@
 		font-weight: bold;
 	}
 	p > a {
+		text-underline-offset: 4px;
 		&:not(:last-child) {
 			margin-right: var(--p);
 		}
@@ -53,6 +54,7 @@
 			position: relative;
 			cursor: pointer;
 			color: var(--color-discord);
+			text-underline-offset: 4px;
 			&:hover {
 				color: var(--color-iron);
 				transform: scale(1.05);
