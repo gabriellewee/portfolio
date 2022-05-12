@@ -69,6 +69,7 @@ $violet: #BA6AFF;
 	--color-focus: #5E9ED6;
 	
 	--color-writing-light: #{mix($red, white, 20%)};
+	--color-writing-med: #{mix($red, white, 40%)};
 	--color-writing-dark: #{mix($red, $iron, 10%)};
 
 	--color-discord: #5865F2;

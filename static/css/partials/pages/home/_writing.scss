@@ -27,6 +27,17 @@
 		font-weight: 900;
 		font-variation-settings: "wght" 900, "CASL" 1;
 	}
+	h4 {
+		font-size: 16px;
+		font-weight: 600;
+		font-variation-settings: "wght" 600, "CASL" 1;
+		span {
+			background-color: var(--color-writing-med);
+			@include dark {
+				background-color: rgba(white, .1);
+			}
+		}
+	}
 	a {
 		will-change: background-color, color, transform;
 		transition: .1s ease-out;
@@ -74,11 +85,11 @@
 		flex-wrap: wrap;
 		align-items: center;
 		align-content: center;
-		a, time {
+		a, time, h4 {
 			display: block;
 			margin-bottom: var(--p);
 		}
-		a span, time {
+		a span, time, h4 span {
 			display: block;
 			padding: calc(var(--p)/2) var(--p);
 			@include clip-path {
@@ -91,15 +102,15 @@
 		> *:not(:last-child) {
 			margin-right: var(--p);
 		}
-		span {
-			background-color: var(--color-red);
-		}
 		a {
 			position: relative;
 			color: white;
 			font-size: 20px;
 			font-weight: 500;
 			font-variation-settings: "wght" 500, "CASL" 0.5;
+			span {
+				background-color: var(--color-red);
+			}
 			&:before {
 				opacity: 0;
 				content: "";
@@ -144,6 +155,9 @@
 					}
 				}
 			}
+		}
+		h4 ~ a {
+			font-size: 16px;
 		}
 		time {
 			background-color: hsla(var(--color-iron-hsl), .2);
