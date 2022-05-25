@@ -2,10 +2,6 @@ a {
 	&.codepen {
 		color: var(--color-cp);
 		text-decoration-color: var(--color-cp);
-		@include dark {
-			color: var(--color-cp-light);
-			text-decoration-color: var(--color-cp-light);
-		}
 	}
 	&.dribbble {
 		color: var(--color-bbb);
@@ -34,10 +30,6 @@ a {
 	&.tumblr {
 		color: var(--color-tum);
 		text-decoration-color: var(--color-tum);
-		@include dark {
-			color: var(--color-tum-light);
-			text-decoration-color: var(--color-tum-light);
-		}
 	}
 	&.music {
 		color: var(--color-am);

@@ -10,7 +10,7 @@
 	@include max {
 		padding-right: max(var(--p), env(safe-area-inset-left));
 	}
-	@media only screen and (min-width: $ipad-11) {
+	@include viewport($ipad-11) {
 		padding: calc(var(--p)*2);
 		padding-right: calc((var(--p)*2) + env(safe-area-inset-left));
 		@include max {
@@ -59,7 +59,7 @@
 		position: absolute;
 		right: calc(var(--p)*5);
 		z-index: 2;
-		@media only screen and (min-width: $ipad-11) {
+		@include viewport($ipad-11) {
 			right: calc(var(--p)*6);
 		}
 	}

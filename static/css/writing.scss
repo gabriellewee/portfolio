@@ -33,7 +33,7 @@ a, pre, button {
 	@include max {
 		padding: var(--p) max((var(--p)*2), env(safe-area-inset-left)) 0;
 	}
-	@media only screen and (min-width: $ipad-11) {
+	@include viewport($ipad-11) {
 		padding-top: calc(var(--p)*2.5);
 	}
 	a {
@@ -41,10 +41,10 @@ a, pre, button {
 		font-weight: 1000;
 		font-variation-settings: "wght" 1000, "CASL" 1;
 		line-height: 1.4;
-		@media only screen and (min-width: $ipad-mini) {
+		@include viewport($ipad-mini) {
 			font-size: 7vw;
 		}
-		@media only screen and (min-width: $ipad-11) {
+		@include viewport($ipad-11) {
 			font-size: 72px;
 		}
 		&:hover, &:focus {
@@ -61,7 +61,7 @@ a, pre, button {
 		@include dark {
 			opacity: 0.5;
 		}
-		@media only screen and (min-width: $ipad-mini) {
+		@include viewport($ipad-mini) {
 			display: unset;
 			margin-bottom: unset;
 			font-size: unset;

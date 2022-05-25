@@ -26,7 +26,7 @@ header {
 
 .grid-item {
 	font-size: 28px;
-	@media only screen and (min-width: $ipad-mini) {
+	@include viewport($ipad-mini) {
 		font-size: 32px;
 	}
 	&.text-only {
@@ -55,7 +55,7 @@ header {
 		text-align: center;
 		text-transform: lowercase;
 		text-underline-offset: 4px;
-		@media only screen and (min-width: $ipad-11) {
+		@include viewport($ipad-11) {
 			font-size: 28px;
 		}
 		&:hover, &:focus {

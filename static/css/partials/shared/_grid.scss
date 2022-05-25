@@ -53,7 +53,7 @@
 @media only screen and (min-width: $mobile) and (max-height: 450px) {
 	.subpage-grid {
 		.grid-pack {
-			grid-template-columns: 1fr 1fr;
+			grid-template-columns: repeat(2, 1fr);
 			&[style] .grid-item {
 				width: 50%;
 			}
@@ -61,27 +61,27 @@
 	}
 }
 
-@media only screen and (min-width: $ipad-mini) {
+@include viewport($ipad-mini) {
 	.grid-pack {
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: repeat(2, 1fr);
 		&[style] .grid-item {
 			width: 50%;
 		}
 	}
 }
 
-@media only screen and (min-width: $mbp-16) {
+@include viewport($mbp-16) {
 	.grid-pack {
-		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-columns: repeat(3, 1fr);
 		&[style] .grid-item {
 			width: calc(100% / 3);
 		}
 	}
 }
 
-@media only screen and (min-width: $lg-5k) {
+@include viewport($lg-5k) {
 	.grid-pack {
-		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-template-columns: repeat(4, 1fr);
 		&[style] .grid-item {
 			width: 25%;
 		}
@@ -172,7 +172,7 @@
 			opacity: 0;
 			~ label.grid-link {
 				display: none;
-				@media only screen and (min-width: $ipad-mini) {
+				@include viewport($ipad-mini) {
 					opacity: 0;
 					display: block;
 				}
@@ -211,7 +211,7 @@
 				}
 			}
 		}
-		@media only screen and (min-width: $ipad-mini) {
+		@include viewport($ipad-mini) {
 			&:hover input {
 				~ label.grid-link {
 					opacity: 1;
@@ -308,7 +308,7 @@
 	left: env(safe-area-inset-left);
 	z-index: 2;
 	max-width: 100%;
-	@media only screen and (min-width: $ipad-11) {
+	@include viewport($ipad-11) {
 		padding: var(--p);
 	}
 	.no-js & {

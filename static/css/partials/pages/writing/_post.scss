@@ -269,18 +269,18 @@ article {
 		grid-gap: calc(var(--p)*2);
 		grid-template-columns: 1fr;
 	}
-	@media only screen and (min-width: $mobile) {
+	@include viewport($mobile) {
 		.row-double {
-			 grid-template-columns: 1fr 1fr;
+			 grid-template-columns: repeat(2, 1fr);
 		}
 		.row-triple {
-			 grid-template-columns: 1fr 1fr 1fr;
+			 grid-template-columns: repeat(3, 1fr);
 		}
 		.row-quad {
-			 grid-template-columns: 1fr 1fr 1fr 1fr;
+			 grid-template-columns: repeat(4, 1fr);
 		}
 		.row-quint {
-			 grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+			 grid-template-columns: repeat(5, 1fr);
 		}
 	}
 	.light-dark {
@@ -317,7 +317,7 @@ article {
 		display: flex;
 		flex-wrap: wrap;
 		margin-bottom: var(--p);
-		@media only screen and (min-width: $ipad-11) {
+		@include viewport($ipad-11) {
 			flex-wrap: nowrap;
 			align-items: center;
 			justify-content: space-between;
@@ -329,7 +329,7 @@ article {
 			.page-post & {
 				@include gradient-text(var(--color-red-hsl), var(--color-orange-hsl), false);
 			}
-			@media only screen and (min-width: $ipad-11) {
+			@include viewport($ipad-11) {
 				order: 1;
 				padding-right: calc(var(--p)*2);
 				width: unset;
@@ -361,7 +361,7 @@ article {
 					background-color: hsla(var(--color-white-hsl), .75);
 					color: var(--color-iron);
 				}
-				@media only screen and (min-width: $ipad-11) {
+				@include viewport($ipad-11) {
 					order: 2;
 					margin-bottom: 0;
 				}
