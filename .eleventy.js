@@ -24,7 +24,7 @@ module.exports = function(eleventyConfig) {
 
 	eleventyConfig.addExtension("scss", {
 		outputFileExtension: "css",
-		compile: async function(inputContent, inputPath) {
+		compile: function(inputContent, inputPath) {
 			let parsed = path.parse(inputPath);
 			if(parsed.name.startsWith("_")) {
 				return;
