@@ -16,14 +16,14 @@ h2 {
 
 .about-grid {
 	padding: calc((var(--p)/2) + env(safe-area-inset-left));
-	@media only screen and (min-width: $mobile) {
+	@include viewport($mobile) {
 		padding: calc(var(--p) + env(safe-area-inset-left));
 	}
 }
 
 .grid-item {
 	padding: calc(var(--p)/2);
-	@media only screen and (min-width: $mobile) {
+	@include viewport($mobile) {
 		padding: var(--p);
 	}
 	> div {

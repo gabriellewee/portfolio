@@ -5,7 +5,7 @@
 		background-color: #3e3e3e;
 		color: #f0f0f0;
 	}
-	@media only screen and (min-width: $ipad-mini) {
+	@include viewport($ipad-mini) {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
@@ -28,7 +28,7 @@
 		z-index: 0;
 		font-size: 20px;
 		color: #717171;
-		@media only screen and (min-width: $ipad-mini) {
+		@include viewport($ipad-mini) {
 			display: block;
 		}
 		span {
@@ -55,10 +55,10 @@
 		@include max {
 			padding: var(--p) max(calc(var(--p)*1.5), env(safe-area-inset-left)) 0;
 		}
-		@media only screen and (min-width: $ipad-mini) {
+		@include viewport($ipad-mini) {
 			width: calc(100% - 200px);
 		}
-		@media only screen and (min-width: $mbp-14) {
+		@include viewport($mbp-14) {
 			width: calc(100% - 255px);
 		}
 	}
@@ -69,10 +69,10 @@
 		@include max {
 			padding: calc(var(--p)*1.5) max(calc(var(--p)*1.5), env(safe-area-inset-left)) 0 0;
 		}
-		@media only screen and (min-width: $ipad-mini) {
+		@include viewport($ipad-mini) {
 			display: block;
 		}
-		@media only screen and (min-width: $mbp-14) {
+		@include viewport($mbp-14) {
 			width: 255px;
 		}
 		svg {
@@ -82,7 +82,7 @@
 	}
 	.modding {
 		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-columns: repeat(3, 1fr);
 		grid-gap: calc(var(--p)*1.5);
 		list-style: none;
 		width: 100%;
@@ -90,8 +90,8 @@
 		@include max {
 			padding: calc(var(--p)*1.5) max(calc(var(--p)*1.5), env(safe-area-inset-left)) var(--p);
 		}
-		@media only screen and (min-width: $ipad-mini) {
-			grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+		@include viewport($ipad-mini) {
+			grid-template-columns: repeat(5, 1fr);
 		}
 		svg {
 			border-radius: calc(var(--p)/2);

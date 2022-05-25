@@ -2,10 +2,10 @@
 	background-color: var(--color-pink-5);
 	color: var(--color-iron);
 	padding-right: calc(var(--p)*5.5);
-	@media only screen and (min-width: $ipad-mini) {
+	@include viewport($ipad-mini) {
 		padding-right: calc(var(--p)*5);
 	}
-	@media only screen and (min-width: $ipad-11) {
+	@include viewport($ipad-11) {
 		padding-right: unset;
 	}
 	h1 {

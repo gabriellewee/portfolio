@@ -4,7 +4,7 @@
 	font-size: 48px;
 	font-variation-settings: "wght" 800, "CASL" 1, "MONO" 0;
 	animation: variable 2s linear alternate infinite both;
-	@media only screen and (min-width: $ipad-11) {
+	@include viewport($ipad-11) {
 		font-size: 72px;
 	}
 }

@@ -45,7 +45,7 @@
 		}
 	}
 	.discord {
-		@media only screen and (min-width: 570px) {
+		@include viewport(570px) {
 			position: relative;
 		}
 		.discord-label {
@@ -90,7 +90,7 @@
 			padding-right: calc(var(--p) + env(safe-area-inset-left));
 			color: white;
 			transform: translateY(calc(var(--p)*2));
-			@media only screen and (min-width: 570px) {
+			@include viewport(570px) {
 				max-width: 500px;
 				padding-left: 0;
 				padding-right: 0;

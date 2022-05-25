@@ -49,7 +49,7 @@
 	transition: 0s visibility .2s, 0s z-index .2s;
 	z-index: -998;
 	padding: var(--p);
-	@media only screen and (min-width: $ipad-11) {
+	@include viewport($ipad-11) {
 		padding: calc(var(--p)*2);
 	}
 	span {
