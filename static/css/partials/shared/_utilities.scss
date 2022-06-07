@@ -18,6 +18,8 @@ $blue: #6AF9FF;
 $indigo: #706AFF;
 $violet: #BA6AFF;
 
+$neon: #DDFF3B;
+
 // functions
 @function hexToHSL($color) {
 	@return "#{hue($color)},#{saturation($color)},#{lightness($color)}";
@@ -75,8 +77,8 @@ $violet: #BA6AFF;
 	border-radius: $radius;
 	overflow: hidden;
 	@include clip-path {
-		-webkit-clip-path: inset(0 0 0 0 round $radius $radius $radius $radius);
-		clip-path: inset(0 0 0 0 round $radius $radius $radius $radius);
+		-webkit-clip-path: inset(0 round $radius);
+		clip-path: inset(0 round $radius);
 	}
 }
 
