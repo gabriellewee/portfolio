@@ -19,7 +19,7 @@ tags: subpages
 <article class="archive">
 	<ul>
 		{% for post in collections.writes | reverse %}
-			{% if showYear %}
+			{% if showYear == true %}
 				{% set postYear = post.date.getFullYear() %}
 				{% if currentYear != postYear %}
 					{% set currentYear = postYear %}
@@ -30,7 +30,7 @@ tags: subpages
 			{% endif %}
 			<li>
 				<h3><a href="{{post.url | url}}">{{post.data.title}}</a></h3>
-				<time datetime="{{post.date | htmlDateString}}">{{post.date|readableDate}}</time>
+				<span role="text"><time datetime="{{post.date | htmlDateString}}">{{post.date|readableDate}}</time></span>
 			</li>
 		{% endfor %}
 	</ul>

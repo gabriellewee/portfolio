@@ -52,7 +52,7 @@
 	@include viewport($ipad-11) {
 		padding: calc(var(--p)*2);
 	}
-	span {
+	.image {
 		opacity: 0;
 		will-change: opacity, display;;
 		transition: .2s opacity ease-out .1s, 0s display .2s;
@@ -61,9 +61,14 @@
 		z-index: 1;
 		width: 100%;
 		height: 100%;
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: contain;
+		picture, img {
+			display: block;
+			height: 100%;
+			width: 100%;
+			object-fit: contain;
+			margin-left: auto;
+			margin-right: auto;
+		}
 	}
 	.no-js &:target, &.active {
 		transition: .2s opacity ease-out;
@@ -80,12 +85,12 @@
 			}
 		}
 	}
-	&.active span.active, .no-js &:target span {
+	&.active .image.active, .no-js &:target .image {
 		opacity: 1;
 		display: block;
 	}
 	&.light-dark {
-		&.active span.active, .no-js &:target span {
+		&.active .image.active, .no-js &:target .image {
 			&:nth-of-type(1) {
 				display: block;
 				@include dark {

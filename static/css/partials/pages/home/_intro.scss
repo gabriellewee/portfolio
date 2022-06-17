@@ -17,6 +17,11 @@
 	}
 	.apple {
 		display: inline-block;
+		span {
+			&:before {
+				content: " ";
+			}
+		}
 		svg {
 			position: relative;
 			top: 2px;

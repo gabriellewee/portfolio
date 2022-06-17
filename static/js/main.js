@@ -16,8 +16,8 @@ const clipboardCopy = (() => {
 		let copyElem = container.querySelector(".username");
 		
 		triggers.forEach(trigger =>{
-			trigger.addEventListener("keypress",  e => {
-				if (e.keyCode === 13) {
+			trigger.addEventListener("keydown",  e => {
+				if (e.key === "Enter") {
 					if(copyTrigger.checked) {
 						copyTrigger.checked = false;
 						copyElem.classList.remove("copied");
@@ -36,16 +36,16 @@ const clipboardCopy = (() => {
 			copy.parentNode.classList.add("copied");
 		    e.clearSelection();
 		});
-		copyButton.addEventListener("keypress", e => {
-			if (e.keyCode === 13) {
+		copyButton.addEventListener("keydown", e => {
+			if (e.key === "Enter") {
 				setTimeout(() => {
 					closeTrigger.focus();
 				}, 50);
 			}
 		})
 
-		document.addEventListener("keypress",  e => {
-			if (e.keyCode === 27) {
+		container.addEventListener("keydown",  e => {
+			if (e.key === "Escape") {
 				copyTrigger.checked = false;
 				copyElem.classList.remove("copied");
 				copyTrigger.focus();
@@ -102,9 +102,22 @@ const loading = new imagesLoaded(document.body, { background: true }, () => {
 const visualFilters = ((filters = document.querySelector(".grid-filters")) => {
 	if (filters) {
 		let tagTrigger = filters.querySelector("#grid-filters");
-		tagTrigger.addEventListener("keypress",  e => {
-			if (e.keyCode == 13) {
-				tagTrigger.checked ? tagTrigger.checked = false : tagTrigger.checked = true;
+		tagTrigger.addEventListener("keydown",  e => {
+			if (e.key === "Enter") {
+				if (tagTrigger.checked) {
+					tagTrigger.checked = false;
+					tagTrigger.setAttribute("aria-checked", "false");
+				} else {
+					tagTrigger.checked = true;
+					tagTrigger.setAttribute("aria-checked", "true");
+				}
+			}
+		});
+		tagTrigger.addEventListener("click", e => {
+			if(tagTrigger.checked){
+				tagTrigger.setAttribute("aria-checked", "true");
+			} else {
+				tagTrigger.setAttribute("aria-checked", "false");
 			}
 		});
 		let links = filters.querySelectorAll("[data-filter]");
@@ -141,30 +154,43 @@ const visualInfoTriggers = ((figures = Array.from(document.querySelectorAll(".gr
 			button.addEventListener("focus", e => {
 				document.getElementById(name).scrollIntoView({ behavior: "smooth" });
 			});
-			let _checked = (check => {
+			let _true = (() => {
+				button.setAttribute("aria-checked", "true");
+				info.removeAttribute("aria-hidden");
+				expand.tabIndex = 0;
+				if(external) external.tabIndex = 0;
+			});
+			let _false = (() => {
+				button.setAttribute("aria-checked", "false");
+				info.setAttribute("aria-hidden", "true");
+				expand.tabIndex = -1;
+				if(external) external.tabIndex = -1;
+			});
+			button.addEventListener("click", e => {
 				if(button.checked){
-					info.setAttribute("aria-hidden", "true");
-					expand.tabIndex = -1;
-					if(external) external.tabIndex = -1
+					_true();
 				} else {
-					info.setAttribute("aria-hidden", "false");
-					expand.tabIndex = 0;
-					if(external) external.tabIndex = 0
+					_false();
 				}
 			});
-			button.addEventListener("keypress", e => {
-				if (e.keyCode == 13) {
-					_checked();
+			button.addEventListener("keydown", e => {
+				if (e.key === "Enter") {
 					if(button.checked){
 						button.checked = false;
+						_false();
 					} else {
 						button.checked = true;
+						_true();
 					}
 				}
 			});
 			labels.forEach(label=>{
 				label.addEventListener("click", e => {
-					_checked();
+					if(button.checked){
+						_true();
+					} else {
+						_false();
+					}
 				});
 			});
 		});

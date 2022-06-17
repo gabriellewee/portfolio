@@ -19,6 +19,16 @@ tags: pages
 {% endblock %}
 
 {% block content %}
+	<nav class="grid-filters" aria-label="Tags List">
+		<input id="grid-filters" type="checkbox" tabindex="0" aria-label="Show tags" role="switch" aria-checked="false"/>
+		<h2><label for="grid-filters"><span>Tags</span></label></h2>
+		<ul>
+			<li><a class="grid-filter" href="#" data-filter=".filter-2d">#2d</a></li>
+			<li><a class="grid-filter" href="#" data-filter=".filter-3d">#3d</a></li>
+			<li><a class="grid-filter reset" href="#" data-filter="*">reset</a></li>
+		</ul>
+	</nav>
+
 	<div class="graphic-grid subpage-grid">
 		<div class="grid-pack grid-isotope" role="list">
 			{% for graphic in graphic %}
@@ -27,19 +37,20 @@ tags: pages
 						{% image './static/images/graphic/' + graphic.date + '-' + graphic.name + '.png', graphic.description, null, 'full', 'graphic' %}
 						<figcaption>
 							<fieldset>
-								<input class="grid-input" id="{{graphic.date|safe}}-{{graphic.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this graphic"/>
+								<input class="grid-input" id="{{graphic.date|safe}}-{{graphic.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this graphic" role="switch" aria-checked="false"/>
 								<label class="grid-close" for="{{graphic.date|safe}}-{{graphic.name}}-info"></label>
 								<label class="grid-overlay" for="{{graphic.date|safe}}-{{graphic.name}}-info">{% include 'svg/icons/info-large.svg' %}</label>
 								<label class="grid-link" for="{{graphic.date|safe}}-{{graphic.name}}-info">{% include 'svg/icons/info.svg' %}</label>
 								<div class="grid-info">
 									<label class="grid-down" for="{{graphic.date|safe}}-{{graphic.name}}-info">{% include 'svg/icons/caret-down.svg' %}</label>
+									<a class="grid-expand expand" href="#{{graphic.date|safe}}-{{graphic.name}}-lightbox" aria-label="Expand graphic" tabindex="-1">{% include 'svg/icons/expand.svg' %}</a>
 									<dl>
 										<div>
 											<dt class="title">Title</dt>
 											<dd>
 												<span>{{graphic.title}}</span>
 												{% if graphic.url %}
-													<a class="grid-link external dribbble" target="_blank" href="{{graphic.url}}" tabindex="-1">{% include 'svg/icons/dribbble.svg' %}</a>
+													<a class="grid-link external dribbble" target="_blank" href="{{graphic.url}}" tabindex="-1" aria-label="View on Dribbble">{% include 'svg/icons/dribbble.svg' %}</a>
 												{% endif %}
 											</dd>
 										</div>
@@ -50,7 +61,6 @@ tags: pages
 											<dt>Tools</dt><dd>{{graphic.tools}}</dd>
 										</div>
 									</dl>
-									<a class="grid-expand expand" href="#{{graphic.date|safe}}-{{graphic.name}}-lightbox" aria-label="Expand graphic" tabindex="-1">{% include 'svg/icons/expand.svg' %}</a>
 								</div>
 							</fieldset>
 						</figcaption>
@@ -61,24 +71,22 @@ tags: pages
 		</div>
 	</div>
 
-	<nav class="grid-filters" aria-label="Tags List">
-		<input id="grid-filters" type="checkbox" tabindex="0" aria-label="Show tags"/>
-		<h2><label for="grid-filters"><span>Tags</span></label></h2>
-		<ul>
-			<li><a class="grid-filter" href="#" data-filter=".filter-2d">#2d</a></li>
-			<li><a class="grid-filter" href="#" data-filter=".filter-3d">#3d</a></li>
-			<li><a class="grid-filter reset" href="#" data-filter="*">reset</a></li>
-		</ul>
-	</nav>
-
 	<div class="lightbox-group">
 		{% for graphic in graphic %}
-			<a class="lightbox" id="{{graphic.date|safe}}-{{graphic.name}}-lightbox" href="#{{graphic.date|safe}}-{{graphic.name}}">
-				<span style="background-image: url('/static/images/graphic/{{graphic.date|safe}}-{{graphic.name}}.png')"></span>
+			<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{graphic.date|safe}}-{{graphic.name}}-lightbox" href="#{{graphic.date|safe}}-{{graphic.name}}">
+				<figure class="image">
+					<picture>
+						<img src="/static/images/graphic/{{graphic.date|safe}}-{{graphic.name}}.png" alt="{{graphic.description}}"/>
+					</picture>
+				</figure>
 			</a>
 		{% endfor %}
-		<a class="lightbox" id="2013-07-08-eeveelutions-lightbox" href="#2013-07-08-eeveelutions">
-			<span class="upscale" style="background-image: url('/static/images/graphic/2013-07-08-eeveelutions.png')"></span>
+		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="2013-07-08-eeveelutions-lightbox" href="#2013-07-08-eeveelutions">
+			<figure class="image">
+				<picture>
+					<img class="upscale" src="/static/images/graphic/2013-07-08-eeveelutions.png" alt="Pixel Eeeveelutions"/>
+				</picture>
+			</figure>
 		</a>
 		<div class="lightbox-background"></div>
 	</div>
