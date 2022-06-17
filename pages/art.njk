@@ -19,6 +19,17 @@ tags: pages
 {% endblock %}
 
 {% block content %}
+	<nav class="grid-filters" aria-label="Tags List">
+		<input id="grid-filters" type="checkbox" tabindex="0" aria-label="Show tags" role="switch" aria-checked="false"/>
+		<h2><label for="grid-filters"><span>Tags</span></label></h2>
+		<ul>
+			<li><a class="grid-filter" href="#" data-filter=".filter-digital">#digital</a></li>
+			<li><a class="grid-filter" href="#" data-filter=".filter-traditional">#traditional</a></li>
+			<li><a class="grid-filter" href="#" data-filter=".filter-figure">#figure drawing</a></li>
+			<li><a class="grid-filter reset" href="#" data-filter="*">reset</a></li>
+		</ul>
+	</nav>
+
 	<div class="art-grid subpage-grid">
 		<div class="grid-pack grid-isotope" role="list">
 			{% for art in art %}
@@ -27,12 +38,13 @@ tags: pages
 						{% image './static/images/art/' + art.date + '-' + art.name + '.jpg', art.description, art.aspect, 'full', 'art' %}
 						<figcaption>
 							<fieldset>
-								<input class="grid-input" id="{{art.date|safe}}-{{art.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this artwork"/>
+								<input class="grid-input" id="{{art.date|safe}}-{{art.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this artwork" role="switch" aria-checked="false"/>
 								<label class="grid-close" for="{{art.date|safe}}-{{art.name}}-info"></label>
 								<label class="grid-overlay" for="{{art.date|safe}}-{{art.name}}-info">{% include 'svg/icons/info-large.svg' %}</label>
 								<label class="grid-link" for="{{art.date|safe}}-{{art.name}}-info">{% include 'svg/icons/info.svg' %}</label>
 								<div class="grid-info">
 									<label class="grid-down" for="{{art.date|safe}}-{{art.name}}-info">{% include 'svg/icons/caret-down.svg' %}</label>
+									<a class="grid-expand expand" href="#{{art.date|safe}}-{{art.name}}-lightbox" aria-label="Expand artwork" tabindex="-1">{% include 'svg/icons/expand.svg' %}</a>
 									<dl>
 										<div>
 											<dt class="title">Title</dt><dd>{{art.title}}</dd>
@@ -44,7 +56,6 @@ tags: pages
 											<dt>Tools</dt><dd>{{art.tools}}</dd>
 										</div>
 									</dl>
-									<a class="grid-expand expand" href="#{{art.date|safe}}-{{art.name}}-lightbox" aria-label="Expand artwork" tabindex="-1">{% include 'svg/icons/expand.svg' %}</a>
 								</div>
 							</fieldset>
 						</figcaption>
@@ -54,21 +65,14 @@ tags: pages
 		</div>
 	</div>
 
-	<nav class="grid-filters" aria-label="Tags List">
-		<input id="grid-filters" type="checkbox" tabindex="0" aria-label="Show tags"/>
-		<h2><label for="grid-filters"><span>Tags</span></label></h2>
-		<ul>
-			<li><a class="grid-filter" href="#" data-filter=".filter-digital">#digital</a></li>
-			<li><a class="grid-filter" href="#" data-filter=".filter-traditional">#traditional</a></li>
-			<li><a class="grid-filter" href="#" data-filter=".filter-figure">#figure drawing</a></li>
-			<li><a class="grid-filter reset" href="#" data-filter="*">reset</a></li>
-		</ul>
-	</nav>
-
 	<div class="lightbox-group">
 		{% for art in art %}
-			<a class="lightbox" id="{{art.date|safe}}-{{art.name}}-lightbox" href="#{{art.date|safe}}-{{art.name}}">
-				<span style="background-image: url('/static/images/art/{{art.date|safe}}-{{art.name}}.jpg')"></span>
+			<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{art.date|safe}}-{{art.name}}-lightbox" href="#{{art.date|safe}}-{{art.name}}">
+				<figure class="image">
+					<picture>
+						<img src="/static/images/art/{{art.date|safe}}-{{art.name}}.jpg" alt="{{art.description}}"/>
+					</picture>
+				</figure>
 			</a>
 		{% endfor %}
 		<div class="lightbox-background"></div>

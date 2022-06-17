@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 	<meta name="format-detection" content="telephone=no">
 
-	{% if hidden %}<meta name="robots" content="noindex,nofollow">{% endif %}
+	{% if hidden == true %}<meta name="robots" content="noindex,nofollow">{% endif %}
 
 	<link rel="canonical" href="{{site.url}}{{page.url}}">
 	<link rel="alternate" type="application/rss+xml" title="RSS" href="/writes/feed.xml">
@@ -63,16 +63,16 @@
 		{% block menu %}{% endblock %}
 	</header>
 	<header class="header">
-		<h1><a href="/writes/"><span>gabriellew.ee</span>/writes</a></h1>
+		<h1><a href="/writes/" aria-label="Gabrielle Wee Writes"><span>gabriellew.ee</span>/writes</a></h1>
 	</header>
 	<main>
 		{% block content %}{{content | safe}}{% endblock %}
 	</main>
 	<footer class="bottom" aria-label="Footer">
 		<p>
-			<a href="/writes/archive/"><span>Archive</span></a> <span>·</span>
-			<a href="/writes/feed.xml"><span>RSS</span></a> <span>·</span>
-			{% if aboutLink %}<a href="/about/"><span>About</span></a>{% endif %}
+			<a href="/writes/archive/"><span>Archive</span></a> <span role="presentation" aria-hidden="true">·</span>
+			<a href="/writes/feed.xml"><span>RSS</span></a> <span role="presentation" aria-hidden="true">·</span>
+			{% if aboutLink == true %}<a href="/about/"><span>About</span></a>{% endif %}
 			<span class="copyright">
 				<span>&copy;</span>
 				<a href="/"><span>{{site.author}}</span></a>
@@ -80,7 +80,7 @@
 			</span>
 		</p>
 	</footer>
-	{% if siteScripts %}<script src="{{'/static/js/lazyload.min.js' | url}}"></script>
+	{% if siteScripts == true %}<script src="{{'/static/js/lazyload.min.js' | url}}"></script>
 	<script src="{{'/static/js/imagesloaded.min.js' | url}}"></script>
 	<script src="{{'/static/js/smoothscroll.min.js' | url}}"></script>
 	<script src="{{'/static/js/lightbox.js' | url}}"></script>

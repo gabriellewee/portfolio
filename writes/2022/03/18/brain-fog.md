@@ -1,8 +1,42 @@
----
-date: 2022-03-18
-title: Brain fog.
-layout: layouts/post.njk
-templateEngineOverride: md,njk
+---json
+{
+	"date": "2022-03-18",
+	"title": "Brain fog.",
+	"layout": "layouts/post.njk",
+	"templateEngineOverride": "md,njk",
+	"photos": [
+		{
+			"name": "er-iv",
+			"type": "jpg",
+			"description": "The photo I sent to my family when I went to the ER",
+			"aspect": "horizontal"
+		},
+		{
+			"name": "cat",
+			"type": "jpg",
+			"description": "My cat cuddling me one morning while I was sick in bed",
+			"aspect": "horizontal"
+		},
+		{
+			"name": "selfie",
+			"type": "jpg",
+			"description": "Trying out neon green and pink makeup and velcro roller hair",
+			"aspect": "vertical"
+		},
+		{
+			"name": "jaw-cooper",
+			"type": "jpg",
+			"description": "Art poster by JAW Cooper from a Kickstarter I supported",
+			"aspect": "vertical"
+		},
+		{
+			"name": "soeymilk",
+			"type": "jpg",
+			"description": "Original art by soeymilk that I purchased at Comic Con",
+			"aspect": "vertical"
+		}
+	]
+}
 ---
 
 December and January were rough months for me. Work was stressful, my grandmother passed away, and then in January I suffered from debilitating migraines for three straight weeks. I think it was the culmination of all the anxiety and stress I was holding inside.
@@ -10,9 +44,9 @@ December and January were rough months for me. Work was stressful, my grandmothe
 Those three weeks passed like a fever dream. I would get up from bed to go lay on the couch, and throw back Tylenol and Excedrin every few hours. My moans of pain became so constant that I almost didn’t notice them anymore. I went to the ER once and they pumped me full of Tylenol and Benadryl. My dreams were filled with monsters who lurked in the shadows and devoured people. I cried constantly. I threw up almost everything I ate. We kept a bucket next to me at all times along with a basket full of meds.
 
 <div class="row-double">
-{% image './static/images/writing/2022-03-18-er-iv.jpg', 'The photo I sent to my family when I went to the ER', 'vertical', 'full', 'posts', '2022-03-18-er-iv', true %}
+{% for photo in photos | index(1) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, photo.aspect, 'full', 'posts', photo.name, true %}{% endfor %}
 
-{% image './static/images/writing/2022-03-18-cat.jpg', 'My cat cuddling me one morning while I was sick in bed', 'horizontal', 'full', 'posts', '2022-03-18-cat', true %}
+{% for photo in photos | index(2) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, photo.aspect, 'full', 'posts', photo.name, true %}{% endfor %}
 </div>
 
 Sounds were especially painful. Everything was loud and echoed uncontrollably through my brain. I could literally hear music throughout the night even though there was almost complete silence. Actually listening to music was painful and I avoided it as much as I could.
@@ -32,27 +66,19 @@ I truly believed I was going insane that entire month. I can look back now and u
 The entire experience has left me grateful for my current life. I’ve started to be able to enjoy my hobbies again. I’m putting up artwork on my walls, trying out new makeup, even coding. I’m finally myself again, and even though I know the migraines will probably be a reoccuring problem, hopefully this experience has left me prepared for what will come.
 
 <div class="row-triple">
-{% image './static/images/writing/2022-03-18-selfie.jpg', 'Trying out neon green and pink makeup and velcro roller hair', 'vertical', 'full', 'posts', '2022-03-18-selfie', true %}
+{% for photo in photos | index(3) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, photo.aspect, 'full', 'posts', photo.name, true %}{% endfor %}
 
-{% image './static/images/writing/2022-03-18-jaw-cooper.jpg', 'Art poster by JAW Cooper from a Kickstarter I supported', 'horizontal', 'full', 'posts', '2022-03-18-jaw-cooper', true %}
+{% for photo in photos | index(4) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, photo.aspect, 'full', 'posts', photo.name, true %}{% endfor %}
 
-{% image './static/images/writing/2022-03-18-soeymilk.jpg', 'Original art by soeymilk that I purchased at Comic Con', 'horizontal', 'full', 'posts', '2022-03-18-soeymilk', true %}
+{% for photo in photos | index(5) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, photo.aspect, 'full', 'posts', photo.name, true %}{% endfor %}
 
 <div class="lightbox-group">
-	<a class="lightbox" id="2022-03-18-er-iv-lightbox" href="#2022-03-18-er-iv">
-		<span style="background-image: url('/static/images/writing/2022-03-18-er-iv.jpg')"></span>
-	</a>
-	<a class="lightbox" id="2022-03-18-cat-lightbox" href="#2022-03-18-cat-toddler">
-		<span style="background-image: url('/static/images/writing/2022-03-18-cat.jpg')"></span>
-	</a>
-	<a class="lightbox" id="2022-03-18-selfie-lightbox" href="#2022-03-18-selfie">
-		<span style="background-image: url('/static/images/writing/2022-03-18-selfie.jpg')"></span>
-	</a>
-	<a class="lightbox" id="2022-03-18-jaw-cooper-lightbox" href="#2022-03-18-jaw-cooper">
-		<span style="background-image: url('/static/images/writing/2022-03-18-jaw-cooper.jpg')"></span>
-	</a>
-	<a class="lightbox" id="2022-03-18-soeymilk-lightbox" href="#2022-03-18-soeymilk">
-		<span style="background-image: url('/static/images/writing/2022-03-18-soeymilk.jpg')"></span>
-	</a>
+	{% for photo in photos %}<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{photo.name}}-lightbox" href="#{{photo.name}}">
+		<figure class="image">
+			<picture>
+				<img src="/static/images/writing/{{date}}-{{photo.name}}.{{photo.type}}" alt="{{photo.description}}"/>
+			</picture>
+		</figure>
+	</a>{% endfor %}
 	<div class="lightbox-background"></div>
 </div>

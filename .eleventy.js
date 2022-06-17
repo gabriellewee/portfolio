@@ -1,4 +1,5 @@
 const { DateTime } = require("luxon");
+const { Duration } = require("luxon");
 const fs = require("fs");
 const Image = require("@11ty/eleventy-img");
 const sharp = require("sharp");
@@ -65,6 +66,10 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addFilter('htmlDateString', dateObj => {
 		return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
 	});
+	
+	eleventyConfig.addFilter("timeAgo", dateObj => {
+		return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toRelative();
+	});
 
 	eleventyConfig.addFilter("readableDate", dateObj => {
 		return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("dd LLLL yyyy");
@@ -90,6 +95,10 @@ module.exports = function(eleventyConfig) {
 
 	eleventyConfig.addFilter("limit", (array, limit) => {
 		return array.slice(0, limit);
+	});
+
+	eleventyConfig.addFilter("index", (array, index) => {
+		return array.slice(index - 1, index);
 	});
 
 	eleventyConfig.addFilter("stripAttr", stripObj => {
@@ -204,10 +213,10 @@ module.exports = function(eleventyConfig) {
 		const url = src.substring(1);
 
 		let figcaption;
-		caption ? figcaption = `<figcaption>${alt}</figcaption>` : figcaption = ``;
+		caption ? figcaption = `<figcaption id="${lightbox}-caption" aria-hidden="true">${alt}</figcaption>` : figcaption = ``;
 
 		if(lightbox) {
-			return `<figure id="${lightbox}">${figcaption}
+			return `<figure id="${lightbox}" aria-labelledby="${lightbox}-caption">${figcaption}
 				<a class="expand" href="#${lightbox}-lightbox" aria-label="Expand image">
 					<picture>${source}${img}</picture>
 				</a>

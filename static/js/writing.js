@@ -47,7 +47,7 @@ const animationPlayPause = ((animations = Array.from(document.querySelectorAll("
 			});
 		});
 		play.addEventListener("keydown", e => {
-			if (e.keyCode == 13) {
+			if (e.key === "Enter") {
 				setTimeout(() => {
 					pause.focus();
 				}, 50);
@@ -61,7 +61,7 @@ const animationPlayPause = ((animations = Array.from(document.querySelectorAll("
 			});
 		});
 		pause.addEventListener("keydown", e => {
-			if (e.keyCode == 13) {
+			if (e.key === "Enter") {
 				setTimeout(() => {
 					play.focus();
 				}, 50);

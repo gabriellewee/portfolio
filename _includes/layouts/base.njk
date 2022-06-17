@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 	<meta name="format-detection" content="telephone=no">
 
-	{% if hidden %}<meta name="robots" content="noindex,nofollow">{% endif %}
+	{% if hidden == true %}<meta name="robots" content="noindex,nofollow">{% endif %}
 
 	<link rel="canonical" href="{{site.url}}{{page.url}}">
 
@@ -53,7 +53,7 @@
 	</noscript>
 </head>
 <body ontouchstart{% if templateClass %} class="page-{{templateClass}}"{% endif %}>
-	{% if headerLink %}<header class="top" aria-label="Header"{% if home %} aria-hidden="true"{% endif %}>
+	{% if headerLink == true %}<header class="top" aria-label="Header"{% if home %} aria-hidden="true"{% endif %}>
 		<a class="logo" href="/" aria-label="Go home?"{% if home %} tabindex="-1"{% endif %}>
 			<picture class="memoji memoji-default">
 				<source srcset="/static/images/memoji.webp" type="image/webp">
@@ -74,11 +74,11 @@
 	</main>
 	<footer class="bottom" aria-label="Footer">
 		<p class="copyright">
-			{% if aboutLink %}<a href="/about/">About</a>{% endif %}
+			{% if aboutLink == true %}<a href="/about/">About</a>{% endif %}
 			&copy; {{site.author}} {% year 'start' %}–{% year 'current' %}
 		</p>
 	</footer>
-	{% if siteScripts %}<script src="{{'/static/js/isotope.min.js' | url}}"></script>
+	{% if siteScripts == true %}<script src="{{'/static/js/isotope.min.js' | url}}"></script>
 	<script src="{{'/static/js/clipboard.min.js' | url}}"></script>
 	<script src="{{'/static/js/packery.min.js' | url}}"></script>
 	<script src="{{'/static/js/imagesloaded.min.js' | url}}"></script>

@@ -1,9 +1,31 @@
----
-date: 2022-03-11
-title: Mourning online.
-layout: layouts/post.njk
-templateEngineOverride: md,njk
-medium: https://gabriellewee.medium.com/mourning-online-ac086c4eb87e
+---json
+{
+	"date": "2022-03-11",
+	"title": "Mourning online.",
+	"layout": "layouts/post.njk",
+	"templateEngineOverride": "md,njk",
+	"medium": "https://gabriellewee.medium.com/mourning-online-ac086c4eb87e",
+	"photos": [
+		{
+			"name": "baby",
+			"type": "jpg",
+			"description": "Me and Ngin Ngin",
+			"aspect": "horizontal"
+		},
+		{
+			"name": "toddler",
+			"type": "jpg",
+			"description": "Me and Ngin Ngin visiting Ye Ye",
+			"aspect": "vertical"
+		},
+		{
+			"name": "adult",
+			"type": "jpg",
+			"description": "Me and Ngin Ngin at one of her recent birthdays",
+			"aspect": "vertical"
+		}
+	]
+}
 ---
 
 Late last year, my paternal grandmother passed away. She was an incredible woman, flaws and all. I wrote a short eulogy for her funeral.
@@ -18,12 +40,12 @@ Late last year, my paternal grandmother passed away. She was an incredible woman
 >
 > I love you, Ngin Ngin, and I look forward to one day seeing you again in Heaven.
 
-{% image './static/images/writing/2022-03-11-baby.jpg', 'Me and Ngin Ngin', 'horizontal', 'full', 'posts', '2022-03-11-baby.jpg', true %}
+{% for photo in photos | index(1) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, photo.aspect, 'full', 'posts', photo.name, true %}{% endfor %}
 
 <div class="row-double">
-{% image './static/images/writing/2022-03-11-toddler.jpg', 'Me and Ngin Ngin visiting Ye Ye', 'vertical', 'full', 'posts', '2022-03-11-toddler', true %}
+{% for photo in photos | index(2) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, photo.aspect, 'full', 'posts', photo.name, true %}{% endfor %}
 
-{% image './static/images/writing/2022-03-11-adult.jpg', 'Me and Ngin Ngin at one of her recent birthdays', 'vertical', 'full', 'posts', '2022-03-11-adult', true %}
+{% for photo in photos | index(3) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, photo.aspect, 'full', 'posts', photo.name, true %}{% endfor %}
 </div>
 
 I miss Ngin Ngin a lot. I didn’t realize what a enormous rift her passing would leave in my life. Even writing about her now is still painful. I’m learning, slowly, to let myself grieve.
@@ -179,14 +201,12 @@ Once I had the video uploaded, I could finally put it on the site. I know that `
 I threw together this website the week before my grandmother’s funeral. It was a madwoman’s dash to the finish line, and yet I’m proud of the work I did. I’m also happy that I was able to put it together in a way that will be easy to maintain for my family — I moderate the guestbook submissions through Netlify and all they have to pay for is the domain name — $12 a year, much more inexpensive than the other monthly subscriptions that don’t include a domain name. I don’t know if anybody has needs as specific as mine, but hopefully this helps someone out there.
 
 <div class="lightbox-group">
-	<a class="lightbox" id="2022-03-11-baby-lightbox" href="#2022-03-11-baby">
-		<span style="background-image: url('/static/images/writing/2022-03-11-baby.jpg')"></span>
-	</a>
-	<a class="lightbox" id="2022-03-11-toddler-lightbox" href="#2022-03-11-toddler">
-		<span style="background-image: url('/static/images/writing/2022-03-11-toddler.jpg')"></span>
-	</a>
-	<a class="lightbox" id="2022-03-11-adult-lightbox" href="#2022-03-11-adult">
-		<span style="background-image: url('/static/images/writing/2022-03-11-adult.jpg')"></span>
-	</a>
+	{% for photo in photos %}<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{photo.name}}-lightbox" href="#{{photo.name}}">
+		<figure class="image">
+			<picture>
+				<img src="/static/images/writing/{{date}}-{{photo.name}}.{{photo.type}}" alt="{{photo.description}}"/>
+			</picture>
+		</figure>
+	</a>{% endfor %}
 	<div class="lightbox-background"></div>
 </div>

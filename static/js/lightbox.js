@@ -3,22 +3,24 @@ const lightbox = ((links = Array.from(document.querySelectorAll(".expand"))) => 
 	let sibling;
 	if(links && lightboxes) {
 		links.forEach((link, index)=>{
-			let backgrounds = Array.from(lightboxes[index].querySelectorAll("span"));
+			let backgrounds = Array.from(lightboxes[index].querySelectorAll(".image"));
 			link.addEventListener("click", e => {
 				e.preventDefault();
 				lightboxes[index].classList.add("active");
+				lightboxes[index].focus();
 				backgrounds.forEach(background=>{
-					imagesLoaded(background, { background: true }, () => {
+					imagesLoaded(background, () => {
 						background.classList.add("active");
 					});
 				});
 			});
 		});
 		lightboxes.forEach((lightbox, index)=>{
-			let backgrounds = Array.from(lightbox.querySelectorAll("span"));
+			let backgrounds = Array.from(lightbox.querySelectorAll(".image"));
 			lightbox.addEventListener("click", e => {
 				e.preventDefault();
 				lightbox.classList.remove("active");
+				links[index].focus();
 				backgrounds.forEach(background=>{
 					background.classList.remove("active");
 				});
@@ -34,25 +36,25 @@ const lightbox = ((links = Array.from(document.querySelectorAll(".expand"))) => 
 				}
 			});
 			document.addEventListener("keydown", e => {
-				let keycode = e.keyCode;
 				if(lightbox.classList.contains("active")) {
-					if (keycode === 27) {
+					if (e.key === "Escape") {
 						lightbox.classList.remove("active");
+						links[index].focus();
 						backgrounds.forEach(background=>{
 							background.classList.remove("active");
 						});
-					} else if(keycode === 39 || keycode === 37) {
+					} else if(e.key === "ArrowRight" || e.key === "ArrowLeft") {
 						setTimeout(() => {
 							lightbox.classList.remove("active");
 							backgrounds.forEach(background=>{
 								background.classList.remove("active");
 							});
-							if(keycode === 39) {
+							if(e.key === "ArrowRight") {
 								sibling = lightboxes[index + 1] || lightboxes[0];
-							} else if(keycode === 37) {
+							} else if(e.key === "ArrowLeft") {
 								sibling = lightboxes[index - 1] || lightboxes[lightboxes.length - 1];
 							}
-							let siblingBackgrounds = Array.from(sibling.querySelectorAll("span"));
+							let siblingBackgrounds = Array.from(sibling.querySelectorAll(".image"));
 							sibling.classList.add("active");
 							siblingBackgrounds.forEach(background=>{
 								background.classList.add("active");
