@@ -137,9 +137,11 @@ article {
 		font-style: italic;
 		&:before {
 			content: open-quote;
+			content: open-quote / "";
 			opacity: 0.2;
 			display: block;
 			position: absolute;
+			width: 100%;
 			top: calc(var(--p)*-2.5);
 			left: calc(var(--p)*-1.5);
 			font-size: 64px;
