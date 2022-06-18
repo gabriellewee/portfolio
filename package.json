@@ -25,6 +25,7 @@
 		"@11ty/eleventy-plugin-rss": "^1.2.0",
 		"@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
 		"autoprefixer": "^10.4.7",
+		"html-minifier": "^4.0.0",
 		"luxon": "^2.4.0",
 		"markdown-it": "^12.3.2",
 		"markdown-it-anchor": "^8.4.1",
@@ -33,6 +34,7 @@
 		"postcss-cli": "^9.1.0",
 		"sass": "^1.52.3",
 		"sharp": "^0.30.6",
+		"terser": "^5.14.1",
 		"vanilla-lazyload": "^17.8.2"
 	},
 	"engines": {
