@@ -1,5 +1,5 @@
 const lightbox = ((links = Array.from(document.querySelectorAll(".expand"))) => {
-	let lightboxes = Array.from(document.querySelectorAll(".lightbox"))
+	let lightboxes = Array.from(document.querySelectorAll(".lightbox"));
 	let sibling;
 	if(links && lightboxes) {
 		links.forEach((link, index)=>{

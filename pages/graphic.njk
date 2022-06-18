@@ -34,7 +34,7 @@ tags: pages
 			{% for graphic in graphic %}
 				<div class="grid-item {{graphic.tags|isoFilter}}" id="{{graphic.date|safe}}-{{graphic.name}}" role="listitem">
 					<figure class="grid-figure" role="group" aria-label="Graphic, {{graphic.title}}">
-						{% image './static/images/graphic/' + graphic.date + '-' + graphic.name + '.png', graphic.description, null, 'full', 'graphic' %}
+						{% image './static/images/graphic/' + graphic.date + '-' + graphic.name + '.png', graphic.description, 'default' %}
 						<figcaption>
 							<fieldset>
 								<input class="grid-input" id="{{graphic.date|safe}}-{{graphic.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this graphic" role="switch" aria-checked="false"/>
@@ -75,9 +75,7 @@ tags: pages
 		{% for graphic in graphic %}
 			<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{graphic.date|safe}}-{{graphic.name}}-lightbox" href="#{{graphic.date|safe}}-{{graphic.name}}">
 				<figure class="image">
-					<picture>
-						<img src="/static/images/graphic/{{graphic.date|safe}}-{{graphic.name}}.png" alt="{{graphic.description}}"/>
-					</picture>
+					{% image './static/images/graphic/' + graphic.date + '-' + graphic.name + '.png', graphic.description, 'screen' %}
 				</figure>
 			</a>
 		{% endfor %}

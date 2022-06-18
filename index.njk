@@ -33,7 +33,7 @@ tags: pages
 				{% for photo in photography | limit(4) %}
 					<li id="{{photo.date|safe}}-{{photo.name}}">
 						<a class="grid-item-expand expand" href="#{{photo.date|safe}}-{{photo.name}}-lightbox" aria-label="{{photo.description}} Expand photo" role="button">
-							{% image './static/images/photography/' + photo.date + '-' + photo.name + '-thumbnail.jpg', photo.description, photo.aspect, 'thumbnail', 'photography' %}
+							{% image './static/images/photography/' + photo.date + '-' + photo.name + '-thumbnail.jpg', photo.description, 'thumbnail' %}
 						</a>
 					</li>
 				{% endfor %}
@@ -47,7 +47,7 @@ tags: pages
 				{% for graphic in graphic | limit(4) %}
 					<li id="{{graphic.date|safe}}-{{graphic.name}}">
 						<a class="grid-item-expand expand" href="#{{graphic.date|safe}}-{{graphic.name}}-lightbox" aria-label="{{graphic.description}} Expand graphic" role="button">
-							{% image './static/images/graphic/' + graphic.date + '-' + graphic.name + '.png', graphic.description, null, 'thumbnail', 'graphic' %}
+							{% image './static/images/graphic/' + graphic.date + '-' + graphic.name + '.png', graphic.description, 'thumbnail' %}
 						</a>
 					</li>
 				{% endfor %}
@@ -61,7 +61,7 @@ tags: pages
 				{% for art in art | limit(4) %}
 					<li id="{{art.date|safe}}-{{art.name}}">
 						<a class="grid-item-expand expand" href="#{{art.date|safe}}-{{art.name}}-lightbox" aria-label="{{art.description}} Expand artwork" role="button">
-							{% image './static/images/art/' + art.date + '-' + art.name + '-thumbnail.jpg', art.description, art.aspect, 'thumbnail', 'art' %}
+							{% image './static/images/art/' + art.date + '-' + art.name + '-thumbnail.jpg', art.description, 'thumbnail' %}
 						</a>
 					</li>
 				{% endfor %}
@@ -79,7 +79,7 @@ tags: pages
 				<p>My favorites are <span>philodendron</span>, <span>monstera</span>, and <span>anthurium</span>.</p>
 			</div>
 			<div class="image">
-				{% image './static/images/photography/thai-constellation.jpg', 'A new leaf on my Monstera deliciosa ‘Thai Constellation’', 'vertical', 'thumbnail', 'photography' %}
+				{% image './static/images/photography/2022-04-01-thai-constellation.jpg', 'A new leaf on my Monstera deliciosa ‘Thai Constellation’', 'thumbnail' %}
 			</div>
 			<a class="more" href="https://instagram.com/ellocasia" target="_blank"><span>view plants</span></a>
 		</article>
@@ -94,27 +94,21 @@ tags: pages
 	{% for photo in photography | limit(4) %}
 		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{photo.date|safe}}-{{photo.name}}-lightbox" href="#{{photo.date|safe}}-{{photo.name}}">
 			<figure class="image">
-				<picture>
-					<img src="/static/images/photography/{{photo.date|safe}}-{{photo.name}}.jpg" alt="{{photo.description}}"/>
-				</picture>
+				{% image './static/images/photography/' + photo.date + '-' + photo.name + '.jpg', photo.description, 'screen' %}
 			</figure>
 		</a>
 	{% endfor %}
 	{% for graphic in graphic | limit(4) %}
 		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{graphic.date|safe}}-{{graphic.name}}-lightbox" href="#{{graphic.date|safe}}-{{graphic.name}}">
 			<figure class="image">
-				<picture>
-					<img src="/static/images/graphic/{{graphic.date|safe}}-{{graphic.name}}.png" alt="{{graphic.description}}"/>
-				</picture>
+				{% image './static/images/graphic/' + graphic.date + '-' + graphic.name + '.png', graphic.description, 'screen' %}
 			</figure>
 		</a>
 	{% endfor %}
 	{% for art in art | limit(4) %}
 		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{art.date|safe}}-{{art.name}}-lightbox" href="#{{art.date|safe}}-{{art.name}}">
 			<figure class="image">
-				<picture>
-					<img src="/static/images/art/{{art.date|safe}}-{{art.name}}.jpg" alt="{{art.description}}"/>
-				</picture>
+				{% image './static/images/art/' + art.date + '-' + art.name + '.jpg', art.description, 'screen' %}
 			</figure>
 		</a>
 	{% endfor %}

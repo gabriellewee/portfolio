@@ -8,32 +8,27 @@
 		{
 			"name": "er-iv",
 			"type": "jpg",
-			"description": "The photo I sent to my family when I went to the ER",
-			"aspect": "horizontal"
+			"description": "The photo I sent to my family when I went to the ER"
 		},
 		{
 			"name": "cat",
 			"type": "jpg",
-			"description": "My cat cuddling me one morning while I was sick in bed",
-			"aspect": "horizontal"
+			"description": "My cat cuddling me one morning while I was sick in bed"
 		},
 		{
 			"name": "selfie",
 			"type": "jpg",
-			"description": "Trying out neon green and pink makeup and velcro roller hair",
-			"aspect": "vertical"
+			"description": "Trying out neon green and pink makeup and velcro roller hair"
 		},
 		{
 			"name": "jaw-cooper",
 			"type": "jpg",
-			"description": "Art poster by JAW Cooper from a Kickstarter I supported",
-			"aspect": "vertical"
+			"description": "Art poster by JAW Cooper from a Kickstarter I supported"
 		},
 		{
 			"name": "soeymilk",
 			"type": "jpg",
-			"description": "Original art by soeymilk that I purchased at Comic Con",
-			"aspect": "vertical"
+			"description": "Original art by soeymilk that I purchased at Comic Con"
 		}
 	]
 }
@@ -44,9 +39,9 @@ December and January were rough months for me. Work was stressful, my grandmothe
 Those three weeks passed like a fever dream. I would get up from bed to go lay on the couch, and throw back Tylenol and Excedrin every few hours. My moans of pain became so constant that I almost didn’t notice them anymore. I went to the ER once and they pumped me full of Tylenol and Benadryl. My dreams were filled with monsters who lurked in the shadows and devoured people. I cried constantly. I threw up almost everything I ate. We kept a bucket next to me at all times along with a basket full of meds.
 
 <div class="row-double">
-{% for photo in photos | index(1) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, photo.aspect, 'full', 'posts', photo.name, true %}{% endfor %}
+{% for photo in photos | index(1) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', photo.name %}{% endfor %}
 
-{% for photo in photos | index(2) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, photo.aspect, 'full', 'posts', photo.name, true %}{% endfor %}
+{% for photo in photos | index(2) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', photo.name %}{% endfor %}
 </div>
 
 Sounds were especially painful. Everything was loud and echoed uncontrollably through my brain. I could literally hear music throughout the night even though there was almost complete silence. Actually listening to music was painful and I avoided it as much as I could.
@@ -66,18 +61,16 @@ I truly believed I was going insane that entire month. I can look back now and u
 The entire experience has left me grateful for my current life. I’ve started to be able to enjoy my hobbies again. I’m putting up artwork on my walls, trying out new makeup, even coding. I’m finally myself again, and even though I know the migraines will probably be a reoccuring problem, hopefully this experience has left me prepared for what will come.
 
 <div class="row-triple">
-{% for photo in photos | index(3) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, photo.aspect, 'full', 'posts', photo.name, true %}{% endfor %}
+{% for photo in photos | index(3) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', photo.name %}{% endfor %}
 
-{% for photo in photos | index(4) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, photo.aspect, 'full', 'posts', photo.name, true %}{% endfor %}
+{% for photo in photos | index(4) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', photo.name %}{% endfor %}
 
-{% for photo in photos | index(5) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, photo.aspect, 'full', 'posts', photo.name, true %}{% endfor %}
+{% for photo in photos | index(5) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', photo.name %}{% endfor %}
 
 <div class="lightbox-group">
-	{% for photo in photos %}<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{photo.name}}-lightbox" href="#{{photo.name}}">
+	{% for photo in photos %}<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{date}}-{{photo.name}}-lightbox" href="#{{photo.name}}">
 		<figure class="image">
-			<picture>
-				<img src="/static/images/writing/{{date}}-{{photo.name}}.{{photo.type}}" alt="{{photo.description}}"/>
-			</picture>
+			{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'screen' %}
 		</figure>
 	</a>{% endfor %}
 	<div class="lightbox-background"></div>
