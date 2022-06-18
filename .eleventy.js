@@ -9,6 +9,7 @@ const markdownItAnchor = require("markdown-it-anchor");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const sass = require("sass");
 const path = require("path");
+const htmlmin = require("html-minifier");
 
 module.exports = function(eleventyConfig) {
 	eleventyConfig.setDataDeepMerge(true);
@@ -20,6 +21,17 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("static/fonts");
 	eleventyConfig.addPassthroughCopy("static/images");
 	eleventyConfig.addPassthroughCopy("static/js");
+	
+	eleventyConfig.addTransform("minify", (content, outputPath) => {
+		if (outputPath.endsWith(".html")) {
+			return htmlmin.minify(content, {
+				collapseWhitespace: true,
+				removeComments: true,  
+				useShortDoctype: true,
+			});
+	    }
+	    return content;
+	});
 
 	eleventyConfig.addTemplateFormats("scss");
 
