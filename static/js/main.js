@@ -1,6 +1,6 @@
 const noJS = (() => {
-	document.documentElement.classList.remove("no-js")
-	document.documentElement.classList.add("js")
+	document.documentElement.classList.remove("no-js");
+	document.documentElement.classList.add("js");
 })();
 
 const clipboardCopy = (() => {

@@ -52,7 +52,7 @@
 		<link rel="stylesheet" href="{{'/static/css/no-js.css' | url}}">
 	</noscript>
 </head>
-<body ontouchstart{% if templateClass %} class="page-{{templateClass}}"{% endif %}>
+<body{% if templateClass %} class="page-{{templateClass}}"{% endif %}>
 	{% if headerLink == true %}<header class="top" aria-label="Header"{% if home %} aria-hidden="true"{% endif %}>
 		<a class="logo" href="/" aria-label="Go home?"{% if home %} tabindex="-1"{% endif %}>
 			<picture class="memoji memoji-default">
@@ -81,6 +81,7 @@
 	<script src="{{'/static/js/packery.min.js' | url}}"></script>
 	<script src="{{'/static/js/imagesloaded.min.js' | url}}"></script>
 	<script src="{{'/static/js/lightbox.js' | url}}"></script>
-	<script src="{{'/static/js/main.js' | url}}"></script>{% endif %}
+	<script src="{{'/static/js/main.js' | url}}"></script>
+	<script>document.body.addEventListener('touchstart', function() {}, {passive: true});</script>{% endif %}
 </body>
 </html>

@@ -49,7 +49,7 @@
 
 	<link rel="stylesheet" href="{{'/static/css/writing.css' | url}}">
 </head>
-<body ontouchstart{% if templateClass %} class="page-{{templateClass}}"{% endif %}>
+<body{% if templateClass %} class="page-{{templateClass}}"{% endif %}>
 	<header class="top" aria-label="Header">
 		<a class="logo" href="/" aria-label="Go home?">
 			<picture class="memoji memoji-default">
@@ -86,6 +86,7 @@
 	<script src="{{'/static/js/imagesloaded.min.js' | url}}"></script>
 	<script src="{{'/static/js/smoothscroll.min.js' | url}}"></script>
 	<script src="{{'/static/js/lightbox.js' | url}}"></script>
-	<script src="{{'/static/js/writing.js' | url}}"></script>{% endif %}
+	<script src="{{'/static/js/writing.js' | url}}"></script>
+	<script>document.body.addEventListener('touchstart', function() {}, {passive: true});</script>{% endif %}
 </body>
 </html>
