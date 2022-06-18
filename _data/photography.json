@@ -1,5 +1,55 @@
 [
 	{
+		"name": "jeselle",
+		"date": "2022-06-05",
+		"location": "San Francisco, CA, USA",
+		"camera": "iPhone 12 Pro Max",
+		"editor": "VSCO",
+		"aspect": "vertical",
+		"tags": "people portrait indoor food",
+		"description": "A person with long hair and beanie holding up pieces of bacon at a brunch restaurant in San Francisco."
+	},
+	{
+		"name": "kehoe",
+		"date": "2022-05-28",
+		"location": "Kehoe Beach, Inverness, CA, USA",
+		"camera": "iPhone 12 Pro Max",
+		"editor": "VSCO",
+		"aspect": "vertical",
+		"tags": "nature outdoor beach landscape",
+		"description": "Ocean waves crashing against the rocks and spraying the air at Kehoe Beach."
+	},
+	{
+		"name": "hayden",
+		"date": "2022-05-28",
+		"location": "Kehoe Beach, Inverness, CA, USA",
+		"camera": "iPhone 12 Pro Max",
+		"editor": "VSCO",
+		"aspect": "vertical",
+		"tags": "nature outdoor beach portrait people",
+		"description": "A man in a waterproof poncho, sunglasses, and a hat sitting on a rock on Kehoe Beach."
+	},
+	{
+		"name": "twin-peaks",
+		"date": "2022-05-13",
+		"location": "Twin Peaks, San Francisco, CA, USA",
+		"camera": "iPhone 12 Pro Max",
+		"editor": "VSCO",
+		"aspect": "horizontal",
+		"tags": "nature outdoor park landscape city",
+		"description": "A wide shot of downtown San Francisco as seen from Twin Peaks."
+	},
+	{
+		"name": "flowers",
+		"date": "2022-05-08",
+		"location": "San Francisco, CA, USA",
+		"camera": "iPhone 12 Pro Max",
+		"editor": "VSCO",
+		"aspect": "vertical",
+		"tags": "flower plants nature indoor",
+		"description": "A bouquet of deep pink peonies."
+	},
+	{
 		"name": "alfie",
 		"date": "2021-10-25",
 		"location": "San Francisco, CA, USA",
@@ -162,7 +212,7 @@
 	{
 		"name": "agate-beach",
 		"date": "2021-03-01",
-		"location": "Patrick’s Point State Park, Trinidad, CA, USA",
+		"location": "Patrick’s Point, Trinidad, CA, USA",
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"aspect": "horizontal",
