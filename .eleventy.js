@@ -128,33 +128,19 @@ module.exports = function(eleventyConfig) {
 		return stripObj;
 	});
 
-	eleventyConfig.addNunjucksAsyncShortcode("image", async (src, alt, aspect, type, category, lightbox, caption) => {
+	eleventyConfig.addNunjucksAsyncShortcode("image", async (src, alt, type, lightbox) => {
+		let category = src.split('/')[3];
+		let name = src.split('/')[4].slice(0, -4);
+		
 		let newWidths;
-		let newFormats;
-
-		if(category === "photography" || category === "posts") {
-			if(type === "full") {
-				if(aspect === 'horizontal') {
-					newWidths = [100, 1512, 3024, null];
-				} else if(aspect === 'vertical') {
-					newWidths = [100, 1134, 2268, null];
-				}
-			} else if(type === "thumbnail") {
-				newWidths = [50, 400, 800];
-			}
-		} else if(category === "art") {
-			if(type === "full") {
-				newWidths = [100, 1500, null]
-			} else if(type === "thumbnail") {
-				newWidths = [50, 400, 800];
-			}
-		} else if(category === "archive") {
-			newWidths = [100, null, null]
-		} else if(category === "graphic") {
-			newWidths = [100, 400, 800, 1500, null]
+		if(type === "default" || type === "screen") {
+			newWidths = [100, 900, 1728, 2268, null]
+		} else if(type === "thumbnail") {
+			newWidths = [50, 400, 800];
 		}
-
-		(category === "graphic") ? newFormats = ["webp", "png"]: newFormats = ["webp", "jpeg"];
+		
+		let newFormats;
+		(category === "graphic") ? newFormats = ["webp", "png"] : newFormats = ["webp", "jpeg"];
 
 		let stats = await Image(src, {
 			widths: newWidths,
@@ -167,13 +153,8 @@ module.exports = function(eleventyConfig) {
 		let basic;
 
 		if(category === "graphic") {
-			if(type === "full") {
-				lowest = stats["png"][0];
-				basic = stats["png"][3];
-			} else if(type === "thumbnail") {
-				lowest = stats["png"][0];
-				basic = stats["png"][1];
-			}
+			lowest = stats["png"][0];
+			basic = stats["png"][1];
 		} else {
 			lowest = stats["jpeg"][0];
 			basic = stats["jpeg"][1];
@@ -184,45 +165,57 @@ module.exports = function(eleventyConfig) {
 			.blur()
 			.toBuffer();
 
-		const base64Placeholder = `data:image/png;base64,${placeholder.toString(
-			"base64"
-		)}`;
-
-		let webpset;
-		let regset;
+		const base64Placeholder = `data:image/png;base64,${placeholder.toString("base64")}`;
 		
-		let large = stats["webp"][2].url || src.substring(1).slice(0, -4);
-
-		if(category === "graphic") {
-			if(type === "full") {
-				webpset = `${stats["webp"][3].url}, ${src.substring(1).slice(0, -4)}.webp 2x`;
-				regset = `${stats["png"][3].url}, ${src.substring(1)} 2x`;
-			} else if(type === "thumbnail") {
-				webpset = `${stats["webp"][1].url}, ${stats["webp"][2].url} 2x`;
-				regset = `${stats["png"][1].url}, ${stats["png"][2].url} 2x`;
-			}
-		} else {
-			webpset = `${stats["webp"][1].url}, ${large} 2x`;
-			regset = `${stats["jpeg"][1].url}, ${large} 2x`;
+		let webpset;
+		if(type === "default") {
+			webpset = `${stats["webp"][3].srcset}, ${stats["webp"][2].srcset}, ${stats["webp"][1].srcset}`
+		} else if(type === "thumbnail") {
+			webpset = `${stats["webp"][1].url}, ${stats["webp"][2].url} 2x`;
+		} else if(type === "screen") {
+			webpset = `${stats["webp"][4].url}`;
 		}
 
-		const source = `<source type="image/webp" srcset="${webpset}">`;
-
-		const img = `<img loading="lazy" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" width="${basic.width}" height="${basic.height}">`;
-
-		const url = src.substring(1);
-
-		let figcaption;
-		caption ? figcaption = `<figcaption id="${lightbox}-caption" aria-hidden="true">${alt}</figcaption>` : figcaption = ``;
-
+		let regset;
+		if(category === "graphic") {
+			if(type === "default") {
+				regset = `${stats["png"][3].srcset}, ${stats["png"][2].srcset}, ${stats["png"][1].srcset}`
+			} else if(type === "thumbnail") {
+				regset = `${stats["png"][1].url}, ${stats["png"][2].url} 2x`;
+			} else if(type === "screen") {
+				regset = `${stats["png"][4].url}`;
+			}
+		} else {
+			if(type === "default") {
+				regset = `${stats["jpeg"][3].srcset}, ${stats["jpeg"][2].srcset}, ${stats["jpeg"][1].srcset}`
+			} else if(type === "thumbnail") {
+				regset = `${stats["jpeg"][1].url}, ${stats["jpeg"][2].url} 2x`;
+			} else if(type === "screen") {
+				regset = `${stats["jpeg"][4].url}`;
+			}
+		}
+		
+		let source;
+		let img;
+		if(type === "default") {
+			source = `<source type="image/webp" srcset="${webpset}" sizes="(min-width: 2560px) 25vw, (min-width: 768px) 50vw, 100vw">`;
+			img = `<img loading="lazy" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" sizes="(min-width: 2560px) 25vw, (min-width: 768px) 50vw, 100vw" width="${basic.width}" height="${basic.height}">`;
+		} else if(type === "thumbnail" || type === "screen") {
+			source = `<source type="image/webp" srcset="${webpset}">`;
+			img = `<img loading="lazy" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" width="${basic.width}" height="${basic.height}">`;
+		}
+		
+		let picture = `<picture>${source}${img}</picture>`;
+		
 		if(lightbox) {
-			return `<figure id="${lightbox}" aria-labelledby="${lightbox}-caption">${figcaption}
-				<a class="expand" href="#${lightbox}-lightbox" aria-label="Expand image">
-					<picture>${source}${img}</picture>
+			return `<figure id="${name}" aria-labelledby="${name}-caption">
+				<figcaption id="${name}-caption" aria-hidden="true">${alt}</figcaption>
+				<a class="expand" href="#${name}-lightbox" aria-label="Expand image">
+					${picture}
 				</a>
 			</figure>`;
 		} else {
-			return `<picture>${source}${img}</picture>`;
+			return `${picture}`;
 		}
 	});
 

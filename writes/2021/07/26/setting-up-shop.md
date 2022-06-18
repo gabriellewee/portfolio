@@ -8,46 +8,39 @@
 		{
 			"name": "website-home",
 			"type": "png",
-			"description": "Previous website home page",
-			"aspect": "horizontal"
+			"description": "Previous website home page"
 		},
 		{
 			"name": "website-project-top",
 			"type": "png",
-			"description": "Previous website project page information",
-			"aspect": "horizontal"
+			"description": "Previous website project page information"
 		},
 		{
 			"name": "website-project-middle",
 			"type": "png",
-			"description": "Previous website project page styles",
-			"aspect": "horizontal"
+			"description": "Previous website project page styles"
 		},
 		{
 			"name": "portfolio-icons",
 			"type": "png",
-			"description": "Website thumbnail icons I created for my portfolio",
-			"aspect": "horizontal"
+			"description": "Website thumbnail icons I created for my portfolio"
 		},
 		{
 			"name": "website-v4",
 			"type": "png",
 			"description": "Landing page version",
-			"aspect": "horizontal",
 			"lightDark": true
 		},
 		{
 			"name": "current-website",
 			"type": "png",
 			"description": "Current website",
-			"aspect": "vertical",
 			"lightDark": true
 		},
 		{
 			"name": "home",
 			"type": "jpg",
-			"description": "Click on this sunset photo to try out the lightbox",
-			"aspect": "horizontal"
+			"description": "Click on this sunset photo to try out the lightbox"
 		}
 	]
 }
@@ -59,17 +52,17 @@ It's been a while since I've really done a proper update on this website. I'd li
 
 Previously, I hosted this website on [Github Pages](https://pages.github.com) and used a static site generator called [Cactus](https://github.com/eudicots/Cactus) to build my files.
 
-{% for photo in photos | index(1) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, photo.aspect, 'full', 'posts', photo.name, true %}{% endfor %}
+{% for photo in photos | index(1) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', photo.name %}{% endfor %}
 
 <div class="row-double">
-{% for photo in photos | index(2) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, photo.aspect, 'full', 'posts', photo.name, true %}{% endfor %}
+{% for photo in photos | index(2) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', photo.name %}{% endfor %}
 
-{% for photo in photos | index(3) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, photo.aspect, 'full', 'posts', photo.name, true %}{% endfor %}
+{% for photo in photos | index(3) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', photo.name %}{% endfor %}
 </div>
 
 I was (and still am) really proud of this portfolio. It was my first big project out of college, and it got featured a few times on various sites. I experimented with different layout techniques and for the first time, created an extensive set of my own icons and thumbnails.
 
-{% for photo in photos | index(4) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, photo.aspect, 'full', 'posts', photo.name, true %}{% endfor %}
+{% for photo in photos | index(4) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', photo.name %}{% endfor %}
 
 After this, I didn't update my portfolio for almost four years. I started working at [Apple](https://apple.com) in 2017 as a vendor and transitioned to full-time in 2018, so there really wasn't any need to change things up. I also really liked the design and couldn't think of how to change it.
 
@@ -80,7 +73,7 @@ Finally, last year, during the height of the pandemic, I decided I needed to cha
 <figure id="2021-07-26-website-v4" class="light-dark">
 	<figcaption>Landing page version</figcaption>
 	<a class="expand " href="#2021-07-26-website-v4-lightbox" aria-label="Expand image">
-		{% for photo in photos | index(5) %}{% image './static/images/writing/' + date + '-' + photo.name + '-dark.' + photo.type, photo.description, photo.aspect, 'full', 'posts' %}{% image './static/images/writing/' + date + '-' + photo.name + '-light.' + photo.type, photo.description, photo.aspect, 'full', 'posts' %}{% endfor %}
+		{% for photo in photos | index(5) %}{% image './static/images/writing/' + date + '-' + photo.name + '-dark.' + photo.type, photo.description, 'default' %}{% image './static/images/writing/' + date + '-' + photo.name + '-light.' + photo.type, photo.description, 'default' %}{% endfor %}
 	</a>
 </figure>
 
@@ -93,7 +86,7 @@ I came up with a design that is busy but organized. Each section represents one 
 <figure id="2021-07-26-current-website" class="light-dark">
 	<figcaption>Current website</figcaption>
 	<a class="expand " href="#2021-07-26-current-website-lightbox" aria-label="Expand image">
-		{% for photo in photos | index(6) %}{% image './static/images/writing/' + date + '-' + photo.name + '-dark.' + photo.type, photo.description, photo.aspect, 'full', 'posts' %}{% image './static/images/writing/' + date + '-' + photo.name + '-light.' + photo.type, photo.description, photo.aspect, 'full', 'posts' %}{% endfor %}
+		{% for photo in photos | index(6) %}{% image './static/images/writing/' + date + '-' + photo.name + '-dark.' + photo.type, photo.description, 'default' %}{% image './static/images/writing/' + date + '-' + photo.name + '-light.' + photo.type, photo.description, 'default' %}{% endfor %}
 	</a>
 </figure>
 
@@ -144,7 +137,7 @@ Another no-JS component is the lightbox. I found this ingenious solution that us
 
 I styled it with some basic CSS transitions and a loading icon, then added enhanced Javascript functionality on top to cycle through images and use keyboard shortcuts. The background is separate from the image so that it doesn't fade in and out when you use the arrow key to tab to another image.
 
-{% for photo in photos | index(7) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, photo.aspect, 'full', 'posts', photo.name, true %}{% endfor %}
+{% for photo in photos | index(7) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', photo.name %}{% endfor %}
 
 ## Eleventy
 
@@ -214,20 +207,14 @@ It's a bit messy, and I have more direct commits than I should, but if you want 
 I keep making small changes here and there, but the heavy lifting is done. I'm hoping to write here more regularly in the future!
 
 <div class="lightbox-group">
-	{% for photo in photos %}<a class="lightbox{% if photo.lightDark == true %} light-dark{% endif %}" role="dialog" aria-label="Modal" aria-modal="true" id="{{photo.name}}-lightbox" href="#{{photo.name}}">
-		{% if photo.lightDark == true %}<figure class="image">
-			<picture>
-				<img src="/static/images/writing/{{date}}-{{photo.name}}-dark.{{photo.type}}" alt="{{photo.description}} in dark mode"/>
-			</picture>
+	{% for photo in photos %}<a class="lightbox{% if photo.lightDark == true %} light-dark{% endif %}" role="dialog" aria-label="Modal" aria-modal="true" id="{{date}}-{{photo.name}}-lightbox" href="#{{photo.name}}">
+		{% if photo.lightDark == true %}<figure class="image dark">
+			{% image './static/images/writing/' + date + '-' + photo.name + '-dark.' + photo.type, photo.description, 'screen' %}
 		</figure>
-		<figure class="image">
-			<picture>
-				<img src="/static/images/writing/{{date}}-{{photo.name}}-light.{{photo.type}}" alt="{{photo.description}} in light mode"/>
-			</picture>
+		<figure class="image light">
+			{% image './static/images/writing/' + date + '-' + photo.name + '-light.' + photo.type, photo.description, 'screen' %}
 		</figure>{% else %}<figure class="image">
-			<picture>
-				<img src="/static/images/writing/{{date}}-{{photo.name}}.{{photo.type}}" alt="{{photo.description}}"/>
-			</picture>
+			{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'screen' %}
 		</figure>{% endif %}
 	</a>{% endfor %}
 	<div class="lightbox-background"></div>

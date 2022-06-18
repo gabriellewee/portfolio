@@ -286,7 +286,7 @@ article {
 		}
 	}
 	.light-dark {
-		picture {
+		picture:not(:only-child) {
 			&:nth-of-type(1) {
 				display: block;
 				@include dark {
