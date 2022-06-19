@@ -1,5 +1,4 @@
-const { DateTime } = require("luxon");
-const { Duration } = require("luxon");
+const { DateTime, Duration } = require("luxon");
 const fs = require("fs");
 const Image = require("@11ty/eleventy-img");
 const sharp = require("sharp");
@@ -9,6 +8,7 @@ const markdownItAnchor = require("markdown-it-anchor");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const sass = require("sass");
 const path = require("path");
+const minify = require("terser").minify;
 const htmlmin = require("html-minifier");
 
 module.exports = function(eleventyConfig) {
@@ -20,11 +20,10 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("static/css/no-js.css");
 	eleventyConfig.addPassthroughCopy("static/fonts");
 	eleventyConfig.addPassthroughCopy("static/images");
-	eleventyConfig.addPassthroughCopy("static/js");
 	
-	eleventyConfig.addTransform("minify", (content, outputPath) => {
+	eleventyConfig.addTransform("minify", async (content, outputPath) => {
 		if (outputPath.endsWith(".html")) {
-			return htmlmin.minify(content, {
+			return await htmlmin.minify(content, {
 				collapseWhitespace: true,
 				removeComments: true,  
 				useShortDoctype: true,
@@ -34,10 +33,9 @@ module.exports = function(eleventyConfig) {
 	});
 
 	eleventyConfig.addTemplateFormats("scss");
-
 	eleventyConfig.addExtension("scss", {
 		outputFileExtension: "css",
-		compile: function(inputContent, inputPath) {
+		compile: (inputContent, inputPath) => {
 			let parsed = path.parse(inputPath);
 			if(parsed.name.startsWith("_")) {
 				return;
@@ -50,6 +48,21 @@ module.exports = function(eleventyConfig) {
 					]
 				});
 				return result.css.toString("utf8");
+			};
+		}
+	});
+	
+	eleventyConfig.addTemplateFormats("js");
+	eleventyConfig.addExtension("js", {
+		outputFileExtension: "js",
+		compile: (inputContent, inputPath) => {
+			let parsed = path.parse(inputPath);
+			if(parsed.name.endsWith("min") || parsed.name.startsWith(".")) {
+				return;
+			}
+			return async (data) => {
+				let minified = await minify(inputContent, {});
+				return minified.code;
 			};
 		}
 	});
