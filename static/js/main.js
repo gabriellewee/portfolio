@@ -64,29 +64,12 @@ const clipboardCopy = (() => {
 	}
 })();
 
-let iso;
 let container = document.querySelector(".grid-isotope");
-const isoTrigger = ((el) => {
-	iso = new Isotope(el, {
-		percentPosition: true,
-		layoutMode: "packery",
-		itemSelector: ".grid-item"
-	});
+let iso = new Isotope(container, {
+	percentPosition: true,
+	layoutMode: "packery",
+	itemSelector: ".grid-item"
 });
-const isoContainer = (() => {
-	if(document.body.clientWidth >= 834) {
-		container ? isoTrigger(container) : null
-	}
-	window.addEventListener("resize", function() {
-		setTimeout(() => {
-			if(document.body.clientWidth >= 834) {
-				if(container && iso === undefined) {
-					isoTrigger(container);
-				}
-			}
-		}, 500);
-	});
-})();
 
 const loading = new imagesLoaded(document.body, { background: true }, () => {
 	setTimeout(() => {
