@@ -15,7 +15,7 @@
 		z-index: 1;
 		padding-bottom: calc(var(--p)/3);
 	}
-	svg {
+	picture {
 		display: block;
 		width: 100%;
 		height: auto;
@@ -75,7 +75,7 @@
 		@include viewport($mbp-14) {
 			width: 255px;
 		}
-		svg {
+		picture {
 			max-width: 255px;
 			margin: 0 auto;
 		}
@@ -93,7 +93,7 @@
 		@include viewport($ipad-mini) {
 			grid-template-columns: repeat(5, 1fr);
 		}
-		svg {
+		picture {
 			border-radius: calc(var(--p)/2);
 			@include dark {
 				.background {

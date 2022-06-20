@@ -17,7 +17,9 @@
 		<li>
 			<a class="code-link-{{link.name}} {{link.style}}" href="https://codepen.io/gabriellewee/pen/{{link.uri}}/" target="_blank" aria-label="{{link.title}}">
 				<span class="inside" aria-hidden="true">
-					{% include 'svg/thumbnails/' + link.name + '.svg' %}
+					<picture>
+						<img src="/static/images/svg/thumbnails/{{link.name}}.svg"/>
+					</picture>
 					<span class="overlay">{{link.title}}</span>
 				</span>
 			</a>
@@ -37,7 +39,9 @@
 		<li>
 			<a class="code-link-{{link.name}}" href="https://codepen.io/gabriellewee/pen/{{link.uri}}/" target="_blank" aria-label="Daily UI #{{link.name}}: {{link.title}}">
 				<span class="inside" aria-hidden="true">
-					{% include 'svg/ui/' + link.name + '.svg' %}
+					<picture>
+						<img src="/static/images/svg/ui/{{link.name}}.svg"/>
+					</picture>
 					<span class="overlay">
 						<span>#{{link.name}}</span>
 						<span>{{link.title}}</span>
