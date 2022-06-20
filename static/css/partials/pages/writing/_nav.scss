@@ -34,7 +34,6 @@
 		}
 		span {
 			display: inline-block;
-			will-change: transform, background-color, color;
 			transition: transform .1s ease-out;
 			background-color: var(--color-iron);
 			color: white;

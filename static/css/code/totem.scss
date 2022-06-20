@@ -22,8 +22,6 @@ main {
 canvas {
 	transform: translateZ(40px) translateY(100vh);
 	animation: enter 2000ms cubic-bezier(.075,.820,.165,1) 500ms forwards;
-	will-change: transform;
-	// border: 1px dashed rgba(black, .2);
 	cursor: move;
 }
 

@@ -106,7 +106,6 @@
 			}
 		}
 		a {
-			will-change: transform;
 			transition: .2s ease-out;
 			display: block;
 			border-radius: calc(var(--p)/2);
@@ -172,7 +171,6 @@
 			.overlay {
 				@include blur(5px);
 				opacity: 0;
-				will-change: opacity;
 				transition: .2s ease-out;
 				display: flex;
 				align-items: center;

@@ -19,7 +19,6 @@
 	}
 	z-index: 10;
 	.memoji {
-		will-change: opacity;
 		display: block;
 		&, img {
 			width: calc(var(--p)*4);
@@ -34,7 +33,6 @@
 	}
 	span {
 		@include blur-all(5px, "var(--color-message-hsl)", .9, .8);
-		will-change: opacity, transform;
 		transition: .3s ease-out;
 		transform: translateY(100%);
 		opacity: 0;

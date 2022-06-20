@@ -78,7 +78,6 @@ main, .frame-content {
 
 .header, h1, h2, h3, h4, h5, h6 {
 	a {
-		will-change: transform;
 		transition: transform .1s ease-out;
 		display: inline-block;
 		&:hover, &:focus {
@@ -119,7 +118,6 @@ button {
 		}
 	}
 	span {
-		will-change: transform, background-color, color;
 		transition: transform .1s ease-out;
 		display: inline-block;
 		padding: calc(var(--p)/3) calc(var(--p)/2);
