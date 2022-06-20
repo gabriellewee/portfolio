@@ -56,11 +56,13 @@
 	{% if headerLink == true %}<header class="top" aria-label="Header"{% if home %} aria-hidden="true"{% endif %}>
 		<a class="logo" href="/" aria-label="Go home?"{% if home %} tabindex="-1"{% endif %}>
 			<picture class="memoji memoji-default">
-				<source srcset="/static/images/avatars/memoji.webp" type="image/webp">
+				<source srcset="/static/images/avatars/memoji.webp, /static/images/avatars/memoji@2x.webp 2x" type="image/webp">
+				<source srcset="/static/images/avatars/memoji.png, /static/images/avatars/memoji@2x.png 2x" type="image/png">
 				<img src="/static/images/avatars/memoji.png" alt="" width="48px" height="68px">
 			</picture>
 			<picture class="memoji memoji-hm">
-				<source srcset="/static/images/avatars/memoji-hm.webp" type="image/webp">
+				<source srcset="/static/images/avatars/memoji-hm.webp, /static/images/avatars/memoji-hm@2x.webp 2x" type="image/webp">
+				<source srcset="/static/images/avatars/memoji-hm.png, /static/images/avatars/memoji-hm@2x.png 2x" type="image/png">
 				<img src="/static/images/avatars/memoji-hm.png" alt="" width="48px" height="68px">
 			</picture>
 		</a>
