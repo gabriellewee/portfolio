@@ -17,6 +17,18 @@
 	NODE_VERSION = "16.0.0"
 
 [[redirects]]
+	from = "http://gabriellewee.netlify.app/*"
+	to = "http://gabriellew.ee/:splat"
+	status = 301
+	force = true
+
+[[redirects]]
+	from = "https://gabriellewee.netlify.app/*"
+	to = "https://gabriellew.ee/:splat"
+	status = 301
+	force = true
+
+[[redirects]]
 	from = "/v1/*"
 	to = "https://archive.gabriellew.ee/v1/:splat"
 	status = 200
