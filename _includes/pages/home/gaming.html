@@ -4,50 +4,17 @@
 </div>
 <div class="console">
 	<picture>
-		<img src="/static/images/svg/controllers/switch-pink.svg"/>
+		<img src="/static/images/svg/controllers/switch-pink.svg" width="255" height="107" alt="Modded pink Nintendo Switch"/>
 	</picture>
 </div>
 <ul class="modding">
-	<li>
-		<picture>
-			<img src="/static/images/svg/controllers/joy-con-white.svg"/>
-		</picture>
-	</li>
-	<li>
-		<picture>
-			<img src="/static/images/svg/controllers/joy-con-black.svg"/>
-		</picture>
-	</li>
-	<li>
-		<picture>
-			<img src="/static/images/svg/controllers/pro-pink.svg"/>
-		</picture>
-	</li>
-	<li>
-		<picture>
-			<img src="/static/images/svg/controllers/joy-con-pink.svg"/>
-		</picture>
-	</li>
-	<li>
-		<picture>
-			<img src="/static/images/svg/controllers/pro-violet.svg"/>
-		</picture>
-	</li>
-	<li>
-		<picture>
-			<img src="/static/images/svg/controllers/joy-con-blue.svg"/>
-		</picture>
-	</li>
-	<li>
-		<picture>
-			<img src="/static/images/svg/controllers/pro-matcha.svg"/>
-		</picture>
-	</li>
-	<li>
-		<picture>
-			<img src="/static/images/svg/controllers/pro-cyan.svg"/>
-		</picture>
-	</li>
+	{% for controller in controllers %}
+		<li>
+			<picture>
+				<img src="/static/images/svg/controllers/{{controller.name}}.svg" width="156" height="156" alt="Modded {{controller.color}} {{controller.brand}} {{controller.type}}"/>
+			</picture>
+		</li>
+	{% endfor %}
 </ul>
 <div class="playing">
 	<h3>Currently playing:</h3>
