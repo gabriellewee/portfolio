@@ -78,7 +78,6 @@ h2 {
 		}
 	}
 	a {
-		will-change: transform, background-color, color;
 		transition: transform .1s ease-out;
 		display: inline-block;
 		padding: calc(var(--p)/2) var(--p);

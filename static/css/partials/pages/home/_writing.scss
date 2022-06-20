@@ -39,7 +39,6 @@
 		}
 	}
 	a {
-		will-change: background-color, color, transform;
 		transition: .1s ease-out;
 		&:active {
 			transform: scale(0.98);

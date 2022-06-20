@@ -22,12 +22,10 @@
 
 .lightbox-background {
 	@include blur-all(5px, "var(--color-iron-12-hsl)", .95, .9);
-	will-change: opacity, visibility, z-index;
 	transition: .2s opacity ease-out, 0s visibility .2s, 0s z-index .2s;
 	z-index: -999;
 	&:before {
 		opacity: 0;
-		will-change: opacity, transform;
 		animation: loading 1s linear infinite forwards;
 		content: "";
 		display: block;
@@ -45,7 +43,6 @@
 }
 
 .lightbox {
-	will-change: visibility, z-index;
 	transition: 0s visibility .2s, 0s z-index .2s;
 	z-index: -998;
 	padding: var(--p);
@@ -54,7 +51,6 @@
 	}
 	.image {
 		opacity: 0;
-		will-change: opacity, display;;
 		transition: .2s opacity ease-out .1s, 0s display .2s;
 		display: none;
 		position: relative;

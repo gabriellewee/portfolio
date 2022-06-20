@@ -15,7 +15,6 @@
 			position: relative;
 		}
 		.expand {
-			will-change: transform;
 			transition: .2s ease-out;
 			border-radius: calc(var(--p)/2);
 			overflow: hidden;
@@ -27,7 +26,6 @@
 				justify-content: center;
 				&:before, &:after {
 					opacity: 0;
-					will-change: opacity;
 					transition: .2s ease-out;
 					content: "";
 					display: block;

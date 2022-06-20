@@ -18,7 +18,6 @@
 		}
 	}
 	a {
-		will-change: transform, background-color, color;
 		transition: .1s ease-out;
 		display: inline-block;
 		background-color: var(--color-iron);

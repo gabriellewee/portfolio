@@ -10,7 +10,6 @@ header {
 .cursor {
 	&:after {
 		content: "_";
-		will-change: opacity;
 		animation: blink 1s cubic-bezier(1,0,0,1) infinite forwards;
 		display: inline-block;
 		@media (prefers-reduced-motion) {
@@ -73,7 +72,6 @@ header {
 			}
 		}
 		span {
-			will-change: transform;
 			transition: .1s ease-out;
 			display: block;
 		}

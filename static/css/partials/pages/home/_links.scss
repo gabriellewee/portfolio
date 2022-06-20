@@ -9,7 +9,6 @@
 		-webkit-user-select: none;
 	}
 	p > a, label {
-		will-change: transform, color;
 		transition: .1s ease-out;
 		display: inline-block;
 		font-size: 40px;
@@ -172,7 +171,6 @@
 				}
 				.tooltip {
 					opacity: 0;
-					will-change: opacity;
 					transition: .1s ease-out;
 					position: relative;
 					background: black;
