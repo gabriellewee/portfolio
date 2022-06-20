@@ -122,10 +122,10 @@
 			&:active {
 				transform: scale(0.95);
 			}
-			&, svg {
+			&, picture {
 				display: block;
 			}
-			svg {
+			picture {
 				width: 100%;
 				height: auto;
 			}
