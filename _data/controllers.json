@@ -1,0 +1,50 @@
+[
+	{
+		"name": "joy-con-white",
+		"color": "white",
+		"brand": "Nintendo",
+		"type": "Joy-Cons"
+	},
+	{
+		"name": "joy-con-black",
+		"color": "black",
+		"brand": "Nintendo",
+		"type": "Joy-Cons"
+	},
+	{
+		"name": "pro-pink",
+		"color": "pink",
+		"brand": "Nintendo",
+		"type": "Pro Controller"
+	},
+	{
+		"name": "joy-con-pink",
+		"color": "pink",
+		"brand": "Nintendo",
+		"type": "Joy-Cons"
+	},
+	{
+		"name": "pro-violet",
+		"color": "violet",
+		"brand": "Nintendo",
+		"type": "Pro Controller"
+	},
+	{
+		"name": "joy-con-blue",
+		"color": "blue",
+		"brand": "Nintendo",
+		"type": "Joy-Cons"
+	},
+	{
+		"name": "pro-matcha",
+		"color": "matcha green",
+		"brand": "Nintendo",
+		"type": "Pro Controller"
+	},
+	{
+		"name": "pro-cyan",
+		"color": "cyan",
+		"brand": "Nintendo",
+		"type": "Pro Controller"
+	}
+]
