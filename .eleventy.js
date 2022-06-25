@@ -13,7 +13,6 @@ const htmlmin = require("html-minifier");
 module.exports = function(eleventyConfig) {
 	eleventyConfig.setDataDeepMerge(true);
 
-	eleventyConfig.addPassthroughCopy("admin");
 	eleventyConfig.addPassthroughCopy("robots.txt");
 	eleventyConfig.addPassthroughCopy("contact.vcf");
 	eleventyConfig.addPassthroughCopy("static/css/no-js.css");
@@ -145,10 +144,12 @@ module.exports = function(eleventyConfig) {
 		if(file === "jpg") file = "jpeg";
 		
 		let newWidths;
-		if(type === "default" || type === "screen") {
+		if(type === "default") {
 			newWidths = [100, 900, 1728, 2268, null]
 		} else if(type === "thumbnail") {
 			newWidths = [50, 400, 800];
+		} else if(type === "screen") {
+			newWidths = [100, 1728, null];
 		}
 
 		let stats = await Image(src, {
@@ -173,12 +174,9 @@ module.exports = function(eleventyConfig) {
 		if(type === "default") {
 			webpset = `${stats["webp"][3].srcset}, ${stats["webp"][2].srcset}, ${stats["webp"][1].srcset}`;
 			regset = `${stats[file][3].srcset}, ${stats[file][2].srcset}, ${stats[file][1].srcset}`;
-		} else if(type === "thumbnail") {
+		} else if(type === "thumbnail" || type === "screen") {
 			webpset = `${stats["webp"][1].url}, ${stats["webp"][2].url} 2x`;
 			regset = `${stats[file][1].url}, ${stats[file][2].url} 2x`;
-		} else if(type === "screen") {
-			webpset = `${stats["webp"][4].url}`;
-			regset = `${stats[file][4].url}`;
 		}
 		
 		let source;
