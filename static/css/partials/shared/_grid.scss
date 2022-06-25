@@ -9,12 +9,12 @@
 	}
 	.page-photography, .page-graphic, .page-art {
 		scroll-snap-type: y mandatory;
-		.grid-item {
+		.grid-item:not(:first-of-type) {
 			scroll-margin-block-start: 91px;
 		}
 	}
 	.page-about {
-		.grid-item {
+		.grid-item:not(:first-of-type) {
 			scroll-margin-block-start: calc(var(--p)/2);
 		}
 	}
