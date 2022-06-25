@@ -111,27 +111,16 @@ module.exports = function(eleventyConfig) {
 	});
 
 	eleventyConfig.addFilter("stripAttr", stripObj => {
+		let removals = /<div class="lightbox-group">([\s\S]*?)<\/div>|<figure class="animation">([\s\S]*?)<\/figure>|<\/?a class="expand"[^>]*>|<\/?span[^>]*>|<\/?picture[^>]*>|<\/?source[^>]*>|<\/?div[^>]*>|<\/?script[^>]*>|\t|\r|\n/g;
+		stripObj = stripObj.replace(removals, '');
 		stripObj = stripObj
-			.replace(/(<div class="lightbox-group">([\s\S]*?)<\/div>)/g, '')
-			.replace(/(<figure class="animation">([\s\S]*?)<\/figure>)/g, '')
-			.replace(/<\/?a class="expand"[^>]*>/g, '')
-			.replace(/<\/?a class="expand "[^>]*>/g, '')
-			.replace(/<\/?div class="highlight "[^>]*>/g, '')
-			.replace(/<\s*p .*?data-slug-hash="([^<]*)" data-default.*?>([^<]*)<\s*a.*?>([^<]*)<\/p>/g, '<iframe src="https://codepen.io/gabriellewee/embed/$1">')
-			.replace(/<\s*img loading="lazy" decoding="async" alt="([^<]*)" src="data:image\/png;base64,([\s\S]*?)" srcset="([^<]*), ([^<]*) 2x" width="([^<]*)" height="([^<]*)">/g, '<img alt="$1" src="$4" width="$5" height="$6">')
-			.replace(/(<a(?: \w+="[^"]+")* class="direct-link"(?: \w+="[^"]+")*>([^<]*)<\/a>)/g, '')
-			.replace(/<\/?span[^>]*>/g, '')
-			.replace(/<\/?picture[^>]*>/g, '')
-			.replace(/<\/?source[^>]*>/g, '')
-			.replace(/<\/?div[^>]*>/g, '')
-			.replace(/<\/?script[^>]*>/g, '')
-			.replace(/<\s*h1.*?>/g, '<h1>')
-			.replace(/<\s*h2.*?>/g, '<h2>')
-			.replace(/<\s*h3.*?>/g, '<h3>')
-			.replace(/<\s*h4.*?>/g, '<h4>')
-			.replace(/<\s*h5.*?>/g, '<h5>')
-			.replace(/<\s*h6.*?>/g, '<h6>')
+			.replace(/<\s*p .*?data-slug-hash="([^<]*)" data-default.*?>[^<]*<\s*a.*?>[^<]*<\/p>/g, '<iframe src="https://codepen.io/gabriellewee/embed/$1">')
+			.replace(/<\s*img loading="lazy" decoding="async"/g, '<img')
+			.replace(/src="data:image\/png;base64,[\s\S]*?" srcset="[\s\S]*?" sizes="[\s\S]*?" data-src="([^<]*)"/g, 'src="$1"')
+			.replace(/( <a class="direct-link" href="[\s\S]*?">¶<\/a>)/g, '')
+			.replace(/<\s*h(\d).*?>/g, '<h$1>')
 			.replace(/<\s*figure.*?>/g, '<figure>')
+			.replace(/<\s*figcaption.*?>/g, '<figcaption>')
 			.replace(/<\s*pre.*?>/g, '<pre>')
 			.replace(/<\s*code.*?>/g, '<code>');
 		return stripObj;
@@ -160,7 +149,12 @@ module.exports = function(eleventyConfig) {
 		});
 
 		let lowest = stats[file][0];
-		let basic = stats[file][1];
+		let basic;
+		if(type === "default" || type === "screen") {
+			basic = stats[file][2];
+		} else if(type === "thumbnail") {
+			basic = stats[file][1];
+		}
 
 		const placeholder = await sharp(lowest.outputPath)
 			.resize({ fit: sharp.fit.inside })
@@ -171,9 +165,13 @@ module.exports = function(eleventyConfig) {
 		
 		let webpset;
 		let regset;
+		let datasrc;
 		if(type === "default") {
 			webpset = `${stats["webp"][3].srcset}, ${stats["webp"][2].srcset}, ${stats["webp"][1].srcset}`;
 			regset = `${stats[file][3].srcset}, ${stats[file][2].srcset}, ${stats[file][1].srcset}`;
+			if(category === "writing") {
+				datasrc = `data-src="${stats[file][3].url}" `;
+			}
 		} else if(type === "thumbnail" || type === "screen") {
 			webpset = `${stats["webp"][1].url}, ${stats["webp"][2].url} 2x`;
 			regset = `${stats[file][1].url}, ${stats[file][2].url} 2x`;
@@ -183,7 +181,7 @@ module.exports = function(eleventyConfig) {
 		let img;
 		if(type === "default") {
 			source = `<source type="image/webp" srcset="${webpset}" sizes="(min-width: 2560px) 25vw, (min-width: 768px) 50vw, 100vw">`;
-			img = `<img loading="lazy" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" sizes="(min-width: 2560px) 25vw, (min-width: 768px) 50vw, 100vw" width="${basic.width}" height="${basic.height}">`;
+			img = `<img loading="lazy" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" sizes="(min-width: 2560px) 25vw, (min-width: 768px) 50vw, 100vw" ${datasrc}width="${basic.width}" height="${basic.height}">`;
 		} else if(type === "thumbnail" || type === "screen") {
 			source = `<source type="image/webp" srcset="${webpset}">`;
 			img = `<img loading="lazy" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" width="${basic.width}" height="${basic.height}">`;

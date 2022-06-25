@@ -72,7 +72,7 @@ Finally, last year, during the height of the pandemic, I decided I needed to cha
 
 <figure id="2021-07-26-website-v4" class="light-dark">
 	<figcaption>Landing page version</figcaption>
-	<a class="expand " href="#2021-07-26-website-v4-lightbox" aria-label="Expand image">
+	<a class="expand" href="#2021-07-26-website-v4-lightbox" aria-label="Expand image">
 		{% for photo in photos | index(5) %}{% image './static/images/writing/' + date + '-' + photo.name + '-dark.' + photo.type, photo.description, 'default' %}{% image './static/images/writing/' + date + '-' + photo.name + '-light.' + photo.type, photo.description, 'default' %}{% endfor %}
 	</a>
 </figure>
@@ -85,7 +85,7 @@ I came up with a design that is busy but organized. Each section represents one 
 
 <figure id="2021-07-26-current-website" class="light-dark">
 	<figcaption>Current website</figcaption>
-	<a class="expand " href="#2021-07-26-current-website-lightbox" aria-label="Expand image">
+	<a class="expand" href="#2021-07-26-current-website-lightbox" aria-label="Expand image">
 		{% for photo in photos | index(6) %}{% image './static/images/writing/' + date + '-' + photo.name + '-dark.' + photo.type, photo.description, 'default' %}{% image './static/images/writing/' + date + '-' + photo.name + '-light.' + photo.type, photo.description, 'default' %}{% endfor %}
 	</a>
 </figure>
