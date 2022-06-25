@@ -1,15 +1,22 @@
----
-title: Photography
-description: Photos I’ve taken over the years.
-
-permalink: /photography/
-templateClass: photography
-ogImage: photography
-
-siteScripts: true
-headerLink: true
-aboutLink: true
-tags: pages
+---json
+{
+	"title": "Photography",
+	"description": "Photos I’ve taken over the years.",
+	"permalink": "/photography/",
+	"templateClass": "photography",
+	"ogImage": "photography",
+	"siteScripts": true,
+	"headerLink": true,
+	"aboutLink": true,
+	"tags": "pages",
+	"gridFilters": [
+		{ "name": "portrait" },
+		{ "name": "landscape" },
+		{ "name": "indoor" },
+		{ "name": "outdoor" },
+		{ "name": "people" }
+	]
+}
 ---
 
 {% extends 'layouts/base.njk' %}
@@ -19,18 +26,7 @@ tags: pages
 {% endblock %}
 
 {% block content %}
-	<nav class="grid-filters" aria-label="Tags List">
-		<input id="grid-filters" type="checkbox" tabindex="0" aria-label="Show tags" role="switch" aria-checked="false"/>
-		<h2><label for="grid-filters" aria-hidden="true"><span>Tags</span></label></h2>
-		<ul>
-			<li><a class="grid-filter" href="#" data-filter=".filter-portrait">#portrait</a></li>
-			<li><a class="grid-filter" href="#" data-filter=".filter-landscape">#landscape</a></li>
-			<li><a class="grid-filter" href="#" data-filter=".filter-indoor">#indoor</a></li>
-			<li><a class="grid-filter" href="#" data-filter=".filter-outdoor">#outdoor</a></li>
-			<li><a class="grid-filter" href="#" data-filter=".filter-people">#people</a></li>
-			<li><a class="grid-filter reset" href="#" data-filter="*">reset</a></li>
-		</ul>
-	</nav>
+	{% include 'pages/visual/tags.html' %}
 
 	<div class="photography-grid subpage-grid">
 		<div class="grid-pack grid-isotope" role="list">

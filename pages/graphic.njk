@@ -1,15 +1,19 @@
----
-title: Graphic
-description: 2D/3D graphic &amp; illustration work.
-
-permalink: /graphic/
-templateClass: graphic
-ogImage: graphic
-
-siteScripts: true
-headerLink: true
-aboutLink: true
-tags: pages
+---json
+{
+	"title": "Graphic",
+	"description": "2D/3D graphic &amp; illustration work.",
+	"permalink": "/graphic/",
+	"templateClass": "graphic",
+	"ogImage": "graphic",
+	"siteScripts": true,
+	"headerLink": true,
+	"aboutLink": true,
+	"tags": "pages",
+	"gridFilters": [
+		{ "name": "2d" },
+		{ "name": "3d" }
+	]
+}
 ---
 
 {% extends 'layouts/base.njk' %}
@@ -19,15 +23,7 @@ tags: pages
 {% endblock %}
 
 {% block content %}
-	<nav class="grid-filters" aria-label="Tags List">
-		<input id="grid-filters" type="checkbox" tabindex="0" aria-label="Show tags" role="switch" aria-checked="false"/>
-		<h2><label for="grid-filters"><span>Tags</span></label></h2>
-		<ul>
-			<li><a class="grid-filter" href="#" data-filter=".filter-2d">#2d</a></li>
-			<li><a class="grid-filter" href="#" data-filter=".filter-3d">#3d</a></li>
-			<li><a class="grid-filter reset" href="#" data-filter="*">reset</a></li>
-		</ul>
-	</nav>
+	{% include 'pages/visual/tags.html' %}
 
 	<div class="graphic-grid subpage-grid">
 		<div class="grid-pack grid-isotope" role="list">
