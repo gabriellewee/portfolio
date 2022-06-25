@@ -141,6 +141,8 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addNunjucksAsyncShortcode("image", async (src, alt, type, lightbox) => {
 		let category = src.split('/')[3];
 		let name = src.split('/')[4].slice(0, -4);
+		let file = src.split(".")[2];
+		if(file === "jpg") file = "jpeg";
 		
 		let newWidths;
 		if(type === "default" || type === "screen") {
@@ -148,27 +150,16 @@ module.exports = function(eleventyConfig) {
 		} else if(type === "thumbnail") {
 			newWidths = [50, 400, 800];
 		}
-		
-		let newFormats;
-		(category === "graphic") ? newFormats = ["webp", "png"] : newFormats = ["webp", "jpeg"];
 
 		let stats = await Image(src, {
 			widths: newWidths,
-			formats: newFormats,
+			formats: ["webp", file],
 			urlPath: `/static/images/${category}/built`,
 			outputDir: `./_site/static/images/${category}/built`,
 		});
 
-		let lowest;
-		let basic;
-
-		if(category === "graphic") {
-			lowest = stats["png"][0];
-			basic = stats["png"][1];
-		} else {
-			lowest = stats["jpeg"][0];
-			basic = stats["jpeg"][1];
-		}
+		let lowest = stats[file][0];
+		let basic = stats[file][1];
 
 		const placeholder = await sharp(lowest.outputPath)
 			.resize({ fit: sharp.fit.inside })
@@ -178,31 +169,16 @@ module.exports = function(eleventyConfig) {
 		const base64Placeholder = `data:image/png;base64,${placeholder.toString("base64")}`;
 		
 		let webpset;
+		let regset;
 		if(type === "default") {
-			webpset = `${stats["webp"][3].srcset}, ${stats["webp"][2].srcset}, ${stats["webp"][1].srcset}`
+			webpset = `${stats["webp"][3].srcset}, ${stats["webp"][2].srcset}, ${stats["webp"][1].srcset}`;
+			regset = `${stats[file][3].srcset}, ${stats[file][2].srcset}, ${stats[file][1].srcset}`;
 		} else if(type === "thumbnail") {
 			webpset = `${stats["webp"][1].url}, ${stats["webp"][2].url} 2x`;
+			regset = `${stats[file][1].url}, ${stats[file][2].url} 2x`;
 		} else if(type === "screen") {
 			webpset = `${stats["webp"][4].url}`;
-		}
-
-		let regset;
-		if(category === "graphic") {
-			if(type === "default") {
-				regset = `${stats["png"][3].srcset}, ${stats["png"][2].srcset}, ${stats["png"][1].srcset}`
-			} else if(type === "thumbnail") {
-				regset = `${stats["png"][1].url}, ${stats["png"][2].url} 2x`;
-			} else if(type === "screen") {
-				regset = `${stats["png"][4].url}`;
-			}
-		} else {
-			if(type === "default") {
-				regset = `${stats["jpeg"][3].srcset}, ${stats["jpeg"][2].srcset}, ${stats["jpeg"][1].srcset}`
-			} else if(type === "thumbnail") {
-				regset = `${stats["jpeg"][1].url}, ${stats["jpeg"][2].url} 2x`;
-			} else if(type === "screen") {
-				regset = `${stats["jpeg"][4].url}`;
-			}
+			regset = `${stats[file][4].url}`;
 		}
 		
 		let source;
