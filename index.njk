@@ -76,9 +76,9 @@ cat:
 			<p>We go on adventures together!</p>
 			<ul class="grid">
 				{% for media in cat | limit(2) %}
-					<li id="{{media.date|safe}}-alfie">
-						<a class="grid-item-expand expand" href="#{{media.date|safe}}-alfie-lightbox" aria-label="{{media.description}} Expand photo" role="button">
-							{% image './static/images/photography/' + media.date + '-alfie.jpg', media.description, 'thumbnail' %}
+					<li id="{{media.date|safe}}-{{media.name}}">
+						<a class="grid-item-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand artwork" role="button">
+							{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail' %}
 						</a>
 					</li>
 				{% endfor %}
@@ -92,9 +92,11 @@ cat:
 				<p>My favorites are <span>philodendron</span>, <span>monstera</span>, and <span>anthurium</span>.</p>
 			</div>
 			<div class="image">
-				<a class="grid-item-expand expand" href="#2022-06-26-philodendron-lightbox" aria-label="A brand-new leaf on my Philodendron ‘El Choco Red’. Expand photo" role="button">
-					{% image './static/images/photography/2022-06-26-philodendron.jpg', 'A brand-new leaf on my Philodendron ‘El Choco Red’.', 'thumbnail' %}
-				</a>
+				{% for media in plants | limit(1) %}
+					<a class="grid-item-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand photo" role="button">
+						{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail' %}
+					</a>
+				{% endfor %}
 			</div>
 			<a class="more" href="https://instagram.com/ellocasia" target="_blank"><span>see plants</span></a>
 		</article>
@@ -128,16 +130,18 @@ cat:
 		</a>
 	{% endfor %}
 	{% for media in cat | limit(2) %}
-		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-alfie-lightbox" href="#{{media.date|safe}}-alfie">
+		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
 			<figure class="image">
-				{% image './static/images/photography/' + media.date + '-alfie.jpg', media.description, 'screen' %}
+				{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
 			</figure>
 		</a>
 	{% endfor %}
-	<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="2022-06-26-philodendron-lightbox" href="#2022-06-26-philodendron">
-		<figure class="image">
-			{% image './static/images/photography/2022-06-26-philodendron.jpg', 'A brand-new leaf on my Philodendron ‘El Choco Red’.', 'screen' %}
-		</figure>
-	</a>
+	{% for media in plants | limit(1) %}
+		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
+			<figure class="image">
+				{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
+			</figure>
+		</a>
+	{% endfor %}
 	<div class="lightbox-background"></div>
 </div>
