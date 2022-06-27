@@ -3,25 +3,22 @@
 	title: "Art",
 	description: "Sketches and artwork.",
 	permalink: "/art/",
-	templateClass: "art",
-	ogImage: "art",
-	siteScripts: true,
-	headerLink: true,
-	aboutLink: true,
-	tags: "pages",
-	navMessage: true,
-	gridFilters: [
+	key: "art",
+	og: true,
+	message: true,
+	filters: [
 		{ name: "digital" },
 		{ name: "traditional" },
 		{ name: "figure", label: "figure drawing" }
 	],
-	mediaType: "artwork",
-	workType: "jpg",
+	type: "artwork",
+	extension: "jpg",
 	eleventyComputed: {
 		work(data) {
-			return data[data.templateClass];
+			return data[data.key];
 		}
-	}
+	},
+	tags: "pages"
 }
 ---
 

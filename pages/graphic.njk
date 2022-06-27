@@ -3,24 +3,21 @@
 	title: "Graphic",
 	description: "2D/3D graphic & illustration work.",
 	permalink: "/graphic/",
-	templateClass: "graphic",
-	ogImage: "graphic",
-	siteScripts: true,
-	headerLink: true,
-	aboutLink: true,
-	tags: "pages",
-	navMessage: true,
-	gridFilters: [
+	key: "graphic",
+	og: true,
+	message: true,
+	filters: [
 		{ name: "2d" },
 		{ name: "3d" }
 	],
-	mediaType: "graphic",
-	workType: "png",
+	type: "graphic",
+	extension: "png",
 	eleventyComputed: {
 		work(data) {
-			return data[data.templateClass];
+			return data[data.key];
 		}
-	}
+	},
+	tags: "pages"
 }
 ---
 

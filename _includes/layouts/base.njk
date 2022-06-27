@@ -9,6 +9,7 @@
 	{% if hidden == true %}<meta name="robots" content="noindex,nofollow">{% endif %}
 
 	<link rel="canonical" href="{{site.url}}{{page.url}}">
+	{% if key == "writing" or key == "post" %}<link rel="alternate" type="application/rss+xml" title="RSS" href="/writes/feed.xml">{% endif %}
 	
 	<link rel="mask-icon" href="/static/images/favicons/safari-pinned-tab.svg" color="#F5C8BF">
 	<link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicons/favicon-32x32.png">
@@ -18,12 +19,20 @@
 	<link rel="apple-touch-icon" sizes="180x180" href="/static/images/favicons/apple-touch-icon-180x180.png">
 	<link rel="manifest" href="/static/images/favicons/manifest.webmanifest">
 
-	<meta name="theme-color" content="#fcf1ef">
+	{% if theme %}
+		<meta name="theme-color" content="{{theme}}">
+	{% else %}
+		<meta name="theme-color" content="#fcf1ef">
+	{% endif %}
 	<meta name="application-name" content="{{site.author}}">
 	<meta name="description" content="{{description}}">
 	<meta name="msapplication-config" content="static/images/favicons/browserconfig.xml">
 
-	<meta name="theme-color" content="#fcf1ef" media="(prefers-color-scheme: light)">
+	{% if theme %}
+		<meta name="theme-color" content="{{theme}}" media="(prefers-color-scheme: light)">
+	{% else %}
+		<meta name="theme-color" content="#fcf1ef" media="(prefers-color-scheme: light)">
+	{% endif %}
 	<meta name="theme-color" content="#263238" media="(prefers-color-scheme: dark)">
 
 	<title>{{title}} · {{site.author}}</title>
@@ -33,7 +42,13 @@
 	<meta property="og:site_name" content="{{site.author}}">
 	<meta property="og:type" content="website"/>
 	<meta property="og:url" content="{{site.url}}{{permalink}}">
-	<meta property="og:image" content="{{site.url}}/static/images/og/{% if ogImage %}{{ogImage}}{% else %}default{% endif %}.jpg">
+	{% if og == true %}
+		<meta property="og:image" content="{{site.url}}/static/images/og/{{key}}.jpg">
+	{% elseif og %}
+		<meta property="og:image" content="{{site.url}}/static/images/og/{{og}}.jpg">
+	{% else %}
+		<meta property="og:image" content="{{site.url}}/static/images/og/default.jpg">
+	{% endif %}
 	<meta property="og:image:type" content="image/jpg">
 	<meta property="og:image:width" content="1200">
 	<meta property="og:image:height" content="630">
@@ -43,56 +58,90 @@
 	<meta name="twitter:site" content="@gabriewee">
 	<meta name="twitter:creator" content="@gabriewee">
 	<meta name="twitter:description" content="{{description}}">
-	<meta property="twitter:image" content="{{site.url}}/static/images/og/{% if ogImage %}{{ogImage}}{% else %}default{% endif %}.jpg">
+	{% if og == true %}
+		<meta property="twitter:image" content="{{site.url}}/static/images/og/{{key}}.jpg">
+	{% elseif og %}
+		<meta property="twitter:image" content="{{site.url}}/static/images/og/{{og}}.jpg">
+	{% else %}
+		<meta property="twitter:image" content="{{site.url}}/static/images/og/default.jpg">
+	{% endif %}
 
 	<meta property="fb:app_id" content="1291587600924107">
 	<meta property="fb:admins" content="504790226">
 
 	<meta property="article:author" content="{{site.author}}">
 
-	<link rel="stylesheet" href="{% if customStyles %}{{ '/static/css/' + customStyles + '.css' | url }}{% else %}{{'/static/css/style.css' | url}}{% endif %}">
+	<link rel="stylesheet" href="{% if style == true %}{{ '/static/css/' + key + '.css' | url }}{% elseif style %}{{ '/static/css/' + style + '.css' | url }}{% else %}{{'/static/css/style.css' | url}}{% endif %}">
 
-	<noscript>
-		<link rel="stylesheet" href="{{'/static/css/no-js.css' | url}}">
-	</noscript>
+	{% if blank != true %}
+		<noscript>
+			<link rel="stylesheet" href="{{'/static/css/no-js.css' | url}}">
+		</noscript>
+	{% endif %}
 </head>
-<body{% if templateClass %} class="page-{{templateClass}}"{% endif %}>
-	{% if headerLink == true %}<header class="top" aria-label="Header"{% if home %} aria-hidden="true"{% endif %}>
-		<a class="logo" href="/" aria-label="Go home?"{% if home %} tabindex="-1"{% endif %}>
-			<picture class="memoji memoji-default">
-				<source srcset="/static/images/avatars/memoji.webp, /static/images/avatars/memoji@2x.webp 2x" type="image/webp">
-				<source srcset="/static/images/avatars/memoji.png, /static/images/avatars/memoji@2x.png 2x" type="image/png">
-				<img src="/static/images/avatars/memoji.png" alt="" width="48px" height="68px">
-			</picture>
-			<picture class="memoji memoji-hm">
-				<source srcset="/static/images/avatars/memoji-hm.webp, /static/images/avatars/memoji-hm@2x.webp 2x" type="image/webp">
-				<source srcset="/static/images/avatars/memoji-hm.png, /static/images/avatars/memoji-hm@2x.png 2x" type="image/png">
-				<img src="/static/images/avatars/memoji-hm.png" alt="" width="48px" height="68px">
-			</picture>
-		</a>
-		<span class="go-home" aria-hidden="true">Go home?</span>
-		{% if navMessage == true %}
-			<span class="message">{{description}}</span>
-		{% elseif navMessage %}
-			<span class="message">{{navMessage}}</span>
+<body{% if key %} class="page-{{key}}"{% endif %}>
+	{% if blank != true %}
+		<header class="top" aria-label="Header"{% if key == "home" %} aria-hidden="true"{% endif %}>
+			<a class="logo" href="/" aria-label="Go home?"{% if key == "home" %} tabindex="-1"{% endif %}>
+				<picture class="memoji memoji-default">
+					<source srcset="/static/images/avatars/memoji.webp, /static/images/avatars/memoji@2x.webp 2x" type="image/webp">
+					<source srcset="/static/images/avatars/memoji.png, /static/images/avatars/memoji@2x.png 2x" type="image/png">
+					<img src="/static/images/avatars/memoji.png" alt="" width="48px" height="68px">
+				</picture>
+				<picture class="memoji memoji-hm">
+					<source srcset="/static/images/avatars/memoji-hm.webp, /static/images/avatars/memoji-hm@2x.webp 2x" type="image/webp">
+					<source srcset="/static/images/avatars/memoji-hm.png, /static/images/avatars/memoji-hm@2x.png 2x" type="image/png">
+					<img src="/static/images/avatars/memoji-hm.png" alt="" width="48px" height="68px">
+				</picture>
+			</a>
+			<span class="go-home" aria-hidden="true">Go home?</span>
+			{% if message == true %}
+				<span class="message">{{description}}</span>
+			{% endif %}
+		</header>
+		{% if key == "writing" or key == "post" %}
+			<header class="header">
+				<h1><a href="/writes/" aria-label="Gabrielle Wee Writes"><span>gabriellew.ee</span>/writes</a></h1>
+			</header>
 		{% endif %}
-	</header>{% endif %}
+	{% endif %}
 	<main>
 		{% block content %}{{content | safe}}{% endblock %}
 	</main>
-	<footer class="bottom" aria-label="Footer">
-		<p class="copyright">
-			{% if aboutLink == true %}<a href="/about/">About</a>{% endif %}
-			&copy; {{site.author}} {% year 'start' %}–{% year 'current' %}
-		</p>
-	</footer>
-	{% if siteScripts == true %}<script src="{{'/static/js/isotope.min.js' | url}}"></script>
-	<script src="{{'/static/js/clipboard.min.js' | url}}"></script>
-	<script src="{{'/static/js/packery.min.js' | url}}"></script>
-	<script src="{{'/static/js/imagesloaded.min.js' | url}}"></script>
-	<script src="{{'/static/js/smoothscroll.min.js' | url}}"></script>
-	<script src="{{'/static/js/lightbox.js' | url}}"></script>
-	<script src="{{'/static/js/main.js' | url}}"></script>
-	<script>document.body.addEventListener('touchstart', function() {}, {passive: true});</script>{% endif %}
+	{% if blank != true %}
+		<footer class="bottom" aria-label="Footer">
+			<p class="copyright">
+				{% if key == "writing" or key == "post" %}
+					<a href="/writes/archive/"><span>Archive</span></a> <span role="presentation" aria-hidden="true">·</span>
+					<a href="/writes/feed.xml"><span>RSS</span></a> <span role="presentation" aria-hidden="true">·</span>
+				{% endif %}
+				{% if key != "about" %}<a href="/about/"><span>About</span></a>{% endif %}
+				<span class="copyright">
+					<span>&copy;</span>
+					{% if key == "writing" or key == "post" %}
+						<a href="/"><span>{{site.author}}</span></a>
+					{% else %}
+						<span>{{site.author}}</span>
+					{% endif %}
+					<span>{% year 'start' %}–{% year 'current' %}</span>
+				</span>
+			</p>
+		</footer>
+
+		<script src="{{'/static/js/imagesloaded.min.js' | url}}"></script>
+		<script src="{{'/static/js/smoothscroll.min.js' | url}}"></script>
+		<script src="{{'/static/js/lightbox.js' | url}}"></script>
+		{% if key == "home" %}
+			<script src="{{'/static/js/clipboard.min.js' | url}}"></script>
+		{% endif %}
+		{% if key == "writing" or key == "post" %}
+			<script src="{{'/static/js/writing.js' | url}}"></script>
+		{% else %}
+			<script src="{{'/static/js/isotope.min.js' | url}}"></script>
+			<script src="{{'/static/js/packery.min.js' | url}}"></script>
+			<script src="{{'/static/js/main.js' | url}}"></script>
+		{% endif %}
+	{% endif %}
+	<script>document.body.addEventListener('touchstart', function() {}, {passive: true});</script>
 </body>
 </html>
