@@ -41,6 +41,14 @@ header {
 				padding: var(--p) max(calc(var(--p)*1.5), env(safe-area-inset-left));
 			}
 		}
+		p {
+			font-size: 24px;
+			margin-top: calc(var(--p) / -2);
+			padding: 0 max(calc(var(--p)*1.5) + env(safe-area-inset-left)) calc(var(--p) + (var(--p) / 3));
+			@include max {
+				padding: 0 max(calc(var(--p)*1.5), env(safe-area-inset-left)) calc(var(--p) + (var(--p) / 3));
+			}
+		}
 	}
 	.more {
 		display: flex;
@@ -83,5 +91,6 @@ header {
 @import '../pages/home/code';
 @import '../pages/home/visual';
 @import '../pages/home/writing';
+@import '../pages/home/cat';
 @import '../pages/home/plants';
 @import '../pages/home/gaming';

@@ -1,0 +1,7 @@
+.grid-item-cat {
+	background-color: #383838;
+	color: white;
+	@include dark {
+		background-color: #1F1F1F;
+	}
+}
