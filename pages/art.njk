@@ -1,74 +1,28 @@
----json
+---js
 {
-	"title": "Art",
-	"description": "Sketches and artwork.",
-	"permalink": "/art/",
-	"templateClass": "art",
-	"ogImage": "art",
-	"siteScripts": true,
-	"headerLink": true,
-	"aboutLink": true,
-	"tags": "pages",
-	"gridFilters": [
-		{ "name": "digital" },
-		{ "name": "traditional" },
-		{ "name": "figure", "label": "figure drawing" }
-	]
+	title: "Art",
+	description: "Sketches and artwork.",
+	permalink: "/art/",
+	templateClass: "art",
+	ogImage: "art",
+	siteScripts: true,
+	headerLink: true,
+	aboutLink: true,
+	tags: "pages",
+	navMessage: true,
+	gridFilters: [
+		{ name: "digital" },
+		{ name: "traditional" },
+		{ name: "figure", label: "figure drawing" }
+	],
+	mediaType: "artwork",
+	workType: "jpg",
+	eleventyComputed: {
+		work(data) {
+			return data[data.templateClass];
+		}
+	}
 }
 ---
 
-{% extends 'layouts/base.njk' %}
-
-{% block menu %}
-	<span class="message">Sketches and artwork.</span>
-{% endblock %}
-
-{% block content %}
-	{% include 'pages/visual/tags.html' %}
-
-	<div class="art-grid subpage-grid">
-		<div class="grid-pack grid-isotope" role="list">
-			{% for art in art %}
-				<div class="grid-item {{art.tags|isoFilter}}" id="{{art.date|safe}}-{{art.name}}" role="listitem">
-					<figure class="grid-figure" role="group" aria-label="Art, {{art.title}}">
-						{% image './static/images/art/' + art.date + '-' + art.name + '.jpg', art.description, 'default' %}
-						<figcaption>
-							<fieldset>
-								<input class="grid-input" id="{{art.date|safe}}-{{art.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this artwork" role="switch" aria-checked="false"/>
-								<label class="grid-close" for="{{art.date|safe}}-{{art.name}}-info"></label>
-								<label class="grid-overlay" for="{{art.date|safe}}-{{art.name}}-info">{% include 'svg/icons/info-large.svg' %}</label>
-								<label class="grid-link" for="{{art.date|safe}}-{{art.name}}-info">{% include 'svg/icons/info.svg' %}</label>
-								<div class="grid-info">
-									<label class="grid-down" for="{{art.date|safe}}-{{art.name}}-info">{% include 'svg/icons/caret-down.svg' %}</label>
-									<a class="grid-expand expand" href="#{{art.date|safe}}-{{art.name}}-lightbox" aria-label="Expand artwork" tabindex="-1">{% include 'svg/icons/expand.svg' %}</a>
-									<dl>
-										<div>
-											<dt class="title">Title</dt><dd>{{art.title}}</dd>
-										</div>
-										<div>
-											<dt>Date</dt><dd>{{art.date|readableDataDate}}</dd>
-										</div>
-										<div>
-											<dt>Tools</dt><dd>{{art.tools}}</dd>
-										</div>
-									</dl>
-								</div>
-							</fieldset>
-						</figcaption>
-					</figure>
-				</div>
-			{% endfor %}
-		</div>
-	</div>
-
-	<div class="lightbox-group">
-		{% for art in art %}
-			<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{art.date|safe}}-{{art.name}}-lightbox" href="#{{art.date|safe}}-{{art.name}}">
-				<figure class="image">
-					{% image './static/images/art/' + art.date + '-' + art.name + '.jpg', art.description, 'screen' %}
-				</figure>
-			</a>
-		{% endfor %}
-		<div class="lightbox-background"></div>
-	</div>
-{% endblock %}
+{% extends 'layouts/media.njk' %}

@@ -68,27 +68,30 @@ module.exports = function(eleventyConfig) {
 	});
 	eleventyConfig.setLibrary("md", markdownLibrary);
 
-	eleventyConfig.addFilter("readableDataDate", dateObj => {
-		return DateTime.fromISO(dateObj, {zone: 'utc'}).toFormat("dd LLLL yyyy");
+	eleventyConfig.addFilter("capitalize", text => {
+		return text.charAt(0).toUpperCase() + text.slice(1);
 	});
 
-	eleventyConfig.addFilter('htmlDateString', dateObj => {
-		return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
+	eleventyConfig.addFilter("readableDataDate", date => {
+		return DateTime.fromISO(date, {zone: 'utc'}).toFormat("dd LLLL yyyy");
+	});
+
+	eleventyConfig.addFilter('htmlDateString', date => {
+		return DateTime.fromJSDate(date, {zone: 'utc'}).toFormat('yyyy-LL-dd');
 	});
 	
-	eleventyConfig.addFilter("timeAgo", dateObj => {
-		return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toRelative();
+	eleventyConfig.addFilter("timeAgo", date => {
+		return DateTime.fromJSDate(date, {zone: 'utc'}).toRelative();
 	});
 
-	eleventyConfig.addFilter("readableDate", dateObj => {
-		return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("dd LLLL yyyy");
+	eleventyConfig.addFilter("readableDate", date => {
+		return DateTime.fromJSDate(date, {zone: 'utc'}).toFormat("dd LLLL yyyy");
 	});
 
-	eleventyConfig.addNunjucksAsyncShortcode("year", async (yearObj) => {
-		let year;
-		if(yearObj === "start") {
+	eleventyConfig.addNunjucksAsyncShortcode("year", async (year) => {
+		if(year === "start") {
 			year = "2012";
-		} else if(yearObj === "current") {
+		} else if(year === "current") {
 			year = DateTime.fromJSDate(new Date(), {zone: 'utc'}).toFormat("yyyy");
 		} else {
 			year = "";
@@ -96,8 +99,8 @@ module.exports = function(eleventyConfig) {
 		return year;
 	});
 
-	eleventyConfig.addFilter("isoFilter", filterObj => {
-		let array = filterObj.split(' ');
+	eleventyConfig.addFilter("isoFilter", filters => {
+		let array = filters.split(' ');
 		let result = array.map(el => 'filter-' + el);
 		return result.join(' ');
 	});
@@ -110,10 +113,10 @@ module.exports = function(eleventyConfig) {
 		return array.slice(index - 1, index);
 	});
 
-	eleventyConfig.addFilter("stripAttr", stripObj => {
+	eleventyConfig.addFilter("stripAttr", stripped => {
 		let removals = /<div class="lightbox-group">([\s\S]*?)<\/div>|<figure class="animation">([\s\S]*?)<\/figure>|<\/?a class="expand"[^>]*>|<\/?span[^>]*>|<\/?picture[^>]*>|<\/?source[^>]*>|<\/?div[^>]*>|<\/?script[^>]*>|\t|\r|\n/g;
-		stripObj = stripObj.replace(removals, '');
-		stripObj = stripObj
+		stripped = stripped.replace(removals, '');
+		stripped = stripped
 			.replace(/<\s*p .*?data-slug-hash="([^<]*)" data-default.*?>[^<]*<\s*a.*?>[^<]*<\/p>/g, '<iframe src="https://codepen.io/gabriellewee/embed/$1">')
 			.replace(/<\s*img loading="lazy" decoding="async"/g, '<img')
 			.replace(/src="data:image\/png;base64,[\s\S]*?" srcset="[\s\S]*?" sizes="[\s\S]*?" data-src="([^<]*)"/g, 'src="$1"')
@@ -123,7 +126,7 @@ module.exports = function(eleventyConfig) {
 			.replace(/<\s*figcaption.*?>/g, '<figcaption>')
 			.replace(/<\s*pre.*?>/g, '<pre>')
 			.replace(/<\s*code.*?>/g, '<code>');
-		return stripObj;
+		return stripped;
 	});
 
 	eleventyConfig.addNunjucksAsyncShortcode("image", async (src, alt, type, lightbox) => {

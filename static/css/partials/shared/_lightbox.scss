@@ -70,6 +70,10 @@
 			max-width: 100%;
 			height: unset;
 			width: unset;
+			&.upscale {
+				height: 100%;
+				width: auto;
+			}
 		}
 	}
 	.no-js &:target, &.active {

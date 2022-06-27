@@ -1,79 +1,30 @@
----json
+---js
 {
-	"title": "Photography",
-	"description": "Photos I’ve taken over the years.",
-	"permalink": "/photography/",
-	"templateClass": "photography",
-	"ogImage": "photography",
-	"siteScripts": true,
-	"headerLink": true,
-	"aboutLink": true,
-	"tags": "pages",
-	"gridFilters": [
-		{ "name": "portrait" },
-		{ "name": "landscape" },
-		{ "name": "indoor" },
-		{ "name": "outdoor" },
-		{ "name": "people" }
-	]
+	title: "Photography",
+	description: "Photos I’ve taken over the years.",
+	permalink: "/photography/",
+	templateClass: "photography",
+	ogImage: "photography",
+	siteScripts: true,
+	headerLink: true,
+	aboutLink: true,
+	tags: "pages",
+	navMessage: true,
+	gridFilters: [
+		{ name: "portrait" },
+		{ name: "landscape" },
+		{ name: "indoor" },
+		{ name: "outdoor" },
+		{ name: "people" }
+	],
+	mediaType: "photo",
+	workType: "jpg",
+	eleventyComputed: {
+		work(data) {
+			return data[data.templateClass];
+		}
+	}
 }
 ---
 
-{% extends 'layouts/base.njk' %}
-
-{% block menu %}
-	<span class="message">Photos I’ve taken over the years.</span>
-{% endblock %}
-
-{% block content %}
-	{% include 'pages/visual/tags.html' %}
-
-	<div class="photography-grid subpage-grid">
-		<div class="grid-pack grid-isotope" role="list">
-			{% for photo in photography %}
-				<div class="grid-item {{photo.tags|isoFilter}}" id="{{photo.date|safe}}-{{photo.name}}" role="listitem">
-					<figure class="grid-figure" role="group" aria-label="Photo, {{photo.location}}">
-						{% image './static/images/photography/' + photo.date + '-' + photo.name + '.jpg', photo.description, 'default' %}
-						<figcaption>
-							<fieldset>
-								<input class="grid-input" id="{{photo.date|safe}}-{{photo.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this photo" role="switch" aria-checked="false"/>
-								<label class="grid-close" for="{{photo.date|safe}}-{{photo.name}}-info"></label>
-								<label class="grid-overlay" for="{{photo.date|safe}}-{{photo.name}}-info">{% include 'svg/icons/info-large.svg' %}</label>
-								<label class="grid-link" for="{{photo.date|safe}}-{{photo.name}}-info">{% include 'svg/icons/info.svg' %}</label>
-								<div class="grid-info">
-									<label class="grid-down" for="{{photo.date|safe}}-{{photo.name}}-info">{% include 'svg/icons/caret-down.svg' %}</label>
-									<a class="grid-expand expand" href="#{{photo.date|safe}}-{{photo.name}}-lightbox" aria-label="Expand photo" tabindex="-1" role="button">{% include 'svg/icons/expand.svg' %}</a>
-									<dl>
-										<div>
-											<dt>Date</dt><dd>{{photo.date|readableDataDate}}</dd>
-										</div>
-										<div>
-											<dt>Location</dt><dd>{{photo.location}}</dd>
-										</div>
-										<div>
-											<dt>Camera</dt><dd>{{photo.camera}}</dd>
-										</div>
-										<div>
-											<dt>Editor</dt><dd>{{photo.editor}}</dd>
-										</div>
-									</dl>
-								</div>
-							</fieldset>
-						</figcaption>
-					</figure>
-				</div>
-			{% endfor %}
-		</div>
-	</div>
-
-	<div class="lightbox-group">
-		{% for photo in photography %}
-			<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{photo.date|safe}}-{{photo.name}}-lightbox" href="#{{photo.date|safe}}-{{photo.name}}">
-				<figure class="image">
-					{% image './static/images/photography/' + photo.date + '-' + photo.name + '.jpg', photo.description, 'screen' %}
-				</figure>
-			</a>
-		{% endfor %}
-		<div class="lightbox-background"></div>
-	</div>
-{% endblock %}
+{% extends 'layouts/media.njk' %}

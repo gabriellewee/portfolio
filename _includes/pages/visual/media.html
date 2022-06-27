@@ -1,0 +1,84 @@
+<div class="{{templateClass}}-grid subpage-grid">
+	<div class="grid-pack grid-isotope" role="list">
+		{% for media in work %}
+			<div class="grid-item {{media.tags|isoFilter}}" id="{{media.date|safe}}-{{media.name}}" role="listitem">
+				<figure class="grid-figure" role="group" aria-label="{{mediaType | capitalize}}{% if media.location %}, {{media.location}}{% elseif media.title %}, {{media.title}}{% endif %}">
+					{% if media.upscale %}
+						<picture>
+							<img class="upscale" src="{% include media.upscale %}"{% if media.upscaleWidth %} width="{{media.upscaleWidth}}"{% endif %}{% if media.upscaleHeight %} height="{{media.upscaleHeight}}"{% endif %} alt="{{media.description}}"/>
+						</picture>
+					{% else %}
+						{% image './static/images/' + templateClass + '/' + media.date + '-' + media.name + '.' + workType, media.description, 'default' %}
+					{% endif %}
+					<figcaption>
+						<fieldset>
+							<input class="grid-input" id="{{media.date|safe}}-{{media.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this photo" role="switch" aria-checked="false"/>
+							<label class="grid-close" for="{{media.date|safe}}-{{media.name}}-info"></label>
+							<label class="grid-overlay" for="{{media.date|safe}}-{{media.name}}-info">{% include 'svg/icons/info-large.svg' %}</label>
+							<label class="grid-link" for="{{media.date|safe}}-{{media.name}}-info">{% include 'svg/icons/info.svg' %}</label>
+							<div class="grid-info">
+								<label class="grid-down" for="{{media.date|safe}}-{{media.name}}-info">{% include 'svg/icons/caret-down.svg' %}</label>
+								<a class="grid-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="Expand {{mediaType}}" tabindex="-1" role="button">{% include 'svg/icons/expand.svg' %}</a>
+								<dl>
+									{% if media.title %}
+										<div>
+											<dt class="title">Title</dt>
+											<dd>
+												<span>{{media.title}}</span>
+												{% if media.url and media.platform %}
+													<a class="grid-link external {{media.platform}}" target="_blank" href="{{media.url}}" tabindex="-1" aria-label="View on {{media.platform | capitalize}}">{% include 'svg/icons/' + media.platform + '.svg' %}</a>
+												{% endif %}
+											</dd>
+										</div>
+									{% endif %}
+									{% if media.date %}
+										<div>
+											<dt>Date</dt><dd>{{media.date|readableDataDate}}</dd>
+										</div>
+									{% endif %}
+									{% if media.location %}
+										<div>
+											<dt>Location</dt><dd>{{media.location}}</dd>
+										</div>
+									{% endif %}
+									{% if media.camera %}
+										<div>
+											<dt>Camera</dt><dd>{{media.camera}}</dd>
+										</div>
+									{% endif %}
+									{% if media.editor %}
+										<div>
+											<dt>Editor</dt><dd>{{media.editor}}</dd>
+										</div>
+									{% endif %}
+									{% if media.tools %}
+										<div>
+											<dt>Tools</dt><dd>{{media.tools}}</dd>
+										</div>
+									{% endif %}
+								</dl>
+							</div>
+						</fieldset>
+					</figcaption>
+				</figure>
+			</div>
+		{% endfor %}
+	</div>
+</div>
+
+<div class="lightbox-group">
+	{% for media in work %}
+		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
+			<figure class="image">
+				{% if media.upscale %}
+					<picture>
+						<img class="upscale" src="{% include media.upscale %}"{% if media.upscaleWidth %} width="{{media.upscaleWidth}}"{% endif %}{% if media.upscaleHeight %} height="{{media.upscaleHeight}}"{% endif %} alt="{{media.description}}"/>
+					</picture>
+				{% else %}
+					{% image './static/images/' + templateClass + '/' + media.date + '-' + media.name + '.' + workType, media.description, 'screen' %}
+				{% endif %}
+			</figure>
+		</a>
+	{% endfor %}
+	<div class="lightbox-background"></div>
+</div>
