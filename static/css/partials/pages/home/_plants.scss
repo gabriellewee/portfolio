@@ -17,7 +17,7 @@
 		grid-template-rows: unset;
 		font-size: 28px;
 	}
-	h2, a {
+	h2 {
 		padding: var(--p) calc((var(--p)*1.5) + env(safe-area-inset-left));
 		@include max {
 			padding: var(--p) max(calc(var(--p)*1.5), env(safe-area-inset-left));
@@ -36,6 +36,7 @@
 	}
 	.image {
 		display: none;
+		padding: calc(var(--p) * 1.5) calc(var(--p) * 1.5) calc(var(--p) * 1.5) 0;
 		@include viewport($ipad-mini) {
 			display: block;
 		}
