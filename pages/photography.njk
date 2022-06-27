@@ -3,27 +3,24 @@
 	title: "Photography",
 	description: "Photos I’ve taken over the years.",
 	permalink: "/photography/",
-	templateClass: "photography",
-	ogImage: "photography",
-	siteScripts: true,
-	headerLink: true,
-	aboutLink: true,
-	tags: "pages",
-	navMessage: true,
-	gridFilters: [
+	key: "photography",
+	og: true,
+	message: true,
+	filters: [
 		{ name: "portrait" },
 		{ name: "landscape" },
 		{ name: "indoor" },
 		{ name: "outdoor" },
 		{ name: "people" }
 	],
-	mediaType: "photo",
-	workType: "jpg",
+	type: "photo",
+	extension: "jpg",
 	eleventyComputed: {
 		work(data) {
-			return data[data.templateClass];
+			return data[data.key];
 		}
-	}
+	},
+	tags: "pages"
 }
 ---
 
