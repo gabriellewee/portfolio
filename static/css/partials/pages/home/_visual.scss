@@ -116,4 +116,23 @@
 			}
 		}
 	}
+	&-cat {
+		$cat: #383838;
+		$cat-dark: #1F1F1F;
+		background-color: $cat;
+		color: white;
+		@include dark {
+			background-color: $cat-dark;
+		}
+		.more {
+			background-color: darken($cat, 10%);
+			color: mix($cat, white, 25%);
+			@include dark {
+				background-color: darken($cat-dark, 10%);
+			}
+			&:focus {
+				text-decoration-color: mix($cat, white, 25%);
+			}
+		}
+	}
 }
