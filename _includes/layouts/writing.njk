@@ -62,7 +62,11 @@
 			</picture>
 		</a>
 		<span class="go-home" aria-hidden="true">Go home?</span>
-		{% block menu %}{% endblock %}
+		{% if navMessage == true %}
+			<span class="message">{{description}}</span>
+		{% elseif navMessage %}
+			<span class="message">{{navMessage}}</span>
+		{% endif %}
 	</header>
 	<header class="header">
 		<h1><a href="/writes/" aria-label="Gabrielle Wee Writes"><span>gabriellew.ee</span>/writes</a></h1>
