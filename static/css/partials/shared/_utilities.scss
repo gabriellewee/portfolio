@@ -145,6 +145,7 @@ $neon: #DDFF3B;
 	--color-white-hsl: #{hexToHSL(#fff)};
 	--color-iron: #{$iron};
 	--color-iron-white: #{mix($iron, white)};
+	--color-iron-white-10: #{mix($iron, white, 10%)};
 	--color-iron-white-30: #{mix($iron, white, 30%)};
 	--color-iron-white-70: #{mix($iron, white, 70%)};
 	--color-iron-1: #{darken($iron, 1%)};

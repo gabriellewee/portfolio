@@ -1,0 +1,175 @@
+@import 'partials/shared/utilities';
+
+#accessible {
+	$highlight: blue;
+	position: fixed;
+	z-index: 100;
+	bottom: 0;
+	right: 0;
+	width: 25px;
+	height: 25px;
+	&:checked {
+		~ .header-writing {
+			a {
+				&:hover, &:focus {
+					color: $highlight;
+					background: none;
+					-webkit-text-fill-color: unset;
+				}
+				&:focus {
+					@include focus-round(rgba($highlight, 0.5));
+				}
+			}
+		}
+		~ main:not(.page-post main):not(.page-writing main) {
+			background-color: hsla(var(--color-iron-hsl), 0.2);
+			.home-grid, .subpage-grid {
+				width: 100%;
+				max-width: 900px;
+				margin-left: auto;
+				margin-right: auto;
+				padding: max(var(--p)*2,env(safe-area-inset-left));
+			}
+			.subpage-grid {
+				.grid-item {
+					@include border-radius(calc(var(--p) / 2));
+				}
+			}
+			.grid-pack {
+				.grid-item {
+					border-radius: calc(var(--p) / 2);
+					position: static;
+					width: 100%;
+					background: white;
+					&:not(:first-child) {
+						margin-top: calc(var(--p) * 2);
+					}
+				}
+				*:not(a) {
+					color: var(--color-iron);
+				}
+				a, .discord-label span, .writes a span {
+					color: $highlight;
+					opacity: 1;
+				}
+				a:focus {
+					text-decoration-color: $highlight;
+				}
+				.overlay {
+					background: rgba($highlight, .75);
+					&, span {
+						color: white;
+					}
+				}
+				.more {
+					background: $highlight;
+					&, span {
+						color: white;
+					}
+					&:hover, &:focus {
+						background: mix($highlight, $iron);
+					}
+					&:active {
+						background: var(--color-iron);
+					}
+				}
+				.grid-item-expand picture:after {
+					background: rgba($highlight, .75);
+				}
+				.grid-item-expand, .grid-item-code a[class*="code-link"] {
+					&:focus {
+						@include focus-round(rgba($highlight, .5));
+					}
+				}
+				.grid-item-writing {
+					time, h4 span {
+						background-color: hsla(var(--color-iron-hsl), 0.2);
+						color: var(--color-iron);
+					}
+					h3 {
+						opacity: 1;
+					}
+					ul a {
+						&:before {
+							background: rgba($highlight, .5);
+						}
+						span {
+							background: var(--color-iron);
+							color: white;
+						}
+						&:hover, &:focus {
+							span {
+								background: $highlight;
+							}
+						}
+						&:active {
+							span {
+								background: mix($highlight, $iron);
+							}
+						}
+					}
+				}
+				.grid-item-gaming {
+					.modding picture {
+						border-radius: 0;
+						border: 2px solid hsla(var(--color-iron-hsl), 0.2);
+					}
+					.playing span {
+						background-color: hsla(var(--color-iron-hsl), 0.2);
+					}
+				}
+				dl {
+					background: hsla(var(--color-iron-hsl), 0.9);
+					dt, dd, span {
+						color: white;
+					}
+				}
+			}
+			.grid-filters a {
+				&.active:not(.reset), &:active {
+					background: $highlight;
+				}
+			}
+			.about-grid {
+				a {
+					-webkit-text-fill-color: unset;
+					background: none;
+					&:focus {
+						@include focus-round(rgba($highlight, .5));
+					}
+				}
+				.about-sitemap a {
+					background: var(--color-iron);
+					color: white;
+					&:hover, &:focus {
+						background: $highlight;
+					}
+					&:active {
+						background: mix($highlight, $iron);
+					}
+				}
+				.about-colors {
+					display: none;
+				}
+				.about-fonts {
+					.label span:first-child {
+						background: var(--color-iron);
+						color: white;
+					}
+				}
+			}
+		}
+		~ footer:not(.page-post footer):not(.page-writing footer) {
+			background-color: hsla(var(--color-iron-hsl), 0.2);
+			a {
+				background: var(--color-iron);
+				&:hover, &:focus {
+					background: $highlight;
+				}
+				&:active {
+					background: mix($highlight, $iron);
+				}
+			}
+		}
+	}
+}
