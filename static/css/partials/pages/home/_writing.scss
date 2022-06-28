@@ -26,6 +26,12 @@
 		font-size: 24px;
 		font-weight: 900;
 		font-variation-settings: "wght" 900, "CASL" 1;
+		a {
+			&:focus span {
+				text-decoration: underline;
+				text-decoration-thickness: 2px;
+			}
+		}
 	}
 	h4 {
 		font-size: 16px;
