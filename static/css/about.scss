@@ -1,4 +1,8 @@
-& {
+@import 'partials/fonts/recursive';
+@import 'partials/fonts/dank-mono';
+@import 'partials/shared/utilities';
+
+body {
 	font-size: 18px;
 	line-height: 1.3;
 	background-color: var(--color-grey);
@@ -23,6 +27,9 @@ h2 {
 
 .grid-item {
 	padding: calc(var(--p)/2);
+	&:not(:first-of-type) {
+		scroll-margin-block-start: calc(var(--p)/2);
+	}
 	@include viewport($mobile) {
 		padding: var(--p);
 	}

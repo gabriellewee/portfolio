@@ -1,8 +1,7 @@
-@import 'partials/fonts/dank-mono';
 @import 'partials/fonts/faune';
-@import 'partials/fonts/recursive';
 
 @import 'partials/shared/utilities';
+@import 'partials/shared/variables';
 @import 'partials/shared/reset';
 @import 'partials/shared/core';
 @import 'partials/shared/loading';
@@ -14,24 +13,6 @@ body {
 
 @import 'partials/shared/grid';
 @import 'partials/shared/lightbox';
-@import 'partials/shared/popup';
 
 @import 'partials/navigation/header';
 @import 'partials/navigation/footer';
-
-.page-home {
-	@import 'partials/pages/home';
-}
-.page-about {
-	@import 'partials/pages/about';
-}
-.page-error {
-	@import 'partials/pages/error';
-	background: url('../images/error.gif') center center / cover;
-}
-
-@media (inverted-colors: inverted) {
-	header .logo, .subpage-grid li figure, .subpage-grid li figcaption, iframe, .lightbox, .grid-item-expand, .inside svg, .grid-item-gaming svg {
-		filter: invert(100%);
-	}
-}

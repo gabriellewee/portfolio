@@ -1,3 +1,8 @@
+@import 'partials/fonts/recursive';
+@import 'partials/fonts/dank-mono';
+@import 'partials/shared/utilities';
+@import 'partials/shared/popup';
+
 header {
 	.logo {
 		pointer-events: none;
@@ -86,10 +91,10 @@ header {
 	}
 }
 
-@import '../pages/home/intro';
-@import '../pages/home/links';
-@import '../pages/home/code';
-@import '../pages/home/visual';
-@import '../pages/home/writing';
-@import '../pages/home/plants';
-@import '../pages/home/gaming';
+@import 'partials/pages/home/intro';
+@import 'partials/pages/home/links';
+@import 'partials/pages/home/code';
+@import 'partials/pages/home/visual';
+@import 'partials/pages/home/writing';
+@import 'partials/pages/home/plants';
+@import 'partials/pages/home/gaming';

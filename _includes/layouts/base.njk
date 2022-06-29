@@ -71,7 +71,19 @@
 
 	<meta property="article:author" content="{{site.author}}">
 
-	<link rel="stylesheet" href="{% if style == true %}{{ '/static/css/' + key + '.css' | url }}{% elseif style %}{{ '/static/css/' + style + '.css' | url }}{% else %}{{'/static/css/style.css' | url}}{% endif %}">
+	{% if style == true %}
+		{% if add == true %}
+			<link rel="stylesheet" href="{{'/static/css/style.css' | url}}">
+		{% endif %}
+		<link rel="stylesheet" href="{{ '/static/css/' + key + '.css' | url }}">
+	{% elseif style %}
+		{% if add == true %}
+			<link rel="stylesheet" href="{{'/static/css/style.css' | url}}">
+		{% endif %}
+		<link rel="stylesheet" href="{{ '/static/css/' + style + '.css' | url }}">
+	{% else %}
+		<link rel="stylesheet" href="{{'/static/css/style.css' | url}}">
+	{% endif %}
 
 	{% if blank != true %}
 		<noscript>

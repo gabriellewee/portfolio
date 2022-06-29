@@ -1,0 +1,366 @@
+@import 'partials/shared/utilities';
+
+body {
+	@media only screen and (max-width: $mobile) {
+		scroll-snap-type: y mandatory;
+		.grid-item:not(:first-of-type) {
+			scroll-margin-block-start: 91px;
+		}
+	}
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	.subpage-grid {
+		order: 1;
+	}
+	.grid-filters {
+		order: 2;
+	}
+}
+
+.grid-figure {
+	position: relative;
+	z-index: 1;
+	font-style: italic;
+	figcaption {
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+	fieldset {
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-end;
+		width: 100%;
+		height: 100%;
+	}
+	svg {
+		display: block;
+		width: 25px;
+		height: 25px;
+		@include svg-path {
+			stroke-width: 7px;
+		}
+	}
+	.grid-close, .grid-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+	}
+	.grid-overlay {
+		@include blur-bg(var(--color-iron-10-hsl), .9, .4);
+		transition: .2s ease-out;
+		opacity: 0;
+		display: flex;
+		align-items: center;
+		align-content: center;
+		justify-content: center;
+		svg {
+			width: 38px;
+			height: 38px;
+			border-radius: 100%;
+			@mixin svg-path {
+				stroke-width: 7px;
+			}
+		}
+	}
+	label, .grid-link {
+		cursor: pointer;
+	}
+	.grid-link, .grid-expand {
+		display: block;
+		position: relative;
+		z-index: 1;
+		padding: calc(var(--p)/4);
+	}
+	.grid-link {
+		padding: calc(var(--p)/2);
+	}
+	a.grid-link {
+		&:focus {
+			@include focus-round;
+		}
+	}
+	label:active, .grid-input:active ~label, a:active {
+		transform: scale(0.95);
+		box-shadow: none;
+	}
+	.grid-input {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		opacity: 0;
+		~ label.grid-link {
+			display: none;
+			@include viewport($ipad-mini) {
+				opacity: 0;
+				display: block;
+			}
+		}
+		&:focus {
+			~ .grid-link {
+				opacity: 0;
+			}
+			~ .grid-overlay {
+				@include blur(5px);
+				opacity: 1;
+				svg {
+					@include focus-round;
+				}
+			}
+			~ .grid-info {
+				.grid-down {
+					@include focus-round($inset: inset);
+				}
+			}
+		}
+		&:checked {
+			~ .grid-info {
+				transform: none;
+				opacity: 1;
+				z-index: 2;
+			}
+			~ .grid-overlay {
+				opacity: 0;
+			}
+			~ .grid-close {
+				z-index: unset;
+			}
+			~ .grid-link {
+				opacity: 0;
+			}
+		}
+	}
+	@include viewport($ipad-mini) {
+		&:hover .grid-input {
+			~ label.grid-link {
+				opacity: 1;
+			}
+			&:focus ~ label.grid-link, &:checked ~ label.grid-link {
+				opacity: 0;
+			}
+		}
+	}
+	.grid-info {
+		transform: translateY(25%);
+		opacity: 0;
+		z-index: 0;
+		transition: all .3s ease-out;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		.grid-down, .grid-expand {
+			position: absolute;
+			right: 0;
+			z-index: 1;
+			padding: calc(var(--p)/2) calc((var(--p)/2) + env(safe-area-inset-left));
+			@include max {
+				padding: calc(var(--p)/2) max(calc(var(--p)/2), env(safe-area-inset-left));
+			}
+		}
+		.grid-down {
+			top: 0;
+		}
+		.grid-expand {
+			bottom: 0;
+			&:focus {
+				@include focus-round($inset: inset);
+			}
+		}
+	}
+}
+
+dl {
+	@include blur-all(5px, "var(--color-iron-10-hsl)", .9, .4);
+	width: 100%;
+	padding: var(--p) calc(var(--p) + env(safe-area-inset-left));
+	font-size: 24px;
+	color: white;
+	@include max {
+		padding: var(--p) max(var(--p), env(safe-area-inset-left));
+	}
+	div {
+		position: relative;
+		z-index: 0;
+	}
+}
+dt, dd {
+	display: inline;
+}
+dt {
+	opacity: 0.7;
+	font-weight: bold;
+	&:after {
+		content: ": "
+	}
+	&.title {
+		display: none;
+		+ dd {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			font-size: 28px;
+			font-weight: bold;
+			font-style: normal;
+			.grid-link {
+				margin: 5px 0 0 calc(var(--p)/3);
+				padding: 0;
+				&.dribbble {
+					border-radius: 100%;
+					&:focus {
+						@include focus-round($inset: inset);
+					}
+				}
+			}
+		}
+	}
+}
+
+.grid-filters {
+	position: fixed;
+	position: -webkit-sticky;
+	position: sticky;
+	bottom: 0;
+	bottom: env(safe-area-inset-bottom);
+	left: 0;
+	left: env(safe-area-inset-left);
+	z-index: 2;
+	max-width: 100%;
+	@include viewport($ipad-11) {
+		padding: var(--p);
+	}
+	.no-js & {
+		visibility: hidden;
+		z-index: -1;
+	}
+	&, ul {
+		display: flex;
+		align-items: center;
+	}
+	ul {
+		border-radius: calc(var(--p)/2);
+		list-style: none;
+		padding: calc(var(--p)/2) calc(var(--p)/2) calc(var(--p)/2) 0;
+		overflow: auto;
+		overflow: -moz-scrollbars-none;
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+		-webkit-overflow-scrolling: touch;
+		@include clip-path {
+			clip-path: inset(var(--p) 0 var(--p) 0 round calc(var(--p)/2) calc(var(--p)/2) calc(var(--p)/2) calc(var(--p)/2));
+		}
+		::-webkit-scrollbar {
+			height: 0;
+			width: 0;
+			display: none;
+		}
+	}
+	li {
+		transition: .1s ease-out;
+		transform: translateX(-100%);
+		opacity: 0;
+		visibility: hidden;
+		padding: calc(var(--p)/2);
+		&:first-child {
+			padding-left: 0;
+		}
+		@for $i from 1 through 6 {
+			&:nth-last-child(#{$i}) {
+				transition-delay: ($i - 1) * .05s;
+			}
+		}
+	}
+	h2 {
+		margin: 0 var(--p);
+		text-transform: uppercase;
+	}
+	label, a {
+		@include blur-all(5px, "var(--color-iron-10-hsl)", .9, .8);
+		border-radius: calc(var(--p)/2);
+		display: block;
+		padding: var(--p) calc(var(--p)*1.25);
+		color: white;
+	}
+	a {
+		font-style: italic;
+		transition: .1s ease-out;
+		&.active:not(.reset) {
+			@include blur-bg(null, .9, .8, $red);
+			color: white;
+		}
+		&:hover, &:focus {
+			@include blur-bg("var(--color-message-hsl)", .9, .8);
+			color: var(--color-iron);
+		}
+		&:focus {
+			@include focus-round($inset: inset);
+		}
+		&:active {
+			@include blur-bg(null, .9, .8, $red);
+			transform: scale(0.95);
+			color: white;
+		}
+	}
+	label {
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+		&:after {
+			content: " ›";
+			font-size: 24px;
+			line-height: 19px;
+			margin-top: -4px;
+		}
+	}
+	input {
+		position: absolute;
+		top: 24px;
+		left: 24px;
+		width: 79px;
+		height: 43px;
+		margin: 0;
+		opacity: 0;
+		z-index: -1;
+		&:focus {
+			~ h2 > label {
+				@include focus-round($inset: inset);
+			}
+		}
+		&:checked {
+			~ h2 > label {
+				&:after {
+					content: " ‹";
+				}
+			}
+			~ ul {
+				li {
+					transform: translateX(0);
+					opacity: 1;
+					visibility: visible;
+					@for $i from 1 through 6 {
+						&:nth-child(#{$i}) {
+							transition-delay: ($i - 1) * .05s;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.upscale {
+	image-rendering: pixelated;
+}
