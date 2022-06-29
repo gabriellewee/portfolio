@@ -71,6 +71,8 @@
 
 	<meta property="article:author" content="{{site.author}}">
 
+	<meta name="generator" content="{{ eleventy.generator }}">
+
 	{% if style == true %}
 		{% if add == true %}
 			<link rel="stylesheet" href="{{'/static/css/style.css' | url}}">
