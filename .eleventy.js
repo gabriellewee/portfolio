@@ -8,6 +8,7 @@ const markdownItAnchor = require("markdown-it-anchor");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const sass = require("sass");
 const path = require("path");
+const minify = require("terser").minify;
 const htmlmin = require("html-minifier");
 
 module.exports = function(eleventyConfig) {
@@ -18,7 +19,6 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("static/css/no-js.css");
 	eleventyConfig.addPassthroughCopy("static/fonts");
 	eleventyConfig.addPassthroughCopy("static/images");
-	eleventyConfig.addPassthroughCopy("static/js");
 	
 	eleventyConfig.addTransform("minify", async (content, outputPath) => {
 		if (outputPath.endsWith(".html")) {
@@ -29,6 +29,21 @@ module.exports = function(eleventyConfig) {
 			});
 	    }
 	    return content;
+	});
+
+	eleventyConfig.addTemplateFormats("js");
+	eleventyConfig.addExtension("js", {
+		outputFileExtension: "js",
+		compile: (inputContent, inputPath) => {
+			let parsed = path.parse(inputPath);
+			if(parsed.name.startsWith(".")) {
+				return;
+			}
+			return async (data) => {
+				let minified = await minify(inputContent, {});
+				return minified.code;
+			};
+		}
 	});
 
 	eleventyConfig.addTemplateFormats("scss");

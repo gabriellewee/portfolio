@@ -1,3 +1,4 @@
+/*! Various site scripts */
 const noJS = ((container = document.documentElement) => {
 	container.classList.remove("no-js");
 	container.classList.add("js");
@@ -10,7 +11,7 @@ let iso = new Isotope(container, {
 	itemSelector: ".grid-item"
 });
 
-const loading = new imagesLoaded(document.body, { background: true }, () => {
+const loading = new imagesLoaded(document.body, () => {
 	setTimeout(() => {
 		if(container && iso != undefined) {
 			iso.layout();

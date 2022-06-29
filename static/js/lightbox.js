@@ -1,3 +1,4 @@
+/*! Lightbox script by Gabrielle Wee */
 const lightbox = ((links = Array.from(document.querySelectorAll(".expand"))) => {
 	let lightboxes = Array.from(document.querySelectorAll(".lightbox"));
 	let sibling;
