@@ -35,3 +35,9 @@
 		}
 	}
 }
+
+@media (inverted-colors: inverted) {
+	header .logo, .subpage-grid li figure, .subpage-grid li figcaption, iframe, .lightbox, .grid-item-expand, .inside svg, .grid-item-gaming svg {
+		filter: invert(100%);
+	}
+}

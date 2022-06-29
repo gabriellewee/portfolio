@@ -1,6 +1,13 @@
-&, a {
+@import 'partials/shared/utilities';
+
+body {
+	background: url('../images/error.gif') center center / cover;
+}
+
+body, a {
 	color: white;
 }
+
 main {
 	background-color: hsla(var(--color-iron-hsl), .2);
 	height: calc(100vh - 55px);
