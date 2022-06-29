@@ -1,4 +1,6 @@
 .grid-item-writing {
+	overflow: unset;
+	z-index: 2;
 	background-color: var(--color-writing-light);
 	color: var(--color-iron);
 	font-family: var(--font-recursive);
@@ -14,19 +16,20 @@
 			padding: var(--p) max(calc(var(--p)*1.5), env(safe-area-inset-left));
 		}
 	}
-	div {
+	> div {
 		padding: 0 calc((var(--p)*1.5) + env(safe-area-inset-left)) var(--p);
 		@include max {
 			padding: 0 max((var(--p)*1.5), env(safe-area-inset-left)) var(--p);
 		}
 	}
 	h3 {
-		opacity: 0.5;
+		opacity: 0.8;
 		margin-bottom: calc(var(--p)/2);
 		font-size: 24px;
 		font-weight: 900;
 		font-variation-settings: "wght" 900, "CASL" 1;
 		a {
+			opacity: 0.7;
 			&:focus span {
 				text-decoration: underline;
 				text-decoration-thickness: 2px;
@@ -92,9 +95,11 @@
 		align-content: center;
 		a, time, h4 {
 			display: block;
+		}
+		a, time, h4, .popup-label {
 			margin-bottom: var(--p);
 		}
-		a span, time, h4 span {
+		a span, time, h4 span, .popup-label span {
 			display: block;
 			padding: calc(var(--p)/2) var(--p);
 			@include clip-path {
@@ -107,7 +112,13 @@
 		> *:not(:last-child) {
 			margin-right: var(--p);
 		}
-		a {
+		.popup-label span:after {
+			content: " ↓";
+		}
+		.popup-button:checked ~ .popup-label span:after {
+			content: " ↑";
+		}
+		.popup-label, a {
 			position: relative;
 			color: white;
 			font-size: 20px;
@@ -136,28 +147,24 @@
 					border-radius: calc(var(--p)/4);
 				}
 			}
-			&:focus {
-				&:before {
-					opacity: 1;
-				}
+		}
+		a:hover, a:focus, .popup-label:hover, .popup-button:focus ~ .popup-label {
+			color: var(--color-red);
+			span {
+				background-color: white;
 			}
-			&:hover, &:focus {
-				color: var(--color-red);
-				span {
-					background-color: white;
-				}
+		}
+		a:focus, .popup-button:focus ~ .popup-label {
+			&:before {
+				opacity: 1;
 			}
-			&:active {
-				transform: scale(0.98);
-				span {
-					background-color: var(--color-iron);
-				}
-			}
-			@include dark {
-				&:active {
-					span {
-						background-color: var(--color-iron-5);
-					}
+		}
+		a:active, .popup-button:active ~ .popup-label {
+			transform: scale(0.98);
+			span {
+				background-color: var(--color-iron);
+				@include dark {
+					background-color: var(--color-iron-5);
 				}
 			}
 		}
