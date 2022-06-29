@@ -21,63 +21,77 @@ const loading = new imagesLoaded(document.body, { background: true }, () => {
 	}, 100);
 });
 
-const clipboardCopy = ((container = document.querySelector(".discord")) => {
-	if(!container) return;
-	let discordWindow = container.querySelector(".discord-window");
-	let discordArrow = container.querySelector(".discord-label");
+const popup = ((containers = Array.from(document.querySelectorAll(".popup"))) => {
+	if(!containers) return;
+	containers.forEach(container =>{
+		let popupWindow = container.querySelector(".popup-window");
+		let popupLabel = container.querySelector(".popup-label");
 
-	let copyTrigger = container.querySelector("input");
-	let closeTrigger = container.querySelector(".close");
-	let triggers = Array.from([copyTrigger, closeTrigger]);
-	
-	let copyElem = container.querySelector(".username");
-	
-	triggers.forEach(trigger =>{
-		trigger.addEventListener("keydown",  e => {
-			if (e.key === "Enter") {
-				if(copyTrigger.checked) {
-					copyTrigger.checked = false;
-					copyElem.classList.remove("copied");
-					copyTrigger.focus();
-				} else {
-					copyTrigger.checked = true;
+		let popupTrigger = container.querySelector(".popup-button");
+		let popupClose = container.querySelector(".close");
+		let triggers = Array.from([popupTrigger, popupClose]);
+
+		triggers.forEach(trigger =>{
+			trigger.addEventListener("keydown",  e => {
+				if (e.key === "Enter") {
+					if(popupTrigger.checked) {
+						popupTrigger.checked = false;
+						popupTrigger.focus();
+					} else {
+						popupTrigger.checked = true;
+					}
 				}
+			});
+		});
+
+		container.addEventListener("keydown",  e => {
+			if (e.key === "Escape") {
+				popupTrigger.checked = false;
+				popupTrigger.focus();
 			}
 		});
-	});
 
-	let copyButton = container.querySelector(".copy-button");
-	let clipboard = new ClipboardJS(copyButton);
-	clipboard.on("success", e => {
-		let copy = container.querySelector(e.trigger.getAttribute("data-clipboard-target"));
-		copy.parentNode.classList.add("copied");
-	    e.clearSelection();
-	});
-	copyButton.addEventListener("keydown", e => {
-		if (e.key === "Enter") {
-			setTimeout(() => {
-				closeTrigger.focus();
-			}, 50);
+		if(container.hasAttribute("data-copy")) {
+			let copyElem = container.querySelector(".username");
+			triggers.forEach(trigger =>{
+				trigger.addEventListener("keydown",  e => {
+					if (e.key === "Enter") {
+						if(popupTrigger.checked) {
+							copyElem.classList.remove("copied");
+						}
+					}
+				});
+				trigger.addEventListener("click",  e => {
+					if(popupTrigger.checked) {
+						setTimeout(() => {
+							copyElem.classList.remove("copied");
+						}, 300);
+					}
+				});
+			});
+
+			let copyButton = container.querySelector(".copy-button");
+			let clipboard = new ClipboardJS(copyButton);
+
+			clipboard.on("success", e => {
+				let copy = container.querySelector(e.trigger.getAttribute("data-clipboard-target"));
+				copy.parentNode.classList.add("copied");
+			    e.clearSelection();
+			});
+			copyButton.addEventListener("keydown", e => {
+				if (e.key === "Enter") {
+					setTimeout(() => {
+						popupClose.focus();
+					}, 50);
+				}
+			});
+			container.addEventListener("keydown",  e => {
+				if (e.key === "Escape") {
+					copyElem.classList.remove("copied");
+				}
+			});
 		}
 	})
-
-	container.addEventListener("keydown",  e => {
-		if (e.key === "Escape") {
-			copyTrigger.checked = false;
-			copyElem.classList.remove("copied");
-			copyTrigger.focus();
-		}
-	});
-	document.addEventListener("scroll", e => {
-		if(copyTrigger.checked) {
-			setTimeout(() => {
-				copyTrigger.checked = false;
-				discordWindow.classList.remove("active");
-				discordArrow.classList.remove("active");
-				copyElem.classList.remove("copied");
-			}, 300);
-		}
-	});
 })();
 
 const visualFilters = ((filters = document.querySelector(".grid-filters")) => {

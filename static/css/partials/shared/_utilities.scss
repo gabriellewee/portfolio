@@ -82,8 +82,14 @@ $neon: #DDFF3B;
 	}
 }
 
-@mixin blur($blur) {
+@mixin blur-check {
 	@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+		@content;
+	}
+}
+
+@mixin blur($blur) {
+	@include blur-check {
 		-webkit-backdrop-filter: blur($blur);
 		backdrop-filter: blur($blur);
 		@content;
@@ -96,7 +102,7 @@ $neon: #DDFF3B;
 	} @else {
 		background-color: hsla(#{$bg}, $crisp);
 	}
-	@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+	@include blur-check {
 		@if $rgb != null {
 			background-color: rgba($rgb, $blur);
 		} @else {
@@ -107,7 +113,7 @@ $neon: #DDFF3B;
 
 @mixin blur-all($blur, $bg, $crisp, $blurry, $rgb: null) {
 	@include blur-bg($bg, $crisp, $blurry, $rgb);
-	@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+	@include blur-check {
 		-webkit-backdrop-filter: blur($blur);
 		backdrop-filter: blur($blur);
 		@content;
