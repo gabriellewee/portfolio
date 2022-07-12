@@ -52,17 +52,17 @@ It's been a while since I've really done a proper update on this website. I'd li
 
 Previously, I hosted this website on [Github Pages](https://pages.github.com) and used a static site generator called [Cactus](https://github.com/eudicots/Cactus) to build my files.
 
-{% for photo in photos | index(1) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', photo.name %}{% endfor %}
+{% for photo in photos | index(1) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', 'lightbox' %}{% endfor %}
 
 <div class="row-double">
-{% for photo in photos | index(2) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', photo.name %}{% endfor %}
+{% for photo in photos | index(2) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', 'lightbox' %}{% endfor %}
 
-{% for photo in photos | index(3) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', photo.name %}{% endfor %}
+{% for photo in photos | index(3) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', 'lightbox' %}{% endfor %}
 </div>
 
 I was (and still am) really proud of this portfolio. It was my first big project out of college, and it got featured a few times on various sites. I experimented with different layout techniques and for the first time, created an extensive set of my own icons and thumbnails.
 
-{% for photo in photos | index(4) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', photo.name %}{% endfor %}
+{% for photo in photos | index(4) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', 'lightbox' %}{% endfor %}
 
 After this, I didn't update my portfolio for almost four years. I started working at [Apple](https://apple.com) in 2017 as a vendor and transitioned to full-time in 2018, so there really wasn't any need to change things up. I also really liked the design and couldn't think of how to change it.
 
@@ -137,7 +137,7 @@ Another no-JS component is the lightbox. I found this ingenious solution that us
 
 I styled it with some basic CSS transitions and a loading icon, then added enhanced Javascript functionality on top to cycle through images and use keyboard shortcuts. The background is separate from the image so that it doesn't fade in and out when you use the arrow key to tab to another image.
 
-{% for photo in photos | index(7) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', photo.name %}{% endfor %}
+{% for photo in photos | index(7) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', 'lightbox' %}{% endfor %}
 
 ## Eleventy
 

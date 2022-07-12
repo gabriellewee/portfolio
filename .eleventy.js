@@ -144,7 +144,7 @@ module.exports = function(eleventyConfig) {
 		return stripped;
 	});
 
-	eleventyConfig.addNunjucksAsyncShortcode("image", async (src, alt, type, lightbox) => {
+	eleventyConfig.addNunjucksAsyncShortcode("image", async (src, alt, type, extra) => {
 		let category = src.split('/')[3];
 		let name = src.split('/')[4].slice(0, -4);
 		let file = src.split(".")[2];
@@ -197,17 +197,23 @@ module.exports = function(eleventyConfig) {
 		
 		let source;
 		let img;
+		let loading;
+		if(Number.isInteger(extra) && extra < 7) {
+			loading = "eager";
+		} else {
+			loading = "lazy";
+		}
 		if(type === "default") {
 			source = `<source type="image/webp" srcset="${webpset}" sizes="(min-width: 2560px) 25vw, (min-width: 768px) 50vw, 100vw">`;
-			img = `<img loading="lazy" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" sizes="(min-width: 2560px) 25vw, (min-width: 768px) 50vw, 100vw" ${datasrc}width="${basic.width}" height="${basic.height}">`;
+			img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" sizes="(min-width: 2560px) 25vw, (min-width: 768px) 50vw, 100vw" ${datasrc}width="${basic.width}" height="${basic.height}">`;
 		} else if(type === "thumbnail" || type === "screen") {
 			source = `<source type="image/webp" srcset="${webpset}">`;
-			img = `<img loading="lazy" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" width="${basic.width}" height="${basic.height}">`;
+			img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" width="${basic.width}" height="${basic.height}">`;
 		}
 		
 		let picture = `<picture>${source}${img}</picture>`;
 		
-		if(lightbox) {
+		if(extra === "lightbox") {
 			return `<figure id="${name}" aria-labelledby="${name}-caption">
 				<figcaption id="${name}-caption" aria-hidden="true">${alt}</figcaption>
 				<a class="expand" href="#${name}-lightbox" aria-label="Expand image">

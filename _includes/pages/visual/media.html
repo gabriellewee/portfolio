@@ -8,7 +8,7 @@
 							<img class="upscale" src="{% include media.upscale %}"{% if media.upscaleWidth %} width="{{media.upscaleWidth}}"{% endif %}{% if media.upscaleHeight %} height="{{media.upscaleHeight}}"{% endif %} alt="{{media.description}}"/>
 						</picture>
 					{% else %}
-						{% image './static/images/' + key + '/' + media.date + '-' + media.name + '.' + extension, media.description, 'default' %}
+						{% image './static/images/' + key + '/' + media.date + '-' + media.name + '.' + extension, media.description, 'default', loop.index %}
 					{% endif %}
 					<figcaption>
 						<fieldset>

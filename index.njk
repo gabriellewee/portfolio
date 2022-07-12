@@ -33,7 +33,7 @@ cat:
 				{% for media in photography | limit(4) %}
 					<li id="{{media.date|safe}}-{{media.name}}">
 						<a class="grid-item-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand photo" role="button">
-							{% image './static/images/photography/' + media.date + '-' + media.name + '-thumbnail.jpg', media.description, 'thumbnail' %}
+							{% image './static/images/photography/' + media.date + '-' + media.name + '-thumbnail.jpg', media.description, 'thumbnail', loop.index %}
 						</a>
 					</li>
 				{% endfor %}
@@ -47,7 +47,7 @@ cat:
 				{% for media in graphic | limit(4) %}
 					<li id="{{media.date|safe}}-{{media.name}}">
 						<a class="grid-item-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand graphic" role="button">
-							{% image './static/images/graphic/' + media.date + '-' + media.name + '.png', media.description, 'thumbnail' %}
+							{% image './static/images/graphic/' + media.date + '-' + media.name + '.png', media.description, 'thumbnail', loop.index %}
 						</a>
 					</li>
 				{% endfor %}
@@ -61,7 +61,7 @@ cat:
 				{% for media in art | limit(4) %}
 					<li id="{{media.date|safe}}-{{media.name}}">
 						<a class="grid-item-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand artwork" role="button">
-							{% image './static/images/art/' + media.date + '-' + media.name + '-thumbnail.jpg', media.description, 'thumbnail' %}
+							{% image './static/images/art/' + media.date + '-' + media.name + '-thumbnail.jpg', media.description, 'thumbnail', loop.index %}
 						</a>
 					</li>
 				{% endfor %}

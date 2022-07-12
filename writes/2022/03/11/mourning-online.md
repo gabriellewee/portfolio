@@ -37,12 +37,12 @@ Late last year, my paternal grandmother passed away. She was an incredible woman
 >
 > I love you, Ngin Ngin, and I look forward to one day seeing you again in Heaven.
 
-{% for photo in photos | index(1) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', photo.name %}{% endfor %}
+{% for photo in photos | index(1) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', 'lightbox' %}{% endfor %}
 
 <div class="row-double">
-{% for photo in photos | index(2) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', photo.name %}{% endfor %}
+{% for photo in photos | index(2) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', 'lightbox' %}{% endfor %}
 
-{% for photo in photos | index(3) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', photo.name %}{% endfor %}
+{% for photo in photos | index(3) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', 'lightbox' %}{% endfor %}
 </div>
 
 I miss Ngin Ngin a lot. I didn’t realize what a enormous rift her passing would leave in my life. Even writing about her now is still painful. I’m learning, slowly, to let myself grieve.
