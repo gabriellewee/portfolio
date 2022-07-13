@@ -212,14 +212,11 @@ module.exports = function(eleventyConfig) {
 		}
 		
 		let picture = `<picture>${source}${img}</picture>`;
+		let caption = `<figcaption id="${name}-caption" aria-hidden="true">${alt}</figcaption>`;
+		let link = `<a class="expand" href="#${name}-lightbox" aria-label="Expand image">${picture}</a>`;
 		
 		if(extra === "lightbox") {
-			return `<figure id="${name}" aria-labelledby="${name}-caption">
-				<figcaption id="${name}-caption" aria-hidden="true">${alt}</figcaption>
-				<a class="expand" href="#${name}-lightbox" aria-label="Expand image">
-					${picture}
-				</a>
-			</figure>`;
+			return `<figure id="${name}" aria-labelledby="${name}-caption">${caption}${link}</figure>`;
 		} else {
 			return `${picture}`;
 		}

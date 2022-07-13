@@ -37,12 +37,11 @@ Late last year, my paternal grandmother passed away. She was an incredible woman
 >
 > I love you, Ngin Ngin, and I look forward to one day seeing you again in Heaven.
 
-{% for photo in photos | index(1) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', 'lightbox' %}{% endfor %}
+{%- set number = 1 %}{% include 'pages/visual/image.html' %}
 
 <div class="row-double">
-{% for photo in photos | index(2) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', 'lightbox' %}{% endfor %}
-
-{% for photo in photos | index(3) %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', 'lightbox' %}{% endfor %}
+{%- set number = 2 %}{% include 'pages/visual/image.html' %}
+{%- set number = 3 %}{% include 'pages/visual/image.html' %}
 </div>
 
 I miss Ngin Ngin a lot. I didn’t realize what a enormous rift her passing would leave in my life. Even writing about her now is still painful. I’m learning, slowly, to let myself grieve.
@@ -197,11 +196,4 @@ Once I had the video uploaded, I could finally put it on the site. I know that `
 
 I threw together this website the week before my grandmother’s funeral. It was a madwoman’s dash to the finish line, and yet I’m proud of the work I did. I’m also happy that I was able to put it together in a way that will be easy to maintain for my family — I moderate the guestbook submissions through Netlify and all they have to pay for is the domain name — $12 a year, much more inexpensive than the other monthly subscriptions that don’t include a domain name. I don’t know if anybody has needs as specific as mine, but hopefully this helps someone out there.
 
-<div class="lightbox-group">
-	{% for photo in photos %}<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{date}}-{{photo.name}}-lightbox" href="#{{photo.name}}">
-		<figure class="image">
-			{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'screen' %}
-		</figure>
-	</a>{% endfor %}
-	<div class="lightbox-background"></div>
-</div>
+{% include 'pages/visual/lightbox.html' %}
