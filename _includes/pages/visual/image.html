@@ -1,0 +1,7 @@
+{% for photo in photos | index(number) %}{% if photo.lightDark == true %}<figure id="{{date}}-{{photo.name}}" class="light-dark">
+	<figcaption>{{photo.description}}</figcaption>
+	<a class="expand" href="#{{date}}-{{photo.name}}-lightbox" aria-label="Expand image">
+		{% image './static/images/writing/' + date + '-' + photo.name + '-dark.' + photo.type, photo.description, 'default' %}
+		{% image './static/images/writing/' + date + '-' + photo.name + '-light.' + photo.type, photo.description, 'default' %}
+	</a>
+</figure>{% else %}{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'default', 'lightbox' %}{% endif %}{% endfor %}
