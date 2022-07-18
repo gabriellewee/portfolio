@@ -99,12 +99,13 @@ article {
 				background-color: var(--color-iron-5);
 			}
 		}
-		strong {
-			font-variation-settings: "wght" 800, "CASL" 0.5, "CRSV" 1;
-		}
-		em {
-			font-style: italic;
-		}
+	}
+	strong {
+		font-variation-settings: "wght" 800, "CASL" 0.5, "CRSV" 1;
+		font-weight: 800;
+	}
+	em {
+		font-style: italic;
 	}
 	pre, p > code {
 		font-weight: 400;
@@ -147,6 +148,9 @@ article {
 			font-size: 64px;
 			font-variation-settings: "wght" 400, "CASL" 1, "CRSV" 1;
 		}
+	}
+	ul {
+		list-style-type: circle;
 	}
 	ul, ol {
 		padding-left: calc(var(--p)*2);
