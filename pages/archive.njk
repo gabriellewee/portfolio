@@ -26,8 +26,8 @@ tags: subpages
 				{% endif %}
 			{% endif %}
 			<li>
-				<h3><a href="{{post.url | url}}">{{post.data.title}}</a></h3>
-				<span role="text"><time datetime="{{post.date | htmlDateString}}">{{post.date|readableDate}}</time></span>
+				<h3><a href="{{post.url | url}}">{{post.data.title | nbsp | safe}}</a></h3>
+				<span role="text"><time datetime="{{post.date | htmlDateString}}">{{post.date | readableDate}}</time></span>
 			</li>
 		{% endfor %}
 	</ul>

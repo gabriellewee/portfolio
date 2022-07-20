@@ -6,6 +6,7 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const string = require("string");
+const nbspFilter = require('eleventy-nbsp-filter');
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const sass = require("sass");
 const path = require("path");
@@ -130,6 +131,8 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addFilter("index", (array, index) => {
 		return array.slice(index - 1, index);
 	});
+
+	eleventyConfig.addFilter("nbsp", nbspFilter(2, 40));
 
 	eleventyConfig.addFilter("stripAttr", stripped => {
 		let removals = /<div class="lightbox-group">([\s\S]*?)<\/div>|<figure class="animation">([\s\S]*?)<\/figure>|<\/?a class="expand"[^>]*>|<\/?span[^>]*>|<\/?picture[^>]*>|<\/?source[^>]*>|<\/?div[^>]*>|<\/?script[^>]*>|\t|\r|\n/g;

@@ -7,16 +7,13 @@ key: home
 style: home
 add: true
 tags: pages
-cat:
- - 2022-05-18
- - 2022-06-26
 ---
 
 <div class="home-grid">
 	<div class="grid-pack grid-isotope" role="list">
 		<article class="grid-item grid-item-intro text-only" role="listitem" aria-label="Introduction">
-			<h1>Hello, stranger. My name is <span>Gabrielle Wee.</span></h1>
-			<p>I’m a front‑end developer working at <span class="apple" role="text">Apple {% include 'svg/apple.svg' %}.</span></p>
+			<h1>Hello, stranger. My name is <span>Gabrielle Wee.</span></h1>
+			<p>I’m a front‑end developer working at <span class="apple" role="text">Apple {% include 'svg/apple.svg' %}.</span></p>
 		</article>
 
 		<article class="grid-item grid-item-links text-only" role="listitem" aria-label="Links">
@@ -28,7 +25,7 @@ cat:
 		</article>
 
 		<article class="grid-item grid-item-photography grid-only" role="listitem" aria-label="Photography">
-			<h2>I enjoy taking photos of the world around me.</h2>
+			<h2>I enjoy taking photos of the world around me.</h2>
 			<ul class="grid">
 				{% for media in photography | limit(4) %}
 					<li id="{{media.date|safe}}-{{media.name}}">
@@ -42,7 +39,7 @@ cat:
 		</article>
 
 		<article class="grid-item grid-item-graphic grid-only" role="listitem" aria-label="Graphic">
-			<h2>I dabble in illustration and design.</h2>
+			<h2>I dabble in illustration and design.</h2>
 			<ul class="grid">
 				{% for media in graphic | limit(4) %}
 					<li id="{{media.date|safe}}-{{media.name}}">
@@ -56,7 +53,7 @@ cat:
 		</article>
 
 		<article class="grid-item grid-item-art grid-only" role="listitem" aria-label="Art">
-			<h2>I like to draw.</h2>
+			<h2>I like to draw.</h2>
 			<ul class="grid">
 				{% for media in art | limit(4) %}
 					<li id="{{media.date|safe}}-{{media.name}}">
@@ -75,7 +72,7 @@ cat:
 
 		<article class="grid-item grid-item-cat grid-only" role="listitem" aria-label="Cat">
 			<h2>I spend a lot of time with Alfie, my cat.</h2>
-			<p>We go on adventures together!</p>
+			<p>We go on adventures together!</p>
 			<ul class="grid">
 				{% for media in cat | limit(2) %}
 					<li id="{{media.date|safe}}-{{media.name}}">
@@ -91,7 +88,7 @@ cat:
 		<article class="grid-item grid-item-plants" role="listitem" aria-label="Plants">
 			<div class="text">
 				<h2>I’m an avid plant collector with over 200 plants, including aroids and succulents! 🪴</h2>
-				<p>My favorites are <span>philodendron</span>, <span>monstera</span>, and <span>anthurium</span>.</p>
+				<p>My favorites are <span>philodendron</span>, <span>monstera</span>, and <span>anthurium</span>.</p>
 			</div>
 			<div class="image">
 				{% for media in plants | limit(1) %}

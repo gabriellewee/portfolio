@@ -3,12 +3,12 @@
 <p><span aria-hidden="true">Check out some</span> <a href="https://codepen.io/gabriellewee" target="blank" aria-label="Check out some code snippets">code snippets</a><span aria-hidden="true">:</span></p>
 
 <div class="embed">
-	<h3><a href="https://codepen.io/gabriellewee/pen/Qdpgwx/" target="_blank" aria-label="CSS-Only Direction-Aware Cube Links">CSS-Only Direction-Aware Cube Links</a></h3>
+	<h3><a href="https://codepen.io/gabriellewee/pen/Qdpgwx/" target="_blank" aria-label="CSS-Only Direction-Aware Cube Links">CSS-Only Direction-Aware Cube Links</a></h3>
 	<iframe class="codepen" title="CSS-Only Direction-Aware Cube Links" width="100%" height="220px" src="/code/cubes/"></iframe>
 </div>
 
 <div class="embed">
-	<h3><a href="https://codepen.io/gabriellewee/pen/JjNGvJd" target="_blank" aria-label="Zdog Draggable Monument Valley Totem">Zdog Draggable Monument Valley Totem</a></h3>
+	<h3><a href="https://codepen.io/gabriellewee/pen/JjNGvJd" target="_blank" aria-label="Zdog Draggable Monument Valley Totem">Zdog Draggable Monument Valley Totem</a></h3>
 	<iframe class="codepen" title="Zdog Draggable Monument Valley Totem" width="100%" height="460px" src="/code/totem/"></iframe>
 </div>
 
@@ -20,7 +20,7 @@
 					<picture>
 						<img src="/static/images/svg/thumbnails/{{link.name}}.svg" width="200" height="125" alt=""/>
 					</picture>
-					<span class="overlay">{{link.title}}</span>
+					<span class="overlay">{{link.title | nbsp | safe}}</span>
 				</span>
 			</a>
 		</li>
@@ -29,7 +29,7 @@
 
 <div class="links">
 	{% for link in codelink %}
-		<p><a href="https://codepen.io/gabriellewee/pen/{{link.uri}}/" target="_blank" aria-label="{{link.title}}">{{link.title}}</a></p>
+		<p><a href="https://codepen.io/gabriellewee/pen/{{link.uri}}/" target="_blank" aria-label="{{link.title}}">{{link.title | nbsp | safe}}</a></p>
 	{% endfor %}
 </div>
 
@@ -44,7 +44,7 @@
 					</picture>
 					<span class="overlay">
 						<span>#{{link.name}}</span>
-						<span>{{link.title}}</span>
+						<span>{{link.title | nbsp | safe}}</span>
 					</span>
 				</span>
 			</a>

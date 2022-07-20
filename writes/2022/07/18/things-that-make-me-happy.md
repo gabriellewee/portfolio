@@ -1,74 +1,74 @@
 ---json
 {
 	"date": "2022-07-20",
-	"title": "Things that make me happy.",
+	"title": "Things that make me happy.",
 	"layout": "layouts/post.njk",
 	"templateEngineOverride": "md,njk",
 	"photos": [
 		{
 			"name": "desk-setup",
 			"type": "jpg",
-			"description": "My completed desk setup"
+			"description": "My completed desk setup"
 		},
 		{
 			"name": "keyboard",
 			"type": "jpg",
-			"description": "My pastel-themed custom mechanical keyboard and Logitech Lift Mouse"
+			"description": "My pastel-themed custom mechanical keyboard and Logitech Lift Mouse"
 		},
 		{
 			"name": "steam-deck-beach",
 			"type": "png",
-			"description": "Playing my Steam Deck at the beach in Half Moon Bay"
+			"description": "Playing my Steam Deck at the beach in Half Moon Bay"
 		},
 		{
 			"name": "steam-deck-cat",
 			"type": "jpg",
-			"description": "Playing my Steam Deck at Game Night with my cat"
+			"description": "Playing my Steam Deck at Game Night with my cat"
 		},
 		{
 			"name": "hayden",
 			"type": "jpg",
-			"description": "Boba with Hayden"
+			"description": "Boba with Hayden"
 		},
 		{
 			"name": "dad",
 			"type": "jpg",
-			"description": "Father‘s Day with family"
+			"description": "Father‘s Day with family"
 		},
 		{
 			"name": "jeselle",
 			"type": "jpg",
-			"description": "Beach with Jeselle"
+			"description": "Beach with Jeselle"
 		},
 		{
 			"name": "richard",
 			"type": "jpg",
-			"description": "Ice cream with Richard"
+			"description": "Ice cream with Richard"
 		},
 		{
 			"name": "float-pack",
 			"type": "jpg",
-			"description": "Me at Float Pack Friday"
+			"description": "Me at Float Pack Friday"
 		},
 		{
 			"name": "phil",
 			"type": "jpg",
-			"description": "Cooking wings with Phil"
+			"description": "Cooking wings with Phil"
 		},
 		{
 			"name": "cat-garden",
 			"type": "jpg",
-			"description": "Cat in the garden"
+			"description": "Cat in the garden"
 		},
 		{
 			"name": "cat-garage",
 			"type": "jpg",
-			"description": "Cat in someone‘s garage"
+			"description": "Cat in someone‘s garage"
 		},
 		{
 			"name": "cat-plush",
 			"type": "jpg",
-			"description": "Cat with me and Korilakkuma"
+			"description": "Cat with me and Korilakkuma"
 		},
 		{
 			"name": "alfie",
@@ -80,12 +80,12 @@
 		{
 			"name": "cat-perch",
 			"type": "jpg",
-			"description": "Cat on his cat tree"
+			"description": "Cat on his cat tree"
 		},
 		{
 			"name": "alfie",
 			"type": "jpg",
-			"description": "Cat at the beach",
+			"description": "Cat at the beach",
 			"date": "2022-05-18",
 			"category": "photography"
 		}
