@@ -1,12 +1,12 @@
 <div class="lightbox-group">
-	{% for photo in photos %}<a class="lightbox{% if photo.lightDark == true %} light-dark{% endif %}" role="dialog" aria-label="Modal" aria-modal="true" id="{{date}}-{{photo.name}}-lightbox" href="#{{photo.name}}">
+	{% for photo in photos %}{% if photo.date %}{%- set day = photo.date %}{% else %}{%- set day = date %}{% endif %}{% if photo.category %}{%- set category = photo.category %}{% else %}{%- set category = 'writing' %}{% endif %}<a class="lightbox{% if photo.lightDark == true %} light-dark{% endif %}" role="dialog" aria-label="Modal" aria-modal="true" id="{{day}}-{{photo.name}}-lightbox" href="#{{photo.name}}">
 		{% if photo.lightDark == true %}<figure class="image dark">
-			{% image './static/images/writing/' + date + '-' + photo.name + '-dark.' + photo.type, photo.description, 'screen' %}
+			{% image './static/images/' + category + '/' + day + '-' + photo.name + '-dark.' + photo.type, photo.description, 'screen' %}
 		</figure>
 		<figure class="image light">
-			{% image './static/images/writing/' + date + '-' + photo.name + '-light.' + photo.type, photo.description, 'screen' %}
+			{% image './static/images/' + category + '/' + day + '-' + photo.name + '-light.' + photo.type, photo.description, 'screen' %}
 		</figure>{% else %}<figure class="image">
-			{% image './static/images/writing/' + date + '-' + photo.name + '.' + photo.type, photo.description, 'screen' %}
+			{% image './static/images/' + category + '/' + day + '-' + photo.name + '.' + photo.type, photo.description, 'screen' %}
 		</figure>{% endif %}
 	</a>{% endfor %}
 	<div class="lightbox-background"></div>

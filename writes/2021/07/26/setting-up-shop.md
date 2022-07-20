@@ -8,27 +8,27 @@
 		{
 			"name": "website-home",
 			"type": "png",
-			"description": "Previous website home page"
+			"description": "Previous website home page"
 		},
 		{
 			"name": "website-project-top",
 			"type": "png",
-			"description": "Previous website project page information"
+			"description": "Previous website project page information"
 		},
 		{
 			"name": "website-project-middle",
 			"type": "png",
-			"description": "Previous website project page styles"
+			"description": "Previous website project page styles"
 		},
 		{
 			"name": "portfolio-icons",
 			"type": "png",
-			"description": "Website thumbnail icons I created for my portfolio"
+			"description": "Website thumbnail icons I created for my portfolio"
 		},
 		{
 			"name": "website-v4",
 			"type": "png",
-			"description": "Landing page version",
+			"description": "Landing page version",
 			"lightDark": true
 		},
 		{
@@ -40,7 +40,7 @@
 		{
 			"name": "home",
 			"type": "jpg",
-			"description": "Click on this sunset photo to try out the lightbox"
+			"description": "Click on this sunset photo to try out the lightbox"
 		}
 	]
 }
