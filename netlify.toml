@@ -16,6 +16,18 @@
 [context.branch-deploy.environment]
 	NODE_VERSION = "16.0.0"
 
+[[plugins]]
+	package = "netlify-plugin-cache"
+
+	[plugins.inputs]
+	paths = [
+		"_site/static/images/art/built/",
+		"_site/static/images/avatars/built/",
+		"_site/static/images/graphic/built/",
+		"_site/static/images/photography/built/",
+		"_site/static/images/writing/built/"
+	]
+
 [[redirects]]
 	from = "http://gabriellewee.netlify.app/*"
 	to = "http://gabriellew.ee/:splat"
