@@ -9,17 +9,17 @@
 		{
 			"name": "baby",
 			"type": "jpg",
-			"description": "Me and Ngin Ngin"
+			"description": "Me and Ngin Ngin"
 		},
 		{
 			"name": "toddler",
 			"type": "jpg",
-			"description": "Me and Ngin Ngin visiting Ye Ye"
+			"description": "Me and Ngin Ngin visiting Ye Ye"
 		},
 		{
 			"name": "adult",
 			"type": "jpg",
-			"description": "Me and Ngin Ngin at one of her recent birthdays"
+			"description": "Me and Ngin Ngin at one of her recent birthdays"
 		}
 	]
 }

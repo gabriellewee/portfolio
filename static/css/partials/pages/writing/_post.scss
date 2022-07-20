@@ -274,6 +274,9 @@ article {
 		display: grid;
 		grid-gap: calc(var(--p)*2);
 		grid-template-columns: 1fr;
+		@include viewport($mobile) {
+			align-items: flex-end;
+		}
 	}
 	@include viewport($mobile) {
 		.row-double {

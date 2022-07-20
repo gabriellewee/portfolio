@@ -8,27 +8,27 @@
 		{
 			"name": "er-iv",
 			"type": "jpg",
-			"description": "The photo I sent to my family when I went to the ER"
+			"description": "The photo I sent to my family when I went to the ER"
 		},
 		{
 			"name": "cat",
 			"type": "jpg",
-			"description": "My cat cuddling me one morning while I was sick in bed"
+			"description": "My cat cuddling me one morning while I was sick in bed"
 		},
 		{
 			"name": "selfie",
 			"type": "jpg",
-			"description": "Trying out neon green and pink makeup and velcro roller hair"
+			"description": "Trying out neon green and pink makeup and velcro roller hair"
 		},
 		{
 			"name": "jaw-cooper",
 			"type": "jpg",
-			"description": "Art poster by JAW Cooper from a Kickstarter I supported"
+			"description": "Art poster by JAW Cooper from a Kickstarter I supported"
 		},
 		{
 			"name": "soeymilk",
 			"type": "jpg",
-			"description": "Original art by soeymilk that I purchased at Comic Con"
+			"description": "Original art by soeymilk that I purchased at Comic Con"
 		}
 	]
 }
