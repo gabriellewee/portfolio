@@ -25,7 +25,8 @@
 		"_site/static/images/avatars/built",
 		"_site/static/images/graphic/built",
 		"_site/static/images/photography/built",
-		"_site/static/images/writing/built"
+		"_site/static/images/writing/built",
+		"_site/static/images/og/post"
 	]
 
 [[redirects]]
