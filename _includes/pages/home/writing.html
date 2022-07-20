@@ -1,11 +1,11 @@
-<h2>Sometimes I have a word or two to say.</h2>
+<h2>Sometimes I have a word or two to say.</h2>
 <div>
 	<h3 class="writes" aria-label="Latest blog posts"><a href="/writes/"><span>Latest blog posts</span></a></h3>
 	<ul>
 		{% for post in collections.writes | reverse | limit(3) %}
 			<li>
-				<a href="{{post.url | url}}"><span>{{post.data.title}}</span></a>
-				<time datetime="{{post.date | htmlDateString}}">{{post.date|timeAgo}}</time>
+				<a href="{{post.url | url}}"><span>{{post.data.title | nbsp | safe}}</span></a>
+				<time datetime="{{post.date | htmlDateString}}">{{post.date | timeAgo}}</time>
 				{% if post.data.medium %}
 					<a class="link link-medium" aria-label="View {{post.data.title}} on Medium" href="{{post.data.medium}}" target="_blank"><span>Medium</span></a>
 				{% endif %}
@@ -33,7 +33,7 @@
 	<h3>Audio</h3>
 	<ul>
 		<li>
-			<a href="https://blog.codepen.io/2021/12/08/345-with-gabrielle-wee/" target="_blank"><span>Codepen Blog - 345: With Gabrielle Wee</span></a>
+			<a href="https://blog.codepen.io/2021/12/08/345-with-gabrielle-wee/" target="_blank"><span>Codepen Blog - 345: With Gabrielle Wee</span></a>
 			<a class="link link-podcasts" aria-label="Listen to Friends Talk Frontend: Episode 7 on Apple Podcasts" href="https://itunes.apple.com/us/podcast/codepen-radio/id824437159" target="_blank"><span>Apple Podcasts</span></a>
 		</li>
 		<li>

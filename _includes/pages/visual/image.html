@@ -1,5 +1,5 @@
 {% for photo in photos | index(number) %}{% if photo.date %}{%- set day = photo.date %}{% else %}{%- set day = date %}{% endif %}{% if photo.category %}{%- set category = photo.category %}{% else %}{%- set category = 'writing' %}{% endif %}{% if photo.lightDark == true %}<figure id="{{day}}-{{photo.name}}" class="light-dark">
-	<figcaption>{{photo.description}}</figcaption>
+	<figcaption>{{photo.description | nbsp | safe}}</figcaption>
 	<a class="expand" href="#{{day}}-{{photo.name}}-lightbox" aria-label="Expand image">
 		{% image './static/images/' + category + '/' + day + '-' + photo.name + '-dark.' + photo.type, photo.description, 'default' %}
 		{% image './static/images/' + category + '/' + day + '-' + photo.name + '-light.' + photo.type, photo.description, 'default' %}

@@ -19,7 +19,7 @@
 		{
 			"name": "adult",
 			"type": "jpg",
-			"description": "Me and Ngin Ngin at one of her recent birthdays"
+			"description": "Me and Ngin Ngin at one of her recent birthdays"
 		}
 	]
 }

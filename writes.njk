@@ -18,7 +18,7 @@ pagination:
 <article>
 	<header>
 		<h2><a href="{{post.url | url}}">{{post.data.title}}</a></h2>
-		<time datetime="{{post.date | htmlDateString}}">{{post.date|timeAgo}}</time>
+		<time datetime="{{post.date | htmlDateString}}">{{post.date | timeAgo}}</time>
 	</header>
 	<div>{% excerpt post %}</div>
 </article>

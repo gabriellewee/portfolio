@@ -8,8 +8,8 @@ tags: posts
 
 <article>
 	<header>
-		<h2>{{title}}</h2>
-		<time datetime="{{page.date | htmlDateString}}">{{page.date|timeAgo}}</time>
+		<h2>{{title | nbsp | safe}}</h2>
+		<time datetime="{{page.date | htmlDateString}}">{{page.date | timeAgo}}</time>
 	</header>
 	<div>{{content | safe}}</div>
 </article>
