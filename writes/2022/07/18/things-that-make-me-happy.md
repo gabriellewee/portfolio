@@ -1,7 +1,7 @@
 ---json
 {
 	"date": "2022-07-20",
-	"title": "Things that make me happy.",
+	"title": "Things that make me happy.",
 	"layout": "layouts/post.njk",
 	"templateEngineOverride": "md,njk",
 	"photos": [
