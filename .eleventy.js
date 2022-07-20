@@ -5,6 +5,7 @@ const sharp = require("sharp");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
+const string = require("string");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const sass = require("sass");
 const path = require("path");
@@ -76,10 +77,12 @@ module.exports = function(eleventyConfig) {
 		linkify: true,
 		typographer: true
 	}).use(markdownItAnchor, {
-		slugify: string => string.trim().toLowerCase().replace(/\s+/g, '-').replace(/[!"#$%&'()*+,./:;<=>?@[\]^_`{|}~]/g, ''),
-		permalink: true,
-		permalinkClass: "direct-link",
-		permalinkSymbol: "¶"
+		slugify: s => string(s).slugify().toString(),
+		permalink: markdownItAnchor.permalink.ariaHidden({
+			class: "direct-link",
+			symbol: "¶",
+			placement: "after"
+		})
 	});
 	eleventyConfig.setLibrary("md", markdownLibrary);
 
