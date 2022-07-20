@@ -257,14 +257,14 @@ h2 {
 		.pangram {
 			font-family: var(--font-recursive);
 			font-weight: 300;
-			font-variation-settings: "wght" 300, "CASL" 0.5, "CRSV" 1;
+			font-variation-settings: "wght" 300, "CASL" 0.5, "CRSV" 1, "MONO" 0;
 		}
 	}
 	.recursive-bold {
 		.pangram {
 			font-family: var(--font-recursive);
 			font-weight: 1000;
-			font-variation-settings: "wght" 1000, "CASL" 1, "CRSV" 1;
+			font-variation-settings: "wght" 1000, "CASL" 1, "CRSV" 1, "MONO" 0;
 		}
 	}
 }

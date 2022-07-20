@@ -10,7 +10,7 @@
 	}
 	h2 {
 		font-weight: 1000;
-		font-variation-settings: "wght" 1000, "CASL" 1;
+		font-variation-settings: "wght" 1000, "CASL" 1, "MONO" 0;
 		padding: var(--p) calc((var(--p)*1.5) + env(safe-area-inset-left));
 		@include max {
 			padding: var(--p) max(calc(var(--p)*1.5), env(safe-area-inset-left));
@@ -27,7 +27,7 @@
 		margin-bottom: calc(var(--p)/2);
 		font-size: 24px;
 		font-weight: 900;
-		font-variation-settings: "wght" 900, "CASL" 1;
+		font-variation-settings: "wght" 900, "CASL" 1, "MONO" 0;
 		a {
 			opacity: 0.7;
 			&:focus span {
@@ -39,7 +39,7 @@
 	h4 {
 		font-size: 16px;
 		font-weight: 600;
-		font-variation-settings: "wght" 600, "CASL" 1;
+		font-variation-settings: "wght" 600, "CASL" 1, "MONO" 0;
 		span {
 			background-color: var(--color-writing-med);
 			@include dark {
@@ -123,7 +123,7 @@
 			color: white;
 			font-size: 20px;
 			font-weight: 500;
-			font-variation-settings: "wght" 500, "CASL" 0.5;
+			font-variation-settings: "wght" 500, "CASL" 0.5, "MONO" 0;
 			span {
 				background-color: var(--color-red);
 			}
@@ -181,7 +181,7 @@
 			padding: calc(var(--p)/2) var(--p);
 			font-size: 16px;
 			font-weight: 700;
-			font-variation-settings: "wght" 700, "CASL" 1;
+			font-variation-settings: "wght" 700, "CASL" 1, "MONO" 0;
 			text-transform: uppercase;
 		}
 		.link {

@@ -3,8 +3,19 @@
 body {
 	@media only screen and (max-width: $mobile) {
 		scroll-snap-type: y mandatory;
-		.grid-item:not(:first-of-type) {
-			scroll-margin-block-start: 91px;
+		.grid-item {
+			&:not(:last-of-type) {
+				scroll-snap-align: start;
+			}
+			&:last-of-type {
+				scroll-snap-align: end;
+			}
+			&:not(:first-of-type) {
+				scroll-margin-block-start: 91px;
+			}
+		}
+		footer {
+			scroll-snap-align: end;
 		}
 	}
 }
