@@ -4,12 +4,12 @@ article {
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		font-variation-settings: "CASL" 1;
+		font-variation-settings: "CASL" 1, "MONO" 0;
 		line-height: 1.2;
 	}
 	h3, h4, h5, h6 {
 		font-weight: 700;
-		font-variation-settings: "wght" 700, "CASL" 1;
+		font-variation-settings: "wght" 700, "CASL" 1, "MONO" 0;
 	}
 	h3 {
 		font-size: 22px;
@@ -17,12 +17,12 @@ article {
 	h2, &.archive h3 {
 		font-size: 26px;
 		font-weight: 800;
-		font-variation-settings: "wght" 800, "CASL" 1;
+		font-variation-settings: "wght" 800, "CASL" 1, "MONO" 0;
 	}
 	h1, header h2 {
 		font-size: 36px;
 		font-weight: 900;
-		font-variation-settings: "wght" 900, "CASL" 1;
+		font-variation-settings: "wght" 900, "CASL" 1, "MONO" 0;
 	}
 
 	h1, h2, h3 {
@@ -66,7 +66,7 @@ article {
 	}
 	p, ol, ul {
 		font-weight: 400;
-		font-variation-settings: "wght" 400, "CASL" 0.5, "CRSV" 1;
+		font-variation-settings: "wght" 400, "CASL" 0.5, "CRSV" 1, "MONO" 0;
 	}
 	p, figcaption, ul, ol {
 		a {
@@ -101,15 +101,15 @@ article {
 		}
 	}
 	strong {
-		font-variation-settings: "wght" 800, "CASL" 0.5, "CRSV" 1;
 		font-weight: 800;
+		font-variation-settings: "wght" 800, "CASL" 0.5, "CRSV" 1, "MONO" 0;
 	}
 	em {
 		font-style: italic;
 	}
 	pre, p > code {
 		font-weight: 400;
-		font-variation-settings: "wght" 400, "MONO" 1, "CASL" 0;
+		font-variation-settings: "wght" 400, "MONO" 1, "CASL" 0, "MONO" 0;
 		line-height: 28px;
 	}
 	pre {
@@ -146,7 +146,7 @@ article {
 			top: calc(var(--p)*-2.5);
 			left: calc(var(--p)*-1.5);
 			font-size: 64px;
-			font-variation-settings: "wght" 400, "CASL" 1, "CRSV" 1;
+			font-variation-settings: "wght" 400, "CASL" 1, "CRSV" 1, "MONO" 0;
 		}
 	}
 	ul {
@@ -174,7 +174,7 @@ article {
 			background-color: hsla(var(--color-white-hsl), .2);
 		}
 		> * {
-			font-variation-settings: "wght" 600, "CASL" 0.5, "CRSV" 1;
+			font-variation-settings: "wght" 600, "CASL" 0.5, "CRSV" 1, "MONO" 0;
 		}
 	}
 	.expand {
@@ -427,7 +427,7 @@ article {
 		display: inline-block;
 		font-size: 48px;
 		font-weight: 900;
-		font-variation-settings: "wght" 900, "CASL" 1;
+		font-variation-settings: "wght" 900, "CASL" 1, "MONO" 0;
 	}
 	a {
 		text-decoration-thickness: 2px;

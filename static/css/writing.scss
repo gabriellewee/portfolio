@@ -10,6 +10,10 @@
 @import 'partials/navigation/header';
 @import 'partials/pages/writing/nav';
 
+.top {
+	position: absolute;
+}
+
 body {
 	font-family: var(--font-recursive);
 	font-size: 18px;
@@ -40,7 +44,7 @@ a, pre, button {
 	a {
 		font-size: 64px;
 		font-weight: 1000;
-		font-variation-settings: "wght" 1000, "CASL" 1;
+		font-variation-settings: "wght" 1000, "CASL" 1, "MONO" 0;
 		line-height: 1.4;
 		@include viewport($ipad-mini) {
 			font-size: 7vw;
@@ -127,7 +131,7 @@ button {
 		font-family: var(--font-recursive);
 		font-weight: 500;
 		font-size: 16px;
-		font-variation-settings: "wght" 500, "CASL" 0.5;
+		font-variation-settings: "wght" 500, "CASL" 0.5, "MONO" 0;
 		line-height: 1.2;
 		@include clip-path {
 			clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);

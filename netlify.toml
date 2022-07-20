@@ -21,11 +21,11 @@
 
 	[plugins.inputs]
 	paths = [
-		"_site/static/images/art/built/",
-		"_site/static/images/avatars/built/",
-		"_site/static/images/graphic/built/",
-		"_site/static/images/photography/built/",
-		"_site/static/images/writing/built/"
+		"_site/static/images/art/built",
+		"_site/static/images/avatars/built",
+		"_site/static/images/graphic/built",
+		"_site/static/images/photography/built",
+		"_site/static/images/writing/built"
 	]
 
 [[redirects]]
