@@ -210,9 +210,7 @@ module.exports = function(eleventyConfig) {
 		if(type === "default") {
 			webpset = `${stats["webp"][3].srcset}, ${stats["webp"][2].srcset}, ${stats["webp"][1].srcset}`;
 			regset = `${stats[file][3].srcset}, ${stats[file][2].srcset}, ${stats[file][1].srcset}`;
-			if(category === "writing") {
-				datasrc = `data-src="${stats[file][3].url}" `;
-			}
+			datasrc = `https://gabriellew.ee${src.substring(1)}`;
 		} else if(type === "thumbnail" || type === "screen") {
 			webpset = `${stats["webp"][1].url}, ${stats["webp"][2].url} 2x`;
 			regset = `${stats[file][1].url}, ${stats[file][2].url} 2x`;
@@ -228,7 +226,7 @@ module.exports = function(eleventyConfig) {
 		}
 		if(type === "default") {
 			source = `<source type="image/webp" srcset="${webpset}" sizes="(min-width: 2560px) 25vw, (min-width: 768px) 50vw, 100vw">`;
-			img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" sizes="(min-width: 2560px) 25vw, (min-width: 768px) 50vw, 100vw" ${datasrc}width="${basic.width}" height="${basic.height}">`;
+			img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" sizes="(min-width: 2560px) 25vw, (min-width: 768px) 50vw, 100vw" data-src="${datasrc}" width="${basic.width}" height="${basic.height}">`;
 		} else if(type === "thumbnail" || type === "screen") {
 			source = `<source type="image/webp" srcset="${webpset}">`;
 			img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" width="${basic.width}" height="${basic.height}">`;
