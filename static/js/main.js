@@ -142,7 +142,7 @@ const visualInfoTriggers = ((figures = Array.from(document.querySelectorAll(".gr
 		let button = figure.querySelector(".grid-input")
 		let info = figure.querySelector(".grid-info");
 		let expand = figure.querySelector(".grid-expand");
-		let external = figure.querySelector(".external");
+		let external = Array.from(figure.querySelectorAll(".external"));
 		let name = button.getAttribute("id").slice(0, -5);
 		let labels = Array.from(figure.querySelectorAll("label"));
 		info.setAttribute("aria-hidden", "true");
@@ -153,13 +153,21 @@ const visualInfoTriggers = ((figures = Array.from(document.querySelectorAll(".gr
 			button.setAttribute("aria-checked", "true");
 			info.removeAttribute("aria-hidden");
 			expand.tabIndex = 0;
-			if(external) external.tabIndex = 0;
+			if(external) {
+				external.forEach(link=> {
+					link.tabIndex = 0;
+				});
+			}
 		});
 		let _false = (() => {
 			button.setAttribute("aria-checked", "false");
 			info.setAttribute("aria-hidden", "true");
 			expand.tabIndex = -1;
-			if(external) external.tabIndex = -1;
+			if(external) {
+				external.forEach(link=> {
+					link.tabIndex = -1;
+				});
+			}
 		});
 		button.addEventListener("click", e => {
 			if(button.checked){

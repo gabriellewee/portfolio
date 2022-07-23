@@ -28,5 +28,17 @@
 		"title": "Monument Valley Totem",
 		"uri": "zNBMmW",
 		"style": "css-only"
+	},
+	{
+		"name": "flash-messages",
+		"title": "#dailyui 011: Flash Messages",
+		"uri": "bYqKPx",
+		"style": ""
+	},
+	{
+		"name": "music-player",
+		"title": "#dailyui 009: Music Player",
+		"uri": "wgZNwK",
+		"style": ""
 	}
 ]

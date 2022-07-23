@@ -32,22 +32,3 @@
 		<p><a href="https://codepen.io/gabriellewee/pen/{{link.uri}}/" target="_blank" aria-label="{{link.title}}">{{link.title | nbsp | safe}}</a></p>
 	{% endfor %}
 </div>
-
-<p>I also have some #dailyui challenges:</p>
-<ul class="ui grid">
-	{% for link in ui %}
-		<li>
-			<a class="code-link-{{link.name}}" href="https://codepen.io/gabriellewee/pen/{{link.uri}}/" target="_blank" aria-label="Daily UI #{{link.name}}: {{link.title}}">
-				<span class="inside" aria-hidden="true">
-					<picture>
-						<img src="/static/images/svg/ui/{{link.name}}.svg" width="150" height="100" alt=""/>
-					</picture>
-					<span class="overlay">
-						<span>#{{link.name}}</span>
-						<span>{{link.title | nbsp | safe}}</span>
-					</span>
-				</span>
-			</a>
-		</li>
-	{% endfor %}
-</ul>

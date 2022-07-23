@@ -1,5 +1,5 @@
-<svg class="icon" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g fill="none" stroke="#fff" stroke-width="8px" stroke-linecap="round" stroke-linejoin="round">
+<svg class="icon" viewBox="0 0 100 100" width="25" height="25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g fill="none" stroke="#fff" stroke-width="3px" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="65 15 85 15 85 35"></polyline>
         <line x1="85" y1="15" x2="62" y2="38"></line>
         <polyline points="35 15 15 15 15 35"></polyline>
