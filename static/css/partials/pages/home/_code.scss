@@ -91,20 +91,6 @@
 				}
 			}
 		}
-		&.ui {
-			a {
-				.overlay {
-					flex-direction: column;
-					span {
-						&:first-child {
-							font-size: 12px;
-							font-weight: bold;
-							font-style: normal;
-						}
-					}
-				}
-			}
-		}
 		a {
 			transition: .2s ease-out;
 			display: block;

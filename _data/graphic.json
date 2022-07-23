@@ -3,71 +3,103 @@
 		"name": "cutie-moon-rod",
 		"date": "2022-03-16",
 		"title": "Cutie Moon Rod",
-		"platform": "dribbble",
-		"url": "https://dribbble.com/shots/17741052-Sailor-Moon-Cutie-Moon-Rod",
 		"tools": "Sketch",
 		"tags": "illustration 2d sketch vector",
-		"description": "Vector art inspired by the Cutie Moon Rod from Sailor Moon, a short staff with a globe on top and wings around its crystal."
+		"description": "Vector art inspired by the Cutie Moon Rod from Sailor Moon, a short staff with a globe on top and wings around its crystal.",
+		"external": [
+			{
+				"platform": "dribbble",
+				"url": "https://dribbble.com/shots/17741052-Sailor-Moon-Cutie-Moon-Rod"
+			}
+		]
 	},
 	{
 		"name": "dailyui-011",
 		"date": "2017-11-11",
 		"title": "#dailyui 011",
-		"platform": "dribbble",
-		"url": "https://dribbble.com/shots/3940740--dailyui-011-Flash-Messages",
 		"tools": "Sketch",
 		"tags": "ui 2d sketch vector",
-		"description": "Mockup of flash messages for success, loading, and error dialogs."
+		"description": "Mockup of flash messages for success, loading, and error dialogs.",
+		"external": [
+			{
+				"platform": "dribbble",
+				"url": "https://dribbble.com/shots/3940740--dailyui-011-Flash-Messages"
+			},
+			{
+				"platform": "codepen",
+				"url": "https://codepen.io/gabriellewee/pen/bYqKPx/"
+			}
+		]
 	},
 	{
 		"name": "desk-setup",
 		"date": "2017-05-18",
 		"title": "Desk Setup",
-		"platform": "dribbble",
-		"url": "https://dribbble.com/shots/3508741-Desk-Setup",
 		"tools": "Sketch",
 		"tags": "illustration 2d sketch vector",
-		"description": "Vector art of my desk setup. From left to right - phone on phone stand, laptop, monitor, takeout coffee, lamp, Sailor Moon figurines, tissue box."
+		"description": "Vector art of my desk setup. From left to right - phone on phone stand, laptop, monitor, takeout coffee, lamp, Sailor Moon figurines, tissue box.",
+		"external": [
+			{
+				"platform": "dribbble",
+				"url": "https://dribbble.com/shots/3508741-Desk-Setup"
+			}
+		]
 	},
 	{
 		"name": "crystal-carillon",
 		"date": "2017-05-10",
 		"title": "Crystal Carillon",
-		"platform": "dribbble",
-		"url": "https://dribbble.com/shots/3490913-Sailor-Moon-Crystal-Carillon",
 		"tools": "Sketch",
 		"tags": "illustration 2d sketch vector",
-		"description": "Vector art inspired by the Crystal Carillon from Sailor Moon, a heart-shaped weapon with a bell at the bottom."
+		"description": "Vector art inspired by the Crystal Carillon from Sailor Moon, a heart-shaped weapon with a bell at the bottom.",
+		"external": [
+			{
+				"platform": "dribbble",
+				"url": "https://dribbble.com/shots/3490913-Sailor-Moon-Crystal-Carillon"
+			}
+		]
 	},
 	{
 		"name": "portfolio-icons",
 		"date": "2017-02-15",
 		"title": "Portfolio Icons",
-		"platform": "dribbble",
-		"url": "https://dribbble.com/shots/3295593-Portfolio-Icons",
 		"tools": "Sketch",
 		"tags": "ui 2d sketch vector",
-		"description": "Icons I created in Sketch to represent the different projects in my portfolio. Each icon is a simiplified version of the project’s home page."
+		"description": "Icons I created in Sketch to represent the different projects in my portfolio. Each icon is a simiplified version of the project’s home page.",
+		"external": [
+			{
+				"platform": "dribbble",
+				"url": "https://dribbble.com/shots/3295593-Portfolio-Icons"
+			}
+		]
 	},
 	{
 		"name": "easing-graphs",
 		"date": "2017-02-27",
 		"title": "Easing Graphs",
-		"platform": "dribbble",
-		"url": "https://dribbble.com/shots/3325157-Easing-Graphs-Freebie",
 		"tools": "Sketch",
 		"tags": "ui 2d sketch vector",
-		"description": "Easing graphs useful for web development and animation, specifically highlighting easeInOut, eaesOutCirc, and easeInOutCirc."
+		"description": "Easing graphs useful for web development and animation, specifically highlighting easeInOut, eaesOutCirc, and easeInOutCirc.",
+		"external": [
+			{
+				"platform": "dribbble",
+				"url": "https://dribbble.com/shots/3325157-Easing-Graphs-Freebie"
+			}
+		]
 	},
 	{
 		"name": "self-portrait",
 		"date": "2017-02-09",
 		"title": "Self-Portrait",
-		"platform": "dribbble",
-		"url": "https://dribbble.com/shots/3278273-Self-Portrait",
 		"tools": "Sketch",
 		"tags": "illustration 2d sketch vector",
-		"description": "Self-portrait done with vector art, where I’m wearing a pink turtleneck and purple lipstick."
+		"description": "Self-portrait done with vector art, where I’m wearing a pink turtleneck and purple lipstick.",
+		"external": [
+			{
+				"platform": "dribbble",
+				"url": "https://dribbble.com/shots/3278273-Self-Portrait"
+			}
+		]
 	},
 	{
 		"name": "scissor-blade",

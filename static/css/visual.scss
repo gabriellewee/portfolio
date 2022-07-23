@@ -229,12 +229,6 @@ dt {
 			.grid-link {
 				margin: 5px 0 0 calc(var(--p)/3);
 				padding: 0;
-				&.dribbble {
-					border-radius: 100%;
-					&:focus {
-						@include focus-round($inset: inset);
-					}
-				}
 			}
 		}
 	}
