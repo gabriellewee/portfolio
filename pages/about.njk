@@ -122,6 +122,14 @@ tags: pages
 					<li><a href="/writes/">Writing</a></li>
 					<li><a href="/writes/archive/">Archive</a></li>
 				</ul>
+				<h2>Blog Posts</h2>
+				<ul>
+					{% for post in collections.writes | reverse %}
+						<li>
+							<a href="{{post.url | url}}">{{post.data.title | nbsp | safe}}</a>
+						</li>
+					{% endfor %}
+				</ul>
 			</div>
 		</li>
 		<li class="grid-item about-colors" role="listitem">
