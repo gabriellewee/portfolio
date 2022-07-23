@@ -21,6 +21,7 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("static/css/no-js.css");
 	eleventyConfig.addPassthroughCopy("static/fonts");
 	eleventyConfig.addPassthroughCopy("static/images");
+	eleventyConfig.addPassthroughCopy({"static/images/favicons":"/"});
 	eleventyConfig.addPassthroughCopy({"_includes/svg":"static/images/svg"});
 	
 	eleventyConfig.addTransform("minify", async (content, outputPath) => {
