@@ -266,27 +266,6 @@ module.exports = function(eleventyConfig) {
 		return content;
 	});
 
-    eleventyConfig.on('afterBuild', () => {
-        const directory = "_site/static/images/og/post/";
-        fs.readdir(directory, function (err, files) {
-            if (files.length > 0) {
-                files.forEach(function (filename) {
-                    if (filename.endsWith(".svg")) {
-                        let imageUrl = directory + filename;
-                        Image(imageUrl, {
-                            formats: ["jpeg"],
-                            outputDir: "./" + directory,
-                            filenameFormat: function (id, src, width, format, options) {
-                                let outputFilename = filename.substring(0, (filename.length-4));
-                                return `${outputFilename}.${format}`;
-                            }
-                        });
-                    }
-                })
-            }
-        })
-    });
-
 	eleventyConfig.setBrowserSyncConfig({
 		callbacks: {
 			ready: function(err, browserSync) {
