@@ -51,9 +51,6 @@
 			svg {
 				width: 100%;
 				height: 100%;
-				@include svg-path {
-					stroke-width: 8px;
-				}
 			}
 			&:focus {
 				@include focus-round;
@@ -280,9 +277,6 @@
 					width: 20px;
 					height: 20px;
 					opacity: 0.8;
-					@include svg-path {
-						stroke-width: 7px;
-					}
 				}
 				&:hover, &:focus {
 					background-color: hsla(var(--color-white-hsl), .1);

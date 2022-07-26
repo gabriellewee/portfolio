@@ -1,5 +1,5 @@
 <svg class="icon" viewBox="0 0 100 100" width="25" height="25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g fill="none" stroke="#fff" stroke-width="3px" stroke-linecap="round" stroke-linejoin="round">
+    <g fill="none" stroke="#fff" stroke-width="7px" stroke-linecap="round" stroke-linejoin="round">
         <line x1="16" y1="16" x2="84" y2="84"></line>
         <line x1="84" y1="16" x2="16" y2="84"></line>
     </g>
