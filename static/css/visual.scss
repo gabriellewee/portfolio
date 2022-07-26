@@ -55,9 +55,6 @@ main {
 		display: block;
 		width: 25px;
 		height: 25px;
-		@include svg-path {
-			stroke-width: 7px;
-		}
 	}
 	.grid-close, .grid-overlay {
 		position: absolute;
@@ -79,9 +76,6 @@ main {
 			width: 38px;
 			height: 38px;
 			border-radius: 100%;
-			@mixin svg-path {
-				stroke-width: 7px;
-			}
 		}
 	}
 	label, .grid-link {
