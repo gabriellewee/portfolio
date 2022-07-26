@@ -42,9 +42,7 @@
 	<meta property="og:site_name" content="{{site.author}}">
 	<meta property="og:type" content="website"/>
 	<meta property="og:url" content="{{site.url}}{{permalink}}">
-	{% if key == "post" %}
-		<meta property="og:image" content="{{site.url}}/static/images/og/post/{{ page.date | htmlDateString }}-{{ title | slugify }}.jpeg" />
-	{% elseif og == true %}
+	{% if og == true %}
 		<meta property="og:image" content="{{site.url}}/static/images/og/{{key}}.jpg">
 	{% elseif og %}
 		<meta property="og:image" content="{{site.url}}/static/images/og/{{og}}.jpg">
