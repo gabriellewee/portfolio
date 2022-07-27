@@ -4,7 +4,7 @@ description: I’m a front‑end developer working at Apple .
 
 layout: layouts/base.njk
 key: home
-style: home
+style: true
 add: true
 tags: pages
 ---
@@ -74,7 +74,7 @@ tags: pages
 			<h2>I spend a lot of time with Alfie, my cat.</h2>
 			<p>We go on adventures together!</p>
 			<ul class="grid">
-				{% for media in cat | limit(2) %}
+				{% for media in home.cat | limit(2) %}
 					<li id="{{media.date|safe}}-{{media.name}}">
 						<a class="grid-item-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand artwork" role="button">
 							{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail' %}
@@ -91,7 +91,7 @@ tags: pages
 				<p>My favorites are <span>philodendron</span>, <span>monstera</span>, and <span>anthurium</span>.</p>
 			</div>
 			<div class="image">
-				{% for media in plants | limit(1) %}
+				{% for media in home.plants | limit(1) %}
 					<a class="grid-item-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand photo" role="button">
 						{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail' %}
 					</a>
@@ -128,14 +128,14 @@ tags: pages
 			</figure>
 		</a>
 	{% endfor %}
-	{% for media in cat | limit(2) %}
+	{% for media in home.cat | limit(2) %}
 		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
 			<figure class="image">
 				{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
 			</figure>
 		</a>
 	{% endfor %}
-	{% for media in plants | limit(1) %}
+	{% for media in home.plants | limit(1) %}
 		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
 			<figure class="image">
 				{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}

@@ -1,20 +1,14 @@
 <h2>You can find me here:</h2>
 <div>
-	<a class="codepen" target="_blank" href="https://codepen.io/gabriellewee/">Codepen</a>
-	<a class="github" target="_blank" href="https://github.com/gabriellewee/">Github</a>
-	<a class="instagram" target="_blank" href="https://instagram.com/gabriellewee/">Instagram</a>
-	<a class="twitter" target="_blank" href="https://twitter.com/gabriewee/">Twitter</a>
-	<a class="dribbble" target="_blank" href="https://dribbble.com/gabriellewee/">Dribbble</a>
-	<a class="medium" target="_blank" href="https://medium.com/@gabriellewee/">Medium</a>
-	<a class="tumblr" target="_blank" href="https://gabriellewee.tumblr.com">Tumblr</a>
-	<a class="pinterest" target="_blank" href="https://pinterest.com/gabriellewee/">Pinterest</a>
-	<a class="music" target="_blank" href="https://music.apple.com/profile/gabriellewee/">Music</a>
+	{% for link in home.links %}
+		<a class="{{link.name}}" target="_blank" href="{{link.url}}">{{link.name | capitalize}}</a>
+	{% endfor %}
 </div>
 
 <h2>You can contact me here:</h2>
 <div>
-	<a class="email" target="_blank" href="mailto:mail@gabriellew.ee">Email</a>
-	<a class="text" target="_blank" href="sms:5102142241">Text</a>
-	<a class="imessage" target="_blank" href="sms:mail@gabriellew.ee">iMessage</a>
+	<a class="email" href="mailto:mail@gabriellew.ee">Email</a>
+	<a class="text" href="sms:5102142241">Text</a>
+	<a class="imessage" href="sms:mail@gabriellew.ee">iMessage</a>
 	{% include 'pages/home/discord.html' %}
 </div>
