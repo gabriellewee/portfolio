@@ -13,7 +13,7 @@
 </div>
 
 <ul class="regular grid">
-	{% for link in code %}
+	{% for link in home.code.thumbnails %}
 		<li>
 			<a class="code-link-{{link.name}} {{link.style}}" href="https://codepen.io/gabriellewee/pen/{{link.uri}}/" target="_blank" aria-label="{{link.title}}">
 				<span class="inside" aria-hidden="true">
@@ -28,7 +28,7 @@
 </ul>
 
 <div class="links">
-	{% for link in codelink %}
+	{% for link in home.code.links %}
 		<p><a href="https://codepen.io/gabriellewee/pen/{{link.uri}}/" target="_blank" aria-label="{{link.title}}">{{link.title | nbsp | safe}}</a></p>
 	{% endfor %}
 </div>
