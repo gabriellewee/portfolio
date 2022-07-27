@@ -48,11 +48,23 @@
 		"style": "css-only"
 	},
 	{
+		"name": "totem",
+		"title": "Monument Valley Totem",
+		"uri": "zNBMmW",
+		"style": "css-only"
+	},
+	{
 		"name": "nested-nav",
 		"title": "Nested Dropdown Navigation",
 		"uri": "oWyObX",
 		"style": "css-only"
 	},
+ 	{
+ 		"name": "sprites",
+ 		"title": "Pokémon Sprite Sorter",
+ 		"uri": "dWRgmJ",
+ 		"style": ""
+ 	},
 	{
 		"name": "cards",
 		"title": "Isotope Card Match Game",
