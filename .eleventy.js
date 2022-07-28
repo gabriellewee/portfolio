@@ -134,7 +134,7 @@ module.exports = function(eleventyConfig) {
 		return array.slice(index - 1, index);
 	});
 
-	eleventyConfig.addFilter("nbsp", nbspFilter(2, 40));
+	eleventyConfig.addFilter("nbsp", nbspFilter(2, 100));
 
 	eleventyConfig.addFilter("stripAttr", stripped => {
 		let removals = /<div class="lightbox-group">([\s\S]*?)<\/div>|<figure class="animation">([\s\S]*?)<\/figure>|<\/?a class="expand"[^>]*>|<\/?span[^>]*>|<\/?picture[^>]*>|<\/?source[^>]*>|<\/?div[^>]*>|<\/?script[^>]*>|\t|\r|\n/g;
@@ -233,12 +233,14 @@ module.exports = function(eleventyConfig) {
 			source = `<source type="image/webp" srcset="${webpset}">`;
 			img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" width="${basic.width}" height="${basic.height}">`;
 		}
-		
+
 		let picture = `<picture>${source}${img}</picture>`;
-		let caption = `<figcaption id="${name}-caption" aria-hidden="true">${alt}</figcaption>`;
-		let link = `<a class="expand" href="#${name}-lightbox" aria-label="Expand image">${picture}</a>`;
 		
 		if(extra === "lightbox") {
+			let nbsp = eleventyConfig.getFilter("nbsp");
+			let figcaption = nbsp(alt);
+			let caption = `<figcaption id="${name}-caption" aria-hidden="true">${figcaption}</figcaption>`;
+			let link = `<a class="expand" href="#${name}-lightbox" aria-label="Expand image">${picture}</a>`;
 			return `<figure id="${name}" aria-labelledby="${name}-caption">${caption}${link}</figure>`;
 		} else {
 			return `${picture}`;
