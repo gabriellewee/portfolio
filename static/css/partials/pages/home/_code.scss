@@ -1,4 +1,4 @@
-.grid-item-code {
+.grid-item-code.grid-only {
 	@import '../../colors/thumbnails';
 	font-family: var(--font-mono);
 	font-size: 16px;
@@ -14,6 +14,21 @@
 			padding:  calc(var(--p)*1.5) max((var(--p)*1.5), env(safe-area-inset-left));
 		}
 	}
+	h3, p {
+		a {
+			color: #73d1c8;
+			&:hover, &:focus {
+				color: #F78C6A;
+				span {
+					text-decoration: underline;
+					text-underline-offset: 4px;
+				}
+			}
+			&:active {
+				color: #82AAFF;
+			}
+		}
+	}
 	p {
 		padding: 0 calc((var(--p)*1.5) + env(safe-area-inset-left)) var(--p);
 		font-size: 24px;
@@ -21,17 +36,8 @@
 			padding: 0 max((var(--p)*1.5), env(safe-area-inset-left)) var(--p);
 		}
 		a {
-			color: #73d1c8;
 			font-style: italic;
 			font-weight: normal;
-			&:hover, &:focus {
-				color: #F78C6A;
-				text-decoration: underline;
-				text-underline-offset: 4px;
-			}
-			&:active {
-				color: #82AAFF;
-			}
 		}
 	}
 	h3, .links p {
@@ -39,18 +45,9 @@
 		font-style: normal;
 		font-size: 16px;
 		a {
-			color: #73d1c8;
-			&:hover, &:focus {
-				color: #F78C6A;
-				text-decoration: underline;
-				text-underline-offset: 4px;
-			}
-			&:active {
-				color: #82AAFF;
-			}
 			&:after {
 				content: "\2197";
-				display: inline-block;
+				display: inline;
 				margin-left: 6px;
 				font-size: 22px;
 				line-height: 19px;
