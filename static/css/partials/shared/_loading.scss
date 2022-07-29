@@ -17,6 +17,7 @@
 	}
 	.message {
 		transform: none;
+		transition: .3s ease-out;
 		opacity: 1;
 	}
 }
