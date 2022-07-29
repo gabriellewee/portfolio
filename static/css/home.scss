@@ -3,7 +3,11 @@
 @import 'partials/shared/utilities';
 @import 'partials/shared/popup';
 
-header {
+.top {
+	display: none;
+	@include viewport($iphone-max) {
+		display: flex;
+	}
 	.logo {
 		pointer-events: none;
 	}
