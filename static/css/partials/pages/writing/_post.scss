@@ -176,6 +176,7 @@ article {
 	}
 	.expand {
 		position: relative;
+		transition: .2s ease-out;
 		&:before {
 			opacity: 0;
 			content: "";
@@ -198,6 +199,9 @@ article {
 			&:before {
 				opacity: 1;
 			}
+		}
+		&:active {
+			transform: scale(0.95);
 		}
 	}
 	img {
