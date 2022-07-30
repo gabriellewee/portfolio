@@ -18,6 +18,11 @@
 	@supports (grid-template-rows: masonry) {
 		grid-template-rows: masonry;
 	}
+	.no-js & {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+	}
 }
 
 .grid-item {
@@ -33,6 +38,11 @@
 			&[style] .grid-item {
 				width: 50%;
 			}
+			.no-js & {
+				.grid-item {
+					width: 50%;
+				}
+			}
 		}
 	}
 }
@@ -43,6 +53,11 @@
 		&[style] .grid-item {
 			width: 50%;
 		}
+		.no-js & {
+			.grid-item {
+				width: 50%;
+			}
+		}
 	}
 }
 
@@ -52,6 +67,11 @@
 		&[style] .grid-item {
 			width: calc(100% / 3);
 		}
+		.no-js & {
+			.grid-item {
+				width: calc(100% / 3);
+			}
+		}
 	}
 }
 
@@ -60,6 +80,11 @@
 		grid-template-columns: repeat(4, 1fr);
 		&[style] .grid-item {
 			width: 25%;
+		}
+		.no-js & {
+			.grid-item {
+				width: 25%;
+			}
 		}
 	}
 }

@@ -106,7 +106,7 @@ tags: pages
 	</div>
 </div>
 
-<div class="lightbox-group">
+<div class="lightbox-group" hidden>
 	{% for media in photography | limit(4) %}
 		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
 			<figure class="image">

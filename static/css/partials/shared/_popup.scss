@@ -164,6 +164,7 @@
 			}
 		}
 		.avatar {
+			@include background-image(avatars/turtleneck, jpg);
 			position: absolute;
 			bottom: -30px;
 			left: calc(var(--p) + 8px);
@@ -182,45 +183,38 @@
 			font-size: 20px;
 			font-weight: normal;
 			font-style: normal;
-			.username-aria {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				opacity: 0;
-				z-index: -1;
-			}
 			.number {
 				opacity: 0.6;
 			}
-			.tooltip {
+			&:before, &:after {
 				opacity: 0;
+				display: block;
 				transition: .1s ease-out;
-				position: relative;
 				background-color: black;
+			}
+			&:before {
+				content: "";
+				position: absolute;
+				top: 7px;
+				right: -16px;
+				z-index: -1;
+				width: 10px;
+				height: 10px;
+				border-bottom-left-radius: 2px;
+				transform: rotate(45deg);
+			}
+			&:after {
+				content: "Copied";
+				position: absolute;
+				right: -63px;
 				padding: 3px 6px 5px;
-				margin-left: 10px;
 				border-radius: 3px;
 				font-size: 12px;
 				font-weight: bold;
 				text-transform: uppercase;
-				&:before {
-					content: "";
-					display: block;
-					position: absolute;
-					z-index: -1;
-					width: 10px;
-					height: 10px;
-					border-top-left-radius: 2px;
-					transform: rotate(45deg);
-					background-color: black;
-					top: 6px;
-					left: -4px;
-				}
 			}
 			&.copied {
-				.tooltip {
+				&:before, &:after {
 					opacity: 1;
 				}
 			}
@@ -255,6 +249,9 @@
 			border-top: 1px solid hsla(var(--color-white-hsl), .1);
 			margin-top: 16px;
 			padding-top: 16px;
+			li {
+				width: calc(50% - 8px);
+			}
 			a, button {
 				transition: .1s ease-out;
 				cursor: pointer;
@@ -263,7 +260,7 @@
 				align-content: center;
 				justify-content: space-between;
 				appearance: none;
-				width: calc(50% - 8px);
+				width: 100%;
 				margin: 0;
 				padding: 8px;
 				border-radius: 3px;
@@ -273,15 +270,22 @@
 				font-family: var(--font-faune);
 				font-size: 16px;
 				text-align: left;
-				svg {
+				span span {
+					display: none;
+				}
+				&:after {
+					content: "";
+					display: block;
 					width: 20px;
 					height: 20px;
 					opacity: 0.8;
+					background-position: center;
+					background-size: 20px 20px;
 				}
 				&:hover, &:focus {
 					background-color: hsla(var(--color-white-hsl), .1);
 					border-color: transparent;
-					svg {
+					&:after {
 						opacity: 1;
 					}
 				}
@@ -292,17 +296,27 @@
 					background-color: #18191C;
 				}
 			}
+			a {
+				&:after {
+					background-image: url(/static/images/svg/icons/external.svg);
+				}
+			}
+			button {
+				&:after {
+					background-image: url(/static/images/svg/icons/copy.svg);
+				}
+			}
 			@media (hover: hover) {
 				.touch {
 					display: none;
 				}
 				.no-touch {
-					display: flex;
+					display: block;
 				}
 			}
 			@media (hover: none) {
 				.touch {
-					display: flex;
+					display: block;
 				}
 				.no-touch {
 					display: none;

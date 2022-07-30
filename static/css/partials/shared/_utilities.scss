@@ -43,7 +43,7 @@ $neon: #DDFF3B;
 }
 
 @mixin gradient-text($one, $two, $underline) {
-	color: $one;
+	color: hsl($one);
 	@supports (-webkit-text-fill-color: transparent) {
 		background-color: hsl($one);
 		background: linear-gradient(135deg, hsl($one) 0%, hsl($two) 100%);
@@ -141,5 +141,17 @@ $neon: #DDFF3B;
 @mixin svg-path {
 	group, path, line, polyline, polygon, circle, ellipse, rect {
 		@content;
+	}
+}
+
+@mixin background-image($bg, $ext) {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url("/static/images/#{$bg}@2x.#{$ext}");
+	@supports (background-image: -webkit-image-set(url("/static/images/#{$bg}.#{$ext}") 1x, url("l/static/images/#{$bg}@2x.#{$ext}") 2x)) {
+		background-image: -webkit-image-set(url("/static/images/#{$bg}.#{$ext}") 1x, url("/static/images/#{$bg}@2x.#{$ext}") 2x);
+	}
+	@supports (background-image: image-set(url("/static/images/#{$bg}.#{$ext}") 1x, url("/static/images/#{$bg}@2x.#{$ext}") 2x)) {
+		background-image: image-set(url("/static/images/#{$bg}.#{$ext}") 1x, url("/static/images/#{$bg}@2x.#{$ext}") 2x);
 	}
 }

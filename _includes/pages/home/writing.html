@@ -4,10 +4,11 @@
 	<ul>
 		{% for post in collections.writes | reverse | limit(3) %}
 			<li>
-				<a href="{{post.url | url}}"><span>{{post.data.title | nbsp | safe}}</span></a>
+				<a href="{{post.url | url}}"><strong>{{post.data.title | nbsp | safe}}</strong></a>
 				<time datetime="{{post.date | htmlDateString}}">{{post.date | timeAgo}}</time>
 				{% if post.data.medium %}
-					<a class="link link-medium" aria-label="View {{post.data.title}} on Medium" href="{{post.data.medium}}" target="_blank"><span>Medium</span></a>
+					<br/>
+					<a class="link link-medium" aria-label="View {{post.data.title}} on Medium" href="{{post.data.medium}}" target="_blank"><span><span>View on </span>Medium</span></a>
 				{% endif %}
 			</li>
 		{% endfor %}
@@ -17,14 +18,15 @@
 	<h3>Elsewhere on the Internet</h3>
 	<ul>
 		<li>
-			<a href="https://webdesign.tutsplus.com/tutorials/mastering-general-sibling-selectors-custom-tab-navigation--cms-29193" target="_blank"><span>Mastering General Sibling Selectors: Custom Tab Navigation</span></a>
+			<a href="https://webdesign.tutsplus.com/tutorials/mastering-general-sibling-selectors-custom-tab-navigation--cms-29193" target="_blank"><strong>Mastering General Sibling Selectors: Custom Tab Navigation</strong></a>
 		</li>
 		<li>
-			<a href="https://webdesign.tutsplus.com/tutorials/mastering-general-sibling-selectors-custom-form-elements--cms-28436" target="_blank"><span>Mastering General Sibling Selectors: Custom Form Elements</span></a>
+			<a href="https://webdesign.tutsplus.com/tutorials/mastering-general-sibling-selectors-custom-form-elements--cms-28436" target="_blank"><strong>Mastering General Sibling Selectors: Custom Form Elements</strong></a>
 		</li>
 		<li>
-			<a href="https://codepen.io/gabriellewee/post/how-to-create-direction-aware-css-only-hover-effects" target="_blank"><span>How to Create Direction-Aware CSS-Only Hover Effects</span></a>
-			<a class="link link-medium" aria-label="View How to Create Direction-Aware CSS-Only Hover Effects on Medium" href="https://medium.com/@gabriellewee/how-to-create-direction-aware-css-only-hover-effects-2bbf0e13ad5b" target="_blank"><span>Medium</span></a>
+			<a href="https://codepen.io/gabriellewee/post/how-to-create-direction-aware-css-only-hover-effects" target="_blank"><strong>How to Create Direction-Aware CSS-Only Hover Effects</strong></a>
+			<br/>
+			<a class="link link-medium" aria-label="View How to Create Direction-Aware CSS-Only Hover Effects on Medium" href="https://medium.com/@gabriellewee/how-to-create-direction-aware-css-only-hover-effects-2bbf0e13ad5b" target="_blank"><span><span>View on </span>Medium</span></a>
 		</li>
 		<li>{% include 'pages/home/mentions.html' %}</li>
 	</ul>
@@ -33,13 +35,16 @@
 	<h3>Audio</h3>
 	<ul>
 		<li>
-			<a href="https://blog.codepen.io/2021/12/08/345-with-gabrielle-wee/" target="_blank"><span>Codepen Blog - 345: With Gabrielle Wee</span></a>
-			<a class="link link-podcasts" aria-label="Listen to Friends Talk Frontend: Episode 7 on Apple Podcasts" href="https://itunes.apple.com/us/podcast/codepen-radio/id824437159" target="_blank"><span>Apple Podcasts</span></a>
+			<a href="https://blog.codepen.io/2021/12/08/345-with-gabrielle-wee/" target="_blank"><strong>Codepen Blog - 345: With Gabrielle Wee</strong></a>
+			<br/>
+			<a class="link link-podcasts" aria-label="Listen to Friends Talk Frontend: Episode 7 on Apple Podcasts" href="https://itunes.apple.com/us/podcast/codepen-radio/id824437159" target="_blank"><span><span>Listen on </span>Apple Podcasts</span></a>
 		</li>
 		<li>
-			<a href="https://itunes.apple.com/us/podcast/7-gabrielle-wee/id1190447982?i=1000382998257&mt=2" target="_blank"><span>Friends Talk Frontend: Episode 7</span></a>
-			<a class="link link-podcasts" aria-label="Listen to Friends Talk Frontend: Episode 7 on Apple Podcasts" href="https://itunes.apple.com/us/podcast/7-gabrielle-wee/id1190447982?i=1000382998257&mt=2" target="_blank"><span>Apple Podcasts</span></a>
-			<a class="link link-spotify" aria-label="Listen to Friends Talk Frontend: Episode 7 on Spotify" href="https://open.spotify.com/episode/7oEcqfovAS8N6q4z6Ct04e" target="_blank"><span>Spotify</span></a>
+			<a href="https://itunes.apple.com/us/podcast/7-gabrielle-wee/id1190447982?i=1000382998257&mt=2" target="_blank"><strong>Friends Talk Frontend: Episode 7</strong></a>
+			<br/>
+			<a class="link link-podcasts" aria-label="Listen to Friends Talk Frontend: Episode 7 on Apple Podcasts" href="https://itunes.apple.com/us/podcast/7-gabrielle-wee/id1190447982?i=1000382998257&mt=2" target="_blank"><span><span>Listen on </span>Apple Podcasts</span></a>
+			<br/>
+			<a class="link link-spotify" aria-label="Listen to Friends Talk Frontend: Episode 7 on Spotify" href="https://open.spotify.com/episode/7oEcqfovAS8N6q4z6Ct04e" target="_blank"><span><span>Listen on </span>Spotify</span></a>
 		</li>
 	</ul>
 </div>
