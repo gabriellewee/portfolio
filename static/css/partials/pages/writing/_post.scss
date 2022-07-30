@@ -360,12 +360,12 @@ article {
 				background-color: hsla(var(--color-iron-1-hsl), .75);
 				color: white;
 				font-weight: 600;
+				@include clip-path-alt {
+					@include border-radius(calc(var(--p)/4));
+				}
 				@include clip-path {
 					clip-path: polygon(calc(var(--p)*1.25) 0%, calc(100% - calc(var(--p)*1.25)) 0%, 100% 45%, 100% 55%, calc(100% - calc(var(--p)*1.25)) 100%, calc(var(--p)*1.25) 100%, 0 55%, 0 45%);
 					padding: calc(var(--p)/2) calc(var(--p)*1.75);
-				}
-				@include clip-path-alt {
-					@include border-radius(calc(var(--p)/4));
 				}
 				@include dark {
 					background-color: hsla(var(--color-white-hsl), .75);
