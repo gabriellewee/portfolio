@@ -15,7 +15,8 @@
 	.grid-item > *, .grid-filters span, .grid-filters label:after, .page-about .grid-item > div > * {
 		opacity: 1;
 	}
-	.message {
+	.top .text.message {
+		animation: unset;
 		transform: none;
 		transition: .3s ease-out;
 		opacity: 1;

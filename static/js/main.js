@@ -2,6 +2,12 @@
 const noJS = ((container = document.documentElement) => {
 	container.classList.remove("no-js");
 	container.classList.add("js");
+	hidden = Array.from(document.querySelectorAll("[hidden]"));
+	if(hidden) {
+		hidden.forEach(el => {
+			el.removeAttribute("hidden");
+		});
+	}
 })();
 
 let container = document.querySelector(".grid-isotope");
@@ -72,6 +78,7 @@ const popup = ((containers = Array.from(document.querySelectorAll(".popup"))) =>
 			});
 
 			let copyButton = container.querySelector(".copy-button");
+			copyButton.removeAttribute("disabled");
 			let clipboard = new ClipboardJS(copyButton);
 
 			clipboard.on("success", e => {

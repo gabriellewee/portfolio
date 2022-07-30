@@ -8,7 +8,13 @@
 		background-color: var(--color-iron-2);
 		color: white;
 	}
-	div > a {
+	ul {
+		list-style: none;
+	}
+	.link {
+		display: inline-block;
+	}
+	.link > a {
 		display: inline-block;
 		text-underline-offset: 4px;
 		&:not(:last-child) {
@@ -18,23 +24,23 @@
 			margin-right: calc(var(--p) + 6px);
 		}
 	}
-	div > a, .popup-label {
+	.link > a, .popup-label {
 		transition: .1s ease-out;
 		font-size: 40px;
 		font-style: italic;
 		font-weight: bold;
 	}
-	div > a:hover, div > a:focus, .popup-label:hover, .popup-button:focus ~ .popup-label {
+	.link > a:hover, .link > a:focus, .popup-label:hover, .popup-button:focus ~ .popup-label {
 		color: var(--color-iron);
 		transform: scale(1.05);
 		@include dark {
 			color: white;
 		}
 	}
-	div > a:focus, .popup-button:focus ~ .popup-label {
+	.link > a:focus, .popup-button:focus ~ .popup-label {
 		@include wavy;
 	}
-	div > a:active, .popup-button:active ~ .popup-label {
+	.link > a:active, .popup-button:active ~ .popup-label {
 		transform: scale(0.95);
 	}
 	.popup-label {
@@ -45,7 +51,7 @@
 		color: var(--color-iron);
 		text-decoration-color: var(--color-discord);
 	}
-	div:not(:last-child) {
+	ul:not(:last-child) {
 		padding-bottom: var(--p);
 	}
 }

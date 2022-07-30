@@ -137,7 +137,7 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addFilter("nbsp", nbspFilter(2, 100));
 
 	eleventyConfig.addFilter("stripAttr", stripped => {
-		let removals = /<div class="lightbox-group">([\s\S]*?)<\/div>|<figure class="animation">([\s\S]*?)<\/figure>|<\/?a class="expand"[^>]*>|<\/?span[^>]*>|<\/?picture[^>]*>|<\/?source[^>]*>|<\/?div[^>]*>|<\/?script[^>]*>|\t|\r|\n/g;
+		let removals = /<div class="lightbox-group" hidden>([\s\S]*?)<\/div>|<figure class="animation">([\s\S]*?)<\/figure>|<\/?a class="expand"[^>]*>|<\/?span[^>]*>|<\/?picture[^>]*>|<\/?source[^>]*>|<\/?div[^>]*>|<\/?script[^>]*>|\t|\r|\n/g;
 		stripped = stripped.replace(removals, '');
 		stripped = stripped
 			.replace(/<\s*p .*?data-slug-hash="([^<]*)" data-default.*?>[^<]*<\s*a.*?>[^<]*<\/p>/g, '<iframe src="https://codepen.io/gabriellewee/embed/$1">')
@@ -192,12 +192,7 @@ module.exports = function(eleventyConfig) {
 		});
 
 		let lowest = stats[file][0];
-		let basic;
-		if(type === "default" || type === "screen") {
-			basic = stats[file][2];
-		} else if(type === "thumbnail") {
-			basic = stats[file][1];
-		}
+		let basic = stats[file][1];
 
 		const placeholder = await sharp(lowest.outputPath)
 			.resize({ fit: sharp.fit.inside })

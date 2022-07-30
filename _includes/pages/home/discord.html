@@ -4,38 +4,35 @@
 		<span aria-hidden="true" id="discord-label">Discord</span>
 	</label>
 	<div id="discord-window" class="popup-window">
-		<span class="inside">
-			<span class="header">
-				<picture class="avatar">
-					<source srcset="/static/images/avatars/turtleneck.webp, /static/images/avatars/turtleneck@2x.webp 2x" type="image/webp">
-					<source srcset="/static/images/avatars/turtleneck.jpg, /static/images/avatars/turtleneck@2x.jpg 2x" type="image/jpg">
-					<img src="/static/images/avatars/turtleneck.jpg" width="60px" height="60px" aria-hidden="true" role="presentation"/>
-				</picture>
-			</span>
-			<span class="username">
-				<span class="username-aria">Discord username: kaladin#0758</span>
-				<span id="username-input" aria-hidden="true">kaladin<span class="number">#0758</span></span>
-				<span class="tooltip" aria-hidden="true">Copied</span>
-			</span>
-			<span class="description">
-				<span class="about-header">About Me</span>
+		<div class="inside">
+			<div class="header">
+				<span class="avatar"></span>
+			</div>
+			<div class="username">
+				<span id="username-input" aria-label="Discord username: kaladin#0758">kaladin<span class="number">#0758</span></span>
+			</div>
+			<div class="description">
+				<h3 class="about-header">About Me</h3>
 				<code class="about-content">I might be the droid you're looking for.</code>
-				<span class="links">
-					<a class="no-touch" target="_blank" href="discord://discordapp.com/users/694064940826230865">
-						<span>Discord profile</span>
-						{% include 'svg/icons/external.svg' %}
-					</a>
-					<a class="touch" target="_blank" href="https://discordapp.com/users/694064940826230865">
-						<span>Discord profile</span>
-						{% include 'svg/icons/external.svg' %}
-					</a>
-					<button class="copy-button" data-clipboard-target="#username-input">
-						<span>Copy username</span>
-						{% include 'svg/icons/copy.svg' %}
-					</button>
-				</span>
-			</span>
+				<ul class="links">
+					<li class="no-touch">
+						<a target="_blank" href="discord://discordapp.com/users/694064940826230865">
+							<span><span>Desktop </span>Discord profile</span>
+						</a>
+					</li>
+					<li class="touch">
+						<a target="_blank" href="https://discordapp.com/users/694064940826230865">
+							<span><span>Mobile </span>Discord profile</span>
+						</a>
+					</li>
+					<li>
+						<button disabled class="copy-button" data-clipboard-target="#username-input">
+							<span>Copy username</span>
+						</button>
+					</li>
+				</ul>
+			</div>
 			<label class="close" for="discord" tabindex="0">{% include 'svg/icons/close.svg' %}</label>
-		</span>
+		</div>
 	</div>
 </div>

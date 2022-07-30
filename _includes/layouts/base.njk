@@ -102,21 +102,15 @@
 <body{% if key %} class="page-{{key}}"{% endif %}>
 	{% if blank != true %}
 		<header class="top" aria-label="Header"{% if key == "home" %} aria-hidden="true"{% endif %}>
-			<a class="logo" href="/" aria-label="Go home?"{% if key == "home" %} tabindex="-1"{% endif %}>
-				<picture class="memoji memoji-default">
-					<source srcset="/static/images/avatars/memoji.webp, /static/images/avatars/memoji@2x.webp 2x" type="image/webp">
-					<source srcset="/static/images/avatars/memoji.png, /static/images/avatars/memoji@2x.png 2x" type="image/png">
-					<img src="/static/images/avatars/memoji.png" alt="" width="48px" height="68px">
-				</picture>
-				<picture class="memoji memoji-hm">
-					<source srcset="/static/images/avatars/memoji-hm.webp, /static/images/avatars/memoji-hm@2x.webp 2x" type="image/webp">
-					<source srcset="/static/images/avatars/memoji-hm.png, /static/images/avatars/memoji-hm@2x.png 2x" type="image/png">
-					<img src="/static/images/avatars/memoji-hm.png" alt="" width="48px" height="68px">
-				</picture>
+			<a class="logo" href="/"{% if key == "home" %} tabindex="-1"{% endif %}>
+				<span class="memoji memoji-default"></span>
+				<span class="memoji memoji-hm"></span>
+				<span class="text go-home">Go home?</span>
 			</a>
-			<span class="go-home" aria-hidden="true">Go home?</span>
 			{% if message == true %}
-				<span class="message">{{description}}</span>
+				<h1 class="text message">{{description}}</h1>
+			{% elseif message %}
+				<h1 class="text message">{{message}}</h1>
 			{% endif %}
 		</header>
 		{% if key == "writing" or key == "post" %}

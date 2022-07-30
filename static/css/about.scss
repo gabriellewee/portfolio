@@ -45,7 +45,7 @@ h2 {
 		}
 	}
 
-	ul, ol {
+	ul {
 		list-style: none;
 	}
 
@@ -206,20 +206,20 @@ h2 {
 		font-family: var(--font-mono);
 		font-size: 12px;
 		font-weight: bold;
-		span {
+		h3, p {
 			display: flex;
 			align-items: center;
 			padding: calc(var(--p)/2) var(--p);
-			&:first-child {
-				background-color: var(--color-red);
-				background: linear-gradient(135deg, var(--color-red) 0%, var(--color-orange) 100%);
-				color: white;
-			}
-			&:last-child {
-				background-color: var(--color-grey);
-				@include dark {
-					background-color: hsla(var(--color-white-hsl), .1);
-				}
+		}
+		h3 {
+			background-color: var(--color-red);
+			background: linear-gradient(135deg, var(--color-red) 0%, var(--color-orange) 100%);
+			color: white;
+		}
+		p {
+			background-color: var(--color-grey);
+			@include dark {
+				background-color: hsla(var(--color-white-hsl), .1);
 			}
 		}
 	}
@@ -270,7 +270,7 @@ h2 {
 }
 
 .about-timeline {
-	ol {
+	ul {
 		position: relative;
 		padding-left: calc(var(--p)*2);
 		margin-top: var(--p);
@@ -292,10 +292,10 @@ h2 {
 	li {
 		margin-bottom: var(--p);
 	}
-	time {
+	h3 {
 		position: relative;
 		font-size: 24px;
-		margin-bottom: calc(var(--p)/2);
+		margin-bottom: calc(var(--p)/3);
 		&:before, &:after {
 			content: "";
 			display: block;

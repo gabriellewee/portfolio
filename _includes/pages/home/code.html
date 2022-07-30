@@ -12,7 +12,7 @@
 	<iframe class="codepen" title="Zdog Draggable Monument Valley Totem" width="100%" height="460px" src="/code/totem/"></iframe>
 </div>
 
-<ul class="regular grid">
+<ul class="grid">
 	{% for link in home.code.thumbnails %}
 		<li>
 			<a class="code-link-{{link.name}} {{link.style}}" href="https://codepen.io/gabriellewee/pen/{{link.uri}}/" target="_blank" aria-label="{{link.title}}">
@@ -20,6 +20,7 @@
 					<picture>
 						<img src="/static/images/svg/thumbnails/{{link.name}}.svg" width="200" height="125" alt=""/>
 					</picture>
+					<br/>
 					<span class="overlay">{{link.title | nbsp | safe}}</span>
 				</span>
 			</a>
@@ -27,8 +28,8 @@
 	{% endfor %}
 </ul>
 
-<div class="links">
+<ul class="links">
 	{% for link in home.code.links %}
-		<p><a href="https://codepen.io/gabriellewee/pen/{{link.uri}}/" target="_blank" aria-label="{{link.title}}"><span>{{link.title | nbsp | safe}}</span></a></p>
+		<li><a href="https://codepen.io/gabriellewee/pen/{{link.uri}}/" target="_blank" aria-label="{{link.title}}"><span>{{link.title | nbsp | safe}}</span></a></li>
 	{% endfor %}
-</div>
+</ul>

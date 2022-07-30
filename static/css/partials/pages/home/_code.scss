@@ -14,7 +14,7 @@
 			padding:  calc(var(--p)*1.5) max((var(--p)*1.5), env(safe-area-inset-left));
 		}
 	}
-	h3, p {
+	h3, .links li, p {
 		a {
 			color: #73d1c8;
 			&:hover, &:focus {
@@ -29,9 +29,8 @@
 			}
 		}
 	}
-	p {
+	.links li, p {
 		padding: 0 calc((var(--p)*1.5) + env(safe-area-inset-left)) var(--p);
-		font-size: 24px;
 		@include max {
 			padding: 0 max((var(--p)*1.5), env(safe-area-inset-left)) var(--p);
 		}
@@ -40,7 +39,10 @@
 			font-weight: normal;
 		}
 	}
-	h3, .links p {
+	p {
+		font-size: 24px;
+	}
+	h3, .links li {
 		padding-bottom: var(--p);
 		font-style: normal;
 		font-size: 16px;
@@ -54,8 +56,8 @@
 			}
 		}
 	}
-	ul + p {
-		padding-top: var(--p);
+	br {
+		display: none;
 	}
 	.codepen {
 		@include border-radius(calc(var(--p)/2));
@@ -74,17 +76,18 @@
 	}
 	.links {
 		margin-bottom: var(--p);
+		li {
+			margin-top: calc(var(--p)/-2);
+		}
 	}
-	ul {
+	.grid {
 		grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
 		padding-bottom: calc(var(--p)*1.5);
-		&.regular {
-			@include viewport(1366px) {
-				grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
-				a {
-					.overlay {
-						font-size: 24px;
-					}
+		@include viewport(1366px) {
+			grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+			a {
+				.overlay {
+					font-size: 24px;
 				}
 			}
 		}
