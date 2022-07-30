@@ -5,8 +5,9 @@
 	"scripts": {
 		"autoprefixer": "npx postcss _site/static/css/*.css --use autoprefixer --dir _site/static/css/",
 		"build": "eleventy && npm run autoprefixer",
+		"watch:autoprefixer": "npx postcss _site/static/css/*.css --use autoprefixer --watch --dir _site/static/css/",
 		"watch:eleventy": "eleventy --serve",
-		"start": "npm run watch:eleventy",
+		"start": "npm-run-all --parallel watch:eleventy watch:autoprefixer",
 		"debug": "DEBUG=* eleventy"
 	},
 	"repository": {

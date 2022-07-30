@@ -44,7 +44,7 @@ $neon: #DDFF3B;
 
 @mixin gradient-text($one, $two, $underline) {
 	color: hsl($one);
-	@supports (-webkit-text-fill-color: transparent) {
+	@supports (-webkit-text-fill-color: transparent) or (text-fill-color: transparent) {
 		background-color: hsl($one);
 		background: linear-gradient(135deg, hsl($one) 0%, hsl($two) 100%);
 		background-clip: text;
@@ -69,10 +69,7 @@ $neon: #DDFF3B;
 }
 
 @mixin clip-path-alt {
-	@supports not (-webkit-clip-path: polygon(0 0)) {
-	  	@content;
-	}
-	@supports not (clip-path: polygon(0 0)) {
+	@supports not ((-webkit-clip-path: polygon(0 0)) or (clip-path: polygon(0 0))) {
 	  	@content;
 	}
 }
@@ -94,7 +91,6 @@ $neon: #DDFF3B;
 
 @mixin blur($blur) {
 	@include blur-check {
-		-webkit-backdrop-filter: blur($blur);
 		backdrop-filter: blur($blur);
 		@content;
 	}
@@ -118,7 +114,6 @@ $neon: #DDFF3B;
 @mixin blur-all($blur, $bg, $crisp, $blurry, $rgb: null) {
 	@include blur-bg($bg, $crisp, $blurry, $rgb);
 	@include blur-check {
-		-webkit-backdrop-filter: blur($blur);
 		backdrop-filter: blur($blur);
 		@content;
 	}
@@ -130,7 +125,6 @@ $neon: #DDFF3B;
 
 @mixin wavy($color: "") {
 	text-decoration: underline;
-	-webkit-text-decoration-skip: edges;
 	text-decoration-skip: edges;
 	text-decoration-style: wavy;
 	@if $color != "" {
@@ -153,5 +147,18 @@ $neon: #DDFF3B;
 	}
 	@supports (background-image: image-set(url("/static/images/#{$bg}.#{$ext}") 1x, url("/static/images/#{$bg}@2x.#{$ext}") 2x)) {
 		background-image: image-set(url("/static/images/#{$bg}.#{$ext}") 1x, url("/static/images/#{$bg}@2x.#{$ext}") 2x);
+	}
+}
+
+@mixin no-scrollbar {
+	overflow: auto;
+	overflow: -moz-scrollbars-none;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	-webkit-overflow-scrolling: touch;
+	&::-webkit-scrollbar {
+		height: 0;
+		width: 0;
+		display: none;
 	}
 }

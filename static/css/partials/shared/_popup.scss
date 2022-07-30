@@ -115,11 +115,11 @@
 			position: relative;
 			padding: var(--p) var(--p) 0;
 			padding-right: 25px;
-			@include clip-path {
-				clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
-			}
 			@include clip-path-alt {
 				border-radius: calc(var(--p)/4);
+			}
+			@include clip-path {
+				clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
 			}
 		}
 	}
@@ -160,7 +160,7 @@
 				width: 100%;
 				height: 100%;
 				background-color: #EECAC1;
-				-webkit-mask: url('data:image/svg+xml;utf8,<svg width="600px" height="60px" viewBox="0 0 600 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M600,0 L600,60 L88,60 L88,60 C88,39.0131795 70.9868205,22 50,22 C29.0131795,22 12,39.0131795 12,60 L0,60 L0,0 L600,0 Z"></path></svg>') no-repeat;
+				mask: url('data:image/svg+xml;utf8,<svg width="600px" height="60px" viewBox="0 0 600 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M600,0 L600,60 L88,60 L88,60 C88,39.0131795 70.9868205,22 50,22 C29.0131795,22 12,39.0131795 12,60 L0,60 L0,0 L600,0 Z"></path></svg>') no-repeat;
 			}
 		}
 		.avatar {
