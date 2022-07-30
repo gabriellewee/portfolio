@@ -89,11 +89,11 @@ article {
 			padding-right: calc(var(--p)/4);
 			background-color: hsla(var(--color-iron-hsl), .2);
 			font-size: 17px;
-			@include clip-path {
-				clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
-			}
 			@include clip-path-alt {
 				border-radius: calc(var(--p)/4);
+			}
+			@include clip-path {
+				clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
 			}
 			@include dark {
 				background-color: var(--color-iron-5);
@@ -118,11 +118,11 @@ article {
 		background: var(--color-iron);
 		font-size: 16px;
 		line-height: 26px;
-		@include clip-path {
-			clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
-		}
 		@include clip-path-alt {
 			border-radius: calc(var(--p)/4);
+		}
+		@include clip-path {
+			clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
 		}
 		@include dark {
 			background-color: var(--color-iron-3);
@@ -187,11 +187,11 @@ article {
 			height: calc(100% + (var(--p)/2));
 			width: calc(100% + (var(--p)/2));
 			background-color: hsla(var(--color-violet-hsl), .5);
-			@include clip-path {
-				clip-path: polygon(3px 0%, calc(100% - 3px) 0%, 100% 3px, 100% calc(100% - 3px), calc(100% - 3px) 100%, 3px 100%, 0% calc(100% - 3px), 0% 3px);
-			}
 			@include clip-path-alt {
 				border-radius: calc(var(--p)/4);
+			}
+			@include clip-path {
+				clip-path: polygon(3px 0%, calc(100% - 3px) 0%, 100% 3px, 100% calc(100% - 3px), calc(100% - 3px) 100%, 3px 100%, 0% calc(100% - 3px), 0% 3px);
 			}
 		}
 		&:focus {
@@ -205,11 +205,11 @@ article {
 		}
 	}
 	img {
-		@include clip-path {
-			clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
-		}
 		@include clip-path-alt {
 			@include border-radius(calc(var(--p)/4));
+		}
+		@include clip-path {
+			clip-path: polygon(2px 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0% calc(100% - 2px), 0% 2px);
 		}
 	}
 	.animation {

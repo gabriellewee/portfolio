@@ -255,7 +255,6 @@ dt {
 
 .grid-filters {
 	position: fixed;
-	position: -webkit-sticky;
 	position: sticky;
 	bottom: 0;
 	bottom: env(safe-area-inset-bottom);
@@ -275,21 +274,12 @@ dt {
 		align-items: center;
 	}
 	ul {
+		@include no-scrollbar();
 		border-radius: calc(var(--p)/2);
 		list-style: none;
 		padding: calc(var(--p)/2) calc(var(--p)/2) calc(var(--p)/2) 0;
-		overflow: auto;
-		overflow: -moz-scrollbars-none;
-		-ms-overflow-style: none;
-		scrollbar-width: none;
-		-webkit-overflow-scrolling: touch;
 		@include clip-path {
 			clip-path: inset(var(--p) 0 var(--p) 0 round calc(var(--p)/2) calc(var(--p)/2) calc(var(--p)/2) calc(var(--p)/2));
-		}
-		::-webkit-scrollbar {
-			height: 0;
-			width: 0;
-			display: none;
 		}
 	}
 	li {

@@ -25,11 +25,11 @@
 			height: calc(100% + (var(--p)/2));
 			width: calc(100% + (var(--p)/2));
 			background-color: hsla(var(--color-violet-hsl), .5);
-			@include clip-path {
-				clip-path: polygon(3px 0%, calc(100% - 3px) 0%, 100% 3px, 100% calc(100% - 3px), calc(100% - 3px) 100%, 3px 100%, 0% calc(100% - 3px), 0% 3px);
-			}
 			@include clip-path-alt {
 				border-radius: calc(var(--p)/4);
+			}
+			@include clip-path {
+				clip-path: polygon(3px 0%, calc(100% - 3px) 0%, 100% 3px, 100% calc(100% - 3px), calc(100% - 3px) 100%, 3px 100%, 0% calc(100% - 3px), 0% 3px);
 			}
 		}
 		span {

@@ -129,7 +129,6 @@ ul {
 				transform: translateZ(#{$p*3});
 				width: 100%!important;
 				height: 100%!important;
-				-webkit-clip-path: none!important;
 				clip-path: none!important;
 				transition: all 100ms ease 500ms;
 			}
