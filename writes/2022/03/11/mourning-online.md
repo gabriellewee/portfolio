@@ -37,7 +37,10 @@ Late last year, my paternal grandmother passed away. She was an incredible woman
 >
 > I love you, Ngin Ngin, and I look forward to one day seeing you again in Heaven.
 
+
+<div class="row-single">
 {%- set number = 1 %}{% include 'pages/visual/image.html' %}
+</div>
 
 <div class="row-double">
 {%- set number = 2 %}{% include 'pages/visual/image.html' %}
@@ -46,7 +49,7 @@ Late last year, my paternal grandmother passed away. She was an incredible woman
 
 I miss Ngin Ngin a lot. I didn’t realize what a enormous rift her passing would leave in my life. Even writing about her now is still painful. I’m learning, slowly, to let myself grieve.
 
-<hr/>
+---
 
 One of the things I never really thought about before she passed away was _mourning online_. I haven’t really had very many people close to me pass away in the recent years, and the few I knew of had some sort of social media presence where people could gather and share memories. My grandmother could barely operate a DVD player — there was no way she could manage Facebook or anything of the kind.
 
