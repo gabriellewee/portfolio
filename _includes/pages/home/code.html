@@ -15,7 +15,7 @@
 <ul class="grid">
 	{% for link in home.code.thumbnails %}
 		<li>
-			<a class="code-link-{{link.name}} {{link.style}}" href="https://codepen.io/gabriellewee/pen/{{link.uri}}/" target="_blank" aria-label="{{link.title}}">
+			<a class="code-link-{{link.name}} {{link.style}}" href="{% if link.uri %}https://codepen.io/gabriellewee/pen/{{link.uri}}/{% elseif link.url %}{{link.url}}{% endif %}" target="_blank" aria-label="{{link.title}}">
 				<span class="inside" aria-hidden="true">
 					<picture>
 						<img src="/static/images/svg/thumbnails/{{link.name}}.svg" width="200" height="125" alt=""/>
