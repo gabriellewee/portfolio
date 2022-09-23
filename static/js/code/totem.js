@@ -34,7 +34,8 @@ let sharedTopBottom = {
 	width: 96,
 	height: 96,
 	color: "#FDAA4E",
-	fill: true
+	fill: true,
+	stroke: 0
 }
 
 let sharedTopGroup = {
@@ -60,7 +61,8 @@ let sharedLeftRight = {
 	width: 96,
 	height: 96,
 	color: "#FED240",
-	fill: true
+	fill: true,
+	stroke: 0
 }
 
 let sharedLeftGroup = {
@@ -74,13 +76,15 @@ let sharedRightGroup = {
 let sharedEye = {
 	diameter: 72,
 	color: "#FFFFF9",
-	fill: true
+	fill: true,
+	stroke: 0
 }
 
 let sharedPupil = {
 	diameter: 48,
 	color: "#9F355A",
-	fill: true
+	fill: true,
+	stroke: 0
 }
 
 let sharedLeftRightBorderOne = {
@@ -88,7 +92,8 @@ let sharedLeftRightBorderOne = {
 	height: 84,
 	color: "#C2C9CC",
 	fill: true,
-	translate: { x: -6, y: 6 }
+	translate: { x: -6, y: 6 },
+	stroke: 0
 }
 
 let sharedLeftRightBorderTwo = {
@@ -96,7 +101,8 @@ let sharedLeftRightBorderTwo = {
 	height: 72,
 	color: "#FED240",
 	fill: true,
-	translate: { x: -12, y: 12 }
+	translate: { x: -12, y: 12 },
+	stroke: 0
 }
 
 let sharedLeftRightBorderThree = {
@@ -104,7 +110,8 @@ let sharedLeftRightBorderThree = {
 	height: 60,
 	color: "#C2C9CC",
 	fill: true,
-	translate: { x: -18, y: 18 }
+	translate: { x: -18, y: 18 },
+	stroke: 0
 }
 
 let sharedLeftRightBorderFour = {
@@ -112,7 +119,8 @@ let sharedLeftRightBorderFour = {
 	height: 48,
 	color: "#FED240",
 	fill: true,
-	translate: { x: -24, y: 24 }
+	translate: { x: -24, y: 24 },
+	stroke: 0
 }
 
 let sharedLeftRightBorderFive = {
@@ -120,7 +128,8 @@ let sharedLeftRightBorderFive = {
 	height: 36,
 	color: "#C2C9CC",
 	fill: true,
-	translate: { x: -30, y: 30 }
+	translate: { x: -30, y: 30 },
+	stroke: 0
 }
 
 let sharedLeftRightBorderSix = {
@@ -128,14 +137,16 @@ let sharedLeftRightBorderSix = {
 	height: 24,
 	color: "#FED240",
 	fill: true,
-	translate: { x: -36, y: 36 }
+	translate: { x: -36, y: 36 },
+	stroke: 0
 }
 
 let sharedFrontBack = {
 	width: 96,
 	height: 96,
 	color: "#FEF440",
-	fill: true
+	fill: true,
+	stroke: 0
 }
 
 let sharedButton = {
@@ -145,14 +156,16 @@ let sharedButton = {
 	frontFace: false,
 	backface: "#FEEE57",
 	fill: true,
-	translate: { z: -4 }
+	translate: { z: -4 },
+	stroke: 0
 }
 
 let sharedButtonInside = {
 	diameter: 24,
 	color: "#EF9355",
 	fill: true,
-	translate: { z: -6 }
+	translate: { z: -6 },
+	stroke: 0
 }
 
 // cube one
@@ -166,7 +179,8 @@ let oneTopBorder = new Zdog.Rect({
 	height: 72,
 	color: "#E4FFFF",
 	fill: true,
-	translate: { x: 6 }
+	translate: { x: 6 },
+	stroke: 0
 });
 
 let oneTopBorderCenter = new Zdog.Rect({
@@ -175,7 +189,8 @@ let oneTopBorderCenter = new Zdog.Rect({
 	height: 48,
 	color: "#FFFD68",
 	fill: true,
-	translate: { x: 12 }
+	translate: { x: 12 },
+	stroke: 0
 });
 
 let oneTopBorderInside = new Zdog.Rect({
@@ -184,7 +199,8 @@ let oneTopBorderInside = new Zdog.Rect({
 	height: 24,
 	color: "#E4FFFF",
 	fill: true,
-	translate: { x: 18 }
+	translate: { x: 18 },
+	stroke: 0
 });
 
 let oneBottomGroup = new Zdog.Group(Zdog.extend(sharedBottomGroup, { addTo: one }));
@@ -221,7 +237,8 @@ let oneFrontBorder = new Zdog.Rect({
 	height: 84,
 	color: "#D7ECE4",
 	fill: true,
-	translate: { y: 6 }
+	translate: { y: 6 },
+	stroke: 0
 });
 
 let oneFrontBorderInside = new Zdog.Rect({
@@ -230,7 +247,8 @@ let oneFrontBorderInside = new Zdog.Rect({
 	height: 72,
 	color: "#FEF440",
 	fill: true,
-	translate: { y: 12 }
+	translate: { y: 12 },
+	stroke: 0
 });
 
 let oneBackGroup = new Zdog.Group(Zdog.extend(sharedBackGroup, { addTo: one }));
@@ -247,7 +265,8 @@ let oneBackBorderOne = new Zdog.Shape({
 	closed: true,
 	fill: true,
 	color: '#D7ECE4',
-	translate: { x: -48, y: -48 }
+	translate: { x: -48, y: -48 },
+	stroke: 0
 });
 
 let oneBackBorderTwo = new Zdog.Shape({
@@ -260,7 +279,8 @@ let oneBackBorderTwo = new Zdog.Shape({
 	closed: true,
 	fill: true,
 	color: '#FEF440',
-	translate: { x: -48, y: -48 }
+	translate: { x: -48, y: -48 },
+	stroke: 0
 });
 
 let oneBackBorderThree = new Zdog.Shape({
@@ -273,7 +293,8 @@ let oneBackBorderThree = new Zdog.Shape({
 	closed: true,
 	fill: true,
 	color: '#D7ECE4',
-	translate: { x: -48, y: -48 }
+	translate: { x: -48, y: -48 },
+	stroke: 0
 });
 
 // cube 2
@@ -361,7 +382,8 @@ let twoFrontBorderOne = new Zdog.Rect({
 	height: 84,
 	color: "#CAE7DE",
 	fill: true,
-	translate: { y: 6 }
+	translate: { y: 6 },
+	stroke: 0
 });
 
 let twoFrontBorderTwo = new Zdog.Rect({
@@ -370,7 +392,8 @@ let twoFrontBorderTwo = new Zdog.Rect({
 	height: 72,
 	color: "#FEF440",
 	fill: true,
-	translate: { y: 12 }
+	translate: { y: 12 },
+	stroke: 0
 });
 
 let twoFrontBorderThree = new Zdog.Rect({
@@ -379,7 +402,8 @@ let twoFrontBorderThree = new Zdog.Rect({
 	height: 60,
 	color: "#CAE7DE",
 	fill: true,
-	translate: { y: 18 }
+	translate: { y: 18 },
+	stroke: 0
 });
 
 let twoFrontBorderFour = new Zdog.Rect({
@@ -388,7 +412,8 @@ let twoFrontBorderFour = new Zdog.Rect({
 	height: 48,
 	color: "#FEF440",
 	fill: true,
-	translate: { y: 24 }
+	translate: { y: 24 },
+	stroke: 0
 });
 
 let twoFrontBorderFive = new Zdog.Rect({
@@ -397,7 +422,8 @@ let twoFrontBorderFive = new Zdog.Rect({
 	height: 36,
 	color: "#CAE7DE",
 	fill: true,
-	translate: { y: 30 }
+	translate: { y: 30 },
+	stroke: 0
 });
 
 let twoFrontBorderSix = new Zdog.Rect({
@@ -406,7 +432,8 @@ let twoFrontBorderSix = new Zdog.Rect({
 	height: 24,
 	color: "#FEF440",
 	fill: true,
-	translate: { y: 36 }
+	translate: { y: 36 },
+	stroke: 0
 });
 
 let twoFrontBorderSeven = new Zdog.Rect({
@@ -415,7 +442,8 @@ let twoFrontBorderSeven = new Zdog.Rect({
 	height: 24,
 	color: "#FEF440",
 	fill: true,
-	translate: { y: 12 }
+	translate: { y: 12 },
+	stroke: 0
 });
 
 let twoBackGroup = oneBackGroup.copy({
@@ -436,7 +464,8 @@ let twoBackBorderOne = new Zdog.Shape({
 	closed: true,
 	fill: true,
 	color: '#D7ECE4',
-	translate: { x: -48, y: -48 }
+	translate: { x: -48, y: -48 },
+	stroke: 0
 });
 
 let twoBackBorderTwo = new Zdog.Shape({
@@ -449,7 +478,8 @@ let twoBackBorderTwo = new Zdog.Shape({
 	closed: true,
 	fill: true,
 	color: '#D7ECE4',
-	translate: { x: -48, y: -48 }
+	translate: { x: -48, y: -48 },
+	stroke: 0
 });
 
 let twoBackBorderThree = new Zdog.Shape({
@@ -463,7 +493,8 @@ let twoBackBorderThree = new Zdog.Shape({
 	closed: true,
 	fill: true,
 	color: '#D7ECE4',
-	translate: { x: -48, y: -48 }
+	translate: { x: -48, y: -48 },
+	stroke: 0
 });
 
 let twoBackBorderFour = new Zdog.Shape({
@@ -477,7 +508,8 @@ let twoBackBorderFour = new Zdog.Shape({
 	closed: true,
 	fill: true,
 	color: '#D7ECE4',
-	translate: { x: -48, y: -48 }
+	translate: { x: -48, y: -48 },
+	stroke: 0
 });
 
 let twoBackBorderFive = new Zdog.Shape({
@@ -491,7 +523,8 @@ let twoBackBorderFive = new Zdog.Shape({
 	closed: true,
 	fill: true,
 	color: '#D7ECE4',
-	translate: { x: -48, y: -48 }
+	translate: { x: -48, y: -48 },
+	stroke: 0
 });
 
 let twoBackBorderSix = new Zdog.Shape({
@@ -505,7 +538,8 @@ let twoBackBorderSix = new Zdog.Shape({
 	closed: true,
 	fill: true,
 	color: '#D7ECE4',
-	translate: { x: -48, y: -48 }
+	translate: { x: -48, y: -48 },
+	stroke: 0
 });
 
 let twoBackBorderSeven = new Zdog.Shape({
@@ -518,7 +552,8 @@ let twoBackBorderSeven = new Zdog.Shape({
 	closed: true,
 	fill: true,
 	color: '#D7ECE4',
-	translate: { x: -48, y: -48 }
+	translate: { x: -48, y: -48 },
+	stroke: 0
 });
 
 // cube 3
@@ -583,7 +618,8 @@ let threeFrontBorderOne = new Zdog.Rect({
 	width: 72,
 	height: 96,
 	color: "#CAE7DE",
-	fill: true
+	fill: true,
+	stroke: 0
 });
 
 let threeFrontBorderTwo = new Zdog.Rect({
@@ -591,7 +627,8 @@ let threeFrontBorderTwo = new Zdog.Rect({
 	width: 48,
 	height: 72,
 	color: "#FEF440",
-	fill: true
+	fill: true,
+	stroke: 0
 });
 
 let threeFrontBorderThree = new Zdog.Rect({
@@ -600,7 +637,8 @@ let threeFrontBorderThree = new Zdog.Rect({
 	height: 12,
 	color: "#FEF440",
 	fill: true,
-	translate: { y: 30 }
+	translate: { y: 30 },
+	stroke: 0
 });
 
 let threeFrontBorderFour = new Zdog.Rect({
@@ -609,7 +647,8 @@ let threeFrontBorderFour = new Zdog.Rect({
 	height: 72,
 	color: "#CAE7DE",
 	fill: true,
-	translate: { y: 12 }
+	translate: { y: 12 },
+	stroke: 0
 });
 
 let threeBackGroup = oneBackGroup.copy({
@@ -626,7 +665,8 @@ let threeBackBorder = new Zdog.Rect({
 	height: 84,
 	color: "#D7ECE4",
 	fill: true,
-	translate: { y: -6 }
+	translate: { y: -6 },
+	stroke: 0
 });
 
 let threeBackBorderCenter = new Zdog.Rect({
@@ -635,7 +675,8 @@ let threeBackBorderCenter = new Zdog.Rect({
 	height: 72,
 	color: "#FEF440",
 	fill: true,
-	translate: { y: -12 }
+	translate: { y: -12 },
+	stroke: 0
 });
 
 let threeBackBorderInside = new Zdog.Rect({
@@ -644,7 +685,8 @@ let threeBackBorderInside = new Zdog.Rect({
 	height: 60,
 	color: "#D7ECE4",
 	fill: true,
-	translate: { y: -18 }
+	translate: { y: -18 },
+	stroke: 0
 });
 
 // cube 4
