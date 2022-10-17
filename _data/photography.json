@@ -1,5 +1,14 @@
 [
 	{
+		"name": "cat-garden",
+		"date": "2022-07-20",
+		"location": "San Francisco, CA, USA",
+		"camera": "iPhone 12 Pro Max",
+		"editor": "VSCO",
+		"tags": "cat animal portrait outdoor",
+		"description": "A grey cat with a grey harness sitting in a garden on an outdoor couch with orange cushions."
+	},
+	{
 		"name": "jeselle",
 		"date": "2022-06-05",
 		"location": "San Francisco, CA, USA",
