@@ -55,4 +55,8 @@ a {
 		color: var(--color-discord);
 		text-decoration-color: var(--color-discord);
 	}
+	&.mastodon {
+		color: var(--color-mastodon);
+		text-decoration-color: var(--color-mastodon);
+	}
 }
