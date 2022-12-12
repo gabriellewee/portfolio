@@ -12,6 +12,11 @@
 		"url": "https://instagram.com/gabriellewee/"
 	},
 	{
+		"name": "mastodon",
+		"url": "https://mas.to/@gabriellewee",
+		"rel": "me"
+	},
+	{
 		"name": "twitter",
 		"url": "https://twitter.com/gabriewee/"
 	},
