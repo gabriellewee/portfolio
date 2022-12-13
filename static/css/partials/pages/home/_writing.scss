@@ -25,7 +25,7 @@
 	h3 {
 		opacity: 0.8;
 		margin-bottom: calc(var(--p)/2);
-		font-size: 24px;
+		font-size: 1.5rem;
 		font-weight: 900;
 		font-variation-settings: "wght" 900, "CASL" 1, "MONO" 0;
 		a {
@@ -37,7 +37,7 @@
 		}
 	}
 	h4 {
-		font-size: 16px;
+		font-size: 1rem;
 		font-weight: 600;
 		font-variation-settings: "wght" 600, "CASL" 1, "MONO" 0;
 		span {
@@ -124,7 +124,7 @@
 		.popup-label, a {
 			position: relative;
 			color: white;
-			font-size: 20px;
+			font-size: 1.25rem;
 			font-weight: 500;
 			font-variation-settings: "wght" 500, "CASL" 0.5, "MONO" 0;
 			> span, > strong {
@@ -172,7 +172,7 @@
 			}
 		}
 		h4 ~ a {
-			font-size: 16px;
+			font-size: 1rem;
 		}
 		time {
 			background-color: hsla(var(--color-iron-hsl), .2);
@@ -182,7 +182,7 @@
 		}
 		.link > span, time {
 			padding: calc(var(--p)/2) var(--p);
-			font-size: 16px;
+			font-size: 1rem;
 			font-weight: 700;
 			font-variation-settings: "wght" 700, "CASL" 1, "MONO" 0;
 			text-transform: uppercase;

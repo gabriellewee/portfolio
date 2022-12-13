@@ -1,11 +1,9 @@
 .font-variation-settings {
 	display: block;
 	font-size: 48px;
+	font-size: clamp(3rem, 5vw, 4.5rem);
 	font-variation-settings: "wght" 800, "CASL" 1, "MONO" 0;
 	animation: variable 2s linear alternate infinite both;
-	@include viewport($ipad-11) {
-		font-size: 72px;
-	}
 }
 @keyframes variable {
 	from { font-variation-settings: "wght" 800, "CASL" 1, "MONO" 0 }

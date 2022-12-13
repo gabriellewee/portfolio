@@ -1,7 +1,7 @@
 .grid-item-code.grid-only {
 	@import '../../colors/thumbnails';
 	font-family: var(--font-mono);
-	font-size: 16px;
+	font-size: 1rem;
 	font-weight: bold;
 	background-color: #253238;
 	color: #73d1c8;
@@ -39,20 +39,17 @@
 			font-weight: normal;
 		}
 	}
-	p {
-		font-size: 24px;
-	}
 	h3, .links li {
 		padding-bottom: var(--p);
 		font-style: normal;
-		font-size: 16px;
+		font-size: 1rem;
 		a {
 			&:after {
 				content: "\2197";
 				display: inline;
 				margin-left: 6px;
-				font-size: 22px;
-				line-height: 19px;
+				font-size: 1.375rem;
+				line-height: 1;
 			}
 		}
 	}
@@ -87,7 +84,7 @@
 			grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
 			a {
 				.overlay {
-					font-size: 24px;
+					font-size: 1.5rem;
 				}
 			}
 		}
@@ -126,7 +123,7 @@
 					bottom: 0;
 					padding: calc(var(--p)/2) calc(var(--p)*.75);
 					font-family: var(--font-faune);
-					font-size: 12px;
+					font-size: 0.75rem;
 					font-weight: bold;
 					text-transform: uppercase;
 				}
@@ -169,7 +166,7 @@
 				height: 100%;
 				padding: var(--p) calc(var(--p)*1.5);
 				font-family: var(--font-faune);
-				font-size: 20px;
+				font-size: 1.25rem;
 				font-weight: normal;
 				font-style: italic;
 				text-align: center;

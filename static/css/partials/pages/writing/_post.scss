@@ -1,4 +1,6 @@
 article {
+	font-size: 1.125rem;
+
 	&:not(:last-child) {
 		margin-bottom: calc(var(--p)*4);
 	}
@@ -12,15 +14,15 @@ article {
 		font-variation-settings: "wght" 700, "CASL" 1, "MONO" 0;
 	}
 	h3 {
-		font-size: 22px;
+		font-size: 1.375rem;
 	}
 	h2, &.archive h3 {
-		font-size: 26px;
+		font-size: 1.625rem;
 		font-weight: 800;
 		font-variation-settings: "wght" 800, "CASL" 1, "MONO" 0;
 	}
 	h1, header h2 {
-		font-size: 36px;
+		font-size: 2.25rem;
 		font-weight: 900;
 		font-variation-settings: "wght" 900, "CASL" 1, "MONO" 0;
 	}
@@ -88,7 +90,7 @@ article {
 			padding-left: calc(var(--p)/4);
 			padding-right: calc(var(--p)/4);
 			background-color: hsla(var(--color-iron-hsl), .2);
-			font-size: 17px;
+			font-size: 1.0625rem;
 			@include clip-path-alt {
 				border-radius: calc(var(--p)/4);
 			}
@@ -110,14 +112,16 @@ article {
 	pre, p > code {
 		font-weight: 400;
 		font-variation-settings: "wght" 400, "MONO" 1, "CASL" 0;
-		line-height: 28px;
+	}
+	p > code {
+		line-height: 1.648;
 	}
 	pre {
 		padding: calc(var(--p)*1.5) calc(var(--p)*2);
 		color: white;
 		background: var(--color-iron);
-		font-size: 16px;
-		line-height: 26px;
+		font-size: 1rem;
+		line-height: 1.625;
 		@include clip-path-alt {
 			border-radius: calc(var(--p)/4);
 		}
@@ -142,7 +146,7 @@ article {
 			width: 100%;
 			top: calc(var(--p)*-2.5);
 			left: calc(var(--p)*-1.5);
-			font-size: 64px;
+			font-size: 4rem;
 			font-variation-settings: "wght" 400, "CASL" 1, "CRSV" 1, "MONO" 0;
 		}
 	}
@@ -166,7 +170,7 @@ article {
 		margin-bottom: calc(var(--p)*2);
 		background-color: hsla(var(--color-iron-hsl), .2);
 		border-radius: 3px;
-		font-size: 20px;
+		font-size: 1.25rem;
 		@include dark {
 			background-color: hsla(var(--color-white-hsl), .2);
 		}
@@ -310,7 +314,7 @@ article {
 		}
 	}
 	figcaption, p.caption {
-		font-size: 14px;
+		font-size: 0.875rem;
 		text-align: center;
 		&:first-child {
 			margin-bottom: calc(var(--p)/2);
@@ -426,7 +430,7 @@ article {
 	}
 	h2 {
 		display: inline-block;
-		font-size: 48px;
+		font-size: 3rem;
 		font-weight: 900;
 		font-variation-settings: "wght" 900, "CASL" 1, "MONO" 0;
 	}

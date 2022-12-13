@@ -2,7 +2,7 @@
 	$plants: #d1e7d6;
 	background-color: $plants;
 	color: desaturate(darken($plants, 60%), 15%);
-	font-size: 24px;
+	font-size: 1.5rem;
 	@include dark {
 		background-color: desaturate(darken($plants, 60%), 5%);
 		color: white;
@@ -15,7 +15,7 @@
 	@include viewport($mbp-14) {
 		grid-template-columns: 1fr 215px;
 		grid-template-rows: unset;
-		font-size: 28px;
+		font-size: 1.75rem;
 	}
 	h2 {
 		padding: var(--p) calc((var(--p)*1.5) + env(safe-area-inset-left));

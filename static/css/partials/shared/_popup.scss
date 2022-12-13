@@ -62,9 +62,9 @@
 		opacity: 0;
 		z-index: -1;
 		overflow: hidden;
-		width: 0px;
-		height: 0px;
-		font-size: 0px;
+		width: 0;
+		height: 0;
+		font-size: 0;
 		&:active {
 			+ .popup-label {
 				span {
@@ -180,7 +180,7 @@
 			position: relative;
 			margin-top: 38px;
 			margin-left: var(--p);
-			font-size: 20px;
+			font-size: 1.25rem;
 			font-weight: normal;
 			font-style: normal;
 			.number {
@@ -209,7 +209,7 @@
 				right: -63px;
 				padding: 3px 6px 5px;
 				border-radius: 3px;
-				font-size: 12px;
+				font-size: 0.75rem;
 				font-weight: bold;
 				text-transform: uppercase;
 			}
@@ -229,7 +229,7 @@
 			display: block;
 			margin-bottom: 8px;
 			color: #b9bbbe;
-			font-size: 12px;
+			font-size: 0.75rem;
 			font-weight: bold;
 			text-transform: uppercase;
 		}
@@ -239,8 +239,8 @@
 			padding: 2px 4px;
 			background-color: #2f3136;
 			font-family: var(--font-mono);
-			font-size: 12px;
-			line-height: 18px;
+			font-size: 0.75rem;
+			line-height: 1.5;
 			white-space: pre-wrap;
 		}
 		.links {
@@ -268,7 +268,7 @@
 				background: none;
 				color: white;
 				font-family: var(--font-faune);
-				font-size: 16px;
+				font-size: 1rem;
 				text-align: left;
 				span span {
 					display: none;
