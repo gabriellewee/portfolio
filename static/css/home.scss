@@ -33,10 +33,7 @@
 }
 
 .grid-item {
-	font-size: 28px;
-	@include viewport($ipad-mini) {
-		font-size: 32px;
-	}
+	font-size: clamp(1.75rem, 2vw, 2rem);
 	&.text-only {
 		padding: var(--p) calc((var(--p)*1.5) + env(safe-area-inset-left));
 		@include max {
@@ -51,7 +48,7 @@
 			}
 		}
 		p {
-			font-size: 24px;
+			font-size: 1.5rem;
 			margin-top: calc(var(--p) / -2);
 			padding: 0 max(calc(var(--p)*1.5) + env(safe-area-inset-left)) calc(var(--p) + (var(--p) / 3));
 			@include max {
@@ -65,15 +62,12 @@
 		justify-content: center;
 		padding: calc(var(--p)/2) var(--p) var(--p);
 		background-color: rgba(black, .5);
-		font-size: 24px;
+		font-size: clamp(1.5rem, 2.5vw, 1.75rem);
 		font-style: italic;
 		font-weight: bold;
 		text-align: center;
 		text-transform: lowercase;
 		text-underline-offset: 4px;
-		@include viewport($ipad-11) {
-			font-size: 28px;
-		}
 		&:hover, &:focus {
 			color: white;
 			span {

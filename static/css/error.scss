@@ -12,12 +12,15 @@ main {
 	background-color: hsla(var(--color-iron-hsl), .2);
 	height: calc(100vh - 55px);
 	padding: var(--p) calc(var(--p)*1.5);
-	font-size: 32px;
+	font-size: clamp(2rem, 2.5vw, 3rem);
+	@include viewport($ipad-mini) {
+		padding: var(--p) calc(var(--p)*2);
+	}
 	h1, p {
 		max-width: 1800px;
 	}
 	h1 {
-		font-size: 52px;
+		font-size: clamp(3.25rem, 4vw, 4.5rem);
 		font-weight: 700;
 		font-style: italic;
 		line-height: 1;
@@ -44,14 +47,4 @@ main {
 
 footer {
 	background-color: hsla(var(--color-iron-hsl), .2);
-}
-
-@include viewport($ipad-mini) {
-	main {
-		font-size: 48px;
-		padding: var(--p) calc(var(--p)*2);
-		h1 {
-			font-size: 72px;
-		}
-	}
 }

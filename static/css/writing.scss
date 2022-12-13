@@ -16,7 +16,6 @@
 
 body {
 	font-family: var(--font-recursive);
-	font-size: 18px;
 	font-feature-settings: 'dlig' 1, 'liga' 1;
 	line-height: 1.6;
 }
@@ -42,16 +41,10 @@ a, pre, button {
 		padding-top: calc(var(--p)*2.5);
 	}
 	a {
-		font-size: 64px;
+		font-size: clamp(4rem, 7vw, 4.5rem);
 		font-weight: 1000;
 		font-variation-settings: "wght" 1000, "CASL" 1, "MONO" 0;
 		line-height: 1.4;
-		@include viewport($ipad-mini) {
-			font-size: 7vw;
-		}
-		@include viewport($ipad-11) {
-			font-size: 72px;
-		}
 		&:hover, &:focus {
 			span {
 				opacity: 1;
@@ -61,7 +54,7 @@ a, pre, button {
 	span {
 		display: block;
 		opacity: 0.75;
-		font-size: 36px;
+		font-size: 2.25rem;
 		margin-bottom: calc(var(--p)*-1);
 		@include dark {
 			opacity: 0.5;
@@ -130,7 +123,7 @@ button {
 		color: white;
 		font-family: var(--font-recursive);
 		font-weight: 500;
-		font-size: 16px;
+		font-size: 1rem;
 		font-variation-settings: "wght" 500, "CASL" 0.5, "MONO" 0;
 		line-height: 1.2;
 		@include clip-path {

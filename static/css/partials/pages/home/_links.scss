@@ -3,7 +3,7 @@
 	overflow: unset;
 	z-index: 2;
 	background-color: white;
-	font-size: 28px;
+	font-size: 1.75rem;
 	@include dark {
 		background-color: var(--color-iron-2);
 		color: white;
@@ -26,7 +26,7 @@
 	}
 	.link > a, .popup-label {
 		transition: .1s ease-out;
-		font-size: 40px;
+		font-size: 2.5rem;
 		font-style: italic;
 		font-weight: bold;
 	}

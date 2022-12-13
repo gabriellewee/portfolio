@@ -76,7 +76,7 @@ main {
 		&:after {
 			content: "Click to view information";
 			display: block;
-			font-size: 20px;
+			font-size: 1.25rem;
 			font-style: normal;
 			color: white;
 		}
@@ -205,7 +205,7 @@ dl {
 	@include blur-all(5px, "var(--color-iron-10-hsl)", .9, .4);
 	width: 100%;
 	padding: var(--p) calc(var(--p) + env(safe-area-inset-left));
-	font-size: 24px;
+	font-size: 1.5rem;
 	color: white;
 	@include max {
 		padding: var(--p) max(var(--p), env(safe-area-inset-left));
@@ -230,7 +230,7 @@ dt {
 			display: flex;
 			align-items: center;
 			justify-content: flex-start;
-			font-size: 28px;
+			font-size: 1.75rem;
 			font-weight: bold;
 			font-style: normal;
 			.grid-link {
@@ -334,8 +334,8 @@ dt {
 		cursor: pointer;
 		&:after {
 			content: " ›";
-			font-size: 24px;
-			line-height: 19px;
+			font-size: 1.25rem;
+			line-height: 0.95;
 			margin-top: -4px;
 		}
 	}
