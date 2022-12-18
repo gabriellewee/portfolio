@@ -25,7 +25,7 @@
 			height: calc(100% + (var(--p)/2));
 			width: calc(100% + (var(--p)/2));
 			background-color: hsla(var(--color-violet-hsl), .5);
-			@include clip-path-alt {
+			@include clip-path(false) {
 				border-radius: calc(var(--p)/4);
 			}
 			@include clip-path {
@@ -34,7 +34,7 @@
 		}
 		span {
 			display: inline-block;
-			transition: transform .1s ease-out;
+			transition: scale .1s ease-out;
 			background-color: var(--color-iron);
 			color: white;
 			padding: calc(var(--p)/3) calc(var(--p)/2);
@@ -62,7 +62,7 @@
 		}
 		&:active {
 			span {
-				transform: scale(0.95);
+				scale: 0.95;
 				background-color: var(--color-indigo);
 				background: linear-gradient(135deg, var(--color-indigo) 0%, var(--color-violet) 100%);
 			}

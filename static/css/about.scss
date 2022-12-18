@@ -85,7 +85,7 @@ h2 {
 		}
 	}
 	a {
-		transition: transform .1s ease-out;
+		transition: scale .1s ease-out;
 		display: inline-block;
 		padding: calc(var(--p)/2) var(--p);
 		border-radius: calc(var(--p)/3);
@@ -100,7 +100,7 @@ h2 {
 			background: linear-gradient(135deg, var(--color-red) 0%, var(--color-orange) 100%);
 		}
 		&:active {
-			transform: scale(0.95);
+			scale: 0.95;
 			background-color: var(--color-indigo);
 			background: linear-gradient(135deg, var(--color-indigo) 0%, var(--color-violet) 100%);
 		}
@@ -142,7 +142,7 @@ h2 {
 				font-size: 1rem;
 				text-transform: uppercase;
 				&:before {
-					transform: rotate(45deg);
+					rotate: 45deg;
 					content: "";
 					display: block;
 					position: absolute;

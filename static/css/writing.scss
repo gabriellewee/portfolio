@@ -76,14 +76,14 @@ main, .frame-content {
 
 .header, h1, h2, h3, h4, h5, h6 {
 	a {
-		transition: transform .1s ease-out;
+		transition: scale .1s ease-out;
 		display: inline-block;
 		&:hover, &:focus {
 			@include gradient-text(var(--color-red-hsl), var(--color-orange-hsl), false);
 		}
 		&:active {
 			@include gradient-text(var(--color-indigo-hsl), var(--color-violet-hsl), false);
-			transform: scale(0.98);
+			scale: 0.98;
 		}
 	}
 }
@@ -111,12 +111,12 @@ button {
 		@include clip-path {
 			clip-path: polygon(3px 0%, calc(100% - 3px) 0%, 100% 3px, 100% calc(100% - 3px), calc(100% - 3px) 100%, 3px 100%, 0% calc(100% - 3px), 0% 3px);
 		}
-		@include clip-path-alt {
+		@include clip-path(false) {
 			border-radius: calc(var(--p)/4);
 		}
 	}
 	span {
-		transition: transform .1s ease-out;
+		transition: scale .1s ease-out;
 		display: inline-block;
 		padding: calc(var(--p)/3) calc(var(--p)/2);
 		background-color: var(--color-iron);
@@ -150,7 +150,7 @@ button {
 	}
 	&:active {
 		span {
-			transform: scale(0.95);
+			scale: 0.95;
 			background-color: var(--color-indigo);
 			background: linear-gradient(135deg, var(--color-indigo) 0%, var(--color-violet) 100%);
 		}

@@ -17,7 +17,7 @@
 	}
 	.top .text.message {
 		animation: unset;
-		transform: none;
+		translate: 0;
 		transition: .3s ease-out;
 		opacity: 1;
 	}

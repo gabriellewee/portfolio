@@ -1,11 +1,11 @@
 @keyframes enter {
-	0% {
+	from {
 		opacity: 0;
-		transform: translateY(100%);
+		translate: 0 100%;
 	}
-	100% {
+	to {
 		opacity: 1;
-		transform: translateY(0%);
+		translate: 0 0%;
 	}
 }
 
@@ -59,13 +59,13 @@
 			color: white;
 		}
 		&.message {
-			transform: translateY(100%);
+			translate: 0 100%;
 			.no-js & {
 				animation: .3s ease-out 1s 1 forwards enter;
 			}
 		}
 		&.go-home {
-			transform: translateY(50%);
+			translate: 0 50%;
 			transition: .3s ease-out;
 			position: absolute;
 			top: 50%;
@@ -90,11 +90,11 @@
 		}
 		&:hover, &:focus, &:active {
 			.go-home {
-				transform: translateY(-50%);
+				translate: 0 -50%;
 				opacity: 1;
 			}
 			~ .text.message {
-				transform: translateY(-100%) translateY(-5px);
+				translate: 0 calc(-100% - 5px);
 				opacity: 0.3;
 			}
 		}

@@ -42,6 +42,36 @@ $neon: #DDFF3B;
 	}
 }
 
+@mixin dark {
+	@media (prefers-color-scheme: dark) {
+		@content;
+	}
+}
+
+@mixin motion($support: true) {
+	@if $support == true {
+		@media (prefers-reduced-motion: no-preference) {
+			@content;
+		}
+	} @else {
+		@media (prefers-reduced-motion: reduce) {
+			@content;
+		}
+	}
+}
+
+@mixin clip-path($support: true) {
+	@if $support == true {
+		@supports (-webkit-clip-path: polygon(0 0)) or (clip-path: polygon(0 0)) {
+		  	@content;
+		}
+	} @else {
+		@supports not ((-webkit-clip-path: polygon(0 0)) or (clip-path: polygon(0 0))) {
+		  	@content;
+		}
+	}
+}
+
 @mixin gradient-text($one, $two, $underline) {
 	color: hsl($one);
 	@supports (-webkit-text-fill-color: transparent) or (text-fill-color: transparent) {
@@ -53,24 +83,6 @@ $neon: #DDFF3B;
 		} @else {
 			-webkit-text-fill-color: transparent;
 		}
-	}
-}
-
-@mixin dark {
-	@media (prefers-color-scheme: dark) {
-		@content;
-	}
-}
-
-@mixin clip-path {
-	@supports (-webkit-clip-path: polygon(0 0)) or (clip-path: polygon(0 0)) {
-	  	@content;
-	}
-}
-
-@mixin clip-path-alt {
-	@supports not ((-webkit-clip-path: polygon(0 0)) or (clip-path: polygon(0 0))) {
-	  	@content;
 	}
 }
 

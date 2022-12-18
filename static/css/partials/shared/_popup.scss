@@ -13,12 +13,12 @@
 			opacity: 0;
 			visibility: hidden;
 			z-index: -1;
-			transition: transform .2s ease-out, opacity .1s ease-out;
+			transition: translate .2s ease-out, rotate .2s ease-out, opacity .1s ease-out;
 			content: "";
 			display: block;
 			position: absolute;
 			transform-origin: center center;
-			transform: translateY(calc(var(--p)*2));
+			translate: 0 calc(var(--p)*2);
 		}
 	}
 	.popup-window {
@@ -32,7 +32,7 @@
 		width: 100vw;
 		padding-left: calc(var(--p) + env(safe-area-inset-left));
 		padding-right: calc(var(--p) + env(safe-area-inset-left));
-		transform: translateY(calc(var(--p)*2));
+		translate: 0 calc(var(--p)*2);
 		@include viewport(570px) {
 			max-width: 500px;
 			padding-left: 0;
@@ -66,13 +66,8 @@
 		height: 0;
 		font-size: 0;
 		&:active {
-			+ .popup-label {
-				span {
-					transform: scale(0.95);
-				}
-				&:after {
-					transition: transform .2s ease-out, opacity .1s ease-out .1s;
-				}
+			+ .popup-label:after {
+				transition: translate .2s ease-out, rotate .2s ease-out, opacity .1s ease-out .1s;
 			}
 		}
 		&:checked {
@@ -81,11 +76,9 @@
 				visibility: visible;
 				z-index: unset;
 			}
-			~ .popup-label:after {
-				transform: none;
-			}
-			~ .popup-window {
-				transform: none;
+			~ .popup-label:after, ~ .popup-window {
+				translate: 0;
+				rotate: 0;
 			}
 		}
 	}
@@ -115,7 +108,7 @@
 			position: relative;
 			padding: var(--p) var(--p) 0;
 			padding-right: 25px;
-			@include clip-path-alt {
+			@include clip-path(false) {
 				border-radius: calc(var(--p)/4);
 			}
 			@include clip-path {
@@ -128,7 +121,8 @@
 .discord-popup {
 	.popup-label {
 		&:after {
-			transform: translateY(calc(var(--p)*2)) rotate(45deg);
+			translate: 0 calc(var(--p)*2);
+			rotate: 45deg;
 			background-color: #EECAC1;
 			bottom: -16px;
 			width: 16px;
@@ -201,7 +195,7 @@
 				width: 10px;
 				height: 10px;
 				border-bottom-left-radius: 2px;
-				transform: rotate(45deg);
+				rotate: 45deg;
 			}
 			&:after {
 				content: "Copied";
@@ -326,7 +320,7 @@
 	}
 	.popup-button:checked {
 		+ .popup-label:after {
-			transform: rotate(45deg);
+			rotate: 45deg;
 		}
 	}
 }

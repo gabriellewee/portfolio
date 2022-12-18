@@ -71,7 +71,7 @@
 		&:hover, &:focus {
 			color: white;
 			span {
-				transform: scale(1.05);
+				scale: 1.05;
 			}
 		}
 		&:focus {
@@ -79,7 +79,7 @@
 		}
 		&:active {
 			span {
-				transform: scale(.95);
+				scale: 0.95;
 			}
 		}
 		span {
