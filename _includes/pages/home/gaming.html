@@ -1,24 +1,26 @@
-<div class="header">
-	<h2>I love gaming and modding my controllers.</h2>
-	<p class="friend-code"><span>Nintendo Friend Code: </span><span>SW‑0918‑7153‑9794</span></p>
-</div>
-<div class="console">
-	<picture>
-		<img src="/static/images/svg/controllers/switch-pink.svg" width="255" height="107" alt="Modded pink Nintendo Switch"/>
-	</picture>
-</div>
-<ul class="modding">
-	{% for controller in home.controllers %}
-		<li>
-			<picture>
-				<img src="/static/images/svg/controllers/{{controller.name}}.svg" width="156" height="156" alt="Modded {{controller.color}} {{controller.brand}} {{controller.type}}"/>
-			</picture>
-		</li>
-	{% endfor %}
-</ul>
-<div class="playing">
-	<h3>Currently playing:</h3>
-	<ul>
-		<li><span>Fire Emblem: Path of Radiance</span></li><li><span>Animal Crossing: New Horizons</span></li><li><span>Stray</span></li><li><span>The Legend of Zelda: Ocarina of Time</span></li>
+<div class="content">
+	<div class="header">
+		<h2>I love gaming and modding my controllers.</h2>
+		<p class="friend-code"><span>Nintendo Friend Code: </span><span>SW‑0918‑7153‑9794</span></p>
+	</div>
+	<div class="console">
+		<picture>
+			<img src="/static/images/svg/controllers/switch-pink.svg" width="255" height="107" alt="Modded pink Nintendo Switch"/>
+		</picture>
+	</div>
+	<ul class="modding">
+		{% for controller in home.controllers %}
+			<li>
+				<picture>
+					<img src="/static/images/svg/controllers/{{controller.name}}.svg" width="156" height="156" alt="Modded {{controller.color}} {{controller.brand}} {{controller.type}}"/>
+				</picture>
+			</li>
+		{% endfor %}
 	</ul>
+	<div class="playing">
+		<h3>Currently playing:</h3>
+		<ul>
+			<li><span>Fire Emblem: Radiant Dawn</span></li><li><span>Hades</span></li><li><span>Stray</span></li><li><span>The Legend of Zelda: Ocarina of Time</span></li>
+		</ul>
+	</div>
 </div>
