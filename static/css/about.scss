@@ -113,7 +113,6 @@ h2 {
 		flex-wrap: wrap;
 	}
 	li {
-		display: flex;
 		margin-bottom: var(--p);
 		&:not(:last-child) {
 			margin-right: var(--p);
@@ -224,8 +223,6 @@ h2 {
 		}
 	}
 	.pangram {
-		display: block;
-		width: 100%;
 		font-size: 2rem;
 	}
 	.faune {
