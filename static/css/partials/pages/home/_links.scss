@@ -24,15 +24,15 @@
 			margin-right: calc(var(--p) + 6px);
 		}
 	}
-	.link > a, .popup-label {
+	.link > a, .popup-label, .popup-label span {
 		transition: .1s ease-out;
 		font-size: 2.5rem;
 		font-style: italic;
 		font-weight: bold;
 	}
-	.link > a:hover, .link > a:focus, .popup-label:hover, .popup-button:focus ~ .popup-label {
+	.link > a:hover, .link > a:focus, .popup-label:hover span, .popup-button:focus ~ .popup-label span {
 		color: var(--color-iron);
-		transform: scale(1.05);
+		scale: 1.05;
 		@include dark {
 			color: white;
 		}
@@ -40,8 +40,8 @@
 	.link > a:focus, .popup-button:focus ~ .popup-label {
 		@include wavy;
 	}
-	.link > a:active, .popup-button:active ~ .popup-label {
-		transform: scale(0.95);
+	.link > a:active, .popup-button:active ~ .popup-label span {
+		scale: 0.95;
 	}
 	.popup-label {
 		color: var(--color-discord);

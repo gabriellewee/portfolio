@@ -74,7 +74,7 @@ main {
 		align-content: center;
 		justify-content: center;
 		&:after {
-			content: "Click to view information";
+			content: "Show information about this photo";
 			display: block;
 			font-size: 1.25rem;
 			font-style: normal;
@@ -105,7 +105,7 @@ main {
 		}
 	}
 	label:active, .grid-input:active ~label, a:active {
-		transform: scale(0.95);
+		scale: 0.95;
 		box-shadow: none;
 	}
 	.grid-input {
@@ -139,7 +139,7 @@ main {
 		}
 		&:checked {
 			~ .grid-info {
-				transform: none;
+				translate: 0 0;
 				opacity: 1;
 				z-index: 2;
 			}
@@ -165,10 +165,10 @@ main {
 		}
 	}
 	.grid-info {
-		transform: translateY(25%);
+		translate: 0 25%;
 		opacity: 0;
 		z-index: 0;
-		transition: all .3s ease-out;
+		transition: .3s ease-out;
 		position: absolute;
 		bottom: 0;
 		left: 0;
@@ -284,7 +284,7 @@ dt {
 	}
 	li {
 		transition: .1s ease-out;
-		transform: translateX(-100%);
+		translate: -100%;
 		opacity: 0;
 		visibility: hidden;
 		padding: calc(var(--p)/2);
@@ -324,7 +324,7 @@ dt {
 		}
 		&:active {
 			@include blur-bg(null, .9, .8, $red);
-			transform: scale(0.95);
+			scale: 0.95;
 			color: white;
 		}
 	}
@@ -361,7 +361,7 @@ dt {
 			}
 			~ ul {
 				li {
-					transform: translateX(0);
+					translate: 0;
 					opacity: 1;
 					visibility: visible;
 					@for $i from 1 through 6 {

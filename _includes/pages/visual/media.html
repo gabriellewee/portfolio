@@ -12,9 +12,9 @@
 					{% endif %}
 					<figcaption>
 						<fieldset>
-							<input style="display: none;" class="grid-input" id="{{media.date | safe}}-{{media.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this photo" role="switch" aria-checked="false"/>
+							<input class="grid-input" id="{{media.date | safe}}-{{media.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this photo" role="switch" aria-checked="false"/>
 							<label class="grid-close" for="{{media.date | safe}}-{{media.name}}-info"></label>
-							<label class="grid-overlay" for="{{media.date | safe}}-{{media.name}}-info"></label>
+							<label class="grid-overlay" for="{{media.date | safe}}-{{media.name}}-info" aria-hidden="true"></label>
 							<label class="grid-link" for="{{media.date | safe}}-{{media.name}}-info"></label>
 							<div class="grid-info">
 								<label class="grid-down" for="{{media.date | safe}}-{{media.name}}-info"></label>

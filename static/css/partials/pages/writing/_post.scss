@@ -91,7 +91,7 @@ article {
 			padding-right: calc(var(--p)/4);
 			background-color: hsla(var(--color-iron-hsl), .2);
 			font-size: 1.0625rem;
-			@include clip-path-alt {
+			@include clip-path(false) {
 				border-radius: calc(var(--p)/4);
 			}
 			@include clip-path {
@@ -122,7 +122,7 @@ article {
 		background: var(--color-iron);
 		font-size: 1rem;
 		line-height: 1.625;
-		@include clip-path-alt {
+		@include clip-path(false) {
 			border-radius: calc(var(--p)/4);
 		}
 		@include clip-path {
@@ -191,7 +191,7 @@ article {
 			height: calc(100% + (var(--p)/2));
 			width: calc(100% + (var(--p)/2));
 			background-color: hsla(var(--color-violet-hsl), .5);
-			@include clip-path-alt {
+			@include clip-path(false) {
 				border-radius: calc(var(--p)/4);
 			}
 			@include clip-path {
@@ -205,11 +205,11 @@ article {
 			}
 		}
 		&:active {
-			transform: scale(0.95);
+			scale: 0.95;
 		}
 	}
 	img {
-		@include clip-path-alt {
+		@include clip-path(false) {
 			@include border-radius(calc(var(--p)/4));
 		}
 		@include clip-path {
@@ -364,7 +364,7 @@ article {
 				background-color: hsla(var(--color-iron-1-hsl), .75);
 				color: white;
 				font-weight: 600;
-				@include clip-path-alt {
+				@include clip-path(false) {
 					@include border-radius(calc(var(--p)/4));
 				}
 				@include clip-path {
