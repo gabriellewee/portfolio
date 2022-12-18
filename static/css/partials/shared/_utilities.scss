@@ -60,6 +60,26 @@ $neon: #DDFF3B;
 	}
 }
 
+@mixin container($support: true, $viewport: null) {
+	@if $support == true {
+		@if $viewport != null {
+			@supports (container-type: inline-size) {
+			  	@container (min-width: #{$viewport}) {
+					@content;
+				}
+			}
+		} @else {
+			@supports (container-type: inline-size) {
+				@content;
+			}
+		}
+	} @else {
+		@supports not (container-type: inline-size) {
+		  	@content;
+		}
+	}
+}
+
 @mixin clip-path($support: true) {
 	@if $support == true {
 		@supports (-webkit-clip-path: polygon(0 0)) or (clip-path: polygon(0 0)) {

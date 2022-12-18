@@ -7,14 +7,7 @@
 		background-color: desaturate(darken($plants, 60%), 5%);
 		color: white;
 	}
-	@include viewport($ipad-mini) {
-		display: grid;
-		grid-template-columns: 1fr 200px;
-		grid-template-rows: 1fr 51px;
-	}
 	@include viewport($mbp-14) {
-		grid-template-columns: 1fr 215px;
-		grid-template-rows: unset;
 		font-size: 1.75rem;
 	}
 	h2 {
@@ -34,20 +27,36 @@
 		font-style: italic;
 		font-weight: bold;
 	}
+	.content {
+		@include container(true, 490px) {
+			display: grid;
+			grid-template-columns: 1fr 200px;
+		}
+		@include container(false) {
+			@include viewport($ipad-mini) {
+				display: grid;
+				grid-template-columns: 1fr 200px;
+			}
+			@include viewport($mbp-14) {
+				grid-template-columns: 1fr 215px;
+			}
+		}
+	}
 	.image {
 		display: none;
 		padding: calc(var(--p) * 1.5) calc(var(--p) * 1.5) calc(var(--p) * 1.5) 0;
-		@include viewport($ipad-mini) {
+		@include container(true, 490px) {
 			display: block;
 		}
-		@include viewport($mbp-14) {
-			grid-row: span 2;
+		@include container(false) {
+			@include viewport($ipad-mini) {
+				display: block;
+			}
 		}
 	}
 	.more {
 		background-color: desaturate(darken($plants, 30%), 10%);
 		color: mix($plants, white, 40%);
-		grid-column: span 2;
 		@include dark {
 			background-color: desaturate(darken($plants, 70%), 5%);
 		}

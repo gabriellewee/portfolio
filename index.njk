@@ -86,16 +86,18 @@ tags: pages
 		</article>
 
 		<article class="grid-item grid-item-plants" role="listitem" aria-label="Plants">
-			<div class="text">
-				<h2>I’m an avid plant collector with over 200 plants, including aroids and succulents! 🪴</h2>
-				<p>My favorites are <span>philodendron</span>, <span>monstera</span>, and <span>anthurium</span>.</p>
-			</div>
-			<div class="image">
-				{% for media in home.plants | limit(1) %}
-					<a class="grid-item-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand photo" role="button">
-						{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail' %}
-					</a>
-				{% endfor %}
+			<div class="content">
+				<div class="text">
+					<h2>I’m an avid plant collector with over 200 plants, including aroids and succulents! 🪴</h2>
+					<p>My favorites are <span>philodendron</span>, <span>monstera</span>, and <span>anthurium</span>.</p>
+				</div>
+				<div class="image">
+					{% for media in home.plants | limit(1) %}
+						<a class="grid-item-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand photo" role="button">
+							{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail' %}
+						</a>
+					{% endfor %}
+				</div>
 			</div>
 			<a class="more" href="https://instagram.com/ellocasia" target="_blank"><span>see plants</span></a>
 		</article>
