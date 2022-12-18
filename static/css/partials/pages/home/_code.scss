@@ -67,8 +67,12 @@
 	}
 	.embed {
 		padding: 0 calc((var(--p)*1.5) + env(safe-area-inset-left)) calc(var(--p)*1.5);
+		line-height: 0;
 		@include max {
 			padding: 0 max(calc(var(--p)*1.5), env(safe-area-inset-left)) calc(var(--p)*1.5);
+		}
+		h3 {
+			line-height: 1.2;
 		}
 	}
 	.links {
