@@ -29,6 +29,9 @@
 	position: relative;
 	width: 100%;
 	overflow: hidden;
+	@include container {
+		container-type: inline-size;
+	}
 }
 
 @media only screen and (min-width: $mobile) and (max-height: 450px) {
