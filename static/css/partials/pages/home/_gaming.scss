@@ -5,11 +5,6 @@
 		background-color: #3e3e3e;
 		color: #f0f0f0;
 	}
-	@include viewport($ipad-mini) {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-	}
 	h2 {
 		position: relative;
 		z-index: 1;
@@ -49,14 +44,31 @@
 			}
 		}
 	}
+	.content {
+		flex-wrap: wrap;
+		justify-content: space-between;
+		@include container(true, 490px) {
+			display: flex;
+		}
+		@include container(false) {
+			@include viewport($ipad-mini) {
+				display: flex;
+			}
+		}
+	}
 	.header {
 		padding: var(--p) calc((var(--p)*1.5) + env(safe-area-inset-left)) 0;
 		width: 100%;
 		@include max {
 			padding: var(--p) max(calc(var(--p)*1.5), env(safe-area-inset-left)) 0;
 		}
-		@include viewport($ipad-mini) {
+		@include container(true, 490px) {
 			width: calc(100% - 200px);
+		}
+		@include container(false) {
+			@include viewport($ipad-mini) {
+				width: calc(100% - 200px);
+			}
 		}
 		@include viewport($mbp-14) {
 			width: calc(100% - 255px);
@@ -69,8 +81,13 @@
 		@include max {
 			padding: calc(var(--p)*1.5) max(calc(var(--p)*1.5), env(safe-area-inset-left)) 0 0;
 		}
-		@include viewport($ipad-mini) {
+		@include container(true, 490px) {
 			display: block;
+		}
+		@include container(false) {
+			@include viewport($ipad-mini) {
+				display: block;
+			}
 		}
 		@include viewport($mbp-14) {
 			width: 255px;
@@ -82,16 +99,13 @@
 	}
 	.modding {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(auto-fill, minmax(156px,auto));;
 		grid-gap: calc(var(--p)*1.5);
 		list-style: none;
 		width: 100%;
 		padding: calc(var(--p)*1.5) calc((var(--p)*1.5) + env(safe-area-inset-left)) var(--p);
 		@include max {
 			padding: calc(var(--p)*1.5) max(calc(var(--p)*1.5), env(safe-area-inset-left)) var(--p);
-		}
-		@include viewport($ipad-mini) {
-			grid-template-columns: repeat(5, 1fr);
 		}
 		picture {
 			border-radius: calc(var(--p)/2);
