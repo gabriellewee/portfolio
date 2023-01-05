@@ -1,6 +1,9 @@
 .grid-item-gaming {
 	background-color: #f0f0f0;
 	color: #2d2d2d;
+	@include container {
+		container-type: inline-size;
+	}
 	@include dark {
 		background-color: #3e3e3e;
 		color: #f0f0f0;
