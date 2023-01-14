@@ -1,148 +1,68 @@
 ---
-title: Portfolio
+title: Front-end Developer, Designer, and Creative
 description: I’m a front‑end developer working at Apple .
 
 layout: layouts/base.njk
 key: home
 style: true
+links: true
 add: true
 tags: pages
+
+pagination:
+    data: collections.posts
+    size: 10
+    reverse: true
 ---
 
-<div class="home-grid">
-	<div class="grid-pack grid-isotope" role="list">
-		<article class="grid-item grid-item-intro text-only" role="listitem" aria-label="Introduction">
-			<h1>Hello, stranger. My name is <span>Gabrielle Wee.</span></h1>
-			<p>I’m a front‑end developer working at <span class="apple" role="text">Apple {% include 'svg/apple.svg' %}.</span></p>
-		</article>
-
-		<article class="grid-item grid-item-links text-only" role="listitem" aria-label="Links">
-			{% include 'pages/home/links.html' %}
-		</article>
-
-		<article class="grid-item grid-item-code grid-only" role="listitem" aria-label="Code">
-			{% include 'pages/home/code.html' %}
-		</article>
-
-		<article class="grid-item grid-item-photography grid-only" role="listitem" aria-label="Photography">
-			<h2>I enjoy taking photos of the world around me.</h2>
-			<ul class="grid">
-				{% for media in photography | limit(4) %}
-					<li id="{{media.date|safe}}-{{media.name}}">
-						<a class="grid-item-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand photo" role="button">
-							{% image './static/images/photography/' + media.date + '-' + media.name + '-thumbnail.jpg', media.description, 'thumbnail', loop.index %}
-						</a>
-					</li>
-				{% endfor %}
-			</ul>
-			<a class="more" href="/photography/"><span>View Photography</span></a>
-		</article>
-
-		<article class="grid-item grid-item-graphic grid-only" role="listitem" aria-label="Graphic">
-			<h2>I dabble in illustration and design.</h2>
-			<ul class="grid">
-				{% for media in graphic | limit(4) %}
-					<li id="{{media.date|safe}}-{{media.name}}">
-						<a class="grid-item-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand graphic" role="button">
-							{% image './static/images/graphic/' + media.date + '-' + media.name + '.png', media.description, 'thumbnail', loop.index %}
-						</a>
-					</li>
-				{% endfor %}
-			</ul>
-			<a class="more" href="/graphic/"><span>View Graphics</span></a>
-		</article>
-
-		<article class="grid-item grid-item-art grid-only" role="listitem" aria-label="Art">
-			<h2>I like to draw.</h2>
-			<ul class="grid">
-				{% for media in art | limit(4) %}
-					<li id="{{media.date|safe}}-{{media.name}}">
-						<a class="grid-item-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand artwork" role="button">
-							{% image './static/images/art/' + media.date + '-' + media.name + '-thumbnail.jpg', media.description, 'thumbnail', loop.index %}
-						</a>
-					</li>
-				{% endfor %}
-			</ul>
-			<a class="more" href="/art/"><span>View Art</span></a>
-		</article>
-
-		<article class="grid-item grid-item-writing" role="listitem" aria-label="Writing">
-			{% include 'pages/home/writing.html' %}
-		</article>
-
-		<article class="grid-item grid-item-cat grid-only" role="listitem" aria-label="Cat">
-			<h2>I spend a lot of time with Alfie, my cat.</h2>
-			<p>We go on adventures together!</p>
-			<ul class="grid">
-				{% for media in home.cat | limit(2) %}
-					<li id="{{media.date|safe}}-{{media.name}}">
-						<a class="grid-item-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand artwork" role="button">
-							{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail' %}
-						</a>
-					</li>
-				{% endfor %}
-			</ul>
-			<a class="more" href="https://instagram.com/greyalphonsecat" target="_blank"><span>see cat</span></a>
-		</article>
-
-		<article class="grid-item grid-item-plants" role="listitem" aria-label="Plants">
-			<div class="content">
-				<div class="text">
-					<h2>I’m an avid plant collector with over 200 plants, including aroids and succulents! 🪴</h2>
-					<p>My favorites are <span>philodendron</span>, <span>monstera</span>, and <span>anthurium</span>.</p>
-				</div>
-				<div class="image">
-					{% for media in home.plants | limit(1) %}
-						<a class="grid-item-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand photo" role="button">
-							{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail' %}
-						</a>
-					{% endfor %}
-				</div>
+<section class="posts grid-isotope">
+	{% for post in pagination.items %}
+		<article class="post {% if (post.data.pagination.alias) and (post.data.pagination.alias != post.data.category) %} post-{{post.data.category}} post-{{post.data.pagination.alias}}{% else %} post-{{post.data.category}}{% endif %}{% if post.data.short == true %} post-short{% endif %} grid-item"{% if post.data.category == "media" %} data-orientation="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, 'orientation' %}"{% endif %}>
+			<header class="post-header">
+				{% if post.data.category == "writing" %}
+					{% if post.data.title %}
+						<h2><a href="{{post.url | url}}">{{post.data.title | safe}}</a></h2>
+					{% endif %}
+				{% elseif post.data.category == "code" %}
+					{% if post.data.title %}
+						<h2>
+							<a href="https://codepen.io/gabriellewee/pen/{{post.data.uri}}" target="_blank"><span>{{post.data.title | safe}}</span></a>
+						</h2>
+					{% endif %}
+				{% elseif post.data.category == "social" %}
+					<a href="{{post.data.url}}" target="_blank">
+						{% include 'svg/logos/' + post.data.pagination.alias + '.svg' %}
+					</a>
+				{% endif %}
+				<time class="time" datetime="{{post.page.date | htmlDateString}}">{{post.page.date | readableDate}}</time>
+			</header>
+			<div class="post-content">
+				{% if post.data.category == "media" %}
+					{% if post.data.upscale %}
+						<picture>
+							<img class="upscale" src="{% include post.data.upscale %}"{% if post.data.upscaleWidth %} width="{{post.data.upscaleWidth}}"{% endif %}{% if post.data.upscaleHeight %} height="{{post.data.upscaleHeight}}"{% endif %} alt="{{post.data.description}}" style="image-rendering: pixelated;"/>
+						</picture>
+					{% else %}
+						{% image './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 'default', loop.index %}
+					{% endif %}
+				{% elseif post.data.category == "code" %}
+					<iframe src="{{post.url | url}}" width="100%" height="{{post.data.height}}"></iframe>
+				{% elseif post.data.content %}
+					{{post.data.content | safe}}
+				{% else %}
+					{% excerpt post %}
+				{% endif %}
 			</div>
-			<a class="more" href="https://instagram.com/ellocasia" target="_blank"><span>see plants</span></a>
 		</article>
+	{% endfor %}
+</section>
 
-		<article class="grid-item grid-item-gaming" role="listitem" aria-label="Gaming and Modding">
-			{% include 'pages/home/gaming.html' %}
-		</article>
-	</div>
-</div>
-
-<div class="lightbox-group" hidden>
-	{% for media in photography | limit(4) %}
-		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
-			<figure class="image">
-				{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
-			</figure>
-		</a>
-	{% endfor %}
-	{% for media in graphic | limit(4) %}
-		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
-			<figure class="image">
-				{% image './static/images/graphic/' + media.date + '-' + media.name + '.png', media.description, 'screen' %}
-			</figure>
-		</a>
-	{% endfor %}
-	{% for media in art | limit(4) %}
-		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
-			<figure class="image">
-				{% image './static/images/art/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
-			</figure>
-		</a>
-	{% endfor %}
-	{% for media in home.cat | limit(2) %}
-		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
-			<figure class="image">
-				{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
-			</figure>
-		</a>
-	{% endfor %}
-	{% for media in home.plants | limit(1) %}
-		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
-			<figure class="image">
-				{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
-			</figure>
-		</a>
-	{% endfor %}
-	<div class="lightbox-background"></div>
-</div>
+<nav class="pagination">
+	<button class="load">Load more</button>
+	{% if pagination.href.previous %}
+		<a class="previous" href="{{ pagination.href.previous }}"><span>Previous</span></a>
+	{% endif %}
+	{% if pagination.href.next %}
+		<a class="next" href="{{ pagination.href.next }}"><span>Next</span></a>
+	{% endif %}
+</nav>

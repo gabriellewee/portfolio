@@ -11,18 +11,19 @@ $mbp-16: 1728px;
 $lg-5k: 2560px;
 
 // colors
-$iron: #263238;
-$pink: #F5C8BF;
 $message: #e9e9eb;
 
-$red: #ff706a;
-$orange: #FF956A;
-$light-orange: #FFBB6A;
-$blue: #6AF9FF;
-$indigo: #706AFF;
-$violet: #BA6AFF;
+$iron: #263238;
+$blush: #F5C8BF;
+$rose: #D19487;
+$mauve: #B2738E;
+$slate: #577783;
+$mint: #8BB29A;
+$oak: #D1AE87;
 
-$neon: #DDFF3B;
+$aqua: #73d1c8;
+$peach: #f78c6a;
+$periwinkle: #82aaff;
 
 // functions
 @function hexToHSL($color) {
@@ -89,6 +90,15 @@ $neon: #DDFF3B;
 		@supports not ((-webkit-clip-path: polygon(0 0)) or (clip-path: polygon(0 0))) {
 		  	@content;
 		}
+	}
+}
+
+@mixin clip-path-edges($cut) {
+	@include clip-path(false) {
+		border-radius: #{$cut + 1px};
+	}
+	@include clip-path {
+		clip-path: polygon(#{$cut} 0%, calc(100% - #{$cut}) 0%, 100% #{$cut}, 100% calc(100% - #{$cut}), calc(100% - #{$cut}) 100%, #{$cut} 100%, 0% calc(100% - #{$cut}), 0% #{$cut});
 	}
 }
 
@@ -193,4 +203,10 @@ $neon: #DDFF3B;
 		width: 0;
 		display: none;
 	}
+}
+
+@mixin font-weight-width($weight, $width) {
+	font-weight: $weight;
+	font-stretch: #{$width * 100%};
+	font-variation-settings: "wght" $weight, "wdth" $width;
 }

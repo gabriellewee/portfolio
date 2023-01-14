@@ -1,24 +1,36 @@
 ---
-layout: layouts/base.njk
 key: post
-style: writing
 og: writing
 tags: posts
+category: writing
 ---
 
-<article>
-	<header>
-		<h2>{{title | nbsp | safe}}</h2>
-		<time datetime="{{page.date | htmlDateString}}">{{page.date | timeAgo}}</time>
-	</header>
-	<div>{{content | safe}}</div>
-</article>
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+<section class="posts">
+	<article class="post post-{{category}}">
+		<header class="post-header">
+			<h2>{{title | nbsp | safe}}</h2>
+			<time class="time" datetime="{{page.date | htmlDateString}}">{{page.date | readableDate}}</time>
+		</header>
+		<div class="post-content">
+			{{content | safe}}
+		</div>
+	</article>
+</section>
 
 <nav class="pagination">
-	{%- set nextPost = collections.writes | getNextCollectionItem(page) %}
-	{%- set previousPost = collections.writes | getPreviousCollectionItem(page) %}
+	{%- set nextPost = collections.posts | getNextCollectionItem(page) %}
+	{%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
 	{%- if nextPost or previousPost %}
 		{%- if nextPost %}<a class="previous" href="{{ nextPost.url | url }}"><span>Previous Post</span></a>{% else %}<span></span>{% endif %}
 		{%- if previousPost %}<a class="next" href="{{ previousPost.url | url }}"><span>Next Post</span></a>{% else %}<span></span>{% endif %}
 	{%- endif %}
 </nav>
+{% endblock %}
+
+{% block bottom %}
+{% include 'pages/visual/lightbox.html' %}
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+{% endblock %}

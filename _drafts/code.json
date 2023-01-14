@@ -1,0 +1,134 @@
+[
+	{
+		"name": "cube-links",
+		"date": "2017-01-20",
+		"title": "CSS-Only Direction-Aware Cube Links",
+		"uri": "Qdpgwx",
+		"style": "css-only"
+	},
+	{
+		"name": "zdog-monument-valley",
+		"date": "2021-07-06",
+		"title": "Zdog Draggable Monument Valley Totem",
+		"uri": "JjNGvJd"
+	},
+	{
+		"name": "pokemon-quest",
+		"date": "2022-05-10",
+		"title": "CSS-Only Pokémon Quest Icon Sorter",
+		"uri": "KKQwydY",
+		"style": "css-only"
+	},
+	{
+		"name": "quadrant",
+		"date": "2020-02-07",
+		"title": "Four-Quadrant CSS-Only Gradient",
+		"uri": "zYGxNKa",
+		"style": "css-only"
+	},
+	{
+		"name": "dark-mode",
+		"date": "2018-06-04",
+		"title": "iOS 12 Dark Mode Notifications",
+		"uri": "MXyKLW",
+		"style": ""
+	},
+	{
+		"name": "instagram",
+		"date": "2018-02-17",
+		"title": "Instagram.exe",
+		"url": "https://twitter.com/gabriewee/status/965058440790814721",
+		"style": ""
+	},
+	{
+		"name": "lotus",
+		"date": "2017-10-02",
+		"title": "Lotus CSS Animation",
+		"uri": "XeeWwY",
+		"style": "css-only"
+	},
+	{
+		"name": "css-dev-conf",
+		"date": "2017-06-26",
+		"title": "CSS Dev Conf Animation",
+		"uri": "rwGRNY",
+		"style": "css-only award"
+	},
+	{
+		"name": "elletem",
+		"date": "2017-06-19",
+		"title": "Monument Valley Inspired Totem",
+		"uri": "jwBZyY",
+		"style": "css-only"
+	},
+	{
+		"name": "doortem",
+		"date": "2017-06-06",
+		"title": "Monument Valley 2 Doortem",
+		"uri": "PjwgMq",
+		"style": "css-only"
+	},
+	{
+		"name": "totem",
+		"date": "2017-01-14",
+		"title": "Monument Valley Totem",
+		"uri": "zNBMmW",
+		"style": "css-only"
+	},
+	{
+		"name": "nested-nav",
+		"date": "2017-05-15",
+		"title": "Nested Dropdown Navigation",
+		"uri": "oWyObX",
+		"style": "css-only"
+	},
+ 	{
+ 		"name": "sprites",
+ 		"date": "2017-05-02",
+ 		"title": "Pokémon Sprite Sorter",
+ 		"uri": "dWRgmJ",
+ 		"style": ""
+ 	},
+	{
+		"name": "cards",
+		"date": "2016-08-17",
+		"title": "Isotope Card Match Game",
+		"uri": "xOBLgX",
+		"style": "isotope"
+	},
+	{
+		"name": "starter-icons",
+		"date": "2019-01-08",
+		"title": "Pokémon Quest Starter Icons",
+		"uri": "VqBvvo",
+		"style": "css-only"
+	},
+	{
+		"name": "line-length",
+		"date": "2017-03-22",
+		"title": "Line Length Calculator",
+		"uri": "XMEEda",
+		"style": ""
+	},
+	{
+		"name": "stranger-things",
+		"date": "2017-02-04",
+		"title": "Stranger Things 404",
+		"uri": "wgjOKP",
+		"style": "css-only"
+	},
+	{
+		"name": "flash-messages",
+		"date": "2017-11-10",
+		"title": "#dailyui 011: Flash Messages",
+		"uri": "bYqKPx",
+		"style": "css-only"
+	},
+	{
+		"name": "music-player",
+		"date": "2017-02-17",
+		"title": "#dailyui 009: Music Player",
+		"uri": "wgZNwK",
+		"style": ""
+	}
+]

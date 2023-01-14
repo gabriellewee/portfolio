@@ -1,0 +1,55 @@
+@import '../partials/shared/reset';
+@import '../partials/shared/utilities';
+
+*, *:before, *:after { box-sizing: border-box; }
+body, html { height: 100%; }
+
+body {
+	background: #A3C4D0;
+	background: linear-gradient(to bottom, #f8f5da 0%,#FFF4E2 20%,#A3C4D0 50%,#3e4f53 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f5da', endColorstr='#3e4f53',GradientType=0 );
+	overflow: hidden;
+}
+
+main {
+	display: flex;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	height: 100%;
+	@media only screen and (max-height: 470px) {
+		scale: 0.75;
+	}
+}
+
+canvas {
+	cursor: move;
+	opacity: 0;
+	@include motion {
+		translate: 0 100vh 40px;
+		animation: enter 2000ms cubic-bezier(.075,.820,.165,1) 500ms forwards;
+	}
+	@include motion(false) {
+		animation: fade 500ms ease-out 500ms forwards;
+	}
+}
+
+@keyframes enter {
+	from {
+		opacity: 0;
+		translate: 0 100vh 40px;
+	}
+	to {
+		opacity: 1;
+		translate: 0 0 40px;
+	}
+}
+
+@keyframes fade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}

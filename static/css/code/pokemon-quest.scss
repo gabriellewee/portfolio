@@ -1,0 +1,6720 @@
+@import '../partials/shared/reset';
+
+$p: 12px;
+$types: (
+	"normal": #A8A878,
+	"fire": #F08030,
+	"water": #6790F0,
+	"grass": #78C84F,
+	"electric": #F8D030,
+	"ice": #98D8D8,
+	"fighting": #C03028,
+	"poison": #9F40A0,
+	"ground": #E0C068,
+	"flying": #A890F0,
+	"psychic": #F85888,
+	"bug": #A8B820,
+	"rock": #B8A039,
+	"ghost": #705898,
+	"dragon": #7038F8,
+	"steel": #B8B8D0,
+	"fairy": #EE99AC,
+	"reset": #67A090,
+);
+
+@mixin nth($a...) {
+	@for $i from nth($a, 1) through nth($a, length($a)) {
+		&:nth-child(#{$i}) {
+			@content;
+		}
+	}
+}
+@mixin r($color: null, $w: 100%, $h: 100%, $t: null, $l: null, $b: null, $r: null) {
+	position: absolute;
+	@if $t == b0 {
+		bottom: 0;
+	} @else if $t == center {
+		top: #{50% - $h * 0.5};
+	} @else if $t == top-center {
+		top: 0;
+		left: #{50% - $w * 0.5};
+	} @else if $t == bottom-center {
+		left: #{50% - $w * 0.5};
+		bottom: 0;
+	} @else if $t == centered {
+		top: #{50% - $h * 0.5};
+		left: #{50% - $w * 0.5};
+	} @else if $t == bottom-left {
+		left: 0;
+		bottom: 0;
+	} @else if $t == bottom-right {
+		bottom: 0;
+		right: 0;
+	} @else if $t {
+		top: $t;
+	}
+	@if $l == center {
+		left: #{50% - $w * 0.5};
+	} @else if $l {
+		left: $l;
+	}
+	@if $b {
+		bottom: $b;
+	}
+	@if $r {
+		right: $r;
+	}
+	width: $w;
+	height: $h;
+	@if $color {
+		background: $color;
+	}
+}
+@mixin s($color: null, $w: null, $h: null, $t: null, $m: true) {
+	position: relative;
+	@if $w {
+		width: $w;
+		@if $w != 100% and $m == true {
+			margin-left: auto;
+			margin-right: auto;
+		}
+	} @else {
+		width: 100%;
+	}
+	@if $h {
+		height: $h;
+	} @else {
+		height: 100%;
+	}
+	@if $color {
+		background: $color;
+	}
+	@if $t {
+		margin-top: $t;
+	}
+}
+@mixin b($num, $nth: null, $el: null, $reverse: false) {
+	@if $nth {
+		$nth-1: $nth;
+		$nth-2: $nth + 1;
+		@if $reverse == true {
+			$nth-1: $nth + 1;
+			$nth-2: $nth;
+		}
+		@if $el == before or $el == after {
+			&:nth-child(#{$nth-1}) {
+				&:#{$el} {
+					left: $num;
+				}
+			}
+			&:nth-child(#{$nth-2}) {
+				&:#{$el} {
+					right: $num;
+				}
+			}
+		} @else if $el == div-before or $el == div-after {
+			$ps: before;
+			@if $el == div-after {
+				$ps: after;
+			}
+			&:nth-child(#{$nth-1}) {
+				div {
+					&:#{$ps} {
+						left: $num;
+					}
+				}
+			}
+			&:nth-child(#{$nth-2}) {
+				div {
+					&:#{$ps} {
+						right: $num;
+					}
+				}
+			}
+		} @else if $el == div {
+			&:nth-child(#{$nth-1}) {
+				div {
+					left: $num;
+				}
+			}
+			&:nth-child(#{$nth-2}) {
+				div {
+					right: $num;
+				}
+			}
+		} @else {
+			&:nth-child(#{$nth-1}) {
+				left: $num;
+			}
+			&:nth-child(#{$nth-2}) {
+				right: $num;
+			}
+		}
+	} @else {
+		&:before {
+			left: $num;
+		}
+		&:after {
+			right: $num;
+		}
+	}
+}
+@mixin e($num, $nth: null, $el: null) {
+	@include b($num, $nth, $el);
+	@if $nth {
+		$nth-1: $nth;
+		$nth-2: $nth + 1;
+		@if $el == before or $el == after {
+			&:nth-child(#{$nth-1}) {
+				&:#{$el} {
+					clip-path: polygon(0 0, 100% 100%, 0 100%);
+				}
+			}
+			&:nth-child(#{$nth-2}) {
+				&:#{$el} {
+					clip-path: polygon(100% 0, 100% 100%, 0 100%);
+				}
+			}
+		} @else if $el == div-before or $el == div-after {
+			$ps: before;
+			@if $el == div-after {
+				$ps: after;
+			}
+			&:nth-child(#{$nth-1}) {
+				div {
+					&:#{$ps} {
+						clip-path: polygon(0 0, 100% 100%, 0 100%);
+					}
+				}
+			}
+			&:nth-child(#{$nth-2}) {
+				div {
+					&:#{$ps} {
+						clip-path: polygon(100% 0, 100% 100%, 0 100%);
+					}
+				}
+			}
+		} @else if $el == div {
+			&:nth-child(#{$nth-1}) {
+				div {
+					clip-path: polygon(0 0, 100% 100%, 0 100%);
+				}
+			}
+			&:nth-child(#{$nth-2}) {
+				div {
+					clip-path: polygon(100% 0, 100% 100%, 0 100%);
+				}
+			}
+		} @else {
+			&:nth-child(#{$nth-1}) {
+				clip-path: polygon(0 0, 100% 100%, 0 100%);
+			}
+			&:nth-child(#{$nth-2}) {
+				clip-path: polygon(100% 0, 100% 100%, 0 100%);
+			}
+		}
+	} @else {
+		&:before {
+			clip-path: polygon(0 0, 100% 100%, 0 100%);
+		}
+		&:after {
+			clip-path: polygon(100% 0, 100% 100%, 0 100%);
+		}
+	}
+}
+@mixin p($num, $nth: null, $reverse: false) {
+	@if $nth {
+		$nth-1: $nth;
+		$nth-2: $nth + 1;
+		@if $reverse == true {
+			$nth-1: $nth + 1;
+			$nth-2: $nth;
+		}
+		&:nth-child(#{$nth-1}) {
+			padding-left: $num;
+		}
+		&:nth-child(#{$nth-2}) {
+			padding-right: $num;
+		}
+	} @else {
+		&:before {
+			padding-left: $num;
+		}
+		&:after {
+			padding-right: $num;
+		}
+	}
+}
+@mixin a($one: 0, $nth: null, $two: 0, $el: null, $reverse: false) {
+	@if $nth {
+		$nth-1: $nth;
+		$nth-2: $nth + 1;
+		@if $reverse == true {
+			$nth-1: $nth + 1;
+			$nth-2: $nth;
+		}
+		@if $el == div {
+			&:nth-child(#{$nth-1}) {
+				div {
+					clip-path: polygon(0 0, #{100% - $one} $two, 100% 100%, 0 100%);
+				}
+			}
+			&:nth-child(#{$nth-2}) {
+				div {
+					clip-path: polygon($one $two, 100% 0, 100% 100%, 0 100%);
+				}
+			}
+		} @else if $el == div-before {
+			&:nth-child(#{$nth}) {
+				div:before {
+					clip-path: polygon(0 0, #{100% - $one} $two, 100% 100%, 0 100%);
+				}
+			}
+			&:nth-child(#{$nth + 1}) {
+				div:before {
+					clip-path: polygon($one $two, 100% 0, 100% 100%, 0 100%);
+				}
+			}
+		} @else if $el == div-after {
+			&:nth-child(#{$nth-1}) {
+				div:after {
+					clip-path: polygon(0 0, #{100% - $one} $two, 100% 100%, 0 100%);
+				}
+			}
+			&:nth-child(#{$nth-2}) {
+				div:after {
+					clip-path: polygon($one $two, 100% 0, 100% 100%, 0 100%);
+				}
+			}
+		} @else {
+			&:nth-child(#{$nth-1}) {
+				clip-path: polygon(0 0, #{100% - $one} $two, 100% 100%, 0 100%);
+			}
+			&:nth-child(#{$nth-2}) {
+				clip-path: polygon($one $two, 100% 0, 100% 100%, 0 100%);
+			}
+		}
+	} @else {
+		&:before {
+			clip-path: polygon(0 0, #{100% - $one} $two, 100% 100%, 0 100%);
+		}
+		&:after {
+			clip-path: polygon($one $two, 100% 0, 100% 100%, 0 100%);
+		}
+	}
+}
+@mixin o($color, $w, $h: 100%, $pos: null, $t: 0, $b: null) {
+	&:before, &:after {
+		width: $w;
+		height: $h;
+		background: $color;
+	}
+	@if $pos {
+		@include b($num: $pos);
+		&:before, &:after {
+			position: absolute;
+			@if $b {
+				bottom: $b;
+			} @else {
+				@if $t {
+					@if $t == b0 {
+						bottom: 0;
+					} @else {
+						top: $t;
+					}
+				}
+			}
+		}
+	} @else {
+		display: flex;
+		justify-content: space-between;
+		@if $b or $t == b0 {
+			align-items: flex-end;
+		}
+		&:before, &:after {
+			position: relative;
+			@if $t != b0 {
+				top: $t;
+			}
+			@if $b and $b != 0 {
+				bottom: $b;
+			}
+		}
+	}
+}
+@mixin flip {
+	transform: rotateY(0.5turn);
+}
+
+*, *:before, *:after { box-sizing: border-box; }
+html, body { min-height: 100%; }
+::selection { background: none; }
+ul { list-style: none; }
+
+body {
+	display: flex;
+	align-items: center;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 18px;
+	overflow-x: hidden;
+}
+main {
+	display: none;
+}
+.pokemon {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: flex-start;
+	align-content: flex-start;
+	justify-content: flex-start;
+	width: 100vw;
+	@media (hover: hover) {
+		min-height: calc(100vh - 58px);
+	}
+	> div {
+		position: relative;
+		flex-wrap: wrap;
+		align-content: flex-start;
+		width: calc(100vw / 3);
+		height: calc(100vw / 3);
+		overflow: hidden;
+		background: #f1f1f1;
+		&:before, &:after, div:before, div:after {
+			content: "";
+			display: block;
+		}
+	}
+}
+.warning {
+	margin: 0 auto;
+	max-width: 500px;
+	padding: $p;
+	line-height: 1.4;
+}
+
+input {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	appearance: none;
+	width: 1px;
+	height: 1px;
+	&#nav:checked {
+		~ nav .inside {
+			ul {
+				width: 100%;
+			}
+			&:after {
+				width: $p*.75;
+			}
+			.label-nav {
+				&:after {
+					content: " ‹"
+				}
+			}
+		}
+	}
+	@each $name, $color in $types {
+		&##{$name}:focus {
+			~ nav .label-#{$name} {
+				background: white;
+				color: $color;
+			}
+		}
+		&##{$name}:checked {
+			~ nav .label-#{$name}:not(.label-reset) {
+				background: white;
+				color: $color;
+			}
+			~ .pokemon > div {
+				display: none;
+			}
+			~ .pokemon > .#{$name} {
+				display: flex;
+			}
+		}
+	}
+	&#reset:checked ~ .pokemon > div {
+		display: flex;
+	}
+}
+nav {
+	display: none;
+	position: fixed;
+	position: -webkit-sticky;
+	position: sticky;
+	bottom: env(safe-area-inset-bottom);
+	left: env(safe-area-inset-left);
+	z-index: 10;
+	padding: $p*.75 max(#{$p*.75}, env(safe-area-inset-left)) max(#{$p*.75}, env(safe-area-inset-bottom));
+	max-width: 100%;
+	@media (hover: hover) {
+		display: block;
+	}
+	.inside {
+		display: flex;
+		align-items: center;
+		align-content: center;
+		background: rgba(#333, .8);
+		backdrop-filter: blur(5px);
+		width: fit-content;
+		block-size: fit-content;
+		max-width: 100%;
+		&:before, &:after {
+			content: "";
+			display: block;
+			width: $p*.75;
+			height: 40px;
+		}
+		&:after {
+			width: 0;
+		}
+	}
+}
+ul {
+	display: flex;
+	width: 0px;
+	max-width: 100%;
+	overflow: auto;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	padding: calc($p / 3) 0;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+li {
+	padding: calc($p / 3);
+	&:first-child {
+		padding-left: 0;
+	}
+	&:last-child {
+		padding-right: 0;
+	}
+}
+label {
+	transition: .1s ease-out;
+	cursor: pointer;
+	display: block;
+	padding: $p*.5 $p*.75;
+	color: white;
+	font-size: $p;
+	font-weight: 600;
+	line-height: 1;
+	text-transform: uppercase;
+	&:active {
+		transform: scale(0.95);
+	}
+	&.label-nav {
+		margin-right: $p*.75;
+		&:after {
+			content: " ›";
+			font-size: 18px;
+			font-weight: 400;
+			line-height: 12px;
+		}
+	}
+	@each $name, $color in $types {
+		&.label-#{$name} {
+			background: $color;
+			&:hover {
+				background: white;
+				color: $color;
+			}
+		}
+	}
+}
+
+@supports(-webkit-clip-path: polygon(0 0)) or (clip-path: polygon(0 0)) {
+	body, main {
+		display: block;
+	}
+	.warning {
+		display: none;
+	}
+}
+
+@media screen and (min-width: 415px) {
+	.pokemon > div {
+		width: 25vw;
+		height: 25vw;
+	}
+}
+@media screen and (min-width: 768px) {
+	.pokemon > div {
+		width: 20vw;
+		height: 20vw;
+	}
+}
+@media screen and (min-width: 980px) {
+	.pokemon > div {
+		width: calc(100vw / 6);
+		height: calc(100vw / 6);
+	}
+}
+@media screen and (min-width: 1280px) {
+	.pokemon > div {
+		width: calc(100vw / 7);
+		height: calc(100vw / 7);
+	}
+}
+@media screen and (min-width: 1366px) {
+	.pokemon > div {
+		width: 12.5vw;
+		height: 12.5vw;
+	}
+}
+@media screen and (min-width: 1440px) {
+	.pokemon > div {
+		width: calc(100vw / 9);
+		height: calc(100vw / 9);
+	}
+}
+@media screen and (min-width: 1536px) {
+	.pokemon > div {
+		width: 10vw;
+		height: 10vw;
+	}
+}
+
+#bulbasaur {
+	background: #78d9ad;
+	&:before {
+		@include s(linear-gradient(
+			to right,
+			#75b87e 43.75%,
+			#639868 43.75%,
+			#639868 56.25%,
+			#75b87e 56.25%
+			), 62.5%, 9.38%);
+		clip-path: polygon(0 0, 100% 0, 94.38% 100%, 5.63% 100%);
+	}
+	&:after {
+		@include r(linear-gradient(
+			to right,
+			#5aaa84 16%,
+			transparent 16%,
+			transparent 84%,
+			#5aaa84 84%
+			), 10%, 4%, 56.25%, center);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(#3c8a5d, 21.09%, 10.16%, 9.38%, 50%);
+			&:before {
+				@include r(#3c8a5d, 33.33%, 69.23%, 84.62%, -66.67%);
+			}
+			&:after {
+				@include r(#3c8a5d, 48.15%, 100%, 200%, -11.11%);
+			}
+		}
+		@include nth(2, 3) {
+			@include r(#EFEFEF, 24.61%, 25.39%, 31.25%);
+			padding-top: 2.34%;
+			&:before {
+				@include s(linear-gradient(
+					#bd414f 73.33%,
+					#d6616d 73.33%
+					));
+			}
+			&:after {
+				@include r(#EFEFEF, 23.81%, 47.69%, 32.31%);
+			}
+		}
+		@include b(8%, 2);
+		@include p(6.25%, 2);
+		@include a(22.22%, 2);
+		@include b(49.21%, 2, after);
+		&:nth-child(4) {
+			@include r(#944368, 74.22%, 15.63%, 62.5%, center);
+			padding: 7.81% 8.98% 0;
+			&:before {
+				@include r(linear-gradient(
+					to right,
+					#EFEFEF 11.45%,
+					transparent 11.45%,
+					transparent 88.55%,
+					#EFEFEF 88.55%
+					), 87.37%, 35%, top-center);
+			}
+			&:after {
+				@include s(#ce779f);
+			}
+		}
+	}
+}
+#ivysaur {
+	background: #81bbc6;
+	&:before {
+		@include s(#d87289, 75%, 11.5%);
+		clip-path: polygon(0 0, 100% 0, 89.5% 100%, 10.5% 100%);
+	}
+	&:after {
+		@include r(#6ba470, 48.44%, 11.5%, top-center);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(null, 31.25%, 19.92%, 11.5%, 40.63%);
+			z-index: 2;
+			&:before {
+				@include r(#317d94);
+				clip-path: polygon(0 0, 100% 0, 63.75% 100%, 36.25% 100%);
+			}
+			&:after {
+				@include r(#317d94, 30%, 43.14%, 84.31%, -20%);
+				clip-path: polygon(0 0, 100% 0, 71% 100%, 29% 100%);
+			}
+		}
+		&:nth-child(2) {
+			@include r(#81bbc6, 57.03%, 31.64%, 33.2%, center);
+			z-index: 1;
+			clip-path: polygon(0 0, 100% 0, 68% 100%, 32% 100%);
+			@include o(#6b9aa5, 3.42%, 12.35%, 40.41%, 76.54%);
+		}
+		@include nth(3, 4) {
+			@include r(white, 27.34%, 20.31%, 33.59%);
+			z-index: 0;
+			&:before {
+				@include s(linear-gradient(
+					#c64552 69.23%,
+					#e14e5a 69.23%
+					));
+			}
+			&:after {
+				@include r(#3c292b, 21.43%, 82.69%, 0);
+			}
+		}
+		@include b(6.25%, 3);
+		@include p(7.81%, 3);
+		@include b(55.71%, 3, after);
+		&:nth-child(5) {
+			@include r(#944368, 80.08%, 16.41%, 60.55%, center);
+			padding: 9.38% 10.55% 0; 
+			&:before {
+				@include r(linear-gradient(
+					to right,
+					#EFEFEF 13.64%,
+					transparent 13.64%,
+					transparent 86.36%,
+					#EFEFEF 86.36%
+					), 85.85%, 42.86%, top-center);
+			}
+			&:after {
+				@include s(#ce779f);
+			}
+		}
+	}
+}
+#venusaur {
+	background: #8cc7c3;
+	@include o(#6b9a99, 2.73%, 2.73%, 42.97%, 67.97%);
+	> div {
+		&:nth-child(1) {
+			@include s(#e1808e, $h: 25%);
+			&:before {
+				@include r(#f4d3d3, 5.47%, 21.88%, $l: 9.38%);
+			}
+			&:after {
+				@include r(#f4d3d3, 7.81%, 31.25%, 32.81%, 17.19%);
+			}
+			div {
+				@include r(#f4d3d3, 10.94%, 43.75%, $r: 11.72%);
+			}
+		}
+		&:nth-child(2) {
+			@include r($t: 0);
+			&:before {
+				@include r(linear-gradient(
+					#8A7150 26.79%,
+					#796249 26.79%,
+					#796249 66.07%,
+					#8A7150 66.07%
+					), 42.2%, 21.95%, 0, center);
+			}
+			div {
+				@include r(#81a884, 100%, 7.81%, 25.05%);
+				&:before {
+					@include r(#81a884, 49.2%, 310%, $l: 25.4%);
+					clip-path: polygon(0 0, 100% 0, 100% 83.87%, 93% 100%, 7% 100%, 0 83.87%);
+				}
+			}
+		}
+		&:nth-child(3) {
+			&:before {
+				@include r(#759a78, 54.6%, 3.1%, 21.95%, center);
+			}
+			&:after {
+				@include r(#759a78, 4.6%, 19.53%, 21.95%, center);
+			}
+		}
+		&:nth-child(4) {
+			@include r($t: 0);
+			@include o(#8cc7c3, 15.63%, 18.4%, $t: 14.8%);
+			&:before, &:after {
+				clip-path: polygon(72.5% 0, 82.5% 12.77%, 100% 100%, 0 100%, 0 0);
+			}
+			&:after {
+				@include flip;
+			}
+			div {
+				@include r(null, 100%, 14.84%, 17.97%);
+				z-index: 1;
+				@include o(#bd5f6d, 10.16%);
+				&:before, &:after {
+					clip-path: polygon(84.62% 0, 100% 10.53%, 100% 100%, 0 100%, 0 0);
+				}
+				&:after {
+					@include flip;
+				}
+			}
+		}
+		@include nth(5, 6) {
+			@include r(white, 19.14%, 19.14%, 45%);
+			padding: 0 4.3% 3.13%;
+			overflow: hidden;
+			div {
+				@include s(#c65563);
+				&:before {
+					@include r(white, 35.72%, 78.05%, $l: 32.14%);
+				}
+				&:after {
+					@include r(#db5e6d, 75%, 21.95%, b0);
+				}
+			}
+			&:after {
+				@include r(#86c0bd, 104%, 104%, -2%, -2%);
+			}
+		}
+		@include b(5.47%, 5);
+		@include b(0, 5, div-after);
+		&:nth-child(5) {
+			&:after {
+				clip-path: polygon(0 0, 100% 0, 100% 73.47%, 0 30.61%);
+			}
+		}
+		&:nth-child(6) {
+			&:after {
+				clip-path: polygon(0 0, 100% 0, 100% 30.61%, 0 73.47%);
+			}
+		}
+		&:nth-child(7) {
+			@include r(#864244, 100%, 16.8%, 69.14%);
+			clip-path: polygon(0 0, 37.5% 0, 39.84% 23.26%, 60.16% 23.26%, 62.5% 0, 100% 0, 100% 100%, 0 100%);
+			@include o(white, 7.03%, 39.53%, 4.69%);
+			div {
+				@include r(#9c7b94, 100%, 41.86%, b0);
+				@include o(linear-gradient(
+					to right,
+					white 38.1%,
+					#9c7b94 38.1%,
+					#9c7b94 61.9%,
+					white 61.9%
+					), 16.41%, 61.11%, 7.81%, b0);
+			}
+		}
+	}
+}
+
+#charmander {
+	background: #efaf84;
+	@include o(#d39873, 3.13%, 6.25%, 42.97%, 55.08%);
+	> div {
+		@include nth(1, 2) {
+			@include r(#1e2c31, 21.88%, 33.2%, 12.89%);
+			padding: 7.42% 6.25% 5.47%;
+			div {
+				@include s(#182226);
+			}
+			&:before {
+				@include r(#396d7e, 100%, 27.06%, bottom-left);
+			}
+			&:after {
+				@include r(white, 37.5%, 37.65%, 4.71%);
+			}
+		}
+		@include b(9%, 1);
+		@include b(12.5%, 1, after, true);
+		&:nth-child(3) {
+			@include r(#a26f8e, 78%, 24.22%, 64.45%, center);
+			padding: 11.33% 8.2% 0;
+			@include o(white, 10.5%, 32.26%, 7%);
+			div {
+				@include s(#cb98c0);
+				@include o(white, 11.25%, 48.48%, 6.25%, b0);
+			}
+		}
+	}
+}
+#charmeleon {
+	background: #ef8b78;
+	&:before {
+		@include r(linear-gradient(
+			to right,
+			#d67d6b 10%,
+			transparent 10%,
+			transparent 90%,
+			#d67d6b 90%
+			), 15.63%, 12.5%, 29.69%, center);
+	}
+	&:after {
+		@include r(linear-gradient(
+			to right,
+			#d67d6b 17.65%,
+			transparent 17.65%,
+			transparent 82.35%,
+			#d67d6b 82.35%
+			), 13.28%, 5.47%, 57.03%, center);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 26.95%, 23.83%, 18.36%);
+			&:before {
+				@include r(white, 15.94%, 68.85%);
+				z-index: 1;
+			}
+			&:after {
+				@include r(#231a1e, 24.64%, 88.52%, 0);
+			}
+			div {
+				@include s(#3c5668);
+				&:before {
+					@include r(#47657b, 100%, 16.39%, b0);
+				}
+			}
+		}
+		@include e(8.59%, 1);
+		@include p(7.81%, 1);
+		@include b(39.13%, 1, before);
+		@include b(49.28%, 1, after);
+		&:nth-child(3) {
+			@include r(#a26f8e, 85.16%, 23.44%, 61.33%, center);
+			padding: 11.72% 8.6% 0;
+			clip-path: polygon(37.61% 25.42%, 62.39% 25.42%, 65.14% 0, 100% 0, 100% 100%, 0 100%, 0 0, 34.86% 0);
+			@include o(white, 10.1%, 31.67%, 5.5%);
+			div {
+				@include s(#cb98c0);
+				@include o(white, 8.57%, 50%, 8.57%, b0);
+			}
+		}
+	}
+}
+#charizard {
+	background: linear-gradient(
+		to bottom,
+		#f1633c 9.77%,
+		#f4af63 9.77%
+	);
+	@include o(#f9b365, 22.27%, 9.87%, 11.33%);
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 26.95%, 18.36%, 25.39%);
+			&:before {
+				@include r(white, 21.74%, 63.83%);
+				z-index: 1;
+			}
+			&:after {
+				@include r(#1e2a2e, 21.74%, 87.23%, 0);
+			}
+			div {
+				@include s(#2b3c42);
+				&:before {
+					@include r(#3c565d, 100%, 21.28%, b0);
+				}
+			}
+		}
+		@include e(8.6%, 1);
+		@include p(7.81%, 1);
+		@include p(3.91%, 1, true);
+		@include b(44.93%, 1, before);
+		@include b(44.93%, 1, after);
+		&:nth-child(3) {
+			@include r(null, 28.9%, 19.53%, 30.08%, center);
+			@include o(#e7a660, 9.46%, 70%);
+			div {
+				@include r(null, 54%, 30%, bottom-center);
+				@include o(#d09454, 15%);
+			}
+		}
+		&:nth-child(4) {
+			@include r(#a77191, 88.28%, 24.22%, 62.5%, center);
+			padding: 13.67% 7.81% 0;
+			@include o(white, 11.5%, 40.32%, 4.42%);
+			div {
+				@include s(#cb98c0);
+				@include o(white, 11.29%, 55.56%, 6%, b0);
+			}
+		}
+	}
+}
+
+#squirtle {
+	background: #84c5d6;
+	@include o(#70a7b5, 2.73%, 3.91%, 44.53%, 60.56%);
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 21.88%, 30.47%, 23.44%);
+			div {
+				@include s(#331e29);
+				&:before {
+					@include r(#91526d, 100%, 26.92%, b0);
+				}
+			}
+			&:before {
+				@include r(white, 35.71%, 24.36%, 5.13%);
+				z-index: 1;
+			}
+			&:after {
+				@include r(black, 35.71%, 79.49%, 5.13%);
+			}
+		}
+		@include b(7.81%, 1);
+		@include p(5.47%, 1);
+		@include b(44.64%, 1, before);
+		@include b(44.64%, 1, after);
+		&:nth-child(3) {
+			@include r(#994b78, 86.72%, 15.23%, 64.45%, center);
+			clip-path: polygon(44.14% 30.77%, 55.86% 30.77%, 63.96% 0, 100% 0, 100% 100%, 0 100%, 0 0, 36.04% 0);
+			padding: 7.42% 9% 0;
+			&:before {
+				@include s(#d084ad);
+			}
+		}
+	}
+}
+#wartortle {
+	background: #75a4db;
+	&:before {
+		@include r(linear-gradient(
+			to right,
+			#6892c3 14.06%,
+			transparent 14.06%,
+			transparent 85.94%,
+			#6892c3 85.94%
+			), 100%, 5.86%, 51.17%);
+	}
+	&:after {
+		@include r(linear-gradient(
+			to right,
+			#6590c0 25%,
+			transparent 25%,
+			transparent 75%,
+			#6590c0 75%
+			), 9.38%, 4.3%, 61.33%, center);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 26.56%, 31.25%, 25.78%);
+			&:before {
+				@include r(white, 52.94%, 22.5%, 5%);
+				z-index: 1;
+			}
+			&:after {
+				@include r(#261915, 26.47%, 65%, 16.25%);
+			}
+			div {
+				@include s(#70473f);
+				&:before {
+					@include r(#7e4f47, 100%, 27.5%, b0);
+				}
+			}
+		}
+		@include b(8.2%, 1);
+		@include p(8.2%, 1);
+		@include a(30.88%, 1);
+		@include b(47%, 1, before);
+		@include b(57.35%, 1, after);
+		&:nth-child(3) {
+			@include r(#994b78, 78.13%, 13.67%, 66.41%, center);
+			clip-path: polygon(43% 28.57%, 57% 28.57%, 61% 0, 100% 0, 100% 100%, 0 100%, 0 0, 39% 0);
+			padding: 6.64% 12.89% 0;
+			&:before {
+				@include r(linear-gradient(
+					to right,
+					white 9.68%,
+					transparent 9.68%,
+					transparent 90.32%,
+					white 90.32%
+					), 93%, 48.57%, top-center);
+			}
+			&:after {
+				@include s(#d084ad);
+			}
+		}
+		&:nth-child(4) {
+			@include r(#e1d1af, 100%, 9.77%, b0);
+			padding: 0 20%;
+			&:before {
+				@include s(#546165, $h: 102%);
+				clip-path: polygon(0 0, 100% 0, 93% 100%, 7% 100%);
+			}
+		}
+	}
+}
+#blastoise {
+	background: #94b7e1;
+	&:before {
+		@include r(#e1d1af, 100%, 25%, b0);
+	}
+	&:after {
+		@include s(#a58b6d, 51.56%, 8.2%);
+		clip-path: polygon(0 0, 100% 0, 96.2% 100%, 3.8% 100%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 29.3%, 21.48%, 22.66%);
+			div {
+				@include s(#635142);
+				&:before {
+					@include r(#7b6552, 100%, 16.36%, b0);
+				}
+			}
+			&:before {
+				@include r(white, 12%, 63.64%);
+				z-index: 1;
+			}
+			&:after {
+				@include r(#312921, 16%, 90.91%, 0);
+			}
+		}
+		@include e(7.81%, 1);
+		@include p(11.72%, 1);
+		@include p(6.64%, 1, true);
+		@include b(45.33%, 1, before);
+		@include b(50.67%, 1, after);
+		&:nth-child(3) {
+			@include r(null, 25.78%, 29.69%, 32.03%, center);
+			@include o(#89acd3, 12.12%, 40.79%);
+			div {
+				@include r(#84a4c8, 84%, 7.89%, bottom-center);
+				@include o(#7b9abd, 23.64%, 100%, -11.82%, -100%);
+			}
+		}
+		&:nth-child(4) {
+			@include r(#6b4b4a, 89.84%, 17.58%, 69.53%, center);
+			@include o(white, 10%, 31.11%, 11.74%);
+			div {
+				@include r(linear-gradient(
+					to right,
+					transparent 12.17%,
+					#b76b7e 12.17%,
+					#b76b7e 87.83%,
+					transparent 87.83%
+					), 100%, 46.67%, b0);
+				@include o(null, 22.17%, 52.38%, $b: 0);
+				&:before {
+					background: linear-gradient(
+						to right,
+						white 29.41%,
+						transparent 29.41%,
+						transparent 54.9%,
+						white 54.9%
+					);
+				}
+				&:after {
+					background: linear-gradient(
+						to right,
+						white 45.1%,
+						transparent 45.1%,
+						transparent 70.59%,
+						white 70.59%
+					);
+				}
+			}
+		}
+	}
+}
+
+#caterpie {
+	background: #639039;
+	&:before {
+		@include r(#ef7d4a, 12.5%, 23.83%, 16.02%, 13.67%);
+	}
+	&:after {
+		@include r(linear-gradient(
+			to right,
+			#8EC769 50%,
+			#719F54 50%
+			), 18.75%, 40.63%, 44.14%, 7.81%);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(null, 78.13%, 78.13%, 10.55%, auto, auto, 0);
+			z-index: 1;
+			&:before {
+				@include r(#8cc56b, 78%, 17%, 99%, auto, auto, 0);
+			}
+			&:after {
+				@include s(#8cc56b);
+				clip-path: polygon(5% 0, 101% 0, 101% 101%, 5% 101%, 0 95%, 0 5%);
+			}
+		}
+		&:nth-child(2) {
+			@include r(#ffeb9f, 42.97%, 42.97%, 24.61%, 37.11%);
+			z-index: 2;
+			padding: 5.86%;
+			div {
+				@include s(#2b2a29);
+				padding: 4.55% 15.45% 27.27%;
+				&:before {
+					@include s(#757775);
+				}
+			}
+		}
+	}
+}
+#metapod {
+	background: #639039;
+	&:before {
+		@include r(#B7D775, 91.41%, 100%);
+		clip-path: polygon(0 12.11%, 17.52% 12.11%, 17.52% 0, 66.24% 0, 66.24% 12.11%, 76.92% 12.11%, 82.05% 17.19%, 82.05% 51.95%, 100% 51.95%, 100% 85.55%, 82.05% 85.55%, 82.05% 101%, 0 101%);
+		z-index: 1;
+	}
+	&:after {
+		@include r(#A7C369, 32.81%, 55.86%, b0);
+		clip-path: polygon(21.43% 0, 100% 0, 100% 16.78%, 50% 16.78%, 50% 51.05%, 90.48% 51.05%, 90.48% 100%, 50% 100%, 50% 65.03%, 0 65.03%, 0 51.05%, 21.43% 51.05%);
+		z-index: 2;
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(#b5d575, 32.81%, 5.86%, bottom-right);
+			&:before {
+				@include r(#a5c36b, 50%, $l: 0);
+			}
+		}
+		&:nth-child(2) {
+			@include r(#eff0ef, 25.78%, 25.78%, 30.47%, 30.47%);
+			padding: 6.25% 7.03125%;
+			z-index: 3;
+			&:after {
+				@include r(#adcb70, 102%, 50.48%, -2%, -2%);
+			}
+			div {
+				@include s(#3c3c3c);
+			}
+		}
+	}
+}
+#butterfree {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	align-content: flex-end;
+	background: #756f89;
+	&:before {
+		@include s(#E8F1F9, $h: 14.84%);
+	}
+	&:after {
+		@include s(#605E61, $h: 8.59%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#db7570, 32.81%, 42.97%, 11.33%);
+			padding-bottom: 16.41%;
+			div {
+				@include s(#ec7d78);
+				&:before {
+					@include r(#ecbcba, 53.13%, 52.94%, 9.38%);
+				}
+			}
+		}
+		@include b(6.25%, 1);
+		@include p(7.81%, 1);
+		@include b(13.24%, 1, div-before, true);
+		&:nth-child(3) {
+			@include r(null, 21.1%, 11.72%, 57.03%, center);
+			@include o(#e9f1f9, 22.22%, 43.33%, 0, $b: -36.67%);
+			div {
+				@include s(#5d8fa5);
+				z-index: 1;
+			}
+		}
+		&:nth-child(4) {
+			@include r(#756f89, 78.13%, 24.22%, bottom-center);
+			z-index: 1;
+			&:before, &:after {
+				@include r(#5d90a5, 19%, 48.39%, b0);
+				clip-path: polygon(84.21% 0, 100% 16.67%, 100% 100%, 0 100%, 0 10%, 7.89% 0);
+			}
+			@include b(19%);
+			&:after {
+				@include flip;
+			}
+		}
+	}
+}
+
+#weedle {
+	background: #e4b370;
+	&:before {
+		@include s(#639039, $h: 17.58%);
+	}
+	&:after {
+		@include r(#eff1f1, 30.47%, 17.58%, top-center);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(#de90ba, 53.13%, 35.55%, 59.38%, center);
+			clip-path: polygon(4.41% 0, 95.59% 0, 100% 6.59%, 100% 89%, 95.59% 100%, 4.41% 100%, 0 89%, 0 6.59%);
+			&:before {
+				@include r(#ecbbd6, 19.12%, 26.37%, 11%, 28.68%);
+			}
+		}
+		&:nth-child(2) {
+			@include r(null, 68.75%, 13.28%, 41.8%, center);
+			@include o(#423a36, 19.32%);
+			div {
+				@include r(null, 85.23%, 38.24%, 5.88%, center);
+				z-index: 1;
+				@include o(#FFFDFF, 8.67%);
+			}
+		}
+	}
+}
+#kakuna {
+	background: #dec968;
+	> div {
+		@include nth(1, 2) {
+			@include r(#47413f, 30%, 18.75%, 18%);
+			&:before {
+				@include s(#2b2c29, $h: 70.83%);
+			}
+			&:after {
+				@include r(#fffffc, 53.25%, 39.58%, 39.58%);
+			}
+		}
+		@include b(7.81%, 1);
+		@include a(59.74%, 1);
+		@include b(0, 1, after, true);
+		&:nth-child(3) {
+			@include r(null, 100%, 28.91%, b0);
+			&:before {
+				@include s(#c8b65d, $h: 21.62%);
+			}
+			div {
+				@include s(#c8b65d, 30.47%, 78.38%);
+				padding: 0 4.3%;
+				&:before {
+					@include s(#dec968);
+				}
+			}
+		}
+		&:nth-child(4) {
+			@include r(null, 100%, 35.94%, 50.78%);
+			&:before {
+				@include s(#c8b65d, $h: 18.48%);
+			}
+			div {
+				@include s(#c8b65d, 46.88%, 81.52%);
+				padding: 0 6.25% 5.47%;
+				clip-path: polygon(0 0, 100% 0, 73.33% 100%, 26.67% 100%);
+				&:before {
+					@include s(#dec968);
+					clip-path: polygon(0 0, 100% 0, 71.59% 100%, 28.41% 100%);
+				}
+			}
+		}
+	}
+}
+#beedrill {
+	background: #f1db63;
+	@include o(#a2a3b5, 10.16%, 24.22%, 19.53%);
+	> div {
+		@include r(#bd535d, 32.81%, 25.78%, 40.63%);
+		&:before {
+			@include r(#ecd5d8, 35.71%, 28.57%, 6.06%);
+		}
+		&:after {
+			@include r(#e7a484, 66.67%, 27.27%, b0);
+		}
+		@include b(6.25%, 1);
+		@include a(30.95%, 1);
+		@include b(28.57%, 1, before);
+		@include b(15%, 1, after);
+	}
+}
+
+#pidgey {
+	background: linear-gradient(
+		to bottom,
+		#c69e68 10.94%,
+		#f7ecb7 10.94%
+	);
+	&:before {
+		@include r(#f7ecb7, 87.5%, 32.03%, top-center);
+		clip-path: polygon(0 0, 100% 0, 68.75% 100%, 31.25% 100%);
+		z-index: 2;
+	}
+	&:after {
+		@include s(#c69e68, 32.03%, 50%);
+		z-index: 3;
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(null, 35.16%, 30.47%, 10.94%);
+			&:before {
+				@include s(#392e26, $h: 89.74%);
+			}
+			&:after {
+				@include r(#efefef, 66.67%, 83.33%, b0);
+			}
+			div {
+				@include r(#392e26, 51.11%, 55.13%, $b: 14.1%);
+				z-index: 1;
+				&:before {
+					@include r(#473d36, 58.7%, 48.84%, b0);
+				}
+				&:after {
+					@include r(#efefef, 36.96%, 51.16%, 23.26%);
+				}
+			}
+		}
+		@include b(0, 1);
+		@include b(0, 1, after, true);
+		@include b(0, 1, div, true);
+		@include b(0, 1, div-before);
+		@include b(39.13%, 1, div-after);
+		&:nth-child(3) {
+			@include r(#cea7b2, 46.88%, 50.78%, 41.06%, 26.56%);
+			z-index: 4;
+			div {
+				@include r(#91737b, 80%, 30.77%, 40%, center);
+				&:before {
+					@include r(#b78291, 75%, 65%, bottom-center);
+				}
+			}
+		}
+	}
+}
+#pidgeotto {
+	background: linear-gradient(
+		to right,
+		#404040 9.77%,
+		#fbf5ba 9.77%,
+		#fbf5ba 90.23%,
+		#404040 90.23%
+		90.23%
+	);
+	&:before {
+		@include s(linear-gradient(
+			to right,
+			#d26869 46.1%,
+			#c46161 46.1%,
+			#c46161 53.91%,
+			#d26869 53.91%
+			), $h: 46.88%);
+		clip-path: polygon(-1% 0, 101% 0, 101% 48.33%, 58.98% 82.5%, 58.98% 101%, 41.02% 101%, 41.02% 82.5%, -1% 48.33%);
+		z-index: 1;
+	}
+	&:after {
+		@include r(#be8b47, 100%, 9.77%, b0);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#f3f3f7, 28.13%, 18.75%, 26.17%);
+			div {
+				@include r(#3b1818, 41.67%, 87.5%);
+				&:before {
+					@include r(#280000, $h: 71.43%);
+				}
+				&:after {
+					@include s(#f3f3f3, 20%, 78.57%);
+				}
+			}
+		}
+		@include b(9.87%, 1);
+		@include b(43.06%, 1, div);
+		&:nth-child(3) {
+			@include s(#d0a7b7, 31.25%, 39.06%);
+			div {
+				@include r(#927479, 75%, 28%, 46%, center);
+				&:before {
+					@include r(#b68392, 70%, 57.14%, bottom-center);
+				}
+			}
+		}
+	}
+}
+#pidgeot {
+	background: #fbf5ba;
+	@include o(linear-gradient(
+		to bottom,
+		#3b3b3b 90.62%,
+		#c7a156 90.62%
+		), 9.38%, $pos: 0);
+	> div {
+		@include nth(1, 2) {
+			@include r(#f3f7fb, 29.69%, 14.84%, 25.78%);
+			div {
+				@include r(#3c3838, 36.84%, 100%);
+				&:before {
+					@include r(#2c2828, $h: 76.32%);
+				}
+				&:after {
+					@include s(#f3f5fa, 28.57%, 84.21%);
+				}
+			}
+		}
+		@include b(9.38%, 1);
+		@include b(35.53%, 1, div);
+		&:nth-child(3) {
+			@include s(#fccc40, $h: 43.75%);
+			clip-path: polygon(0 0, 100% 0, 100% 52%, 61% 93%, 61% 101%, 39% 101%, 39% 93%, 0 52%);
+			z-index: 2;
+			&:before, &:after {
+				@include r(#e26238, 45.7%, 89.29%, 10.71%);
+			}
+			@include a($two: 74%);
+			@include b(0);
+		}
+		&:nth-child(4) {
+			@include s(#e7bbca, 39.06%, 41.41%);
+			div {
+				@include r(#9e7c79, 80%, 20.75%, 55.66%, center);
+				&:before {
+					@include r(#cb97b2, 60%, 54.55%, bottom-center);
+				}
+			}
+		}
+	}
+}
+
+#rattata {
+	background: linear-gradient(
+		to bottom,
+		#aa8bbe 50.78%,
+		#e6d8ba 50.78%
+	);
+	@include o(#695475, 2.73%, 4.69%, 45.31%, 46.09%);
+	> div {
+		@include nth(1, 2) {
+			@include r(#fff7ff, 28.91%, 21.48%, 13.28%);
+			div {
+				@include s(#a24d55);
+				&:before {
+					@include r(#fff7ff, 24.53%, 83.64%);
+				}
+				&:after {
+					@include r(#b65861, 50.94%, 18.18%, b0);
+				}
+			}
+		}
+		@include e(7.42%, 1);
+		@include p(8.2%, 1);
+		@include b(24.53%, 1, div-before);
+		@include b(0, 1, div-after);
+		&:nth-child(3) {
+			@include r(#996e86, 50%, 33.2%, 59.38%, center);
+			&:before {
+				@include r(#cfabb2, 90.63%, 51.76%, bottom-center);
+			}
+			div {
+				@include r(#f7fdf6, 56.25%, 58.82%, 0, center);
+				&:before {
+					@include r(#e3e7e3, 13.89%, 64%, bottom-center);
+				}
+			}
+		}
+	}
+}
+#raticate {
+	background: #cf9b41;
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 24.22%, 14.84%, 7.81%);
+			div {
+				@include s(#463c3c);
+				&:before {
+					@include r(#58504e, 51.28%, 21.05%, b0);
+				}
+				&:after {
+					@include r(white, 23.08%, 89.47%);
+				}
+			}
+		}
+		@include e(8.2%, 1);
+		@include p(8.98%, 1);
+		@include b(0, 1, div-before);
+		@include b(28.57%, 1, div-after);
+		&:nth-child(3) {
+			@include r(#efdebd, 81.25%, 70.7%, bottom-center);
+			&:before {
+				@include r(#efdebd, 42.31%, 5.6%, -5.52%, center);
+			}
+			div {
+				@include r(null, 11.54%, 6.63%, -1.1%, center);
+				@include o(#c7b99e, 25%);
+			}
+		}
+		&:nth-child(4) {
+			@include r(#a7838e, 50%, 57.81%, 34.77%, center);
+			&:before {
+				@include r(#c795b1, 82.81%, 64.19%, bottom-center);
+			}
+			div {
+				@include s(#f7fdf6, 57.81%, 100%);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				&:before {
+					@include r(#e1eae2, 13.51%, 57.81%);
+				}
+				&:after {
+					@include s(#c795b1, $h: 5.41%);
+				}
+			}
+		}
+	}
+}
+
+#spearow {
+	background: #ba8559;
+	&:before {
+		@include r(linear-gradient(
+			to right,
+			#fbefd8 15.63%,
+			transparent 15.63%,
+			transparent 31.25%,
+			#fbefd8 31.25%,
+			#fbefd8 39.84%,
+			transparent 39.84%,
+			transparent 60.16%,
+			#fbefd8 60.16%,
+			#fbefd8 68.75%,
+			transparent 68.75%,
+			transparent 84.38%,
+			#fbefd8 84.38%
+			), 100%, 15.63%, b0);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#f7f7fb, 26.56%, 18.75%, 20.31%);
+			div {
+				@include s(#302a2c);
+				&:before {
+					@include r(#dfe1e6, 25.64%, 100%);
+				}
+				&:after {
+					@include r(#514a49, 100%, 25%, b0);
+				}
+			}
+		}
+		@include b(7.81%, 1);
+		@include a(0, 1, 41.67%);
+		@include p(11.33%, 1);
+		@include b(38.46%, 1, div-before);
+		&:nth-child(3) {
+			@include r(#f3d3d7, 40.63%, 32.42%, 42.19%, center);
+			&:before {
+				@include r(#f3d3d7, 44.23%, 30%, -28.92%, center);
+			}
+			div {
+				@include r(#ad7c8c, 84.62%, 33.73%, 48.19%, center);
+				padding: 14.46% 17.31% 0;
+				&:before {
+					@include s(#c3979e);
+				}
+			}
+		}
+	}
+}
+#fearow {
+	background: #ba874d;
+	&:before {
+		@include s(#b2f9ff, $h: 28.13%);
+	}
+	&:after {
+		@include r(#db7662, 100%, 70.7%, 0);
+		clip-path: polygon(0 25%, 39% 25%, 39% 0, 61% 0, 61% 25%, 101% 25%, 101% 47%, 92% 47%, 59% 100%, 41% 100%, 8% 47%, 0 47%);
+	}
+	> div {
+		&:nth-child(1) {
+			@include s(#ebebeb, 82.81%, 42.58%);
+			@include o(#303030, 8.02%, 80.73%, 19.34%);
+		}
+		&:nth-child(2) {
+			@include s(#eecddb, 39.06%, 29.3%);
+		}
+	}
+}
+
+#ekans {
+	background: #8e4696;
+	&:before {
+		@include r(#d39da2, 68.75%, 34.38%, bottom-right);
+	}
+	> div {
+		@include r(#ba8dbe);
+		clip-path: polygon(0 45.31%, 0 17.97%, 14.06% 17.97%, 14.06% 0, 101% 0, 101% 100%, 19.92% 100%, 19.92% 87.11%, 64.84% 87.11%, 64.84% 45.31%);
+		&:before {
+			@include r(#aa81ae, 62.5%, 9.38%, 8.98%);
+		}
+		div {
+			@include r(#f1dfa8, 28.13%, 28.13%, 8.98%, 55.86%);
+			&:before {
+				@include s(#3c341f, 19.44%, 73.61%);
+			}
+		}
+	}
+}
+#arbok {
+	background: #a695be;
+	&:before {
+		@include r(#494845, 28.91%, 21.88%, 5.47%, center);
+		clip-path: polygon(18.92% 73.21%, 35.14% 73.21%, 35.14% 0, 64.86% 0, 64.86% 73.21%, 81.08% 73.21%, 81.08% 32.14%, 100% 32.14%, 100% 100%, 0 100%, 0 32.14%, 18.92% 32.14%);
+	}
+	&:after {
+		@include r(#494845, 89.06%, 28.91%, 65.63%, center);
+		clip-path: polygon(0 0, 8.33% 0, 8.33% 16.22%, 38.16% 16.22%, 38.16% 0, 61.84% 0, 61.84% 16.22%, 91.67% 16.22%, 91.67% 0, 100% 0, 100% 75.68%, 56.58% 75.68%, 56.58% 100%, 43.42% 100%, 43.42% 75.68%, 0 75.68%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#494845, 34.77%, 42.58%, 17.97%);
+			div {
+				@include r(#c76e65, 73.03%, 77.98%, 12.84%);
+				&:before {
+					@include r(#cbb95f, 61.54%, 37.65%, 50.59%);
+				}
+			}
+		}
+		@include b(10.16%, 1);
+		@include b(13.48%, 1, div);
+		@include b(20%, 1, div-before);
+		&:nth-child(1) {
+			clip-path: polygon(0 0, 59.55% 0, 59.55% 33.03%, 100% 33.03%, 100% 100%, 0 100%);
+			div {
+				clip-path: polygon(0 0, 44.62% 0, 44.62% 37.65%, 100% 37.65%, 100% 100%, 0 100%);
+			}
+		}
+		&:nth-child(2) {
+			clip-path: polygon(0 33.03%, 40.45% 33.03%, 40.45% 0, 100% 0, 100% 100%, 0 100%);
+			div {
+				clip-path: polygon(0 37.65%, 55.38% 37.65%, 55.38% 0, 100% 0, 100% 100%, 0 100%);
+			}
+		}
+	}
+}
+
+#pikachu {
+	background: #fae57c;
+	@include o(#e06c51, 19.53%, 22.66%, 0, 51.56%);
+	> div {
+		@include nth(1, 2) {
+			@include r(#1a1312, 16.8%, 19.53%, 23.44%);
+			&:before {
+				@include r(white, 41.86%, 36%, 6%);
+			}
+			&:after {
+				@include r(#3a322a, 100%, 20%, b0);
+			}
+		}
+		@include b(16.41%, 1);
+		@include b(37.21%, 1, before);
+		&:nth-child(3) {
+			@include r($t: 0);
+			&:after {
+				@include r(#1a1312, 7.03%, 3.91%, 44.53%, center);
+			}
+			div {
+				@include r(#96606d, 37.5%, 26.56%, 50.78%, center);
+				padding: 17.58% 5.08% 0;
+				clip-path: polygon(50% 0, 64.58% 25%, 100% 25%, 100% 100%, 0 100%, 0 25%, 35.42% 25%);
+				&:before {
+					@include s(#d49ab3);
+				}
+			}
+		}
+	}
+}
+#raichu {
+	background: #f4c85a;
+	@include o(#fee986, 22.27%, 26.95%, 0, 50%);
+	> div {
+		@include nth(1, 2) {
+			@include r(#1c0f0c, 16.41%, 20.31%, 23.44%);
+			&:before {
+				@include r(white, 42.86%, 32.69%, 5.77%);
+			}
+			&:after {
+				@include r(#4e3d34, 100%, 21.43%, b0);
+			}
+		}
+		@include b(16.8%, 1);
+		@include b(35.71%, 1, before);
+		&:nth-child(3) {
+			@include r($t: 0);
+			&:after {
+				@include r(#302a24, 8.59%, 5.08%, 44.14%, center);
+			}
+			div {
+				@include r(#96606d, 38.28%, 20.7%, 51.56%, center);
+				padding: 12.5% 7.03% 0;
+				clip-path: polygon(50% 0, 63.27% 24.53%, 100% 24.53%, 100% 100%, 0 100%, 0 24.53%, 36.73% 24.53%);
+				&:before {
+					@include s(#d49ab3);
+				}
+			}
+		}
+	}
+}
+
+#sandshrew {
+	background: #ecd168;
+	@include o(#dcc461, 17.19%, 18.75%, $b: 0);
+	&:before, &:after {
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 62.22% 100%, 62.22% 22.92%, 0 22.92%);
+	}
+	&:after {
+		@include flip;
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(null, 70.31%, 100%, centered);
+			&:before {
+				@include r(#dcc461, 100%, 62.5%);
+				clip-path: polygon(0 34.38%, 15% 34.38%, 15% 0, 23.33% 0, 23.33% 34.38%, 76.67% 34.38%, 76.67% 0, 85% 0, 85% 34.38%, 100% 34.38%, 100% 100%, 91.67% 100%, 91.67% 44.38%, 53.89% 44.38%, 53.89% 75.63%, 73.33% 75.63%, 73.33% 100%, 66.67% 100%, 66.67% 84.38%, 33.33% 84.38%, 33.33% 100%, 26.67% 100%, 26.67% 75.63%, 46.11% 75.63%, 46.11% 44.38%, 8.33% 44.38%, 8.33% 100%, 0 100%);
+			}
+			&:after {
+				@include r(#efedd7, 100%, 41.02%, b0);
+				clip-path: polygon(0 0, 100% 0, 100% 64.76%, 78.33% 64.76%, 73.33% 73.33%, 73.33% 100%, 26.67% 100%, 26.67% 73.33%, 21.67% 64.76%, 0 64.76%);
+				z-index: 1;
+			}
+		}
+		@include nth(2, 3) {
+			@include r(#04192c, 21.09%, 25.78%, 43.36%);
+			z-index: 2;
+			&:before {
+				@include r(#fffffe, 37.04%, 36.36%);
+			}
+			&:after {
+				@include r(#004879, 57.41%, 31.82%, b0);
+			}
+		}
+		@include b(8.59%, 2);
+		@include b(48.15%, 2, before);
+		@include b(0, 2, after, true);
+	}
+}
+#sandslash {
+	background: #f1d170;
+	&:before {
+		@include s(linear-gradient(
+			to right,
+			#aa7c30 30.61%,
+			transparent 30.61%,
+			transparent 69.39%,
+			#aa7c30 69.39%
+			), 76.56%, 19.14%);
+		clip-path: polygon(0 0, 100% 0, 87.24% 100%, 12.76% 100%);
+	}
+	&:after {
+		@include r(#f3e5cf, 100%, 46.88%, b0);
+		clip-path: polygon(0 0, 25% 0, 36.33% 31.67%, 36.33% 80%, 63.67% 80%, 63.67% 31.67%, 75% 0, 100% 0, 100% 100%, 0 100%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#04192c, 29.69%, 20.7%, 47.27%);
+			z-index: 1;
+			&:before {
+				@include r(white, 21.05%, 30.19%, 11.32%);
+			}
+			&:after {
+				@include r(#002c49, 46.05%, 32.08%, b0);
+			}
+		}
+		@include b(6.64%, 1);
+		@include b(55.26%, 1, before);
+		@include b(35.53%, 1, after);
+		&:nth-child(1) {
+			clip-path: polygon(0 0, 81.58% 0, 100% 100%, 19.74% 100%);
+		}
+		&:nth-child(2) {
+			clip-path: polygon(18.42% 0, 100% 0, 80.26% 100%, 0 100%);
+		}
+	}
+}
+
+#nidoran-f {
+	background: #cbd7ef;
+	@include o(#a2abc4, 1.95%, 3.52%, 44.92%, 42.19%);
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 28.52%, 21.09%, 18.75%);
+			&:before {
+				@include s(linear-gradient(
+					#a2352c 81.48%,
+					#c9522f 81.48%
+					));
+			}
+			&:after {
+				@include r(white, 20.55%, 83.33%, 0);
+			}
+		}
+		@include e(7.42%, 1);
+		@include p(8.2%, 1);
+		@include b(50.68%, 1, after);
+		&:nth-child(3) {
+			@include r(#976271, 34.38%, 28.13%, 54.69%, center);
+			&:before {
+				@include r(#c7839e, 100%, 44.44%, b0);
+			}
+			&:after {
+				@include r(white, 65.91%, 69.44%, 0, center);
+			}
+		}
+	}
+}
+#nidorina {
+	background: #b1d4d8;
+	&:before {
+		@include r(linear-gradient(
+			to right,
+			#a9cbcf 8.11%,
+			transparent 8.11%,
+			transparent 91.89%,
+			#a9cbcf 91.89%
+			), 28.91%, 10.94%, 34.38%, center);
+	}
+	&:after {
+		@include r(linear-gradient(
+			to right,
+			#738484 16.67%,
+			transparent 16.67%,
+			transparent 83.33%,
+			#738484 83.33%
+			), 11.72%, 4.3%, 53.52%, center);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 28.13%, 23.05%, 21.88%);
+			&:before {
+				@include s(linear-gradient(
+					#c7402c 88.14%,
+					#f47d5b 88.14%
+					));
+			}
+			&:after {
+				@include r(white, 41.67%, 79.66%, 0);
+			}
+		}
+		@include e(7.42%, 1);
+		@include p(9.77%, 1);
+		@include b(0, 1, after, true);
+		&:nth-child(3) {
+			@include r(#7c636b, 73.44%, 22.27%, 58.59%, center);
+			clip-path: polygon(33.51% 14.04%, 66.49% 14.04%, 66.49% 0, 100% 0, 100% 100%, 0 100%, 0 0, 33.51% 0);
+			&:before {
+				@include r(linear-gradient(
+					to right,
+					white 13.25%,
+					transparent 13.25%,
+					transparent 86.75%,
+					white 86.75%
+					), 88.3%, 33.33%, top-center);
+			}
+			&:after {
+				@include r(#bea1a6, 74.47%, 43.86%, bottom-center);
+			}
+		}
+	}
+}
+#nidoqueen {
+	background: #89afc8;
+	&:after {
+		@include r(#eae2c1, 100%, 21.09%, b0);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 24.22%, 21.88%, 22.27%);
+			&:before {
+				@include s(linear-gradient(
+					#302c29 85.71%,
+					#594d3c 85.71%
+					));
+			}
+			&:after {
+				@include r(white, 19.35%, 92.86%, 0);
+			}
+		}
+		@include e(7.03%, 1);
+		@include p(7.03%, 1);
+		@include b(62.9%, 1, after);
+		&:nth-child(3){
+			@include r(null, 37.5%, 35.55%, 29.69%, center);
+			&:before {
+				@include r(linear-gradient(
+					to right,
+					#85a7bf 7.29%,
+					transparent 7.29%,
+					transparent 92.71%,
+					#85a7bf 92.71%
+					), $h: 39.56%);
+			}
+			&:after {
+				@include r(linear-gradient(
+					to right,
+					#6e8fa0 17.65%,
+					transparent 17.65%,
+					transparent 82.35%,
+					#6e8fa0 82.35%
+					), 35.42%, 13.19%, bottom-center);
+			}
+		}
+		&:nth-child(4) {
+			@include s(#799fba, 29.69%, 20.31%);
+			border-radius: 0 0 5% 5% / 0 0 10% 10%;
+			&:before {
+				@include s(#89afc8, 76.32%, 69.23%);
+				border-radius: 0 0 5% 5% / 0 0 10% 10%;
+			}
+		}
+		&:nth-child(5) {
+			@include r(#a78386, 100%, 38.28%, b0);
+			clip-path: polygon(33.98% 13.27%, 66.02% 13.27%, 66.02% 0, 100% 0, 100% 100%, 0 100%, 0 0, 33.98% 0);
+			&:before {
+				@include r(#c7a3aa, 70.41%, 74.22%, bottom-center);
+			}
+		}
+	}
+}
+
+#nidoran-m {
+	background: #c799c3;
+	@include o(#755c75, 2.73%, 3.52%, 42.58%, 44.53%);
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 28.91%, 21.88%, 20.31%);
+			&:after {
+				@include r(#470d16, 51.35%, 100%, 0);
+			}
+			div {
+				@include s(#aa6059);
+				&:before {
+					@include r(#cb9b97, 90.38%, 71.43%, 0);
+				}
+				&:after {
+					@include r(#ad6958, 100%, 7.14%, b0);
+				}
+			}
+		}
+		@include e(7.03%, 1);
+		@include p(8.59%, 1);
+		@include b(0, 1, after, true);
+		@include b(0, 1, div-before, true);
+		&:nth-child(3) {
+			@include s(linear-gradient(
+				to bottom,
+				#b687b2 56.14%,
+				#895e8e 56.14%
+				), 21.09%, 22.27%);
+			&:before {
+				@include r(#c799c3, 62.96%, 35.09%, 0, center);
+			}
+		}
+		&:nth-child(4) {
+			@include r(#976271, 34.38%, 28.13%, 57.03%, center);
+			padding-top: 16.016%;
+			&:before {
+				@include s(#c7839e);
+			}
+			&:after {
+				@include r(white, 65.91%, 69.44%, 0, center);
+			}
+		}
+	}
+}
+#nidorino {
+	background: #c698c3;
+	&:before {
+		@include s(#ba8bb6, 26.56%, 25.78%);
+	}
+	&:after {
+		@include r(#c799c3, 21.88%, 17.58%, top-center);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 28.13%, 19.53%, 29.3%);
+			&:before {
+				@include s(linear-gradient(
+					#362e26 84%,
+					#6d5e4d 84%
+					));
+			}
+			&:after {
+				@include r(white, 18.06%, 84%, 0);
+			}
+		}
+		@include e(6.64%, 1);
+		@include p(10.16%, 1);
+		@include b(55.56%, 1, after);
+		&:nth-child(3) {
+			@include r(null, 30.47%, 24.61%, 38.28%, center);
+			&:before {
+				@include r(linear-gradient(
+					to right,
+					#b88fb7 7.69%,
+					transparent 7.69%,
+					transparent 92.31%,
+					#b88fb7 92.31%
+					), $h: 42.86%)
+					}
+			&:after {
+				@include r(linear-gradient(
+					to right,
+					#a379ab 15%,
+					transparent 15%,
+					transparent 85%,
+					#a379ab 85%
+					), 51.28%, 17.46%, bottom-center);
+			}
+		}
+		&:nth-child(4) {
+			@include r(#976271, 70.31%, 19.53%, 62.5%, center);
+			clip-path: polygon(31.11% 20%, 68.89% 20%, 68.89% 0, 100% 0, 100% 100%, 0 100%, 0 0, 31.11% 0);
+			&:before {
+				@include s(linear-gradient(
+					to right,
+					white 12.66%,
+					transparent 12.66%,
+					transparent 87.34%,
+					white 87.34%
+					), 87.78%, 40%);
+			}
+			&:after {
+				@include r(#ba879e, 74.44%, 44%, bottom-center);
+			}
+		}
+	}
+}
+#nidoking {
+	background: #b783b2;
+	&:before {
+		@include s(#aa76a1, 35.16%, 16.41%);
+		border-radius: 0 0 5% 5% / 0 0 15% 15%;
+	}
+	&:after {
+		@include r(#b783b2, 28.13%, 11.72%, top-center);
+		border-radius: 0 0 5% 5% / 0 0 15% 15%;
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 26.56%, 19.53%, 21.48%);
+			div {
+				@include s(#372f2f);
+				&:before {
+					@include r(#4a4045, 100%, 16%, b0);
+				}
+				&:after {
+					@include r(white, 17.78%, 88%);
+				}
+			}
+		}
+		@include e(7.03%, 1);
+		@include p(8.98%, 1);
+		@include b(35.55%, 1, div-after);
+		&:nth-child(3) {
+			@include r(null, 32.81%, 36.33%, 27.34%, center);
+			@include o(#ae7aa6, 8.33%, 37.63%);
+			&:after {
+				height: 26.88%;
+				top: 10.75%;
+			}
+			div {
+				@include r(null, 30.95%, 11.83%, bottom-center);
+				@include o(#92698a, 15.38%);
+			}
+		}
+		&:nth-child(4) {
+			@include r(#977a7d, 100%, 22.27%, 58.98%);
+			@include o(white, 26.56%, 56.14%, $b: 0);
+			clip-path: polygon(36.72% 29.82%, 63.28% 29.82%, 63.28% 0, 101% 0, 101% 100%, 0 100%, 0 0, 36.72% 0);
+			&:before {
+				z-index: 1;
+				clip-path: polygon(22.06% 0, 22.06% 56.25%, 101% 56.25%, 101% 100%, 0 100%, 0 0);
+			}
+			&:after {
+				clip-path: polygon(77.94% 56.25%, 77.94% 0, 101% 0, 101% 100%, 0 100%, 0 56.25%);
+			}
+			div {
+				@include r(#af8e96, 70.31%, 40.35%, bottom-center);
+			}
+		}
+	}
+}
+
+#clefairy {
+	background: #f7d8db;
+	&:before {
+		@include r(#ebcdcf, 65.23%, 19.92%, $l: 6.64%);
+		clip-path: polygon(83.83% 66.67%, 83.83% 0, 100% 0, 100% 100%, 17.96% 100%, 0 54.9%, 10.78% 25.49%, 25.75% 66.67%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#200504, 8.59%, 18.75%, 31.25%);
+			z-index: 2;
+			&:before {
+				@include s(#f1f1f1, $h: 25%);
+			}
+			&:after {
+				@include r(#497c9e, 100%, 25%, b0);
+			}
+		}
+		@include b(21.48%, 1);
+		&:nth-child(3) {
+			@include r(null, 78.13%, 22.66%, 29.3%, center);
+			@include o(#f1d0d0, 7%);
+			div {
+				@include r(#f7d8db, 94%, 82.76%, centered);
+				z-index: 1;
+			}
+		}
+		&:nth-child(4) {
+			@include r(null, 100%, 28.52%, 55.08%);
+			@include o(#e7c6d7, 14.45%, 39.73%, $t: 2.74%);
+			div {
+				@include s(#be98aa, 32.81%, 100%);
+				&:before {
+					@include r(#f1f1f1, 23.81%, 30.14%, $r: 0);
+				}
+				&:after {
+					@include r(#e3c9d7, 100%, 45.21%, b0);
+				}
+			}
+		}
+	}
+}
+#clefable {
+	background: #f7d7c8;
+	&:before {
+		@include s(#e7c9ba, 56.25%, 18.36%);
+		clip-path: polygon(72.92% 51.06%, 72.92% 0, 100% 0, 100% 76.6%, 92.36% 100%, 6.94% 100%, 0 76.6%, 0 51.06%);
+	}
+	&:after {
+		@include r(linear-gradient(
+			to bottom,
+			#ba9196 50%,
+			#e3afb2 50%
+			), 37.11%, 20.31%, 60.16%, center);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(null, 68.75%, 19.53%, 33.98%, center);
+			@include o(#ebcdbe, 5.11%);
+			div {
+				@include r(#f7d7c8, 95.45%, 84%, centered);
+				z-index: 1;
+			}
+		}
+		@include nth(2, 3) {
+			@include r(#240401, 7.81%, 19.92%, 33.59%);
+			z-index: 1;
+			&:before {
+				@include s(white, $h: 25.49%);
+			}
+			&:after {
+				@include r(#6c6461, 100%, 25.49%, b0);
+			}
+		}
+		@include b(25%, 2);
+	}
+}
+
+#vulpix {
+	background: #c88e6d;
+	&:before {
+		@include s(#dc8241, 61.72%, 29.3%);
+		border-radius: 1% 1% 0 0;
+		clip-path: polygon(7.59% 56%, 0 44%, 0 0, 100% 0, 100% 44%, 92.41% 56%, 68.99% 56%, 68.99% 92%, 65.19% 100%, 34.81% 100%, 31.01% 92%, 31.01% 56%);
+	}
+	&:after {
+		@include r(#4d3f41, 14.06%, 9.38%, 47.66%, center);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#65463c, 24.22%, 23.83%, 25.39%);
+			&:before {
+				@include r(white, 27.42%, 32.79%, 6.56%);
+			}
+			&:after {
+				@include r(#715249, 62.9%, 36.07%, b0);
+			}
+		}
+		@include b(8.2%, 1);
+		@include b(17.74%, 1, before, true);
+		@include b(11.29%, 1, after);
+		&:nth-child(3) {
+			@include r(#9b7e7d, 21.88%, 15.63%, 71.88%, center);
+			padding: 8.2% 3.13% 0;
+			div {
+				@include s(#e7c3cf);
+			}
+		}
+	}
+}
+#ninetails {
+	background: #f4eca5;
+	&:before {
+		@include s(linear-gradient(
+			to right,
+			#D7CB96 15.63%,
+			transparent 15.63%,
+			transparent 25%,
+			#F3E58E 25%,
+			#F3E58E 75%,
+			transparent 75%,
+			transparent 84.37%,
+			#D7CB96 84.37%
+			), 87.5%, 15.23%);
+	}
+	&:after {
+		@include r(#393931, 12.5%, 8.98%, 55.47%, center);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#d37259, 26.95%, 21.09%, 33.2%);
+			&:before {
+				@include s(#eb7f61, 39.13%, 87.04%);
+			}
+			&:after {
+				@include r(#fff1eb, 60.87%, 46.3%, 0, center);
+			}
+		}
+		@include e(7.03%, 1);
+	}
+}
+
+#jigglypuff {
+	background: #f7d7df;
+	&:before {
+		@include r(linear-gradient(
+			to bottom,
+			#8a4041 79.41%,
+			#ee8b9a 79.41%
+			), 17.19%, 13.28%, 58.59%, center);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(null, 52.34%, 23.44%, $l: 27.34%);
+			&:before {
+				@include r(#e5c4cc, 86.57%, 100%);
+				border-radius: 0 0 5% 5% / 0 0 15% 15%;
+			}
+			&:after {
+				@include r(#e5c4cc, 13.43%, 45%, $r: 0);
+				border-bottom-right-radius: 50% 25%;
+			}
+			div {
+				@include r(null, 84.33%, 70%, $l: 8.21%);
+				z-index: 1;
+				&:before {
+					@include r(#f7d7df, 83.19%, 100%);
+					border-radius: 0 0 5% 5% / 0 0 15% 15%;
+				}
+				&:after {
+					@include r(#f7d7df, 16.81%, 35.71%, $r: 0);
+					border-bottom-right-radius: 25% 50%;
+				}
+			}
+		}
+		@include nth(2, 3) {
+			@include r(white, 29.69%, 30.08%, 29.69%);
+			div {
+				@include r(#017c96, 77.63%, 76.62%, 10.39%);
+				&:before {
+					@include r(white, 32.2%, 30.51%, 10.17%);
+				}
+				&:after {
+					@include r(#01a3be, 100%, 23.73%, b0);
+				}
+			}
+		}
+		@include b(7.42%, 2);
+		@include b(14.47%, 2, div);
+		@include b(40.68%, 2, div-before);
+	}
+}
+#wigglytuff {
+	background: #fadfe3;
+	&:before {
+		@include r(#fbf5f7, 71.88%, 54.69%, b0, center);
+	}
+	> div {
+		&:nth-child(1) {
+			@include s(#e6c5cb, 48.44%, 14.45%);
+			border-radius: 0 0 5% 5% / 0 0 20% 20%;
+			padding: 0 3.91% 6.64%;
+			div {
+				@include s(#fadfe3);
+				border-radius: 0 0 5% 5% / 0 0 20% 20%;
+			}
+		}
+		@include nth(2, 3) {
+			@include r(white, 26.17%, 30.86%, 22.27%);
+			div {
+				@include r(#0c7a96, 77.61%, 73.42%, 12.66%);
+				&:before {
+					@include r(white, 34.62%, 27.59%, 5.17%);
+				}
+				&:after {
+					@include r(#6dabb6, 69.23%, 18.97%, b0);
+				}
+			}
+		}
+		@include b(6.64%, 2);
+		@include b(0, 2, div, true);
+		@include b(40.38%, 2, div-before);
+		@include b(17.31%, 2, div-after);
+		&:nth-child(4) {
+			@include r(#8a4041, 23.44%, 10.94%, 50%, center);
+			padding: 3.91% 3.91% 0;
+			div {
+				@include s(#ee8b9a);
+			}
+		}
+	}
+}
+
+#zubat {
+	background: #4a8db3;
+	&:before {
+		@include s(linear-gradient(
+			to right,
+			#865c82 17.19%,
+			transparent 17.19%,
+			transparent 27.34%,
+			#a78ec8 27.34%,
+			#a78ec8 72.66%,
+			transparent 72.66%,
+			transparent 82.81%,
+			#865c82 82.81%
+			), 100%, 14.45%);
+	}
+	> div {
+		@include r(#3c3e45, 85.94%, 63.67%, 29.3%, center);
+		@include o(#dfdfeb, 12.27%, 22.09%, 23.18%);
+		div {
+			@include r(null, 77.27%, 22.09%, bottom-center);
+			@include o(#dfdfeb, 15.29%);
+		}
+	}
+}
+#golbat {
+	background: #3583a5;
+	&:before {
+		@include s(#a78ec8, $h: 21.48%);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(null, 100%, 14.84%, 7.42%);
+			@include o(#3583a5, 15.23%);
+			&:before {
+				clip-path: polygon(89.74% 0, 100% 10.53%, 100% 100%, 0 100%, 0 0);
+			}
+			&:after {
+				clip-path: polygon(10.26% 0, 100% 0, 100% 100%, 0 100%, 0 10.53%);
+			}
+			div {
+				@include r(null, 92.97%, 71.05%, 23.68%, center);
+				z-index: 1;
+				@include o(#b274a6, 8.4%);
+				&:before, &:after {
+					clip-path: polygon(15% 0, 85% 0, 100% 11.11%, 100% 100%, 0 100%, 0 11.11%);
+				}
+			}
+		}
+		&:nth-child(2) {
+			@include r(null, 83.59%, 8.98%, 33.2%, center);
+			@include o(#f1f1f1, 24.3%);
+			&:before {
+				clip-path: polygon(0 0, 100% 0, 86.54% 100%, 15.38% 100%);
+			}
+			&:after {
+				clip-path: polygon(0 0, 100% 0, 84.62% 100%, 13.46% 100%);
+			}
+			div {
+				@include r(null, 78.5%, 100%, top-center);
+				z-index: 1;
+				@include o(#242424, 3.57%);
+			}
+		}
+		&:nth-child(3) {
+			@include r(#383838, 78.91%, 52.34%, bottom-center);
+			@include o(#dedede, 11.88%, 24.63%, 4.95%);
+		}
+	}
+}
+
+#oddish {
+	background: linear-gradient(
+		to bottom,
+		#519345 22.66%,
+		#55829e 22.66%
+	);
+	&:before {
+		@include r(linear-gradient(
+			to bottom,
+			#c7768e 51.52%,
+			#e389a2 51.52%
+			), 22.66%, 12.89%, 57.42%, center);
+	}
+	> div {
+		@include r(null, 50.78%, 9.77%, 43.36%, center);
+		@include o(linear-gradient(
+			to bottom,
+			#f5a49a 36%,
+			#d37265 36%
+			), 13.08%);
+	}
+}
+#gloom {
+	background: linear-gradient(
+		to bottom,
+		#965241 9.38%,
+		#db6e3c 9.38%,
+		#db6e3c 18.36%,
+		#5d84a2 18.36%
+	);
+	&:before, &:after {
+		@include r(#182228, 26.17%, 10.94%, 30.08%);
+		clip-path: polygon(88.06% 0, 100% 0, 100% 100%, 0 100%, 0 71.43%, 88.06% 71.43%);
+	}
+	@include b(12.5%);
+	&:after {
+		@include flip;
+	}
+	> div {
+		@include r(#9289be, 68.36%, 19.53%, 46.48%, center);
+		&:before {
+			@include r(#d3d1d8, 8.57%, 96%, 36%, $r: 11.43%);
+			clip-path: polygon(0 0, 100% 0, 100% 89.58%, 60% 100%, 0 100%);
+		}
+		&:after {
+			@include r(#d3d1d8, 12%, 164%, 36%, $r: 19.8%);
+			clip-path: polygon(0 0, 100% 0, 100% 95.12%, 80.95% 100%, 19.05% 100%, 0 95.12%);
+		}
+		div {
+			@include r(#d3d1d8, 77.14%, 36%, centered);
+		}
+	}
+}
+#vileplume {
+	background: linear-gradient(
+		to bottom,
+		#d86475 15.63%,
+		#60749a 15.63%
+	);
+	&:before {
+		@include r(linear-gradient(
+			to bottom,
+			#4e2224 74.29%,
+			#7d3838 74.29%
+			), 28.91%, 13.67%, 57.03%, center);
+	}
+	> div {
+		@include r(null, 53.13%, 10.16%, 43.36%, center);
+		@include o(#8b4647, 19.12%);
+		div {
+			@include r(null, 94.12%, 65.38%, centered);
+			z-index: 1;
+			@include o(#d78b8a, 13.28%);
+		}
+	}
+}
+
+#paras {
+	background: #eca356;
+	&:before {
+		@include s(#96a730, $h: 44.53%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#d78da6, 37.11%, 38.28%, 8.59%);
+			@include b(0, 1);
+		}
+		&:nth-child(1) {
+			clip-path: polygon(0 0, 81.05% 0, 100% 15.31%, 100% 100%, 0 100%);
+			&:before {
+				@include r(#fad7a4, 12.63%, 31.63%, 36.73%);
+			}
+			&:after {
+				@include r(#fad7a4, 17.89%, 16.33%, 25.51%, 36.84%);
+			}
+		}
+		&:nth-child(2) {
+			clip-path: polygon(0 15.31%, 18.95% 0, 100% 0, 100% 100%, 0 100%);
+			&:before {
+				@include r(#fad7a4, 30.53%, 29.59%, 16.84%, 30.61%);
+			}
+			&:after {
+				@include r(#fad7a4, 17.89%, 31.63%, 35.71%, $r: 0);
+			}
+		}
+		&:nth-child(3) {
+			@include s($h: 18.36%);
+			@include o(#bea75d, 9.38%, 87.23%, $b: 0);
+			div {
+				@include r(#eca356, 37.5%, 100%, top-center);
+				@include o(#e39b51, 16.67%, 34.04%, 16.67%, 25.53%);
+			}
+		}
+		@include nth(4, 5) {
+			@include r(#f3f5fa, 25%, 24.61%, 38.28%);
+			&:after {
+				@include r(white, 34.38%, 34.92%, 7.94%);
+			}
+			div {
+				@include r(#282428, 53.13%, 53.97%, 23.81%, center);
+				padding-top: 38.1%;
+				&:before {
+					@include s(#696158);
+				}
+			}
+		}
+		@include b(7.42%, 4);
+		@include b(50%, 4, after);
+		&:nth-child(6) {
+			@include r(#e8f1f1, 24.22%, 13.67%, 74.61%, center);
+			&:before {
+				@include r(#281d10, 22.58%, 100%, top-center);
+			}
+			&:after {
+				@include r(#281d10, 100%, 20%, $t: center);
+			}
+		}
+	}
+}
+#parasect {
+	background: linear-gradient(
+		to bottom,
+		#cb7c9a 61.33%,
+		#e9964c 61.33%
+	);
+	@include o(#cfd5e7, 25.78%, 25.78%, 16.8%, 41.41%);
+	> div {
+		&:nth-child(1) {
+			@include r($t: 0);
+			&:before {
+				@include r(#eec41f, 11.72%, 15.23%, 29.3%);
+				clip-path: polygon(0 0, 83.33% 0, 100% 12.82%, 100% 89.74%, 80% 100%, 0 100%);
+			}
+			&:after {
+				@include r(#eec41f, 16.8%, 17.97%, 15.63%, $r: 0);
+				clip-path: polygon(0 10.87%, 13.95% 0, 100% 0, 100% 100%, 13.95% 100%, 0 89.13%);
+			}
+			div {
+				@include r(#eec41f, 42.19%, 18.75%, 0, 23.83%);
+				clip-path: polygon(0 0, 100% 0, 100% 87.5%, 94.44% 100%, 5.56% 100%, 0 87.5%);
+			}
+		}
+		&:nth-child(2) {
+			@include r(#382415, 45.31%, 12.89%, 78.13%, center);
+			padding: 5.86% 5.47% 0;
+			&:before {
+				@include s(#654151);
+			}
+		}
+	}
+}
+
+#venonat {
+	background: #7970ae;
+	@include o(#dfdfe7, 5.47%, 14.84%, 35.94%);
+	> div {
+		@include nth(1, 2) {
+			@include r(#df83ae, 28.52%, 34.38%, 19.14%);
+			&:before {
+				@include r(#e795ba, 54.79%, 54.55%, 5.68%);
+			}
+			&:after {
+				@include r($t: 0);
+				background-size: 30.14% 22.73%;
+				background-position: 18% 0;
+				background-image: conic-gradient(
+					transparent 90deg,
+					transparent 90deg 180deg,
+					#d37ca6 180deg 270deg,
+					transparent 270deg
+				);
+			}
+		}
+		@include b(7.81%, 1);
+		@include b(21.92%, 1, before);
+		&:nth-child(3) {
+			@include r(null, 21.88%, 15.63%, 50.39%, center);
+			@include o(#d7d7df, 25%, 80%, $b: 0);
+			&:before, &:after {
+				clip-path: polygon(0 0, 100% 0, 100% 90.63%, 78.57% 100%, 21.43% 100%, 0 90.63%);
+			}
+			div {
+				@include r(#be768e, 75%, 65%, 0, center);
+				z-index: 1;
+			}
+		}
+		&:nth-child(4) {
+			@include r(null, 40.63%, 15.63%, 68.36%, center);
+			@include o(#b7a686, 30.77%);
+			&:before {
+				clip-path: polygon(12.5% 0, 90.63% 0, 100% 7.5%, 100% 92.5%, 90% 100%, 12.5% 100%, 0 92.5%, 0 10%);
+			}
+			&:after {
+				clip-path: polygon(9.38% 0, 87.5% 0, 100% 12.5%, 100% 92.5%, 87.5% 100%, 9.38% 100%, 0 92.5%, 0 7.5%);
+			}
+		}
+	}
+}
+#venomoth {
+	background: #ece3ef;
+	&:before {
+		@include r(#ccc3cf, 35.16%, 23.44%, 0, center);
+	}
+	&:after {
+		@include s(#a392bb, 65.63%);
+		clip-path: polygon(14.88% 0, 85.12% 0, 67.26% 19.14%, 67.26% 26.17%, 100% 49.61%, 100% 100%, 0 100%, 0 49.61%, 32.74% 26.17%, 32.74% 19.14%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#d7e3fb, 32.03%, 32.81%, 13.67%);
+			z-index: 1;
+			&:before {
+				@include r(#eff1fb, 100%, 32.14%, b0);
+			}
+			&:after {
+				@include r(white, 25.61%, 26.19%, 5.95%);
+			}
+			div {
+				@include r(#2c2428, 54.88%, 53.57%, 22.62%);
+				&:before {
+					@include r(#4d4649, 66.67%, 28.89%, b0);
+				}
+			}
+		}
+		@include b(7.81%, 1);
+		@include b(43.9%, 1, after);
+		@include b(25.61%, 1, div);
+		@include b(15.56%, 1, div-before);
+		&:nth-child(3) {
+			@include r(null, 72.66%, 28.13%, 62.11%, center);
+			z-index: 1;
+			@include o(#d3cbc3, 32.26%, 33.33%);
+			div {
+				@include r(null, 100%, 33.33%, b0);
+				@include o(#d3cbc3, 32.26%);
+			}
+		}
+		&:nth-child(4) {
+			@include r(#ccc3cf, 100%, 48.44%, 19.92%);
+			padding: 11.72% 0;
+			&:before {
+				@include s(#ece3ef);
+			}
+		}
+		&:nth-child(5) {
+			@include r(null, 25%, 10.55%, 45.31%, center);
+			z-index: 1;
+			@include o(#ececec, 26.56%);
+		}
+	}
+}
+
+#diglett {
+	background: #b5947b;
+	&:before {
+		@include r(#e3afcf, 61.72%, 38.28%, 50%, center);
+		clip-path: polygon(7.59% 0, 92.41% 0, 100% 10.2%, 100% 89.8%, 92.41% 100%, 7.59% 100%, 0 89.8%, 0 10.2%);
+	}
+	&:after {
+		@include r(#fbeef3, 16.41%, 8.59%, 57.81%, 28.52%);
+	}
+	> div {
+		@include r(#242020, 13.28%, 29.3%, 12.11%);
+		&:before {
+			@include r(#fdfdfd, 58.82%, 24%, 5.33%, center);
+		}
+		&:after {
+			@include r(#38322c, 100%, 20%, b0);
+		}
+		@include b(19.14%, 1);
+	}
+}
+#dugtrio {
+	background: #d7b36d;
+	> div {
+		&:nth-child(1), &:nth-child(2), &:nth-child(3) {
+			div {
+				&:before {
+					@include r(#fdfdfd, 62.5%, 22.22%, 8.33%, center);
+				}
+				&:after {
+					@include r(#38322c, 100%, 25%, b0);
+				}
+			}
+		}
+		&:nth-child(1) {
+			@include s(#a68569, 61.72%, 50%);
+			&:before {
+				@include r(#e3afcf, 48.1%, 35.94%, 53.91%, center);
+				clip-path: polygon(6.58% 0, 93.42% 0, 100% 8.7%, 100% 91.3%, 93.42% 100%, 6.58% 100%, 0 91.3%, 0 8.7%);
+			}
+			&:after {
+				@include r(#fbeef3, 12.66%, 7.81%, 64.06%, 32.28%);
+			}
+			div {
+				@include r(#242020, 10.13%, 28.13%, 17.19%);
+				@include b(25.32%, 1);
+			}
+		}
+		@include nth(2, 3) {
+			&:before {
+				@include r(#e3afcf, 60.16%, 35.16%, 52.34%);
+				clip-path: polygon(5.19% 0, 94.81% 0, 100% 8.89%, 100% 91.11%, 94.81% 100%, 5.19% 100%, 0 91.11%, 0 8.89%);
+			}
+			&:after {
+				@include r(#f6edf5, 15.63%, 7.81%, 61.72%);
+			}
+			div {
+				@include r(#242020, 12.5%, 28.13%, 14.84%);
+			}
+		}
+		&:nth-child(2) {
+			@include r(#aa8d71, 50%, 50%, b0);
+			&:before {
+				left: 13.28%;
+			}
+			&:after {
+				left: 22.66%;
+			}
+			div {
+				&:nth-child(1) {
+					left: 14.06%;
+				}
+				&:nth-child(2) {
+					left: 60.94%;
+				}
+			}
+		}
+		&:nth-child(3) {
+			@include r(#b5947b, 50%, 50%, b0, $r: 0);
+			&:before {
+				right: 13.28%;
+			}
+			&:after {
+				left: 35.94%;
+			}
+			div {
+				&:nth-child(1) {
+					right: 14.06%;
+				}
+				&:nth-child(2) {
+					right: 60.94%;
+				}
+			}
+		}
+	}
+}
+
+#meowth {
+	background: #fbefbe;
+	&:before {
+		@include r(#fbd14a, 28.91%, 34.77%, 0, center);
+		clip-path: polygon(0 0, 100% 0, 98% 89.89%, 87.84% 100%, 12.16% 100%, 0 89.89%);
+	}
+	&:after {
+		@include r(null, 20.31%, 23.83%, 5.08%, center);
+		background-image: repeating-linear-gradient(
+			to bottom,
+			#b89833 0,
+			#b89833 33.33%,
+			transparent 33.33%,
+			transparent 100%
+		);
+		background-size: 100% 41.67%;
+	}
+	> div {
+		&:nth-child(1) {
+			@include s(null, $h: 15.63%);
+			@include o(#5d5c59, 12.5%);
+			div {
+				@include r(null, 81.25%, 100%, 0, center);
+				z-index: 1;
+				@include o(#e79d76, 22.12%);
+			}
+		}
+		@include nth(2, 3) {
+			@include r(#fffff4, 22.66%, 26.17%, 32.03%);
+			padding-bottom: 0.39%;
+			&:before {
+				@include s(#f9f9f1);
+			}
+			div {
+				@include r(#201c1c, 13.79%, 71.64%, 13.43%);
+				&:before {
+					@include s(#756866, $h: 29.17%);
+				}
+			}
+		}
+		@include b(7.42%, 2);
+		@include p(1.17%, 2);
+		@include b(51.72%, 2, div);
+		&:nth-child(4) {
+			display: flex;
+			align-items: flex-end;
+			@include r(#a2768a, 73.44%, 19.92%, 63.67%, center);
+			@include o(#fffff1, 8.51%, 45.1%, 11.17%);
+			clip-path: polygon(4.79% 13.73%, 95.21% 13.73%, 100% 0, 100% 100%, 0 100%, 0 0);
+			div {
+				@include s(#d7a7be, $h: 33.33%);
+				position: unset;
+				@include o(#f9f9f1, 6.38%, 45.1%, 12.77%);
+				&:before, &:after {
+					z-index: 1;
+				}
+			}
+		}
+	}
+}
+#persian {
+	background: #f7e9be;
+	&:before {
+		@include r(#dccca4, 2.34%, 18.75%, 50%, center);
+	}
+	&:after {
+		@include r(#453934, 12.5%, 7.81%, 45.31%, center);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(#df7c6c, 11.72%, 11.72%, 16.41%, center);
+			&:before {
+				@include r(#f7dfdb, 30%, 30%, 3.33%, 20%);
+			}
+			&:after {
+				@include r(#f79f91, 100%, 20%, b0);
+			}
+		}
+		@include nth(2, 3) {
+			@include r(#fffff1, 32.03%, 22.27%, 23.44%);
+			&:before {
+				@include r(#fbfbf3, 87.8%, 94.74%);
+			}
+			div {
+				@include r(#ea765e, 17.07%, 92.98%);
+				&:before {
+					@include r(#ff7d6c, 100%, 24.53%, b0);
+				}
+			}
+		}
+		@include b(8.2%, 2);
+		@include a(43.9%, 2);
+		@include b(3.66%, 2, before);
+		@include b(50%, 2, div);
+		&:nth-child(4) {
+			@include r(#b07d8f, 57.81%, 20.7%, 62.89%, center);
+			clip-path: polygon(50% 0, 57.43% 20.75%, 100% 20.75%, 100% 100%, 0 100%, 0 20.75%, 42.57% 20.75%);
+			@include o(#efefe7, 11.49%, 50.94%, 8.11%);
+			div {
+				@include r(#cf9db2, 100%, 28.3%, b0);
+			}
+		}
+	}
+}
+
+#psyduck {
+	background: #66b7fb;
+	&:after {
+		@include r(#fbd971, 100%, 55.08%, b0);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(null, 81.25%, 17.97%, 62.5%, center);
+			z-index: 1;
+			@include o(#F3F7F7, 32.21%);
+			div {
+				@include r(null, 73.08%, 26.09%, 34.78%, center);
+				@include o(#363636, 7.89%);
+				z-index: 2;
+			}
+		}
+		&:nth-child(2) {
+			@include r(#ebddbe, 68.75%, 24.61%, bottom-center);
+			z-index: 1;
+			clip-path: polygon(35.22% 0, 64.77% 0, 64.77% 33.33%, 100% 33.33%, 100% 100%, 0 100%, 0 33.33%, 35.22% 33.33%);
+			div {
+				@include r(null, 13.64%, 23.81%, 9.52%, center);
+				@include o(#8e8675, 25%);
+			}
+		}
+		&:nth-child(3) {
+			@include r();
+			&:before, &:after {
+				@include r(#484848, 10.94%, 46.88%, 5.08%, center);
+				border-radius: 10.71% 10.71% 0 0 / 2.5% 2.5% 0 0;
+			}
+			&:before {
+				transform: rotate(-36deg) translateX(-120%) translateY(5%);
+			}
+			&:after {
+				transform: rotate(36deg) translateX(120%) translateY(5%);
+			}
+			div {
+				@include r(#484848, 10.16%, 46.88%, 5.08%, center);
+				border-radius: 11.54% 11.54% 0 0 / 2.5% 2.5% 0 0;
+			}
+		}
+	}
+}
+#golduck {
+	background: #85b2d6;
+	&:before {
+		@include r(linear-gradient(
+			to bottom,
+			#ff5269 75%,
+			#fe7686 75%
+			), 10.94%, 10.94%, 16.41%, center);
+	}
+	&:after {
+		@include r(#ffb3be, 3.52%, 3.52%, 17.58%, 47.27%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 32.03%, 18.75%, 22.27%);
+			div {
+				@include r(#ad520d, 29.27%);
+				&:before {
+					@include r(#c75e0c, 100%, 20.83%, b0);
+				}
+				&:after {
+					@include r(linear-gradient(
+						to bottom,
+						white 72.22%,
+						#592a04 72.22%
+						), 41.67%, 75%, centered);
+				}
+			}
+		}
+		@include e(7.03%, 1);
+		@include b(42.68%, 1, div);
+		&:nth-child(3) {
+			@include r(#fff5d4, 85.94%, 52.34%, 37.5%, center);
+			clip-path: polygon(40.91% 0, 59.09% 0, 62.73% 6.72%, 62.73% 20.9%, 100% 20.9%, 100% 100%, 0 100%, 0 20.9%, 37.27% 20.9%, 37.27% 6.72%);
+			@include o(#d5cdab, 2.27%, 11.94%, 41.82%, 8.21%);
+			div {
+				@include r(#8e7475, 88.18%, 35.82%, 50.75%, center);
+				&:before {
+					@include r(#aa818e, 71.13%, 43.76%, bottom-center);
+				}
+			}
+		}
+	}
+}
+
+#mankey {
+	background: #efdbc7;
+	> div {
+		@include nth(1, 2) {
+			@include r(#f1f1f1, 35.55%, 26.17%, 21.48%);
+			div {
+				@include r(#c99685, 26.37%);
+				&:before {
+					@include r(#3b332b, 41.67%, 28.36%, 61.19%, center);
+				}
+			}
+		}
+		@include e(8.98%, 1);
+		@include b(39.56%, 1, div);
+		&:nth-child(3) {
+			@include r(null, 43.75%, 29.69%, 47.66%, center);
+			@include o(#c3b5a2, 5.36%, 75%, 38.39%, -50%);
+			&:before {
+				height: 56.58%;
+				top: -31.58%;
+			}
+			div {
+				@include s(#d38d79);
+				z-index: 1;
+				clip-path: polygon(7.14% 0, 92.86% 0, 100% 10.53%, 100% 88.16%, 91.96% 100%, 8.04% 100%, 0 88.16%, 0 10.53%);
+				@include o(#3b332b, 7.14%, 42.11%, 28.57%, 26.32%);
+			}
+		}
+	}
+}
+#primeape {
+	background: #efdbc7;
+	> div {
+		@include nth(1, 2) {
+			@include r(#f1f1f1, 28.91%, 24.61%, 26.56%);
+			div {
+				@include r(#34302c, 16.22%, 84.13%);
+			}
+		}
+		@include e(11.72%, 1);
+		@include b(51.35%, 1, div);
+		&:nth-child(3) {
+			@include r(null, 44.53%, 30.47%, 51.17%, center);
+			@include o(#dac9b8, 7.02%, 76.92%, 28.95%, -56.41%);
+			&:before {
+				height: 60.26%;
+				top: -39.74%;
+			}
+			div {
+				@include s(#d38d79);
+				z-index: 1;
+				clip-path: polygon(7.14% 0, 92.86% 0, 100% 10.53%, 100% 88.16%, 91.96% 100%, 8.04% 100%, 0 88.16%, 0 10.53%);
+				@include o(#754e45, 11.4%, 38.46%, 27.19%, 30.77%);
+			}
+		}
+		&:nth-child(4) {
+			@include r(null, 25%, 23.44%, 4.69%, 62.89%);
+			&:before {
+				@include r(#c3b5a6, 90.63%, 40%, centered);
+			}
+			&:after {
+				@include r(#c3b5a6, 37.5%, 90%, centered);
+			}
+			div {
+				@include s();
+				z-index: 1;
+				&:before {
+					@include r(#efdbc7, 100%, 13.33%, centered);
+				}
+				&:after {
+					@include r(#efdbc7, 12.5%, 100%, centered);
+				}
+			}
+		}
+	}
+}
+
+#growlithe {
+	background: #e8a460;
+	&:before {
+		@include r(#f7e7bf, 17.97%, 16.8%, null, center);
+	}
+	&:after {
+		@include r(#f7e7bf, 100%, 59.38%, b0);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 25.78%, 23.44%, 17.58%);
+			div {
+				@include s(linear-gradient(
+					#1d2434 83.33%,
+					#4d4655 83.33%
+					));
+				&:before {
+					@include r(#181e2c, 43.59%, 88.33%);
+				}
+				&:after {
+					@include r(white, 35.9%, 61.67%);
+				}
+			}
+		}
+		@include b(8.59%, 1);
+		@include a(0, 1, 50%);
+		@include p(10.55%, 1);
+		@include b(30.77%, 1, div-before);
+		@include b(48.72%, 1, div-after);
+		&:nth-child(3) {
+			@include r();
+			z-index: 1;
+			&:before {
+				@include r(#343638, 19.53%, 11.72%, 39.06%, center);
+			}
+			div {
+				@include r(#927275, 85.94%, 17.19%, 68.75%, center);
+				padding: 9.77% 11.33% 0;
+				&:before {
+					@include s(#ffacb2);
+				}
+			}
+		}
+	}
+}
+#arcanine {
+	background: #e8a460;
+	&:after {
+		@include r(#f7e7bf);
+		clip-path: polygon(36.72% 39.06%, -1% 14.45%, -1% -1%, 101% -1%, 101% 14.45%, 63.28% 39.06%, 63.28% 43.75%, 101% 43.75%, 101% 100%, -1% 100%, -1% 43.75%, 36.72% 43.75%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 28.91%, 20.31%, 19.14%);
+			div {
+				@include r(linear-gradient(
+					#242220 75%,
+					#3c3834 75%
+					), 51.35%, 100%);
+				&:before {
+					@include r(white, 28.95%, 86.54%);
+				}
+			}
+		}
+		@include b(8.59%, 1);
+		@include b(27.03%, 1, div);
+		@include b(36.84%, 1, div-before);
+		&:nth-child(3) {
+			@include r(#927275, 89.06%, 17.97%, 69.53%, center);
+			z-index: 1;
+			&:before {
+				@include r(#343638, 20.18%, 56.52%, -132.61%, center);
+			}
+			&:after {
+				@include r(#ffacb2, 78.07%, 34.78%, bottom-center);
+			}
+			div {
+				@include r(null, 83.33%, 43.48%, top-center);
+				@include o(white, 12.63%);
+			}
+		}
+	}
+}
+
+#poliwag {
+	background: #6595d3;
+	&:before {
+		@include r(#f3c5db, 23.44%, 17.58%, 29.3%, center);
+		z-index: 1;
+	}
+	&:after {
+		@include r(#512c41, 11.72%, 5.08%, 35.55%, center);
+		z-index: 2;
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 25%, 24.22%, 8.98%);
+			div {
+				@include r(#180f10, 82.81%, 83.87%);
+				&:before {
+					@include r(white, 35.85%, 36.54%, 13.21%);
+				}
+				&:after {
+					@include r(#251d1d, 64.15%, 30.77%, b0);
+				}
+			}
+		}
+		@include b(7.42%, 1);
+		@include b(0, 1, div, true);
+		@include b(15.38%, 1, div-before, true);
+		@include b(15.09%, 1, div-after);
+		&:nth-child(3) {
+			@include r(#dfe1ef, 81.25%, 58.98%, bottom-center);
+			clip-path: polygon(7.21% 0, 92.79% 0, 100% 9.27%, 100% 100%, 0 100%, 0 9.27%);
+			&:before {
+				@include r(#342528, 73.08%, 84.77%, bottom-center);
+				clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%, 25.66% 100%, 25.66% 28.91%, 74.34% 28.91%, 74.34% 73.44%, 50% 73.44%, 50% 59.38%, 61.84% 59.38%, 61.84% 43.75%, 38.16% 43.75%, 38.16% 89.06%, 86.84% 89.06%, 86.84% 14.84%, 13.16% 14.84%, 13.16% 100%);
+			}
+		}
+	}
+}
+#poliwhirl {
+	background: #6595d3;
+	&:before {
+		@include s(linear-gradient(
+			to bottom,
+			#3d66b8 56.52%,
+			#699bdb 56.52%
+			), 31.25%, 17.97%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 23.44%, 23.83%, 7.42%);
+			div {
+				@include r(#180f10, 75%, 70.49%, 14.75%);
+				&:before {
+					@include r(white, 31.11%, 32.56%, 11.63%);
+				}
+				&:after {
+					@include r(#241d1c, 57.78%, 30.23%, b0);
+				}
+			}
+		}
+		@include b(5.86%, 1);
+		@include b(13.33%, 1, div);
+		@include b(17.78%, 1, div-before, true);
+		@include b(15.56%, 1, div-after);
+		&:nth-child(3) {
+			@include r(null, 84.38%, 62.89%, bottom-center);
+			&:before {
+				@include s(#dfe1ef);
+				clip-path: polygon(0 100%, 0 8.7%, 5.56% 0, 94.44% 0, 100% 8.7%, 100% 100%);
+			}
+			&:after {
+				@include r(#342528, 74.54%, 82.61%, b0, 12.5%);
+				clip-path: polygon(100% 100%, 88.2% 100%, 88.2% 14.29%, 11.8% 14.29%, 11.8% 92.48%, 65.84% 92.48%, 65.84% 44.36%, 34.16% 44.36%, 34.16% 60.9%, 53.42% 60.9%, 53.42% 76.69%, 22.98% 76.69%, 22.98% 28.57%, 77.64% 28.57%, 77.64% 100%, 0 100%, 0 0, 100% 0);
+			}
+			div {
+				@include r(null, 21.12%, 10.53%, -17.29%, center);
+				@include o(#5d89c3, 26.47%);
+			}
+		}
+	}
+}
+#poliwrath {
+	background: #6595d3;
+	&:before {
+		@include s(linear-gradient(
+			to bottom,
+			#3d66b8 50%,
+			#699bdb 50%
+			), 29.69%, 20.31%);
+	}
+	&:after {
+		@include r(linear-gradient(
+			to right,
+			#5d89c3 17.5%,
+			transparent 17.5%,
+			transparent 82.5%,
+			#5d89c3 82.5%
+			), 15.63%, 6.25%, 33.98%, center);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 24.22%, 23.83%, 13.67%);
+			&:before {
+				@include r(#180f10, 29.03%, 77.05%);
+			}
+			&:after {
+				@include s(#5d89c3, 101%, 49.18%);
+			}
+		}
+		&:nth-child(1) {
+			&:after {
+				clip-path: polygon(0 0, 101% 0, 100% 100%, 0 40%);
+			}
+		}
+		&:nth-child(2) {
+			&:after {
+				clip-path: polygon(0 0, 100% 0, 100% 40%, 0 100%);
+			}
+		}
+		@include b(5.86%, 1);
+		@include b(45.16%, 1, before);
+		&:nth-child(3) {
+			@include r(#dfe1ef, 100%, 53.51%, b0);
+			div {
+				@include r(#342528, 78.13%, 88.32%, bottom-center);
+				&:before {
+					@include r(#dfe1ef, 74%, 80.17%, bottom-center);
+				}
+			}
+			&:after {
+				@include r(#342528, 42.97%, 58.39%, bottom-center);
+				clip-path: polygon(0 0, 100% 0, 100% 100%, 77.27% 100%, 77.27% 31.25%, 22.73% 31.25%, 22.73% 55%, 59.09% 55%, 59.09% 85%, 0 85%);
+			}
+		}
+	}
+}
+
+#abra {
+	background: #f7df49;
+	&:before, &:after {
+		@include r(#504e3c, 27.73%, 19.53%, 34.77%);
+		clip-path: polygon(4.23% 0, 100% 48%, 100% 100%, 85.92% 100%, 85.92% 64%, 0 22%);
+	}
+	&:before {
+		left: 8.98%;
+	}
+	&:after {
+		@include flip;
+		right: 8.98%;
+	}
+	> div {
+		@include r(#f5e5b3, 39.84%, 26.17%, 59.38%, center);
+		@include o(#dcc482, 6.86%, 20.9%, 34.31%, 56.72%);
+		clip-path: polygon(0 14.93%, 9.8% 0, 90.2% 0, 100% 14.93%, 100% 79.1%, 90.2% 100%, 9.8% 100%, 0 79.1%);
+	}
+}
+#kadabra {
+	background: #f3d94a;
+	&:after {
+		@include s(#edb39a, 26.56%, 25.39%, 3.91%);
+		clip-path: polygon(50% 0, 70.59% 33.85%, 100% 41.54%, 77.94% 66.15%, 79.41% 100%, 50% 81.54%, 20.59% 100%, 22.06% 66.15%, 0 41.54%, 29.41% 33.85%);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(#7d6a65, 100%, 41.8%, b0);
+			div {
+				@include r(#f3d94a, 100%, 72.9%, b0);
+				&:before {
+					@include r(#7d6a65, 76.56%, 66.67%, bottom-center);
+				}
+			}
+		}
+		&:nth-child(2) {
+			@include r(#f3d94a, 38.28%, 50%, 45.31%, center);
+			@include o(#d9c13d, 8.16%, 10.94%, 23.47%, 73.44%);
+			clip-path: polygon(0 0, 100% 0, 100% 90.63%, 89.8% 100%, 10.2% 100%, 0 90.63%);
+		}
+		@include nth(3, 4) {
+			@include r(null, 36.72%, 60.55%, 12.89%);
+			&:after {
+				@include s(#e7cf3c, 101%);
+			}
+			div {
+				@include r(white, $h: 45.81%);
+				&:before {
+					@include r(#414141, 11.7%, 90.14%);
+				}
+			}
+		}
+		&:nth-child(3) {
+			&:after {
+				clip-path: polygon(0 0, 100% 0, 100% 100%, 89.36% 100%, 89.36% 45.81%, 0 10.97%);
+			}
+		}
+		&:nth-child(4) {
+			&:after {
+				clip-path: polygon(100% 0, 0 0, 0 100%, 10.64% 100%, 10.64% 45.81%, 100% 10.97%);
+			}
+		}
+		@include b(6.64%, 3);
+		@include a(0, 3, 41.29%);
+		@include b(45.74%, 3, div-before);
+	}
+}
+#alakazam {
+	background: #f2dd45;
+	&:before {
+		@include r(linear-gradient(
+			to bottom,
+			#7d6a65 48.39%,
+			#f2dd45 48.39%,
+			#f2dd45 73.39%,
+			#7d6a65 73.39%
+			), 100%, 48.44%, b0);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(#f2dd45, 39.06%, 50%, 43.75%, center);
+			@include o(#dfcb41, 9%, 11.72%, 23%, 73.44%);
+			clip-path: polygon(0 0, 100% 0, 100% 93.75%, 91% 100%, 9% 100%, 0% 93.75%);
+		}
+		@include nth(2, 3) {
+			@include r(null, 35.55%, 57.03%, 13.28%);
+			&:after {
+				@include s(#e6d140, 100%);
+			}
+			div {
+				@include r(white, $h: 40.41%);
+				&:before {
+					@include r(#3e3e3e, 15.38%, 91.53%);
+				}
+			}
+		}
+		&:nth-child(2) {
+			&:after {
+				clip-path: polygon(0 0, 100% 0, 100% 100%, 87.91% 100%, 87.91% 40.41%, 0 9.59%);
+			}
+		}
+		&:nth-child(3) {
+			&:after {
+				clip-path: polygon(100% 0, 0 0, 0 100%, 12.09% 100%, 12.09% 40.41%, 100% 9.59%);
+			}
+		}
+		@include b(7.81%, 2);
+		@include a(0, 2, 34.93%);
+		@include b(42.86%, 2, div-before);
+		@include nth(4, 5) {
+			@include r(#d7d7cb, 21.48%, 39.45%, b0);
+			&:before {
+				@include r(#e3e1d3, 34.55%, 43.56%, 12.87%);
+			}
+		}
+		&:nth-child(4) {
+			clip-path: polygon(0 0, 78.18% 0, 101% 11.88%, 101% 101%, 0 101%);
+		}
+		&:nth-child(5) {
+			right: 0;
+			clip-path: polygon(101% 0, 21.82% 0, 0 11.88%, 0 101%, 101% 101%);
+			&:before {
+				right: 0;
+			}
+		}
+	}
+}
+
+#machop {
+	background: #b6cdd7;
+	&:before {
+		@include s(linear-gradient(
+			to right,
+			#d7cfc3 23.08%,
+			#b6cdd7 23.08%,
+			#b6cdd7 38.46%,
+			#d7cfc3 38.46%,
+			#d7cfc3 61.54%,
+			#b6cdd7 61.54%,
+			#b6cdd7 76.92%,
+			#d7cfc3 76.92%
+			), 50.78%, 16.8%);
+	}
+	&:after {
+		@include r(linear-gradient(
+			to right,
+			#9badb6 25%,
+			transparent 25%,
+			transparent 75%,
+			#9badb6 75%
+			), 12.5%, 5.08%, 54.69%, center)
+			}
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 22.66%, 35.55%, 19.92%);
+			&:before {
+				@include r(linear-gradient(
+					#d36e6d 73.75%,
+					#e87675 73.75%
+					), 68.97%, 87.91%, b0);
+			}
+			&:after {
+				@include r(#382424, 31.03%, 51.65%, 31.87%);
+			}
+		}
+		@include b(8.59%, 1);
+		@include b(0, 1, before, true);
+		@include b(53.45%, 1, after);
+		&:nth-child(3) {
+			@include r(#9a8d96, 67.19%, 25%, 64.84%, center);
+			&:before {
+				@include r(#dbafc3, 76.74%, 43.75%, bottom-center);
+			}
+		}
+	}
+}
+#machoke {
+	background: #babbd7;
+	&:before {
+		@include s(linear-gradient(
+			to right,
+			#a5a3a6 16.67%,
+			#babbd7 16.67%,
+			#babbd7 40.91%,
+			#a5a3a6 40.91%,
+			#a5a3a6 59.09%,
+			#babbd7 59.09%,
+			#babbd7 83.33%,
+			#a5a3a6 83.33%
+			), 51.56%, 34.38%);
+	}
+	&:after {
+		@include r(linear-gradient(
+			to right,
+			#9a9bb2 25%,
+			transparent 25%,
+			transparent 75%,
+			#9a9bb2 75%
+			), 12.5%, 6.25%, 62.89%, center);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 25%, 20.31%, 27.34%);
+			&:before {
+				@include s(linear-gradient(
+					#924c59 86.54%,
+					#aa5865 86.54%
+					));
+			}
+			&:after {
+				@include r(#271618, 23.44%, 94.23%, 0);
+			}
+		}
+		@include e(7.03%, 1);
+		@include p(8.59%, 1);
+		@include b(57.81%, 1, after);
+		&:nth-child(3) {
+			@include r(#82445d, 88.28%, 17.97%, 71.88%, center);
+			&:before {
+				@include s(linear-gradient(
+					to right,
+					white 12.82%,
+					transparent 12.82%,
+					transparent 87.18%,
+					white 87.18%
+					), 69.03%, 36.96%);
+			}
+			&:after {
+				@include r(linear-gradient(
+					to right,
+					white 9.5%,
+					transparent 9.5%,
+					transparent 15%,
+					#9a8196 15%,
+					#9a8196 85%,
+					transparent 85%,
+					transparent 90.5%,
+					white 90.5%
+					), 88.5%, 45.65%, bottom-center);
+			}
+		}
+	}
+}
+#machamp {
+	background: #aabacb;
+	&:before {
+		@include s(#b6ab9a, 11.72%, 50%);
+	}
+	&:after {
+		@include r(#f4ecba, 100%, 57.81%, b0);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(null, 36.33%, 43.75%, 0);
+			&:before {
+				@include r(white, 91.4%);
+			}
+			&:after {
+				@include r(#b6ab9a);
+			}
+			div {
+				@include r(#a66e5d, 30.11%);
+				&:before {
+					@include r(#b67b65, 100%, 15.18%, b0);
+				}
+				&:after {
+					@include s(#493029, 42.86%, 89.29%);
+				}
+			}
+		}
+		&:nth-child(1) {
+			clip-path: polygon(0 0, 24.73% 0, 24.73% 21.43%, 100% 96.43%, 100% 100%, 0 100%);
+			&:after {
+				clip-path: polygon(0 0, 100% 0, 100% 100%, 81.72% 100%, 0 21.43%);
+			}
+		}
+		&:nth-child(2) {
+			clip-path: polygon(100% 0, 75.27% 0, 75.27% 21.43%, 0 96.43%, 0 100%, 100% 100%);
+			&:after {
+				clip-path: polygon(100% 0, 0 0, 0 100%, 18.28% 100%, 100% 21.43%);
+			}
+		}
+		@include b(5.86%, 1);
+		@include b(0, 1, before, true);
+		@include b(32.26%, 1, div);
+		&:nth-child(3) {
+			@include r(#967886, 100%, 21.88%, 59.77%);
+			z-index: 1;
+			clip-path: polygon(0 0, 34.38% 0, 37.5% 16.07%, 62.5% 16.07%, 65.63% 0, 100% 0, 100% 100%, 0 100%);
+			div {
+				@include r(#c79eae, 79.69%, 41.07%, bottom-center);
+			}
+		}
+	}
+}
+
+#bellsprout {
+	background: #ebeb5d;
+	&:before {
+		@include r(linear-gradient(
+			#dcb9b6 16.67%,
+			#cfb1ae 16.67%
+			), 100%, 35.16%, b0);
+	}
+	&:after {
+		@include r(#292620, 72.66%, 17.19%, bottom-center);
+	}
+	> div {
+		@include r(#2c2a28, 10.94%, 14.84%, 20.31%);
+		&:before {
+			@include r(#575757, 100%, 18.42%, b0);
+		}
+		&:after {
+			@include r(#fbfbfb, 53.57%, 36.84%);
+		}
+		@include b(18.75%, 1);
+		@include b(25%, 1, after);
+	}
+}
+#weepinbell {
+	background: #ebeb5d;
+	&:before {
+		@include r(#a6af3b, 14.84%, 14.45%, 3.52%, 28.13%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#f9fff8, 28.52%, 28.13%, 25.78%);
+			&:before {
+				@include r(#393939, 57.75%, 56.94%, centered);
+			}
+		}
+		@include b(8.2%, 1);
+		&:nth-child(3) {
+			@include r(#dcb9b6, 100%, 38.28%, b0);
+			&:before {
+				@include r(#cfb1ae, 100%, 76.53%, b0);
+			}
+			&:after {
+				@include r(#282620, 81.25%, 35.71%, bottom-center);
+			}
+		}
+	}
+}
+#victreebell {
+	background: #efef64;
+	&:before {
+		@include r(#4d4c20, 25%, 14.06%, 58.59%, center);
+	}
+	> div {
+		&:nth-child(1) {
+			@include s(#8fc982, $h: 26.95%);
+			&:before {
+				@include s(#79b071, 7.03%, 39.13%);
+			}
+			&:after {
+				@include r(#79b071, 100%, 43.48%, b0);
+			}
+		}
+		&:nth-child(2) {
+			@include s(#cfb1ae, $h: 39.84%);
+			&:before {
+				@include s(#d7b7b2, $h: 47.06%);
+			}
+			div {
+				@include r(#282620, 91.41%, 34.31%, 0, center);
+				@include o(#f9fff8, 12.39%, 48.57%, 15.81%, b0);
+			}
+		}
+		@include nth(3, 4) {
+			@include r(#f9fff8, 28.91%, 14.84%);
+			&:before {
+				@include r(#393939, 12.16%, 55.26%);
+			}
+		}
+		@include b(10.16%, 3);
+		@include b(41.89%, 3, before);
+	}
+}
+
+#tentacool {
+	background: #55a5cf;
+	&:before {
+		@include r(#4d95ba, 3.52%, 14.06%, bottom-center);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(#c45079, 32.81%, 38.28%, 6.64%, center);
+			clip-path: polygon(9.52% 0, 90.48% 0, 100% 8.16%, 100% 91.84%, 90.48% 100%, 9.52% 100%, 0 91.84%, 0 8.16%);
+			div {
+				@include r(#b1344d, 88.1%, 91.83%, centered);
+				clip-path: polygon(12.16% 0, 87.84% 0, 100% 8.89%, 100% 91.11%, 87.84% 100%, 12.16% 100%, 0 91.11%, 0 8.89%);
+				&:before {
+					@include r(#ffe3ef, 29.73%, 21.43%, 8.16%, 24.32%);
+				}
+				&:after {
+					@include r(#d37b9a, 75.68%, 37.76%, bottom-center);
+					clip-path: polygon(0 13.89%, 8.93% 0, 91.07% 0, 100% 13.89%, 100% 100%, 0 100%);
+				}
+			}
+		}
+		@include nth(2, 3) {
+			@include r(null, 50.78%, 33.98%, 53.91%);
+			&:before {
+				@include r(#4d95ba, 7.69%, 52.87%);
+				border-radius: 20% 20% 0 0 / 4.35% 4.35% 0 0;
+			}
+			div {
+				@include r(#4d95ba, 100%, 49.43%, b0);
+				&:before {
+					@include r(#eaf3fb, 56.92%, 65.12%, 18.6%);
+				}
+				&:after {
+					@include r(#1f2c31, 8.46%, 34.88%, 18.6%);
+				}
+			}
+		}
+		&:nth-child(2) {
+			div {
+				clip-path: polygon(0 0, 68.46% 0, 91.54% 79.07%, 100% 79.07%, 100% 100%, 12.31% 100%, 12.31% 18.6%, 0 18.6%);
+				&:before {
+					clip-path: polygon(0 0, 79.73% 0, 100% 57.14%, 100% 100%, 0 100%);
+				}
+			}
+		}
+		&:nth-child(3) {
+			div {
+				clip-path: polygon(100% 0, 31.54% 0, 8.46% 79.07%, 0 79.07%, 0 100%, 87.69% 100%, 87.69% 18.6%, 100% 18.6%);
+				&:before {
+					clip-path: polygon(100% 0, 20.27% 0, 0 57.14%, 0 100%, 100% 100%);
+				}
+			}
+		}
+		@include b(0, 2);
+		@include b(60.77%, 2, before);
+		@include b(18.46%, 2, div-before);
+		@include b(43.08%, 2, div-after);
+	}
+}
+#tentacruel {
+	background: #373737;
+	&:after {
+		@include r(#6abbe5, 28.91%, 17.97%, bottom-center);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(white, 81.25%, 18.75%, 57.03%, center);
+			@include o(#2b2b2b, 4.81%, 87.5%, 16.83%);
+		}
+		&:nth-child(2) {
+			@include s(#6abbe5, $h: 75.78%);
+			clip-path: polygon(-1% 0, -1% 82.99%, 14.84% 82.99%, 37.5% 100%, 62.5% 100%, 85.16% 82.99%, 101% 82.99%, 101% 0);
+			&:before {
+				@include r(#5899ba, 100%, 5.67%, 17.53%);
+			}
+			&:after {
+				@include r(#5899ba, 5.47%, 79.38%, bottom-center);
+			}
+		}
+		&:nth-child(3) {
+			@include r(null, 100%, 38.67%, 0);
+			@include o(#c74f7a, 16.8%);
+			div {
+				@include r();
+				@include o(#b2344d, 8.98%, 80.81%);
+				z-index: 1;
+				&:before {
+					clip-path: polygon(0 0, 100% 0, 100% 85%, 52.17% 100%, 0 100%);
+				}
+				&:after {
+					clip-path: polygon(100% 0, 0 0, 0 85%, 47.83% 100%, 100% 100%);
+				}
+			}
+		}
+		&:nth-child(4) {
+			@include r(#c74f7a, 33.59%, 32.81%, 5.86%, center);
+			clip-path: polygon(11.63% 0, 88.37% 0, 100% 10.71%, 100% 90.48%, 88.37% 100%, 11.63% 100%, 0 90.48%, 0 10.71%);
+			div {
+				@include r(#b2344d, 88.37%, 88.1%, centered);
+				clip-path: polygon(11.84% 0, 88.16% 0, 100% 10.81%, 100% 90.54%, 88.16% 100%, 11.84% 100%, 0 90.54%, 0 10.81%);
+				&:before {
+					@include r(#ffe3ee, 28.95%, 28.38%, 10.81%, 27.63%);
+				}
+				&:after {
+					@include r(#d37c9a, 76.32%, 37.84%, bottom-center);
+					clip-path: polygon(0 14.29%, 6.9% 0, 93.1% 0, 100% 14.29%, 100% 100%, 0 100%);
+				}
+			}
+		}
+	}
+}
+
+#geodude {
+	background: #b3b5ae;
+	&:before {
+		@include r(#bbbdb6, $h: 22.66%);
+		clip-path: polygon(0 0, 100% 0, 100% 51.72%, 74.61% 51.72%, 62.5% 100%, 37.5% 100%, 25.39% 51.72%, 0 51.72%);
+	}
+	&:after {
+		@include r(#b3b5ae, $h: 18.75%);
+		clip-path: polygon(0 0, 100% 0, 100% 41.67%, 74.22% 41.67%, 62.5% 100%, 37.5% 100%, 25.78% 41.67%, 0 41.67%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(null, 35.16%, 42.58%, 18.36%);
+			&:before {
+				@include r(#eff1f6, 73.33%, 66.06%, b0);
+			}
+			&:after {
+				@include r(#afb1aa, $h: 68.81%);
+			}
+			div {
+				@include r(#231219, 18.89%, 66.06%, 29.36%);
+				&:before {
+					@include r(#eff1f6, 58.82%, 62.5%);
+				}
+				&:after {
+					@include r(#412e20, 100%, 13.33%, b0);
+				}
+			}
+		}
+		&:nth-child(1) {
+			&:after {
+				clip-path: polygon(16.67% 0, 100% 53.33%, 100% 100%, 0 48%);
+			}
+		}
+		&:nth-child(2) {
+			&:after {
+				clip-path: polygon(83.33% 0, 0 53.33%, 0 100%, 100% 48%);
+			}
+		}
+		@include b(3.52%, 1);
+		@include b(17.78%, 1, before);
+		@include b(51.11%, 1, div);
+		@include b(17.65%, 1, div-before);
+		&:nth-child(3) {
+			@include r(#ae5059, 68.75%, 21.09%, 71.09%, center);
+			padding: 11.33% 7.81% 0;
+			&:before {
+				@include s(#cf6069);
+			}
+		}
+	}
+}
+#graveler {
+	background: #a1a192;
+	&:before, &:after {
+		clip-path: polygon(0 0, 100% 0, 100% 79.22%, 88.67% 100%, 88.67% 42.86%, 86.33% 36.36%, 64.84% 36.36%, 62.5% 42.86%, 62.5% 100%, 37.5% 100%, 37.5% 42.86%, 35.16% 36.36%, 13.67% 36.36%, 11.33% 42.86%, 11.33% 100%, 0% 79.22%);
+	}
+	&:before {
+		@include r(#99998a, $h: 30.08%);
+	}
+	&:after {
+		@include r(#a4a493, $h: 30.08%);
+		margin-top: -5.47%;
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(null, 34.77%, 18.75%, 47.27%);
+			div {
+				@include s(#eee);
+				&:before {
+					@include r(#282824, 12.36%, 87.5%);
+				}
+			}
+		}
+		@include b(7.03%, 1);
+		@include e(0, 1, div);
+		@include b(56.18%, 1, div-before);
+		&:nth-child(1) {
+			&:before {
+				@include r(#96978a, 7.87%, 83.33%, b0, $r: -7.87%);
+			}
+		}
+		&:nth-child(2) {
+			&:before {
+				@include r(#96978a, 7.87%, 60.42%, b0, $l: -7.87%);
+			}
+		}
+		&:nth-child(3) {
+			@include r(#bb889a, 65.63%, 10.94%, 75%, center);
+			clip-path: polygon(0 0, 100% 0, 97.62% 100%, 2.38% 100%);
+			&:before {
+				@include r(#efabbe, 100%, 42.86%, b0);
+			}
+		}
+	}
+}
+#golem {
+	background: #7d7e75;
+	&:before {
+		@include r(#4a403d);
+		clip-path: polygon(0 8.2%, 28.91% 8.2%, 28.91% 0, 41.02% 0, 41.02% 8.2%, 80.47% 8.2%, 80.47% 0, 92.19% 0, 92.19% 80.47%, 100% 80.47%, 100% 92.19%, 64.84% 92.19%, 64.84% 100%, 52.34% 100%, 52.34% 92.19%, 7.42% 92.19%, 7.42% 81.64%, 0 81.64%, 0 69.53%, 7.42% 69.53%, 7.42% 19.53%, 0 19.53%);
+	}
+	&:after {
+		@include r(#968982, 73.44%, 66.41%, centered);
+		clip-path: polygon(0 8.24%, 6.38% 0, 93.62% 0, 100% 8.24%, 100% 92.94%, 94.15% 100%, 5.85% 100%, 0 92.94%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#e9e9e9, 21.88%, 10.16%, 35.16%);
+			z-index: 1;
+			div {
+				@include r(#d3786d, 62.5%, 100%);
+				&:before {
+					@include r(#e38375, 32.14%, 42.31%, b0)
+						}
+				&:after {
+					@include r(#452824, 28.57%, 76.92%);
+				}
+			}
+		}
+		@include b(17.97%, 1);
+		@include b(0, 1, div, true);
+		@include b(0, 1, div-before);
+		@include b(31.43%, 1, div-after);
+		&:nth-child(1) {
+			clip-path: polygon(0 0, 64.29% 0, 100% 100%, 25% 100%);
+		}
+		&:nth-child(2) {
+			clip-path: polygon(100% 0, 35.71% 0, 0 100%, 75% 100%);
+		}
+		&:nth-child(3) {
+			@include r(#9a707d, 64.06%, 17.58%, 56.25%, center);
+			z-index: 1;
+			@include o(#c3c5cb, 9.76%, 31.11%, 6.1%, b0);
+			div {
+				@include r(#c38ca2, 59.76%, 53.33%, bottom-center);
+			}
+		}
+	}
+}
+
+#ponyta {
+	background: #fff9d3;
+	&:before {
+		@include s(#e36634, 80.47%, 9.77%);
+		clip-path: polygon(0 0, 100% 0, 87.86% 100%, 12.14% 100%);
+	}
+	&:after {
+		@include r(#f4bf00, 68.75%, 36.72%, top-center);
+		clip-path: polygon(0 0, 100% 0, 100% 50%, 72.73% 50%, 72.73% 91.49%, 69.32% 100%, 30.68% 100%, 27.27% 91.49%, 27.27% 50%, 0 50%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#1a090a, 26.17%, 29.69%, 37.89%);
+			&:before {
+				@include r(#fff9f7, 26.87%, 35.53%, 13.16%);
+			}
+			&:after {
+				@include r(#4c3b2b, 100%, 15.79%, b0);
+			}
+		}
+		@include b(6.64%, 1);
+		@include a(0, 1, 14.47%);
+		@include b(40.3%, 1, before);
+		&:nth-child(1) {
+			&:before {
+				clip-path: polygon(0 0, 100% 11.11%, 100% 100%, 0 100%);
+			}
+		}
+		&:nth-child(2) {
+			&:before {
+				clip-path: polygon(0 11.11%, 100% 0, 100% 100%, 0 100%);
+			}
+		}
+		&:nth-child(3) {
+			@include r(null, 18.75%, 7.81%, 82.81%, center);
+			@include o(#cfc9aa, 18.75%);
+		}
+	}
+}
+#rapidash {
+	background: #f7f3c7;
+	&:before {
+		@include s(linear-gradient(
+			to right,
+			#cf7669 14.95%,
+			transparent 14.95%,
+			transparent 85.05%,
+			#cf7669 85.05%
+			), 83.59%, 15.23%);
+	}
+	&:after {
+		@include r(linear-gradient(
+			to right,
+			#e36634 17.92%,
+			transparent 17.92%,
+			transparent 82.08%,
+			#e36634 82.08%
+			), 41.41%, 15.23%, top-center);
+		clip-path: polygon(0 0, 100% 0,
+			97.17% 100%, 2.83% 100%);
+	}
+	> div {
+		&:nth-child(1) {
+			@include o(#d7cf8f, 4.69%, 9.38%, 39.06%, 80.47%);
+		}
+		@include nth(2, 3) {
+			@include r(#f9f9f9, 30.47%, 19.53%, 35.16%);
+			&:before {
+				@include r(linear-gradient(
+					#cf7669 88%,
+					#df8171 88%
+					), 66.67%, 100%);
+			}
+			&:after {
+				@include r(#f9f9f9, 19.23%, 74%);
+			}
+		}
+		@include e(7.03%, 2);
+		@include b(21.79%, 2, before);
+		@include b(46.15%, 2, after);
+	}
+}
+
+#slowpoke {
+	background: #D6A9B2;
+	&:before {
+		@include r(#D1C7B1, 89.84%, 49.22%, 41.41%, center);
+		clip-path: polygon(4.35% 0, 95.65% 0, 100% 7.94%, 100% 94.44%, 95.65% 100%, 4.35% 100%, 0% 94.44%, 0% 7.94%);
+	}
+	&:after {
+		@include r(linear-gradient(
+			to right,
+			#B2AB95 20%,
+			transparent 20%,
+			transparent 80%,
+			#B2AB95 80%
+			), 11.72%, 5.86%, 54.3%, center);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(null, 81.25%, 25.39%, 16.02%, center);
+			@include o(#F3F5F7, 30.77%);
+			div {
+				@include r(null, 73.08%, 18.46%, 24.62%, center);
+				@include o(#333, 7.89%);
+				z-index: 1;
+			}
+		}
+		&:nth-child(2) {
+			@include r(#917982, 80.47%, 21.88%, 62.5%, center);
+			clip-path: polygon(0 0, 8.25% 17.86%, 91.75% 17.86%, 100% 0, 100% 100%, 0 100%);
+			z-index: 1;
+			@include o(#eee, 10.68%, 35.71%, 22.82%);
+			div {
+				@include r(#A58A95, 52.34%, 39.29%, bottom-center);
+			}
+		}
+	}
+}
+#slowbro {
+	background: #D6A9B2;
+	> div {
+		&:nth-child(1) {
+			@include r(#F3F5F7, 24.22%, 24.61%, 23.92%, 13.28%);
+			div {
+				@include r(#333, 16.13%, 15.87%, 27.42%, 36.51%);
+			}
+		}
+		&:nth-child(2) {
+			@include r(#D1C7B1, 44.14%, 46.48%, 48.44%);
+			clip-path: polygon(0 0, 91.15% 0, 100% 8.4%, 100% 94.96%, 94.69% 100%, 0 100%);
+			&:before {
+				@include s(#D8CCB5, $h: 8.85%);
+			}
+			&:after {
+				@include r(#B4AD98, 6.19%, 12.61%, 26.89%, 4.42%);
+			}
+			div {
+				@include r(#917982, 89.38%, 42.02%, 44.54%);
+				clip-path: polygon(0 20%, 88.12% 20%, 100% 0, 100% 100%, 0 100%);
+				&:before {
+					@include r(#F5F5F5, 21.78%, 42%, 0, 55.45%);
+				}
+				&:after {
+					@include r(#A58A95, 77.23%, 40%, b0);
+				}
+			}
+		}
+		&:nth-child(3) {
+			@include r(#C6D1DA, 37.11%, 100%, $r: 0);
+			clip-path: polygon(0 11.72%, 37.89% 11.72%, 49.47% 8.2%, 49.47% 0, 100% 0, 100% 100%, 48.42% 100%, 48.42% 63.67%, 0 63.67%);
+			&:before {
+				@include r(#808EA4, 21.05%, 7.81%, 14.45%, 57.89%);
+			}
+			> div {
+				&:nth-child(1) {
+					@include r(#F7F7F7, 54.74%, 10.55%, 31.64%, 10.53%);
+					clip-path: polygon(0 100%, 100% 0, 100% 100%);
+					div {
+						@include r(#454C4C, 9.62%, 18.52%, 74.07%, 34.62%);
+					}
+				}
+				&:nth-child(2) {
+					@include r(#3D2537, 78.95%, 52.73%, b0);
+					&:before {
+						@include r(#DED9DF, 21.33%, 14.81%, $l: 62.67%);
+					}
+					&:after {
+						@include r(#DED9DF, 28%, 20%, $l: 17.33%);
+					}
+					div {
+						@include r(#AB878E, 62.17%, 85.19%, b0);
+					}
+				}
+			}
+		}
+	}
+}
+
+#magnemite {
+	background: #B8D0DA;
+	&:before {
+		@include s(#F7F9FB, 48.44%, 48.83%, 13.28%);
+	}
+	&:after {
+		@include r(#606060, 7.03%, 7.03%, 33.98%, center);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#CBCBCB, 21.48%, 21.09%, 67.58%);
+			&:before {
+				@include r(#8E8D8E, 76.36%, 24.07%, centered);
+			}
+			&:after {
+				@include r(#8E8D8E, 25.45%, 77.78%, centered);
+			}
+		}
+		@include b(2.34%, 1);
+	}
+}
+#magneton {
+	background: #B8D0DA;
+	&:before, &:after {
+		@include r(#F9D871, 22.27%, 51.17%);
+	}
+	@include b(0);
+	div {
+		&:nth-child(1) {
+			@include r(null, 55.47%, 51.17%, bottom-center);
+			&:before {
+				@include r(#B0C6D2, 100%, 5.34%);
+			}
+			&:after {
+				@include r(#B0C6D2, 6.34%, 100%, top-center);
+			}
+		}
+		&:nth-child(2) {
+			@include r(white, 25.78%, 25.39%, 7.81%, center);
+			&:before {
+				@include r(#606060, 15.15%, 13.85%, centered);
+			}
+		}
+		@include nth(3, 4) {
+			@include r(#CBCBCB, 11.33%, 11.33%, 36.33%);
+			&:before {
+				@include r(#8E8D8E, 24.14%, 75.86%, centered);
+			}
+			&:after {
+				@include r(#8E8D8E, 75.86%, 24.14%, centered);
+			}
+		}
+		@include b(28.52%, 3);
+		@include nth(5, 6) {
+			@include r(white, 25.78%, 25.78%, 65.63%);
+			&:before {
+				@include r(#606060, 15.15%, 15.15%, centered);
+			}
+		}
+		@include b(6.64%, 5);
+		@include nth(7, 8) {
+			@include r(#CBCBCB, 11.33%, 11.33%, 84.38%);
+			&:before {
+				@include r(#8E8D8E, 24.14%, 75.86%, centered);
+			}
+			&:after {
+				@include r(#8E8D8E, 75.86%, 24.14%, centered);
+			}
+		}
+		@include b(35.55%, 7);
+	}
+}
+
+#farfetch-d {
+	background: #A3968F;
+	&:before {
+		@include s(#3A332C, 51.56%, 32.03%);
+		clip-path: polygon(0 0, 23.48% 0, 50% 58.54%, 76.52% 0, 100% 0, 63.64% 100%, 36.36% 100%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 25%, 32.03%, 17.58%);
+			div {
+				@include r(#27201D, 29.69%, 80.49%, 4.88%);
+				&:before {
+					@include r(white, 47.37%, 25.76%, 4.55%);
+				}
+				&:after {
+					@include r(#4F4845, 100%, 25.76%, b0);
+				}
+			}
+		}
+		@include b(8.59%, 1);
+		@include b(54.69%, 1, div);
+		@include b(35.29%, 1, div-before);
+		&:nth-child(3) {
+			@include r(#EFC952, 90.63%, 54.69%, 38.28%, center);
+			clip-path: polygon(0 19.29%, 35.78% 19.29%, 35.78% 0, 64.22% 0, 64.22% 19.29%, 100% 19.29%, 100% 100%, 0 100%);
+			div {
+				@include r(#693938, 81.9%, 25.71%, 52.14%, center);
+				&:before {
+					@include r(#AE5F63, 65.26%, 58.33%, bottom-center);
+				}
+			}
+		}
+	}
+}
+
+#doduo {
+	background: #CEE8EA;
+	&:before, &:after {
+		@include r(#454445, 15.63%, 50%, b0);
+	}
+	@include b(0);
+	> div {
+		@include r(#BC956F, 46.09%, 75.78%, 8.59%);
+		z-index: 1;
+		&:before {
+			@include r(#E8D4B6, 40.68%, 23.71%, 51.55%);
+		}
+		div {
+			@include r(#2C2C30, 28.81%, 25.77%, 29.38%);
+			&:before {
+				@include r(white, 47.06%, 32%, 6%, center);
+			}
+			&:after {
+				@include r(#444248, 100%, 24%, b0);
+			}
+		}
+		@include b(0, 1);
+		@include b(0, 1, before);
+		@include b(52.54%, 1, div);
+		&:nth-child(1) {
+			clip-path: polygon(0 0, 91.53% 0, 101% 4.64%, 101% 95.36%, 90.68% 100%, 0 100%);
+		}
+		&:nth-child(2) {
+			clip-path: polygon(0 4.64%, 8.47% 0, 101% 0, 101% 100%, 9.32% 100%, 0 95.36%);
+		}
+	}
+}
+#dodrio {
+	background: #CEE8EA;
+	&:before, &:after {
+		@include r(#BC956F, 8.59%, 69.53%, 16.02%);
+		clip-path: polygon(0 0, 63.64% 0, 101% 3.93%, 101% 95.51%, 59.09% 100%, 0 100%);
+	}
+	@include b(0);
+	&:after {
+		@include flip;
+	}
+	> div {
+		&:nth-child(1) {
+			&:before {
+				@include r(#5D5C5D, 33.59%, 37.89%, top-center);
+				clip-path: polygon(0 0, 37.21% 0, 50% 65.98%, 62.79% 0, 100% 0, 81.4% 94.85%, 75.58% 100%, 24.42% 100%, 18.6% 94.85%);
+				z-index: 1;
+			}
+			&:after {
+				@include r(#C4B49D, 20.31%, 18.75%, bottom-center);
+				z-index: 0;
+			}
+		}
+		&:nth-child(2) {
+			@include r(#BC956F, 71.09%, 69.53%, 16.02%, center);
+			clip-path: polygon(0 4.49%, 4.95% 0, 95.05% 0, 100% 4.49%, 100% 95.51%, 95.05% 100%, 4.95% 100%, 0 95.51%);
+			@include o(#A5845E, 2.2%, 11.24%, 44.51%, $b: 51.12%);
+			&:after {
+				height: 6.74%;
+			}
+			div {
+				@include r(#E8D4B6, 29.67%, 22.47%, 55.62%, center);
+			}
+		}
+		@include nth(3, 4) {
+			@include r(#FEF7F0, 19.53%, 10.16%, 39.84%);
+			&:before {
+				@include r(#383838, 16%, 100%, 0);
+			}
+		}
+		@include e(26.17%, 3);
+		@include b(68%, 3, before);
+	}
+}
+
+#seel {
+	background: #DCE1EA;
+	&:before {
+		@include r(#F5EDD2, 100%, 51.56%, b0);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(null, 88.28%, 38.67%, 9.77%, center);
+			&:before, &:after {
+				@include r(#5A5C61, 26.99%, 26.26%);
+				clip-path: polygon(0 0, 100% 0, 100% 80.77%, 91.8% 80.77%, 91.8% 19.23%, 9.84% 19.23%, 9.84% 100%, 0 100%);
+			}
+			&:after {
+				@include flip;
+			}
+			div {
+				@include r(#2C2E30, 16.81%, 17.17%, bottom-center);
+			}
+		}
+		@include b(0);
+		@include nth(2, 3) {
+			@include r(#242B32, 14.45%, 19.14%, 23.05%);
+			&:before {
+				@include r(#305952, 100%, 26.53%, b0);
+			}
+			&:after {
+				@include r(white, 48.65%, 36.73%, 4.08%);
+			}
+			div {
+				@include r(#1D2227, 56.76%, 67.35%, 14.29%, center);
+			}
+		}
+		@include b(11.33%, 2);
+		@include b(32.43%, 2, after);
+		&:nth-child(4) {
+			@include r(null, 75.78%, 30.86%, 61.72%, center);
+			@include o(white, 13.92%, 62.03%);
+			div {
+				@include r(#DEC8DD, 72.16%, 79.75%, bottom-center);
+				clip-path: polygon(0 0, 100% 0, 100% 87.3%, 93.57% 100%, 6.43% 100%, 0 87.3%);
+				&:before {
+					@include r(#E6CEE5, $h: 68.25%);
+					border-bottom-left-radius: 10.71% 23.81%;
+					border-bottom-right-radius: 10.71% 23.81%;
+				}
+				&:after {
+					@include r(#A798A9, 35%, 26.98%, top-center);
+				}
+			}
+		}
+	}
+}
+#dewgong {
+	background: #EBEDF2;
+	&:before {
+		@include r(#303030, 14.84%, 2.73%, 39.06%, center);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#261E19, 17.58%, 24.22%, 17.58%);
+			&:before {
+				@include r(#1F1815, 46.67%, 69.35%, 11.29%);
+			}
+			&:after {
+				@include r(#7F7163, 73.33%, 28.89%, bottom-center);
+			}
+			div {
+				@include r(white, 40%, 29.03%, 3.23%);
+			}
+		}
+		@include b(8.2%, 1);
+		@include b(28.89%, 1, before);
+		@include b(42.22%, 1, div);
+		&:nth-child(3) {
+			@include r(#66575D, 77.34%, 24.22%, 64.45%, center);
+			@include o(white, 14.14%, 58.06%, 7.07%);
+			&:before {
+				z-index: 1;
+			}
+			div {
+				@include r(#936E67, 72.73%, 59.68%, bottom-center);
+			}
+		}
+	}
+}
+
+#grimer {
+	background: #B9A2C8;
+	&:before {
+		@include r(#69577A, 60.55%, 10.94%, 17.19%, $r: 0);
+	}
+	&:after {
+		@include r(null, 72.66%, 53.13%, bottom-center);
+		background-image: linear-gradient(
+			to bottom,
+			#242220 52.94%,
+			#9395A1 52.94%
+		);
+		clip-path: polygon(0 0, 4.84% 5.88%, 95.16% 5.88%, 100% 0, 100% 100%, 0 100%);
+	}
+	> div {
+		@include r(null, 82.03%, 26.17%, 10.16%, center);
+		@include o(#F6F3F7, 29.05%);
+		div {
+			@include r(null, 71.43%, 29.85%, 13.43%, center);
+			z-index: 1;
+			@include o(#444045, 12.67%);
+		}
+	}
+}
+#muk {
+	background: #AB9EB4;
+	&:before {
+		@include r(#7B707C, 100%, 8.59%, 14.06%);
+	}
+	&:after {
+		@include r(#7B707C, 100%, 11.33%, bottom-center);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(#2F2F2F, 85.16%, 44.14%, 33.98%, center);
+			&:before {
+				@include r(#9395A1, 100%, 35.4%, bottom-center);
+			}
+			&:after {
+				@include r(#AB9EB4, 10.09%, 102%, -1%, 78.44%);
+			}
+		}
+		@include nth(2, 3) {
+			@include r(null, 27.73%, 10.55%, 14.06%);
+			overflow: hidden;
+			&:before {
+				@include r(#605868, 39.44%, 81.48%);
+			}
+			&:after {
+				@include r(#7B707C, 31.99%, 60.26%, -1%);
+			}
+			div {
+				@include r(#E9E9F0, 76.06%, 51.85%, b0);
+				z-index: 1;
+				&:before {
+					@include r(#444045, 16.67%, 64.29%);
+				}
+			}
+		}
+		&:nth-child(2) {
+			&:before {
+				border-bottom-right-radius: 20%;
+			}
+			&:after {
+				border-bottom-right-radius: 19%;
+			}
+		}
+		&:nth-child(3) {
+			&:before {
+				border-bottom-left-radius: 20%;
+			}
+			&:after {
+				border-bottom-left-radius: 19%;
+			}
+		}
+		@include b(7.42%, 2);
+		@include b(0, 2, before, true);
+		@include b(8.45%, 2, after, true);
+		@include b(0, 2, div);
+		@include b(62.96%, 2, div-before);
+	}
+}
+
+#shellder {
+	background: #948BBF;
+	&:before {
+		@include s(linear-gradient(
+			to right,
+			#8780AE 6.45%,
+			transparent 6.45%,
+			transparent 46.77%,
+			#8780AE 46.77%,
+			#8780AE 53.23%,
+			transparent 53.23%,
+			transparent 93.55%,
+			#8780AE 93.55%
+			), 72.66%, 57.81%);
+	}
+	&:after {
+		@include r(#383834, 100%, 33.98%, 52.73%);
+	}
+	> div {
+		z-index: 1;
+		&:nth-child(1) {
+			@include r(linear-gradient(
+				to right,
+				#F3F5F7 25.94%,
+				transparent 25.94%,
+				transparent 74.06%,
+				#F3F5F7 74.06%
+				), 82.81%, 21.48%, 58.59%, center);
+			@include o(#404047, 3.77%, 14.55%, 10.85%, 43.64%);
+		}
+		&:nth-child(2) {
+			@include r(#D8B3B6, 21.88%, 24.22%, bottom-center);
+			&:before {
+				@include s(#AC9096, 14.29%);
+			}
+		}
+	}
+}
+#cloyster {
+	background: #B3B9C2;
+	&:before {
+		@include r(#828591, 87.5%, 87.5%, centered);
+	}
+	&:after {
+		@include r(linear-gradient(
+			to right,
+			#828591 12.24%,
+			transparent 12.24%,
+			transparent 87.76%,
+			#828591 87.76%
+			), 38.28%, 7.81%, top-center);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(#605892, 74.22%, 75%, 13.67%, center);
+			clip-path: polygon(0 5.73%, 5.79% 0, 94.21% 0, 100% 5.73%, 100% 94.27%, 94.21% 100%, 5.79% 100%, 0 94.27%);
+			div {
+				@include r(#E8E8E8, 73.68%, 9.9%, 72.92%, center);
+				clip-path: polygon(0 0, 100% 0, 96.43% 100%, 3.57% 100%);
+				@include o(#454449, 5%, $pos: 0);
+				&:before {
+					left: 54.29%;
+				}
+				&:after {
+					left: 75.71%;
+				}
+			}
+		}
+		@include nth(2, 3) {
+			@include r(#E9E9E9, 23.83%, 23.83%, 29.3%);
+			&:before {
+				@include r(#3C3A3C, 13.11%, 85.25%);
+			}
+		}
+		@include e(17.97%, 2);
+		@include b(57.38%, 2, before);
+	}
+}
+
+#gastly {
+	background: #746E8F;
+	&:before {
+		@include r(#332E2C, 86.72%, 87.11%, 6.64%, center);
+		clip-path: polygon(0 5.83%, 5.41% 0, 94.59% 0, 100% 5.83%, 100% 94.17%, 94.59% 100%, 5.41% 100%, 0 94.17%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(null, 44.14%, 45.7%, 14.45%);
+			&:after {
+				@include s(#222);
+				clip-path: polygon(0 0, 100% 95.73%, 96.46% 100%, 0 7.69%);
+			}
+			div {
+				@include r(#EFEDF2, 96.46%, 93.16%, b0);
+				&:before {
+					@include r(#313131, 6.42%, 14.68%, 76.15%);
+				}
+			}
+		}
+		@include b(0, 1);
+		@include e(0, 1, div);
+		@include b(66.06%, 1, div-before);
+		&:nth-child(2) {
+			&:after {
+				@include flip;
+			}
+		}
+		&:nth-child(3) {
+			@include r(null, 37.5%, 14.84%, 48.83%, center);
+			@include o(#725656, 35.42%, 10.53%, $b: 0);
+			&:before {
+				width: 23.96%;
+				left: 8.33%;
+			}
+			div {
+				@include r(null, 25%, 76.32%, top-center);
+				@include o(#725656, 16.67%, $b: 0);
+				&:before {
+					height: 72.41%;
+				}
+			}
+		}
+		&:nth-child(4) {
+			@include r(#756269, 53.13%, 12.89%, 68.75%, center);
+			&:before {
+				@include r(#957A82, 100%, 54.55%, b0);
+			}
+			div {
+				@include r(null, 82.35%, 69.7%, top-center);
+				@include o(#E5DEE5, 13.39%, 100%, 8.82%);
+			}
+		}
+	}
+}
+#haunter {
+	background: #746E8F;
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 32.81%, 26.56%, 19.92%);
+			&:before {
+				@include r(#232027, 9.52%, 86.76%);
+			}
+		}
+		@include e(7.42%, 1);
+		@include b(57.14%, 1, before);
+		&:nth-child(3) {
+			@include r(#8E6274, 89.84%, 28.91%, 53.91%, center);
+			clip-path: polygon(0 0, 4.35% 13.51%, 13.48% 13.51%, 13.48% 41.89%, 26.52% 41.89%, 26.52% 13.51%, 33.91% 13.51%, 33.91% 41.89%, 46.52% 41.89%, 46.52% 13.51%, 53.48% 13.51%, 53.48% 41.89%, 66.09% 41.89%, 66.09% 13.51%, 73.48% 13.51%, 73.48% 41.89%, 86.52% 41.89%, 86.52% 13.51%, 95.65% 13.51%, 100% 0, 100% 100%, 86.09% 100%, 86.09% 78.38%, 76.09% 78.38%, 76.09% 100%, 70.87% 100%, 70.87% 78.38%, 60.43% 78.38%, 60.43% 100%, 55.22% 100%, 55.22% 78.38%, 44.78% 78.38%, 44.78% 100%, 39.57% 100%, 39.57% 78.38%, 29.13% 78.38%, 29.13% 100%, 23.91% 100%, 23.91% 78.38%, 13.91% 78.38%, 13.91% 100%, 0 100%);
+			&:before {
+				@include r(#A37A90, 82.61%, 40.54%, bottom-center);
+			}
+		}
+	}
+}
+#gengar {
+	background: #746E8F;
+	> div {
+		@include nth(1, 2) {
+			@include r(#D38D80, 27.34%, 22.66%, 22.66%);
+			&:before {
+				@include r(#272220, 14.29%, 86.21%);
+			}
+		}
+		@include e(14.84%, 1);
+		@include b(54.29%, 1, before);
+		&:nth-child(3) {
+			@include r(linear-gradient(
+				to right,
+				#E6E3F2 9.57%,
+				#ABABBB 9.57%,
+				#ABABBB 12.17%,
+				#E6E3F2 12.17%,
+				#E6E3F2 28.26%,
+				#ABABBB 28.26%,
+				#ABABBB 30.87%,
+				#E6E3F2 30.87%,
+				#E6E3F2 48.7%,
+				#ABABBB 48.7%,
+				#ABABBB 51.3%,
+				#E6E3F2 51.3%,
+				#E6E3F2 69.13%,
+				#ABABBB 69.13%,
+				#ABABBB 71.74%,
+				#E6E3F2 71.74%,
+				#E6E3F2 87.83%,
+				#ABABBB 87.83%,
+				#ABABBB 90.43%,
+				#E6E3F2 90.43%
+				), 89.84%, 32.81%, 42.19%, center);
+			clip-path: polygon(0 0, 6.52% 30.95%, 93.48% 30.95%, 100% 0, 100% 100%, 0 100%);
+		}
+	}
+}
+
+#onix {
+	background: #ADABB1;
+	&:before {
+		@include r(#B2B1B6, 100%, 11.72%, 34.77%);
+		clip-path: polygon(0 56.67%, 18.75% 56.67%, 18.75% 0, 81.25% 0, 81.25% 56.67%, 100% 56.67%, 100% 100%, 0 100%);
+	}
+	&:after {
+		@include r(#545051, 92.19%, 14.06%, 66.8%, center);
+		clip-path: polygon(0 0, 10.17% 0, 10.17% 19.44%, 27.12% 19.44%, 27.12% 0, 36.02% 0, 42.8% 52.78%, 57.2% 52.78%, 63.98% 0, 72.88% 0, 72.88% 19.44%, 89.83% 19.44%, 89.83% 0, 100% 0, 100% 100%, 66.95% 100%, 63.98% 75%, 36.02% 75%, 33.05% 100%, 0 100%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 29.69%, 12.89%, 28.91%);
+			&:before {
+				@include r(#303034, 11.84%, 81.82%);
+			}
+		}
+		@include b(7.42%, 1);
+		@include b(72.37%, 1, before);
+		@include a(0, 1, 39.39%);
+		&:nth-child(3) {
+			@include r(null, 25.78%, 26.95%, 19.53%, center);
+			@include o(#A5A3A9, 21.21%);
+			&:before {
+				clip-path: polygon(0 55.07%, 37.5% 55.07%, 37.5% 0, 100% 0, 100% 62.32%, 50% 62.32%, 50% 100%, 0 100%);
+			}
+			&:after {
+				clip-path: polygon(0 18.84%, 57.14% 18.84%, 57.14% 55.07%, 100% 55.07%, 100% 100%, 50% 100%, 50% 62.32%, 0 62.32%);
+			}
+		}
+	}
+}
+
+#drowzee {
+	background: #F0DC80;
+	&:before {
+		@include s(linear-gradient(
+			to bottom,
+			#E3CE74 24.59%,
+			transparent 24.59%,
+			transparent 77.05%,
+			#E3CE74 77.05%
+			), 28.91%, 23.83%, 9.77%);
+	}
+	&:after {
+		@include r(#78726E, 100%, 27.77%, b0);
+		clip-path: polygon(-1% 0, 10.55% 0, 12.89% 11.27%, 12.89% 39.44%, 15.23% 47.89%, 34.38% 47.89%, 36.33% 39.44%, 36.33% 11.27%, 39.06% 0, 60.94% 0, 63.67% 11.27%, 63.67% 39.44%, 65.63% 47.89%, 84.77% 47.89%, 87.11% 39.44%, 87.11% 11.27%, 89.45% 0, 101% 0, 101% 100%, -1% 100%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#E1CD77, 25.39%, 8.98%, 19.14%);
+			clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
+			div {
+				@include r(#F5F5F5, 78.46%, 73.91%, 13.04%);
+				clip-path: polygon(17.65% 0, 82.35% 0, 100% 100%, 0 100%);
+				&:before {
+					@include r(#1E1717, 11.76%, 35.29%);
+				}
+			}
+		}
+		@include b(3.91%, 1);
+		@include b(10.77%, 1, div);
+		@include b(60.78%, 1, div-before);
+		&:nth-child(3) {
+			@include r(#8B686D, 80.47%, 24.61%, 31.25%, center);
+			clip-path: polygon(0 0, 2.91% 9.52%, 24.76% 9.52%, 24.76% 50.79%, 28.64% 65.08%, 71.36% 65.08%, 75.24% 50.79%, 75.24% 9.52%, 97.09% 9.52%, 100% 0, 100% 100%, 0 100%);
+			div {
+				@include r(#B39196, 81.55%, 50.79%, bottom-center);
+			}
+		}
+	}
+}
+#hypno {
+	background: #F3DE60;
+	&:before {
+		@include r(#F7E466, 36.72%, 4.69%, 66.8%, center);
+	}
+	&:after {
+		@include s(linear-gradient(
+			to right,
+			#8A7363 24.11%,
+			transparent 24.11%,
+			transparent 31.25%,
+			#D4AFDF 31.25%,
+			#D4AFDF 68.75%,
+			transparent 68.75%,
+			transparent 75.89%,
+			#8A7363 75.89%
+			), 87.5%, 17.19%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(null, 26.17%, 10.16%, 52.34%);
+			&:before {
+				@include r(#E8CD56, 62.69%, 38.46%, b0);
+			}
+			div {
+				@include r(#ECECEC, $h: 65.38%);
+				clip-path: polygon(13.43% 0, 86.57% 0, 100% 100%, 0 100%);
+				&:before {
+					@include r(#F4F4F4, 5.97%, 23.53%, 47.06%);
+				}
+				&:after {
+					@include r(#2F2A11, 13.43%, 58.82%);
+				}
+			}
+		}
+		@include b(7.42%, 1);
+		@include b(0, 1, before, true);
+		@include b(70.15%, 1, div-before);
+		@include b(59.7%, 1, div-after);
+		&:nth-child(3) {
+			@include r(null, 34.77%, 72.27%, 0, 58.2%);
+			z-index: 1;
+			&:after {
+				@include r(#5C5C55, 11.24%, 69.19%, $l: 42.7%);
+			}
+			div {
+				@include r(#A2A19E, 100%, 47.57%, b0);
+				clip-path: polygon(0 9.09%, 10.11% 0, 89.89% 0, 100% 9.09%, 100% 90.91%, 89.89% 100%, 35.96% 100%, 35.96% 69.32%, 64.04% 69.32%, 68.54% 64.77%, 68.54% 36.36%, 64.04% 31.82%, 35.96% 31.82%, 31.46% 36.36%, 31.46% 64.77%, 35.96% 69.32%, 35.96% 100%, 10.11% 100%, 0 90.91%);
+			}
+		}
+	}
+}
+
+#krabby {
+	background: #79B5F5;
+	&:before {
+		@include s(#C99058, 100%, 75%, 8.59%);
+		clip-path: polygon(-1% 32.29%, 21.48% 32.29%, 21.48% 2.08%, 23.05% 0, 33.98% 0, 35.55% 2.08%, 35.55% 32.29%, 64.45% 32.29%, 64.45% 2.08%, 66.02% 0, 76.95% 0, 78.52% 2.08%, 78.52% 32.29%, 101% 32.29%, 101% 100%, -1% 100%);
+	}
+	&:after {
+		@include r(#EBDEDD, 100%, 45.31%, b0);
+		clip-path: polygon(-1% 0, 10.16% 0, 12.11% 4.31%, 12.11% 31.9%, 41.8% 31.9%, 50% 42.24%, 58.2% 31.9%, 87.89% 31.9%, 87.89% 4.31%, 89.84% 0, 101% 0, 101% 100%, -1% 100%);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(null, 83.59%, 20.7%, 28.13%, center);
+			@include o(#FBFDFF, 35.05%);
+		}
+		@include a(16%);
+		&:nth-child(2) {
+			@include r(null, 53.52%, 4.3%, 35.16%, center);
+			@include o(#4A4A4A, 8.03%);
+		}
+	}
+}
+#kingler {
+	background: #79B5F5;
+	&:before {
+		@include s(#D38D4D, 100%, 75%, 6.25%);
+		clip-path: polygon(0 14.06%, 6.25% 14.06%, 7.03% 15.1%, 7.03% 38.54%, 14.84% 38.54%, 14.84% 6.77%, 16.02% 5.21%, 25% 5.21%, 26.17% 6.77%, 26.17% 38.54%, 33.98% 38.54%, 33.98% 1.56%, 35.16% 0, 44.92% 0, 46.09% 1.56%, 46.09% 38.54%, 53.91% 38.54%, 53.91% 1.56%, 55.08% 0, 64.84% 0, 66.02% 1.56%, 66.02% 38.54%, 73.83% 38.54%, 73.83% 6.77%, 75% 5.21%, 83.98% 5.21%, 85.16% 6.77%, 85.16% 38.54%, 92.97% 38.54%, 92.97% 15.1%, 93.75% 14.06%, 100% 14.06%, 100% 100%, 0 100%);
+	}
+	&:after {
+		@include r(#EEDDDD, 100%, 51.95%, b0);
+		clip-path: polygon(0 0, 6.64% 0, 7.42% 3.01%, 7.42% 56.39%, 14.84% 56.39%, 14.84% 40.6%, 16.02% 37.59%, 33.2% 37.59%, 33.98% 40.6%, 33.98% 56.39%, 66.02% 56.39%, 66.02% 40.6%, 66.8% 37.59%, 83.98% 37.59%, 85.16% 40.6%, 85.16% 56.39%, 92.58% 56.39%, 92.58% 3.01%, 93.36% 0, 100% 0, 100% 100%, 0 100%);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(null, 77.34%, 16.8%, 40.63%, center);
+			@include o(white, 39.39%);
+			@include a(19.23%);
+		}
+		&:nth-child(2) {
+			@include r(null, 47.66%, 5.47%, 48.05%, center);
+			@include o(#484848, 7.38%);
+		}
+	}
+}
+
+#voltorb {
+	background: #DF4059;
+	&:before {
+		@include r(#EBEBEF, 100%, 37.11%, b0);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(null, 77.34%, 22.27%, 15.63%, center);
+			@include o(#EB435F, 40.91%);
+			&:before, &:after {
+				clip-path: polygon(0 0, 100% 84.21%, 100% 100%, 0 15.79%);
+			}
+			&:after {
+				@include flip;
+			}
+		}
+		&:nth-child(2) {
+			@include r(null, 14.06%, 13.67%, 36.72%, center);
+			@include o(#D33C55, 19.44%, $b: 0);
+			&:after {
+				height: 84%;
+			}
+		}
+		@include nth(3, 4) {
+			@include r(#EBEBEF, 29.69%, 18.36%, 31.25%);
+			&:before {
+				@include r(#242220, 18.42%, 89.36%);
+			}
+		}
+		@include e(7.42%, 3);
+		@include b(55.26%, 3, before);
+	}
+}
+#electrode {
+	background: #EBEBEF;
+	&:before {
+		@include r(#DF4059, 100%, 43.75%, b0);
+	}
+	> div {
+		&:nth-child(1) {
+			@include s(null, 88.28%, 25%, 13.28%);
+			@include o(#343230, 46.46%);
+			&:before {
+				clip-path: polygon(0 53.13%, 29.52% 0, 94.29% 89.06%, 89.52% 100%, 30.48% 18.75%, 5.71% 64.06%);
+			}
+			&:after {
+				clip-path: polygon(0 53.13%, 6.67% 53.13%, 12.38% 82.81%, 71.43% 0, 100% 53.13%, 94.29% 64.06%, 70.48% 20.31%, 13.33% 100%, 8.57% 100%);
+			}
+		}
+		&:nth-child(2) {
+			@include r(null, 39.06%, 12.89%, 36.72%, center);
+			@include o(#343230, 11%);
+		}
+		&:nth-child(3) {
+			@include r(#EFF1F3, 71.48%, 16.02%, 66.8%, 15.23%);
+			clip-path: polygon(0 0, 100% 0, 100% 85.37%, 97.27% 100%, 2.73% 100%, 0 87.8%);
+			&:before {
+				@include r(#444, 4.37%, 36.59%, b0, $r: 24.59%);
+			}
+			&:after {
+				@include r(#444, 4.37%, 53.66%, b0, $r: 15.3%);
+			}
+		}
+	}
+}
+
+#exeggcute {
+	background: linear-gradient(
+		to bottom,
+		#F4E4E3 14.89%,
+		#F3DFDF 14.89%
+	);
+	&:before {
+		@include r(#BEB0B2, 45.7%, 50%, 0, 44.14%);
+		clip-path: polygon(0 -1%, 26.5% -1%, 26.5% 10.94%, 72.65% 10.94%, 72.65% -1%, 100% -1%, 100% 100%, 72.65% 100%, 72.65% 26.56%, 0 26.56%);
+	}
+	&:after {
+		@include r(#A69396, 30.86%, 12.11%, 71.09%, 35.94%);
+		clip-path: polygon(11.39% 0, 88.61% 0, 100% 100%, 0 100%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#E0CFCF, 36.33%, 20.7%, 35.94%);
+			clip-path: polygon(0 0, 5.38% 0, 100% 88.68%, 100% 100%, 0 100%);
+			div {
+				@include r(#EFEFF3, 81.72%, 77.36%, 9.43%, 4.3%);
+				clip-path: polygon(0 0, 100% 100%, 0 100%);
+				&:before {
+					@include r(#3C3838, 13.16%, 92.68%, $l: 60.53%);
+				}
+			}
+		}
+		&:nth-child(1) {
+			left: 7.42%;
+		}
+		&:nth-child(2) {
+			right: 5.08%;
+			@include flip;
+		}
+	}
+}
+#exeggutor {
+	display: flex;
+	justify-content: space-between;
+	background: linear-gradient(
+		to bottom,
+		#569365 15.63%,
+		#AA9D92 15.63%
+	);
+	&:before, &:after {
+		@include s(#EFEBB6, 8.59%, 78.91%, 10.94%, false);
+		clip-path: polygon(0 0, 50% 0, 100% 5.45%, 100% 96.04%, 54.55% 100%, 0 100%);
+	}
+	&:after {
+		@include flip;
+	}
+	> div {
+		&:nth-child(1) {
+			@include s(#EFEBB6, 71.09%, 78.91%, 10.94%, false);
+			clip-path: polygon(0 5.45%, 6.04% 0, 93.96% 0, 100% 5.45%, 100% 95.54%, 93.96% 100%, 6.04% 100%, 0 95.54%);
+			div {
+				@include r(linear-gradient(
+					#AA8485 39.74%,
+					#C7A7AA 39.74%
+					), 64.84%, 38.61%, 42.57%, center);
+				clip-path: polygon(0 0, 100% 0, 95.76% 100%, 4.24% 100%);
+				@include o(white, 12.71%, 17.95%, 12.71%);
+			}
+		}
+		@include nth(2, 3) {
+			@include r(white, 18.75%, 12.5%, 25%);
+			&:before {
+				@include r(#474736, 22.92%, 40.63%);
+			}
+		}
+		@include b(23.44%, 2);
+		@include a(0, 2, 25%, $reverse: true);
+		@include b(47.92%, 2, before);
+	}
+}
+
+#cubone {
+	background: #BA8559;
+	&:before {
+		@include r(#CFCFCF);
+		clip-path: polygon(5.86% 51.17%, 11.33% 43.75%, 34.38% 43.75%, 34.38% 21.48%, 38.67% 17.58%, 87.11% 17.58%, 87.11% 0, 100% 0, 100% 100%, 36.33% 100%, 36.33% 85.94%, 10.16% 85.94%, 5.86% 81.64%);
+	}
+	&:after {
+		@include r(#2C2424, 14.84%, 14.84%, 62.5%, 18.36%);
+		clip-path: polygon(0 10.53%, 13.16% 0, 86.84% 0, 100% 10.53%, 100% 86.84%, 86.84% 100%, 13.16% 100%, 0 86.84%);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(null, 51.17%, 65.23%, 34.77%, $r: 0);
+			&:before {
+				@include r(#D8B57D, 75.57%, 54.49%, $l: 11.45%);
+				clip-path: polygon(0 13.19%, 12.12% 0, 86.87% 0, 100% 13.19%, 100% 87.91%, 87.88% 100%, 11.11% 100%, 0 87.91%);
+			}
+			&:after {
+				@include r(#D8B57D, 100%, 21.56%, b0);
+			}
+		}
+		&:nth-child(2) {
+			@include r(#FFFDFB, 31.64%, 25.39%, 38.67%, 57.03%);
+			clip-path: polygon(0 78.46%, 100% 0, 100% 100%, 0 100%);
+			&:before {
+				@include r(linear-gradient(
+					#2C2424 84.62%,
+					#333344 84.62%
+					), 55.56%, 100%, $l: 8.64%);
+			}
+			&:after {
+				@include r(#FFFDFB, 13.58%, 75.38%, $l: 27.16%);
+			}
+		}
+	}
+}
+#marowak {
+	background: #BA8559;
+	&:before {
+		@include r(#CFA96D, 43.75%, 25%, b0, $r: 0);
+	}
+	&:after {
+		@include r(#CFCFCF, 92.58%, 80.08%, 10.94%, $r: 0);
+		clip-path: polygon(0 40%, 5.06% 34.15%, 36.29% 34.15%, 36.29% 6.83%, 41.77% 0, 100% 0, 100% 100%, 6.33% 100%, 0 93.17%);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(#F1F1F1, 39.84%, 18.75%, 32.42%, 52.73%);
+			z-index: 1;
+			clip-path: polygon(0 50%, 100% 0, 100% 100%, 0 100%);
+			&:before {
+				@include r(linear-gradient(
+					#A28779 85.42%,
+					#B89685 85.42%
+					), 30.39%, $l: 31.37%);
+			}
+			&:after {
+				@include r(#382E2C, 10.78%, 87.5%, $l: 41.18%);
+			}
+		}
+		&:nth-child(2) {
+			@include r(#ADADAD, 84.38%, 39.45%, 21.48%, $r: 0);
+			clip-path: polygon(0 59.41%, 2.78% 53.47%, 40.74% 53.47%, 100% 0, 100% 22.77%, 43.52% 75.25%, 6.48% 75.25%, 6.48% 100%, 0 100%);
+			z-index: 1;
+		}
+	}
+}
+
+#hitmonlee {
+	background: #B29D96;
+	> div {
+		@include r(#343A38, 35.16%, 15.63%, 29.3%);
+		&:before {
+			@include r(#F1F1F1, 28.89%, 77.5%);
+		}
+		&:after {
+			@include r(#282C2C, 13.33%, 57.5%);
+		}
+		@include b(7.03%, 1);
+		@include a(40%, 1);
+		@include b(38.89%, 1, before);
+		@include b(46.67%, 1, after);
+	}
+}
+#hitmonchan {
+	background: linear-gradient(
+		to bottom,
+		#A8977F 73.44%,
+		#CAC1D9 73.44%
+	);
+	&:before {
+		@include r(#8A7D69, 66.41%, 18.75%, 57.42%, center);
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 95.29% 100%, 95.29% 14.58%, 4.71% 14.58%, 4.71% 100%, 0 100%);
+	}
+	&:after {
+		@include r(linear-gradient(
+			to right,
+			#CC6958 27.34%,
+			transparent 27.34%,
+			transparent 72.66%,
+			#CC6958 72.66%
+			), 100%, 32.42%, b0);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 27.73%, 28.91%, 16.41%);
+			&:before {
+				@include r(linear-gradient(
+					#14242C 82.43%,
+					#244051 82.43%
+					), 45.07%);
+			}
+			&:after {
+				@include r(white, 16.9%, 56.76%)
+					}
+		}
+		@include b(7.42%, 1);
+		@include a(0, 1, 50.7%);
+		@include b(0, 1, before, true);
+		@include b(74.65%, 1, after)
+			}
+}
+
+#lickitung {
+	background: #F3B9BE;
+	&:before {
+		@include r(#AA899A, 87.5%, 33.98%, 39.84%, center);
+	}
+	&:after {
+		@include r(linear-gradient(
+			to right,
+			#B98D91 20%,
+			transparent 20%,
+			transparent 80%,
+			#B98D91 80%
+			), 11.72%, 6.25%, 30.47%, center);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#242030, 10.94%, 12.89%, 14.45%);
+			&:before {
+				@include r(white, 57.14%, 30.3%, top-center);
+			}
+			&:after {
+				@include r(#535364, 78.57%, 33.33%, bottom-center);
+			}
+		}
+		@include b(8.98%, 1);
+		&:nth-child(3) {
+			@include r(#E2C1CF, 72.66%, 42.19%, bottom-center);
+			clip-path: polygon(0 0, 100% 0, 100% 97.22%, 98.39% 100%, 1.61% 100%, 0 97.22%);
+			&:before {
+				@include s(#C3A3AE, 13.95%);
+			}
+		}
+	}
+}
+
+#koffing {
+	background: #9A93BA;
+	&:before {
+		@include r(#E3DFD7, 28.13%, 19.53%, 44.53%, center);
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 23.61% 100%, 23.61% 68%, 76.39% 68%, 76.39% 32%, 23.61% 32%, 23.61% 68%, 25% 68%, 25% 100%, 0 100%);
+	}
+	&:after {
+		@include r(#E3DFD7, 50%, 31.25%, 62.5%, center);
+		clip-path: polygon(0 18.75%, 7.03% 0, 50% 42.5%, 92.97% 0, 100% 18.75%, 63.28% 53.75%, 92.97% 81.25%, 86.72% 100%, 50% 65%, 13.28% 100%, 7.03% 81.25%, 36.72% 53.75%);
+	}
+	> div {
+		&:nth-child(1) {
+			@include s(null, 75.78%, 11.72%, 7.81%);
+			@include o(white, 34.02%);
+			&:before, &:after {
+				clip-path: polygon(9.09% 0, 90.91% 0, 100% 100%, 0 100%);
+			}
+			div {
+				@include r(null, 63.92%, 36.67%, 6.67%, center);
+				z-index: 1;
+				@include o(#2F2F40, 5.65%);
+			}
+		}
+		&:nth-child(2) {
+			@include r(#9E6E79, 85.94%, 9.38%, 28.13%, center);
+			@include o(white, 6.82%, 66.67%, 5.45%);
+			div {
+				@include r(#C78C9A, 63.64%, 58.33%, bottom-center);
+			}
+		}
+	}
+}
+#weezing {
+	background: #A699B2;
+	&:before {
+		@include r(#E3DFD7, 28.13%, 19.53%, 43.36%, 16.8%);
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 23.61% 100%, 23.61% 68%, 76.39% 68%, 76.39% 32%, 23.61% 32%, 23.61% 68%, 25% 68%, 25% 100%, 0 100%);
+	}
+	&:after {
+		@include r(#E3DFD7, 50%, 31.25%, 60.55%, 5.86%);
+		clip-path: polygon(0 18.75%, 7.03% 0, 50% 42.5%, 92.97% 0, 100% 18.75%, 63.28% 53.75%, 92.97% 81.25%, 86.72% 100%, 50% 65%, 13.28% 100%, 7.03% 81.25%, 36.72% 53.75%);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(null, 71.88%, 7.81%, 8.59%, 13.28%);
+			@include o(white, 31.52%);
+			div {
+				@include r(null, 57.61%, 50%, top-center);
+				z-index: 1;
+				@include o(#484040, 7.55%);
+			}
+		}
+		&:nth-child(2) {
+			@include r(#9E6E79, 76.56%, 8.98%, 24.22%, 10.55%);
+			@include o(white, 16.33%, 39.13%, 27.55%);
+			div {
+				@include r(#AE788E, 90.82%, 39.13%, bottom-center);
+				@include o(white, 11.8%, 366.67%, 5.62%, b0);
+			}
+		}
+		&:nth-child(3) {
+			@include r(null, 31.25%, 5.47%, 52.34%, 62.11%);
+			@include o(white, 36.25%);
+			div {
+				@include r(null, 60%, 42.86%, top-center);
+				z-index: 1;
+				@include o(#484040, 12.5%);
+			}
+		}
+		&:nth-child(4) {
+			@include r(linear-gradient(
+				to bottom,
+				#8B829A 9.43%,
+				transparent 9.43%
+				), 34.38%, 20.7%, 61.33%, 60.55%);
+			@include o(white, 11.36%, 16.98%, $t: 9.43%);
+			div {
+				@include r(#E3DFD7, 52.27%, 60.38%, bottom-center);
+				&:before {
+					@include r(#A699B2, 52.17%, 46.88%, 25%, center);
+				}
+			}
+		}
+	}
+}
+
+#rhyhorn {
+	background: #9DABAF;
+	&:before {
+		@include s(#9AA5AA, 69.53%, 33.59%);
+		clip-path: polygon(0 0, 100% 0, 100% 61.63%, 79.78% 100%, 64.61% 100%, 64.61% 32.56%, 62.36% 27.91%, 37.64% 27.91%, 35.39% 32.56%, 35.39% 100%, 20.22% 100%, 0 61.63%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#9AA3AB, 25%, 21.09%, 41.02%);
+			&:before {
+				@include r(white, 92.19%, 92.59%);
+			}
+			div {
+				@include r(linear-gradient(
+					#C77469 85.19%,
+					#D77E71 85.19%
+					), 73.44%, 75.93%);
+				&:before {
+					@include r(#39201C, 27.66%, 90.24%);
+				}
+				&:after {
+					@include r(white, 25.53%, 65.85%);
+				}
+			}
+		}
+		@include e(5.47%, 1);
+		@include b(0, 1, before, true);
+		@include b(0, 1, div, true);
+		@include b(19.15%, 1, div-before);
+		@include b(12.77%, 1, div-after);
+		&:nth-child(3) {
+			@include r(#6D6271, 90.63%, 11.72%, 71.09%, center);
+			@include o(white, 9.05%, 70%, 5.6%);
+			div {
+				@include r(#AF9392, 61.21%, 46.67%, bottom-center);
+				@include o(#8A939A, 5.63%, 121.43%, 62.68%, -285.71%);
+			}
+		}
+	}
+}
+#rhydon {
+	background: #B2BBCC;
+	&:before {
+		@include s(linear-gradient(
+			to bottom,
+			#E3D3BA 28%,
+			#C3B39E 28%,
+			#C3B39E 40%,
+			#E3D3BA 40%,
+			#E3D3BA 66.67%,
+			#C3B39E 66.67%,
+			#C3B39E 78.67%,
+			#E3D3BA 78.67%
+			), 22.66%, 29.3%, 12.5%);
+		clip-path: polygon(0 5.33%, 6.9% 0, 93.1% 0, 100% 5.33%, 100% 100%, 0 100%);
+	}
+	&:after {
+		@include r(linear-gradient(
+			#E2D1B8 55.88%,
+			#CFBFAA 55.88%
+			), 53.13%, 13.28%, bottom-center);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(null, 29.3%, 19.53%, 22.27%);
+			&:before {
+				@include r(#F5F5F5, 92%);
+			}
+			&:after {
+				@include r(#A6AFBF, 7%, 58%, b0);
+			}
+			div {
+				@include r(linear-gradient(
+					#A65849 82%,
+					#B86353 82%
+					), 33.33%);
+				&:before {
+					@include r(#462525, 28%, 88%);
+				}
+				&:after {
+					@include r(#F1F1F1, 36%, 64%);
+				}
+			}
+		}
+		@include b(6.25%, 1);
+		@include b(0, 1, before);
+		@include b(0, 1, after, true);
+		@include b(36%, 1, div);
+		@include b(36%, 1, div-before);
+		@include b(16%, 1, div-after);
+		&:nth-child(1) {
+			clip-path: polygon(0 0, 93% 100%, 93% 28%, 100% 28%, 100% 100%, 0 100%);
+		}
+		&:nth-child(2) {
+			clip-path: polygon(100% 0, 7% 100%, 7% 28%, 0 28%, 0 100%, 100% 100%);
+		}
+		&:nth-child(3) {
+			@include r(#96788A, 87.5%, 16.02%, 57.03%, center);
+			@include o(white, 9.38%, 56.1%);
+			div {
+				@include r(#C6A5AA, 69.64%, 41.46%, bottom-center);
+				@include o(#7A838B, 3.21%, 64.71%, 42.31%, -229.41%);
+			}
+		}
+	}
+}
+
+#chansey {
+	background: #FBCBD3;
+	&:before {
+		@include r(#F4C2CB, 14.06%, 3.91%, 61.72%, center);
+	}
+	&:after {
+		@include r(#F1E9D8, 78.13%, 21.88%, bottom-center);
+		clip-path: polygon(0 23.21%, 5% 0, 95% 0, 100% 23.21%, 100% 100%, 0 100%);
+	}
+	> div {
+		&:nth-child(1) {
+			@include s(linear-gradient(
+				to bottom,
+				white 17.5%,
+				#172023 17.5%,
+				#172023 82.5%,
+				#589CBE 82.5%
+				), 48.44%, 15.63%, 14.06%);
+			&:before {
+				@include s(#FBCBD3, 74.19%, 104%, -1%);
+			}
+		}
+		&:nth-child(2) {
+			@include r(#754F55, 34.38%, 16.41%, 38.28%, center);
+			&:before {
+				@include r(#E397A6, 52.27%, 52.38%, bottom-center);
+			}
+		}
+	}
+}
+
+#tangela {
+	background: #6999BA;
+	&:before {
+		@include r(linear-gradient(
+			to bottom,
+			#6DA3C3 37.61%,
+			transparent 37.61%,
+			transparent 63.25%,
+			#6DA3C3 63.25%
+			), 8.98%, 45.7%, 33.98%);
+	}
+	&:after {
+		@include r(#6DA3C3, 8.98%, 47.27%, bottom-right);
+		clip-path: polygon(0 7.44%, 47.83% 0, 100% 0, 100% 100%, 0 100%);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(#4D4849, 82.03%, 54.69%, 21.48%, center);
+			clip-path: polygon(0 22.86%, 4.76% 15.71%, 31.43% 15.71%, 36.67% 8.57%, 36.67% 0, 84.76% 0, 100% 22.86%, 100% 92.86%, 94.29% 100%, 5.71% 100%, 0 92.86%);
+			@include o(#F3F1F3, 29.52%, 44.29%, 10.95%, 30%);
+			div {
+				@include r(null, 54.29%, 7.86%, 47.14%, center);
+				z-index: 1;
+				@include o(#383634, 9.65%);
+			}
+		}
+		&:nth-child(2) {
+			@include s();
+			&:before {
+				@include r(#6DA3C3, 75.39%, 32.81%, bottom-left);
+				clip-path: polygon(0 60.71%, 36.27% 60.71%, 36.27% 13.1%, 41.97% 0, 94.3% 0, 100% 13.1%, 100% 101%, 78.24% 101%, 78.24% 46.43%, 56.99% 46.43%, 56.99% 101%, 0 101%);
+			}
+			&:after {
+				@include r(#6DA3C3, 47.27%, 16.41%);
+				clip-path: polygon(0 0, 100% 0, 100% 76.19%, 90.91% 100%, 0 100%);
+			}
+			div {
+				@include r(#6DA3C3, 39.45%, 30.47%, $r: 0);
+				clip-path: polygon(0 0, 100% 0, 100% 100%, 12.87% 100%, 0 84.62%);
+				&:before {
+					@include r(#6999BA, 57.43%, 44.87%, $r: 0);
+				}
+			}
+		}
+	}
+}
+
+#kangaskhan {
+	background: #C7B1A2;
+	&:before {
+		@include r(linear-gradient(
+			to right,
+			#AA978E 14.71%,
+			transparent 14.71%,
+			transparent 85.29%,
+			#AA978E 85.29%
+			), 13.28%, 3.91%, 37.11%, center);
+	}
+	&:after {
+		@include s(#968B82, 100%, 26.17%);
+		clip-path: polygon(-1% 0, 101% 0, 101% 35.82%, 92.97% 35.82%, 64.06% 100%, 35.94% 100%, 7.03% 35.82%, -1% 35.82%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 31.25%, 26.17%);
+			div {
+				@include r(linear-gradient(
+					#B85263 91.04%,
+					#DB5375 91.04%
+					), 27.5%, 100%);
+				&:before {
+					@include r(#37161F, 36.36%, 92.54%, top-center);
+				}
+				&:after {
+					@include r(white, 31.82%, 79.1%);
+				}
+			}
+		}
+		@include b(7.03%, 1);
+		@include b(43.75%, 1, div);
+		@include b(18.18%, 1, div-after);
+		&:nth-child(3) {
+			@include r(#895E69, 90.63%, 29.69%, 37.5%, center);
+			clip-path: polygon(0 0, 35.34% 0, 41.38% 17.11%, 58.62% 17.11%, 64.66% 0, 100% 0, 100% 100%, 0 100%);
+			@include o(white, 8.62%, 25%, 7.76%);
+			div {
+				@include r(#AA6E71, 62.07%, 47.37%, bottom-center);
+			}
+		}
+		&:nth-child(4) {
+			@include r(#F3E1A6, 100%, 13.67%, b0);
+			&:before {
+				@include r(#E3CF96, 56.25%, 60%, bottom-center);
+			}
+			div {
+				@include r(linear-gradient(
+					#AA9F75 64.81%,
+					#CCC3DF 64.81%
+					), 34.38%, 154.29%, bottom-center);
+				@include o(#372627, 20.45%, 37.04%, 12.5%, 42.59%);
+			}
+		}
+	}
+}
+
+#horsey {
+	background: #97D5F3;
+	&:before {
+		@include r(#9FDCF7, 34.38%, 33.59%, 50.78%, center);
+		clip-path: polygon(0 13.95%, 12.5% 0, 87.5% 0, 100% 13.95%, 100% 84.88%, 86.36% 100%, 13.64% 100%, 0 84.88%);
+	}
+	&:after {
+		@include r(#213036, 24.22%, 24.61%, 55.08%, center);
+		clip-path: polygon(0 15.87%, 14.52% 0, 85.48% 0, 100% 15.87%, 100% 84.13%, 85.48% 100%, 14.52% 100%, 0 84.13%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#FFF9FF, 22.27%, 41.8%, 23.83%);
+			&:before {
+				@include r(linear-gradient(
+					#9B372F 77.22%,
+					#C74C41 77.22%
+					), 75.44%, 73.83%, 14.95%);
+			}
+			&:after {
+				@include r(#260D0C, 26.32%, 42.99%, 32.71%);
+			}
+		}
+		@include b(7.03%, 1);
+		@include b(0, 1, before, true);
+		@include b(59.65%, 1, after);
+	}
+}
+#seadra {
+	background: #79BFDF;
+	&:before {
+		@include r(#76CBF3, 64.06%, 46.48%, 39.84%, center);
+	}
+	&:after {
+		@include r(#14243C, 35.94%, 29.3%, 51.17%, center);
+	}
+	&:before, &:after {
+		clip-path: polygon(50% 0, 100% 100%, 0 100%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(null, 35.16%, 35.94%, 13.28%);
+			&:before {
+				@include r(#71B3CF, 72.22%, 85.87%, $r: 0);
+				clip-path: polygon(0 7.59%, 9.23% 0, 100% 93.67%, 90.77% 100%);
+			}
+			div {
+				@include r(white, 85.56%, 85.87%, null, 0, 0);
+				clip-path: polygon(0 0, 35.53% 60.26%, 100% 100%, 0 100%);
+				&:before {
+					@include r(#1D2C34, 36.36%, 100%, $l: 42.86%);
+				}
+				&:after {
+					@include r(white, 11.69%, 89.87%, $l: 55.84%);
+				}
+			}
+		}
+		@include b(7.42%, 1);
+		&:nth-child(2) {
+			@include flip;
+		}
+	}
+}
+
+#goldeen {
+	background: #EBE9F3;
+	&:before {
+		@include r(#E39374, 37.5%, 22.66%, 10.94%, center);
+		clip-path: polygon(0 12.07%, 6.25% 0, 93.75% 0, 100% 12.07%, 100% 50%, 89.58% 50%, 89.58% 91.38%, 84.38% 100%, 15.63% 100%, 10.42% 91.38%, 10.42% 50%, 0 50%);
+	}
+	&:after {
+		@include s(#D7CDBA, 16.41%, 21.88%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 22.66%, 26.95%, 33.98%);
+			&:before {
+				@include s(#E39374, $h: 47.83%);
+				z-index: 1;
+			}
+			&:after {
+				@include r(white, 18.97%, 8.7%);
+			}
+			div {
+				@include r(#37999F, 58.62%, 85.51%, 0);
+				&:before {
+					@include r(#41B1B6, 50%, 15.25%, b0);
+				}
+				&:after {
+					@include r(#170506, 58.82%, 84.75%, top-center);
+				}
+			}
+		}
+		@include b(31.03%, 1, after);
+		@include b(7.03%, 1);
+		@include b(25.86%, 1, div);
+		@include b(0, 1, div-before);
+		&:nth-child(3) {
+			@include r(#E7ADB6, 20.31%, 14.06%, 57.81%, center);
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			&:before {
+				@include s(#AB7178, 50%, 27.78%);
+			}
+			&:after {
+				@include s(#C6858E, 50%, 27.78%);
+			}
+		}
+	}
+}
+#seaking {
+	background: #65B7FB;
+	&:before {
+		@include r(#E7D5BE, 24.61%, 14.06%, $l: 27.73%);
+	}
+	&:after {
+		@include r(#E7BBCB, 12.5%, 31.25%, 50.78%, 5.47%);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(linear-gradient(
+				to right,
+				#E3E7EB 60.53%,
+				#CFD1D7 60.53%,
+				#CFD1D7 81.58%,
+				#E3E7EB 81.58%
+				), 29.69%, 12.5%, $r: 0);
+		}
+		&:nth-child(2) {
+			@include r(linear-gradient(
+				to right,
+				#E27251 82.03%,
+				#484645 82.03%
+				), 84.77%, 91.8%, b0, $r: 0);
+			z-index: 1;
+			&:before {
+				@include r(#484645, 32.42%, 9.77%, 69.53%, 44.92%);
+			}
+			&:after {
+				@include r(#484645, 25.78%, 9.38%, 85.55%, 41.02%);
+			}
+		}
+		&:nth-child(3) {
+			@include r(white, 36.72%, 36.72%, 28.52%, 35.55%);
+			z-index: 2;
+			div {
+				@include r(#303030, 74.47%, 74.47%, centered);
+				&:before {
+					@include r(white, 32.86%, 32.86%, 11.43%, 18.57%);
+				}
+				&:after {
+					@include r(#555051, 55.71%, 31.43%, b0, 30%);
+				}
+			}
+		}
+	}
+}
+
+#staryu {
+	background: #927451;
+	&:before {
+		@include r(#F7E66A, 85.94%, 85.55%, b0, $r: 0);
+		clip-path: polygon(0 0, 83.64% 0, 83.64% 68.04%, 100% 68.04%, 100% 84.47%, 50.91% 84.47%, 50.91% 100%, 32.73% 100%, 32.73% 84.47%, 0 84.47%);
+	}
+	&:after {
+		@include r(#FFF16D, 88.28%, 79.3%, 10.94%, center);
+		clip-path: polygon(0 44.33%, 2.21% 41.87%, 21.24% 41.87%, 21.24% 29.06%, 5.31% 10.84%, 5.31% 8.37%, 12.83% 0, 15.04% 0, 31.42% 18.23%, 68.58% 18.23%, 84.96% 0, 87.17% 0, 94.69% 8.37%, 94.69% 10.84%, 78.76% 29.06%, 78.76% 41.87%, 97.79% 41.87%, 100% 44.33%, 100% 55.67%, 97.79% 57.64%, 78.76% 57.64%, 78.76% 70.94%, 94.69% 88.67%, 94.69% 91.63%, 87.17% 100%, 84.96% 100%, 69.03% 81.77%, 30.97% 81.77%, 15.04% 100%, 12.83% 100%, 5.31% 91.63%, 5.31% 88.67%, 21.24% 70.94%, 21.24% 57.64%, 2.21% 57.64%, 0 55.67%);
+	}
+	> div {
+		@include r(#FF5F82, 42.97%, 42.97%, 29.3%, center);
+		z-index: 1;
+		clip-path: polygon(0 10.91%, 10.91% 0, 89.09% 0, 100% 10.91%, 100% 89.09%, 89.09% 100%, 10.91% 100%, 0 89.09%);
+		div {
+			@include r(#D64E69, 81.82%, 83.64%, centered);
+			clip-path: polygon(0 14.13%, 13.33% 0, 86.67% 0, 100% 14.13%, 100% 85.87%, 85.56% 100%, 14.44% 100%, 0 85.87%);
+			&:before {
+				@include r(#FDFFFF, 36.67%, 36.96%, $l: 13.33%)
+					}
+			&:after {
+				@include r(#FDFFFF, 16.67%, 17.39%, 46.74%, 8.89%);
+			}
+		}
+	}
+}
+#starmie {
+	background: #A69DB6;
+	&:before {
+		@include r(#F7DB5C, 68.75%, 68.75%, centered);
+	}
+	&:after {
+		@include r(#FFE971, 88.28%, 88.28%, centered);
+		clip-path: polygon(45.58% 100%, 44.25% 98.67%, 44.25% 76.99%, 31.42% 76.99%, 13.72% 94.69%, 11.95% 94.69%, 5.75% 88.5%, 5.75% 86.73%, 23.45% 69.03%, 23.45% 56.19%, 1.33% 56.19%, 0 54.87%, 0 46.02%, 1.33% 44.69%, 23.45% 44.69%, 23.45% 31.86%, 5.75% 14.16%, 5.75% 12.39%, 11.95% 6.19%, 13.72% 6.19%, 31.42% 23.89%, 44.25% 23.89%, 44.25% 1.77%, 46.02% 0, 53.98% 0, 55.75% 1.77%, 55.75% 23.89%, 68.58% 23.89%, 86.28% 6.19%, 88.05% 6.19%, 94.25% 12.39%, 94.25% 14.16%, 76.55% 31.86%, 76.55% 44.69%, 98.67% 44.69%, 100% 46.02%, 100% 54.87%, 98.67% 56.19%, 76.55% 56.19%, 76.55% 69.03%, 94.25% 86.73%, 94.25% 88.5%, 88.05% 94.69%, 86.28% 94.69%, 68.58% 76.99%, 55.75% 76.99%, 55.75% 98.67%, 54.42% 100%);
+	}
+	> div {
+		@include r(#FC6385, 37.5%, 37.89%, 31.25%, center);
+		z-index: 1;
+		clip-path: polygon(9.38% 100%, 0 91.75%, 0 8.25%, 9.38% 0, 90.63% 0, 100% 8.25%, 100% 91.75%, 90.63% 100%);
+		div {
+			@include r(#D74E69, 85.42%, 85.57%, centered);
+			clip-path: polygon(9.76% 100%, 0 92.77%, 0 8.43%, 9.76% 0, 90.24% 0, 100% 8.43%, 100% 92.77%, 90.24% 100%);
+			&:before, &:after {
+				@include r(#F7A1B2);
+			}
+			&:before {
+				clip-path: polygon(0 49.4%, 52.44% 0, 100% 0, 100% 2.41%, 0 100%);
+			}
+			&:after {
+				clip-path: polygon(21.95% 100%, 100% 22.89%, 100% 39.76%, 40.24% 100%);
+			}
+		}
+	}
+}
+
+#mr-mime {
+	background: #FBECEF;
+	@include o(#EF95AA, 20.31%, 29.3%, $t: 42.97%);
+	> div {
+		&:nth-child(1) {
+			@include r(linear-gradient(
+				to right,
+				white 32.31%,
+				transparent 32.31%,
+				transparent 67.69%,
+				white 67.69%
+				), 50.78%, 25.39%, 20.7%, center);
+			@include o(#414141, 10%, 35.38%, 20%, 27.69%);
+		}
+		&:nth-child(2) {
+			@include r(#9A7082, 45.31%, 25%, 53.52%, center);
+			padding: 10.55% 7.03% 0;
+			&:before {
+				@include s(#C793A6);
+			}
+		}
+	}
+}
+
+#scyther {
+	background: #AAD38A;
+	@include o(#9ABD7D, 2.34%, 5.47%, 43.36%, 55.86%);
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 26.17%, 26.56%, 19.92%);
+			div {
+				@include r(linear-gradient(
+					#232628 83.82%,
+					#303638 83.82%
+					), 68.66%);
+				&:before {
+					@include r(#1D1E20, 30.43%, 88.24%, $l: 32.61%);
+				}
+				&:after {
+					@include r(white, 89.13%, 61.76%);
+				}
+			}
+		}
+		@include e(7.42%, 1);
+		@include b(0, 1, div, true);
+		@include b(0, 1, div-after, true);
+		&:nth-child(3) {
+			@include s(#896868, 84.38%, 19.92%, 61.33%);
+			clip-path: polygon(0 0, 33.8% 0, 37.5% 21.57%, 62.5% 21.57%, 66.2% 0, 100% 0, 100% 100%, 0 100%);
+			@include o(white, 10.19%, 41.18%, 7.87%); 
+			div {
+				@include r(#C7A09E, 74.07%, 39.22%, bottom-center);
+			}
+		}
+		&:nth-child(4) {
+			@include r(linear-gradient(
+				to bottom,
+				transparent 59.52%,
+				#AEDA8F 59.52%,
+				#AEDA8F 73.81%,
+				transparent 73.81%
+				), 33.59%, 16.41%, 30.08%, center);
+			@include o(#9FC582, 9.3%, $b: 0);
+			&:before {
+				height: 78.57%;
+			}
+		}
+	}
+}
+
+#jynx {
+	background: #FBF5C7;
+	&:before {
+		@include s(#E7E1B6, 91.41%, 79.3%, 4.3%);
+		clip-path: polygon(0 4.93%, 5.56% 0, 94.44% 0, 100% 4.93%, 100% 100%, 0 100%);
+	}
+	&:after {
+		@include r(#A284B2, 91.41%, 70.31%, 13.28%, center);
+		clip-path: polygon(0 7.22%, 5.98% 0, 94.02% 0, 100% 7.22%, 100% 100%, 0 100%);
+	}
+	> div {
+		&:nth-child(1) {
+			@include s(#F7E87D, 91.41%, 16.41%);
+			@include o(#DB6461, 41.45%, 66.67%, 0.85%, b0);
+			&:before, &:after {
+				clip-path: polygon(0 39.29%, 15.46% 0, 84.54% 0, 100% 39.29%, 100% 100%, 0 100%);
+			}
+			div {
+				@include r(null, 52.99%, 38.1%, bottom-center);
+				@include o(#E66965, 27.42%);
+				z-index: 1;
+			}
+		}
+		&:nth-child(2) {
+			@include r(linear-gradient(
+				to right,
+				white 25.93%,
+				transparent 25.93%,
+				transparent 74.07%,
+				white 74.07%
+				), 63.28%, 21.09%, 27.34%, center);
+			z-index: 1;
+			@include o(#303030, 4.94%, 14.81%, 11.11%, 29.63%);
+		}
+		&:nth-child(3) {
+			@include r(#F7C2C8, 24.22%, 30.86%, 44.14%, center);
+			z-index: 1;
+			&:before {
+				@include r(linear-gradient(
+					#AB828A 52.94%,
+					#D09EA7 52.94%
+					), 45.16%, 43.04%, 24.05%, center);
+			}
+			&:after {
+				@include r(#F6D3D5, 16.13%, 12.66%, 70.89%, 33.87%);
+			}
+		}
+	}
+}
+
+#electabuzz {
+	background: #FBDF7E;
+	&:before {
+		@include r(#2F4252, 71.09%, 46.48%, 4.3%, center);
+		clip-path: polygon(0 23.53%, 15.38% 0, 50% 58.82%, 84.62% 0, 100% 23.53%, 54.95% 100%, 45.05% 100%);
+	}
+	&:after {
+		@include r(linear-gradient(
+			to right,
+			#C7AF61 25%,
+			transparent 25%,
+			transparent 75%,
+			#C7AF61 75%
+			), 10.94%, 5.08%, 60.16%, center);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 28.91%, 20.31%, 31.64%);
+			&:before {
+				@include r(#302E24, 14.86%, 88.46%, )
+					}
+		}
+		@include e(7.81%, 1);
+		@include b(55.41%, 1, before);
+		&:nth-child(3) {
+			@include r(#A7857D, 100%, 22.66%, 68.75%);
+			&:before {
+				@include r(#DBB1B6, 78.91%, 63.79%, bottom-center);
+			}
+			&:after {
+				@include r(linear-gradient(
+					to right,
+					white 12.17%,
+					transparent 12.17%,
+					transparent 87.83%,
+					white 87.83%
+					), 89.84%, 63.79%, top-center);
+			}
+		}
+	}
+}
+
+#magmar {
+	background: #E56027;
+	&:before {
+		@include s(#FAD86D, $h: 11.33%);
+	}
+	&:after {
+		@include s(#CB5524, $h: 51.95%);
+		clip-path: polygon(0 100%, 0 68.42%, 46.09% 68.42%, 46.09% 0, 53.91% 0, 53.91% 68.42%, 100% 68.42%, 100% 100%);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(linear-gradient(
+				to right,
+				white 33.63%,
+				transparent 33.63%,
+				transparent 66.37%,
+				white 66.37%
+				), 88.28%, 12.89%, 46.88%, center);
+			z-index: 1;
+			@include o(#2C2421, 5.31%, 48.48%, 19.91%);
+		}
+		&:nth-child(2) {
+			@include r(#EBC6AB, 71.88%, 42.19%, 49.22%, center);
+			clip-path: polygon(0 100%, 0 33.33%, 34.78% 33.33%, 34.78% 0, 65.22% 0, 65.22% 33.33%, 100% 33.33%, 100% 100%);
+			z-index: 1;
+			&:before {
+				@include r(#926672, 70.65%, 26.85%, null, center, 13.89%);
+			}
+			&:after {
+				@include r(#B6808E, 50%, 14.81%, null, center, 13.89%);
+			}
+		}
+	}
+}
+
+#pinsir {
+	background: #8E7C75;
+	&:before {
+		@include r(#6D625D, 100%, 8.98%, 55.08%);
+	}
+	&:after {
+		@include r(#6D625D, 100%, 6.64%, b0);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 33.98%, 21.88%, 10.55%);
+			&:before {
+				@include r(#343034, 16.09%, 87.5%);
+			}
+			&:after {
+				@include r(white, 6.9%, 71.43%);
+			}
+		}
+		@include e(8.59%, 1);
+		@include b(47.13%, 1, before);
+		@include b(52.87%, 1, after);
+		&:nth-child(3) {
+			@include r(repeating-linear-gradient(
+				#383030 -4.46%,
+				#383030 10.19%,
+				#CBC5CB 10.19%,
+				#CBC5CB 26.75%,
+				), 53.91%, 61.33%, bottom-center);
+			z-index: 1;
+		}
+	}
+}
+
+#tauros {
+	background: #D7A561;
+	&:before {
+		@include r(#8B8279, 45.31%, 34.38%, 62.89%, center);
+		clip-path: polygon(0 11.36%, 11.21% 0, 88.79% 0, 100% 11.36%, 100% 90.91%, 90.52% 100%, 9.48% 100%, 0 90.91%);
+	}
+	&:after {
+		@include r(linear-gradient(
+			to right,
+			#696158 28.13%,
+			transparent 28.13%,
+			transparent 71.88%,
+			#696158 71.88%
+			), 25%, 1.95%, 90.63%, center);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 23.44%, 22.27%, 35.94%);
+			&:before {
+				@include r(#3D3A34, 21.67%, 89.47%);
+			}
+		}
+		@include e(9.38%, 1);
+		@include b(46.67%, 1, before);
+		&:nth-child(3) {
+			@include r(#A6A7B6, 21.88%, 21.09%, 27.34%, center);
+			&:before {
+				@include r(#D3D5E6, 41.07%, 42.59%, 9.26%, 19.64%);
+			}
+		}
+		&:nth-child(4) {
+			@include r(#A6A7B6, 13.28%, 12.5%, 3.52%, center);
+			&:before {
+				@include r(#D3D5E6, 41.18%, 43.75%, 9.38%, 20.59%);
+			}
+		}
+	}
+}
+
+#magikarp {
+	background: #65B7FB;
+	&:before {
+		@include r(#F5C4C4, 50%, 41.8%, 25%, 7.42%);
+	}
+	&:after {
+		@include r(#F77C56, 85.16%, $r: 0);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(white, 27.34%, 27.34%, 5.86%, 32.03%);
+			z-index: 1;
+			&:before {
+				@include r(#363636, 15.71%, 15.71%, 41.43%, 41.43%);
+			}
+		}
+		&:nth-child(2) {
+			@include r(#EFE9EB, 25%, 39.06%, 22.66%, $r: 0);
+			z-index: 1;
+			&:before {
+				@include r(#B1AFAE, 100%, 14%, 25%);
+			}
+			&:after {
+				@include r(#B1AFAE, 100%, 13%, 61%);
+			}
+		}
+		&:nth-child(3) {
+			@include r(null, 85.16%, 53.52%, bottom-right);
+			z-index: 1;
+			&:before {
+				@include r(#C76449, 100%, 47.45%, b0);
+				clip-path: polygon(0 0, 100% 0, 100% 20%, 45.87% 20%, 45.87% 100%, 39.91% 100%, 39.91% 20%, 0 20%);
+			}
+			&:after {
+				@include r(#FFD26C, 80.73%, 88.32%, $r: 0);
+				clip-path: polygon(0 0, 46.59% 0, 50.57% 5.79%, 50.57% 80.99%, 52.84% 84.3%, 100% 84.3%, 100% 100%, 43.75% 100%, 40.34% 95.04%, 40.34% 19.01%, 37.5% 14.88%, 0 14.88%);
+			}
+		}
+	}
+}
+#gyrados {
+	background: #53B7E9;
+	&:before {
+		@include r(linear-gradient(
+			to right,
+			#3BA7D8 20%,
+			transparent 20%,
+			transparent 80%,
+			#3BA7D8 80%
+			), 15.63%, 8.2%, 35.94%, center);
+	}
+	&:after {
+		@include r(#458696, $h: 31.64%);
+		clip-path: polygon(37.11% 100%, 0 11.11%, 0 0, 20.31% 0, 38.67% 43.21%, 38.67% 0, 61.33% 0, 61.33% 43.21%, 79.69% 0, 100% 0, 100% 11.11%, 62.89% 100%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#EAF3FB, 26.17%, 31.25%, 8.59%);
+			&:before {
+				@include r(linear-gradient(
+					#D1553D 83.75%,
+					#EB5E45 83.75%
+					), 58.21%);
+			}
+			&:after {
+				@include r(#2C1A17, 25.37%, 88.75%, )
+					}
+		}
+		@include b(7.42%, 1);
+		@include a(0, 1, 50%);
+		@include b(0, 1, before, true);
+		@include b(59.7%, 1, after);
+		&:nth-child(3) {
+			@include r(#FFF3C7, 88.28%, 50%, bottom-center);
+			&:before {
+				@include r(linear-gradient(
+					#6D3B38 54%,
+					#DFB5C7 54%
+					), 73.45%, 78.13%, bottom-center);
+			}
+			&:after {
+				@include r(linear-gradient(
+					to right,
+					#EAF3FB 18.85%,
+					transparent 18.85%,
+					transparent 81.15%,
+					#EAF3FB 81.15%
+					), 53.98%, 17.97%, 21.88%, center);
+			}
+		}
+	}
+}
+
+#lapras {
+	background: #376EBE;
+	&:before {
+		@include r(#B26A71, 50%, 18.75%, 64.45%, 41.02%);
+	}
+	&:after {
+		@include r(#D4CBBA, 63.28%, 35.16%, 58.2%, 25%);
+		clip-path: polygon(0 51.11%, 76.54% 51.11%, 76.54% 0, 100% 0, 100% 82.22%, 87.65% 100%, 8.02% 100%, 0 83.33%);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(#65B3DF, 91.8%, $r: 0);
+			clip-path: polygon(0 14.45%, 5.11% 8.2%, 16.6% 8.2%, 16.6% 0, 46.81% 0, 46.81% 8.2%, 85.96% 8.2%, 85.96% 0, 101% 0, 101% 100%, 78.3% 100%, 78.3% 58.2%, 0 58.2%);
+		}
+		&:nth-child(2) {
+			@include r(white, 31.64%, 19.92%, 29.3%, 46.48%);
+			clip-path: polygon(60.49% 0, 100% 0, 100% 100%, 0 100%);
+			&:after {
+				@include r(white, 17.28%, 60.78%, $l: 32.1%);
+			}
+			div {
+				@include r(#383E42, 61.73%);
+				&:before {
+					@include r(#494E51, 50%, 25.49%, bottom-right);
+				}
+				&:after {
+					@include r(#282C30, 32%, 86.27%, $l: 40%);
+				}
+			}
+		}
+	}
+}
+
+#ditto {
+	background: #D3BBE7;
+	@include o(#2C282C, 7.81%, 8.2%, 15.63%, 35.55%);
+	> div {
+		@include r(#C78D8B, 83.59%, 12.89%, 48.83%, center);
+		clip-path: polygon(0 0, 12.15% 0, 12.15% 36.36%, 87.85% 36.36%, 87.85% 0, 100% 0, 100% 100%, 0 100%);
+		&:before {
+			@include r(#D79992, 85.98%, 30.3%, bottom-center);
+		}
+	}
+}
+
+#eevee {
+	background: #AE834D;
+	&:before {
+		@include r(#F7E7BD, 100%, 12.5%, b0);
+	}
+	&:after {
+		@include r(#140E0C, 7.81%, 5.08%, 49.22%, center);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(linear-gradient(
+				#160000 72.73%,
+				#693A0A 72.73%
+				), 20.31%, 30.08%, 22.66%);
+			&:before {
+				@include s(#0C0000, 46.15%, 83.12%);
+			}
+			&:after {
+				@include r(white, 36.54%, 25.97%, 0);
+			}
+		}
+		@include b(8.59%, 1);
+		@include b(38.46%, 1, after);
+		&:nth-child(3) {
+			@include r(#592430, 31.25%, 18.36%, 57.03%, center);
+			clip-path: polygon(0 12.77%, 33.75% 12.77%, 50% 0, 66.25% 12.77%, 100% 12.77%, 100% 100%, 0 100%);
+			&:before {
+				@include r(#BA4C51, 67.5%, 46.81%, bottom-center);
+			}
+		}
+	}
+}
+#vaporeon {
+	background: #85CFE3;
+	&:before {
+		@include s(#146082, 67.19%, 20.7%);
+		clip-path: polygon(0 0, 100% 0, 58.14% 100%, 41.86% 100%);
+	}
+	&:after {
+		@include r(linear-gradient(
+			to right,
+			#DFDBE7 44.53%,
+			#D8CFDC 44.53%,
+			#D8CFDC 55.47%,
+			#DFDBE7 55.47%
+			), 100%, 11.33%, b0);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#1F0000, 25.78%, 24.22%, 26.95%);
+			&:before {
+				@include r(white, 31.82%, 50%);
+			}
+			&:after {
+				@include r(#3D2E57, 63.64%, 30.65%, b0);
+			}
+		}
+		@include b(8.59%, 1);
+		@include a(0, 1, 17.74%);
+		@include b(48.48%, 1, before);
+		@include b(9.09%, 1, after);
+		&:nth-child(3) {
+			@include r(#121219, 7.03%, 5.08%, 50.78%, center);
+			&:before {
+				@include r(#4D2430, 477.78%, 376.92%, 146.15%, center);
+				clip-path: polygon(0 16.33%, 38.37% 16.33%, 50% 0, 61.63% 16.33%, 100% 16.33%, 100% 100%, 0 100%);
+			}
+			&:after {
+				@include r(#A64055, 355.56%, 138.46%, 384.62%, center);
+			}
+		}
+	}
+}
+#jolteon {
+	background: #F7D761;
+	&:before {
+		@include s(#201915, 9.38%, 5.08%, 48.05%);
+	}
+	&:after {
+		@include r(#E7EDEF, 100%, 11.33%, b0);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#190504, 25.39%, 23.05%, 28.13%);
+			&:before {
+				@include r(white, 30.77%, 52.54%);
+			}
+			&:after {
+				@include r(#371E50, 56.92%, 33.9%, b0);
+			}
+		}
+		@include b(7.81%, 1);
+		@include a(0, 1, 38.98%);
+		@include b(49.23%, 1, before);
+		@include b(0, 1, after);
+		&:nth-child(3) {
+			@include r(#4D2430, 52.34%, 14.06%, 65.63%, center);
+			&:before {
+				@include r(#A64055, 73.13%, 50%, bottom-center);
+			}
+		}
+	}
+}
+#flareon {
+	background: #EB804D;
+	&:before {
+		@include s(#F8E99E, 56.25%, 27.73%);
+		clip-path: polygon(0 0, 100% 0, 100% 83.1%, 94.44% 100%, 5.56% 100%, 0 83.1%);
+	}
+	&:after {
+		@include r(#F8E99E, 100%, 12.11%, b0);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#1F0000, 24.22%, 22.66%, 32.03%);
+			&:before {
+				@include r(white, 30.65%, 53.45%);
+			}
+			&:after {
+				@include r(#002638, 67.74%, 27.59%, bottom-center);
+			}
+		}
+		@include b(8.2%, 1);
+		@include a(0, 1, 31.03%);
+		@include b(48.39%, 1, before);
+		&:nth-child(3) {
+			@include r(#4D2430, 56.25%, 16.41%, 64.84%, center);
+			&:before {
+				@include r(#A64055, 73.61%, 50%, bottom-center);
+			}
+			&:after {
+				@include r(#1F1716, 15.28%, 40.48%, -61.9%, center);
+			}
+		}
+	}
+}
+
+#porygon {
+	background: #CBC5BA;
+	&:before {
+		@include r(#56B3B6, 100%, 74.61%, b0);
+	}
+	&:after {
+		@include r(linear-gradient(
+			to right,
+			#CBC5BA 62.58%,
+			#56B3B6 62.58%
+			), 60.55%, 22.66%, $b: 0);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(#EB6475, $t: 0);
+			clip-path: polygon(21.48% 5.08%, 26.95% 0, 101% 0, 101% 101%, 21.48% 101%);
+			&:before {
+				@include r(white, 35.16%, 35.16%, 8.2%, 50.78%);
+			}
+			&:after {
+				@include r(#251218, 9.38%, 9.38%, 21.09%, 63.67%);
+			}
+		}
+	}
+}
+
+#omanyte {
+	background: #79D0E7;
+	&:before {
+		@include s(linear-gradient(
+			#E3DDB6 18.18%,
+			#D7D1AE 18.18%,
+			#D7D1AE 41.96%,
+			#E3DDB6 41.96%
+			), $h: 55.86%);
+		clip-path: polygon(-1% -1%, 101% -1%, 101% 86.71%, 75% 86.71%, 75% 101%, 25% 101%, 25% 86.71%, -1% 86.71%);
+	}
+	&:after {
+		@include s(#6DBDCF, 50%, 6.64%);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(linear-gradient(
+				to right,
+				#F3F3F3 36.73%,
+				transparent 36.73%,
+				transparent 63.27%,
+				#F3F3F3 63.27%
+				), 88.28%, 32.42%, 37.11%, center);
+			z-index: 1;
+			@include o(linear-gradient(
+				#3D3A3C 78.57%,
+				#302E30 78.57%
+				), 25.22%, 67.47%, 5.75%, 18.07%);
+		}
+		&:nth-child(2) {
+			@include r(linear-gradient(
+				to right,
+				transparent 26.95%,
+				#7BD8EF 26.95%,
+				#7BD8EF 46.88%,
+				transparent 46.88%,
+				transparent 53.13%,
+				#7BD8EF 53.13%,
+				#7BD8EF 73.05%,
+				transparent 73.05%
+				), 100%, 7.03%, 83.59%);
+			@include o(#7BD8EF, 20.7%, 77.78%);
+		}
+	}
+}
+#omastar {
+	background: #71B7C7;
+	&:before {
+		@include s(#E3DDB6, $h: 33.98%);
+		clip-path: polygon(-1% -1%, 101% -1%, 101% 75.86%, 75% 75.86%, 75% 101%, 25% 101%, 25% 75.86%, -1% 75.86%);
+	}
+	&:after {
+		@include s(#65A3B2, 50%, 4.3%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#FBFBCF, 27.73%, 28.13%, 10.16%);
+			z-index: 1;
+			&:before {
+				@include r(#270600, 22.54%, 70.83%, 13.89%);
+			}
+			&:after {
+				@include r(#FFFFEF, 29.58%, 29.17%, 8.33%);
+			}
+		}
+		@include b(9.77%, 1);
+		@include b(38.03%, 1, before);
+		@include b(23.94%, 1, after);
+		&:nth-child(3) {
+			@include r(#FBEFD3, 63.28%, 42.58%, 48.44%, center);
+			&:before {
+				@include s(#3C1328, 14.2%);
+			}
+			&:after {
+				@include r(#3C1328, 100%, 20.18%, 39.45%);
+			}
+		}
+	}
+}
+
+#kabuto {
+	background: linear-gradient(
+		#BB9269 29.69%,
+		#152034 29.69%
+	);
+	@include o(#1D1E24, 8.98%, 8.59%, 12.89%, 2.34%);
+	> div {
+		&:nth-child(1) {
+			@include s(linear-gradient(
+				to right,
+				#E3B0B0 28.1%,
+				transparent 28.1%,
+				transparent 71.9%,
+				#E3B0B0 71.9%
+				), 82.03%, 21.48%, 35.16%);
+			@include o(#EB7482, 21.43%, 78.18%, 3.33%, 10.91%);
+		}
+		&:nth-child(2) {
+			@include r(#F3C57D, 100%, 33.59%, b0);
+			&:before {
+				@include r(#152034, 46.88%, 101.16%, bottom-center);
+			}
+			&:after {
+				@include r(#152034, 100%, 26.74%, 52.33%);
+			}
+		}
+	}
+}
+#kabutops {
+	background: #B68B55;
+	&:before {
+		@include r(#A67C4D, $h: 88.67%);
+		z-index: 1;
+		clip-path: polygon(-1% -1%, 101% -1%, 101% 37.44%, 63.28% 100%, 36.72% 100%, -1% 37.44%)
+	}
+	&:after {
+		@include r(#B68B55, $h: 82.81%);
+		z-index: 1;
+		clip-path: polygon(-1% -1%, 101% -1%, 101% 28.3%, 60.94% 100%, 39.06% 100%, -1% 28.3%)
+	}
+	> div {
+		@include r(#EDEDED, 37.5%, 37.5%, 35.55%);
+		&:before {
+			@include r(linear-gradient(
+				#34292C 91.76%,
+				#504040 91.76%
+				), 19.79%, 88.54%);
+		}
+		&:after {
+			@include r(#eee, 19.79%, 71.88%);
+		}
+		@include b(7.03%, 1);
+		@include b(19.79%, 1, before);
+		@include b(26.04%, 1, after);
+	};
+}
+
+#aerodactyl {
+	background: #C3BDCF;
+	@include o(#808091, 1.95%, 5.86%, 41.8%, 37.11%);
+	> div {
+		@include nth(1, 2) {
+			@include r(white, 31.64%, 21.09%, 17.19%);
+			div {
+				@include r(linear-gradient(
+					#201718 83.33%,
+					#384C38 83.33%
+					), 41.98%);
+				&:before {
+					@include r(#1C1514, 44.12%, 90.74%);
+				}
+				&:after {
+					@include r(white, 32.35%, 62.96%);
+				}
+			}
+		}
+		@include e(6.64%, 1);
+		@include b(35.8%, 1, div);
+		@include b(29.41%, 1, div-before);
+		@include b(20.59%, 1, div-after);
+		&:nth-child(3) {
+			@include r(#754C54, 86.72%, 23.44%, 62.11%, center);
+			clip-path: polygon(0 0, 32.88% 0, 37.84% 28.33%, 62.16% 28.33%, 67.12% 0, 100% 0, 100% 100%, 0 100%);
+			@include o(white, 7.66%, 41.67%, $b: 0);
+			div {
+				@include r(#B28D8A, 63.96%, 41.67%, bottom-center);
+			}
+		}
+	}
+}
+
+#snorlax {
+	background: #FFEBD3;
+	&:before {
+		@include r(#58A1BF, $h: 36.72%);
+		clip-path: polygon(-1% -1%, 101% -1%, 101% 70.21%, 68.75% 70.21%, 53.52% 100%, 46.48% 100%, 31.25% 70.21%, -1% 70.21%);
+	}
+	&:after {
+		@include r(#336679, 61.72%, 9.38%, top-center);
+	}
+	> div {
+		&:nth-child(1) {
+			@include r(null, 83.59%, 3.52%, 46.88%, center);
+			@include o(#5C5A55, 33.18%);
+		}
+		&:nth-child(2) {
+			@include r(linear-gradient(
+				transparent 57.14%,
+				#5C5A55 57.14%
+				), 39.06%, 8.2%, 58.98%, center);
+			@include o(#F3F5F7, 14%, 57.14%);
+		}
+	}
+}
+
+#articuno {
+	background: #7EB7E3;
+	&:before {
+		@include r(#9C9C9C, 26.56%, 84.77%, top-center);
+	}
+	&:after {
+		@include r(#2381A6, $h: 41.02%);
+		clip-path: polygon(-1% -1%, 101% -1%, 101% 48.57%, 63.28% 100%, 36.72% 100%, -1% 48.57%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#F9F9F9, 24.61%, 37.5%, 11.72%);
+			&:before {
+				@include r(linear-gradient(
+					#652B23 79.17%,
+					#71322C 79.17%
+					), 68.25%);
+			}
+			&:after {
+				@include r(linear-gradient(
+					#F9F9F9 75%,
+					#3C2823 75%
+					), 23.81%, 87.5%, 0);
+			}
+		}
+		&:nth-child(3) {
+			@include r(#79435A, 20.31%, 14.84%, 62.11%, center);
+			&:before {
+				@include r(#9E647E, 69.23%, 47.37%, bottom-center);
+			}
+		}
+		@include b(7.03%, 1);
+		@include b(0, 1, before, true);
+		@include b(53.97%, 1, after);
+	}
+}
+#zapdos {
+	background: #FEDC71;
+	&:after {
+		@include r(#EDBB6A, 28.91%, 41.41%, 37.89%, center);
+		clip-path: polygon(0 25.47%, 21.62% 25.47%, 21.62% 0, 78.38% 0, 78.38% 25.47%, 100% 25.47%, 100% 100%, 0 100%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#394049, 38.67%, 24.22%, 24.22%);
+			&:before {
+				@include r(white, 72.73%, 83.87%);
+			}
+			&:after {
+				@include r(#30343C, 13.13%, 79.03%);
+			}
+		}
+		@include e(6.64%, 1);
+		@include b(0, 1, before, true);
+		@include b(54.55%, 1, after);
+		&:nth-child(3) {
+			@include r(#71515D, 21.09%, 11.72%, 59.38%, center);
+			z-index: 1;
+			&:before {
+				@include r(#AA5A7A, 62.96%, 36.67%, bottom-center);
+			}
+		}
+	}
+}
+#moltres {
+	background: #F7CB6D;
+	&:before {
+		@include r(#A2817D, 28.91%, 38.67%, 42.97%, center);
+		clip-path: polygon(0 26.26%, 24.32% 26.26%, 24.32% 0, 75.68% 0, 75.68% 26.26%, 100% 26.26%, 100% 100%, 0 100%);
+	}
+	&:after {
+		@include r(#E36734, 43.75%, 28.91%, $l: 26.17%);
+		clip-path: polygon(0 -1%, 100% -1%, 100% 43.24%, 85.71% 43.24%, 85.71% 100%, 23.21% 100%, 23.21% 66.22%, 0 66.22%);
+	}
+	> div {
+		@include nth(1, 2) {
+			@include r(#F3EFFF, 29.3%, 28.91%, 21.88%);
+			div {
+				@include r(#342C1C, 68%);
+				&:before {
+					@include r(#493824, 49.02%, 18.92%, b0);
+				}
+				&:after {
+					@include r(#F3EFFF, 23.53%, 87.84%);
+				}
+			}
+		}
+		@include e(8.2%, 1);
+		@include b(0, 1, div, true);
+		@include b(0, 1, div-before);
+		@include b(37.25%, 1, div-after);
+		&:nth-child(3) {
+			@include r(#714C59, 22.66%, 7.42%, 66.8%, center);
+			&:before {
+				@include r(#96566E, 68.97%, 57.89%, bottom-center);
+			}
+		}
+	}
+}
+
+#dratini {
+	background: #ABC4E5;
+	&:before {
+		@include r(#F3F3F3, 14.45%, 14.06%, 9.77%, center);
+	}
+	&:after {
+		@include r(#F3F3F3, 73.44%, 43.75%, 49.22%, center);
+		clip-path: polygon(0 8.93%, 5.32% 0, 94.68% 0, 100% 8.93%, 100% 89.29%, 96.81% 100%, 3.19% 100%, 0 89.29%);
+	}
+	> div {
+		@include r(#230A1A, 21.09%, 34.77%, 14.45%);
+		&:before {
+			@include r(#451B41, 100%, 38.2%, b0);
+			clip-path: polygon(0 0, 37.04% 0, 37.04% 52.94%, 100% 52.94%, 100% 100%, 0 100%);
+		}
+		&:after {
+			@include r(#E9E9E9, 55.56%, 47.19%, 5.62%);
+		}
+		div {
+			@include r(#190510, 51.85%, 60.67%, 21.35%, center);
+		}
+		&:nth-child(2) {
+			&:before {
+				@include flip;
+			}
+		}
+		@include b(8.2%, 1);
+		@include b(35.19%, 1, after);
+	}
+}
+#dragonair {
+	background: #7DADDF;
+	&:before {
+		@include s(#F3F7FB, 22.66%, 22.27%);
+	}
+	&:after {
+		@include r(linear-gradient(
+			to right,
+			#4A8CEF 12.5%,
+			transparent 12.5%,
+			transparent 87.5%,
+			#4A8CEF 87.5%
+			), 100%, 15.63%, b0)
+			}
+	> div {
+		@include nth(1, 2) {
+			@include r(#240B18, 23.83%, 37.11%, 12.89%);
+			&:before {
+				@include r(#6D2A4C, 100%, 63.16%, b0);
+				clip-path: polygon(0 0, 50% 0, 50% 55%, 100% 55%, 100% 100%, 0 100%);
+			}
+			&:after {
+				@include r(white, 37.7%, 36.84%, 7.37%);
+			}
+			div {
+				@include r(#1A0913, 45.9%, 61.05%, 17.89%);
+			}
+		}
+		&:nth-child(2) {
+			&:before {
+				@include flip;
+			}
+		}
+		@include b(8.2%, 1);
+		@include b(52.46%, 1, after);
+		@include b(27.87%, 1, div);
+		&:nth-child(3) {
+			@include r(#3774B6, 51.56%, 15.63%, bottom-center);
+			clip-path: polygon(0 30%, 6.82% 0, 93.18% 0, 100% 30%, 100% 100%, 0 100%);
+			&:before {
+				@include r(#B7D3EF, 32.58%, 55%, b0, 18.94%);
+			}
+		}
+	}
+}
+#dragonite {
+	background: #F4BD64;
+	@include o(#D7CDA9, 7.42%, 8.98%, 22.66%);
+	> div {
+		@include nth(1, 2) {
+			@include r(#F9F9F9, 22.66%, 29.69%, 22.66%);
+			&:before {
+				@include r(linear-gradient(
+					#38322B 59.21%,
+					#4E443C 59.21%
+					), 75.86%, 85.53%, $b: 0);
+			}
+			&:after {
+				@include r(#F9F9F9, 24.14%, 21.05%, 23.68%);
+			}
+			div {
+				@include r(#201E17, 32.76%, 48.68%, 32.89%);
+			}
+		}
+		@include b(8.59%, 1);
+		@include b(0, 1, before, true);
+		@include b(63.79%, 1, after);
+		@include b(44.83%, 1, div);
+		&:nth-child(3) {
+			@include r(#A76C6D, 73.44%, 12.5%, 78.13%, center);
+			&:before {
+				@include r(#EE8179, 77.66%, 62.5%, bottom-center);
+			}
+			&:after {
+				@include r(linear-gradient(
+					to right,
+					#D09E54 12.5%,
+					transparent 12.5%,
+					transparent 87.5%,
+					#D09E54 87.5%
+					), 25.53%, 40.63%, -96.88%, center);
+			}
+		}
+	}
+}
+
+#mewtwo {
+	background: #E7E1EC;
+	&:before {
+		@include r(linear-gradient(
+			to right,
+			#C9C3CD 26.56%,
+			transparent 26.56%,
+			transparent 73.44%,
+			#C9C3CD 73.44%
+			), 25%, 13.28%, 39.45%, center);
+		clip-path: polygon(0 100%, 0 85.29%, 18.75% 85.29%, 18.75% 0, 81.25% 0, 81.25% 85.29%, 100% 85.29%, 100% 100%);
+	}
+	&:after {
+		@include r(linear-gradient(
+			to right,
+			#969696 16.67%,
+			transparent 16.67%,
+			transparent 83.33%,
+			#969696 83.33%
+			), 9.38%, 4.3%, 62.5%, center);
+	}
+	> div {
+		@include r(white, 29.3%, 22.27%, 30.47%);
+		div {
+			@include r(linear-gradient(
+				#8A6A86 78.95%,
+				#A27E9E 78.95%
+				), 33.33%);
+			&:before {
+				@include r(#3C303C, 52%, 89.47%, top-center);
+			}
+			&:after {
+				@include r(white, 32%, 64.91%);
+			}
+		}
+		@include e(7.81%, 1);
+		@include b(38.67%, 1, div);
+		@include b(24%, 1, div-after);
+	}
+}
+#mew {
+	background: #DBADE2;
+	&:before {
+		@include r(#F7D3DF);
+		clip-path: polygon(-1% 6.64%, 23.05% 6.64%, 25.78% 9.77%, 25.78% 23.05%, 74.22% 23.05%, 74.22% 9.77%, 76.95% 6.64%, 101% 6.64%, 101% 101%, -1% 101%);
+	}
+	> div {
+		@include r(#F7F3F3, 23.83%, 28.52%, 44.14%);
+		div {
+			@include r(linear-gradient(
+				#5185B6 80.7%,
+				#799FC7 80.7%
+				), 75.41%, 78.08%, b0);
+			&:before {
+				@include r(#4D5261, 43.48%, 56.14%, 12.28%, center);
+			}
+			&:after {
+				@include r(#F7F3F3, 32.61%, 28.07%, 5.26%);
+			}
+		}
+		@include b(7.42%, 1);
+		@include b(0, 1, div, true);
+		@include b(54.35%, 1, div-after);
+	}
+}

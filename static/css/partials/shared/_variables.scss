@@ -1,60 +1,59 @@
 :root {
 	--p: 12px;
 
-	--font-mono: 'dm', 'Inconsolata', 'Consolas', Monaco, 'Bitstream Vera Sans Mono', 'Lucida Console', Terminal, Courier, monospace;
-	--font-faune: 'faune', sans-serif;
-	--font-recursive: 'Recursive', 'faune', sans-serif;
+	--font-mono: 'Dank Mono', 'Inconsolata', 'Consolas', Monaco, 'Bitstream Vera Sans Mono', 'Lucida Console', Terminal, Courier, monospace;
+	--font-default: -apple-system, BlinkMacSystemFont, "Mona Sans", "Segoe UI Variable", "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	
 	--color-white-hsl: #{hexToHSL(#fff)};
-	--color-iron: #{$iron};
 	--color-iron-white: #{mix($iron, white)};
-	--color-iron-white-10: #{mix($iron, white, 10%)};
-	--color-iron-white-30: #{mix($iron, white, 30%)};
 	--color-iron-white-70: #{mix($iron, white, 70%)};
-	--color-iron-1: #{darken($iron, 1%)};
-	--color-iron-2: #{darken($iron, 2%)};
-	--color-iron-3: #{darken($iron, 3%)};
-	--color-iron-5: #{darken($iron, 5%)};
-	--color-iron-10: #{darken($iron, 10%)};
+	--color-iron-white-90: #{mix($iron, white, 90%)};
 	
+	--color-iron: #{$iron};
 	--color-iron-hsl: #{hexToHSL($iron)};
 	--color-iron-1-hsl: #{hexToHSL(darken($iron, 1%))};
 	--color-iron-10-hsl: #{hexToHSL(darken($iron, 10%))};
 	--color-iron-12-hsl: #{hexToHSL(darken($iron, 12%))};
+	--color-iron-10: #{darken($iron, 10%)};
 	
-	--color-pink: #{$pink};
-	--color-pink-5: #{lighten($pink, 5%)};
+	--color-blush: #{$blush};
+	--color-blush-hsl: #{hexToHSL($blush)};
+	--color-blush-5: #{lighten($blush, 5%)};
+	--color-blush-8: #{lighten($blush, 8%)};
+
+	--color-rose: #{$rose};
+	--color-rose-hsl: #{hexToHSL($rose)};
+
+	--color-mauve: #{$mauve};
+	--color-mauve-hsl: #{hexToHSL($mauve)};
+
+	--color-slate: #{$slate};
+	--color-slate-hsl: #{hexToHSL($slate)};
+
+	--color-mint: #{$mint};
+	--color-mint-hsl: #{hexToHSL($mint)};
+
+	--color-oak: #{$oak};
+	--color-oak-hsl: #{hexToHSL($oak)};
+
+	--color-aqua: #{$aqua};
+	--color-peach: #{$peach};
+	--color-periwinkle: #{$periwinkle};
 	
 	--color-message: #{$message};
 	--color-message-hsl: #{hexToHSL($message)};
-	
-	--color-red: #{$red};
-	--color-orange: #{$orange};
-	--color-light-orange: #{$light-orange};
-	--color-blue: #{$blue};
-	--color-indigo: #{$indigo};
-	--color-violet: #{$violet};
-	
-	--color-red-hsl: #{hexToHSL($red)};
-	--color-orange-hsl: #{hexToHSL($orange)};
-	--color-light-orange-hsl: #{hexToHSL($light-orange)};
-	--color-blue-hsl: #{hexToHSL($blue)};
-	--color-indigo-hsl: #{hexToHSL($indigo)};
-	--color-violet-hsl: #{hexToHSL($violet)};
 	
 	--color-grey: #f1f1f1;
 	--color-grey-dark: #e5e5e5;
 	
 	--color-focus: #5E9ED6;
-	
-	--color-writing-light: #{mix($red, white, 20%)};
-	--color-writing-med: #{mix($red, white, 40%)};
-	--color-writing-dark: #{mix($red, $iron, 10%)};
 
 	--color-discord: #5865F2;
-	--color-mastodon: #6364ff;
+	--color-mas: #6364ff;
+	--color-mas-dark: #563ACC;
+	--color-mas-light: #858AFA;
 	--color-gv: #34a853;
-	--color-cp: #F5CD15;
+	--color-cp: #717790;
 	--color-gh: #4969ed;
 	--color-insta: #cd486b;
 	--color-tw: #1D9BF0;
@@ -71,11 +70,4 @@
 	--color-med-hsl: #{hexToHSL(#00AB6C)};
 	--color-ap-hsl: #{hexToHSL(#7d50df)};
 	--color-sp-hsl: #{hexToHSL(#1cb954)};
-}
-
-@include dark {
-	:root {
-		--color-cp: #ffdd40;
-		--color-tum: #519ecc;
-	}
 }

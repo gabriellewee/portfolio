@@ -1,0 +1,22 @@
+---js
+{
+    layout: "layouts/base.njk",
+    key: "post",
+    tags: "posts",
+    category: "social",
+    pagination: {
+        data: "mastodon",
+        size: 1,
+        addAllPagesToCollections: true,
+        alias: "mastodon"
+    },
+    permalink: false,
+	eleventyComputed: {
+		mastodon(data) {
+			data.page.date = new Date(data.mastodon.created_at);
+			data.content = data.mastodon.content;
+			data.url = data.mastodon.url;
+		}
+	}
+}
+---
