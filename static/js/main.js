@@ -11,11 +11,23 @@ const noJS = ((container = document.documentElement) => {
 })();
 
 let container = document.querySelector(".grid-isotope");
-let iso = new Isotope(container, {
-	percentPosition: true,
-	layoutMode: "packery",
-	itemSelector: ".grid-item"
-});
+if(container) {
+	let iso = new Isotope(container, {
+		percentPosition: true,
+		layoutMode: "packery",
+		itemSelector: ".grid-item",
+		packery: {
+			gutter: 24
+		}
+	});
+	let scroll = new InfiniteScroll(container, {
+		button: '.load',
+		path: '.next',
+		append: '.post',
+		scrollThreshold: false,
+		outlayer: iso
+	});
+}
 
 const loading = new imagesLoaded(document.body, () => {
 	setTimeout(() => {
@@ -100,108 +112,4 @@ const popup = ((containers = Array.from(document.querySelectorAll(".popup"))) =>
 			});
 		}
 	})
-})();
-
-const visualFilters = ((filters = document.querySelector(".grid-filters")) => {
-	if (!filters) return;
-	let tagTrigger = filters.querySelector("#grid-filters");
-	tagTrigger.addEventListener("keydown",  e => {
-		if (e.key === "Enter") {
-			if (tagTrigger.checked) {
-				tagTrigger.checked = false;
-				tagTrigger.setAttribute("aria-checked", "false");
-			} else {
-				tagTrigger.checked = true;
-				tagTrigger.setAttribute("aria-checked", "true");
-			}
-		}
-	});
-	tagTrigger.addEventListener("click", e => {
-		if(tagTrigger.checked){
-			tagTrigger.setAttribute("aria-checked", "true");
-		} else {
-			tagTrigger.setAttribute("aria-checked", "false");
-		}
-	});
-	let links = filters.querySelectorAll("[data-filter]");
-	links.forEach(link=>{
-		let value = link.getAttribute("data-filter");
-		link.addEventListener("click", e => {
-			e.preventDefault();
-			iso.arrange({ filter: value });
-			let active = filters.querySelector(".active");
-			if (active && value == "*") {
-				active.classList.remove("active");
-			} else if (active) {
-				active.classList.remove("active");
-				e.target.classList.add("active");
-			} else {
-				e.target.classList.add("active");
-			};
-			iso.layout();
-		});
-	});
-})();
-
-const visualInfoTriggers = ((figures = Array.from(document.querySelectorAll(".grid-figure"))) => {
-	if(!figures) return;
-	figures.forEach(figure=>{
-		let button = figure.querySelector(".grid-input")
-		let info = figure.querySelector(".grid-info");
-		let expand = figure.querySelector(".grid-expand");
-		let external = Array.from(figure.querySelectorAll(".external"));
-		let name = button.getAttribute("id").slice(0, -5);
-		let labels = Array.from(figure.querySelectorAll("label"));
-		info.setAttribute("aria-hidden", "true");
-		button.addEventListener("focus", e => {
-			document.getElementById(name).scrollIntoView({ behavior: "smooth" });
-		});
-		let _true = (() => {
-			button.setAttribute("aria-checked", "true");
-			info.removeAttribute("aria-hidden");
-			expand.tabIndex = 0;
-			if(external) {
-				external.forEach(link=> {
-					link.tabIndex = 0;
-				});
-			}
-		});
-		let _false = (() => {
-			button.setAttribute("aria-checked", "false");
-			info.setAttribute("aria-hidden", "true");
-			expand.tabIndex = -1;
-			if(external) {
-				external.forEach(link=> {
-					link.tabIndex = -1;
-				});
-			}
-		});
-		button.addEventListener("click", e => {
-			if(button.checked){
-				_true();
-			} else {
-				_false();
-			}
-		});
-		button.addEventListener("keydown", e => {
-			if (e.key === "Enter") {
-				if(button.checked){
-					button.checked = false;
-					_false();
-				} else {
-					button.checked = true;
-					_true();
-				}
-			}
-		});
-		labels.forEach(label=>{
-			label.addEventListener("click", e => {
-				if(button.checked){
-					_true();
-				} else {
-					_false();
-				}
-			});
-		});
-	});
 })();

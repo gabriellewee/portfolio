@@ -1,0 +1,31 @@
+@import 'popup';
+@import 'lightbox';
+
+.memoji {
+	display: block;
+	width: 48px;
+	height: 68px;
+	background-size: 48px 68px;
+	&-default {
+		@include background-image(avatars/memoji, png);
+	}
+	&-hm {
+		@include background-image(avatars/memoji-hm, png);
+	}
+}
+
+.cursor {
+	&:after {
+		content: "_";
+		animation: blink 1s cubic-bezier(1,0,0,1) infinite forwards;
+		display: inline-block;
+		@media (prefers-reduced-motion) {
+			content: unset;
+			display: unset;
+			animation: unset;
+		}
+	}
+}
+@keyframes blink {
+	from { opacity: 1 } to { opacity: 0 }
+}

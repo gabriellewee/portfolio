@@ -25,7 +25,7 @@
 }
 
 .lightbox-background {
-	@include blur-all(5px, "var(--color-iron-12-hsl)", .95, .9);
+	@include blur-all(5px, "var(--color-iron-12-hsl)", .98, .9);
 	transition: .2s opacity ease-out, 0s visibility .2s, 0s z-index .2s;
 	z-index: -999;
 	&:before {

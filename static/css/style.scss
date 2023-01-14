@@ -1,18 +1,33 @@
-@import 'partials/fonts/faune';
-
 @import 'partials/shared/utilities';
 @import 'partials/shared/variables';
 @import 'partials/shared/reset';
 @import 'partials/shared/core';
-@import 'partials/shared/loading';
+
+@import 'partials/fonts/dank-mono';
+@import 'partials/fonts/mona-sans';
 
 body {
-	font-family: var(--font-faune);
-	line-height: 1.2;
+	background-color: var(--color-blush-8);
+	color: var(--color-iron);
+	font-family: var(--font-default);
 }
 
-@import 'partials/shared/grid';
-@import 'partials/shared/lightbox';
+.top, main, .bottom {
+	max-width: 70rem;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
+	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
+}
 
-@import 'partials/navigation/header';
-@import 'partials/navigation/footer';
+.upscale {
+	image-rendering: pixelated;
+}
+
+@import 'partials/shared/loading';
+
+@import 'partials/shared/components';
+@import 'partials/shared/navigation';
+
+@import 'partials/shared/post';
+@import 'partials/shared/syntax';

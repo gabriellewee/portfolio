@@ -36,12 +36,8 @@ a {
 		text-decoration-color: var(--color-am);
 	}
 	&.email {
-		color: rgba(black, .5);
-		text-decoration-color: rgba(black, .5);
-		@include dark {
-			color: hsla(var(--color-white-hsl), .4);
-			text-decoration-color: hsla(var(--color-white-hsl), .4);
-		}
+		color: var(--color-iron-white-70);
+		text-decoration-color: var(--color-iron-white-70);
 	}
 	&.text {
 		color: var(--color-gv);
@@ -56,7 +52,7 @@ a {
 		text-decoration-color: var(--color-discord);
 	}
 	&.mastodon {
-		color: var(--color-mastodon);
-		text-decoration-color: var(--color-mastodon);
+		color: var(--color-mas);
+		text-decoration-color: var(--color-mas);
 	}
 }

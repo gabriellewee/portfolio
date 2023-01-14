@@ -12,6 +12,7 @@ const sass = require("sass");
 const path = require("path");
 const minify = require("terser").minify;
 const htmlmin = require("html-minifier");
+const util = require("util");
 
 module.exports = function(eleventyConfig) {
 	eleventyConfig.setDataDeepMerge(true);
@@ -23,9 +24,13 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("static/images");
 	eleventyConfig.addPassthroughCopy({"static/images/favicons":"/"});
 	eleventyConfig.addPassthroughCopy({"_includes/svg":"static/images/svg"});
+
+	eleventyConfig.addFilter('dump', obj => {
+		return util.inspect(obj)
+	});
 	
 	eleventyConfig.addTransform("minify", async (content, outputPath) => {
-		if (outputPath.endsWith(".html")) {
+		if (outputPath && outputPath.endsWith(".html")) {
 			return await htmlmin.minify(content, {
 				collapseWhitespace: true,
 				removeComments: true,  
@@ -93,20 +98,20 @@ module.exports = function(eleventyConfig) {
 		return text.charAt(0).toUpperCase() + text.slice(1);
 	});
 
-	eleventyConfig.addFilter("readableDataDate", date => {
-		return DateTime.fromISO(date, {zone: 'utc'}).toFormat("dd LLLL yyyy");
+	eleventyConfig.addFilter("readableDate", date => {
+		return DateTime.fromJSDate(date, {zone: 'utc'}).toFormat("dd LLLL yyyy");
 	});
 
 	eleventyConfig.addFilter('htmlDateString', date => {
 		return DateTime.fromJSDate(date, {zone: 'utc'}).toFormat('yyyy-LL-dd');
 	});
+
+	eleventyConfig.addFilter('linkDate', date => {
+		return DateTime.fromISO(date, {zone: 'utc'}).toFormat('yyyy/LL/dd');
+	});
 	
 	eleventyConfig.addFilter("timeAgo", date => {
 		return DateTime.fromJSDate(date, {zone: 'utc'}).toRelative();
-	});
-
-	eleventyConfig.addFilter("readableDate", date => {
-		return DateTime.fromJSDate(date, {zone: 'utc'}).toFormat("dd LLLL yyyy");
 	});
 
 	eleventyConfig.addNunjucksAsyncShortcode("year", async (year) => {
@@ -118,12 +123,6 @@ module.exports = function(eleventyConfig) {
 			year = "";
 		}
 		return year;
-	});
-
-	eleventyConfig.addFilter("isoFilter", filters => {
-		let array = filters.split(' ');
-		let result = array.map(el => 'filter-' + el);
-		return result.join(' ');
 	});
 
 	eleventyConfig.addFilter("limit", (array, limit) => {
@@ -167,6 +166,29 @@ module.exports = function(eleventyConfig) {
         }, []);
 
         return lines;
+    });
+
+    eleventyConfig.addNunjucksAsyncShortcode("stats", async (src, type) => {
+		let category = src.split('/')[3];
+		let stats = await Image(src, {
+			widths: [null],
+			statsOnly: true
+		});
+		let width = stats["webp"][0].width;
+		let height = stats["webp"][0].height;
+		let result;
+		let orientation;
+
+		if(type === "width") {
+			result = width;
+		} else if(type === "height") {
+			result = height
+		} else if(type === "orientation") {
+			width > height ? orientation = "landscape" : orientation = "portrait"
+			result = orientation
+		}
+
+		return result;
     });
 
 	eleventyConfig.addNunjucksAsyncShortcode("image", async (src, alt, type, extra) => {

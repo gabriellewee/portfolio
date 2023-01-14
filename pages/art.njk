@@ -1,27 +1,33 @@
 ---js
 {
-	title: "Art",
-	description: "Sketches and artwork.",
-	permalink: "/art/",
-	key: "art",
-	style: "visual",
-	add: true,
-	og: true,
-	message: true,
-	filters: [
-		{ name: "digital" },
-		{ name: "traditional" },
-		{ name: "figure", label: "figure drawing" }
-	],
-	type: "artwork",
-	extension: "jpg",
+    layout: "layouts/base.njk",
+    key: "post",
+    tags: "posts",
+    category: "media",
+    pagination: {
+        data: "art",
+        size: 1,
+        addAllPagesToCollections: true,
+        alias: "media"
+    },
+    permalink: false,
 	eleventyComputed: {
-		work(data) {
-			return data[data.key];
+		media(data) {
+			data.page.date = new Date(data.media.date);
+			data.name = data.media.name;
+			data.date = data.media.date;
+			data.title = data.media.title;
+			data.tools = data.media.tools;
+			data.description = data.media.description;
+			data.extension = "jpg";
 		}
-	},
-	tags: "pages"
+	}
 }
 ---
 
-{% extends 'layouts/media.njk' %}
+<article>
+	<header>
+		<h2>{{ media.title }}</h2>
+	</header>
+</article>
+

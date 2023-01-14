@@ -43,22 +43,3 @@ img {
 	font-style: normal;
 	font-size: 1.125rem;
 }
-
-@include dark {
-	body {
-		background-color: var(--color-iron-1);
-	}
-	body, a {
-		color: rgba(white, .8);
-	}
-
-	::-moz-selection {
-		background-color: white;
-		color: var(--color-iron);
-	}
-
-	::selection {
-		background-color: white;
-		color: var(--color-iron);
-	}
-}
