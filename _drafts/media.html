@@ -5,7 +5,7 @@
 				<figure class="grid-figure" role="group" aria-label="{{type | capitalize}}{% if media.location %}, {{media.location}}{% elseif media.title %}, {{media.title}}{% endif %}">
 					{% if media.upscale %}
 						<picture>
-							<img class="upscale" src="{% include media.upscale %}"{% if media.upscaleWidth %} width="{{media.upscaleWidth}}"{% endif %}{% if media.upscaleHeight %} height="{{media.upscaleHeight}}"{% endif %} alt="{{media.description}}" style="image-rendering: pixelated;"/>
+							<img class="upscale" src="{% include media.upscale %}"{% if media.upscaleWidth %} width="{{media.upscaleWidth}}"{% endif %}{% if media.upscaleHeight %} height="{{media.upscaleHeight}}"{% endif %} alt="{{media.description}}"/>
 						</picture>
 					{% else %}
 						{% image './static/images/' + key + '/' + media.date + '-' + media.name + '.' + extension, media.description, 'default', loop.index %}

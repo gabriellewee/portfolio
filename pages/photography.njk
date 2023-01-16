@@ -2,7 +2,7 @@
 {
     layout: "layouts/base.njk",
     key: "post",
-    tags: "posts",
+    tags: "entries",
     category: "media",
     pagination: {
         data: "photography",
@@ -21,6 +21,7 @@
 			data.editor = data.media.editor;
 			data.description = data.media.description;
 			data.extension = "jpg";
+			data.type = "photo";
 		}
 	}
 }

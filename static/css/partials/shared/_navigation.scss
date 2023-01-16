@@ -1,6 +1,14 @@
+.top, .bottom {
+	max-width: var(--width);
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
+	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
+}
+
 .top {
 	@include font-weight-width(900, 125);
-	padding-top: calc((var(--p)*1.5) + env(safe-area-inset-top));
+	padding-top: calc((var(--p)*2) + env(safe-area-inset-top));
 	line-height: 1.2;
 	@include viewport($ipad-mini) {
 		line-height: 1.1;
@@ -20,12 +28,12 @@
 		&.message {
 			translate: 0 100%;
 			.no-js & {
-				animation: .3s ease-out 1s 1 forwards enter;
+				animation: .2s ease-out 1s 1 forwards enter;
 			}
 		}
 		&.go-home {
 			translate: 0 50%;
-			transition: .3s ease-out;
+			transition: .2s ease-out;
 			position: absolute;
 			top: 50%;
 			left: calc(var(--p)*4);
@@ -48,7 +56,7 @@
 		}
 		a {
 			display: block;
-			&:focus {
+			&:focus-visible {
 				@include focus-round(hsla(var(--color-mauve-hsl), .5));
 				.memoji {
 					&-default {
@@ -100,14 +108,110 @@
 
 .bottom {
 	@include font-weight-width(500, 125);
-	padding-top: calc(var(--p)*1.5);
-	padding-bottom: calc((var(--p)*1.5) + env(safe-area-inset-bottom));
+	padding-top: calc(var(--p)*2);
+	padding-bottom: calc((var(--p)*2) + env(safe-area-inset-bottom));
 }
 
 .pagination {
-	.previous, .next {
-		.js & {
-			display: none;
+	display: flex;
+	justify-content: space-between;
+	margin-top: calc(var(--p)*2);
+	button {
+		appearance: none;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		background: none;
+	}
+	a, button {
+		display: block;
+		cursor: pointer;
+		&, > span, > span:before, > span:after {
+			transition: .2s ease-out;
+		}
+		> span {
+			@include button;
+			@include font-weight-width(700, 125);
+			position: relative;
+			background-color: var(--color-mauve);
+			background: radial-gradient(circle at center left, var(--color-mauve) 0, var(--color-slate) 100%);
+			&:before, &:after {
+				opacity: 0;
+				content: "";
+				display: block;
+				z-index: 0;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+			&:before {
+				background-color: var(--color-rose);
+				background: radial-gradient(circle at center left, var(--color-rose) 0, var(--color-mauve) 100%);
+			}
+			&:after {
+				background-color: var(--color-iron);
+				background: radial-gradient(circle at center left, var(--color-iron) 0, var(--color-iron-12) 100%);
+			}
+			span {
+				position: relative;
+				z-index: 1;
+			}
+		}
+		&:hover {
+			scale: 1.02;
+		}
+		&:hover, &:focus {
+			> span {
+				&:before {
+					opacity: 1;
+				}
+			}
+		}
+		&:active {
+			scale: 0.98;
+			> span {
+				&:before, &:after {
+					opacity: 1;
+				}
+			}
+		}
+	}
+	.next {
+		> span {
+			background-color: var(--color-mauve);
+			background: radial-gradient(circle at center left, var(--color-slate) 0, var(--color-mauve) 100%);
+			&:before, &:after {
+				opacity: 0;
+				content: "";
+				display: block;
+				z-index: 0;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+			&:before {
+				background-color: var(--color-rose);
+				background: radial-gradient(circle at center left, var(--color-mauve) 0, var(--color-rose) 100%);
+			}
+			&:after {
+				background-color: var(--color-iron);
+				background: radial-gradient(circle at center left, var(--color-iron-12) 0, var(--color-iron) 100%);
+			}
+			span {
+				position: relative;
+				z-index: 1;
+			}
+		}
+	}
+	&.main-pagination {
+		.previous, .next {
+			.js & {
+				display: none;
+			}
 		}
 	}
 }

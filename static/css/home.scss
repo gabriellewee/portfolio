@@ -14,6 +14,11 @@
 }
 
 .contact {
+	max-width: var(--width);
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
+	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
 	> h2, > ul {
 		@include font-weight-width(900, 125);
 		font-size: clamp(1.5rem, 3vw, 2rem);

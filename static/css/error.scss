@@ -50,7 +50,7 @@ main {
 		&:hover, &:focus {
 			background-color: hsla(var(--color-iron-hsl), .5);
 		}
-		&:focus {
+		&:focus-visible {
 			@include focus-round(hsla(var(--color-white-hsl), .8));
 		}
 		&:active {

@@ -5,7 +5,7 @@
 	"permalink": "/posts/{{ date | linkDate }}/migrating-to-scriptogram/",
 	"layout": "layouts/post.njk",
 	"templateEngineOverride": "md,njk",
-	"short": true
+	"small": true
 }
 ---
 

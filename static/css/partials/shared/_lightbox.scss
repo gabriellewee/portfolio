@@ -1,6 +1,8 @@
 .expand {
 	display: block;
-	cursor: zoom-in;
+	&, &:before, &:after {
+		cursor: zoom-in;
+	}
 }
 
 .lightbox-group {

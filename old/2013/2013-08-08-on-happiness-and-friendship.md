@@ -4,7 +4,44 @@
 	"title": "On happiness and friendship",
 	"permalink": "/posts/{{ date | linkDate }}/{{ title | slugify }}/",
 	"layout": "layouts/post.njk",
-	"templateEngineOverride": "md,njk"
+	"templateEngineOverride": "md,njk",
+	"photos": [
+		{
+			"name": "wip-1",
+			"type": "jpg",
+			"description": "Dragon digital sketch draft 1",
+			"figcaption": "Draft 1",
+			"lightbox": false
+		},
+		{
+			"name": "wip-2",
+			"type": "jpg",
+			"description": "Dragon digital sketch draft 2",
+			"figcaption": "Draft 2",
+			"lightbox": false
+		},
+		{
+			"name": "wip-3",
+			"type": "png",
+			"description": "Dragon digital sketch draft 3",
+			"figcaption": "The swatches Ali gave us are so pretty *u*",
+			"lightbox": false
+		},
+		{
+			"name": "wacom-1",
+			"type": "jpg",
+			"description": "Photo of my Wacom tablet",
+			"figcaption": "Me using my new baby &hearts;",
+			"lightbox": false
+		},
+		{
+			"name": "wacom-2",
+			"type": "png",
+			"description": "Amazon listing photo for Wacom tablet",
+			"figcaption": "A better photo I borrowed from Amazon's listing",
+			"lightbox": false
+		}
+	]
 }
 ---
 
@@ -17,42 +54,17 @@ I went up to Oregon last weekend for my cousin Brian's wedding! Brian and Lindse
 As far as school goes, I'm currently taking Concepts & Imaging towards my major. It's the most challenging class I've had yet, and I'm not likely to get a high grade, but I'm still glad I have this class and [Ali](http://artofali.com) as my instructor. Here's some WIP shots of my current project:
 
 <div class="row-double">
-	<figure aria-labelledby="2013-08-08-wip-1-caption">
-		<figcaption id="2013-08-08-wip-1-caption" aria-hidden="true">Draft 1</figcaption>
-		<picture>
-			<img loading="lazy" decoding="async" alt="Dragon digital sketch draft 1" src="/static/images/writing/2013-08-08-wip-1.jpg" width="1936" height="1937">
-		</picture>
-	</figure>
-	<figure aria-labelledby="2013-08-08-wip-2-caption">
-		<figcaption id="2013-08-08-wip-2-caption" aria-hidden="true">Draft 2</figcaption>
-		<picture>
-			<img loading="lazy" decoding="async" alt="Dragon digital sketch draft 2" src="/static/images/writing/2013-08-08-wip-2.jpg" width="1936" height="1937">
-		</picture>
-	</figure>
+{%- set number = 1 %}{% include 'pages/posts/image.html' %}
+{%- set number = 2 %}{% include 'pages/posts/image.html' %}
 </div>
 
-<figure aria-labelledby="2013-08-08-wip-3-caption">
-	<figcaption id="2013-08-08-wip-3-caption" aria-hidden="true">The swatches Ali gave us are so pretty *u*</figcaption>
-	<picture>
-		<img loading="lazy" decoding="async" alt="Dragon digital sketch draft 3" src="/static/images/writing/2013-08-08-wip-3.png" width="1280" height="800">
-	</picture>
-</figure>
+{%- set number = 3 %}{% include 'pages/posts/image.html' %}
 
 I also bought myself an expensive birthday present while I was up in Oregon (and didn't have to fuss with sales tax) - a medium Wacom Intuos5 tablet! Best present ever omg and completely worth the money. It's so much better than the Intuos3 tablets that Ex'pression issues us for the class (and we have to return those at the end of the term).
 
 <div class="row-double flex-start">
-	<figure aria-labelledby="2013-08-08-wacom-1-caption">
-		<figcaption id="2013-08-08-wacom-1-caption" aria-hidden="true">Me using my new baby &hearts;</figcaption>
-		<picture>
-			<img loading="lazy" decoding="async" alt="Photo of my Wacom tablet" src="/static/images/writing/2013-08-08-wacom-1.jpg" width="1936" height="1937">
-		</picture>
-	</figure>
-	<figure aria-labelledby="2013-08-08-wacom-2-caption">
-		<figcaption id="2013-08-08-wacom-2-caption" aria-hidden="true">A better photo I borrowed from Amazon's listing</figcaption>
-		<picture>
-			<img loading="lazy" decoding="async" alt="Amazon listing photo for Wacom tablet" src="/static/images/writing/2013-08-08-wacom-2.png" width="1936" height="1937">
-		</picture>
-	</figure>
+{%- set number = 4 %}{% include 'pages/posts/image.html' %}
+{%- set number = 5 %}{% include 'pages/posts/image.html' %}
 </div>
 
 So, on to the real topic of this blog post -

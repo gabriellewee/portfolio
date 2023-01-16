@@ -1,5 +1,6 @@
 /*! Lightbox script by Gabrielle Wee */
-const lightbox = ((links = Array.from(document.querySelectorAll(".expand"))) => {
+function lightbox(buttons) {
+	let links = Array.from(document.querySelectorAll(buttons))
 	let lightboxes = Array.from(document.querySelectorAll(".lightbox"));
 	let sibling;
 	if(!links && !lightboxes) return;
@@ -65,4 +66,4 @@ const lightbox = ((links = Array.from(document.querySelectorAll(".expand"))) => 
 			}
 		});
 	});
-})();
+}
