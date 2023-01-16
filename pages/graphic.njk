@@ -2,7 +2,7 @@
 {
     layout: "layouts/base.njk",
     key: "post",
-    tags: "posts",
+    tags: "entries",
     category: "media",
     pagination: {
         data: "graphic",
@@ -21,7 +21,8 @@
 			data.description = data.media.description;
 			data.external = data.media.external;
 			data.upscale = data.media.upscale;
-			data.extension = "png";
+			data.extension = "png";;
+			data.type = "graphic";
 		}
 	}
 }

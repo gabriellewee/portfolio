@@ -25,7 +25,7 @@ Only problem was, I neglected to bring sunglasses to the appointment since I for
 
 So, about to give up, I started walking back to the bus stop when my head literally swiveled around. Sunglasses stand. Wat. They had Hello Kitty sunglasses. WAT.
 
-{%- set number = 1 %}{% include 'pages/visual/image.html' %}
+{%- set number = 1 %}{% include 'pages/posts/image.html' %}
 
 They were 2 for $20, and I have to say, I didn't even think about it much. Insta-buy. I will, in my defense, point out that (a) I needed sunglasses, (b) my last pair snapped in half, and (c) Hello Kitty? Need I say more? I never was really interested in Hello Kitty until a year or two ago. Must have developed my Asian-girl-loves-Hello-Kitty syndrome a little late.
 

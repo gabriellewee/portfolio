@@ -1,0 +1,41 @@
+.post-wrapper {
+	background-color: var(--color-iron);
+	color: white;
+}
+
+.post-header {
+	h2, time {
+		font-family: var(--font-mono);
+		font-size: 1rem;
+		font-weight: 700;
+		line-height: 1.375;
+	}
+	h2 {
+		a {
+			color: var(--color-aqua);
+			&:hover, &:focus {
+				color: var(--color-peach);
+				span {
+					text-decoration: underline;
+					text-underline-offset: 4px;
+				}
+			}
+			&:active {
+				color: var(--color-periwinkle);
+			}
+			&:after {
+				content: "↗";
+				display: inline;
+				margin-left: 6px;
+				font-size: 1.375rem;
+				line-height: 1;
+			}
+		}
+	}
+}
+
+.post-content {
+	iframe {
+		display: block;
+	}
+}

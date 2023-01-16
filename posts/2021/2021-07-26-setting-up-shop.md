@@ -5,6 +5,7 @@
 	"permalink": "/posts/{{ date | linkDate }}/{{ title | slugify }}/",
 	"layout": "layouts/post.njk",
 	"templateEngineOverride": "md,njk",
+	"codepen": true,
 	"photos": [
 		{
 			"name": "website-home",
@@ -53,16 +54,16 @@ It's been a while since I've really done a proper update on this website. I'd li
 
 Previously, I hosted this website on [Github Pages](https://pages.github.com) and used a static site generator called [Cactus](https://github.com/eudicots/Cactus) to build my files.
 
-{%- set number = 1 %}{% include 'pages/visual/image.html' %}
+{%- set number = 1 %}{% include 'pages/posts/image.html' %}
 
 <div class="row-double">
-{%- set number = 2 %}{% include 'pages/visual/image.html' %}
-{%- set number = 3 %}{% include 'pages/visual/image.html' %}
+{%- set number = 2 %}{% include 'pages/posts/image.html' %}
+{%- set number = 3 %}{% include 'pages/posts/image.html' %}
 </div>
 
 I was (and still am) really proud of this portfolio. It was my first big project out of college, and it got featured a few times on various sites. I experimented with different layout techniques and for the first time, created an extensive set of my own icons and thumbnails.
 
-{%- set number = 4 %}{% include 'pages/visual/image.html' %}
+{%- set number = 4 %}{% include 'pages/posts/image.html' %}
 
 After this, I didn't update my portfolio for almost four years. I started working at [Apple](https://apple.com) in 2017 as a vendor and transitioned to full-time in 2018, so there really wasn't any need to change things up. I also really liked the design and couldn't think of how to change it.
 
@@ -70,7 +71,7 @@ After this, I didn't update my portfolio for almost four years. I started workin
 
 Finally, last year, during the height of the pandemic, I decided I needed to change things up. I still didn't have a clue what it should look like, but my work was badly outdated, so I decided to just make it more of a landing page with links to websites that I _was_ updating regularly.
 
-{%- set number = 5 %}{% include 'pages/visual/image.html' %}
+{%- set number = 5 %}{% include 'pages/posts/image.html' %}
 
 ## Current version
 
@@ -78,7 +79,7 @@ This year is the year I decided to build a full website again. I really wanted s
 
 I came up with a design that is busy but organized. Each section represents one of my interests and has its own styles and colors. There's also light and dark versions of this site (if you have dark mode enabled, the screenshot below should show the light mode, and vice-versa). I chose [Faune](http://cnap.graphismeenfrance.fr/faune/en.html) as the main font because I really loved the unusual-looking italics.
 
-{%- set number = 6 %}{% include 'pages/visual/image.html' %}
+{%- set number = 6 %}{% include 'pages/posts/image.html' %}
 
 This site is built with [Eleventy](http://11ty.dev) and is hosted on Netlify. I chose Netlify because of the ease of use and plethora of configuration options and plugins. Eleventy is easy to learn and has the most flexibility out of the static site generators I was looking at.
 
@@ -127,7 +128,7 @@ Another no-JS component is the lightbox. I found this ingenious solution that us
 
 I styled it with some basic CSS transitions and a loading icon, then added enhanced Javascript functionality on top to cycle through images and use keyboard shortcuts. The background is separate from the image so that it doesn't fade in and out when you use the arrow key to tab to another image.
 
-{%- set number = 7 %}{% include 'pages/visual/image.html' %}
+{%- set number = 7 %}{% include 'pages/posts/image.html' %}
 
 ## Eleventy
 

@@ -1,5 +1,6 @@
 :root {
 	--p: 12px;
+	--width: 70rem;
 
 	--font-mono: 'Dank Mono', 'Inconsolata', 'Consolas', Monaco, 'Bitstream Vera Sans Mono', 'Lucida Console', Terminal, Courier, monospace;
 	--font-default: -apple-system, BlinkMacSystemFont, "Mona Sans", "Segoe UI Variable", "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -10,6 +11,8 @@
 	--color-iron-white-90: #{mix($iron, white, 90%)};
 	
 	--color-iron: #{$iron};
+	--color-iron-1: #{darken($iron, 1%)};
+	--color-iron-12: #{darken($iron, 12%)};
 	--color-iron-hsl: #{hexToHSL($iron)};
 	--color-iron-1-hsl: #{hexToHSL(darken($iron, 1%))};
 	--color-iron-10-hsl: #{hexToHSL(darken($iron, 10%))};
@@ -52,6 +55,7 @@
 	--color-mas: #6364ff;
 	--color-mas-dark: #563ACC;
 	--color-mas-light: #858AFA;
+	--color-mas-slate: #{mix(#563ACC, $slate, 30%)};
 	--color-gv: #34a853;
 	--color-cp: #717790;
 	--color-gh: #4969ed;

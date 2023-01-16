@@ -40,12 +40,12 @@ Late last year, my paternal grandmother passed away. She was an incredible woman
 
 
 <div class="row-single">
-{%- set number = 1 %}{% include 'pages/visual/image.html' %}
+{%- set number = 1 %}{% include 'pages/posts/image.html' %}
 </div>
 
 <div class="row-double">
-{%- set number = 2 %}{% include 'pages/visual/image.html' %}
-{%- set number = 3 %}{% include 'pages/visual/image.html' %}
+{%- set number = 2 %}{% include 'pages/posts/image.html' %}
+{%- set number = 3 %}{% include 'pages/posts/image.html' %}
 </div>
 
 I miss Ngin Ngin a lot. I didn’t realize what a enormous rift her passing would leave in my life. Even writing about her now is still painful. I’m learning, slowly, to let myself grieve.

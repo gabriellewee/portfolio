@@ -21,7 +21,7 @@ As far as school goes, I'm currently in Game Pro I, where we build two game leve
 
 <!--more-->
 
-{%- set number = 1 %}{% include 'pages/visual/image.html' %}
+{%- set number = 1 %}{% include 'pages/posts/image.html' %}
 
 I've also been doing some web design. One of my best friends is starting a t-shirt company with some other people on Big Cartel, and I am in the process of coding the store layout. I'm also working on Squarespace portfolio site templates for two of my school friends. For all three sites, I received very specific instructions on the look and feel, including PSDs and example sites to work from. It's quite a different experience since I tend to start with a vague idea that evolves as I code, but this kind of challenge is good for me since I learn to work with and around other people's design work.
 

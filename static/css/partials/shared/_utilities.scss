@@ -1,4 +1,5 @@
 // viewports
+$iphone-mini: 320px;
 $iphone: 375px;
 $iphone-max: 414px;
 $mobile: 568px;
@@ -32,8 +33,14 @@ $periwinkle: #82aaff;
 
 // mixins
 @mixin viewport($viewport) {
-	@media only screen and (min-width: $viewport) {
-		@content;
+	@if $viewport == "mobile" {
+		@media screen and (min-width: $mobile) and (max-height: 450px), screen and (min-width: $ipad-mini) {
+			@content;
+		}
+	} @else {
+		@media only screen and (min-width: $viewport) {
+			@content;
+		}
 	}
 }
 
@@ -57,26 +64,6 @@ $periwinkle: #82aaff;
 	} @else {
 		@media (prefers-reduced-motion: reduce) {
 			@content;
-		}
-	}
-}
-
-@mixin container($support: true, $viewport: null) {
-	@if $support == true {
-		@if $viewport != null {
-			@supports (container-type: inline-size) {
-			  	@container (min-width: #{$viewport}) {
-					@content;
-				}
-			}
-		} @else {
-			@supports (container-type: inline-size) {
-				@content;
-			}
-		}
-	} @else {
-		@supports not (container-type: inline-size) {
-		  	@content;
 		}
 	}
 }
@@ -207,6 +194,20 @@ $periwinkle: #82aaff;
 
 @mixin font-weight-width($weight, $width) {
 	font-weight: $weight;
-	font-stretch: #{$width * 100%};
+	font-stretch: #{$width * 1%};
 	font-variation-settings: "wght" $weight, "wdth" $width;
+}
+
+@mixin button {
+	display: block;
+	color: white;
+	font-size: 1rem;
+	@include clip-path(false) {
+		@include border-radius(calc(var(--p)/4));
+		padding: var(--p) calc(var(--p)*2);
+	}
+	@include clip-path {
+		clip-path: polygon(calc(var(--p)*1.25) 0%, calc(100% - calc(var(--p)*1.25)) 0%, 100% 45%, 100% 55%, calc(100% - calc(var(--p)*1.25)) 100%, calc(var(--p)*1.25) 100%, 0 55%, 0 45%);
+		padding: var(--p) calc(var(--p)*2.5);
+	}
 }

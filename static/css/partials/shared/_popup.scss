@@ -60,7 +60,7 @@
 					fill: var(--color-iron);
 				}
 			}
-			&:focus {
+			&:focus-visible {
 				@include focus-round;
 			}
 		}
@@ -256,7 +256,7 @@
 						opacity: 1;
 					}
 				}
-				&:focus {
+				&:focus-visible {
 					@include focus-round;
 				}
 				&:active {

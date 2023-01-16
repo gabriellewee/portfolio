@@ -54,30 +54,30 @@ By the way, some of the UI (navigation, icons, colours, etc) might look off beca
 ## Kingdom Rush ##
 One game I've been absolutely addicted to is **Kingdom Rush** ($2.99). It's a classic TD (tower defense) game - build towers of four different varieties, kill enemies, send in reinforcements, upgrade and sell and build. I'm a fan of strategy games like these because I'm absolutely terrible at action games that require accurate movement, such as Infinity Blade and its sequel. Make no mistake, I love those games too, but I just plain suck at them.
 
-{%- set number = 1 %}{% include 'pages/visual/image.html' %}
+{%- set number = 1 %}{% include 'pages/posts/image.html' %}
 
 My favourite part, of course, is upgrading towers. There's just something about it that gives me deep satisfaction, like I'm actually accomplishing something. Which of course, I'm not, unless you count wasting time gaming.
 
 There's twelve basic campaigns to complete the game, with an additional four post-game side-quests and three levels of difficulty per campaign. For each completed campaign, you earn three stars, which you can use to boost your tower stats or activate special heroes. Each additional difficulty completed earns you another star. You also earn crystals from killing enemies that can be used to purchase special items - extra lives, additional gold to bring to the field, etc. Addicted gamer that I am, I already finished the first twelve campaigns, but playing through the difficulty levels is taking some time.
 
-{%- set number = 2 %}{% include 'pages/visual/image.html' %}
+{%- set number = 2 %}{% include 'pages/posts/image.html' %}
 
 ## iStudiez Pro ##
 I can never keep a planner, and in high school, mine was almost always blank within a few months of starting school. This time, I'm trying to keep one on my iPad instead. **iStudiez Pro** ($0.99) keeps track of my schedule, professors and group project members, and grades. I haven't explored all its features yet, but it's definitely coming in handy now that school has started for me!
 
-{%- set number = 3 %}{% include 'pages/visual/image.html' %}
+{%- set number = 3 %}{% include 'pages/posts/image.html' %}
 
 ## Evernote ##
 I love **Evernote** (free). It's easy to use and easy to take notes with, especially the WYSIWYG editor. Markdown doesn't some automatically to me, and I don't need a fancy editor with fonts and colors and such, so it's nice to have simple headers, subheaders, and tabbed bullet lists.
 
 The only thing I'm not crazy about is having to pay more to access my notes offline, but I figure that I'm in a wifi area nearly all the time, so I don't need to worry about it too much. Worse come to worse, I can always copy the notes to another app to study while I'm on BART or something.
 
-{%- set number = 4 %}{% include 'pages/visual/image.html' %}
+{%- set number = 4 %}{% include 'pages/posts/image.html' %}
 
 ## Textastic ##
 Last but not least, **Textastic** ($9.99). I use this to update and work on my websites. It's a feature-rich code editor with syntax highlighting and FTP. I'm sure there's more, but that's all I've been using it for so far. I love being able to code on the fly, and this is the perfect app. I was considering purchasing Diet Coda, since I use the regular desktop version of Coda, but it was twice the price with no offline editing. This is a much better buy.
 
-{%- set number = 5 %}{% include 'pages/visual/image.html' %}
+{%- set number = 5 %}{% include 'pages/posts/image.html' %}
 
 I'm so in love with this thing right now. Best purchase I've ever made, by far. It still doesn't replace a real computer, but it's perfect for taking to school with me when I don't want to lug my 4lb+ laptop around... which, strangely enough, wasn't that heavy six months ago. Huh.
 

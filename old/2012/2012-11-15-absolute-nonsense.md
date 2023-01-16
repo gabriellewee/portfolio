@@ -26,7 +26,7 @@ I went ahead and splurged for a wireless Apple keyboard for my iPad. It was pric
 
 <!--more-->
 
-{%- set number = 1 %}{% include 'pages/visual/image.html' %}
+{%- set number = 1 %}{% include 'pages/posts/image.html' %}
 
 So I guess this is kind of an update in the life of Gabrielle Wee. I haven't really been doing much online since school and work have been dominating my life. There's still a design I need to finish up for a Tumblr theme and various other things that need updating, but right now, school comes first. That's the most important.
 
@@ -36,7 +36,7 @@ Our particular movie is about a group of Dungeons and Dragons players that embar
 
 In yet other news, I got new glasses! I lost the first pair of glasses I had purchased in four years at a restaurant called Milano last May - they barely lasted me three months - and have been depending on contacts ever since. Not a good idea at all, especially after I scratched my cornea with a defective lens.
 
-{%- set number = 2 %}{% include 'pages/visual/image.html' %}
+{%- set number = 2 %}{% include 'pages/posts/image.html' %}
 
 A family friend recommended [Zenni Optical](http://zennioptical.com) for inexpensive prescription glasses. I ended up ordering two pairs from them - a round pair with rose-tinted lenses and a light blue pair with clear lenses. Both pairs offer UV protection; I added on some extras that I can't remember at the moment. The order came out to $45, including shipping - *less than half of what I paid for my glasses at the beginning of last year!* Each pair comes with a plastic case and cleaning cloth. If you are in need of glasses or even just want a spare pair for emergencies, I \*highly\* recommend Zenni Optical. You will need to know your prescription and pupillary distance - I usually get my glasses from Costco and they measured it for me there.
 

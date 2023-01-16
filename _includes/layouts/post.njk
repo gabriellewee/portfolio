@@ -1,36 +1,35 @@
 ---
+layout: layouts/base.njk
 key: post
 og: writing
-tags: posts
+tags: entries
 category: writing
 ---
 
-{% extends "layouts/base.njk" %}
+<section class="posts-container">
+	<div class="posts">
+		<article class="post post-{{category}}">
+			<div class="post-wrapper">
+				<header class="post-header inline-header">
+					<h2>{{title | nbsp | safe}}</h2>
+					<time class="time-default" datetime="{{page.date | htmlDateString}}" title="{{post.page.date | readableDate}}">{{page.date | timeAgo}}</time>
+				</header>
+				<div class="post-content">
+					{{content | safe}}
+				</div>
+			</div>
+		</article>
+	</div>
 
-{% block content %}
-<section class="posts">
-	<article class="post post-{{category}}">
-		<header class="post-header">
-			<h2>{{title | nbsp | safe}}</h2>
-			<time class="time" datetime="{{page.date | htmlDateString}}">{{page.date | readableDate}}</time>
-		</header>
-		<div class="post-content">
-			{{content | safe}}
-		</div>
-	</article>
+	<nav class="pagination">
+		{%- set nextPost = collections.posts | getNextCollectionItem(page) %}
+		{%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+		{%- if nextPost or previousPost %}
+			{%- if nextPost %}<a class="previous" href="{{ nextPost.url | url }}"><span><span>Previous Post</span></span></a>{% else %}<span></span>{% endif %}
+			{%- if previousPost %}<a class="next" href="{{ previousPost.url | url }}"><span><span>Next Post</span></span></a>{% else %}<span></span>{% endif %}
+		{%- endif %}
+	</nav>
+
+	{% if photos %}{% include 'pages/posts/lightbox.html' %}{% endif %}
+	{% if codepen == "true" %}<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>{% endif %}
 </section>
-
-<nav class="pagination">
-	{%- set nextPost = collections.posts | getNextCollectionItem(page) %}
-	{%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
-	{%- if nextPost or previousPost %}
-		{%- if nextPost %}<a class="previous" href="{{ nextPost.url | url }}"><span>Previous Post</span></a>{% else %}<span></span>{% endif %}
-		{%- if previousPost %}<a class="next" href="{{ previousPost.url | url }}"><span>Next Post</span></a>{% else %}<span></span>{% endif %}
-	{%- endif %}
-</nav>
-{% endblock %}
-
-{% block bottom %}
-{% include 'pages/visual/lightbox.html' %}
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-{% endblock %}
