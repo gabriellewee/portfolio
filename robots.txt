@@ -1,5 +1,4 @@
 User-agent: *
-Disallow: /code/
 
 Sitemap: https://gabriellew.ee/sitemap.xml
 

@@ -107,92 +107,166 @@
 }
 
 .bottom {
-	@include font-weight-width(500, 125);
+	@include font-weight-width(500, 115);
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
 	padding-top: calc(var(--p)*2);
-	padding-bottom: calc((var(--p)*2) + env(safe-area-inset-bottom));
+	padding-bottom: calc(var(--p) + env(safe-area-inset-bottom));
+	a, .copyright {
+		display: block;
+		position: relative;
+		margin-bottom: var(--p);
+		span {
+			@include clip-path-edges(2px);
+			display: block;
+			padding: calc(var(--p)/3*2) var(--p);
+		}
+	}
+	.copyright {
+		span {
+			background: white;
+		}
+	}
+	a {
+		@include font-weight-width(600, 115);
+		margin-right: var(--p);
+		&, span {
+			transition: .2s ease-out;
+		}
+		&:before {
+			@include clip-path-edges(3px);
+			opacity: 0;
+			content: "";
+			display: block;
+			position: absolute;
+			top: calc(var(--p)/-4);
+			left: calc(var(--p)/-4);
+			width: calc(100% + var(--p)/2);
+			height: calc(100% + var(--p)/2);
+			background-color: var(--color-iron);
+		}
+		span {
+			color: white;
+			background: var(--color-mauve);
+		}
+		&:hover, &:focus {
+			span {
+				background: var(--color-iron-white-70);
+			}
+		}
+		&:focus-visible {
+			&:before {
+				opacity: 1;
+			}
+		}
+		&:active {
+			scale: 0.98;
+			span {
+				background: var(--color-iron);
+			}
+		}
+	}
+}
+
+.button {
+	cursor: pointer;
+	appearance: none;
+	display: block;
+	position: relative;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	&, > span, > span:before, > span:after {
+		transition: .2s ease-out;
+	}
+	&:before {
+		@include clip-path {
+			content: "";
+			display: block;
+			opacity: 0;
+			content: "";
+			position: absolute;
+			top: calc(var(--p)/-4);
+			left: calc(var(--p)/-4);
+			width: calc(100% + var(--p)/2);
+			height: calc(100% + var(--p)/2);
+			clip-path: polygon(calc(var(--p)*1.375) 0%, calc(100% - calc(var(--p)*1.375)) 0%, 100% 43%, 100% 57%, calc(100% - calc(var(--p)*1.375)) 100%, calc(var(--p)*1.375) 100%, 0 57%, 0 43%);
+			padding: var(--p) calc(var(--p)*2.5);
+			background-color: var(--color-slate-mauve);
+		}
+	}
+	> span {
+		@include button;
+		@include font-weight-width(700, 125);
+		position: relative;
+		background-color: var(--color-mauve);
+		background: radial-gradient(circle at center left, var(--color-mauve) 0, var(--color-slate) 100%);
+		&:before, &:after {
+			opacity: 0;
+			content: "";
+			display: block;
+			z-index: 0;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+		&:before {
+			background-color: var(--color-rose);
+			background: radial-gradient(circle at center left, var(--color-rose) 0, var(--color-mauve) 100%);
+		}
+		&:after {
+			background-color: var(--color-iron);
+			background: radial-gradient(circle at center left, var(--color-iron) 0, var(--color-iron-12) 100%);
+		}
+		span {
+			position: relative;
+			z-index: 1;
+		}
+	}
+	&:hover {
+		scale: 1.02;
+	}
+	&:hover, &:focus {
+		> span {
+			&:before {
+				opacity: 1;
+			}
+		}
+	}
+	&:focus-visible {
+		@include clip-path(false) {
+			@include focus-round(var(--color-slate));
+		}
+		&:before {
+			opacity: 1;
+		}
+	}
+	&:active {
+		scale: 0.98;
+		> span {
+			&:before, &:after {
+				opacity: 1;
+			}
+		}
+	}
 }
 
 .pagination {
 	display: flex;
 	justify-content: space-between;
 	margin-top: calc(var(--p)*2);
-	button {
-		appearance: none;
-		margin: 0;
+	padding: 0 calc(var(--p)*1.5);
+	@include viewport($iphone) {
 		padding: 0;
-		border: 0;
-		background: none;
-	}
-	a, button {
-		display: block;
-		cursor: pointer;
-		&, > span, > span:before, > span:after {
-			transition: .2s ease-out;
-		}
-		> span {
-			@include button;
-			@include font-weight-width(700, 125);
-			position: relative;
-			background-color: var(--color-mauve);
-			background: radial-gradient(circle at center left, var(--color-mauve) 0, var(--color-slate) 100%);
-			&:before, &:after {
-				opacity: 0;
-				content: "";
-				display: block;
-				z-index: 0;
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-			}
-			&:before {
-				background-color: var(--color-rose);
-				background: radial-gradient(circle at center left, var(--color-rose) 0, var(--color-mauve) 100%);
-			}
-			&:after {
-				background-color: var(--color-iron);
-				background: radial-gradient(circle at center left, var(--color-iron) 0, var(--color-iron-12) 100%);
-			}
-			span {
-				position: relative;
-				z-index: 1;
-			}
-		}
-		&:hover {
-			scale: 1.02;
-		}
-		&:hover, &:focus {
-			> span {
-				&:before {
-					opacity: 1;
-				}
-			}
-		}
-		&:active {
-			scale: 0.98;
-			> span {
-				&:before, &:after {
-					opacity: 1;
-				}
-			}
-		}
 	}
 	.next {
 		> span {
 			background-color: var(--color-mauve);
 			background: radial-gradient(circle at center left, var(--color-slate) 0, var(--color-mauve) 100%);
-			&:before, &:after {
-				opacity: 0;
-				content: "";
-				display: block;
-				z-index: 0;
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-			}
 			&:before {
 				background-color: var(--color-rose);
 				background: radial-gradient(circle at center left, var(--color-mauve) 0, var(--color-rose) 100%);
@@ -201,14 +275,10 @@
 				background-color: var(--color-iron);
 				background: radial-gradient(circle at center left, var(--color-iron-12) 0, var(--color-iron) 100%);
 			}
-			span {
-				position: relative;
-				z-index: 1;
-			}
 		}
 	}
 	&.main-pagination {
-		.previous, .next {
+		.next {
 			.js & {
 				display: none;
 			}

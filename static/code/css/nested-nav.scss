@@ -1,0 +1,229 @@
+@use "sass:math";
+@import 'reset';
+
+$p: 12px;
+$n: 5;
+$w: 216px;
+$f: "brandon-grotesque", "Brandon Grotesque", "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+$e: cubic-bezier(0,.5,.5,1.1);
+$grey: #A6ADA7;
+$pink: #F5C8BF;
+$green: #AEBFAF;
+$mint: #f2faf3;
+
+*, *:before, *:after { box-sizing: border-box; }
+* { -webkit-tap-highlight-color: rgba(0,0,0,0); transform-style: preserve-3d; }
+*:focus { outline: none!important; }
+body, html { height: 100%; }
+a { cursor: pointer; }
+
+body {
+	display: flex;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	background: lighten($pink, 9%);
+	color: $grey;
+	font-family: $f;
+}
+
+nav {
+	position: relative;
+	opacity: 0;
+	animation: bounceInUp 1000ms linear 500ms forwards;
+	label, a {
+		transition: all 150ms ease-out;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		align-content: center;
+		height: 48px;
+		width: $w;
+		padding: 0 $p;
+		background: white;
+		border: 2px solid $grey;
+		border-radius: 2px;
+		font-size: 18px;
+		font-weight: 600;
+		letter-spacing: -1px;
+	}
+	a {
+		&:hover, &:focus {
+			border-color: mix($mint, $green);
+		}
+		&:active {
+			border-color: $pink;
+		}
+	}
+	label {
+		position: relative;
+		&:before, &:after {
+			transition: all 150ms ease-out;
+			content: "";
+			display: block;
+			position: absolute;
+			width: 2px;
+			height: 12px;
+			background: $grey;
+			border-radius: 2px;
+		}
+		&:before {
+			transform: rotate(-45deg);
+		}
+		&:after {
+			transform: rotate(45deg);
+		}
+		&.down {
+			&:before, &:after {
+				transform-origin: center 11px;
+				top: 50%;
+				margin-top: -6px;
+				right: 20px;
+			}
+		}
+		&.right {
+			&:before, &:after {
+				transform-origin: left center;
+				top: 50%;
+				right: 20px;
+			}
+			&:before {
+				margin-top: -9px;
+			}
+			&:after {
+				margin-top: -3px;
+			}
+		}
+	}
+	> label {
+		transform: translateZ(1px);
+		z-index: 1;
+	}
+	ul {
+		will-change: visibility;
+		transition: visibility 0ms ease-out 600ms;
+		visibility: hidden;
+		z-index: 1;
+		li {
+			will-change: transform, opacity;
+			padding: math.div($p, 3) 0;
+			opacity: 0;
+			@for $i from 1 through $n {
+				&:nth-child(#{$i}) {
+					transition: transform 150ms $e #{-($i - $n - 1)*100}ms, opacity 100ms ease-out #{-($i - $n - 1)*100}ms;
+				}
+			}
+		}
+	}
+	> ul {
+		position: relative;
+		padding-top: math.div($p, 3);
+		> li {
+			transform: translateY(-100%);
+			> label {
+				transform: translateZ(0.5px);
+			}
+		}
+		ul {
+			position: absolute;
+			top: 0;
+			right: -$w - math.div($p, 1.5);
+			> li {
+				transform: translateX(-100%);
+			}
+		}
+	}
+	input {
+		cursor: pointer;
+		appearance: none;
+		opacity: 0;
+		position: absolute;
+		width: $w;
+		height: 48px;
+		margin: 0;
+		&:hover, &:focus {
+			~ label {
+				border-color: mix($mint, $green);
+			}
+		}
+		&:active {
+			~ label {
+				border-color: $pink;
+			}
+		}
+		&:checked {
+			~ label {
+				border-color: $green;
+				&.down {
+					&:before, &:after {
+						margin-top: -16px;
+					}
+					&:before {
+						transform: rotate(-135deg);
+					}
+					&:after {
+						transform: rotate(135deg);
+					}
+				}
+				&.right {
+					&:before {
+						transform: rotate(45deg);
+						margin-top: -11px;
+					}
+					&:after {
+						transform: rotate(-45deg);
+						margin-top: -2px;
+					}
+				}
+			}
+			~ ul {
+				visibility: visible;
+				transition: visibility 0ms ease-out 0ms;
+				> li {
+					opacity: 1;
+					transform: none;
+					@for $i from 1 through $n {
+						&:nth-child(#{$i}) {
+							transition: transform 150ms $e #{$i*100}ms, opacity 100ms ease-out #{$i*100}ms;
+						}
+					}
+				}
+			}
+		}
+	}
+	> input {
+		z-index: 2;
+		top: 0;
+		left: 0;
+		&:not(:checked) {
+			~ ul {
+				> li {
+					input:checked ~ ul {
+						li {
+							opacity: 0;
+							transform: translateX(-100%);
+							@for $i from 1 through $n {
+								&:nth-child(#{$i}) {
+									transition: transform 150ms $e #{-($i - $n - 1)*100}ms, opacity 100ms ease-out #{-($i - $n - 1)*100}ms;
+								}
+							}
+						}
+					}
+				}
+			}	
+		}
+	}
+}
+
+/* https://goo.gl/1h4kf5 */
+@keyframes bounceInUp { 
+  0% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 200, 0, 1); opacity: 0; }
+  5.51% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 95.356, 0, 1); }
+  11.01% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 23.691, 0, 1); }
+  16.52% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -9.467, 0, 1); }
+  21.92% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -16.994, 0, 1); }
+  36.24% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -3.682, 0, 1); opacity: 1; }
+  50.55% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1.004, 0, 1); }
+  79.08% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -0.059, 0, 1); }
+  100% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); opacity: 1; } 
+}

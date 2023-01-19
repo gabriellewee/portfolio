@@ -10,6 +10,10 @@
 			{
 				"platform": "dribbble",
 				"url": "https://dribbble.com/shots/17741052-Sailor-Moon-Cutie-Moon-Rod"
+			},
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/CbLbaFSPDh-/"
 			}
 		]
 	},
@@ -43,7 +47,8 @@
 				"platform": "dribbble",
 				"url": "https://dribbble.com/shots/3508741-Desk-Setup"
 			}
-		]
+		],
+		"size": "m"
 	},
 	{
 		"name": "crystal-carillon",
@@ -123,7 +128,8 @@
 		"title": "Shrine Tower",
 		"tools": "Maya 2014",
 		"tags": "3d maya",
-		"description": "A shrine tower 3d model based off of the Fushimi Inari shrine in Kyoto, Japan."
+		"description": "A shrine tower 3d model based off of the Fushimi Inari shrine in Kyoto, Japan.",
+		"size": "m"
 	},
 	{
 		"name": "eeveelutions",

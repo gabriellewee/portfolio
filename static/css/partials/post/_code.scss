@@ -1,24 +1,35 @@
-.post-wrapper {
+.post-header.inline-header {
+	padding: calc(var(--p)*1.5) calc(var(--p)*2);
 	background-color: var(--color-iron);
 	color: white;
-}
-
-.post-header {
-	h2, time {
-		font-family: var(--font-mono);
-		font-size: 1rem;
-		font-weight: 700;
-		line-height: 1.375;
+	font-family: var(--font-mono);
+	font-size: 1rem;
+	font-weight: 700;
+	line-height: 1.375;
+	div {
+		display: flex;
+		align-items: center;
+		align-content: center;
+		flex-wrap: wrap;
+		order: 2;
+	}
+	div, h2 {
+		@supports not(container-type: inline-size) {
+			@include viewport(mobile) {
+				order: 1;
+			}
+		}
+		@container header (min-width: 350px) {
+			order: 1;
+		}
 	}
 	h2 {
+		order: 1;
+		line-height: 1.5;
 		a {
 			color: var(--color-aqua);
 			&:hover, &:focus {
 				color: var(--color-peach);
-				span {
-					text-decoration: underline;
-					text-underline-offset: 4px;
-				}
 			}
 			&:active {
 				color: var(--color-periwinkle);
@@ -26,9 +37,56 @@
 			&:after {
 				content: "↗";
 				display: inline;
-				margin-left: 6px;
+				margin-left: calc(var(--p)/2);
 				font-size: 1.375rem;
 				line-height: 1;
+			}
+		}
+	}
+	time {
+		margin-bottom: calc(var(--p)*.75);
+		@supports not(container-type: inline-size) {
+			@include viewport(mobile) {
+				margin-bottom: 0;
+			}
+		}
+		@container header (min-width: 350px) {
+			margin-bottom: 0;
+		}
+	}
+	ul {
+		order: 2;
+		display: flex;
+		flex-wrap: wrap;
+		list-style: none;
+		margin-top: var(--p);
+		margin-bottom: calc(var(--p)*.75);
+		@supports not(container-type: inline-size) {
+			@include viewport(mobile) {
+				margin-top: 0;
+				margin-bottom: 0;
+				margin-left: calc(var(--p)*1.5);
+			}
+		}
+		@container header (min-width: 350px) {
+			margin-top: 0;
+			margin-bottom: 0;
+			margin-left: calc(var(--p)*1.5);
+		}
+		li {
+			margin-right: calc(var(--p)*1.5);
+		}
+		span {
+			@include clip-path-edges(2px);
+			display: block;
+			padding-left: calc(var(--p)/2);
+			padding-right: calc(var(--p)/2);
+			line-height: 1.5;
+			&.tag-css-only {
+				background: var(--color-slate);
+			}
+			&.tag-award {
+				background: var(--color-mauve);
 			}
 		}
 	}
@@ -37,5 +95,10 @@
 .post-content {
 	iframe {
 		display: block;
+	}
+	video {
+		display: block;
+		width: 100%;
+		height: auto;
 	}
 }

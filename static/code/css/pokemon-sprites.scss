@@ -1,0 +1,1046 @@
+@use "sass:math";
+@import 'reset';
+
+$p: 12px;
+$f: "brandon-grotesque", "Brandon Grotesque", "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+
+@mixin btn-bg($bg) {
+	background: rgba($bg, .25);
+	&:hover, &:focus {
+		background: lighten($bg, 10%);
+	}
+	&:active, &.active {
+		background: $bg;
+	}
+}
+
+@mixin pk-img($pk) {
+	background-image: url('https://raw.githubusercontent.com/elletricity/sprites/master/pk/#{$pk}.png');
+}
+@mixin pk-bg($bg, $ti) {
+	background-color: lighten($bg, $ti);
+}
+
+*, *:before, *:after { box-sizing: border-box; }
+* { -webkit-tap-highlight-color: rgba(0,0,0,0); transform-style: preserve-3d; }
+*:focus { outline: none!important; }
+body, html { height: 100%; }
+a { cursor: pointer; }
+button, input {
+	font-family: $f;
+}
+body {
+	background: #263238;
+	color: white;
+	font-family: $f;
+}
+
+main {
+	display: flex;
+	flex-flow: row wrap;
+	opacity: 0;
+	&.animated {
+		opacity: 1;
+		transition: all 1000ms ease-out;
+	}
+}
+
+section {
+	width: 100%;
+	.section-header {
+		display: none;
+		width: 100%;
+	}
+	h2 {
+		padding: math.div($p, 3)*2;
+		background: #90A4AE;
+		color: white;
+		font-size: 12px;
+		font-weight: 500;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+	}
+	ul {
+		display: flex;
+		flex-flow: row wrap;
+		width: 100%;
+		li {
+			padding: math.div($p, 3);
+		}
+	}
+	.filter {
+		padding: math.div($p, 3);
+		background: #ECEFF1;
+		a, button {
+			display: block;
+			cursor: pointer;
+		}
+		button {
+			margin: 0;
+		}
+	}
+	.grid {
+		padding: math.div($p, 3);
+		background: #fff;
+		// ul {
+		// 	flex-flow: row wrap-reverse;
+		// }
+		li {
+			width: calc(100% / 3);
+			@media only screen and (min-width: 440px) {
+				width: calc(100% / 4);
+			}
+			@media only screen and (min-width: 560px) {
+				width: calc(100% / 5);
+			}
+			@media only screen and (min-width: 768px) {
+				width: calc(100% / 7);
+			}
+			@media only screen and (min-width: 1136px) {
+				width: calc(100% / 9);
+			}
+		}
+		a, figure {
+			display: block;
+			width: 100%;
+			svg {
+				display: block;
+				width: 100%;
+				height: auto;
+				fill: none;
+			}
+			&:hover, &:focus {
+				filter: grayscale(0.5);
+			}
+			&:active {
+				filter: grayscale(1);
+			}
+		}
+	}
+}
+
+button[class*="pk"] {
+	@include btn-bg(#607D8B);
+	appearance: none;
+	padding: math.div($p, 3) math.div($p, 3)*2;
+	border: 0;
+	border-radius: 2px;
+	color: white;
+	font-size: 10px;
+	font-weight: 500;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	&[class*="gen1"] {
+		@include btn-bg(#82B92F);
+	}
+	&[class*="gen2"] {
+		@include btn-bg(#CABF3E);
+	}
+	&[class*="gen3"] {
+		@include btn-bg(#6AC0AB);
+	}
+	&[class*="gen4"] {
+		@include btn-bg(#8F73A2);
+	}
+	&[class*="gen5"] {
+		@include btn-bg(#6EAECC);
+	}
+	&[class*="gen6"] {
+		@include btn-bg(#C91451);
+	}
+	&[class*="gen7"] {
+		@include btn-bg(#DA5B45);
+	}
+	&[class*="normal"] {
+		@include btn-bg(#A8A77A);
+	}
+	&[class*="fighting"] {
+		@include btn-bg(#BE322E);
+	}
+	&[class*="flying"] {
+		@include btn-bg(#A893ED);
+	}
+	&[class*="poison"] {
+		@include btn-bg(#9F449E);
+	}
+	&[class*="ground"] {
+		@include btn-bg(#DFBF6E);
+	}
+	&[class*="rock"] {
+		@include btn-bg(#B79F41);
+	}
+	&[class*="bug"] {
+		@include btn-bg(#A8B732);
+	}
+	&[class*="ghost"] {
+		@include btn-bg(#705A96);
+	}
+	&[class*="steel"] {
+		@include btn-bg(#B8B8CF);
+	}
+	&[class*="fire"] {
+		@include btn-bg(#EE803B);
+	}
+	&[class*="water"] {
+		@include btn-bg(#6A92ED);
+	}
+	&[class*="grass"] {
+		@include btn-bg(#7AC657);
+	}
+	&[class*="electric"] {
+		@include btn-bg(#F7CF43);
+	}
+	&[class*="psychic"] {
+		@include btn-bg(#F65B89);
+	}
+	&[class*="ice"] {
+		@include btn-bg(#9AD8D7);
+	}
+	&[class*="dragon"] {
+		@include btn-bg(#7043F4);
+	}
+	&[class*="dark"] {
+		@include btn-bg(#6F5849);
+	}
+	&[class*="fairy"] {
+		@include btn-bg(#FD6AD3);
+	}
+}
+
+figure[class*="pk"] {
+	@include pk-img("000");
+	background-color: #CFD8DC;
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 80px 80px;
+	border-radius: 2px;
+	&:before, &:after {
+		content: "";
+		display: block;
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		height: 2px;
+	}
+	&:before {
+		left: 0;
+	}
+	&:after {
+		right: 0;
+	}
+	&[class*="001"] {
+		@include pk-img("001");
+		@include pk-bg(#7ECD7E, 10%);
+	}
+	&[class*="002"] {
+		@include pk-img("002");
+		@include pk-bg(#6EBCA5, 10%);
+	}
+	&[class*="003"] {
+		&.a {
+			@include pk-img("003A");
+			@include pk-bg(#6EBCA5, 10%);
+		}
+		&.b {
+			@include pk-img("003B");
+			@include pk-bg(#6FC6C5, 10%);
+		}
+	}
+	&[class*="004"] {
+		@include pk-img("004");
+		@include pk-bg(#F59338, 10%);
+	}
+	&[class*="005"] {
+		@include pk-img("005");
+		@include pk-bg(#F56C50, 10%);
+	}
+	&[class*="006"] {
+		&.a {
+			@include pk-img("006A");
+			@include pk-bg(#F59338, 10%);
+		}
+		&.b {
+			@include pk-img("006B");
+			@include pk-bg(#F59477, 10%);
+		}
+		&.c {
+			@include pk-img("006C");
+			@include pk-bg(#7B7B73, 10%);
+		}
+	}
+	&[class*="007"] {
+		@include pk-img("007");
+		@include pk-bg(#77C7F5, 10%);
+	}
+	&[class*="008"] {
+		@include pk-img("008");
+		@include pk-bg(#95A7F4, 10%);
+	}
+	&[class*="009"] {
+		&.a {
+			@include pk-img("009A");
+			@include pk-bg(#7DAEED, 10%);
+		}
+		&.b {
+			@include pk-img("009B");
+			@include pk-bg(#7DAEED, 10%);
+		}
+	}
+	&[class*="010"] {
+		@include pk-img("010");
+		@include pk-bg(#9DCC53, 10%);
+	}
+	&[class*="011"] {
+		@include pk-img("011");
+		@include pk-bg(#9DCC53, 10%);
+	}
+	&[class*="012"] {
+		@include pk-img("012");
+		@include pk-bg(#6B66C3, 10%);
+	}
+	&[class*="013"] {
+		@include pk-img("013");
+		@include pk-bg(#D5AC52, 10%);
+	}
+	&[class*="014"] {
+		@include pk-img("014");
+		@include pk-bg(#F6D43F, 10%);
+	}
+	&[class*="015"] {
+		&.a {
+			@include pk-img("015A");
+			@include pk-bg(#F6E546, 10%);
+		}
+		&.b {
+			@include pk-img("015B");
+			@include pk-bg(#F6CD44, 10%);
+		}
+	}
+	&[class*="016"] {
+		@include pk-img("016");
+		@include pk-bg(#DC9B37, 10%);
+	}
+	&[class*="017"] {
+		@include pk-img("017");
+		@include pk-bg(#BB7347, 10%);
+	}
+	&[class*="018"] {
+		&.a {
+			@include pk-img("018A");
+			@include pk-bg(#DC9B37, 10%);
+		}
+		&.b {
+			@include pk-img("018B");
+			@include pk-bg(#BB6B46, 10%);
+		}
+	}
+	&[class*="019"] {
+		&.a {
+			@include pk-img("019A");
+			@include pk-bg(#AC8DC4, 10%);
+		}
+		&.b {
+			@include pk-img("019B");
+			@include pk-bg(#7B7B7B, 10%);
+		}
+	}
+	&[class*="020"] {
+		&.a {
+			@include pk-img("020A");
+			@include pk-bg(#B47B47, 10%);
+		}
+		&.b {
+			@include pk-img("020B");
+			@include pk-bg(#5A5A5A, 20%);
+		}
+	}
+	&[class*="021"] {
+		@include pk-img("021");
+		@include pk-bg(#AC6337, 10%);
+	}
+	&[class*="022"] {
+		@include pk-img("022");
+		@include pk-bg(#C58B3B, 10%);
+	}
+	&[class*="023"] {
+		@include pk-img("023");
+		@include pk-bg(#C585B4, 10%);
+	}
+	&[class*="024"] {
+		@include pk-img("024");
+		@include pk-bg(#AC8DAC, 10%);
+	}
+	&[class*="025"] {
+		@include pk-img("025A");
+		@include pk-bg(#F6D544, 10%);
+	}
+	&[class*="026"] {
+		&.a {
+			@include pk-img("026A");
+			@include pk-bg(#F5B441, 10%);
+		}
+		&.b {
+			@include pk-img("026B");
+			@include pk-bg(#DDA444, 10%);
+		}
+	}
+	&[class*="027"] {
+		&.a {
+			@include pk-img("027A");
+			@include pk-bg(#E6D55D, 10%);
+		}
+		&.b {
+			@include pk-img("027B");
+			@include pk-bg(#C7E7F6, 5%);
+		}
+	}
+	&[class*="028"] {
+		&.a {
+			@include pk-img("028A");
+			@include pk-bg(#F6D55D, 10%);
+		}
+		&.b {
+			@include pk-img("028B");
+			@include pk-bg(#BEE7F6, 7.5%);
+		}
+	}
+	&[class*="029"] {
+		@include pk-img("029");
+		@include pk-bg(#AEC7FD, 10%);
+	}
+	&[class*="030"] {
+		@include pk-img("030");
+		@include pk-bg(#96CEC6, 10%);
+	}
+	&[class*="031"] {
+		@include pk-img("031");
+		@include pk-bg(#6EBDCD, 10%);
+	}
+	&[class*="032"] {
+		@include pk-img("032");
+		@include pk-bg(#CD8DB4, 10%);
+	}
+	&[class*="033"] {
+		@include pk-img("033");
+		@include pk-bg(#CD8DB4, 10%);
+	}
+	&[class*="034"] {
+		@include pk-img("034");
+		@include pk-bg(#CD8DB4, 10%);
+	}
+	&[class*="035"] {
+		@include pk-img("035");
+		@include pk-bg(#FEBDA7, 10%);
+	}
+	&[class*="036"] {
+		@include pk-img("036");
+		@include pk-bg(#FDB597, 10%);
+	}
+	&[class*="037"] {
+		&.a {
+			@include pk-img("037A");
+			@include pk-bg(#B47347, 15%);
+		}
+		&.b {
+			@include pk-img("037B");
+			@include pk-bg(#BED6EE, 10%);
+		}
+	}
+	&[class*="038"] {
+		&.a {
+			@include pk-img("038A");
+			@include pk-bg(#F6E691, 10%);
+		}
+		&.b {
+			@include pk-img("038B");
+			@include pk-bg(#CEE6FE, 5%);
+		}
+	}
+	&[class*="039"] {
+		@include pk-img("039");
+		@include pk-bg(#FEBDAF, 10%);
+	}
+	&[class*="040"] {
+		@include pk-img("040");
+		@include pk-bg(#FEC6B7, 10%);
+	}
+	&[class*="041"] {
+		@include pk-img("041");
+		@include pk-bg(#6EB5C5, 10%);
+	}
+	&[class*="042"] {
+		@include pk-img("042");
+		@include pk-bg(#66ADC5, 10%);
+	}
+	&[class*="043"] {
+		@include pk-img("043");
+		@include pk-bg(#7D93B8, 10%);
+	}
+	&[class*="044"] {
+		@include pk-img("044");
+		@include pk-bg(#6EADC5, 10%);
+	}
+	&[class*="045"] {
+		@include pk-img("045");
+		@include pk-bg(#6C8DCC, 10%);
+	}
+	&[class*="046"] {
+		@include pk-img("046");
+		@include pk-bg(#F59338, 10%);
+	}
+	&[class*="047"] {
+		@include pk-img("047");
+		@include pk-bg(#F59338, 10%);
+	}
+	&[class*="048"] {
+		@include pk-img("048");
+		@include pk-bg(#8C86DB, 10%);
+	}
+	&[class*="049"] {
+		@include pk-img("049");
+		@include pk-bg(#ABA5F2, 10%);
+	}
+	&[class*="050"] {
+		&.a {
+			@include pk-img("050A");
+			@include pk-bg(#B4845D, 10%);
+		}
+		&.b {
+			@include pk-img("050B");
+			@include pk-bg(#B3835D, 10%);
+		}
+	}
+	&[class*="051"] {
+		&.a {
+			@include pk-img("051A");
+			@include pk-bg(#B4845D, 10%);
+		}
+		&.b {
+			@include pk-img("051B");
+			@include pk-bg(#B3835D, 10%);
+		}
+	}
+	&[class*="052"] {
+		&.a {
+			@include pk-img("052A");
+			@include pk-bg(#F6E6B0, 7.5%);
+		}
+		&.b {
+			@include pk-img("052B");
+			@include pk-bg(#ACB4CC, 10%);
+		}
+	}
+	&[class*="053"] {
+		&.a {
+			@include pk-img("053A");
+			@include pk-bg(#F2DA96, 10%);
+		}
+		&.b {
+			@include pk-img("053B");
+			@include pk-bg(#ACB4CC, 10%);
+		}
+	}
+	&[class*="054"] {
+		@include pk-img("054");
+		@include pk-bg(#F6D557, 10%);
+	}
+	&[class*="055"] {
+		@include pk-img("055");
+		@include pk-bg(#73ACF0, 10%);
+	}
+	&[class*="056"] {
+		@include pk-img("056");
+		@include pk-bg(#F4E4A7, 7.5%);
+	}
+	&[class*="057"] {
+		@include pk-img("057");
+		@include pk-bg(#F6E6A9, 7.5%);
+	}
+	&[class*="058"] {
+		@include pk-img("058");
+		@include pk-bg(#F49B4D, 10%);
+	}
+	&[class*="059"] {
+		@include pk-img("059");
+		@include pk-bg(#F59B4C, 10%);
+	}
+	&[class*="060"] {
+		@include pk-img("060");
+		@include pk-bg(#7A97F9, 10%);
+	}
+	&[class*="061"] {
+		@include pk-img("061");
+		@include pk-bg(#6797F4, 10%);
+	}
+	&[class*="062"] {
+		@include pk-img("062");
+		@include pk-bg(#658FF4, 10%);
+	}
+	&[class*="063"] {
+		@include pk-img("063");
+		@include pk-bg(#F6DC51, 10%);
+	}
+	&[class*="064"] {
+		@include pk-img("064");
+		@include pk-bg(#F6DA4B, 10%);
+	}
+	&[class*="065"] {
+		&.a {
+			@include pk-img("065A");
+			@include pk-bg(#F6DC4B, 10%);
+		}
+		&.b {
+			@include pk-img("065B");
+			@include pk-bg(#E6DC4A, 10%);
+		}
+	}
+	&[class*="066"] {
+		@include pk-img("066");
+		@include pk-bg(#AECEC6, 10%);
+	}
+	&[class*="067"] {
+		@include pk-img("067");
+		@include pk-bg(#BDB6CD, 10%);
+	}
+	&[class*="068"] {
+		@include pk-img("068");
+		@include pk-bg(#859CAC, 10%);
+	}
+	&[class*="069"] {
+		@include pk-img("069");
+		@include pk-bg(#F7ED59, 10%);
+	}
+	&[class*="070"] {
+		@include pk-img("070");
+		@include pk-bg(#F6E565, 10%);
+	}
+	&[class*="071"] {
+		@include pk-img("071");
+		@include pk-bg(#F6E565, 10%);
+	}
+	&[class*="072"] {
+		@include pk-img("072");
+		@include pk-bg(#75BDF4, 10%);
+	}
+	&[class*="073"] {
+		@include pk-img("073");
+		@include pk-bg(#76BEF5, 10%);
+	}
+	&[class*="074"] {
+		&.a {
+			@include pk-img("074A");
+			@include pk-bg(#BDB48E, 10%);
+		}
+		&.b {
+			@include pk-img("074B");
+			@include pk-bg(#A4ACBC, 10%);
+		}
+	}
+	&[class*="075"] {
+		&.a {
+			@include pk-img("075A");
+			@include pk-bg(#BDB596, 10%);
+		}
+		&.b {
+			@include pk-img("075B");
+			@include pk-bg(#BDB396, 10%);
+		}
+	}
+	&[class*="076"] {
+		&.a {
+			@include pk-img("076A");
+			@include pk-bg(#D2B394, 10%);
+		}
+		&.b {
+			@include pk-img("076B");
+			@include pk-bg(#C5B496, 10%);
+		}
+	}
+	&[class*="077"] {
+		@include pk-img("077");
+		@include pk-bg(#FFF6D0, 2.5%);
+	}
+	&[class*="078"] {
+		@include pk-img("078");
+		@include pk-bg(#FFF6D0, 2.5%);
+	}
+	&[class*="079"] {
+		@include pk-img("079");
+		@include pk-bg(#F5AD9E, 10%);
+	}
+	&[class*="080"] {
+		&.a {
+			@include pk-img("080A");
+			@include pk-bg(#FDADA7, 10%);
+		}
+		&.b {
+			@include pk-img("080B");
+			@include pk-bg(#FDADA7, 10%);
+		}
+	}
+	&[class*="081"] {
+		@include pk-img("081");
+		@include pk-bg(#A6C7FD, 10%);
+	}
+	&[class*="082"] {
+		@include pk-img("082");
+		@include pk-bg(#A5C6FB, 10%);
+	}
+	&[class*="083"] {
+		@include pk-img("083");
+		@include pk-bg(#BC9475, 10%);
+	}
+	&[class*="084"] {
+		@include pk-img("084");
+		@include pk-bg(#DDB47F, 10%);
+	}
+	&[class*="085"] {
+		@include pk-img("085");
+		@include pk-bg(#DBB27D, 10%);
+	}
+	&[class*="086"] {
+		@include pk-img("086");
+		@include pk-bg(#CED7F6, 7.5%);
+	}
+	&[class*="087"] {
+		@include pk-img("087");
+		@include pk-bg(#C7D7F6, 7.5%);
+	}
+	&[class*="088"] {
+		&.a {
+			@include pk-img("088A");
+			@include pk-bg(#BCA5CD, 10%);
+		}
+		&.b {
+			@include pk-img("088B");
+			@include pk-bg(#8CB38C, 10%);
+		}
+	}
+	&[class*="089"] {
+		&.a {
+			@include pk-img("089A");
+			@include pk-bg(#BDA6CD, 10%);
+		}
+		&.b {
+			@include pk-img("089B");
+			@include pk-bg(#8CB38C, 10%);
+		}
+	}
+	&[class*="090"] {
+		@include pk-img("090");
+		@include pk-bg(#9C9EF4, 10%);
+	}
+	&[class*="091"] {
+		@include pk-img("091");
+		@include pk-bg(#837CCB, 10%);
+	}
+	&[class*="092"] {
+		@include pk-img("092");
+		@include pk-bg(#525252, 25%);
+	}
+	&[class*="093"] {
+		@include pk-img("093");
+		@include pk-bg(#9C7ED4, 10%);
+	}
+	&[class*="094"] {
+		&.a {
+			@include pk-img("094A");
+			@include pk-bg(#9C7ED4, 10%);
+		}
+		&.b {
+			@include pk-img("094B");
+			@include pk-bg(#7B65B3, 15%);
+		}
+	}
+	&[class*="095"] {
+		@include pk-img("095");
+		@include pk-bg(#BABAB2, 10%);
+	}
+	&[class*="096"] {
+		@include pk-img("096");
+		@include pk-bg(#F6DD51, 10%);
+	}
+	&[class*="097"] {
+		@include pk-img("097");
+		@include pk-bg(#FEDD46, 10%);
+	}
+	&[class*="098"] {
+		@include pk-img("098");
+		@include pk-bg(#F58561, 10%);
+	}
+	&[class*="099"] {
+		@include pk-img("099");
+		@include pk-bg(#F5845F, 10%);
+	}
+	&[class*="100"] {
+		@include pk-img("100");
+		@include pk-bg(#D46347, 15%);
+	}
+	&[class*="101"] {
+		@include pk-img("101");
+		@include pk-bg(#C45355, 15%);
+	}
+	&[class*="102"] {
+		@include pk-img("102");
+		@include pk-bg(#FECEC7, 5%);
+	}
+	&[class*="103"] {
+		&.a {
+			@include pk-img("103A");
+			@include pk-bg(#F7EE92, 7.5%);
+		}
+		&.b {
+			@include pk-img("103B");
+			@include pk-bg(#F6ED91, 7.5%);
+		}
+	}
+	&[class*="104"] {
+		@include pk-img("104");
+		@include pk-bg(#BC935E, 10%);
+	}
+	&[class*="105"] {
+		&.a {
+			@include pk-img("105A");
+			@include pk-bg(#BC935E, 10%);
+		}
+		&.b {
+			@include pk-img("105B");
+			@include pk-bg(#7A537A, 20%);
+		}
+	}
+	&[class*="106"] {
+		@include pk-img("106");
+		@include pk-bg(#A47B6C, 15%);
+	}
+	&[class*="107"] {
+		@include pk-img("107");
+		@include pk-bg(#CDAD8E, 10%);
+	}
+	&[class*="108"] {
+		@include pk-img("108");
+		@include pk-bg(#ED959D, 10%);
+	}
+	&[class*="109"] {
+		@include pk-img("109");
+		@include pk-bg(#9D9EFC, 10%);
+	}
+	&[class*="110"] {
+		@include pk-img("110");
+		@include pk-bg(#9D9EFC, 10%);
+	}
+	&[class*="111"] {
+		@include pk-img("111");
+		@include pk-bg(#ABB3BB, 10%);
+	}
+	&[class*="112"] {
+		@include pk-img("112");
+		@include pk-bg(#ADB5BD, 10%);
+	}
+	&[class*="113"] {
+		@include pk-img("113");
+		@include pk-bg(#FEC6BE, 10%);
+	}
+	&[class*="114"] {
+		@include pk-img("114");
+		@include pk-bg(#5DADF8, 10%);
+	}
+	&[class*="115"] {
+		&.a {
+			@include pk-img("115A");
+			@include pk-bg(#CD9C7D, 10%);
+		}
+		&.b {
+			@include pk-img("115B");
+			@include pk-bg(#CD9C7D, 10%);
+		}
+	}
+	&[class*="116"] {
+		@include pk-img("116");
+		@include pk-bg(#75CCFB, 10%);
+	}
+	&[class*="117"] {
+		@include pk-img("117");
+		@include pk-bg(#7ECFFD, 10%);
+	}
+	&[class*="118"] {
+		@include pk-img("118");
+		@include pk-bg(#EA7057, 15%);
+	}
+	&[class*="119"] {
+		@include pk-img("119");
+		@include pk-bg(#F5845F, 10%);
+	}
+	&[class*="120"] {
+		@include pk-img("120");
+		@include pk-bg(#B4845D, 10%);
+	}
+	&[class*="121"] {
+		@include pk-img("121");
+		@include pk-bg(#7A7CCB, 10%);
+	}
+	&[class*="122"] {
+		@include pk-img("122");
+		@include pk-bg(#FDCDBD, 5%);
+	}
+	&[class*="123"] {
+		@include pk-img("123");
+		@include pk-bg(#86C577, 10%);
+	}
+	&[class*="124"] {
+		@include pk-img("124");
+		@include pk-bg(#947DCC, 10%);
+	}
+	&[class*="125"] {
+		@include pk-img("125");
+		@include pk-bg(#F6DD57, 10%);
+	}
+	&[class*="126"] {
+		@include pk-img("126");
+		@include pk-bg(#D46347, 20%);
+	}
+	&[class*="127"] {
+		&.a {
+			@include pk-img("127A");
+			@include pk-bg(#CBB394, 10%);
+		}
+		&.b {
+			@include pk-img("127B");
+			@include pk-bg(#C5AD8E, 10%);
+		}
+	}
+	&[class*="128"] {
+		@include pk-img("128");
+		@include pk-bg(#DDBC78, 10%);
+	}
+	&[class*="129"] {
+		@include pk-img("129");
+		@include pk-bg(#F57357, 12.5%);
+	}
+	&[class*="130"] {
+		&.a {
+			@include pk-img("130A");
+			@include pk-bg(#4E95E3, 15%);
+		}
+		&.b {
+			@include pk-img("130B");
+			@include pk-bg(#4E96E4, 15%);
+		}
+	}
+	&[class*="131"] {
+		@include pk-img("131");
+		@include pk-bg(#67BEFC, 10%);
+	}
+	&[class*="132"] {
+		@include pk-img("132");
+		@include pk-bg(#927CCA, 15%);
+	}
+	&[class*="133"] {
+		@include pk-img("133");
+		@include pk-bg(#DDB461, 10%);
+	}
+	&[class*="134"] {
+		@include pk-img("134");
+		@include pk-bg(#87DEEE, 10%);
+	}
+	&[class*="135"] {
+		@include pk-img("135");
+		@include pk-bg(#FEED5B, 10%);
+	}
+	&[class*="136"] {
+		@include pk-img("136");
+		@include pk-bg(#F59459, 10%);
+	}
+	&[class*="137"] {
+		@include pk-img("137");
+		@include pk-bg(#FDB5A7, 7.5%);
+	}
+	&[class*="138"] {
+		@include pk-img("138");
+		@include pk-bg(#7EC7FD, 10%);
+	}
+	&[class*="139"] {
+		@include pk-img("139");
+		@include pk-bg(#8FCFFB, 10%);
+	}
+	&[class*="140"] {
+		@include pk-img("140");
+		@include pk-bg(#DDBC78, 10%);
+	}
+	&[class*="141"] {
+		@include pk-img("141");
+		@include pk-bg(#B4845D, 15%);
+	}
+	&[class*="142"] {
+		&.a {
+			@include pk-img("142A");
+			@include pk-bg(#BDBDBD, 10%);
+		}
+		&.b {
+			@include pk-img("142B");
+			@include pk-bg(#BDBDBD, 10%);
+		}
+	}
+	&[class*="143"] {
+		@include pk-img("143");
+		@include pk-bg(#54849B, 15%);
+	}
+	&[class*="144"] {
+		@include pk-img("144");
+		@include pk-bg(#5D9EF4, 15%);
+	}
+	&[class*="145"] {
+		@include pk-img("145");
+		@include pk-bg(#F6E542, 10%);
+	}
+	&[class*="146"] {
+		@include pk-img("146");
+		@include pk-bg(#FEDD52, 10%);
+	}
+	&[class*="147"] {
+		@include pk-img("147");
+		@include pk-bg(#8CB4FA, 10%);
+	}
+	&[class*="148"] {
+		@include pk-img("148");
+		@include pk-bg(#7DAFFC, 10%);
+	}
+	&[class*="149"] {
+		@include pk-img("149");
+		@include pk-bg(#F5B46A, 10%);
+	}
+	&[class*="150"] {
+		&.a {
+			@include pk-img("150A");
+			@include pk-bg(#E7DEEF, 2.5%);
+		}
+		&.b {
+			@include pk-img("150B");
+			@include pk-bg(#E7DEEF, 2.5%);
+		}
+		&.c {
+			@include pk-img("150C");
+			@include pk-bg(#E7DEEF, 2.5%);
+		}
+	}
+	&[class*="151"] {
+		@include pk-img("151");
+		@include pk-bg(#FEBDC7, 5%);
+	}
+	// &[class*="000"] {
+	// 	@include pk-img("000");
+	// 	@include pk-bg(#CFD8DC, 10%);
+	// }
+	// &[class*="000"] {
+	// 	&.a {
+	// 		@include pk-img("000A");
+	// 		@include pk-bg(#CFD8DC, 10%);
+	// 	}
+	// 	&.b {
+	// 		@include pk-img("000B");
+	// 		@include pk-bg(#CFD8DC, 10%);
+	// 	}
+	// }
+}

@@ -22,6 +22,7 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("static/css/no-js.css");
 	eleventyConfig.addPassthroughCopy("static/fonts");
 	eleventyConfig.addPassthroughCopy("static/images");
+	eleventyConfig.addPassthroughCopy("static/code/images");
 	eleventyConfig.addPassthroughCopy({"static/images/favicons":"/"});
 	eleventyConfig.addPassthroughCopy({"_includes/svg":"static/images/svg"});
 
@@ -99,11 +100,13 @@ module.exports = function(eleventyConfig) {
 	});
 
 	eleventyConfig.addFilter("readableDate", date => {
-		return DateTime.fromJSDate(date, {zone: 'utc'}).toFormat("dd LLLL yyyy");
+		date = DateTime.fromJSDate(date, {zone: 'utc'}).toFormat("dd LLLL yyyy") || DateTime.fromISO(date, {zone: 'utc'}).toFormat("dd LLLL yyyy")
+		return date;
 	});
 
 	eleventyConfig.addFilter('htmlDateString', date => {
-		return DateTime.fromJSDate(date, {zone: 'utc'}).toFormat('yyyy-LL-dd');
+		date = DateTime.fromJSDate(date, {zone: 'utc'}).toFormat('yyyy-LL-dd') || DateTime.fromISO(date, {zone: 'utc'}).toFormat('yyyy-LL-dd');
+		return date;
 	});
 
 	eleventyConfig.addFilter('linkDate', date => {
@@ -111,7 +114,8 @@ module.exports = function(eleventyConfig) {
 	});
 	
 	eleventyConfig.addFilter("timeAgo", date => {
-		return DateTime.fromJSDate(date, {zone: 'utc'}).toRelative();
+		date = DateTime.fromJSDate(date, {zone: 'utc'}).toRelative() || DateTime.fromISO(date, {zone: 'utc'}).toRelative();
+		return date;
 	});
 
 	eleventyConfig.addNunjucksAsyncShortcode("year", async (year) => {
@@ -201,13 +205,13 @@ module.exports = function(eleventyConfig) {
 
 		let newWidths;
 		if(type === "default" && extra === "no-lightbox") {
-			newWidths = [100, null]
+			newWidths = [100, "auto"]
 		} else if(type === "default" && extra != "no-lightbox") {
-			newWidths = [100, 900, 1728, 2268, null]
+			newWidths = [100, 900, 1728, 2268, "auto"]
 		} else if(type === "thumbnail") {
 			newWidths = [50, 300, 600];
 		} else if(type === "screen") {
-			newWidths = [100, 1728, null];
+			newWidths = [100, 1728, "auto"];
 		}
 
 		let stats = await Image(src, {
@@ -231,9 +235,15 @@ module.exports = function(eleventyConfig) {
 		let regset;
 		let datasrc;
 		if(type === "default" && extra != "no-lightbox") {
-			webpset = `${stats["webp"][3].srcset}, ${stats["webp"][2].srcset}, ${stats["webp"][1].srcset}`;
-			regset = `${stats[file][3].srcset}, ${stats[file][2].srcset}, ${stats[file][1].srcset}`;
-			datasrc = `https://gabriellew.ee${src.substring(1)}`;
+			if(stats["webp"][4]) {
+				webpset = `${stats["webp"][4].srcset}, ${stats["webp"][3].srcset}, ${stats["webp"][2].srcset}, ${stats["webp"][1].srcset}`;
+				regset = `${stats[file][4].srcset}, ${stats[file][3].srcset}, ${stats[file][2].srcset}, ${stats[file][1].srcset}`;
+				datasrc = `https://gabriellew.ee${src.substring(1)}`;
+			} else {
+				webpset = `${stats["webp"][3].srcset}, ${stats["webp"][2].srcset}, ${stats["webp"][1].srcset}`;
+				regset = `${stats[file][3].srcset}, ${stats[file][2].srcset}, ${stats[file][1].srcset}`;
+				datasrc = `https://gabriellew.ee${src.substring(1)}`;
+			}
 		} else if(type === "thumbnail" || type === "screen") {
 			webpset = `${stats["webp"][1].url}, ${stats["webp"][2].url} 2x`;
 			regset = `${stats[file][1].url}, ${stats[file][2].url} 2x`;
@@ -251,7 +261,7 @@ module.exports = function(eleventyConfig) {
 			loading = "lazy";
 		}
 		if(type === "default" && extra != "no-lightbox") {
-			source = `<source type="image/webp" srcset="${webpset}" sizes="(min-width: 2560px) 25vw, (min-width: 768px) 50vw, 100vw">`;
+			source = `<source type="image/webp" srcset="${webpset}" sizes="(min-width: 2560px) 75vw, (min-width: 768px) 50vw, 100vw">`;
 			img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" sizes="(min-width: 2560px) 25vw, (min-width: 768px) 50vw, 100vw" data-src="${datasrc}" width="${basic.width}" height="${basic.height}">`;
 		} else if(type === "thumbnail" || type === "screen" || (type === "default" && extra === "no-lightbox")) {
 			source = `<source type="image/webp" srcset="${webpset}">`;

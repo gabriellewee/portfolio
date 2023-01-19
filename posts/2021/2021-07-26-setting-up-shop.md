@@ -5,7 +5,6 @@
 	"permalink": "/posts/{{ date | linkDate }}/{{ title | slugify }}/",
 	"layout": "layouts/post.njk",
 	"templateEngineOverride": "md,njk",
-	"codepen": true,
 	"photos": [
 		{
 			"name": "website-home",
@@ -180,7 +179,7 @@ These days, I'm loath to lose any previous website content, even content that is
 
 Last but not least, I have this blog. The layout I'm using for the other pages wasn't really conducive to a blog format, so I created an entirely separate set of styles. One of the things I really love about this site is the font, [Recursive](https://www.recursive.design). It's a variable font that I'm using for every single part of the blog site, including the code snippets. You can even animate between the proportional and monospace versions!
 
-<figure class="animation">
+<!-- <figure class="animation">
 	<figcaption class="animation-caption">Animation of font variable settings</figcaption>
 	<div>
 		<span class="animating font-variation-settings">recursive.design</span>
@@ -189,10 +188,12 @@ Last but not least, I have this blog. The layout I'm using for the other pages w
 		<button class="pause"><span>Pause animation</span></button>
 		<button class="play"><span>Play animation</span></button>
 	</figcaption>
-</figure>
+</figure> -->
 
 ## That's all, folks.
 
 It's a bit messy, and I have more direct commits than I should, but if you want to check out the code for this website, you can [view the repo](https://github.com/gabriellewee/portfolio).
 
 I keep making small changes here and there, but the heavy lifting is done. I'm hoping to write here more regularly in the future!
+
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>

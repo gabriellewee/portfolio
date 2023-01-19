@@ -6,7 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 	<meta name="format-detection" content="telephone=no">
 
-	{% if hidden == true %}<meta name="robots" content="noindex,nofollow">{% endif %}
+	{% if (hidden == true) or ((key == "home") and (pagination.pageNumber != 0)) %}
+		<meta name="robots" content="noindex,nofollow">
+	{% endif %}
 
 	<link rel="canonical" href="{{site.url}}{{page.url}}">
 	<link rel="alternate" type="application/rss+xml" title="RSS" href="/posts/feed.xml">
@@ -29,11 +31,10 @@
 	<meta name="msapplication-config" content="/browserconfig.xml">
 
 	{% if theme %}
-		<meta name="theme-color" content="{{theme}}" media="(prefers-color-scheme: light)">
+		<meta name="theme-color" content="{{theme}}">
 	{% else %}
-		<meta name="theme-color" content="#fcf1ef" media="(prefers-color-scheme: light)">
+		<meta name="theme-color" content="#fcf1ef">
 	{% endif %}
-	<meta name="theme-color" content="#263238" media="(prefers-color-scheme: dark)">
 
 	<title>{{site.author}} · {{title}}</title>
 	<meta property="og:title" content="{{title}}">
@@ -88,7 +89,7 @@
 		{% if add == true %}
 			<link rel="stylesheet" href="{{'/static/css/style.css' | url}}">
 		{% endif %}
-		<link rel="stylesheet" href="{{ '/static/css/' + style + '.css' | url }}">
+		<link rel="stylesheet" href="{{ '/static/' + style + '.css' | url }}">
 	{% else %}
 		<link rel="stylesheet" href="{{'/static/css/style.css' | url}}">
 	{% endif %}
@@ -114,12 +115,12 @@
 					<h1 class="text message">{{message}}</h1>
 				{% endif %}
 			</div>
-			{% if pagination.pageNumber == 0 %}
+			{% if (key == "home") and (pagination.pageNumber == 0) %}
 				<h1 class="title">Hello, stranger! My name is <strong>Gabrielle Wee.</strong> I’m a front‑end developer working at <span class="apple" role="text">Apple {% include 'svg/apple.svg' %}<span class="cursor" aria-hidden="true"></span></span></h1>
 			{% endif %}
 		</header>
 	{% endif %}
-	<main>
+	<main class="main" role="main">
 		{% if links == true %}
 			{% include 'pages/home/links.html' %}
 		{% endif %}
@@ -127,14 +128,14 @@
 	</main>
 	{% if blank != true %}
 		<footer class="bottom" aria-label="Footer">
-			<p class="copyright">
-				{% if key != about %}<a href="/about/"><span>About</span></a>{% endif %}
-				<span class="copyright">
-					<span>&copy;</span>
-					<span>{{site.author}}</span>
-					<span>{% year 'start' %}–{% year 'current' %}</span>
-				</span>
-			</p>
+			{% if key != "about" %}
+				<a href="/about/"><span>About</span></a>
+				<a href="/archive/"><span>Archive</span></a>
+				<a href="/feed.xml"><span>RSS</span></a>
+			{% endif %}
+			<span class="copyright">
+				<span>&copy; {{site.author}} {% year 'start' %}–{% year 'current' %}</span>
+			</span>
 		</footer>
 
 		<script src="{{'/static/js/imagesloaded.min.js' | url}}"></script>
@@ -143,6 +144,8 @@
 		{% if key == "home" %}
 			<script src="{{'/static/js/clipboard.min.js' | url}}"></script>
 			<script src="{{'/static/js/infinite-scroll.min.js' | url}}"></script>
+		{% endif %}
+		{% if isotope == true %}
 			<script src="{{'/static/js/isotope.min.js' | url}}"></script>
 			<script src="{{'/static/js/packery.min.js' | url}}"></script>
 		{% endif %}

@@ -5,7 +5,12 @@
 	"permalink": "/posts/{{ date | linkDate }}/{{ title | slugify }}/",
 	"layout": "layouts/post.njk",
 	"templateEngineOverride": "md,njk",
-	"medium": "https://gabriellewee.medium.com/mourning-online-ac086c4eb87e",
+	"external": [
+		{
+			"platform": "medium",
+			"url": "https://gabriellewee.medium.com/mourning-online-ac086c4eb87e"
+		}
+	],
 	"photos": [
 		{
 			"name": "baby",

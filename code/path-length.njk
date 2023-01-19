@@ -1,0 +1,71 @@
+---
+title: Path Length Calculator
+description: Path Length Calculator
+date: 2017-01-10
+
+permalink: /code/{{ page.fileSlug }}/
+uri: XMEEda
+
+layout: layouts/base.njk
+tags: entries
+category: code
+
+blank: true
+style: code/css/path-length
+hidden: true
+
+height: 500px
+---
+
+<ul>
+	<li>
+		<p>
+			Drop an <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d" target="_blank">SVG path description</a> in the first box to find its length, i.e. <code>&lt;path&nbsp;d="<span>M22.5,88.5 L257.5,293.5</span>"&gt;</code> - useful when calculating stroke-dashoffset for animation.
+		</p>
+	</li>
+	<li>
+		<form>
+			<input id="path-length" type="text" onClick="this.select();"/>
+		</form>
+		<button id="submit-btn">get length</button>
+	</li>
+	<li>
+		<input id="path-output" class="copy" data-clipboard-target="#path-output" type="tel" />
+		<button id="copy-btn" class="copy" data-clipboard-target="#path-output">copy</button>
+	</li>
+</ul>
+
+<svg><path d=""></path></svg>
+
+<script src="https://use.typekit.net/lkh0ago.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+<script src="/static/code/js/jquery.min.js"></script>
+<script src="/static/js/clipboard.min.js"></script>
+<script>
+	$("body").addClass("pre-enter");
+	setTimeout(function(){
+		$("body").addClass("on-enter");
+	}, 500);
+	setTimeout(function(){
+		$("body").removeClass("pre-enter on-enter");
+	}, 1500);
+
+	function round(value, decimals) {
+		return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+	}
+
+	$('#submit-btn').click(function(){
+		var path = document.querySelector('path');
+		var submitted = document.getElementById('path-length').value;
+		path.setAttribute("d", submitted);
+		setTimeout(function(){
+			var length = path.getTotalLength();
+			var total = round(length, 3);
+			console.log(total);
+			document.getElementById('path-output').value = total;
+		}, 100);
+	});
+
+	new Clipboard('.copy');
+</script>

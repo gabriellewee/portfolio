@@ -1,0 +1,124 @@
+---js
+{
+	title: "About",
+	description: "About this website, its iterations, and all the resources used.",
+	permalink: "/about/",
+	key: "about",
+	layout: "layouts/base.njk",
+	tags: "pages",
+	isotope: true,
+	style: true,
+	add: true,
+	hidden: true,
+	message: "Behind the scenes",
+	colors: [
+		{
+			name: "iron",
+			hex: "#263238"
+		},
+		{
+			name: "blush",
+			hex: "#F5C8BF"
+		},
+		{
+			name: "rose",
+			hex: "#D19487"
+		},
+		{
+			name: "mauve",
+			hex: "#B2738E"
+		},
+		{
+			name: "slate",
+			hex: "#577783"
+		},
+		{
+			name: "mint",
+			hex: "#8BB29A"
+		}
+	]
+}
+---
+
+<section class="posts-container">
+	<div class="posts grid-isotope">
+		<article class="post post-about post-build post-size-m grid-item">
+			<div class="post-wrapper">
+				<header class="post-header">
+					<h3>About</h3>
+				</header>
+				<div class="post-content post-text">
+					<p>This website is built with <a href="https://www.11ty.dev" target="_blank">Eleventy</a>, hosted on <a href="https://github.com/gabriellewee/portfolio" target="_blank">Github</a>, and deployed via <a href="https://netlify.com/" target="_blank">Netlify</a>. The domain provider is <a href="https://www.netim.com" target="_blank">Netim</a>. Templates are built from a combination of <a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a>, Markdown, and vanilla HTML. Styles are built with SASS and Autoprefixer.</p>
+				</div>
+			</div>
+		</article>
+
+		<article class="post post-about post-size-xs post-versions grid-item">
+			<div class="post-wrapper">
+				<header class="post-header">
+					<h3>Versions</h3>
+				</header>
+				<div class="post-links">
+					<ol>
+						{% for link in range(1, 6) %}
+  							<li>
+								<a class="button" href="/v{{link}}/" target="blank"><span><span>Version {{link}}</span></span></a>
+							</li>
+						{% endfor %}
+					</ol>
+				</div>
+			</div>
+		</article>
+
+		<article class="post post-about post-size-m post-sitemap grid-item">
+			<div class="post-wrapper">
+				<header class="post-header">
+					<h3>Site Map</h3>
+				</header>
+				<div class="post-links">
+					<ul>
+						{% for post in collections.pages %}
+							<li>
+								<a href="{{post.url | url}}"><span>{{post.data.key | safe | capitalize}}</span></a>
+							</li>
+						{% endfor %}
+						<li><a href="/feed.xml"><span>RSS</span></a></li>
+					</ul>
+				</div>
+			</div>
+		</article>
+
+		<article class="post post-about post-size-m post-colors grid-item">
+			<div class="post-wrapper">
+				<header class="post-header">
+					<h3>Colors</h3>
+				</header>
+				<div class="post-links">
+					<ul>
+						{% for color in colors %}
+							<li>
+								<div class="color color-{{color.name}}">
+									<span></span>
+									<span aria-label="{{color.name|capitalize}}">{{color.hex}}</span>
+								</div>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</article>
+
+		<article class="post post-about post-thanks grid-item">
+			<div class="post-wrapper">
+				<header class="post-header">
+					<h3>Thanks</h3>
+				</header>
+				<div class="post-content post-text">
+					<ul>
+						<li><a href="https://www.11ty.dev" target="_blank">Eleventy</a> by <a href="https://www.zachleat.com" target="_blank">Zach Leatherman</a></li><li><a href="https://isotope.metafizzy.co" target="_blank">Isotope</a> and <a href="https://infinite-scroll.com" target="_blank">Infinite Scroll</a> by <a href="https://desandro.com" target="_blank">Dave DeSandro</a> of <a href="https://metafizzy.co" target="_blank">Metafizzy</a></li><li><a href="https://gumroad.com/l/dank-mono" target="_blank">Dank Mono</a> font by <a href="https://kitten.sh" target="_blank">Phil Pluckthun</a></li><li><a href="https://github.com/github/mona-sans" target="_blank">Mona Sans</a> font by <a href="https://github.com/github" target="_blank">Github</a></li>
+					</ul>
+				</div>
+			</div>
+		</article>
+	</div>
+</section>

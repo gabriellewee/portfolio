@@ -1,0 +1,31 @@
+---js
+{
+    layout: "layouts/base.njk",
+    key: "post",
+    tags: "entries",
+    category: "media",
+    pagination: {
+        data: "photography",
+        size: 1,
+        addAllPagesToCollections: true,
+        alias: "media"
+    },
+    permalink: false,
+	eleventyComputed: {
+		media(data) {
+			data.page.date = new Date(data.media.date);
+			data.name = data.media.name;
+			data.date = data.media.date;
+			data.location = data.media.location;
+			data.camera = data.media.camera;
+			data.editor = data.media.editor;
+			data.description = data.media.description;
+			data.extension = "jpg";
+			data.type = "photo";
+			data.size = data.media.size;
+			data.external = data.media.external;
+		}
+	}
+}
+---
+
