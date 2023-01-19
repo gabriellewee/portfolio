@@ -1,0 +1,28 @@
+---js
+{
+    layout: "layouts/base.njk",
+    key: "post",
+    tags: "entries",
+    category: "media",
+    pagination: {
+        data: "art",
+        size: 1,
+        addAllPagesToCollections: true,
+        alias: "media"
+    },
+    permalink: false,
+	eleventyComputed: {
+		media(data) {
+			data.page.date = new Date(data.media.date);
+			data.name = data.media.name;
+			data.date = data.media.date;
+			data.title = data.media.title;
+			data.tools = data.media.tools;
+			data.description = data.media.description;
+			data.extension = "jpg";
+			data.type = "artwork";
+			data.size = data.media.size;
+		}
+	}
+}
+---

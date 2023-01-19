@@ -1,0 +1,91 @@
+<section class="posts-container">
+	<div class="posts grid-isotope">
+		{% for post in media %}
+			<article class="post post-media post-photography{% if post.size %} post-size-{{post.size}}{% endif %} grid-item" data-orientation="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + extension, 'orientation' %}">
+				<input class="media-trigger" id="{{post.date | safe}}-{{post.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this {{type}}" role="switch" aria-checked="false"/>
+				<div class="post-wrapper">
+					<div class="post-content">
+						<figure id="{{post.date | safe}}-{{post.name}}" role="group" aria-label="{{type | capitalize}}{% if post.location %}, {{post.location}}{% elseif post.title %}, {{post.title}}{% endif %}" style="aspect-ratio: {% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + extension, 'ratio' %};">
+							{% if post.upscale %}
+								<picture>
+									<img class="upscale" src="{% include post.upscale %}"{% if post.upscaleWidth %} width="{{post.upscaleWidth}}"{% endif %}{% if post.upscaleHeight %} height="{{post.upscaleHeight}}"{% endif %} alt="{{post.description}}"/>
+								</picture>
+							{% else %}
+								{% image './static/images/' + key + '/' + post.date + '-' + post.name + '.' + extension, post.description, 'default', loop.index %}
+							{% endif %}
+							<figcaption class="media-data">
+								<time class="time-default" datetime="{{post.date}}" title="{{post.date | readableDate}}">{{post.date | timeAgo}}</time>
+								<label class="media-down media-icon" for="{{post.date | safe}}-{{post.name}}-info"></label>
+								<div class="media-thumbnail">
+									<a class="media-expand expand" href="#{{post.date | safe}}-{{post.name}}-lightbox" aria-label="Expand {{type}}" tabindex="-1" role="button">
+										<span class="no-image">Expand</span>
+										<span aria-hidden="true">
+											{% if post.upscale %}
+												<picture>
+													<img class="upscale" src="{% include post.upscale %}"{% if post.upscaleWidth %} width="{{post.upscaleWidth}}"{% endif %}{% if post.upscaleHeight %} height="{{post.upscaleHeight}}"{% endif %} alt="{{post.description}}"/>
+												</picture>
+											{% else %}
+												{% image './static/images/' + key + '/' + post.date + '-' + post.name + '.' + extension, post.description, 'thumbnail', loop.index %}
+											{% endif %}
+										</span>
+									</a>
+								</div>
+								{% if post.external %}
+									<div class="media-links">
+										{% for link in post.external %}
+											<a class="media-link external {{link.platform}}" target="_blank" href="{{link.url | url}}" tabindex="-1" aria-label="View on {{link.platform | capitalize}}"><span>{{link.platform | capitalize}}</span></a>
+										{% endfor %}
+									</div>
+								{% endif %}
+								<dl class="media-meta">
+									{% if post.title %}
+										<div class="meta-title">
+											<dt>Title</dt><dd>{{post.title | nbsp | safe}}</dd>
+										</div>
+									{% endif %}
+									{% if post.location %}
+										<div class="meta-location">
+											<dt>Location</dt><dd>{{post.location}}</dd>
+										</div>
+									{% endif %}
+									{% if post.camera %}
+										<div class="meta-camera">
+											<dt>Camera</dt><dd>{{post.camera}}</dd>
+										</div>
+									{% endif %}
+									{% if post.editor %}
+										<div class="meta-editor">
+											<dt>Editor</dt><dd>{{post.editor}}</dd>
+										</div>
+									{% endif %}
+									{% if post.tools %}
+										<div class="meta-tools">
+											<dt>Tools</dt><dd>{{post.tools}}</dd>
+										</div>
+									{% endif %}
+								</dl>
+							</figcaption>
+						</figure>
+					</div>
+				</div>
+			</article>
+		{% endfor %}
+	</div>
+</section>
+
+<div class="lightbox-group" hidden>
+	{% for post in media %}
+		<a class="lightbox post-lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{post.date | safe}}-{{post.name}}-lightbox" href="#{{post.date | safe}}-{{post.name}}">
+			<figure class="image">
+				{% if post.upscale %}
+					<picture>
+						<img class="upscale" src="{% include post.upscale %}"{% if post.upscaleWidth %} width="{{post.upscaleWidth}}"{% endif %}{% if post.upscaleHeight %} height="{{post.upscaleHeight}}"{% endif %} alt="{{post.description}}"/>
+					</picture>
+				{% else %}
+					{% image './static/images/' + key + '/' + post.date + '-' + post.name + '.' + extension, post.description, 'screen' %}
+				{% endif %}
+			</figure>
+		</a>
+	{% endfor %}
+	<div class="lightbox-background post-lightbox"></div>
+</div>

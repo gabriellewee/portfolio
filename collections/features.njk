@@ -1,0 +1,26 @@
+---js
+{
+    layout: "layouts/base.njk",
+    key: "post",
+    tags: "entries",
+    category: "writing",
+    pagination: {
+        data: "features",
+        size: 1,
+        addAllPagesToCollections: true,
+        alias: "feature"
+    },
+    permalink: false,
+	eleventyComputed: {
+		feature(data) {
+            data.title = data.feature.title;
+			data.page.date = new Date(data.feature.date);
+			data.content = data.feature.summary;
+			data.url = data.feature.url;
+            data.platform = data.feature.platform;
+            data.external = data.feature.external;
+            data.type = data.feature.type;
+		}
+	}
+}
+---

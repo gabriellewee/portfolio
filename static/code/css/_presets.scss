@@ -1,0 +1,74 @@
+$mercury: #dad1d0;
+$chico: #92665d;
+$gondola: #3a3231;
+$maria: #9b3d29;
+$asparagus: #435444;
+$river: #474d57;
+$coral: #b06772;
+
+$slate: #413D44;
+$forest: #495453;
+$grey: #A6ADA7;
+$green: #AEBFAF;
+$mint: #f2faf3;
+$beige: #E0D2C5;
+$pink: #F5C8BF;
+
+$wine: #4D496A;
+$rose: #ECACA4;
+$ice: #D6F0F8;
+$dove: #BEB9C0;
+$lavendar: #9DA5BA;
+$midnight: #17324A;
+$granite: #413D44;
+
+@mixin round {
+	border-radius: 1000px;
+}
+@mixin listless {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+@mixin blur($blur) {
+	filter: blur($blur+px);
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='#{$blur}');
+}
+@mixin stroke($stroke, $width) {
+	fill: none;
+	stroke: $stroke;
+	stroke-width: $width+px;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+$links: 'a:active, a:focus, a:hover';
+$buttons: 'button:active, button:hover, button:focus, a[class*=btn]:active, a[class*=btn]:focus, a[class*=btn]:hover';
+
+$padding: 12px;
+
+$font: "brandon-grotesque", "Brandon Grotesque", "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif!important;
+
+$body: "brandon-text", "Brandon Text", "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif!important;
+
+body {
+  margin: 0;
+}
+
+// pen
+main.pen-desc.personal {
+	display: flex;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	width: 100%;
+	height: 100vh;
+  background: $chico;
+	h1 {
+		margin: 0;
+    color: white;
+    font-family: $font;
+    font-weight: 400;
+		font-size: 10vw;
+		line-height: 1;
+	}
+}

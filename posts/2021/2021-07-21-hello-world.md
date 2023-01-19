@@ -5,7 +5,7 @@
 	"permalink": "/posts/{{ date | linkDate }}/{{ title | slugify }}/",
 	"layout": "layouts/post.njk",
 	"templateEngineOverride": "md,njk",
-	"small": true
+	"size": "s"
 }
 ---
 

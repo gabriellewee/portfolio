@@ -8,13 +8,15 @@ category: writing
 
 <section class="posts-container">
 	<div class="posts">
-		<article class="post post-{{category}}">
+		<article class="post post-{{category}}{% for tag in tags %}{% if tag != "entries" %} post-{{tag}}{% endif %}{% endfor %}">
 			<div class="post-wrapper">
 				<header class="post-header inline-header">
-					<h2>{{title | nbsp | safe}}</h2>
-					<time class="time-default" datetime="{{page.date | htmlDateString}}" title="{{post.page.date | readableDate}}">{{page.date | timeAgo}}</time>
+					<div class="post-header-wrapper">
+						<h2>{{title | nbsp | safe}}</h2>
+						<time class="time-default" datetime="{{page.date | htmlDateString}}" title="{{post.page.date | readableDate}}">{{page.date | timeAgo}}</time>
+					</div>
 				</header>
-				<div class="post-content">
+				<div class="post-content post-text">
 					{{content | safe}}
 				</div>
 			</div>
@@ -25,11 +27,10 @@ category: writing
 		{%- set nextPost = collections.posts | getNextCollectionItem(page) %}
 		{%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
 		{%- if nextPost or previousPost %}
-			{%- if nextPost %}<a class="previous" href="{{ nextPost.url | url }}"><span><span>Previous Post</span></span></a>{% else %}<span></span>{% endif %}
-			{%- if previousPost %}<a class="next" href="{{ previousPost.url | url }}"><span><span>Next Post</span></span></a>{% else %}<span></span>{% endif %}
+			{%- if nextPost %}<a class="previous button" href="{{ nextPost.url | url }}"><span><span>Previous Post</span></span></a>{% else %}<span></span>{% endif %}
+			{%- if previousPost %}<a class="next button" href="{{ previousPost.url | url }}"><span><span>Next Post</span></span></a>{% else %}<span></span>{% endif %}
 		{%- endif %}
 	</nav>
 
-	{% if photos %}{% include 'pages/posts/lightbox.html' %}{% endif %}
-	{% if codepen == "true" %}<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>{% endif %}
+	{% include 'pages/posts/lightbox.html' %}
 </section>

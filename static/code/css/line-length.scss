@@ -1,0 +1,194 @@
+@use "sass:math";
+@import 'reset';
+@import 'presets';
+
+$p: $padding;
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: rgba(0,0,0,0); }
+body, html { height: 100%; }
+body {
+	overflow: hidden;
+	color: $forest;
+	font-family: $font;
+	background: lighten($grey, 15%);
+	margin: 0;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	&.pre-enter {
+		opacity: 0;
+	}
+	&.on-enter {
+		opacity: 1;
+		transition: all 1000ms ease-out;
+	}
+}
+
+::selection {
+	background: $beige;
+}
+
+a {
+	color: $forest;
+	&:hover, &:focus {
+		color: white;
+		background: desaturate(darken($beige, 15%), 15%);
+		border-radius: 2px;
+	}
+	&:active {
+		background: $grey;
+	}
+}
+
+p {
+	font-size: 18px;
+	line-height: 1.5;
+}
+
+code {
+	color: $slate;
+	span {
+		border-radius: 2px;
+		background: desaturate(darken($beige, 15%), 15%);
+		color: white;
+	}
+}
+
+svg {
+	position: absolute;
+	opacity: 0;
+}
+
+main > ul {
+	margin: 0 auto;
+	max-width: 800px;
+	width: 100%;
+	display: flex;
+	flex-flow: row wrap;
+	position: relative;
+	z-index: 10;
+	list-style: none;
+	margin: 0;
+	padding: $p*.5;
+	> li {
+		width: 100%;
+		form + div {
+			padding: $p*.5;
+		}
+		&:nth-child(1) {
+			padding: $p*.5;
+		}
+		&:nth-child(3) {
+			form > div {
+				padding: $p*.5;
+			}
+		}
+	}
+}
+
+input, button {
+	display: block;
+	width: 100%;
+	margin: 0;
+	font-family: $font;
+	appearance: none;
+	border: 0;
+	border-radius: 2px;
+	&:focus {
+		outline: none!important;
+	}
+}
+
+input {
+	padding: 0;
+	font-size: 48px;
+	font-weight: 600;
+	text-align: center;
+	color: $grey;
+	&::placeholder {
+		color: rgba($grey, .5);
+	}
+	&:focus {
+		color: $slate;
+		&::placeholder {
+			color: rgba($grey, .75);
+		}
+	}
+}
+
+button {
+	cursor: pointer;
+	background: darken($green, 5%);
+	color: white;
+	font-size: 20px;
+	font-weight: 600;
+	height: 48px;
+	width: 100%;
+	&:hover, &:focus {
+		background: $grey;
+		color: $forest;
+	}
+	&:active {
+		background: $forest;
+		color: white;
+	}
+}
+
+.form-length {
+	ul {
+		display: flex;
+		flex-flow: row wrap;
+		li {
+			display: flex;
+			width: 50%;
+			padding: $p*.5;
+		}
+		label {
+			display: flex;
+			align-items: center;
+			align-content: center;
+			justify-content: center;
+			width: 40px;
+			padding: math.div($p, 3) $p;
+			background: $grey;
+			border-radius: 2px 0 0 2px;
+			color: white;
+			font-weight: 700;
+			text-align: center;
+		}
+		input {
+			width: calc(100% - 40px);
+			border-radius: 0 2px 2px 0;
+		}
+	}
+}
+
+@media only screen and (min-width: 640px) {
+	body {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	main > ul {
+		> li {
+			width: 50%;
+			&:nth-child(1) {
+				width: 100%;
+			}
+			&:nth-child(2) {
+				input {
+					font-size: 44px;
+				}
+			}
+			&:nth-child(3) {
+				input {
+					font-size: 96px;
+					height: 140px;
+				}
+			}
+		}
+	}
+	button {
+		font-size: 24px;
+		height: 64px;
+	}
+}

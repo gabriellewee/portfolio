@@ -1,0 +1,46 @@
+---
+title: Archive
+description: Post archive for gabriellew.ee
+permalink: /archive/
+
+key: archive
+layout: layouts/base.njk
+tags: pages
+
+message: Post archive for gabriellew.ee
+---
+
+{% set currentYear = "" %}
+
+<section class="posts-container">
+	<article class="posts-archive">
+		<ul>
+			{% for post in collections.posts | reverse %}
+				{% set postYear = post.date.getFullYear() %}
+				{% if currentYear != postYear %}
+					{% set currentYear = postYear %}
+					<li class="year">
+						<h2>{{ postYear }}</h2>
+					</li>
+				{% endif %}
+				<li>
+					<h3><a href="{{post.url | url}}"><span>{{post.data.title | nbsp | safe}}</span></a></h3>
+					<span class="date" role="text"><time datetime="{{post.date | htmlDateString}}">{{post.date | readableDate}}</time></span>
+				</li>
+			{% endfor %}
+			{% for post in collections.archive | reverse %}
+				{% set postYear = post.date.getFullYear() %}
+				{% if currentYear != postYear %}
+					{% set currentYear = postYear %}
+					<li class="year">
+						<h2>{{ postYear }}</h2>
+					</li>
+				{% endif %}
+				<li>
+					<h3><a href="{{post.url | url}}"><span>{{post.data.title | nbsp | safe}}</span></a></h3>
+					<span class="date" role="text"><time datetime="{{post.date | htmlDateString}}">{{post.date | readableDate}}</time></span>
+				</li>
+			{% endfor %}
+		</ul>
+	</article>
+</section>

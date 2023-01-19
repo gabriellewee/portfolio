@@ -33,6 +33,9 @@
 	--color-slate: #{$slate};
 	--color-slate-hsl: #{hexToHSL($slate)};
 
+	--color-slate-mauve: #{mix($slate, $mauve)};
+	--color-mauve-rose: #{mix($mauve, $rose)};
+
 	--color-mint: #{$mint};
 	--color-mint-hsl: #{hexToHSL($mint)};
 
@@ -42,6 +45,7 @@
 	--color-aqua: #{$aqua};
 	--color-peach: #{$peach};
 	--color-periwinkle: #{$periwinkle};
+	--color-violet: #{$violet};
 	
 	--color-message: #{$message};
 	--color-message-hsl: #{hexToHSL($message)};
@@ -67,9 +71,9 @@
 	--color-im: #0d84ff;
 	--color-tum: #35465D;
 
-	--color-med: #00AB6C; // #1A8917
-	--color-ap: #7d50df;
-	--color-sp: #1cb954;
+	--color-med: #51A653;
+	--color-ap: #852dc4;
+	--color-sp: #1BD760;
 	
 	--color-med-hsl: #{hexToHSL(#00AB6C)};
 	--color-ap-hsl: #{hexToHSL(#7d50df)};

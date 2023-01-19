@@ -1,0 +1,528 @@
+@import 'reset';
+
+$red: #F04F54;
+$black: #40484b;
+$green: #43cb9d;
+$grey: #ebebeb;
+
+$padding: 12px;
+$font: "brandon-grotesque", "Brandon Grotesque", "Brandon Text", "Futura", "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+
+* { box-sizing: border-box; user-select: none; -webkit-tap-highlight-color: rgba(0,0,0,0); }
+*:focus { outline: none; }
+body, html { height: 100%; }
+body {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	background: $grey;
+	perspective: 1000px;
+	margin: 0;
+	overflow: hidden;
+	font-family: $font;
+	font-size: 18px;
+	color: $black;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	&.success {
+		transition: all 250ms ease-out;
+		background: $green;
+		#reset {
+			opacity: 0;
+			z-index: -1;
+		}
+		.start {
+			opacity: 0;
+			z-index: -100;
+		}
+		.congrats {
+			transition: all 250ms ease-out 250ms;
+			opacity: 1;
+			z-index: 100;
+		}
+	}
+	&.begin {
+		#reset {
+			opacity: 1;
+			z-index: auto;
+		}
+		.start {
+			opacity: 0;
+			z-index: -100;
+		}
+		.congrats {
+			opacity: 0;
+			z-index: -100;
+		}
+		.playing-card {
+			> div {
+				&.back {
+					> div {
+						> div {
+							> div {
+								animation: timer 15s linear infinite forwards;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+main {
+	width: 100%;
+}
+
+strong {
+	font-weight: 600;
+}
+
+button {
+	appearance: none;
+	cursor: pointer;
+	border: 0;
+	font-family: $font;
+	border-radius: 2px;
+	font-size: 20px;
+	background: $green;
+	color: white;
+	transition: all 250ms ease-out;
+	* {
+		transition: all 250ms ease-out;
+	}
+	&:hover, &:focus {
+		background: mix(white, $green);
+		color: mix($black, $green);
+		svg {
+			* {
+				stroke: mix($black, $green);
+			}
+		}
+	}
+	&:active {
+		background: mix($black, $green);
+		color: white;
+		svg {
+			* {
+				stroke: white;
+			}
+		}
+	}
+}
+
+.changelog {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: $padding*2 $padding $padding;
+	background: $grey;
+	overflow: auto;
+	&.visible {
+		transition: opacity 250ms ease-out;
+		opacity: 1;
+		z-index: 101;
+	}
+	&:not(.visible) {
+		transition: opacity 250ms ease-out, z-index 0ms ease-out 250ms;
+		opacity: 0;
+		z-index: -101;
+	}
+	button {
+		display: block;
+		margin: 0 auto;
+		height: 48px;
+		min-width: 128px;
+	}
+	div {
+		width: 100%;
+		max-width: 512px;
+		margin-top: $padding;
+		margin-left: auto;
+		margin-right: auto;
+		h2 {
+			margin: 0;
+			font-weight: 600;
+		}
+		ul {
+			list-style: circle;
+			padding: $padding*.25 0;
+			li {
+				padding: $padding*.25 0;
+				line-height: 1.4;
+			}
+		}
+	}
+}
+
+.congrats, .start {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	flex-flow: row wrap;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: $padding;
+	h1, p, div {
+		width: 100%;
+	}
+	h1 {
+		font-size: 48px;
+		margin-bottom: $padding;
+		text-align: center;
+	}
+	p {
+		max-width: 512px;
+		line-height: 1.4;
+		+ p {
+			margin-top: $padding;
+			font-size: 14px;
+		}
+	}
+	button {
+		display: block;
+		margin: $padding auto 0;
+		height: 64px;
+		min-width: 256px;
+		&:hover, &:focus {
+			background: mix(white, $green);
+			color: mix($black, $green);
+		}
+		&:active {
+			background: mix($black, $green);
+			color: white;
+		}
+	}
+	footer {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		text-align: center;
+		padding: $padding;
+		width: 100%;
+		font-size: 14px;
+		a {
+			background: $green;
+			color: white;
+			text-decoration: none;
+			display: inline-block;
+			border-radius: 2px;
+			padding: 2px 4px;
+			&:hover, &:focus {
+				background: $red;
+				color: white;
+			}
+			&:active {
+				background: $black;
+				color: white;
+			}
+		}
+	}
+}
+
+.congrats {
+	transition: opacity 250ms ease-out 250ms, z-index 0ms linear 500ms;
+	background: rgba($green, .95);
+	color: white;
+	opacity: 0;
+	z-index: -100;
+	button {
+		background: white;
+		color: $green;
+	}
+	footer {
+		a {
+			background: white;
+			color: $green;
+			&:hover, &:focus {
+				background: $red;
+				color: white;
+			}
+			&:active {
+				background: $black;
+				color: white;
+			}
+		}
+	}
+}
+
+.start {
+	transition: opacity 250ms ease-out 250ms, z-index 0ms linear 500ms;
+	background: rgba($grey, .8);
+	opacity: 1;
+	z-index: 100;
+}
+
+.cards {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	padding: $padding*.5;
+	width: 100%;
+	max-width: 492px;
+	margin: 0 auto;
+	height: 100%;
+	li {
+		padding: $padding*.5;
+	}
+}
+
+#reset {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	border-radius: 0;
+	border-top-left-radius: 2px;
+	background: $grey;
+	opacity: 0.5;
+	svg {
+		* {
+			stroke: $black;
+		}
+	}
+	&:hover, &:focus {
+		opacity: 1;
+		svg {
+			* {
+				stroke: $red;
+			}
+		}
+	}
+	&:active {
+		opacity: 1;
+		svg {
+			* {
+				stroke: $black;
+			}
+		}
+	}
+}
+
+.playing-card-container {
+	position: relative;
+	input {
+		position: absolute;
+		appearance: none;
+		opacity: 0;
+		z-index: 10;
+		margin: 0;
+		width: 50%;
+		height: 50%;
+		cursor: pointer;
+		&:hover, &:focus {
+			~ .playing-card {
+				> div {
+					&.back {
+						> div {
+							background: $red;
+						}
+					}
+				}
+			}
+		}
+		&:nth-child(1) {
+			top: 0;
+			left: 0;
+			&:hover, &:focus {
+				~ .playing-card {
+					transform-origin: bottom right;
+					transform: rotateX(3deg) rotateY(-3deg) translateZ(0);
+				}
+			}
+		}
+		&:nth-child(2) {
+			top: 0;
+			right: 0;
+			&:hover, &:focus {
+				~ .playing-card {
+					transform-origin: bottom left;
+					transform: rotateX(3deg) rotateY(3deg) translateZ(0);
+				}
+			}
+		}
+		&:nth-child(3) {
+			bottom: 0;
+			right: 0;
+			&:hover, &:focus {
+				~ .playing-card {
+					transform-origin: top left;
+					transform: rotateX(-3deg) rotateY(3deg) translateZ(0);
+				}
+			}
+		}
+		&:nth-child(4) {
+			bottom: 0;
+			left: 0;
+			&:hover, &:focus {
+				~ .playing-card {
+					transform-origin: top right;
+					transform: rotateX(-3deg) rotateY(-3deg) translateZ(0);
+				}
+			}
+		}
+		&:checked ~ .playing-card {
+			> div {
+				&.front {
+					opacity: 1;
+					transform: rotateY(0deg) translateZ(0);
+				}
+				&.back {
+					opacity: 0;
+					transform: rotateY(180deg) translateZ(0);
+					> div {
+						> div {
+							transition: 0ms;
+							opacity: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.complete {
+	input {
+		display: none!important;
+		pointer-events: none;
+	}
+}
+
+.playing-card {
+	width: 84px;
+	transform-style: preserve-3d;
+	transition: all 250ms ease-out;
+	* {
+		transform-origin: center center;
+		transform-style: preserve-3d;
+		transition: all 250ms ease-out;
+	}
+	> div {
+		width: 100%;
+		height: 100%;
+		background: white;
+		border-radius: 10px;
+		&.front {
+			opacity: 0;
+			backface-visibility: hidden;
+			transform: rotateY(180deg);
+			position: relative;
+			z-index: 2;
+			svg {
+				display: block;
+				width: 100%;
+				height: 100%;
+			}
+		}
+		&.back {
+			opacity: 1;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 1;
+			width: 100%;
+			height: 100%;
+			padding: 12px;
+			backface-visibility: hidden;
+			> div {
+				display: flex;
+				flex-flow: row wrap;
+				align-items: center;
+				align-content: center;
+				justify-content: center;
+				border-radius: 2px;
+				width: 100%;
+				height: 100%;
+				background: #f5f5f5;
+				> div {
+					border-radius: 100%;
+					width: 36px;
+					height: 36px;
+					background: white;
+					overflow: hidden;
+					transform: translateZ(0);
+					transition: 250ms ease 250ms;
+					> div {
+						width: 36px;
+						height: 36px;
+						background: mix(white, $black, 80%);
+						transform: translate3d(0,-100%,0);
+					}
+				}
+			}
+		}
+	}
+}
+
+.play-heart {
+	.diamond, .spade, .club {
+		display: none;
+	}
+	text {
+		fill: $red;
+	}
+}
+.play-diamond {
+	.heart, .spade, .club {
+		display: none;
+	}
+	text {
+		fill: $red;
+	}
+}
+.play-spade {
+	.diamond, .heart, .club {
+		display: none;
+	}
+	text {
+		fill: $black;
+	}
+}
+.play-club {
+	.diamond, .spade, .heart {
+		display: none;
+	}
+	text {
+		fill: $black;
+	}
+}
+
+@keyframes timer {
+	0% { transform: translateY(100%); }
+	100% { transform: translateY(0); }
+}
+
+@-moz-document url-prefix() { 
+	.playing-card {
+		> div {
+			&.back {
+				> div {
+					> div {
+						border-radius: 2px;
+						> div {
+							border-radius: 2px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

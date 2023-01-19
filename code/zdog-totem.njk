@@ -3,7 +3,7 @@ title: Zdog Draggable Monument Valley Totem
 description: Zdog Draggable Monument Valley Totem
 date: 2021-07-06
 
-permalink: /code/zdog-totem/
+permalink: /code/{{ page.fileSlug }}/
 uri: JjNGvJd
 
 layout: layouts/base.njk
@@ -11,13 +11,13 @@ tags: entries
 category: code
 
 blank: true
-style: code/zdog-totem
+style: code/css/zdog-totem
 hidden: true
 
-height: 460px
+height: 600px
 ---
 
 <canvas class='totem' height='500' width='500'></canvas>
 
-<script src="{{'/static/js/code/zdog.min.js' | url}}"></script>
-<script src="{{'/static/js/code/totem.js' | url}}"></script>
+<script src="{{'/static/code/js/zdog.min.js' | url}}"></script>
+<script src="{{'/static/code/js/zdog-totem.js' | url}}"></script>

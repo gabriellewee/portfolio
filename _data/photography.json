@@ -6,7 +6,13 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "cat animal portrait outdoor",
-		"description": "A grey cat with a grey harness sitting in a garden on an outdoor couch with orange cushions."
+		"description": "A grey cat with a grey harness sitting in a garden on an outdoor couch with orange cushions.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/CgQgAmZL1ul/"
+			 }
+		]
 	},
 	{
 		"name": "jeselle",
@@ -51,7 +57,13 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "flower plants nature indoor",
-		"description": "A bouquet of deep pink peonies."
+		"description": "A bouquet of deep pink peonies.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/CdZZi6-pzlT/"
+			 }
+		]
 	},
 	{
 		"name": "alfie",
@@ -78,7 +90,13 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "cat animal portrait indoor",
-		"description": "A grey kitten lying down inside a cubby on a cat tower with his head sticking out."
+		"description": "A grey kitten lying down inside a cubby on a cat tower with his head sticking out.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/CfTOmMbO0tl/"
+			 }
+		]
 	},
 	{
 		"name": "pier-14",
@@ -105,7 +123,13 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "art indoor nature",
-		"description": "An art gallery empty of people in the de Young Museum in San Francisco."
+		"description": "An art gallery empty of people in the de Young Museum in San Francisco.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/CQb8AzEpnLp/"
+			 }
+		]
 	},
 	{
 		"name": "pimz",
@@ -159,7 +183,13 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "sunset beach landscape outdoor water nature",
-		"description": "Sunset over Lands End Lookout in San Francisco."
+		"description": "Sunset over Lands End Lookout in San Francisco.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/CNEaD0Pptf3/"
+			 }
+		]
 	},
 	{
 		"name": "cherry-blossom",
@@ -168,7 +198,13 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "trees flower plants outdoor nature",
-		"description": "Cherry blossoms lit by fairy lights during an evening in San Francisco’s Japantown."
+		"description": "Cherry blossoms lit by fairy lights during an evening in San Francisco’s Japantown.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/CMrGC2EJ5Gp/"
+			 }
+		]
 	},
 	{
 		"name": "fern-tree",
@@ -231,7 +267,13 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "sunset beach people landscape outdoor water nature",
-		"description": "Four people in the distance walking towards the camera from the water’s edge at a beach in Waldport, Oregon."
+		"description": "Four people in the distance walking towards the camera from the water’s edge at a beach in Waldport, Oregon.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/CL8teVipWS5/"
+			 }
+		]
 	},
 	{
 		"name": "hayden",
@@ -249,7 +291,13 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "sunset beach landscape outdoor water nature",
-		"description": "Sunset over a beach in Waldport, Oregon."
+		"description": "Sunset over a beach in Waldport, Oregon.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/CLyOsC5pDzM/"
+			 }
+		]
 	},
 	{
 		"name": "rainforest",
@@ -312,7 +360,13 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "fog landscape city outdoor",
-		"description": "Fog coming towards the camera from the top of Twin Peaks in San Francisco."
+		"description": "Fog coming towards the camera from the top of Twin Peaks in San Francisco.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/CLanDMjpmXX/"
+			 }
+		]
 	},
 	{
 		"name": "glen-canyon-flowers",
@@ -321,7 +375,13 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "park flower plants outdoor nature",
-		"description": "Unknown white flowers at Glen Canyon Park in San Francisco."
+		"description": "Unknown white flowers at Glen Canyon Park in San Francisco.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/CLXzgsBpqY2/"
+			 }
+		]
 	},
 	{
 		"name": "jeselle",
@@ -339,7 +399,13 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "outdoor city night rain landscape water",
-		"description": "San Francsico Chinatown during a rainy night, decorated with red lanterns for Lunar New Year."
+		"description": "San Francsico Chinatown during a rainy night, decorated with red lanterns for Lunar New Year.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/CLNLWq0J027/"
+			 }
+		]
 	},
 	{
 		"name": "bay-bridge",
@@ -357,7 +423,13 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "sunset landscape outdoor beach water nature people",
-		"description": "Sunset over Ocean Beach in San Francisco."
+		"description": "Sunset over Ocean Beach in San Francisco.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/CKu5FiOpSxv/"
+			 }
+		]
 	},
 	{
 		"name": "lands-end",
@@ -366,7 +438,13 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "forest sunset landscape park outdoor nature",
-		"description": "Sunset through the trees at Lands End in San Francisco."
+		"description": "Sunset through the trees at Lands End in San Francisco.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/CKdRu2TJNHY/"
+			 }
+		]
 	},
 	{
 		"name": "hayden",
@@ -384,7 +462,13 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "sunset landscape city outdoor",
-		"description": "Clouds and golden light over San Francisco."
+		"description": "Clouds and golden light over San Francisco.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/CKA5273J7Qd/"
+			 }
+		]
 	},
 	{
 		"name": "hayden",
@@ -402,7 +486,13 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"tags": "sunset landscape city outdoor beach water bridge",
-		"description": "San Francisco’s Golden Gate Bridge at sunset facing Sausalito."
+		"description": "San Francisco’s Golden Gate Bridge at sunset facing Sausalito.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/CJCq3X-pHNz/"
+			 }
+		]
 	},
 	{
 		"name": "lone-mountain",
@@ -420,7 +510,13 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"tags": "people indoor perspective",
-		"description": "A man in a striped shirt standing in the center of a long aisle of white metal storage units."
+		"description": "A man in a striped shirt standing in the center of a long aisle of white metal storage units.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/CG_nVcZJCcO/"
+			 }
+		]
 	},
 	{
 		"name": "salt-ponds",
@@ -429,7 +525,13 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"tags": "sunset landscape outdoor people",
-		"description": "Sunset over the salt ponds at Alviso Marina County Park in San Jose, California."
+		"description": "Sunset over the salt ponds at Alviso Marina County Park in San Jose, California.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/CEuSAN-pcf6/"
+			 }
+		]
 	},
 	{
 		"name": "sunset",
@@ -447,7 +549,13 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"tags": "landscape outdoor aerial nature",
-		"description": "Red rock formations from a bird’s eye view of Thoreau, New Mexico."
+		"description": "Red rock formations from a bird’s eye view of Thoreau, New Mexico.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/B9AxAu5p8TQ/"
+			 }
+		]
 	},
 	{
 		"name": "palm-trees",
@@ -456,6 +564,12 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"tags": "landscape outdoor water trees plants nature",
-		"description": "Blue palm trees at Fairchild Tropical Botanic Garden in Coral Gables, Florida."
+		"description": "Blue palm trees at Fairchild Tropical Botanic Garden in Coral Gables, Florida.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/B9AxrwmJBnk/"
+			 }
+		]
 	}
 ]

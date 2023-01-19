@@ -22,4 +22,13 @@ body {
 @import 'partials/shared/navigation';
 
 @import 'partials/post/post';
+
+.post-writing {
+	@import 'partials/post/writing';
+}
+.post-media {
+	@import 'partials/post/media';
+}
+
+@import 'partials/post/archive';
 @import 'partials/post/syntax';

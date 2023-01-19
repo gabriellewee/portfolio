@@ -7,6 +7,7 @@
 		@include clip-path-edges(3px);
 		opacity: 0;
 		content: "";
+		display: block;
 		position: absolute;
 		top: calc(var(--p)/-4);
 		left: calc(var(--p)/-4);
@@ -278,6 +279,11 @@ figcaption {
 			}
 		}
 
+		&.instagram {
+			&:before {
+				background: url(/static/images/svg/icons/instagram.svg) no-repeat center / 25px;
+			}
+		}
 		&.dribbble {
 			&:before {
 				background: url(/static/images/svg/icons/dribbble.svg) no-repeat center / 25px;

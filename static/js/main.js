@@ -13,6 +13,7 @@ const noJS = ((container = document.documentElement) => {
 lightbox(".expand");
 
 let container = document.querySelector(".grid-isotope");
+let scrollContainer = document.querySelector(".grid-scroll");
 let lightboxContainer = document.querySelector(".posts-lightbox-group");
 let iso;
 if(container) {
@@ -24,24 +25,25 @@ if(container) {
 			gutter: 24
 		}
 	});
-	let scroll = new InfiniteScroll(container, {
-		button: '.load',
-		path: '.next',
-		append: '.post',
-		scrollThreshold: false,
-		outlayer: iso
-	});
-	let lightboxScroll = new InfiniteScroll(lightboxContainer, {
-		button: '.load',
-		path: '.next',
-		append: '.post-lightbox',
-		scrollThreshold: false,
-		history: false
-	});
-
-	scroll.on('append', function( body, path, items, response ) {
-		lightbox(".expand");
-	});
+	if(scrollContainer && lightboxContainer) {
+		let scroll = new InfiniteScroll(scrollContainer, {
+			button: '.load',
+			path: '.next',
+			append: '.post',
+			scrollThreshold: false,
+			outlayer: iso
+		});
+		let lightboxScroll = new InfiniteScroll(lightboxContainer, {
+			button: '.load',
+			path: '.next',
+			append: '.post-lightbox',
+			scrollThreshold: false,
+			history: false
+		});
+		scroll.on('append', function( body, path, items, response ) {
+			lightbox(".expand");
+		});
+	}
 }
 
 const loading = new imagesLoaded(document.body, () => {
@@ -53,6 +55,13 @@ const loading = new imagesLoaded(document.body, () => {
 			document.documentElement.classList.add("loaded")
 		}, 250);
 	}, 100);
+
+	let videos = Array.from(document.querySelectorAll("video"));
+	videos.forEach(video => {
+		video.addEventListener("click", e => {
+			iso.layout();
+		});
+	});
 });
 
 const popup = ((containers = Array.from(document.querySelectorAll(".popup"))) => {

@@ -1,0 +1,145 @@
+@use "sass:math";
+@import 'reset';
+@import 'presets';
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: rgba(0,0,0,0); }
+body, html { height: 100%; }
+body {
+	overflow: hidden;
+	color: $forest;
+	font-family: $font;
+	background: lighten($beige, 5%);
+	margin: 0;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	&.pre-enter {
+		opacity: 0;
+	}
+	&.on-enter {
+		opacity: 1;
+		transition: all 1000ms ease-out;
+	}
+}
+
+::selection {
+	background: $pink;
+}
+
+a {
+	color: $forest;
+	&:hover, &:focus {
+		color: white;
+		background: $pink;
+		border-radius: 2px;
+	}
+	&:active {
+		background: $grey;
+	}
+}
+
+p {
+	font-size: 18px;
+	line-height: 1.5;
+}
+
+code {
+	color: $slate;
+	span {
+		border-radius: 2px;
+		background: $pink;
+		color: white;
+	}
+}
+
+svg {
+	position: absolute;
+	opacity: 0;
+}
+
+ul {
+	margin: 0 auto;
+	max-width: 800px;
+	width: 100%;
+	display: flex;
+	flex-flow: row wrap;
+	position: relative;
+	z-index: 10;
+	padding: $padding*.5;
+	list-style: none;
+	margin: 0;
+	li {
+		padding: $padding*.5;
+		width: 100%;
+	}
+}
+
+input, button {
+	display: block;
+	width: 100%;
+	margin: 0;
+	font-family: $font;
+	appearance: none;
+	border: 0;
+	border-radius: 2px;
+	&:focus {
+		outline: none!important;
+	}
+}
+
+input {
+	font-size: 48px;
+	font-weight: 600;
+	text-align: center;
+	color: $grey;
+	&::placeholder {
+		color: rgba($grey, .5);
+	}
+	&:focus {
+		color: $slate;
+		&::placeholder {
+			color: rgba($grey, .75);
+		}
+	}
+}
+
+button {
+	cursor: pointer;
+	margin-top: $padding;
+	background: $green;
+	color: white;
+	font-size: 20px;
+	font-weight: 600;
+	height: 48px;
+	width: 100%;
+	&:hover, &:focus {
+		background: $grey;
+		color: $forest;
+	}
+	&:active {
+		background: $forest;
+		color: white;
+	}
+}
+
+@media only screen and (min-width: 640px) {
+	body, main {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	ul {
+		li {
+			width: 50%;
+			&:first-child {
+				width: 100%;
+			}
+		}
+	}
+	input {
+		font-size: 96px;
+	}
+	button {
+		font-size: 24px;
+		height: 64px;
+	}
+}

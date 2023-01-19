@@ -1,29 +1,22 @@
 ---js
 {
     layout: "layouts/base.njk",
-    key: "post",
-    tags: "entries",
-    category: "media",
-    pagination: {
-        data: "graphic",
-        size: 1,
-        addAllPagesToCollections: true,
-        alias: "media"
-    },
-    permalink: false,
+	title: "Graphic",
+	description: "2D/3D graphic & illustration work",
+	permalink: "/graphic/",
+	key: "graphic",
+	og: true,
+	message: true,
+	isotope: true,
+	type: "graphic",
+	extension: "png",
 	eleventyComputed: {
 		media(data) {
-			data.page.date = new Date(data.media.date);
-			data.name = data.media.name;
-			data.date = data.media.date;
-			data.title = data.media.title;
-			data.tools = data.media.tools;
-			data.description = data.media.description;
-			data.external = data.media.external;
-			data.upscale = data.media.upscale;
-			data.extension = "png";;
-			data.type = "graphic";
+			return data[data.key];
 		}
-	}
+	},
+	tags: "pages"
 }
 ---
+
+{% include 'layouts/media.njk' %}
