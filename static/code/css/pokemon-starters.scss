@@ -134,8 +134,6 @@ main {
 		}
 		> .label {
 			will-change: opacity, transform, visibility, background-color;
-			transform: translateY(100%) translateY(12px);
-			transition: transform 0.125s ease-out, opacity 0.5s linear 0.125s, visibility 0 linear 0.5s, background-color 0.25s ease-out;
 			cursor: pointer;
 			display: flex;
 			align-items: center;
@@ -151,6 +149,13 @@ main {
 			font-weight: 500;
 			letter-spacing: 1px;
 			text-transform: uppercase;
+			@media (prefers-reduced-motion: no-preference) {
+				transform: translateY(100%) translateY(12px);
+				transition: transform 0.125s ease-out, opacity 0.5s linear 0.125s, visibility 0 linear 0.5s, background-color 0.25s ease-out;
+			}
+			@media (prefers-reduced-motion: reduce) {
+				transition: opacity 0.5s linear 0.125s, visibility 0 linear 0.5s, background-color 0.25s ease-out;
+			}
 		}
 		> .magnify, > .animate {
 			transform-origin: center center;
@@ -170,14 +175,30 @@ main {
 					&.#{nth($pokemon, $i)} {
 						animation-delay: #{($i - 1) + 0.5}s, #{($i - 1) + 1.5}s;
 						@if $i == 1 {
-							animation-name: spinInFirst, spinOut;
 							animation-duration: 1s, 1s;
+							@media (prefers-reduced-motion: no-preference) {
+								animation-name: spinInFirst, spinOut;
+							}
+							@media (prefers-reduced-motion: reduce) {
+								animation-name: fadeIn, fadeOut;
+							}
 						} @else if $i == length($pokemon) {
-							animation-name: spinIn, fadeOut;
 							animation-duration: 1s, 0.5s;
+							@media (prefers-reduced-motion: no-preference) {
+								animation-name: spinIn, fadeOut;
+							}
+							@media (prefers-reduced-motion: reduce) {
+								animation-name: fadeIn, fadeOut;
+							}
+							
 						} @else {
-							animation-name: spinIn, spinOut;
 							animation-duration: 1s, 1s;
+							@media (prefers-reduced-motion: no-preference) {
+								animation-name: spinIn, spinOut;
+							}
+							@media (prefers-reduced-motion: reduce) {
+								animation-name: fadeIn, fadeOut;
+							}
 						}
 					}
 				}
@@ -300,10 +321,15 @@ main {
 				&##{nth($pokemon, $i)} {
 					&:hover, &:focus, &:active, &:checked {
 						~ .label.#{nth($pokemon, $i)} {
-							transform: none;
 							opacity: 1;
 							visibility: visible;
-							transition: transform 0.25s cubic-bezier(.25,1.15,.4,1.15), background-color 0.25s ease-out;
+							@media (prefers-reduced-motion: no-preference) {
+								transform: none;
+								transition: transform 0.25s cubic-bezier(.25,1.15,.4,1.15), background-color 0.25s ease-out;
+							}
+							@media (prefers-reduced-motion: reduce) {
+								transition: background-color 0.25s ease-out;
+							}
 						}
 					}
 					&:active, &:checked {
@@ -321,12 +347,17 @@ main {
 							background-color: darken(nth($colors, $i), 15%);
 						}
 						~ .magnify.#{nth($pokemon, $i)} {
-							transition: transform 0.25s cubic-bezier(.25,1.15,.4,1.15), border-radius 0.25s linear;
 							z-index: 10;
 							opacity: 1;
 							border-radius: 0.5vw;
 							visibility: visible;
 							transform: none;
+							@media (prefers-reduced-motion: no-preference) {
+								transition: transform 0.25s cubic-bezier(.25,1.15,.4,1.15), border-radius 0.25s linear;
+							}
+							@media (prefers-reduced-motion: reduce) {
+								transition: opacity 0.25s linear;
+							}
 						 }
 					}
 				}

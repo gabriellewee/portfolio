@@ -46,8 +46,10 @@
 
 .post-footer {
 	display: flex;
-	padding: 0 calc(var(--p)*2) calc(var(--p)*2);
 	margin-top: calc(var(--p)/-2);
+	&:not(:empty) {
+		padding: 0 calc(var(--p)*2) calc(var(--p)*2);
+	}
 	.button {
 		margin-right: var(--p);
 		&.link-medium {

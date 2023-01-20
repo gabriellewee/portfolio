@@ -16,7 +16,14 @@ body {
 	image-rendering: pixelated;
 }
 
-@import 'partials/shared/loading';
+main {
+	.js & {
+		opacity: 0;
+	}
+	.js.loaded & {
+		opacity: 1;
+	}
+}
 
 @import 'partials/shared/components';
 @import 'partials/shared/navigation';

@@ -2,7 +2,7 @@
 <html lang="en" class="no-js">
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 	<meta name="format-detection" content="telephone=no">
 
@@ -116,11 +116,11 @@
 				{% endif %}
 			</div>
 			{% if (key == "home") and (pagination.pageNumber == 0) %}
-				<h1 class="title">Hello, stranger! My name is <strong>Gabrielle Wee.</strong> I’m a front‑end developer working at <span class="apple" role="text">Apple {% include 'svg/apple.svg' %}<span class="cursor" aria-hidden="true"></span></span></h1>
+				<h1 class="title"><span class="copy">Hello, stranger! My name is Gabrielle Wee. I’m a front-end developer working at</span> <span class="apple">Apple {% include 'svg/apple.svg' %}</span><span class="cursor" aria-hidden="true"></span></h1>
 			{% endif %}
 		</header>
 	{% endif %}
-	<main class="main" role="main">
+	<main class="main">
 		{% if links == true %}
 			{% include 'pages/home/links.html' %}
 		{% endif %}
@@ -138,16 +138,29 @@
 			</span>
 		</footer>
 
-		<script src="{{'/static/js/imagesloaded.min.js' | url}}"></script>
+		<script src="{{'/static/js/gsap.min.js' | url}}"></script>
+		<script src="{{'/static/js/scroll-trigger.min.js' | url}}"></script>
+		<script src="{{'/static/js/text.min.js' | url}}"></script>
 		<script src="{{'/static/js/smoothscroll.min.js' | url}}"></script>
 		<script src="{{'/static/js/lightbox.js' | url}}"></script>
-		{% if key == "home" %}
-			<script src="{{'/static/js/clipboard.min.js' | url}}"></script>
-			<script src="{{'/static/js/infinite-scroll.min.js' | url}}"></script>
-		{% endif %}
 		{% if isotope == true %}
 			<script src="{{'/static/js/isotope.min.js' | url}}"></script>
 			<script src="{{'/static/js/packery.min.js' | url}}"></script>
+		{% endif %}
+		{% if key == "home" %}
+			<script src="{{'/static/js/clipboard.min.js' | url}}"></script>
+			<script src="{{'/static/js/infinite-scroll.min.js' | url}}"></script>
+			{% if pagination.pageNumber == 0 %}
+				<script src="{{'/static/js/animation/home.js' | url}}"></script>
+			{% endif %}
+		{% else %}
+			<script src="{{'/static/js/imagesloaded.min.js' | url}}"></script>
+		{% endif %}
+		{% if animation == true %}
+			<script src="{{'/static/js/animation/' + key + '.js' | url}}"></script>
+		{% endif %}
+		{% if key == "post" %}
+			<script src="{{'/static/js/posts.js' | url}}"></script>
 		{% endif %}
 		<script src="{{'/static/js/main.js' | url}}"></script>
 	{% endif %}

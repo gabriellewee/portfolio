@@ -57,18 +57,6 @@ $violet: #D18FF0;
 	}
 }
 
-@mixin motion($support: true) {
-	@if $support == true {
-		@media (prefers-reduced-motion: no-preference) {
-			@content;
-		}
-	} @else {
-		@media (prefers-reduced-motion: reduce) {
-			@content;
-		}
-	}
-}
-
 @mixin clip-path($support: true) {
 	@if $support == true {
 		@supports (-webkit-clip-path: polygon(0 0)) or (clip-path: polygon(0 0)) {

@@ -38,8 +38,7 @@ figure {
 figcaption {
 	@include blur-all(10px, "var(--color-iron-10-hsl)", .9, .7);
 	@include font-weight-width(700, 120);
-	transition: .5s cubic-bezier(0.64, 0, 0.78, 0);
-	translate: 0 50%;
+	transition: .5s cubic-bezier(.64, 0, .78, 0);
 	opacity: 0;
 	display: flex;
 	flex-wrap: wrap;
@@ -55,6 +54,9 @@ figcaption {
 	color: white;
 	font-size: 1.125rem;
 	overflow: scroll;
+	@media (prefers-reduced-motion: no-preference) {
+		translate: 0 50%;
+	}
 	@supports not(container-type: inline-size) {
 		@media only screen and (min-width: 450px) {
 			font-size: 1.25rem;
@@ -131,7 +133,7 @@ figcaption {
 			}
 
 			.no-image {
-				opacity: 0.7;
+				opacity: .7;
 				content: "Expand";
 				margin-left: calc(var(--p) * .75);
 			}
@@ -146,14 +148,21 @@ figcaption {
 
 			&:active {
 				&:before, .no-image {
-					opacity: 0.2;
+					opacity: .2;
 				}
 			}
 
 			@supports not(container-type: size) {
 				@include viewport($iphone) {
 					&:hover {
-						scale: 1.02;
+						@media (prefers-reduced-motion: no-preference) {
+							scale: 1.02;
+						}
+						@media (prefers-reduced-motion: reduce) {
+							&:after {
+								opacity: 1;
+							}
+						}
 					}
 					&:focus-visible {
 						&:after {
@@ -161,7 +170,9 @@ figcaption {
 						}
 					}
 					&:active {
-						scale: .98;
+						@media (prefers-reduced-motion: no-preference) {
+							scale: .98;
+						}
 						&:before {
 							opacity: 1;
 						}
@@ -179,7 +190,14 @@ figcaption {
 
 			@container metadata (min-width: 320px) and (min-height: 400px) {
 				&:hover {
-					scale: 1.01;
+					@media (prefers-reduced-motion: no-preference) {
+						scale: 1.02;
+					}
+					@media (prefers-reduced-motion: reduce) {
+						&:after {
+							opacity: 1;
+						}
+					}
 				}
 				&:focus-visible {
 					&:after {
@@ -187,7 +205,9 @@ figcaption {
 					}
 				}
 				&:active {
-					scale: .99;
+					@media (prefers-reduced-motion: no-preference) {
+						scale: .98;
+					}
 					&:before {
 						opacity: 1;
 					}
@@ -264,7 +284,7 @@ figcaption {
 			height: 25px;
 		}
 		span {
-			opacity: 0.7;
+			opacity: .7;
 		}
 		&:hover, &:focus {
 			span {
@@ -275,7 +295,7 @@ figcaption {
 		}
 		&:active {
 			&:before, span {
-				opacity: 0.2;
+				opacity: .2;
 			}
 		}
 
@@ -306,13 +326,13 @@ figcaption {
 		}
 		div {
 			position: relative;
-			margin-bottom: 0.25rem;
+			margin-bottom: .25rem;
 		}
 		dt, dd {
 			display: inline;
 		}
 		dt {
-			opacity: 0.7;
+			opacity: .7;
 			&:after {
 				content: ": ";
 			}
@@ -355,7 +375,14 @@ figcaption {
 	opacity: 0;
 	&:hover {
 		+ .post-wrapper {
-			scale: 1.01;
+			@media (prefers-reduced-motion: no-preference) {
+				scale: 1.01;
+			}
+			@media (prefers-reduced-motion: reduce) {
+				&:before {
+					opacity: 1;
+				}
+			}
 		}
 	}
 	&:focus-visible {
@@ -367,7 +394,9 @@ figcaption {
 	}
 	&:active {
 		+ .post-wrapper {
-			scale: 0.99;
+			@media (prefers-reduced-motion: no-preference) {
+				scale: .99;
+			}
 		}
 	}
 	&:checked {
@@ -375,9 +404,11 @@ figcaption {
 		+ .post-wrapper {
 			.post-content {
 				figcaption {
-					transition: .5s cubic-bezier(0.64, 0, 0.78, 0);
-					translate: 0 0;
+					transition: .5s cubic-bezier(.64, 0, .78, 0);
 					opacity: 1;
+					@media (prefers-reduced-motion: no-preference) {
+						translate: 0 0;
+					}
 				}
 			}
 		}

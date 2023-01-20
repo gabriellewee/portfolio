@@ -1,17 +1,5 @@
 @import 'reset';
 
-@mixin motion($support: true) {
-	@if $support == true {
-		@media (prefers-reduced-motion: no-preference) {
-			@content;
-		}
-	} @else {
-		@media (prefers-reduced-motion: reduce) {
-			@content;
-		}
-	}
-}
-
 *, *:before, *:after { box-sizing: border-box; }
 body, html { height: 100%; }
 
@@ -36,12 +24,12 @@ main {
 canvas {
 	cursor: move;
 	opacity: 0;
-	@include motion {
+	@media (prefers-reduced-motion: no-preference) {
 		translate: 0 100vh 40px;
 		animation: enter 2000ms cubic-bezier(.075,.820,.165,1) 500ms forwards;
 	}
-	@include motion(false) {
-		animation: fade 500ms ease-out 500ms forwards;
+	@media (prefers-reduced-motion: reduce) {
+		animation: fade 500ms ease-out forwards;
 	}
 }
 

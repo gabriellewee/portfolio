@@ -19,9 +19,9 @@ pagination:
 <section class="posts-container">
 	<div class="posts grid-isotope grid-scroll">
 		{% for post in pagination.items %}
-			<article class="post {% if (post.data.pagination.alias) and (post.data.pagination.alias != post.data.category) %} post-{{post.data.category}} post-{{post.data.pagination.alias}}{% else %} post-{{post.data.category}}{% endif %}{% if post.data.tags %}{% for tag in post.data.tags %}{% if tag != "entries" %} post-{{tag}}{% endif %}{% endfor %}{% endif %}{% if post.data.size %} post-size-{{post.data.size}}{% endif %}{% if post.data.category == "media" %} post-{{post.data.pagination.data}}{% endif %} grid-item"{% if post.data.category == "media" %} data-orientation="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, 'orientation' %}"{% endif %}{% if post.data.width %} style="max-width: {{post.data.width}}"{% endif %}>
+			<article class="post {% if pagination.pageNumber == 0 %} post-animate{% endif %}{% if (post.data.pagination.alias) and (post.data.pagination.alias != post.data.category) %} post-{{post.data.category}} post-{{post.data.pagination.alias}}{% else %} post-{{post.data.category}}{% endif %}{% if post.data.tags %}{% for tag in post.data.tags %}{% if tag != "entries" %} post-{{tag}}{% endif %}{% endfor %}{% endif %}{% if post.data.size %} post-size-{{post.data.size}}{% endif %}{% if post.data.category == "media" %} post-{{post.data.pagination.data}}{% endif %} grid-item"{% if post.data.category == "media" %} data-orientation="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, 'orientation' %}"{% endif %}{% if post.data.width %} style="max-width: {{post.data.width}}"{% endif %}>
 				{% if post.data.category == "media" %}
-					<input class="{{post.data.category}}-trigger" id="{{post.data.date | safe}}-{{post.data.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this {{post.data.type}}" role="switch" aria-checked="false"/>
+					<input class="{{post.data.category}}-trigger" id="{{post.data.date | safe}}-{{post.data.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this {{post.data.type}}" role="switch"/>
 				{% endif %}
 				<div class="post-wrapper">
 					<header class="post-header{% if (post.data.category == "writing") or (post.data.category == "code") %} inline-header{% endif %}">
@@ -47,7 +47,7 @@ pagination:
 								</div>
 							{% elseif post.data.category == "social" %}
 								<h2 aria-label="{{post.data.pagination.alias|capitalize}} post">
-									<a href="{{post.data.url | url}}" target="_blank">
+									<a href="{{post.data.url | url}}" target="_blank" aria-label="View on Mastodon">
 										{% include 'svg/logos/' + post.data.pagination.alias + '.svg' %}
 									</a>
 								</h2>
@@ -59,7 +59,7 @@ pagination:
 					</header>
 					<div class="post-content{% if post.data.category == "writing" %} post-text{% endif %}">
 						{% if post.data.category == "media" %}
-							<figure id="{{post.data.date | safe}}-{{post.data.name}}" role="group" aria-label="{{post.data.type | capitalize}}{% if post.data.location %}, {{post.data.location}}{% elseif post.data.title %}, {{post.data.title}}{% endif %}" style="aspect-ratio: {% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, 'ratio' %};">
+							<figure id="{{post.data.date | safe}}-{{post.data.name}}" aria-label="{{post.data.type | capitalize}}{% if post.data.location %}, {{post.data.location}}{% elseif post.data.title %}, {{post.data.title}}{% endif %}" style="aspect-ratio: {% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, 'ratio' %};">
 								{% if post.data.upscale %}
 									<picture>
 										<img class="upscale" src="{% include post.data.upscale %}"{% if post.data.upscaleWidth %} width="{{post.data.upscaleWidth}}"{% endif %}{% if post.data.upscaleHeight %} height="{{post.data.upscaleHeight}}"{% endif %} alt="{{post.data.description}}"/>
@@ -122,11 +122,9 @@ pagination:
 							</figure>
 						{% elseif post.data.category == "code" %}
 							{% if post.url %}
-								<iframe src="{{post.url | url}}" width="100%" height="{{post.data.height}}" title="{{post.data.title | safe}}" loading="lazy" tabindex="-1"></iframe>
+								<iframe src="{{post.url | url}}" width="600" height="{{post.data.height}}" title="{{post.data.title | safe}}" loading="lazy" tabindex="-1"></iframe>
 							{% else %}
-								<video width="{{post.data.width}}" height="{{post.data.height}}" controls preload="auto" poster="/static/code/images/{{post.fileSlug}}/poster.png">
-									<source src="/static/code/images/{{post.fileSlug}}/video.mp4" type="video/mp4">
-								</video>
+								{{post.content|safe}}
 							{% endif %}
 						{% elseif post.data.content %}
 							{{post.data.content | nbsp | safe}}
@@ -137,7 +135,7 @@ pagination:
 					<footer class="post-footer">
 						{% if (post.data.category == "writing") and (post.data.size != "s") %}
 							{% if post.url %}
-								<a class="button link-default" href="{{post.url | url}}"><span><span>Read more</span></span></a>
+								<a class="button link-default" href="{{post.url | url}}"><span><span>Read post</span></span></a>
 							{% elseif post.data.url %}
 								<a class="button link-default" href="{{post.data.url | url}}" target="_blank"><span><span>Read more{% if post.data.platform %} at {{post.data.platform}}{% endif %}</span></a>
 							{% endif %}
@@ -151,7 +149,9 @@ pagination:
 		{% endfor %}
 	</div>
 	<nav class="pagination main-pagination">
-		<button class="load button"><span><span>Load more</span></span></button>
+		{% if (pagination.href.next != null) %}
+			<button class="load button"><span><span>Load more</span></span></button>
+		{% endif %}
 		{% if (pagination.href.previous) and (pagination.pageNumber != 0) %}
 			<a class="previous button" href="{{ pagination.href.previous }}"><span><span>Previous</span></span></a>
 		{% endif %}

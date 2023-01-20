@@ -140,7 +140,9 @@
 			}
 		}
 		&:active {
-			scale: 0.98;
+			@media (prefers-reduced-motion: no-preference) {
+				scale: .98;
+			}
 			span {
 				background-color: var(--color-mint);
 			}
