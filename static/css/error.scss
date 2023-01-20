@@ -21,7 +21,7 @@ header {
 	}
 }
 
-main, footer {
+main, .bottom {
 	position: relative;
 	z-index: 2;
 }
@@ -61,5 +61,29 @@ main {
 		&:active {
 			background-color: var(--color-iron);
 		}
+	}
+}
+
+.bottom {
+	a {
+		span {
+			background: var(--color-blush);
+			color: var(--color-iron);
+		}
+		&:hover, &:focus {
+			span {
+				background: var(--color-iron);
+				color: white;
+			}
+		}
+		&:active {
+			span {
+				background: var(--color-iron-12);
+				color: white;
+			}
+		}
+	}
+	.copyright {
+		color: var(--color-iron);
 	}
 }
