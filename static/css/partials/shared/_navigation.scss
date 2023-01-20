@@ -14,119 +14,6 @@
 		line-height: 1.1;
 	}
 
-	.home-link {
-		display: flex;
-		align-items: center;
-		align-content: center;
-		position: relative;
-		order: 2;
-		margin-bottom: var(--p);
-		.memoji-hm {
-			opacity: 0;
-			position: absolute;
-			left: 0;
-			top: 0;
-		}
-		.text {
-			@include blur-all(5px, var(--color-white-hsl), .9, .8);
-			opacity: 0;
-			order: 1;
-			display: inline-block;
-			padding: calc(var(--p)*.75) calc(var(--p)*1.5);
-			margin-left: var(--p);
-			color: var(--color-iron-10);
-			border-radius: 2em;
-			font-stretch: normal;
-			font-weight: 600;
-			&.message {
-				@media (prefers-reduced-motion: no-preference) {
-					translate: 0 100%;
-				}
-				@media (prefers-reduced-motion: reduce) {
-					opacity: 1;
-				}
-				.no-js & {
-					@media (prefers-reduced-motion: no-preference) {
-						animation: .2s ease-out 1s 1 forwards enter;
-					}
-				}
-				.loaded & {
-					@media (prefers-reduced-motion: no-preference) {
-						animation: unset;
-						translate: 0;
-						transition: .2s ease-out;
-						opacity: 1;
-					}
-				}
-			}
-			&.go-home {
-				transition: .2s ease-out;
-				position: absolute;
-				top: 50%;
-				left: calc(var(--p)*4);
-				z-index: 2;
-				@media (prefers-reduced-motion: no-preference) {
-					translate: 0 50%;
-				}
-				@media (prefers-reduced-motion: reduce) {
-					translate: 0 -50%;
-				}
-			}
-		}
-		a {
-			display: block;
-			&:focus-visible {
-				@include focus-round(hsla(var(--color-mauve-hsl), .5));
-				.memoji {
-					&-default {
-						opacity: 0;
-					}
-					&-hm {
-						opacity: 1;
-					}
-				}
-			}
-			&:hover, &:focus, &:active {
-				.go-home {
-					opacity: 1;
-					@media (prefers-reduced-motion: no-preference) {
-						translate: 0 -50%;
-					}
-				}
-				~ .text.message {
-					@media (prefers-reduced-motion: no-preference) {
-						opacity: .3;
-						translate: 0 calc(-100% - 5px);
-					}
-					@media (prefers-reduced-motion: reduce) {
-						opacity: 0;
-					}
-				}
-			}
-		}
-	}
-
-	.title {
-		font-size: clamp(1.5rem, 3vw, 2.5rem);
-		.js & {
-			opacity: 0;
-		}
-		.apple {
-			display: inline-block;
-			span {
-				&:before {
-					content: " ";
-				}
-			}
-			svg {
-				position: relative;
-				top: 2px;
-				width: clamp(1.3rem, 3vw, 2.3rem);
-				height: clamp(1.3rem, 3vw, 2.3rem);
-			}
-		}
-	}
-
 	.cursor {
 		@include font-weight-width(900, 75);
 	}
@@ -170,7 +57,7 @@
 			left: calc(var(--p)/-4);
 			width: calc(100% + var(--p)/2);
 			height: calc(100% + var(--p)/2);
-			background-color: var(--color-iron);
+			background-color: var(--color-blush);
 		}
 		span {
 			color: white;
@@ -205,8 +92,16 @@
 	@include viewport($iphone) {
 		padding: 0;
 	}
-	.next {
+	&:empty {
+		display: none;
+	}
+	.older {
+		&:before {
+			clip-path: polygon(3px 0%, calc(100% - calc(var(--p)*1.375)) 0%, 100% 43%, 100% 57%, calc(100% - calc(var(--p)*1.375)) 100%, 3px 100%, 0 calc(100% - 3px), 0 3px);
+		}
 		> span {
+			clip-path: polygon(2px 0%, calc(100% - calc(var(--p)*1.25)) 0%, 100% 45%, 100% 55%, calc(100% - calc(var(--p)*1.25)) 100%, 2px 100%, 0 calc(100% - 2px), 0 2px);
+			padding-left: calc(var(--p)*2);
 			background-color: var(--color-mauve);
 			background: radial-gradient(circle at center left, var(--color-slate) 0, var(--color-mauve) 100%);
 			&:before {
@@ -219,6 +114,15 @@
 			}
 		}
 	}
+	.newer {
+		&:before {
+			clip-path: polygon(calc(var(--p)*1.375) 0%, calc(100% - 3px) 0%, 100% 3px, 100% calc(100% - 3px), calc(100% - 3px) 100%, calc(var(--p)*1.375) 100%, 0 57%, 0 43%)
+		}
+		> span {
+			clip-path: polygon(calc(var(--p)*1.25) 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, calc(var(--p)*1.25) 100%, 0 55%, 0 45%);;
+			padding-right: calc(var(--p)*2);
+		}
+	}
 	.load {
 		display: none;
 		.js & {
@@ -226,7 +130,7 @@
 		}
 	}
 	&.main-pagination {
-		.next {
+		.older {
 			.js & {
 				display: none;
 			}

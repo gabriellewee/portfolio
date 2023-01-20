@@ -2,16 +2,10 @@ let enter = gsap.timeline({ paused: true });
 let text = document.querySelector(".text");
 let posts = Array.from(document.querySelectorAll(".post-animate"));
 
-enter.fromTo('.title', {
-	opacity: 0
-}, {
-	duration: 0,
+enter.set('.title', {
 	opacity: 1
 });
-enter.fromTo('.cursor', {
-	opacity: 0
-}, {
-	duration: 0,
+enter.set('.cursor', {
 	opacity: 1
 });
 enter.from('.copy', {
@@ -32,6 +26,11 @@ enter.from('.apple', {
 	preserveSpaces: true
 });
 enter.set('.cursor', { className: 'cursor animated' });
+enter.to('.message', {
+	duration: .2,
+	opacity: 0,
+	y: "-100%"
+});
 enter.fromTo(".contact-sites", {
 	opacity: 0,
 	y: 20
@@ -39,7 +38,7 @@ enter.fromTo(".contact-sites", {
 	duration: .5,
 	opacity: 1,
 	y: 0
-}, "<.5");
+}, "<");
 enter.fromTo(".contact-messages", {
 	opacity: 0,
 	y: 20
@@ -58,6 +57,7 @@ posts.forEach(post => {
 		y: 0
 	}, "<.1");
 });
+enter.set('.posts-container', { className: 'posts-container visible' });
 
 gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
 	ScrollTrigger.create({
@@ -70,6 +70,10 @@ gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
 	});
 
 	document.documentElement.addEventListener("click", () => {
+		enter.progress(1)
+	}, {once: true});
+
+	document.documentElement.addEventListener("keydown", () => {
 		enter.progress(1)
 	}, {once: true});
 });

@@ -52,31 +52,6 @@
 	}
 	.button {
 		margin-right: var(--p);
-		&.link-medium {
-			> span {
-				background: var(--color-med);
-			}
-		}
-		&.link-apple-podcasts {
-			> span {
-				background: var(--color-ap);
-			}
-		}
-		&.link-spotify {
-			> span {
-				background: var(--color-sp);
-			}
-		}
-		&:not(.link-default) {
-			&:before {
-				background-color: var(--color-iron-white-90);
-			}
-			> span {
-				&:before {
-					background: var(--color-iron-white-70);
-				}
-			}
-		}
 	}
 }
 

@@ -222,6 +222,45 @@
 	}
 }
 
+.post-mentions {
+	ul {
+		margin: 0;
+		padding: 0;
+	}
+	li {
+		&:not(:first-child) {
+			margin-top: .75rem;
+			@include viewport(mobile) {
+				margin-top: .5rem;
+			}
+		}
+	}
+	span {
+		@include font-weight-width(600, 90);
+		@include clip-path-edges(2px);
+		display: inline-block;
+		background: hsla(var(--color-iron-white-70-hsl), .2);
+		margin-bottom: calc(var(--p)/3);
+		padding-left: calc(var(--p)/2);
+		padding-right: calc(var(--p)/2);
+		color: var(--color-iron-white-70);
+		font-size: .875rem;
+		text-transform: uppercase;
+		line-height: 1.715;
+		@include viewport(mobile) {
+			margin-bottom: unset;
+			margin-right: calc(var(--p)/3);
+		}
+	}
+	a {
+		@include font-weight-width(600, 115);
+		display: block;
+		line-height: 1.333;
+		@include viewport(mobile) {
+			display: inline;
+		}
+	}
+}
 
 .post-build, .post-thanks {
 	h3 {

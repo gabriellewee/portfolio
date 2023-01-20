@@ -44,6 +44,8 @@ Late last year, my paternal grandmother passed away. She was an incredible woman
 > I love you, Ngin Ngin, and I look forward to one day seeing you again in Heaven.
 
 
+<!--more-->
+
 <div class="row-single">
 {%- set number = 1 %}{% include 'pages/posts/image.html' %}
 </div>

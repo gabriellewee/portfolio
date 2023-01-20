@@ -44,12 +44,14 @@ main {
 .lotus {
 	transform-origin: center center;
 	transform: rotateX(70deg);
-	animation: rotate 20000ms linear infinite forwards;
 	position: absolute;
 	top: calc(50% - 18px);
 	left: calc(50% - 18px);
 	width: 36px;
 	height: 36px;
+	@media (prefers-reduced-motion: no-preference) {
+		animation: rotate 20000ms linear infinite forwards;
+	}
 	ul {
 		position: relative;
 		width: 36px;

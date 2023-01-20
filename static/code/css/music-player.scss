@@ -97,9 +97,6 @@ main {
 	background: white;
 	border-radius: 2px;
 	box-shadow: 0 0 15px rgba(mix($red, $grey), .2);
-	@media (prefers-reduced-motion: no-preference) {
-		transform: rotateX(30deg) rotateY(-30deg) translateY(300px) translateZ(200px);
-	}
 }
 .back {
 	position: absolute;

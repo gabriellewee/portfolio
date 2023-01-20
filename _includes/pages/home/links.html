@@ -3,7 +3,7 @@
 		<h2>You can find me here:</h2>
 		<ul>
 			{% for link in home.links %}
-				<li class="link"><a class="{{link.name}}" target="_blank" href="{{link.url}}"{% if link.rel %} rel="{{link.rel}}"{% endif %}>{{link.name | capitalize}}</a></li>
+				<li class="link"><a class="{{link.name}}" target="_blank" href="{{link.url}}" rel="me">{{link.name | capitalize}}</a></li>
 			{% endfor %}
 		</ul>
 	</div>

@@ -103,14 +103,16 @@
 <body class="{% if key %}page-{{key}}{% endif %}{% if pagination.pageNumber == 0 %} page-index{% endif %}">
 	{% if blank != true %}
 		<header class="top" aria-label="Header">
-			<div class="home-link">
-				<a href="/"{% if (key == home) and (pagination.pageNumber == 0) %} tabindex="-1"{% endif %}>
+			<div class="memoji-link">
+				<a href="/"{% if (key == "home") and (pagination.pageNumber == 0) %} tabindex="-1"{% endif %}>
 					<span class="memoji memoji-default"></span>
 					<span class="memoji memoji-hm"></span>
 					<span class="text go-home">Go home?</span>
 				</a>
 				{% if message == true %}
 					<h1 class="text message">{{description}}</h1>
+				{% elseif (message) and (key == "home") and (pagination.pageNumber == 0) %}
+					<p class="text message">{{message}}</p>
 				{% elseif message %}
 					<h1 class="text message">{{message}}</h1>
 				{% endif %}

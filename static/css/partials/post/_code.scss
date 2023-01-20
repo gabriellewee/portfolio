@@ -93,8 +93,15 @@
 }
 
 .post-content {
+	position: relative;
 	iframe {
 		display: block;
 		width: 100%;
+	}
+	.reload {
+		@include font-weight-width(600, 90);
+		position: absolute;
+		bottom: calc(var(--p)*2);
+		right: calc(var(--p)*2);
 	}
 }
