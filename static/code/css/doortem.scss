@@ -30,9 +30,15 @@ main {
 }
 
 .totem {
-	transform: translateZ(40px) translateY(100vh);
-	animation: enter 2000ms cubic-bezier(.075,.820,.165,1) 500ms forwards;
-	will-change: transform;
+	@media (prefers-reduced-motion: no-preference) {
+		transform: translateZ(40px) translateY(100vh);
+		animation: enter 2000ms cubic-bezier(.075,.820,.165,1) 500ms forwards;
+		will-change: transform;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		opacity: 0;
+		animation: fade 500ms ease-out forwards;
+	}
 	.clip {
 		position: absolute;
 		opacity: 0;
@@ -194,10 +200,14 @@ main {
 		// two
 		&:nth-child(2) {
 			transform: rotateX(-15deg) rotateY(30deg) translateY(-80px) translateX(-20px) translateZ(40px);
-			animation: two 12000ms linear 1500ms infinite forwards;
-			will-change: transform;
+			@media (prefers-reduced-motion: no-preference) {
+				animation: two 12000ms linear 1500ms infinite forwards;
+				will-change: transform;
+			}
 			&:hover {
-				animation: jitter-x 250ms ease forwards;
+				@media (prefers-reduced-motion: no-preference) {
+					animation: jitter-x 250ms ease forwards;
+				}
 			}
 			> div {
 				// left
@@ -251,9 +261,11 @@ main {
 							}
 							&:after {
 								background: #20634c;
-								animation: eye 16000ms linear infinite forwards;
-								will-change: transform;
-								transform-origin: center center;
+								@media (prefers-reduced-motion: no-preference) {
+									animation: eye 16000ms linear infinite forwards;
+									will-change: transform;
+									transform-origin: center center;
+								}
 							}
 						}
 						&:nth-child(2) {
@@ -264,23 +276,27 @@ main {
 							height: 200%;
 							border-radius: 100%;
 							background: #4ea0c4;
-							animation: blink 8000ms linear infinite forwards;
-							will-change: transform;
+							@media (prefers-reduced-motion: no-preference) {
+								animation: blink 8000ms linear infinite forwards;
+								will-change: transform;
+							}
 						}
 					}
 					&:hover {
 						> div {
-							&:nth-child(1) {
-								animation: shrink 10ms ease 250ms forwards;
-								&:before {
-									animation: jitter-large 250ms ease forwards;
+							@media (prefers-reduced-motion: no-preference) {
+								&:nth-child(1) {
+									animation: shrink 10ms ease 250ms forwards;
+									&:before {
+										animation: jitter-large 250ms ease forwards;
+									}
+									&:after {
+										animation: jitter-small 250ms ease forwards;
+									}
 								}
-								&:after {
-									animation: jitter-small 250ms ease forwards;
+								&:nth-child(2) {
+									animation: none;
 								}
-							}
-							&:nth-child(2) {
-								animation: none;
 							}
 						}
 					}
@@ -569,4 +585,13 @@ main {
 @keyframes shrink {
 	0% { clip-path: circle(100% at center); }
 	100% { clip-path: circle(0% at center); }
+}
+
+@keyframes fade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }

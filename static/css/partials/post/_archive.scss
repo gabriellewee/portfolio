@@ -32,10 +32,15 @@
 		white-space: nowrap;
 		text-transform: uppercase;
 	}
-	li:not(:first-child) {
-		margin-top: .75rem;
-		h2 {
-			margin-top: 2rem;
+	li {
+		.js .page-index &, .js .page-about & {
+			opacity: 0;
+		}
+		&:not(:first-child) {
+			margin-top: .75rem;
+			h2 {
+				margin-top: 2rem;
+			}
 		}
 	}
 }

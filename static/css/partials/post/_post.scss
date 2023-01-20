@@ -52,6 +52,12 @@
 		}
 	}
 
+	.js .page-index &, .js .page-about & {
+		&.post-animate {
+			opacity: 0;
+		}
+	}
+
 	&.post-size-xs {
 		@include viewport(mobile) {
 			&:not([style]) {
@@ -182,7 +188,7 @@
 	}
 	.direct-link {
 		@include font-weight-width(800, 100);
-		opacity: 0.3;
+		opacity: .3;
 		margin-left: var(--p);
 		&:hover, &:focus {
 			opacity: 1;
@@ -200,12 +206,12 @@
 
 	p, blockquote, pre, ul, ol, figure, h1, h2, h3, h4, h5, h6 {
 		&:not(:last-child) {
-			margin-bottom: calc(var(--p)*2);
+			margin-bottom: 1rem;
 		}
 	}
 	h2, h3, h4, h5, h6 {
 		&:not(:first-child) {
-			padding-top: var(--p);
+			padding-top: 1rem;
 		}
 	}
 
@@ -273,12 +279,12 @@
 		&:before {
 			content: open-quote;
 			content: open-quote / "";
-			opacity: 0.2;
+			opacity: .2;
 			display: block;
 			position: absolute;
 			width: 100%;
 			top: calc(var(--p)*-1.5);
-			left: calc(var(--p)*-0.5);
+			left: calc(var(--p)*-.5);
 			font-size: 5rem;
 		}
 	}
@@ -330,7 +336,9 @@
 			}
 		}
 		&:active {
-			scale: 0.95;
+			@media (prefers-reduced-motion: no-preference) {
+				scale: .95;
+			}
 		}
 	}
 	img, iframe {
@@ -410,7 +418,7 @@
 		}
 	}
 	figcaption, p.caption {
-		font-size: 0.875rem;
+		font-size: .875rem;
 		text-align: center;
 		&:first-child, &:first-of-type:not(:first-child) {
 			margin-bottom: calc(var(--p)/2);

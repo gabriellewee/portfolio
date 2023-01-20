@@ -1,4 +1,3 @@
-/*! Various site scripts */
 const noJS = ((container = document.documentElement) => {
 	container.classList.remove("no-js");
 	container.classList.add("js");
@@ -11,20 +10,46 @@ const noJS = ((container = document.documentElement) => {
 })();
 
 lightbox(".expand");
+let videos = Array.from(document.querySelectorAll("video"));
+if(videos) {
+	videos.forEach(video => {
+		video.addEventListener("click", e => {
+			iso.layout();
+		});
+	});
+}
 
 let container = document.querySelector(".grid-isotope");
 let scrollContainer = document.querySelector(".grid-scroll");
 let lightboxContainer = document.querySelector(".posts-lightbox-group");
 let iso;
+let motion = window.matchMedia("(prefers-reduced-motion: no-preference)");
 if(container) {
-	iso = new Isotope(container, {
-		percentPosition: true,
-		layoutMode: "packery",
-		itemSelector: ".grid-item",
-		packery: {
-			gutter: 24
-		}
-	});
+	if(motion.matches == true) {
+		iso = new Isotope(container, {
+			percentPosition: true,
+			layoutMode: "packery",
+			itemSelector: ".grid-item",
+			packery: {
+				gutter: 24
+			}
+		});
+	} else {
+		iso = new Isotope(container, {
+			percentPosition: true,
+			layoutMode: "packery",
+			itemSelector: ".grid-item",
+			packery: {
+				gutter: 24
+			},
+			hiddenStyle: {
+				opacity: 0
+			},
+			visibleStyle: {
+				opacity: 1
+			}
+		});
+	}
 	if(scrollContainer && lightboxContainer) {
 		let scroll = new InfiniteScroll(scrollContainer, {
 			button: '.load',
@@ -40,28 +65,26 @@ if(container) {
 			scrollThreshold: false,
 			history: false
 		});
-		scroll.on('append', function( body, path, items, response ) {
+		scroll.on('append', (body, path, items, response) => {
 			lightbox(".expand");
+			videos = Array.from(document.querySelectorAll("video"));
+			if(videos) {
+				iso.layout();
+				videos.forEach(video => {
+					video.addEventListener("click", e => {
+						iso.layout();
+					});
+				});
+			}
 		});
 	}
 }
 
 const loading = new imagesLoaded(document.body, () => {
-	setTimeout(() => {
-		if(container && iso != undefined) {
-			iso.layout();
-		}
-		setTimeout(() => {
-			document.documentElement.classList.add("loaded")
-		}, 250);
-	}, 100);
-
-	let videos = Array.from(document.querySelectorAll("video"));
-	videos.forEach(video => {
-		video.addEventListener("click", e => {
-			iso.layout();
-		});
-	});
+	if(container && iso != undefined) {
+		iso.layout();
+	}
+	document.documentElement.classList.add("loaded");
 });
 
 const popup = ((containers = Array.from(document.querySelectorAll(".popup"))) => {
@@ -140,7 +163,7 @@ const popup = ((containers = Array.from(document.querySelectorAll(".popup"))) =>
 const mediaTriggers = ((figures = Array.from(document.querySelectorAll(".post-media"))) => {
 	if(!figures) return;
 	figures.forEach(figure=>{
-		let trigger = figure.querySelector(".media-trigger")
+		let trigger = figure.querySelector(".media-trigger");
 		let data = figure.querySelector(".media-data");
 		let expand = figure.querySelector(".media-expand");
 		let external = Array.from(figure.querySelectorAll(".external"));

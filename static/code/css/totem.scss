@@ -30,9 +30,14 @@ main {
 }
 
 .totem {
-	transform: translateZ(40px) translateY(100vh);
-	animation: enter 2000ms cubic-bezier(.075,.820,.165,1) 500ms forwards;
-	will-change: transform;
+	@media (prefers-reduced-motion: no-preference) {
+		transform: translateZ(40px) translateY(100vh);
+		animation: enter 2000ms cubic-bezier(.075,.820,.165,1) 500ms forwards;
+		will-change: transform;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		animation: fade 500ms ease-out forwards;
+	}
 	> div {
 		transform-origin: $p*4 $p*4 -#{$p*4};
 		position: relative;
@@ -72,8 +77,10 @@ main {
 		// one
 		&:nth-child(1) {
 			transform: rotateX(-15deg) rotateY(30deg) translateY(-45px) translateX(-30px) translateZ(60px);
-			animation: one 3000ms linear infinite forwards;
-			will-change: transform;
+			@media (prefers-reduced-motion: no-preference) {
+				animation: one 3000ms linear infinite forwards;
+				will-change: transform;
+			}
 			> div {
 				// top
 				&:nth-child(1) {
@@ -115,8 +122,10 @@ main {
 						width: calc(100% - #{$p*4});
 						height: calc(100% - #{$p*4});
 						background: #9F355A;
-						animation: eye 8000ms linear infinite forwards;
-						will-change: transform;
+						@media (prefers-reduced-motion: no-preference) {
+							animation: eye 8000ms linear infinite forwards;
+							will-change: transform;
+						}
 					}
 				}
 				// right
@@ -363,5 +372,14 @@ main {
 	}
 	100% {
 		transform: translate3d(0,0,0);
+	}
+}
+
+@keyframes fade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
 	}
 }

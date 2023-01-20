@@ -33,7 +33,7 @@
 	--color-slate: #{$slate};
 	--color-slate-hsl: #{hexToHSL($slate)};
 
-	--color-slate-mauve: #{mix($slate, $mauve)};
+	--color-slate-mauve: #{darken(mix($slate, $mauve), 5%)};
 	--color-mauve-rose: #{mix($mauve, $rose)};
 
 	--color-mint: #{$mint};

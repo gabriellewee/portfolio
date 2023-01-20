@@ -97,6 +97,9 @@ main {
 	background: white;
 	border-radius: 2px;
 	box-shadow: 0 0 15px rgba(mix($red, $grey), .2);
+	@media (prefers-reduced-motion: no-preference) {
+		transform: rotateX(30deg) rotateY(-30deg) translateY(300px) translateZ(200px);
+	}
 }
 .back {
 	position: absolute;
@@ -305,7 +308,9 @@ main {
 		opacity: 0;
 		transform-origin: center top;
 		will-change: opacity, transform;
-		transform: rotateX(30deg) rotateY(-30deg) translateY(300px) translateZ(200px);
+		@media (prefers-reduced-motion: no-preference) {
+			transform: rotateX(30deg) rotateY(-30deg) translateY(300px) translateZ(200px);
+		}
 	}
 }
 .on-enter {
@@ -314,7 +319,12 @@ main {
 		opacity: 1;
 	}
 	.player {
-		animation: rotateIn 1000ms $easeOutCubic 500ms forwards;
+		@media (prefers-reduced-motion: no-preference) {
+			animation: rotateIn 1000ms $easeOutCubic 500ms forwards;
+		}
+		@media (prefers-reduced-motion: reduce) {
+			animation: fade 1000ms $easeOutCubic 500ms forwards;
+		}
 	}
 }
 
@@ -329,6 +339,15 @@ main {
 	100% {
 		opacity: 1;
 		transform: none;
+	}
+}
+
+@keyframes fade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
 	}
 }
 
@@ -351,23 +370,31 @@ main {
 	.player {
 		will-change: transform;
 		&:hover {
-			transform: translateZ(#{$p*5});
+			@media (prefers-reduced-motion: no-preference) {
+				transform: translateZ(#{$p*5});
+			}
 		}
 		.back {
-			transform: rotateY(180deg);
+			@media (prefers-reduced-motion: no-preference) {
+				transform: rotateY(180deg);
+			}
 			* {
 				opacity: 0;
 			}
 		}
 		&.playlist {
 			.front {
-				transform: rotateY(180deg);
+				@media (prefers-reduced-motion: no-preference) {
+					transform: rotateY(180deg);
+				}
 				* {
 					opacity: 0;
 				}
 			}
 			.back {
-				transform: rotateY(0);
+				@media (prefers-reduced-motion: no-preference) {
+					transform: rotateY(0);
+				}
 				* {
 					opacity: 1;
 				}

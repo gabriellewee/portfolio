@@ -28,52 +28,90 @@ main {
 		}
 		&:nth-child(1) {
 			opacity: 0;
-			transform: translateZ(1000px);
-			animation: zoomFadeIn 5000ms $easeOutCubic forwards;
-			transform-origin: center center;
+			@media (prefers-reduced-motion: no-preference) {
+				transform: translateZ(1000px);
+				animation: zoomFadeIn 5000ms $easeOutCubic forwards;
+				transform-origin: center center;
+			}
+			@media (prefers-reduced-motion: reduce) {
+				animation: fadeIn 5000ms $easeOutCubic forwards;
+			}
 			.error-1-e {
-				transform: translateX(-50%);
-				animation: slideRight 3000ms $easeOutCubic -500ms forwards;
+				@media (prefers-reduced-motion: no-preference) {
+					transform: translateX(-50%);
+					animation: slideRight 3000ms $easeOutCubic -500ms forwards;	
+				}
 			}
 			.error-2-r {
-				transform: translateY(-20%);
-				animation: slideDown 5000ms $easeOutCubic -500ms  forwards;
+				@media (prefers-reduced-motion: no-preference) {
+					transform: translateY(-20%);
+					animation: slideDown 5000ms $easeOutCubic -500ms  forwards;	
+				}
 			}
 			.error-4-o {
-				transform: translateX(10%);
-				animation: slideLeftSmall 3000ms $easeOutCubic -300ms forwards;
+				@media (prefers-reduced-motion: no-preference) {
+					transform: translateX(10%);
+					animation: slideLeftSmall 3000ms $easeOutCubic -300ms forwards;	
+				}
 			}
 			.error-5-r {
-				transform: translateX(50%);
-				animation: slideLeft 3000ms $easeOutCubic -500ms  forwards;
+				@media (prefers-reduced-motion: no-preference) {
+					transform: translateX(50%);
+					animation: slideLeft 3000ms $easeOutCubic -500ms  forwards;	
+				}
 			}
 			.error-2-0 {
-				transform: translateY(20%);
-				animation: slideUp 5000ms $easeOutCubic -500ms  forwards;
+				@media (prefers-reduced-motion: no-preference) {
+					transform: translateY(20%);
+					animation: slideUp 5000ms $easeOutCubic -500ms  forwards;
+				}
 			}
 			.error-top {
-				transform: scaleX(0);
-				// transform-origin: center center;
-				transform-origin: 163px 3px;
-				animation: scaleXIn 750ms $easeOutExpo 3000ms forwards;
+				@media (prefers-reduced-motion: no-preference) {
+					transform: scaleX(0);
+					// transform-origin: center center;
+					transform-origin: 163px 3px;
+					animation: scaleXIn 750ms $easeOutExpo 3000ms forwards;
+				}
+				@media (prefers-reduced-motion: reduce) {
+					opacity: 0;
+					animation: fadeIn 750ms $easeOutCubic 3000ms forwards;
+				}
 			}
 			.error-left {
-				transform: scaleX(0);
-				// transform-origin: right center;
-				transform-origin: 75px 3px;
-				animation: scaleXIn 750ms $easeOutExpo 3500ms forwards;
+				@media (prefers-reduced-motion: no-preference) {
+					transform: scaleX(0);
+					// transform-origin: right center;
+					transform-origin: 75px 3px;
+					animation: scaleXIn 750ms $easeOutExpo 3500ms forwards;
+				}
+				@media (prefers-reduced-motion: reduce) {
+					opacity: 0;
+					animation: fadeIn 750ms $easeOutCubic 3500ms forwards;
+				}
 			}
 			.error-right {
-				transform: scaleX(0);
-				// transform-origin: left center;
-				transform-origin: 250px 3px;
-				animation: scaleXIn 750ms $easeOutExpo 3500ms forwards;
+				@media (prefers-reduced-motion: no-preference) {
+					transform: scaleX(0);
+					// transform-origin: left center;
+					transform-origin: 250px 3px;
+					animation: scaleXIn 750ms $easeOutExpo 3500ms forwards;
+				}
+				@media (prefers-reduced-motion: reduce) {
+					opacity: 0;
+					animation: fadeIn 750ms $easeOutCubic 3500ms forwards;
+				}
 			}
 		}
 		&:nth-child(2) {
 			.quote-top, .quote-bottom {
 				opacity: 0;
-				animation: slideUpFadeIn 1000ms $easeOutCubic 5500ms forwards;
+				@media (prefers-reduced-motion: no-preference) {
+					animation: slideUpFadeIn 1000ms $easeOutCubic 5500ms forwards;
+				}
+				@media (prefers-reduced-motion: reduce) {
+					animation: fadeIn 1000ms $easeOutCubic 5500ms forwards;
+				}
 			}
 			.quote-bottom {
 				animation-delay: 5750ms;
@@ -82,7 +120,12 @@ main {
 		&:nth-child(3) {
 			.link-phrase, .link-mark {
 				opacity: 0;
-				animation: slideUpFadeIn 1000ms $easeOutCubic 6250ms forwards;
+				@media (prefers-reduced-motion: no-preference) {
+					animation: slideUpFadeIn 1000ms $easeOutCubic 6250ms forwards;
+				}
+				@media (prefers-reduced-motion: reduce) {
+					animation: fadeIn 1000ms $easeOutCubic 6250ms forwards;
+				}
 			}
 			.link-mark {
 				opacity: 0;
@@ -95,7 +138,9 @@ main {
 					transition: all 150ms ease-out;
 				}
 				&:hover, &:focus {
-					animation: jitter 225ms ease-in-out 2 forwards;
+					@media (prefers-reduced-motion: no-preference) {
+						animation: jitter 225ms ease-in-out 2 forwards;
+					}
 					.top use {
 						fill: white;
 					}
