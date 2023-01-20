@@ -2,79 +2,13 @@
 
 .page-home {
 	&.page-index {
-		.home-link a {
+		.memoji-link a {
 			pointer-events: none;
 		}
 	}
 	&:not(.page-index) {
 		.contact {
 			display: none;
-		}
-	}
-}
-
-.contact {
-	position: relative;
-	z-index: 10;
-	max-width: var(--width);
-	margin-left: auto;
-	margin-right: auto;
-	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
-	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
-	.contact-sites, .contact-messages {
-		.js & {
-			opacity: 0;
-		}
-		> h2, > ul {
-			@include font-weight-width(900, 125);
-			font-size: clamp(1.5rem, 3vw, 2rem);
-			line-height: 1.2;
-			@include viewport($ipad-mini) {
-				line-height: 1.1;
-			}
-		}
-
-		> h2 {
-			margin-top: 1.5rem;
-		}
-
-		> ul {
-			@import 'partials/colors/links';
-			margin-top: .5rem;
-			list-style: none;
-			.link {
-				display: inline-block;
-			}
-			.link > a {
-				display: inline-block;
-				text-underline-offset: 4px;
-				&:not(:last-child) {
-					margin-right: .75rem;
-				}
-				&:last-of-type {
-					margin-right: .75rem;
-				}
-			}
-			.link > a, .popup-label, .popup-label span {
-				transition: .1s ease-out;
-			}
-			.link > a:hover, .link > a:focus, .popup-label:hover span, .popup-button:focus ~ .popup-label span {
-				color: var(--color-iron);
-				text-decoration: underline;
-			}
-			.link > a:active, .popup-button:active ~ .popup-label span {
-				@media (prefers-reduced-motion: no-preference) {
-					scale: .95;
-				}
-			}
-			.popup-label {
-				color: var(--color-discord);
-				text-underline-offset: 4px;
-			}
-			.popup-button:focus + .popup-label {
-				color: var(--color-iron);
-				text-decoration-color: var(--color-discord);
-			}
 		}
 	}
 }

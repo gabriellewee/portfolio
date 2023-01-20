@@ -9,10 +9,11 @@ links: true
 isotope: true
 add: true
 tags: pages
+message: Scroll to skip animation
 
 pagination:
     data: collections.entries
-    size: 10
+    size: 16
     reverse: true
 ---
 
@@ -121,13 +122,16 @@ pagination:
 								</figcaption>
 							</figure>
 						{% elseif post.data.category == "code" %}
+							{% if post.data.button %}
+								<button class="reload button"><span><span>{{post.data.button|capitalize}}</span></span></button>
+							{% endif %}
 							{% if post.url %}
 								<iframe src="{{post.url | url}}" width="600" height="{{post.data.height}}" title="{{post.data.title | safe}}" loading="lazy" tabindex="-1"></iframe>
 							{% else %}
 								{{post.content|safe}}
 							{% endif %}
 						{% elseif post.data.content %}
-							{{post.data.content | nbsp | safe}}
+							<blockquote>{{post.data.content | nbsp | safe}}</blockquote>
 						{% else %}
 							{% excerpt post %}
 						{% endif %}
@@ -140,7 +144,7 @@ pagination:
 								<a class="button link-default" href="{{post.data.url | url}}" target="_blank"><span><span>Read more{% if post.data.platform %} at {{post.data.platform}}{% endif %}</span></a>
 							{% endif %}
 							{% for link in post.data.external %}
-								<a class="button link-{{link.platform}}" href="{{link.url | url}}" target="_blank"><span><span>{% if post.data.type == "audio" %}Listen on {% elseif post.data.type == "writing" %}Read on {% else %}View on {% endif %}{% if link.title %}{{link.title}}{% else %}{{link.platform | capitalize}}{% endif %}</span></a>
+								<a class="button link-platform link-{{link.platform}}" href="{{link.url | url}}" target="_blank"><span><span>{% if post.data.type == "audio" %}Listen on {% elseif post.data.type == "writing" %}Read on {% else %}View on {% endif %}{% if link.title %}{{link.title}}{% else %}{{link.platform | capitalize}}{% endif %}</span></a>
 							{% endfor %}
 						{% endif %}
 					</footer>
@@ -153,10 +157,10 @@ pagination:
 			<button class="load button"><span><span>Load more</span></span></button>
 		{% endif %}
 		{% if (pagination.href.previous) and (pagination.pageNumber != 0) %}
-			<a class="previous button" href="{{ pagination.href.previous }}"><span><span>Previous</span></span></a>
+			<a class="newer button" href="{{ pagination.href.previous }}"><span><span>Newer</span></span></a>
 		{% endif %}
 		{% if pagination.href.next %}
-			<a class="next button" href="{{ pagination.href.next }}"><span><span>Next</span></span></a>
+			<a class="older button" href="{{ pagination.href.next }}"><span><span>Older</span></span></a>
 		{% endif %}
 	</nav>
 </section>

@@ -9,21 +9,26 @@ const noJS = ((container = document.documentElement) => {
 	}
 })();
 
-lightbox(".expand");
-let videos = Array.from(document.querySelectorAll("video"));
-if(videos) {
-	videos.forEach(video => {
-		video.addEventListener("click", e => {
-			iso.layout();
+function frames(buttons) {
+	let links = Array.from(document.querySelectorAll(buttons));
+	if(!links) return;
+	links.forEach(button => {
+		let frame = button.nextElementSibling;
+		button.addEventListener("click",  e => {
+			frame.src = frame.src;
 		});
 	});
 }
 
+frames(".reload");
+lightbox(".expand");
+
 let container = document.querySelector(".grid-isotope");
 let scrollContainer = document.querySelector(".grid-scroll");
 let lightboxContainer = document.querySelector(".posts-lightbox-group");
-let iso;
 let motion = window.matchMedia("(prefers-reduced-motion: no-preference)");
+let iso;
+
 if(container) {
 	if(motion.matches == true) {
 		iso = new Isotope(container, {
@@ -53,29 +58,21 @@ if(container) {
 	if(scrollContainer && lightboxContainer) {
 		let scroll = new InfiniteScroll(scrollContainer, {
 			button: '.load',
-			path: '.next',
+			path: '.older',
 			append: '.post',
 			scrollThreshold: false,
 			outlayer: iso
 		});
 		let lightboxScroll = new InfiniteScroll(lightboxContainer, {
 			button: '.load',
-			path: '.next',
+			path: '.older',
 			append: '.post-lightbox',
 			scrollThreshold: false,
 			history: false
 		});
 		scroll.on('append', (body, path, items, response) => {
+			frames(".reload");
 			lightbox(".expand");
-			videos = Array.from(document.querySelectorAll("video"));
-			if(videos) {
-				iso.layout();
-				videos.forEach(video => {
-					video.addEventListener("click", e => {
-						iso.layout();
-					});
-				});
-			}
 		});
 	}
 }
@@ -86,6 +83,36 @@ const loading = new imagesLoaded(document.body, () => {
 	}
 	document.documentElement.classList.add("loaded");
 });
+
+const mediaFilters = ((filters = document.querySelector(".filters")) => {
+	if (!filters) return;
+	let links = filters.querySelectorAll("[data-filter]");
+	links.forEach(link=>{
+		let value = link.getAttribute("data-filter");
+		let reset = filters.querySelector(".reset");
+		link.addEventListener("click", e => {
+			e.preventDefault();
+			iso.arrange({ filter: value });
+			let active = filters.querySelector(".active");
+			if(!reset.classList.contains("visible")) {
+				reset.classList.add("visible");
+			}
+			if (active && value == "*") {
+				active.classList.remove("active");
+				active.tabIndex = 0;
+			} else if (active) {
+				active.classList.remove("active");
+				active.tabIndex = 0;
+				e.target.parentElement.classList.add("active");
+				e.target.parentElement.tabIndex = -1;
+			} else {
+				e.target.parentElement.classList.add("active");
+				e.target.parentElement.tabIndex = -1;
+			};
+			iso.layout();
+		});
+	});
+})();
 
 const popup = ((containers = Array.from(document.querySelectorAll(".popup"))) => {
 	if(!containers) return;

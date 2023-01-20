@@ -1,7 +1,16 @@
 <section class="posts-container">
+	<nav hidden class="filters">
+		<h2>Tags</h2>
+		<ul>
+			{% for filter in filters %}
+				<li><a class="grid-filter" href="#" data-filter=".filter-{{filter.name}}">#<span>{% if filter.label %}{{filter.label}}{% else %}{{filter.name}}{% endif %}</span></a></li>
+			{% endfor %}
+			<li><a class="grid-filter reset" href="#" data-filter="*"><span>reset</span></a></li>
+		</ul>
+	</nav>
 	<div class="posts grid-isotope">
 		{% for post in media %}
-			<article class="post post-media post-photography{% if post.size %} post-size-{{post.size}}{% endif %} grid-item" data-orientation="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + extension, 'orientation' %}">
+			<article class="post post-media post-photography{% if post.size %} post-size-{{post.size}}{% endif %} grid-item {{post.tags | isoFilter}}" data-orientation="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + extension, 'orientation' %}">
 				<input class="media-trigger" id="{{post.date | safe}}-{{post.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this {{type}}" role="switch"/>
 				<div class="post-wrapper">
 					<div class="post-content">

@@ -50,4 +50,10 @@ module.exports = eleventyConfig => {
 		}
 		return year;
 	});
+
+	eleventyConfig.addFilter("isoFilter", filters => {
+		let array = filters.split(' ');
+		let result = array.map(el => 'filter-' + el);
+		return result.join(' ');
+	});
 };

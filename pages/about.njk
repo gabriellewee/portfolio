@@ -109,6 +109,24 @@
 			</div>
 		</article>
 
+		<article class="post post-about post-mentions post-animate grid-item">
+			<div class="post-wrapper">
+				<header class="post-header">
+					<h3>Mentions</h3>
+				</header>
+				<div class="post-content post-text">
+					<ul>
+						{% for mention in mentions %}
+							<li>
+								<span class="mention-publication">{{mention.publication}}</span>
+								<a class="mention-link" href="{{mention.url | url}}" target="_blank">{{mention.title | nbsp | safe}}</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</article>
+
 		<article class="post post-about post-thanks post-animate grid-item">
 			<div class="post-wrapper">
 				<header class="post-header">

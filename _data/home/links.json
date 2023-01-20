@@ -13,8 +13,7 @@
 	},
 	{
 		"name": "mastodon",
-		"url": "https://mas.to/@gabriellewee",
-		"rel": "me"
+		"url": "https://mas.to/@gabriellewee"
 	},
 	{
 		"name": "twitter",

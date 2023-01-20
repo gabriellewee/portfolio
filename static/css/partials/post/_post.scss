@@ -27,6 +27,50 @@
 	}
 }
 
+.filters {
+	@include font-weight-width(600, 110);
+	font-size: 1.5rem;
+	line-height: 1.3;
+	position: relative;
+	h2 {
+		position: absolute;
+		width: 0;
+		height: 0;
+		font-size: 0;
+	}
+	ul {
+		list-style: none;
+		display: flex;
+		flex-wrap: wrap;
+	}
+	li {
+		margin-right: var(--p);
+	}
+	a {
+		color: var(--color-iron-white-70);
+		&:hover, &:focus {
+			color: var(--color-iron-white);
+			span {
+				text-decoration: underline;
+				text-decoration-thickness: 2px;
+				text-underline-offset: 2px;
+			}
+		}
+		&:focus-visible {
+			@include focus-round(var(--color-mauve));
+		}
+		&:active, &.active {
+			color: var(--color-iron-12);
+		}
+		&.reset {
+			display: none;
+			&.visible {
+				display: block;
+			}
+		}
+	}
+}
+
 .post {
 	position: relative;
 	width: 100%;
@@ -53,8 +97,10 @@
 	}
 
 	.js .page-index &, .js .page-about & {
-		&.post-animate {
-			opacity: 0;
+		.posts-container:not(.visible) & {
+			&.post-animate {
+				opacity: 0;
+			}
 		}
 	}
 
@@ -228,6 +274,7 @@
 	p, figcaption, ul, ol {
 		a {
 			@include gradient-text(var(--color-mauve-hsl), var(--color-slate-hsl), true);
+			position: relative;
 			text-decoration: underline;
 			text-decoration-thickness: 1.5px;
 			text-underline-offset: 2px;
@@ -271,21 +318,33 @@
 		line-height: 1.625;
 	}
 	blockquote {
-		@include font-weight-width(450, 115);
+		@include font-weight-width(450, 110);
 		quotes: auto;
 		position: relative;
 		padding: 0 calc(var(--p)*2);
 		font-size: 1.25rem;
-		&:before {
-			content: open-quote;
-			content: open-quote / "";
+		&:before, &:after {
 			opacity: .2;
 			display: block;
 			position: absolute;
-			width: 100%;
+			font-size: 5rem;
+		}
+		&:before {
+			content: open-quote;
+			content: open-quote / "";
 			top: calc(var(--p)*-1.5);
 			left: calc(var(--p)*-.5);
-			font-size: 5rem;
+		}
+		&:after {
+			content: close-quote;
+			content: close-quote / "";
+			visibility: hidden;
+			bottom: calc(var(--p)*-1.5);
+			right: calc(var(--p)*-.5);
+		}
+		code {
+			font-size: inherit;
+			line-height: inherit;
 		}
 	}
 	ul {
