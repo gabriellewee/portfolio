@@ -95,13 +95,36 @@
 .post-content {
 	position: relative;
 	iframe {
-		display: block;
+		display: none;
 		width: 100%;
+		.js & {
+			display: block;
+		}
+	}
+	.warning {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 300px;
+		color: var(--color-iron-white-70);
+		font-weight: 600;
+		&.css-only {
+			display: none;
+			+ iframe {
+				display: block;
+			}
+		}
+		.js & {
+			display: none;
+		}
 	}
 	.reload {
 		@include font-weight-width(600, 90);
 		position: absolute;
 		bottom: calc(var(--p)*2);
 		right: calc(var(--p)*2);
+		.no-js & {
+			display: none;
+		}
 	}
 }
