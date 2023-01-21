@@ -72,6 +72,12 @@
 	force = true
 
 [[redirects]]
+	from = "/v5/*"
+	to = "https://archive.gabriellew.ee/v5/:splat"
+	status = 200
+	force = true
+
+[[redirects]]
 	from = "/nameplate/v1/*"
 	to = "https://archive.gabriellew.ee/nameplate/v1/:splat"
 	status = 200
