@@ -8,24 +8,43 @@ body, a {
 	color: white;
 }
 
+header {
+	&:before {
+		content: "";
+		display: block;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background-color: hsla(var(--color-iron-hsl), .2);
+	}
+}
+
+main, .bottom {
+	position: relative;
+	z-index: 2;
+}
+
 main {
-	background-color: hsla(var(--color-iron-hsl), .2);
-	height: calc(100vh - 55px);
-	padding: var(--p) calc(var(--p)*1.5);
-	font-size: clamp(2rem, 2.5vw, 3rem);
-	@include viewport($ipad-mini) {
-		padding: var(--p) calc(var(--p)*2);
+	height: calc(100vh - 104px - 82px);
+	max-width: var(--width);
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
+	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
+	h1 {
+		font-size: clamp(3rem, 6vw, 5rem);
 	}
 	h1, p {
-		max-width: 1800px;
-	}
-	h1 {
-		font-size: clamp(3.25rem, 4vw, 4.5rem);
-		font-weight: 700;
-		font-style: italic;
-		line-height: 1;
+		@include font-weight-width(900, 125);
+		line-height: 1.2;
+		@include viewport($ipad-mini) {
+			line-height: 1.1;
+		}
 	}
 	p {
+		font-size: clamp(1.5rem, 3vw, 2.5rem);
 		padding-top: var(--p);
 	}
 	a {
@@ -36,7 +55,7 @@ main {
 		&:hover, &:focus {
 			background-color: hsla(var(--color-iron-hsl), .5);
 		}
-		&:focus {
+		&:focus-visible {
 			@include focus-round(hsla(var(--color-white-hsl), .8));
 		}
 		&:active {
@@ -45,6 +64,26 @@ main {
 	}
 }
 
-footer {
-	background-color: hsla(var(--color-iron-hsl), .2);
+.bottom {
+	a {
+		span {
+			background: var(--color-blush);
+			color: var(--color-iron);
+		}
+		&:hover, &:focus {
+			span {
+				background: var(--color-iron);
+				color: white;
+			}
+		}
+		&:active {
+			span {
+				background: var(--color-iron-12);
+				color: white;
+			}
+		}
+	}
+	.copyright {
+		color: var(--color-iron);
+	}
 }

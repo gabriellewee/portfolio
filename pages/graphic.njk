@@ -1,26 +1,26 @@
 ---js
 {
+    layout: "layouts/base.njk",
 	title: "Graphic",
-	description: "2D/3D graphic & illustration work.",
+	description: "2D/3D graphic & illustration work",
 	permalink: "/graphic/",
 	key: "graphic",
-	style: "visual",
-	add: true,
 	og: true,
 	message: true,
-	filters: [
-		{ name: "2d" },
-		{ name: "3d" }
-	],
+	isotope: true,
 	type: "graphic",
 	extension: "png",
 	eleventyComputed: {
-		work(data) {
+		media(data) {
 			return data[data.key];
 		}
 	},
-	tags: "pages"
+	tags: "pages",
+	filters: [
+		{ name: "2d" },
+		{ name: "3d" }
+	]
 }
 ---
 
-{% extends 'layouts/media.njk' %}
+{% include 'layouts/media.njk' %}

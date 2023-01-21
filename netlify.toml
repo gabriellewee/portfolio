@@ -42,6 +42,12 @@
 	force = true
 
 [[redirects]]
+	from = "/writes/*"
+	to = "/posts/:splat"
+	status = 302
+	force = true
+
+[[redirects]]
 	from = "/v1/*"
 	to = "https://archive.gabriellew.ee/v1/:splat"
 	status = 200
@@ -62,6 +68,12 @@
 [[redirects]]
 	from = "/v4/*"
 	to = "https://archive.gabriellew.ee/v4/:splat"
+	status = 200
+	force = true
+
+[[redirects]]
+	from = "/v5/*"
+	to = "https://archive.gabriellew.ee/v5/:splat"
 	status = 200
 	force = true
 

@@ -1,0 +1,1404 @@
+---
+title: Pokémon Sprite Sorter
+description: Pokémon Sprite Sorter
+date: 2017-05-02
+
+permalink: /code/{{ page.fileSlug }}/
+uri: dWRgmJ
+
+layout: layouts/base.njk
+tags: entries
+category: code
+
+blank: true
+style: code/css/pokemon-sprites
+hidden: true
+
+height: 600
+button: reload content
+---
+
+<section>
+	<div class='section-content pk'>
+		<nav class='filter'>
+			<ul>
+				<li>
+					<button class='pk-filter pk-fave' data-filter='.gw'>Favorites</button>
+				</li>
+				<li>
+					<button class='pk-filter pk-rgby' data-filter='.rgby'>RGBY</button>
+				</li>
+				<li>
+					<button class='pk-filter pk-xy' data-filter='.xy'>XY</button>
+				</li>
+				<li>
+					<button class='pk-filter pk-oras' data-filter='.oras'>ORAS</button>
+				</li>
+				<li>
+					<button class='pk-filter pk-sm' data-filter='.sm'>SM</button>
+				</li>
+				<li>
+					<button class='pk-filter pk-mega' data-filter='.mega'>Mega</button>
+				</li>
+				<li>
+					<button class='pk-filter pk-legendary' data-filter='.legend'>Legendary</button>
+				</li>
+				<li>
+					<button class='pk-filter pk-normal' data-filter='.normal'>Normal</button>
+				</li>
+				<li>
+					<button class='pk-filter pk-fighting' data-filter='.fighting'>Fighting</button>
+				</li>
+				<li>
+					<button class='pk-filter pk-flying' data-filter='.flying'>Flying</button>
+				</li>
+				<li>
+					<button class='pk-filter pk-poison' data-filter='.poison'>Poison</button>
+				</li>
+				<li>
+					<button class='pk-filter pk-ground' data-filter='.ground'>Ground</button>
+				</li>
+				<li>
+					<button class='pk-filter pk-rock' data-filter='.rock'>Rock</button>
+				</li>
+				<li>
+					<button class='pk-filter pk-bug' data-filter='.bug'>Bug</button>
+				</li>
+				<li>
+					<button class='pk-filter pk-ghost' data-filter='.ghost'>Ghost</button>
+				</li>
+				<li>
+					<button class='pk-filter pk-steel' data-filter='.steel'>Steel</button>
+				</li>
+				<li>
+					<button class='pk-filter pk-fire' data-filter='.fire'>Fire</button>
+				</li>
+				<li>
+					<button class='pk-filter pk-water' data-filter='.water'>Water</button>
+				</li>
+				<li>
+					<button class='pk-filter pk-grass' data-filter='.grass'>Grass</button>
+				</li>
+				<li>
+					<button class='pk-filter pk-electric' data-filter='.electric'>Electric</button>
+				</li>
+				<li>
+					<button class='pk-filter pk-psychic' data-filter='.psychic'>Psychic</button>
+				</li>
+				<li>
+					<button class='pk-filter pk-ice' data-filter='.ice'>Ice</button>
+				</li>
+				<li>
+					<button class='pk-filter pk-dragon' data-filter='.dragon'>Dragon</button>
+				</li>
+				<li>
+					<button class='pk-filter pk-dark' data-filter='.dark'>Dark</button>
+				</li>
+				<li>
+					<button class='pk-filter pk-fairy' data-filter='.fairy'>Fairy</button>
+				</li>
+				<li>
+					<button class='pk-filter' data-filter='*'>Reset</button>
+				</li>
+			</ul>
+		</nav>
+		<div class='grid'>
+			<ul>
+				<li class='1 rgby gw grass poison multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Bulbasaur_(Pokémon)' target='_blank'>
+						<figure class='pk-001'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby grass poison multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Ivysaur_(Pokémon)' target='_blank'>
+						<figure class='pk-002'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby grass poison multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Venusaur_(Pokémon)' target='_blank'>
+						<figure class='pk-003 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 xy grass poison mega multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Venusaur_(Pokémon)' target='_blank'>
+						<figure class='pk-003 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw fire'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Charmander_(Pokémon)' target='_blank'>
+						<figure class='pk-004'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw fire'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Charmeleon_(Pokémon)' target='_blank'>
+						<figure class='pk-005'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw fire'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Charizard_(Pokémon)' target='_blank'>
+						<figure class='pk-006 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 xy gw fire flying mega multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Charizard_(Pokémon)' target='_blank'>
+						<figure class='pk-006 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 xy gw fire dragon mega multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Charizard_(Pokémon)' target='_blank'>
+						<figure class='pk-006 c'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw water'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Squirtle_(Pokémon)' target='_blank'>
+						<figure class='pk-007'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby water'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Wartortle_(Pokémon)' target='_blank'>
+						<figure class='pk-008'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby water'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Blastoise_(Pokémon)' target='_blank'>
+						<figure class='pk-009 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 xy water mega'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Blastoise_(Pokémon)' target='_blank'>
+						<figure class='pk-009 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby bug'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Caterpie_(Pokémon)' target='_blank'>
+						<figure class='pk-010'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby bug'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Metapod_(Pokémon)' target='_blank'>
+						<figure class='pk-011'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby bug flying multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Butterfree_(Pokémon)' target='_blank'>
+						<figure class='pk-012'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby bug poison multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Weedle_(Pokémon)' target='_blank'>
+						<figure class='pk-013'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby bug poison multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Kakuna_(Pokémon)' target='_blank'>
+						<figure class='pk-014'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby bug poison multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Beedrill_(Pokémon)' target='_blank'>
+						<figure class='pk-015 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 oras bug poison mega multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Beedrill_(Pokémon)' target='_blank'>
+						<figure class='pk-015 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby normal flying multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Pidgey_(Pokémon)' target='_blank'>
+						<figure class='pk-016'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby normal flying multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Pidgeotto_(Pokémon)' target='_blank'>
+						<figure class='pk-017'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby normal flying multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Pidgeot_(Pokémon)' target='_blank'>
+						<figure class='pk-018 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 oras rgby normal flying mega'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Pidgeot_(Pokémon)' target='_blank'>
+						<figure class='pk-018 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby normal'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Rattata_(Pokémon)' target='_blank'>
+						<figure class='pk-019 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 sm normal dark multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Rattata_(Pokémon)' target='_blank'>
+						<figure class='pk-019 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby normal'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Raticate_(Pokémon)' target='_blank'>
+						<figure class='pk-020 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 sm normal dark multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Raticate_(Pokémon)' target='_blank'>
+						<figure class='pk-020 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby normal flying multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Spearow_(Pokémon)' target='_blank'>
+						<figure class='pk-021'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby normal flying multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Fearow_(Pokémon)' target='_blank'>
+						<figure class='pk-022'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby poison'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Ekans_(Pokémon)' target='_blank'>
+						<figure class='pk-023'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby poison'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Arbok_(Pokémon)' target='_blank'>
+						<figure class='pk-024'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw electric'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Pikachu_(Pokémon)' target='_blank'>
+						<figure class='pk-025'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby electric'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Raichu_(Pokémon)' target='_blank'>
+						<figure class='pk-026 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 sm electric psychic multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Raichu_(Pokémon)' target='_blank'>
+						<figure class='pk-026 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby ground'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Sandshrew_(Pokémon)' target='_blank'>
+						<figure class='pk-027 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 sm ice steel multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Sandshrew_(Pokémon)' target='_blank'>
+						<figure class='pk-027 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby ground'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Sandslash_(Pokémon)' target='_blank'>
+						<figure class='pk-028 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 sm ice steel multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Sandslash_(Pokémon)' target='_blank'>
+						<figure class='pk-028 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby poison'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Nidoran♀_(Pokémon)' target='_blank'>
+						<figure class='pk-029'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby poison'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Nidorina_(Pokémon)' target='_blank'>
+						<figure class='pk-030'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby poison ground multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Nidoqueen_(Pokémon)' target='_blank'>
+						<figure class='pk-031'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby poison'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Nidoran♂_(Pokémon)' target='_blank'>
+						<figure class='pk-032'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby poison'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Nidorino_(Pokémon)' target='_blank'>
+						<figure class='pk-033'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby poison ground multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Nidoking_(Pokémon)' target='_blank'>
+						<figure class='pk-034'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby fairy'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Clefairy_(Pokémon)' target='_blank'>
+						<figure class='pk-035'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw fairy'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Clefable_(Pokémon)' target='_blank'>
+						<figure class='pk-036'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw fire'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Vulpix_(Pokémon)' target='_blank'>
+						<figure class='pk-037 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 sm gw ice'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Vulpix_(Pokémon)' target='_blank'>
+						<figure class='pk-037 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw fire'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Ninetales_(Pokémon)' target='_blank'>
+						<figure class='pk-038 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 sm gw ice fairy multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Ninetales_(Pokémon)' target='_blank'>
+						<figure class='pk-038 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby normal fairy multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Jigglypuff_(Pokémon)' target='_blank'>
+						<figure class='pk-039'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby normal fairy multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Wigglytuff_(Pokémon)' target='_blank'>
+						<figure class='pk-040'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby poison flying multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Zubat_(Pokémon)' target='_blank'>
+						<figure class='pk-041'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby poison flying multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Golbat_(Pokémon)' target='_blank'>
+						<figure class='pk-042'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby grass poison multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Oddish_(Pokémon)' target='_blank'>
+						<figure class='pk-043'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby grass poison multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Gloom_(Pokémon)' target='_blank'>
+						<figure class='pk-044'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby grass poison multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Vileplume_(Pokémon)' target='_blank'>
+						<figure class='pk-045'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby bug grass multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Paras_(Pokémon)' target='_blank'>
+						<figure class='pk-046'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby bug grass multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Parasect_(Pokémon)' target='_blank'>
+						<figure class='pk-047'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby bug poison multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Venonat_(Pokémon)' target='_blank'>
+						<figure class='pk-048'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby bug poison multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Venomoth_(Pokémon)' target='_blank'>
+						<figure class='pk-049'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby ground'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Diglett_(Pokémon)' target='_blank'>
+						<figure class='pk-050 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 sm ground steel multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Diglett_(Pokémon)' target='_blank'>
+						<figure class='pk-050 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby ground'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Dugtrio_(Pokémon)' target='_blank'>
+						<figure class='pk-051 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 sm ground steel multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Dugtrio_(Pokémon)' target='_blank'>
+						<figure class='pk-051 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby normal'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Meowth_(Pokémon)' target='_blank'>
+						<figure class='pk-052 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 sm dark'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Meowth_(Pokémon)' target='_blank'>
+						<figure class='pk-052 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby normal'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Persian_(Pokémon)' target='_blank'>
+						<figure class='pk-053 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 sm dark'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Persian_(Pokémon)' target='_blank'>
+						<figure class='pk-053 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby water'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Psyduck_(Pokémon)' target='_blank'>
+						<figure class='pk-054'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby water'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Golduck_(Pokémon)' target='_blank'>
+						<figure class='pk-055'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby fighting'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Mankey_(Pokémon)' target='_blank'>
+						<figure class='pk-056'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby fighting'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Primeape_(Pokémon)' target='_blank'>
+						<figure class='pk-057'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw fire'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Growlithe_(Pokémon)' target='_blank'>
+						<figure class='pk-058'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw fire'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Arcanine_(Pokémon)' target='_blank'>
+						<figure class='pk-059'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby water'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Poliwag_(Pokémon)' target='_blank'>
+						<figure class='pk-060'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby water'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Poliwhirl_(Pokémon)' target='_blank'>
+						<figure class='pk-061'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby water fighting multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Poliwrath_(Pokémon)' target='_blank'>
+						<figure class='pk-062'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw psychic'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Abra_(Pokémon)' target='_blank'>
+						<figure class='pk-063'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby psychic'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Kadabra_(Pokémon)' target='_blank'>
+						<figure class='pk-064'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby psychic'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Alakazam_(Pokémon)' target='_blank'>
+						<figure class='pk-065 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 xy psychic mega'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Alakazam_(Pokémon)' target='_blank'>
+						<figure class='pk-065 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby fighting'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Machop_(Pokémon)' target='_blank'>
+						<figure class='pk-066'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby fighting'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Machoke_(Pokémon)' target='_blank'>
+						<figure class='pk-067'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby fighting'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Machamp_(Pokémon)' target='_blank'>
+						<figure class='pk-068'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby grass poison multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Bellsprout_(Pokémon)' target='_blank'>
+						<figure class='pk-069'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby grass poison multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Weepinbell_(Pokémon)' target='_blank'>
+						<figure class='pk-070'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby grass poison multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Victreebell_(Pokémon)' target='_blank'>
+						<figure class='pk-071'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby water poison multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Tentacool_(Pokémon)' target='_blank'>
+						<figure class='pk-072'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby water poison multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Tentacruel_(Pokémon)' target='_blank'>
+						<figure class='pk-073'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby rock ground multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Geodude_(Pokémon)' target='_blank'>
+						<figure class='pk-074 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 sm rock electric multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Geodude_(Pokémon)' target='_blank'>
+						<figure class='pk-074 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby rock ground multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Graveler_(Pokémon)' target='_blank'>
+						<figure class='pk-075 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 sm rock electric multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Graveler_(Pokémon)' target='_blank'>
+						<figure class='pk-075 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby rock ground multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Golem_(Pokémon)' target='_blank'>
+						<figure class='pk-076 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 sm rock electric multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Golem_(Pokémon)' target='_blank'>
+						<figure class='pk-076 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw fire'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Ponyta_(Pokémon)' target='_blank'>
+						<figure class='pk-077'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw fire'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Rapidash_(Pokémon)' target='_blank'>
+						<figure class='pk-078'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby water psychic multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Slowpoke_(Pokémon)' target='_blank'>
+						<figure class='pk-079'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby water psychic multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Slowbro_(Pokémon)' target='_blank'>
+						<figure class='pk-080 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 oras water psychic mega multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Slowbro_(Pokémon)' target='_blank'>
+						<figure class='pk-080 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby electric steel multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Magnemite_(Pokémon)' target='_blank'>
+						<figure class='pk-081'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby electric steel multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Magneton_(Pokémon)' target='_blank'>
+						<figure class='pk-082'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby normal flying multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Farfetch%27d_(Pokémon)' target='_blank'>
+						<figure class='pk-083'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby normal flying multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Doduo_(Pokémon)' target='_blank'>
+						<figure class='pk-084'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby normal flying multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Dodrio_(Pokémon)' target='_blank'>
+						<figure class='pk-085'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby water'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Seel_(Pokémon)' target='_blank'>
+						<figure class='pk-086'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw water ice multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Dewgong_(Pokémon)' target='_blank'>
+						<figure class='pk-087'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby poison'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Grimer_(Pokémon)' target='_blank'>
+						<figure class='pk-088 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 sm poison dark multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Grimer_(Pokémon)' target='_blank'>
+						<figure class='pk-088 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby poison'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Muk_(Pokémon)' target='_blank'>
+						<figure class='pk-089 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 sm poison dark multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Muk_(Pokémon)' target='_blank'>
+						<figure class='pk-089 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby water'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Shellder_(Pokémon)' target='_blank'>
+						<figure class='pk-090'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby water ice multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Cloyster_(Pokémon)' target='_blank'>
+						<figure class='pk-091'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby ghost poison multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Gastly_(Pokémon)' target='_blank'>
+						<figure class='pk-092'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby ghost poison multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Haunter_(Pokémon)' target='_blank'>
+						<figure class='pk-093'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw ghost poison multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Gengar_(Pokémon)' target='_blank'>
+						<figure class='pk-094 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 xy gw ghost poison mega multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Gengar_(Pokémon)' target='_blank'>
+						<figure class='pk-094 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby rock ground multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Onix_(Pokémon)' target='_blank'>
+						<figure class='pk-095'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby psychic'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Drowzee_(Pokémon)' target='_blank'>
+						<figure class='pk-096'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby psychic'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Hypno_(Pokémon)' target='_blank'>
+						<figure class='pk-097'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby water'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Krabby_(Pokémon)' target='_blank'>
+						<figure class='pk-098'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby water'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Kingler_(Pokémon)' target='_blank'>
+						<figure class='pk-099'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby electric'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Voltorb_(Pokémon)' target='_blank'>
+						<figure class='pk-100'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby electric'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Electrode_(Pokémon)' target='_blank'>
+						<figure class='pk-101'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby grass psychic multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Exeggcute_(Pokémon)' target='_blank'>
+						<figure class='pk-102'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby grass psychic multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Exeggcutor_(Pokémon)' target='_blank'>
+						<figure class='pk-103 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 sm grass dragon multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Exeggcutor_(Pokémon)' target='_blank'>
+						<figure class='pk-103 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby ground'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Cubone_(Pokémon)' target='_blank'>
+						<figure class='pk-104'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw ground'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Marowak_(Pokémon)' target='_blank'>
+						<figure class='pk-105 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 sm gw fire ghost multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Marowak_(Pokémon)' target='_blank'>
+						<figure class='pk-105 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby fighting'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Hitmonlee_(Pokémon)' target='_blank'>
+						<figure class='pk-106'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby fighting'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Hitmonchan_(Pokémon)' target='_blank'>
+						<figure class='pk-107'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby normal'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Lickitung_(Pokémon)' target='_blank'>
+						<figure class='pk-108'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby poison'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Koffing_(Pokémon)' target='_blank'>
+						<figure class='pk-109'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby poison'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Weezing_(Pokémon)' target='_blank'>
+						<figure class='pk-110'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby ground rock multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Rhyhorn_(Pokémon)' target='_blank'>
+						<figure class='pk-111'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby ground rock multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Rhydon_(Pokémon)' target='_blank'>
+						<figure class='pk-112'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby normal'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Chansey_(Pokémon)' target='_blank'>
+						<figure class='pk-113'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby grass'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Tangela_(Pokémon)' target='_blank'>
+						<figure class='pk-114'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby normal'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Kangaskhan_(Pokémon)' target='_blank'>
+						<figure class='pk-115 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 xy normal mega'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Kangaskhan_(Pokémon)' target='_blank'>
+						<figure class='pk-115 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby water'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Horsea_(Pokémon)' target='_blank'>
+						<figure class='pk-116'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby water'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Seadra_(Pokémon)' target='_blank'>
+						<figure class='pk-117'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby water'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Goldeen_(Pokémon)' target='_blank'>
+						<figure class='pk-118'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby water'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Seaking_(Pokémon)' target='_blank'>
+						<figure class='pk-119'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby water'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Staryu_(Pokémon)' target='_blank'>
+						<figure class='pk-120'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby water psychic multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Starmie_(Pokémon)' target='_blank'>
+						<figure class='pk-121'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby psychic fairy multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Mr._Mime_(Pokémon)' target='_blank'>
+						<figure class='pk-122'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby bug flying multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Scyther_(Pokémon)' target='_blank'>
+						<figure class='pk-123'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby ice psychic multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Jynx_(Pokémon)' target='_blank'>
+						<figure class='pk-124'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby electric'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Electabuzz_(Pokémon)' target='_blank'>
+						<figure class='pk-125'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby fire'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Magmar_(Pokémon)' target='_blank'>
+						<figure class='pk-126'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby bug'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Pinsir_(Pokémon)' target='_blank'>
+						<figure class='pk-127 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 xy bug flying mega multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Pinsir_(Pokémon)' target='_blank'>
+						<figure class='pk-127 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby normal'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Tauros_(Pokémon)' target='_blank'>
+						<figure class='pk-128'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby water'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Magikarp_(Pokémon)' target='_blank'>
+						<figure class='pk-129'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw water flying multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Gyrados_(Pokémon)' target='_blank'>
+						<figure class='pk-130 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 xy gw water dark mega multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Gyrados_(Pokémon)' target='_blank'>
+						<figure class='pk-130 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw water'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Lapras_(Pokémon)' target='_blank'>
+						<figure class='pk-131'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw normal'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Ditto_(Pokémon)' target='_blank'>
+						<figure class='pk-132'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw normal eevee'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Eevee_(Pokémon)' target='_blank'>
+						<figure class='pk-133'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw water eevee'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Vaporeon_(Pokémon)' target='_blank'>
+						<figure class='pk-134'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw electric eevee'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Jolteon_(Pokémon)' target='_blank'>
+						<figure class='pk-135'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw fire eevee'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Flareon_(Pokémon)' target='_blank'>
+						<figure class='pk-136'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby normal'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Porygon_(Pokémon)' target='_blank'>
+						<figure class='pk-137'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby rock water multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Omanyte_(Pokémon)' target='_blank'>
+						<figure class='pk-138'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby rock water multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Omastar_(Pokémon)' target='_blank'>
+						<figure class='pk-139'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby rock water multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Kabuto_(Pokémon)' target='_blank'>
+						<figure class='pk-140'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw rock water multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Kabutops_(Pokémon)' target='_blank'>
+						<figure class='pk-141'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw rock flying multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Aerodactyl_(Pokémon)' target='_blank'>
+						<figure class='pk-142 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 xy gw rock flying mega multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Aerodactyl_(Pokémon)' target='_blank'>
+						<figure class='pk-142 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw normal'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Snorlax_(Pokémon)' target='_blank'>
+						<figure class='pk-143'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw ice flying multi legend'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Articuno_(Pokémon)' target='_blank'>
+						<figure class='pk-144'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby electric flying multi legend'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Zapdos_(Pokémon)' target='_blank'>
+						<figure class='pk-145'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby fire flying multi legend'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Moltres_(Pokémon)' target='_blank'>
+						<figure class='pk-146'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw dragon'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Dratini_(Pokémon)' target='_blank'>
+						<figure class='pk-147'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw dragon'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Dragonair_(Pokémon)' target='_blank'>
+						<figure class='pk-148'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw dragon flying multi'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Dragonite_(Pokémon)' target='_blank'>
+						<figure class='pk-149'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby psychic legend'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Mewtwo_(Pokémon)' target='_blank'>
+						<figure class='pk-150 a'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 xy psychic fighting mega multi legend'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Mewtwo_(Pokémon)' target='_blank'>
+						<figure class='pk-150 b'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 xy gw psychic mega legend'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Mewtwo_(Pokémon)' target='_blank'>
+						<figure class='pk-150 c'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+				<li class='1 rgby gw psychic legend'>
+					<a href='https://bulbapedia.bulbagarden.net/wiki/Mew_(Pokémon)' target='_blank'>
+						<figure class='pk-151'>
+							<svg viewBox='0 0 10 10'></svg>
+						</figure>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</section>
+
+
+<script src="/static/js/imagesloaded.min.js"></script>
+<script src="/static/js/isotope.min.js"></script>
+<script src="/static/js/packery.min.js"></script>
+<script src="/static/code/js/pokemon-sprites.js"></script>

@@ -1,12 +1,12 @@
 ---json
 {
-	"permalink": "writes/feed.xml",
+	"permalink": "/posts/feed.xml",
 	"eleventyExcludeFromCollections": true,
 	"metadata": {
-		"title": "gabriellew.ee/writes",
+		"title": "Gabrielle Wee",
 		"subtitle": "Gabrielle Wee’s personal blog and photo journal.",
-		"url": "https://gabriellew.ee/writes/",
-		"feedUrl": "https://gabriellew.ee/writes/feed.xml",
+		"url": "https://gabriellew.ee",
+		"feedUrl": "https://gabriellew.ee/posts/feed.xml",
 		"author": {
 			"name": "Gabrielle Wee",
 			"email": "mail@gabriellew.ee"
@@ -26,7 +26,7 @@
 		<name>{{ metadata.author.name }}</name>
 		<email>{{ metadata.author.email }}</email>
 	</author>
-	{%- for post in collections.writes %}
+	{%- for post in collections.posts %}
 	{% set absolutePostUrl %}{{ post.url | url | absoluteUrl(metadata.url) }}{% endset %}
 	<entry>
 		<title>{{ post.data.title }}</title>

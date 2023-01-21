@@ -1,0 +1,1166 @@
+@import 'reset';
+
+$pokemon: bulbasaur, ivysaur, venusaur, charmander, charmeleon, charizard, squirtle, wartortle, blastoise;
+$colors: #78d9ad, #81bbc6, #8cc7c3, #efaf84, #ef8b78, #f4af63, #84c5d6, #75a4db, #94b7e1;
+
+@mixin e($top, $left, $bottom, $right, $width, $height, $color) {
+	position: absolute;
+	top: $top;
+	left: $left;
+	bottom: $bottom;
+	right: $right;
+	width: $width;
+	height: $height;
+	background: $color;
+}
+@mixin t($width, $height, $color) {
+	position: relative;
+	width: $width;
+	height: $height;
+	margin: 0 auto;
+	background: $color;
+}
+@mixin f($color) {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background: $color;
+}
+@mixin p($gap) {
+	&:before {
+		left: $gap;
+	}
+	&:after {
+		right: $gap;
+	}
+}
+@mixin g($a, $b, $num) {
+	&:nth-child(#{$a}) {
+		left: $num;
+		clip-path: polygon(0 0, 100% 100%, 0 100%);
+	}
+	&:nth-child(#{$b}) {
+		right: $num;
+		clip-path: polygon(100% 0, 100% 100%, 0 100%);
+	}
+}
+@mixin m($a, $b, $num) {
+	&:nth-child(#{$a}) {
+		left: $num;
+	}
+	&:nth-child(#{$b}) {
+		right: $num;
+	}
+}
+@mixin n($a, $b, $num) {
+	&:nth-child(#{$a}) {
+		padding-left: $num;
+	}
+	&:nth-child(#{$b}) {
+		padding-right: $num;
+	}
+}
+@mixin a($a, $b, $num) {
+	&:nth-child(#{$a}) {
+		clip-path: polygon(0 0, #{100% - $num} 0%, 100% 100%, 0% 100%);
+	}
+	&:nth-child(#{$b}) {
+		clip-path: polygon($num 0, 100% 0, 100% 100%, 0% 100%);
+	}
+}
+
+*, *:before, *:after { box-sizing: border-box; }
+* { user-select: none; -webkit-tap-highlight-color: rgba(0,0,0,0); transform-style: preserve-3d; }
+*:focus { outline: none; }
+html, body { height: 100%; }
+
+body {
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+}
+
+@for $i from 1 through length($colors) {
+	.#{nth($pokemon, $i)} {
+		background: nth($colors, $i)
+	}
+}
+
+main {
+	animation: bgColor 9s linear 0.5s forwards, bgEnd 1s linear 9.5s forwards;
+	will-change: background;
+	display: none;
+	background: #849896;
+	width: 100%;
+	height: 100%;
+	.container {
+		display: flex;
+		flex-flow: row wrap;
+		align-items: center;
+		align-content: center;
+		justify-content: center;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 25vw;
+		height: 25vw;
+		min-width: 300px;
+		min-height: 300px;
+		@media only screen and (max-height: 25vw) {
+			width: 18vw;
+			height: 18vw;
+		}
+		.bg {
+			will-change: background-color;
+			position: absolute;
+			top: calc(50% - 50vh);
+			left: calc(50% - 50vw);
+			width: 100vw;
+			height: 100vh;
+			z-index: -1;
+		}
+		> .hover, > .animate, > .magnify, > .label, > input {
+			opacity: 0;
+			visibility: hidden;
+		}
+		> .hover, > .animate, > .magnify {
+			display: block;
+			overflow: hidden;
+			&:before, &:after, div:before, div:after {
+				content: "";
+				display: block;
+			}
+		}
+		> .label {
+			will-change: opacity, transform, visibility, background-color;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			bottom: calc(100% + 12px);
+			left: 0;
+			width: 100%;
+			height: 1vw;
+			min-height: 28px;
+			border-radius: 0.5vw;
+			color: white;
+			font-weight: 500;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+			@media (prefers-reduced-motion: no-preference) {
+				transform: translateY(100%) translateY(12px);
+				transition: transform 0.125s ease-out, opacity 0.5s linear 0.125s, visibility 0 linear 0.5s, background-color 0.25s ease-out;
+			}
+			@media (prefers-reduced-motion: reduce) {
+				transition: opacity 0.5s linear 0.125s, visibility 0 linear 0.5s, background-color 0.25s ease-out;
+			}
+		}
+		> .magnify, > .animate {
+			transform-origin: center center;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			border-radius: 0.5vw;
+		}
+		> .animate {
+			will-change: opacity, transform, visibility;
+			z-index: 12;
+			@supports(animation-fill-mode: forwards) {
+				animation-fill-mode: forwards, linear;
+				animation-timing-function: linear, linear;
+
+				@for $i from 1 through length($pokemon) {
+					&.#{nth($pokemon, $i)} {
+						animation-delay: #{($i - 1) + 0.5}s, #{($i - 1) + 1.5}s;
+						@if $i == 1 {
+							animation-duration: 1s, 1s;
+							@media (prefers-reduced-motion: no-preference) {
+								animation-name: spinInFirst, spinOut;
+							}
+							@media (prefers-reduced-motion: reduce) {
+								animation-name: fadeIn, fadeOut;
+							}
+						} @else if $i == length($pokemon) {
+							animation-duration: 1s, 0.5s;
+							@media (prefers-reduced-motion: no-preference) {
+								animation-name: spinIn, fadeOut;
+							}
+							@media (prefers-reduced-motion: reduce) {
+								animation-name: fadeIn, fadeOut;
+							}
+							
+						} @else {
+							animation-duration: 1s, 1s;
+							@media (prefers-reduced-motion: no-preference) {
+								animation-name: spinIn, spinOut;
+							}
+							@media (prefers-reduced-motion: reduce) {
+								animation-name: fadeIn, fadeOut;
+							}
+						}
+					}
+				}
+			}
+		}
+		> .magnify {
+			will-change: opacity, transform, visibility, z-index, border-radius;
+			opacity: 0;
+			visibility: hidden;
+			transform: scale(0.34);
+			border-radius: 1.5vw;
+			transition: transform 0.125s ease-out, border-radius 0.25s linear, z-index 0 linear 0.5s, opacity 0.125s linear 0.125s, visibility 0 linear 0.5s;
+			
+			&.bulbasaur {
+				transform-origin: left top;
+			}
+			&.ivysaur {
+				transform-origin: center top;
+			}
+			&.venusaur {
+				transform-origin: right top;
+			}
+
+			&.charmander {
+				transform-origin: left center;
+			}
+			&.charmeleon {
+				transform-origin: center center;
+			}
+			&.charizard {
+				transform-origin: right center;
+			}
+
+			&.squirtle {
+				transform-origin: left bottom;
+			}
+			&.wartortle {
+				transform-origin: center bottom;
+			}
+			&.blastoise {
+				transform-origin: right bottom;
+			}
+		}
+		> .hover {
+			will-change: opacity, visibility;
+			cursor: pointer;
+			position: relative;
+			z-index: 10;
+			width: calc(100% / 3);
+			height: calc(100% / 3);
+			animation: fadeIn 1s linear 9.5s forwards;
+			&:nth-of-type(1) {
+				border-top-left-radius: 0.5vw;
+			}
+			&:nth-of-type(3) {
+				border-top-right-radius: 0.5vw;
+			}
+			&:nth-of-type(7) {
+				border-bottom-left-radius: 0.5vw;
+			}
+			&:nth-of-type(9) {
+				border-bottom-right-radius: 0.5vw;
+			}
+		}
+		> input {
+			will-change: opacity, visibility;
+			animation: fadeIn 1s linear 9.5s forwards;
+			appearance: none;
+			cursor: pointer;
+			display: block;
+			position: absolute;
+			z-index: 11;
+			width: calc(100% / 3);
+			height: calc(100% / 3);
+			border: 0;
+			margin: 0;
+			padding: 0;
+			background: transparent;
+
+			&#bulbasaur {
+				top: 0;
+				left: 0;
+			}
+			&#ivysaur {
+				top: 0;
+				left: calc(100% / 3);
+			}
+			&#venusaur {
+				top: 0;
+				left: calc(100% / 3 * 2);
+			}
+
+			&#charmander {
+				top: calc(100% / 3);
+				left: 0;
+			}
+			&#charmeleon {
+				top: calc(100% / 3);
+				left: calc(100% / 3);
+			}
+			&#charizard {
+				top: calc(100% / 3);
+				left: calc(100% / 3 * 2);
+			}
+
+			&#squirtle {
+				top: calc(100% / 3 * 2);
+				left: 0;
+			}
+			&#wartortle {
+				top: calc(100% / 3 * 2);
+				left: calc(100% / 3);
+			}
+			&#blastoise {
+				top: calc(100% / 3 * 2);
+				left: calc(100% / 3 * 2);
+			}
+
+			@for $i from 1 through length($pokemon) {
+				&##{nth($pokemon, $i)} {
+					&:hover, &:focus, &:active, &:checked {
+						~ .label.#{nth($pokemon, $i)} {
+							opacity: 1;
+							visibility: visible;
+							@media (prefers-reduced-motion: no-preference) {
+								transform: none;
+								transition: transform 0.25s cubic-bezier(.25,1.15,.4,1.15), background-color 0.25s ease-out;
+							}
+							@media (prefers-reduced-motion: reduce) {
+								transition: background-color 0.25s ease-out;
+							}
+						}
+					}
+					&:active, &:checked {
+						~ .label.#{nth($pokemon, $i)} {
+							background: rgba(white, .1);
+						}
+					}
+					&:checked {
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						z-index: 12;
+						~ .bg {
+							background-color: darken(nth($colors, $i), 15%);
+						}
+						~ .magnify.#{nth($pokemon, $i)} {
+							z-index: 10;
+							opacity: 1;
+							border-radius: 0.5vw;
+							visibility: visible;
+							transform: none;
+							@media (prefers-reduced-motion: no-preference) {
+								transition: transform 0.25s cubic-bezier(.25,1.15,.4,1.15), border-radius 0.25s linear;
+							}
+							@media (prefers-reduced-motion: reduce) {
+								transition: opacity 0.25s linear;
+							}
+						 }
+					}
+				}
+			}
+		}
+	}
+}
+.warning {
+	margin: 0 auto;
+	max-width: 500px;
+	padding: 12px;
+	line-height: 1.4;
+}
+
+@supports(-webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%)) or (clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%)) {
+	main {
+		display: flex;
+	}
+	.warning {
+		display: none;
+	}
+}
+
+.bulbasaur {
+	> div {
+		&:nth-child(1) {
+			@include t(62.5%, 9.375%, #75b87e);
+			clip-path: polygon(0 0, 100% 0, 94.375% 100%, 5.625% 100%);
+			div {
+				@include t(12.5%, 100%, #639868);
+			}
+		}
+		&:nth-child(2) {
+			@include e(9.375%, 50%, auto, auto, 21.09%, 10.16%, #3c8a5d);
+			&:before {
+				@include e(84.62%, -66.67%, auto, auto, 33.33%, 69.23%, #3c8a5d);
+			}
+			&:after {
+				@include e(200%, -11.11%, auto, auto, 48.15%, 100%, #3c8a5d);
+			}
+		}
+		&:nth-child(3) {
+			@include e(56.25%, 45%, auto, auto, 10%, 4%, none);
+			&:before {
+				@include e(0, 0, auto, auto, 16%, 100%, #5aaa84);
+			}
+			&:after {
+				@include e(0, auto, auto, 0, 16%, 100%, #5aaa84);
+			}
+		}
+		&:nth-child(4), &:nth-child(5) {
+			@include e(31.25%, auto, auto, auto, 24.22%, 25.39%, white);
+			padding-top: 2.34%;
+			div {
+				@include f(#bd414f);
+				&:before {
+					@include e(auto, 0, 0, auto, 100%, 26.67%, #d6616d);
+				}
+				&:after {
+					@include e(25%, auto, auto, auto, 32.61%, 50%, white);
+				}
+			}
+		}
+		@include m(4, 5, 8%);
+		@include n(4, 5, 6.25%);
+		@include a(4, 5, 21%);
+		&:nth-child(4) {
+			div {
+				&:after {
+					left: 30.4%;
+				}
+			}
+		}
+		&:nth-child(5) {
+			div {
+				&:after {
+					right: 30.4%;
+				}
+			}
+		}
+		&:nth-child(6) {
+			@include e(62.5%, 12.5%, auto, auto, 75%, 16%, #944368);
+			padding: 8% 9% 0;
+			div {
+				@include f(#ce779f);
+			}
+			&:before, &:after {
+				@include e(0, auto, auto, auto, 8%, 30%, white);
+			}
+			@include p(6%);
+		}
+	}
+}
+.ivysaur {
+	> div {
+		&:nth-child(1) {
+			@include t(75%, 11.5%, #d87289);
+			clip-path: polygon(0 0, 100% 0, 89.5% 100%, 10.5% 100%);
+			div {
+				@include t(64.58%, 100%, #6ba470);
+			}
+		}
+		&:nth-child(2) {
+			@include e(11.5%, 40.625%, auto, auto, 31.25%, 19.92%, none);
+			z-index: 2;
+			&:before {
+				@include e(0, 0, auto, auto, 100%, 100%, #317d94);
+			clip-path: polygon(0 0, 100% 0, 63.75% 100%, 36.25% 100%);
+			}
+			&:after {
+				@include e(84.31%, -20%, auto, auto, 30%, 43.14%, #317d94);
+				clip-path: polygon(0 0, 100% 0, 71% 100%, 29% 100%);
+			}
+		}
+		&:nth-child(3) {
+			@include e(32.59%, 21.68%, auto, auto, 56.64%, 32.25%, #81bbc6);
+			z-index: 1;
+			clip-path: polygon(0 0, 100% 0, 68% 100%, 32% 100%);
+		}
+		&:nth-child(4) {
+			@include e(57.42%, 44.5%, auto, auto, 11%, 3.91%, none);
+			z-index: 1;
+			&:before, &:after {
+				@include e(0, auto, auto, auto, 18%, 100%, #6b9aa5);
+			}
+			@include p(0);
+		}
+		&:nth-child(5), &:nth-child(6) {
+			@include e(33.59%, auto, auto, auto, 27.34%, 20.31%, white);
+			z-index: 0;
+			div {
+				@include f(#c64552);
+				&:before {
+					@include e(auto, 0, 0, auto, 100%, 30.77%, #e14e5a);
+				}
+				&:after {
+					@include e(0, auto, auto, auto, 30%, 82.69%, #3c292b);
+				}
+			}
+		}
+		@include m(5, 6, 6.25%);
+		@include n(5, 6, 7.8125%);
+		&:nth-child(5) {
+			div {
+				&:after {
+					left: 40%;
+				}
+			}
+		}
+		&:nth-child(6) {
+			div {
+				&:after {
+					right: 40%;
+				}
+			}
+		}
+		&:nth-child(7) {
+			@include e(60.55%, 10%, auto, auto, 80%, 16.41%, #944368);
+			padding: 9.375% 10.55% 0; 
+			div {
+				@include f(#ce779f);
+			}
+			&:before, &:after {
+				@include e(0, auto, auto, auto, 11.71%, 40.48%, white);
+			}
+			@include p(7.32%);
+		}
+	}
+}
+.venusaur {
+	> div {
+		&:nth-child(1) {
+			@include t(100%, 25%, #e1808e);
+			&:before {
+				@include e(0, 9.375%, auto, auto, 5.47%, 21.875%, #f4d3d3);
+			}
+			&:after {
+				@include e(32.8125%, 17.1875%, auto, auto, 7.8125%, 31.25%, #f4d3d3);
+			}
+			div {
+				@include e(0, auto, auto, 11.72%, 10.9375%, 43.75%, #f4d3d3);
+			}
+		}
+		&:nth-child(2) {
+			@include e(0, 28.9%, auto, auto, 42.2%, 21.95%, #8c7152);
+			padding: 5.47% 0 6.25%;
+			div {
+				@include f(#7b634a);
+			}
+		}
+		&:nth-child(3) {
+			@include e(25%, 0, auto, auto, 100%, 7.8125%, #81a884);
+			div {
+				@include e(0, 25.4%, auto, auto, 49.2%, 310%, #81a884);
+				clip-path: polygon(0 0, 100% 0, 100% 83.87%, 93% 100%, 7% 100%, 0 83.87%);
+			}
+		}
+		&:nth-child(4) {
+			@include e(0, 0, auto, auto, 100%, 100%, none);
+			&:before {
+				@include e(21.95%, 22.7%, auto, auto, 54.6%, 3.1%, #759a78);
+			}
+			&:after {
+				@include e(21.95%, 47.7%, auto, auto, 4.6%, 19.53%, #759a78);
+			}
+		}
+		&:nth-child(5), &:nth-child(6) {
+			@include e(14.8%, auto, auto, auto, 15.625%, 18.4%, #8cc7c3);
+			div {
+				@include e(auto, auto, 0, auto, 65%, 80.85%, #bd5f6d);
+			}
+		}
+		@include m(5, 6, 0);
+		&:nth-child(5) {
+			clip-path: polygon(72.5% 0, 82.5% 12.77%, 100% 100%, 0 100%, 0 0);
+			div {
+				left: 0;
+				clip-path: polygon(84.62% 0, 100% 10.53%, 100% 100%, 0 100%, 0 0);
+			}
+		}
+		&:nth-child(6) {
+			clip-path: polygon(27.5% 0, 100% 0, 100% 100%, 0 100%, 17.5% 12.77%);
+			div {
+				right: 0;
+				clip-path: polygon(15.38% 0, 100% 0, 100% 100%, 0 100%, 0 10.53%);
+			}
+		}
+		&:nth-child(7), &:nth-child(8) {
+			@include e(45%, auto, auto, auto, 19.14%, 19.14%, white);
+			padding: 0 4.3% 3.125%;
+			overflow: hidden;
+			div {
+				@include f(#c65563);
+				&:before {
+					@include e(0, 32.14%, auto, auto, 35.72%, 78.05%, white);
+				}
+				&:after {
+					@include e(auto, auto, 0, auto, 75%, 21.95%, #db5e6d);
+				}
+			}
+			&:after {
+				@include e(-2%, -2%, auto, auto, 104%, 104%, #86c0bd);
+			}
+		}
+		@include m(7, 8, 5.47%);
+		&:nth-child(7) {
+			div {
+				&:after {
+					left: 0;
+				}
+			}
+			&:after {
+				clip-path: polygon(0 0, 100% 0, 100% 73.47%, 0 30.61%);
+			}
+		}
+		&:nth-child(8) {
+			div {
+				&:after {
+					right: 0;
+				}
+			}
+			&:after {
+				clip-path: polygon(0 0, 100% 0, 100% 30.61%, 0 73.47%);
+			}
+		}
+		&:nth-child(9) {
+			@include e(67.97%, 43%, auto, auto, 14%, 2.73%, none);
+			z-index: 1;
+			&:before, &:after {
+				@include e(0, auto, auto, auto, 19.44%, 100%, #6b9a99);
+			}
+			@include p(0);
+		}
+		&:nth-child(10) {
+			@include e(69.14%, 0, auto, auto, 100%, 10.94%, #864244);
+			clip-path: polygon(39.84% 35.71%, 60.16% 35.71%, 62.5% 0, 100% 0, 100% 100%, 0 100%, 0 0, 37.5% 0);
+			&:before, &:after {
+				@include e(0, auto, auto, auto, 7.03%, 60.71%, white);
+			}
+			@include p(4.69%);
+		}
+		&:nth-child(11) {
+			@include e(79.3%, 0, auto, auto, 100%, 6.64%, #9c7b94);
+			div {
+				@include e(auto, auto, 0, auto, 16.41%, 64.71%, none);
+				&:nth-child(1) {
+					left: 7.8125%;
+				}
+				&:nth-child(2) {
+					right: 7.8125%;
+				}
+				&:before, &:after {
+					@include e(0, auto, auto, auto, 38.1%, 100%, white);
+				}
+				@include p(0);
+			}
+		}
+	}
+}
+
+.charmander {
+	> div {
+		&:nth-child(1), &:nth-child(2) {
+			@include e(12.89%, auto, auto, auto, 21.875%, 33.2%, #1e2c31);
+			padding: 7.42% 6.25% 5.47%;
+			div {
+				@include f(#182226);
+			}
+			&:before {
+				@include e(auto, 0, 0, auto, 100%, 27.06%, #396d7e);
+			}
+			&:after {
+				@include e(4.71%, auto, auto, auto, 37.5%, 37.65%, white);
+			}
+		}
+		@include m(1, 2, 9%);
+		&:nth-child(1) {
+			&:after {
+				right: 12.5%;
+			}
+		}
+		&:nth-child(2) {
+			&:after {
+				left: 12.5%;
+			}
+		}
+		&:nth-child(3) {
+			@include e(55.08%, 42.5%, auto, auto, 15%, 6.25%, none);
+			&:before, &:after {
+				@include e(auto, auto, auto, auto, 23%, 100%, #d39873);
+			}
+			@include p(0);
+		}
+		&:nth-child(4) {
+			@include e(64.45%, 11%, auto, auto, 78%, 24.22%, #a26f8e);
+			padding: 11.33% 8.2% 0;
+			&:before, &:after {
+				@include e(0, auto, auto, auto, 10.5%, 32.26%, white);
+			}
+			@include p(7%);
+			div {
+				@include f(#cb98c0);
+				&:before, &:after {
+					@include e(auto, auto, 0, auto, 11.25%, 48.48%, white);
+				}
+				@include p(6.25%);
+			}
+		}
+	}
+}
+.charmeleon {
+	> div {
+		&:nth-child(1), &:nth-child(2) {
+			@include e(18.36%, auto, auto, auto, 26.95%, 23.83%, white);
+			&:before {
+				@include e(0, auto, auto, auto, 15.94%, 68.85%, white);
+				z-index: 1;
+			}
+			&:after {
+				@include e(0, auto, auto, auto, 24.64%, 88.52%, #231a1e);
+			}
+			div {
+				@include f(#3c5668);
+				&:before {
+					@include e(auto, 0, 0, auto, 100%, 16.39%, #47657b);
+				}
+			}
+		}
+		@include g(1, 2, 8.59%);
+		@include n(1, 2, 7.8125%);
+		&:nth-child(1) {
+			&:before {
+				left: 39.13%;
+			}
+			&:after {
+				left: 49.28%;
+			}
+		}
+		&:nth-child(2) {
+			&:before {
+				right: 39.13%;
+			}
+			&:after {
+				right: 49.28%;
+			}
+		}
+		&:nth-child(3) {
+			@include e(29.69%, 42.2%, auto, auto, 15.6%, 32.42%, none);
+			&:before, &:after {
+				@include e(0, auto, auto, auto, 10%, 38.55%, #d67d6b);
+			}
+			@include p(0);
+			div {
+				@include e(auto, 10%, 0, auto, 80%, 15.66%, none);
+				&:before, &:after {
+					@include e(0, auto, auto, auto, 15.625%, 100%, #d67d6b);
+				}
+				@include p(0);
+			}
+		}
+		&:nth-child(4) {
+			@include e(61.33%, 7.42%, auto, auto, 85.16%, 23.44%, #a26f8e);
+			padding: 11.72% 8.6% 0;
+			clip-path: polygon(37.61% 25.42%, 62.39% 25.42%, 65.14% 0, 100% 0, 100% 100%, 0 100%, 0 0, 34.86% 0);
+			&:before, &:after {
+				@include e(0, auto, auto, auto, 10.1%, 31.67%, white);
+			}
+			@include p(5.5%);
+			div {
+				@include f(#cb98c0);
+				&:before, &:after {
+					@include e(auto, auto, 0, auto, 8.57%, 50%, white);
+				}
+				@include p(8.57%);
+			}
+		}
+	}
+}
+.charizard {
+	> div {
+		&:nth-child(1) {
+			@include t(100%, 9.77%, #f1633c);
+			&:before, &:after {
+				@include e(0, auto, auto, auto, 22.27%, 100%, #f9b365);
+			}
+			@include p(11.33%);
+		}
+		&:nth-child(2), &:nth-child(3) {
+			@include e(25.39%, auto, auto, auto, 26.95%, 18.36%, white);
+			&:before {
+				@include e(0, auto, auto, auto, 21.74%, 63.83%, white);
+				z-index: 1;
+			}
+			&:after {
+				@include e(0, auto, auto, auto, 21.74%, 87.23%, #1e2a2e);
+			}
+			div {
+				@include f(#2b3c42);
+				&:before {
+					@include e(auto, 0, 0, auto, 100%, 21.28%, #3c565d);
+				}
+			}
+		}
+		@include g(2, 3, 8.6%);
+		&:nth-child(2) {
+			padding-left: 7.8125%;
+			padding-right: 3.91%;
+			&:before, &:after {
+				left: 44.93%;
+			}
+		}
+		&:nth-child(3) {
+			padding-left: 3.91%;
+			padding-right: 7.8125%;
+			&:before, &:after {
+				right: 44.93%;
+			}
+		}
+		&:nth-child(4) {
+			@include e(30.08%, 35.55%, auto, auto, 28.9%, 19.53%, none);
+			&:before, &:after {
+				@include e(0, auto, auto, auto, 9.46%, 70%, #e7a660);
+			}
+			@include p(0);
+			div {
+				@include e(auto, 23%, 0, auto, 54%, 30%, none);
+				&:before, &:after {
+					@include e(0, auto, auto, auto, 15%, 100%, #d09454);
+				}
+				@include p(0);
+			}
+		}
+		&:nth-child(5) {
+			@include e(62.5%, 5.86%, auto, auto, 88.28%, 24.22%, #a77191);
+			padding: 13.67% 7.8125% 0;
+			&:before, &:after {
+				@include e(0, auto, auto, auto, 11.5%, 40.32%, white);
+			}
+			@include p(4.42%);
+			div {
+				@include f(#cb98c0);
+				&:before, &:after {
+					@include e(auto, auto, 0, auto, 11.29%, 55.56%, white);
+				}
+				@include p(6%);
+			}
+		}
+	}
+}
+
+.squirtle {
+	> div {
+		&:nth-child(1), &:nth-child(2) {
+			@include e(23.44%, auto, auto, auto, 21.875%, 30.47%, white);
+			div {
+				@include f(#331e29);
+				&:before {
+					@include e(auto, 0, 0, auto, 100%, 26.92%, #91526d);
+				}
+			}
+			&:before {
+				@include e(5.13%, auto, auto, auto, 35.71%, 24.36%, white);
+				z-index: 1;
+			}
+			&:after {
+				@include e(5.13%, auto, auto, auto, 35.71%, 79.49%, black);
+			}
+		}
+		@include m(1, 2, 7.8125%);
+		@include n(1, 2, 5.47%);
+		&:nth-child(1) {
+			&:before, &:after {
+				left: 44.64%;
+			}
+		}
+		&:nth-child(2) {
+			&:before, &:after {
+				right: 44.64%;
+			}
+		}
+		&:nth-child(3) {
+			@include e(60.56%, 44.92%, auto, auto, 10.16%, 3.91%, none);
+			&:before, &:after {
+				@include e(0, auto, auto, auto, 23%, 100%, #70a7b5);
+			}
+			@include p(0);
+		}
+		&:nth-child(4) {
+			@include e(64.45%, 6.64%, auto, auto, 86.72%, 15.23%, #994b78);
+			clip-path: polygon(44.14% 30.77%, 55.86% 30.77%, 63.96% 0, 100% 0, 100% 100%, 0 100%, 0 0, 36.04% 0);
+			padding: 7.42% 9% 0;
+			div {
+				@include f(#d084ad);
+			}
+		}
+	}
+}
+.wartortle {
+	> div {
+		&:nth-child(1), &:nth-child(2) {
+			@include e(25.78%, auto, auto, auto, 26.56%, 31.25%, white);
+			&:before {
+				@include e(5%, auto, auto, auto, 52.94%, 22.5%, white);
+				z-index: 1;
+			}
+			&:after {
+				@include e(16.25%, auto, auto, auto, 26.47%, 65%, #261915);
+			}
+			div {
+				@include f(#70473f);
+				&:before {
+					@include e(auto, 0, 0, auto, 100%, 27.5%, #7e4f47);
+				}
+			}
+		}
+		@include m(1, 2, 8.2%);
+		@include n(1, 2, 8.2%);
+		@include a(1, 2, 30.88%);
+		&:nth-child(1) {
+			&:before {
+				left: 47%;
+			}
+			&:after {
+				left: 57.35%;
+			}
+		}
+		&:nth-child(2) {
+			&:before {
+				right: 47%;
+			}
+			&:after {
+				right: 57.35%;
+			}
+		}
+		&:nth-child(3) {
+			@include e(51.17%, 0, auto, auto, 100%, 5.86%, none);
+			&:before, &:after {
+				@include e(0, auto, auto, auto, 8.2%, 100%, #6892c3);
+			}
+			@include p(0);
+		}
+		&:nth-child(4) {
+			@include e(61.33%, 45.3125%, auto, auto, 9.375%, 4.3%, none);
+			&:before, &:after {
+				@include e(0, auto, auto, auto, 25%, 100%, #6590c0);
+			}
+			@include p(0);
+		}
+		&:nth-child(5) {
+			@include e(66.41%, 10.9375%, auto, auto, 78.125%, 13.67%, #994b78);
+			clip-path: polygon(43% 28.57%, 57% 28.57%, 61% 0, 100% 0, 100% 100%, 0 100%, 0 0, 39% 0);
+			padding: 6.64% 12.89% 0;
+			&:before, &:after {
+				@include e(0, auto, auto, auto, 9%, 48.57%, white);
+			}
+			@include p(4%);
+			div {
+				@include f(#d084ad);
+			}
+		}
+		&:nth-child(6) {
+			@include e(auto, 0, 0, auto, 100%, 9.77%, #e1d1af);
+			div {
+				@include e(0, 20%, auto, auto, 60%, 100%, #546165);
+				clip-path: polygon(0 0, 100% 0, 93.5% 100%, 6.5% 100%);
+			}
+		}
+	}
+}
+.blastoise {
+	&:before {
+		@include e(auto, 0, 0, auto, 100%, 25%, #e1d1af);
+	}
+	&:after {
+		@include t(51.5625%, 8.2%, #a58b6d);
+		clip-path: polygon(0 0, 100% 0, 96.2% 100%, 3.8% 100%);
+	}
+	> div {
+		&:nth-child(1), &:nth-child(2) {
+			@include e(22.66%, auto, auto, auto, 29.3%, 21.48%, white);
+			div {
+				@include f(#635142);
+				&:before {
+					@include e(auto, 0, 0, auto, 100%, 16.36%, #7b6552);
+				}
+			}
+			&:before {
+				@include e(0, auto, auto, auto, 12%, 63.64%, white);
+				z-index: 1;
+			}
+			&:after {
+				@include e(0, auto, auto, auto, 16%, 90.91%, #312921);
+			}
+		}
+		@include g(1, 2, 7.8125%);
+		&:nth-child(1) {
+			padding-left: 11.72%;
+			padding-right: 6.64%;
+			&:before {
+				left: 45.33%;
+			}
+			&:after {
+				left: 50.67%;
+			}
+		}
+		&:nth-child(2) {
+			padding-left: 6.64%;
+			padding-right: 11.72%;
+			&:before {
+				right: 45.33%;
+			}
+			&:after {
+				right: 50.67%;
+			}
+		}
+		&:nth-child(3) {
+			@include e(32.03%, 37.11%, auto, auto, 25.78%, 29.69%, none);
+			&:before, &:after {
+				@include e(0, auto, auto, auto, 12.12%, 40.79%, #89acd3);
+			}
+			@include p(0);
+			div {
+				@include e(auto, 8%, 0, auto, 84%, 7.89%, #84a4c8);
+				&:before, &:after {
+					@include e(-100%, auto, auto, auto, 23.64%, 100%, #7b9abd);
+				}
+				@include p(-11.82%);
+			}
+		}
+		&:nth-child(4) {
+			@include e(69.53%, 5.08%, auto, auto, 89.84%, 17.58%, #6b4b4a);
+			&:before, &:after {
+				@include e(0, auto, auto, auto, 10%, 31.11%, white);
+			}
+			@include p(11.74%);
+		}
+		&:nth-child(5) {
+			@include e(69.53%, 5.08%, auto, auto, 89.84%, 17.58%, none);
+			padding: 8.98% 10.55% 0;
+			&:before, &:after {
+				@include e(auto, auto, 0, auto, 6.09%, 24.44%, white);
+			}
+			@include p(0);
+			div {
+				@include f(#b76b7e);
+				&:before, &:after {
+					@include e(auto, auto, 0, auto, 13.07%, 50%, white);
+				}
+				@include p(0);
+			}
+		}
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		visibility: hidden;
+	}
+	to {
+		opacity: 1;
+		visibility: visible;
+	}
+}
+@keyframes fadeOut {
+	from {
+		opacity: 1;
+		visibility: visible;
+	}
+	to {
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+
+@keyframes bgColor {
+	0% { background: #849896; }
+
+	// bulbasaur
+	11.11% { background: darken(#78d9ad, 15%); }
+
+	// ivysaur
+	22.22% { background: darken(#81bbc6, 15%); }
+
+	// venusaur
+	33.33% { background: darken(#8cc7c3, 15%); }
+
+	// charmander
+	44.44% { background: darken(#efaf84, 15%); }
+
+	// charmeleon
+	55.56% { background: darken(#ef8b78, 15%); }
+
+	// charizard
+	66.67% { background: darken(#f4af63, 15%); }
+
+	// squirtle
+	77.78% { background: darken(#84c5d6, 15%); }
+
+	// wartortle
+	88.89% { background: darken(#75a4db, 15%); }
+
+	// blastoise
+	100% { background: darken(#94b7e1, 15%); }
+}
+@keyframes bgEnd {
+	from { background: darken(#94b7e1, 15%); }
+	to { background: #849896; }
+}
+
+// https://goo.gl/ykjfsj
+@keyframes spinInFirst { 
+  0% { opacity: 0; visibility: hidden; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  24.9% { opacity: 0; visibility: hidden; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  25% { opacity: 1; visibility: visible; transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  27.85% { transform: matrix3d(0.162, -0.338, 0, 0, 0.338, 0.162, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  30.66% { transform: matrix3d(0.471, -0.426, 0, 0, 0.426, 0.471, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  30.71% { transform: matrix3d(0.477, -0.426, 0, 0, 0.426, 0.477, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  33.51% { transform: matrix3d(0.74, -0.328, 0, 0, 0.328, 0.74, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  33.56% { transform: matrix3d(0.744, -0.325, 0, 0, 0.325, 0.744, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  36.31% { transform: matrix3d(0.897, -0.171, 0, 0, 0.171, 0.897, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  36.34% { transform: matrix3d(0.898, -0.169, 0, 0, 0.169, 0.898, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  39.16% { transform: matrix3d(0.972, -0.032, 0, 0, 0.032, 0.972, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  39.19% { transform: matrix3d(0.973, -0.031, 0, 0, 0.031, 0.973, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  41.97% { transform: matrix3d(1, 0.058, 0, 0, -0.058, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  42.04% { transform: matrix3d(1.001, 0.059, 0, 0, -0.059, 1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  47.57% { transform: matrix3d(1.011, 0.115, 0, 0, -0.115, 1.011, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  47.67% { transform: matrix3d(1.011, 0.115, 0, 0, -0.115, 1.011, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  61.29% { transform: matrix3d(1.003, 0.032, 0, 0, -0.032, 1.003, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  62.69% { transform: matrix3d(1.003, 0.024, 0, 0, -0.024, 1.003, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  75% { transform: matrix3d(1, -0.005, 0, 0, 0.005, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  77.7% { transform: matrix3d(1, -0.005, 0, 0, 0.005, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  100% { opacity: 1; visibility: visible; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 
+}
+
+// https://goo.gl/orG4SL
+@keyframes spinIn { 
+  0% { opacity: 0; visibility: hidden; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  24.9% { opacity: 0; visibility: hidden; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  25% { opacity: 1; visibility: visible; transform: matrix3d(0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  30.71% { transform: matrix3d(0.746, -0.666, 0, 0, 0.666, 0.746, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  33.56% { transform: matrix3d(0.916, -0.401, 0, 0, 0.401, 0.916, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  36.34% { transform: matrix3d(0.983, -0.185, 0, 0, 0.185, 0.983, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  39.19% { transform: matrix3d(0.999, -0.032, 0, 0, 0.032, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  42.04% { transform: matrix3d(0.998, 0.059, 0, 0, -0.059, 0.998, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  47.67% { transform: matrix3d(0.994, 0.113, 0, 0, -0.113, 0.994, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  62.69% { transform: matrix3d(1, 0.024, 0, 0, -0.024, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  77.7% { transform: matrix3d(1, -0.005, 0, 0, 0.005, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  100% { opacity: 1; visibility: visible; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 
+}
+
+// https://goo.gl/ar1WZ9
+@keyframes spinOut { 
+  0% { opacity: 1; visibility: visible; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  24.9% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  25% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  30.71% { transform: matrix3d(0.666, 0.746, 0, 0, -0.746, 0.666, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  33.56% { transform: matrix3d(0.401, 0.916, 0, 0, -0.916, 0.401, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  36.34% { transform: matrix3d(0.185, 0.983, 0, 0, -0.983, 0.185, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  39.19% { opacity: 1; visibility: visible; transform: matrix3d(0.032, 0.999, 0, 0, -0.999, 0.032, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  42.04% { opacity: 0; visibility: hidden; transform: matrix3d(-0.059, 0.998, 0, 0, -0.998, -0.059, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  47.67% { transform: matrix3d(-0.113, 0.994, 0, 0, -0.994, -0.113, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  62.69% { transform: matrix3d(-0.024, 1, 0, 0, -1, -0.024, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  77.7% { transform: matrix3d(0.005, 1, 0, 0, -1, 0.005, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  100% { opacity: 0; transform: matrix3d(0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 
+}

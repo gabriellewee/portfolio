@@ -3,7 +3,7 @@ html {
 	height: 100vh;
 	height: -webkit-fill-available;
 	scroll-behavior: smooth;
-	@media screen and (prefers-reduced-motion: reduce) {
+	@media (prefers-reduced-motion: reduce) {
 		scroll-behavior: auto;
 	}
 }
@@ -42,23 +42,4 @@ figure, picture, img {
 img {
 	font-style: normal;
 	font-size: 1.125rem;
-}
-
-@include dark {
-	body {
-		background-color: var(--color-iron-1);
-	}
-	body, a {
-		color: rgba(white, .8);
-	}
-
-	::-moz-selection {
-		background-color: white;
-		color: var(--color-iron);
-	}
-
-	::selection {
-		background-color: white;
-		color: var(--color-iron);
-	}
 }

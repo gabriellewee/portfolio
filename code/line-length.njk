@@ -1,0 +1,101 @@
+---
+title: Line Length Calculator
+description: Line Length Calculator
+date: 2017-03-22
+
+permalink: /code/{{ page.fileSlug }}/
+uri: XMEEda
+
+layout: layouts/base.njk
+tags: entries
+category: code
+
+blank: true
+style: code/css/line-length
+hidden: true
+
+height: 500
+button: reload content
+---
+
+<ul>
+	<li>
+		<p>
+			Drop the coordinates for an <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/line" target="_blank">SVG line</a> in the first four boxes to find its length, i.e. <code>&lt;line x1="<span>4.5</span>" x2="<span>9.24</span>" y1="<span>12.5</span>" y2="<span>17.24</span>"&gt;</code> - useful when calculating stroke-dashoffset for animation.
+		</p>
+	</li>
+	<li>
+		<form class="form-length">
+			<ul>
+				<li>
+					<label for="x1-length">x1</label>
+					<input id="x1-length" class="line-length" type="text" onClick="this.select();"/>
+				</li>
+				<li>
+					<label for="x2-length">x2</label>
+					<input id="x2-length" class="line-length" type="text" onClick="this.select();"/>
+				</li>
+				<li>
+					<label for="y1-length">y1</label>
+					<input id="y1-length" class="line-length" type="text" onClick="this.select();"/>
+				</li>
+				<li>
+					<label for="y2-length">y2</label>
+					<input id="y2-length" class="line-length" type="text" onClick="this.select();"/>
+				</li>
+			</ul>
+		</form>
+		<div><button id="submit-btn">get length</button></div>
+	</li>
+	<li>
+		<form>
+			<div>
+				<input id="line-output" class="copy" data-clipboard-target="#line-output" type="tel" />
+			</div>
+		</form>
+		<div>
+			<button id="copy-btn" class="copy" data-clipboard-target="#line-output">copy</button>
+		</div>
+	</li>
+</ul>
+
+<svg><line x1="" x2="" y1="" y2=""></line></svg>
+
+<script src="https://use.typekit.net/lkh0ago.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+<script src="/static/code/js/jquery.min.js"></script>
+<script src="/static/js/clipboard.min.js"></script>
+<script>
+	$("body").addClass("pre-enter");
+	setTimeout(function(){
+		$("body").addClass("on-enter");
+	}, 500);
+	setTimeout(function(){
+		$("body").removeClass("pre-enter on-enter");
+	}, 1500);
+
+	function round(value, decimals) {
+		return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+	}
+
+	$('#submit-btn').click(function(){
+		var line = document.querySelector('line');
+		var x1 = document.getElementById('x1-length').value;
+		var x2 = document.getElementById('x2-length').value;
+		var y1 = document.getElementById('y1-length').value;
+		var y2 = document.getElementById('y2-length').value;
+		line.setAttribute("x1", x1);
+		line.setAttribute("x2", x2);
+		line.setAttribute("y1", y1);
+		line.setAttribute("y2", y2);
+		setTimeout(function(){
+			var length = Math.sqrt( (x2-=x1)*x2 + (y2-=y1)*y2 );
+			var total = round(length, 3);
+			console.log(total);
+			document.getElementById('line-output').value = total;
+		}, 100);
+	});
+
+	new ClipboardJS('.copy');
+</script>

@@ -1,22 +1,23 @@
 ---
-title: Archive · Writing
-description: Gabrielle Wee’s personal blog and photo journal archive.
+title: Archive
+description: Post archive for gabriellew.ee
+permalink: /archive/
 
-permalink: /writes/archive/
+key: archive
 layout: layouts/base.njk
-key: writing
-og: true
-style: true
-tags: subpages
+tags: pages
+animation: true
+og: writing
+
+message: Post archive for gabriellew.ee
 ---
 
-{% set showYear = true %}
 {% set currentYear = "" %}
 
-<article class="archive">
-	<ul>
-		{% for post in collections.writes | reverse %}
-			{% if showYear == true %}
+<section class="posts-container">
+	<article class="posts-archive">
+		<ul>
+			{% for post in collections.posts | reverse %}
 				{% set postYear = post.date.getFullYear() %}
 				{% if currentYear != postYear %}
 					{% set currentYear = postYear %}
@@ -24,11 +25,24 @@ tags: subpages
 						<h2>{{ postYear }}</h2>
 					</li>
 				{% endif %}
-			{% endif %}
-			<li>
-				<h3><a href="{{post.url | url}}">{{post.data.title | nbsp | safe}}</a></h3>
-				<span role="text"><time datetime="{{post.date | htmlDateString}}">{{post.date | readableDate}}</time></span>
-			</li>
-		{% endfor %}
-	</ul>
-</article>
+				<li>
+					<h3><a href="{{post.url | url}}"><span>{{post.data.title | nbsp | safe}}</span></a></h3>
+					<time datetime="{{post.date | htmlDateString}}">{{post.date | readableDate}}</time>
+				</li>
+			{% endfor %}
+			{% for post in collections.archive | reverse %}
+				{% set postYear = post.date.getFullYear() %}
+				{% if currentYear != postYear %}
+					{% set currentYear = postYear %}
+					<li class="year">
+						<h2>{{ postYear }}</h2>
+					</li>
+				{% endif %}
+				<li>
+					<h3><a href="{{post.url | url}}"><span>{{post.data.title | nbsp | safe}}</span></a></h3>
+					<time datetime="{{post.date | htmlDateString}}">{{post.date | readableDate}}</time>
+				</li>
+			{% endfor %}
+		</ul>
+	</article>
+</section>

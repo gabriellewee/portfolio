@@ -1,0 +1,64 @@
+[
+	{
+		"title": "Codepen Blog - 345: With Gabrielle Wee",
+		"date": "2021-12-08",
+		"type": "audio",
+		"platform": "Codepen",
+		"url": "https://blog.codepen.io/2021/12/08/345-with-gabrielle-wee/",
+		"summary": "<p>This week I talk with <a href='https://gabriellew.ee/' target='_blank'>Gabrielle Wee</a>, who’s done loads of creative coding work <a href='https://codepen.io/gabriellewee' target='_blank'>here on CodePen</a> but like so many other creative people we talk to, her creativity explodes into so many other areas like illustration, photography, drawing, and even gardening. Plus a desire to <a href='https://gabriellewee.medium.com/how-to-create-direction-aware-css-only-hover-effects-2bbf0e13ad5b' target='_blank'>share those techniques</a>. Her path has led her to be working at Apple, a dream job.</p>",
+		"external": [
+			{
+				"platform": "apple-podcasts",
+				"title": "Apple Podcasts",
+				"url": "https://itunes.apple.com/us/podcast/codepen-radio/id824437159"
+			}
+		]
+	},
+	{
+		"title": "Mastering General Sibling Selectors: Custom Tab Navigation",
+		"date": "2017-08-14",
+		"type": "writing",
+		"platform": "Envato Tuts+",
+		"url": "https://webdesign.tutsplus.com/tutorials/mastering-general-sibling-selectors-custom-tab-navigation--cms-29193",
+		"summary": "<p>Welcome to the next in our <a href='https://webdesign.tutsplus.com/tutorials/mastering-general-sibling-selectors-custom-form-elements--cms-28436' target='_blank'>series of tutorials</a> where we use the&nbsp;general sibling combinator&nbsp;<code>~</code>&nbsp;to create various components for the web. This tutorial will cover navigation elements using links and radio inputs.</p><p>In addition to CSS selectors, the <code>will-change</code>&nbsp;property, and input states from the previous tutorial, we’ll also cover a border hack, Sass for loops, <code>calc()</code>, and accessibility!</p>"
+	},
+	{
+		"title": "Mastering General Sibling Selectors: Custom Form Elements",
+		"date": "2017-04-03",
+		"type": "writing",
+		"platform": "Envato Tuts+",
+		"url": "https://webdesign.tutsplus.com/tutorials/mastering-general-sibling-selectors-custom-form-elements--cms-28436",
+		"summary": "<p>One of the most powerful and underutilized CSS selectors is the general sibling combinator: <code>~</code>. In the coming tutorials I will go over different ways to use&nbsp;<code>~</code> to create components that are not only visually appealing, but also functional and useful. This tutorial will cover form elements; radio, checkbox, and regular inputs.</p><p>We’ll be learning a lot: modern CSS selectors, the&nbsp;<code>will-change</code> property, SVG’s <code>stroke</code>&nbsp;properties, input states, and plenty more!</p>"
+	},
+	{
+		"title": "Friends Talk Frontend: Episode 7",
+		"date": "2017-03-22",
+		"type": "audio",
+		"summary": "Today we’re talking to Gabrielle Wee on her adventures on web development and web design! I hope you enjoy this show!",
+		"external": [
+			{
+				"platform": "apple-podcasts",
+				"title": "Apple Podcasts",
+				"url": "https://podcasts.apple.com/us/podcast/7-gabrielle-wee/id1190447982"
+			},
+			{
+				"platform": "spotify",
+				"url": "https://open.spotify.com/episode/7oEcqfovAS8N6q4z6Ct04e"
+			}
+		]
+	},
+	{
+		"title": "How to Create Direction-Aware CSS-Only Hover Effects",
+		"date": "2017-01-26",
+		"type": "writing",
+		"platform": "Codepen",
+		"url": "https://codepen.io/gabriellewee/post/how-to-create-direction-aware-css-only-hover-effects",
+		"summary": "A couple of tutorials for direction-aware CSS-only hover effects.",
+		"external": [
+			{
+				"platform": "medium",
+				"url": "https://medium.com/@gabriellewee/how-to-create-direction-aware-css-only-hover-effects-2bbf0e13ad5b"
+			}
+		]
+	}
+]

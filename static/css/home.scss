@@ -1,98 +1,23 @@
-@import 'partials/fonts/recursive';
-@import 'partials/fonts/dank-mono';
 @import 'partials/shared/utilities';
-@import 'partials/shared/popup';
 
-.top {
-	display: none;
-	@include viewport($iphone-max) {
-		display: flex;
-	}
-	.logo {
-		pointer-events: none;
-	}
-	.go-home {
-		display: none;
-	}
-}
-
-.cursor {
-	&:after {
-		content: "_";
-		animation: blink 1s cubic-bezier(1,0,0,1) infinite forwards;
-		display: inline-block;
-		@media (prefers-reduced-motion) {
-			content: unset;
-			display: unset;
-			animation: unset;
+.page-home {
+	&.page-index {
+		.memoji-link a {
+			pointer-events: none;
 		}
 	}
-}
-@keyframes blink {
-	from { opacity: 1 } to { opacity: 0 }
-}
-
-.grid-item {
-	font-size: clamp(1.75rem, 2vw, 2rem);
-	&.text-only {
-		padding: var(--p) calc((var(--p)*1.5) + env(safe-area-inset-left));
-		@include max {
-	 		padding: var(--p) max(calc(var(--p)*1.5), env(safe-area-inset-left));
-	 	}
-	}
-	&.grid-only {
-		h2 {
-			padding: var(--p) max(calc(var(--p)*1.5) + env(safe-area-inset-left));
-			@include max {
-				padding: var(--p) max(calc(var(--p)*1.5), env(safe-area-inset-left));
-			}
-		}
-		p {
-			font-size: 1.5rem;
-			margin-top: calc(var(--p) / -2);
-			padding: 0 max(calc(var(--p)*1.5) + env(safe-area-inset-left)) calc(var(--p) + (var(--p) / 3));
-			@include max {
-				padding: 0 max(calc(var(--p)*1.5), env(safe-area-inset-left)) calc(var(--p) + (var(--p) / 3));
-			}
-		}
-	}
-	.more {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: calc(var(--p)/2) var(--p) var(--p);
-		background-color: rgba(black, .5);
-		font-size: clamp(1.5rem, 2.5vw, 1.75rem);
-		font-style: italic;
-		font-weight: bold;
-		text-align: center;
-		text-transform: lowercase;
-		text-underline-offset: 4px;
-		&:hover, &:focus {
-			color: white;
-			span {
-				scale: 1.05;
-			}
-		}
-		&:focus {
-			@include wavy;
-		}
-		&:active {
-			span {
-				scale: 0.95;
-			}
-		}
-		span {
-			transition: .1s ease-out;
-			display: block;
+	&:not(.page-index) {
+		.contact {
+			display: none;
 		}
 	}
 }
 
-@import 'partials/pages/home/intro';
-@import 'partials/pages/home/links';
-@import 'partials/pages/home/code';
-@import 'partials/pages/home/visual';
-@import 'partials/pages/home/writing';
-@import 'partials/pages/home/plants';
-@import 'partials/pages/home/gaming';
+.post {
+	&-code {
+		@import 'partials/post/code';
+	}
+	&-social {
+		@import 'partials/post/social';
+	}
+}

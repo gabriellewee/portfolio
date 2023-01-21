@@ -1,4 +1,3 @@
-/*! Various site scripts */
 const noJS = ((container = document.documentElement) => {
 	container.classList.remove("no-js");
 	container.classList.add("js");
@@ -10,30 +9,116 @@ const noJS = ((container = document.documentElement) => {
 	}
 })();
 
+function frames(buttons) {
+	let links = Array.from(document.querySelectorAll(buttons));
+	if(!links) return;
+	links.forEach(button => {
+		let frame = button.nextElementSibling;
+		button.addEventListener("click",  e => {
+			frame.src = frame.src;
+		});
+	});
+}
+
+frames(".reload");
+lightbox(".expand");
+
 let container = document.querySelector(".grid-isotope");
-let iso = new Isotope(container, {
-	percentPosition: true,
-	layoutMode: "packery",
-	itemSelector: ".grid-item"
-});
+let scrollContainer = document.querySelector(".grid-scroll");
+let lightboxContainer = document.querySelector(".posts-lightbox-group");
+let motion = window.matchMedia("(prefers-reduced-motion: no-preference)");
+let iso;
+
+if(container) {
+	if(motion.matches == true) {
+		iso = new Isotope(container, {
+			percentPosition: true,
+			layoutMode: "packery",
+			itemSelector: ".grid-item",
+			packery: {
+				gutter: 24
+			}
+		});
+	} else {
+		iso = new Isotope(container, {
+			percentPosition: true,
+			layoutMode: "packery",
+			itemSelector: ".grid-item",
+			packery: {
+				gutter: 24
+			},
+			hiddenStyle: {
+				opacity: 0
+			},
+			visibleStyle: {
+				opacity: 1
+			}
+		});
+	}
+	if(scrollContainer && lightboxContainer) {
+		let scroll = new InfiniteScroll(scrollContainer, {
+			button: '.load',
+			path: '.older',
+			append: '.post',
+			scrollThreshold: false,
+			outlayer: iso
+		});
+		let lightboxScroll = new InfiniteScroll(lightboxContainer, {
+			button: '.load',
+			path: '.older',
+			append: '.post-lightbox',
+			scrollThreshold: false,
+			history: false
+		});
+		scroll.on('append', (body, path, items, response) => {
+			frames(".reload");
+			lightbox(".expand");
+		});
+	}
+}
 
 const loading = new imagesLoaded(document.body, () => {
-	setTimeout(() => {
-		if(container && iso != undefined) {
-			iso.layout();
-		}
-		setTimeout(() => {
-			document.documentElement.classList.add("loaded")
-		}, 250);
-	}, 100);
+	if(container && iso != undefined) {
+		iso.layout();
+	}
+	document.documentElement.classList.add("loaded");
 });
+
+const mediaFilters = ((filters = document.querySelector(".filters")) => {
+	if (!filters) return;
+	let links = filters.querySelectorAll("[data-filter]");
+	links.forEach(link=>{
+		let value = link.getAttribute("data-filter");
+		let reset = filters.querySelector(".reset");
+		link.addEventListener("click", e => {
+			e.preventDefault();
+			iso.arrange({ filter: value });
+			let active = filters.querySelector(".active");
+			if(!reset.classList.contains("visible")) {
+				reset.classList.add("visible");
+			}
+			if (active && value == "*") {
+				active.classList.remove("active");
+				active.tabIndex = 0;
+			} else if (active) {
+				active.classList.remove("active");
+				active.tabIndex = 0;
+				e.target.parentElement.classList.add("active");
+				e.target.parentElement.tabIndex = -1;
+			} else {
+				e.target.parentElement.classList.add("active");
+				e.target.parentElement.tabIndex = -1;
+			};
+			iso.layout();
+		});
+	});
+})();
 
 const popup = ((containers = Array.from(document.querySelectorAll(".popup"))) => {
 	if(!containers) return;
 	containers.forEach(container =>{
 		let popupWindow = container.querySelector(".popup-window");
 		let popupLabel = container.querySelector(".popup-label");
-
 		let popupTrigger = container.querySelector(".popup-button");
 		let popupClose = container.querySelector(".close");
 		let triggers = Array.from([popupTrigger, popupClose]);
@@ -102,63 +187,22 @@ const popup = ((containers = Array.from(document.querySelectorAll(".popup"))) =>
 	})
 })();
 
-const visualFilters = ((filters = document.querySelector(".grid-filters")) => {
-	if (!filters) return;
-	let tagTrigger = filters.querySelector("#grid-filters");
-	tagTrigger.addEventListener("keydown",  e => {
-		if (e.key === "Enter") {
-			if (tagTrigger.checked) {
-				tagTrigger.checked = false;
-				tagTrigger.setAttribute("aria-checked", "false");
-			} else {
-				tagTrigger.checked = true;
-				tagTrigger.setAttribute("aria-checked", "true");
-			}
-		}
-	});
-	tagTrigger.addEventListener("click", e => {
-		if(tagTrigger.checked){
-			tagTrigger.setAttribute("aria-checked", "true");
-		} else {
-			tagTrigger.setAttribute("aria-checked", "false");
-		}
-	});
-	let links = filters.querySelectorAll("[data-filter]");
-	links.forEach(link=>{
-		let value = link.getAttribute("data-filter");
-		link.addEventListener("click", e => {
-			e.preventDefault();
-			iso.arrange({ filter: value });
-			let active = filters.querySelector(".active");
-			if (active && value == "*") {
-				active.classList.remove("active");
-			} else if (active) {
-				active.classList.remove("active");
-				e.target.classList.add("active");
-			} else {
-				e.target.classList.add("active");
-			};
-			iso.layout();
-		});
-	});
-})();
-
-const visualInfoTriggers = ((figures = Array.from(document.querySelectorAll(".grid-figure"))) => {
+const mediaTriggers = ((figures = Array.from(document.querySelectorAll(".post-media"))) => {
 	if(!figures) return;
 	figures.forEach(figure=>{
-		let button = figure.querySelector(".grid-input")
-		let info = figure.querySelector(".grid-info");
-		let expand = figure.querySelector(".grid-expand");
+		let trigger = figure.querySelector(".media-trigger");
+		let data = figure.querySelector(".media-data");
+		let expand = figure.querySelector(".media-expand");
 		let external = Array.from(figure.querySelectorAll(".external"));
-		let name = button.getAttribute("id").slice(0, -5);
+		let name = trigger.getAttribute("id").slice(0, -5);
 		let labels = Array.from(figure.querySelectorAll("label"));
-		info.setAttribute("aria-hidden", "true");
-		button.addEventListener("focus", e => {
+		data.setAttribute("aria-hidden", "true");
+		trigger.addEventListener("focus", e => {
 			document.getElementById(name).scrollIntoView({ behavior: "smooth" });
 		});
 		let _true = (() => {
-			button.setAttribute("aria-checked", "true");
-			info.removeAttribute("aria-hidden");
+			trigger.setAttribute("aria-checked", "true");
+			data.removeAttribute("aria-hidden");
 			expand.tabIndex = 0;
 			if(external) {
 				external.forEach(link=> {
@@ -167,8 +211,8 @@ const visualInfoTriggers = ((figures = Array.from(document.querySelectorAll(".gr
 			}
 		});
 		let _false = (() => {
-			button.setAttribute("aria-checked", "false");
-			info.setAttribute("aria-hidden", "true");
+			trigger.setAttribute("aria-checked", "false");
+			data.setAttribute("aria-hidden", "true");
 			expand.tabIndex = -1;
 			if(external) {
 				external.forEach(link=> {
@@ -176,27 +220,27 @@ const visualInfoTriggers = ((figures = Array.from(document.querySelectorAll(".gr
 				});
 			}
 		});
-		button.addEventListener("click", e => {
-			if(button.checked){
+		trigger.addEventListener("click", e => {
+			if(trigger.checked){
 				_true();
 			} else {
 				_false();
 			}
 		});
-		button.addEventListener("keydown", e => {
+		trigger.addEventListener("keydown", e => {
 			if (e.key === "Enter") {
-				if(button.checked){
-					button.checked = false;
+				if(trigger.checked){
+					trigger.checked = false;
 					_false();
 				} else {
-					button.checked = true;
+					trigger.checked = true;
 					_true();
 				}
 			}
 		});
 		labels.forEach(label=>{
 			label.addEventListener("click", e => {
-				if(button.checked){
+				if(trigger.checked){
 					_true();
 				} else {
 					_false();

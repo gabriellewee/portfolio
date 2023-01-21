@@ -1,13 +1,21 @@
 ---js
 {
+    layout: "layouts/base.njk",
 	title: "Photography",
-	description: "Photos I’ve taken over the years.",
+	description: "Photos I’ve taken over the years",
 	permalink: "/photography/",
 	key: "photography",
-	style: "visual",
-	add: true,
 	og: true,
 	message: true,
+	isotope: true,
+	type: "photo",
+	extension: "jpg",
+	eleventyComputed: {
+		media(data) {
+			return data[data.key];
+		}
+	},
+	tags: "pages",
 	filters: [
 		{ name: "portrait" },
 		{ name: "landscape" },
@@ -15,15 +23,7 @@
 		{ name: "outdoor" },
 		{ name: "people" }
 	],
-	type: "photo",
-	extension: "jpg",
-	eleventyComputed: {
-		work(data) {
-			return data[data.key];
-		}
-	},
-	tags: "pages"
 }
 ---
 
-{% extends 'layouts/media.njk' %}
+{% include 'layouts/media.njk' %}

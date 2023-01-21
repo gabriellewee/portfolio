@@ -1,0 +1,46 @@
+.posts-archive {
+	ul {
+		list-style: none;
+	}
+	h2 {
+		@include font-weight-width(1000, 120);
+		font-size: 4rem;
+	}
+	h3 {
+		@include font-weight-width(800, 120);
+		font-size: 2rem;
+		line-height: 1.3;
+		a {
+			span {
+				@include gradient-text(var(--color-mauve-hsl), var(--color-slate-hsl), true);
+			}
+			&:hover, &:focus {
+				span {
+					@include gradient-text(var(--color-rose-hsl), var(--color-mauve-hsl), true);
+				}
+			}
+			&:active {
+				span {
+					@include gradient-text(var(--color-iron-1-hsl), var(--color-iron-12-hsl), true);
+				}
+			}
+		}
+	}
+	time {
+		@include font-weight-width(600, 80);
+		display: block;
+		white-space: nowrap;
+		text-transform: uppercase;
+	}
+	li {
+		.js .page-index &, .js .page-about & {
+			opacity: 0;
+		}
+		&:not(:first-child) {
+			margin-top: .75rem;
+			h2 {
+				margin-top: 2rem;
+			}
+		}
+	}
+}

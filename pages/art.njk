@@ -1,27 +1,27 @@
 ---js
 {
+    layout: "layouts/base.njk",
 	title: "Art",
-	description: "Sketches and artwork.",
+	description: "Sketches and artwork",
 	permalink: "/art/",
 	key: "art",
-	style: "visual",
-	add: true,
 	og: true,
 	message: true,
+	isotope: true,
+	type: "artwork",
+	extension: "jpg",
+	eleventyComputed: {
+		media(data) {
+			return data[data.key];
+		}
+	},
+	tags: "pages",
 	filters: [
 		{ name: "digital" },
 		{ name: "traditional" },
 		{ name: "figure", label: "figure drawing" }
-	],
-	type: "artwork",
-	extension: "jpg",
-	eleventyComputed: {
-		work(data) {
-			return data[data.key];
-		}
-	},
-	tags: "pages"
+	]
 }
 ---
 
-{% extends 'layouts/media.njk' %}
+{% include 'layouts/media.njk' %}

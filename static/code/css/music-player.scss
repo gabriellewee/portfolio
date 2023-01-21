@@ -1,0 +1,406 @@
+@use "sass:math";
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;500&display=swap');
+@import 'reset';
+
+$red: #EB2045;
+$grey: #0B0B0B;
+$p: 12px;
+$easeInBack: cubic-bezier(0.600, -0.280, 0.735, 0.045);
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+$easeOutCubic: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+
+*, *:before, *:after { box-sizing: border-box; }
+* { -webkit-tap-highlight-color: rgba(0,0,0,0); transform-style: preserve-3d; }
+*:focus { outline: none!important; }
+::selection { background: none; }
+a { cursor: pointer; }
+body, html { height: 100%; }
+hr {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 1px;
+	background: rgba($grey, .5);
+}
+
+body {
+	color: $grey;
+	font-family: "Roboto Mono", monospace;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}
+main {
+	perspective: 1000px;
+	transform-style: preserve-3d;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	padding: $p;
+}
+
+.background {
+	background: white;
+	&, &:before, &:after, div {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+	&:before {
+		content: "";
+		background: url('/static/code/images/music-player/thousand-thursday.jpeg') center center / cover;
+		filter: blur(2px);
+	}
+	div {
+		background: $red;
+		mix-blend-mode: screen;
+	}
+	&:after {
+		content: "";
+		background: rgba(black, .15);
+	}
+}
+
+.player {
+	position: relative;
+	z-index: 3;
+	width: 100%;
+	max-width: 320px;
+	.back {
+		opacity: 0;
+	}
+	&.playlist {
+		.front {
+			z-index: -1;
+			opacity: 0;
+		}
+		.back {
+			z-index: 1;
+			opacity: 1;
+		}
+	}
+}
+.player, .back, .front {
+	will-change: transform;
+	transform-origin: center center;
+	transform-style: preserve-3d;
+	backface-visibility: hidden;
+}
+.front, .back {
+	transition: all 500ms $easeOutBack;
+	background: white;
+	border-radius: 2px;
+	box-shadow: 0 0 15px rgba(mix($red, $grey), .2);
+}
+.back {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	header {
+		display: flex;
+		align-items: center;
+		align-content: center;
+		background: rgba($grey, .1);
+		padding: $p;
+		a {
+			display: block;
+			padding: 0 5px 3px!important;
+			border-radius: 2px;
+			margin-right: $p;
+			background: rgba($grey, .1);
+		}
+	}
+	a {
+		display: flex;
+		padding: $p;
+		&:hover, &:focus {
+			background: $red;
+			color: white;
+		}
+		&:active {
+			background: $grey;
+		}
+	}
+	img {
+		display: block;
+		border-radius: 2px;
+		height: 32px;
+		width: 32px;
+		+ div {
+			padding-left: $p;
+		}
+	}
+	hr {
+		margin-left: $p;
+		width: calc(100% - #{$p*2});
+		background: rgba($grey, .1);
+	}
+	h3 {
+		margin-bottom: 4px;
+		font-size: 16px;
+		font-weight: 300;
+	}
+	h4 {
+		font-size: 12px;
+		font-weight: 500;
+	}
+}
+.art {
+	border-radius: 2px 2px 0 0;
+	display: block;
+	width: 100%;
+}
+.bar {
+	position: relative;
+	z-index: 2;
+	width: 100%;
+	height: $p;
+	margin-top: -$p*.5;
+	overflow: hidden;
+	&:before, hr {
+		display: block;
+		position: absolute;
+		top: 50%;
+		margin-top: -1px;
+		left: 0;
+		width: 100%;
+		height: 2px;
+	}
+	&:before {
+		content: "";
+		background: #bbb;
+	}
+	hr {
+		transform: translateX(-50%);
+		margin-bottom: 0;
+		padding: 0;
+		border: 0;
+		background: $red;
+		&:after {
+			transform-origin: center center;
+			content: "";
+			display: block;
+			position: absolute;
+			right: -$p*.5;
+			top: 50%;
+			margin-top: -$p*.5;
+			width: $p;
+			height: $p;
+			background: $red;
+			border-radius: 2px;
+		}
+		&:hover {
+			background: $grey;
+			&:after {
+				background: $grey;
+			}
+		}
+	}
+}
+.controls {
+	display: flex;
+	align-items: center;
+	align-content: center;
+	width: 100%;
+	a {
+		display: block;
+		svg {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+		&.skip {
+			width: 36px;
+			height: 20px;
+		}
+		&.play {
+			width: 42px;
+			height: 36px;
+		}
+	}
+	&.top {
+		justify-content: space-around;
+		padding: $p;
+		a {
+			transition: all 250ms ease-out;
+			will-change: transform;
+			svg {
+				fill: $grey;
+			}
+			&:hover, &:focus {
+				transition: all 500ms $easeOutBack;
+				transform: scale(1.1);
+				svg {
+					fill: $red;
+				}
+			}
+			&:active {
+				transform: scale(1);
+			}
+		}
+	}
+	&.bottom {
+		justify-content: space-between;
+		padding: $p*1.5 $p $p;
+		a {
+			width: 24px;
+			height: 20px;
+			svg {
+				fill: rgba($red, .25);
+			}
+			&:hover, &:focus, &.active {
+				svg {
+					fill: $red;
+				}
+			}
+			&.flip {
+				svg {
+					fill: rgba($grey, .25);
+				}
+				&:hover, &:focus {
+					svg {
+						fill: $grey;
+					}
+				}
+			}
+		}
+	}
+}
+.meta {
+	text-align: center;
+	time {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		padding: 0 math.div($p, 3);
+		font-size: 10px;
+	}
+	.info {
+		padding: $p;
+	}
+	h1 {
+		font-size: 20px;
+		font-weight: 300;
+		margin-bottom: $p*.5;
+	}
+	h2 {
+		font-size: 14px;
+		font-weight: 500;
+	}
+}
+
+.pre-enter {
+	.background {
+		opacity: 0;
+	}
+	.player {
+		opacity: 0;
+		transform-origin: center top;
+		will-change: opacity, transform;
+		@media (prefers-reduced-motion: no-preference) {
+			transform: rotateX(30deg) rotateY(-30deg) translateY(300px) translateZ(200px);
+		}
+	}
+}
+.on-enter {
+	.background {
+		transition: all 1000ms ease-out;
+		opacity: 1;
+	}
+	.player {
+		@media (prefers-reduced-motion: no-preference) {
+			animation: rotateIn 1000ms $easeOutCubic 500ms forwards;
+		}
+		@media (prefers-reduced-motion: reduce) {
+			animation: fade 1000ms $easeOutCubic 500ms forwards;
+		}
+	}
+}
+
+@keyframes rotateIn {
+	0% {
+		opacity: 0;
+		transform: rotateX(30deg) rotateY(-30deg) translateY(300px) translateZ(200px);
+	}
+	10% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@keyframes fade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@media only screen and (max-height: 510px) {
+	.container {
+		transform-origin: center center;
+		transform: scale(0.75);
+	}
+}
+
+@media only screen and (min-width: 640px) {
+	.with-hover {
+		.player {
+			transition: all 500ms ease-out;
+			&:hover {
+				transition: all 1000ms $easeOutBack;
+			}
+		}
+	}
+	.player {
+		will-change: transform;
+		&:hover {
+			@media (prefers-reduced-motion: no-preference) {
+				transform: translateZ(#{$p*5});
+			}
+		}
+		.back {
+			@media (prefers-reduced-motion: no-preference) {
+				transform: rotateY(180deg);
+			}
+			* {
+				opacity: 0;
+			}
+		}
+		&.playlist {
+			.front {
+				@media (prefers-reduced-motion: no-preference) {
+					transform: rotateY(180deg);
+				}
+				* {
+					opacity: 0;
+				}
+			}
+			.back {
+				@media (prefers-reduced-motion: no-preference) {
+					transform: rotateY(0);
+				}
+				* {
+					opacity: 1;
+				}
+			}
+		}
+	}
+	.bar {
+		hr {
+			cursor: col-resize;
+		}
+	}
+}

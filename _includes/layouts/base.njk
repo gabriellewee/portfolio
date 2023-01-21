@@ -2,14 +2,16 @@
 <html lang="en" class="no-js">
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 	<meta name="format-detection" content="telephone=no">
 
-	{% if hidden == true %}<meta name="robots" content="noindex,nofollow">{% endif %}
+	{% if (hidden == true) or ((key == "home") and (pagination.pageNumber != 0)) %}
+		<meta name="robots" content="noindex,nofollow">
+	{% endif %}
 
 	<link rel="canonical" href="{{site.url}}{{page.url}}">
-	{% if key == "writing" or key == "post" %}<link rel="alternate" type="application/rss+xml" title="RSS" href="/writes/feed.xml">{% endif %}
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="/posts/feed.xml">
 	
 	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#F5C8BF">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -29,13 +31,12 @@
 	<meta name="msapplication-config" content="/browserconfig.xml">
 
 	{% if theme %}
-		<meta name="theme-color" content="{{theme}}" media="(prefers-color-scheme: light)">
+		<meta name="theme-color" content="{{theme}}">
 	{% else %}
-		<meta name="theme-color" content="#fcf1ef" media="(prefers-color-scheme: light)">
+		<meta name="theme-color" content="#fcf1ef">
 	{% endif %}
-	<meta name="theme-color" content="#263238" media="(prefers-color-scheme: dark)">
 
-	<title>{{title}} · {{site.author}}</title>
+	<title>{{site.author}} · {{title}}</title>
 	<meta property="og:title" content="{{title}}">
 
 	<meta property="og:description" content="{{description}}">
@@ -66,7 +67,7 @@
 		<meta property="twitter:image" content="{{site.url}}/static/images/og/default.jpg">
 	{% endif %}
 
-	{% if key == "home" %}
+	{% if key == home %}
 		<link href="https://github.com/gabriellewee" rel="me authn">
 	{% endif %}
 	<link rel="webmention" href="https://webmention.io/gabriellew.ee/webmention" />
@@ -88,7 +89,7 @@
 		{% if add == true %}
 			<link rel="stylesheet" href="{{'/static/css/style.css' | url}}">
 		{% endif %}
-		<link rel="stylesheet" href="{{ '/static/css/' + style + '.css' | url }}">
+		<link rel="stylesheet" href="{{ '/static/' + style + '.css' | url }}">
 	{% else %}
 		<link rel="stylesheet" href="{{'/static/css/style.css' | url}}">
 	{% endif %}
@@ -99,62 +100,71 @@
 		</noscript>
 	{% endif %}
 </head>
-<body{% if key %} class="page-{{key}}"{% endif %}>
+<body class="{% if key %}page-{{key}}{% endif %}{% if pagination.pageNumber == 0 %} page-index{% endif %}">
 	{% if blank != true %}
-		<header class="top" aria-label="Header"{% if key == "home" %} aria-hidden="true"{% endif %}>
-			<a class="logo" href="/"{% if key == "home" %} tabindex="-1"{% endif %}>
-				<span class="memoji memoji-default"></span>
-				<span class="memoji memoji-hm"></span>
-				<span class="text go-home">Go home?</span>
-			</a>
-			{% if message == true %}
-				<h1 class="text message">{{description}}</h1>
-			{% elseif message %}
-				<h1 class="text message">{{message}}</h1>
+		<header class="top" aria-label="Header">
+			<div class="memoji-link">
+				<a href="/"{% if (key == "home") and (pagination.pageNumber == 0) %} tabindex="-1"{% endif %}>
+					<span class="memoji memoji-default"></span>
+					<span class="memoji memoji-hm"></span>
+					<span class="text go-home">Go home?</span>
+				</a>
+				{% if message == true %}
+					<h1 class="text message">{{description}}</h1>
+				{% elseif (message) and (key == "home") and (pagination.pageNumber == 0) %}
+					<p class="text message">{{message}}</p>
+				{% elseif message %}
+					<h1 class="text message">{{message}}</h1>
+				{% endif %}
+			</div>
+			{% if (key == "home") and (pagination.pageNumber == 0) %}
+				<h1 class="title"><span class="copy">Hello, stranger! My name is Gabrielle Wee. I’m a front-end developer working at</span> <span class="apple">Apple {% include 'svg/apple.svg' %}</span><span class="cursor" aria-hidden="true"></span></h1>
 			{% endif %}
 		</header>
-		{% if key == "writing" or key == "post" %}
-			<header class="header">
-				<h1><a href="/writes/" aria-label="Gabrielle Wee Writes"><span>gabriellew.ee</span>/writes</a></h1>
-			</header>
-		{% endif %}
 	{% endif %}
-	<main>
+	<main class="main">
+		{% if links == true %}
+			{% include 'pages/home/links.html' %}
+		{% endif %}
 		{% block content %}{{content | safe}}{% endblock %}
 	</main>
 	{% if blank != true %}
 		<footer class="bottom" aria-label="Footer">
-			<p class="copyright">
-				{% if key == "writing" or key == "post" %}
-					<a href="/writes/archive/"><span>Archive</span></a> <span role="presentation" aria-hidden="true">·</span>
-					<a href="/writes/feed.xml"><span>RSS</span></a> <span role="presentation" aria-hidden="true">·</span>
-				{% endif %}
-				{% if key != "about" %}<a href="/about/"><span>About</span></a>{% endif %}
-				<span class="copyright">
-					<span>&copy;</span>
-					{% if key == "writing" or key == "post" %}
-						<a href="/"><span>{{site.author}}</span></a>
-					{% else %}
-						<span>{{site.author}}</span>
-					{% endif %}
-					<span>{% year 'start' %}–{% year 'current' %}</span>
-				</span>
-			</p>
+			{% if key != "about" %}
+				<a href="/about/"><span>About</span></a>
+				<a href="/archive/"><span>Archive</span></a>
+				<a href="/feed.xml"><span>RSS</span></a>
+			{% endif %}
+			<span class="copyright">
+				<span>&copy; {{site.author}} {% year 'start' %}–{% year 'current' %}</span>
+			</span>
 		</footer>
 
-		<script src="{{'/static/js/imagesloaded.min.js' | url}}"></script>
+		<script src="{{'/static/js/gsap.min.js' | url}}"></script>
+		<script src="{{'/static/js/scroll-trigger.min.js' | url}}"></script>
+		<script src="{{'/static/js/text.min.js' | url}}"></script>
 		<script src="{{'/static/js/smoothscroll.min.js' | url}}"></script>
 		<script src="{{'/static/js/lightbox.js' | url}}"></script>
-		{% if key == "home" %}
-			<script src="{{'/static/js/clipboard.min.js' | url}}"></script>
-		{% endif %}
-		{% if key == "writing" or key == "post" %}
-			<script src="{{'/static/js/writing.js' | url}}"></script>
-		{% else %}
+		{% if isotope == true %}
 			<script src="{{'/static/js/isotope.min.js' | url}}"></script>
 			<script src="{{'/static/js/packery.min.js' | url}}"></script>
-			<script src="{{'/static/js/main.js' | url}}"></script>
 		{% endif %}
+		{% if key == "home" %}
+			<script src="{{'/static/js/clipboard.min.js' | url}}"></script>
+			<script src="{{'/static/js/infinite-scroll.min.js' | url}}"></script>
+			{% if pagination.pageNumber == 0 %}
+				<script src="{{'/static/js/animation/home.js' | url}}"></script>
+			{% endif %}
+		{% else %}
+			<script src="{{'/static/js/imagesloaded.min.js' | url}}"></script>
+		{% endif %}
+		{% if animation == true %}
+			<script src="{{'/static/js/animation/' + key + '.js' | url}}"></script>
+		{% endif %}
+		{% if key == "post" %}
+			<script src="{{'/static/js/posts.js' | url}}"></script>
+		{% endif %}
+		<script src="{{'/static/js/main.js' | url}}"></script>
 	{% endif %}
 	<script>document.body.addEventListener('touchstart', function() {}, {passive: true});</script>
 </body>
