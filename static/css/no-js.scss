@@ -1,0 +1,40 @@
+.load,
+.post-code .post-content iframe, .post-code .reload,
+.page-index .memoji-link .text.message {
+	display: none;
+}
+
+.post-code .post-content .warning:not(.css-only) {
+	display: flex;
+}
+
+.title, .cursor,
+.contact .contact-sites, .contact .contact-messages {
+	opacity: 1;
+}
+
+.page-index, .page-about {
+	.posts-container {
+		.post-animate {
+			opacity: 1;
+		}
+	}
+}
+
+.cursor:after {
+	animation: blink 1s cubic-bezier(1,0,0,1) infinite forwards;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.memoji-link .text.message {
+		translate: 0 0;
+		opacity: 1;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.memoji-link .text.message {
+		translate: 0 0;
+		opacity: 1;
+	}
+}

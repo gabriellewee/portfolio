@@ -57,7 +57,6 @@ posts.forEach(post => {
 		y: 0
 	}, "<.1");
 });
-enter.set('.posts-container', { className: 'posts-container visible' });
 
 gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
 	ScrollTrigger.create({

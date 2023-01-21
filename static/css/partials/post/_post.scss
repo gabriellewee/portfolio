@@ -8,6 +8,11 @@
 		padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
 		padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
 	}
+	.page-index &, .page-about & {
+		.post-animate {
+			opacity: 0;
+		}
+	}
 }
 .posts {
 	display: grid;
@@ -92,14 +97,6 @@
 			}
 			&[style] {
 				width: calc(50% - var(--p));
-			}
-		}
-	}
-
-	.js .page-index &, .js .page-about & {
-		.posts-container:not(.visible) & {
-			&.post-animate {
-				opacity: 0;
 			}
 		}
 	}

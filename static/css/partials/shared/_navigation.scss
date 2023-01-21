@@ -123,12 +123,6 @@
 			padding-right: calc(var(--p)*2);
 		}
 	}
-	.load {
-		display: none;
-		.js & {
-			display: block;
-		}
-	}
 	&.main-pagination {
 		.older {
 			.js & {
