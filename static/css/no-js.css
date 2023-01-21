@@ -1,7 +1,0 @@
-.grid-item > *, .grid-filters span, .grid-filters label:after, .page-about .grid-item > div > * {
-	opacity: 1;
-}
-.message {
-	transform: none;
-	opacity: 1;
-}
