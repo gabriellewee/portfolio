@@ -134,7 +134,7 @@ Since our team didn't get footage until quite a bit later than the rest of the c
 
 <figure aria-labelledby="2013-04-23-video-caption">
 	<figcaption id="2013-04-23-video-caption" aria-hidden="true">Of Corsets and Comics trailer</figcaption>
-	<iframe style="aspect-ratio: 16 / 9; width: 100%; height: auto;" src="http://player.vimeo.com/video/64177625" width="800" height="450" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+	<iframe style="aspect-ratio: 16 / 9; width: 100%; height: auto;" src="https://player.vimeo.com/video/64177625" width="800" height="450" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 </figure>
 
 I'm worried and a little stressed out, to be honest - I initially thought the project was due two weeks from now but it's actually due this coming Tuesday. We'll finish in time, though! I'm sure of it.
