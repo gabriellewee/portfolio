@@ -1,5 +1,5 @@
 .post-header {
-	padding: calc(var(--p) * 1.5) calc(var(--p) * 1.5) var(--p);
+	padding: calc(var(--p) * 2) calc(var(--p) * 2) var(--p);
 	.post-header-wrapper {
 		display: flex;
 		flex-wrap: nowrap;
@@ -13,7 +13,7 @@
 
 .post-content {
 	@include font-weight-width(600, 120);
-	padding: 0 calc(var(--p) * 1.5) calc(var(--p) * 1.5);
+	padding: 0 calc(var(--p) * 2) calc(var(--p) * 2);
 	color: var(--color-iron-white-90);
 	font-size: 1.25rem;
 	a {

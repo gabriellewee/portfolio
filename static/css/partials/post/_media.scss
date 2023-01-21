@@ -53,7 +53,7 @@ figcaption {
 	padding: calc(var(--p)*2);
 	color: white;
 	font-size: 1.125rem;
-	overflow: scroll;
+	overflow-y: auto;
 	@media (prefers-reduced-motion: no-preference) {
 		translate: 0 50%;
 	}
