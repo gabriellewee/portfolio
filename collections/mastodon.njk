@@ -17,6 +17,9 @@
 			data.content = data.mastodon.content;
 			data.url = data.mastodon.url;
             data.size = "s";
+            if (data.mastodon.reblog || data.mastodon.in_reply_to_account_id) {
+                data.tags = "replies";
+            }
 		}
 	}
 }
