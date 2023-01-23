@@ -4,6 +4,7 @@ module.exports = eleventyConfig => {
 		"contact.vcf",
 		"static/css/no-js.css",
 		"static/fonts",
+		"static/css/fonts",
 		"static/images",
 		"static/code/images"
 	].forEach(path =>
