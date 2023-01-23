@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = eleventyConfig => {
 	eleventyConfig.addPlugin(require('./_config/passthrough.js'));
 	eleventyConfig.addPlugin(require('./_config/transform.js'));

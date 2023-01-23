@@ -21,6 +21,7 @@
 
 	[plugins.inputs]
 	paths = [
+		".cache",
 		"_site/static/images/art/built",
 		"_site/static/images/avatars/built",
 		"_site/static/images/graphic/built",
