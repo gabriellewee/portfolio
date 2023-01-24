@@ -61,7 +61,7 @@
 		}
 	}
 	.avatar {
-		&:hover, &:focus {
+		&:hover {
 			@media (prefers-reduced-motion: no-preference) {
 				scale: 1.05;
 			}
