@@ -1,0 +1,126 @@
+.mentions {
+	margin-top: calc(var(--p)*2);
+	h3 {
+		@include font-weight-width(800, 120);
+		font-size: 2rem;
+		margin-top: calc(var(--p)*3);
+		margin-bottom: calc(var(--p)*1.5);
+		@include viewport(mobile) {
+			font-size: 2.25rem;
+		}
+	}
+	.mentions-list {
+		> ul {
+			list-style: none;
+		}
+	}
+	.mentions-grid {
+		display: grid;
+		grid-gap: var(--p);
+		grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
+	}
+	.mentions-flex li {
+		@include clip-path-edges(2px);
+		background: white;
+		padding: calc(var(--p)*2);
+		@include viewport(mobile) {
+			display: flex;
+			align-items: flex-start;
+		}
+		&:not(:first-child) {
+			margin-top: calc(var(--p)*2);
+		}
+		> div {
+			margin-top: var(--p);
+			@include viewport(mobile) {
+				margin-top: 0;
+				margin-left: calc(var(--p)*2);
+			}
+		}
+	}
+	.time, .avatar {
+		transition: .2s ease-out;
+		display: inline-block;
+		position: relative;
+		&:before {
+			@include clip-path-edges(3px);
+			opacity: 0;
+			content: "";
+			display: block;
+			position: absolute;
+			top: calc(var(--p)/-4);
+			left: calc(var(--p)/-4);
+			height: calc(100% + (var(--p)/2));
+			width: calc(100% + (var(--p)/2));
+			background-color: hsla(var(--color-mauve-hsl), .5);
+		}
+		&:focus-visible {
+			&:before {
+				opacity: 1;
+			}
+		}
+	}
+	.avatar {
+		&:hover, &:focus {
+			@media (prefers-reduced-motion: no-preference) {
+				scale: 1.05;
+			}
+		}
+		&:active {
+			@media (prefers-reduced-motion: no-preference) {
+				scale: .95;
+			}
+		}
+		picture {
+			@include clip-path-edges(2px);
+			width: 48px;
+			height: 48px;
+		}
+	}
+	.time {
+		@include font-weight-width(600, 80);
+		color: white;
+		font-size: .875rem;
+		text-transform: uppercase;
+		time {
+			@include clip-path-edges(2px);
+			transition: .2s ease-out;
+			display: inline-block;
+			background-color: hsla(var(--color-iron-1-hsl), .75);
+			padding: calc(var(--p)/3*2) var(--p);
+		}
+		&:hover, &:focus {
+			time {
+				background-color: var(--color-mauve);
+			}
+		}
+		&:focus-visible {
+			&:before {
+				opacity: 1;
+			}
+		}
+		&:active {
+			@media (prefers-reduced-motion: no-preference) {
+				scale: .95;
+			}
+			time {
+				background-color: var(--color-slate);
+			}
+		}
+	}
+	.reply {
+		font-size: 1.125rem;
+		margin-top: var(--p);
+		@include viewport(mobile) {
+			margin-top: calc(var(--p)/2);
+		}
+	}
+	.mentions-placeholder {
+		display: none;
+		&:empty {
+			~ h3, ~ ul {
+				display: none;
+			}
+		}
+	}
+}

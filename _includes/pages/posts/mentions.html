@@ -1,0 +1,70 @@
+{% set pageLink = site.url + page.url %}
+<aside class="mentions">
+	<div class="mentions-list mentions-likes">
+		<div class="mentions-placeholder">
+			{% for webmention in webmentions.links %}
+				{% if (webmention.target == pageLink) and (webmention.activity.type == "like") %}&nbsp;{% endif %}
+			{% endfor %}
+		</div>
+		<h3>Likes</h3>
+		<ul class="mentions-grid">
+			{% for webmention in webmentions.links %}
+				{% if (webmention.target == pageLink) and (webmention.activity.type == "like") %}
+					<li>
+						<a class="avatar" title="{{webmention.data.author.name}}" href="{{webmention.data.author.url}}" target="_blank">
+							<picture>
+								<img src="{{webmention.data.author.photo}}" width="48" height="48" />
+							</picture>
+						</a>
+					</li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="mentions-list mentions-reposts">
+		<div class="mentions-placeholder">
+			{% for webmention in webmentions.links %}
+				{% if (webmention.target == pageLink) and (webmention.activity.type == "repost") %}&nbsp;{% endif %}
+			{% endfor %}
+		</div>
+		<h3>Reposts</h3>
+		<ul class="mentions-grid">
+			{% for webmention in webmentions.links %}
+				{% if (webmention.target == pageLink) and (webmention.activity.type == "repost") %}
+					<li>
+						<a class="avatar" title="{{webmention.data.author.name}}" href="{{webmention.data.author.url}}" target="_blank">
+							<picture>
+								<img src="{{webmention.data.author.photo}}" width="48" height="48" />
+							</picture>
+						</a>
+					</li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="mentions-list mentions-replies">
+		<div class="mentions-placeholder">
+			{% for webmention in webmentions.links %}
+				{% if (webmention.target == pageLink) and (webmention.activity.type == "reply") %}&nbsp;{% endif %}
+			{% endfor %}
+		</div>
+		<h3>Replies</h3>
+		<ul class="mentions-flex">
+			{% for webmention in webmentions.links %}
+				{% if (webmention.target == pageLink) and (webmention.activity.type == "reply") %}
+					<li>
+						<a class="avatar" title="{{webmention.data.author.name}}" href="{{webmention.data.author.url}}" target="_blank">
+							<picture>
+								<img src="{{webmention.data.author.photo}}" width="48" height="48" />
+							</picture>
+						</a>
+						<div>
+							<a class="time" href="{{webmention.data.url}}" target="_blank"><time>{{webmention.data.published|timeAgo}}</time></a>
+							<div class="reply post-text">{{webmention.data.content|safe}}</div>
+						</div>
+					</li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+	</div>
+</aside>

@@ -30,6 +30,8 @@ category: writing
 		</article>
 	</div>
 
+	{% include 'pages/posts/mentions.html' %}
+
 	<nav class="pagination">
 		{%- set nextPost = collections.posts | getNextCollectionItem(page) %}
 		{%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
