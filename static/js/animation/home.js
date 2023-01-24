@@ -22,8 +22,7 @@ enter.from('.apple', {
 		value: "",
 		preserveSpaces: true
 	},
-	ease: "none",
-	preserveSpaces: true
+	ease: "none"
 });
 enter.set('.cursor', { className: 'cursor animated' });
 enter.to('.message', {
