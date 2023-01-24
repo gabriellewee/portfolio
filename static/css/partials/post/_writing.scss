@@ -48,8 +48,8 @@
 .post-footer {
 	display: flex;
 	flex-flow: row wrap;
-	margin-top: calc(var(--p)*-1.5);
 	&:not(:empty) {
+		margin-top: calc(var(--p)*-1.5);
 		padding: 0 calc(var(--p)*2) calc(var(--p)*2);
 	}
 	.button {
