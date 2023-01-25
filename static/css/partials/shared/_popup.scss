@@ -172,22 +172,22 @@
 			&:before {
 				content: "";
 				position: absolute;
-				top: 7px;
+				top: 9px;
 				right: -16px;
 				z-index: -1;
-				width: 10px;
-				height: 10px;
+				width: 8px;
+				height: 8px;
 				border-bottom-left-radius: 2px;
 				rotate: 45deg;
 			}
 			&:after {
+				@include font-weight-width(600, 100);
 				content: "Copied";
 				position: absolute;
 				right: -69px;
 				padding: 4px 6px;
 				border-radius: 3px;
 				font-size: .75rem;
-				font-weight: bold;
 				text-transform: uppercase;
 			}
 			&.copied {
