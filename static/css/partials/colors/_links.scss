@@ -1,58 +1,86 @@
 a {
 	&.codepen {
 		color: var(--color-cp);
-		text-decoration-color: var(--color-cp);
+		&:hover, &:focus {
+			text-decoration-color: var(--color-cp);
+		}
 	}
 	&.dribbble {
 		color: var(--color-bbb);
-		text-decoration-color: var(--color-bbb);
+		&:hover, &:focus {
+			text-decoration-color: var(--color-bbb);
+		}
 	}
 	&.github {
 		color: var(--color-gh);
-		text-decoration-color: var(--color-gh);
+		&:hover, &:focus {
+			text-decoration-color: var(--color-gh);
+		}
 	}
 	&.instagram {
 		color: var(--color-insta);
-		text-decoration-color: var(--color-insta);
+		&:hover, &:focus {
+			text-decoration-color: var(--color-insta);
+		}
 	}
 	&.twitter {
 		color: var(--color-tw);
-		text-decoration-color: var(--color-tw);
+		&:hover, &:focus {
+			text-decoration-color: var(--color-tw);
+		}
 	}
 	&.pinterest {
 		color: var(--color-pin);
-		text-decoration-color: var(--color-pin);
+		&:hover, &:focus {
+			text-decoration-color: var(--color-pin);
+		}
 	}
 	&.medium {
 		color: var(--color-med);
-		text-decoration-color: var(--color-med);
+		&:hover, &:focus {
+			text-decoration-color: var(--color-med);
+		}
 	}
 	&.tumblr {
 		color: var(--color-tum);
-		text-decoration-color: var(--color-tum);
+		&:hover, &:focus {
+			text-decoration-color: var(--color-tum);
+		}
 	}
 	&.music {
 		color: var(--color-am);
-		text-decoration-color: var(--color-am);
+		&:hover, &:focus {
+			text-decoration-color: var(--color-am);
+		}
 	}
 	&.email {
 		color: var(--color-iron-white-70);
-		text-decoration-color: var(--color-iron-white-70);
+		&:hover, &:focus {
+			text-decoration-color: var(--color-iron-white-70);
+		}
 	}
 	&.text {
 		color: var(--color-gv);
-		text-decoration-color: var(--color-gv);
+		&:hover, &:focus {
+			text-decoration-color: var(--color-gv);
+		}
 	}
 	&.imessage {
 		color: var(--color-im);
-		text-decoration-color: var(--color-im);
+		&:hover, &:focus {
+			text-decoration-color: var(--color-im);
+		}
 	}
 	&.discord {
 		color: var(--color-discord);
-		text-decoration-color: var(--color-discord);
+		&:hover, &:focus {
+			text-decoration-color: var(--color-discord);
+		}
 	}
 	&.mastodon {
 		color: var(--color-mas);
-		text-decoration-color: var(--color-mas);
+		&:hover, &:focus {
+			text-decoration-color: var(--color-mas);
+		}
 	}
 }

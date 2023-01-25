@@ -9,14 +9,20 @@
 	h3 {
 		@include font-weight-width(800, 120);
 		font-size: 2rem;
-		line-height: 1.3;
+		line-height: 1.2;
 		a {
 			span {
 				@include gradient-text(var(--color-mauve-hsl), var(--color-slate-hsl), true);
+				transition: .2s ease-out;
+				text-decoration: underline;
+				text-underline-offset: 8px;
+				text-decoration-color: var(--color-blush-8);
 			}
 			&:hover, &:focus {
 				span {
 					@include gradient-text(var(--color-rose-hsl), var(--color-mauve-hsl), true);
+					text-underline-offset: 4px;
+					text-decoration-color: var(--color-mauve-rose);
 				}
 			}
 			&:active {
@@ -29,13 +35,12 @@
 	time {
 		@include font-weight-width(600, 80);
 		display: block;
+		margin-top: calc(var(--p)/4);
 		white-space: nowrap;
 		text-transform: uppercase;
 	}
 	li {
-		.js .page-index &, .js .page-about & {
-			opacity: 0;
-		}
+		opacity: 0;
 		&:not(:first-child) {
 			margin-top: .75rem;
 			h2 {

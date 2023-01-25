@@ -290,7 +290,6 @@
 			}
 			.link > a {
 				display: inline-block;
-				text-underline-offset: 4px;
 				&:not(:last-child) {
 					margin-right: .75rem;
 				}
@@ -301,22 +300,25 @@
 			.link > a, .popup-label, .popup-label span {
 				transition: .1s ease-out;
 			}
+			.link > a, .popup-label span {
+				text-decoration: underline;
+				text-underline-offset: 8px;
+				text-decoration-color: var(--color-blush-8);
+			}
+			.popup-label {
+				color: var(--color-discord);
+			}
+			.popup-label:hover span, .popup-button:focus + .popup-label span {
+				text-decoration-color: var(--color-discord);
+			}
 			.link > a:hover, .link > a:focus, .popup-label:hover span, .popup-button:focus ~ .popup-label span {
 				color: var(--color-iron);
-				text-decoration: underline;
+				text-underline-offset: 4px;
 			}
 			.link > a:active, .popup-button:active ~ .popup-label span {
 				@media (prefers-reduced-motion: no-preference) {
 					scale: .95;
 				}
-			}
-			.popup-label {
-				color: var(--color-discord);
-				text-underline-offset: 4px;
-			}
-			.popup-button:focus + .popup-label {
-				color: var(--color-iron);
-				text-decoration-color: var(--color-discord);
 			}
 		}
 	}
