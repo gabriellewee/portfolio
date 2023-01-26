@@ -1,6 +1,7 @@
 let enter = gsap.timeline({ paused: true });
 let text = document.querySelector(".text");
 let posts = Array.from(document.querySelectorAll(".post-animate"));
+posts.push(document.querySelector(".bottom"));
 
 enter.set('.title', {
 	opacity: 1

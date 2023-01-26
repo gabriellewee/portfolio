@@ -169,7 +169,7 @@ const popup = ((containers = Array.from(document.querySelectorAll(".popup"))) =>
 			clipboard.on("success", e => {
 				let copy = container.querySelector(e.trigger.getAttribute("data-clipboard-target"));
 				copy.parentNode.classList.add("copied");
-			    e.clearSelection();
+				e.clearSelection();
 			});
 			copyButton.addEventListener("keydown", e => {
 				if (e.key === "Enter") {

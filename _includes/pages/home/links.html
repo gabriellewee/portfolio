@@ -2,7 +2,7 @@
 	<div class="contact-sites">
 		<h2>You can find me here:</h2>
 		<ul>
-			{% for link in home.links %}
+			{% for link in about.links %}
 				<li class="link"><a class="{{link.name}}" target="_blank" href="{{link.url}}" rel="me">{{link.name | capitalize}}</a></li>
 			{% endfor %}
 		</ul>

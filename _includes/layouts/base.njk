@@ -130,6 +130,7 @@
 		<footer class="bottom" aria-label="Footer">
 			{% if key != "about" %}
 				<a href="/about/"><span>About</span></a>
+				<a href="/me/"><span>Me</span></a>
 				<a href="/archive/"><span>Archive</span></a>
 				<a href="/posts/feed.xml"><span>RSS</span></a>
 			{% endif %}
@@ -147,8 +148,10 @@
 			<script src="{{'/static/js/isotope.min.js' | url}}"></script>
 			<script src="{{'/static/js/packery.min.js' | url}}"></script>
 		{% endif %}
-		{% if key == "home" %}
+		{% if (key == "home") or (key == "me") %}
 			<script src="{{'/static/js/clipboard.min.js' | url}}"></script>
+		{% endif %}
+		{% if key == "home" %}
 			<script src="{{'/static/js/infinite-scroll.min.js' | url}}"></script>
 			{% if pagination.pageNumber == 0 %}
 				<script src="{{'/static/js/animation/home.js' | url}}"></script>

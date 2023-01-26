@@ -1,5 +1,25 @@
 [
 	{
+		"name": "bangkok",
+		"date": "2022-11-26",
+		"location": "Bangkok, Thailand",
+		"camera": "iPhone 14 Pro Max",
+		"editor": "VSCO",
+		"tags": "city outdoor landscape",
+		"description": "Gridlocked roads filled with cars, mopeds, and people on an afternoon in Bangkok, Thailand.",
+		"size": "xs"
+	},
+	{
+		"name": "jewel-changi",
+		"date": "2022-11-25",
+		"location": "Jewel Changi Airport, Singapore",
+		"camera": "iPhone 14 Pro Max",
+		"editor": "VSCO",
+		"tags": "nature plants indoor landscape",
+		"description": "A panoramic view of the world’s tallest indoor waterfall inside Jewel Changi Airport.",
+		"size": "m"
+	},
+	{
 		"name": "cat-garden",
 		"date": "2022-07-20",
 		"location": "San Francisco, CA, USA",
@@ -12,7 +32,8 @@
 			 	"platform": "instagram",
 			 	"url": "https://www.instagram.com/p/CgQgAmZL1ul/"
 			 }
-		]
+		],
+		"size": "m"
 	},
 	{
 		"name": "jeselle",
@@ -39,7 +60,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "nature outdoor beach portrait people",
-		"description": "A man in a waterproof poncho, sunglasses, and a hat sitting on a rock on Kehoe Beach."
+		"description": "A man in a waterproof poncho, sunglasses, and a hat sitting on a rock on Kehoe Beach.",
+		"size": "xs"
 	},
 	{
 		"name": "twin-peaks",
@@ -129,7 +151,8 @@
 			 	"platform": "instagram",
 			 	"url": "https://www.instagram.com/p/CQb8AzEpnLp/"
 			 }
-		]
+		],
+		"size": "m"
 	},
 	{
 		"name": "pimz",
@@ -156,7 +179,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "hills landscape park plants outdoor nature",
-		"description": "Hills in the Marin Headlands in Sausalito, California."
+		"description": "Hills in the Marin Headlands in Sausalito, California.",
+		"size": "s"
 	},
 	{
 		"name": "orange-flower",
@@ -165,7 +189,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "park flower plants outdoor nature",
-		"description": "An orange flower in the Marin Headlands in Sausalito, California."
+		"description": "An orange flower in the Marin Headlands in Sausalito, California.",
+		"size": "xs"
 	},
 	{
 		"name": "white-iris",
@@ -174,7 +199,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "park flower plants outdoor nature",
-		"description": "A white iris in the Marin Headlands in Sausalito, California."
+		"description": "A white iris in the Marin Headlands in Sausalito, California.",
+		"size": "xs"
 	},
 	{
 		"name": "sunset",
@@ -258,7 +284,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "sunset beach landscape outdoor water nature",
-		"description": "Sunset over a beach in Waldport, Oregon."
+		"description": "Sunset over a beach in Waldport, Oregon.",
+		"size": "m"
 	},
 	{
 		"name": "squad",
@@ -282,7 +309,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "portrait people beach outdoor",
-		"description": "A portrait of a man in a gray poncho at a beach in Waldport, Oregon."
+		"description": "A portrait of a man in a gray poncho at a beach in Waldport, Oregon.",
+		"size": "xs"
 	},
 	{
 		"name": "sunset",
@@ -315,7 +343,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "forest road trees snow landscape outdoor nature",
-		"description": "A snow-covered road in Willamette National Forest in Oregon."
+		"description": "A snow-covered road in Willamette National Forest in Oregon.",
+		"size": "xs"
 	},
 	{
 		"name": "snow-2",
@@ -324,7 +353,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "forest road trees snow landscape outdoor nature",
-		"description": "A snow-covered road in Willamette National Forest in Oregon."
+		"description": "A snow-covered road in Willamette National Forest in Oregon.",
+		"size": "m"
 	},
 	{
 		"name": "snow-1",
@@ -333,7 +363,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "forest road trees snow landscape outdoor nature",
-		"description": "Snow-covered trees by the side of a road in Willamette National Forest in Oregon."
+		"description": "Snow-covered trees by the side of a road in Willamette National Forest in Oregon.",
+		"size": "xs"
 	},
 	{
 		"name": "hayden",
@@ -477,7 +508,8 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"tags": "landscape city outdoor water people",
-		"description": "A man with his back to the camera, facing a rocky overlook and white ocean waves."
+		"description": "A man with his back to the camera, facing a rocky overlook and white ocean waves.",
+		"size": "m"
 	},
 	{
 		"name": "golden-gate",
@@ -516,7 +548,8 @@
 			 	"platform": "instagram",
 			 	"url": "https://www.instagram.com/p/CG_nVcZJCcO/"
 			 }
-		]
+		],
+		"size": "xs"
 	},
 	{
 		"name": "salt-ponds",
@@ -531,7 +564,8 @@
 			 	"platform": "instagram",
 			 	"url": "https://www.instagram.com/p/CEuSAN-pcf6/"
 			 }
-		]
+		],
+		"size": "m"
 	},
 	{
 		"name": "sunset",

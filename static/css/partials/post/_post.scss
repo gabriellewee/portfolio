@@ -8,7 +8,7 @@
 		padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
 		padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
 	}
-	.page-index &, .page-about & {
+	.page-index &, .page-about &, .page-me & {
 		.post-animate {
 			opacity: 0;
 		}
@@ -84,9 +84,6 @@
 	@include viewport(mobile) {
 		&:not([style]) {
 			grid-column: 1 / span 12;
-		}
-		&[style] {
-			width: 100%;
 		}
 	}
 
@@ -384,16 +381,7 @@
 		position: relative;
 		transition: .2s ease-out;
 		&:before {
-			@include clip-path-edges(3px);
-			opacity: 0;
-			content: "";
-			display: block;
-			position: absolute;
-			top: calc(var(--p)/-4);
-			left: calc(var(--p)/-4);
-			height: calc(100% + (var(--p)/2));
-			width: calc(100% + (var(--p)/2));
-			background-color: hsla(var(--color-mauve-hsl), .5);
+			@include before(hsla(var(--color-mauve-hsl), .5));
 		}
 		&:focus-visible {
 			box-shadow: none;
@@ -403,7 +391,7 @@
 		}
 		&:active {
 			@media (prefers-reduced-motion: no-preference) {
-				scale: .95;
+				scale: .98;
 			}
 		}
 	}

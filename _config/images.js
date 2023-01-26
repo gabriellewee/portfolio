@@ -27,6 +27,30 @@ module.exports = eleventyConfig => {
 		return result;
     });
 
+    eleventyConfig.addNunjucksAsyncShortcode("external", async (src, alt, width) => {
+		let stats = await Image(src, {
+			widths: [width, width*2],
+			formats: ["webp", "jpeg"],
+			urlPath: `/static/images/external`,
+			outputDir: `./_site/static/images/external`,
+		});
+
+		const placeholder = await sharp(stats["jpeg"][0].outputPath)
+			.resize({ fit: sharp.fit.inside })
+			.blur()
+			.toBuffer();
+		const base64Placeholder = `data:image/png;base64,${placeholder.toString("base64")}`;
+		
+		let result = `
+			<picture>
+				<source type="image/webp" srcset="${stats["webp"][0].url}, ${stats["webp"][1].url} 2x">
+				<img loading="lazy" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${stats["jpeg"][0].url}, ${stats["jpeg"][1].url} 2x" width="${stats["webp"][0].width}" height="${stats["webp"][0].height}">
+			</picture
+		`;
+
+		return result;
+    });
+
 	eleventyConfig.addNunjucksAsyncShortcode("image", async (src, alt, type, extra, figp) => {
 		let category = src.split('/')[3];
 		let name = src.split('/')[4].slice(0, -4);

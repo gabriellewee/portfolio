@@ -1,0 +1,241 @@
+---js
+{
+	title: "Me",
+	description: "About me and the things I like to do.",
+	permalink: "/me/",
+	key: "me",
+	layout: "layouts/base.njk",
+	tags: "pages",
+	isotope: true,
+	style: true,
+	add: true,
+	animation: true,
+	hidden: true,
+	message: "About me and the things I like to do",
+}
+---
+
+<section class="posts-container">
+	<div class="posts grid-isotope">
+		<article class="post post-game post-me post-size-m grid-item">
+			<div class="post-wrapper post-animate">
+				<header class="post-header">
+					<h2>I love playing video games - here‘s what I‘m currently playing.</h2>
+				</header>
+
+				<h3>Steam Deck:</h3>
+				<ul class="grid">
+					{% for game in steam.response.games %}
+						<li>
+							<a class="post-external" href="https://store.steampowered.com/app/{{game.appid}}/" target="_blank">
+								{% external "https://cdn.cloudflare.steamstatic.com/steam/apps/" + game.appid + "/capsule_616x353.jpg", game.name, 300 %}
+							</a>
+						</li>
+					{% endfor %}
+				</ul>
+				<a class="button" href="https://steamcommunity.com/id/gabriellewee" target="_blank"><span><span>Add me on Steam</span></span></a>
+
+				<h3>Nintendo Switch:</h3>
+				<ul class="grid">
+					{% for game in about.nintendo %}
+						<li>
+							{% set letter = game.slug | first  %}
+							<a class="post-external" href="https://www.nintendo.com/store/products/{{game.slug}}-switch/" target="_blank">
+								{% external "https://assets.nintendo.com/image/upload/ar_16:9,c_limit,w_1240/b_white/f_auto/q_auto/ncom/en_US/games/switch/" + letter + "/" + game.slug + "-switch/hero", game.title, 300 %}
+							</a>
+						</li>
+					{% endfor %}
+				</ul>
+				<div class="friend-code-container">
+					<h4>Friend Code:</h4>
+					<div><input class="friend-code" type="text" value="SW‑0918‑7153‑9794" data-clipboard-target=".friend-code"/></div>
+				</div>
+			</div>
+		</article>
+
+		<article class="post post-music post-me post-size-xs grid-item">
+			<div class="post-wrapper post-animate">
+				<header class="post-header">
+					<h2>I listen to a bit of music here and there.</h2>
+				</header>
+
+				<div class="iframe">
+					<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/pl.u-d2b0kEBtMN5eGo"></iframe>
+				</div>
+			</div>
+		</article>
+
+		<article class="post post-mods post-me post-size-s grid-item">
+			<div class="post-wrapper post-animate">
+				<header class="post-header">
+					<h2>I mod my keyboards and console controllers for fun.</h2>
+				</header>
+				<div id="2022-07-20-keyboard">
+					<a class="post-expand expand" href="#2022-07-20-keyboard-lightbox" aria-label="Expand image" role="button">
+						{% image './static/images/writing/2022-07-20-keyboard.jpg', 'My pastel-themed custom mechanical keyboard and Logitech Lift Mouse', 'default' %}
+					</a>
+				</div>
+				<ul class="grid">
+					{% for controller in about.controllers %}
+						<li>
+							<picture>
+								<img src="/static/images/svg/controllers/{{controller.name}}.svg" width="156" height="156" alt="Modded {{controller.color}} {{controller.brand}} {{controller.type}}"/>
+							</picture>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</article>
+
+		<article class="post post-photography post-me post-size-s grid-item">
+			<div class="post-wrapper post-animate">
+				<header class="post-header">
+					<h2>I enjoy taking photos of the world around me.</h2>
+				</header>
+				<ul class="grid">
+					{% for media in photography | limit(4) %}
+						<li id="{{media.date|safe}}-{{media.name}}">
+							<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand photo" role="button">
+								{% image './static/images/photography/' + media.date + '-' + media.name + '-thumbnail.jpg', media.description, 'thumbnail', loop.index %}
+							</a>
+						</li>
+					{% endfor %}
+				</ul>
+				<footer class="post-footer">
+					<a class="button" href="/photography/"><span><span>View Photography</span></span></a>
+				</footer>
+			</div>
+		</article>
+
+		<article class="post post-graphic post-me post-size-s grid-item">
+			<div class="post-wrapper post-animate">
+				<header class="post-header">
+					<h2>I dabble in illustration and design.</h2>
+				</header>
+				<ul class="grid">
+					{% for media in graphic | limit(4) %}
+						<li id="{{media.date|safe}}-{{media.name}}">
+							<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand graphic" role="button">
+								{% image './static/images/graphic/' + media.date + '-' + media.name + '.png', media.description, 'thumbnail', loop.index %}
+							</a>
+						</li>
+					{% endfor %}
+				</ul>
+				<footer class="post-footer">
+					<a class="button" href="/graphic/"><span><span>View Graphics</span></span></a>
+				</footer>
+			</div>
+		</article>
+
+		<article class="post post-art post-me post-size-s grid-item">
+			<div class="post-wrapper post-animate">
+				<header class="post-header">
+					<h2>I like to draw.</h2>
+				</header>
+				<ul class="grid">
+					{% for media in art | limit(4) %}
+						<li id="{{media.date|safe}}-{{media.name}}">
+							<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand artwork" role="button">
+								{% image './static/images/art/' + media.date + '-' + media.name + '-thumbnail.jpg', media.description, 'thumbnail', loop.index %}
+							</a>
+						</li>
+					{% endfor %}
+				</ul>
+				<footer class="post-footer">
+					<a class="button" href="/art/"><span><span>View Art</span></span></a>
+				</footer>
+			</div>
+		</article>
+
+		<article class="post post-cat post-me post-size-s grid-item">
+			<div class="post-wrapper post-animate">
+				<header class="post-header">
+					<h2>I spend a lot of time with Alfie, my cat.</h2>
+					<p>We go on adventures together!</p>
+				</header>
+				<ul class="grid">
+					{% for media in about.cat | limit(2) %}
+						<li id="{{media.date|safe}}-{{media.name}}">
+							<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand photo" role="button">
+								{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail' %}
+							</a>
+						</li>
+					{% endfor %}
+				</ul>
+				<footer class="post-footer">
+					<a class="button" href="https://instagram.com/greyalphonsecat" target="_blank"><span><span>See Cat</span></span></a>
+				</footer>
+			</div>
+		</article>
+
+		<article class="post post-plants post-me post-size-s grid-item">
+			<div class="post-wrapper post-animate">
+				<header class="post-header">
+					<h2>I’m an avid plant collector with over 200 plants, including aroids and succulents! 🪴</h2>
+				</header>
+				<ul class="grid">
+					{% for media in about.plants | limit(2) %}
+						<li id="{{media.date|safe}}-{{media.name}}">
+							<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand photo" role="button">
+								{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail' %}
+							</a>
+						</li>
+					{% endfor %}
+				</ul>
+				<footer class="post-footer">
+					<a class="button" href="https://instagram.com/ellocasia" target="_blank"><span><span>See Plants</span></span></a>
+				</footer>
+			</div>
+		</article>
+	</div>
+</section>
+
+<div class="lightbox-group" hidden>
+	<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="2022-07-20-keyboard-lightbox" href="#2022-07-20-keyboard">
+		<figure class="image">
+			{% image './static/images/writing/2022-07-20-keyboard.jpg', 'My pastel-themed custom mechanical keyboard and Logitech Lift Mouse', 'screen' %}
+		</figure>
+	</a>
+
+	{% for media in photography | limit(4) %}
+		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
+			<figure class="image">
+				{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
+			</figure>
+		</a>
+	{% endfor %}
+
+	{% for media in graphic | limit(4) %}
+		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
+			<figure class="image">
+				{% image './static/images/graphic/' + media.date + '-' + media.name + '.png', media.description, 'screen' %}
+			</figure>
+		</a>
+	{% endfor %}
+
+	{% for media in art | limit(4) %}
+		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
+			<figure class="image">
+				{% image './static/images/art/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
+			</figure>
+		</a>
+	{% endfor %}
+
+	{% for media in about.cat | limit(2) %}
+		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
+			<figure class="image">
+				{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
+			</figure>
+		</a>
+	{% endfor %}
+
+	{% for media in about.plants | limit(2) %}
+		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
+			<figure class="image">
+				{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
+			</figure>
+		</a>
+	{% endfor %}
+
+	<div class="lightbox-background"></div>
+</div>

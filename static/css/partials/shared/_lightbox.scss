@@ -70,7 +70,7 @@
 			height: 100%;
 		}
 		img {
-			@include border-radius(calc(var(--p)/3));
+			@include clip-path-edges(2px);
 			display: block;
 			max-height: 100%;
 			max-width: 100%;

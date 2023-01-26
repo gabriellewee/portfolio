@@ -1,0 +1,167 @@
+@import 'partials/shared/utilities';
+
+.post-me {
+	.post-wrapper {
+		padding: calc(var(--p) * 2);
+	}
+	.post-footer {
+		margin-top: calc(var(--p) * 2);
+	}
+	.post-header {
+		margin-bottom: calc(var(--p)*1.5);
+		h2 {
+			@include font-weight-width(800, 120);
+			font-size: 1.5rem;
+			line-height: 1.1;
+			@include viewport(mobile) {
+				font-size: 1.75rem;
+			}
+		}
+		p {
+			margin-top: var(--p);
+			line-height: 1.3;
+			font-weight: 600;
+			strong {
+				font-weight: 900;
+			}
+		}
+	}
+	.button {
+		display: inline-block;
+	}
+}
+
+.grid {
+	list-style: none;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: calc(var(--p)*2);
+}
+
+.post-expand, .post-external {
+	transition: .2s ease-out;
+	display: block;
+	position: relative;
+	&:before {
+		@include before(var(--color-rose));
+	}
+	picture {
+		@include clip-path-edges(2px);
+	}
+	&:focus-visible {
+		&:before {
+			opacity: 1;
+		}
+	}
+	&:active {
+		scale: 0.98;
+	}
+}
+
+.post-plants {
+	picture {
+		max-width: 300px;
+	}
+}
+
+.post-game {
+	.grid {
+		@include viewport(mobile) {
+			display: flex;
+			flex-wrap: wrap;
+		}
+	}
+	picture {
+		max-width: 300px;
+		height: auto;
+	}
+	h3 {
+		@include font-weight-width(450, 110);
+		font-size: 1.25rem;
+		margin-top: calc(var(--p)*2);
+		margin-bottom: var(--p);
+	}
+	.button, .friend-code-container {
+		margin-top: calc(var(--p)*2);
+	}
+	.friend-code-container {
+		@include viewport(mobile) {
+			display: inline-flex;
+			align-items: center;
+		}
+		h4 {
+			@include font-weight-width(450, 110);
+			font-size: 1.25rem;
+		}
+		input {
+			@include clip-path-edges(2px);
+			appearance: none;
+			border: 0;
+			max-width: 208px;
+			padding: var(--p) calc(var(--p)*1.5);
+			background-color: hsla(var(--color-iron-hsl), .1);
+			font-family: var(--font-mono);
+			font-size: 1.125rem;
+		}
+		div {
+			display: inline-flex;
+			align-items: center;
+			position: relative;
+			margin-top: var(--p);
+			@include viewport(mobile) {
+				margin-top: 0;
+				margin-left: var(--p);
+			}
+			&:before, &:after {
+				opacity: 0;
+				visibility: hidden;
+				display: block;
+				transition: .1s ease-out;
+				background-color: var(--color-iron);
+			}
+			&:before {
+				content: "";
+				position: absolute;
+				top: 17px;
+				right: -24px;
+				width: 10px;
+				height: 10px;
+				border-bottom-left-radius: 2px;
+				rotate: 45deg;
+			}
+			&:after {
+				@include font-weight-width(600, 100);
+				content: "Copied";
+				color: white;
+				position: absolute;
+				right: -81px;
+				padding: 6px 8px;
+				border-radius: 2px;
+				font-size: .75rem;
+				text-transform: uppercase;
+			}
+			&.copied {
+				&:before, &:after {
+					opacity: 1;
+					visibility: visible;
+				}
+			}
+		}
+	}
+}
+
+.post-mods {
+	.grid {
+		margin-top: calc(var(--p)*2);
+		grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
+	}
+	picture {
+		@include clip-path-edges(2px);
+		background-color: hsla(var(--color-iron-hsl), .05);
+	}
+}
+
+.iframe {
+	@include clip-path-edges(2px);
+	background-color: #F8F8FA;
+}

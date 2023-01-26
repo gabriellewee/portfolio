@@ -1,5 +1,7 @@
 let enter = gsap.timeline({ paused: true });
 let posts = Array.from(document.querySelectorAll("li"));
+posts.push(document.querySelector(".bottom"));
+
 posts.forEach(post => {
 	enter.fromTo(post, {
 		opacity: 0,

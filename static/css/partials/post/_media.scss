@@ -4,16 +4,7 @@
 	overflow: unset;
 	background: unset;
 	&:before {
-		@include clip-path-edges(3px);
-		opacity: 0;
-		content: "";
-		display: block;
-		position: absolute;
-		top: calc(var(--p)/-4);
-		left: calc(var(--p)/-4);
-		width: calc(100% + var(--p)/2);
-		height: calc(100% + var(--p)/2);
-		background-color: var(--color-rose);
+		@include before(var(--color-rose));
 	}
 }
 
@@ -121,15 +112,7 @@ figcaption {
 				background: url(/static/images/svg/icons/expand.svg) no-repeat center / 25px;
 			}
 			&:after {
-				@include clip-path-edges(3px);
-				opacity: 0;
-				position: absolute;
-				z-index: 0;
-				top: calc(var(--p)/-4);
-				left: calc(var(--p)/-4);
-				width: calc(100% + var(--p)/2);
-				height: calc(100% + var(--p)/2);
-				background-color: white;
+				@include before(white);
 			}
 
 			.no-image {
@@ -223,7 +206,7 @@ figcaption {
 			}
 		}
 		picture {
-			@include clip-path-edges(3px);
+			@include clip-path-edges(2px);
 			position: relative;
 			z-index: 1;
 			width: 150px;

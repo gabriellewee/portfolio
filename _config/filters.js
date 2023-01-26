@@ -1,6 +1,5 @@
 const { DateTime, Duration } = require("luxon");
 const nbspFilter = require('eleventy-nbsp-filter');
-const util = require("util");
 
 module.exports = eleventyConfig => {
 	eleventyConfig.addFilter("nbsp", nbspFilter(2, 100));
@@ -11,14 +10,6 @@ module.exports = eleventyConfig => {
 
 	eleventyConfig.addFilter("index", (array, index) => {
 		return array.slice(index - 1, index);
-	});
-
-	eleventyConfig.addFilter('dump', obj => {
-		return util.inspect(obj)
-	});
-
-	eleventyConfig.addFilter("capitalize", text => {
-		return text.charAt(0).toUpperCase() + text.slice(1);
 	});
 
 	eleventyConfig.addFilter("readableDate", date => {

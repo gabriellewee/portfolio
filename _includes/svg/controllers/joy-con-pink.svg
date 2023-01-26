@@ -1,6 +1,6 @@
 <svg viewBox="0 0 156 156" width="156" height="156" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 	<g stroke="none" stroke-linecap="round" stroke-linejoin="round">
-		<rect class="background" fill="#FFFFFF" x="0" y="0" width="156" height="156"></rect>
+		<!-- <rect class="background" fill="#FFFFFF" x="0" y="0" width="156" height="156"></rect> -->
 		<g class="lights">
 			<rect stroke="#FAE6E6" fill="#F2CACA" x="64.5" y="14.5" width="11" height="11" rx="1"></rect>
 			<rect stroke="#FAE6E6" fill="#F2CACA" x="48.5" y="14.5" width="11" height="11" rx="1"></rect>

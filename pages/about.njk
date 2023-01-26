@@ -43,10 +43,10 @@
 
 <section class="posts-container">
 	<div class="posts grid-isotope">
-		<article class="post post-about post-build post-size-m post-animate grid-item">
-			<div class="post-wrapper">
+		<article class="post post-about post-build post-size-m grid-item">
+			<div class="post-wrapper post-animate">
 				<header class="post-header">
-					<h3>About</h3>
+					<h3>Build</h3>
 				</header>
 				<div class="post-content post-text">
 					<p>This website is built with <a href="https://www.11ty.dev" target="_blank">Eleventy</a>, hosted on <a href="https://github.com/gabriellewee/portfolio" target="_blank">Github</a>, and deployed via <a href="https://netlify.com/" target="_blank">Netlify</a>. The domain provider is <a href="https://www.netim.com" target="_blank">Netim</a>. Templates are built from a combination of <a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a>, Markdown, and vanilla HTML. Styles are built with SASS and Autoprefixer.</p>
@@ -54,8 +54,8 @@
 			</div>
 		</article>
 
-		<article class="post post-about post-size-xs post-versions post-animate grid-item">
-			<div class="post-wrapper">
+		<article class="post post-about post-size-xs post-versions grid-item">
+			<div class="post-wrapper post-animate">
 				<header class="post-header">
 					<h3>Versions</h3>
 				</header>
@@ -71,8 +71,8 @@
 			</div>
 		</article>
 
-		<article class="post post-about post-size-m post-sitemap post-animate grid-item">
-			<div class="post-wrapper">
+		<article class="post post-about post-size-m post-sitemap grid-item">
+			<div class="post-wrapper post-animate">
 				<header class="post-header">
 					<h3>Site Map</h3>
 				</header>
@@ -83,14 +83,14 @@
 								<a href="{{post.url | url}}"><span>{{post.data.key | safe | capitalize}}</span></a>
 							</li>
 						{% endfor %}
-						<li><a href="/feed.xml"><span>RSS</span></a></li>
+						<li><a href="/posts/feed.xml"><span>RSS</span></a></li>
 					</ul>
 				</div>
 			</div>
 		</article>
 
-		<article class="post post-about post-size-m post-colors post-animate grid-item">
-			<div class="post-wrapper">
+		<article class="post post-about post-size-m post-colors grid-item">
+			<div class="post-wrapper post-animate">
 				<header class="post-header">
 					<h3>Colors</h3>
 				</header>
@@ -109,14 +109,14 @@
 			</div>
 		</article>
 
-		<article class="post post-about post-mentions post-animate grid-item">
-			<div class="post-wrapper">
+		<article class="post post-about post-mentions grid-item">
+			<div class="post-wrapper post-animate">
 				<header class="post-header">
 					<h3>Mentions</h3>
 				</header>
 				<div class="post-content post-text">
 					<ul>
-						{% for mention in mentions %}
+						{% for mention in about.mentions %}
 							<li>
 								<span class="mention-publication">{{mention.publication}}</span>
 								<a class="mention-link" href="{{mention.url | url}}" target="_blank">{{mention.title | nbsp | safe}}</a>
@@ -127,8 +127,8 @@
 			</div>
 		</article>
 
-		<article class="post post-about post-thanks post-animate grid-item">
-			<div class="post-wrapper">
+		<article class="post post-about post-thanks grid-item">
+			<div class="post-wrapper post-animate">
 				<header class="post-header">
 					<h3>Thanks</h3>
 				</header>

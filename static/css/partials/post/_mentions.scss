@@ -43,16 +43,7 @@
 		display: inline-block;
 		position: relative;
 		&:before {
-			@include clip-path-edges(3px);
-			opacity: 0;
-			content: "";
-			display: block;
-			position: absolute;
-			top: calc(var(--p)/-4);
-			left: calc(var(--p)/-4);
-			height: calc(100% + (var(--p)/2));
-			width: calc(100% + (var(--p)/2));
-			background-color: hsla(var(--color-mauve-hsl), .5);
+			@include before(hsla(var(--color-mauve-hsl), .5));
 		}
 		&:focus-visible {
 			&:before {

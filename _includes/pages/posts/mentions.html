@@ -1,70 +1,34 @@
 {% set pageLink = site.url + page.url %}
 <aside class="mentions">
-	<div class="mentions-list mentions-likes">
-		<div class="mentions-placeholder">
-			{% for webmention in webmentions.links %}
-				{% if (webmention.target == pageLink) and (webmention.activity.type == "like") %}&nbsp;{% endif %}
-			{% endfor %}
+	{% for type, webmentions in webmentions.links | groupby("activity.type") %}
+		<div class="mentions-list mentions-{{type}}s">
+			<div class="mentions-placeholder">
+				{% for webmention in webmentions %}
+					{% if (webmention.target == pageLink) and (type != "link") %}&nbsp;{% endif %}
+				{% endfor %}
+			</div>
+			<h3>{% if type == "reply" %}Replies{% else %}{{type|capitalize}}s{% endif %}</h3>
+			<ul class="mentions-{% if type == 'reply' %}flex{% elseif type == 'link' %}url{% elseif (type != 'reply') and (type != 'link') %}grid{% endif %}">
+				{% for webmention in webmentions %}
+					{% if (webmention.target == pageLink) and (type == "reply") %}
+						<li>
+							<a class="avatar" title="{{webmention.data.author.name}}" href="{{webmention.data.author.url}}" target="_blank">
+								{% external webmention.data.author.photo, webmention.data.author.name, 48 %}
+							</a>
+							<div>
+								<a class="time" href="{{webmention.data.url}}" target="_blank"><time>{{webmention.data.published|timeAgo}}</time></a>
+								<div class="reply post-text">{{webmention.data.content|safe}}</div>
+							</div>
+						</li>
+					{% elseif (webmention.target == pageLink) and (type != "reply") and (type != "link") %}
+						<li>
+							<a class="avatar" title="{{webmention.data.author.name}}" href="{{webmention.data.author.url}}" target="_blank">
+								{% external webmention.data.author.photo, webmention.data.author.name, 48 %}
+							</a>
+						</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
 		</div>
-		<h3>Likes</h3>
-		<ul class="mentions-grid">
-			{% for webmention in webmentions.links %}
-				{% if (webmention.target == pageLink) and (webmention.activity.type == "like") %}
-					<li>
-						<a class="avatar" title="{{webmention.data.author.name}}" href="{{webmention.data.author.url}}" target="_blank">
-							<picture>
-								<img src="{{webmention.data.author.photo}}" width="48" height="48" />
-							</picture>
-						</a>
-					</li>
-				{% endif %}
-			{% endfor %}
-		</ul>
-	</div>
-	<div class="mentions-list mentions-reposts">
-		<div class="mentions-placeholder">
-			{% for webmention in webmentions.links %}
-				{% if (webmention.target == pageLink) and (webmention.activity.type == "repost") %}&nbsp;{% endif %}
-			{% endfor %}
-		</div>
-		<h3>Reposts</h3>
-		<ul class="mentions-grid">
-			{% for webmention in webmentions.links %}
-				{% if (webmention.target == pageLink) and (webmention.activity.type == "repost") %}
-					<li>
-						<a class="avatar" title="{{webmention.data.author.name}}" href="{{webmention.data.author.url}}" target="_blank">
-							<picture>
-								<img src="{{webmention.data.author.photo}}" width="48" height="48" />
-							</picture>
-						</a>
-					</li>
-				{% endif %}
-			{% endfor %}
-		</ul>
-	</div>
-	<div class="mentions-list mentions-replies">
-		<div class="mentions-placeholder">
-			{% for webmention in webmentions.links %}
-				{% if (webmention.target == pageLink) and (webmention.activity.type == "reply") %}&nbsp;{% endif %}
-			{% endfor %}
-		</div>
-		<h3>Replies</h3>
-		<ul class="mentions-flex">
-			{% for webmention in webmentions.links %}
-				{% if (webmention.target == pageLink) and (webmention.activity.type == "reply") %}
-					<li>
-						<a class="avatar" title="{{webmention.data.author.name}}" href="{{webmention.data.author.url}}" target="_blank">
-							<picture>
-								<img src="{{webmention.data.author.photo}}" width="48" height="48" />
-							</picture>
-						</a>
-						<div>
-							<a class="time" href="{{webmention.data.url}}" target="_blank"><time>{{webmention.data.published|timeAgo}}</time></a>
-							<div class="reply post-text">{{webmention.data.content|safe}}</div>
-						</div>
-					</li>
-				{% endif %}
-			{% endfor %}
-		</ul>
-	</div>
+	{% endfor %}
 </aside>
