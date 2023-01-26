@@ -26,15 +26,22 @@
 			a {
 				span {
 					@include gradient-text(var(--color-mauve-hsl), var(--color-slate-hsl), true);
+					transition: .2s ease-out;
+					text-decoration: underline;
+					text-underline-offset: 8px;
+					text-decoration-color: white;
 				}
 				&:hover, &:focus {
 					span {
 						@include gradient-text(var(--color-rose-hsl), var(--color-mauve-hsl), true);
+						text-underline-offset: 4px;
+						text-decoration-color: var(--color-mauve-rose);
 					}
 				}
 				&:active {
 					span {
 						@include gradient-text(var(--color-iron-1-hsl), var(--color-iron-12-hsl), true);
+						text-decoration-color: var(--color-iron-1);
 					}
 				}
 			}

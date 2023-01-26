@@ -3,7 +3,7 @@
 		<h2>Tags</h2>
 		<ul>
 			{% for filter in filters %}
-				<li><a class="grid-filter" href="#" data-filter=".filter-{{filter.name}}">#<span>{% if filter.label %}{{filter.label}}{% else %}{{filter.name}}{% endif %}</span></a></li>
+				<li><a class="grid-filter" href="#" data-filter=".filter-{{filter.name}}"><span>{% if filter.label %}{{filter.label}}{% else %}{{filter.name}}{% endif %}</span></a></li>
 			{% endfor %}
 			<li><a class="grid-filter reset" href="#" data-filter="*"><span>reset</span></a></li>
 		</ul>

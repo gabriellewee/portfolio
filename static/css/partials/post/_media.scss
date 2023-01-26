@@ -27,7 +27,6 @@ figure {
 }
 
 figcaption {
-	@include blur-all(10px, "var(--color-iron-10-hsl)", .9, .7);
 	@include font-weight-width(700, 120);
 	transition: .5s cubic-bezier(.64, 0, .78, 0);
 	opacity: 0;
@@ -42,6 +41,7 @@ figcaption {
 	width: 100%;
 	height: 100%;
 	padding: calc(var(--p)*2);
+	background-color: hsla(var(--color-iron-10-hsl), .9);
 	color: white;
 	font-size: 1.125rem;
 	overflow-y: auto;
@@ -116,16 +116,20 @@ figcaption {
 			}
 
 			.no-image {
+				transition: .2s ease-out;
 				opacity: .7;
 				content: "Expand";
 				margin-left: calc(var(--p) * .75);
+				text-decoration: underline;
+				text-underline-offset: 8px;
+				text-decoration-color: rgba(white, 0);
 			}
 
 			&:hover, &:focus {
 				.no-image {
 					opacity: 1;
-					text-decoration: underline;
 					text-underline-offset: 4px;
+					text-decoration-color: white;
 				}
 			}
 
@@ -268,12 +272,16 @@ figcaption {
 		}
 		span {
 			opacity: .7;
+			transition: .2s ease-out;
+			text-decoration: underline;
+			text-underline-offset: 8px;
+			text-decoration-color: rgba(white, 0);
 		}
 		&:hover, &:focus {
 			span {
 				opacity: 1;
-				text-decoration: underline;
 				text-underline-offset: 4px;
+				text-decoration-color: white;
 			}
 		}
 		&:active {
@@ -284,17 +292,17 @@ figcaption {
 
 		&.instagram {
 			&:before {
-				background: url(/static/images/svg/icons/instagram.svg) no-repeat center / 25px;
+				background: url("/static/images/svg/icons/instagram.svg") no-repeat center / 25px;
 			}
 		}
 		&.dribbble {
 			&:before {
-				background: url(/static/images/svg/icons/dribbble.svg) no-repeat center / 25px;
+				background: url("/static/images/svg/icons/dribbble.svg") no-repeat center / 25px;
 			}
 		}
 		&.codepen {
 			&:before {
-				background: url(/static/images/svg/icons/codepen.svg) no-repeat center / 25px;
+				background: url("/static/images/svg/icons/codepen.svg") no-repeat center / 25px;
 			}
 		}
 	}
@@ -387,6 +395,7 @@ figcaption {
 		+ .post-wrapper {
 			.post-content {
 				figcaption {
+					@include blur-all(10px, "var(--color-iron-10-hsl)", .9, .7);
 					transition: .5s cubic-bezier(.64, 0, .78, 0);
 					opacity: 1;
 					@media (prefers-reduced-motion: no-preference) {

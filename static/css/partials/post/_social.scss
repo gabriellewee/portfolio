@@ -37,6 +37,9 @@
 			flex-wrap: nowrap;
 		}
 		a {
+			.outside {
+				transition: .2s ease-out;
+			}
 			@supports (container-type: inline-size) {
 				margin-bottom: var(--p);
 			}

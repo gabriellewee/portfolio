@@ -28,6 +28,7 @@
 			&:active {
 				span {
 					@include gradient-text(var(--color-iron-1-hsl), var(--color-iron-12-hsl), true);
+					text-decoration-color: var(--color-iron-1);
 				}
 			}
 		}
