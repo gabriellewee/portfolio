@@ -110,9 +110,9 @@
 				{% if message == true %}
 					<h1 class="text message">{{description}}</h1>
 				{% elseif (message) and (key == "home") and (pagination.pageNumber == 0) %}
-					<p class="text message">{{message}}</p>
+					<p class="text message">{{message|nbsp|safe}}</p>
 				{% elseif message %}
-					<h1 class="text message">{{message}}</h1>
+					<h1 class="text message">{{message|nbsp|safe}}</h1>
 				{% endif %}
 			</div>
 			{% if (key == "home") and (pagination.pageNumber == 0) %}

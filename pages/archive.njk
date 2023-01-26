@@ -26,7 +26,7 @@ message: Post archive for gabriellew.ee
 					</li>
 				{% endif %}
 				<li>
-					<h3><a href="{{post.url | url}}"><span>{{post.data.title | nbsp | safe}}</span></a></h3>
+					<h3><a href="{{post.url | url}}"><span>{{post.data.title | safe}}</span></a></h3>
 					<time datetime="{{post.date | htmlDateString}}">{{post.date | readableDate}}</time>
 				</li>
 			{% endfor %}
@@ -39,7 +39,7 @@ message: Post archive for gabriellew.ee
 					</li>
 				{% endif %}
 				<li>
-					<h3><a href="{{post.url | url}}"><span>{{post.data.title | nbsp | safe}}</span></a></h3>
+					<h3><a href="{{post.url | url}}"><span>{{post.data.title | safe}}</span></a></h3>
 					<time datetime="{{post.date | htmlDateString}}">{{post.date | readableDate}}</time>
 				</li>
 			{% endfor %}

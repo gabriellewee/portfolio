@@ -9,7 +9,7 @@
 	h3 {
 		@include font-weight-width(800, 120);
 		font-size: 2rem;
-		line-height: 1.2;
+		line-height: 1.1;
 		a {
 			span {
 				@include gradient-text(var(--color-mauve-hsl), var(--color-slate-hsl), true);
@@ -36,7 +36,7 @@
 	time {
 		@include font-weight-width(600, 80);
 		display: block;
-		margin-top: calc(var(--p)/4);
+		margin-top: calc(var(--p)/2);
 		white-space: nowrap;
 		text-transform: uppercase;
 	}
