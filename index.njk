@@ -126,7 +126,7 @@ pagination:
 								<button class="reload button"><span><span>{{post.data.button|capitalize}}</span></span></button>
 							{% endif %}
 							{% if post.url %}
-								<iframe src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title|safe}}" loading="lazy" tabindex="-1"></iframe>
+								<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title|safe}}" loading="lazy" tabindex="-1"></iframe>
 								<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}">Please enable Javascript to view this code demo.</noscript>
 							{% else %}
 								{{post.content|safe}}
