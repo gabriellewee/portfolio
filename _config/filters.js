@@ -30,6 +30,11 @@ module.exports = eleventyConfig => {
 		date = DateTime.fromJSDate(date, {zone: 'utc'}).toRelative() || DateTime.fromISO(date, {zone: 'utc'}).toRelative();
 		return date;
 	});
+	
+	eleventyConfig.addFilter("ISO", date => {
+		date = DateTime.fromJSDate(date, {zone: 'utc'}).toISO() || DateTime.fromISO(date, {zone: 'utc'}).toISO();
+		return date;
+	});
 
 	eleventyConfig.addNunjucksAsyncShortcode("year", async (year) => {
 		if(year === "start") {

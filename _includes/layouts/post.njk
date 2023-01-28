@@ -12,17 +12,17 @@ category: writing
 			<div class="post-wrapper">
 				<header class="post-header inline-header">
 					<div class="post-header-wrapper">
-						<h2>{{title | nbsp | safe}}</h2>
-						<time class="time-default" datetime="{{page.date | htmlDateString}}" title="{{page.date | readableDate}}">{{page.date | timeAgo}}</time>
+						<h2>{{title|nbsp|safe}}</h2>
+						<time class="time-default" datetime="{{page.date|htmlDateString}}" title="{{page.date|readableDate}}" data-time="{{page.date|ISO}}">{{page.date|readableDate}}</time>
 					</div>
 				</header>
 				<div class="post-content post-text">
-					{{content | safe}}
+					{{content|safe}}
 				</div>
 				{% if external %}
 					<footer class="post-footer">
 						{% for link in external %}
-							<a class="button link-platform link-{{link.platform}}" href="{{link.url | url}}" target="_blank"><span><span>Read on {{link.platform | capitalize}}</span></a>
+							<a class="button link-platform link-{{link.platform}}" href="{{link.url|url}}" target="_blank"><span><span>Read on {{link.platform|capitalize}}</span></a>
 						{% endfor %}
 					</footer>
 				{% endif %}
@@ -33,31 +33,31 @@ category: writing
 	{% include 'pages/posts/mentions.html' %}
 
 	<nav class="pagination">
-		{%- set nextPost = collections.posts | getNextCollectionItem(page) %}
-		{%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+		{%- set nextPost = collections.posts|getNextCollectionItem(page) %}
+		{%- set previousPost = collections.posts|getPreviousCollectionItem(page) %}
 		{%- if nextPost or previousPost %}
 			{%- if nextPost %}
-				<a class="newer button" href="{{ nextPost.url | url }}"><span><span>Newer</span></span></a>
+				<a class="newer button" href="{{nextPost.url|url}}"><span><span>Newer</span></span></a>
 			{% else %}
 				<a class="button" href="/"><span><span>Back to home</span></span></a>
 			{% endif %}
 			{%- if previousPost %}
-				<a class="older button" href="{{ previousPost.url | url }}"><span><span>Older</span></span></a>
+				<a class="older button" href="{{previousPost.url|url}}"><span><span>Older</span></span></a>
 			{% else %}
 				<a class="button" href="/archive/"><span><span>Back to archive</span></span></a>
 			{% endif %}
 		{%- endif %}
 
-		{%- set nextPost = collections.archive | getNextCollectionItem(page) %}
-		{%- set previousPost = collections.archive | getPreviousCollectionItem(page) %}
+		{%- set nextPost = collections.archive|getNextCollectionItem(page) %}
+		{%- set previousPost = collections.archive|getPreviousCollectionItem(page) %}
 		{%- if nextPost or previousPost %}
 			{%- if nextPost %}
-				<a class="newer button" href="{{ nextPost.url | url }}"><span><span>Newer</span></span></a>
+				<a class="newer button" href="{{nextPost.url|url}}"><span><span>Newer</span></span></a>
 			{% else %}
 				<a class="button" href="/archive/"><span><span>Back to archive</span></span></a>
 			{% endif %}
 			{%- if previousPost %}
-				<a class="older button" href="{{ previousPost.url | url }}"><span><span>Older</span></span></a>
+				<a class="older button" href="{{previousPost.url|url}}"><span><span>Older</span></span></a>
 			{% else %}
 				<a class="button" href="/archive/"><span><span>Back to archive</span></span></a>
 			{% endif %}

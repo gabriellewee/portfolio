@@ -76,25 +76,25 @@
 
 	<meta property="article:author" content="{{site.author}}">
 
-	<meta name="generator" content="{{ eleventy.generator }}">
+	<meta name="generator" content="{{eleventy.generator}}">
 
 	{% if style == true %}
 		{% if add == true %}
-			<link rel="stylesheet" href="{{'/static/css/style.css' | url}}">
+			<link rel="stylesheet" href="{{'/static/css/style.css'|url}}">
 		{% endif %}
-		<link rel="stylesheet" href="{{ '/static/css/' + key + '.css' | url }}">
+		<link rel="stylesheet" href="{{'/static/css/' + key + '.css'|url}}">
 	{% elseif style %}
 		{% if add == true %}
-			<link rel="stylesheet" href="{{'/static/css/style.css' | url}}">
+			<link rel="stylesheet" href="{{'/static/css/style.css'|url}}">
 		{% endif %}
-		<link rel="stylesheet" href="{{ '/static/' + style + '.css' | url }}">
+		<link rel="stylesheet" href="{{'/static/' + style + '.css'|url}}">
 	{% else %}
-		<link rel="stylesheet" href="{{'/static/css/style.css' | url}}">
+		<link rel="stylesheet" href="{{'/static/css/style.css'|url}}">
 	{% endif %}
 
 	{% if blank != true %}
 		<noscript>
-			<link rel="stylesheet" href="{{'/static/css/no-js.css' | url}}">
+			<link rel="stylesheet" href="{{'/static/css/no-js.css'|url}}">
 		</noscript>
 	{% endif %}
 </head>
@@ -124,7 +124,7 @@
 		{% if links == true %}
 			{% include 'pages/home/links.html' %}
 		{% endif %}
-		{% block content %}{{content | safe}}{% endblock %}
+		{% block content %}{{content|safe}}{% endblock %}
 	</main>
 	{% if blank != true %}
 		<footer class="bottom" aria-label="Footer">
@@ -139,33 +139,34 @@
 			</span>
 		</footer>
 
-		<script src="{{'/static/js/gsap.min.js' | url}}"></script>
-		<script src="{{'/static/js/scroll-trigger.min.js' | url}}"></script>
-		<script src="{{'/static/js/text.min.js' | url}}"></script>
-		<script src="{{'/static/js/smoothscroll.min.js' | url}}"></script>
-		<script src="{{'/static/js/lightbox.js' | url}}"></script>
+		<script src="{{'/static/js/gsap.min.js'|url}}"></script>
+		<script src="{{'/static/js/scroll-trigger.min.js'|url}}"></script>
+		<script src="{{'/static/js/text.min.js'|url}}"></script>
+		<script src="{{'/static/js/smoothscroll.min.js'|url}}"></script>
+		<script src="{{'/static/js/lightbox.js'|url}}"></script>
+		<script src="{{'/static/js/luxon.min.js'|url}}"></script>
 		{% if isotope == true %}
-			<script src="{{'/static/js/isotope.min.js' | url}}"></script>
-			<script src="{{'/static/js/packery.min.js' | url}}"></script>
+			<script src="{{'/static/js/isotope.min.js'|url}}"></script>
+			<script src="{{'/static/js/packery.min.js'|url}}"></script>
 		{% endif %}
 		{% if (key == "home") or (key == "me") %}
-			<script src="{{'/static/js/clipboard.min.js' | url}}"></script>
+			<script src="{{'/static/js/clipboard.min.js'|url}}"></script>
 		{% endif %}
 		{% if key == "home" %}
-			<script src="{{'/static/js/infinite-scroll.min.js' | url}}"></script>
+			<script src="{{'/static/js/infinite-scroll.min.js'|url}}"></script>
 			{% if pagination.pageNumber == 0 %}
-				<script src="{{'/static/js/animation/home.js' | url}}"></script>
+				<script src="{{'/static/js/animation/home.js'|url}}"></script>
 			{% endif %}
 		{% else %}
-			<script src="{{'/static/js/imagesloaded.min.js' | url}}"></script>
+			<script src="{{'/static/js/imagesloaded.min.js'|url}}"></script>
 		{% endif %}
 		{% if animation == true %}
-			<script src="{{'/static/js/animation/' + key + '.js' | url}}"></script>
+			<script src="{{'/static/js/animation/' + key + '.js'|url}}"></script>
 		{% endif %}
 		{% if key == "post" %}
-			<script src="{{'/static/js/posts.js' | url}}"></script>
+			<script src="{{'/static/js/posts.js'|url}}"></script>
 		{% endif %}
-		<script src="{{'/static/js/main.js' | url}}"></script>
+		<script src="{{'/static/js/main.js'|url}}"></script>
 	{% endif %}
 	<script>document.body.addEventListener('touchstart', function() {}, {passive: true});</script>
 </body>

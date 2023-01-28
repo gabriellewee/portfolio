@@ -20,7 +20,19 @@ function frames(buttons) {
 	});
 }
 
+function timeAgo(dates) {
+	let datesISO = Array.from(document.querySelectorAll(dates));
+	if(!datesISO) return;
+	datesISO.forEach(date =>{
+		let datetime = date.getAttribute("data-time");
+		if(!datetime) return;
+		let relativeTime = luxon.DateTime.fromISO(datetime, {zone: 'utc'}).toRelative();
+		date.innerHTML = relativeTime;
+	});
+}
+
 frames(".reload");
+timeAgo("time");
 lightbox(".expand");
 
 let container = document.querySelector(".grid-isotope");
@@ -73,6 +85,7 @@ if(container) {
 		scroll.on('append', (body, path, items, response) => {
 			frames(".reload");
 			lightbox(".expand");
+			timeAgo("time");
 		});
 	}
 }

@@ -22,6 +22,7 @@ module.exports = eleventyConfig => {
 		"node_modules/infinite-scroll/dist/infinite-scroll.pkgd.min.js": "static/js/infinite-scroll.min.js",
 		"node_modules/isotope-layout/dist/isotope.pkgd.min.js": "static/js/isotope.min.js",
 		"node_modules/isotope-packery/packery-mode.pkgd.min.js": "static/js/packery.min.js",
+		"node_modules/luxon/build/global/luxon.min.js": "static/js/luxon.min.js",
 		"node_modules/smoothscroll-polyfill/dist/smoothscroll.min.js": "static/js/smoothscroll.min.js"
 	});
 };

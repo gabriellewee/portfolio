@@ -80,7 +80,7 @@
 					<ul>
 						{% for post in collections.pages %}
 							<li>
-								<a href="{{post.url | url}}"><span>{{post.data.key | safe | capitalize}}</span></a>
+								<a href="{{post.url|url}}"><span>{{post.data.key|safe|capitalize}}</span></a>
 							</li>
 						{% endfor %}
 						<li><a href="/posts/feed.xml"><span>RSS</span></a></li>
@@ -119,7 +119,7 @@
 						{% for mention in about.mentions %}
 							<li>
 								<span class="mention-publication">{{mention.publication}}</span>
-								<a class="mention-link" href="{{mention.url | url}}" target="_blank">{{mention.title | nbsp | safe}}</a>
+								<a class="mention-link" href="{{mention.url|url}}" target="_blank">{{mention.title|nbsp|safe}}</a>
 							</li>
 						{% endfor %}
 					</ul>

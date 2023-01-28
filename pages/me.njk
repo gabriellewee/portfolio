@@ -41,7 +41,7 @@
 				<ul class="grid">
 					{% for game in about.nintendo %}
 						<li>
-							{% set letter = game.slug | first  %}
+							{% set letter = game.slug|first  %}
 							<a class="post-external" href="https://www.nintendo.com/store/products/{{game.slug}}-switch/" target="_blank">
 								{% external "https://assets.nintendo.com/image/upload/ar_16:9,c_limit,w_1240/b_white/f_auto/q_auto/ncom/en_US/games/switch/" + letter + "/" + game.slug + "-switch/hero", game.title, 300 %}
 							</a>
@@ -95,7 +95,7 @@
 					<h2>I enjoy taking photos of the world around me.</h2>
 				</header>
 				<ul class="grid">
-					{% for media in photography | limit(4) %}
+					{% for media in photography|limit(4) %}
 						<li id="{{media.date|safe}}-{{media.name}}">
 							<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand photo" role="button">
 								{% image './static/images/photography/' + media.date + '-' + media.name + '-thumbnail.jpg', media.description, 'thumbnail', loop.index %}
@@ -115,7 +115,7 @@
 					<h2>I dabble in illustration and design.</h2>
 				</header>
 				<ul class="grid">
-					{% for media in graphic | limit(4) %}
+					{% for media in graphic|limit(4) %}
 						<li id="{{media.date|safe}}-{{media.name}}">
 							<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand graphic" role="button">
 								{% image './static/images/graphic/' + media.date + '-' + media.name + '.png', media.description, 'thumbnail', loop.index %}
@@ -135,7 +135,7 @@
 					<h2>I like to draw.</h2>
 				</header>
 				<ul class="grid">
-					{% for media in art | limit(4) %}
+					{% for media in art|limit(4) %}
 						<li id="{{media.date|safe}}-{{media.name}}">
 							<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand artwork" role="button">
 								{% image './static/images/art/' + media.date + '-' + media.name + '-thumbnail.jpg', media.description, 'thumbnail', loop.index %}
@@ -156,7 +156,7 @@
 					<p>We go on adventures together!</p>
 				</header>
 				<ul class="grid">
-					{% for media in about.cat | limit(2) %}
+					{% for media in about.cat|limit(2) %}
 						<li id="{{media.date|safe}}-{{media.name}}">
 							<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand photo" role="button">
 								{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail' %}
@@ -176,7 +176,7 @@
 					<h2>I’m an avid plant collector with over 200 plants, including aroids and succulents! 🪴</h2>
 				</header>
 				<ul class="grid">
-					{% for media in about.plants | limit(2) %}
+					{% for media in about.plants|limit(2) %}
 						<li id="{{media.date|safe}}-{{media.name}}">
 							<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand photo" role="button">
 								{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail' %}
@@ -199,7 +199,7 @@
 		</figure>
 	</a>
 
-	{% for media in photography | limit(4) %}
+	{% for media in photography|limit(4) %}
 		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
 			<figure class="image">
 				{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
@@ -207,7 +207,7 @@
 		</a>
 	{% endfor %}
 
-	{% for media in graphic | limit(4) %}
+	{% for media in graphic|limit(4) %}
 		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
 			<figure class="image">
 				{% image './static/images/graphic/' + media.date + '-' + media.name + '.png', media.description, 'screen' %}
@@ -215,7 +215,7 @@
 		</a>
 	{% endfor %}
 
-	{% for media in art | limit(4) %}
+	{% for media in art|limit(4) %}
 		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
 			<figure class="image">
 				{% image './static/images/art/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
@@ -223,7 +223,7 @@
 		</a>
 	{% endfor %}
 
-	{% for media in about.cat | limit(2) %}
+	{% for media in about.cat|limit(2) %}
 		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
 			<figure class="image">
 				{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
@@ -231,7 +231,7 @@
 		</a>
 	{% endfor %}
 
-	{% for media in about.plants | limit(2) %}
+	{% for media in about.plants|limit(2) %}
 		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
 			<figure class="image">
 				{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
