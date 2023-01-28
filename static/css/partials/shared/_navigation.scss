@@ -106,7 +106,7 @@
 				background: radial-gradient(circle at center right, var(--color-iron) 0, var(--color-iron-12) 100%);
 			}
 		}
-		&:hover, &:focus, &:focus-visible {
+		&:hover, &:focus {
 			> span {
 				background-position-x: 100%;
 			}

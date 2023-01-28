@@ -205,7 +205,7 @@
 			scale: 1.02;
 		}
 	}
-	&:hover, &:focus, &:focus-visible {
+	&:hover, &:focus {
 		> span {
 			background-position-x: 0%;
 		}
@@ -253,7 +253,7 @@
 				display: none;
 			}
 		}
-		&:hover, &:focus, &:focus-visible {
+		&:hover, &:focus {
 			> span {
 				background: var(--color-iron-white-70);
 			}
@@ -310,6 +310,7 @@
 			}
 			.link > a, .popup-label span {
 				text-decoration: underline;
+				text-decoration-thickness: 3px;
 				text-underline-offset: 8px;
 				text-decoration-color: var(--color-blush-8);
 			}
@@ -321,6 +322,8 @@
 			}
 			.link > a:hover, .link > a:focus, .popup-label:hover span, .popup-button:focus ~ .popup-label span {
 				color: var(--color-iron);
+			}
+			.link > a:hover, .link > a:focus, .popup-label:hover span, .popup-button:focus ~ .popup-label span, .link > a:active, .popup-button:active ~ .popup-label span {
 				text-underline-offset: 4px;
 			}
 			.link > a:active, .popup-button:active ~ .popup-label span {

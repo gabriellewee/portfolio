@@ -12,6 +12,29 @@
 			width: unset;
 			font-size: 2.25rem;
 		}
+		a {
+			span {
+				transition: .2s ease-out;
+				text-decoration: underline;
+				text-underline-offset: 8px;
+				text-decoration-color: white;
+			}
+			&:hover, &:focus, &:active {
+				span {
+					text-underline-offset: 4px;
+				}
+			}
+			&:hover, &:focus {
+				span {
+					text-decoration-color: var(--color-mauve-rose);
+				}
+			}
+			&:active {
+				span {
+					text-decoration-color: var(--color-iron-1);
+				}
+			}
+		}
 	}
 	time {
 		@include viewport(mobile) {
@@ -26,22 +49,15 @@
 			a {
 				span {
 					@include gradient-text(var(--color-mauve-hsl), var(--color-slate-hsl), true);
-					transition: .2s ease-out;
-					text-decoration: underline;
-					text-underline-offset: 8px;
-					text-decoration-color: white;
 				}
 				&:hover, &:focus {
 					span {
 						@include gradient-text(var(--color-rose-hsl), var(--color-mauve-hsl), true);
-						text-underline-offset: 4px;
-						text-decoration-color: var(--color-mauve-rose);
 					}
 				}
 				&:active {
 					span {
 						@include gradient-text(var(--color-iron-1-hsl), var(--color-iron-12-hsl), true);
-						text-decoration-color: var(--color-iron-1);
 					}
 				}
 			}
@@ -132,7 +148,7 @@
 					background: radial-gradient(circle at center right, var(--color-iron) 0, var(--color-iron-12) 100%);
 				}
 			}
-			&:hover, &:focus, &:focus-visible {
+			&:hover, &:focus {
 				> span {
 					background-position-x: 100%;
 				}
@@ -148,9 +164,15 @@
 				color: var(--color-iron-white-70);
 				&:hover, &:focus {
 					color: var(--color-iron-white);
+					span {
+						text-decoration-color: var(--color-iron-white);
+					}
 				}
 				&:active {
 					color: var(--color-iron-white-90);
+					span {
+						text-decoration-color: var(--color-iron-white-90);
+					}
 				}
 			}
 		}

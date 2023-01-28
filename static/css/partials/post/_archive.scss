@@ -18,10 +18,14 @@
 				text-underline-offset: 8px;
 				text-decoration-color: var(--color-blush-8);
 			}
+			&:hover, &:focus, &:active {
+				span {
+					text-underline-offset: 4px;
+				}
+			}
 			&:hover, &:focus {
 				span {
 					@include gradient-text(var(--color-rose-hsl), var(--color-mauve-hsl), true);
-					text-underline-offset: 4px;
 					text-decoration-color: var(--color-mauve-rose);
 				}
 			}
