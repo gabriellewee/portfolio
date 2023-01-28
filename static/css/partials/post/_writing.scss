@@ -120,14 +120,21 @@
 		.link-default {
 			> span {
 				background-color: var(--color-slate);
-				background: radial-gradient(circle at center left, var(--color-slate) 0, var(--color-mauve) 100%);
-				&:before {
-					background-color: var(--color-mauve);
-					background: radial-gradient(circle at center left, var(--color-mauve) 0, var(--color-rose) 100%);
-				}
+				background: radial-gradient(
+					circle at center right,
+					var(--color-rose) 0,
+					var(--color-mauve) 25%,
+					var(--color-slate) 75%,
+					var(--color-slate) 100%,
+				) 50% 0% / 200% 100%;
 				&:after {
 					background-color: var(--color-iron-12);
-					background: radial-gradient(circle at center left, var(--color-iron-12) 0, var(--color-iron) 100%);
+					background: radial-gradient(circle at center right, var(--color-iron) 0, var(--color-iron-12) 100%);
+				}
+			}
+			&:hover, &:focus, &:focus-visible {
+				> span {
+					background-position-x: 100%;
 				}
 			}
 		}

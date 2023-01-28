@@ -152,8 +152,8 @@
 	padding: 0;
 	border: 0;
 	background: none;
-	&, > span, > span:before, > span:after {
-		transition: .2s ease-out;
+	&, > span, > span:before {
+		transition: background .4s ease-out, scale .2s ease-out;
 	}
 	&:before {
 		@include clip-path {
@@ -175,8 +175,14 @@
 		@include button;
 		position: relative;
 		background-color: var(--color-mauve);
-		background: radial-gradient(circle at center left, var(--color-mauve) 0, var(--color-slate) 100%);
-		&:before, &:after {
+		background: radial-gradient(
+			circle at center left,
+			var(--color-rose) 0,
+			var(--color-mauve) 25%,
+			var(--color-slate) 75%,
+			var(--color-slate) 100%,
+		) 50% 0% / 200% 100%;
+		&:before {
 			opacity: 0;
 			content: "";
 			display: block;
@@ -186,12 +192,6 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-		}
-		&:before {
-			background-color: var(--color-rose);
-			background: radial-gradient(circle at center left, var(--color-rose) 0, var(--color-mauve) 100%);
-		}
-		&:after {
 			background-color: var(--color-iron);
 			background: radial-gradient(circle at center left, var(--color-iron) 0, var(--color-iron-12) 100%);
 		}
@@ -205,27 +205,25 @@
 			scale: 1.02;
 		}
 	}
-	&:hover, &:focus {
+	&:hover, &:focus, &:focus-visible {
 		> span {
-			&:before {
-				opacity: 1;
-			}
+			background-position-x: 0%;
 		}
 	}
 	&:focus-visible {
 		@include clip-path(false) {
 			@include focus-round(var(--color-slate));
 		}
-		&:before {
-			opacity: 1;
-		}
 	}
 	&:active {
 		@media (prefers-reduced-motion: no-preference) {
 			scale: .98;
 		}
+		&, > span, > span:before {
+			transition: all .2s ease-out;
+		}
 		> span {
-			&:before, &:after {
+			&:before {
 				opacity: 1;
 			}
 		}
@@ -252,7 +250,17 @@
 		}
 		> span {
 			&:before {
+				display: none;
+			}
+		}
+		&:hover, &:focus, &:focus-visible {
+			> span {
 				background: var(--color-iron-white-70);
+			}
+		}
+		&:active {
+			> span {
+				background: var(--color-iron-12);
 			}
 		}
 	}
