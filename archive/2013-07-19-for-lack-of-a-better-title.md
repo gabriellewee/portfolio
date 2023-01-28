@@ -2,7 +2,7 @@
 {
 	"date": "2013-07-19",
 	"title": "For lack of a better title",
-	"permalink": "/archive/{{ date | linkDate }}/{{ title | slugify }}/",
+	"permalink": "/archive/{{date|linkDate}}/{{title|slugify}}/",
 	"layout": "layouts/post.njk",
 	"templateEngineOverride": "md,njk",
 	"hidden": true,

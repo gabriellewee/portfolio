@@ -2,7 +2,7 @@
 {
 	"date": "2012-09-29",
 	"title": "Back into the fray",
-	"permalink": "/archive/{{ date | linkDate }}/{{ title | slugify }}/",
+	"permalink": "/archive/{{date|linkDate}}/{{title|slugify}}/",
 	"layout": "layouts/post.njk",
 	"templateEngineOverride": "md,njk",
 	"hidden": true

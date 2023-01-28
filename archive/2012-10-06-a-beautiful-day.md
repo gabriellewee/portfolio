@@ -2,7 +2,7 @@
 {
 	"date": "2012-10-06",
 	"title": "A beautiful day",
-	"permalink": "/archive/{{ date | linkDate }}/{{ title | slugify }}/",
+	"permalink": "/archive/{{date|linkDate}}/{{title|slugify}}/",
 	"layout": "layouts/post.njk",
 	"templateEngineOverride": "md,njk",
 	"hidden": true,

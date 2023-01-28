@@ -2,7 +2,7 @@
 {
 	"date": "2021-07-26",
 	"title": "Setting up shop.",
-	"permalink": "/posts/{{ date | linkDate }}/{{ title | slugify }}/",
+	"permalink": "/posts/{{date|linkDate}}/{{title|slugify}}/",
 	"layout": "layouts/post.njk",
 	"templateEngineOverride": "md,njk",
 	"photos": [

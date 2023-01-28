@@ -2,7 +2,7 @@
 {
 	"date": "2012-10-01",
 	"title": "I'm posting this from my iPad!",
-	"permalink": "/archive/{{ date | linkDate }}/posting-this-from-my-ipad/",
+	"permalink": "/archive/{{date|linkDate}}/posting-this-from-my-ipad/",
 	"layout": "layouts/post.njk",
 	"templateEngineOverride": "md,njk",
 	"hidden": true,

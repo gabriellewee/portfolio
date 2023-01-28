@@ -2,7 +2,7 @@
 {
 	"date": "2021-07-21",
 	"title": "Hello, world!",
-	"permalink": "/posts/{{ date | linkDate }}/{{ title | slugify }}/",
+	"permalink": "/posts/{{date|linkDate}}/{{title|slugify}}/",
 	"layout": "layouts/post.njk",
 	"templateEngineOverride": "md,njk",
 	"size": "s"

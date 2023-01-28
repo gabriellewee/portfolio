@@ -2,7 +2,7 @@
 {
 	"date": "2022-07-20",
 	"title": "Things that make me happy.",
-	"permalink": "/posts/{{ date | linkDate }}/{{ title | slugify }}/",
+	"permalink": "/posts/{{date|linkDate}}/{{title|slugify}}/",
 	"layout": "layouts/post.njk",
 	"templateEngineOverride": "md,njk",
 	"photos": [

@@ -2,7 +2,7 @@
 {
 	"date": "2013-03-07",
 	"title": "Jekyll up and running",
-	"permalink": "/archive/{{ date | linkDate }}/{{ title | slugify }}/",
+	"permalink": "/archive/{{date|linkDate}}/{{title|slugify}}/",
 	"layout": "layouts/post.njk",
 	"templateEngineOverride": "md,njk",
 	"hidden": true,

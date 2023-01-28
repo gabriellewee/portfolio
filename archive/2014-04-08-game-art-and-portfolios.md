@@ -2,7 +2,7 @@
 {
 	"date": "2014-04-08",
 	"title": "Game Art and Portfolios",
-	"permalink": "/archive/{{ date | linkDate }}/{{ title | slugify }}/",
+	"permalink": "/archive/{{date|linkDate}}/{{title|slugify}}/",
 	"layout": "layouts/post.njk",
 	"templateEngineOverride": "md,njk",
 	"hidden": true,

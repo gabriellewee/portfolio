@@ -2,7 +2,7 @@
 {
 	"date": "2013-03-06",
 	"title": "In the process of migrating to Scripto.gram.",
-	"permalink": "/archive/{{ date | linkDate }}/migrating-to-scriptogram/",
+	"permalink": "/archive/{{date|linkDate}}/migrating-to-scriptogram/",
 	"layout": "layouts/post.njk",
 	"templateEngineOverride": "md,njk",
 	"hidden": true,

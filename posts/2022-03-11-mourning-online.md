@@ -2,7 +2,7 @@
 {
 	"date": "2022-03-11",
 	"title": "Mourning online.",
-	"permalink": "/posts/{{ date | linkDate }}/{{ title | slugify }}/",
+	"permalink": "/posts/{{date|linkDate}}/{{title|slugify}}/",
 	"layout": "layouts/post.njk",
 	"templateEngineOverride": "md,njk",
 	"external": [

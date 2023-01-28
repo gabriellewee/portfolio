@@ -2,7 +2,7 @@
 {
 	"date": "2013-01-18",
 	"title": "One of the minor pleasures in life is to be slightly ill.",
-	"permalink": "/archive/{{ date | linkDate }}/minor-pleasures/",
+	"permalink": "/archive/{{date|linkDate}}/minor-pleasures/",
 	"layout": "layouts/post.njk",
 	"templateEngineOverride": "md,njk",
 	"hidden": true,
