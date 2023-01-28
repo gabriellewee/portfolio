@@ -133,6 +133,15 @@ pagination:
 							{% endif %}
 						{% elseif post.data.content %}
 							<blockquote>{{post.data.content|nbsp|safe}}</blockquote>
+							{% if (post.data.category == "social") and (post.data.media) %}
+								{% for media in post.data.media %}
+									{% if media.url %}
+										<a class="media-attachment" href="{{post.data.url|url}}" target="_blank">
+											{% external media.url, media.description, 750 %}
+										</a>
+									{% endif %}
+								{% endfor %}
+							{% endif %}
 						{% else %}
 							{% excerpt post %}
 						{% endif %}

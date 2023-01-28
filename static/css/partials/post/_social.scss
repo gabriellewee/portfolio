@@ -22,6 +22,32 @@
 	}
 }
 
+.media-attachment {
+	transition: .2s ease-out;
+	display: block;
+	position: relative;
+	margin-top: calc(var(--p)*1.75);
+	+ .media-attachment {
+		margin-top: calc(var(--p)*2);
+	}
+	&:before {
+		@include before;
+	}
+	&:focus-visible {
+		&:before {
+			opacity: 1;
+		}
+	}
+	&:active {
+		@media (prefers-reduced-motion: no-preference) {
+			scale: .98;
+		}
+	}
+	img {
+		@include clip-path-edges(2px);
+	}
+}
+
 &.post-mastodon {
 	.post-wrapper {
 		@supports (container-type: inline-size) {
@@ -72,7 +98,7 @@
 		p {
 			line-height: 1.2;
 		}
-		a {
+		a:not(.media-attachment) {
 			color: var(--color-mas);
 			&:hover, &:focus {
 				color: var(--color-mas-light);

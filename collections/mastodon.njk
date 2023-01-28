@@ -16,6 +16,7 @@
 			data.page.date = new Date(data.mastodon.created_at);
 			data.content = data.mastodon.content;
 			data.url = data.mastodon.url;
+            data.media = data.mastodon.media_attachments;
             data.size = "s";
             if (data.mastodon.reblog || data.mastodon.in_reply_to_account_id) {
                 data.tags = "disabled";

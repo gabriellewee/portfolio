@@ -28,14 +28,18 @@ module.exports = eleventyConfig => {
     });
 
     eleventyConfig.addNunjucksAsyncShortcode("external", async (src, alt, width) => {
+    	let file = src.split(".");
+    	file = file[file.length - 1];
+    	if(file === "jpg") file = "jpeg";
+
 		let stats = await Image(src, {
 			widths: [width, width*2],
-			formats: ["webp", "jpeg"],
+			formats: ["webp", file],
 			urlPath: `/static/images/external`,
 			outputDir: `./_site/static/images/external`,
 		});
 
-		const placeholder = await sharp(stats["jpeg"][0].outputPath)
+		const placeholder = await sharp(stats[file][0].outputPath)
 			.resize({ fit: sharp.fit.inside })
 			.blur()
 			.toBuffer();
@@ -44,7 +48,7 @@ module.exports = eleventyConfig => {
 		let result = `
 			<picture>
 				<source type="image/webp" srcset="${stats["webp"][0].url}, ${stats["webp"][1].url} 2x">
-				<img loading="lazy" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${stats["jpeg"][0].url}, ${stats["jpeg"][1].url} 2x" width="${stats["webp"][0].width}" height="${stats["webp"][0].height}">
+				<img loading="lazy" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${stats[file][0].url}, ${stats[file][1].url} 2x" width="${stats["webp"][0].width}" height="${stats["webp"][0].height}">
 			</picture
 		`;
 
