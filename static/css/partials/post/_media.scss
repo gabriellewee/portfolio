@@ -401,6 +401,20 @@ figcaption {
 	}
 	&:checked {
 		z-index: -1;
+		&:hover {
+			+ .post-wrapper {
+				@media (prefers-reduced-motion: no-preference) {
+					scale: 1;
+				}
+			}
+		}
+		&:active {
+			+ .post-wrapper {
+				@media (prefers-reduced-motion: no-preference) {
+					scale: .99;
+				}
+			}
+		}
 		+ .post-wrapper {
 			.post-content {
 				figcaption {
