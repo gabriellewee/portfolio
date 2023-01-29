@@ -26,8 +26,10 @@ function timeAgo(dates) {
 	datesISO.forEach(date =>{
 		let datetime = date.getAttribute("data-time");
 		if(!datetime) return;
+		let platform = date.querySelector("span");
 		let relativeTime = luxon.DateTime.fromISO(datetime, {zone: 'utc'}).toRelative();
 		date.innerHTML = relativeTime;
+		if(platform) date.append(platform);
 	});
 }
 

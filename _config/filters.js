@@ -13,22 +13,27 @@ module.exports = eleventyConfig => {
 	});
 
 	eleventyConfig.addFilter("readableDate", date => {
-		date = DateTime.fromJSDate(date, {zone: 'utc'}).toFormat("dd LLLL yyyy") || DateTime.fromISO(date, {zone: 'utc'}).toFormat("dd LLLL yyyy")
+		date = DateTime.fromJSDate(date, {zone: 'utc'}).toFormat("dd LLLL yyyy");
+		return date;
+	});
+
+	eleventyConfig.addFilter("readableDateISO", date => {
+		date = DateTime.fromISO(date, {zone: 'utc'}).toFormat("dd LLLL yyyy");
 		return date;
 	});
 
 	eleventyConfig.addFilter('htmlDateString', date => {
-		date = DateTime.fromJSDate(date, {zone: 'utc'}).toFormat('yyyy-LL-dd') || DateTime.fromISO(date, {zone: 'utc'}).toFormat('yyyy-LL-dd');
+		date = DateTime.fromJSDate(date, {zone: 'utc'}).toFormat('yyyy-LL-dd');
+		return date;
+	});
+
+	eleventyConfig.addFilter('htmlDateStringISO', date => {
+		date = DateTime.fromISO(date, {zone: 'utc'}).toFormat('yyyy-LL-dd');
 		return date;
 	});
 
 	eleventyConfig.addFilter('linkDate', date => {
 		return DateTime.fromISO(date, {zone: 'utc'}).toFormat('yyyy/LL/dd');
-	});
-	
-	eleventyConfig.addFilter("timeAgo", date => {
-		date = DateTime.fromJSDate(date, {zone: 'utc'}).toRelative() || DateTime.fromISO(date, {zone: 'utc'}).toRelative();
-		return date;
 	});
 	
 	eleventyConfig.addFilter("ISO", date => {
@@ -51,5 +56,11 @@ module.exports = eleventyConfig => {
 		let array = filters.split(' ');
 		let result = array.map(el => 'filter-' + el);
 		return result.join(' ');
+	});
+
+	eleventyConfig.addFilter("platform", platform => {
+		platform = platform.split('/')[4];
+		platform = platform.charAt(0).toUpperCase() + platform.slice(1);
+		return `<span> on ${platform}</span>`;
 	});
 };

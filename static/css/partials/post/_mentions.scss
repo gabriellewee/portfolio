@@ -31,10 +31,17 @@
 			margin-top: calc(var(--p)*2);
 		}
 		> div {
-			margin-top: var(--p);
-			@include viewport(mobile) {
-				margin-top: 0;
-				margin-left: calc(var(--p)*2);
+			&:not(:first-child) {
+				margin-top: var(--p);
+				@include viewport(mobile) {
+					margin-top: 0;
+					margin-left: calc(var(--p)*2);
+				}
+			}
+			&.post-link {
+				a {
+					font-weight: 600;
+				}
 			}
 		}
 	}
