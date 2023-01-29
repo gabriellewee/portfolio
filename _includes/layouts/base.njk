@@ -125,6 +125,7 @@
 			{% include 'pages/home/links.html' %}
 		{% endif %}
 		{% block content %}{{content|safe}}{% endblock %}
+		{% include 'pages/posts/author.html' %}
 	</main>
 	{% if blank != true %}
 		<footer class="bottom" aria-label="Footer">

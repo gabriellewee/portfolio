@@ -8,12 +8,12 @@ category: writing
 
 <section class="posts-container">
 	<div class="posts">
-		<article class="post post-{{category}}{% for tag in tags %}{% if tag != "entries" %} post-{{tag}}{% endif %}{% endfor %}">
+		<article class="post post-{{category}}{% for tag in tags %}{% if tag != "entries" %} post-{{tag}}{% endif %}{% endfor %} h-entry">
 			<div class="post-wrapper">
 				<header class="post-header inline-header">
 					<div class="post-header-wrapper">
-						<h2>{{title|nbsp|safe}}</h2>
-						<time class="time-default" datetime="{{page.date|htmlDateString}}" title="{{page.date|readableDate}}" data-time="{{page.date|ISO}}">{{page.date|readableDate}}</time>
+						<h2><a class="u-url" href="{{page.url}}"><span class="p-name">{{title|nbsp|safe}}</span></a></h2>
+						<time class="time-default dt-published" datetime="{{page.date|htmlDateString}}" title="{{page.date|readableDate}}" data-time="{{page.date|ISO}}">{{page.date|readableDate}}</time>
 					</div>
 				</header>
 				<div class="post-content post-text">
@@ -30,6 +30,7 @@ category: writing
 		</article>
 	</div>
 
+	{% include 'pages/posts/author.html' %}
 	{% include 'pages/posts/mentions.html' %}
 
 	<nav class="pagination">

@@ -8,8 +8,8 @@
 	--color-white-hsl: #{hexToHSL(#fff)};
 	--color-iron-white: #{mix($iron, white)};
 	--color-iron-white-70: #{mix($iron, white, 70%)};
-	--color-iron-white-70-hsl: #{hexToHSL(mix($iron, white, 70%))};
 	--color-iron-white-90: #{mix($iron, white, 90%)};
+	--color-iron-white-70-hsl: #{hexToHSL(mix($iron, white, 70%))};
 	
 	--color-iron: #{$iron};
 	--color-iron-1: #{darken($iron, 1%)};

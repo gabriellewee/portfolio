@@ -21,7 +21,7 @@
 	}
 	.mentions-flex li {
 		@include clip-path-edges(2px);
-		background: white;
+		background: rgba(white, .75);
 		padding: calc(var(--p)*2);
 		@include viewport(mobile) {
 			display: flex;
@@ -114,4 +114,8 @@
 			}
 		}
 	}
+}
+
+.post-author {
+	display: none;
 }

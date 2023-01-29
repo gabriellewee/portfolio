@@ -29,6 +29,11 @@ pre[class$="markdown"] {
 		content: "Markdown";
 	}
 }
+pre[class$="yaml"] {
+	&:before {
+		content: "YAML";
+	}
+}
 
 pre {
 	&:before {
