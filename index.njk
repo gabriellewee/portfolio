@@ -175,6 +175,8 @@ pagination:
 	</nav>
 </section>
 
+{% include 'pages/posts/author.html' %}
+
 <div class="lightbox-group posts-lightbox-group" hidden>
 	{% for post in pagination.items %}
 		{% if post.data.category == "media" %}
