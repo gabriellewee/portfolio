@@ -22,11 +22,6 @@ module.exports = eleventyConfig => {
 		return date;
 	});
 
-	eleventyConfig.addFilter('ogDateString', date => {
-		date = DateTime.fromISO(date, {zone: 'utc'}).toFormat('yyyy-LL-dd');
-		return date;
-	});
-
 	eleventyConfig.addFilter('linkDate', date => {
 		return DateTime.fromISO(date, {zone: 'utc-8'}).toFormat('yyyy/LL/dd');
 	});
