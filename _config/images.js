@@ -3,7 +3,6 @@ const sharp = require("sharp");
 
 module.exports = eleventyConfig => {
 	eleventyConfig.addNunjucksAsyncShortcode("stats", async (src, type) => {
-		let category = src.split('/')[3];
 		let stats = await Image(src, {
 			widths: [null],
 			statsOnly: true
