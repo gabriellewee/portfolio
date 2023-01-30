@@ -5,7 +5,6 @@ description: I’m a front‑end developer working at Apple .
 layout: layouts/base.njk
 key: home
 style: true
-links: true
 isotope: true
 add: true
 tags: pages
@@ -16,6 +15,8 @@ pagination:
     size: 16
     reverse: true
 ---
+
+{% if pagination.pageNumber == 0 %}{% include 'pages/shared/links.html' %}{% endif %}
 
 <section class="posts-container">
 	<div class="posts grid-isotope grid-scroll">
@@ -54,7 +55,7 @@ pagination:
 								</h2>
 							{% endif %}
 							{% if post.data.category != "media" %}
-								<time{% if post.data.category != "code" %} class="time-default"{% endif %} datetime="{{post.page.date|htmlDateString}}" data-time="{{post.page.date|ISO}}">{{post.page.date|readableDate}}</time>
+								<time{% if post.data.category != "code" %} class="time-default"{% endif %} datetime="{{post.page.date|ISO|htmlDateString}}" data-time="{{post.page.date|ISO}}">{{post.page.date|ISO|readableDate}}</time>
 							{% endif %}
 						</div>
 					</header>
@@ -69,7 +70,7 @@ pagination:
 									{% image './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 'default', loop.index %}
 								{% endif %}
 								<figcaption class="{{post.data.category}}-data">
-									<time class="time-default" datetime="{{post.page.date|htmlDateString}}" title="{{post.page.date|readableDate}}" data-time="{{post.page.date|ISO}}">{{post.page.date|readableDate}}</time>
+									<time class="time-default" datetime="{{post.page.date|ISO|htmlDateString}}" title="{{post.page.date|ISO|readableDate}}" data-time="{{post.page.date|ISO}}">{{post.page.date|ISO|readableDate}}</time>
 									<label class="media-down media-icon" for="{{post.data.date|safe}}-{{post.data.name}}-info"></label>
 									<div class="media-thumbnail">
 										<a class="media-expand expand" href="#{{post.data.date|safe}}-{{post.data.name}}-lightbox" aria-label="Expand {{post.data.type}}" tabindex="-1" role="button">

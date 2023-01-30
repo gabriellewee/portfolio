@@ -110,48 +110,11 @@
 			font-family: var(--font-mono);
 			font-size: 1.125rem;
 		}
-		div {
-			display: inline-flex;
-			align-items: center;
-			position: relative;
+		.clip-container {
 			margin-top: var(--p);
 			@include viewport(mobile) {
 				margin-top: 0;
 				margin-left: var(--p);
-			}
-			&:before, &:after {
-				opacity: 0;
-				visibility: hidden;
-				display: block;
-				transition: .1s ease-out;
-				background-color: var(--color-iron);
-			}
-			&:before {
-				content: "";
-				position: absolute;
-				top: 17px;
-				right: -24px;
-				width: 10px;
-				height: 10px;
-				border-bottom-left-radius: 2px;
-				rotate: 45deg;
-			}
-			&:after {
-				@include font-weight-width(600, 100);
-				content: "Copied";
-				color: white;
-				position: absolute;
-				right: -81px;
-				padding: 6px 8px;
-				border-radius: 2px;
-				font-size: .75rem;
-				text-transform: uppercase;
-			}
-			&.copied {
-				&:before, &:after {
-					opacity: 1;
-					visibility: visible;
-				}
 			}
 		}
 	}

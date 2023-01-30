@@ -6,10 +6,8 @@
 			pointer-events: none;
 		}
 	}
-	&:not(.page-index) {
-		.contact {
-			display: none;
-		}
+	.contact-sites, .contact-messages {
+		opacity: 0;
 	}
 }
 

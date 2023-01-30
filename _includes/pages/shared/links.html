@@ -14,7 +14,11 @@
 			<li class="link"><a class="email" href="mailto:mail@gabriellew.ee">Email</a></li>
 			<li class="link"><a class="text" href="sms:5102142241">Text</a></li>
 			<li class="link"><a class="imessage" href="sms:mail@gabriellew.ee">iMessage</a></li>
-			<li class="link">{% include 'pages/home/discord.html' %}</li>
+			{% if key == "home" %}
+				<li class="link">{% include 'pages/home/discord.html' %}</li>
+			{% else %}
+				<li class="link"><a class="discord clip clip-container" href="#" data-clipboard-text="kaladin#0758">Discord</a></li>
+			{% endif %}
 		</ul>
 	</div>
 </aside>

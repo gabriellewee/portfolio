@@ -1,17 +1,41 @@
 .mentions {
 	margin-top: calc(var(--p)*2);
-	h3 {
-		@include font-weight-width(800, 120);
-		font-size: 2rem;
-		margin-top: calc(var(--p)*3);
-		margin-bottom: calc(var(--p)*1.5);
-		@include viewport(mobile) {
-			font-size: 2.25rem;
-		}
-	}
 	.mentions-list {
 		> ul {
 			list-style: none;
+			&:before {
+				@include font-weight-width(800, 120);
+				display: block;
+				font-size: 2rem;
+				margin-top: calc(var(--p)*3);
+				margin-bottom: calc(var(--p)*1.5);
+				@include viewport(mobile) {
+					font-size: 2.25rem;
+				}
+			}
+			&:empty {
+				display: none;
+			}
+		}
+	}
+	.mentions-like {
+		&:before {
+			content: "Likes";
+		}
+	}
+	.mentions-reply {
+		&:before {
+			content: "Replies";
+		}
+	}
+	.mentions-repost {
+		&:before {
+			content: "Reposts";
+		}
+	}
+	.mentions-link {
+		&:before {
+			content: "Links";
 		}
 	}
 	.mentions-grid {

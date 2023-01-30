@@ -27,7 +27,7 @@ function timeAgo(dates) {
 		let datetime = date.getAttribute("data-time");
 		if(!datetime) return;
 		let platform = date.querySelector("span");
-		let relativeTime = luxon.DateTime.fromISO(datetime, {zone: 'utc'}).toRelative();
+		let relativeTime = luxon.DateTime.fromISO(datetime).plus({'hours': +8}).toRelative();
 		date.innerHTML = relativeTime;
 		if(platform) date.append(platform);
 	});
@@ -200,6 +200,24 @@ const popup = ((containers = Array.from(document.querySelectorAll(".popup"))) =>
 			});
 		}
 	})
+})();
+
+const copyButtons = ((buttons = Array.from(document.querySelectorAll(".clip"))) => {
+	if(!buttons) return;
+	buttons.forEach(button=>{
+		button.addEventListener("click", e => {
+			e.preventDefault();
+			return false;
+		});
+		let clipboard = new ClipboardJS(button);
+		clipboard.on("success", e => {
+			if(button.tagName === "INPUT") {
+				e.trigger.parentNode.classList.add("copied");
+			} else {
+				e.trigger.classList.add("copied");
+			}
+		});
+	});
 })();
 
 const mediaTriggers = ((figures = Array.from(document.querySelectorAll(".post-media"))) => {

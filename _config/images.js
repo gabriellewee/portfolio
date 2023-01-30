@@ -49,7 +49,7 @@ module.exports = eleventyConfig => {
 			<picture>
 				<source type="image/webp" srcset="${stats["webp"][0].url}, ${stats["webp"][1].url} 2x">
 				<img loading="lazy" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${stats[file][0].url}, ${stats[file][1].url} 2x" width="${stats["webp"][0].width}" height="${stats["webp"][0].height}">
-			</picture
+			</picture>
 		`;
 
 		return result;

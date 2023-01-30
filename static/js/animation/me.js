@@ -30,8 +30,3 @@ gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
 gsap.matchMedia().add("(prefers-reduced-motion: reduce)", () => {
 	enter.progress(1);
 });
-
-let clipboard = new ClipboardJS('.friend-code');
-clipboard.on("success", e => {
-	e.trigger.parentNode.classList.add("copied");
-});
