@@ -8,10 +8,14 @@
 				display: block;
 				font-size: 2rem;
 				margin-top: calc(var(--p)*3);
-				margin-bottom: calc(var(--p)*1.5);
+				margin-bottom: calc(var(--p)/3*2);
+				grid-column: 1/-1;
 				@include viewport(mobile) {
 					font-size: 2.25rem;
 				}
+			}
+			&.mentions-flex:before {
+				margin-bottom: calc(var(--p)*1.5);
 			}
 			&:empty {
 				display: none;

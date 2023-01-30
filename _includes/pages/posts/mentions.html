@@ -11,7 +11,7 @@
 							</a>
 							<div>
 								<a class="time" href="{{webmention.data.url}}" target="_blank">
-									<time datetime="{{webmention.data.published|htmlDateString}}" title="{{webmention.data.published|readableDate}}" data-time="{{webmention.data.published|ISO}}">Posted {{webmention.data.published|ISO}}{{webmention.source|platform|safe}}</time>
+									<time class="mention-date" datetime="{{webmention.data.published|htmlDateString}}" title="{{webmention.data.published|readableDate}}" data-time="{{webmention.data.published|ISO}}">Posted {{webmention.data.published|ISO}}{{webmention.source|platform|safe}}</time>
 								</a>
 								<div class="reply post-text">{{webmention.data.content|safe}}</div>
 							</div>

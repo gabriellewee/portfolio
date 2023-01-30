@@ -27,7 +27,12 @@ function timeAgo(dates) {
 		let datetime = date.getAttribute("data-time");
 		if(!datetime) return;
 		let platform = date.querySelector("span");
-		let relativeTime = luxon.DateTime.fromISO(datetime).plus({'hours': +8}).toRelative();
+		let relativeTime;
+		if(date.classList.contains("mention-date")) {
+			relativeTime = luxon.DateTime.fromISO(datetime).toRelative();
+		} else {
+			relativeTime = luxon.DateTime.fromISO(datetime).plus({'hours': +8}).toRelative();
+		}
 		date.innerHTML = relativeTime;
 		if(platform) date.append(platform);
 	});
