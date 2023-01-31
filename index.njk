@@ -55,7 +55,7 @@ pagination:
 								</h2>
 							{% endif %}
 							{% if post.data.category != "media" %}
-								<time{% if post.data.category != "code" %} class="time-default"{% endif %} datetime="{{post.page.date|ISO|htmlDateString}}" data-time="{{post.page.date|ISO}}">{{post.page.date|ISO|readableDate}}</time>
+								<time class="time{% if post.data.category != 'code' %} time-default{% endif %}{% if post.data.category == 'social' %} time-external{% endif %}" datetime="{{post.page.date|ISO|htmlDateString}}" data-time="{{post.page.date|ISO}}">{{post.page.date|ISO|readableDate}}</time>
 							{% endif %}
 						</div>
 					</header>

@@ -39,6 +39,16 @@ module.exports = eleventyConfig => {
 		return stripped;
 	});
 
+	eleventyConfig.addFilter("platform", platform => {
+		platform = platform.split('/')[4];
+		platform = platform.charAt(0).toUpperCase() + platform.slice(1);
+		if(platform == "") {
+			return;
+		} else {
+			return `<span> on ${platform}</span>`;
+		}
+	});
+
 	eleventyConfig.addShortcode('excerpt', post => {
 		if (!post.hasOwnProperty('templateContent')) {
 			console.warn('❌ Failed to extract excerpt: Document has no property `templateContent`.');

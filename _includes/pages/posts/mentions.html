@@ -1,28 +1,26 @@
 {% set pageLink = site.url + page.url %}
 <aside class="mentions">
 	{% for type, webmentions in webmentions.links | groupby("activity.type") %}
-		<div class="mentions-list">
-			<ul class="mentions-{{type}} mentions-{% if (type == 'reply') or (type == 'link') %}flex{% elseif (type != 'reply') and (type != 'link') %}grid{% endif %}">
-				{% for webmention in webmentions %}
-					{% if (webmention.target == pageLink) and (type == "reply") %}
-						<li>
-							<a class="avatar" title="{{webmention.data.author.name}}" href="{{webmention.data.author.url}}" target="_blank">
+		<ul class="mentions-{{type}} mentions-{% if (type == 'reply') or (type == 'link') %}flex{% elseif (type != 'reply') and (type != 'link') %}grid{% endif %}">
+			{% for webmention in webmentions %}
+				{% if webmention.target == pageLink %}
+					<li>
+						{% if webmention.data.author.photo %}
+							<a class="avatar" title="{{webmention.data.author.name}}" href="{% if type == 'repost' %}{{webmention.data.url}}{% else %}{{webmention.data.author.url}}{% endif %}" target="_blank">
 								{% external webmention.data.author.photo, webmention.data.author.name, 48 %}
 							</a>
+						{% endif %}
+						{% if type == "reply" %}
 							<div>
+								<a class="username" href="{{webmention.data.author.url}}" target="_blank">
+									<span>{{webmention.data.author.name}}</span>
+								</a>
 								<a class="time" href="{{webmention.data.url}}" target="_blank">
-									<time class="mention-date" datetime="{{webmention.data.published|htmlDateString}}" title="{{webmention.data.published|readableDate}}" data-time="{{webmention.data.published|ISO}}">Posted {{webmention.data.published|ISO}}{{webmention.source|platform|safe}}</time>
+									<time class="time-external" datetime="{{webmention.data.published|htmlDateString}}" title="{{webmention.data.published|readableDate}}" data-time="{{webmention.data.published|ISO}}">Posted {{webmention.data.published|ISO}}{{webmention.source|platform|safe}}</time>
 								</a>
 								<div class="reply post-text">{{webmention.data.content|safe}}</div>
 							</div>
-						</li>
-					{% elseif (webmention.target == pageLink) and (type == "link") %}
-						<li>
-							{% if webmention.data.author.photo %}
-								<a class="avatar" title="{{webmention.data.author.name}}" href="{{webmention.data.author.url}}" target="_blank">
-									{% external webmention.data.author.photo, webmention.data.author.name, 48 %}
-								</a>
-							{% endif %}
+						{% elseif type == "link" %}
 							<div class="post-link post-text">
 								<p>
 									{% if webmention.data.author.name %}
@@ -32,16 +30,10 @@
 									{% endif %}
 								</p>
 							</div>
-						</li>
-					{% elseif (webmention.target == pageLink) and (type != "reply") and (type != "link") %}
-						<li>
-							<a class="avatar" title="{{webmention.data.author.name}}" href="{{webmention.data.author.url}}" target="_blank">
-								{% external webmention.data.author.photo, webmention.data.author.name, 48 %}
-							</a>
-						</li>
-					{% endif %}
-				{% endfor %}
-			</ul>
-		</div>
+						{% endif %}
+					</li>
+				{% endif %}
+			{% endfor %}
+		</ul>
 	{% endfor %}
 </aside>

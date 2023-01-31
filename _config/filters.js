@@ -47,10 +47,4 @@ module.exports = eleventyConfig => {
 		let result = array.map(el => 'filter-' + el);
 		return result.join(' ');
 	});
-
-	eleventyConfig.addFilter("platform", platform => {
-		platform = platform.split('/')[4];
-		platform = platform.charAt(0).toUpperCase() + platform.slice(1);
-		return `<span> on ${platform}</span>`;
-	});
 };

@@ -28,7 +28,7 @@ function timeAgo(dates) {
 		if(!datetime) return;
 		let platform = date.querySelector("span");
 		let relativeTime;
-		if(date.classList.contains("mention-date")) {
+		if(date.classList.contains("time-external")) {
 			relativeTime = luxon.DateTime.fromISO(datetime).toRelative();
 		} else {
 			relativeTime = luxon.DateTime.fromISO(datetime).plus({'hours': +8}).toRelative();
