@@ -1,17 +1,17 @@
 ---json
 {
-	"date": "2023-01-30",
-	"title": "New year, new design.",
-	"permalink": "/posts/{{date|linkDate}}/{{title|slugify}}/",
-	"layout": "layouts/post.njk",
-	"templateEngineOverride": "md,njk",
-	"photos": [
-		{
-			"name": "photo-overlays",
-			"type": "png",
-			"description": "Different photo overlay layouts for different container widths"
-		}
-	]
+  "date": "2023-01-30",
+  "title": "New year, new design.",
+  "permalink": "/posts/{{date|linkDate}}/{{title|slugify}}/",
+  "layout": "layouts/post.njk",
+  "templateEngineOverride": "md,njk",
+  "photos": [
+    {
+      "name": "photo-overlays",
+      "type": "png",
+      "description": "Different photo overlay layouts for different container widths"
+    }
+  ]
 }
 ---
 
@@ -48,57 +48,57 @@ Portrait photos by default take up half the container width while landscape phot
 
 ``` scss
 .media-container {
-	// set up container query
-	@supports (container-type: size) {
-		container-type: size;
-		container-name: metadata;
-	}
+  // set up container query
+  @supports (container-type: size) {
+    container-type: size;
+    container-name: metadata;
+  }
 }
 .media-overlay {
-	overflow-y: auto;
+  overflow-y: auto;
 }
 .media-thumbnail {
-	.media-expand {
-		// hide the "Expand" text for large viewports when container queries aren‘t supported
-		@supports not(container-type: size) {
-			@include viewport($iphone) {
-				.no-image {
-					display: none;
-				}
-			}
-		}
-		// hide the "Expand" text for large containers when container queries are supported
-		@container metadata (min-width: 320px) and (min-height: 400px) {
-			.no-image {
-				display: none;
-			}
-		}
-	}
-	.media-picture {
-		width: 150px;
-		// media queries to handle thumbnail display and sizing when container queries aren‘t supported
-		@supports not(container-type: size) {
-			@include viewport($iphone) {
-				display: block;
-			}
-			@media only screen and (min-width: 450px) {
-				width: 200px;
-			}
-			@include viewport(mobile) {
-				width: 150px;
-			}
-			@include viewport($ipad-11) {
-				width: 200px;
-			}
-		}
-		// a more straightforward version when container queries are supported
-		@container metadata (min-width: 320px) and (min-height: 400px) {
-			display: block;
-		}
-		@container metadata (min-width: 400px) {
-			width: 200px;
-		}
-	}
+  .media-expand {
+    // hide the "Expand" text for large viewports when container queries aren‘t supported
+    @supports not(container-type: size) {
+      @include viewport($iphone) {
+        .no-image {
+          display: none;
+        }
+      }
+    }
+    // hide the "Expand" text for large containers when container queries are supported
+    @container metadata (min-width: 320px) and (min-height: 400px) {
+      .no-image {
+        display: none;
+      }
+    }
+  }
+  .media-picture {
+    width: 150px;
+    // media queries to handle thumbnail display and sizing when container queries aren‘t supported
+    @supports not(container-type: size) {
+      @include viewport($iphone) {
+        display: block;
+      }
+      @media only screen and (min-width: 450px) {
+        width: 200px;
+      }
+      @include viewport(mobile) {
+        width: 150px;
+      }
+      @include viewport($ipad-11) {
+        width: 200px;
+      }
+    }
+    // a more straightforward version when container queries are supported
+    @container metadata (min-width: 320px) and (min-height: 400px) {
+      display: block;
+    }
+    @container metadata (min-width: 400px) {
+      width: 200px;
+    }
+  }
 }
 
 ```
@@ -111,43 +111,43 @@ const Image = require("@11ty/eleventy-img");
 const sharp = require("sharp");
 
 module.exports = eleventyConfig => {
-	eleventyConfig.addNunjucksAsyncShortcode("stats", async (src, type) => {
-		let stats = await Image(src, {
-			widths: [null],
-			statsOnly: true
-		});
-		let width = stats["webp"][0].width;
-		let height = stats["webp"][0].height;
-		let result;
-		let orientation;
+  eleventyConfig.addNunjucksAsyncShortcode("stats", async (src, type) => {
+    let stats = await Image(src, {
+      widths: [null],
+      statsOnly: true
+    });
+    let width = stats["webp"][0].width;
+    let height = stats["webp"][0].height;
+    let result;
+    let orientation;
 
-		if(type === "width") {
-			result = width;
-		} else if(type === "height") {
-			result = height
-		} else if(type === "orientation") {
-			width > height ? orientation = "landscape" : orientation = "portrait"
-			result = orientation
-		} else if(type === "ratio") {
-			result = `${width} / ${height}`
-		}
+    if(type === "width") {
+      result = width;
+    } else if(type === "height") {
+      result = height
+    } else if(type === "orientation") {
+      width > height ? orientation = "landscape" : orientation = "portrait"
+      result = orientation
+    } else if(type === "ratio") {
+      result = `${width} / ${height}`
+    }
 
-		return result;
-	});
+    return result;
+  });
 };
 ````
 
 **Implementation:**
 ``` html
 {% raw %}<figure style="aspect-ratio: {% stats './static/images/photography/2022-07-20-cat-garden.jpg', 'ratio' %};">
-	<!-- image and information -->
+  <!-- image and information -->
 </figure>{% endraw %}
 ```
 
 **Output:**
 ``` html
 {% raw %}<figure style="aspect-ratio: 3024 / 4032;">
-	<!-- image and information -->
+  <!-- image and information -->
 </figure>{% endraw %}
 ```
 
@@ -182,23 +182,23 @@ As of right now, the only social media posts that I‘m including on my site are
 const Cache = require('@11ty/eleventy-fetch');
 
 module.exports = async () => {
-	try {
-		let key = process.env.MASTODON_API_KEY;
-		let id = process.env.MASTODON_API_ID;
-		let url = `https://mas.to/api/v1/accounts/${id}/statuses`;
+  try {
+    let key = process.env.MASTODON_API_KEY;
+    let id = process.env.MASTODON_API_ID;
+    let url = `https://mas.to/api/v1/accounts/${id}/statuses`;
 
-		return Cache(url, {
-			duration: '1d',
-			type: 'json',
-			fetchOptions: {
-				headers: {
-					'Authorization': `Bearer ${key}`
-				}
-			}
-		});
-	} catch(e) {
-		return [];
-	}
+    return Cache(url, {
+      duration: '1d',
+      type: 'json',
+      fetchOptions: {
+        headers: {
+          'Authorization': `Bearer ${key}`
+        }
+      }
+    });
+  } catch(e) {
+    return [];
+  }
 };
 ```
 
@@ -227,26 +227,26 @@ For [text feature posts](https://github.com/gabriellewee/portfolio/blob/netlify/
 ``` yaml
 ---js
 {
-	layout: "layouts/base.njk",
-	key: "post",
-	tags: "entries",
-	category: "social",
-	pagination: {
-		data: "mastodon",
-		size: 1,
-		addAllPagesToCollections: true,
-		alias: "mastodon"
-	},
-	permalink: false,
-	eleventyComputed: {
-		mastodon(data) {
-			data.page.date = new Date(data.mastodon.created_at);
-			data.content = data.mastodon.content;
-			data.url = data.mastodon.url;
-			data.media = data.mastodon.media_attachments;
-			if (data.mastodon.reblog || data.mastodon.in_reply_to_account_id || data.mastodon.content.includes("https://gabriellew.ee")) data.tags = "";
-		}
-	}
+  layout: "layouts/base.njk",
+  key: "post",
+  tags: "entries",
+  category: "social",
+  pagination: {
+    data: "mastodon",
+    size: 1,
+    addAllPagesToCollections: true,
+    alias: "mastodon"
+  },
+  permalink: false,
+  eleventyComputed: {
+    mastodon(data) {
+      data.page.date = new Date(data.mastodon.created_at);
+      data.content = data.mastodon.content;
+      data.url = data.mastodon.url;
+      data.media = data.mastodon.media_attachments;
+      if (data.mastodon.reblog || data.mastodon.in_reply_to_account_id || data.mastodon.content.includes("https://gabriellew.ee")) data.tags = "";
+    }
+  }
 }
 ---
 ```
@@ -269,23 +269,23 @@ pagination:
 ---
 
 {% raw %}<div class="posts">
-	{% for post in pagination.items %}
-		<article class="post">
-			<div class="post-wrapper">
-				<header class="post-header">
-					<div class="post-header-wrapper">
-						<h2>
-							<a href="{{post.url|url}}"><span>{{post.data.title|safe}}</span></a>
-						</h2>
-						<time datetime="{{post.page.date|htmlDateString}}">{{post.page.date|readableDate}}</time>
-					</div>
-				</header>
-				<div class="post-content">
-					<!-- {{post.content|safe}} or code post iframe or photo post information -->
-				</div>
-			</div>
-		</article>
-	{% endfor %}
+  {% for post in pagination.items %}
+    <article class="post">
+      <div class="post-wrapper">
+        <header class="post-header">
+          <div class="post-header-wrapper">
+            <h2>
+              <a href="{{post.url|url}}"><span>{{post.data.title|safe}}</span></a>
+            </h2>
+            <time datetime="{{post.page.date|htmlDateString}}">{{post.page.date|readableDate}}</time>
+          </div>
+        </header>
+        <div class="post-content">
+          <!-- {{post.content|safe}} or code post iframe or photo post information -->
+        </div>
+      </div>
+    </article>
+  {% endfor %}
 </div>{% endraw %}
 ```
 
@@ -297,17 +297,17 @@ Implementing webmentions was tricky. I ended up using eleventy-fetch again and s
 const Cache = require('@11ty/eleventy-fetch');
 
 module.exports = async () => {
-	try {
-		let key = process.env.WEBMENTION_IO_KEY;
-		let url = `https://webmention.io/api/mentions.json?token=${key}&per-page=90001`;
+  try {
+    let key = process.env.WEBMENTION_IO_KEY;
+    let url = `https://webmention.io/api/mentions.json?token=${key}&per-page=90001`;
 
-		return Cache(url, {
-			duration: '1d',
-			type: 'json'
-		});
-	} catch(e) {
-		return [];
-	}
+    return Cache(url, {
+      duration: '1d',
+      type: 'json'
+    });
+  } catch(e) {
+    return [];
+  }
 };
 ```
 
@@ -317,19 +317,19 @@ I decided against a Javascript solution to sorting data (again, not my strong su
 {% raw %}<!-- set a pageLink variable so that only mentions for this page show up -->
 {% set pageLink = site.url + page.url %}
 <aside class="mentions">
-	{% for type, webmentions in webmentions.links | groupby("activity.type") %}
-		<div class="mentions-list">
-			<ul>
-				{% for webmention in webmentions %}
-					{% if (webmention.target == pageLink) %}
-						<li>
-							<!-- webmention template -->
-						</li>
-					{% endif %}
-				{% endfor %}
-			</ul>
-		</div>
-	{% endfor %}{% endraw %}
+  {% for type, webmentions in webmentions.links | groupby("activity.type") %}
+    <div class="mentions-list">
+      <ul>
+        {% for webmention in webmentions %}
+          {% if (webmention.target == pageLink) %}
+            <li>
+              <!-- webmention template -->
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}{% endraw %}
 </aside>
 ```
 
