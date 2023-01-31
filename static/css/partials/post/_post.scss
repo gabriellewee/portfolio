@@ -405,13 +405,15 @@
 	}
 	.highlight {
 		position: relative;
-		padding: var(--p) calc(var(--p)*2.5);
+		padding: calc(var(--p)*1.5) calc(var(--p)*2);
 		margin-bottom: calc(var(--p)*2);
-		background-color: hsla(var(--color-iron-hsl), .2);
+		background-color: hsla(var(--color-iron-hsl), .1);
 		border-radius: 3px;
-		font-size: 1.25rem;
 		> * {
-			@include font-weight-width(450, 115);
+			font-weight: 450;
+			code {
+				font-weight: 700;
+			}
 		}
 	}
 

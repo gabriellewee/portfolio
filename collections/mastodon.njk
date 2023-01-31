@@ -18,7 +18,7 @@
             data.url = data.mastodon.url;
             data.media = data.mastodon.media_attachments;
             data.size = "s";
-            if (data.mastodon.reblog || data.mastodon.in_reply_to_account_id || data.mastodon.content.includes("https://gabriellew.ee")) data.tags = "";
+            if (data.mastodon.content.includes("https://gabriellew.ee")) data.tags = "";
         }
     }
 }

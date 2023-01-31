@@ -185,7 +185,7 @@ module.exports = async () => {
   try {
     let key = process.env.MASTODON_API_KEY;
     let id = process.env.MASTODON_API_ID;
-    let url = `https://mas.to/api/v1/accounts/${id}/statuses`;
+    let url = `https://mas.to/api/v1/accounts/${id}/statuses?limit=40`;
 
     return Cache(url, {
       duration: '1d',
@@ -254,6 +254,13 @@ For [text feature posts](https://github.com/gabriellewee/portfolio/blob/netlify/
 I set `permalink: false` on all of these — photo posts already had all the information included and the others had permalink pages outside of my website.
 
 I decided to filter my Mastodon posts and remove posts mentioning my site URL (since they‘d most likely just be a link to a blog post already on the front page) as well as replies/reposts. I‘d seen some implementations removing them entirely from the data, but Javascript is not my strong suit and I couldn‘t get it to work for me, so instead I changed the tag so that they were no longer included in the “entries” collection.
+
+
+<div class="highlight">
+
+**Edit 01/31/2023:** I‘ve realized that if you add `&exclude_replies=true&exclude_reblogs=true` to your url in `mastadon.js`, you don't need to change the tag collection and can remove `data.mastodon.reblog || data.mastodon.in_reply_to_account_id`.
+
+</div>
 
 Now, in my `index.njk` file, I could paginate through “entries” and have everything I needed! Here‘s a much-abbreviated version of my post template (I have a lot more variables in the final version).
 
