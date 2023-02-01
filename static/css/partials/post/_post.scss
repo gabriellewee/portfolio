@@ -322,10 +322,11 @@
 	}
 	p {
 		> code {
-			@include clip-path-edges(2px);
-			display: inline-block;
-			padding-left: calc(var(--p)/4);
-			padding-right: calc(var(--p)/4);
+			word-break: break-all;
+			overflow-wrap: break-word;
+			border-radius: 2px;
+			padding-left: calc(var(--p)/6);
+			padding-right: calc(var(--p)/6);
 			background-color: hsla(var(--color-iron-hsl), .2);
 			font-size: 1.0625rem;
 		}
