@@ -3,9 +3,9 @@
 	"version": "4.0.0",
 	"description": "Gabrielle Wee’s personal website and portfolio.",
 	"scripts": {
-		"autoprefixer": "npx postcss _site/static/css/*.css --use autoprefixer --dir _site/static/css/",
+		"autoprefixer": "npx postcss _site/static/css/*.css --use autoprefixer --no-map --dir _site/static/css/",
 		"build": "eleventy && npm run autoprefixer",
-		"watch:autoprefixer": "npx postcss _site/static/css/*.css --use autoprefixer --watch --dir _site/static/css/",
+		"watch:autoprefixer": "npx postcss _site/static/css/*.css --use autoprefixer --no-map --watch --dir _site/static/css/",
 		"watch:eleventy": "eleventy --serve",
 		"start": "npm-run-all --parallel watch:eleventy watch:autoprefixer",
 		"debug": "DEBUG=* eleventy"
