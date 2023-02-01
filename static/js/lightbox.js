@@ -1,5 +1,5 @@
 /*! Lightbox script by Gabrielle Wee */
-function lightbox(buttons) {
+const lightbox = (buttons) => {
 	let links = Array.from(document.querySelectorAll(buttons))
 	let lightboxes = Array.from(document.querySelectorAll(".lightbox"));
 	let sibling;

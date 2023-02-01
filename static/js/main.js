@@ -9,7 +9,7 @@ const noJS = ((container = document.documentElement) => {
 	}
 })();
 
-function frames(buttons) {
+const frames = (buttons) => {
 	let links = Array.from(document.querySelectorAll(buttons));
 	if(!links) return;
 	links.forEach(button => {
@@ -20,7 +20,7 @@ function frames(buttons) {
 	});
 }
 
-function timeAgo(dates) {
+const timeAgo = (dates) => {
 	let datesISO = Array.from(document.querySelectorAll(dates));
 	if(!datesISO) return;
 	datesISO.forEach(date =>{
@@ -46,11 +46,13 @@ let container = document.querySelector(".grid-isotope");
 let scrollContainer = document.querySelector(".grid-scroll");
 let lightboxContainer = document.querySelector(".posts-lightbox-group");
 let motion = window.matchMedia("(prefers-reduced-motion: no-preference)");
+let media = window.matchMedia("(min-width: 568px) and (max-height: 450px), (min-width: 768px)");
+let filters = document.querySelector(".filters");
 let iso;
 
-if(container) {
+const layout = (items) => {
 	if(motion.matches == true) {
-		iso = new Isotope(container, {
+		iso = new Isotope(items, {
 			percentPosition: true,
 			layoutMode: "packery",
 			itemSelector: ".grid-item",
@@ -59,7 +61,7 @@ if(container) {
 			}
 		});
 	} else {
-		iso = new Isotope(container, {
+		iso = new Isotope(items, {
 			percentPosition: true,
 			layoutMode: "packery",
 			itemSelector: ".grid-item",
@@ -74,6 +76,15 @@ if(container) {
 			}
 		});
 	}
+}
+
+const viewportChange = (e) => {
+	if (e.matches || filters) layout(container);
+}
+
+if(container) {
+	media.addListener(viewportChange);
+	viewportChange(media);
 	if(scrollContainer && lightboxContainer) {
 		let scroll = new InfiniteScroll(scrollContainer, {
 			button: '.load',
@@ -104,7 +115,7 @@ const loading = new imagesLoaded(document.body, () => {
 	document.documentElement.classList.add("loaded");
 });
 
-const mediaFilters = ((filters = document.querySelector(".filters")) => {
+const mediaFilters = (() => {
 	if (!filters) return;
 	let links = filters.querySelectorAll("[data-filter]");
 	links.forEach(link=>{
