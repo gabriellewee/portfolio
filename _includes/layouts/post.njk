@@ -43,7 +43,7 @@ category: writing
 				<a class="button" href="/"><span><span>Back to home</span></span></a>
 			{% endif %}
 			{%- if previousPost %}
-				<a class="older button" href="{{previousPost.url|url}}"><span><span>Older</span></span></a>
+				<a class="older button button-reverse" href="{{previousPost.url|url}}"><span><span>Older</span></span></a>
 			{% else %}
 				<a class="button" href="/archive/"><span><span>Back to archive</span></span></a>
 			{% endif %}
@@ -58,7 +58,7 @@ category: writing
 				<a class="button" href="/archive/"><span><span>Back to archive</span></span></a>
 			{% endif %}
 			{%- if previousPost %}
-				<a class="older button" href="{{previousPost.url|url}}"><span><span>Older</span></span></a>
+				<a class="older button button-reverse" href="{{previousPost.url|url}}"><span><span>Older</span></span></a>
 			{% else %}
 				<a class="button" href="/archive/"><span><span>Back to archive</span></span></a>
 			{% endif %}
