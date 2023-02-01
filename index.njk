@@ -150,9 +150,9 @@ pagination:
 					<footer class="post-footer">
 						{% if (post.data.category == "writing") and (post.data.size != "s") %}
 							{% if post.url %}
-								<a class="button link-default" href="{{post.url|url}}"><span><span>Read post</span></span></a>
+								<a class="button button-reverse link-default" href="{{post.url|url}}"><span><span>Read post</span></span></a>
 							{% elseif post.data.url %}
-								<a class="button button-reverse link-default" href="{{post.data.url|url}}" target="_blank"><span><span>Read more{% if post.data.platform %} at {{post.data.platform}}{% endif %}</span></a>
+								<a class="button link-default" href="{{post.data.url|url}}" target="_blank"><span><span>Read more{% if post.data.platform %} at {{post.data.platform}}{% endif %}</span></a>
 							{% endif %}
 							{% for link in post.data.external %}
 								<a class="button link-platform link-{{link.platform}}" href="{{link.url|url}}" target="_blank"><span><span>{% if post.data.type == "audio" %}Listen on {% elseif post.data.type == "writing" %}Read on {% else %}View on {% endif %}{% if link.title %}{{link.title}}{% else %}{{link.platform|capitalize}}{% endif %}</span></a>
@@ -168,10 +168,10 @@ pagination:
 			<button class="load button"><span><span>Load more</span></span></button>
 		{% endif %}
 		{% if (pagination.href.previous) and (pagination.pageNumber != 0) %}
-			<a class="newer button" href="{{pagination.href.previous}}"><span><span>Newer</span></span></a>
+			<a class="newer button button-reverse" href="{{pagination.href.previous}}"><span><span>Newer</span></span></a>
 		{% endif %}
 		{% if pagination.href.next %}
-			<a class="older button button-reverse" href="{{pagination.href.next}}"><span><span>Older</span></span></a>
+			<a class="older button" href="{{pagination.href.next}}"><span><span>Older</span></span></a>
 		{% endif %}
 	</nav>
 </section>

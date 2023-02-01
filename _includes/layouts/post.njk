@@ -38,12 +38,12 @@ category: writing
 		{%- set previousPost = collections.posts|getPreviousCollectionItem(page) %}
 		{%- if nextPost or previousPost %}
 			{%- if nextPost %}
-				<a class="newer button" href="{{nextPost.url|url}}"><span><span>Newer</span></span></a>
+				<a class="newer button button-reverse" href="{{nextPost.url|url}}"><span><span>Newer</span></span></a>
 			{% else %}
 				<a class="button" href="/"><span><span>Back to home</span></span></a>
 			{% endif %}
 			{%- if previousPost %}
-				<a class="older button button-reverse" href="{{previousPost.url|url}}"><span><span>Older</span></span></a>
+				<a class="older button" href="{{previousPost.url|url}}"><span><span>Older</span></span></a>
 			{% else %}
 				<a class="button" href="/archive/"><span><span>Back to archive</span></span></a>
 			{% endif %}
@@ -53,12 +53,12 @@ category: writing
 		{%- set previousPost = collections.archive|getPreviousCollectionItem(page) %}
 		{%- if nextPost or previousPost %}
 			{%- if nextPost %}
-				<a class="newer button" href="{{nextPost.url|url}}"><span><span>Newer</span></span></a>
+				<a class="newer button button-reverse" href="{{nextPost.url|url}}"><span><span>Newer</span></span></a>
 			{% else %}
 				<a class="button" href="/archive/"><span><span>Back to archive</span></span></a>
 			{% endif %}
 			{%- if previousPost %}
-				<a class="older button button-reverse" href="{{previousPost.url|url}}"><span><span>Older</span></span></a>
+				<a class="older button" href="{{previousPost.url|url}}"><span><span>Older</span></span></a>
 			{% else %}
 				<a class="button" href="/archive/"><span><span>Back to archive</span></span></a>
 			{% endif %}
