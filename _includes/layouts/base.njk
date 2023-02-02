@@ -80,16 +80,6 @@
 
 	<link rel="preload" as="font" href="{{'/static/fonts/mona-sans.woff2'|url}}" crossorigin>
 	<link rel="preload" as="style" href="{{'/static/css/fonts.css'|url}}">
-	{% if add == true %}
-		<link rel="preload" as="style" href="{{'/static/css/style.css'|url}}">
-	{% endif %}
-	{% if style == true %}
-		<link rel="preload" as="style" href="{{'/static/css/' + key + '.css'|url}}">
-	{% elseif style %}
-		<link rel="preload" as="style" href="{{'/static/' + style + '.css'|url}}">
-	{% else %}
-		<link rel="preload" as="style" href="{{'/static/css/style.css'|url}}">
-	{% endif %}
 	{% if isotope == true %}
 		<link rel="prefetch" as="script" href="{{'/static/js/isotope.min.js'|url}}">
 		<link rel="prefetch" as="script" href="{{'/static/js/packery.min.js'|url}}">
