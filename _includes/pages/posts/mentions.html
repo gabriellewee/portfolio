@@ -1,5 +1,7 @@
 {% set pageLink = site.url + page.url %}
 <aside class="mentions">
+	<div class="giscus"></div>
+
 	{% for target, webmentions in webmentions.links | groupby("target") %}
 		{% for type, webmentions in webmentions | groupby("activity.type") %}
 			{% if target == pageLink %}
@@ -18,7 +20,7 @@
 										<span>{{webmention.data.author.name}}</span>
 									</a>
 									<a class="time" href="{{webmention.data.url}}" target="_blank">
-										<time class="time-external" datetime="{{webmention.data.published|htmlDateString}}" title="{{webmention.data.published|readableDate}}" data-time="{{webmention.data.published|ISO}}">Posted {{webmention.data.published|ISO}}{{webmention.source|platform|safe}}</time>
+										<time class="time-external" datetime="{{webmention.data.published|htmlDateString}}" title="{{webmention.data.published|readableDate}}" data-time="{{webmention.data.published|ISO}}">Posted {{webmention.data.published|readableDate}}{{webmention.source|platform|safe}}</time>
 									</a>
 									<div class="reply post-text">{{webmention.data.content|safe}}</div>
 								</div>

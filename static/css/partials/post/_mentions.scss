@@ -1,6 +1,14 @@
 .mentions {
 	display: flex;
 	flex-direction: column;
+
+	.giscus:not(:empty) {
+		@include clip-path-edges(2px);
+		margin-top: calc(var(--p)*2);
+		padding: calc(var(--p)*2);
+		background: rgba(white, .75);
+	}
+
 	.mentions-header {
 		@include font-weight-width(800, 120);
 		font-size: 2rem;

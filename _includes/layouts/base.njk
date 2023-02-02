@@ -165,8 +165,23 @@
 		{% if animation == true %}
 			<script src="{{'/static/js/animation/' + key + '.js'|url}}"></script>
 		{% endif %}
-		{% if key == "post" %}
-			<script src="{{'/static/js/posts.js'|url}}"></script>
+		{% if (key == "post") and (archive != true) %}
+			<script src="https://giscus.app/client.js"
+				data-repo="gabriellewee/portfolio"
+				data-repo-id="MDEwOlJlcG9zaXRvcnkzNTIwMDk1Mg=="
+				data-category="General"
+				data-category-id="DIC_kwDOAhkfuM4CT8l0"
+				data-mapping="og:title"
+				data-strict="0"
+				data-reactions-enabled="1"
+				data-emit-metadata="0"
+				data-input-position="top"
+				data-theme="{{'/static/css/giscus.css'|url}}"
+				data-lang="en"
+				data-loading="lazy"
+				crossorigin="anonymous"
+				async>
+			</script>
 		{% endif %}
 		<script src="{{'/static/js/main.js'|url}}"></script>
 	{% endif %}
