@@ -1,39 +1,42 @@
 {% set pageLink = site.url + page.url %}
 <aside class="mentions">
-	{% for type, webmentions in webmentions.links | groupby("activity.type") %}
-		<ul class="mentions-{{type}} mentions-{% if (type == 'reply') or (type == 'link') %}flex{% elseif (type != 'reply') and (type != 'link') %}grid{% endif %}">
-			{% for webmention in webmentions %}
-				{% if webmention.target == pageLink %}
-					<li>
-						{% if webmention.data.author.photo %}
-							<a class="avatar" title="{{webmention.data.author.name}}" href="{% if type == 'repost' %}{{webmention.data.url}}{% else %}{{webmention.data.author.url}}{% endif %}" target="_blank">
-								{% external webmention.data.author.photo, webmention.data.author.name, 48 %}
-							</a>
-						{% endif %}
-						{% if type == "reply" %}
-							<div>
-								<a class="username" href="{{webmention.data.author.url}}" target="_blank">
-									<span>{{webmention.data.author.name}}</span>
+	{% for target, webmentions in webmentions.links | groupby("target") %}
+		{% for type, webmentions in webmentions | groupby("activity.type") %}
+			{% if target == pageLink %}
+				<h3 class="mentions-{{type}}-header mentions-header">{% if type == 'reply' %}Replies{% else %}{{type|capitalize}}s{% endif %}</h3>
+				<ul class="mentions-{{type}}-content mentions-content">
+					{% for webmention in webmentions %}
+						<li>
+							{% if webmention.data.author.photo %}
+								<a class="avatar" title="{{webmention.data.author.name}}" href="{% if type == 'repost' %}{{webmention.data.url}}{% else %}{{webmention.data.author.url}}{% endif %}" target="_blank">
+									{% external webmention.data.author.photo, webmention.data.author.name, 48 %}
 								</a>
-								<a class="time" href="{{webmention.data.url}}" target="_blank">
-									<time class="time-external" datetime="{{webmention.data.published|htmlDateString}}" title="{{webmention.data.published|readableDate}}" data-time="{{webmention.data.published|ISO}}">Posted {{webmention.data.published|ISO}}{{webmention.source|platform|safe}}</time>
-								</a>
-								<div class="reply post-text">{{webmention.data.content|safe}}</div>
-							</div>
-						{% elseif type == "link" %}
-							<div class="post-link post-text">
-								<p>
-									{% if webmention.data.author.name %}
-										<a href="{{webmention.data.author.url}}" target="_blank">{{webmention.data.author.name}}</a> mentioned this post{% if webmention.data.published %} <a href="{{webmention.data.url}}" target="_blank"><time datetime="{{webmention.data.published|htmlDateString}}" title="{{webmention.data.published|readableDate}}" data-time="{{webmention.data.published|ISO}}">{{webmention.data.published|readableDate}}</time></a>{% endif %}
-									{% else %}
-										<a href="{{webmention.data.url}}" target="_blank">Someone mentioned this post{% if webmention.data.published %} <time datetime="{{webmention.data.published|htmlDateString}}" title="{{webmention.data.published|readableDate}}" data-time="{{webmention.data.published|ISO}}">on {{webmention.data.published|readableDate}}</time>{% endif %}</a>
-									{% endif %}
-								</p>
-							</div>
-						{% endif %}
-					</li>
-				{% endif %}
-			{% endfor %}
-		</ul>
+							{% endif %}
+							{% if type == "reply" %}
+								<div>
+									<a class="username" href="{{webmention.data.author.url}}" target="_blank">
+										<span>{{webmention.data.author.name}}</span>
+									</a>
+									<a class="time" href="{{webmention.data.url}}" target="_blank">
+										<time class="time-external" datetime="{{webmention.data.published|htmlDateString}}" title="{{webmention.data.published|readableDate}}" data-time="{{webmention.data.published|ISO}}">Posted {{webmention.data.published|ISO}}{{webmention.source|platform|safe}}</time>
+									</a>
+									<div class="reply post-text">{{webmention.data.content|safe}}</div>
+								</div>
+							{% elseif type == "link" %}
+								<div class="post-link post-text">
+									<p>
+										{% if webmention.data.author.name %}
+											<a href="{{webmention.data.author.url}}" target="_blank">{{webmention.data.author.name}}</a> mentioned this post{% if webmention.data.published %} <a href="{{webmention.data.url}}" target="_blank"><time datetime="{{webmention.data.published|htmlDateString}}" title="{{webmention.data.published|readableDate}}" data-time="{{webmention.data.published|ISO}}">{{webmention.data.published|readableDate}}</time></a>{% endif %}
+										{% else %}
+											<a href="{{webmention.data.url}}" target="_blank">Someone mentioned this post{% if webmention.data.published %} <time datetime="{{webmention.data.published|htmlDateString}}" title="{{webmention.data.published|readableDate}}" data-time="{{webmention.data.published|ISO}}">on {{webmention.data.published|readableDate}}</time>{% endif %}</a>
+										{% endif %}
+									</p>
+								</div>
+							{% endif %}
+						</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		{% endfor %}
 	{% endfor %}
 </aside>

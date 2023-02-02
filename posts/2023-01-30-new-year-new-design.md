@@ -324,18 +324,20 @@ I decided against a Javascript solution to sorting data (again, not my strong su
 {% raw %}<!-- set a pageLink variable so that only mentions for this page show up -->
 {% set pageLink = site.url + page.url %}
 <aside class="mentions">
-  {% for type, webmentions in webmentions.links | groupby("activity.type") %}
-    <div class="mentions-list">
-      <ul>
-        {% for webmention in webmentions %}
-          {% if (webmention.target == pageLink) %}
-            <li>
-              <!-- webmention template -->
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    </div>
+  {% for target, webmentions in webmentions.links | groupby("target") %}
+    {% for type, webmentions in webmentions.links | groupby("activity.type") %}
+      {% if target == pageLink %}
+        <div class="mentions-list">
+          <ul>
+            {% for webmention in webmentions %}
+              <li>
+                <!-- webmention template -->
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+       {% endif %}
+    {% endfor %}
   {% endfor %}{% endraw %}
 </aside>
 ```
