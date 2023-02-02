@@ -46,7 +46,6 @@ let container = document.querySelector(".grid-isotope");
 let scrollContainer = document.querySelector(".grid-scroll");
 let lightboxContainer = document.querySelector(".posts-lightbox-group");
 let motion = window.matchMedia("(prefers-reduced-motion: no-preference)");
-let media = window.matchMedia("(min-width: 568px) and (max-height: 450px), (min-width: 768px)");
 let filters = document.querySelector(".filters");
 let iso;
 
@@ -78,13 +77,8 @@ const layout = (items) => {
 	}
 }
 
-const viewportChange = (e) => {
-	if (e.matches || filters) layout(container);
-}
-
 if(container) {
-	media.addListener(viewportChange);
-	viewportChange(media);
+	layout(container);
 	if(scrollContainer && lightboxContainer) {
 		let scroll = new InfiniteScroll(scrollContainer, {
 			button: '.load',
