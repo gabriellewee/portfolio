@@ -1,10 +1,27 @@
 {% set pageLink = site.url + page.url %}
 <aside class="mentions">
-	<div class="giscus"></div>
+	{% for target, webmentions in webmentions.links | groupby("target") %}
+		{% for type, webmentions in webmentions | groupby("activity.type") | dictsort %}
+			{% if (target == pageLink) and ((type == 'repost') or (type == 'like')) %}
+				<h3 class="mentions-{{type}}-header mentions-header">{{type|capitalize}}s</h3>
+				<ul class="mentions-{{type}}-content mentions-content">
+					{% for webmention in webmentions %}
+						<li>
+							{% if webmention.data.author.photo %}
+								<a class="avatar" title="{{webmention.data.author.name}}" href="{% if type == 'repost' %}{{webmention.data.url}}{% else %}{{webmention.data.author.url}}{% endif %}" target="_blank">
+									{% external webmention.data.author.photo, webmention.data.author.name, 48 %}
+								</a>
+							{% endif %}
+						</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		{% endfor %}
+	{% endfor %}
 
 	{% for target, webmentions in webmentions.links | groupby("target") %}
-		{% for type, webmentions in webmentions | groupby("activity.type") %}
-			{% if target == pageLink %}
+		{% for type, webmentions in webmentions | groupby("activity.type") | dictsort %}
+			{% if target == pageLink and ((type == 'reply') or (type == 'link')) %}
 				<h3 class="mentions-{{type}}-header mentions-header">{% if type == 'reply' %}Replies{% else %}{{type|capitalize}}s{% endif %}</h3>
 				<ul class="mentions-{{type}}-content mentions-content">
 					{% for webmention in webmentions %}
@@ -41,4 +58,6 @@
 			{% endif %}
 		{% endfor %}
 	{% endfor %}
+
+	<div class="giscus"></div>
 </aside>
