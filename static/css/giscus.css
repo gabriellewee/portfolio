@@ -1,5 +1,3 @@
-@import 'partials/shared/utilities';
-
 /*! MIT License
  * Copyright (c) 2018 GitHub Inc.
  * https://github.com/primer/primitives/blob/main/LICENSE
@@ -9,7 +7,7 @@ main {
   --color-prettylights-syntax-comment: #6e7781;
   --color-prettylights-syntax-constant: #0550ae;
   --color-prettylights-syntax-entity: #8250df;
-  --color-prettylights-syntax-storage-modifier-import: #24292f;
+  --color-prettylights-syntax-storage-modifier-import: #263238;
   --color-prettylights-syntax-entity-tag: #116329;
   --color-prettylights-syntax-keyword: #cf222e;
   --color-prettylights-syntax-string: #0a3069;
@@ -22,8 +20,8 @@ main {
   --color-prettylights-syntax-string-regexp: #116329;
   --color-prettylights-syntax-markup-list: #3b2300;
   --color-prettylights-syntax-markup-heading: #0550ae;
-  --color-prettylights-syntax-markup-italic: #24292f;
-  --color-prettylights-syntax-markup-bold: #24292f;
+  --color-prettylights-syntax-markup-italic: #263238;
+  --color-prettylights-syntax-markup-bold: #263238;
   --color-prettylights-syntax-markup-deleted-text: #82071e;
   --color-prettylights-syntax-markup-deleted-bg: #ffebe9;
   --color-prettylights-syntax-markup-inserted-text: #116329;
@@ -36,7 +34,7 @@ main {
   --color-prettylights-syntax-brackethighlighter-angle: #57606a;
   --color-prettylights-syntax-sublimelinter-gutter-mark: #8c959f;
   --color-prettylights-syntax-constant-other-reference-link: #0a3069;
-  --color-btn-text: #24292f;
+  --color-btn-text: #263238;
   --color-btn-bg: #f6f8fa;
   --color-btn-border: rgb(27 31 36 / 15%);
   --color-btn-shadow: 0 1px 0 rgb(27 31 36 / 4%);
@@ -47,18 +45,18 @@ main {
   --color-btn-active-border: rgb(27 31 36 / 15%);
   --color-btn-selected-bg: hsl(220deg 14% 94% / 100%);
   --color-btn-primary-text: #fff;
-  --color-btn-primary-bg: $mauve;
+  --color-btn-primary-bg: #B2738E;
   --color-btn-primary-border: rgb(38 50 56 / 15%);
   --color-btn-primary-shadow: 0 1px 0 rgb(27 31 36 / 10%);
   --color-btn-primary-inset-shadow: inset 0 1px 0 rgb(255 255 255 / 3%);
-  --color-btn-primary-hover-bg: $rose;
+  --color-btn-primary-hover-bg: #D19487;
   --color-btn-primary-hover-border: rgb(38 50 56 / 15%);
-  --color-btn-primary-selected-bg: $slate;
+  --color-btn-primary-selected-bg: #577783;
   --color-btn-primary-selected-shadow: inset 0 1px 0 rgb(0 45 17 / 20%);
   --color-btn-primary-disabled-text: rgb(255 255 255 / 80%);
-  --color-btn-primary-disabled-bg: $blush;
+  --color-btn-primary-disabled-bg: #F5C8BF;
   --color-btn-primary-disabled-border: rgb(38 50 56 / 15%);
-  --color-fg-default: #24292f;
+  --color-fg-default: #263238;
   --color-fg-muted: #57606a;
   --color-fg-subtle: #6e7781;
   --color-canvas-default: #fff;
@@ -68,10 +66,10 @@ main {
   --color-border-default: #d0d7de;
   --color-border-muted: hsl(210deg 18% 87% / 100%);
   --color-neutral-muted: rgb(175 184 193 / 20%);
-  --color-accent-fg: #0969da;
-  --color-accent-emphasis: #0969da;
-  --color-accent-muted: rgb(84 174 255 / 40%);
-  --color-accent-subtle: #ddf4ff;
+  --color-accent-fg: #B2738E;
+  --color-accent-emphasis: #B2738E;
+  --color-accent-muted: #d0d7de;
+  --color-accent-subtle: #fbe6e2;
   --color-success-fg: #1a7f37;
   --color-attention-fg: #9a6700;
   --color-attention-muted: rgb(212 167 44 / 40%);
@@ -79,10 +77,10 @@ main {
   --color-danger-fg: #cf222e;
   --color-danger-muted: rgb(255 129 130 / 40%);
   --color-danger-subtle: #ffebe9;
-  --color-primer-shadow-inset: inset 0 1px 0 rgb(208 215 222 / 20%);
-  --color-primer-shadow-focus: 0 0 0 3px rgb(9 105 218 / 30%);
+  --color-primer-shadow-inset: inset 0 1px 0 rgb(245 200 191 / 20%);
+  --color-primer-shadow-focus: 0 0 0 3px #fbe6e2;
   --color-scale-gray-1: #eaeef2;
-  --color-scale-blue-1: #b6e3ff;
+  --color-scale-blue-1: #f8dbd5;
 
   /*! Extensions from @primer/css/alerts/flash.scss */
   --color-social-reaction-bg-hover: var(--color-scale-gray-1);
