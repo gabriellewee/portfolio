@@ -2,6 +2,7 @@
 @import 'lightbox';
 @import 'memoji';
 @import 'button';
+@import 'colors';
 
 .title {
 	opacity: 0;
@@ -104,7 +105,6 @@
 		}
 
 		> ul {
-			@import 'partials/colors/links';
 			margin-top: .5rem;
 			list-style: none;
 			.link {

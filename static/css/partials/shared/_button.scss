@@ -112,21 +112,6 @@
 		}
 	}
 
-	&.link-medium {
-		> span {
-			background: var(--color-med);
-		}
-	}
-	&.link-apple-podcasts {
-		> span {
-			background: var(--color-ap);
-		}
-	}
-	&.link-spotify {
-		> span {
-			background: var(--color-sp);
-		}
-	}
 	&.link-platform {
 		> span {
 			&:before {

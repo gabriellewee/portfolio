@@ -1,0 +1,184 @@
+a {
+	&.codepen {
+		&.color {
+			color: var(--color-cp);
+			&:hover, &:focus {
+				text-decoration-color: var(--color-cp);
+			}
+		}
+		&.background {
+			> span {
+				background: var(--color-cp);
+			}
+		}
+	}
+	&.dribbble {
+		&.color {
+			color: var(--color-bbb);
+			&:hover, &:focus {
+				text-decoration-color: var(--color-bbb);
+			}
+		}
+		&.background {
+			> span {
+				background: var(--color-bbb);
+			}
+		}
+	}
+	&.github {
+		&.color {
+			color: var(--color-gh);
+			&:hover, &:focus {
+				text-decoration-color: var(--color-gh);
+			}
+		}
+		&.background {
+			> span {
+				background: var(--color-gh);
+			}
+		}
+	}
+	&.instagram {
+		&.color {
+			color: var(--color-insta);
+			&:hover, &:focus {
+				text-decoration-color: var(--color-insta);
+			}
+		}
+		&.background {
+			> span {
+				background: var(--color-insta);
+			}
+		}
+	}
+	&.twitter {
+		&.color {
+			color: var(--color-tw);
+			&:hover, &:focus {
+				text-decoration-color: var(--color-tw);
+			}
+		}
+		&.background {
+			> span {
+				background: var(--color-tw);
+			}
+		}
+	}
+	&.pinterest {
+		&.color {
+			color: var(--color-pin);
+			&:hover, &:focus {
+				text-decoration-color: var(--color-pin);
+			}
+		}
+		&.background {
+			> span {
+				background: var(--color-pin);
+			}
+		}
+	}
+	&.medium {
+		&.color {
+			color: var(--color-med);
+			&:hover, &:focus {
+				text-decoration-color: var(--color-med);
+			}
+		}
+		&.background {
+			> span {
+				background: var(--color-med);
+			}
+		}
+	}
+	&.tumblr {
+		&.color {
+			color: var(--color-tum);
+			&:hover, &:focus {
+				text-decoration-color: var(--color-tum);
+			}
+		}
+		&.background {
+			> span {
+				background: var(--color-tum);
+			}
+		}
+	}
+	&.music {
+		&.color {
+			color: var(--color-am);
+			&:hover, &:focus {
+				text-decoration-color: var(--color-am);
+			}
+		}
+		&.background {
+			> span {
+				background: var(--color-am);
+			}
+		}
+	}
+	&.email {
+		&.color {
+			color: var(--color-iron-white-70);
+			&:hover, &:focus {
+				text-decoration-color: var(--color-iron-white-70);
+			}
+		}
+		&.background {
+			> span {
+				background: var(--color-iron-white-70);
+			}
+		}
+	}
+	&.text {
+		&.color {
+			color: var(--color-gv);
+			&:hover, &:focus {
+				text-decoration-color: var(--color-gv);
+			}
+		}
+		&.background {
+			> span {
+				background: var(--color-gv);
+			}
+		}
+	}
+	&.imessage {
+		&.color {
+			color: var(--color-im);
+			&:hover, &:focus {
+				text-decoration-color: var(--color-im);
+			}
+		}
+		&.background {
+			> span {
+				background: var(--color-im);
+			}
+		}
+	}
+	&.discord {
+		&.color {
+			color: var(--color-discord);
+			&:hover, &:focus {
+				text-decoration-color: var(--color-discord);
+			}
+		}
+		&.background {
+			> span {
+				background: var(--color-discord);
+			}
+		}
+	}
+	&.mastodon {
+		&.color {
+			color: var(--color-mas);
+			&:hover, &:focus {
+				text-decoration-color: var(--color-mas);
+			}
+		}
+		&.background {
+			> span {
+				background: var(--color-mas);
+			}
+		}
+	}
+}

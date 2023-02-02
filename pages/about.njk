@@ -109,7 +109,7 @@
 			</div>
 		</article>
 
-		<article class="post post-about post-mentions grid-item">
+		<article class="post post-about post-external grid-item">
 			<div class="post-wrapper post-animate">
 				<header class="post-header">
 					<h3>Mentions</h3>
@@ -118,8 +118,30 @@
 					<ul>
 						{% for mention in about.mentions %}
 							<li>
-								<span class="mention-publication">{{mention.publication}}</span>
-								<a class="mention-link" href="{{mention.url|url}}" target="_blank">{{mention.title|nbsp|safe}}</a>
+								<span class="external-platform">{{mention.publication}}</span>
+								<a class="external-title" href="{{mention.url|url}}" target="_blank">{{mention.title|nbsp|safe}}</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</article>
+
+		<article class="post post-about post-external grid-item">
+			<div class="post-wrapper post-animate">
+				<header class="post-header">
+					<h3>Features</h3>
+				</header>
+				<div class="post-content post-text">
+					<ul>
+						{% for feature in features %}
+							<li>
+								<span class="external-platform">{{feature.platform}}</span>
+								{% if feature.url %}
+									<a class="external-title" href="{{feature.url|url}}" target="_blank">{{feature.title|nbsp|safe}}</a>
+								{% elseif feature.external %}
+									<a class="external-title" href="{{feature.external[0].url|url}}" target="_blank">{{feature.title|nbsp|safe}}</a>
+								{% endif %}
 							</li>
 						{% endfor %}
 					</ul>

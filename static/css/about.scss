@@ -80,9 +80,16 @@
 		> span {
 			background: var(--color-iron-white-90);
 			&:before {
+				display: none;
+			}
+		}
+		&:hover, &:focus {
+			> span {
 				background: var(--color-rose);
 			}
-			&:after {
+		}
+		&:active {
+			> span {
 				background: var(--color-mint);
 			}
 		}
@@ -213,7 +220,7 @@
 	}
 }
 
-.post-mentions {
+.post-external {
 	ul {
 		margin: 0;
 		padding: 0;
@@ -226,7 +233,7 @@
 			}
 		}
 	}
-	span {
+	.external-platform {
 		@include font-weight-width(600, 90);
 		@include clip-path-edges(2px);
 		display: inline-block;
@@ -243,7 +250,7 @@
 			margin-right: calc(var(--p)/3);
 		}
 	}
-	a {
+	.external-title {
 		@include font-weight-width(600, 115);
 		display: block;
 		line-height: 1.333;
