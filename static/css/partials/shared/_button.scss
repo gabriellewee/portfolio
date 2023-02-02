@@ -70,6 +70,11 @@
 		@include clip-path(false) {
 			@include focus-round(var(--color-slate));
 		}
+		@include clip-path(true) {
+			&:before {
+				opacity: 1;
+			}
+		}
 	}
 	&:active {
 		@media (prefers-reduced-motion: no-preference) {
@@ -95,9 +100,9 @@
 				var(--color-slate) 75%,
 				var(--color-slate) 100%,
 			) 50% 0% / 200% 100%;
-			&:after {
-				background-color: var(--color-iron-12);
-				background: radial-gradient(circle at center right, var(--color-iron) 0, var(--color-iron-12) 100%);
+			&:before {
+				background-color: var(--color-iron-5);
+				background: radial-gradient(circle at center right, var(--color-iron) 0, var(--color-iron-5) 100%);
 			}
 		}
 		&:hover, &:focus {
@@ -123,9 +128,6 @@
 		}
 	}
 	&.link-platform {
-		&:before {
-			background-color: var(--color-iron-white-90);
-		}
 		> span {
 			&:before {
 				display: none;

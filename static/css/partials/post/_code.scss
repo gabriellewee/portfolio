@@ -116,5 +116,26 @@
 		position: absolute;
 		bottom: calc(var(--p)*2);
 		right: calc(var(--p)*2);
+		&:before {
+			background-color: var(--color-blush);
+		}
+		> span {
+			background-color: var(--color-mint);
+			background: radial-gradient(
+				circle at center left,
+				var(--color-slate) 0,
+				var(--color-mint) 50%,
+				var(--color-oak) 100%,
+			) 50% 0% / 200% 100%;
+			&:before {
+				background-color: var(--color-iron);
+				background: radial-gradient(circle at center right, var(--color-iron-10) 0, var(--color-iron) 100%);
+			}
+		}
+		&:hover, &:focus {
+			> span {
+				background-position-x: 100%;
+			}
+		}
 	}
 }

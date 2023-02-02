@@ -216,7 +216,7 @@
 		}
 		time {
 			order: 1;
-			margin-bottom: var(--p);
+			margin-bottom: calc(var(--p)*1.25);
 			@supports not(container-type: inline-size) {
 				@include viewport(mobile) {
 					order: 2;

@@ -86,6 +86,9 @@
 	&:empty {
 		display: none;
 	}
+	.older, .newer {
+		height: calc(100% + var(--p)/3);
+	}
 	.older {
 		&:before {
 			clip-path: polygon(3px 0%, calc(100% - calc(var(--p)*1.375)) 0%, 100% 43%, 100% 57%, calc(100% - calc(var(--p)*1.375)) 100%, 3px 100%, 0 calc(100% - 3px), 0 3px);
