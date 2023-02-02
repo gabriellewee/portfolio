@@ -154,7 +154,7 @@
 			.link > a:hover, .link > a:focus, .popup-label:hover span, .popup-button:focus ~ .popup-label span, .link > a:active, .popup-button:active ~ .popup-label span {
 				text-underline-offset: 4px;
 			}
-			.link > a:active, .popup-button:active ~ .popup-label span {
+			.link > a:active, .popup-button:not(:checked):active ~ .popup-label span {
 				@media (prefers-reduced-motion: no-preference) {
 					scale: .95;
 				}
