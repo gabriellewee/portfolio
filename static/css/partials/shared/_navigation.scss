@@ -26,6 +26,9 @@
 	align-items: center;
 	padding-top: calc(var(--p)*2);
 	padding-bottom: calc(var(--p) + env(safe-area-inset-bottom));
+	.page-index &, .page-about &, .page-me & {
+		opacity: 0;
+	}
 	a, .copyright {
 		display: block;
 		position: relative;

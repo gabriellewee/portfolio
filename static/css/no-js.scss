@@ -16,7 +16,12 @@
 
 .title, .cursor,
 .posts-archive li,
-.page-home .contact-sites, .page-home .contact-messages {
+.page-home .contact-sites,
+.page-home .contact-messages,
+.posts-container .contact,
+.page-index .bottom,
+.page-about .bottom,
+.page-me .bottom {
 	opacity: 1;
 }
 

@@ -58,6 +58,12 @@ posts.forEach(post => {
 	}, "<.1");
 });
 
+new imagesLoaded(document.body, () => {
+	if(window.scrollY > 0) {
+		enter.progress(1);
+	}
+});
+
 gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
 	ScrollTrigger.create({
 		trigger: ".page-index",

@@ -1,7 +1,6 @@
 require('dotenv').config();
 
 module.exports = eleventyConfig => {
-	eleventyConfig.addWatchTarget("./_config/*.js");
 	eleventyConfig.setQuietMode(true);
 
 	eleventyConfig.addPlugin(require('./_config/passthrough.js'));

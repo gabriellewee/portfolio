@@ -133,10 +133,17 @@
 				text-decoration: underline;
 				text-decoration-thickness: 3px;
 				text-underline-offset: 8px;
-				text-decoration-color: var(--color-blush-8);
+			}
+			.link > a {
+				&:not(:hover):not(:focus) {
+					text-decoration-color: var(--color-blush-8);
+				}
 			}
 			.popup-label {
 				color: var(--color-discord);
+				span {
+					text-decoration-color: var(--color-blush-8);
+				}
 			}
 			.popup-label:hover span, .popup-button:focus + .popup-label span {
 				text-decoration-color: var(--color-discord);
@@ -158,6 +165,7 @@
 		position: relative;
 		padding: calc(var(--p)*2);
 		margin-top: calc(var(--p)*2);
+		opacity: 0;
 		&:before {
 			@include clip-path-edges(2px);
 			content: "";

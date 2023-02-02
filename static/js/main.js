@@ -102,7 +102,7 @@ if(container) {
 	}
 }
 
-const loading = new imagesLoaded(document.body, () => {
+new imagesLoaded(document.body, () => {
 	if(container && iso != undefined) {
 		iso.layout();
 	}
