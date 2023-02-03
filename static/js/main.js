@@ -46,7 +46,6 @@ let container = document.querySelector(".grid-isotope");
 let scrollContainer = document.querySelector(".grid-scroll");
 let lightboxContainer = document.querySelector(".posts-lightbox-group");
 let motion = window.matchMedia("(prefers-reduced-motion: no-preference)");
-let filters = document.querySelector(".filters");
 let iso;
 
 const layout = (items) => {
@@ -109,7 +108,7 @@ new imagesLoaded(document.body, () => {
 	document.documentElement.classList.add("loaded");
 });
 
-const mediaFilters = (() => {
+const mediaFilters = ((filters = document.querySelector(".filters")) => {
 	if (!filters) return;
 	let links = filters.querySelectorAll("[data-filter]");
 	links.forEach(link=>{

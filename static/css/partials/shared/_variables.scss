@@ -3,7 +3,7 @@
 	--width:70rem;
 
 	--font-mono:'Dank Mono','Inconsolata','Consolas',Monaco,'Bitstream Vera Sans Mono','Lucida Console',Terminal,Courier,monospace;
-	--font-default:-apple-system,BlinkMacSystemFont,"Mona Sans","Roboto Flex","Segoe UI Variable","Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	--font-default:-apple-system,system,".SFNSText-Regular","San Francisco",BlinkMacSystemFont,"Mona Sans","Roboto Flex","Segoe UI Variable","Segoe UI",Roboto,Ubuntu,Cantarell,"Helvetica Neue",Helvetica,Arial,sans-serif;
 	
 	--color-white-hsl:#{hexToHSL(#fff)};
 	--color-iron-white:#{mix($iron,white)};

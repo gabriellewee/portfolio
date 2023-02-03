@@ -8,12 +8,12 @@ category: writing
 
 <section class="posts-container h-entry">
 	<div class="posts">
-		<article class="post post-{{category}}{% for tag in tags %}{% if tag != "entries" %} post-{{tag}}{% endif %}{% endfor %}">
+		<article class="post post-{{category}}{% for tag in tags %}{% if tag != 'entries' %} post-{{tag}}{% endif %}{% endfor %}">
 			<div class="post-wrapper">
 				<header class="post-header inline-header">
 					<div class="post-header-wrapper">
 						<h2><a class="u-url" href="{{page.url}}"><span class="p-name">{{title|nbsp|safe}}</span></a></h2>
-						<time class="time-default dt-published" datetime="{{page.date|ISO|htmlDateString}}" title="{{page.date|ISO|readableDate}}" data-time="{{page.date|ISO}}">{{page.date|readableDate}}</time>
+						<time class="time-default dt-published" datetime="{{page.date|ISO|htmlDateString}}" title="{{page.date|ISO|readableDate}}" data-time="{{page.date|ISO}}">{{page.date|ISO|readableDate}}</time>
 					</div>
 				</header>
 				<div class="post-content post-text e-content">
