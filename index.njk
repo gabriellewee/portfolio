@@ -150,9 +150,9 @@ pagination:
 					<footer class="post-footer">
 						{% if (post.data.category == "writing") and (post.data.size != "s") %}
 							{% if post.url %}
-								<a class="button button-reverse link-default" href="{{post.url|url}}"><span><span>Read post</span></span></a>
+								<a class="button" href="{{post.url|url}}"><span><span>Read post</span></span></a>
 							{% elseif post.data.url %}
-								<a class="button link-default" href="{{post.data.url|url}}" target="_blank"><span><span>Read more{% if post.data.platform %} at {{post.data.platform}}{% endif %}</span></a>
+								<a class="button button-reverse" href="{{post.data.url|url}}" target="_blank"><span><span>Read more{% if post.data.platform %} at {{post.data.platform}}{% endif %}</span></a>
 							{% endif %}
 							{% for link in post.data.external %}
 								<a class="button link-platform {{link.platform}} background" href="{{link.url|url}}" target="_blank"><span><span>{% if post.data.type == "audio" %}Listen on {% elseif post.data.type == "writing" %}Read on {% else %}View on {% endif %}{% if link.title %}{{link.title}}{% else %}{{link.platform|capitalize}}{% endif %}</span></a>
