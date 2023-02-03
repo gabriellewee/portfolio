@@ -181,4 +181,30 @@ a {
 			}
 		}
 	}
+	&.apple-podcasts {
+		&.color {
+			color: var(--color-ap);
+			&:hover, &:focus {
+				text-decoration-color: var(--color-ap);
+			}
+		}
+		&.background {
+			> span {
+				background: var(--color-ap);
+			}
+		}
+	}
+	&.spotify {
+		&.color {
+			color: var(--color-sp);
+			&:hover, &:focus {
+				text-decoration-color: var(--color-sp);
+			}
+		}
+		&.background {
+			> span {
+				background: var(--color-sp);
+			}
+		}
+	}
 }

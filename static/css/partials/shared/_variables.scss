@@ -35,6 +35,7 @@
 	--color-mauve-hsl:#{hexToHSL($mauve)};
 
 	--color-slate:#{$slate};
+	--color-slate-5:#{darken($slate, 5%)};
 	--color-slate-hsl:#{hexToHSL($slate)};
 
 	--color-slate-mauve:#{darken(mix($slate,$mauve),5%)};
@@ -80,8 +81,4 @@
 	--color-med:#51A653;
 	--color-ap:#852dc4;
 	--color-sp:#1BD760;
-	
-	--color-med-hsl:#{hexToHSL(#00AB6C)};
-	--color-ap-hsl:#{hexToHSL(#7d50df)};
-	--color-sp-hsl:#{hexToHSL(#1cb954)};
 }

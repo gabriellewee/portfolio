@@ -357,6 +357,7 @@
 		quotes: auto;
 		position: relative;
 		font-size: 1.25rem;
+		line-height: 1.334;
 		@include viewport(mobile) {
 			padding: 0 calc(var(--p)*2);
 		}
@@ -365,6 +366,7 @@
 			display: block;
 			position: absolute;
 			font-size: 5rem;
+			line-height: 1;
 		}
 		&:before {
 			content: open-quote;

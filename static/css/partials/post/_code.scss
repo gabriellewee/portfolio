@@ -123,8 +123,9 @@
 			background-color: var(--color-mint);
 			background: radial-gradient(
 				circle at center left,
-				var(--color-slate) 0,
+				var(--color-slate-5) 0,
 				var(--color-mint) 50%,
+				var(--color-mint) 60%,
 				var(--color-oak) 100%,
 			) 50% 0% / 200% 100%;
 			&:before {

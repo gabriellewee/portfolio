@@ -38,7 +38,12 @@
 		}
 	}
 	time {
-		@include viewport(mobile) {
+		@supports not(container-type: inline-size) {
+			@include viewport(mobile) {
+				margin-left: var(--p);
+			}
+		}
+		@container header (min-width: 350px) {
 			margin-left: var(--p);
 		}
 	}
@@ -104,7 +109,6 @@
 				}
 				&:after {
 					content: "↗";
-					display: inline-block;
 					position: relative;
 					top: 2px;
 					margin-left: calc(var(--p)/3*2);

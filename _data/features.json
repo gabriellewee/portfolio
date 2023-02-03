@@ -15,7 +15,7 @@
 		]
 	},
 	{
-		"title": "Mastering General Sibling Selectors: Custom Tab Navigation",
+		"title": "Mastering General Sibling Selectors: Custom Tab Navigation",
 		"date": "2017-08-14",
 		"type": "writing",
 		"platform": "Envato Tuts+",
@@ -23,7 +23,7 @@
 		"summary": "<p>Welcome to the next in our <a href='https://webdesign.tutsplus.com/tutorials/mastering-general-sibling-selectors-custom-form-elements--cms-28436' target='_blank'>series of tutorials</a> where we use the&nbsp;general sibling combinator&nbsp;<code>~</code>&nbsp;to create various components for the web. This tutorial will cover navigation elements using links and radio inputs.</p><p>In addition to CSS selectors, the <code>will-change</code>&nbsp;property, and input states from the previous tutorial, we’ll also cover a border hack, Sass for loops, <code>calc()</code>, and accessibility!</p>"
 	},
 	{
-		"title": "Mastering General Sibling Selectors: Custom Form Elements",
+		"title": "Mastering General Sibling Selectors: Custom Form Elements",
 		"date": "2017-04-03",
 		"type": "writing",
 		"platform": "Envato Tuts+",
