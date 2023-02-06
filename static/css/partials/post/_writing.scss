@@ -159,17 +159,21 @@
 			}
 		}
 		time {
-			background-color: var(--color-iron-white-70);
+			background-color: var(--color-iron-white-60);
 		}
 	}
 	.post-footer {
 		.button {
 			> span {
 				background: var(--color-iron-white-70);
-				&:before {
+			}
+			&:hover, &:focus {
+				> span {
 					background: var(--color-iron-white);
 				}
-				&:after {
+			}
+			&:active {
+				> span {
 					background: var(--color-iron-white-90);
 				}
 			}
