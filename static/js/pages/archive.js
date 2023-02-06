@@ -15,7 +15,7 @@ posts.forEach(post => {
 
 gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
 	ScrollTrigger.create({
-		trigger: ".page-archvie",
+		trigger: ".page-archive",
 		start: "-10",
 		end: "+=50",
 		once: true,
