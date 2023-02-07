@@ -3,6 +3,11 @@
 @import 'partials/shared/reset';
 @import 'partials/shared/core';
 
+html, body {
+	width: 100vw;
+	overflow-x: hidden;
+}
+
 body {
 	background-color: var(--color-blush-8);
 	color: var(--color-iron);
