@@ -6,7 +6,7 @@
 		@include clip-path-edges(2px);
 		margin-top: calc(var(--p)*2);
 		padding: calc(var(--p)*2);
-		background: rgba(white, .75);
+		background: hsla(var(--color-white-hsl), .75);
 	}
 
 	.mentions-header {
@@ -30,7 +30,7 @@
 	.mentions-reply-content, .mentions-link-content {
 		li {
 			@include clip-path-edges(2px);
-			background: rgba(white, .75);
+			background: hsla(var(--color-white-hsl), .75);
 			padding: calc(var(--p)*2);
 			@include viewport(mobile) {
 				display: flex;

@@ -68,7 +68,7 @@
 	}
 	&:focus-visible {
 		@include clip-path(false) {
-			@include focus-round(var(--color-slate));
+			@include focus-shadow(var(--color-slate));
 		}
 		@include clip-path(true) {
 			&:before {

@@ -78,7 +78,7 @@
 				}
 			}
 			&:focus-visible {
-				@include focus-round(var(--color-mas-light));
+				@include focus-shadow(var(--color-mas-light));
 			}
 			&:active {
 				.outside {
@@ -104,7 +104,7 @@
 				color: var(--color-mas-light);
 			}
 			&:focus-visible {
-				@include focus-round(var(--color-mas-light));
+				@include focus-shadow(var(--color-mas-light));
 			}
 			&:active {
 				color: var(--color-mas-dark);

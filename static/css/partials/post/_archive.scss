@@ -16,7 +16,7 @@
 				transition: .2s ease-out;
 				text-decoration: underline;
 				text-underline-offset: 8px;
-				text-decoration-color: var(--color-blush-8);
+				text-decoration-color: hsla(var(--color-blush-8-hsl), 0);
 			}
 			&:hover, &:focus, &:active {
 				span {

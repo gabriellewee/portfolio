@@ -64,7 +64,7 @@
 			text-decoration: underline;
 			text-decoration-thickness: 2px;
 			text-underline-offset: 8px;
-			text-decoration-color: var(--color-blush-8);
+			text-decoration-color: hsla(var(--color-blush-8-hsl), 0);
 		}
 		&:hover, &:focus {
 			color: var(--color-iron-white);
@@ -78,7 +78,7 @@
 			}
 		}
 		&:focus-visible {
-			@include focus-round(var(--color-rose));
+			@include focus-shadow(var(--color-rose));
 		}
 		&:active, &.active {
 			color: var(--color-iron-12);
@@ -297,7 +297,7 @@
 
 	a, pre, button {
 		&:focus-visible {
-			@include focus-round(hsla(var(--color-mauve-hsl), .5));
+			@include focus-shadow(hsla(var(--color-mauve-hsl), .5));
 		}
 	}
 

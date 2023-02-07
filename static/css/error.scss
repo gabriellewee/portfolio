@@ -56,7 +56,7 @@ main {
 			background-color: hsla(var(--color-iron-hsl), .5);
 		}
 		&:focus-visible {
-			@include focus-round(hsla(var(--color-white-hsl), .8));
+			@include focus-shadow(hsla(var(--color-white-hsl), .8));
 		}
 		&:active {
 			background-color: var(--color-iron);

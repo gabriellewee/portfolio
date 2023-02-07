@@ -24,9 +24,10 @@
 	--color-iron-12-hsl:#{hexToHSL(darken($iron,12%))};
 	
 	--color-blush:#{$blush};
-	--color-blush-hsl:#{hexToHSL($blush)};
 	--color-blush-5:#{lighten($blush,5%)};
 	--color-blush-8:#{lighten($blush,8%)};
+	--color-blush-hsl:#{hexToHSL($blush)};
+	--color-blush-8-hsl:#{hexToHSL(lighten($blush,8%))};
 
 	--color-rose:#{$rose};
 	--color-rose-hsl:#{hexToHSL($rose)};

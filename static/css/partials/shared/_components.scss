@@ -136,13 +136,13 @@
 			}
 			.link > a {
 				&:not(:hover):not(:focus) {
-					text-decoration-color: var(--color-blush-8);
+					text-decoration-color: hsla(var(--color-blush-8-hsl), 0);
 				}
 			}
 			.popup-label {
 				color: var(--color-discord);
 				span {
-					text-decoration-color: var(--color-blush-8);
+					text-decoration-color: hsla(var(--color-blush-8-hsl), 0);
 				}
 			}
 			.popup-label:hover span, .popup-button:focus + .popup-label span {
@@ -210,7 +210,7 @@
 						text-underline-offset: 3px;
 					}
 					&:not(:hover):not(:focus) {
-						text-decoration-color: rgba(white, 0);
+						text-decoration-color: hsla(var(--color-white-hsl), 0);
 					}
 				}
 			}

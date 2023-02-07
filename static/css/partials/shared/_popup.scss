@@ -62,7 +62,7 @@
 				}
 			}
 			&:focus-visible {
-				@include focus-round;
+				@include focus-shadow;
 			}
 		}
 	}
@@ -121,7 +121,7 @@
 		width: calc(100vw - var(--p)*4 - env(safe-area-inset-left)*2);
 		.inside {
 			@include border-radius(3px);
-			@include blur-all(10px, null, .9, .8, #18191C);
+			@include blur(10px, null, .9, .8, #18191C);
 			display: block;
 			position: relative;
 			margin-top: calc(var(--p)/2);
@@ -278,7 +278,7 @@
 					}
 				}
 				&:focus-visible {
-					@include focus-round;
+					@include focus-shadow;
 				}
 				&:active {
 					background-color: #18191C;
