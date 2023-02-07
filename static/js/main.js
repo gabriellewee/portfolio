@@ -167,6 +167,17 @@ const popup = ((containers = Array.from(document.querySelectorAll(".popup"))) =>
 			}
 		});
 
+		ScrollTrigger.create({
+			trigger: popupWindow,
+			start: "top top",
+			end: "bottom top",
+			onLeave: self => {
+				if(popupTrigger.checked) {
+					popupTrigger.checked = false;
+				}
+			}
+		});
+
 		if(container.hasAttribute("data-copy")) {
 			let copyElem = container.querySelector(".username");
 			triggers.forEach(trigger =>{

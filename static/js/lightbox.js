@@ -2,52 +2,62 @@
 const lightbox = (buttons) => {
 	let links = Array.from(document.querySelectorAll(buttons))
 	let lightboxes = Array.from(document.querySelectorAll(".lightbox"));
-	let sibling;
-	if(!links && !lightboxes) return;
+	if(!links || !lightboxes) return;
+
+	let scrollTrigger;
+	let scrollPosition;
+
 	links.forEach((link, index)=>{
 		let backgrounds = Array.from(lightboxes[index].querySelectorAll(".image"));
 		link.addEventListener("click", e => {
 			e.preventDefault();
 			lightboxes[index].classList.add("active");
 			lightboxes[index].focus();
+			scrollPosition = document.documentElement.scrollTop;
 			backgrounds.forEach(background=>{
 				imagesLoaded(background, () => {
 					background.classList.add("active");
 				});
 			});
+			scrollTrigger = ScrollTrigger.create({
+				trigger: document.body,
+				start: scrollPosition,
+				end: "+=500",
+				onLeave: self => {
+					if(lightboxes[index].classList.contains("active")) {
+						lightboxes[index].classList.remove("active");
+						backgrounds.forEach(background=>{
+							background.classList.remove("active");
+						});
+					}
+				}
+			});
 		});
 	});
+
+	let removeLightbox = (lightbox, index, backgrounds) => {
+		backgrounds.push(lightbox);
+		backgrounds.forEach(background=>{
+			background.classList.remove("active");
+		});
+		scrollTrigger.kill();
+		links[index].focus();
+	}
+
+	let sibling;
 	lightboxes.forEach((lightbox, index)=>{
 		let backgrounds = Array.from(lightbox.querySelectorAll(".image"));
 		lightbox.addEventListener("click", e => {
 			e.preventDefault();
-			lightbox.classList.remove("active");
-			links[index].focus();
-			backgrounds.forEach(background=>{
-				background.classList.remove("active");
-			});
-		});
-		document.addEventListener("scroll", e => {
-			if(lightbox.classList.contains("active")) {
-				setTimeout(() => {
-					lightbox.classList.remove("active");
-					backgrounds.forEach(background=>{
-						background.classList.remove("active");
-					});
-				}, 300);
-			}
+			removeLightbox(lightbox, index, backgrounds);
 		});
 		document.addEventListener("keydown", e => {
 			if(lightbox.classList.contains("active")) {
 				if (e.key === "Escape") {
-					lightbox.classList.remove("active");
-					links[index].focus();
-					backgrounds.forEach(background=>{
-						background.classList.remove("active");
-					});
+					removeLightbox(lightbox, index, backgrounds);
 				} else if(e.key === "ArrowRight" || e.key === "ArrowLeft") {
 					setTimeout(() => {
-						lightbox.classList.remove("active");
+						backgrounds.push(lightbox);
 						backgrounds.forEach(background=>{
 							background.classList.remove("active");
 						});
@@ -57,7 +67,7 @@ const lightbox = (buttons) => {
 							sibling = lightboxes[index - 1] || lightboxes[lightboxes.length - 1];
 						}
 						let siblingBackgrounds = Array.from(sibling.querySelectorAll(".image"));
-						sibling.classList.add("active");
+						siblingBackgrounds.push(sibling);
 						siblingBackgrounds.forEach(background=>{
 							background.classList.add("active");
 						});
