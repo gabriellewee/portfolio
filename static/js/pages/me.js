@@ -1,7 +1,6 @@
 let enter = gsap.timeline({ paused: true });
 let posts = Array.from(document.querySelectorAll(".post-animate"));
-posts.push(document.querySelector(".contact"));
-posts.push(document.querySelector(".bottom"));
+posts.push(document.querySelector(".contact"), document.querySelector(".bottom"));
 
 posts.forEach(post => {
 	enter.fromTo(post, {
@@ -25,6 +24,10 @@ gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
 	});
 
 	document.documentElement.addEventListener("click", () => {
+		enter.progress(1)
+	}, {once: true});
+
+	document.documentElement.addEventListener("keydown", () => {
 		enter.progress(1)
 	}, {once: true});
 });

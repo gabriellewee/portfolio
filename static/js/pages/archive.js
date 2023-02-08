@@ -26,6 +26,10 @@ gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
 	document.documentElement.addEventListener("click", () => {
 		enter.progress(1)
 	}, {once: true});
+
+	document.documentElement.addEventListener("keydown", () => {
+		enter.progress(1)
+	}, {once: true});
 });
 
 gsap.matchMedia().add("(prefers-reduced-motion: reduce)", () => {
