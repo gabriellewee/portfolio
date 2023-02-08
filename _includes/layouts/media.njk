@@ -10,7 +10,7 @@
 	</nav>
 	<div class="posts grid-isotope">
 		{% for post in media %}
-			<article class="post post-media post-photography{% if post.size %} post-size-{{post.size}}{% endif %} grid-item {{post.tags|isoFilter}}" data-orientation="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + extension, 'orientation' %}">
+			<article class="post post-animate post-media post-photography{% if post.size %} post-size-{{post.size}}{% endif %} grid-item {{post.tags|isoFilter}}" data-orientation="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + extension, 'orientation' %}">
 				<input class="media-trigger" id="{{post.date|safe}}-{{post.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this {{type}}" role="switch"/>
 				<div class="post-wrapper">
 					<div class="post-content">

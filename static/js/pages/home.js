@@ -64,25 +64,4 @@ new imagesLoaded(document.body, () => {
 	}
 });
 
-gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
-	ScrollTrigger.create({
-		trigger: ".page-index",
-		start: "-10",
-		end: "+=50",
-		once: true,
-		onEnter: self => enter.resume(),
-		onLeave: self => enter.progress(1)
-	});
-
-	document.documentElement.addEventListener("click", () => {
-		enter.progress(1)
-	}, {once: true});
-
-	document.documentElement.addEventListener("keydown", () => {
-		enter.progress(1)
-	}, {once: true});
-});
-
-gsap.matchMedia().add("(prefers-reduced-motion: reduce)", () => {
-	enter.progress(1);
-});
+animateQueries(enter);

@@ -21,13 +21,14 @@
 
 .bottom {
 	@include font-weight-width(500, 115);
+	opacity: 0;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	padding-top: calc(var(--p)*2);
 	padding-bottom: calc(var(--p) + env(safe-area-inset-bottom));
-	.page-index &, .page-about &, .page-me & {
-		opacity: 0;
+	.page-home:not(.page-index) & {
+		opacity: 1;
 	}
 	a, .copyright {
 		display: block;

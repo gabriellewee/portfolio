@@ -134,14 +134,8 @@
 		{% endif %}
 		{% if key == "home" %}
 			<script src="{{'/static/js/infinite-scroll.min.js'|url}}"></script>
-			{% if pagination.pageNumber == 0 %}
-				<script src="{{'/static/js/pages/home.js'|url}}"></script>
-			{% endif %}
 		{% else %}
 			<script src="{{'/static/js/imagesloaded.min.js'|url}}"></script>
-		{% endif %}
-		{% if scripts == true %}
-			<script src="{{'/static/js/pages/' + key + '.js'|url}}"></script>
 		{% endif %}
 		{% if (key == "post") and (archive != true) and (comments != false) %}
 			<script src="https://giscus.app/client.js"
@@ -162,6 +156,14 @@
 			</script>
 		{% endif %}
 		<script src="{{'/static/js/main.js'|url}}"></script>
+		{% if scripts == true %}
+			<script src="{{'/static/js/pages/' + key + '.js'|url}}"></script>
+		{% elseif scripts %}
+			<script src="{{'/static/js/pages/' + scripts + '.js'|url}}"></script>
+		{% endif %}
+		{% if (key == "home") and (pagination.pageNumber == 0) %}
+			<script src="{{'/static/js/pages/home.js'|url}}"></script>
+		{% endif %}
 	{% endif %}
 	<script>document.body.addEventListener('touchstart', function() {}, {passive: true});</script>
 </body>

@@ -19,18 +19,10 @@
 .page-home .contact-sites,
 .page-home .contact-messages,
 .posts-container .contact,
-.page-index .bottom,
-.page-about .bottom,
-.page-me .bottom {
+.bottom,
+.filters a,
+.post.post-animate {
 	opacity: 1;
-}
-
-.page-index, .page-about, .page-me {
-	.posts-container {
-		.post-animate {
-			opacity: 1;
-		}
-	}
 }
 
 .cursor:after {

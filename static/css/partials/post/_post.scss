@@ -9,11 +9,6 @@
 		padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
 		padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
 	}
-	.page-index &, .page-about &, .page-me & {
-		.post-animate {
-			opacity: 0;
-		}
-	}
 }
 .posts {
 	display: grid;
@@ -53,6 +48,7 @@
 		margin-right: var(--p);
 	}
 	a {
+		opacity: 0;
 		color: var(--color-iron-white-70);
 		&:not(.reset):before {
 			content: "#";
@@ -98,6 +94,10 @@
 			}
 		}
 	}
+}
+
+.post-animate {
+	opacity: 0;
 }
 
 .post {
