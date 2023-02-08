@@ -3,12 +3,19 @@ const lightbox = (buttons) => {
 	let links = Array.from(document.querySelectorAll(buttons))
 	let lightboxes = Array.from(document.querySelectorAll(".lightbox"));
 	if(!links || !lightboxes) return;
-
-	let scrollTrigger;
 	let scrollPosition;
 
 	links.forEach((link, index)=>{
 		let backgrounds = Array.from(lightboxes[index].querySelectorAll(".image"));
+		let deactivate = () => {
+			if(lightboxes[index].classList.contains("active")) {
+				lightboxes[index].classList.remove("active");
+				backgrounds.forEach(background=>{
+					background.classList.remove("active");
+				});
+				scrollPosition = document.documentElement.scrollTop;
+			}
+		}
 		link.addEventListener("click", e => {
 			e.preventDefault();
 			lightboxes[index].classList.add("active");
@@ -19,18 +26,19 @@ const lightbox = (buttons) => {
 					background.classList.add("active");
 				});
 			});
-			scrollTrigger = ScrollTrigger.create({
+			ScrollTrigger.create({
 				trigger: document.body,
-				start: scrollPosition,
-				end: "+=500",
-				onLeave: self => {
-					if(lightboxes[index].classList.contains("active")) {
-						lightboxes[index].classList.remove("active");
-						backgrounds.forEach(background=>{
-							background.classList.remove("active");
-						});
-					}
-				}
+				start: `${scrollPosition}`,
+				end: `+=500`,
+				once: true,
+				onLeave: () => deactivate()
+			});
+			ScrollTrigger.create({
+				trigger: document.body,
+				start: `+=${scrollPosition - 500}`,
+				end: `+=${scrollPosition}`,
+				once: true,
+				onLeaveBack: () => deactivate()
 			});
 		});
 	});
@@ -40,7 +48,6 @@ const lightbox = (buttons) => {
 		backgrounds.forEach(background=>{
 			background.classList.remove("active");
 		});
-		scrollTrigger.kill();
 		links[index].focus();
 	}
 

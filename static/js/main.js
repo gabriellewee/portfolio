@@ -343,8 +343,8 @@ const animateQueries = (enter) => {
 			start: "-10",
 			end: "+=50",
 			once: true,
-			onEnter: self => enter.resume(),
-			onLeave: self => enter.progress(1)
+			onEnter: () => enter.resume(),
+			onLeave: () => enter.progress(1)
 		});
 
 		document.documentElement.addEventListener("click", () => {
