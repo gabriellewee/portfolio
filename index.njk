@@ -70,56 +70,58 @@ pagination:
 									{% image './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 'default', loop.index %}
 								{% endif %}
 								<figcaption class="{{post.data.category}}-data">
-									<time class="time-default" datetime="{{post.page.date|ISO|htmlDateString}}" title="{{post.page.date|ISO|readableDate}}" data-time="{{post.page.date|ISO}}">{{post.page.date|ISO|readableDate}}</time>
-									<label class="media-down media-icon" for="{{post.data.date|safe}}-{{post.data.name}}-info"></label>
-									<div class="media-thumbnail">
-										<a class="media-expand expand" href="#{{post.data.date|safe}}-{{post.data.name}}-lightbox" aria-label="Expand {{post.data.type}}" tabindex="-1" role="button">
-											<span class="no-image">Expand</span>
-											<span aria-hidden="true">
-												{% if post.data.upscale %}
-													<picture>
-														<img class="upscale" src="{% include post.data.upscale %}"{% if post.data.upscaleWidth %} width="{{post.data.upscaleWidth}}"{% endif %}{% if post.data.upscaleHeight %} height="{{post.data.upscaleHeight}}"{% endif %} alt="{{post.data.description}}"/>
-													</picture>
-												{% else %}
-													{% image './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 'thumbnail', loop.index %}
-												{% endif %}
-											</span>
-										</a>
-									</div>
-									{% if post.data.external %}
-										<div class="media-links">
-											{% for link in post.data.external %}
-												<a class="media-link external {{link.platform}}" target="_blank" href="{{link.url|url}}" tabindex="-1" aria-label="View on {{link.platform|capitalize}}"><span>{{link.platform|capitalize}}</span></a>
-											{% endfor %}
+									<div class="media-data-wrapper">
+										<time class="time-default" datetime="{{post.page.date|ISO|htmlDateString}}" title="{{post.page.date|ISO|readableDate}}" data-time="{{post.page.date|ISO}}">{{post.page.date|ISO|readableDate}}</time>
+										<label class="media-down media-icon" for="{{post.data.date|safe}}-{{post.data.name}}-info"></label>
+										<div class="media-thumbnail">
+											<a class="media-expand expand" href="#{{post.data.date|safe}}-{{post.data.name}}-lightbox" aria-label="Expand {{post.data.type}}" tabindex="-1" role="button">
+												<span class="no-image">Expand</span>
+												<span aria-hidden="true">
+													{% if post.data.upscale %}
+														<picture>
+															<img class="upscale" src="{% include post.data.upscale %}"{% if post.data.upscaleWidth %} width="{{post.data.upscaleWidth}}"{% endif %}{% if post.data.upscaleHeight %} height="{{post.data.upscaleHeight}}"{% endif %} alt="{{post.data.description}}"/>
+														</picture>
+													{% else %}
+														{% image './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 'thumbnail', loop.index %}
+													{% endif %}
+												</span>
+											</a>
 										</div>
-									{% endif %}
-									<dl class="media-meta">
-										{% if post.data.title %}
-											<div class="meta-title">
-												<dt>Title</dt><dd>{{post.data.title|nbsp|safe}}</dd>
+										{% if post.data.external %}
+											<div class="media-links">
+												{% for link in post.data.external %}
+													<a class="media-link external {{link.platform}}" target="_blank" href="{{link.url|url}}" tabindex="-1" aria-label="View on {{link.platform|capitalize}}"><span>{{link.platform|capitalize}}</span></a>
+												{% endfor %}
 											</div>
 										{% endif %}
-										{% if post.data.location %}
-											<div class="meta-location">
-												<dt>Location</dt><dd>{{post.data.location}}</dd>
-											</div>
-										{% endif %}
-										{% if post.data.camera %}
-											<div class="meta-camera">
-												<dt>Camera</dt><dd>{{post.data.camera}}</dd>
-											</div>
-										{% endif %}
-										{% if post.data.editor %}
-											<div class="meta-editor">
-												<dt>Editor</dt><dd>{{post.data.editor}}</dd>
-											</div>
-										{% endif %}
-										{% if post.data.tools %}
-											<div class="meta-tools">
-												<dt>Tools</dt><dd>{{post.data.tools}}</dd>
-											</div>
-										{% endif %}
-									</dl>
+										<dl class="media-meta">
+											{% if post.data.title %}
+												<div class="meta-title">
+													<dt>Title</dt><dd>{{post.data.title|nbsp|safe}}</dd>
+												</div>
+											{% endif %}
+											{% if post.data.location %}
+												<div class="meta-location">
+													<dt>Location</dt><dd>{{post.data.location}}</dd>
+												</div>
+											{% endif %}
+											{% if post.data.camera %}
+												<div class="meta-camera">
+													<dt>Camera</dt><dd>{{post.data.camera}}</dd>
+												</div>
+											{% endif %}
+											{% if post.data.editor %}
+												<div class="meta-editor">
+													<dt>Editor</dt><dd>{{post.data.editor}}</dd>
+												</div>
+											{% endif %}
+											{% if post.data.tools %}
+												<div class="meta-tools">
+													<dt>Tools</dt><dd>{{post.data.tools}}</dd>
+												</div>
+											{% endif %}
+										</dl>
+									</div>
 								</figcaption>
 							</figure>
 						{% elseif post.data.category == "code" %}
