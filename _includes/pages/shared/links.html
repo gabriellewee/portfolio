@@ -3,7 +3,7 @@
 		<h2>You can find me here:</h2>
 		<ul>
 			{% for link in about.links %}
-				<li class="link"><a class="{{link.name}} color u-url" target="_blank" href="{{link.url}}" rel="me">{{link.name | capitalize}}</a></li>
+				<li><a class="link {{link.name}} color u-url" target="_blank" href="{{link.url}}" rel="me">{{link.name | capitalize}}</a></li>
 			{% endfor %}
 		</ul>
 	</div>
@@ -11,13 +11,13 @@
 	<div class="contact-messages">
 		<h2>You can contact me here:</h2>
 		<ul>
-			<li class="link"><a class="email color" href="mailto:mail@gabriellew.ee">Email</a></li>
-			<li class="link"><a class="text color" href="sms:5102142241">Text</a></li>
-			<li class="link"><a class="imessage color" href="sms:mail@gabriellew.ee">iMessage</a></li>
+			<li><a class="link email color" href="mailto:mail@gabriellew.ee">Email</a></li>
+			<li><a class="link text color" href="sms:5102142241">Text</a></li>
+			<li><a class="link imessage color" href="sms:mail@gabriellew.ee">iMessage</a></li>
 			{% if key == "home" %}
-				<li class="link">{% include 'pages/home/discord.html' %}</li>
+				<li>{% include 'pages/home/discord.html' %}</li>
 			{% else %}
-				<li class="link"><a class="discord color clip clip-container" href="#" data-clipboard-text="kaladin#0758">Discord</a></li>
+				<li><a class="link discord color clip clip-container" href="#" data-clipboard-text="kaladin#0758">Discord</a></li>
 			{% endif %}
 		</ul>
 	</div>

@@ -64,22 +64,24 @@
 	--color-focus:#5E9ED6;
 
 	--color-discord:#5865F2;
-	--color-mas:#6364ff;
-	--color-mas-dark:#563ACC;
-	--color-mas-light:#858AFA;
-	--color-mas-slate:#{mix(#563ACC,$slate,30%)};
-	--color-gv:#34a853;
-	--color-cp:#717790;
-	--color-gh:#4969ed;
-	--color-insta:#cd486b;
-	--color-tw:#1D9BF0;
-	--color-pin:#e60023;
-	--color-bbb:#ea4c89;
-	--color-am:#fa2d48;
-	--color-im:#0d84ff;
-	--color-tum:#35465D;
+	--color-mastodon:#6364ff;
+	--color-mastodon-dark:#563ACC;
+	--color-mastodon-light:#858AFA;
+	--color-mastodon-slate:#{mix(#563ACC,$slate,30%)};
+	--color-text:#34a853;
+	--color-codepen:#717790;
+	--color-github:#4969ed;
+	--color-instagram:#cd486b;
+	--color-twitter:#1D9BF0;
+	--color-pinterest:#e60023;
+	--color-dribbble:#ea4c89;
+	--color-music:#fa2d48;
+	--color-imessage:#0d84ff;
+	--color-tumblr:#35465D;
 
-	--color-med:#51A653;
-	--color-ap:#852dc4;
-	--color-sp:#1BD760;
+	--color-medium:#51A653;
+	--color-apple-podcasts:#852dc4;
+	--color-spotify:#1BD760;
+
+	--color-email: var(--color-iron-white-70);
 }

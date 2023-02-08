@@ -74,15 +74,15 @@
 			}
 			&:hover, &:focus {
 				.outside {
-					fill: var(--color-mas-light);
+					fill: var(--color-mastodon-light);
 				}
 			}
 			&:focus-visible {
-				@include focus-shadow(var(--color-mas-light));
+				@include focus-shadow(var(--color-mastodon-light));
 			}
 			&:active {
 				.outside {
-					fill: var(--color-mas-dark);
+					fill: var(--color-mastodon-dark);
 				}
 			}
 		}
@@ -91,7 +91,7 @@
 			width: auto;
 		}
 		time {
-			background-color: var(--color-mas-slate);
+			background-color: var(--color-mastodon-slate);
 		}
 	}
 	.post-content {
@@ -99,15 +99,15 @@
 			line-height: 1.2;
 		}
 		a:not(.media-attachment) {
-			color: var(--color-mas);
+			color: var(--color-mastodon);
 			&:hover, &:focus {
-				color: var(--color-mas-light);
+				color: var(--color-mastodon-light);
 			}
 			&:focus-visible {
-				@include focus-shadow(var(--color-mas-light));
+				@include focus-shadow(var(--color-mastodon-light));
 			}
 			&:active {
-				color: var(--color-mas-dark);
+				color: var(--color-mastodon-dark);
 			}
 		}
 	}
