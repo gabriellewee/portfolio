@@ -26,10 +26,11 @@ module.exports = eleventyConfig => {
 		return result;
     });
 
-    eleventyConfig.addNunjucksAsyncShortcode("external", async (src, alt, width) => {
+    eleventyConfig.addNunjucksAsyncShortcode("external", async (src, alt, width, loading) => {
     	let file = src.split(".");
     	file = file[file.length - 1];
     	if(file === "jpg") file = "jpeg";
+    	if(!loading) loading = "lazy"
 
 		let stats = await Image(src, {
 			widths: [width, width*2],
@@ -47,7 +48,7 @@ module.exports = eleventyConfig => {
 		let result = `
 			<picture>
 				<source type="image/webp" srcset="${stats["webp"][0].url}, ${stats["webp"][1].url} 2x">
-				<img loading="lazy" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${stats[file][0].url}, ${stats[file][1].url} 2x" width="${stats["webp"][0].width}" height="${stats["webp"][0].height}">
+				<img loading=${loading} decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${stats[file][0].url}, ${stats[file][1].url} 2x" width="${stats["webp"][0].width}" height="${stats["webp"][0].height}">
 			</picture>
 		`;
 

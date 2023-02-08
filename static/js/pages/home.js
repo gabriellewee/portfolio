@@ -58,10 +58,4 @@ posts.forEach(post => {
 	}, "<.1");
 });
 
-new imagesLoaded(document.body, () => {
-	if(window.scrollY > 0) {
-		enter.progress(1);
-	}
-});
-
 animateQueries(enter);

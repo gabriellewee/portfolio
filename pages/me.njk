@@ -29,7 +29,7 @@
 						{% for game in steam.response.games %}
 							<li>
 								<a class="post-external" href="https://store.steampowered.com/app/{{game.appid}}/" target="_blank">
-									{% external "https://cdn.cloudflare.steamstatic.com/steam/apps/" + game.appid + "/capsule_616x353.jpg", game.name, 300 %}
+									{% external "https://cdn.cloudflare.steamstatic.com/steam/apps/" + game.appid + "/capsule_616x353.jpg", game.name, 300, "eager" %}
 								</a>
 							</li>
 						{% endfor %}
@@ -43,14 +43,14 @@
 						<li>
 							{% set letter = game.slug|first  %}
 							<a class="post-external" href="https://www.nintendo.com/store/products/{{game.slug}}-switch/" target="_blank">
-								{% external "https://assets.nintendo.com/image/upload/ar_16:9,c_limit,w_1240/b_white/f_auto/q_auto/ncom/en_US/games/switch/" + letter + "/" + game.slug + "-switch/hero.jpg", game.title, 300 %}
+								{% external "https://assets.nintendo.com/image/upload/ar_16:9,c_limit,w_1240/b_white/f_auto/q_auto/ncom/en_US/games/switch/" + letter + "/" + game.slug + "-switch/hero.jpg", game.title, 300, "eager" %}
 							</a>
 						</li>
 					{% endfor %}
 				</ul>
 				<div class="friend-code-container">
-					<h4>Friend Code:</h4>
-					<div class="clip-container"><input class="friend-code clip" type="text" value="SW‑0918‑7153‑9794" data-clipboard-target=".friend-code"/></div>
+					<label for="friend-code">Friend Code:</label>
+					<div class="clip-container"><input id="friend-code" class="friend-code clip" type="text" value="SW‑0918‑7153‑9794" data-clipboard-target=".friend-code"/></div>
 				</div>
 			</div>
 		</article>
@@ -62,7 +62,7 @@
 				</header>
 
 				<div class="iframe">
-					<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/pl.u-d2b0kEBtMN5eGo"></iframe>
+					<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/pl.u-d2b0kEBtMN5eGo" title="Apple Music Playlist"></iframe>
 				</div>
 			</div>
 		</article>

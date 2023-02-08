@@ -4,7 +4,7 @@
 	.post-wrapper {
 		padding: calc(var(--p)*1.5) calc(var(--p)*2);
 	}
-	h3 {
+	h2 {
 		@include font-weight-width(800, 120);
 		font-size: 2.25rem;
 		margin-bottom: var(--p);

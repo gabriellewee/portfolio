@@ -96,7 +96,7 @@
 			display: inline-flex;
 			align-items: center;
 		}
-		h4 {
+		label {
 			@include font-weight-width(450, 110);
 			font-size: 1.25rem;
 		}

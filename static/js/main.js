@@ -337,6 +337,12 @@ const targetBlankLinks = ((links = document.getElementsByTagName("a")) => {
 })();
 
 const animateQueries = (enter) => {
+	new imagesLoaded(document.body, () => {
+		if(window.scrollY > 0) {
+			enter.progress(1);
+		}
+	});
+
 	gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
 		ScrollTrigger.create({
 			trigger: document.body,
