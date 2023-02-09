@@ -27,7 +27,7 @@
 	align-items: center;
 	padding-top: calc(var(--p)*2);
 	padding-bottom: calc(var(--p) + env(safe-area-inset-bottom));
-	.page-home:not(.page-index) & {
+	.page-home:not(.page-index) &, .page-post & {
 		opacity: 1;
 	}
 	a, .copyright {
