@@ -20,11 +20,12 @@
 	&[style] {
 		grid-gap: unset;
 	}
-	@supports (grid-template-rows: masonry) {
-		grid-template-rows: masonry;
-	}
-	@include viewport(mobile) {
-		grid-template-columns: repeat(12, 1fr);
+	&:not([style]) {
+		@include viewport(mobile) {
+			.js & {
+				grid-template-columns: repeat(12, 1fr);
+			}
+		}
 	}
 }
 
