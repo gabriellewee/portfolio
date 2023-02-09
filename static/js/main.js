@@ -376,7 +376,10 @@ const animateItems = (items) => {
 		}, {
 			duration: .5,
 			opacity: 1,
-			y: 0
+			y: 0,
+			onComplete() {
+				if(item.classList.contains("post-animate")) item.classList.remove("post-animate");
+		    }
 		}, "<.1");
 	});
 
