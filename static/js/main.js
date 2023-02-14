@@ -236,6 +236,13 @@ const copyButtons = ((buttons = Array.from(document.querySelectorAll(".clip"))) 
 			} else {
 				e.trigger.classList.add("copied");
 			}
+			setTimeout(() => {
+				if(button.tagName === "INPUT") {
+					e.trigger.parentNode.classList.remove("copied");
+				} else {
+					e.trigger.classList.remove("copied");
+				}
+			}, 3000);
 		});
 	});
 })();
