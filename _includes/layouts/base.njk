@@ -114,13 +114,12 @@
 			</span>
 		</footer>
 
-		<script src="{{'/static/js/gsap.min.js'|url}}"></script>
-		<script src="{{'/static/js/scroll-trigger.min.js'|url}}"></script>
-		<script src="{{'/static/js/text.min.js'|url}}"></script>
-		<script src="{{'/static/js/smoothscroll.min.js'|url}}"></script>
 		<script src="{{'/static/js/lightbox.js'|url}}"></script>
 		<script src="{{'/static/js/luxon.min.js'|url}}"></script>
-		<script src="{{'/static/js/clipboard.min.js'|url}}"></script>
+		<script src="{{'/static/js/dates.js'|url}}"></script>
+		<script src="{{'/static/js/gsap.min.js'|url}}"></script>
+		<script src="{{'/static/js/scroll-trigger.min.js'|url}}"></script>
+		<script src="{{'/static/js/smoothscroll.min.js'|url}}"></script>
 		{% if isotope == true %}
 			<script src="{{'/static/js/isotope.min.js'|url}}"></script>
 			<script src="{{'/static/js/packery.min.js'|url}}"></script>
@@ -129,6 +128,21 @@
 			<script src="{{'/static/js/infinite-scroll.min.js'|url}}"></script>
 		{% else %}
 			<script src="{{'/static/js/imagesloaded.min.js'|url}}"></script>
+		{% endif %}
+		{% if key == "post" %}
+			<script src="{{'/static/js/posts.js'|url}}"></script>
+		{% else %}
+			<script src="{{'/static/js/clipboard.min.js'|url}}"></script>
+			<script src="{{'/static/js/main.js'|url}}"></script>
+		{% endif %}
+		{% if scripts == true %}
+			<script src="{{'/static/js/pages/' + key + '.js'|url}}"></script>
+		{% elseif scripts %}
+			<script src="{{'/static/js/pages/' + scripts + '.js'|url}}"></script>
+		{% endif %}
+		{% if (key == "home") and (pagination.pageNumber == 0) %}
+			<script src="{{'/static/js/text.min.js'|url}}"></script>
+			<script src="{{'/static/js/pages/home.js'|url}}"></script>
 		{% endif %}
 		{% if (key == "post") and (archive != true) and (comments != false) %}
 			<script src="https://giscus.app/client.js"
@@ -147,15 +161,6 @@
 				crossorigin="anonymous"
 				async>
 			</script>
-		{% endif %}
-		<script src="{{'/static/js/main.js'|url}}"></script>
-		{% if scripts == true %}
-			<script src="{{'/static/js/pages/' + key + '.js'|url}}"></script>
-		{% elseif scripts %}
-			<script src="{{'/static/js/pages/' + scripts + '.js'|url}}"></script>
-		{% endif %}
-		{% if (key == "home") and (pagination.pageNumber == 0) %}
-			<script src="{{'/static/js/pages/home.js'|url}}"></script>
 		{% endif %}
 	{% endif %}
 	<script>document.body.addEventListener('touchstart', function() {}, {passive: true});</script>

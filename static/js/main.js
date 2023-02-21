@@ -20,27 +20,74 @@ const frames = (buttons) => {
 	});
 }
 
-const timeAgo = (dates) => {
-	let datesISO = Array.from(document.querySelectorAll(dates));
-	if(!datesISO) return;
-	datesISO.forEach(date =>{
-		let datetime = date.getAttribute("data-time");
-		if(!datetime) return;
-		let platform = date.querySelector("span");
-		let relativeTime;
-		if(date.classList.contains("time-external")) {
-			relativeTime = luxon.DateTime.fromISO(datetime).toRelative();
-		} else {
-			relativeTime = luxon.DateTime.fromISO(datetime).plus({'hours': +8}).toRelative();
+const mediaTriggers = (media) => {
+	let figures = Array.from(document.querySelectorAll(media));
+	if(!figures) return;
+	figures.forEach(figure=>{
+		let trigger = figure.querySelector(".media-trigger");
+		let data = figure.querySelector(".media-data");
+		let expand = figure.querySelector(".media-expand");
+		let external = Array.from(figure.querySelectorAll(".external"));
+		let name = trigger.getAttribute("id").slice(0, -5);
+		let labels = Array.from(figure.querySelectorAll("label"));
+		data.setAttribute("aria-hidden", "true");
+		trigger.addEventListener("focus", e => {
+			document.getElementById(name).scrollIntoView({ behavior: "smooth" });
+		});
+		let _true = () => {
+			trigger.setAttribute("aria-checked", "true");
+			data.removeAttribute("aria-hidden");
+			expand.tabIndex = 0;
+			if(external) {
+				external.forEach(link=> {
+					link.tabIndex = 0;
+				});
+			}
 		}
-		date.innerHTML = relativeTime;
-		if(platform) date.append(platform);
+		let _false = () => {
+			trigger.setAttribute("aria-checked", "false");
+			data.setAttribute("aria-hidden", "true");
+			expand.tabIndex = -1;
+			if(external) {
+				external.forEach(link=> {
+					link.tabIndex = -1;
+				});
+			}
+		}
+		trigger.addEventListener("click", e => {
+			if(trigger.checked){
+				_true();
+			} else {
+				_false();
+			}
+		});
+		trigger.addEventListener("keydown", e => {
+			if (e.key === "Enter") {
+				if(trigger.checked){
+					trigger.checked = false;
+					_false();
+				} else {
+					trigger.checked = true;
+					_true();
+				}
+			}
+		});
+		labels.forEach(label=>{
+			label.addEventListener("click", e => {
+				if(trigger.checked){
+					_true();
+				} else {
+					_false();
+				}
+			});
+		});
 	});
 }
 
 frames(".reload");
 timeAgo("time");
 lightbox(".expand");
+mediaTriggers(".post-media");
 
 let container = document.querySelector(".grid-isotope");
 let scrollContainer = document.querySelector(".grid-scroll");
@@ -97,6 +144,7 @@ if(container) {
 			frames(".reload");
 			lightbox(".expand");
 			timeAgo("time");
+			mediaTriggers(".post-media");
 		});
 	}
 }
@@ -245,102 +293,6 @@ const copyButtons = ((buttons = Array.from(document.querySelectorAll(".clip"))) 
 			}, 3000);
 		});
 	});
-})();
-
-const mediaTriggers = ((figures = Array.from(document.querySelectorAll(".post-media"))) => {
-	if(!figures) return;
-	figures.forEach(figure=>{
-		let trigger = figure.querySelector(".media-trigger");
-		let data = figure.querySelector(".media-data");
-		let expand = figure.querySelector(".media-expand");
-		let external = Array.from(figure.querySelectorAll(".external"));
-		let name = trigger.getAttribute("id").slice(0, -5);
-		let labels = Array.from(figure.querySelectorAll("label"));
-		data.setAttribute("aria-hidden", "true");
-		trigger.addEventListener("focus", e => {
-			document.getElementById(name).scrollIntoView({ behavior: "smooth" });
-		});
-		let _true = (() => {
-			trigger.setAttribute("aria-checked", "true");
-			data.removeAttribute("aria-hidden");
-			expand.tabIndex = 0;
-			if(external) {
-				external.forEach(link=> {
-					link.tabIndex = 0;
-				});
-			}
-		});
-		let _false = (() => {
-			trigger.setAttribute("aria-checked", "false");
-			data.setAttribute("aria-hidden", "true");
-			expand.tabIndex = -1;
-			if(external) {
-				external.forEach(link=> {
-					link.tabIndex = -1;
-				});
-			}
-		});
-		trigger.addEventListener("click", e => {
-			if(trigger.checked){
-				_true();
-			} else {
-				_false();
-			}
-		});
-		trigger.addEventListener("keydown", e => {
-			if (e.key === "Enter") {
-				if(trigger.checked){
-					trigger.checked = false;
-					_false();
-				} else {
-					trigger.checked = true;
-					_true();
-				}
-			}
-		});
-		labels.forEach(label=>{
-			label.addEventListener("click", e => {
-				if(trigger.checked){
-					_true();
-				} else {
-					_false();
-				}
-			});
-		});
-	});
-})();
-
-const smoothScrollLinks = ((links = Array.from(document.querySelectorAll(".direct-link"))) => {
-	if(!links) return;
-	let mainContent = document.querySelector("main");
-	links.forEach(link=>{
-		link.setAttribute("aria-hidden", "true");
-		let linkHref = link.getAttribute("href").substring(1);
-		let targetLink = document.getElementById(linkHref);
-		link.addEventListener("click", e => {
-			targetLink.scrollIntoView({ behavior: "smooth" });
-		});
-	});
-	if(window.location.hash) {
-		let scrollHash = window.location.hash.substring(1);
-		let scrollLocation = document.getElementById(scrollHash);
-		if(scrollLocation) {
-			imagesLoaded(mainContent, { background: true }, () =>{
-				setTimeout(() => {
-					scrollLocation.scrollIntoView({ behavior: "smooth" });
-				}, 300);
-			});
-		}
-	}
-})();
-
-const targetBlankLinks = ((links = document.getElementsByTagName("a")) => {
-	if(!links) return;
-	for (var i = 0; i < links.length; i++) {
-		if (/^(https?:)?\/\//.test(links[i].getAttribute("href"))) {
-			links[i].target = "_blank";
-		}
-	}
 })();
 
 const animateQueries = (enter) => {
