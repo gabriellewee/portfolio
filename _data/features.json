@@ -53,6 +53,7 @@
 		"date": "2017-01-26",
 		"type": "writing",
 		"platform": "Codepen",
+		"self": true,
 		"url": "https://codepen.io/gabriellewee/post/how-to-create-direction-aware-css-only-hover-effects",
 		"summary": "A couple of tutorials for direction-aware CSS-only hover effects.",
 		"external": [
