@@ -98,6 +98,7 @@
 		}
 		label {
 			@include font-weight-width(450, 110);
+			margin-right: var(--p);
 			font-size: 1.25rem;
 		}
 		input {
@@ -114,7 +115,6 @@
 			margin-top: var(--p);
 			@include viewport(mobile) {
 				margin-top: 0;
-				margin-left: var(--p);
 			}
 		}
 	}
