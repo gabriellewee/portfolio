@@ -42,6 +42,11 @@ module.exports = eleventyConfig => {
 		return year;
 	});
 
+	eleventyConfig.addNunjucksAsyncShortcode("icondate", async (icondate) => {
+		icondate = DateTime.fromJSDate(new Date(), {zone: 'utc-8'}).toFormat("yyyyLLdd");
+		return icondate;
+	});
+
 	eleventyConfig.addFilter("isoFilter", filters => {
 		let array = filters.split(' ');
 		let result = array.map(el => 'filter-' + el);
