@@ -67,20 +67,34 @@
 	}
 }
 
+.post-music {
+	width: 100%;
+	min-width: 345px;
+	max-width: 700px;
+	@include viewport($desktop) {
+		max-width: 345px;
+	}
+	iframe {
+		display: block;
+	}
+}
+
 .post-game {
+	width: 100%;
+	@include viewport($desktop) {
+		max-width: 672px;
+	}
 	.grid {
-		grid-template-columns: 1fr;
-		@include viewport($iphone-max) {
+		grid-template-columns: repeat(2, 1fr);
+		@include viewport(mobile) {
+			grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		}
+		@include viewport($desktop-small) {
+			grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+		}
+		@include viewport($desktop) {
 			grid-template-columns: repeat(2, 1fr);
 		}
-		@include viewport(mobile) {
-			display: flex;
-			flex-wrap: wrap;
-		}
-	}
-	picture {
-		max-width: 300px;
-		height: auto;
 	}
 	h3 {
 		@include font-weight-width(450, 110);
@@ -129,9 +143,4 @@
 		@include clip-path-edges(2px);
 		background-color: hsla(var(--color-iron-hsl), .05);
 	}
-}
-
-.iframe {
-	@include clip-path-edges(2px);
-	background-color: #F8F8FA;
 }
