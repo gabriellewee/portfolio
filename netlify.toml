@@ -26,7 +26,7 @@
 		"_site/static/images/avatars/built",
 		"_site/static/images/graphic/built",
 		"_site/static/images/photography/built",
-		"_site/static/images/writing/built"
+		"_site/static/images/posts/built"
 	]
 
 [[headers]]
@@ -49,6 +49,12 @@
 [[redirects]]
 	from = "/writes/*"
 	to = "/posts/:splat"
+	status = 302
+	force = true
+
+[[redirects]]
+	from = "/static/images/writing/*"
+	to = "/static/images/posts/:splat"
 	status = 302
 	force = true
 
