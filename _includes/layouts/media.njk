@@ -10,14 +10,19 @@
 	</nav>
 	<div class="posts grid-isotope">
 		{% for post in media %}
-			<article class="post post-animate post-media post-photography{% if post.size %} post-size-{{post.size}}{% endif %} grid-item {{post.tags|isoFilter}}" data-orientation="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + extension, 'orientation' %}">
+			{% if post.svg == true %}{%- set file = "svg" %}{% else %}{%- set file = extension %}{% endif %}
+			<article class="post post-animate post-media post-photography{% if post.size %} post-size-{{post.size}}{% endif %} grid-item {{post.tags|isoFilter}}" data-orientation="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'orientation' %}">
 				<input class="media-trigger" id="{{post.date|safe}}-{{post.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this {{type}}" role="switch"/>
 				<div class="post-wrapper">
 					<div class="post-content">
-						<figure id="{{post.date|safe}}-{{post.name}}" aria-label="{{type|capitalize}}{% if post.location %}, {{post.location}}{% elseif post.title %}, {{post.title}}{% endif %}" style="aspect-ratio: {% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + extension, 'ratio' %};">
+						<figure id="{{post.date|safe}}-{{post.name}}" aria-label="{{type|capitalize}}{% if post.location %}, {{post.location}}{% elseif post.title %}, {{post.title}}{% endif %}" style="aspect-ratio: {% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'ratio' %};">
 							{% if post.upscale %}
 								<picture>
 									<img class="upscale" src="{% include post.upscale %}"{% if post.upscaleWidth %} width="{{post.upscaleWidth}}"{% endif %}{% if post.upscaleHeight %} height="{{post.upscaleHeight}}"{% endif %} alt="{{post.description}}"/>
+								</picture>
+							{% elseif post.svg == true %}
+								<picture>
+									<img src="/static/images/{{key}}/{{post.date}}-{{post.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'width' %}" height="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'height' %}"/>
 								</picture>
 							{% else %}
 								{% image './static/images/' + key + '/' + post.date + '-' + post.name + '.' + extension, post.description, 'default', loop.index %}
@@ -33,6 +38,10 @@
 												{% if post.upscale %}
 													<picture>
 														<img class="upscale" src="{% include post.upscale %}"{% if post.upscaleWidth %} width="{{post.upscaleWidth}}"{% endif %}{% if post.upscaleHeight %} height="{{post.upscaleHeight}}"{% endif %} alt="{{post.description}}"/>
+													</picture>
+												{% elseif post.svg == true %}
+													<picture>
+														<img src="/static/images/{{key}}/{{post.date}}-{{post.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'width' %}" height="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'height' %}"/>
 													</picture>
 												{% else %}
 													{% image './static/images/' + key + '/' + post.date + '-' + post.name + '.' + extension, post.description, 'thumbnail', loop.index %}
@@ -93,6 +102,10 @@
 				{% if post.upscale %}
 					<picture>
 						<img class="upscale" src="{% include post.upscale %}"{% if post.upscaleWidth %} width="{{post.upscaleWidth}}"{% endif %}{% if post.upscaleHeight %} height="{{post.upscaleHeight}}"{% endif %} alt="{{post.description}}"/>
+					</picture>
+				{% elseif post.svg == true %}
+					<picture>
+						<img src="/static/images/{{key}}/{{post.date}}-{{post.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'width' %}" height="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'height' %}"/>
 					</picture>
 				{% else %}
 					{% image './static/images/' + key + '/' + post.date + '-' + post.name + '.' + extension, post.description, 'screen' %}

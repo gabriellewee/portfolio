@@ -118,7 +118,13 @@
 					{% for media in graphic|limit(4) %}
 						<li id="{{media.date|safe}}-{{media.name}}">
 							<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand graphic" role="button">
-								{% image './static/images/graphic/' + media.date + '-' + media.name + '.png', media.description, 'thumbnail', loop.index %}
+								{% if media.svg == true %}
+									<picture>
+										<img src="/static/images/graphic/{{media.date}}-{{media.name}}.svg" alt="{{media.description}}" width="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'width' %}" height="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'height' %}"/>
+									</picture>
+								{% else %}
+									{% image './static/images/graphic/' + media.date + '-' + media.name + '.png', media.description, 'thumbnail', loop.index %}
+								{% endif %}
 							</a>
 						</li>
 					{% endfor %}
@@ -213,7 +219,13 @@
 	{% for media in graphic|limit(4) %}
 		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
 			<figure class="image">
-				{% image './static/images/graphic/' + media.date + '-' + media.name + '.png', media.description, 'screen' %}
+				{% if media.svg == true %}
+					<picture>
+						<img src="/static/images/graphic/{{media.date}}-{{media.name}}.svg" alt="{{media.description}}" width="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'width' %}" height="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'height' %}"/>
+					</picture>
+				{% else %}
+					{% image './static/images/graphic/' + media.date + '-' + media.name + '.png', media.description, 'screen' %}
+				{% endif %}
 			</figure>
 		</a>
 	{% endfor %}

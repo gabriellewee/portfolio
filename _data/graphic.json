@@ -15,7 +15,8 @@
 				"platform": "instagram",
 				"url": "https://www.instagram.com/p/CbLbaFSPDh-/"
 			}
-		]
+		],
+		"svg": true
 	},
 	{
 		"name": "dailyui-011",
@@ -33,7 +34,8 @@
 				"platform": "codepen",
 				"url": "https://codepen.io/gabriellewee/pen/bYqKPx/"
 			}
-		]
+		],
+		"svg": true
 	},
 	{
 		"name": "desk-setup",
@@ -48,7 +50,8 @@
 				"url": "https://dribbble.com/shots/3508741-Desk-Setup"
 			}
 		],
-		"size": "m"
+		"size": "m",
+		"svg": true
 	},
 	{
 		"name": "crystal-carillon",
@@ -62,7 +65,8 @@
 				"platform": "dribbble",
 				"url": "https://dribbble.com/shots/3490913-Sailor-Moon-Crystal-Carillon"
 			}
-		]
+		],
+		"svg": true
 	},
 	{
 		"name": "portfolio-icons",
@@ -76,7 +80,8 @@
 				"platform": "dribbble",
 				"url": "https://dribbble.com/shots/3295593-Portfolio-Icons"
 			}
-		]
+		],
+		"svg": true
 	},
 	{
 		"name": "easing-graphs",
@@ -90,7 +95,8 @@
 				"platform": "dribbble",
 				"url": "https://dribbble.com/shots/3325157-Easing-Graphs-Freebie"
 			}
-		]
+		],
+		"svg": true
 	},
 	{
 		"name": "self-portrait",
@@ -120,7 +126,8 @@
 		"title": "Transistor Blade",
 		"tools": "Illustrator CS6",
 		"tags": "illustration 2d illustrator vector",
-		"description": "Vector art inspired by the blade from Supergiant Games’ Transistor."
+		"description": "Vector art inspired by the blade from Supergiant Games’ Transistor.",
+		"svg": true
 	},
 	{
 		"name": "shrine",

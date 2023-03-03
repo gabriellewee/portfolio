@@ -21,7 +21,8 @@ pagination:
 <section class="posts-container">
 	<div class="posts grid-isotope grid-scroll">
 		{% for post in pagination.items %}
-			<article class="post {% if pagination.pageNumber == 0 %} post-animate{% endif %}{% if (post.data.pagination.alias) and (post.data.pagination.alias != post.data.category) %} post-{{post.data.category}} post-{{post.data.pagination.alias}}{% else %} post-{{post.data.category}}{% endif %}{% if post.data.tags %}{% for tag in post.data.tags %}{% if tag != 'entries' %} post-{{tag}}{% endif %}{% endfor %}{% endif %}{% if post.data.size %} post-size-{{post.data.size}}{% endif %}{% if post.data.category == 'media' %} post-{{post.data.pagination.data}}{% endif %} grid-item"{% if post.data.extension %} data-orientation="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, 'orientation' %}"{% endif %}{% if post.data.width %} style="max-width: {{post.data.width}}"{% endif %}>
+			{% if post.data.svg == true %}{%- set file = "svg" %}{% elseif post.data.extension %}{%- set file = post.data.extension %}{% endif %}
+			<article class="post {% if pagination.pageNumber == 0 %} post-animate{% endif %}{% if (post.data.pagination.alias) and (post.data.pagination.alias != post.data.category) %} post-{{post.data.category}} post-{{post.data.pagination.alias}}{% else %} post-{{post.data.category}}{% endif %}{% if post.data.tags %}{% for tag in post.data.tags %}{% if tag != 'entries' %} post-{{tag}}{% endif %}{% endfor %}{% endif %}{% if post.data.size %} post-size-{{post.data.size}}{% endif %}{% if post.data.category == 'media' %} post-{{post.data.pagination.data}}{% endif %} grid-item"{% if post.data.extension %} data-orientation="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'orientation' %}"{% endif %}{% if post.data.width %} style="max-width: {{post.data.width}}"{% endif %}>
 				{% if post.data.category == "media" %}
 					<input class="{{post.data.category}}-trigger" id="{{post.data.date|safe}}-{{post.data.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this {{post.data.type}}" role="switch"/>
 				{% endif %}
@@ -61,10 +62,14 @@ pagination:
 					</header>
 					<div class="post-content{% if post.data.category == 'writing' %} post-text{% endif %}">
 						{% if post.data.category == "media" %}
-							<figure id="{{post.data.date|safe}}-{{post.data.name}}" aria-label="{{post.data.type|capitalize}}{% if post.data.location %}, {{post.data.location}}{% elseif post.data.title %}, {{post.data.title}}{% endif %}" style="aspect-ratio: {% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, 'ratio' %};">
+							<figure id="{{post.data.date|safe}}-{{post.data.name}}" aria-label="{{post.data.type|capitalize}}{% if post.data.location %}, {{post.data.location}}{% elseif post.data.title %}, {{post.data.title}}{% endif %}" style="aspect-ratio: {% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'ratio' %};">
 								{% if post.data.upscale %}
 									<picture>
 										<img class="upscale" src="{% include post.data.upscale %}"{% if post.data.upscaleWidth %} width="{{post.data.upscaleWidth}}"{% endif %}{% if post.data.upscaleHeight %} height="{{post.data.upscaleHeight}}"{% endif %} alt="{{post.data.description}}"/>
+									</picture>
+								{% elseif post.data.svg == true %}
+									<picture>
+										<img src="/static/images/{{post.data.pagination.data}}/{{post.data.date}}-{{post.data.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'width' %}" height="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'height' %}"/>
 									</picture>
 								{% else %}
 									{% image './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 'default', loop.index %}
@@ -80,6 +85,10 @@ pagination:
 													{% if post.data.upscale %}
 														<picture>
 															<img class="upscale" src="{% include post.data.upscale %}"{% if post.data.upscaleWidth %} width="{{post.data.upscaleWidth}}"{% endif %}{% if post.data.upscaleHeight %} height="{{post.data.upscaleHeight}}"{% endif %} alt="{{post.data.description}}"/>
+														</picture>
+													{% elseif post.data.svg == true %}
+														<picture>
+															<img src="/static/images/{{post.data.pagination.data}}/{{post.data.date}}-{{post.data.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'width' %}" height="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'height' %}"/>
 														</picture>
 													{% else %}
 														{% image './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 'thumbnail', loop.index %}
@@ -188,6 +197,10 @@ pagination:
 					{% if post.data.upscale %}
 						<picture>
 							<img class="upscale" src="{% include post.data.upscale %}"{% if post.data.upscaleWidth %} width="{{post.data.upscaleWidth}}"{% endif %}{% if post.data.upscaleHeight %} height="{{post.data.upscaleHeight}}"{% endif %} alt="{{post.data.description}}"/>
+						</picture>
+					{% elseif post.data.svg == true %}
+						<picture>
+							<img src="/static/images/{{post.data.pagination.data}}/{{post.data.date}}-{{post.data.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'width' %}" height="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'height' %}"/>
 						</picture>
 					{% else %}
 						{% image './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 'screen' %}

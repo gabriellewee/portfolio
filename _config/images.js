@@ -12,15 +12,23 @@ module.exports = eleventyConfig => {
 		let result;
 		let orientation;
 
+		let reduce = (numerator, denominator) => {
+			let gcd = (a, b) => {
+				return b ? gcd(b, a%b) : a;
+			};
+			gcd = gcd(numerator, denominator);
+			return [numerator/gcd, denominator/gcd];
+		}
+
 		if(type === "width") {
 			result = width;
 		} else if(type === "height") {
-			result = height
+			result = height;
 		} else if(type === "orientation") {
 			width > height ? orientation = "landscape" : orientation = "portrait"
 			result = orientation
 		} else if(type === "ratio") {
-			result = `${width} / ${height}`
+			result = `${reduce(width, height)[0]} / ${reduce(width, height)[1]}`
 		}
 
 		return result;
@@ -119,8 +127,13 @@ module.exports = eleventyConfig => {
 			loading = "lazy";
 		}
 		if(type === "default" && extra != "no-lightbox") {
-			source = `<source type="image/webp" srcset="${webpset}" sizes="(min-width: 2560px) 75vw, (min-width: 768px) 50vw, 100vw">`;
-			img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" sizes="(min-width: 2560px) 25vw, (min-width: 768px) 50vw, 100vw" data-src="${datasrc}" width="${basic.width}" height="${basic.height}">`;
+			if(stats["webp"][4]) {
+				source = `<source type="image/webp" srcset="${webpset}" sizes="${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px, (min-width: 1549px) ${stats["webp"][4].width}px">`;
+				img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" sizes="${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px, (min-width: 1549px) ${stats["webp"][4].width}px" data-src="${datasrc}" width="${basic.width}" height="${basic.height}">`;
+			} else {
+				source = `<source type="image/webp" srcset="${webpset}" sizes="${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px">`;
+				img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" sizes="${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px" data-src="${datasrc}" width="${basic.width}" height="${basic.height}">`;
+			}
 		} else if(type === "thumbnail" || type === "screen" || (type === "default" && extra === "no-lightbox")) {
 			source = `<source type="image/webp" srcset="${webpset}">`;
 			img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" width="${basic.width}" height="${basic.height}">`;
