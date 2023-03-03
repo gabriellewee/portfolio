@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2400" height="1260" viewBox="0 0 1200 630" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>2023-03-02-logo-posts</title>
+    <defs>
+        <linearGradient x1="-4.77048956e-16%" y1="1.75207071e-14%" x2="100%" y2="100%" id="gradient-logo-posts">
+            <stop stop-color="#D19487" offset="0%"></stop>
+            <stop stop-color="#B2738E" offset="50%"></stop>
+            <stop stop-color="#577783" stop-opacity="1" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g stroke="none" fill-rule="evenodd">
+        <rect fill="#FFFFFF" x="0" y="0" width="1200" height="630"></rect>
+        <g fill="#C4DEE6">
+            <rect x="0" y="57" width="1200" height="4"></rect>
+            <rect x="0" y="121" width="1200" height="4"></rect>
+            <rect x="0" y="185" width="1200" height="4"></rect>
+            <rect x="0" y="249" width="1200" height="4"></rect>
+            <rect x="0" y="313" width="1200" height="4"></rect>
+            <rect x="0" y="377" width="1200" height="4"></rect>
+            <rect x="0" y="441" width="1200" height="4"></rect>
+            <rect x="0" y="505" width="1200" height="4"></rect>
+            <rect x="0" y="569" width="1200" height="4"></rect>
+        </g>
+        <rect fill="#E6A0A0" opacity="0.6" x="200" y="0" width="4" height="630"></rect>
+        <polygon fill="url(#gradient-logo-posts)" opacity="0.5" points="352 287 572 68 628 68 848 287 848 343 628 564 572 564 352 343"></polygon>
+        <polygon fill="url(#gradient-logo-posts)" points="612.311 106 587.688 106 390 302.79 390 327.31 587.791 526 612.208 526 810 327.309 810 302.791"></polygon>
+        <path d="M712.5,315 C712.5,381.375 662.132034,414 600,414 C537.867966,414 487.5,380.71125 487.5,315 C487.5,248.625 537.867966,216 600,216 C652.199425,216 696.095414,239.027713 708.796081,285.750258 L649.071302,285.749992 C639.434865,269.186179 621.070345,261 600,261 C568.933983,261 543.75,278.795455 543.75,315 C543.75,350.8425 568.933983,369 600,369 C622.897413,369 642.599397,359.332576 651.3773,339.752023 L604.5,339.75 L604.5,306.75 L712.231957,306.749066 C712.409675,309.438911 712.5,312.189193 712.5,315 Z" fill="#F9F3F3"></path>
+    </g>
+</svg>

@@ -25,7 +25,7 @@
 			"name": "wig",
 			"type": "png",
 			"description": "My wig for cosplaying Marshall Lee drying upside down",
-			"figcaption": "For the sake of cosplay...",
+			"figcaption": "For the sake of cosplay…",
 			"lightbox": false
 		},
 		{

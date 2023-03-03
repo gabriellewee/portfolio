@@ -80,6 +80,6 @@ Last but not least, **Textastic** ($9.99). I use this to update and work on my w
 
 {%- set number = 5 %}{% include 'pages/posts/image.html' %}
 
-I'm so in love with this thing right now. Best purchase I've ever made, by far. It still doesn't replace a real computer, but it's perfect for taking to school with me when I don't want to lug my 4lb+ laptop around... which, strangely enough, wasn't that heavy six months ago. Huh.
+I'm so in love with this thing right now. Best purchase I've ever made, by far. It still doesn't replace a real computer, but it's perfect for taking to school with me when I don't want to lug my 4lb+ laptop around… which, strangely enough, wasn't that heavy six months ago. Huh.
 
 I keep saying, "Wow, Textastic baby" in my head. Earlier, I said it out loud by accident and my sister gave me a funny look. Note to self: tone down the k-pop.
