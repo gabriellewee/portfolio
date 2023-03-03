@@ -33,20 +33,20 @@
     {
       "name": "logo-default",
       "type": "svg",
-      "description": "Current logo design used in OpenGraph image",
-      "figcaption": "Current logo design used in OpenGraph image. A capital letter G sits in front of a diamond shape on a gradient background."
+      "description": "Current logo design used in OpenGraph image. A capital letter G sits in front of a diamond shape on a gradient background.",
+      "figcaption": "Current logo design used in OpenGraph image"
     },
     {
       "name": "logo-graphic",
       "type": "svg",
-      "description": "Current logo design used in OpenGraph image for graphic page",
-      "figcaption": "Current logo design used in OpenGraph image for graphic page, with a background composed of randomly placed outlined stars and circles."
+      "description": "Current logo design used in OpenGraph image for graphic page, with a background composed of randomly placed outlined stars and circles.",
+      "figcaption": "Current logo design used in OpenGraph image for graphic page"
     },
     {
       "name": "logo-posts",
       "type": "svg",
-      "description": "Current logo design used in OpenGraph image for post pages",
-      "figcaption": "Current logo design used in OpenGraph image for post pages, with a background resembling a piece of lined paper."
+      "description": "Current logo design used in OpenGraph image for post pages, with a background resembling a piece of lined paper.",
+      "figcaption": "Current logo design used in OpenGraph image for post pages"
     },
     {
       "name": "logo-vector",
@@ -56,14 +56,14 @@
     {
       "name": "logo-ios",
       "type": "svg",
-      "description": "Logo version used for iOS and OpenGraph",
-      "figcaption": "Logo version used for iOS and OpenGraph. A capital letter G sits in front of a diamond shape on a gradient background."
+      "description": "Logo version used for iOS and OpenGraph. A capital letter G sits in front of a diamond shape on a gradient background.",
+      "figcaption": "Logo version used for iOS and OpenGraph"
     },
     {
       "name": "logo-favicon",
       "type": "svg",
-      "description": "Logo version used for favicons and Android",
-      "figcaption": "Logo version used for favicons and Android. A capital letter G sits in front of an octagon with a gradient."
+      "description": "Logo version used for favicons and Android. A capital letter G sits in front of an octagon with a gradient.",
+      "figcaption": "Logo version used for favicons and Android"
     }
   ]
 }
