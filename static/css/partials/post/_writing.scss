@@ -33,6 +33,9 @@
 			&:active {
 				span {
 					text-decoration-color: var(--color-iron-1);
+					@include dark {
+						text-decoration-color: var(--color-iron-10);
+					}
 				}
 			}
 		}
@@ -64,6 +67,9 @@
 				&:active {
 					span {
 						@include gradient-text(var(--color-iron-1-hsl), var(--color-iron-12-hsl), true);
+						@include dark {
+							@include gradient-text(var(--color-iron-10-hsl), var(--color-iron-12-hsl), true);
+						}
 					}
 				}
 			}
@@ -126,9 +132,15 @@
 				&:active {
 					span {
 						@include gradient-text(var(--color-iron-12-hsl), var(--color-iron-1-hsl), true);
+						@include dark {
+							@include gradient-text(var(--color-iron-12-hsl), var(--color-iron-10-hsl), true);
+						}
 					}
 					&:after {
 						color: var(--color-iron-1);
+						@include dark {
+							color: var(--color-iron-white-80);
+						}
 					}
 				}
 			}
@@ -144,16 +156,31 @@
 		h2 {
 			a {
 				color: var(--color-iron-white-70);
+				@include dark {
+					color: var(--color-iron-white);
+				}
 				&:hover, &:focus {
 					color: var(--color-iron-white);
+					@include dark {
+						color: hsla(var(--color-white-hsl), .7);
+					}
 					span {
 						text-decoration-color: var(--color-iron-white);
+						@include dark {
+							text-decoration-color: hsla(var(--color-white-hsl), .7);
+						}
 					}
 				}
 				&:active {
 					color: var(--color-iron-white-90);
+					@include dark {
+						color: var(--color-iron-white-70);
+					}
 					span {
 						text-decoration-color: var(--color-iron-white-90);
+						@include dark {
+							text-decoration-color: var(--color-iron-white-70);
+						}
 					}
 				}
 			}

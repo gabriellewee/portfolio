@@ -84,6 +84,10 @@ $violet: #D18FF0;
 		background-color: hsl($one);
 		background: linear-gradient(135deg, hsl($one) 0%, hsl($two) 100%);
 		background-clip: text;
+		@include dark {
+			background: linear-gradient(135deg, hsl($one) 0%, hsl($two) 80%);
+			background-clip: text;
+		}
 		@if $underline == true {
 			-webkit-text-fill-color: hsla($one, .5);
 		} @else {

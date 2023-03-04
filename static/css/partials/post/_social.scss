@@ -16,6 +16,9 @@
 	padding: 0 calc(var(--p) * 2) calc(var(--p) * 2);
 	color: var(--color-iron-white-90);
 	font-size: 1.25rem;
+	@include dark {
+		color: hsla(var(--color-white-hsl), .8);
+	}
 	a {
 		text-decoration: underline;
 		text-underline-offset: 2px;
@@ -100,14 +103,23 @@
 		}
 		a:not(.media-attachment) {
 			color: var(--color-mastodon);
+			@include dark {
+				color: var(--color-mastodon-white);
+			}
 			&:hover, &:focus {
 				color: var(--color-mastodon-light);
+				@include dark {
+					color: var(--color-mastodon-white-30);
+				}
 			}
 			&:focus-visible {
-				@include focus-shadow(var(--color-mastodon-light));
+				@include focus-shadow(var(--color-mastodon-white));
 			}
 			&:active {
 				color: var(--color-mastodon-dark);
+				@include dark {
+					color: var(--color-mastodon-light);
+				}
 			}
 		}
 	}

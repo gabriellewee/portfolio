@@ -35,6 +35,10 @@
 		margin-left: var(--p);
 		color: var(--color-iron-10);
 		border-radius: 2em;
+		@include dark {
+			@include blur(5px, var(--color-iron-hsl), .9, .8);
+			color: white;
+		}
 		&.message {
 			@media (prefers-reduced-motion: no-preference) {
 				translate: 0 100%;

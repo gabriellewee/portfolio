@@ -7,6 +7,9 @@
 		margin-top: calc(var(--p)*2);
 		padding: calc(var(--p)*2);
 		background: hsla(var(--color-white-hsl), .75);
+		@include dark {
+			background: hsla(var(--color-iron-8-hsl), .65)
+		}
 	}
 
 	.mentions-header {
@@ -32,6 +35,9 @@
 			@include clip-path-edges(2px);
 			background: hsla(var(--color-white-hsl), .75);
 			padding: calc(var(--p)*2);
+			@include dark {
+				background: hsla(var(--color-iron-8-hsl), .65)
+			}
 			@include viewport(mobile) {
 				display: flex;
 				align-items: flex-start;

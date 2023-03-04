@@ -50,6 +50,10 @@
 			height: 100%;
 			background-color: var(--color-iron);
 			background: radial-gradient(circle at center left, var(--color-iron) 0, var(--color-iron-12) 100%);
+			@include dark {
+				background-color: var(--color-slate);
+				background: radial-gradient(circle at center left, var(--color-slate) 0, var(--color-iron-white-80) 100%);
+			}
 		}
 		span {
 			position: relative;
@@ -103,6 +107,10 @@
 			&:before {
 				background-color: var(--color-iron-5);
 				background: radial-gradient(circle at center right, var(--color-iron) 0, var(--color-iron-5) 100%);
+				@include dark {
+					background-color: var(--color-iron-white-80);
+					background: radial-gradient(circle at center left, var(--color-iron-white-80) 0, var(--color-slate) 100%);
+				}
 			}
 		}
 		&:hover, &:focus {

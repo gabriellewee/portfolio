@@ -172,6 +172,9 @@
 				height: 36px;
 				border-radius: 100%;
 				border: calc(var(--p)/4) solid var(--color-message);
+				@include dark {
+					border-color: white;
+				}
 			}
 			&:last-child {
 				position: relative;
@@ -237,7 +240,7 @@
 		@include font-weight-width(600, 90);
 		@include clip-path-edges(2px);
 		display: inline-block;
-		background: hsla(var(--color-iron-white-70-hsl), .2);
+		background-color: hsla(var(--color-iron-white-70-hsl), .2);
 		margin-bottom: calc(var(--p)/3);
 		padding-left: calc(var(--p)/2);
 		padding-right: calc(var(--p)/2);
@@ -245,6 +248,10 @@
 		font-size: .875rem;
 		text-transform: uppercase;
 		line-height: 1.715;
+		@include dark {
+			background-color: hsla(var(--color-iron-8-hsl), .4);
+			color: hsla(var(--color-white-hsl), .7);
+		}
 		@include viewport(mobile) {
 			margin-bottom: unset;
 			margin-right: calc(var(--p)/3);

@@ -9,17 +9,22 @@
 	--color-iron-white:#{mix($iron,white)};
 	--color-iron-white-60:#{mix($iron,white,60%)};
 	--color-iron-white-70:#{mix($iron,white,70%)};
+	--color-iron-white-80:#{mix($iron,white,80%)};
 	--color-iron-white-90:#{mix($iron,white,90%)};
+	--color-iron-white-hsl:#{hexToHSL(mix($iron,white))};
 	--color-iron-white-70-hsl:#{hexToHSL(mix($iron,white,70%))};
+	--color-iron-white-80-hsl:#{hexToHSL(mix($iron,white,80%))};
 	
 	--color-iron:#{$iron};
 	--color-iron-1:#{darken($iron,1%)};
 	--color-iron-5:#{darken($iron,5%)};
+	--color-iron-8:#{darken($iron,8%)};
 	--color-iron-10:#{darken($iron,10%)};
 	--color-iron-12:#{darken($iron,12%)};
 	--color-iron-hsl:#{hexToHSL($iron)};
 	--color-iron-1-hsl:#{hexToHSL(darken($iron,1%))};
 	--color-iron-5-hsl:#{hexToHSL(darken($iron,1%))};
+	--color-iron-8-hsl:#{hexToHSL(darken($iron,8%))};
 	--color-iron-10-hsl:#{hexToHSL(darken($iron,10%))};
 	--color-iron-12-hsl:#{hexToHSL(darken($iron,12%))};
 	
@@ -68,6 +73,8 @@
 	--color-mastodon-dark:#563ACC;
 	--color-mastodon-light:#858AFA;
 	--color-mastodon-slate:#{mix(#563ACC,$slate,30%)};
+	--color-mastodon-white:#{mix(#563ACC,white)};
+	--color-mastodon-white-30:#{mix(#563ACC,white,30%)};
 	--color-text:#34a853;
 	--color-codepen:#717790;
 	--color-github:#4969ed;
@@ -78,6 +85,7 @@
 	--color-music:#fa2d48;
 	--color-imessage:#0d84ff;
 	--color-tumblr:#35465D;
+	--color-tumblr-light:#5487b3;
 
 	--color-medium:#51A653;
 	--color-apple-podcasts:#852dc4;

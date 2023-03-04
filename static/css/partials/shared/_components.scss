@@ -52,6 +52,9 @@
 		display: block;
 		transition: .1s ease-out;
 		background-color: var(--color-iron);
+		@include dark {
+			background-color: var(--color-iron-8);
+		}
 	}
 	&:before {
 		content: "";
@@ -124,6 +127,14 @@
 					text-decoration-color: hsla(var(--color-blush-8-hsl), 0);
 				}
 			}
+			.link.tumblr {
+				@include dark {
+					color: var(--color-tumblr-light);
+					&:hover, &:focus {
+						text-decoration-color: var(--color-tumblr-light);
+					}
+				}
+			}
 			.link, .popup-label, .popup-label span {
 				transition: .1s ease-out;
 				font-size: clamp(1.75rem, 3vw, 2rem);
@@ -147,7 +158,7 @@
 				text-decoration-color: var(--color-discord);
 			}
 			.link:hover, .link:focus, .popup-label:hover span, .popup-button:focus ~ .popup-label span {
-				color: var(--color-iron);
+				color: white;
 			}
 			.link:hover, .link:focus, .popup-label:hover span, .popup-button:focus ~ .popup-label span, .link:active, .popup-button:active ~ .popup-label span {
 				text-underline-offset: 4px;
@@ -173,7 +184,10 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background: white;
+			background-color: white;
+			@include dark {
+				background-color: var(--color-iron);
+			}
 		}
 		@include viewport(mobile) {
 			display: grid;

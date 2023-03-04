@@ -156,9 +156,12 @@
 
 	.post-wrapper {
 		overflow: hidden;
-		background: white;
+		background-color: white;
 		@include viewport($iphone) {
 			@include clip-path-edges(2px);
+		}
+		@include dark {
+			background-color: var(--color-iron);
 		}
 	}
 	time {
@@ -318,6 +321,9 @@
 			}
 			&:active {
 				@include gradient-text(var(--color-iron-1-hsl), var(--color-iron-12-hsl), true);
+				@include dark {
+					@include gradient-text(var(--color-slate-hsl), var(--color-iron-white-80-hsl), true);
+				}
 			}
 		}
 	}
@@ -349,9 +355,12 @@
 		@include clip-path-edges(2px);
 		padding: calc(var(--p)*1.5) calc(var(--p)*2);
 		color: white;
-		background: var(--color-iron);
+		background-color: var(--color-iron);
 		font-size: 1rem;
 		line-height: 1.5;
+		@include dark {
+			background-color: var(--color-iron-8);
+		}
 	}
 	blockquote {
 		@include font-weight-width(450, 110);

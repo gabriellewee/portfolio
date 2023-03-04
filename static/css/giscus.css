@@ -87,6 +87,13 @@ main {
   --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-1);
 }
 
+@media (prefers-color-scheme: dark) {
+  main {
+    --color-fg-default: white;
+    --color-social-reaction-bg-hover: #171F23;
+  }
+}
+
 main .pagination-loader-container {
   background-image: url("https://github.com/images/modules/pulls/progressive-disclosure-line.svg");
 }

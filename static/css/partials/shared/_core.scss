@@ -23,11 +23,18 @@ body {
 	background-color: var(--color-blush-8);
 	color: var(--color-iron);
 	font-family: var(--font-default);
+	@include dark {
+		background-color: var(--color-iron-5);
+		color: white;
+	}
 }
 
 a {
 	color: var(--color-iron);
 	text-decoration: none;
+	@include dark {
+		color: white;
+	}
 }
 
 ::-moz-selection {

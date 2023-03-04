@@ -42,7 +42,10 @@
 	}
 	.copyright {
 		span {
-			background: white;
+			background-color: white;
+			@include dark {
+				background-color: var(--color-iron);
+			}
 		}
 	}
 	a {
