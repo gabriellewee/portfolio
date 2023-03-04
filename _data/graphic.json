@@ -1,5 +1,15 @@
 [
 	{
+		"name": "logo",
+		"date": "2023-03-02",
+		"title": "Logo design",
+		"tools": "Sketch",
+		"tags": "identity ui 2d sketch vector",
+		"description": "Logo/identity design for gabriellew.ee. A capital letter G sits in front of a diamond shape on a gradient background.",
+		"size": "m",
+		"svg": true
+	},
+	{
 		"name": "cutie-moon-rod",
 		"date": "2022-03-16",
 		"title": "Cutie Moon Rod",
@@ -110,7 +120,8 @@
 				"platform": "dribbble",
 				"url": "https://dribbble.com/shots/3278273-Self-Portrait"
 			}
-		]
+		],
+		"size": "m"
 	},
 	{
 		"name": "scissor-blade",
@@ -136,7 +147,7 @@
 		"tools": "Maya 2014",
 		"tags": "3d maya",
 		"description": "A shrine tower 3d model based off of the Fushimi Inari shrine in Kyoto, Japan.",
-		"size": "m"
+		"size": "s"
 	},
 	{
 		"name": "eeveelutions",

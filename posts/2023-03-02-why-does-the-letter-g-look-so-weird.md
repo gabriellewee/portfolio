@@ -31,10 +31,11 @@
       "figcaption": "Logo design from 2021"
     },
     {
-      "name": "logo-default",
+      "name": "logo",
       "type": "svg",
       "description": "Current logo design used in OpenGraph image. A capital letter G sits in front of a diamond shape on a gradient background.",
-      "figcaption": "Current logo design used in OpenGraph image"
+      "figcaption": "Current logo design used in OpenGraph image",
+      "category": "graphic"
     },
     {
       "name": "logo-graphic",
