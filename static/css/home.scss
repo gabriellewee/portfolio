@@ -12,9 +12,6 @@
 }
 
 .post {
-	&-code {
-		@import 'partials/post/code';
-	}
 	&-social {
 		@import 'partials/post/social';
 	}

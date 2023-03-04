@@ -15,6 +15,9 @@
 .post-media {
 	@import 'partials/post/media';
 }
+.post-code {
+	@import 'partials/post/code';
+}
 
 @import 'partials/post/archive';
 @import 'partials/post/syntax';
