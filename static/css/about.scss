@@ -22,6 +22,14 @@
 	}
 }
 
+.post-build {
+	.post-content {
+		@include dark {
+			color: hsla(var(--color-white-hsl), .7);
+		}
+	}
+}
+
 .post-versions {
 	.post-wrapper {
 		padding-bottom: var(--p);
@@ -187,11 +195,16 @@
 				font-weight: bold;
 				font-size: 1rem;
 				text-transform: uppercase;
+				@include dark {
+					background-color: var(--color-iron-5);
+					color: white;
+				}
 				&:before {
 					rotate: 45deg;
 					content: "";
 					display: block;
 					position: absolute;
+					z-index: -1;
 					width: var(--p);
 					height: var(--p);
 					background-color: var(--color-message);
@@ -199,6 +212,9 @@
 					top: calc(var(--p)/-2);
 					left: 50%;
 					margin-left: calc(var(--p)/-2);
+					@include dark {
+						background-color: var(--color-iron-5);
+					}
 				}
 			}
 		}
@@ -275,6 +291,9 @@
 
 .post-thanks {
 	.post-content {
+		@include dark {
+			color: hsla(var(--color-white-hsl), .7);
+		}
 		ul {
 			padding: 0;
 		}

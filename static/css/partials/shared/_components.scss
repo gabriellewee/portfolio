@@ -7,6 +7,9 @@
 .title {
 	opacity: 0;
 	font-size: clamp(1.5rem, 3vw, 2.5rem);
+	@include dark {
+		color: hsla(var(--color-white-hsl), .8);
+	}
 	.apple {
 		display: inline-block;
 		span {
@@ -95,6 +98,9 @@
 	margin-right: auto;
 	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
 	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
+	@include dark {
+		color: hsla(var(--color-white-hsl), .8);
+	}
 	.contact-sites, .contact-messages {
 		@include font-weight-width(900, 125);
 		font-size: clamp(1.5rem, 3vw, 2rem);

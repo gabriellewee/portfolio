@@ -272,6 +272,9 @@
 		border: 0;
 		height: 2px;
 		background-color: hsla(var(--color-iron-hsl), .2);
+		@include dark {
+			background-color: hsla(var(--color-white-hsl), .2);
+		}
 	}
 
 	p, blockquote, pre, ul, ol, figure {
