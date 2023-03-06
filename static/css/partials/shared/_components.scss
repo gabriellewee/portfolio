@@ -164,7 +164,10 @@
 				text-decoration-color: var(--color-discord);
 			}
 			.link:hover, .link:focus, .popup-label:hover span, .popup-button:focus ~ .popup-label span {
-				color: white;
+				color: var(--color-iron);
+				@include dark {
+					color: white;
+				}
 			}
 			.link:hover, .link:focus, .popup-label:hover span, .popup-button:focus ~ .popup-label span, .link:active, .popup-button:active ~ .popup-label span {
 				text-underline-offset: 4px;
