@@ -17,7 +17,7 @@ message: Post archive for gabriellew.ee
 <section class="posts-container">
 	<article class="posts-archive">
 		<ul>
-			{% for post in collections.posts|reverse %}
+			{% for post in collections.writing|reverse %}
 				{% set postYear = post.date.getFullYear() %}
 				{% if currentYear != postYear %}
 					{% set currentYear = postYear %}
@@ -28,19 +28,6 @@ message: Post archive for gabriellew.ee
 				<li>
 					<h3><a href="{{post.url|url}}"><span>{{post.data.title|safe}}</span></a></h3>
 					<time datetime="{{post.date|ISO|htmlDateString}}">{{post.date|ISO|readableDate}}</time>
-				</li>
-			{% endfor %}
-			{% for post in collections.archive|reverse %}
-				{% set postYear = post.date.getFullYear() %}
-				{% if currentYear != postYear %}
-					{% set currentYear = postYear %}
-					<li class="year">
-						<h2>{{postYear}}</h2>
-					</li>
-				{% endif %}
-				<li>
-					<h3><a href="{{post.url|url}}"><span>{{post.data.title|safe}}</span></a></h3>
-					<time datetime="{{post.date|htmlDateString}}">{{post.date|ISO|readableDate}}</time>
 				</li>
 			{% endfor %}
 		</ul>
