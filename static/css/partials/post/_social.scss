@@ -52,6 +52,11 @@
 }
 
 &.post-mastodon {
+	&.post-size-xs {
+		@include viewport(mobile) {
+			min-width: 290px;
+		}
+	}
 	.post-wrapper {
 		@supports (container-type: inline-size) {
 			container-type: inline-size;

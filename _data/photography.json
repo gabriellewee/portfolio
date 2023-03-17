@@ -1,12 +1,42 @@
 [
 	{
+		"name": "golden-gate",
+		"date": "2023-03-14",
+		"location": "Fort Point National Historic Site, San Francisco, CA, USA",
+		"camera": "iPhone 14 Pro Max",
+		"editor": "VSCO",
+		"tags": "fog landscape city outdoor beach water bridge",
+		"description": "Fog rolling over Golden Gate Bridge in San Francisco.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/Cp3_DB2OWnv/"
+			 }
+		]
+	},
+	{
+		"name": "alfie",
+		"date": "2023-03-07",
+		"location": "San Francisco, CA, USA",
+		"camera": "iPhone 14 Pro Max",
+		"editor": "VSCO",
+		"tags": "cat animal portrait indoor",
+		"description": "A grey cat sitting on a sofa, wrapped in a grey and white fuzzy blanket.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/CpgN7-MDS50/"
+			 }
+		]
+	},
+	{
 		"name": "spoons",
 		"date": "2022-12-20",
 		"location": "San Francisco, CA, USA",
 		"camera": "iPhone 14 Pro Max",
 		"editor": "VSCO",
 		"tags": "indoor objects",
-		"description": "A collection of freshly polished wooden spoons and serving utensils",
+		"description": "A collection of freshly polished wooden spoons and serving utensils.",
 		"size": "m"
 	},
 	{
@@ -52,7 +82,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "people portrait indoor food",
-		"description": "A person with long hair and beanie holding up pieces of bacon at a brunch restaurant in San Francisco."
+		"description": "A person with long hair and beanie holding up pieces of bacon at a brunch restaurant in San Francisco.",
+		"size": "xs"
 	},
 	{
 		"name": "kehoe",
@@ -80,7 +111,8 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "nature outdoor park landscape city",
-		"description": "A wide shot of downtown San Francisco as seen from Twin Peaks."
+		"description": "A wide shot of downtown San Francisco as seen from Twin Peaks.",
+		"size": "s"
 	},
 	{
 		"name": "flowers",
