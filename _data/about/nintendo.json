@@ -1,14 +1,18 @@
 [
 	{
+		"title": "The Legend of Zelda: Tears of the Kingdom",
+		"slug": "the-legend-of-zelda-tears-of-the-kingdom"
+	},
+	{
+		"title": "Animal Crossing: New Horizons",
+		"slug": "animal-crossing-new-horizons"
+	},
+	{
 		"title": "Hades",
 		"slug": "hades"
 	},
 	{
 		"title": "Fire Emblem: Three Houses",
 		"slug": "fire-emblem-three-houses"
-	},
-	{
-		"title": "Animal Crossing: New Horizons",
-		"slug": "animal-crossing-new-horizons"
 	}
 ]
