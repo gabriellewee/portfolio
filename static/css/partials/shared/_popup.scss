@@ -153,46 +153,59 @@
 			height: 60px;
 		}
 		.username {
-			display: inline-flex;
-			align-items: center;
-			align-content: center;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
 			position: relative;
 			margin-top: 38px;
 			margin-left: var(--p);
-			font-size: 1.5rem;
-			.number {
-				opacity: .6;
+			h3 {
+				width: fit-content;
+				margin-bottom: calc(var(--p)/3);
+				font-size: 1.75rem;
 			}
-			&:before, &:after {
-				opacity: 0;
-				display: block;
-				transition: .1s ease-out;
-				background-color: black;
-			}
-			&:before {
-				content: "";
-				position: absolute;
-				top: 9px;
-				right: -16px;
-				z-index: -1;
-				width: 8px;
-				height: 8px;
-				border-bottom-left-radius: 2px;
-				rotate: 45deg;
-			}
-			&:after {
+			span {
 				@include font-weight-width(600, 100);
-				content: "Copied";
-				position: absolute;
-				right: -69px;
-				padding: 4px 6px;
-				border-radius: 3px;
-				font-size: .75rem;
-				text-transform: uppercase;
+				width: fit-content;
+				display: inline-flex;
+				align-items: center;
+				align-content: center;
+				position: relative;
+				font-size: 0.875rem;
+				opacity: 0.6;
+				&:before, &:after {
+					opacity: 0;
+					display: block;
+					transition: .1s ease-out;
+					background-color: black;
+				}
+				&:before {
+					content: "";
+					position: absolute;
+					top: 4px;
+					right: -16px;
+					z-index: -1;
+					width: 8px;
+					height: 8px;
+					border-bottom-left-radius: 2px;
+					rotate: 45deg;
+				}
+				&:after {
+					@include font-weight-width(600, 100);
+					content: "Copied";
+					position: absolute;
+					right: -69px;
+					padding: 4px 6px;
+					border-radius: 3px;
+					font-size: .75rem;
+					text-transform: uppercase;
+				}
 			}
 			&.copied {
-				&:before, &:after {
-					opacity: 1;
+				span {
+					&:before, &:after {
+						opacity: 1;
+					}
 				}
 			}
 		}
