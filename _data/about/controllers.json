@@ -46,5 +46,11 @@
 		"color": "cyan",
 		"brand": "Nintendo",
 		"type": "Pro Controller"
+	},
+	{
+		"name": "joy-con-violet",
+		"color": "violet",
+		"brand": "Nintendo",
+		"type": "Joy-Cons"
 	}
 ]

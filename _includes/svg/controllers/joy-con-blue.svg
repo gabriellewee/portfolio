@@ -24,7 +24,7 @@
 			<circle fill="#BED0DF" cx="105.5" cy="77" r="3"></circle>
 			<circle fill="#BED0DF" cx="99.5" cy="96.5" r="5.5"></circle>
 			<rect fill="#BED0DF" x="93.5" y="53" width="3" height="10" rx="1"></rect>
-			<rect fill="#FBF0EE" x="90" y="56.5" width="10" height="3" rx="1"></rect>
+			<rect fill="#BED0DF" x="90" y="56.5" width="10" height="3" rx="1"></rect>
 		</g>
 	</g>
 </svg>
