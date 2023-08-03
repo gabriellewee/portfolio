@@ -149,7 +149,7 @@ pagination:
 								{% for media in post.data.media %}
 									{% if media.url %}
 										<a class="media-attachment" href="{{post.data.url|url}}" target="_blank">
-											{% external media.url, media.description, 750 %}
+											{% external media.url, media.description, 500 %}
 										</a>
 									{% endif %}
 								{% endfor %}

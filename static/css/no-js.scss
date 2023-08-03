@@ -10,6 +10,10 @@
 	grid-column: 1 / span 12 !important;
 }
 
+.media-attachment img {
+	width: auto;
+}
+
 .post-code .post-content .warning:not(.css-only) {
 	display: flex;
 }
@@ -21,7 +25,7 @@
 .posts-container .contact,
 .bottom,
 .filters a,
-.post.post-animate {
+.post-animate {
 	opacity: 1;
 }
 
