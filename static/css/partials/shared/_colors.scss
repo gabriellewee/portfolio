@@ -1,4 +1,4 @@
-$links: "codepen", "dribbble", "github", "instagram", "twitter", "pinterest", "medium", "tumblr", "music", "email", "text", "imessage", "discord", "mastodon", "apple-podcasts", "spotify", "threads";
+$links: "codepen", "dribbble", "github", "instagram", "twitter", "pinterest", "medium", "tumblr", "music", "email", "text", "imessage", "discord", "mastodon", "apple-podcasts", "spotify", "threads", "bluesky";
 
 @each $link in $links {
 	a {

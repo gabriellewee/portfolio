@@ -20,8 +20,13 @@
 		"url": "https://threads.net/@gabriellewee"
 	},
 	{
+		"name": "bluesky",
+		"url": "https://bsky.app/profile/gabriellew.ee"
+	},
+	{
 		"name": "twitter",
-		"url": "https://twitter.com/gabriewee/"
+		"url": "https://twitter.com/gabriewee/",
+		"secondary": true
 	},
 	{
 		"name": "dribbble",
