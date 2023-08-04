@@ -425,6 +425,9 @@
 		margin-bottom: calc(var(--p)*2);
 		background-color: hsla(var(--color-iron-hsl), .1);
 		border-radius: 3px;
+		@include dark {
+			background-color: hsla(var(--color-white-hsl), .1);
+		}
 		> * {
 			font-weight: 450;
 			code {
