@@ -306,7 +306,7 @@ const animateQueries = (enter) => {
 		ScrollTrigger.create({
 			trigger: document.body,
 			start: "-10",
-			end: "+=50",
+			end: "50",
 			once: true,
 			onEnter: () => enter.resume(),
 			onLeave: () => enter.progress(1)
