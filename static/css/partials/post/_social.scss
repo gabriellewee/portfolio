@@ -29,7 +29,7 @@
 	transition: .2s ease-out;
 	display: block;
 	position: relative;
-	margin-top: calc(var(--p)*1.75);
+	margin-top: 1em;
 	+ .media-attachment {
 		margin-top: calc(var(--p)*2);
 	}
@@ -105,6 +105,9 @@
 	.post-content {
 		p {
 			line-height: 1.2;
+			+ p {
+				margin-top: .75em;
+			}
 		}
 		a:not(.media-attachment) {
 			color: var(--color-mastodon);
