@@ -74,6 +74,7 @@
 	--color-mastodon-light:#858AFA;
 	--color-mastodon-slate:#{mix(#563ACC,$slate,30%)};
 	--color-mastodon-white:#{mix(#563ACC,white)};
+	--color-mastodon-white-hsl:#{hexToHSL(mix(#563ACC,white))};
 	--color-mastodon-white-30:#{mix(#563ACC,white,30%)};
 	--color-text:#34a853;
 	--color-codepen:#717790;

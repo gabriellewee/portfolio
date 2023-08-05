@@ -103,7 +103,7 @@
 	a {
 		transition: .2s ease-out;
 		&:before {
-			@include before(var(--color-mastodon-white));
+			@include before(hsla(var(--color-mauve-hsl), 0.5));
 		}
 		&:focus-visible {
 			&:before {
@@ -160,5 +160,8 @@
 				}
 			}
 		}
+	}
+	.post-footer .button:before, .media-attachment a:before {
+		background-color: hsla(var(--color-mastodon-white-hsl), 0.5);
 	}
 }
