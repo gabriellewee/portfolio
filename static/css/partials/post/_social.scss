@@ -1,19 +1,25 @@
 .post-header {
 	padding: calc(var(--p) * 2) calc(var(--p) * 2) var(--p);
+	@supports (container-type: inline-size) {
+		container-type: inline-size;
+		container-name: header;
+	}
 	.post-header-wrapper {
 		display: flex;
 		flex-wrap: nowrap;
 		align-items: flex-start;
-		justify-content: space-between;
-	}
-	a {
-		display: block;
+		@include viewport(mobile) {
+			justify-content: flex-end;
+		}
+		@container header (min-width: 350px) {
+			justify-content: flex-end;
+		}
 	}
 }
 
 .post-content {
 	@include font-weight-width(450, 110);
-	padding: 0 calc(var(--p) * 2) calc(var(--p) * 2);
+	padding: 0 calc(var(--p) * 2);
 	color: var(--color-iron-white-90);
 	font-size: 1.25rem;
 	@include dark {
@@ -22,6 +28,68 @@
 	a {
 		text-decoration: underline;
 		text-underline-offset: 2px;
+	}
+}
+
+.post-footer {
+	display: flex;
+	flex-flow: row wrap;
+	&:not(:empty) {
+		margin-top: calc(var(--p)/2);
+		padding: 0 calc(var(--p)*2) calc(var(--p)*2);
+	}
+	.button {
+		margin-top: var(--p);
+		line-height: 1.125;
+		&:not(:last-child) {
+			margin-right: var(--p);
+		}
+		> span {
+			display: flex;
+			align-items: flex-start;
+			align-content: flex-start;
+			background: radial-gradient(
+				circle at center left,
+				var(--color-mastodon-light) 0,
+				var(--color-mastodon) 30%,
+				var(--color-mastodon-dark) 60%,
+				var(--color-mastodon-dark) 100%,
+			) 50% 0% / 200% 100%;
+		}
+		svg {
+			transition: .2s ease-out;
+			position: relative;
+			z-index: 1;
+			width: 18px;
+			height: 18px;
+			margin-right: calc(var(--p)/2);
+			.outside {
+				fill: white;
+			}
+			.inside {
+				fill: var(--color-mastodon);
+			}
+		}
+		&:hover, &:focus {
+			> span {
+				background-position-x: 0%;
+			}
+			svg {
+				.inside {
+					fill: var(--color-mastodon-light);
+				}
+			}
+		}
+		&:active {
+			svg {
+				.inside {
+					fill: var(--color-iron);
+					@include dark {
+						fill: var(--color-slate);
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -59,47 +127,7 @@
 			min-width: 290px;
 		}
 	}
-	.post-wrapper {
-		@supports (container-type: inline-size) {
-			container-type: inline-size;
-			container-name: wrapper;
-		}
-	}
 	.post-header {
-		@supports (container-type: inline-size) {
-			flex-wrap: wrap;
-		}
-		@container wrapper (min-width: 300px) {
-			flex-wrap: nowrap;
-		}
-		a {
-			.outside {
-				transition: .2s ease-out;
-			}
-			@supports (container-type: inline-size) {
-				margin-bottom: var(--p);
-			}
-			@container wrapper (min-width: 300px) {
-				margin-bottom: 0;
-			}
-			&:hover, &:focus {
-				.outside {
-					fill: var(--color-mastodon-light);
-				}
-			}
-			&:focus-visible {
-				@include focus-shadow(var(--color-mastodon-light));
-			}
-			&:active {
-				.outside {
-					fill: var(--color-mastodon-dark);
-				}
-			}
-		}
-		svg {
-			height: 54px;
-			width: auto;
-		}
 		time {
 			background-color: var(--color-mastodon-slate);
 		}

@@ -18,11 +18,17 @@ pagination:
 
 {% if pagination.pageNumber == 0 %}{% include 'pages/shared/links.html' %}{% endif %}
 
-<section class="posts-container">
+<section class="posts-container" aria-label="Posts">
 	<div class="posts grid-isotope grid-scroll">
 		{% for post in pagination.items %}
 			{% if post.data.svg == true %}{%- set file = "svg" %}{% elseif post.data.extension %}{%- set file = post.data.extension %}{% endif %}
-			<article class="post {% if pagination.pageNumber == 0 %} post-animate{% endif %}{% if (post.data.pagination.alias) and (post.data.pagination.alias != post.data.category) %} post-{{post.data.category}} post-{{post.data.pagination.alias}}{% else %} post-{{post.data.category}}{% endif %}{% if post.data.tags %}{% for tag in post.data.tags %}{% if tag != 'entries' %} post-{{tag}}{% endif %}{% endfor %}{% endif %}{% if post.data.size %} post-size-{{post.data.size}}{% endif %}{% if post.data.category == 'media' %} post-{{post.data.pagination.data}}{% endif %} grid-item"{% if post.data.extension %} data-orientation="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'orientation' %}"{% endif %}{% if post.data.width %} style="max-width: {{post.data.width}}"{% endif %}>
+			<article
+				class="post {% if pagination.pageNumber == 0 %} post-animate{% endif %}{% if (post.data.pagination.alias) and (post.data.pagination.alias != post.data.category) %} post-{{post.data.category}} post-{{post.data.pagination.alias}}{% else %} post-{{post.data.category}}{% endif %}{% if post.data.tags %}{% for tag in post.data.tags %}{% if tag != 'entries' %} post-{{tag}}{% endif %}{% endfor %}{% endif %}{% if post.data.size %} post-size-{{post.data.size}}{% endif %}{% if post.data.category == 'media' %} post-{{post.data.pagination.data}}{% endif %} grid-item"
+				{% if post.data.extension %}data-orientation="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'orientation' %}"{% endif %}
+				{% if post.data.width %}style="max-width: {{post.data.width}}"{% endif %}
+				{% if post.data.category == "social" %}aria-label="{{post.data.pagination.alias|capitalize}} post"
+				{% elseif post.data.category == "media" %}aria-label="{{post.data.type|capitalize}} post"{% endif %}
+			>
 				{% if post.data.category == "media" %}
 					<input class="{{post.data.category}}-trigger" id="{{post.data.date|safe}}-{{post.data.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this {{post.data.type}}" role="switch"/>
 				{% endif %}
@@ -48,12 +54,6 @@ pagination:
 										{% endfor %}
 									</ul>
 								</div>
-							{% elseif post.data.category == "social" %}
-								<h2 aria-label="{{post.data.pagination.alias|capitalize}} post">
-									<a href="{{post.data.url|url}}" target="_blank" aria-label="View on Mastodon">
-										{% include 'svg/logos/' + post.data.pagination.alias + '.svg' %}
-									</a>
-								</h2>
 							{% endif %}
 							{% if post.data.category != "media" %}
 								<time class="time{% if post.data.category != 'code' %} time-default{% endif %}{% if post.data.category == 'social' %} time-external{% endif %}" datetime="{{post.page.date|ISO|htmlDateString}}" data-time="{{post.page.date|ISO}}" title="{{post.page.date|ISO|readableDate}}">{{post.page.date|ISO|readableDate}}</time>
@@ -160,18 +160,27 @@ pagination:
 							{% excerpt post %}
 						{% endif %}
 					</div>
-					<footer class="post-footer">
-						{% if (post.data.category == "writing") and (post.data.size != "s") %}
-							{% if post.url %}
-								<a class="button" href="{{post.url|url}}"><span><span>Read post</span></span></a>
-							{% elseif post.data.url %}
-								<a class="button button-reverse" href="{{post.data.url|url}}" target="_blank"><span><span>Read more{% if post.data.platform %} at {{post.data.platform}}{% endif %}</span></a>
+					{% if (post.data.category == "writing") or (post.data.category == "social") %}
+						<footer class="post-footer">
+							{% if post.data.category == "social" %}
+								<a class="button button-{{post.data.pagination.alias}}" href="{{post.data.url|url}}">
+									<span>
+										{% include 'svg/logos/' + post.data.pagination.alias + '.svg' %}
+										<span>View post</span>
+									</span>
+								</a>
+							{% elseif (post.data.category == "writing") and (post.data.size != "s") %}
+								{% if post.url %}
+									<a class="button" href="{{post.url|url}}"><span><span>Read post</span></span></a>
+								{% elseif post.data.url %}
+									<a class="button button-reverse" href="{{post.data.url|url}}" target="_blank"><span><span>Read more{% if post.data.platform %} at {{post.data.platform}}{% endif %}</span></a>
+								{% endif %}
+								{% for link in post.data.external %}
+									<a class="button link-platform {{link.platform}} background" href="{{link.url|url}}" target="_blank"><span><span>{% if post.data.type == "audio" %}Listen on {% elseif post.data.type == "writing" %}Read on {% else %}View on {% endif %}{% if link.title %}{{link.title}}{% else %}{{link.platform|capitalize}}{% endif %}</span></a>
+								{% endfor %}
 							{% endif %}
-							{% for link in post.data.external %}
-								<a class="button link-platform {{link.platform}} background" href="{{link.url|url}}" target="_blank"><span><span>{% if post.data.type == "audio" %}Listen on {% elseif post.data.type == "writing" %}Read on {% else %}View on {% endif %}{% if link.title %}{{link.title}}{% else %}{{link.platform|capitalize}}{% endif %}</span></a>
-							{% endfor %}
-						{% endif %}
-					</footer>
+						</footer>
+					{% endif %}
 				</div>
 			</article>
 		{% endfor %}
