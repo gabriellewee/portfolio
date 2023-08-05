@@ -26,24 +26,26 @@
 }
 
 .media-attachment {
-	transition: .2s ease-out;
 	display: block;
 	position: relative;
 	margin-top: 1em;
 	+ .media-attachment {
 		margin-top: calc(var(--p)*2);
 	}
-	&:before {
-		@include before;
-	}
-	&:focus-visible {
+	a {
+		transition: .2s ease-out;
 		&:before {
-			opacity: 1;
+			@include before(var(--color-mastodon-white));
 		}
-	}
-	&:active {
-		@media (prefers-reduced-motion: no-preference) {
-			scale: .98;
+		&:focus-visible {
+			&:before {
+				opacity: 1;
+			}
+		}
+		&:active {
+			@media (prefers-reduced-motion: no-preference) {
+				scale: .98;
+			}
 		}
 	}
 	img {
@@ -109,7 +111,7 @@
 				margin-top: .75em;
 			}
 		}
-		a:not(.media-attachment) {
+		a:not(.expand) {
 			color: var(--color-mastodon);
 			@include dark {
 				color: var(--color-mastodon-white);

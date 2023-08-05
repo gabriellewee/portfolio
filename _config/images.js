@@ -38,10 +38,17 @@ module.exports = eleventyConfig => {
     	let file = src.split(".");
     	file = file[file.length - 1];
     	if(file === "jpg") file = "jpeg";
-    	if(!loading) loading = "lazy"
+    	if(!loading) loading = "lazy";
+
+    	let newWidths;
+    	if(width > 1000) {
+    		newWidths = [width/2, width]
+    	} else {
+    		newWidths = [width, width*2]
+    	}
 
 		let stats = await Image(src, {
-			widths: [width, width*2],
+			widths: newWidths,
 			formats: ["webp", file],
 			urlPath: `/static/images/external`,
 			outputDir: `./_site/static/images/external`,

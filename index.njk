@@ -148,9 +148,11 @@ pagination:
 							{% if (post.data.category == "social") and (post.data.media) %}
 								{% for media in post.data.media %}
 									{% if media.url %}
-										<a class="media-attachment" href="{{post.data.url|url}}" target="_blank">
-											{% external media.url, media.description, 500 %}
-										</a>
+										<figure id="external-{{media.id}}" class="media-attachment" aria-label="Media attachment">
+											<a class="expand" href="#external-{{media.id}}-lightbox" aria-label="Expand image">
+												{% external media.url, media.description, 500 %}
+											</a>
+										</figure>
 									{% endif %}
 								{% endfor %}
 							{% endif %}
@@ -207,6 +209,16 @@ pagination:
 					{% endif %}
 				</figure>
 			</a>
+		{% elseif (post.data.category == "social") and (post.data.media) %}
+			{% for media in post.data.media %}
+				{% if media.url %}
+					<a class="lightbox post-lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="external-{{media.id}}-lightbox" href="#external-{{media.id}}">
+						<figure class="image">
+							{% external media.url, media.description, media.meta.original.width %}
+						</figure>
+					</a>
+				{% endif %}
+			{% endfor %}
 		{% endif %}
 	{% endfor %}
 	<div class="lightbox-background post-lightbox"></div>
