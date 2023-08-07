@@ -44,50 +44,22 @@
 		&:not(:last-child) {
 			margin-right: var(--p);
 		}
-		> span {
+		> span span {
 			display: flex;
 			align-items: flex-start;
 			align-content: flex-start;
-			background: radial-gradient(
-				circle at center left,
-				var(--color-mastodon-light) 0,
-				var(--color-mastodon) 30%,
-				var(--color-mastodon-dark) 60%,
-				var(--color-mastodon-dark) 100%,
-			) 50% 0% / 200% 100%;
-		}
-		svg {
-			transition: .2s ease-out;
-			position: relative;
-			z-index: 1;
-			width: 18px;
-			height: 18px;
-			margin-right: calc(var(--p)/2);
-			.outside {
-				fill: white;
-			}
-			.inside {
-				fill: var(--color-mastodon);
-			}
-		}
-		&:hover, &:focus {
-			> span {
-				background-position-x: 0%;
-			}
-			svg {
-				.inside {
-					fill: var(--color-mastodon-light);
-				}
-			}
-		}
-		&:active {
-			svg {
-				.inside {
-					fill: var(--color-iron);
-					@include dark {
-						fill: var(--color-slate);
-					}
-				}
+			&:before {
+				content: "";
+				display: block;
+				transition: .2s ease-out;
+				position: relative;
+				z-index: 1;
+				width: 18px;
+				height: 18px;
+				margin-right: calc(var(--p)/2);
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: top left;
 			}
 		}
 	}
@@ -151,7 +123,7 @@
 				}
 			}
 			&:focus-visible {
-				@include focus-shadow(var(--color-mastodon-white));
+				@include focus-shadow(hsla(var(--color-mastodon-white-hsl), 0.75));
 			}
 			&:active {
 				color: var(--color-mastodon-dark);
@@ -162,6 +134,27 @@
 		}
 	}
 	.post-footer .button:before, .media-attachment a:before {
-		background-color: hsla(var(--color-mastodon-white-hsl), 0.5);
+		background-color: hsla(var(--color-mastodon-white-hsl), 0.75);
+	}
+	.post-footer {
+		.button {
+			> span {
+				background: radial-gradient(
+					circle at center left,
+					var(--color-mastodon-light) 0,
+					var(--color-mastodon) 30%,
+					var(--color-mastodon-dark) 60%,
+					var(--color-mastodon-dark) 100%,
+				) 50% 0% / 200% 100%;
+				span:before {
+					background-image: url(/static/images/svg/logos/mastodon-fill.svg);
+				}
+			}
+			&:hover, &:focus {
+				> span {
+					background-position-x: 0%;
+				}
+			}
+		}
 	}
 }
