@@ -39,14 +39,14 @@
 
 				<h3>Nintendo Switch:</h3>
 				<ul class="grid">
-					{% for game in about.nintendo %}
+					{% for game in about.switch %}{% if game.archive != true %}
 						<li>
-							{% set letter = game.slug|first  %}
+							{% set letter = game.slug|first %}
 							<a class="post-external" href="https://www.nintendo.com/store/products/{{game.slug}}-switch/" target="_blank">
 								{% external "https://assets.nintendo.com/image/upload/ar_16:9,c_limit,w_1240/b_white/f_auto/q_auto/ncom/en_US/games/switch/" + letter + "/" + game.slug + "-switch/hero.jpg", game.title, 300, "eager" %}
 							</a>
 						</li>
-					{% endfor %}
+					{% endif %}{% endfor %}
 				</ul>
 				<div class="friend-code-container">
 					<label for="friend-code">Friend Code:</label>
