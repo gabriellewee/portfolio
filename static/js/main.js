@@ -295,38 +295,47 @@ const copyButtons = ((buttons = Array.from(document.querySelectorAll(".clip"))) 
 	});
 })();
 
-const animateQueries = (enter) => {
+const animateQueries = (timeline, key) => {
 	new imagesLoaded(document.body, () => {
 		if(window.scrollY > 0) {
-			enter.progress(1);
+			timeline.progress(1);
 		}
 	});
 
-	gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
-		ScrollTrigger.create({
-			trigger: document.body,
-			start: "-10",
-			end: "50",
-			once: true,
-			onEnter: () => enter.resume(),
-			onLeave: () => enter.progress(1)
+	let storageItem = `${key}PageAnimation`;
+	window.onload = () => {
+		gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
+			if (sessionStorage.getItem(storageItem) === null) {
+				ScrollTrigger.create({
+					trigger: document.body,
+					start: "-10",
+					end: "50",
+					once: true,
+					onEnter: () => timeline.resume(),
+					onLeave: () => timeline.progress(1)
+				});
+
+				document.documentElement.addEventListener("click", () => {
+					timeline.progress(1);
+				}, {once: true});
+
+				document.documentElement.addEventListener("keydown", () => {
+					timeline.progress(1);
+				}, {once: true});
+
+				sessionStorage.setItem(storageItem, true);
+			} else {
+				timeline.progress(1);
+			}
 		});
-
-		document.documentElement.addEventListener("click", () => {
-			enter.progress(1)
-		}, {once: true});
-
-		document.documentElement.addEventListener("keydown", () => {
-			enter.progress(1)
-		}, {once: true});
-	});
+	}
 
 	gsap.matchMedia().add("(prefers-reduced-motion: reduce)", () => {
-		enter.progress(1);
+		timeline.progress(1);
 	});
 }
 
-const animateItems = (items) => {
+const animateItems = (items, key) => {
 	let enter = gsap.timeline({ paused: true });
 	items.forEach(item => {
 		enter.fromTo(item, {
@@ -342,7 +351,7 @@ const animateItems = (items) => {
 		}, "<.1");
 	});
 
-	animateQueries(enter);
+	animateQueries(enter, key);
 }
 
 const targetBlankLinks = ((links = document.getElementsByTagName("a")) => {

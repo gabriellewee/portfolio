@@ -1,3 +1,4 @@
+let key = document.body.classList[0].slice(5);
 let enter = gsap.timeline({ paused: true });
 let text = document.querySelector(".text");
 let posts = Array.from(document.querySelectorAll(".post-animate"));
@@ -54,8 +55,11 @@ posts.forEach(post => {
 	}, {
 		duration: .5,
 		opacity: 1,
-		y: 0
+		y: 0,
+		onComplete() {
+			if(post.classList.contains("post-animate")) post.classList.remove("post-animate");
+	    }
 	}, "<.1");
 });
 
-animateQueries(enter);
+animateQueries(enter, key);
