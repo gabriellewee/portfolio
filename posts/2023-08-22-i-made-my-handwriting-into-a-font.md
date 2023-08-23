@@ -42,7 +42,7 @@ After a bit of research, I decided to check out [Fontself](https://apps.apple.co
 {%- set number = 3 %}{% include 'pages/posts/image.html' %}
 </div>
 
-Honestly, it’s a little bit weird to see my handwriting so neat and even. I feel like I could probably achieve this by hand if I wrot verrrrry slowly. Before editing the curves, the font looked a lot more like my everyday handwriting, but the repeated quirks in each letter looked strange to me. Making each letter more balanced and upright lent itself better to a legible font.
+Honestly, it’s a little bit weird to see my handwriting so neat and even. I feel like I could probably achieve this by hand if I wrote verrrrry slowly. Before editing the curves, the font looked a lot more like my everyday handwriting, but the repeated quirks in each letter looked strange to me. Making each letter more balanced and upright lent itself better to a legible font.
 
 I’m still not sure what I’m going to do with my new font. I would love to add a bold variant but the app is a little bit limited and I can’t edit stroke width after drawing out the character, so I’d have to start from scratch. I ran into a problem I also have with my physical handwriting — at small sizes, it’s difficult to read. I think it’s because the letters are so narrow and tall. Maybe I’ll refine it more and put it on my website. All in all, it was a really fun afternoon project!
 
