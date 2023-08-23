@@ -48,6 +48,11 @@ module.exports = eleventyConfig => {
 			return `<span> on ${platform}</span>`;
 		}
 	});
+	
+	eleventyConfig.addFilter("stripEmpty", post => {
+		post = post.replace('</figure></p>', '</figure>');
+		return post;
+	});
 
 	eleventyConfig.addShortcode('excerpt', post => {
 		if (!post.hasOwnProperty('templateContent')) {
@@ -56,14 +61,14 @@ module.exports = eleventyConfig => {
 		}
 
 		const excerptSeparator = '<!--more-->';
-		const content = post.templateContent;
+		const content = post.templateContent.replace('</figure></p>', '</figure>');
 
 		if (content.includes(excerptSeparator)) {
 			return content.substring(0, content.indexOf(excerptSeparator)).trim();
 		}
 
 		const pCloseTag = '</p>';
-			if (content.includes(pCloseTag)) {
+		if (content.includes(pCloseTag)) {
 			return content.substring(0, content.indexOf(pCloseTag) + pCloseTag.length);
 		}
 

@@ -19,7 +19,7 @@ category: writing
 					</div>
 				</header>
 				<div class="post-content post-text e-content">
-					{{content|safe}}
+					{{content|stripEmpty|safe}}
 				</div>
 				{% if external %}
 					<footer class="post-footer">
