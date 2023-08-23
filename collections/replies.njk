@@ -1,0 +1,18 @@
+---js
+{
+    tags: "replies",
+    pagination: {
+        data: "mastodon",
+        size: 1,
+        addAllPagesToCollections: true,
+        alias: "mastodon"
+    },
+    permalink: false,
+    eleventyComputed: {
+        mastodon(data) {
+            data.content = data.mastodon.content;
+            data.url = data.mastodon.url;
+        }
+    }
+}
+---

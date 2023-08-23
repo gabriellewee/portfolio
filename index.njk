@@ -163,7 +163,7 @@ pagination:
 					{% if (post.data.category == "writing") or (post.data.category == "social") %}
 						<footer class="post-footer">
 							{% if post.data.category == "social" %}
-								<a class="button button-{{post.data.pagination.alias}}" href="{{post.data.url|url}}" aria-label="View post on {{post.data.pagination.alias|capitalize}}"><span><span>View post</span></span></a>
+								<a class="button button-social button-{{post.data.pagination.alias}}" href="{{post.data.url|url}}" aria-label="View post on {{post.data.pagination.alias|capitalize}}"><span><span>View post</span></span></a>
 							{% elseif (post.data.category == "writing") and (post.data.size != "s") %}
 								{% if post.url %}
 									<a class="button" href="{{post.url|url}}"><span><span>Read post</span></span></a>

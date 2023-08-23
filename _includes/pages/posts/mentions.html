@@ -22,7 +22,16 @@
 	{% for target, webmentions in webmentions.links | groupby("target") %}
 		{% for type, webmentions in webmentions | groupby("activity.type") | dictsort %}
 			{% if target == pageLink and ((type == 'reply') or (type == 'link')) %}
-				<h3 class="mentions-{{type}}-header mentions-header">{% if type == 'reply' %}Replies{% else %}{{type|capitalize}}s{% endif %}</h3>
+				<div class="mentions-header-wrapper">
+					<h3 class="mentions-{{type}}-header mentions-header">{% if type == 'reply' %}Replies{% else %}{{type|capitalize}}s{% endif %}</h3>
+					{% if (type == 'reply') and (hidden != true) %}
+						{% for reply in collections.replies %}
+							{% if reply.data.content.includes(page.url) %}
+								<a class="button button-social button-mastodon" href="{{reply.data.url|url}}" target="_blank"><span><span>Reply on Mastodon</span></span></a>
+							{% endif %}
+						{% endfor %}
+					{% endif %}
+				</div>
 				<ul class="mentions-{{type}}-content mentions-content">
 					{% for webmention in webmentions %}
 						<li>
@@ -58,6 +67,4 @@
 			{% endif %}
 		{% endfor %}
 	{% endfor %}
-
-	<div class="giscus"></div>
 </aside>

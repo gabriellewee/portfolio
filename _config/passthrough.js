@@ -2,7 +2,6 @@ module.exports = eleventyConfig => {
 	[
 		"robots.txt",
 		"contact.vcf",
-		"static/css/giscus.css",
 		"static/fonts",
 		"static/css/fonts",
 		"static/images",

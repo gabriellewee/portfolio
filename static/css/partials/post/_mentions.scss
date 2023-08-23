@@ -1,25 +1,57 @@
 .mentions {
 	display: flex;
 	flex-direction: column;
-
-	.giscus:not(:empty) {
-		@include clip-path-edges(2px);
-		margin-top: calc(var(--p)*2);
-		padding: calc(var(--p)*2);
-		background: hsla(var(--color-white-hsl), .75);
-		@include dark {
-			background: hsla(var(--color-iron-8-hsl), .65)
-		}
+	@supports (container-type: inline-size) {
+		container-type: inline-size;
+		container-name: mentions;
 	}
-
 	.mentions-header {
 		@include font-weight-width(800, 120);
 		font-size: 2rem;
-		margin-top: calc(var(--p)*3);
+		margin-top: calc(var(--p)*2.5);
 		margin-bottom: calc(var(--p)*1.5);
 		grid-column: 1/-1;
 		@include viewport(mobile) {
 			font-size: 2.25rem;
+		}
+	}
+	.mentions-header-wrapper {
+		grid-column: 1/-1;
+		margin-top: calc(var(--p)*2.5);
+		margin-bottom: calc(var(--p)*1.5);
+		@supports not(container-type: inline-size) {
+			@include viewport(mobile) {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				align-content: center;
+			}
+		}
+		@container mentions (min-width: 480px) {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			align-content: center;
+		}
+		.mentions-header {
+			grid-column: unset;
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+		.button {
+			display: inline-block;
+			margin-top: calc(var(--p)*1.75);
+			margin-bottom: calc(var(--p)/2);
+			@supports not(container-type: inline-size) {
+				@include viewport(mobile) {
+					margin-top: 0;
+					margin-bottom: 0;
+				}
+			}
+			@container mentions (min-width: 480px) {
+				margin-top: 0;
+				margin-bottom: 0;
+			}
 		}
 	}
 	.mentions-content {
@@ -149,6 +181,7 @@
 	}
 	.reply {
 		font-size: 1.125rem;
+		line-height: 1.334;
 		margin-top: var(--p);
 		@include viewport(mobile) {
 			margin-top: calc(var(--p)/2);

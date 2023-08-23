@@ -145,24 +145,6 @@
 			<script src="{{'/static/js/text.min.js'|url}}"></script>
 			<script src="{{'/static/js/pages/home.js'|url}}"></script>
 		{% endif %}
-		{% if (key == "post") and (archive != true) and (comments != false) %}
-			<script src="https://giscus.app/client.js"
-				data-repo="gabriellewee/portfolio"
-				data-repo-id="MDEwOlJlcG9zaXRvcnkzNTIwMDk1Mg=="
-				data-category="General"
-				data-category-id="DIC_kwDOAhkfuM4CT8l0"
-				data-mapping="og:title"
-				data-strict="0"
-				data-reactions-enabled="1"
-				data-emit-metadata="0"
-				data-input-position="top"
-				data-theme="{{site.url}}/static/css/giscus.css"
-				data-lang="en"
-				data-loading="lazy"
-				crossorigin="anonymous"
-				async>
-			</script>
-		{% endif %}
 	{% endif %}
 	<script>document.body.addEventListener('touchstart', function() {}, {passive: true});</script>
 </body>

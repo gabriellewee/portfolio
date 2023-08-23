@@ -38,29 +38,10 @@
 		margin-top: calc(var(--p)/2);
 		padding: 0 calc(var(--p)*2) calc(var(--p)*2);
 	}
-	.button {
+	.button-social {
 		margin-top: var(--p);
-		line-height: 1.125;
 		&:not(:last-child) {
 			margin-right: var(--p);
-		}
-		> span span {
-			display: flex;
-			align-items: flex-start;
-			align-content: flex-start;
-			&:before {
-				content: "";
-				display: block;
-				transition: .2s ease-out;
-				position: relative;
-				z-index: 1;
-				width: 18px;
-				height: 18px;
-				margin-right: calc(var(--p)/2);
-				background-size: contain;
-				background-repeat: no-repeat;
-				background-position: top left;
-			}
 		}
 	}
 }
@@ -133,28 +114,7 @@
 			}
 		}
 	}
-	.post-footer .button:before, .media-attachment a:before {
+	.media-attachment a:before {
 		background-color: hsla(var(--color-mastodon-white-hsl), 0.75);
-	}
-	.post-footer {
-		.button {
-			> span {
-				background: radial-gradient(
-					circle at center left,
-					var(--color-mastodon-light) 0,
-					var(--color-mastodon) 30%,
-					var(--color-mastodon-dark) 60%,
-					var(--color-mastodon-dark) 100%,
-				) 50% 0% / 200% 100%;
-				span:before {
-					background-image: url(/static/images/svg/logos/mastodon-fill.svg);
-				}
-			}
-			&:hover, &:focus {
-				> span {
-					background-position-x: 0%;
-				}
-			}
-		}
 	}
 }

@@ -29,11 +29,6 @@
 		"_site/static/images/posts/built"
 	]
 
-[[headers]]
-	for = "/static/css/giscus.css"
-	[headers.values]
-		Access-Control-Allow-Origin = "*"
-
 [[redirects]]
 	from = "http://gabriellewee.netlify.app/*"
 	to = "http://gabriellew.ee/:splat"
