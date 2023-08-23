@@ -29,14 +29,14 @@ const lightbox = (buttons) => {
 			ScrollTrigger.create({
 				trigger: document.body,
 				start: `${scrollPosition}`,
-				end: `+=500`,
+				end: `${scrollPosition + 320}`,
 				once: true,
 				onLeave: () => deactivate()
 			});
 			ScrollTrigger.create({
 				trigger: document.body,
-				start: `+=${scrollPosition - 500}`,
-				end: `+=${scrollPosition}`,
+				start: `${scrollPosition - 320}`,
+				end: `${scrollPosition}`,
 				once: true,
 				onLeaveBack: () => deactivate()
 			});
