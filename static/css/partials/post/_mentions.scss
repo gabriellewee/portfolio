@@ -5,6 +5,21 @@
 		container-type: inline-size;
 		container-name: mentions;
 	}
+	> .button {
+		&:not(:only-child) {
+			display: none;
+		}
+		&:only-child {
+			align-self: flex-start;
+			margin-top: calc(var(--p)*2);
+		}
+	}
+	.mentions-like-content + .button,
+	.mentions-repost-content + .button {
+		display: block;
+		align-self: flex-start;
+		margin-top: calc(var(--p)*2);
+	}
 	.mentions-header {
 		@include font-weight-width(800, 120);
 		font-size: 2rem;

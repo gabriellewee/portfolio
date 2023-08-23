@@ -33,7 +33,7 @@
 					{% endif %}
 				</div>
 				<ul class="mentions-{{type}}-content mentions-content">
-					{% for webmention in webmentions %}
+					{% for webmention in webmentions | sort(attribute="data.published_ts") | reverse %}
 						<li>
 							{% if webmention.data.author.photo %}
 								<a class="avatar" title="{{webmention.data.author.name}}" href="{% if type == 'repost' %}{{webmention.data.url}}{% else %}{{webmention.data.author.url}}{% endif %}" target="_blank">
@@ -66,5 +66,11 @@
 				</ul>
 			{% endif %}
 		{% endfor %}
+	{% endfor %}
+
+	{% for reply in collections.replies %}
+		{% if reply.data.content.includes(page.url) %}
+			<a class="button button-social button-mastodon" href="{{reply.data.url|url}}" target="_blank"><span><span>Reply on Mastodon</span></span></a>
+		{% endif %}
 	{% endfor %}
 </aside>
