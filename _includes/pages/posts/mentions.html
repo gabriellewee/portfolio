@@ -28,9 +28,9 @@
 				<div class="mentions-header-wrapper mentions-{{type}}-header-wrapper">
 					<h3 class="mentions-{{type}}-header mentions-header">{% if type == 'reply' %}Replies{% else %}{{type|capitalize}}s{% endif %}</h3>
 					{% if (type == 'reply') and (hidden != true) %}
-						{% for reply in collections.replies %}
-							{% if reply.data.content.includes(page.url) %}
-								<a class="button button-social button-mastodon" href="{{reply.data.url|url}}" target="_blank"><span><span>Reply on Mastodon</span></span></a>
+						{% for source in collections.sources %}
+							{% if source.data.content.includes(pageLink) %}
+								<a class="button button-social button-mastodon" href="{{source.data.url|url}}" target="_blank"><span><span>Reply on Mastodon</span></span></a>
 							{% endif %}
 						{% endfor %}
 					{% endif %}
@@ -71,9 +71,9 @@
 		{% endfor %}
 	{% endfor %}
 
-	{% for reply in collections.replies %}
-		{% if reply.data.content.includes(page.url) %}
-			<a class="button button-social button-mastodon" href="{{reply.data.url|url}}" target="_blank"><span><span>Reply on Mastodon</span></span></a>
+	{% for source in collections.sources %}
+		{% if source.data.content.includes(pageLink) %}
+			<a class="button button-social button-mastodon" href="{{source.data.url|url}}" target="_blank"><span><span>Reply on Mastodon</span></span></a>
 		{% endif %}
 	{% endfor %}
 </aside>
