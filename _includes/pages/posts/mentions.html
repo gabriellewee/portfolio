@@ -21,8 +21,11 @@
 
 	{% for target, webmentions in webmentions.links | groupby("target") %}
 		{% for type, webmentions in webmentions | groupby("activity.type") | dictsort %}
+			{% if type == 'null' %}
+				{% set type = 'reply' %}
+			{% endif %}
 			{% if target == pageLink and ((type == 'reply') or (type == 'link')) %}
-				<div class="mentions-header-wrapper">
+				<div class="mentions-header-wrapper mentions-{{type}}-header-wrapper">
 					<h3 class="mentions-{{type}}-header mentions-header">{% if type == 'reply' %}Replies{% else %}{{type|capitalize}}s{% endif %}</h3>
 					{% if (type == 'reply') and (hidden != true) %}
 						{% for reply in collections.replies %}
@@ -33,7 +36,7 @@
 					{% endif %}
 				</div>
 				<ul class="mentions-{{type}}-content mentions-content">
-					{% for webmention in webmentions | sort(attribute="data.published_ts") | reverse %}
+					{% for webmention in webmentions | sort(attribute="verified_date") | sort(attribute="data.published") | sort(attribute="data.published_ts") | reverse %}
 						<li>
 							{% if webmention.data.author.photo %}
 								<a class="avatar" title="{{webmention.data.author.name}}" href="{% if type == 'repost' %}{{webmention.data.url}}{% else %}{{webmention.data.author.url}}{% endif %}" target="_blank">

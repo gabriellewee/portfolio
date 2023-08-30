@@ -69,6 +69,12 @@
 			}
 		}
 	}
+	.mentions-reply-content + .mentions-reply-header-wrapper {
+		display: none;
+		+ .mentions-reply-content {
+			margin-top: calc(var(--p)*2);
+		}
+	}
 	.mentions-content {
 		list-style: none;
 	}
