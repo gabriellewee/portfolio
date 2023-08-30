@@ -20,7 +20,7 @@
             if (data.mastodon.reblogs_count > 0) data.reblogs = data.mastodon.reblogs_count;
             if (data.mastodon.favourites_count > 0) data.favourites = data.mastodon.favourites_count;
             if (data.mastodon.in_reply_to_account_id || data.mastodon.content.includes("https://gabriellew.ee") || data.mastodon.visibility != "public") data.tags = "";
-            if (data.mastodon.content.length < 75) data.size = "xs";
+            if (data.mastodon.content.length < 120) data.tags = "";
         }
     }
 }
