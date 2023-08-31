@@ -1,3 +1,7 @@
+:root {
+	color-scheme: light dark;
+}
+
 html {
 	text-size-adjust: 100%;
 	height: 100vh;
@@ -41,11 +45,17 @@ a {
 ::-moz-selection {
 	background-color: var(--color-iron);
 	color: white;
+	@include dark {
+		background-color: hsla(var(--color-white-hsl), .2);
+	}
 }
 
 ::selection {
 	background-color: var(--color-iron);
 	color: white;
+	@include dark {
+		background-color: hsla(var(--color-white-hsl), .2);
+	}
 }
 
 figure, picture, img {

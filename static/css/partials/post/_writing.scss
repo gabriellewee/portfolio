@@ -34,7 +34,7 @@
 				span {
 					text-decoration-color: var(--color-iron-1);
 					@include dark {
-						text-decoration-color: var(--color-iron-10);
+						text-decoration-color: var(--color-slate);
 					}
 				}
 			}
@@ -68,7 +68,7 @@
 					span {
 						@include gradient-text(var(--color-iron-1-hsl), var(--color-iron-12-hsl), true);
 						@include dark {
-							@include gradient-text(var(--color-iron-10-hsl), var(--color-iron-12-hsl), true);
+							@include gradient-text(var(--color-slate-hsl), var(--color-iron-white-80-hsl), true);
 						}
 					}
 				}

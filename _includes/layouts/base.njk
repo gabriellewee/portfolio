@@ -20,15 +20,11 @@
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?update={% icondate %}">
 	<link rel="manifest" href="/manifest.webmanifest">
 
-	{% if theme %}
-		<meta name="theme-color" content="{{theme}}">
-	{% else %}
-		<meta name="theme-color" content="#fcf1ef">
-	{% endif %}
 	<meta name="application-name" content="{{site.author}}">
 	<meta name="description" content="{{description}}">
 	<meta name="msapplication-config" content="/browserconfig.xml">
 
+	<meta name="color-scheme" content="light dark">
 	{% if theme %}
 		<meta name="theme-color" content="{{theme}}">
 	{% else %}

@@ -316,6 +316,9 @@
 			text-decoration: underline;
 			text-decoration-thickness: 1.5px;
 			text-underline-offset: 2px;
+			@include dark {
+				filter: brightness(1.2);
+			}
 			&:hover, &:focus {
 				@include gradient-text(var(--color-rose-hsl), var(--color-mauve-hsl), true);
 			}
