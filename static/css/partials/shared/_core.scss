@@ -23,6 +23,7 @@ body {
 	background-color: var(--color-blush-8);
 	color: var(--color-iron);
 	font-family: var(--font-default);
+    font-feature-settings: "liga","ss01";
 	@include dark {
 		background-color: var(--color-iron-5);
 		color: white;
