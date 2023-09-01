@@ -54,6 +54,11 @@ module.exports = eleventyConfig => {
 		return post;
 	});
 
+	eleventyConfig.addFilter("removeEmoji", name => {
+		name = name.replace(/ :(.*?):$/g, '');
+		return name;
+	});
+
 	eleventyConfig.addShortcode('excerpt', post => {
 		if (!post.hasOwnProperty('templateContent')) {
 			console.warn('❌ Failed to extract excerpt: Document has no property `templateContent`.');

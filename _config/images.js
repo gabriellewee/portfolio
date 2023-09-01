@@ -39,6 +39,7 @@ module.exports = eleventyConfig => {
     	file = file[file.length - 1];
     	if(file === "jpg") file = "jpeg";
     	if(!loading) loading = "lazy";
+    	alt = alt.replace(/ :(.*?):$/g, '');
 
     	let newWidths;
     	if(width > 1000) {
