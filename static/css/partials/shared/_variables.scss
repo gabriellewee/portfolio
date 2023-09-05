@@ -2,8 +2,8 @@
 	--p:12px;
 	--width:70rem;
 
-	--font-mono:'Dank Mono','Inconsolata','Consolas',Monaco,'Lucida Console',Menlo,Terminal,monospace;
-	--font-default:system-ui,-apple-system,BlinkMacSystemFont,"Mona Sans",Roboto,Ubuntu,Cantarell,Helvetica,Arial,sans-serif;
+	--font-mono:'Dank Mono',ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+	--font-default:-apple-system,"Mona Sans",system-ui,BlinkMacSystemFont,Roboto,Ubuntu,Cantarell,Helvetica,Arial,sans-serif;
 	
 	--color-white-hsl:#{hexToHSL(#fff)};
 	--color-iron-white:#{mix($iron,white)};
