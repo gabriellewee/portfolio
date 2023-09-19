@@ -1,0 +1,1879 @@
+// custom colors
+$iron: #263238; $blush: #F5C8BF; $rose: #D19487; $mauve: #B2738E; $slate: #577783; $mint: #8BB29A; $oak: #D1AE87; $grey: #C5C1C6;
+$g1: lighten($grey, 10%); $g2: lighten($grey, 2%); $g3: darken($grey, 15%); $hi: $blush; $wh: #fcfcfc; $bl: $iron; $bg: mix($mauve, #fbe6e2, 20%);
+
+// url
+$url: "/static/code/images/windows-95/";
+
+// update below here
+
+// arrows
+$up: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAMElEQVQokWP8//8/AymAiSTVA6dBzdgCp8cwNMAU49LEhE0xPpuY8EliE2ccBvEAAGLfEQE9MAhjAAAAAElFTkSuQmCC';
+$dn: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAOklEQVQokWP8//8/AymAiSTVdNHAAmOoGVvg9MytsycYsdnAiEUthji6k9A1YRiCzQ+MaDSq5DCIBwDz6goZAxDEewAAAABJRU5ErkJggg==';
+$lt: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAPUlEQVQokWP8//8/AymAiSTVhDSoGVtgWI9TAzbFODXgUoxVAz7FWDXcOnuCkSQNhDTh9DQuTYwDG3HYAACS4BOhZHfptgAAAABJRU5ErkJggg==';
+$rt: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAWElEQVQokWP8//8/AymAiSTVDAwMLOgCasYW/xkYGBhh/FtnTxBlA053Ymjg/vcTryYMDV+Z2PHahNPTUJsY0cVxavjKxI6hGJ8GrIoZGBgYGGkecSRrAABJOBMT7b9GFQAAAABJRU5ErkJggg==';
+$re: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAN0lEQVR4Ae3MgQUAMBRDwU5fFF05lb/CARTBw2Ulof0DxPtcwp3hNuEYnjbcEW4TjuFpwx3h9gMWGgZ2Y/PT2gAAAABJRU5ErkJggg==';
+$x: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOHB4IiBoZWlnaHQ9IjdweCIgdmlld0JveD0iMCAwIDggNyIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgPHBvbHlnb24gc3Ryb2tlPSJub25lIiBmaWxsPSIjMjYzMjM4IiBwb2ludHM9IjMgMyAyIDMgMiAyIDEgMiAxIDEgMCAxIDAgMCAyIDAgMiAxIDMgMSAzIDIgNSAyIDUgMSA2IDEgNiAwIDggMCA4IDEgNyAxIDcgMiA2IDIgNiAzIDUgMyA1IDQgNiA0IDYgNSA3IDUgNyA2IDggNiA4IDcgNiA3IDYgNiA1IDYgNSA1IDMgNSAzIDYgMiA2IDIgNyAwIDcgMCA2IDEgNiAxIDUgMiA1IDIgNCAzIDQiPjwvcG9seWdvbj4KPC9zdmc+';
+$y: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iN3B4IiBoZWlnaHQ9IjdweCIgdmlld0JveD0iMCAwIDcgNyIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxwb2x5Z29uIHN0cm9rZT0ibm9uZSIgZmlsbD0iIzI2MzIzOCIgcG9pbnRzPSI0IDYgMyA2IDMgNyAyIDcgMiA2IDEgNiAxIDUgMCA1IDAgMiAxIDIgMSAzIDIgMyAyIDQgMyA0IDMgMyA0IDMgNCAyIDUgMiA1IDEgNiAxIDYgMCA3IDAgNyAzIDYgMyA2IDQgNSA0IDUgNSA0IDUiPjwvcG9seWdvbj4KPC9zdmc+';
+$o: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNnB4IiBoZWlnaHQ9IjZweCIgdmlld0JveD0iMCAwIDYgNiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxwb2x5Z29uIHN0cm9rZT0ibm9uZSIgZmlsbD0iIzI2MzIzOCIgcG9pbnRzPSI1IDAgNSAxIDYgMSA2IDUgNSA1IDUgNiAxIDYgMSA1IDAgNSAwIDEgMSAxIDEgMCI+PC9wb2x5Z29uPgo8L3N2Zz4=';
+$q: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNnB4IiBoZWlnaHQ9IjlweCIgdmlld0JveD0iMCAwIDYgOSIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KPGcgZmlsbD0iIzFBMkMzNCI+Cjxwb2x5Z29uIHBvaW50cz0iMyA0IDMgMyA0IDMgNCAxIDIgMSAyIDMgMCAzIDAgMSAxIDEgMSAwIDUgMCA1IDEgNiAxIDYgMyA1IDMgNSA0IDQgNCA0IDYgMiA2IDIgNCI+PC9wb2x5Z29uPgo8cmVjdCB4PSIyIiB5PSI3IiB3aWR0aD0iMiIgaGVpZ2h0PSIyIj48L3JlY3Q+CjwvZz4KPC9zdmc+';
+
+// mixins
+@mixin ch($c: $g2, $s: 1px, $b: $wh) {
+	background-color: $b;
+	background-image: linear-gradient(45deg, $c 25%, transparent 25%, transparent 75%, $c 75%, $c), 
+		linear-gradient(45deg, $c 25%, transparent 25%, transparent 75%, $c 75%, $c);
+	background-size: $s*2 $s*2;
+	background-position: 0 0, $s $s;
+}
+@mixin bt($w, $d: default, $c: true) {
+	@include sh($w, $d);
+	@if $c == true {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding-bottom: $w*.5;
+	} @else {
+		padding: $w*2;
+	}
+	z-index: 4;
+	background: $g2;
+}
+@mixin sh($w, $d: default) {
+	@if $d == default {
+		box-shadow: inset #{-$w*.5} #{-$w*.5} 0 0 $bl, inset #{$w*.5} #{$w*.5} 0 0 $wh, inset #{-$w} #{-$w} 0 0 $g3, inset $w $w 0 0 $g1;
+	} @else if $d == window {
+		box-shadow: inset #{-$w*.5} #{-$w*.5} 0 0 $bl, inset #{$w*.5} #{$w*.5} 0 0 $g1, inset #{-$w} #{-$w} 0 0 $g3, inset $w $w 0 0 $wh;
+	} @else if $d == button {
+		box-shadow: inset #{-$w*.5} #{-$w*.5} 0 0 $bl, inset #{$w*.5} #{$w*.5} 0 0 $wh, inset #{-$w} #{-$w} 0 0 $g3, inset $w $w 0 0 $g2;
+		padding-bottom: $w*.5;
+		padding-right: $w*.5;
+	} @else if $d == button-reverse {
+		box-shadow: inset #{-$w*.5} #{-$w*.5} 0 0 $wh, inset #{$w*.5} #{$w*.5} 0 0 $bl, inset #{-$w} #{-$w} 0 0 $g2, inset $w $w 0 0 $g3;
+		padding-bottom: $w*.5;
+		padding-right: $w*.5;
+	} @else if $d == button-strong {
+		box-shadow: inset #{-$w} #{-$w} 0 0 $bl, inset #{$w*.5} #{$w*.5} 0 0 $bl, inset #{-$w*1.5} #{-$w*1.5} 0 0 $g3, inset $w $w 0 0 $wh;
+		padding-bottom: $w*.5;
+	} @else if $d == button-strong-pressed {
+		box-shadow: inset #{-$w*.5} #{-$w*.5} 0 0 $bl, inset #{$w*.5} #{$w*.5} 0 0 $bl, inset #{-$w} #{-$w} 0 0 $g3, inset $w $w 0 0 $g3;
+		padding-bottom: $w*.5;
+	} @else if $d == inside {
+		box-shadow: inset #{-$w*.5} #{-$w*.5} 0 0 $wh, inset #{$w*.5} #{$w*.5} 0 0 $g3, inset #{-$w} #{-$w} 0 0 $g2, inset $w $w 0 0 $bl;
+		padding: $w;
+	} @else if $d == inset {
+		box-shadow: inset #{-$w*.5} #{-$w*.5} 0 0 $wh, inset #{$w*.5} #{$w*.5} 0 0 $g3;
+	} @else if $d == hide {
+		box-shadow: inset #{-$w*.5} 0 0 0 $bl, inset #{$w*.5} #{$w*.5} 0 0 $wh, inset #{-$w} 0 0 0 $g3, inset $w $w 0 0 $g1;
+	} @else if $d == fieldset {
+		box-shadow: inset #{-$w*.5} #{-$w*.5} 0 0 $wh, inset #{$w*.5} #{$w*.5} 0 0 $g3, inset #{-$w} #{-$w} 0 0 $g3, inset $w $w 0 0 $wh;
+	}
+}
+@mixin nb {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+@mixin fl {
+	&:first-letter {
+		text-decoration: underline;
+	}
+}
+@mixin li {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+	width: 116px;
+	&:before, &:after {
+		width: 48px;
+		height: 48px;
+	}
+	&:before {
+		margin-bottom: 6px;
+	}
+	&:after {
+		left: 36px;
+	}
+	span {
+		padding: 1px;
+		border: 1.5px solid transparent;
+	}
+}
+@mixin ta {
+	@include bt(3px, button-reverse);
+	@include ch($wh, 1.5px, transparent);
+	justify-content: flex-start;
+}
+
+// fonts
+@font-face {
+	font-family: "MS Sans Serif";
+	src: url("#{$url}ms-sans-serif.woff2") format("woff2");
+	font-weight: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "MS Sans Serif";
+	src: url("#{$url}ms-sans-serif-bold.woff2") format("woff2");
+	font-weight: bold;
+	font-display: swap;
+}
+
+// base styles
+*, *:before, *:after {
+	cursor: default;
+	box-sizing: border-box;
+	image-rendering: pixelated;
+	font-family: "MS Sans Serif", Tahoma, Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	text-decoration-thickness: 1.5px;
+	text-underline-offset: 1px;
+	// cursor: default;
+	// cursor: url("#{$url}cursor.png") 0 0, pointer;
+	// cursor: url("#{$url}cursor.svg") 0 0, pointer;
+	// cursor: -webkit-image-set(url("#{$url}cursor.png") 1x, url("https://assets.codepen.io/345377/cursor@2x.png") 2x) 0 0, pointer;
+}
+*:not(textarea, input) {
+	user-select: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+*:focus { outline: none; }
+::selection { background: none; }
+body, html { height: 100%; }
+body {
+	margin: 0;
+	background-color: $bg;
+	color: $bl;
+	line-height: 1;
+	overflow: hidden;
+}
+textarea {
+	display: block;
+	border: 0;
+	padding: 3px;
+	width: 100%;
+	height: 100%;
+	resize: none;
+	overflow: scroll;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 1.4;
+	&::selection {
+		background-color: $slate;
+		-webkit-tap-highlight-color: $slate;
+		color: white;
+	}
+}
+.textarea-container {
+	@include sh(3px, inside);
+}
+[hidden] {
+	appearance: none;
+	visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 0;
+}
+
+// menu and label styles
+menu, ul:not(.information ul), ol {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.underline {
+	> li {
+		> a, > label {
+			&:not(.no-line) {
+				&, > span, .line {
+					@include fl;
+				}
+				> span span:not(.line) {
+					&:first-letter {
+						text-decoration: none;
+					}
+				}
+				.line {
+					display: inline-block;
+				}
+			}
+		}
+	}
+}
+label, a {
+	&:before, &:after {
+		content: "";
+		background-position: center center;
+		background-size: contain;
+	}
+}
+label[tabindex] {
+	span {
+		padding: 1px 2px;
+		span {
+			padding: 0;
+		}
+	}
+}
+[class*="label"]:not(.folders label):not(.label-nested) {
+	&:after {
+		@include ch($mauve, 1.5px, transparent);
+		display: block;
+		opacity: 0;
+		position: absolute;
+		top: 0;
+		mask-position: center;
+		mask-size: cover;
+	}
+	&[tabindex] {
+		&:active, &:focus {
+			&:after {
+				opacity: 1;
+			}
+		}
+	}
+}
+.label-nested {
+	&:after {
+		position: absolute;
+		right: 6px;
+		width: 16px;
+		height: 16px;
+		background-image: url($rt);
+		background-size: 16px 16px;
+	}
+	&:hover:after {
+		filter: invert(1) brightness(200%);
+	}
+}
+li:hover > .label-nested {
+	&:after {
+		filter: invert(1) brightness(200%);
+	}
+}
+
+// icons
+$icons: folder-programs, folder-documents, settings, find, help, run, shut-down, notepad, folder-explorer, document-text, control-panel, folder-printers, desktop, computer, disk, diskette, folder, recycle-bin, inbox, program, program-config, document-windows, hardware, add-programs, date-time, document-misc, document-config, document-font, grpconv, folder-fonts-link, computer-display, modems, keyboard, internet, joystick, mouse, multimedia, network, passwords, battery, regional, folder-printers-link, computer-sounds, computer-mouse, document-printer, printer, volume, wordpad;
+@each $icon in $icons {
+	.label-#{$icon} {
+		&:before {
+			background-image: url("#{$url}#{$icon}.png");
+			background-repeat: no-repeat;
+		}
+		&:not(.folders label):not(.label-nested) {
+			&:after {
+				mask-image: url("#{$url}#{$icon}.png");
+			}
+		}
+	}
+	.label-#{$icon}-small {
+		&:before {
+			background-image: url("#{$url}#{$icon}-small.png");
+			background-repeat: no-repeat;
+		}
+		&:not(.folders label):not(.label-nested) {
+			&:after {
+				mask-image: url("#{$url}#{$icon}-small.png");
+			}
+		}
+	}
+}
+$large-icons: taskbar, customize-start-menu, recycle-bin-folder;
+@each $icon in $large-icons {
+	.label-#{$icon}:before {
+		background-image: url("#{$url}#{$icon}.png");
+		background-repeat: no-repeat;
+	}
+}
+
+// buttons
+.button {
+	@include bt(3px, button);
+	appearance: none;
+	display: flex;
+	align-items: center;
+	border: 0;
+	padding-left: 6px;
+	padding-right: 6px;
+	width: 120px;
+	height: 36px;
+	background: none;
+	text-align: center;
+	&.underline {
+		span {
+			@include fl;
+		}
+	}
+	+ .button {
+		margin-left: 10px;
+	}
+	> span {
+		display: block;
+		width: 100%;
+		line-height: 22px;
+		border: 1px dotted transparent;
+		padding: 0 !important;
+		@media (min-width: 500px) {
+			border-width: 1.5px;
+		}
+	}
+	&[disabled] {
+		color: $g3;
+		pointer-events: none;
+	}
+	&:not([disabled]) {
+		&:focus {
+			@include bt(3px, button-strong);
+		}
+		&:active {
+			@include bt(3px, button-strong-pressed);
+		}
+		&:focus, &:active {
+			span {
+				border-color: $bl;
+				color: $bl;
+				background: none;
+			}
+		}
+	}
+}
+
+// desktop
+#desktop {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: calc(100vh - 44px);
+}
+#icons {
+	position: relative;
+	z-index: 1;
+	padding-top: 3px;
+	height: 100%;
+}
+.desktop-icon {
+	@include li;
+	&:not(:first-child) {
+		margin-top: 40px;
+	}
+	&[tabindex] {
+		&:active, &:focus {
+			span {
+				background: $mauve;
+				color: white;
+				border: 1px dotted $oak;
+				@media (min-width: 500px) {
+					border-width: 1.5px;
+				}
+			}
+		}
+	}
+}
+
+// windows and alerts
+#windows, #alerts {
+	display: grid;
+	place-items: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: calc(100% + 44px);
+	padding-bottom: 44px;
+}
+.window, .alert {
+	@include bt(3px, window, false);
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	z-index: -1;
+	background: $g2;
+	&-inside {
+		max-width: calc(100vw - 36px);
+		max-height: calc(100vh - 44px - 12px);
+		min-width: 300px;
+		min-height: 200px;
+		overflow: hidden;
+		resize: both;
+		&::-webkit-resizer {
+			display: none;
+		}
+	}
+}
+.window-nav {
+	background-color: $g3;
+}
+.alert-nav {
+	background-color: $slate;
+}
+.window-nav, .alert-nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 28px;
+	padding: 0 3px;
+	color: white;
+	&:before, &:after {
+		content: unset;
+	}
+	h3 {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		width: calc(100% - 69px);
+		margin: 0;
+		line-height: 28px;
+		&[class*="label"]:before {
+			content: "";
+			display: block;
+			width: 24px;
+			height: 24px;
+			margin-right: 6px;
+			background-size: contain;
+		}
+		&[class*="label"] span:only-child {
+			@include nb;
+			width: calc(100% - 24px - 6px);
+		}
+		&:not([class*="label"]) {
+			padding: 0 3px;
+		}
+	}
+	.buttons {
+		display: flex;
+		label {
+			@include bt(3px, button);
+			position: relative;
+			width: 22px;
+			height: 20px;
+			background: $g2;
+			&[disabled] {
+				pointer-events: none;
+				&:after {
+					opacity: 0.4;
+				}
+			}
+			&:last-child {
+				margin-left: 3px;
+			}
+			&.minimize {
+				&:after {
+					display: block;
+					position: absolute;
+					bottom: 4.5px;
+					left: 5px;
+					width: 10px;
+					height: 3px;
+					background: $bl;
+				}
+			}
+			&.maximize {
+				&:before, &:after {
+					content: "";
+					display: block;
+					position: absolute;
+					width: 12px;
+					height: 12px;
+					border: 1.5px solid $bl;
+					border-top-width: 3px;
+					background-color: $g2;
+				}
+				&:before {
+					visibility: hidden;
+				}
+			}
+			&.close {
+				&:after {
+					content: "";
+					background-image: url($x);
+					width: 12px;
+					height: 10px;
+				}
+			}
+			&.question {
+				&:after {
+					content: "";
+					background-image: url($q);
+					width: 9px;
+					height: 14px;
+				}
+			}
+			&:not([disabled]):active {
+				@include sh(3px, button-reverse);
+			}
+		}
+	}
+}
+.window-menu {
+	display: flex;
+	position: relative;
+	line-height: 25px;
+	padding: 1.5px 0;
+	li {
+		position: relative;
+	}
+	> li {
+		&:has(> .sub-menu:hover) > a {
+			background-color: $slate;
+			color: white;
+		}
+		> a {
+			display: block;
+			padding: 0 10px;
+			text-decoration: none;
+			color: $iron;
+			&:before, &:after {
+				content: unset;
+			}
+			&:hover {
+				background-color: $slate;
+				color: white;
+				+ menu {
+					visibility: visible;
+					opacity: 1;
+					z-index: 3;
+				}
+			}
+		}
+	}
+	.sub-menu {
+		@include bt(3px, window, false);
+		background: $g2;
+		position: absolute;
+		width: 190px;
+		z-index: -1;
+		visibility: hidden;
+		opacity: 0;
+		&:hover {
+			visibility: visible;
+			opacity: 1;
+			z-index: 3;
+		}
+		.sub-menu {
+			top: -6px;
+			left: calc(100% - 6px);
+		}
+		li {
+			&:hover {
+				> label, > a {
+					background-color: $slate;
+					color: white;
+				}
+			}
+			label:not(.label-check) {
+				display: block;
+				&:before, &:after {
+					content: unset;
+				}
+			}
+			> a {
+				display: flex;
+				align-items: center;
+				align-content: center;
+			}
+			> a, > label {
+				padding-left: 32px;
+				line-height: 28px;
+				&:hover {
+					background-color: $slate;
+				}
+				&:not(.label-disabled):hover {
+					color: white;
+				}
+				&.label-disabled {
+					color: $g3;
+				}
+			}
+			a:hover ~ .sub-menu {
+				visibility: visible;
+				opacity: 1;
+				z-index: 4;
+			}
+			.label-check {
+				display: flex;
+				padding-left: 0;
+				&:before {
+					visibility: hidden;
+					content: "";
+					display: block;
+					background-repeat: no-repeat;
+					background-position: center;
+					width: 32px;
+					height: 28px;
+				}
+				&:hover:before {
+					filter: invert(1) brightness(200%);
+				}
+			}
+		}
+		hr {
+			margin: 4px 0;
+			border: 0;
+			height: 3px;
+			width: 100%;
+			background: linear-gradient(to bottom, $g3 0%, $g3 50%, $wh 50%);
+		}
+	}
+	.label-status-bar:before {
+		background-image: url($y);
+		background-size: 10px 10px;
+	}
+	.label-icon-size:before {
+		background-image: url($o);
+		background-size: 8px 8px;
+	}
+}
+.toggle-menu-label {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+}
+.toggle-menu:not(:checked) ~ .window-inside {
+	.window-menu > li > a:hover {
+		background-color: unset;
+		color: $iron;
+		+ .sub-menu {
+			visibility: hidden;
+			opacity: 0;
+			z-index: -1;
+		}
+	}
+}
+.toggle-menu:checked ~ .window-inside .toggle-menu-label {
+	z-index: -1;
+}
+.window-footer {
+	.window-content & {
+		display: none;
+		width: 100%;
+		height: 26px;
+		margin-top: 3px;
+		ul {
+			@include sh(3px, inset);
+			position: relative;
+			height: 26px;
+			line-height: 26px;
+			li {
+				@include nb;
+				width: 100%;
+				position: absolute;
+				padding: 0 4px;
+				&:not(.show) {
+					visibility: hidden;
+				}
+			}
+		}
+		.number {
+			width: 30%;
+			&:only-child {
+				width: 100%;
+			}
+		}
+		.space {
+			margin-left: 3px;
+			width: calc(70% - 3px);
+		}
+	}
+}
+.window-default {
+	.window-inside {
+		width: 750px;
+		height: 470px;
+	}
+}
+.window-content {
+	height: calc(100% - 56px);
+	> .list-container {
+		margin-top: 0;
+	}
+}
+.list-container {
+	@include sh(3px, inside);
+	background: white;
+	height: calc(100% - 28px - 2px);
+	margin-top: 2px;
+}
+.list {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	align-content: flex-start;
+	height: 100%;
+	overflow: auto;
+	li {
+		position: relative;
+	}
+	label:not(.label-toggle) {
+		display: flex;
+		align-items: center;
+		position: relative;
+		padding-bottom: 3px;
+		white-space: nowrap;
+		&:not(.folders label) {
+			&:after {
+				width: 24px;
+				height: 24px;
+				z-index: 2;
+			}
+		}
+		&:before {
+			display: block;
+			position: relative;
+			z-index: 2;
+			width: 24px;
+			height: 24px;
+			margin-right: 6px;
+		}
+		&:active, &:focus {
+			span {
+				background: $mauve;
+				color: white;
+				border: 1px dotted $oak;
+				@media (min-width: 500px) {
+					border-width: 1.5px;
+				}
+			}
+		}
+	}
+	.label-toggle {
+		display: block;
+		position: absolute;
+		top: 6px;
+		left: -22px;
+		width: 12.5px;
+		height: 12.5px;
+		box-shadow: inset -1.5px -1.5px 0 0 $g3, inset 1.5px 1.5px 0 0 $g3;
+		background-color: white;
+		&:before, &:after {
+			display: block;
+			position: absolute;
+			background-color: $bl;
+		}
+		&:before {
+			left: 3px;
+			top: 5.5px;
+			width: 6.5px;
+			height: 1.5px;
+		}
+		&:after {
+			left: 5.5px;
+			top: 3px;
+			width: 1.5px;
+			height: 6.5px;
+		}
+		~ menu {
+			display: none;
+		}
+	}
+	menu {
+		position: relative;
+		padding-left: 26px;
+		&:before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: -3px;
+			left: 9px;
+			height: calc(100% - 12px);
+			border-left: 1px dotted $g3;
+			@media (min-width: 500px) {
+				height: calc(100% - 11px);
+				border-left-width: 1.5px;
+			}
+		}
+		li {
+			position: relative;
+		}
+	}
+}
+.above-footer {
+	height: 100%;
+}
+
+#alerts {
+	z-index: -1;
+}
+@keyframes blink {
+	from { opacity: 1 } to { opacity: 0 }
+}
+#alert-blue-screen {
+	opacity: 0;
+	visibility: hidden;
+	z-index: -1;
+	display: grid;
+	place-items: center;
+	width: 100%;
+	height: 100%;
+	background-color: #00a;
+	color: white;
+	.content {
+		max-width: 570px;
+	}
+	h3, p {
+		font-weight: bold;
+		font-size: 18px;
+		line-height: 1.4;
+	}
+	h3, p:last-child {
+		text-align: center;
+	}
+	h3 span {
+		display: inline-block;
+		padding: 2px 3px;
+		background-color: #aaa;
+		color: #00a;
+	}
+	.blink {
+		display: inline-block;
+		animation: blink 1s cubic-bezier(1,0,0,1) infinite forwards;
+	}
+}
+.alert-inside {
+	min-width: unset;
+	min-height: unset;
+	width: 320px;
+	height: 180px;
+	resize: none;
+}
+.alert-content {
+	padding: 0 24px;
+	height: calc(100% - 28px - 52px);
+	p {
+		padding: 16px 0 0;
+		margin: 0;
+	}
+}
+.alert-footer {
+	display: flex;
+	padding: 0 24px 16px;
+}
+
+#window-welcome {
+	.window-inside {
+		height: 60vh;
+		@media screen and (min-width: 568px) and (max-height: 450px), screen and (min-width: 768px) {
+			width: 500px;
+			height: 260px;
+		}
+		@media only screen and (min-width: 1000px) {
+			width: 700px;
+			height: 400px;
+		}
+	}
+	.window-content {
+		padding: 20px;
+		height: calc(100% - 3px - 40px - 36px);
+	}
+	.window-footer {
+		display: flex;
+		justify-content: flex-end;
+		padding-right: 19px;
+		.button {
+			@include bt(3px, button-strong);
+			&:active {
+				@include bt(3px, button-strong-pressed);
+			}
+		}
+	}
+	.information-container {
+		@include sh(3px, inset);
+		width: 100%;
+		height: 100%;
+		background: $wh;
+		padding: 1.5px;
+	}
+	.information {
+		overflow-y: scroll;
+		width: 100%;
+		height: 100%;
+		padding: 20px;
+		line-height: 1.4;
+		h3, p, ul {
+			margin: 1em 0 0;
+		}
+		h3:first-child {
+			margin-top: 0;
+		}
+		ul {
+			padding-left: 10px;
+			list-style-type: "–";
+			li {
+				padding-left: 0.5em;
+				&:not(:first-child) {
+					margin-top: 0.25em;
+				}
+			}
+		}
+	}
+}
+
+#window-taskbar {
+	left: 3px;
+	bottom: 48px;
+	&[style] {
+		bottom: unset;
+	}
+	> .window-inside {
+		resize: none;
+		width: 510px;
+		height: 600px;
+		> .window-content {
+			padding: 12px 9px 10px;
+			height: calc(100% - 28px - 3px - 36px - 9px);
+		}
+	}
+	.window-footer {
+		display: flex;
+		justify-content: flex-end;
+		width: 100%;
+		padding: 0 9px;
+	}
+	.tab-container {
+		height: 100%;
+	}
+	.tab-group {
+		display: flex;
+	}
+	.tab {
+		display: block;
+		position: relative;
+		z-index: 0;
+		margin-top: 3px;
+		line-height: 32px;
+		padding: 0 12px;
+		background-color: $g2;
+		&:first-child {
+			transform: translateX(3px);
+		}
+		&:not(:first-child) {
+			margin-left: -3px;
+			transform: translateX(-3px);
+		}
+		&:before, &:after, span:before, span:after {
+			content: "";
+			display: block;
+			position: absolute;
+		}
+		&:before {
+			width: calc(100% - 6px);
+			height: 100%;
+			top: 0;
+			left: 3px;
+			border-top: 1.5px solid $wh;
+		}
+		&:after {
+			width: 100%;
+			height: calc(100% - 3px);
+			bottom: 0;
+			left: 0;
+			border-left: 1.5px solid $wh;
+			border-right: 1.5px solid $bl;
+			box-shadow: inset -1.5px 0 0 0 $g3;
+		}
+		span {
+			&:before, &:after {
+				top: 1.5px;
+				width: 1.5px;
+				height: 1.5px;
+			}
+			&:before {
+				left: 1.5px;
+				background-color: $wh;
+			}
+			&:after {
+				right: 1.5px;
+				background-color: $bl;;
+			}
+		}
+	}
+	$taskbar-tabs: taskbar-options, start-menu-programs;
+	@each $tab in $taskbar-tabs {
+		##{$tab}:checked ~ .window-inside {
+			.tab-#{$tab} {
+				z-index: 12;
+				margin-top: 0;
+				transform: none;
+			}
+			.tabpanel.#{$tab} {
+				z-index: 12;
+			}
+		}
+	}
+	.tabpanel-group {
+		position: relative;
+		z-index: 0;
+		margin-top: -1.5px;
+		height: calc(100% - 32px + 1.5px);
+	}
+	.tabpanel {
+		@include sh(3px, button);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		height: 100%;
+		background-color: $g2;
+	}
+
+	.taskbar-options {
+		padding: 32px;
+	}
+	.preview-container {
+		@include sh(3px, inset);
+		display: grid;
+		place-items: center;
+		width: 100%;
+		height: 200px;
+		background: $bg;
+	}
+	.preview {
+		position: relative;
+		overflow: hidden;
+		width: calc(100% - 3px);
+		height: calc(100% - 3px);
+		* {
+			pointer-events: none;
+		}
+		.window {
+			opacity: 1;
+			visibility: visible;
+			z-index: 2;
+			bottom: 22px;
+			left: calc(100% - 96px);
+		}
+		.window-inside {
+			width: 300px;
+			height: 200px;
+		}
+		.window-content {
+			height: 100%;
+		}
+		.list-container {
+			height: 100%;
+		}
+		.list {
+			display: block;
+			label {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				position: relative;
+				width: 116px;
+				height: 98px;
+				white-space: unset;
+				text-align: center;
+				line-height: 1.3;
+				&:before {
+					margin-bottom: 6px;
+					margin-right: 0;
+					width: 48px;
+					height: 48px;
+				}
+			}
+		}
+		.start-menu, .start-menu-outline {
+			bottom: 1px;
+			left: 4px;
+			width: calc(100% - 8px);
+		}
+		.start-menu-outline {
+			visibility: hidden;
+			position: absolute;
+			height: 44px;
+			border: 1.5px dotted $mint;
+			border-bottom: 0;
+			z-index: 10;
+		}
+		.start-menu {
+			@include sh(3px);
+			padding: 0 2px 0 1px;
+			justify-content: space-between;
+			.label-start {
+				@include sh(3px, button-reverse);
+			}
+			.menu-container {
+				visibility: visible;
+				z-index: 2;
+				left: 0;
+				bottom: 44px;
+			}
+			.time {
+				display: flex;
+				align-items: center;
+				width: auto;
+				padding: 0 10px;
+				&:before {
+					content: "";
+					width: 24px;
+					height: 24px;
+					margin-right: 8px;
+					background-size: contain;
+				}
+			}
+		}
+	}
+	.options {
+		width: 100%;
+		label {
+			display: flex;
+			align-items: center;
+			margin-top: 32px;
+			position: relative;
+			&:before, &:after {
+				display: block;
+				width: 20px;
+				height: 20px;
+			}
+			&:before {
+				@include sh(3px, inside);
+				margin-right: 8px;
+				background-color: white;
+			}
+			&:after {
+				position: absolute;
+				left: 0;
+				visibility: hidden;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-image: url($y);
+				background-size: 10px 10px;
+			}
+			> span {
+				border: 1.5px dotted transparent;
+				line-height: 1;
+				height: 20px;
+			}
+			&:focus {
+				> span {
+					border: 1.5px dotted;
+				}
+			}
+		}
+	}
+
+	.start-menu-programs {
+		padding: 0 20px 20px;
+		form {
+			display: block;
+			width: 100%;
+		}
+		fieldset {
+			@include sh(3px, fieldset);
+			display: block;
+			width: 100%;
+			margin-top: 20px;
+			border: 0;
+			padding: 32px 32px 20px;
+		}
+		legend {
+			background-color: $g2;
+			margin-left: -22px;
+			transform: translateY(2px);
+			padding: 0 5px;
+		}
+		p {
+			display: flex;
+			align-items: flex-start;
+			width: calc(100% - 20px);
+			margin: 0;
+			line-height: 1.3;
+			&:before {
+				content: "";
+				display: block;
+				min-width: 48px;
+				width: 48px;
+				height: 48px;
+				background-size: contain;
+				margin-right: 24px;
+			}
+		}
+		.menu-options {
+			display: flex;
+			justify-content: flex-end;
+			li {
+				&:not(:first-child) {
+					margin-left: 10px;
+				}
+			}
+		}
+		.customize-start-menu {
+			.menu-options {
+				margin-top: 48px;
+			}
+		}
+		.documents-menu {
+			.menu-options {
+				margin-top: 20px;
+			}
+		}
+	}
+}
+$options: always-on-top, auto-hide, show-small-icons, show-clock;
+@each $option in $options {
+	#option-#{$option}:checked ~ .window-inside {
+		label[for="option-#{$option}"] {
+			&:after {
+				visibility: visible;
+			}
+		}
+	}
+}
+#option-always-on-top:not(:checked) ~ .window-inside .preview .window {
+	z-index: 11;
+}
+#global-option-always-on-top:not(:checked) ~ main {
+	#start-menu {
+		z-index: unset;
+		.menu-container {
+			z-index: 1000000;
+		}
+	}
+}
+#start:checked ~ #global-option-always-on-top:not(:checked) ~ main {
+	#start-menu {
+		z-index: 1000000;
+		.menu-container {
+			z-index: unset;
+		}
+	}
+}
+#option-auto-hide:checked ~ .window-inside .preview {
+	.start-menu-outline {
+		visibility: visible;
+	}
+	.start-menu {
+		@include sh(3px, hide);
+		height: 10px;
+		> * {
+			visibility: hidden;
+		}
+	}
+}
+#global-option-auto-hide:checked ~ main:not(#start:checked ~ main) {
+	.start-menu {
+		transform: translateY(100%);
+		&:hover {
+			transform: none;
+		}
+	}
+	#start-menu-outline {
+		visibility: visible;
+		&:hover {
+			+ .start-menu {
+				transform: none;
+			}
+		}
+	}
+}
+#option-show-small-icons:checked ~ .window-inside .preview, #global-option-show-small-icons:checked ~ main #start-menu {
+	$small-icons: folder-programs, folder-documents, settings, find, help, run, shut-down;
+	@each $icon in $small-icons {
+		.label-#{$icon} {
+			&:before {
+				background-image: url("#{$url}#{$icon}-small.png");
+			}
+		}
+	}
+	.menu-container:before {
+		display: none;
+	}
+	.main-menu {
+		> li {
+			&:last-child {
+				padding-top: 8px;
+			}
+			> a, > label {
+				height: 34px;
+				width: 175px;
+				&:before {
+					width: 24px;
+					height: 24px;
+					margin-right: 8px;
+				}
+			}
+		}
+	}
+}
+#option-show-clock:not(:checked) ~ .window-inside .preview {
+	.time:before {
+		margin-right: 0;
+	}
+	time {
+		display: none;
+	}
+}
+#global-option-show-clock:not(:checked) ~ main #start-menu .time {
+	display: none;
+}
+
+#window-printers {
+	.window-inside {
+		width: 480px;
+		height: 390px;
+	}
+}
+#window-control-panel {
+	.window-inside {
+		width: 520px;
+		height: 480px;
+	}
+}
+#window-explorer {
+	.window-nav {
+		h3 > span {
+			position: relative;
+			height: 28px;
+			span {
+				visibility: hidden;
+				top: 0;
+				position: absolute;
+			}
+		}
+	}
+	.window-content {
+		display: flex;
+		flex-wrap: wrap;
+		h4, h5 {
+			@include nb;
+			@include sh(3px, inset);
+			margin: 0;
+			padding: 0 6px;
+			font-weight: normal;
+			line-height: 28px;
+		}
+		.folders {
+			width: 250px;
+			.long {
+				min-width: 180px;
+			}
+			label:not(.label-toggle) {
+				&:after {
+					display: block;
+					position: absolute;
+					z-index: 1;
+					left: -17px;
+					width: 17px;
+					border-top: 1px dotted $g3;
+					@media (min-width: 500px) {
+						left: -14px;
+						width: 14px;
+						border-top-width: 1.5px;
+					}
+				}
+			}
+		}
+		.folders-content {
+			position: relative;
+			margin-left: 4px;
+			width: calc(100% - 254px);
+		}
+		.content {
+			opacity: 0;
+			visibility: hidden;
+			position: absolute;
+			z-index: -1;
+			width: 100%;
+			height: 100%;
+			.list {
+				li {
+					min-width: 210px;
+				}
+			}
+		}
+	}
+}
+
+$windows: welcome, taskbar, printers, control-panel, computer, notepad, explorer;
+@each $window in $windows {
+	##{$window} {
+		&:checked ~ main {
+			#window-#{$window} {
+				will-change: transform;
+				opacity: 1;
+				visibility: visible;
+				z-index: 2;
+			}
+			.tab-#{$window} {
+				display: flex;
+			}
+			.menu .label-#{$window} {
+				pointer-events: none;
+			}
+		}
+		&.active ~ ##{$window}-minimize:not(:checked) ~ main,
+		&.active.no-tab ~ main {
+			#window-#{$window} {
+				z-index: 10;
+				.window-nav {
+					background-color: $slate;
+				}
+			}
+			.window[data-window]:not(#window-#{$window}) {
+				z-index: 2;
+			}
+			.tab-#{$window} label {
+				@include ta;
+			}
+			.activate:not(.tab-#{$window} .activate) {
+				z-index: 1;
+			}
+			.tab label:not(.tab-#{$window} label) {
+				z-index: 0;
+			}
+		}
+	}
+	##{$window}-minimize {
+		&:active ~ main #window-#{$window} .window-inside {
+			.minimize {
+				@include sh(3px, button-reverse);
+			}
+		}
+		&:checked ~ main #window-#{$window} {
+			transform: scale(0);
+		}
+	}
+	##{$window}-maximize {
+		&:active ~ main #window-#{$window} .window-inside {
+			.maximize {
+				@include sh(3px, button-reverse);
+			}
+		}
+		&:checked ~ main #window-#{$window} {
+			left: unset !important;
+			top: 0 !important;
+			.window-inside {
+				max-width: calc(100vw - 12px);
+				width: calc(100vw - 12px);
+				height: calc(100vh - 44px - 12px);
+				.maximize {
+					&:before, &:after {
+						width: 9px;
+						height: 9px;
+					}
+					&:before {
+						visibility: visible;
+						top: 3px;
+						right: 6px;
+					}
+					&:after {
+						bottom: 4px;
+						left: 4px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.menu-status-bar:checked ~ .window-inside {
+	.label-check.label-status-bar:before {
+		visibility: visible;
+	}
+	.window-footer {
+		display: flex;
+	}
+	.above-footer {
+		height: calc(100% - 26px - 3px);
+	}
+}
+.menu-large-icons:checked ~ .window-inside {
+	.label-check.label-large-icons:before {
+		visibility: visible;
+	}
+	.window-content {
+		.list:not(.folders .list) {
+			display: grid !important;
+			grid-template-columns: repeat(auto-fill, 120px);
+			row-gap: 24px;
+			padding: 9px 0;
+			li {
+				label {
+					white-space: unset;
+					text-align: center;
+					line-height: 1.3;
+					height: 98px;
+					&:before {
+						margin-bottom: 6px;
+						margin-right: 0;
+					}
+					&:active, &:focus {
+						span {
+							background: $mauve;
+							color: white;
+							border: 1px dotted $oak;
+							@media (min-width: 500px) {
+								border-width: 1.5px;
+							}
+						}
+					}
+				}
+			}
+		}
+		@each $icon in $icons {
+			.label-#{$icon}-small:not(.folders label) {
+				@include li;
+				&:before {
+					background-image: url("#{$url}#{$icon}.png");
+				}
+		}
+	}
+}
+}
+.menu-small-icons:checked ~ .window-inside {
+	.label-check.label-small-icons:before {
+		visibility: visible;
+	}
+	.window-content {
+		.list:not(.folders .list) {
+			flex-direction: row;
+			label {
+				width: 210px;
+			}
+		}
+	}
+}
+.menu-list-icons:checked ~ .window-inside {
+	.label-check.label-list-icons:before {
+		visibility: visible;
+	}
+	.window-content {
+		.list:not(.folders list) {
+			flex-direction: column;
+		}
+	}
+}
+
+$alerts: blue-screen, diskette-a, diskette-b;
+input[id*="error-"]:checked ~ main #alerts {
+	z-index: 1000001;
+}
+@each $alert in $alerts {
+	#error-#{$alert} {
+		&:checked ~ main {
+			#alert-#{$alert} {
+				will-change: transform;
+				opacity: 1;
+				visibility: visible;
+				z-index: 2;
+			}
+		}
+	}
+}
+
+$toggles: computer, disk, program-files, windows;
+@each $toggle in $toggles {
+	#toggle-#{$toggle} {
+		&:checked ~ main #window-explorer {
+			.toggle-#{$toggle} {
+				&:after {
+					visibility: hidden;
+				}
+				~ menu {
+					display: block;
+				}
+			}
+		}
+	}
+}
+
+$explorer-panels: desktop, computer, disk, dos, program-files, windows, control-panel, printers, recycle-bin;
+@each $panel in $explorer-panels {
+	#explorer-#{$panel} {
+		&:checked ~ main #window-explorer {
+			.title-explorer-#{$panel}, .content-explorer-#{$panel}, .explorer-number-#{$panel}, .explorer-space-#{$panel} {
+				visibility: visible;
+			}
+			.label-folder-small[for="explorer-#{$panel}"]:before {
+				background-image: url("#{$url}folder-open-small.png");
+			}
+			.content-explorer-#{$panel} {
+				visibility: visible;
+				opacity: 1;
+				z-index: unset;
+			}
+		}
+	}
+}
+
+// start menu
+#start {
+	&:focus, &:active, &:checked {
+		~ main > .start-menu .label-start {
+			outline: 1px dotted $bl;
+			outline-offset: -6px;
+			@media (min-width: 500px) {
+				outline-width: 1.5px;
+			}
+		}
+	}
+	&:active, &:checked {
+		~ main > .start-menu .label-start {
+			@include sh(3px, button-reverse);
+		}
+	}
+	&:checked {
+		~ main > .start-menu .menu-container {
+			visibility: visible;
+			z-index: unset;
+			.sub-menu:hover {
+				visibility: visible;
+				z-index: 2;
+			}
+			.main-menu {
+				a:hover ~ .sub-menu {
+					visibility: visible;
+					opacity: 1;
+					z-index: 2;
+				}
+			}
+		}
+	}
+}
+#start-menu-outline {
+	visibility: hidden;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 3px;
+	background-color: $g3;
+}
+.start-menu {
+	display: flex;
+	align-items: center;
+	position: absolute;
+	z-index: 10;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 44px;
+	background-color: $g2;
+	box-shadow: inset 0 1.5px 0 0 $g2, inset 0 3px 0 0 $wh;
+	padding-top: 3px;
+	.menu-container, .sub-menu {
+		@include bt(3px);
+		position: absolute;
+		padding: 4px;
+	}
+	.menu {
+		li {
+			position: relative;
+			&:hover {
+				> label, > a {
+					background-color: $slate;
+					color: white;
+				}
+			}
+		}
+		label, a {
+			display: flex;
+			align-items: center;
+			align-content: center;
+			width: 200px;
+			padding-left: 8px;
+			height: 32px;
+			&:before {
+				width: 24px;
+				height: 24px;
+				margin-right: 8px;
+			}
+			&:hover {
+				background-color: $slate;
+				color: white;
+			}
+			&.label-empty {
+				justify-content: center;
+				padding-left: 0;
+				&:before, &:after {
+					display: none;
+				}
+			}
+			&.label-disabled, &.label-empty {
+				&, &:hover {
+					color: #85888c;
+				}
+			}
+		}
+	}
+	.menu-container {
+		visibility: hidden;
+		display: flex;
+		align-items: stretch;
+		z-index: -1;
+		bottom: 38px;
+		left: 4px;
+		&:before {
+			content: "";
+			display: block;
+			background-color: desaturate(lighten($slate, 15%), 15%);
+			width: 32px;
+		}
+		.sub-menu {
+			visibility: hidden;
+			z-index: -1;
+			display: block;
+			top: -4px;
+			left: calc(100% - 4px);
+			margin: 0;
+		}
+		.main-menu {
+			> li {
+				&:nth-last-child(2) {
+					border-bottom: 1.5px solid $g3;
+				}
+				&:last-child {
+					border-top: 1.5px solid $wh;
+				}
+				> label, > a {
+					height: 50px;
+					&:before {
+						width: 48px;
+						height: 48px;
+						margin-right: 10px;
+					}
+				}
+			}
+		}
+	}
+	.label-start {
+		font-weight: bold;
+		margin-left: 4px;
+		&:before {
+			width: 24px;
+			height: 21px;
+			margin-right: 5px;
+			background-image: url("#{$url}start.png");
+			background-size: 24px 21px;
+		}
+	}
+	.label-start, .tabs label {
+		@include bt(3px, button);
+		height: 34px;
+		padding: 0 6px !important;
+		background-color: $g2;
+	}
+	.tabs {
+		display: flex;
+		width: calc(100% - 79px - 100px - 6px);
+		.tab {
+			flex-basis: 200px;
+			display: none;
+			position: relative;
+			overflow: hidden;
+			margin-left: 4px;
+		}
+		.activate {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 0;
+		}
+		label {
+			position: relative;
+			z-index: 1;
+			width: 100%;
+			justify-content: flex-start;
+			span {
+				@include nb;
+			}
+			&:before {
+				width: 24px;
+				min-width: 24px;
+				height: 24px;
+				margin-right: 3px;
+			}
+			&:active {
+				@include ta;
+			}
+		}
+	}
+	.time {
+		@include nb;
+		@include sh(3px, inset);
+		display: grid;
+		place-items: center;
+		height: 34px;
+		width: 100px;
+		margin: 0 3px;
+	}
+}
+#start-menu {
+	z-index: 1000000;
+}
+
+// scrollbar
+// https://codepen.io/louh/pen/oZJQvm
+$sc-wd: 24px;
+::-webkit-scrollbar {
+	width: $sc-wd;
+	height: $sc-wd;
+}
+::-webkit-scrollbar-track {
+	@include ch(lighten($g2, 15%));
+}
+::-webkit-scrollbar-thumb {
+	@include sh(3px);
+	width: $sc-wd;
+	height: $sc-wd;
+	background-color: $g2;
+	z-index: 1;
+}
+::-webkit-scrollbar-corner {
+	background-color: $g2;
+}
+::-webkit-resizer {
+	width: $sc-wd;
+	height: $sc-wd;
+	background-color: $g2;
+	background-color: transparent;
+	background-image: url($re);
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	image-rendering: pixelated;
+}
+::-webkit-scrollbar-button {
+	@include sh(3px);
+	display: block;
+	width: $sc-wd;
+	height: $sc-wd;
+	background-color: $g2;
+	image-rendering: pixelated;
+	background-size: $sc-wd*.75 $sc-wd*.75;
+	background-repeat: no-repeat;
+	background-position: center center;
+	&:active {
+		background-position: 2px 2px;
+	}
+	&:horizontal:decrement {
+		background-image: url($lt);
+	}
+	&:horizontal:increment {
+		background-image: url($rt);
+	}
+	&:vertical:decrement {
+		background-image: url($up);
+	}
+	&:vertical:increment {
+		background-image: url($dn);
+	}
+	&:horizontal:increment:start { display: none; }
+	&:horizontal:decrement:end { display: none; }
+	&:vertical:increment:start { display: none; }
+	&:vertical:decrement:end { display: none; }
+	&:active {
+		border: 1.5px solid $g3;
+		box-shadow: none;
+	}
+}

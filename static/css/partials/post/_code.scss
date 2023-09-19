@@ -12,15 +12,18 @@
 		align-content: center;
 		flex-wrap: wrap;
 		order: 2;
+		width: 100%;
 	}
 	div, h2 {
 		@supports not(container-type: inline-size) {
 			@include viewport(mobile) {
 				order: 1;
+				width: unset;
 			}
 		}
 		@container header (min-width: 350px) {
 			order: 1;
+			width: unset;
 		}
 	}
 	h2 {
