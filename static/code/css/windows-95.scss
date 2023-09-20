@@ -1019,8 +1019,8 @@ $large-icons: taskbar, customize-start-menu, recycle-bin-folder;
 		align-items: center;
 		justify-content: flex-start;
 		position: absolute;
+		overflow: hidden;
 		width: 100%;
-		height: 100%;
 		height: 100%;
 		background-color: $g2;
 	}

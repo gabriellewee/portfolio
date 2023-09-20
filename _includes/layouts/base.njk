@@ -98,19 +98,23 @@
 	</main>
 	{% if blank != true %}
 		<footer class="bottom" aria-label="Footer">
-			{% if key != "about" %}
-				<a href="/about/"><span>About</span></a>
-				<a href="/me/"><span>Me</span></a>
-				<a href="/archive/"><span>Archive</span></a>
-				<a href="/code/"><span>Code</span></a>
-				<a href="/posts/feed.xml"><span>RSS</span></a>
-			{% endif %}
-			{% if (key == "home") and (pagination.pageNumber == 0) or (key == "about") or (key == "me") %}{% else %}
-				<a href="mailto:mail@gabriellew.ee"><span>Email</span></a>
-			{% endif %}
-			<span class="copyright">
-				<span>&copy; {{site.author}} {% year 'start' %}–{% year 'current' %}</span>
-			</span>
+			<nav aria-label="Site links">
+				<ul class="links">
+					{% if key != "about" %}
+						<li><a href="/about/"><span>About</span></a></li>
+						<li><a href="/me/"><span>Me</span></a></li>
+						<li><a href="/archive/"><span>Archive</span></a></li>
+						<li><a href="/code/"><span>Code</span></a></li>
+						<li><a href="/posts/feed.xml"><span>RSS</span></a></li>
+					{% endif %}
+					{% if ((key == "home") and (pagination.pageNumber == 0)) or (key == "about") or (key == "me") %}{% else %}
+						<li><a href="mailto:mail@gabriellew.ee"><span>Email</span></a></li>
+					{% endif %}
+				</ul>
+				<p class="copyright">
+					<span>&copy; {{site.author}} {% year 'start' %}–{% year 'current' %}</span>
+				</p>
+			</nav>
 		</footer>
 
 		<script src="{{'/static/js/lightbox.js'|url}}"></script>

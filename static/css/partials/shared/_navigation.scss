@@ -22,21 +22,23 @@
 .bottom {
 	@include font-weight-width(500, 115);
 	opacity: 0;
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
 	padding-top: calc(var(--p)*2);
 	padding-bottom: calc(var(--p) + env(safe-area-inset-bottom));
 	.page-home:not(.page-index) &, .page-post &, .page-code & {
 		opacity: 1;
 	}
+	nav, .links {
+		display: inline;
+	}
+	li, a, .copyright {
+		display: inline-block;
+	}
 	a, .copyright {
-		display: block;
 		position: relative;
 		margin-bottom: var(--p);
 		span {
 			@include clip-path-edges(2px);
-			display: block;
+			display: inline-block;
 			padding: calc(var(--p)/3*2) var(--p);
 		}
 	}
