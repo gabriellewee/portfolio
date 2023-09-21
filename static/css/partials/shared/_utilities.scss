@@ -57,6 +57,12 @@ $violet: #D18FF0;
 	}
 }
 
+@mixin hover {
+	@media (hover: hover) and (pointer: fine) {
+		@content;
+	}
+}
+
 @mixin clip-path($support: true) {
 	@if $support == true {
 		@supports (-webkit-clip-path: polygon(0 0)) or (clip-path: polygon(0 0)) {
