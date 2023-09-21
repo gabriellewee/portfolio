@@ -30,7 +30,7 @@ pagination:
 				{% elseif post.data.category == "media" %}aria-label="{{post.data.type|capitalize}} post"{% endif %}
 			>
 				{% if post.data.category == "media" %}
-					<input class="{{post.data.category}}-trigger" id="{{post.data.date|safe}}-{{post.data.name}}-info" type="checkbox" tabindex="0" aria-label="Show information about this {{post.data.type}}" role="switch"/>
+					<input class="{{post.data.category}}-trigger" id="{{post.data.date|safe}}-{{post.data.name}}-info" type="checkbox" tabindex="0" aria-label="View information about this {{post.data.type}}" role="switch"/>
 				{% endif %}
 				<div class="post-wrapper">
 					<header class="post-header{% if (post.data.category == 'writing') or (post.data.category == 'code') %} inline-header{% endif %}">

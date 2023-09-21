@@ -28,6 +28,30 @@ figure {
 	}
 }
 
+.media-view {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(
+		to bottom,
+		hsla(var(--color-iron-10-hsl), 0.7) 0%,
+		hsla(var(--color-iron-10-hsl), 0.4) 20%,
+		hsla(var(--color-iron-10-hsl), 0) 100%
+	);
+	@include hover {
+		display: flex;
+	}
+	.button {
+		position: absolute;
+		display: inline-block;
+		top: calc(var(--p)*2);
+		right: calc(var(--p)*2);
+	}
+}
+
 figcaption {
 	@include font-weight-width(700, 120);
 	transition: .5s cubic-bezier(.64, 0, .78, 0);
