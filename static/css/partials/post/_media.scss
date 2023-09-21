@@ -73,6 +73,12 @@ figure {
 		display: inline-block;
 		top: calc(var(--p)*2);
 		right: calc(var(--p)*2);
+		> span {
+			&:before {
+				background-color: var(--color-slate);
+				background: radial-gradient(circle at center left, var(--color-slate) 0, var(--color-iron-white-80) 100%);
+			}
+		}
 	}
 }
 
