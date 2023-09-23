@@ -814,7 +814,8 @@ $large-icons: taskbar, customize-start-menu, recycle-bin-folder;
 	background-color: #00a;
 	color: white;
 	.content {
-		max-width: 570px;
+		max-width: 610px;
+		padding: 20px;
 	}
 	h3, p {
 		font-weight: bold;

@@ -46,7 +46,11 @@ pagination:
 							{% elseif post.data.category == "code" %}
 								<div>
 									<h2>
-										<a href="https://codepen.io/gabriellewee/pen/{{post.data.uri}}" target="_blank"><span>{{post.data.title|safe}}</span></a>
+										{% if post.data.uri %}
+											<a href="https://codepen.io/gabriellewee/pen/{{post.data.uri}}" target="_blank"><span>{{post.data.title|safe}}</span></a>
+										{% else %}
+											{{post.data.title|safe}}
+										{% endif %}
 									</h2>
 									<ul>
 										{% for type in post.data.type %}
@@ -60,7 +64,7 @@ pagination:
 							{% endif %}
 						</div>
 					</header>
-					<div class="post-content{% if post.data.category == 'writing' %} post-text{% endif %}">
+					<div class="post-content{% if post.data.category == 'writing' %} post-text{% endif %}"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %}>
 						{% if post.data.category == "media" %}
 							<figure id="{{post.data.date|safe}}-{{post.data.name}}" aria-label="{{post.data.type|capitalize}}{% if post.data.location %}, {{post.data.location}}{% elseif post.data.title %}, {{post.data.title}}{% endif %}" style="aspect-ratio: {% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'ratio' %};">
 								{% if post.data.upscale %}
@@ -142,7 +146,7 @@ pagination:
 								<button class="reload button"><span><span>{{post.data.button|capitalize}}</span></span></button>
 							{% endif %}
 							{% if post.url %}
-								<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title|safe}}" loading="lazy" tabindex="-1"></iframe>
+								<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title|safe}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %}></iframe>
 								<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}">Please enable Javascript to view this code demo.</noscript>
 							{% else %}
 								{{post.content|safe}}

@@ -25,8 +25,13 @@
 .posts-container .contact,
 .bottom,
 .filters a,
-.post-animate {
+.post-animate,
+.post-code .post-content iframe {
 	opacity: 1;
+}
+
+.post-content {
+	background: var(--color-iron-1) !important;
 }
 
 .cursor:after {

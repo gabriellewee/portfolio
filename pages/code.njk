@@ -26,7 +26,11 @@
 						<div class="post-header-wrapper">
 							<div>
 								<h2>
-									<a href="https://codepen.io/gabriellewee/pen/{{post.data.uri}}" target="_blank"><span>{{post.data.title|safe}}</span></a>
+									{% if post.data.uri %}
+										<a href="https://codepen.io/gabriellewee/pen/{{post.data.uri}}" target="_blank"><span>{{post.data.title|safe}}</span></a>
+									{% else %}
+										{{post.data.title|safe}}
+									{% endif %}
 								</h2>
 								<ul>
 									{% for type in post.data.type %}
@@ -37,12 +41,12 @@
 							<time class="time{% if post.data.category != 'code' %} time-default{% endif %}{% if post.data.category == 'social' %} time-external{% endif %}" datetime="{{post.page.date|ISO|htmlDateString}}" data-time="{{post.page.date|ISO}}">{{post.page.date|ISO|readableDate}}</time>
 						</div>
 					</header>
-					<div class="post-content{% if post.data.category == 'writing' %} post-text{% endif %}">
+					<div class="post-content{% if post.data.category == 'writing' %} post-text{% endif %}"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %}>
 						{% if post.data.button %}
 							<button class="reload button"><span><span>{{post.data.button|capitalize}}</span></span></button>
 						{% endif %}
 						{% if post.url %}
-							<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title|safe}}" loading="lazy" tabindex="-1"></iframe>
+							<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title|safe}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"></iframe>
 							<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}">Please enable Javascript to view this code demo.</noscript>
 						{% else %}
 							{{post.content|safe}}
