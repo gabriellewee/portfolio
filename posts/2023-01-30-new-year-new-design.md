@@ -278,9 +278,9 @@ pagination:
 {% raw %}<div class="posts">
   {% for post in pagination.items %}
     <article class="post">
-      <div class="post-wrapper">
+      <div class="post-inner">
         <header class="post-header">
-          <div class="post-header-wrapper">
+          <div class="post-header-content">
             <h2>
               <a href="{{post.url|url}}"><span>{{post.data.title|safe}}</span></a>
             </h2>

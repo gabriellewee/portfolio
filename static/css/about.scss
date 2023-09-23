@@ -1,7 +1,7 @@
 @import 'partials/shared/utilities';
 
 .post-about {
-	.post-wrapper {
+	.post-inner {
 		padding: calc(var(--p)*1.5) calc(var(--p)*2);
 	}
 	h2, h3 {
@@ -37,7 +37,7 @@
 }
 
 .post-versions {
-	.post-wrapper {
+	.post-inner {
 		padding-bottom: var(--p);
 	}
 	ol {
@@ -111,7 +111,7 @@
 }
 
 .post-sitemap {
-	.post-wrapper {
+	.post-inner {
 		padding-bottom: var(--p);
 	}
 	ul {
@@ -163,7 +163,7 @@
 }
 
 .post-colors {
-	.post-wrapper {
+	.post-inner {
 		padding-bottom: var(--p);
 	}
 	ul {

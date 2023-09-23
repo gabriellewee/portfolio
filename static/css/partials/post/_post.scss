@@ -154,7 +154,7 @@
 		}
 	}
 
-	.post-wrapper {
+	.post-inner {
 		overflow: hidden;
 		background-color: white;
 		@include viewport($iphone) {
@@ -180,7 +180,7 @@
 			container-type: inline-size;
 			container-name: header;
 		}
-		.post-header-wrapper {
+		.post-header-content {
 			display: flex;
 			flex-wrap: wrap;
 			@supports not(container-type: inline-size) {

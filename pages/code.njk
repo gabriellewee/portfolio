@@ -21,9 +21,9 @@
 	<div class="posts grid-isotope">
 		{% for post in collections.code | reverse %}
 			<article class="post post-code {% if post.data.size %} post-size-{{post.data.size}}{% endif %} grid-item"{% if post.data.width %} style="max-width: {{post.data.width}}"{% endif %}>
-				<div class="post-wrapper">
+				<div class="post-inner">
 					<header class="post-header{% if (post.data.category == 'writing') or (post.data.category == 'code') %} inline-header{% endif %}">
-						<div class="post-header-wrapper">
+						<div class="post-header-content">
 							<div>
 								<h2>
 									{% if post.data.uri %}

@@ -1,4 +1,4 @@
-.post-wrapper {
+.post-inner {
 	transition: .2s ease-out;
 	clip-path: unset;
 	overflow: unset;
@@ -447,7 +447,7 @@ figcaption {
 	opacity: 0;
 	@include hover {
 		&:hover, &:focus, &:active {
-			+ .post-wrapper {
+			+ .post-inner {
 				.media-view-hover {
 					opacity: 1;
 					.button {
@@ -460,7 +460,7 @@ figcaption {
 			}
 		}
 		&:active {
-			+ .post-wrapper {
+			+ .post-inner {
 				.media-view-hover {
 					.button {
 						@media (prefers-reduced-motion: no-preference) {
@@ -480,7 +480,7 @@ figcaption {
 		}
 	}
 	&:hover {
-		+ .post-wrapper {
+		+ .post-inner {
 			@media (prefers-reduced-motion: no-preference) {
 				scale: 1.01;
 			}
@@ -492,14 +492,14 @@ figcaption {
 		}
 	}
 	&:focus-visible {
-		+ .post-wrapper {
+		+ .post-inner {
 			&:before {
 				opacity: 1;
 			}
 		}
 	}
 	&:active {
-		+ .post-wrapper {
+		+ .post-inner {
 			@media (prefers-reduced-motion: no-preference) {
 				scale: .99;
 			}
@@ -508,20 +508,20 @@ figcaption {
 	&:checked {
 		z-index: -1;
 		&:hover {
-			+ .post-wrapper {
+			+ .post-inner {
 				@media (prefers-reduced-motion: no-preference) {
 					scale: 1;
 				}
 			}
 		}
 		&:active {
-			+ .post-wrapper {
+			+ .post-inner {
 				@media (prefers-reduced-motion: no-preference) {
 					scale: .99;
 				}
 			}
 		}
-		+ .post-wrapper {
+		+ .post-inner {
 			@include hover {
 				.media-view-hover {
 					opacity: 0;

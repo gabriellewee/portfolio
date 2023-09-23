@@ -32,9 +32,9 @@ pagination:
 				{% if post.data.category == "media" %}
 					<input class="{{post.data.category}}-trigger" id="{{post.data.date|safe}}-{{post.data.name}}-info" type="checkbox" tabindex="0" aria-label="View information about this {{post.data.type}}" role="switch"/>
 				{% endif %}
-				<div class="post-wrapper">
+				<div class="post-inner">
 					<header class="post-header{% if (post.data.category == 'writing') or (post.data.category == 'code') %} inline-header{% endif %}">
-						<div class="post-header-wrapper">
+						<div class="post-header-content">
 							{% if post.data.category == "writing" %}
 								<h2>
 									{% if post.url %}
