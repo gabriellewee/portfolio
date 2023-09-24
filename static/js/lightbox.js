@@ -3,7 +3,7 @@ const lightbox = (buttons, boxes) => {
 	let scrollPosition = document.documentElement.scrollTop;
 
 	const deactivate = (lightboxes) => {
-		lightboxes.forEach(lightbox => {
+		const remove = (lightbox) => {
 			let contents;
 			if(lightbox.nextElementSibling.hasAttribute("data-content")) {
 				contents = [lightbox.nextElementSibling];
@@ -17,11 +17,23 @@ const lightbox = (buttons, boxes) => {
 				});
 				scrollPosition = document.documentElement.scrollTop;
 			}
-		});
+		}
+		if(lightboxes instanceof Array) {
+			lightboxes.forEach(lightbox => {
+				remove(lightbox);
+			});
+		} else {
+			remove(lightboxes);
+		}
 	}
 
-	const activate = (e, lightboxes, index, contents) => {
-		e.preventDefault();
+	const activate = (lightboxes, index) => {
+		let contents;
+		if(lightboxes[index].nextElementSibling.hasAttribute("data-content")) {
+			contents = [lightboxes[index].nextElementSibling];
+		} else {
+			contents = Array.from(lightboxes[index].querySelectorAll("[data-content]"))
+		}
 		lightboxes[index].classList.add("active");
 		lightboxes[index].focus();
 		scrollPosition = document.documentElement.scrollTop;
@@ -43,15 +55,13 @@ const lightbox = (buttons, boxes) => {
 		});
 	}
 
-	const removeLightbox = (links, lightbox, index, contents) => {
-		contents.push(lightbox);
-		contents.forEach(content=>{
-			content.classList.remove("active");
-		});
-		links[index].focus();
-	}
-
-	const setNext = (e, sibling, lightbox, lightboxes, index, contents) => {
+	const setNext = (e, sibling, lightbox, lightboxes, index) => {
+		let contents;
+		if(lightbox.nextElementSibling.hasAttribute("data-content")) {
+			contents = [lightbox.nextElementSibling];
+		} else {
+			contents = Array.from(lightbox.querySelectorAll("[data-content]"))
+		}
 		setTimeout(() => {
 			contents.push(lightbox);
 			contents.forEach(content=>{
@@ -78,12 +88,12 @@ const lightbox = (buttons, boxes) => {
 		}, 100);
 	}
 
-	const shortcut = (e, sibling, links, lightbox, lightboxes, index, contents) => {
+	const shortcut = (e, sibling, lightbox, lightboxes, index) => {
 		if(lightbox.classList.contains("active")) {
 			if (e.key === "Escape") {
-				removeLightbox(links, lightbox, index, contents);
+				deactivate(lightbox);
 			} else if(e.key === "ArrowRight" || e.key === "ArrowLeft") {
-				setNext(e, sibling, lightbox, lightboxes, index, contents);
+				setNext(e, sibling, lightbox, lightboxes, index);
 			}
 		}
 	}
@@ -94,28 +104,22 @@ const lightbox = (buttons, boxes) => {
 		let { signal } = controller;
 
 		links.forEach((link, index)=>{
-			let contents;
-			if(lightboxes[index].nextElementSibling.hasAttribute("data-content")) {
-				contents = [lightboxes[index].nextElementSibling];
-			} else {
-				contents = Array.from(lightboxes[index].querySelectorAll("[data-content]"))
-			}
-			link.addEventListener("click", e => activate(e, lightboxes, index, contents), { signal });
+			link.addEventListener("click", e => {
+				e.preventDefault();
+				activate(lightboxes, index);
+			}, { signal });
 		});
 
 		let sibling;
 		lightboxes.forEach((lightbox, index)=>{
-			let contents;
-			if(lightbox.nextElementSibling.hasAttribute("data-content")) {
-				contents = [lightbox.nextElementSibling];
-			} else {
-				contents = Array.from(lightbox.querySelectorAll("[data-content]"))
-			}
 			lightbox.addEventListener("click", e => {
 				e.preventDefault();
-				removeLightbox(links, lightbox, index, contents);
+				deactivate(lightbox);
+				links[index].focus();
 			}, { signal });
-			document.addEventListener("keydown", e => shortcut(e, sibling, links, lightbox, lightboxes, index, contents), { signal });
+			document.addEventListener("keydown", e => {
+				shortcut(e, sibling, lightbox, lightboxes, index);
+			}, { signal });
 		});
 	}
 
@@ -132,15 +136,7 @@ const lightbox = (buttons, boxes) => {
 		expand(links, lightboxes);
 
 		return () => {
-			lightboxes.forEach((lightbox, index)=>{
-				let contents;
-				if(lightboxes[index].nextElementSibling.hasAttribute("data-content")) {
-					contents = [lightboxes[index].nextElementSibling];
-				} else {
-					contents = Array.from(lightboxes[index].querySelectorAll("[data-content]"))
-				}
-				removeLightbox(links, lightbox, index, contents);
-			});
+			deactivate(lightboxes);
 			controller.abort();
 		}
 	});
