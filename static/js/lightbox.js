@@ -70,7 +70,6 @@ const lightbox = (buttons, boxes, scroll) => {
 				} else if(e.key === "ArrowLeft") {
 					sibling = lightboxes[index - 1] || lightboxes[lightboxes.length - 1];
 				}
-				sibling.focus();
 				activate(sibling);
 			}
 		}, 100);
@@ -80,9 +79,27 @@ const lightbox = (buttons, boxes, scroll) => {
 		if(lightbox.classList.contains("active")) {
 			if (e.key === "Escape") {
 				deactivate(lightbox);
+				scrollTo(lightbox);
 			} else if(e.key === "ArrowRight" || e.key === "ArrowLeft") {
 				setNext(e, lightbox, lightboxes, index);
 			}
+		}
+	}
+
+	const scrollTo = (lightbox) => {
+		let href = lightbox.getAttribute("href").slice(1);
+		let info = document.querySelector(`[id="${href}-info"]`);
+		let element = document.querySelector(`[id="${href}"]`);
+		if(info) {
+			info.scrollIntoView({ behavior: "smooth" });
+			info.focus();
+			if(!info.checked) {
+				info.click();
+			}
+
+		} else if(element) {
+			element.scrollIntoView({ behavior: "smooth" });
+			element.focus();
 		}
 	}
 
@@ -102,7 +119,7 @@ const lightbox = (buttons, boxes, scroll) => {
 			lightbox.addEventListener("click", e => {
 				e.preventDefault();
 				deactivate(lightbox);
-				links[index].focus();
+				scrollTo(lightbox);
 			}, { signal });
 
 			document.addEventListener("keydown", e => {

@@ -64,7 +64,7 @@ pagination:
 							{% if post.data.category == "code" %}
 								<div class="post-header-right">
 									<time class="time{% if post.data.category != 'code' %} time-default{% endif %}{% if post.data.category == 'social' %} time-external{% endif %}" datetime="{{post.page.date|ISO|htmlDateString}}" data-time="{{post.page.date|ISO}}" title="{{post.page.date|ISO|readableDate}}">{{post.page.date|ISO|readableDate}}</time>
-									<a class="expand" href="#{{post.page.date|ISO|htmlDateString}}-{{post.data.title|slugify}}-lightbox" aria-label="Expand {{post.data.type}}" role="button" data-desktop></a>
+									<a class="expand" id="{{post.page.date|ISO|htmlDateString}}-{{post.data.title|slugify}}" href="#{{post.page.date|ISO|htmlDateString}}-{{post.data.title|slugify}}-lightbox" aria-label="Expand {{post.data.type}}" role="button" data-desktop></a>
 									<a class="external-expand" href="{{post.url|url}}" aria-label="View {{post.data.type}} in new window" target="_blank"></a>
 								</div>
 							{% elseif (post.data.category != "media") and (post.data.category != "code") %}
