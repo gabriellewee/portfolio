@@ -1,5 +1,7 @@
 /*! Lightbox script by Gabrielle Wee */
-const lightbox = (buttons, boxes) => {
+const lightbox = (buttons, boxes, scroll) => {
+	if(!buttons || !boxes) return;
+
 	let scrollPosition = document.documentElement.scrollTop;
 
 	const deactivate = (lightboxes) => {
@@ -27,16 +29,18 @@ const lightbox = (buttons, boxes) => {
 		}
 	}
 
-	const activate = (lightboxes, index) => {
+	const activate = (lightbox) => {
 		let contents;
-		if(lightboxes[index].nextElementSibling.hasAttribute("data-content")) {
-			contents = [lightboxes[index].nextElementSibling];
+		if(lightbox.nextElementSibling.hasAttribute("data-content")) {
+			contents = [lightbox.nextElementSibling];
 		} else {
-			contents = Array.from(lightboxes[index].querySelectorAll("[data-content]"))
+			contents = Array.from(lightbox.querySelectorAll("[data-content]"))
 		}
-		lightboxes[index].classList.add("active");
-		lightboxes[index].focus();
+
+		lightbox.classList.add("active");
+		lightbox.focus();
 		scrollPosition = document.documentElement.scrollTop;
+
 		contents.forEach(content=>{
 			let frame = content.querySelector("iframe");
 			imagesLoaded(content, () => {
@@ -44,6 +48,7 @@ const lightbox = (buttons, boxes) => {
 				if(frame) frame.src = frame.src;
 			});
 		});
+
 		const scrollOut = ScrollTrigger.create({
 			trigger: document.body,
 			start: `${scrollPosition - 240}`,
@@ -55,45 +60,28 @@ const lightbox = (buttons, boxes) => {
 		});
 	}
 
-	const setNext = (e, sibling, lightbox, lightboxes, index) => {
-		let contents;
-		if(lightbox.nextElementSibling.hasAttribute("data-content")) {
-			contents = [lightbox.nextElementSibling];
-		} else {
-			contents = Array.from(lightbox.querySelectorAll("[data-content]"))
-		}
+	const setNext = (e, lightbox, lightboxes, index) => {
 		setTimeout(() => {
-			contents.push(lightbox);
-			contents.forEach(content=>{
-				content.classList.remove("active");
-			});
-			if(e.key === "ArrowRight") {
-				sibling = lightboxes[index + 1] || lightboxes[0];
-			} else if(e.key === "ArrowLeft") {
-				sibling = lightboxes[index - 1] || lightboxes[lightboxes.length - 1];
+			deactivate(lightbox);
+			if(lightboxes.length > 1) {
+				let sibling;
+				if(e.key === "ArrowRight") {
+					sibling = lightboxes[index + 1] || lightboxes[0];
+				} else if(e.key === "ArrowLeft") {
+					sibling = lightboxes[index - 1] || lightboxes[lightboxes.length - 1];
+				}
+				sibling.focus();
+				activate(sibling);
 			}
-			sibling.focus();
-			let siblingContents;
-			if(sibling.nextElementSibling.hasAttribute("data-content")) {
-				siblingContents = [sibling.nextElementSibling];
-			} else {
-				siblingContents = Array.from(sibling.querySelectorAll("[data-content]"))
-			}
-			siblingContents.push(sibling);
-			siblingContents.forEach(content=>{
-				content.classList.add("active");
-				let frame = content.querySelector("iframe");
-				if(frame) frame.src = frame.src;
-			});
 		}, 100);
 	}
 
-	const shortcut = (e, sibling, lightbox, lightboxes, index) => {
+	const shortcut = (e, lightbox, lightboxes, index) => {
 		if(lightbox.classList.contains("active")) {
 			if (e.key === "Escape") {
 				deactivate(lightbox);
 			} else if(e.key === "ArrowRight" || e.key === "ArrowLeft") {
-				setNext(e, sibling, lightbox, lightboxes, index);
+				setNext(e, lightbox, lightboxes, index);
 			}
 		}
 	}
@@ -106,19 +94,19 @@ const lightbox = (buttons, boxes) => {
 		links.forEach((link, index)=>{
 			link.addEventListener("click", e => {
 				e.preventDefault();
-				activate(lightboxes, index);
+				activate(lightboxes[index]);
 			}, { signal });
 		});
 
-		let sibling;
 		lightboxes.forEach((lightbox, index)=>{
 			lightbox.addEventListener("click", e => {
 				e.preventDefault();
 				deactivate(lightbox);
 				links[index].focus();
 			}, { signal });
+
 			document.addEventListener("keydown", e => {
-				shortcut(e, sibling, lightbox, lightboxes, index);
+				shortcut(e, lightbox, lightboxes, index);
 			}, { signal });
 		});
 	}
@@ -134,6 +122,18 @@ const lightbox = (buttons, boxes) => {
 		lightboxes = desktop ? [... document.querySelectorAll(`${boxes}`)] : [... document.querySelectorAll(`${boxes}:not([data-desktop])`)];
 
 		expand(links, lightboxes);
+
+		if(scroll) {
+			scroll.on('append', (body, path, items, response) => {
+				deactivate(lightboxes);
+				controller.abort();
+
+				links = desktop ? [... document.querySelectorAll(`${buttons}`)] : [... document.querySelectorAll(`${buttons}:not([data-desktop])`)];
+				lightboxes = desktop ? [... document.querySelectorAll(`${boxes}`)] : [... document.querySelectorAll(`${boxes}:not([data-desktop])`)];
+
+				expand(links, lightboxes);
+			});
+		}
 
 		return () => {
 			deactivate(lightboxes);

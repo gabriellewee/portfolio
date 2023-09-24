@@ -90,7 +90,6 @@ const mediaTriggers = (media) => {
 }
 
 frames(".reload");
-lightbox(".expand", ".lightbox");
 timeAgo("time");
 mediaTriggers(".post-media");
 
@@ -145,13 +144,15 @@ if(container) {
 			scrollThreshold: false,
 			history: false
 		});
+		lightbox(".expand", ".lightbox", scroll);
 		scroll.on('append', (body, path, items, response) => {
 			frames(".reload");
-			lightbox(".expand", ".lightbox");
 			timeAgo("time");
 			mediaTriggers(".post-media");
 		});
 	}
+} else {
+	lightbox(".expand", ".lightbox");
 }
 
 new imagesLoaded(document.body, () => {

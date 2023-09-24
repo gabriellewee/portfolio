@@ -215,7 +215,7 @@ pagination:
 	{% for post in pagination.items %}
 		{% if post.data.category == "media" %}
 			<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{post.data.date|safe}}-{{post.data.name}}-lightbox" href="#{{post.data.date|safe}}-{{post.data.name}}" data-append>
-				<figure class="image" data-content="true">
+				<figure class="image" data-content>
 					{% if post.data.upscale %}
 						<picture>
 							<img class="upscale" src="{% include post.data.upscale %}"{% if post.data.upscaleWidth %} width="{{post.data.upscaleWidth}}"{% endif %}{% if post.data.upscaleHeight %} height="{{post.data.upscaleHeight}}"{% endif %} alt="{{post.data.description}}"/>
@@ -233,7 +233,7 @@ pagination:
 			{% for media in post.data.media %}
 				{% if media.url %}
 					<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="external-{{media.id}}-lightbox" href="#external-{{media.id}}" data-append>
-						<figure class="image" data-content="true">
+						<figure class="image" data-content>
 							{% external media.url, media.description, media.meta.original.width %}
 						</figure>
 					</a>
@@ -242,14 +242,14 @@ pagination:
 		{% elseif (post.data.category == "writing") and (post.data.excerptPhoto) %}
 			{% for photo in post.data.photos|limit(1) %}
 				<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{post.data.date|safe}}-{{photo.name}}-lightbox" href="#{{post.data.date|safe}}-{{photo.name}}" data-append>
-					<figure class="image" data-content="true">
+					<figure class="image" data-content>
 						{% image './static/images/posts' + '/' + post.data.date + '-' + photo.name + '.' + photo.type, photo.description, 'screen' %}
 					</figure>
 				</a>
 			{% endfor %}
 		{% elseif post.data.category == "code" %}
 			<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{post.page.date|ISO|htmlDateString}}-{{post.data.title|slugify}}-lightbox" href="#{{post.page.date|ISO|htmlDateString}}-{{post.data.title|slugify}}" data-append data-desktop></a>
-			<div class="iframe" data-append data-content="true">
+			<div class="iframe" data-append data-content>
 				{% if post.url %}
 					<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title|safe}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"></iframe>
 					<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}">Please enable Javascript to view this code demo.</noscript>
