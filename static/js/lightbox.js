@@ -1,13 +1,23 @@
 /*! Lightbox script by Gabrielle Wee */
 const lightbox = (buttons, boxes) => {
-	const deactivate = (lightboxes, index, contents) => {
-		if(lightboxes[index].classList.contains("active")) {
-			lightboxes[index].classList.remove("active");
-			contents.forEach(content=>{
-				content.classList.remove("active");
-			});
-			scrollPosition = document.documentElement.scrollTop;
-		}
+	let scrollPosition = document.documentElement.scrollTop;
+
+	const deactivate = (lightboxes) => {
+		lightboxes.forEach(lightbox => {
+			let contents;
+			if(lightbox.nextElementSibling.hasAttribute("data-content")) {
+				contents = [lightbox.nextElementSibling];
+			} else {
+				contents = Array.from(lightbox.querySelectorAll("[data-content]"))
+			}
+			if(lightbox.classList.contains("active")) {
+				lightbox.classList.remove("active");
+				contents.forEach(content=>{
+					content.classList.remove("active");
+				});
+				scrollPosition = document.documentElement.scrollTop;
+			}
+		});
 	}
 
 	const activate = (e, lightboxes, index, contents) => {
@@ -22,19 +32,14 @@ const lightbox = (buttons, boxes) => {
 				if(frame) frame.src = frame.src;
 			});
 		});
-		ScrollTrigger.create({
+		const scrollOut = ScrollTrigger.create({
 			trigger: document.body,
-			start: `${scrollPosition}`,
-			end: `${scrollPosition + 320}`,
+			start: `${scrollPosition - 240}`,
+			end: `${scrollPosition + 240}`,
 			once: true,
-			onLeave: () => deactivate(lightboxes, index, contents)
-		});
-		ScrollTrigger.create({
-			trigger: document.body,
-			start: `${scrollPosition - 320}`,
-			end: `${scrollPosition}`,
-			once: true,
-			onLeaveBack: () => deactivate(lightboxes, index, contents)
+			onLeave: () => deactivate(lightboxes),
+			onLeaveBack: () => deactivate(lightboxes),
+			invalidateOnRefresh: true,
 		});
 	}
 
@@ -85,7 +90,6 @@ const lightbox = (buttons, boxes) => {
 
 	let controller;
 	const expand = (links, lightboxes) => {
-		let scrollPosition;
 		controller = new AbortController();
 		let { signal } = controller;
 
