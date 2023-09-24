@@ -183,14 +183,7 @@
 		.post-header-content {
 			display: flex;
 			flex-wrap: wrap;
-			@supports not(container-type: inline-size) {
-				@include viewport(mobile) {
-					flex-wrap: nowrap;
-					align-items: flex-start;
-					justify-content: space-between;
-				}
-			}
-			@container header (min-width: 350px) {
+			@include container(header, mobile, $container-mobile) {
 				flex-wrap: nowrap;
 				align-items: flex-start;
 				justify-content: space-between;
@@ -199,13 +192,7 @@
 		h2 {
 			order: 2;
 			width: 100%;
-			@supports not(container-type: inline-size) {
-				@include viewport(mobile) {
-					order: 1;
-					width: unset;
-				}
-			}
-			@container header (min-width: 350px) {
+			@include container(header, mobile, $container-mobile) {
 				order: 1;
 				width: unset;
 			}
@@ -221,13 +208,7 @@
 		time {
 			order: 1;
 			margin-bottom: calc(var(--p)*1.25);
-			@supports not(container-type: inline-size) {
-				@include viewport(mobile) {
-					order: 2;
-					margin-bottom: 0;
-				}
-			}
-			@container header (min-width: 350px) {
+			@include container(header, mobile, $container-mobile) {
 				order: 2;
 				margin-bottom: 0;
 			}

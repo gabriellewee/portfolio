@@ -159,12 +159,7 @@ figcaption {
 		position: relative;
 		width: 100%;
 		margin-top: calc(var(--p) * 1.5);
-		@supports not(container-type: size) {
-			@include viewport($iphone) {
-				margin-top: calc(var(--p) * 2);
-			}
-		}
-		@container metadata (min-width: 320px) and (min-height: 400px) {
+		@include container(metadata, $iphone, "(min-width: #{$iphone-mini}) and (min-height: 400px)") {
 			margin-top: calc(var(--p) * 2);
 		}
 		.media-expand {
@@ -253,7 +248,7 @@ figcaption {
 				}
 			}
 
-			@container metadata (min-width: 320px) and (min-height: 400px) {
+			@container metadata (min-width: #{$iphone-mini}) and (min-height: 400px) {
 				&:hover {
 					@media (prefers-reduced-motion: no-preference) {
 						scale: 1.02;
@@ -307,7 +302,7 @@ figcaption {
 					width: 200px;
 				}
 			}
-			@container metadata (min-width: 320px) and (min-height: 400px) {
+			@container metadata (min-width: #{$iphone-mini}) and (min-height: 400px) {
 				display: block;
 			}
 			@container metadata (min-width: 400px) {
@@ -316,12 +311,7 @@ figcaption {
 		}
 		+ * {
 			margin-top: var(--p);
-			@supports not(container-type: size) {
-				@include viewport($iphone) {
-					margin-top: calc(var(--p) * 1.5);
-				}
-			}
-			@container metadata (min-width: 320px) and (min-height: 400px) {
+			@include container(metadata, $iphone, "(min-width: #{$iphone-mini}) and (min-height: 400px)") {
 				margin-top: calc(var(--p) * 1.5);
 			}
 			+ * {
@@ -394,7 +384,7 @@ figcaption {
 		@supports (container-type: size) {
 			align-self: center;
 		}
-		@container metadata (min-width: 320px) {
+		@container metadata (min-width: #{$iphone-mini}) {
 			align-self: unset;
 		}
 		div {

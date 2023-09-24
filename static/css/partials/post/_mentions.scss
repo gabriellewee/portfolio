@@ -34,15 +34,7 @@
 		grid-column: 1/-1;
 		margin-top: calc(var(--p)*2.5);
 		margin-bottom: calc(var(--p)*1.5);
-		@supports not(container-type: inline-size) {
-			@include viewport(mobile) {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				align-content: center;
-			}
-		}
-		@container mentions (min-width: 480px) {
+		@include container(mentions, mobile, 480px) {
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
@@ -57,13 +49,7 @@
 			display: inline-block;
 			margin-top: calc(var(--p)*1.75);
 			margin-bottom: calc(var(--p)/2);
-			@supports not(container-type: inline-size) {
-				@include viewport(mobile) {
-					margin-top: 0;
-					margin-bottom: 0;
-				}
-			}
-			@container mentions (min-width: 480px) {
+			@include container(mentions, mobile, 480px) {
 				margin-top: 0;
 				margin-bottom: 0;
 			}

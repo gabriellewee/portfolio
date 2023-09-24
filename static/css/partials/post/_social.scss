@@ -8,10 +8,7 @@
 		display: flex;
 		flex-wrap: nowrap;
 		align-items: flex-start;
-		@include viewport(mobile) {
-			justify-content: flex-end;
-		}
-		@container header (min-width: 350px) {
+		@include container(header, mobile, $container-mobile) {
 			justify-content: flex-end;
 		}
 	}

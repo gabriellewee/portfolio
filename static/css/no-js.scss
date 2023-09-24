@@ -1,5 +1,6 @@
 .load,
 .post-code .post-content iframe:not(.css-only), .post-code .reload,
+.lightbox + .iframe iframe:not(.css-only),
 .page-index .memoji-link .text.message {
 	display: none;
 }
@@ -14,7 +15,16 @@
 	width: auto;
 }
 
-.post-code .post-content .warning:not(.css-only) {
+.lightbox + .iframe {
+	width: unset;
+	height: unset;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.post-code .post-content .warning:not(.css-only),
+.lightbox + .iframe .warning:not(.css-only) {
 	display: flex;
 }
 
@@ -26,11 +36,12 @@
 .bottom,
 .filters a,
 .post-animate,
-.post-code .post-content iframe {
+.post-code .post-content iframe,
+.lightbox + .iframe iframe {
 	opacity: 1;
 }
 
-.post-content {
+.post-code .post-content {
 	background: var(--color-iron-1) !important;
 }
 

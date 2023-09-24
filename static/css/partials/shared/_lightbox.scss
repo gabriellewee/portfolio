@@ -55,14 +55,43 @@
 	@include viewport($ipad-11) {
 		padding: calc(var(--p)*2);
 	}
-	.image {
+	.image, + .iframe {
 		opacity: 0;
 		transition: .2s opacity ease-out .1s, 0s display .2s;
 		display: none;
-		position: relative;
 		z-index: 1;
 		width: 100%;
 		height: 100%;
+	}
+	+ .iframe {
+		@include clip-path-edges(2px);
+		place-items: center;
+		position: fixed;
+		top: calc(var(--p)*4);
+		left: calc(var(--p)*4);
+		width: calc(100% - (var(--p)*8));
+		height: calc(100% - (var(--p)*8));
+		iframe {
+			opacity: 0;
+			transition: .2s ease-out .3s;
+			width: 100%;
+			height: 100%;
+		}
+		.warning {
+			display: none;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			max-height: 300px;
+			width: 100vh;
+			max-width: calc(var(--width) - (var(--p)*4) - env(safe-area-inset-left) - env(safe-area-inset-right));
+			background-color: var(--color-iron-5);
+			color: var(--color-iron-white-70);
+			font-weight: 600;
+		}
+	}
+	.image {
+		position: relative;
 		picture {
 			display: flex;
 			align-items: center;
@@ -95,6 +124,11 @@
 			&:before {
 				opacity: 1;
 			}
+		}
+		+ .iframe {
+			z-index: 1000;
+			opacity: 1;
+			display: grid;
 		}
 	}
 	&.active .image.active, .no-js &:target .image {

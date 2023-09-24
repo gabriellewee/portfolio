@@ -6,75 +6,79 @@
 	font-size: 1rem;
 	font-weight: 700;
 	line-height: 1.375;
-	div {
+	.post-header-content {
+		@include container(header, mobile, $container-mobile) {
+			align-items: stretch;
+			align-content: flex-start;
+		}
+		@include container(header, $ipad-mini) {
+			align-items: flex-start;
+		}
+	}
+	.post-header-left {
 		display: flex;
 		align-items: center;
 		align-content: center;
 		flex-wrap: wrap;
 		order: 2;
 		width: 100%;
-	}
-	div, h2 {
-		@supports not(container-type: inline-size) {
-			@include viewport(mobile) {
-				order: 1;
-				width: unset;
-			}
+		@include container(header, mobile, $container-mobile) {
+			align-items: flex-start;
+			align-content: flex-start;
 		}
-		@container header (min-width: 350px) {
+		@include container(header, $ipad-mini) {
+			align-items: center;
+			align-content: center;
+		}
+	}
+	.post-header-left, .post-headline {
+		@include container(header, mobile, $container-mobile) {
 			order: 1;
 			width: unset;
 		}
 	}
-	h2 {
+	a {
+		color: var(--color-aqua);
+		&:hover, &:focus {
+			color: var(--color-peach);
+		}
+		&:active {
+			color: var(--color-periwinkle);
+		}
+		&:after {
+			display: inline;
+			font-size: 1.375rem;
+			line-height: 1;
+		}
+	}
+	.post-headline {
 		order: 1;
 		line-height: 1.5;
+		@include container(header, mobile, $container-mobile) {
+			margin-right: calc(var(--p)*1.5);
+		}
 		a {
-			color: var(--color-aqua);
-			&:hover, &:focus {
-				color: var(--color-peach);
-			}
-			&:active {
-				color: var(--color-periwinkle);
-			}
 			&:after {
 				content: "\2197";
-				display: inline;
 				margin-left: calc(var(--p)/2);
-				font-size: 1.375rem;
-				line-height: 1;
 			}
 		}
 	}
-	time {
-		margin-bottom: calc(var(--p)*.75);
-		@supports not(container-type: inline-size) {
-			@include viewport(mobile) {
-				margin-bottom: 0;
-			}
-		}
-		@container header (min-width: 350px) {
-			margin-bottom: 0;
-		}
-	}
-	ul {
+	.post-tags {
 		order: 2;
 		display: flex;
 		flex-wrap: wrap;
 		list-style: none;
 		margin-top: var(--p);
 		margin-bottom: calc(var(--p)*.75);
-		@supports not(container-type: inline-size) {
-			@include viewport(mobile) {
-				margin-top: 0;
-				margin-bottom: 0;
-				margin-left: calc(var(--p)*1.5);
-			}
-		}
-		@container header (min-width: 350px) {
-			margin-top: 0;
+		@include container(header, mobile, $container-mobile) {
+			width: 100%;
+			margin-top: calc(var(--p)*.75);
 			margin-bottom: 0;
-			margin-left: calc(var(--p)*1.5);
+		}
+		@include container(header, $ipad-mini) {
+			width: unset;
+			margin-top: 0;
 		}
 		li {
 			margin-right: calc(var(--p)*1.5);
@@ -90,6 +94,90 @@
 			}
 			&.tag-award {
 				background: var(--color-mauve);
+			}
+		}
+	}
+	.post-header-right {
+		order: 1;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		justify-content: space-between;
+		width: 100%;
+		margin-bottom: calc(var(--p)*.75);
+		@include container(header, mobile, $container-mobile) {
+			order: 2;
+			justify-content: flex-end;
+			align-content: space-between;
+			width: unset;
+			margin-bottom: 0;
+		}
+		@include container(header, $ipad-mini) {
+			flex-wrap: nowrap;
+			align-items: center;
+			align-content: unset;
+		}
+		.time {
+			margin-bottom: 0;
+			@include container(header, mobile, $container-mobile) {
+				width: 100%;
+				text-align: right;
+			}
+			@include container(header, $ipad-mini) {
+				width: unset;
+			}
+		}
+		.expand, .external-expand {
+			order: 2;
+			line-height: 1;
+			border-radius: 1px;
+			height: 20px;
+			margin-bottom: 2px;
+			&:focus {
+				outline: 1px solid var(--color-peach);
+			}
+			@include container(header, mobile, $container-mobile) {
+				margin-top: calc(var(--p)/2);
+			}
+			@include container(header, $ipad-mini) {
+				margin-top: 0;
+				margin-left: var(--p);
+			}
+			&:after {
+				content: "\26F6";
+			}
+		}
+		.expand {
+			display: none;
+			@include viewport($ipad-mini) {
+				display: block;
+			}
+		}
+		.external-expand {
+			display: block;
+			@include viewport($ipad-mini) {
+				display: none;
+			}
+		}
+	}
+	.post-header-left:not(:has(.post-tags)) + .post-header-right {
+		@include container(header, mobile, $container-mobile) {
+			flex-wrap: nowrap;
+			align-items: flex-start;
+			align-content: unset;
+		}
+		@include container(header, $ipad-mini) {
+			align-items: center;
+		}
+		.time {
+			@include container(header, mobile, $container-mobile) {
+				width: unset;
+			}
+		}
+		.expand, .external-expand {
+			@include container(header, mobile, $container-mobile) {
+				margin-top: 0;
+				margin-left: var(--p);
 			}
 		}
 	}
@@ -110,11 +198,6 @@
 		height: 300px;
 		color: var(--color-iron-white-70);
 		font-weight: 600;
-		&.css-only {
-			+ iframe {
-				display: block;
-			}
-		}
 	}
 	.reload {
 		@include font-weight-width(600, 90);
@@ -122,7 +205,7 @@
 		bottom: calc(var(--p)*2);
 		right: calc(var(--p)*2);
 		&:before {
-			background-color: var(--color-blush);
+			background-color: var(--color-iron-white-60);
 		}
 		> span {
 			background-color: var(--color-mint);

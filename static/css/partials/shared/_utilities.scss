@@ -10,6 +10,7 @@ $desktop: 1280px;
 $mbp-14: 1512px;
 $mbp-16: 1728px;
 $lg-5k: 2560px;
+$container-mobile: 350px;
 
 // colors
 $message: #e9e9eb;
@@ -40,6 +41,23 @@ $violet: #D18FF0;
 		}
 	} @else {
 		@media only screen and (min-width: $viewport) {
+			@content;
+		}
+	}
+}
+
+@mixin container($container, $a, $b: $a) {
+	@supports not(container-type: inline-size) {
+		@include viewport($a) {
+			@content;
+		}
+	}
+	@if (str-index(#{$b}, "min")) {
+		@container #{$container} #{$b} {
+			@content;
+		}
+	} @else {
+		@container #{$container} (min-width: #{$b}) {
 			@content;
 		}
 	}

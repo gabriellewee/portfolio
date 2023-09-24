@@ -41,12 +41,7 @@
 		}
 	}
 	time {
-		@supports not(container-type: inline-size) {
-			@include viewport(mobile) {
-				margin-left: var(--p);
-			}
-		}
-		@container header (min-width: 350px) {
+		@include container(header, mobile, $container-mobile) {
 			margin-left: var(--p);
 		}
 	}

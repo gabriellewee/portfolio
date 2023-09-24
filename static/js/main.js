@@ -17,6 +17,11 @@ const frames = (buttons) => {
 		button.addEventListener("click",  e => {
 			frame.src = frame.src;
 		});
+		button.addEventListener("keydown",  e => {
+			if (e.key === "Enter") {
+				frame.src = frame.src;
+			}
+		});
 	});
 }
 
@@ -85,8 +90,8 @@ const mediaTriggers = (media) => {
 }
 
 frames(".reload");
+lightbox(".expand", ".lightbox");
 timeAgo("time");
-lightbox(".expand");
 mediaTriggers(".post-media");
 
 let container = document.querySelector(".grid-isotope");
@@ -136,13 +141,13 @@ if(container) {
 		let lightboxScroll = new InfiniteScroll(lightboxContainer, {
 			button: '.load',
 			path: '.older',
-			append: '.post-lightbox',
+			append: '[data-append]',
 			scrollThreshold: false,
 			history: false
 		});
 		scroll.on('append', (body, path, items, response) => {
 			frames(".reload");
-			lightbox(".expand");
+			lightbox(".expand", ".lightbox");
 			timeAgo("time");
 			mediaTriggers(".post-media");
 		});

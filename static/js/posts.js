@@ -1,4 +1,4 @@
-lightbox(".expand");
+lightbox(".expand", ".lightbox");
 timeAgo("time");
 
 const smoothScrollLinks = ((links = Array.from(document.querySelectorAll(".direct-link"))) => {

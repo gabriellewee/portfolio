@@ -101,8 +101,8 @@
 
 <div class="lightbox-group" hidden>
 	{% for post in media %}
-		<a class="lightbox post-lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{post.date|safe}}-{{post.name}}-lightbox" href="#{{post.date|safe}}-{{post.name}}">
-			<figure class="image">
+		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{post.date|safe}}-{{post.name}}-lightbox" href="#{{post.date|safe}}-{{post.name}}">
+			<figure class="image lightbox-content">
 				{% if post.upscale %}
 					<picture>
 						<img class="upscale" src="{% include post.upscale %}"{% if post.upscaleWidth %} width="{{post.upscaleWidth}}"{% endif %}{% if post.upscaleHeight %} height="{{post.upscaleHeight}}"{% endif %} alt="{{post.description}}"/>
@@ -117,5 +117,5 @@
 			</figure>
 		</a>
 	{% endfor %}
-	<div class="lightbox-background post-lightbox"></div>
+	<div class="lightbox-background"></div>
 </div>
