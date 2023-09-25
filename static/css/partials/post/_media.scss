@@ -68,7 +68,7 @@ figure {
 		display: flex;
 	}
 	.button {
-		transform: translateY(-100%);
+		translate: 0 100%;
 		transition: .2s ease-out;
 		position: absolute;
 		display: inline-block;
@@ -442,7 +442,7 @@ figcaption {
 				.media-view-hover {
 					opacity: 1;
 					.button {
-						transform: translateY(0);
+						translate: 0 0;
 						> span {
 							background-position-x: 0%;
 						}
@@ -525,7 +525,7 @@ figcaption {
 				.media-view-hover {
 					opacity: 0;
 					.button {
-						transform: translateY(-100%);
+						translate: 0 100%;
 					}
 				}
 			}
