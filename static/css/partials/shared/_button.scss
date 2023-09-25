@@ -22,9 +22,14 @@
 			left: calc(var(--p)/-4);
 			width: calc(100% + var(--p)/2);
 			height: calc(100% + var(--p)/2);
-			clip-path: polygon(calc(var(--p)*1.375) 0%, calc(100% - calc(var(--p)*1.375)) 0%, 100% 43%, 100% 57%, calc(100% - calc(var(--p)*1.375)) 100%, calc(var(--p)*1.375) 100%, 0 57%, 0 43%);
 			padding: var(--p) calc(var(--p)*2.5);
 			background-color: var(--color-blush);
+			@include clip-path(false) {
+				@include border-radius(calc(var(--p)/2));
+			}
+			@include clip-path {
+				@include button-outline-shape;
+			}
 		}
 	}
 	> span {

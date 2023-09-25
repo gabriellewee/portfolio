@@ -47,7 +47,7 @@
 							</div>
 						</div>
 					</header>
-					<div class="post-content{% if post.data.category == 'writing' %} post-text{% endif %}"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %}>
+					<div class="post-content{% if post.data.category == 'writing' %} post-text{% endif %}">
 						{% if post.data.mobile == false %}
 							<a class="post-mobile-button button" href="{{post.url|url}}" target="_blank"><span><span>View animation</span></span></a>
 						{% endif %}
@@ -62,7 +62,9 @@
 									</picture>
 								</div>
 							{% endif %}
-							<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title|safe}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"></iframe>
+							<div class="frame-wrapper" {% if post.data.background %} style="background: {{post.data.background}}"{% endif %}>
+								<iframe class="frame{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title|safe}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"></iframe>
+							</div>
 							<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}">Please enable Javascript to view this code demo.</noscript>
 						{% else %}
 							{{post.content|safe}}

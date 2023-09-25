@@ -184,7 +184,15 @@
 }
 
 .post-content {
+	display: flex;
+	flex-direction: column;
 	position: relative;
+	.frame-wrapper {
+		order: 1;
+		@include viewport(mobile) {
+			order: 2;
+		}
+	}
 	iframe {
 		display: block;
 		width: 100%;
@@ -203,11 +211,62 @@
 	}
 	.button {
 		@include font-weight-width(600, 90);
-		position: absolute;
-		bottom: calc(var(--p)*2);
-		right: calc(var(--p)*2);
+		order: 2;
+		text-align: center;
+		text-decoration: underline;
+		text-decoration-color: hsla(var(--color-white-hsl), 0);
+		text-decoration-thickness: 3px;
+		text-underline-offset: 8px;
+		transition: .2s ease-out;
+		@include viewport(mobile) {
+			order: 1;
+			position: absolute;
+			bottom: calc(var(--p)*2);
+			right: calc(var(--p)*2);
+			text-decoration: none;
+		}
+		&:before {
+			display: none;
+			@include viewport(mobile) {
+				display: block;
+			}
+		}
+		&:hover {
+			@media (prefers-reduced-motion: no-preference) {
+				scale: unset;
+				@include viewport(mobile) {
+					scale: 1.02;
+				}
+			}
+		}
+		&:hover, &:focus {
+			text-decoration-color: hsla(var(--color-white-hsl), 1);
+			text-underline-offset: 4px;
+		}
+		&:active {
+			@media (prefers-reduced-motion: no-preference) {
+				scale: unset;
+				@include viewport(mobile) {
+					scale: .98;
+				}
+			}
+		}
 		&:before {
 			background-color: var(--color-iron-white-60);
+			@include clip-path(false) {
+				@include border-radius(0);
+			}
+			@include clip-path {
+				clip-path: none;
+			}
+			@include viewport(mobile) {
+				@include clip-path(false) {
+					@include border-radius(calc(var(--p)/2));
+				}
+				@include clip-path {
+					@include button-outline-shape;
+				}
+			}
 		}
 		> span {
 			background-color: var(--color-mint);
@@ -218,6 +277,20 @@
 				var(--color-mint) 60%,
 				var(--color-oak) 100%,
 			) 50% 0% / 200% 100%;
+			@include clip-path(false) {
+				@include border-radius(0);
+			}
+			@include clip-path {
+				clip-path: none;
+			}
+			@include viewport(mobile) {
+				@include clip-path(false) {
+					@include border-radius(calc(var(--p)/4));
+				}
+				@include clip-path {
+					@include button-shape;
+				}
+			}
 			&:before {
 				background-color: var(--color-iron);
 				background: radial-gradient(circle at center right, var(--color-iron-10) 0, var(--color-iron) 100%);
@@ -235,7 +308,7 @@
 			display: none;
 		}
 	}
-	.post-mobile-button + .reload, .post-mobile ~ iframe {
+	.post-mobile-button + .reload, .post-mobile ~ .frame-wrapper {
 		display: none;
 		@include viewport(mobile) {
 			display: block;

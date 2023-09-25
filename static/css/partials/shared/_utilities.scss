@@ -219,6 +219,12 @@ $violet: #D18FF0;
 	height: calc(100% + var(--p)/2);
 	background: $color;
 }
+@mixin button-outline-shape {
+	clip-path: polygon(calc(var(--p)*1.375) 0%, calc(100% - calc(var(--p)*1.375)) 0%, 100% 43%, 100% 57%, calc(100% - calc(var(--p)*1.375)) 100%, calc(var(--p)*1.375) 100%, 0 57%, 0 43%);
+}
+@mixin button-shape {
+	clip-path: polygon(calc(var(--p)*1.25) 0%, calc(100% - calc(var(--p)*1.25)) 0%, 100% 45%, 100% 55%, calc(100% - calc(var(--p)*1.25)) 100%, calc(var(--p)*1.25) 100%, 0 55%, 0 45%);
+}
 @mixin button {
 	display: block;
 	color: white;
@@ -228,7 +234,7 @@ $violet: #D18FF0;
 		padding: var(--p) calc(var(--p)*2);
 	}
 	@include clip-path {
-		clip-path: polygon(calc(var(--p)*1.25) 0%, calc(100% - calc(var(--p)*1.25)) 0%, 100% 45%, 100% 55%, calc(100% - calc(var(--p)*1.25)) 100%, calc(var(--p)*1.25) 100%, 0 55%, 0 45%);
+		@include button-shape;
 		padding: var(--p) calc(var(--p)*2.5);
 	}
 }
