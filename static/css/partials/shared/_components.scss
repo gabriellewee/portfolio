@@ -146,7 +146,7 @@
 				font-size: clamp(1.75rem, 3vw, 2rem);
 				line-height: 1.3;
 				@include viewport($ipad-mini) {
-					line-height: 1.1;
+					line-height: 1.2;
 				}
 			}
 			.link, .popup-label span {
