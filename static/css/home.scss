@@ -1,11 +1,6 @@
 @import 'partials/shared/utilities';
 
 .page-home {
-	&.page-index {
-		.memoji-link a {
-			pointer-events: none;
-		}
-	}
 	.contact-sites, .contact-messages {
 		opacity: 0;
 	}

@@ -1,9 +1,13 @@
 <header class="top" aria-label="Header">
 	<div class="memoji-link">
-		<a href="/"{% if (key == "home") and (pagination.pageNumber == 0) %} tabindex="-1"{% endif %}>
+		<a href="/">
 			<span class="memoji memoji-default"></span>
 			<span class="memoji memoji-hm"></span>
-			<span class="text go-home">Go home?</span>
+			{% if (key == "home") and (pagination.pageNumber == 0) %}
+				<span class="text go-home">Refresh?</span>
+			{% else %}
+				<span class="text go-home">Go home?</span>
+			{% endif %}
 		</a>
 		{% if message == true %}
 			<h1 class="text message">{{description}}</h1>
