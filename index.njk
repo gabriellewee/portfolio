@@ -64,7 +64,7 @@ pagination:
 							{% if post.data.category == "code" %}
 								<div class="post-header-right">
 									<time class="time{% if post.data.category != 'code' %} time-default{% endif %}{% if post.data.category == 'social' %} time-external{% endif %}" datetime="{{post.page.date|ISO|htmlDateString}}" data-time="{{post.page.date|ISO}}" title="{{post.page.date|ISO|readableDate}}">{{post.page.date|ISO|readableDate}}</time>
-									<a class="expand" id="{{post.page.date|ISO|htmlDateString}}-{{post.data.title|slugify}}" href="#{{post.page.date|ISO|htmlDateString}}-{{post.data.title|slugify}}-lightbox" aria-label="Expand {{post.data.type}}" role="button" data-desktop></a>
+									<a class="expand" id="{{post.page.date|ISO|htmlDateString}}-{{post.page.fileSlug}}" href="#{{post.page.date|ISO|htmlDateString}}-{{post.page.fileSlug}}-lightbox" aria-label="Expand {{post.data.type}}" role="button" data-desktop></a>
 									<a class="external-expand" href="{{post.url|url}}" aria-label="View {{post.data.type}} in new window" target="_blank"></a>
 								</div>
 							{% elseif (post.data.category != "media") and (post.data.category != "code") %}
@@ -248,7 +248,7 @@ pagination:
 				</a>
 			{% endfor %}
 		{% elseif post.data.category == "code" %}
-			<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{post.page.date|ISO|htmlDateString}}-{{post.data.title|slugify}}-lightbox" href="#{{post.page.date|ISO|htmlDateString}}-{{post.data.title|slugify}}" data-append data-desktop></a>
+			<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{post.page.date|ISO|htmlDateString}}-{{post.page.fileSlug}}-lightbox" href="#{{post.page.date|ISO|htmlDateString}}-{{post.page.fileSlug}}" data-append data-desktop></a>
 			<div class="iframe" data-append data-content>
 				{% if post.url %}
 					<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title|safe}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"></iframe>

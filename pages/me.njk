@@ -203,14 +203,14 @@
 
 <div class="lightbox-group" hidden>
 	<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="2022-07-20-keyboard-lightbox" href="#2022-07-20-keyboard">
-		<figure class="image">
+		<figure class="image" data-content>
 			{% image './static/images/posts/2022-07-20-keyboard.jpg', 'My pastel-themed custom mechanical keyboard and Logitech Lift Mouse', 'screen' %}
 		</figure>
 	</a>
 
 	{% for media in photography|limit(4) %}
 		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
-			<figure class="image lightbox-content">
+			<figure class="image" data-content>
 				{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
 			</figure>
 		</a>
@@ -218,7 +218,7 @@
 
 	{% for media in graphic|limit(4) %}
 		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
-			<figure class="image lightbox-content">
+			<figure class="image" data-content>
 				{% if media.svg == true %}
 					<picture>
 						<img src="/static/images/graphic/{{media.date}}-{{media.name}}.svg" alt="{{media.description}}" width="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'width' %}" height="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'height' %}"/>
@@ -232,7 +232,7 @@
 
 	{% for media in art|limit(4) %}
 		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
-			<figure class="image lightbox-content">
+			<figure class="image" data-content>
 				{% image './static/images/art/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
 			</figure>
 		</a>
@@ -240,7 +240,7 @@
 
 	{% for media in about.cat|limit(2) %}
 		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
-			<figure class="image lightbox-content">
+			<figure class="image" data-content>
 				{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
 			</figure>
 		</a>
@@ -248,7 +248,7 @@
 
 	{% for media in about.plants|limit(2) %}
 		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
-			<figure class="image lightbox-content">
+			<figure class="image" data-content>
 				{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
 			</figure>
 		</a>

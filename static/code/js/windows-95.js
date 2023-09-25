@@ -78,7 +78,6 @@ errors.forEach(error=>{
 					} else if (e.key === "Control") {
 						error.checked = false;
 						error.removeAttribute("checked");
-						console.log(welcome.classList)
 						start.checked = false;
 						start.removeAttribute("checked");
 						triggers.forEach(trigger=>{

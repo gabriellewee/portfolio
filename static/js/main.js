@@ -13,7 +13,7 @@ const frames = (buttons) => {
 	let links = Array.from(document.querySelectorAll(buttons));
 	if(!links) return;
 	links.forEach(button => {
-		let frame = button.nextElementSibling;
+		let frame = button.parentElement.querySelector("iframe");
 		button.addEventListener("click",  e => {
 			frame.src = frame.src;
 		});
@@ -94,11 +94,8 @@ timeAgo("time");
 mediaTriggers(".post-media");
 
 let container = document.querySelector(".grid-isotope");
-let scrollContainer = document.querySelector(".grid-scroll");
-let lightboxContainer = document.querySelector(".posts-lightbox-group");
-let motion = window.matchMedia("(prefers-reduced-motion: no-preference)");
 let iso;
-
+let motion = window.matchMedia("(prefers-reduced-motion: no-preference)");
 const layout = (items) => {
 	if(motion.matches == true) {
 		iso = new Isotope(items, {
@@ -127,30 +124,31 @@ const layout = (items) => {
 	}
 }
 
-if(container) {
-	layout(container);
-	if(scrollContainer && lightboxContainer) {
-		let scroll = new InfiniteScroll(scrollContainer, {
-			button: '.load',
-			path: '.older',
-			append: '.post',
-			scrollThreshold: false,
-			outlayer: iso
-		});
-		let lightboxScroll = new InfiniteScroll(lightboxContainer, {
-			button: '.load',
-			path: '.older',
-			append: '[data-append]',
-			scrollThreshold: false,
-			history: false
-		});
-		lightbox(".expand", ".lightbox", scroll);
-		scroll.on('append', (body, path, items, response) => {
-			frames(".reload");
-			timeAgo("time");
-			mediaTriggers(".post-media");
-		});
-	}
+if(container) layout(container);
+
+let scrollContainer = document.querySelector(".grid-scroll");
+let lightboxContainer = document.querySelector(".posts-lightbox-group");
+if(scrollContainer && lightboxContainer) {
+	let scroll = new InfiniteScroll(scrollContainer, {
+		button: '.load',
+		path: '.older',
+		append: '.post',
+		scrollThreshold: false,
+		outlayer: iso
+	});
+	let lightboxScroll = new InfiniteScroll(lightboxContainer, {
+		button: '.load',
+		path: '.older',
+		append: '[data-append]',
+		scrollThreshold: false,
+		history: false
+	});
+	lightbox(".expand", ".lightbox", scroll);
+	scroll.on('append', (body, path, items, response) => {
+		frames(".reload");
+		timeAgo("time");
+		mediaTriggers(".post-media");
+	});
 } else {
 	lightbox(".expand", ".lightbox");
 }

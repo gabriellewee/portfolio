@@ -42,16 +42,26 @@
 							</div>
 							<div class="post-header-right">
 								<time class="time{% if post.data.category != 'code' %} time-default{% endif %}{% if post.data.category == 'social' %} time-external{% endif %}" datetime="{{post.page.date|ISO|htmlDateString}}" data-time="{{post.page.date|ISO}}">{{post.page.date|ISO|readableDate}}</time>
-								<a class="expand" id="{{post.page.date|ISO|htmlDateString}}-{{post.data.title|slugify}}" href="#{{post.page.date|ISO|htmlDateString}}-{{post.data.title|slugify}}-lightbox" aria-label="Expand {{post.data.type}}" role="button"></a>
+								<a class="expand" id="{{post.page.date|ISO|htmlDateString}}-{{post.page.fileSlug}}" href="#{{post.page.date|ISO|htmlDateString}}-{{post.page.fileSlug}}-lightbox" aria-label="Expand {{post.data.type}}" role="button"></a>
 								<a class="external-expand" href="{{post.url|url}}" aria-label="View {{post.data.type}} in new window" target="_blank"></a>
 							</div>
 						</div>
 					</header>
 					<div class="post-content{% if post.data.category == 'writing' %} post-text{% endif %}"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %}>
+						{% if post.data.mobile == false %}
+							<a class="post-mobile-button button" href="{{post.url|url}}" target="_blank"><span><span>View animation</span></span></a>
+						{% endif %}
 						{% if post.data.button %}
 							<button class="reload button"><span><span>{{post.data.button|capitalize}}</span></span></button>
 						{% endif %}
 						{% if post.url %}
+							{% if post.data.mobile == false %}
+								<div class="post-mobile">
+									<picture>
+										<img src="/static/code/images/{{post.page.fileSlug}}/thumbnail.svg" alt="{{post.description}}" width="{% stats './static/code/images/' + post.page.fileSlug + '/thumbnail.svg', 'width' %}" height="{% stats './static/code/images/' + post.page.fileSlug + '/thumbnail.svg', 'height' %}"/>
+									</picture>
+								</div>
+							{% endif %}
 							<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title|safe}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"></iframe>
 							<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}">Please enable Javascript to view this code demo.</noscript>
 						{% else %}
@@ -68,7 +78,7 @@
 
 <div class="lightbox-group" hidden>
 	{% for post in collections.code | reverse %}
-		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{post.page.date|ISO|htmlDateString}}-{{post.data.title|slugify}}-lightbox" href="#{{post.page.date|ISO|htmlDateString}}-{{post.data.title|slugify}}"></a>
+		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{post.page.date|ISO|htmlDateString}}-{{post.page.fileSlug}}-lightbox" href="#{{post.page.date|ISO|htmlDateString}}-{{post.page.fileSlug}}"></a>
 		<div class="iframe" data-content="true">
 			{% if post.url %}
 				<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title|safe}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"></iframe>
