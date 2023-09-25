@@ -14,6 +14,14 @@
 			margin-top: calc(var(--p)*2);
 		}
 	}
+	> .mentions-header, .mentions-header-wrapper, .mentions-like-content, .mentions-repost-content {
+		padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
+		padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
+		@include viewport($iphone-max) {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
 	.mentions-like-content + .button,
 	.mentions-repost-content + .button {
 		display: block;
@@ -71,11 +79,13 @@
 	}
 	.mentions-reply-content, .mentions-link-content {
 		li {
-			@include clip-path-edges(2px);
 			background: hsla(var(--color-white-hsl), .75);
 			padding: calc(var(--p)*2);
 			@include dark {
 				background: hsla(var(--color-iron-8-hsl), .65)
+			}
+			@include viewport($iphone-max) {
+				@include clip-path-edges(2px);
 			}
 			@include viewport(mobile) {
 				display: flex;

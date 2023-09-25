@@ -88,9 +88,11 @@
 	display: flex;
 	justify-content: space-between;
 	margin-top: calc(var(--p)*2);
-	padding: 0 calc(var(--p)*1.5);
-	@include viewport($iphone) {
-		padding: 0;
+	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
+	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
+	@include viewport($iphone-max) {
+		padding-left: 0;
+		padding-right: 0;
 	}
 	&:empty {
 		display: none;

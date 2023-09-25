@@ -1,8 +1,10 @@
 .memoji {
 	display: block;
-	width: 48px;
+	width: calc(48px + var(--p));
 	height: 68px;
 	background-size: 48px 68px;
+	padding-right: var(--p);
+	background-position: center left;
 	&-default {
 		@include background-image(avatars/memoji, png);
 	}
@@ -32,7 +34,7 @@
 		order: 1;
 		display: inline-block;
 		padding: calc(var(--p)*.75) calc(var(--p)*1.5);
-		margin-left: var(--p);
+		line-height: 1.4;
 		color: var(--color-iron-10);
 		border-radius: 2em;
 		@include dark {
@@ -62,7 +64,7 @@
 		&.go-home {
 			position: absolute;
 			top: 50%;
-			left: calc(var(--p)*4);
+			left: calc(var(--p)*5);
 			z-index: 2;
 			@media (prefers-reduced-motion: no-preference) {
 				translate: 0 50%;

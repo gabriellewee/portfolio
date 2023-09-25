@@ -5,7 +5,7 @@
 	margin-right: auto;
 	padding-left: env(safe-area-inset-left);
 	padding-right: env(safe-area-inset-right);
-	@include viewport($iphone) {
+	@include viewport($iphone-max) {
 		padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
 		padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
 	}
@@ -34,6 +34,13 @@
 	font-size: 1.5rem;
 	line-height: 1.334;
 	position: relative;
+	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
+	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
+	@include viewport($iphone-max) {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
 	h2 {
 		position: absolute;
 		width: 0;
@@ -157,7 +164,7 @@
 	.post-inner {
 		overflow: hidden;
 		background-color: white;
-		@include viewport($iphone) {
+		@include viewport($iphone-max) {
 			@include clip-path-edges(2px);
 		}
 		@include dark {

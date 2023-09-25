@@ -171,7 +171,7 @@ $violet: #D18FF0;
 
 @mixin background-image($bg, $ext, $webp: true) {
 	background-repeat: no-repeat;
-	background-position: center;
+	background-position: center left;
 	background-image: url("/static/images/#{$bg}@2x.#{$ext}");
 	@supports (background-image: -webkit-image-set(url("") 1x, url("") 2x)) {
 		background-image: -webkit-image-set(url("/static/images/#{$bg}.#{$ext}") 1x, url("/static/images/#{$bg}@2x.#{$ext}") 2x);

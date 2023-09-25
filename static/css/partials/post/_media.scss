@@ -17,7 +17,7 @@
 }
 
 figure {
-	@include viewport($iphone) {
+	@include viewport($iphone-max) {
 		@include clip-path-edges(2px);
 	}
 	@supports (container-type: size) {
@@ -455,7 +455,9 @@ figcaption {
 				.media-view-hover {
 					.button {
 						@media (prefers-reduced-motion: no-preference) {
-							scale: .98;
+							@include viewport($iphone-max) {
+								scale: .98;
+							}
 						}
 						&, > span, > span:before {
 							transition: all .2s ease-out;
@@ -473,7 +475,9 @@ figcaption {
 	&:hover {
 		+ .post-inner {
 			@media (prefers-reduced-motion: no-preference) {
-				scale: 1.01;
+				@include viewport($iphone-max) {
+					scale: 1.01;
+				}
 			}
 			@media (prefers-reduced-motion: reduce) {
 				&:before {
@@ -492,7 +496,9 @@ figcaption {
 	&:active {
 		+ .post-inner {
 			@media (prefers-reduced-motion: no-preference) {
-				scale: .99;
+				@include viewport($iphone-max) {
+					scale: .99;
+				}
 			}
 		}
 	}
@@ -508,7 +514,9 @@ figcaption {
 		&:active {
 			+ .post-inner {
 				@media (prefers-reduced-motion: no-preference) {
-					scale: .99;
+					@include viewport($iphone-max) {
+						scale: .99;
+					}
 				}
 			}
 		}
