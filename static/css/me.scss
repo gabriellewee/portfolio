@@ -88,8 +88,11 @@
 			height: $width;
 		}
 		&:before {
-			filter: contrast(50%) saturate(30%);
+			filter: contrast(50%) saturate(30%) brightness(120%) opacity(60%);
 			width: 100%;
+			@include dark {
+				filter: contrast(50%) saturate(30%);
+			}
 		}
 		&:after {
 			width: $width;

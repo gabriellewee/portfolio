@@ -64,8 +64,8 @@ pagination:
 							{% if post.data.category == "code" %}
 								<div class="post-header-right">
 									<time class="time{% if post.data.category != 'code' %} time-default{% endif %}{% if post.data.category == 'social' %} time-external{% endif %}" datetime="{{post.page.date|ISO|htmlDateString}}" data-time="{{post.page.date|ISO}}" title="{{post.page.date|ISO|readableDate}}">{{post.page.date|ISO|readableDate}}</time>
-									<a class="expand" id="{{post.page.date|ISO|htmlDateString}}-{{post.page.fileSlug}}" href="#{{post.page.date|ISO|htmlDateString}}-{{post.page.fileSlug}}-lightbox" aria-label="Expand {{post.data.type}}" role="button" data-desktop></a>
-									<a class="external-expand" href="{{post.url|url}}" aria-label="View {{post.data.type}} in new window" target="_blank"></a>
+									<a class="expand" id="{{post.page.date|ISO|htmlDateString}}-{{post.page.fileSlug}}" href="#{{post.page.date|ISO|htmlDateString}}-{{post.page.fileSlug}}-lightbox" aria-label="Expand {{post.data.category}}" role="button" data-desktop></a>
+									<a class="external-expand" href="{{post.url|url}}" aria-label="View {{post.data.category}} in new window" target="_blank"></a>
 								</div>
 							{% elseif (post.data.category != "media") and (post.data.category != "code") %}
 								<time class="time{% if post.data.category != 'code' %} time-default{% endif %}{% if post.data.category == 'social' %} time-external{% endif %}" datetime="{{post.page.date|ISO|htmlDateString}}" data-time="{{post.page.date|ISO}}" title="{{post.page.date|ISO|readableDate}}">{{post.page.date|ISO|readableDate}}</time>
@@ -164,7 +164,7 @@ pagination:
 							{% if (post.data.category == "social") and (post.data.media) %}
 								{% for media in post.data.media %}
 									{% if media.url %}
-										<figure id="external-{{media.id}}" class="media-attachment" aria-label="Media attachment">
+										<figure id="external-{{media.id}}" class="media-attachment" aria-label="{{media.description}}">
 											<a class="expand" href="#external-{{media.id}}-lightbox" aria-label="Expand image">
 												{% external media.url, media.description, 500 %}
 											</a>
