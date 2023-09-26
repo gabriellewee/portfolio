@@ -12,7 +12,7 @@
 		h2 {
 			@include font-weight-width(800, 120);
 			font-size: 1.5rem;
-			line-height: 1.1;
+			line-height: 1.2;
 			@include viewport(mobile) {
 				font-size: 1.75rem;
 			}
@@ -61,12 +61,48 @@
 	}
 }
 
+.post-intro {
+	width: 100%;
+	.post-inner {
+		padding: 0;
+	}
+	.post-header {
+		padding: calc(var(--p)*2);
+		margin-bottom: 0;
+	}
+	$width: 320px;
+	.post-image {
+		display: grid;
+		place-items: center;
+		position: relative;
+		width: 100%;
+		height: $width;
+		&:before, &:after {
+			@include background-image(avatars/intro, jpg);
+			content: "";
+			display: block;
+			position: absolute;
+			background-size: contain;
+			background-repeat: repeat;
+			background-position: center;
+			height: $width;
+		}
+		&:before {
+			filter: contrast(50%) saturate(30%);
+			width: 100%;
+		}
+		&:after {
+			width: $width;
+		}
+	}
+}
+
 .post-music {
 	width: 100%;
 	min-width: 345px;
 	max-width: 700px;
 	@include viewport($desktop) {
-		max-width: 345px;
+		max-width: 376px;
 	}
 	iframe {
 		display: block;
