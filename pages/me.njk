@@ -81,16 +81,16 @@
 				<header class="post-header">
 					<h2>I mod my keyboards and console controllers for fun.</h2>
 				</header>
-				<div id="2022-07-20-keyboard">
-					<a class="post-expand expand" href="#2022-07-20-keyboard-lightbox" aria-label="My pastel-themed custom mechanical keyboard and Logitech Lift Mouse. Expand image" role="button">
+				<figure id="2022-07-20-keyboard" aria-label="My pastel-themed custom mechanical keyboard and Logitech Lift Mouse.">
+					<a class="post-expand expand" href="#2022-07-20-keyboard-lightbox" role="button" aria-expanded="false" aria-label="Expand image">
 						{% image './static/images/posts/2022-07-20-keyboard.jpg', 'My pastel-themed custom mechanical keyboard and Logitech Lift Mouse', 'default' %}
 					</a>
-				</div>
+				</figure>
 				<ul class="grid">
 					{% for controller in about.controllers %}
 						<li>
 							<picture>
-								<img src="/static/images/svg/controllers/{{controller.name}}.svg" width="156" height="156" alt="Modded {{controller.color}} {{controller.brand}} {{controller.type}}"/>
+								<img src="/static/images/svg/controllers/{{controller.name}}.svg" width="156" height="156" alt="Icon rendition of modded {{controller.color}} {{controller.brand}} {{controller.type}}"/>
 							</picture>
 						</li>
 					{% endfor %}
@@ -105,10 +105,12 @@
 				</header>
 				<ul class="grid">
 					{% for media in photography|limit(4) %}
-						<li id="{{media.date|safe}}-{{media.name}}">
-							<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand photo" role="button">
-								{% image './static/images/photography/' + media.date + '-' + media.name + '-thumbnail.jpg', media.description, 'thumbnail', loop.index %}
-							</a>
+						<li>
+							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
+								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-expanded="false" aria-label="Expand image">
+									{% image './static/images/photography/' + media.date + '-' + media.name + '-thumbnail.jpg', media.description, 'thumbnail', loop.index %}
+								</a>
+							</figure>
 						</li>
 					{% endfor %}
 				</ul>
@@ -125,16 +127,18 @@
 				</header>
 				<ul class="grid">
 					{% for media in graphic|limit(4) %}
-						<li id="{{media.date|safe}}-{{media.name}}">
-							<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand graphic" role="button">
-								{% if media.svg == true %}
-									<picture>
-										<img src="/static/images/graphic/{{media.date}}-{{media.name}}.svg" alt="{{media.description}}" width="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'width' %}" height="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'height' %}"/>
-									</picture>
-								{% else %}
-									{% image './static/images/graphic/' + media.date + '-' + media.name + '.png', media.description, 'thumbnail', loop.index %}
-								{% endif %}
-							</a>
+						<li>
+							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
+								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-expanded="false" aria-label="Expand image">
+									{% if media.svg == true %}
+										<picture>
+											<img src="/static/images/graphic/{{media.date}}-{{media.name}}.svg" alt="{{media.description}}" width="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'width' %}" height="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'height' %}"/>
+										</picture>
+									{% else %}
+										{% image './static/images/graphic/' + media.date + '-' + media.name + '.png', media.description, 'thumbnail', loop.index %}
+									{% endif %}
+								</a>
+							</figure>
 						</li>
 					{% endfor %}
 				</ul>
@@ -151,10 +155,12 @@
 				</header>
 				<ul class="grid">
 					{% for media in art|limit(4) %}
-						<li id="{{media.date|safe}}-{{media.name}}">
-							<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand artwork" role="button">
-								{% image './static/images/art/' + media.date + '-' + media.name + '-thumbnail.jpg', media.description, 'thumbnail', loop.index %}
-							</a>
+						<li>
+							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
+								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-expanded="false" aria-label="Expand image">
+									{% image './static/images/art/' + media.date + '-' + media.name + '-thumbnail.jpg', media.description, 'thumbnail', loop.index %}
+								</a>
+							</figure>
 						</li>
 					{% endfor %}
 				</ul>
@@ -172,10 +178,12 @@
 				</header>
 				<ul class="grid">
 					{% for media in about.cat|limit(2) %}
-						<li id="{{media.date|safe}}-{{media.name}}">
-							<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand photo" role="button">
-								{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail' %}
-							</a>
+						<li>
+							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
+								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-expanded="false" aria-label="Expand image">
+									{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail' %}
+								</a>
+							</figure>
 						</li>
 					{% endfor %}
 				</ul>
@@ -192,10 +200,12 @@
 				</header>
 				<ul class="grid">
 					{% for media in about.plants|limit(2) %}
-						<li id="{{media.date|safe}}-{{media.name}}">
-							<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" aria-label="{{media.description}} Expand photo" role="button">
-								{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail' %}
-							</a>
+						<li>
+							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
+								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-expanded="false" aria-label="Expand photo">
+									{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail' %}
+								</a>
+							</figure>
 						</li>
 					{% endfor %}
 				</ul>
@@ -211,56 +221,50 @@
 </section>
 
 <div class="lightbox-group" hidden>
-	<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="2022-07-20-keyboard-lightbox" href="#2022-07-20-keyboard">
-		<figure class="image" data-content>
-			{% image './static/images/posts/2022-07-20-keyboard.jpg', 'My pastel-themed custom mechanical keyboard and Logitech Lift Mouse', 'screen' %}
-		</figure>
-	</a>
+	<a class="lightbox" id="2022-07-20-keyboard-lightbox" role="button" aria-expanded="true" aria-label="Close image" href="#2022-07-20-keyboard"></a>
+	<figure class="image" role="dialog" aria-label="Image preview" aria-modal="true" data-content>
+		{% image './static/images/posts/2022-07-20-keyboard.jpg', 'My pastel-themed custom mechanical keyboard and Logitech Lift Mouse', 'screen' %}
+	</figure>
 
 	{% for media in photography|limit(4) %}
-		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
-			<figure class="image" data-content>
-				{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
-			</figure>
-		</a>
+		<a class="lightbox" id="{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-expanded="true" aria-label="Close image" href="#{{media.date|safe}}-{{media.name}}"></a>
+		<figure class="image" role="dialog" aria-label="Image preview" aria-modal="true" data-content>
+			{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
+		</figure>
 	{% endfor %}
 
 	{% for media in graphic|limit(4) %}
-		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
-			<figure class="image" data-content>
-				{% if media.svg == true %}
-					<picture>
-						<img src="/static/images/graphic/{{media.date}}-{{media.name}}.svg" alt="{{media.description}}" width="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'width' %}" height="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'height' %}"/>
-					</picture>
-				{% else %}
-					{% image './static/images/graphic/' + media.date + '-' + media.name + '.png', media.description, 'screen' %}
-				{% endif %}
-			</figure>
-		</a>
+		<a class="lightbox" id="{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-expanded="true" aria-label="Close image" href="#{{media.date|safe}}-{{media.name}}"></a>
+		<figure class="image" role="dialog" aria-label="Image preview" aria-modal="true" data-content>
+			{% if media.svg == true %}
+				<picture>
+					<img src="/static/images/graphic/{{media.date}}-{{media.name}}.svg" alt="{{media.description}}" width="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'width' %}" height="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'height' %}"/>
+				</picture>
+			{% else %}
+				{% image './static/images/graphic/' + media.date + '-' + media.name + '.png', media.description, 'screen' %}
+			{% endif %}
+		</figure>
 	{% endfor %}
 
 	{% for media in art|limit(4) %}
-		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
-			<figure class="image" data-content>
-				{% image './static/images/art/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
-			</figure>
-		</a>
+		<a class="lightbox" id="{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-expanded="true" aria-label="Close image" href="#{{media.date|safe}}-{{media.name}}"></a>
+		<figure class="image" role="dialog" aria-label="Image preview" aria-modal="true" data-content>
+			{% image './static/images/art/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
+		</figure>
 	{% endfor %}
 
 	{% for media in about.cat|limit(2) %}
-		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
-			<figure class="image" data-content>
-				{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
-			</figure>
-		</a>
+		<a class="lightbox" id="{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-expanded="true" aria-label="Close image" href="#{{media.date|safe}}-{{media.name}}"></a>
+		<figure class="image" role="dialog" aria-label="Image preview" aria-modal="true" data-content>
+			{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
+		</figure>
 	{% endfor %}
 
 	{% for media in about.plants|limit(2) %}
-		<a class="lightbox" role="dialog" aria-label="Modal" aria-modal="true" id="{{media.date|safe}}-{{media.name}}-lightbox" href="#{{media.date|safe}}-{{media.name}}">
-			<figure class="image" data-content>
-				{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
-			</figure>
-		</a>
+		<a class="lightbox" id="{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-expanded="true" aria-label="Close image" href="#{{media.date|safe}}-{{media.name}}"></a>
+		<figure class="image" role="dialog" aria-label="Image preview" aria-modal="true" data-content>
+			{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
+		</figure>
 	{% endfor %}
 
 	<div class="lightbox-background"></div>

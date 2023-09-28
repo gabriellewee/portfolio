@@ -154,7 +154,7 @@ module.exports = eleventyConfig => {
 		if(extra === "lightbox") {
 			figp == null ? figcaption = nbsp(alt) : figcaption = figp;
 			let caption = `<figcaption id="${name}-caption" aria-hidden="true">${figcaption}</figcaption>`;
-			let link = `<a class="expand" href="#${name}-lightbox" aria-label="Expand image">${picture}</a>`;
+			let link = `<a class="expand" href="#${name}-lightbox" aria-label="${alt} Expand image">${picture}</a>`;
 			return `<figure id="${name}" aria-labelledby="${name}-caption">${caption}${link}</figure>`;
 		} else if(extra === "no-lightbox") {
 			figp == null ? figcaption = nbsp(alt) : figcaption = figp;
