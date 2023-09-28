@@ -24,37 +24,41 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-overflow-scrolling: touch;
-	background-color: var(--color-blush-8);
-	color: var(--color-iron);
 	font-family: var(--font-default);
     font-feature-settings: "liga","ss01";
+	background-color: var(--color-blush-8);
 	@include dark {
 		background-color: var(--color-iron-5);
-		color: white;
 	}
 }
 
-a {
+header, main, footer {
 	color: var(--color-iron);
-	text-decoration: none;
-	@include dark {
+	@include dark(1) {
 		color: white;
 	}
-}
-
-::-moz-selection {
-	background-color: var(--color-iron);
-	color: white;
-	@include dark {
-		background-color: hsla(var(--color-white-hsl), .2);
+	a {
+		color: var(--color-iron);
+		text-decoration: none;
+		@include dark(1) {
+			color: white;
+		}
 	}
-}
 
-::selection {
-	background-color: var(--color-iron);
-	color: white;
-	@include dark {
-		background-color: hsla(var(--color-white-hsl), .2);
+	::-moz-selection {
+		background-color: var(--color-iron);
+		color: white;
+		@include dark(1) {
+			background-color: hsla(var(--color-white-hsl), .2);
+		}
+	}
+
+	::selection {
+		background-color: var(--color-iron);
+		color: white;
+		@include dark(1) {
+			background-color: hsla(var(--color-white-hsl), .2);
+		}
 	}
 }
 
@@ -71,4 +75,21 @@ img {
 
 .upscale {
 	image-rendering: pixelated;
+}
+
+.option {
+	position: relative;
+	z-index: 1000;
+}
+.background {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--color-iron-5);
+	@include dark(1) {
+		display: block;
+	}
 }

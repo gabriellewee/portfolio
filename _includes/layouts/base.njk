@@ -91,11 +91,19 @@
 </head>
 <body class="{% if key %}page-{{key}}{% endif %}{% if pagination.pageNumber == 0 %} page-index{% endif %}">
 	{% if blank != true %}
+		<input type="checkbox" class="option" id="option-color"/>
+		<input type="checkbox" class="option" id="option-contrast"/>
+		<input type="checkbox" class="option" id="option-motion"/>
+		<input type="checkbox" class="option" id="option-load"/>
+		<div class="background"></div>
+
 		{% include 'pages/shared/header.html' %}
 	{% endif %}
+
 	<main class="main">
 		{% block content %}{{content|safe}}{% endblock %}
 	</main>
+
 	{% if blank != true %}
 		<footer class="bottom" aria-label="Footer">
 			<nav aria-label="Site links">

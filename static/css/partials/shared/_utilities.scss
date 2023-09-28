@@ -69,9 +69,18 @@ $violet: #D18FF0;
 	}
 }
 
-@mixin dark {
-	@media (prefers-color-scheme: dark) {
-		@content;
+@mixin dark($level: null, $container: null) {
+	// @media (prefers-color-scheme: dark) {
+	// 	@content;
+	// }
+	@if $level == 1 {
+		#option-color:checked ~ & {
+			@content;
+		}
+	} @else if $level == 2 {
+		#option-color:checked ~ #{$container} & {
+			@content;
+		}
 	}
 }
 

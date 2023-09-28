@@ -8,10 +8,22 @@
 
 .top {
 	@include font-weight-width(900, 125);
+	position: relative;
+	z-index: 100;
 	padding-top: calc((var(--p)*2) + env(safe-area-inset-top));
 	line-height: 1.2;
 	@include viewport($ipad-mini) {
 		line-height: 1.1;
+	}
+
+	> div {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: var(--p);
+		.memoji-link {
+			margin-bottom: 0;
+		}
 	}
 
 	.cursor {
