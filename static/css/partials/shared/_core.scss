@@ -32,14 +32,17 @@ body {
 	}
 }
 
+a {
+	text-decoration: none;
+}
+
 header, main, footer {
 	color: var(--color-iron);
 	@include dark(1) {
 		color: white;
 	}
-	a {
+	a:not([class]) {
 		color: var(--color-iron);
-		text-decoration: none;
 		@include dark(1) {
 			color: white;
 		}
@@ -83,7 +86,7 @@ img {
 }
 .background {
 	display: none;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;

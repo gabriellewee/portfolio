@@ -30,7 +30,7 @@
 
 .post-build {
 	.post-content {
-		@include dark {
+		@include dark(2) {
 			color: hsla(var(--color-white-hsl), .7);
 		}
 	}
@@ -54,7 +54,7 @@
 			height: 100%;
 			background-color: var(--color-iron);
 			border-radius: 2px;
-			@include dark {
+			@include dark(2) {
 				background-color: var(--color-iron-white);
 			}
 		}
@@ -67,7 +67,7 @@
 			display: block;
 			position: absolute;
 			background-color: var(--color-iron);
-			@include dark {
+			@include dark(2) {
 				background-color: var(--color-iron-white);
 			}
 		}
@@ -186,7 +186,7 @@
 				height: 36px;
 				border-radius: 100%;
 				border: calc(var(--p)/4) solid var(--color-message);
-				@include dark {
+				@include dark(2) {
 					border-color: white;
 				}
 			}
@@ -201,7 +201,7 @@
 				font-weight: bold;
 				font-size: 1rem;
 				text-transform: uppercase;
-				@include dark {
+				@include dark(2) {
 					background-color: var(--color-iron-5);
 					color: white;
 				}
@@ -218,7 +218,7 @@
 					top: calc(var(--p)/-2);
 					left: 50%;
 					margin-left: calc(var(--p)/-2);
-					@include dark {
+					@include dark(2) {
 						background-color: var(--color-iron-5);
 					}
 				}
@@ -270,7 +270,7 @@
 		font-size: .875rem;
 		text-transform: uppercase;
 		line-height: 1.715;
-		@include dark {
+		@include dark(2) {
 			background-color: hsla(var(--color-iron-8-hsl), .4);
 			color: hsla(var(--color-white-hsl), .7);
 		}
@@ -297,7 +297,7 @@
 
 .post-thanks {
 	.post-content {
-		@include dark {
+		@include dark(2) {
 			color: hsla(var(--color-white-hsl), .7);
 		}
 		ul {

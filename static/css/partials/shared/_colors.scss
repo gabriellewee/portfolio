@@ -8,12 +8,6 @@ $links: "codepen", "dribbble", "github", "instagram", "twitter", "pinterest", "m
 				&:hover, &:focus {
 					text-decoration-color: var(--color-#{$link});
 				}
-				@include dark(2, main) {
-					color: var(--color-#{$link});
-					&:hover, &:focus {
-						text-decoration-color: var(--color-#{$link});
-					}
-				}
 			}
 			&.background {
 				> span {
