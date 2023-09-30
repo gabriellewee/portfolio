@@ -161,11 +161,22 @@
 		}
 	}
 
+	h1, h2, h3, h4, h5 {
+		@include light(2) {
+			color: var(--color-iron);
+		}
+		@include dark(2) {
+			color: white;
+		}
+	}
+
 	.post-inner {
 		overflow: hidden;
-		background-color: white;
 		@include viewport($iphone-max) {
 			@include clip-path-edges(2px);
+		}
+		@include light(2) {
+			background-color: white;
 		}
 		@include dark(2) {
 			background-color: var(--color-iron);
@@ -248,6 +259,12 @@
 		@include font-weight-width(800, 100);
 		opacity: .3;
 		margin-left: var(--p);
+		@include light(2) {
+			color: var(--color-iron);
+		}
+		@include dark(2) {
+			color: white;
+		}
 		&:hover, &:focus {
 			opacity: 1;
 		}
@@ -259,7 +276,9 @@
 		margin: calc(var(--p)*3) auto;
 		border: 0;
 		height: 2px;
-		background-color: hsla(var(--color-iron-hsl), .2);
+		@include light(2) {
+			background-color: hsla(var(--color-iron-hsl), .2);
+		}
 		@include dark(2) {
 			background-color: hsla(var(--color-white-hsl), .2);
 		}
@@ -304,6 +323,9 @@
 			text-decoration: underline;
 			text-decoration-thickness: 1.5px;
 			text-underline-offset: 2px;
+			@include light(2) {
+				filter: unset;
+			}
 			@include dark(2) {
 				filter: brightness(1.2);
 			}
@@ -311,7 +333,9 @@
 				@include gradient-text(var(--color-rose-hsl), var(--color-mauve-hsl), true);
 			}
 			&:active {
-				@include gradient-text(var(--color-iron-1-hsl), var(--color-iron-12-hsl), true);
+				@include light(2) {
+					@include gradient-text(var(--color-iron-1-hsl), var(--color-iron-12-hsl), true);
+				}
 				@include dark(2) {
 					@include gradient-text(var(--color-slate-hsl), var(--color-iron-white-80-hsl), true);
 				}
@@ -346,9 +370,11 @@
 		@include clip-path-edges(2px);
 		padding: calc(var(--p)*1.5) calc(var(--p)*2);
 		color: white;
-		background-color: var(--color-iron);
 		font-size: 1rem;
 		line-height: 1.5;
+		@include dark(2) {
+			background-color: var(--color-iron);
+		}
 		@include dark(2) {
 			background-color: var(--color-iron-8);
 		}
@@ -411,8 +437,10 @@
 		position: relative;
 		padding: calc(var(--p)*1.5) calc(var(--p)*2);
 		margin-bottom: calc(var(--p)*2);
-		background-color: hsla(var(--color-iron-hsl), .1);
 		border-radius: 3px;
+		@include dark(2) {
+			background-color: hsla(var(--color-iron-hsl), .1);
+		}
 		@include dark(2) {
 			background-color: hsla(var(--color-white-hsl), .1);
 		}
@@ -512,13 +540,17 @@
 		}
 		picture:not(:only-child) {
 			&:nth-of-type(2) {
-				display: block;
+				@include light(2) {
+					display: block;
+				}
 				@include dark(2) {
 					display: none;
 				}
 			}
 			&:nth-of-type(1) {
-				display: none;
+				@include light(2) {
+					display: none;
+				}
 				@include dark(2) {
 					display: block;
 				}

@@ -26,7 +26,6 @@
 		top: 0;
 	}
 	.text {
-		@include blur(5px, var(--color-white-hsl), .9, .8);
 		@include font-weight-width(600, 115);
 		opacity: 0;
 		transition: .2s ease-out;
@@ -36,8 +35,12 @@
 		line-height: 1.4;
 		color: var(--color-iron-10);
 		border-radius: 2em;
-		@include dark {
-			@include blur(5px, var(--color-iron-hsl), .9, .8);
+		@include light(2) {
+			background-color: hsla(var(--color-white-hsl), .8);
+			color: var(--color-iron);
+		}
+		@include dark(2) {
+			background-color: hsla(var(--color-iron-hsl), .8);
 			color: white;
 		}
 		&.message {

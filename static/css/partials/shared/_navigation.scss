@@ -56,8 +56,10 @@
 	}
 	.copyright {
 		span {
-			background-color: white;
-			@include dark {
+			@include light(1) {
+				background-color: white;
+			}
+			@include dark(1) {
 				background-color: var(--color-iron);
 			}
 		}

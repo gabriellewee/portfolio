@@ -79,9 +79,11 @@
 	}
 	.mentions-reply-content, .mentions-link-content {
 		li {
-			background: hsla(var(--color-white-hsl), .75);
 			padding: calc(var(--p)*2);
-			@include dark {
+			@include light(2) {
+				background: hsla(var(--color-white-hsl), .75);
+			}
+			@include dark(2) {
 				background: hsla(var(--color-iron-8-hsl), .65)
 			}
 			@include viewport($iphone-max) {

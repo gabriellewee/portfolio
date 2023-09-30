@@ -17,9 +17,11 @@
 .post-content {
 	@include font-weight-width(450, 110);
 	padding: 0 calc(var(--p) * 2);
-	color: var(--color-iron-white-90);
 	font-size: 1.25rem;
-	@include dark {
+	@include light(2) {
+		color: var(--color-iron-white-90);
+	}
+	@include dark(2) {
 		color: hsla(var(--color-white-hsl), .8);
 	}
 	a {
@@ -90,13 +92,17 @@
 			}
 		}
 		a:not(.expand) {
-			color: var(--color-mastodon);
-			@include dark {
+			@include light(2) {
+				color: var(--color-mastodon);
+			}
+			@include dark(2) {
 				color: var(--color-mastodon-white);
 			}
 			&:hover, &:focus {
-				color: var(--color-mastodon-light);
-				@include dark {
+				@include light(2) {
+					color: var(--color-mastodon-light);
+				}
+				@include dark(2) {
 					color: var(--color-mastodon-white-30);
 				}
 			}
@@ -104,8 +110,10 @@
 				@include focus-shadow(hsla(var(--color-mastodon-white-hsl), 0.75));
 			}
 			&:active {
-				color: var(--color-mastodon-dark);
-				@include dark {
+				@include light(2) {
+					color: var(--color-mastodon-dark);
+				}
+				@include dark(2) {
 					color: var(--color-mastodon-light);
 				}
 			}

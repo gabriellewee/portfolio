@@ -25,6 +25,39 @@ const frames = (buttons) => {
 	});
 }
 
+const accessibility = ((options = Array.from(document.querySelectorAll("[data-option"))) => {
+	if(!options || !window.matchMedia) return;
+	const color = window.matchMedia('(prefers-color-scheme: dark)');
+	let background = document.querySelector(".background");
+	if(background) background.classList.add("inactive");
+
+	options.forEach(option =>{
+		option.classList.add("inactive");
+		if(option.getAttribute("data-option") === "color") {
+			if(color.matches || (localStorage.getItem("theme") === "dark")) {
+				option.checked = true;
+				document.documentElement.classList.add("theme-dark");
+				localStorage.setItem("theme", "dark");
+			} else if(!color.matches || (localStorage.getItem("theme") === "light")) {
+				option.checked = false;
+				document.documentElement.classList.add("theme-light");
+				localStorage.setItem("theme", "light");
+			}
+			option.addEventListener("click", e => {
+				if(option.checked) {
+					document.documentElement.classList.remove("theme-light");
+					document.documentElement.classList.add("theme-dark");
+					localStorage.setItem("theme", "dark");
+				} else {
+					document.documentElement.classList.remove("theme-dark");
+					document.documentElement.classList.add("theme-light");
+					localStorage.setItem("theme", "light");
+				}
+			});
+		}
+	})
+})();
+
 const mediaTriggers = (media) => {
 	let figures = Array.from(document.querySelectorAll(media));
 	if(!figures) return;

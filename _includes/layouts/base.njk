@@ -91,10 +91,10 @@
 </head>
 <body class="{% if key %}page-{{key}}{% endif %}{% if pagination.pageNumber == 0 %} page-index{% endif %}">
 	{% if blank != true %}
-		<input type="checkbox" class="option" id="option-color"/>
-		<input type="checkbox" class="option" id="option-contrast"/>
-		<input type="checkbox" class="option" id="option-motion"/>
-		<input type="checkbox" class="option" id="option-load"/>
+		<input type="checkbox" class="option" id="option-color" data-option="color"/>
+		<input type="checkbox" class="option" id="option-contrast" data-option="contrast"/>
+		<input type="checkbox" class="option" id="option-motion" data-option="motion"/>
+		<input type="checkbox" class="option" id="option-load" data-option="load"/>
 		<div class="background"></div>
 
 		{% include 'pages/shared/header.html' %}

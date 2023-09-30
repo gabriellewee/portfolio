@@ -80,10 +80,10 @@
 					<ul>
 						{% for post in collections.pages %}
 							<li>
-								<a href="{{post.url|url}}"><span>{{post.data.key|safe|capitalize}}</span></a>
+								<a class="page" href="{{post.url|url}}"><span>{{post.data.key|safe|capitalize}}</span></a>
 							</li>
 						{% endfor %}
-						<li><a href="/posts/feed.xml"><span>RSS</span></a></li>
+						<li><a class="page" href="/posts/feed.xml"><span>RSS</span></a></li>
 					</ul>
 				</div>
 			</div>

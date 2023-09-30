@@ -69,16 +69,46 @@ $violet: #D18FF0;
 	}
 }
 
-@mixin dark($level: null, $container: main) {
+@mixin dark($level: null) {
 	@media (prefers-color-scheme: dark) {
 		@content;
 	}
+	.theme-dark & {
+		@content
+	}
 	@if $level == 1 {
-		#option-color:checked ~ & {
+		#option-color:not(.inactive):checked ~ & {
 			@content;
 		}
 	} @else if $level == 2 {
-		#option-color:checked ~ #{$container} & {
+		#option-color:not(.inactive):checked ~ * & {
+			@content;
+		}
+	} @else if $level == 3 {
+		&:has(#option-color:not(.inactive):checked) {
+			@content;
+		}
+	}
+}
+
+@mixin light($level: null) {
+	@content;
+	@media (prefers-color-scheme: light) {
+		@content;
+	}
+	.theme-light & {
+		@content
+	}
+	@if $level == 1 {
+		#option-color:not(.inactive):not(:checked) ~ & {
+			@content;
+		}
+	} @else if $level == 2 {
+		#option-color:not(.inactive):not(:checked) ~ * & {
+			@content;
+		}
+	} @else if $level == 3 {
+		&:has(#option-color:not(.inactive):not(:checked)) {
 			@content;
 		}
 	}

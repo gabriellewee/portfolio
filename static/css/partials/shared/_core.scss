@@ -26,9 +26,13 @@ body {
 	-webkit-overflow-scrolling: touch;
 	font-family: var(--font-default);
     font-feature-settings: "liga","ss01";
-	background-color: var(--color-blush-8);
-	@include dark {
+	@include light(3) {
+		background-color: var(--color-blush-8);
+		color: var(--color-iron);
+	}
+	@include dark(3) {
 		background-color: var(--color-iron-5);
+		color: hsla(var(--color-white-hsl), .9);
 	}
 }
 
@@ -36,21 +40,12 @@ a {
 	text-decoration: none;
 }
 
-header, main, footer {
-	color: var(--color-iron);
-	@include dark(1) {
-		color: white;
-	}
-	a:not([class]) {
-		color: var(--color-iron);
-		@include dark(1) {
-			color: white;
-		}
-	}
-
+* {
 	::-moz-selection {
-		background-color: var(--color-iron);
 		color: white;
+		@include light(1) {
+			background-color: var(--color-iron);
+		}
 		@include dark(1) {
 			background-color: hsla(var(--color-white-hsl), .2);
 		}
@@ -59,6 +54,9 @@ header, main, footer {
 	::selection {
 		background-color: var(--color-iron);
 		color: white;
+		@include light(1) {
+			background-color: var(--color-iron);
+		}
 		@include dark(1) {
 			background-color: hsla(var(--color-white-hsl), .2);
 		}
@@ -94,5 +92,8 @@ img {
 	background-color: var(--color-iron-5);
 	@include dark(1) {
 		display: block;
+	}
+	&.inactive {
+		display: none;
 	}
 }
