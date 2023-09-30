@@ -162,10 +162,10 @@
 	}
 
 	h1, h2, h3, h4, h5 {
-		@include light(2) {
+		@include theme(light, 2) {
 			color: var(--color-iron);
 		}
-		@include dark(2) {
+		@include theme(dark, 2) {
 			color: white;
 		}
 	}
@@ -175,10 +175,10 @@
 		@include viewport($iphone-max) {
 			@include clip-path-edges(2px);
 		}
-		@include light(2) {
+		@include theme(light, 2) {
 			background-color: white;
 		}
-		@include dark(2) {
+		@include theme(dark, 2) {
 			background-color: var(--color-iron);
 		}
 	}
@@ -259,10 +259,10 @@
 		@include font-weight-width(800, 100);
 		opacity: .3;
 		margin-left: var(--p);
-		@include light(2) {
+		@include theme(light, 2) {
 			color: var(--color-iron);
 		}
-		@include dark(2) {
+		@include theme(dark, 2) {
 			color: white;
 		}
 		&:hover, &:focus {
@@ -276,10 +276,10 @@
 		margin: calc(var(--p)*3) auto;
 		border: 0;
 		height: 2px;
-		@include light(2) {
+		@include theme(light, 2) {
 			background-color: hsla(var(--color-iron-hsl), .2);
 		}
-		@include dark(2) {
+		@include theme(dark, 2) {
 			background-color: hsla(var(--color-white-hsl), .2);
 		}
 	}
@@ -323,20 +323,20 @@
 			text-decoration: underline;
 			text-decoration-thickness: 1.5px;
 			text-underline-offset: 2px;
-			@include light(2) {
+			@include theme(light, 2) {
 				filter: unset;
 			}
-			@include dark(2) {
+			@include theme(dark, 2) {
 				filter: brightness(1.2);
 			}
 			&:hover, &:focus {
 				@include gradient-text(var(--color-rose-hsl), var(--color-mauve-hsl), true);
 			}
 			&:active {
-				@include light(2) {
+				@include theme(light, 2) {
 					@include gradient-text(var(--color-iron-1-hsl), var(--color-iron-12-hsl), true);
 				}
-				@include dark(2) {
+				@include theme(dark, 2) {
 					@include gradient-text(var(--color-slate-hsl), var(--color-iron-white-80-hsl), true);
 				}
 			}
@@ -372,10 +372,10 @@
 		color: white;
 		font-size: 1rem;
 		line-height: 1.5;
-		@include dark(2) {
+		@include theme(dark, 2) {
 			background-color: var(--color-iron);
 		}
-		@include dark(2) {
+		@include theme(dark, 2) {
 			background-color: var(--color-iron-8);
 		}
 	}
@@ -438,10 +438,10 @@
 		padding: calc(var(--p)*1.5) calc(var(--p)*2);
 		margin-bottom: calc(var(--p)*2);
 		border-radius: 3px;
-		@include dark(2) {
+		@include theme(dark, 2) {
 			background-color: hsla(var(--color-iron-hsl), .1);
 		}
-		@include dark(2) {
+		@include theme(dark, 2) {
 			background-color: hsla(var(--color-white-hsl), .1);
 		}
 		> * {
@@ -540,18 +540,18 @@
 		}
 		picture:not(:only-child) {
 			&:nth-of-type(2) {
-				@include light(2) {
+				@include theme(light, 2) {
 					display: block;
 				}
-				@include dark(2) {
+				@include theme(dark, 2) {
 					display: none;
 				}
 			}
 			&:nth-of-type(1) {
-				@include light(2) {
+				@include theme(light, 2) {
 					display: none;
 				}
-				@include dark(2) {
+				@include theme(dark, 2) {
 					display: block;
 				}
 			}

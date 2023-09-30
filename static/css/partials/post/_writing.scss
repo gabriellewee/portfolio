@@ -32,10 +32,10 @@
 			}
 			&:active {
 				span {
-					@include light(2) {
+					@include theme(light, 2) {
 						text-decoration-color: var(--color-iron-1);
 					}
-					@include dark(2) {
+					@include theme(dark, 2) {
 						text-decoration-color: var(--color-slate);
 					}
 				}
@@ -63,10 +63,10 @@
 				}
 				&:active {
 					span {
-						@include light(2) {
+						@include theme(light, 2) {
 							@include gradient-text(var(--color-iron-1-hsl), var(--color-iron-12-hsl), true);
 						}
-						@include dark(2) {
+						@include theme(dark, 2) {
 							@include gradient-text(var(--color-slate-hsl), var(--color-iron-white-80-hsl), true);
 						}
 					}
@@ -130,18 +130,18 @@
 				}
 				&:active {
 					span {
-						@include light(2) {
+						@include theme(light, 2) {
 							@include gradient-text(var(--color-iron-12-hsl), var(--color-iron-1-hsl), true);
 						}
-						@include dark(2) {
+						@include theme(dark, 2) {
 							@include gradient-text(var(--color-iron-12-hsl), var(--color-iron-10-hsl), true);
 						}
 					}
 					&:after {
-						@include light(2) {
+						@include theme(light, 2) {
 							color: var(--color-iron-1);
 						}
-						@include dark(2) {
+						@include theme(dark, 2) {
 							color: var(--color-iron-white-80);
 						}
 					}
@@ -158,40 +158,40 @@
 	.post-header {
 		h2 {
 			a {
-				@include light(2) {
+				@include theme(light, 2) {
 					color: var(--color-iron-white-70);
 				}
-				@include dark(2) {
+				@include theme(dark, 2) {
 					color: var(--color-iron-white);
 				}
 				&:hover, &:focus {
-					@include light(2) {
+					@include theme(light, 2) {
 						color: var(--color-iron-white);
 					}
-					@include dark(2) {
+					@include theme(dark, 2) {
 						color: hsla(var(--color-white-hsl), .7);
 					}
 					span {
-						@include light(2) {
+						@include theme(light, 2) {
 							text-decoration-color: var(--color-iron-white);
 						}
-						@include dark(2) {
+						@include theme(dark, 2) {
 							text-decoration-color: hsla(var(--color-white-hsl), .7);
 						}
 					}
 				}
 				&:active {
-					@include light(2) {
+					@include theme(light, 2) {
 						color: var(--color-iron-white-90);
 					}
-					@include dark(2) {
+					@include theme(dark, 2) {
 						color: var(--color-iron-white-70);
 					}
 					span {
-						@include light(2) {
+						@include theme(light, 2) {
 							text-decoration-color: var(--color-iron-white-90);
 						}
-						@include dark(2) {
+						@include theme(dark, 2) {
 							text-decoration-color: var(--color-iron-white-70);
 						}
 					}

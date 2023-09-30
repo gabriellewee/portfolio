@@ -35,11 +35,11 @@
 		line-height: 1.4;
 		color: var(--color-iron-10);
 		border-radius: 2em;
-		@include light(2) {
+		@include theme(light, 2) {
 			background-color: hsla(var(--color-white-hsl), .8);
 			color: var(--color-iron);
 		}
-		@include dark(2) {
+		@include theme(dark, 2) {
 			background-color: hsla(var(--color-iron-hsl), .8);
 			color: white;
 		}

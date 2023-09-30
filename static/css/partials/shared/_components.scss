@@ -8,10 +8,10 @@
 .title {
 	opacity: 0;
 	font-size: clamp(1.5rem, 3vw, 2.5rem);
-	@include light(2) {
+	@include theme(light, 2) {
 		color: var(--color-iron);
 	}
-	@include dark(2) {
+	@include theme(dark, 2) {
 		color: hsla(var(--color-white-hsl), .8);
 	}
 	.apple {
@@ -58,10 +58,10 @@
 		visibility: hidden;
 		display: block;
 		transition: .1s ease-out;
-		@include light(2) {
+		@include theme(light, 2) {
 			background-color: var(--color-iron);
 		}
-		@include dark(2) {
+		@include theme(dark, 2) {
 			background-color: var(--color-iron-8);
 		}
 	}

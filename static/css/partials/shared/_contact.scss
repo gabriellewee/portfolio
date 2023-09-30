@@ -6,10 +6,10 @@
 	margin-right: auto;
 	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
 	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
-	@include light(2) {
+	@include theme(light, 2) {
 		color: var(--color-iron);
 	}
-	@include dark(2) {
+	@include theme(dark, 2) {
 		color: hsla(var(--color-white-hsl), .8);
 	}
 	.contact-sites, .contact-messages {
@@ -45,13 +45,13 @@
 				}
 			}
 			.link.tumblr {
-				@include light(2) {
+				@include theme(light, 2) {
 					color: var(--color-tumblr);
 					&:hover, &:focus {
 						text-decoration-color: var(--color-tumblr);
 					}
 				}
-				@include dark(2) {
+				@include theme(dark, 2) {
 					color: var(--color-tumblr-light);
 					&:hover, &:focus {
 						text-decoration-color: var(--color-tumblr-light);
@@ -81,10 +81,10 @@
 				text-decoration-color: var(--color-discord);
 			}
 			.link:hover, .link:focus, .popup-label:hover span, .popup-button:focus ~ .popup-label span {
-				@include light(2) {
+				@include theme(light, 2) {
 					color: var(--color-iron);
 				}
-				@include dark(2) {
+				@include theme(dark, 2) {
 					color: white;
 				}
 			}
@@ -112,10 +112,10 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			@include light(2) {
+			@include theme(light, 2) {
 				background-color: white;
 			}
-			@include dark(2) {
+			@include theme(dark, 2) {
 				background-color: var(--color-iron);
 			}
 		}

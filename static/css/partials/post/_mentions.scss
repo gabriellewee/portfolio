@@ -80,10 +80,10 @@
 	.mentions-reply-content, .mentions-link-content {
 		li {
 			padding: calc(var(--p)*2);
-			@include light(2) {
+			@include theme(light, 2) {
 				background: hsla(var(--color-white-hsl), .75);
 			}
-			@include dark(2) {
+			@include theme(dark, 2) {
 				background: hsla(var(--color-iron-8-hsl), .65)
 			}
 			@include viewport($iphone-max) {
