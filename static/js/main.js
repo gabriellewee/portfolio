@@ -31,18 +31,29 @@ const accessibility = ((options = Array.from(document.querySelectorAll("[data-op
 	let background = document.querySelector(".background");
 	if(background) background.classList.add("inactive");
 
+	console.log(localStorage.getItem("theme"))
+
 	options.forEach(option =>{
 		option.classList.add("inactive");
 		if(option.getAttribute("data-option") === "color") {
-			if(color.matches || (localStorage.getItem("theme") === "dark")) {
+			if(color.matches && !localStorage.getItem("theme")) {
 				option.checked = true;
 				document.documentElement.classList.add("theme-dark");
 				localStorage.setItem("theme", "dark");
-			} else if(!color.matches || (localStorage.getItem("theme") === "light")) {
+			} else if(!color.matches && !localStorage.getItem("theme")) {
 				option.checked = false;
 				document.documentElement.classList.add("theme-light");
 				localStorage.setItem("theme", "light");
 			}
+
+			if (localStorage.getItem("theme") === "dark") {
+				option.checked = true;
+				document.documentElement.classList.add("theme-dark");
+			} else if((localStorage.getItem("theme") === "light")) {
+				option.checked = false;
+				document.documentElement.classList.add("theme-light");
+			}
+
 			option.addEventListener("click", e => {
 				if(option.checked) {
 					document.documentElement.classList.remove("theme-light");
