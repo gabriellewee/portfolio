@@ -4,15 +4,23 @@
 	overflow: unset;
 	background: unset;
 	&:before {
-		@include before(var(--color-rose));
+		@include viewport($iphone-max) {
+			@include before(var(--color-rose));
+			z-index: -1;
+		}
 	}
-}
-
-.post-header {
-	time {
-		position: absolute;
-		top: calc(var(--p)*2);
-		right: calc(var(--p)*2);
+	&:after {
+		@include viewport($iphone-max) {
+			@include contrast(both, 2) {
+				@include clip-path-edges(2.5px);
+				z-index: -2;
+				top: -1.5px;
+				left: -1.5px;
+				width: calc(100% + 3px);
+				height: calc(100% + 3px);
+				background: var(--color-light);
+			}
+		}
 	}
 }
 
@@ -68,12 +76,14 @@ figure {
 		display: flex;
 	}
 	.button {
-		translate: 0 100%;
 		transition: .2s ease-out;
 		position: absolute;
 		display: inline-block;
 		top: calc(var(--p)*2);
 		right: calc(var(--p)*2);
+		@media (prefers-reduced-motion: no-preference) {
+			translate: 0 100%;
+		}
 		> span {
 			&:before {
 				background-color: var(--color-slate);
@@ -137,6 +147,11 @@ figcaption {
 	}
 	.time-default {
 		background-color: hsla(var(--color-iron-12-hsl), .9);
+		&:before {
+			@include contrast(light, 2) {
+				background-color: hsla(var(--color-white-hsl), .8);
+			}
+		}
 	}
 	.media-icon {
 		display: block;
@@ -211,12 +226,24 @@ figcaption {
 				text-decoration: underline;
 				text-underline-offset: 8px;
 				text-decoration-color: hsla(var(--color-white-hsl), 0);
+				@include contrast(both, 2) {
+					text-underline-offset: 4px;
+					text-decoration-color: unset;
+				}
 			}
 
 			&:hover, &:focus {
 				.no-image {
 					opacity: 1;
 					text-decoration-color: white;
+				}
+			}
+
+			&:focus {
+				.no-image {
+					@include contrast(both, 2) {
+						@include focus-shadow(hsla(var(--color-white-hsl), .8));
+					}
 				}
 			}
 
@@ -364,11 +391,22 @@ figcaption {
 			text-decoration: underline;
 			text-underline-offset: 8px;
 			text-decoration-color: hsla(var(--color-white-hsl), 0);
+			@include contrast(both, 2) {
+				text-underline-offset: 4px;
+				text-decoration-color: unset;
+			}
 		}
 		&:hover, &:focus {
 			span {
 				opacity: 1;
 				text-decoration-color: white;
+			}
+		}
+		&:focus {
+			span {
+				@include contrast(both, 2) {
+					@include focus-shadow(hsla(var(--color-white-hsl), .8));
+				}
 			}
 		}
 		&:hover, &:focus, &:active {
@@ -545,7 +583,9 @@ figcaption {
 				.media-view-hover {
 					opacity: 0;
 					.button {
-						translate: 0 100%;
+						@media (prefers-reduced-motion: no-preference) {
+							translate: 0 100%;
+						}
 					}
 				}
 			}

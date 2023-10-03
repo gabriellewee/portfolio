@@ -6,6 +6,9 @@
 	font-size: 1rem;
 	font-weight: 700;
 	line-height: 1.375;
+	@include contrast(both, 2) {
+		@include clip-path-edges(2px, up);
+	}
 	.post-header-content {
 		@include container(header, mobile, $container-mobile) {
 			align-items: stretch;
@@ -39,8 +42,17 @@
 	}
 	a {
 		color: var(--color-aqua);
+		span {
+			@include contrast(both, 2) {
+				text-decoration: underline;
+				text-underline-offset: 4px;
+			}
+		}
 		&:hover, &:focus {
 			color: var(--color-peach);
+			@include contrast(both, 2) {
+				@include focus-shadow(hsla(var(--color-peach-hsl), .7));
+			}
 		}
 		&:active {
 			color: var(--color-periwinkle);
@@ -86,14 +98,53 @@
 		span {
 			@include clip-path-edges(2px);
 			display: block;
+			position: relative;
 			padding-left: calc(var(--p)/2);
 			padding-right: calc(var(--p)/2);
 			line-height: 1.5;
 			&.tag-css-only {
-				background: var(--color-slate);
+				background-color: var(--color-slate);
 			}
 			&.tag-award {
-				background: var(--color-mauve);
+				background-color: var(--color-mauve);
+			}
+			@include contrast(both, 2) {
+				clip-path: unset;
+				border-radius: unset;
+				&:before, &:after {
+					content: "";
+					display: block;
+					position: absolute;
+				}
+				&:before {
+					@include clip-path-edges(2.5px);
+					z-index: -2;
+					top: -1.5px;
+					left: -1.5px;
+					width: calc(100% + 3px);
+					height: calc(100% + 3px);
+					background-color: hsla(var(--color-light-hsl), .7);
+				}
+				&:after {
+					@include clip-path-edges(2px);
+					z-index: -1;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+				}
+				&.tag-css-only {
+					background-color: unset;
+					&:after {
+						background-color: var(--color-slate);
+					}
+				}
+				&.tag-award:after {
+					background-color: unset;
+					&:after {
+						background-color: var(--color-mauve);
+					}
+				}
 			}
 		}
 	}
@@ -135,6 +186,9 @@
 			margin-bottom: 2px;
 			&:focus {
 				outline: 1px solid var(--color-peach);
+				@include contrast(both, 2) {
+					outline: unset;
+				}
 			}
 			@include container(header, mobile, $container-mobile) {
 				margin-top: calc(var(--p)/2);
@@ -187,6 +241,9 @@
 	display: flex;
 	flex-direction: column;
 	position: relative;
+	@include contrast(both, 2) {
+		@include clip-path-edges(2px, down);
+	}
 	.frame-wrapper {
 		order: 1;
 		@include viewport(mobile) {
@@ -221,6 +278,7 @@
 		@include viewport(mobile) {
 			order: 1;
 			position: absolute;
+			z-index: 3;
 			bottom: calc(var(--p)*2);
 			right: calc(var(--p)*2);
 			text-decoration: none;
@@ -264,7 +322,7 @@
 					@include border-radius(calc(var(--p)/2));
 				}
 				@include clip-path {
-					@include button-outline-shape;
+					@include button-shape(1.375, 7%);
 				}
 			}
 		}

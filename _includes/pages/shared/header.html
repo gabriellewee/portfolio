@@ -1,5 +1,10 @@
+<input type="checkbox" class="option" id="option-color" data-option="color" aria-hidden="true" tabindex="-1"/>
+<input type="checkbox" class="option" id="option-contrast" data-option="contrast" aria-hidden="true" tabindex="-1"/>
+<input type="checkbox" class="option" id="option-transparency" data-option="transparency" aria-hidden="true" tabindex="-1"/>
+<input type="checkbox" class="option" id="option-load" data-option="load" aria-hidden="true" tabindex="-1" checked/>
+
 <header class="top" aria-label="Header">
-	<div>
+	<div class="top-content">
 		<div class="memoji-link">
 			<a href="/">
 				<span class="memoji memoji-default"></span>
@@ -19,33 +24,7 @@
 			{% endif %}
 		</div>
 
-		<div class="accessibility-popup popup">
-			<input type="checkbox" id="accessibility" class="popup-button" tabindex="0" role="switch" aria-haspopup="true" aria-controls="accessibility-window" aria-labelledby="accessibility-button"/>
-			<label id="accessibility-button" class="popup-label" for="accessibility">
-				<span class="button">
-					<span><span>Accessibility</span></span>
-				</span>
-			</label>
-			<div id="accessibility-window" class="popup-window">
-				<div class="inside">
-					<label class="close" for="accessibility" tabindex="0">Close</label>
-					<ul>
-						<li>
-							<label for="option-color">Dark mode</label>
-						</li>
-						<li>
-							<label for="option-contrast">Increased contrast</label>
-						</li>
-						<li>
-							<label for="option-motion">Reduced motion</label>
-						</li>
-						<li>
-							<label for="option-load">Load posts on same page</label>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
+		{% include 'pages/home/accessibility.html' %}
 	</div>
 
 	{% if (key == "home") and (pagination.pageNumber == 0) %}

@@ -1,19 +1,21 @@
 $links: "codepen", "dribbble", "github", "instagram", "twitter", "pinterest", "medium", "tumblr", "music", "email", "text", "imessage", "discord", "mastodon", "apple-podcasts", "spotify", "threads", "bluesky";
 
 @each $link in $links {
-	a {
-		&.#{$link} {
-			&.color, &.link.color {
-				color: var(--color-#{$link});
-				&:hover, &:focus {
-					text-decoration-color: var(--color-#{$link});
-				}
-			}
-			&.background {
-				> span {
-					background: var(--color-#{$link});
-				}
-			}
+	a.#{$link} {
+		--color-link: var(--color-#{$link});
+	}
+}
+
+a {
+	&.color, &.link.color {
+		color: var(--color-link);
+		&:hover, &:focus {
+			text-decoration-color: var(--color-link);
+		}
+	}
+	&.background {
+		> span {
+			background: var(--color-link);
 		}
 	}
 }

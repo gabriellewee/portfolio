@@ -24,10 +24,17 @@
 				text-decoration: underline;
 				text-underline-offset: 8px;
 				text-decoration-color: hsla(var(--color-blush-8-hsl), 0);
+				@include contrast(both, 2) {
+					text-underline-offset: 4px;
+					text-decoration-color: unset;
+				}
 			}
 			&:hover, &:focus, &:active {
 				span {
 					text-underline-offset: 4px;
+					@include contrast(both, 2) {
+						@include focus-shadow(var(--color-rose));
+					}
 				}
 			}
 			&:hover, &:focus {

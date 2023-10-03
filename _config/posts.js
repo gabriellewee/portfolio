@@ -42,7 +42,7 @@ module.exports = eleventyConfig => {
 	eleventyConfig.addFilter("platform", platform => {
 		platform = platform.split('/')[4];
 		platform = platform.charAt(0).toUpperCase() + platform.slice(1);
-		if(platform == "") {
+		if (platform == "") {
 			return;
 		} else {
 			return `<span> on ${platform}</span>`;

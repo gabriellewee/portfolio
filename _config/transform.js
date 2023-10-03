@@ -20,7 +20,7 @@ module.exports = eleventyConfig => {
 		outputFileExtension: "js",
 		compile: (inputContent, inputPath) => {
 			let parsed = path.parse(inputPath);
-			if(parsed.name.startsWith(".")) {
+			if (parsed.name.startsWith(".")) {
 				return;
 			}
 			return async (data) => {
@@ -35,7 +35,7 @@ module.exports = eleventyConfig => {
 		outputFileExtension: "css",
 		compile: (inputContent, inputPath) => {
 			let parsed = path.parse(inputPath);
-			if(parsed.name.startsWith("_")) {
+			if (parsed.name.startsWith("_")) {
 				return;
 			}
 			return async (data) => {

@@ -41,21 +41,23 @@
 					margin-right: .75rem;
 				}
 				&:not(:hover):not(:focus) {
-					text-decoration-color: hsla(var(--color-blush-8-hsl), 0);
+					@include theme(light, 2) {
+						text-decoration-color: hsla(var(--color-blush-8-hsl), 0);
+					}
+					@include theme(dark, 2) {
+						text-decoration-color: hsla(var(--color-iron-5-hsl), 0);
+					}
+					@include contrast(both, 2) {
+						text-decoration-color: hsla(var(--color-light-hsl), .5);
+					}
 				}
 			}
 			.link.tumblr {
 				@include theme(light, 2) {
-					color: var(--color-tumblr);
-					&:hover, &:focus {
-						text-decoration-color: var(--color-tumblr);
-					}
+					--color-link: var(--color-tumblr);
 				}
 				@include theme(dark, 2) {
-					color: var(--color-tumblr-light);
-					&:hover, &:focus {
-						text-decoration-color: var(--color-tumblr-light);
-					}
+					--color-link: var(--color-tumblr-light);
 				}
 			}
 			.link, .popup-label, .popup-label span {
@@ -70,15 +72,27 @@
 				text-decoration: underline;
 				text-decoration-thickness: 3px;
 				text-underline-offset: 8px;
+				@include contrast(both, 2) {
+					text-underline-offset: 4px;
+				}
 			}
 			.popup-label {
-				color: var(--color-discord);
+				--color-link: var(--color-discord);
+				color: var(--color-link);
 				span {
-					text-decoration-color: hsla(var(--color-blush-8-hsl), 0);
+					@include theme(light, 2) {
+						text-decoration-color: hsla(var(--color-blush-8-hsl), 0);
+					}
+					@include theme(dark, 2) {
+						text-decoration-color: hsla(var(--color-iron-5-hsl), 0);
+					}
+					@include contrast(both, 2) {
+						text-decoration-color: hsla(var(--color-light-hsl), .5);
+					}
 				}
 			}
 			.popup-label:hover span, .popup-button:focus + .popup-label span {
-				text-decoration-color: var(--color-discord);
+				text-decoration-color: var(--color-link);
 			}
 			.link:hover, .link:focus, .popup-label:hover span, .popup-button:focus ~ .popup-label span {
 				@include theme(light, 2) {
@@ -86,6 +100,12 @@
 				}
 				@include theme(dark, 2) {
 					color: white;
+				}
+			}
+			.link:focus, .popup-button:focus ~ .popup-label span {
+				@include contrast(both, 2) {
+					text-decoration-color: hsla(var(--color-light-hsl), 0);
+					@include focus-shadow(var(--color-link));
 				}
 			}
 			.link:hover, .link:focus, .popup-label:hover span, .popup-button:focus ~ .popup-label span, .link:active, .popup-button:active ~ .popup-label span {
@@ -119,6 +139,20 @@
 				background-color: var(--color-iron);
 			}
 		}
+		&:after {
+			@include contrast(both, 2) {
+				@include clip-path-edges(2.5px);
+				content: "";
+				display: block;
+				position: absolute;
+				z-index: -1;
+				top: -1.5px;
+				left: -1.5px;
+				width: calc(100% + 3px);
+				height: calc(100% + 3px);
+				background-color: var(--color-light);
+			}
+		}
 		@include viewport(mobile) {
 			display: grid;
 			grid-gap: calc(var(--p)*2);
@@ -148,11 +182,17 @@
 				.link {
 					text-decoration-thickness: 2px;
 					text-underline-offset: 6px;
+					@include contrast(both, 2) {
+						text-underline-offset: 3px;
+					}
 					&:hover, &:focus {
 						text-underline-offset: 3px;
 					}
 					&:not(:hover):not(:focus) {
 						text-decoration-color: hsla(var(--color-white-hsl), 0);
+						@include contrast(both, 2) {
+							text-decoration-color: hsla(var(--color-light-hsl), .5);
+						}
 					}
 				}
 			}
@@ -166,6 +206,7 @@
 	}
 	.clip-container {
 		&:before {
+			clip-path: polygon(0 0, 0 100%, 100% 0);
 			left: 50%;
 			top: 100%;
 			translate: -50% calc(var(--p)/3);

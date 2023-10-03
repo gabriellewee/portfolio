@@ -82,6 +82,11 @@
 	.post-header {
 		time {
 			background-color: var(--color-mastodon-slate);
+			&:after {
+				@include contrast(both, 2) {
+					background-color: var(--color-mastodon-slate);
+				}
+			}
 		}
 	}
 	.post-content {

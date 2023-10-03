@@ -1,19 +1,19 @@
 /*! Lightbox script by Gabrielle Wee */
 const lightbox = (buttons, boxes, scroll) => {
-	if(!buttons || !boxes) return;
+	if (!buttons || !boxes) return;
 
 	let scrollPosition = document.documentElement.scrollTop;
 
 	const deactivate = (lightboxes) => {
 		const remove = (lightbox) => {
 			let content = lightbox.nextElementSibling;
-			if(lightbox.classList.contains("active")) {
+			if (lightbox.classList.contains("active")) {
 				lightbox.classList.remove("active");
 				content.classList.remove("active");
 				scrollPosition = document.documentElement.scrollTop;
 			}
 		}
-		if(lightboxes instanceof Array) {
+		if (lightboxes instanceof Array) {
 			lightboxes.forEach(lightbox => {
 				remove(lightbox);
 			});
@@ -25,7 +25,7 @@ const lightbox = (buttons, boxes, scroll) => {
 	const activate = (lightbox) => {
 		let content = lightbox.nextElementSibling;
 		let frame = content.querySelector("iframe");
-		if(frame) frame.src = frame.src;
+		if (frame) frame.src = frame.src;
 
 		lightbox.classList.add("active");
 		lightbox.focus();
@@ -47,22 +47,22 @@ const lightbox = (buttons, boxes, scroll) => {
 	}
 
 	const shortcut = (e, lightbox, lightboxes, index) => {
-		if(lightbox.classList.contains("active")) {
+		if (lightbox.classList.contains("active")) {
 			if (e.key === "Escape") {
 				deactivate(lightbox);
 				scrollTo(lightbox);
-			} else if(e.key === "ArrowRight" || e.key === "ArrowLeft") {
+			} else if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
 				setTimeout(() => {
 				    let ctrl = false;
 					if (e.key === "Ctrl") {
 						ctrl = true;
 					}
 					deactivate(lightbox);
-					if(lightboxes.length > 1) {
+					if (lightboxes.length > 1) {
 						let sibling;
-						if(e.key === "ArrowRight" && !ctrl) {
+						if (e.key === "ArrowRight" && !ctrl) {
 							sibling = lightboxes[index + 1] || lightboxes[0];
-						} else if(e.key === "ArrowLeft" && !ctrl) {
+						} else if (e.key === "ArrowLeft" && !ctrl) {
 							sibling = lightboxes[index - 1] || lightboxes[lightboxes.length - 1];
 						}
 						activate(sibling);
@@ -77,14 +77,14 @@ const lightbox = (buttons, boxes, scroll) => {
 		let info = document.querySelector(`[id="${href}-info"]`);
 		let element = document.querySelector(`[id="${href}"]`);
 		let expand = element.querySelector(".expand");
-		if(info) {
+		if (info) {
 			info.scrollIntoView({ behavior: "smooth" });
 			info.focus();
-			if(!info.checked) {
+			if (!info.checked) {
 				info.click();
 			}
 
-		} else if(element) {
+		} else if (element) {
 			element.scrollIntoView({ behavior: "smooth" });
 			expand ? expand.focus() : element.focus();
 		}
@@ -110,7 +110,7 @@ const lightbox = (buttons, boxes, scroll) => {
 			}, { signal });
 
 			let content = lightbox.nextElementSibling;
-			if(content.classList.contains("image")) {
+			if (content.classList.contains("image")) {
 				content.addEventListener("click", e => {
 					e.preventDefault();
 					deactivate(lightbox);
@@ -136,7 +136,7 @@ const lightbox = (buttons, boxes, scroll) => {
 
 		expand(links, lightboxes);
 
-		if(scroll) {
+		if (scroll) {
 			scroll.on('append', (body, path, items, response) => {
 				deactivate(lightboxes);
 				controller.abort();

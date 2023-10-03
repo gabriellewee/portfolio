@@ -2,7 +2,9 @@
 
 .page-home {
 	.contact-sites, .contact-messages {
-		opacity: 0;
+		@media (prefers-reduced-motion: no-preference) {
+			opacity: 0;
+		}
 	}
 	.secondary {
 		display: none !important;

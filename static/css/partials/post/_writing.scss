@@ -19,15 +19,25 @@
 				text-decoration: underline;
 				text-underline-offset: 8px;
 				text-decoration-color: hsla(var(--color-white-hsl), 0);
+				@include contrast(both, 2) {
+					text-underline-offset: 4px;
+					text-decoration-color: unset;
+				}
 			}
 			&:hover, &:focus, &:active {
 				span {
 					text-underline-offset: 4px;
 				}
+
 			}
 			&:hover, &:focus {
 				span {
 					text-decoration-color: var(--color-mauve-rose);
+				}
+			}
+			&:focus {
+				@include contrast(both, 2) {
+					@include focus-shadow(hsla(var(--color-mauve-hsl), .5));
 				}
 			}
 			&:active {
@@ -75,6 +85,11 @@
 		}
 		time {
 			background-color: var(--color-slate);
+			&:after {
+				@include contrast(both, 2) {
+					background-color: var(--color-slate);
+				}
+			}
 		}
 	}
 }
@@ -150,6 +165,11 @@
 		}
 		time {
 			background-color: var(--color-mauve);
+			&:after {
+				@include contrast(both, 2) {
+					background-color: var(--color-mauve);
+				}
+			}
 		}
 	}
 }
@@ -200,6 +220,11 @@
 		}
 		time {
 			background-color: var(--color-iron-white-60);
+			&:after {
+				@include contrast(both, 2) {
+					background-color: var(--color-iron-white-60);
+				}
+			}
 		}
 	}
 	.post-footer {

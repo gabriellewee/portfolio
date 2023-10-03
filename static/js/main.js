@@ -2,7 +2,7 @@ const noJS = ((container = document.documentElement) => {
 	container.classList.remove("no-js");
 	container.classList.add("js");
 	hidden = Array.from(document.querySelectorAll("[hidden]"));
-	if(hidden) {
+	if (hidden) {
 		hidden.forEach(el => {
 			el.removeAttribute("hidden");
 		});
@@ -11,7 +11,7 @@ const noJS = ((container = document.documentElement) => {
 
 const frames = (buttons) => {
 	let links = Array.from(document.querySelectorAll(buttons));
-	if(!links) return;
+	if (!links) return;
 	links.forEach(button => {
 		let frame = button.parentElement.querySelector("iframe");
 		button.addEventListener("click",  e => {
@@ -25,53 +25,9 @@ const frames = (buttons) => {
 	});
 }
 
-const accessibility = ((options = Array.from(document.querySelectorAll("[data-option"))) => {
-	if(!options || !window.matchMedia) return;
-	const color = window.matchMedia('(prefers-color-scheme: dark)');
-	let background = document.querySelector(".background");
-	if(background) background.classList.add("inactive");
-
-	console.log(localStorage.getItem("theme"))
-
-	options.forEach(option =>{
-		option.classList.add("inactive");
-		if(option.getAttribute("data-option") === "color") {
-			if(color.matches && !localStorage.getItem("theme")) {
-				option.checked = true;
-				document.documentElement.classList.add("theme-dark");
-				localStorage.setItem("theme", "dark");
-			} else if(!color.matches && !localStorage.getItem("theme")) {
-				option.checked = false;
-				document.documentElement.classList.add("theme-light");
-				localStorage.setItem("theme", "light");
-			}
-
-			if (localStorage.getItem("theme") === "dark") {
-				option.checked = true;
-				document.documentElement.classList.add("theme-dark");
-			} else if((localStorage.getItem("theme") === "light")) {
-				option.checked = false;
-				document.documentElement.classList.add("theme-light");
-			}
-
-			option.addEventListener("click", e => {
-				if(option.checked) {
-					document.documentElement.classList.remove("theme-light");
-					document.documentElement.classList.add("theme-dark");
-					localStorage.setItem("theme", "dark");
-				} else {
-					document.documentElement.classList.remove("theme-dark");
-					document.documentElement.classList.add("theme-light");
-					localStorage.setItem("theme", "light");
-				}
-			});
-		}
-	})
-})();
-
 const mediaTriggers = (media) => {
 	let figures = Array.from(document.querySelectorAll(media));
-	if(!figures) return;
+	if (!figures) return;
 	figures.forEach(figure=>{
 		let trigger = figure.querySelector(".media-trigger");
 		let data = figure.querySelector(".media-data");
@@ -87,7 +43,7 @@ const mediaTriggers = (media) => {
 			trigger.setAttribute("aria-checked", "true");
 			data.removeAttribute("aria-hidden");
 			expand.tabIndex = 0;
-			if(external) {
+			if (external) {
 				external.forEach(link=> {
 					link.tabIndex = 0;
 				});
@@ -97,14 +53,14 @@ const mediaTriggers = (media) => {
 			trigger.setAttribute("aria-checked", "false");
 			data.setAttribute("aria-hidden", "true");
 			expand.tabIndex = -1;
-			if(external) {
+			if (external) {
 				external.forEach(link=> {
 					link.tabIndex = -1;
 				});
 			}
 		}
 		trigger.addEventListener("click", e => {
-			if(trigger.checked){
+			if (trigger.checked){
 				_true();
 			} else {
 				_false();
@@ -112,7 +68,7 @@ const mediaTriggers = (media) => {
 		});
 		trigger.addEventListener("keydown", e => {
 			if (e.key === "Enter") {
-				if(trigger.checked){
+				if (trigger.checked){
 					trigger.checked = false;
 					_false();
 				} else {
@@ -123,7 +79,7 @@ const mediaTriggers = (media) => {
 		});
 		labels.forEach(label=>{
 			label.addEventListener("click", e => {
-				if(trigger.checked){
+				if (trigger.checked){
 					_true();
 				} else {
 					_false();
@@ -139,9 +95,10 @@ mediaTriggers(".post-media");
 
 let container = document.querySelector(".grid-isotope");
 let iso;
+let motionClass = document.documentElement.classList.contains("theme-reduce-motion");
 let motion = window.matchMedia("(prefers-reduced-motion: no-preference)");
 const layout = (items) => {
-	if(motion.matches == true) {
+	if ((motionClass == false && motion.matches == true) || (!motionClass && motion.matches == true)) {
 		iso = new Isotope(items, {
 			percentPosition: true,
 			layoutMode: "packery",
@@ -168,11 +125,11 @@ const layout = (items) => {
 	}
 }
 
-if(container) layout(container);
+if (container) layout(container);
 
 let scrollContainer = document.querySelector(".grid-scroll");
 let lightboxContainer = document.querySelector(".posts-lightbox-group");
-if(scrollContainer && lightboxContainer) {
+if (scrollContainer && lightboxContainer) {
 	let scroll = new InfiniteScroll(scrollContainer, {
 		button: '.load',
 		path: '.older',
@@ -198,7 +155,7 @@ if(scrollContainer && lightboxContainer) {
 }
 
 new imagesLoaded(document.body, () => {
-	if(container && iso != undefined) {
+	if (container && iso != undefined) {
 		iso.layout();
 	}
 	document.documentElement.classList.add("loaded");
@@ -214,7 +171,7 @@ const mediaFilters = ((filters = document.querySelector(".filters")) => {
 			e.preventDefault();
 			iso.arrange({ filter: value });
 			let active = filters.querySelector(".active");
-			if(!reset.classList.contains("visible")) {
+			if (!reset.classList.contains("visible")) {
 				reset.classList.add("visible");
 			}
 			if (active && value == "*") {
@@ -235,7 +192,7 @@ const mediaFilters = ((filters = document.querySelector(".filters")) => {
 })();
 
 const popup = ((containers = Array.from(document.querySelectorAll(".popup"))) => {
-	if(!containers) return;
+	if (!containers) return;
 	containers.forEach(container =>{
 		let popupWindow = container.querySelector(".popup-window");
 		let popupLabel = container.querySelector(".popup-label");
@@ -244,9 +201,17 @@ const popup = ((containers = Array.from(document.querySelectorAll(".popup"))) =>
 		let triggers = Array.from([popupTrigger, popupClose]);
 
 		triggers.forEach(trigger =>{
+			trigger.addEventListener("click",  e => {
+				if (popupTrigger.checked) {
+					popupTrigger.checked = true;
+				} else {
+					popupTrigger.checked = false;
+					popupTrigger.focus();
+				}
+			});
 			trigger.addEventListener("keydown",  e => {
 				if (e.key === "Enter") {
-					if(popupTrigger.checked) {
+					if (popupTrigger.checked) {
 						popupTrigger.checked = false;
 						popupTrigger.focus();
 					} else {
@@ -268,24 +233,24 @@ const popup = ((containers = Array.from(document.querySelectorAll(".popup"))) =>
 			start: "top top",
 			end: "bottom top",
 			onLeave: self => {
-				if(popupTrigger.checked) {
+				if (popupTrigger.checked) {
 					popupTrigger.checked = false;
 				}
 			}
 		});
 
-		if(container.hasAttribute("data-copy")) {
+		if (container.hasAttribute("data-copy")) {
 			let copyElem = container.querySelector(".username");
 			triggers.forEach(trigger =>{
 				trigger.addEventListener("keydown",  e => {
 					if (e.key === "Enter") {
-						if(popupTrigger.checked) {
+						if (popupTrigger.checked) {
 							copyElem.classList.remove("copied");
 						}
 					}
 				});
 				trigger.addEventListener("click",  e => {
-					if(popupTrigger.checked) {
+					if (popupTrigger.checked) {
 						setTimeout(() => {
 							copyElem.classList.remove("copied");
 						}, 300);
@@ -319,7 +284,7 @@ const popup = ((containers = Array.from(document.querySelectorAll(".popup"))) =>
 })();
 
 const copyButtons = ((buttons = Array.from(document.querySelectorAll(".clip"))) => {
-	if(!buttons) return;
+	if (!buttons) return;
 	buttons.forEach(button=>{
 		button.addEventListener("click", e => {
 			e.preventDefault();
@@ -327,13 +292,13 @@ const copyButtons = ((buttons = Array.from(document.querySelectorAll(".clip"))) 
 		});
 		let clipboard = new ClipboardJS(button);
 		clipboard.on("success", e => {
-			if(button.tagName === "INPUT") {
+			if (button.tagName === "INPUT") {
 				e.trigger.parentNode.classList.add("copied");
 			} else {
 				e.trigger.classList.add("copied");
 			}
 			setTimeout(() => {
-				if(button.tagName === "INPUT") {
+				if (button.tagName === "INPUT") {
 					e.trigger.parentNode.classList.remove("copied");
 				} else {
 					e.trigger.classList.remove("copied");
@@ -345,7 +310,7 @@ const copyButtons = ((buttons = Array.from(document.querySelectorAll(".clip"))) 
 
 const animateQueries = (timeline, key) => {
 	new imagesLoaded(document.body, () => {
-		if(window.scrollY > 0) {
+		if (window.scrollY > 0) {
 			timeline.progress(1);
 		}
 	});
@@ -363,16 +328,17 @@ const animateQueries = (timeline, key) => {
 					onLeave: () => timeline.progress(1)
 				});
 
-				document.documentElement.addEventListener("click", () => {
+				document.documentElement.addEventListener("click", e => {
 					timeline.progress(1);
 				}, {once: true});
 
-				document.documentElement.addEventListener("keydown", () => {
+				document.documentElement.addEventListener("keydown", e => {
 					timeline.progress(1);
 				}, {once: true});
 
 				sessionStorage.setItem(storageItem, true);
 			} else {
+				document.documentElement.classList.add("loaded");
 				timeline.progress(1);
 			}
 		});
@@ -394,7 +360,7 @@ const animateItems = (items, key) => {
 			opacity: 1,
 			y: 0,
 			onComplete() {
-				if(item.classList.contains("post-animate")) item.classList.remove("post-animate");
+				if (item.classList.contains("post-animate")) item.classList.remove("post-animate");
 		    }
 		}, "<.1");
 	});

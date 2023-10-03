@@ -1,5 +1,5 @@
 <div class="discord-popup popup" data-copy>
-	<input type="checkbox" id="discord" class="popup-button" tabindex="0" role="switch" aria-haspopup="true" aria-controls="discord-window" aria-labelledby="discord-label"/>
+	<input type="checkbox" id="discord" class="popup-button" tabindex="0" role="button" aria-haspopup="true" aria-controls="discord-window" aria-labelledby="discord-label"/>
 	<label class="popup-label" for="discord">
 		<span aria-hidden="true" id="discord-label">Discord</span>
 	</label>
@@ -33,7 +33,7 @@
 					</li>
 				</ul>
 			</div>
-			<label class="close" for="discord" tabindex="0">{% include 'svg/icons/close.svg' %}</label>
+			<label class="close" for="discord" tabindex="0" role="button" aria-haspopup="true" aria-controls="discord-window">{% include 'svg/icons/close.svg' %}</label>
 		</div>
 	</div>
 </div>

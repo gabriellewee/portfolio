@@ -42,10 +42,7 @@
 	}
 
 	h2 {
-		position: absolute;
-		width: 0;
-		height: 0;
-		font-size: 0;
+		@include hide;
 	}
 	ul {
 		list-style: none;
@@ -56,8 +53,10 @@
 		margin-right: var(--p);
 	}
 	a {
-		opacity: 0;
 		color: var(--color-iron-white-70);
+		@media (prefers-reduced-motion: no-preference) {
+			opacity: 0;
+		}
 		&:not(.reset):before {
 			content: "#";
 		}
@@ -69,6 +68,10 @@
 			text-decoration-thickness: 2px;
 			text-underline-offset: 8px;
 			text-decoration-color: hsla(var(--color-blush-8-hsl), 0);
+			@include contrast(both, 2) {
+				text-underline-offset: 4px;
+				text-decoration-color: unset;
+			}
 		}
 		&:hover, &:focus {
 			color: var(--color-iron-white);
@@ -105,7 +108,9 @@
 }
 
 .post-animate {
-	opacity: 0;
+	@media (prefers-reduced-motion: no-preference) {
+		opacity: 0;
+	}
 }
 
 .post {
@@ -181,6 +186,52 @@
 		@include theme(dark, 2) {
 			background-color: var(--color-iron);
 		}
+		@include viewport($iphone-max) {
+			@include contrast(both, 2) {
+				overflow: unset;
+				position: relative;
+				clip-path: unset;
+				border-radius: unset;
+				background-color: unset !important;
+				&:before, &:after {
+					content: "";
+					display: block;
+					position: absolute;
+				}
+				&:before {
+					@include clip-path-edges(2.5px);
+					z-index: -2;
+					top: -1.5px;
+					left: -1.5px;
+					width: calc(100% + 3px);
+					height: calc(100% + 3px);
+				}
+				&:after {
+					@include clip-path-edges(2px);
+					z-index: -1;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+				}
+			}
+		}
+		&:before {
+			@include contrast(light, 2) {
+				background-color: var(--color-iron);
+			}
+			@include contrast(dark, 2) {
+				background-color: var(--color-iron-white-5);
+			}
+		}
+		&:after {
+			@include contrast(light, 2) {
+				background-color: white;
+			}
+			@include contrast(dark, 2) {
+				background-color: var(--color-iron);
+			}
+		}
 	}
 	time {
 		display: block;
@@ -188,8 +239,51 @@
 		&.time-default {
 			@include button;
 			@include font-weight-width(600, 80);
+			position: relative;
 			background-color: hsla(var(--color-iron-1-hsl), .75);
 			text-transform: uppercase;
+			@include contrast(both, 2) {
+				background-color: unset !important;
+				@include clip-path(false) {
+					border-radius: unset;
+				}
+				@include clip-path {
+					clip-path: unset;
+				}
+				&:before, &:after {
+					content: "";
+					display: block;
+					position: absolute;
+				}
+				&:before {
+					z-index: -2;
+					top: calc(var(--p)/-8);
+					left: calc(var(--p)/-8);
+					width: calc(100% + var(--p)/4);
+					height: calc(100% + var(--p)/4);
+					background-color: var(--color-light);
+					@include clip-path(false) {
+						@include border-radius(calc(var(--p)/4));
+					}
+					@include clip-path {
+						@include button-shape(1.3125, 6%);
+					}
+				}
+				&:after {
+					z-index: -1;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background-color: var(--color-iron);
+					@include clip-path(false) {
+						@include border-radius(calc(var(--p)/2));
+					}
+					@include clip-path {
+						@include button-shape;
+					}
+				}
+			}
 		}
 	}
 	.inline-header {
@@ -598,6 +692,9 @@
 .button-mastodon {
 	&:before {
 		background-color: hsla(var(--color-mastodon-white-hsl), 0.75);
+		@include contrast(both, 2) {
+			background-color: var(--color-mastodon-white);
+		}
 	}
 	> span {
 		background: radial-gradient(
