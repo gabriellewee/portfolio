@@ -4,6 +4,7 @@
 	appearance: none;
 	display: block;
 	position: relative;
+	z-index: 3;
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -11,24 +12,41 @@
 	&, > span, > span:before {
 		transition: background .4s ease-out, scale .2s ease-out;
 	}
+	&:before, &:after {
+		content: "";
+		display: block;
+		position: absolute;
+	}
 	&:before {
+		opacity: 0;
+		z-index: -1;	
+		top: calc(var(--p)/-4);
+		left: calc(var(--p)/-4);
+		width: calc(100% + var(--p)/2);
+		height: calc(100% + var(--p)/2);
+		padding: var(--p) calc(var(--p)*2.5);
+		background-color: var(--color-blush);
+		@include clip-path(false) {
+			@include border-radius(calc(var(--p)/2));
+		}
 		@include clip-path {
-			content: "";
-			display: block;
-			opacity: 0;
-			content: "";
-			position: absolute;
-			top: calc(var(--p)/-4);
-			left: calc(var(--p)/-4);
-			width: calc(100% + var(--p)/2);
-			height: calc(100% + var(--p)/2);
+			@include button-shape(1.375, 7%);
+		}
+	}
+	&:after {
+		@include contrast(both, 2) {
+			z-index: -2;
+			top: calc(var(--p)/-8);
+			left: calc(var(--p)/-8);
+			width: calc(100% + var(--p)/4);
+			height: calc(100% + var(--p)/4);
 			padding: var(--p) calc(var(--p)*2.5);
-			background-color: var(--color-blush);
+			background-color: var(--color-light);
 			@include clip-path(false) {
-				@include border-radius(calc(var(--p)/2));
+				@include border-radius(calc(var(--p)/4));
 			}
 			@include clip-path {
-				@include button-outline-shape;
+				@include button-shape(1.3125, 6%);
 			}
 		}
 	}
@@ -47,15 +65,17 @@
 			opacity: 0;
 			content: "";
 			display: block;
-			z-index: 0;
 			position: absolute;
+			z-index: 0;
 			top: 0;
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background-color: var(--color-iron);
-			background: radial-gradient(circle at center left, var(--color-iron) 0, var(--color-iron-12) 100%);
-			@include dark {
+			@include theme(light, 2) {
+				background-color: var(--color-iron);
+				background: radial-gradient(circle at center left, var(--color-iron) 0, var(--color-iron-12) 100%);
+			}
+			@include theme(dark, 2) {
 				background-color: var(--color-slate);
 				background: radial-gradient(circle at center left, var(--color-slate) 0, var(--color-iron-white-80) 100%);
 			}
@@ -110,9 +130,11 @@
 				var(--color-slate) 100%,
 			) 50% 0% / 200% 100%;
 			&:before {
-				background-color: var(--color-iron-5);
-				background: radial-gradient(circle at center right, var(--color-iron) 0, var(--color-iron-5) 100%);
-				@include dark {
+				@include theme(light, 2) {
+					background-color: var(--color-iron-5);
+					background: radial-gradient(circle at center right, var(--color-iron) 0, var(--color-iron-5) 100%);
+				}
+				@include theme(dark, 2) {
 					background-color: var(--color-iron-white-80);
 					background: radial-gradient(circle at center left, var(--color-iron-white-80) 0, var(--color-slate) 100%);
 				}

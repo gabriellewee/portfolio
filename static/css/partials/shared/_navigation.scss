@@ -7,15 +7,29 @@
 }
 
 .top {
-	@include font-weight-width(900, 125);
 	padding-top: calc((var(--p)*2) + env(safe-area-inset-top));
 	line-height: 1.2;
 	@include viewport($ipad-mini) {
 		line-height: 1.1;
 	}
 
+	> div {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: var(--p);
+		.memoji-link {
+			margin-bottom: 0;
+		}
+	}
+
 	.cursor {
 		@include font-weight-width(900, 75);
+	}
+
+	.top-content {
+		position: relative;
+		z-index: 100;
 	}
 }
 
@@ -41,11 +55,27 @@
 			display: inline-block;
 			padding: calc(var(--p)/3*2) var(--p);
 		}
+		&:after {
+			@include contrast(both, 2) {
+				@include clip-path-edges(2.5px);
+				content: "";
+				display: block;
+				position: absolute;
+				z-index: -1;
+				top: -1.5px;
+				left: -1.5px;
+				width: calc(100% + 3px);
+				height: calc(100% + 3px);
+				background-color: var(--color-light);
+			}
+		}
 	}
 	.copyright {
 		span {
-			background-color: white;
-			@include dark {
+			@include theme(light, 1) {
+				background-color: white;
+			}
+			@include theme(dark, 1) {
 				background-color: var(--color-iron);
 			}
 		}
@@ -97,31 +127,63 @@
 	&:empty {
 		display: none;
 	}
+	.load {
+		.theme-no-load & {
+			display: none;
+		}
+		#option-load:not(.inactive):not(:checked) ~ * & {
+			display: none;
+		}
+	}
 	.older, .newer {
 		height: calc(100% + var(--p)/3);
 	}
 	.older {
 		&:before {
-			clip-path: polygon(3px 0%, calc(100% - calc(var(--p)*1.375)) 0%, 100% 43%, 100% 57%, calc(100% - calc(var(--p)*1.375)) 100%, 3px 100%, 0 calc(100% - 3px), 0 3px);
+			@include button-shape(1.375, 7%, 3px, right);
+		}
+		&:after {
+			@include contrast(both, 2) {
+				@include button-shape(1.3125, 6%, 2.5px, right);
+			}
 		}
 		> span {
-			clip-path: polygon(2px 0%, calc(100% - calc(var(--p)*1.25)) 0%, 100% 45%, 100% 55%, calc(100% - calc(var(--p)*1.25)) 100%, 2px 100%, 0 calc(100% - 2px), 0 2px);
+			@include button-shape(1.25, 5%, 2px, right);
 			padding-left: calc(var(--p)*2);
 		}
 	}
 	.newer {
 		&:before {
-			clip-path: polygon(calc(var(--p)*1.375) 0%, calc(100% - 3px) 0%, 100% 3px, 100% calc(100% - 3px), calc(100% - 3px) 100%, calc(var(--p)*1.375) 100%, 0 57%, 0 43%)
+			@include button-shape(1.375, 7%, 3px, left);
+		}
+		&:after {
+			@include contrast(both, 2) {
+				@include button-shape(1.3125, 6%, 2.5px, left);
+			}
 		}
 		> span {
-			clip-path: polygon(calc(var(--p)*1.25) 0%, calc(100% - 2px) 0%, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, calc(var(--p)*1.25) 100%, 0 55%, 0 45%);;
+			@include button-shape(1.25, 5%, 2px, left);
 			padding-right: calc(var(--p)*2);
 		}
 	}
 	&.main-pagination {
+		.page-index & {
+			.theme-no-load & {
+				justify-content: flex-end;
+			}
+			#option-load:not(.inactive):not(:checked) ~ * & {
+				justify-content: flex-end;
+			}
+		}
 		.older {
 			.js & {
 				display: none;
+			}
+			.theme-no-load & {
+				display: block;
+			}
+			#option-load:not(.inactive):not(:checked) ~ * & {
+				display: block;
 			}
 		}
 	}

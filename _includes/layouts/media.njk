@@ -38,7 +38,7 @@
 									<div class="media-thumbnail">
 										<a class="media-expand expand" href="#{{post.date|safe}}-{{post.name}}-lightbox" role="button" aria-label="Expand image" aria-expanded="false" tabindex="-1">
 											<span class="no-image">Expand</span>
-											<span aria-hidden="true">
+											<span class="has-image" aria-hidden="true">
 												{% if post.upscale %}
 													<picture>
 														<img class="upscale" src="{% include post.upscale %}"{% if post.upscaleWidth %} width="{{post.upscaleWidth}}"{% endif %}{% if post.upscaleHeight %} height="{{post.upscaleHeight}}"{% endif %} alt="{{post.description}}"/>

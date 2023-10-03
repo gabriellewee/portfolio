@@ -1,9 +1,8 @@
 .memoji {
 	display: block;
-	width: calc(48px + var(--p));
+	width: 48px;
 	height: 68px;
 	background-size: 48px 68px;
-	padding-right: var(--p);
 	background-position: center left;
 	&-default {
 		@include background-image(avatars/memoji, png);
@@ -18,7 +17,6 @@
 	align-items: center;
 	align-content: center;
 	position: relative;
-	order: 2;
 	margin-bottom: var(--p);
 	.memoji-hm {
 		opacity: 0;
@@ -27,7 +25,6 @@
 		top: 0;
 	}
 	.text {
-		@include blur(5px, var(--color-white-hsl), .9, .8);
 		@include font-weight-width(600, 115);
 		opacity: 0;
 		transition: .2s ease-out;
@@ -37,9 +34,19 @@
 		line-height: 1.4;
 		color: var(--color-iron-10);
 		border-radius: 2em;
-		@include dark {
-			@include blur(5px, var(--color-iron-hsl), .9, .8);
+		@media (prefers-reduced-motion: no-preference) {
+			opacity: 0;
+		}
+		@include theme(light, 2) {
+			background-color: hsla(var(--color-white-hsl), .8);
+			color: var(--color-iron);
+		}
+		@include theme(dark, 2) {
+			background-color: hsla(var(--color-iron-hsl), .8);
 			color: white;
+		}
+		@include contrast(both, 2) {
+			outline: 1.5px solid var(--color-light);
 		}
 		&.message {
 			@media (prefers-reduced-motion: no-preference) {
@@ -50,6 +57,12 @@
 			}
 			.page-index & {
 				color: var(--color-iron-white-70);
+				@media (prefers-reduced-motion: reduce) {
+					display: none;
+				}
+			}
+			.loaded .page-index & {
+				display: none;
 			}
 			.page-home:not(.page-index) & {
 				display: none;
@@ -76,6 +89,7 @@
 	}
 	a {
 		display: block;
+		margin-right: var(--p);
 		&:focus-visible {
 			@include focus-shadow(hsla(var(--color-mauve-hsl), .5));
 			.memoji {

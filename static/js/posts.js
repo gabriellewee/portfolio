@@ -11,10 +11,10 @@ const smoothScrollLinks = ((links = Array.from(document.querySelectorAll(".direc
 			targetLink.scrollIntoView({ behavior: "smooth" });
 		});
 	});
-	if(window.location.hash) {
+	if (window.location.hash) {
 		let scrollHash = window.location.hash.substring(1);
 		let scrollLocation = document.getElementById(scrollHash);
-		if(scrollLocation) {
+		if (scrollLocation) {
 			imagesLoaded(mainContent, { background: true }, () =>{
 				setTimeout(() => {
 					scrollLocation.scrollIntoView({ behavior: "smooth" });

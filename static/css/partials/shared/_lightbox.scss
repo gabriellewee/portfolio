@@ -137,14 +137,18 @@
 	}
 	&.light-dark + [data-content] {
 		.dark {
-			display: block;
-			@include dark {
+			@include theme(light, 2) {
+				display: block;
+			}
+			@include theme(dark, 2) {
 				display: none;
 			}
 		}
 		.light {
-			display: none;
-			@include dark {
+			@include theme(light, 2) {
+				display: none;
+			}
+			@include theme(dark, 2) {
 				display: block;
 			}
 		}

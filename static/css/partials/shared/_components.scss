@@ -6,9 +6,15 @@
 @import 'contact';
 
 .title {
-	opacity: 0;
+	@include font-weight-width(900, 125);
 	font-size: clamp(1.5rem, 3vw, 2.5rem);
-	@include dark {
+	@media (prefers-reduced-motion: no-preference) {
+		opacity: 0;
+	}
+	@include theme(light, 2) {
+		color: var(--color-iron);
+	}
+	@include theme(dark, 2) {
 		color: hsla(var(--color-white-hsl), .8);
 	}
 	.apple {
@@ -28,7 +34,9 @@
 }
 
 .cursor {
-	opacity: 0;
+	@media (prefers-reduced-motion: no-preference) {
+		opacity: 0;
+	}
 	@media (prefers-reduced-motion) {
 		display: none;
 	}
@@ -55,8 +63,10 @@
 		visibility: hidden;
 		display: block;
 		transition: .1s ease-out;
-		background-color: var(--color-iron);
-		@include dark {
+		@include theme(light, 2) {
+			background-color: var(--color-iron);
+		}
+		@include theme(dark, 2) {
 			background-color: var(--color-iron-8);
 		}
 	}

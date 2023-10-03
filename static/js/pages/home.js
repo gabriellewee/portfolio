@@ -57,7 +57,7 @@ posts.forEach(post => {
 		opacity: 1,
 		y: 0,
 		onComplete() {
-			if(post.classList.contains("post-animate")) post.classList.remove("post-animate");
+			if (post.classList.contains("post-animate")) post.classList.remove("post-animate");
 	    }
 	}, "<.1");
 });

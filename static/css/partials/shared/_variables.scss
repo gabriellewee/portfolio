@@ -6,6 +6,8 @@
 	--font-default:-apple-system,"Mona Sans",system-ui,BlinkMacSystemFont,Roboto,Ubuntu,Cantarell,Helvetica,Arial,sans-serif;
 	
 	--color-white-hsl:#{hexToHSL(#fff)};
+	--color-iron-white-5:#{mix($iron,white,5%)};
+	--color-iron-white-10:#{mix($iron,white,10%)};
 	--color-iron-white:#{mix($iron,white)};
 	--color-iron-white-60:#{mix($iron,white,60%)};
 	--color-iron-white-70:#{mix($iron,white,70%)};
@@ -23,10 +25,15 @@
 	--color-iron-12:#{darken($iron,12%)};
 	--color-iron-hsl:#{hexToHSL($iron)};
 	--color-iron-1-hsl:#{hexToHSL(darken($iron,1%))};
-	--color-iron-5-hsl:#{hexToHSL(darken($iron,1%))};
+	--color-iron-5-hsl:#{hexToHSL(darken($iron,5%))};
 	--color-iron-8-hsl:#{hexToHSL(darken($iron,8%))};
 	--color-iron-10-hsl:#{hexToHSL(darken($iron,10%))};
 	--color-iron-12-hsl:#{hexToHSL(darken($iron,12%))};
+
+	--color-dark:var(--color-iron);
+	--color-light:var(--color-iron-white-5);
+	--color-dark-hsl:var(--color-iron-hsl);
+	--color-light-hsl:var(--color-white-hsl);
 	
 	--color-blush:#{$blush};
 	--color-blush-5:#{lighten($blush,5%)};
@@ -48,6 +55,7 @@
 	--color-slate-mauve-hsl:#{hexToHSL(darken(mix($slate,$mauve),5%))};
 	--color-mauve-rose:#{mix($mauve,$rose)};
 	--color-mauve-rose-hsl:#{hexToHSL(mix($mauve,$rose))};
+	--color-mauve-iron:#{mix($mauve,$iron)};
 
 	--color-mint:#{$mint};
 	--color-mint-hsl:#{hexToHSL($mint)};
@@ -57,6 +65,7 @@
 
 	--color-aqua:#{$aqua};
 	--color-peach:#{$peach};
+	--color-peach-hsl:#{hexToHSL($peach)};
 	--color-periwinkle:#{$periwinkle};
 	--color-violet:#{$violet};
 	

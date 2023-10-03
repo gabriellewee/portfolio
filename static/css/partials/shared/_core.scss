@@ -24,37 +24,50 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-overflow-scrolling: touch;
-	background-color: var(--color-blush-8);
-	color: var(--color-iron);
 	font-family: var(--font-default);
     font-feature-settings: "liga","ss01";
-	@include dark {
-		background-color: var(--color-iron-5);
-		color: white;
+	@include theme(light, 3) {
+		background-color: var(--color-blush-8);
+		color: var(--color-iron);
 	}
+	@include theme(dark, 3) {
+		background-color: var(--color-iron-5);
+		color: hsla(var(--color-white-hsl), .9);
+	}
+	@include contrast(dark, 3) {
+		background-color: var(--color-iron-10);
+		color: var(--color-light);
+	}
+}
+
+.theme-light {
+	--color-dark:white;
+	--color-light:#{mix($iron, white, 95%)};
+	--color-dark-hsl:var(--color-white-hsl);
+	--color-light-hsl:var(--color-iron-hsl);
 }
 
 a {
-	color: var(--color-iron);
 	text-decoration: none;
-	@include dark {
-		color: white;
-	}
 }
 
-::-moz-selection {
-	background-color: var(--color-iron);
-	color: white;
-	@include dark {
-		background-color: hsla(var(--color-white-hsl), .2);
+* {
+	::-moz-selection {
+		@include theme(light, 1) {
+			background-color: var(--color-iron);
+		}
+		@include theme(dark, 1) {
+			background-color: hsla(var(--color-white-hsl), .2);
+		}
 	}
-}
 
-::selection {
-	background-color: var(--color-iron);
-	color: white;
-	@include dark {
-		background-color: hsla(var(--color-white-hsl), .2);
+	::selection {
+		@include theme(light, 1) {
+			background-color: var(--color-iron);
+		}
+		@include theme(dark, 1) {
+			background-color: hsla(var(--color-white-hsl), .2);
+		}
 	}
 }
 
@@ -71,4 +84,9 @@ img {
 
 .upscale {
 	image-rendering: pixelated;
+}
+
+.option {
+	position: relative;
+	z-index: 1000;
 }

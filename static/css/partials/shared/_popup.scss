@@ -10,6 +10,8 @@
 		position: relative;
 		cursor: pointer;
 		&:after {
+			clip-path: polygon(0 0, 0 100%, 100% 0);
+			rotate: 45deg;
 			opacity: 0;
 			visibility: hidden;
 			z-index: -1;
@@ -18,11 +20,14 @@
 			position: absolute;
 			transform-origin: center center;
 			@media (prefers-reduced-motion: no-preference) {
-				transition: translate .2s ease-out, rotate .2s ease-out, opacity .1s ease-out;
+				transition: translate .2s ease-out, opacity .1s ease-out;
 				translate: 0 calc(var(--p)*2);
 			}
 			@media (prefers-reduced-motion: reduce) {
 				transition: opacity .1s ease-out;
+			}
+			@include contrast(both, 2) {
+				display: none;
 			}
 		}
 	}
@@ -34,17 +39,18 @@
 		position: absolute;
 		left: 0;
 		display: block;
-		width: 100vw;
+		width: calc(100vw - var(--p)*4 - env(safe-area-inset-left)*2);
 		max-width: 500px;
-		padding-left: calc(var(--p) + env(safe-area-inset-left));
-		padding-right: calc(var(--p) + env(safe-area-inset-left));
 		@media (prefers-reduced-motion: no-preference) {
 			translate: 0 calc(var(--p)*2);
+		}
+		@include contrast(both, 2) {
+			outline: 1.5px solid white;
 		}
 		ul {
 			list-style: none;
 		}
-		.close {
+		.close:not(.button) {
 			cursor: pointer;
 			box-sizing: content-box;
 			display: inline-flex;
@@ -67,17 +73,11 @@
 		}
 	}
 	.popup-button {
-		position: absolute;
-		opacity: 0;
-		z-index: -1;
-		overflow: hidden;
-		width: 0;
-		height: 0;
-		font-size: 0;
+		@include hide;
 		&:active {
 			+ .popup-label:after {
 				@media (prefers-reduced-motion: no-preference) {
-					transition: translate .2s ease-out, rotate .2s ease-out, opacity .1s ease-out .1s;
+					transition: translate .2s ease-out, opacity .1s ease-out .1s;
 				}
 				@media (prefers-reduced-motion: reduce) {
 					transition: opacity .1s ease-out .1s;
@@ -94,7 +94,6 @@
 			~ .popup-label:after, ~ .popup-window {
 				@media (prefers-reduced-motion: no-preference) {
 					translate: 0;
-					rotate: 0;
 				}
 			}
 		}
@@ -111,20 +110,18 @@
 			border-top-left-radius: 2px;
 			@media (prefers-reduced-motion: no-preference) {
 				translate: 0 calc(var(--p)*2);
-				rotate: 45deg;
 			}
 		}
 	}
 	.popup-window {
 		color: white;
-		padding: 0;
-		width: calc(100vw - var(--p)*4 - env(safe-area-inset-left)*2);
+		margin-top: calc(var(--p)/2);
+		border-radius: 3px;
 		.inside {
 			@include border-radius(3px);
 			@include blur(10px, null, .9, .8, #18191C);
 			display: block;
 			position: relative;
-			margin-top: calc(var(--p)/2);
 			width: 100%;
 			min-height: 250px;
 			overflow: hidden;
@@ -180,6 +177,8 @@
 					background-color: black;
 				}
 				&:before {
+					clip-path: polygon(0 0, 0 100%, 100% 100%);
+					rotate: 45deg;
 					content: "";
 					position: absolute;
 					top: 4px;
@@ -188,7 +187,6 @@
 					width: 8px;
 					height: 8px;
 					border-bottom-left-radius: 2px;
-					rotate: 45deg;
 				}
 				&:after {
 					@include font-weight-width(600, 100);
@@ -323,6 +321,149 @@
 					display: none;
 				}
 			}
+		}
+	}
+}
+
+$options: color, contrast, transparency, load;
+@each $option in $options {
+	#option-#{$option}:checked ~ .top label[for="option-#{$option}"] {
+		svg {
+			opacity: 1;
+		}
+	}
+	#option-#{$option}:focus ~ .top label[for="option-#{$option}"] {
+		&:before {
+			opacity: 1;
+		}
+	}
+}
+.option {
+	@include hide;
+}
+
+.accessibility-popup {
+	.popup-button, .popup-label {
+		pointer-events: none;
+	}
+	.popup-button:focus, .popup-button:active {
+		&, ~ .popup-label {
+			pointer-events: unset;
+		}
+		~ .popup-label {
+			z-index: unset;
+			&, .button:before {
+				opacity: 1;
+			}
+		}
+	}
+	.popup-button:checked {
+		&, ~ .popup-label {
+			pointer-events: unset;
+		}
+		~ .popup-label {
+			z-index: unset;
+			opacity: 1;
+		}
+	}
+	.popup-label:after, .popup-window .inside {
+		@include blur(10px, "var(--color-iron-12-hsl)", .9, .8);
+	}
+	.popup-label {
+		z-index: -1;
+		opacity: 0;
+		&:after {
+			bottom: -24px;
+			width: 16px;
+			height: 16px;
+			border-top-left-radius: 2px;
+			@media (prefers-reduced-motion: no-preference) {
+				translate: 0 calc(var(--p)*2);
+			}
+		}
+	}
+	.popup-window {
+		right: 0;
+		left: unset;
+		max-width: 360px;
+		color: white;
+		margin-top: 16px;
+		border-radius: 3px;
+		.inside {
+			@include border-radius(3px);
+			display: block;
+			position: relative;
+			width: 100%;
+			min-height: 250px;
+			overflow: hidden;
+		}
+		ul {
+			list-style: none;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: flex-end;
+			padding: var(--p);
+		}
+		li {
+			width: 100%;
+			padding: var(--p);
+		}
+		.option-label {
+			@include font-weight-width(500, 115);
+			cursor: pointer;
+			display: inline-flex;
+			align-items: flex-start;
+			align-content: center;
+			justify-content: flex-start;
+			font-size: 1.25rem;
+			line-height: calc(var(--p)*2);
+			&:focus-visible {
+				.checkbox {
+					&:before {
+						opacity: 1;
+					}
+				}
+			}
+		}
+		.checkbox {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+			width: calc(var(--p)*2);
+			height: calc(var(--p)*2);
+			margin-right: calc(var(--p)*.75);
+			&:before, &:after {
+				content: "";
+				display: block;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+			}
+			&:before {
+				@include before(var(--color-rose));
+				z-index: -1;
+			}
+			&:after {
+				@include clip-path-edges(2px);
+				background: white;
+				z-index: 0;
+			}
+			svg {
+				position: absolute;
+				opacity: 0;
+				z-index: 1;
+			}
+		}
+		.has-button {
+			@include viewport($iphone) {
+				width: 50%;
+			}
+		}
+		.button {
+			display: inline-block;
+			text-align: center;
+			width: 100%;
 		}
 	}
 	.popup-button:checked {

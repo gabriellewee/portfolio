@@ -1,7 +1,8 @@
 .load,
 .post-code .post-content iframe:not(.css-only), .post-code .reload,
 .lightbox + .iframe iframe:not(.css-only),
-.page-index .memoji-link .text.message {
+.page-index .memoji-link .text.message,
+.option-container-load, .option-container-reset {
 	display: none;
 }
 

@@ -79,10 +79,12 @@
 	}
 	.mentions-reply-content, .mentions-link-content {
 		li {
-			background: hsla(var(--color-white-hsl), .75);
 			padding: calc(var(--p)*2);
-			@include dark {
-				background: hsla(var(--color-iron-8-hsl), .65)
+			@include theme(light, 2) {
+				background-color: hsla(var(--color-white-hsl), .75);
+			}
+			@include theme(dark, 2) {
+				background-color: hsla(var(--color-iron-8-hsl), .65)
 			}
 			@include viewport($iphone-max) {
 				@include clip-path-edges(2px);
@@ -90,6 +92,44 @@
 			@include viewport(mobile) {
 				display: flex;
 				align-items: flex-start;
+			}
+			@include viewport($iphone-max) {
+				@include contrast(both, 2) {
+					position: relative;
+					clip-path: unset;
+					border-radius: unset;
+					background-color: unset;
+					&:before, &:after {
+						content: "";
+						display: block;
+						position: absolute;
+					}
+					&:before {
+						@include clip-path-edges(2.5px);
+						z-index: -2;
+						top: -1.5px;
+						left: -1.5px;
+						width: calc(100% + 3px);
+						height: calc(100% + 3px);
+						background-color: var(--color-light);
+					}
+					&:after {
+						@include clip-path-edges(2px);
+						z-index: -1;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+					}
+				}
+			}
+			&:after {
+				@include contrast(light, 2) {
+					background-color: white;
+				}
+				@include contrast(dark, 2) {
+					background-color: var(--color-iron-5);
+				}
 			}
 			&:not(:first-child) {
 				margin-top: calc(var(--p)*2);
@@ -120,6 +160,9 @@
 		position: relative;
 		&:before {
 			@include before(hsla(var(--color-mauve-hsl), .5));
+			@include contrast(both, 2) {
+				@include before(var(--color-mauve-iron));
+			}
 		}
 		&:focus-visible {
 			&:before {
@@ -146,6 +189,7 @@
 	}
 	.username, .time {
 		@include font-weight-width(600, 80);
+		z-index: 1;
 		color: white;
 		font-size: .875rem;
 		> * {
@@ -153,6 +197,20 @@
 			transition: .2s ease-out;
 			display: inline-block;
 			padding: calc(var(--p)/3*2) var(--p);
+		}
+		&:after {
+			@include contrast(both, 2) {
+				@include clip-path-edges(2.5px);
+				content: "";
+				display: block;
+				position: absolute;
+				z-index: -1;
+				top: -1.5px;
+				left: -1.5px;
+				width: calc(100% + 3px);
+				height: calc(100% + 3px);
+				background-color: var(--color-light);
+			}
 		}
 		&:focus-visible {
 			&:before {

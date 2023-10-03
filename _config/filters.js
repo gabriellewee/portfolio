@@ -32,9 +32,9 @@ module.exports = eleventyConfig => {
 	});
 
 	eleventyConfig.addNunjucksAsyncShortcode("year", async (year) => {
-		if(year === "start") {
+		if (year === "start") {
 			year = "2012";
-		} else if(year === "current") {
+		} else if (year === "current") {
 			year = DateTime.fromJSDate(new Date(), {zone: 'utc-8'}).toFormat("yyyy");
 		} else {
 			year = "";

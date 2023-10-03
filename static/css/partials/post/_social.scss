@@ -17,9 +17,11 @@
 .post-content {
 	@include font-weight-width(450, 110);
 	padding: 0 calc(var(--p) * 2);
-	color: var(--color-iron-white-90);
 	font-size: 1.25rem;
-	@include dark {
+	@include theme(light, 2) {
+		color: var(--color-iron-white-90);
+	}
+	@include theme(dark, 2) {
 		color: hsla(var(--color-white-hsl), .8);
 	}
 	a {
@@ -80,6 +82,11 @@
 	.post-header {
 		time {
 			background-color: var(--color-mastodon-slate);
+			&:after {
+				@include contrast(both, 2) {
+					background-color: var(--color-mastodon-slate);
+				}
+			}
 		}
 	}
 	.post-content {
@@ -90,13 +97,17 @@
 			}
 		}
 		a:not(.expand) {
-			color: var(--color-mastodon);
-			@include dark {
+			@include theme(light, 2) {
+				color: var(--color-mastodon);
+			}
+			@include theme(dark, 2) {
 				color: var(--color-mastodon-white);
 			}
 			&:hover, &:focus {
-				color: var(--color-mastodon-light);
-				@include dark {
+				@include theme(light, 2) {
+					color: var(--color-mastodon-light);
+				}
+				@include theme(dark, 2) {
 					color: var(--color-mastodon-white-30);
 				}
 			}
@@ -104,8 +115,10 @@
 				@include focus-shadow(hsla(var(--color-mastodon-white-hsl), 0.75));
 			}
 			&:active {
-				color: var(--color-mastodon-dark);
-				@include dark {
+				@include theme(light, 2) {
+					color: var(--color-mastodon-dark);
+				}
+				@include theme(dark, 2) {
 					color: var(--color-mastodon-light);
 				}
 			}

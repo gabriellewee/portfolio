@@ -90,12 +90,12 @@
 	{% endif %}
 </head>
 <body class="{% if key %}page-{{key}}{% endif %}{% if pagination.pageNumber == 0 %} page-index{% endif %}">
-	{% if blank != true %}
-		{% include 'pages/shared/header.html' %}
-	{% endif %}
+	{% if blank != true %}{% include 'pages/shared/header.html' %}{% endif %}
+
 	<main class="main">
 		{% block content %}{{content|safe}}{% endblock %}
 	</main>
+
 	{% if blank != true %}
 		<footer class="bottom" aria-label="Footer">
 			<nav aria-label="Site links">
@@ -123,6 +123,7 @@
 		<script src="{{'/static/js/gsap.min.js'|url}}"></script>
 		<script src="{{'/static/js/scroll-trigger.min.js'|url}}"></script>
 		<script src="{{'/static/js/smoothscroll.min.js'|url}}"></script>
+		<script src="{{'/static/js/accessibility.js'|url}}"></script>
 		{% if isotope == true %}
 			<script src="{{'/static/js/isotope.min.js'|url}}"></script>
 			<script src="{{'/static/js/packery.min.js'|url}}"></script>
