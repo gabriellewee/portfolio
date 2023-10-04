@@ -29,14 +29,12 @@
 		{
 			"name": "website-v4",
 			"type": "png",
-			"description": "Landing page version",
-			"lightDark": true
+			"description": "Landing page version"
 		},
 		{
 			"name": "current-website",
 			"type": "png",
-			"description": "Current website",
-			"lightDark": true
+			"description": "Current website"
 		},
 		{
 			"name": "home",
@@ -76,7 +74,7 @@ Finally, last year, during the height of the pandemic, I decided I needed to cha
 
 This year is the year I decided to build a full website again. I really wanted something that not only highlighted my work as a developer but also included my hobbies and other non-work activities. I've also been strongly nostalgic for the whacky, quirky Geocities-type websites that used to exist before everything became smooth and clean and minimal. Lastly, I wanted my website to be completely functional without Javascript.
 
-I came up with a design that is busy but organized. Each section represents one of my interests and has its own styles and colors. There's also light and dark versions of this site (if you have dark mode enabled, the screenshot below should show the light mode, and vice-versa). I chose [Faune](http://cnap.graphismeenfrance.fr/faune/en.html) as the main font because I really loved the unusual-looking italics.
+I came up with a design that is busy but organized. Each section represents one of my interests and has its own styles and colors. There's also light and dark versions of this site. I chose [Faune](http://cnap.graphismeenfrance.fr/faune/en.html) as the main font because I really loved the unusual-looking italics.
 
 {%- set number = 6 %}{% include 'pages/posts/image.html' %}
 

@@ -466,7 +466,7 @@
 		color: white;
 		font-size: 1rem;
 		line-height: 1.5;
-		@include theme(dark, 2) {
+		@include theme(light, 2) {
 			background-color: var(--color-iron);
 		}
 		@include theme(dark, 2) {
@@ -628,29 +628,6 @@
 		}
 	}
 
-	.light-dark {
-		br {
-			display: none;
-		}
-		picture:not(:only-child) {
-			&:nth-of-type(2) {
-				@include theme(light, 2) {
-					display: block;
-				}
-				@include theme(dark, 2) {
-					display: none;
-				}
-			}
-			&:nth-of-type(1) {
-				@include theme(light, 2) {
-					display: none;
-				}
-				@include theme(dark, 2) {
-					display: block;
-				}
-			}
-		}
-	}
 	figcaption, p.caption {
 		font-size: .875rem;
 		line-height: 1.286;

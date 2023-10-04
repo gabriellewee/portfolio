@@ -135,24 +135,6 @@
 			display: block;
 		}
 	}
-	&.light-dark + [data-content] {
-		.dark {
-			@include theme(light, 2) {
-				display: block;
-			}
-			@include theme(dark, 2) {
-				display: none;
-			}
-		}
-		.light {
-			@include theme(light, 2) {
-				display: none;
-			}
-			@include theme(dark, 2) {
-				display: block;
-			}
-		}
-	}
 }
 
 @keyframes loading {

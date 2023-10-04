@@ -3,16 +3,9 @@
 		{% if photo.date %}{%- set day = photo.date %}{% else %}{%- set day = date %}{% endif %}
 		{% if photo.category %}{%- set category = photo.category %}{% else %}{%- set category = 'posts' %}{% endif %}
 		{% if photo.lightbox == false %}{% else %}
-			<a class="lightbox{% if photo.lightDark == true %} light-dark{% endif %}" id="{{day}}-{{photo.name}}-lightbox" role="button" aria-expanded="true" aria-label="Close image" href="#{{day}}-{{photo.name}}"></a>
+			<a class="lightbox" id="{{day}}-{{photo.name}}-lightbox" role="button" aria-expanded="true" aria-label="Close image" href="#{{day}}-{{photo.name}}"></a>
 			<figure class="image" role="dialog" aria-label="Image preview" aria-modal="true" data-content>
-				{% if photo.lightDark == true %}
-					<div class="dark">
-						{% image './static/images/' + category + '/' + day + '-' + photo.name + '-light.' + photo.type, photo.description, 'screen' %}
-					</div>
-					<div class="light">
-						{% image './static/images/' + category + '/' + day + '-' + photo.name + '-dark.' + photo.type, photo.description, 'screen' %}
-					</div>
-				{% elseif photo.type == "svg" %}
+				{% if photo.type == "svg" %}
 					<picture>
 						<img src="/static/images/{{category}}/{{day}}-{{photo.name}}.svg" alt="{{photo.description}}" width="{% stats './static/images/' + category + '/' + day + '-' + photo.name + '.' + photo.type, 'width' %}" height="{% stats './static/images/' + category + '/' + day + '-' + photo.name + '.' + photo.type, 'height' %}"/>
 					</picture>
