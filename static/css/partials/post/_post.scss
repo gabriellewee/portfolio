@@ -167,24 +167,14 @@
 	}
 
 	h1, h2, h3, h4, h5 {
-		@include theme(light, 2) {
-			color: var(--color-iron);
-		}
-		@include theme(dark, 2) {
-			color: white;
-		}
+		color: var(--color-primary);
 	}
 
 	.post-inner {
 		overflow: hidden;
+		background-color: var(--color-secondary);
 		@include viewport($iphone-max) {
 			@include clip-path-edges(2px);
-		}
-		@include theme(light, 2) {
-			background-color: white;
-		}
-		@include theme(dark, 2) {
-			background-color: var(--color-iron);
 		}
 		@include viewport($iphone-max) {
 			@include contrast(both, 2) {
@@ -192,7 +182,7 @@
 				position: relative;
 				clip-path: unset;
 				border-radius: unset;
-				background-color: unset !important;
+				background-color: unset;
 				&:before, &:after {
 					content: "";
 					display: block;
@@ -218,19 +208,14 @@
 		}
 		&:before {
 			@include contrast(light, 2) {
-				background-color: var(--color-iron);
+				background-color: var(--color-primary);
 			}
 			@include contrast(dark, 2) {
 				background-color: var(--color-iron-white-5);
 			}
 		}
 		&:after {
-			@include contrast(light, 2) {
-				background-color: white;
-			}
-			@include contrast(dark, 2) {
-				background-color: var(--color-iron);
-			}
+			background-color: var(--color-secondary);
 		}
 	}
 	time {
@@ -261,7 +246,7 @@
 					left: calc(var(--p)/-8);
 					width: calc(100% + var(--p)/4);
 					height: calc(100% + var(--p)/4);
-					background-color: var(--color-light);
+					background-color: var(--color-primary);
 					@include clip-path(false) {
 						@include border-radius(calc(var(--p)/4));
 					}
@@ -353,12 +338,7 @@
 		@include font-weight-width(800, 100);
 		opacity: .3;
 		margin-left: var(--p);
-		@include theme(light, 2) {
-			color: var(--color-iron);
-		}
-		@include theme(dark, 2) {
-			color: white;
-		}
+		color: var(--color-primary);
 		&:hover, &:focus {
 			opacity: 1;
 		}
@@ -370,15 +350,10 @@
 		margin: calc(var(--p)*3) auto;
 		border: 0;
 		height: 2px;
-		@include theme(light, 2) {
-			background-color: hsla(var(--color-iron-hsl), .2);
-		}
-		@include theme(dark, 2) {
-			background-color: hsla(var(--color-white-hsl), .2);
-		}
+		background-color: hsla(var(--color-primary-hsl), .2);
 	}
 
-	p, blockquote, pre, ul, ol, figure {
+	p:not(.codepen), blockquote, pre, ul, ol, figure {
 		&:not(:last-child) {
 			margin-bottom: .75em;
 		}
@@ -532,12 +507,7 @@
 		padding: calc(var(--p)*1.5) calc(var(--p)*2);
 		margin-bottom: calc(var(--p)*2);
 		border-radius: 3px;
-		@include theme(dark, 2) {
-			background-color: hsla(var(--color-iron-hsl), .1);
-		}
-		@include theme(dark, 2) {
-			background-color: hsla(var(--color-white-hsl), .1);
-		}
+		background-color: hsla(var(--color-primary-hsl), .1);
 		> * {
 			font-weight: 450;
 			code {
@@ -578,9 +548,14 @@
 		align-items: center;
 		align-content: center;
 		justify-content: center;
-		padding-top: var(--p);
+		padding: var(--p);
 		font-weight: 700;
-		background-color: hsla(var(--color-iron-hsl), .1);
+		@include theme(light, 2) {
+			background-color: hsla(var(--color-primary-hsl), .1);
+		}
+		@include theme(dark, 2) {
+			background-color: hsla(var(--color-iron-10-hsl), .5);
+		}
 		span {
 			display: block;
 			max-width: 400px;

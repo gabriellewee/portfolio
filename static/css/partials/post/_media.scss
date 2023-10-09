@@ -18,12 +18,7 @@
 				left: -1.5px;
 				width: calc(100% + 3px);
 				height: calc(100% + 3px);
-			}
-			@include contrast(light, 2) {
-				background: var(--color-light);
-			}
-			@include contrast(dark, 2) {
-				background: var(--color-light);
+				background-color: var(--color-primary);
 			}
 		}
 	}
@@ -89,6 +84,9 @@ figure {
 		@media (prefers-reduced-motion: no-preference) {
 			translate: 0 100%;
 		}
+		&:after {
+			background-color: white;
+		}
 		> span {
 			&:before {
 				background-color: var(--color-slate);
@@ -152,6 +150,9 @@ figcaption {
 	}
 	.time-default {
 		background-color: hsla(var(--color-iron-12-hsl), .9);
+		@include reduce-transparency(2) {
+			background-color: hsla(var(--color-iron-hsl), .9);
+		}
 		&:before {
 			@include contrast(light, 2) {
 				background-color: hsla(var(--color-white-hsl), .8);

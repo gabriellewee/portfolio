@@ -28,7 +28,7 @@ body {
     font-feature-settings: "liga","ss01";
 	@include theme(light, 3) {
 		background-color: var(--color-blush-8);
-		color: var(--color-iron);
+		color: var(--color-primary);
 	}
 	@include theme(dark, 3) {
 		background-color: var(--color-iron-5);
@@ -36,19 +36,10 @@ body {
 	}
 	@include contrast(light, 3) {
 		background-color: var(--color-blush-10);
-		color: var(--color-light);
 	}
 	@include contrast(dark, 3) {
 		background-color: var(--color-iron-10);
-		color: var(--color-light);
 	}
-}
-
-.theme-light {
-	--color-dark:white;
-	--color-light:#{mix($iron, white, 95%)};
-	--color-dark-hsl:var(--color-white-hsl);
-	--color-light-hsl:var(--color-iron-hsl);
 }
 
 a {

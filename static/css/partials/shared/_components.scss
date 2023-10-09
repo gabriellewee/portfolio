@@ -11,12 +11,6 @@
 	@media (prefers-reduced-motion: no-preference) {
 		opacity: 0;
 	}
-	@include theme(light, 2) {
-		color: var(--color-iron);
-	}
-	@include theme(dark, 2) {
-		color: hsla(var(--color-white-hsl), .8);
-	}
 	.apple {
 		display: inline-block;
 		span {
@@ -64,7 +58,7 @@
 		display: block;
 		transition: .1s ease-out;
 		@include theme(light, 2) {
-			background-color: var(--color-iron);
+			background-color: var(--color-primary);
 		}
 		@include theme(dark, 2) {
 			background-color: var(--color-iron-8);

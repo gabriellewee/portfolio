@@ -212,6 +212,9 @@
 			border-top: 1px solid hsla(var(--color-white-hsl), .1);
 			margin-top: 16px;
 			padding: 16px;
+			@include contrast(both, 2) {
+				border-color: white;
+			}
 		}
 		.about-header {
 			@include font-weight-width(600, 100);
@@ -235,6 +238,9 @@
 			border-top: 1px solid hsla(var(--color-white-hsl), .1);
 			margin-top: 16px;
 			padding-top: 16px;
+			@include contrast(both, 2) {
+				border-color: white;
+			}
 			@include viewport(450px) {
 				display: flex;
 				justify-content: space-between;
@@ -269,6 +275,9 @@
 				color: white;
 				font-size: 1rem;
 				text-align: left;
+				@include contrast(both, 2) {
+					border-color: white;
+				}
 				span span {
 					display: none;
 				}
@@ -284,6 +293,9 @@
 				&:hover, &:focus {
 					background-color: hsla(var(--color-white-hsl), .1);
 					border-color: transparent;
+					@include contrast(both, 2) {
+						border-color: white;
+					}
 					&:after {
 						opacity: 1;
 					}
@@ -379,6 +391,14 @@ $options: color, contrast, transparency, load;
 			border-top-left-radius: 2px;
 			@media (prefers-reduced-motion: no-preference) {
 				translate: 0 calc(var(--p)*2);
+			}
+		}
+		.button:before {
+			@include theme(light, 2) {
+				background-color: var(--color-mauve-iron);
+			}
+			@include theme(dark, 2) {
+				background-color: var(--color-blush);
 			}
 		}
 	}

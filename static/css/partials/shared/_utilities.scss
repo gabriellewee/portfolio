@@ -69,15 +69,31 @@ $violet: #D18FF0;
 	}
 }
 
-@mixin theme($theme, $level: null) {
-	@if $theme == light {
-		@content;
-	}
-	@media (prefers-color-scheme: #{$theme}) {
-		@content;
-	}
-	.theme-#{$theme} & {
-		@content;
+@mixin theme($theme, $level: null, $root: false) {
+	@if $root == true {
+		@if $theme == light {
+			:root {
+				@content;
+			}
+		}
+		@media (prefers-color-scheme: #{$theme}) {
+			:root {
+				@content;
+			}
+		}
+		:root.theme-#{$theme} {
+			@content;
+		}
+	} @else {
+		@if $theme == light {
+			@content;
+		}
+		@media (prefers-color-scheme: #{$theme}) {
+			@content;
+		}
+		.theme-#{$theme} & {
+			@content;
+		}
 	}
 	@if $theme == dark {
 		@if $level == 1 {
@@ -90,6 +106,10 @@ $violet: #D18FF0;
 			}
 		} @else if $level == 3 {
 			&:has(#option-color:not(.inactive):checked) {
+				@content;
+			}
+		} @else if $level == 4 {
+			:root:has(#option-color:not(.inactive):checked) {
 				@content;
 			}
 		}
@@ -106,9 +126,13 @@ $violet: #D18FF0;
 			&:has(#option-color:not(.inactive):not(:checked)) {
 				@content;
 			}
+		} @else if $level == 4 {
+			:root:has(#option-color:not(.inactive):not(:checked)) {
+				@content;
+			}
 		}
 	}
-}
+ }
 
 @mixin contrast($theme, $level: null) {
 	@if $theme == both {
@@ -180,6 +204,28 @@ $violet: #D18FF0;
 			&:has(#option-color:not(.inactive):not(:checked) ~ #option-contrast:not(.inactive):checked) {
 				@content;
 			}
+		}
+	}
+}
+
+@mixin reduce-transparency($level: null) {
+	@media (prefers-reduced-transparency: reduce) {
+		@content;
+	}
+	.theme-reduce-transparency & {
+		@content;
+	}
+	@if $level == 1 {
+		#option-transparency:not(.inactive):checked ~ & {
+			@content;
+		}
+	} @else if $level == 2 {
+		#option-transparency:not(.inactive):checked ~ * & {
+			@content;
+		}
+	} @else if $level == 3 {
+		&:has(#option-contrast:not(.inactive):checked) {
+			@content;
 		}
 	}
 }
@@ -291,14 +337,7 @@ $violet: #D18FF0;
 		} @else {
 			background-color: hsla(#{$bg}, $blur);
 		}
-		@media (prefers-reduced-transparency: reduce) {
-			@if $rgb != null {
-				background-color: rgba($rgb, 1);
-			} @else {
-				background-color: hsla(#{$bg}, 1);
-			}
-		}
-		.theme-reduce-transparency &, #option-transparency:checked ~ * & {
+		@include reduce-transparency(2) {
 			@if $rgb != null {
 				background-color: rgba($rgb, 1);
 			} @else {
@@ -313,10 +352,7 @@ $violet: #D18FF0;
 	@include blur-check {
 		backdrop-filter: blur($blur);
 		@content;
-		@media (prefers-reduced-transparency: reduce) {
-			backdrop-filter: unset;
-		}
-		.theme-reduce-transparency &, #option-transparency:checked ~ * & {
+		@include reduce-transparency(2) {
 			backdrop-filter: unset;
 		}
 	}

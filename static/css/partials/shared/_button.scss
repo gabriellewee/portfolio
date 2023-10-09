@@ -41,7 +41,7 @@
 			width: calc(100% + var(--p)/4);
 			height: calc(100% + var(--p)/4);
 			padding: var(--p) calc(var(--p)*2.5);
-			background-color: var(--color-light);
+			background-color: var(--color-primary);
 			@include clip-path(false) {
 				@include border-radius(calc(var(--p)/4));
 			}

@@ -46,7 +46,7 @@
 			color: white;
 		}
 		@include contrast(both, 2) {
-			outline: 1.5px solid var(--color-light);
+			outline: 1.5px solid var(--color-primary);
 		}
 		&.message {
 			@media (prefers-reduced-motion: no-preference) {

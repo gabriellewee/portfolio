@@ -48,7 +48,7 @@
 						text-decoration-color: hsla(var(--color-iron-5-hsl), 0);
 					}
 					@include contrast(both, 2) {
-						text-decoration-color: hsla(var(--color-light-hsl), .5);
+						text-decoration-color: hsla(var(--color-primary-hsl), .5);
 					}
 				}
 			}
@@ -87,7 +87,7 @@
 						text-decoration-color: hsla(var(--color-iron-5-hsl), 0);
 					}
 					@include contrast(both, 2) {
-						text-decoration-color: hsla(var(--color-light-hsl), .5);
+						text-decoration-color: hsla(var(--color-primary-hsl), .5);
 					}
 				}
 			}
@@ -104,7 +104,7 @@
 			}
 			.link:focus, .popup-button:focus ~ .popup-label span {
 				@include contrast(both, 2) {
-					text-decoration-color: hsla(var(--color-light-hsl), 0);
+					text-decoration-color: hsla(var(--color-primary-hsl), 0);
 					@include focus-shadow(var(--color-link));
 				}
 			}
@@ -150,7 +150,7 @@
 				left: -1.5px;
 				width: calc(100% + 3px);
 				height: calc(100% + 3px);
-				background-color: var(--color-light);
+				background-color: var(--color-primary);
 			}
 		}
 		@include viewport(mobile) {
@@ -191,7 +191,7 @@
 					&:not(:hover):not(:focus) {
 						text-decoration-color: hsla(var(--color-white-hsl), 0);
 						@include contrast(both, 2) {
-							text-decoration-color: hsla(var(--color-light-hsl), .5);
+							text-decoration-color: hsla(var(--color-primary-hsl), .5);
 						}
 					}
 				}

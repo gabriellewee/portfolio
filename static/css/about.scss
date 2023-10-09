@@ -50,7 +50,7 @@
 			height: 100%;
 			border-radius: 2px;
 			@include theme(light, 2) {
-				background-color: var(--color-iron);
+				background-color: var(--color-primary);
 			}
 			@include theme(dark, 2) {
 				background-color: var(--color-iron-white);
@@ -64,7 +64,7 @@
 			display: block;
 			position: absolute;
 			@include theme(light, 2) {
-				background-color: var(--color-iron);
+				background-color: var(--color-primary);
 			}
 			@include theme(dark, 2) {
 				background-color: var(--color-iron-white);
@@ -92,10 +92,6 @@
 		}
 		> span {
 			background: var(--color-iron-white-90);
-			@include contrast(light, 2) {
-				background: var(--color-blush-8);
-				color: var(--color-iron);
-			}
 			&:before {
 				display: none;
 			}
@@ -103,19 +99,11 @@
 		&:hover, &:focus {
 			> span {
 				background: var(--color-rose);
-				@include contrast(light, 2) {
-					background: var(--color-rose);
-					color: white;
-				}
 			}
 		}
 		&:active {
 			> span {
 				background: var(--color-mint);
-				@include contrast(light, 2) {
-					background: var(--color-mint);
-					color: white;
-				}
 			}
 		}
 	}
@@ -157,7 +145,7 @@
 				left: -1.5px;
 				width: calc(100% + 3px);
 				height: calc(100% + 3px);
-				background-color: var(--color-light);
+				background-color: var(--color-primary);
 			}
 		}
 		span {
@@ -165,18 +153,10 @@
 			display: inline-block;
 			padding: calc(var(--p)/3*2) var(--p);
 			background-color: var(--color-iron-white-90);
-			@include contrast(light, 2) {
-				background-color: var(--color-blush-8);
-				color: var(--color-iron);
-			}
 		}
 		&:hover, &:focus {
 			span {
 				background-color: var(--color-rose);
-				@include contrast(light, 2) {
-					background-color: var(--color-rose);
-					color: white;
-				}
 			}
 		}
 		&:focus-visible {
@@ -190,10 +170,6 @@
 			}
 			span {
 				background-color: var(--color-mint);
-				@include contrast(light, 2) {
-					background-color: var(--color-mint);
-					color: white;
-				}
 			}
 		}
 	}
@@ -230,7 +206,7 @@
 					border-color: white;
 				}
 				@include contrast(both, 2) {
-					border-color: var(--color-light);
+					border-color: var(--color-primary);
 				}
 			}
 			&:last-child {
@@ -244,14 +220,14 @@
 				text-transform: uppercase;
 				@include theme(light, 2) {
 					background-color: var(--color-message);
-					color: var(--color-iron);
+					color: var(--color-primary);
 				}
 				@include theme(dark, 2) {
 					background-color: var(--color-iron-5);
 					color: white;
 				}
 				@include contrast(both, 2) {
-					outline: 1.5px solid var(--color-light);
+					outline: 1.5px solid var(--color-primary);
 				}
 				&:before {
 					rotate: 45deg;
@@ -362,7 +338,7 @@
 		}
 		@include contrast(dark, 2) {
 			&:before {
-				background-color: hsla(var(--color-light-hsl), .7);
+				background-color: hsla(var(--color-primary-hsl), .7);
 			}
 			&:after {
 				background-color: var(--color-iron-5);
@@ -370,7 +346,7 @@
 		}
 		@include contrast(light, 2) {
 			&:before {
-				background-color: hsla(var(--color-light-hsl), .5);
+				background-color: hsla(var(--color-primary-hsl), .5);
 			}
 			&:after {
 				background-color: var(--color-iron-white-10);
@@ -396,10 +372,10 @@
 .post-thanks {
 	.post-content {
 		@include theme(light, 2) {
-			color: var(--color-iron);
+			color: var(--color-primary);
 		}
 		@include theme(dark, 2) {
-			color: hsla(var(--color-white-hsl), .7);
+			color: hsla(var(--color-primary-hsl), .7);
 		}
 		ul {
 			padding: 0;

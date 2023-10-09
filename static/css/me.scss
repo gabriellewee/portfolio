@@ -158,13 +158,12 @@
 			padding: var(--p) calc(var(--p)*1.5);
 			font-family: var(--font-mono);
 			font-size: 1.125rem;
+			color: var(--color-primary);
 			@include theme(light, 2) {
-				background-color: hsla(var(--color-iron-hsl), .1);
-				color: var(--color-iron);
+				background-color: hsla(var(--color-primary-hsl), .1);
 			}
 			@include theme(dark, 2) {
 				background-color: hsla(var(--color-iron-8-hsl), .4);
-				color: white;
 			}
 			@include contrast(dark, 2) {
 				background-color: var(--color-iron-5);
@@ -189,7 +188,7 @@
 					left: -1.5px;
 					width: calc(100% + 3px);
 					height: calc(100% + 3px);
-					background-color: var(--color-light);
+					background-color: var(--color-primary);
 				}
 			}
 		}
@@ -203,11 +202,9 @@
 	}
 	picture {
 		@include clip-path-edges(2px);
-		@include theme(light, 2) {
-			background-color: hsla(var(--color-iron-hsl), .05);
-		}
-		@include theme(dark, 2) {
-			background-color: hsla(var(--color-white-hsl), .1);
+		background-color: hsla(var(--color-primary-hsl), .05);
+		@include contrast(dark, 2) {
+			background-color: hsla(var(--color-primary-hsl), .2);
 		}
 	}
 }

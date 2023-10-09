@@ -123,7 +123,7 @@
 					left: -1.5px;
 					width: calc(100% + 3px);
 					height: calc(100% + 3px);
-					background-color: hsla(var(--color-light-hsl), .7);
+					background-color: hsla(var(--color-primary-hsl), .7);
 				}
 				&:after {
 					@include clip-path-edges(2px);

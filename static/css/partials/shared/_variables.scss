@@ -29,11 +29,6 @@
 	--color-iron-8-hsl:#{hexToHSL(darken($iron,8%))};
 	--color-iron-10-hsl:#{hexToHSL(darken($iron,10%))};
 	--color-iron-12-hsl:#{hexToHSL(darken($iron,12%))};
-
-	--color-dark:var(--color-iron);
-	--color-light:var(--color-iron-white-5);
-	--color-dark-hsl:var(--color-iron-hsl);
-	--color-light-hsl:var(--color-white-hsl);
 	
 	--color-blush:#{$blush};
 	--color-blush-5:#{lighten($blush,5%)};
@@ -104,5 +99,19 @@
 	--color-apple-podcasts:#852dc4;
 	--color-spotify:#1BD760;
 
-	--color-email: var(--color-iron-white-70);
+	--color-email:var(--color-iron-white-70);
+}
+
+@include theme(light, 4, true) {
+	--color-secondary:white;
+	--color-primary:#{mix($iron, white, 95%)};
+	--color-secondary-hsl:var(--color-white-hsl);
+	--color-primary-hsl:var(--color-iron-hsl);
+}
+
+@include theme(dark, 4, true) {
+	--color-secondary:var(--color-iron);
+	--color-primary:var(--color-iron-white-5);
+	--color-secondary-hsl:var(--color-iron-hsl);
+	--color-primary-hsl:var(--color-white-hsl);
 }

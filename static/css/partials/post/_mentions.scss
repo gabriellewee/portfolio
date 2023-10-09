@@ -81,7 +81,7 @@
 		li {
 			padding: calc(var(--p)*2);
 			@include theme(light, 2) {
-				background-color: hsla(var(--color-white-hsl), .75);
+				background-color: hsla(var(--color-secondary-hsl), .75);
 			}
 			@include theme(dark, 2) {
 				background-color: hsla(var(--color-iron-8-hsl), .65)
@@ -111,7 +111,7 @@
 						left: -1.5px;
 						width: calc(100% + 3px);
 						height: calc(100% + 3px);
-						background-color: var(--color-light);
+						background-color: var(--color-primary);
 					}
 					&:after {
 						@include clip-path-edges(2px);
@@ -209,7 +209,7 @@
 				left: -1.5px;
 				width: calc(100% + 3px);
 				height: calc(100% + 3px);
-				background-color: var(--color-light);
+				background-color: var(--color-primary);
 			}
 		}
 		&:focus-visible {
