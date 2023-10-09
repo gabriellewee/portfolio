@@ -237,13 +237,8 @@ pagination:
 					</figure>
 				{% endif %}
 			{% endfor %}
-		{% elseif (post.data.category == "writing") and (post.data.excerptPhoto) %}
-			{% for photo in post.data.photos|limit(1) %}
-				<a class="lightbox" id="{{post.data.date|safe}}-{{photo.name}}-lightbox" role="button" aria-expanded="true" aria-label="Close image" href="#{{post.data.date|safe}}-{{photo.name}}" data-append></a>
-				<figure class="image" role="dialog" aria-label="Image preview" aria-modal="true" data-content data-append>
-					{% image './static/images/posts' + '/' + post.data.date + '-' + photo.name + '.' + photo.type, photo.description, 'screen' %}
-				</figure>
-			{% endfor %}
+		{% elseif (post.data.category == "writing") %}
+			{% excerpt post, "lightbox" %}
 		{% elseif post.data.category == "code" %}
 			<a class="lightbox" id="{{post.page.date|ISO|htmlDateString}}-{{post.page.fileSlug}}-lightbox" role="button" aria-expanded="true" aria-label="Close preview of {{post.data.title}}" href="#{{post.page.date|ISO|htmlDateString}}-{{post.page.fileSlug}}" data-append data-desktop></a>
 			<figure class="iframe" role="dialog" aria-label="Preview of {{post.data.title}}" aria-modal="true" data-append data-content>

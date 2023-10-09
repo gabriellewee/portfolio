@@ -1,103 +1,23 @@
----json
-{
-	"date": "2013-04-23",
-	"title": "General life updates",
-	"permalink": "/archive/{{date|linkDate}}/{{title|slugify}}/",
-	"layout": "layouts/post.njk",
-	"templateEngineOverride": "md,njk",
-	"hidden": true,
-	"photos": [
-		{
-			"name": "skeletons",
-			"type": "jpg",
-			"description": "Skeleton war drawing",
-			"lightbox": false
-		},
-		{
-			"name": "hand-1",
-			"type": "jpg",
-			"description": "Hand sketch 1",
-			"lightbox": false
-		},
-		{
-			"name": "hand-2",
-			"type": "jpg",
-			"description": "Hand sketch 2",
-			"lightbox": false
-		},
-		{
-			"name": "charmie",
-			"type": "jpg",
-			"description": "Charmie’s FFXIII Lightning cosplay",
-			"figcaption": "<a href='https://www.facebook.com/CharmieSweets' target='_blank'>Charmie</a> as Lightning from FFXIII",
-			"lightbox": false
-		},
-		{
-			"name": "colin",
-			"type": "jpg",
-			"description": "Colin’s Pokémon James cosplay",
-			"figcaption": "Colin as James from Pokémon",
-			"lightbox": false
-		},
-		{
-			"name": "ffxiii",
-			"type": "jpg",
-			"description": "Charmie by @erikestrada",
-			"figcaption": "<a href='http://instagram.com/erikestrada' target='_blank'>@erikestrada</a>",
-			"lightbox": false
-		},
-		{
-			"name": "precious",
-			"type": "jpg",
-			"description": "Precious by @erikestrada",
-			"figcaption": "<a href='http://instagram.com/erikestrada' target='_blank'>@erikestrada</a>",
-			"lightbox": false
-		},
-		{
-			"name": "snake",
-			"type": "jpg",
-			"description": "Snake by @epicepix_",
-			"figcaption": "<a href='http://instagram.com/epicepix_' target='_blank'>@epicepix_</a>",
-			"lightbox": false
-		},
-		{
-			"name": "rainbow-dash",
-			"type": "jpg",
-			"description": "Rainbow Dash by @tracygraveslom",
-			"figcaption": "<a href='http://instagram.com/tracygraveslom' target='_blank'>@tracygraveslom</a>",
-			"lightbox": false
-		},
-		{
-			"name": "james",
-			"type": "jpg",
-			"description": "James by @tracygraveslom",
-			"figcaption": "<a href='http://instagram.com/tracygraveslom' target='_blank'>@tracygraveslom</a>",
-			"lightbox": false
-		},
-		{
-			"name": "group",
-			"type": "jpg",
-			"description": "Group photo by @tracygraveslom",
-			"figcaption": "<a href='http://instagram.com/tracygraveslom' target='_blank'>@tracygraveslom</a>",
-			"lightbox": false
-		}
-	]
-}
 ---
-
+date: 2013-04-23
+title: General life updates
+---
 Finally got my new design up, after over a month! I've been getting more and more busy with school. My final Bootcamp project turned out to be much, much better than I expected. I think I'm actually a better artist than I thought! I mean, I do know that I'm decent at design, but I always told people I was not good at drawing, and yet here is undeniable proof that I can do more than scribble.
 
-<!--more-->
+![Skeleton war drawing](2013-04-23-skeletons.jpg 'Skeleton war drawing')
 
-{%- set number = 1 %}{% include 'pages/posts/image.html' %}
+<!--more-->
 
 The human skeletons are riding cheetahs, if you're wondering. I loved the way even a cheetah's skeleton looks lean and graceful, built perfectly for running. I considered trying out different animal skeletons for each rider, but that would be far too much detail and ruin the overall effect.
 
 Also, some drawing exercises I never posted -
 
 <div class="row-double">
-{%- set number = 2 %}{% include 'pages/posts/image.html' %}
-{%- set number = 3 %}{% include 'pages/posts/image.html' %}
+
+![Hand sketch 1](2013-04-23-hand-1.jpg 'Hand sketch 1')
+
+![Hand sketch 2](2013-04-23-hand-2.jpg 'Hand sketch 2')
+
 </div>
 
 Great news for my [Living in a Media World project](http://students.expression.edu) as well - my topic got voted up and it's currently being made into an official documentary and will be showing in a couple of weeks!
@@ -111,8 +31,11 @@ At any rate, we made it there, and attended the convention for one full day. It 
 I only have photos with a few cosplayers but these are the best photos ever even though they're blurry!!!
 
 <div class="row-double">
-{%- set number = 4 %}{% include 'pages/posts/image.html' %}
-{%- set number = 5 %}{% include 'pages/posts/image.html' %}
+
+![@charmiesweets’s FFXIII Lightning cosplay](2013-04-23-charmie.jpg '@charmiesweets as Lightning from FFXIII')
+
+![Colin’s Pokémon James cosplay](2013-04-23-colin.jpg 'Colin as James from Pokémon')
+
 </div>
 
 Sara (Charmie Sweets) is seriously one of the nicest people I have ever met! I actually met her in February at Animation on Display and even used footage of my interview with her for my first trailer. I ran into her at Anime Conji completely by coincidence - Tracy wanted a photo with the awesome Lightning cosplayer and when I snapped the photo, I recognized her! Meant to be, yes? We exchanged contact information and I eventually interviewed her for the second time.
@@ -122,12 +45,19 @@ Colin was a great James, and he was one of the few who admitted that not all cos
 Some stolen Instagram shots:
 
 <div class="row-triple">
-{%- set number = 6 %}{% include 'pages/posts/image.html' %}
-{%- set number = 7 %}{% include 'pages/posts/image.html' %}
-{%- set number = 8 %}{% include 'pages/posts/image.html' %}
-{%- set number = 9 %}{% include 'pages/posts/image.html' %}
-{%- set number = 10 %}{% include 'pages/posts/image.html' %}
-{%- set number = 11 %}{% include 'pages/posts/image.html' %}
+
+![Lightning by @charmiesweets](2013-04-23-ffxiii.jpg '@charmiesweets')
+
+![Precious by @erikestrada](2013-04-23-precious.jpg '@erikestrada')
+
+![Snake by @epicepix_](2013-04-23-snake.jpg '@epicepix_')
+
+![Rainbow Dash by @tracygraveslom](2013-04-23-rainbow-dash.jpg '@tracygraveslom')
+
+![James by @tracygraveslom](2013-04-23-james.jpg '@tracygraveslom')
+
+![Group photo by @tracygraveslom](2013-04-23-group.jpg '@tracygraveslom')
+
 </div>
 
 Since our team didn't get footage until quite a bit later than the rest of the class, we had to work madly after we returned home. Here's the trailer I finally came up with -

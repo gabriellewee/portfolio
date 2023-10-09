@@ -1,14 +1,7 @@
----json
-{
-	"date": "2012-09-29",
-	"title": "Back into the fray",
-	"permalink": "/archive/{{date|linkDate}}/{{title|slugify}}/",
-	"layout": "layouts/post.njk",
-	"templateEngineOverride": "md,njk",
-	"hidden": true
-}
 ---
-
+date: 2012-09-29
+title: Back into the fray
+---
 Other than school and work, tonight was the first night in a long time that I've been out with friends. I went to church with my sister and one of our old buddies from karate class, and it was really, really fun. Our fellowship is comprised of both college students and young adults, and though it's a smaller group, I feel like we're that much closer for it. There were quite a few new people today, including college students (which you can never have enough of, btw), and we had some good discussions. Of course, there's always that awkward moment when the leader asks a question to the group and there's a deafening, resounding silence, but I figure that's what I'm there for, right? I like answering~ And being back at church after missing it so many times reminded me I need to get back into the habit of studying! Work + school kind of killed my Bible reading for a while. Not that that is a valid excuse!!
 
 <!--more-->

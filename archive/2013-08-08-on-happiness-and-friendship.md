@@ -1,51 +1,7 @@
----json
-{
-	"date": "2013-08-08",
-	"title": "On happiness and friendship",
-	"permalink": "/archive/{{date|linkDate}}/{{title|slugify}}/",
-	"layout": "layouts/post.njk",
-	"templateEngineOverride": "md,njk",
-	"hidden": true,
-	"photos": [
-		{
-			"name": "wip-1",
-			"type": "jpg",
-			"description": "Dragon digital sketch draft 1",
-			"figcaption": "Draft 1",
-			"lightbox": false
-		},
-		{
-			"name": "wip-2",
-			"type": "jpg",
-			"description": "Dragon digital sketch draft 2",
-			"figcaption": "Draft 2",
-			"lightbox": false
-		},
-		{
-			"name": "wip-3",
-			"type": "png",
-			"description": "Dragon digital sketch draft 3",
-			"figcaption": "The swatches Ali gave us are so pretty *u*",
-			"lightbox": false
-		},
-		{
-			"name": "wacom-1",
-			"type": "jpg",
-			"description": "Photo of my Wacom tablet",
-			"figcaption": "Me using my new baby &hearts;",
-			"lightbox": false
-		},
-		{
-			"name": "wacom-2",
-			"type": "png",
-			"description": "Amazon listing photo for Wacom tablet",
-			"figcaption": "A better photo I borrowed from Amazon's listing",
-			"lightbox": false
-		}
-	]
-}
 ---
-
+date: 2013-08-08
+title: On happiness and friendship
+---
 Just before I launch into know-it-all preachy mode, just an quick update on my life -
 
 I went up to Oregon last weekend for my cousin Brian's wedding! Brian and Lindsey had one of the most touching ceremonies I have ever witnessed and I am honored to have been there for them. I took dozens of photos but my parents are still up north with the camera so those will have to wait. My family is going to Patrick's Point and Agate Beach without me since I have school all week; I flew home early Monday morning and am staying with friends.
@@ -55,17 +11,23 @@ I went up to Oregon last weekend for my cousin Brian's wedding! Brian and Lindse
 As far as school goes, I'm currently taking Concepts & Imaging towards my major. It's the most challenging class I've had yet, and I'm not likely to get a high grade, but I'm still glad I have this class and [Ali](http://artofali.com) as my instructor. Here's some WIP shots of my current project:
 
 <div class="row-double">
-{%- set number = 1 %}{% include 'pages/posts/image.html' %}
-{%- set number = 2 %}{% include 'pages/posts/image.html' %}
+
+![Dragon digital sketch draft 1](2013-08-08-wip-1.jpg 'Draft 1')
+
+![Dragon digital sketch draft 2](2013-08-08-wip-2.jpg 'Draft 2')
+
 </div>
 
-{%- set number = 3 %}{% include 'pages/posts/image.html' %}
+![Dragon digital sketch draft 3](2013-08-08-wip-3.png 'The swatches Ali gave us are so pretty *u*')
 
 I also bought myself an expensive birthday present while I was up in Oregon (and didn't have to fuss with sales tax) - a medium Wacom Intuos5 tablet! Best present ever omg and completely worth the money. It's so much better than the Intuos3 tablets that Ex'pression issues us for the class (and we have to return those at the end of the term).
 
-<div class="row-double flex-start">
-{%- set number = 4 %}{% include 'pages/posts/image.html' %}
-{%- set number = 5 %}{% include 'pages/posts/image.html' %}
+<div class="row-double">
+
+![Photo of my Wacom tablet](2013-08-08-wacom-1.jpg 'Me using my new baby ♥')
+
+![Amazon listing photo for Wacom tablet](2013-08-08-wacom-2.png 'A better photo I borrowed from Amazon’s listing')
+
 </div>
 
 So, on to the real topic of this blog post -

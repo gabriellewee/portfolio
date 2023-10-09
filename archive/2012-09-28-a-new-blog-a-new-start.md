@@ -1,14 +1,7 @@
----json
-{
-	"date": "2012-09-28",
-	"title": "A new blog, a new start.",
-	"permalink": "/archive/{{date|linkDate}}/{{title|slugify}}/",
-	"layout": "layouts/post.njk",
-	"templateEngineOverride": "md,njk",
-	"hidden": true
-}
 ---
-
+date: 2012-09-28
+title: A new blog, a new start.
+---
 I consider myself a wanderer. In high school, I seemed to fit in with all the different social groups and thereby belonging to none of them; online, I wander from social network to social network, trying to find one that suits me perfectly. For a long time, I thought Tumblr was my home to stay. I love Tumblr, with its eccentricities, networking, silly gifs and fan wars. But it's not a place where I truly feel at home any longer. A month or two ago, I discovered that .ee domains existed. After much thought and consideration, Mitch and I decided to purchase gabriellew.ee. It's a bit pricier than buying a .com domain, but it's definitely a domain worth keeping, at least for myself. Since then, I've searched and searched for a blogging platform that I could use on gabriellew.ee.
 
 <!--more-->

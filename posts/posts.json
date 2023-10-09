@@ -1,5 +1,8 @@
 {
 	"tags": [
 		"posts"
-	]
+	],
+	"permalink": "/posts/{{date|ISO|linkDate}}/{{title|slugify}}/",
+	"layout": "layouts/post.njk",
+	"templateEngineOverride": "md,njk"
 }

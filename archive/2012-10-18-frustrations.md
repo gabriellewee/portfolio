@@ -1,12 +1,6 @@
----json
-{
-	"date": "2012-10-18",
-	"title": "Frustrations",
-	"permalink": "/archive/{{date|linkDate}}/{{title|slugify}}/",
-	"layout": "layouts/post.njk",
-	"templateEngineOverride": "md,njk",
-	"hidden": true
-}
+---
+date: 2012-10-18
+title: Frustrations
 ---
 
 This week has got to be the most exhausting week in my entire existence.

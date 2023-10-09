@@ -1,36 +1,8 @@
----json
-{
-	"date": "2022-03-11",
-	"title": "Mourning online.",
-	"permalink": "/posts/{{date|linkDate}}/{{title|slugify}}/",
-	"layout": "layouts/post.njk",
-	"templateEngineOverride": "md,njk",
-	"external": [
-		{
-			"platform": "medium",
-			"url": "https://gabriellewee.medium.com/mourning-online-ac086c4eb87e"
-		}
-	],
-	"photos": [
-		{
-			"name": "baby",
-			"type": "jpg",
-			"description": "Me and Ngin Ngin"
-		},
-		{
-			"name": "toddler",
-			"type": "jpg",
-			"description": "Me and Ngin Ngin visiting Ye Ye"
-		},
-		{
-			"name": "adult",
-			"type": "jpg",
-			"description": "Me and Ngin Ngin at one of her recent birthdays"
-		}
-	]
-}
 ---
-
+date: 2022-03-11
+title: Mourning online.
+external: [{"platform": "medium","url": "https://gabriellewee.medium.com/mourning-online-ac086c4eb87e"}]
+---
 Late last year, my paternal grandmother passed away. She was an incredible woman, flaws and all. I wrote a short eulogy for her funeral.
 
 > One of my earliest memories of my grandmother was when I was about five years old. My parents had left me at her house for a few hours, and upon returning, found me hiding behind the sofa. They asked me what was wrong, and I told them I didn’t want to eat anymore. Ngin Ngin had fed me so much that I had finally had enough and had to remove myself from the situation.
@@ -43,16 +15,16 @@ Late last year, my paternal grandmother passed away. She was an incredible woman
 >
 > I love you, Ngin Ngin, and I look forward to one day seeing you again in Heaven.
 
-
 <!--more-->
 
-<div class="row-single">
-{%- set number = 1 %}{% include 'pages/posts/image.html' %}
-</div>
+![Me and Ngin Ngin](2022-03-11-baby.jpg 'Me and Ngin Ngin')
 
 <div class="row-double">
-{%- set number = 2 %}{% include 'pages/posts/image.html' %}
-{%- set number = 3 %}{% include 'pages/posts/image.html' %}
+
+![Me and Ngin Ngin visiting Ye Ye](2022-03-11-toddler.jpg 'Me and Ngin Ngin visiting Ye Ye')
+
+![Me and Ngin Ngin at one of her recent birthdays](2022-03-11-adult.jpg 'Me and Ngin Ngin at one of her recent birthdays')
+
 </div>
 
 I miss Ngin Ngin a lot. I didn’t realize what a enormous rift her passing would leave in my life. Even writing about her now is still painful. I’m learning, slowly, to let myself grieve.

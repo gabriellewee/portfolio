@@ -598,10 +598,7 @@
 		grid-gap: calc(var(--p)*2);
 		grid-template-columns: 1fr;
 		@include viewport($mobile) {
-			align-items: flex-end;
-			&.flex-start {
-				align-items: flex-start;
-			}
+			align-items: flex-start;
 		}
 		figure + figure {
 			margin-top: 0;

@@ -1,21 +1,7 @@
----json
-{
-	"date": "2012-10-06",
-	"title": "A beautiful day",
-	"permalink": "/archive/{{date|linkDate}}/{{title|slugify}}/",
-	"layout": "layouts/post.njk",
-	"templateEngineOverride": "md,njk",
-	"hidden": true,
-	"photos": [
-		{
-			"name": "hello-kitty-sunglasses",
-			"type": "jpg",
-			"description": "Hello Kitty sunglasses"
-		}
-	]
-}
 ---
-
+date: 2012-10-06
+title: A beautiful day
+---
 I'm learning more and more to enjoy the little things in life, and today was a beautiful day.
 
 It started out a little rushed, because I had to go to the ophthalmologist and get my eyes dilated. Not. Fun. Basically they numb your eyes then dilate them to a ridiculously large size so they can poke around and generally make your eyes ache. But it was over quickly, thank goodness, and nothing changed with the scar on my retina (more on that another time) and I was on my way.
@@ -26,7 +12,7 @@ Only problem was, I neglected to bring sunglasses to the appointment since I for
 
 So, about to give up, I started walking back to the bus stop when my head literally swiveled around. Sunglasses stand. Wat. They had Hello Kitty sunglasses. WAT.
 
-{%- set number = 1 %}{% include 'pages/posts/image.html' %}
+![Hello Kitty sunglasses](2012-10-06-hello-kitty-sunglasses.jpg 'Hello Kitty sunglasses')
 
 They were 2 for $20, and I have to say, I didn't even think about it much. Insta-buy. I will, in my defense, point out that (a) I needed sunglasses, (b) my last pair snapped in half, and (c) Hello Kitty? Need I say more? I never was really interested in Hello Kitty until a year or two ago. Must have developed my Asian-girl-loves-Hello-Kitty syndrome a little late.
 

@@ -5,3 +5,7 @@ package-lock.json
 .DS_Store
 .cache/
 .env
+posts/.obsidian/
+posts/images/
+archive/.obsidian/
+archive/images/

@@ -1,33 +1,14 @@
----json
-{
-	"date": "2012-11-15",
-	"title": "Absolute nonsense",
-	"permalink": "/archive/{{date|linkDate}}/{{title|slugify}}/",
-	"layout": "layouts/post.njk",
-	"templateEngineOverride": "md,njk",
-	"hidden": true,
-	"photos": [
-		{
-			"name": "keyboard",
-			"type": "jpg",
-			"description": "iPad keyboard"
-		},
-		{
-			"name": "glasses",
-			"type": "jpg",
-			"description": "New glasses"
-		}
-	]
-}
 ---
-
+date: 2012-11-15
+title: Absolute nonsense
+---
 I'm sitting in Sarah's room while she sleeps - we both skipped out on lab today. I'm still dealing with a cold the old man gave me that incapacitated me yesterday while she.. well, she partied hard. We're both in the process of recovering.
 
 I went ahead and splurged for a wireless Apple keyboard for my iPad. It was pricey, but definitely worth the cost. I love my iPad and everything it does for me, but the simple fact remains that a physical keyboard will always trump a virtual one. Yes, I know, I could have waited and bought a Surface Pro with a keyboard cover. Whatever. I am satisfied with what I have and if I don't want the keyboard, I don't have to bring it with me.
 
 <!--more-->
 
-{%- set number = 1 %}{% include 'pages/posts/image.html' %}
+![iPad keyboard](2012-11-15-keyboard.jpg 'iPad keyboard')
 
 So I guess this is kind of an update in the life of Gabrielle Wee. I haven't really been doing much online since school and work have been dominating my life. There's still a design I need to finish up for a Tumblr theme and various other things that need updating, but right now, school comes first. That's the most important.
 
@@ -37,7 +18,7 @@ Our particular movie is about a group of Dungeons and Dragons players that embar
 
 In yet other news, I got new glasses! I lost the first pair of glasses I had purchased in four years at a restaurant called Milano last May - they barely lasted me three months - and have been depending on contacts ever since. Not a good idea at all, especially after I scratched my cornea with a defective lens.
 
-{%- set number = 2 %}{% include 'pages/posts/image.html' %}
+![New glasses](2012-11-15-glasses.jpg 'New glasses')
 
 A family friend recommended [Zenni Optical](http://zennioptical.com) for inexpensive prescription glasses. I ended up ordering two pairs from them - a round pair with rose-tinted lenses and a light blue pair with clear lenses. Both pairs offer UV protection; I added on some extras that I can't remember at the moment. The order came out to $45, including shipping - *less than half of what I paid for my glasses at the beginning of last year!* Each pair comes with a plastic case and cleaning cloth. If you are in need of glasses or even just want a spare pair for emergencies, I \*highly\* recommend Zenni Optical. You will need to know your prescription and pupillary distance - I usually get my glasses from Costco and they measured it for me there.
 

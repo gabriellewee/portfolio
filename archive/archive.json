@@ -2,5 +2,9 @@
 	"tags": [
 		"archive"
 	],
-	"archive": true
+	"archive": true,
+	"hidden": true,
+	"permalink": "/archive/{{date|ISO|linkDate}}/{{title|slugify}}/",
+	"templateEngineOverride": "md,njk",
+	"layout": "layouts/post.njk"
 }
