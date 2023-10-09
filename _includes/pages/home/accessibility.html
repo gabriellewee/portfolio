@@ -8,6 +8,9 @@
 	<menu id="accessibility-window" class="popup-window">
 		<div class="inside">
 			<ul>
+				<li class="option-no-js">
+					<p>Please turn on Javascript in order to keep your settings after refreshing or leaving the page.</p>
+				</li>
 				<li>
 					<label class="option-label" for="option-color" tabindex="0" role="button" aria-pressed="false" data-option-label>
 						<span class="checkbox">{% include 'svg/icons/close-small.svg' %}</span>
@@ -26,13 +29,13 @@
 						<span>Reduce transparency</span>
 					</label>
 				</li>
-				<li class="option-container-load">
+				<li class="option-js-only">
 					<label class="option-label" for="option-load" tabindex="0" role="button" aria-pressed="true" data-option-label>
 						<span class="checkbox">{% include 'svg/icons/close-small.svg' %}</span>
 						<span>Load posts</span>
 					</label>
 				</li>
-				<li class="has-button option-container-load">
+				<li class="has-button option-js">
 					<button class="button" data-option="reset"><span><span>Reset</span></span></button>
 				</li>
 				<li class="has-button">

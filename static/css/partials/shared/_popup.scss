@@ -414,7 +414,6 @@ $options: color, contrast, transparency, load;
 			display: block;
 			position: relative;
 			width: 100%;
-			min-height: 250px;
 			overflow: hidden;
 		}
 		ul {
@@ -425,11 +424,24 @@ $options: color, contrast, transparency, load;
 			padding: var(--p);
 		}
 		li {
+			@include font-weight-width(500, 115);
 			width: 100%;
 			padding: var(--p);
 		}
+		.option-no-js {
+			.js & {
+				display: none;
+			}
+		}
+		.option-js {
+			.no-js & {
+				display: none;
+			}
+		}
+		p {
+			line-height: 1.3;
+		}
 		.option-label {
-			@include font-weight-width(500, 115);
 			cursor: pointer;
 			display: inline-flex;
 			align-items: flex-start;
