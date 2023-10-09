@@ -346,7 +346,7 @@ $options: color, contrast, transparency, load;
 	.popup-button, .popup-label {
 		pointer-events: none;
 	}
-	.popup-button:focus, .popup-button:active {
+	.popup-button:focus, .popup-button:active, .popup-button:checked {
 		&, ~ .popup-label {
 			pointer-events: unset;
 		}
