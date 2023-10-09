@@ -58,7 +58,7 @@ a {
 * {
 	::-moz-selection {
 		@include theme(light, 1) {
-			background-color: var(--color-iron);
+			background-color: hsla(var(--color-rose-hsl), .5);
 		}
 		@include theme(dark, 1) {
 			background-color: hsla(var(--color-white-hsl), .2);
@@ -67,7 +67,7 @@ a {
 
 	::selection {
 		@include theme(light, 1) {
-			background-color: var(--color-iron);
+			background-color: hsla(var(--color-rose-hsl), .5);
 		}
 		@include theme(dark, 1) {
 			background-color: hsla(var(--color-white-hsl), .2);
