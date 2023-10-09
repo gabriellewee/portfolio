@@ -12,18 +12,16 @@ module.exports = eleventyConfig => {
 		return array.slice(index - 1, index);
 	});
 
-	eleventyConfig.addFilter("readableDate", date => {
-		date = DateTime.fromISO(date, {zone: 'utc'}).toFormat("dd LLLL yyyy");
-		return date;
-	});
-
-	eleventyConfig.addFilter('htmlDateString', date => {
-		date = DateTime.fromISO(date, {zone: 'utc'}).toFormat('yyyy-LL-dd');
-		return date;
-	});
-
-	eleventyConfig.addFilter('linkDate', date => {
-		return DateTime.fromISO(date, {zone: 'utc'}).toFormat('yyyy/LL/dd');
+	eleventyConfig.addFilter('date', (date, option) => {
+		if (option === "archive") {
+			return DateTime.fromISO(date, {zone: 'utc'}).toFormat('yyyy/L/d');
+		} else if (option === "string") {
+			return DateTime.fromISO(date, {zone: 'utc'}).toFormat('yyyy-LL-dd');
+		} else if (option === "readable") {
+			return DateTime.fromISO(date, {zone: 'utc'}).toFormat("dd LLLL yyyy");
+		} else {
+			return DateTime.fromISO(date, {zone: 'utc'}).toFormat('yyyy/LL/dd');
+		}
 	});
 	
 	eleventyConfig.addFilter("ISO", date => {

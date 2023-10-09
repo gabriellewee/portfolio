@@ -15,19 +15,23 @@ category: writing
 				<header class="post-header inline-header">
 					<div class="post-header-content">
 						<h2><a class="u-url" href="{{page.url}}"><span class="p-name">{{title|nbsp|safe}}</span></a></h2>
-						<time class="time-default dt-published" datetime="{{page.date|ISO|htmlDateString}}" title="{{page.date|ISO|readableDate}}" data-time="{{page.date|ISO}}">{{page.date|ISO|readableDate}}</time>
+						<time class="time-default dt-published" datetime="{{page.date|ISO|date('string')}}" title="{{page.date|ISO|date('readable')}}" data-time="{{page.date|ISO}}">{{page.date|ISO|date('readable')}}</time>
 					</div>
 				</header>
 				<div class="post-content post-text e-content">
 					{{content|images|safe}}
 				</div>
-				{% if external %}
-					<footer class="post-footer">
+				
+				<footer class="post-footer">
+					{% if archive == true %}
+						<a class="button" href="{{site.url}}/v1/{{page.date|ISO|date('archive')}}/{{page.fileSlug}}" target="_blank"><span><span>View original</span></span></a>
+					{% endif %}
+					{% if external %}
 						{% for link in external %}
 							<a class="button link-platform link-{{link.platform}}" href="{{link.url|url}}" target="_blank"><span><span>Read on {{link.platform|capitalize}}</span></span></a>
 						{% endfor %}
-					</footer>
-				{% endif %}
+					{% endif %}
+				</footer>
 			</div>
 		</article>
 	</div>

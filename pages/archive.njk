@@ -27,7 +27,7 @@ message: Post archive for gabriellew.ee
 				{% endif %}
 				<li>
 					<h3><a href="{{post.url|url}}"><span>{{post.data.title|safe}}</span></a></h3>
-					<time datetime="{{post.date|ISO|htmlDateString}}">{{post.date|ISO|readableDate}}</time>
+					<time datetime="{{post.date|ISO|date('string')}}">{{post.date|ISO|date('readable')}}</time>
 				</li>
 			{% endfor %}
 		</ul>

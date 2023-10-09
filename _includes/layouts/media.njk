@@ -33,7 +33,7 @@
 							<label class="media-view-touch" for="{{post.date|safe}}-{{post.name}}-info" aria-hidden="true">View info</label>
 							<figcaption class="media-data">
 								<div class="media-data-wrapper">
-									<time class="time-default" datetime="{{post.date}}" title="{{post.date|readableDate}}" data-time="{{post.date|ISO}}">{{post.date|readableDate}}</time>
+									<time class="time-default" datetime="{{post.date}}" title="{{post.date|date('readable')}}" data-time="{{post.date|ISO}}">{{post.date|date('readable')}}</time>
 									<label class="media-down media-icon" for="{{post.date|safe}}-{{post.name}}-info"></label>
 									<div class="media-thumbnail">
 										<a class="media-expand expand" href="#{{post.date|safe}}-{{post.name}}-lightbox" role="button" aria-label="Expand image" aria-expanded="false" tabindex="-1">
