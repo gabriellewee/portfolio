@@ -38,6 +38,7 @@
 	--color-blush:#{$blush};
 	--color-blush-5:#{lighten($blush,5%)};
 	--color-blush-8:#{lighten($blush,8%)};
+	--color-blush-10:#{lighten($blush,10%)};
 	--color-blush-hsl:#{hexToHSL($blush)};
 	--color-blush-8-hsl:#{hexToHSL(lighten($blush,8%))};
 

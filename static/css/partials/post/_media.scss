@@ -18,6 +18,11 @@
 				left: -1.5px;
 				width: calc(100% + 3px);
 				height: calc(100% + 3px);
+			}
+			@include contrast(light, 2) {
+				background: var(--color-light);
+			}
+			@include contrast(dark, 2) {
 				background: var(--color-light);
 			}
 		}

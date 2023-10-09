@@ -34,6 +34,10 @@ body {
 		background-color: var(--color-iron-5);
 		color: hsla(var(--color-white-hsl), .9);
 	}
+	@include contrast(light, 3) {
+		background-color: var(--color-blush-10);
+		color: var(--color-light);
+	}
 	@include contrast(dark, 3) {
 		background-color: var(--color-iron-10);
 		color: var(--color-light);
