@@ -86,10 +86,10 @@ pagination:
 								{% else %}
 									{% image './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 'default', loop.index %}
 								{% endif %}
-								<label class="media-view-hover" for="{{post.date|safe}}-{{post.data.name}}-info" aria-hidden="true">
+								<label class="media-view-hover" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true">
 									<span class="button"><span><span>View info</span></span></span>
 								</label>
-								<label class="media-view-touch" for="{{post.date|safe}}-{{post.data.name}}-info" aria-hidden="true">View info</label>
+								<label class="media-view-touch" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true">View info</label>
 								<figcaption class="{{post.data.category}}-data">
 									<div class="media-data-wrapper">
 										<time class="time-default" datetime="{{post.page.date|ISO|htmlDateString}}" title="{{post.page.date|ISO|readableDate}}" data-time="{{post.page.date|ISO}}">{{post.page.date|ISO|readableDate}}</time>

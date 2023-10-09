@@ -215,7 +215,7 @@ module.exports = eleventyConfig => {
 			if (excerpt != undefined) {
 				return excerpt;
 			} else {
-				return false;
+				return;
 			}
 		} else {
 			if (content.includes(excerptSeparator)) {
