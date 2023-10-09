@@ -2,6 +2,8 @@ const pluginRss = require("@11ty/eleventy-plugin-rss");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
+const markdownItContainer = require("markdown-it-container");
+const markdownItAttrs = require("markdown-it-attrs");
 const string = require("string");
 const Image = require("@11ty/eleventy-img");
 const sharp = require("sharp");
@@ -22,7 +24,18 @@ module.exports = eleventyConfig => {
 			symbol: "¶",
 			placement: "after"
 		})
-	});
+	}).use(markdownItContainer, 'dynamic', {
+		validate: function() { return true; },
+		render: function(tokens, idx) {
+			var token = tokens[idx];
+
+			if (token.nesting === 1) {
+				return '<div class="' + token.info.trim() + '">';
+			} else {
+				return '</div>';
+			}
+		},
+	}).use(markdownItAttrs);
 	eleventyConfig.setLibrary("md", markdownLibrary);
 
 	eleventyConfig.addFilter("stripAttr", stripped => {

@@ -12,13 +12,13 @@ The human skeletons are riding cheetahs, if you're wondering. I loved the way ev
 
 Also, some drawing exercises I never posted -
 
-<div class="row-double">
+::: row-double
 
 ![Hand sketch 1](2013-04-23-hand-1.jpg 'Hand sketch 1')
 
 ![Hand sketch 2](2013-04-23-hand-2.jpg 'Hand sketch 2')
 
-</div>
+:::
 
 Great news for my [Living in a Media World project](http://students.expression.edu) as well - my topic got voted up and it's currently being made into an official documentary and will be showing in a couple of weeks!
 
@@ -30,13 +30,13 @@ At any rate, we made it there, and attended the convention for one full day. It 
 
 I only have photos with a few cosplayers but these are the best photos ever even though they're blurry!!!
 
-<div class="row-double">
+::: row-double
 
 ![@charmiesweets’s FFXIII Lightning cosplay](2013-04-23-charmie.jpg '@charmiesweets as Lightning from FFXIII')
 
 ![Colin’s Pokémon James cosplay](2013-04-23-colin.jpg 'Colin as James from Pokémon')
 
-</div>
+:::
 
 Sara (Charmie Sweets) is seriously one of the nicest people I have ever met! I actually met her in February at Animation on Display and even used footage of my interview with her for my first trailer. I ran into her at Anime Conji completely by coincidence - Tracy wanted a photo with the awesome Lightning cosplayer and when I snapped the photo, I recognized her! Meant to be, yes? We exchanged contact information and I eventually interviewed her for the second time.
 
@@ -44,7 +44,7 @@ Colin was a great James, and he was one of the few who admitted that not all cos
 
 Some stolen Instagram shots:
 
-<div class="row-triple">
+::: row-triple
 
 ![Lightning by @charmiesweets](2013-04-23-ffxiii.jpg '@charmiesweets')
 
@@ -58,7 +58,7 @@ Some stolen Instagram shots:
 
 ![Group photo by @tracygraveslom](2013-04-23-group.jpg '@tracygraveslom')
 
-</div>
+:::
 
 Since our team didn't get footage until quite a bit later than the rest of the class, we had to work madly after we returned home. Here's the trailer I finally came up with -
 

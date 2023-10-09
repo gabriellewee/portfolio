@@ -10,13 +10,13 @@ Previously, I hosted this website on [Github Pages](https://pages.github.com) an
 
 ![Previous website home page](2021-07-26-website-home.png 'Previous website home page')
 
-<div class="row-double">
+::: row-double
 
 ![Previous website project page information](2021-07-26-website-project-top.png 'Previous website project page information')
 
 ![Previous website project page styles](2021-07-26-website-project-middle.png 'Previous website project page styles')
 
-</div>
+:::
 
 I was (and still am) really proud of this portfolio. It was my first big project out of college, and it got featured a few times on various sites. I experimented with different layout techniques and for the first time, created an extensive set of my own icons and thumbnails.
 
@@ -91,7 +91,7 @@ I styled it with some basic CSS transitions and a loading icon, then added enhan
 
 I really love how easy it is to organize your files and code any way you want with Eleventy. Each of the visual homepage sections and my blog are Eleventy collections. Here are a couple of Eleventy plugins/filters/shortcodes that I found useful:
 
-<p class="caption">Limit the number of items in an Eleventy collection</p>
+Limit the number of items in an Eleventy collection {.caption}
 
 ``` js
 eleventyConfig.addFilter("limit", (array, limit) => {
@@ -99,7 +99,7 @@ eleventyConfig.addFilter("limit", (array, limit) => {
 });
 ```
 
-<p class="caption"><a href="https://github.com/11ty/eleventy/issues/410#issuecomment-462821193">Show post excerpt for blog collection</a></p>
+[Show post excerpt for blog collection](https://github.com/11ty/eleventy/issues/410#issuecomment-462821193) {.caption}
 
 ``` js
 eleventyConfig.addShortcode('excerpt', post => {
@@ -136,17 +136,6 @@ These days, I'm loath to lose any previous website content, even content that is
 ## Blog
 
 Last but not least, I have this blog. The layout I'm using for the other pages wasn't really conducive to a blog format, so I created an entirely separate set of styles. One of the things I really love about this site is the font, [Recursive](https://www.recursive.design). It's a variable font that I'm using for every single part of the blog site, including the code snippets. You can even animate between the proportional and monospace versions!
-
-<!-- <figure class="animation">
-	<figcaption class="animation-caption">Animation of font variable settings</figcaption>
-	<div>
-		<span class="animating font-variation-settings">recursive.design</span>
-	</div>
-	<figcaption class="animation-buttons">
-		<button class="pause"><span>Pause animation</span></button>
-		<button class="play"><span>Play animation</span></button>
-	</figcaption>
-</figure> -->
 
 ## That's all, folks.
 

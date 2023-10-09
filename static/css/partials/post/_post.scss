@@ -635,6 +635,9 @@
 		&:last-child, &:last-of-type:not(:last-child) {
 			margin-top: calc(var(--p)/2);
 		}
+		+ pre, + figure {
+			margin-top: 0;
+		}
 	}
 	p.caption:not(:last-child) {
 		margin-bottom: calc(var(--p)/2);

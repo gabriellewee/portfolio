@@ -10,25 +10,25 @@ I went up to Oregon last weekend for my cousin Brian's wedding! Brian and Lindse
 
 As far as school goes, I'm currently taking Concepts & Imaging towards my major. It's the most challenging class I've had yet, and I'm not likely to get a high grade, but I'm still glad I have this class and [Ali](http://artofali.com) as my instructor. Here's some WIP shots of my current project:
 
-<div class="row-double">
+::: row-double
 
 ![Dragon digital sketch draft 1](2013-08-08-wip-1.jpg 'Draft 1')
 
 ![Dragon digital sketch draft 2](2013-08-08-wip-2.jpg 'Draft 2')
 
-</div>
+:::
 
 ![Dragon digital sketch draft 3](2013-08-08-wip-3.png 'The swatches Ali gave us are so pretty *u*')
 
 I also bought myself an expensive birthday present while I was up in Oregon (and didn't have to fuss with sales tax) - a medium Wacom Intuos5 tablet! Best present ever omg and completely worth the money. It's so much better than the Intuos3 tablets that Ex'pression issues us for the class (and we have to return those at the end of the term).
 
-<div class="row-double">
+::: row-double
 
 ![Photo of my Wacom tablet](2013-08-08-wacom-1.jpg 'Me using my new baby ♥')
 
 ![Amazon listing photo for Wacom tablet](2013-08-08-wacom-2.png 'A better photo I borrowed from Amazon’s listing')
 
-</div>
+:::
 
 So, on to the real topic of this blog post -
 

@@ -37,13 +37,11 @@ I also recently purchased a [Logitech Lift Vertical Ergonomic Mouse](https://www
 
 I was fortunate enough to get my hands on a Steam Deck last month. I’d been waiting for my order window for almost a year, and almost missed it because of a preorder error. Luckily we contacted customer service and they sent us one out almost immediately!
 
-<div class="row-double">
+::: row-double
 
 ![Playing my Steam Deck at the beach in Half Moon Bay](2022-07-20-steam-deck-beach.png 'Playing my Steam Deck at the beach in Half Moon Bay')
 
 ![Playing my Steam Deck at Game Night with my cat](2022-07-20-steam-deck-cat.jpg 'Playing my Steam Deck at Game Night with my cat')
-
-</div>
 
 I’ve never owned a gaming PC (all my computers have been MacBooks) and most of my consoles have been from Nintendo, so being able to play PC and Steam games on a portable computer has been incredible. I also installed an emulator so that I’m able to play some of my favorite older games such as Fire Emblem: Path of Radiance.
 
@@ -51,7 +49,7 @@ I’ve never owned a gaming PC (all my computers have been MacBooks) and most of
 
 Spending time with the people I love has been the highlight of this year. Even though I had more time in years past, I think that this year I’ve been really intentional with my time with my friends and family.
 
-<div class="row-triple">
+::: row-triple
 
 ![Boba with Hayden](2022-07-20-hayden.jpg 'Boba with Hayden')
 
@@ -65,13 +63,13 @@ Spending time with the people I love has been the highlight of this year. Even t
 
 ![Cooking wings with Phil](2022-07-20-phil.jpg 'Cooking wings with Phil')
 
-</div>
+:::
 
 ## The cat
 
 Last but certainly not least, I’ve been spending a *lot* of time with my cat, Alfie. He’s been in my life since last September, but I feel like he’s always been with me now. He just turned 1 years old in May, and he’s still quite a handful. Basically all of my photos are of him these days. He’s ridiculous and I love him so much. I’m working on him to make him an Adventure Cat, and so far it’s been working out pretty well.
 
-<div class="row-triple">
+::: row-triple
 
 ![Cat in the garden](2022-07-20-cat-garden.jpg 'Cat in the garden')
 
@@ -85,7 +83,7 @@ Last but certainly not least, I’ve been spending a *lot* of time with my cat, 
 
 ![Cat at the beach](2022-07-20-cat-beach.jpg 'Cat at the beach')
 
-</div>
+:::
 
 ## Happy
 

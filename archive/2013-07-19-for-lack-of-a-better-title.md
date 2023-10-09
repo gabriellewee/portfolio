@@ -15,19 +15,19 @@ We finally finished our documentary project - it's up and running on YouTube wit
 
 We got so much positive feedback from the community that we decided to continue the project. We filmed again at Fanime 2013 in San Jose, made business cards, and started a new website in the meantime. I just redesigned the splash page yesterday for Comic Con. Wish I was going. Hayley's handing out our business cards over there though! She also designed the logo for our cards and site.
 
-<div class="row-double">
+::: row-double
 
 ![con·cious website screenshot](2013-07-19-con-scio-us.png 'Check us out at the official con·cious website!')
 
 ![con·cious keychain cards](2013-07-19-con-scio-us-cards.jpg 'Hayley’s photo of the keychain cards she laminated for Comic Con!')
 
-</div>
+:::
 
 Fanime 2013 - I went with Hayley, Casey, and Hayley's friend Ashley. They cosplayed from Silent Hill and I cosplayed as Adventure Time's Marshall Lee!
 
 Ashley's mom actually got us into a real hospital the night before for an amazing Silent Hill photoshoot! I'll post photos up eventually.
 
-<div class="row-triple">
+::: row-triple
 
 ![My wig for cosplaying Marshall Lee drying upside down](2013-07-19-wig.png 'For the sake of cosplay…')
 
@@ -35,7 +35,7 @@ Ashley's mom actually got us into a real hospital the night before for an amazin
 
 ![Ashley cosplaying as a Pyramid Head/Silent Hill nurse](2013-07-19-silent-hill.jpg 'Ashley as Pyramid Nurse')
 
-</div>
+:::
 
 It was crazy busy and full of amazing cosplayers and booths and panels! I attended a panel on cosplaying and body image for the project. My sister Isabelle, who cosplayed as Fionna to my Marshall Lee, dragged me to the Gaia Online panel where I won a free virtual gift.
 
@@ -49,7 +49,7 @@ School has been as hectic as ever. I just completed Intro to Animation with a so
 
 Some WIP shots -
 
-<div class="row-triple">
+::: row-triple
 
 ![Ball bounce](2013-07-19-light-ball.jpg 'Ball bounce')
 
@@ -57,23 +57,19 @@ Some WIP shots -
 
 ![Mew tail Wave](2013-07-19-mew.jpg 'Mew tail Wave')
 
-</div>
+:::
 
-<div class="row-double">
+::: row-double
 
 ![Cat and mouse](2013-07-19-take.jpg 'Cat & mouse')
 
 ![Kingdom Rush](2013-07-19-sync.jpg 'Kingdom Rush')
 
-</div>
-
-<div class="row-double">
-
 ![Claymation set](2013-07-19-claymation.jpg 'Claymation set')
 
 ![Mechanical mouse animation sketches](2013-07-19-final.jpg 'Mechanical mouse animation sketches')
 
-</div>
+:::
 
 Nick, Nathan, and I teamed up for the claymation. It started out with blowing up ponies and ended up being so much more twisted…
 
@@ -88,7 +84,7 @@ Rushing through my updates so I can post this and sleep!
 
 I'm going to start an Etsy shop soon for friendship bracelets! I've been making them like crazy and I figured I might as well profit from it.
 
-<div class="row-triple no-figcaption">
+::: row-triple no-figcaption
 
 ![Friendship bracelet](2013-07-19-fb-1.jpg 'Friendship bracelet')
 
@@ -102,7 +98,7 @@ I'm going to start an Etsy shop soon for friendship bracelets! I've been making 
 
 ![Friendship bracelet](2013-07-19-fb-6.jpg 'Friendship bracelet')
 
-</div>
+:::
 
 ![Friendship bracelet](2013-07-19-fb-7.jpg 'Friendship bracelet')
 

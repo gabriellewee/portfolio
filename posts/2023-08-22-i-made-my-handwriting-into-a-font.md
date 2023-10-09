@@ -10,13 +10,13 @@ I’ve been using my iPad a lot more lately. For a while, I was mostly using it 
 
 After a bit of research, I decided to check out [Fontself](https://apps.apple.com/ca/app/fontself-make-your-own-fonts/id1512959192). It was really easy to set up and get started. The app comes with a number of templates, so I picked the handwriting one and began drawing. I tried really hard at first to get each stroke right, but later realized that I could edit the curves afterwards.
 
-<div class="row-double">
+::: row-double
 
 ![The handwriting template provided in the Fontself app, showing the alphabet in grayed out letters.](2023-08-22-font-template.png 'The handwriting template')
 
 ![The letter ð in Fontself with bézier curves visible and editable, surrounded by other letters in a grid.](2023-08-22-font-vector.png 'Editing bézier curves')
 
-</div>
+:::
 
 Honestly, it’s a little bit weird to see my handwriting so neat and even. I feel like I could probably achieve this by hand if I wrote verrrrry slowly. Before editing the curves, the font looked a lot more like my everyday handwriting, but the repeated quirks in each letter looked strange to me. Making each letter more balanced and upright lent itself better to a legible font.
 

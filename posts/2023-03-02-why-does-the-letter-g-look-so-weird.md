@@ -8,7 +8,7 @@ As time has passed, this search for the perfect G has spilled over into other pa
 
 I also have struggled with making favicons/OpenGraph images for my site. I’ve avoided proper identity design by simply using my initial, but then I spend even more time trying to perfect it.
 
-<div class="row-quad">
+::: row-quad
 
 ![White G logo design on a red background from 2013](2023-03-02-logo-v1.svg 'Logo design from 2013')
 
@@ -18,19 +18,19 @@ I also have struggled with making favicons/OpenGraph images for my site. I’ve 
 
 ![White G logo design on a pink background from 2021](2023-03-02-logo-v4.svg 'Logo design from 2021')
 
-</div>
+:::
 
 With my first proper website design, I simply threw the initial in my website font onto a red background and called it a day. Later iterations were more or less the same thing, with varying colors and backgrounds. This proven technique has led me to my current icon design, though I think I like the G a little more this time around.
 
 ![Current logo design used in OpenGraph image. A capital letter G sits in front of a diamond shape on a gradient background.](2023-03-02-logo.svg 'Current logo design used in OpenGraph image')
 
-<div class="row-double">
+::: row-double
 
 ![Current logo design used in OpenGraph image for graphic page, with a background composed of randomly placed outlined stars and circles.](2023-03-02-logo-graphic.svg 'Current logo design used in OpenGraph image for graphic page')
 
 ![Current logo design used in OpenGraph image for post pages, with a background resembling a piece of lined paper.](2023-03-02-logo-posts.svg 'Current logo design used in OpenGraph image for post pages')
 
-</div>
+:::
 
 Maybe it’s because wide sans-serif fonts are trendy right now, but something about the oval that is deeply satisfying, more so than the perfect circles I emulated in previous iterations. I also added the cut-off corner motif that is used all over my site.
 
@@ -38,13 +38,13 @@ Maybe it’s because wide sans-serif fonts are trendy right now, but something a
 
 I decided to rotate the background for favicons since the square would utilize more space than the diamond shape.
 
-<div class="row-double">
+::: row-double
 
 ![Logo version used for iOS and OpenGraph. A capital letter G sits in front of a diamond shape on a gradient background.](2023-03-02-logo-ios.svg 'Logo version used for iOS and OpenGraph')
 
 ![Logo version used for favicons and Android. A capital letter G sits in front of an octagon with a gradient.](2023-03-02-logo-favicon.svg 'Logo version used for favicons and Android')
 
-</div>
+:::
 
 I used to have to search for a favicon generator every time I updated mine, but I finally just installed [ImageMagick](https://imagemagick.org) and made the .ico file myself.
 

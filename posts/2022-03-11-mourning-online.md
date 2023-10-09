@@ -19,13 +19,13 @@ Late last year, my paternal grandmother passed away. She was an incredible woman
 
 ![Me and Ngin Ngin](2022-03-11-baby.jpg 'Me and Ngin Ngin')
 
-<div class="row-double">
+::: row-double
 
 ![Me and Ngin Ngin visiting Ye Ye](2022-03-11-toddler.jpg 'Me and Ngin Ngin visiting Ye Ye')
 
 ![Me and Ngin Ngin at one of her recent birthdays](2022-03-11-adult.jpg 'Me and Ngin Ngin at one of her recent birthdays')
 
-</div>
+:::
 
 I miss Ngin Ngin a lot. I didn’t realize what a enormous rift her passing would leave in my life. Even writing about her now is still painful. I’m learning, slowly, to let myself grieve.
 
@@ -35,13 +35,13 @@ One of the things I never really thought about before she passed away was _mourn
 
 My family ended up asking me to create a website memorializing her. I thought this would be a quick and easy task, but it's actually really difficult to find what I was looking for:
 
-<div class="highlight">
+::: highlight
 
 1. A minimal page that included a place for her obituary and memorial video
 2. A self-moderated guestbook that anybody could sign without social media
 3. Inexpensive or free to use
 
-</div>
+:::
 
 Most of the memorial websites I came across were not suitable for what I wanted. Many were outdated and looked like they were built twenty years ago. Others were free but were overwhelming and had too much information. Some wanted around $100 USD up front to unlock features and others had a monthly subscription.
 
