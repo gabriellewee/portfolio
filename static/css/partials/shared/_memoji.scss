@@ -61,9 +61,6 @@
 					display: none;
 				}
 			}
-			.loaded .page-index & {
-				display: none;
-			}
 			.page-home:not(.page-index) & {
 				display: none;
 			}
@@ -71,6 +68,12 @@
 				@media (prefers-reduced-motion: no-preference) {
 					translate: 0;
 					opacity: 1;
+				}
+			}
+			.loaded .page-index & {
+				@media (prefers-reduced-motion: no-preference) {
+					translate: 0 100%;
+					opacity: 0;
 				}
 			}
 		}

@@ -23,6 +23,12 @@
 		}
 	}
 
+	br {
+		@include viewport(#{$iphone-mini + 1px}) {
+			display: none;
+		}
+	}
+
 	.cursor {
 		@include font-weight-width(900, 75);
 	}

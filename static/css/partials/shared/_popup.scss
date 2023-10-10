@@ -355,6 +355,12 @@ $options: color, contrast, transparency, load;
 }
 
 .accessibility-popup {
+	position: absolute;
+	right: 0;
+	@include viewport(mobile) {
+		position: unset;
+		right: unset;
+	}
 	.popup-button, .popup-label {
 		pointer-events: none;
 	}

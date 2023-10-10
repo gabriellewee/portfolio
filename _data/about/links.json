@@ -26,26 +26,31 @@
 	{
 		"name": "twitter",
 		"url": "https://twitter.com/gabriewee/",
-		"secondary": true
+		"class": "secondary"
 	},
-	{
+{
 		"name": "dribbble",
-		"url": "https://dribbble.com/gabriellewee/"
+		"url": "https://dribbble.com/gabriellewee/",
+		"class": "secondary-mobile"
 	},
 	{
 		"name": "medium",
-		"url": "https://medium.com/@gabriellewee/"
+		"url": "https://medium.com/@gabriellewee/",
+		"class": "secondary-mobile"
 	},
 	{
 		"name": "tumblr",
-		"url": "https://gabriellewee.tumblr.com"
+		"url": "https://gabriellewee.tumblr.com",
+		"class": "secondary-mobile"
 	},
 	{
 		"name": "pinterest",
-		"url": "https://pinterest.com/gabriellewee/"
+		"url": "https://pinterest.com/gabriellewee/",
+		"class": "secondary-mobile"
 	},
 	{
 		"name": "music",
-		"url": "https://music.apple.com/profile/gabriellewee/"
+		"url": "https://music.apple.com/profile/gabriellewee/",
+		"class": "secondary-mobile"
 	}
 ]

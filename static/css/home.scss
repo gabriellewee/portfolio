@@ -5,9 +5,15 @@
 		@media (prefers-reduced-motion: no-preference) {
 			opacity: 0;
 		}
-	}
-	.secondary {
-		display: none !important;
+		.secondary {
+			display: none;
+		}
+		.secondary-mobile {
+			display: none;
+			@include viewport(mobile) {
+				display: inline-block;
+			}
+		}
 	}
 }
 
