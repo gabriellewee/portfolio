@@ -28,7 +28,7 @@ category: writing
 					{% endif %}
 					{% if external %}
 						{% for link in external %}
-							<a class="button link-platform link-{{link.platform}}" href="{{link.url|url}}" target="_blank"><span><span>Read on {{link.platform|capitalize}}</span></span></a>
+							<a class="button link-platform {{link.platform}} background" href="{{link.url|url}}" target="_blank"><span><span>Read on {{link.platform|capitalize}}</span></span></a>
 						{% endfor %}
 					{% endif %}
 				</footer>
