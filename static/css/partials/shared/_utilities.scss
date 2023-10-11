@@ -410,8 +410,9 @@ $violet: #D18FF0;
 @mixin hide {
 	position: absolute;
 	appearance: none;
-	width: 0;
-	height: 0;
+	width: 1px;
+	height: 1px;
+	clip: rect(0,0,0,0);
 	z-index: -1;
 	opacity: 0;
 }

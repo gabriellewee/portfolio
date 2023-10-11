@@ -101,6 +101,14 @@
 }
 
 .discord-popup {
+	.popup-button {
+		width: 127px;
+		height: 36px;
+		@include viewport($desktop-small) {
+			width: 145px;
+			height: 38px;
+		}
+	}
 	.popup-label {
 		&:after {
 			background-color: #EECAC1;
@@ -358,16 +366,16 @@ $options: color, contrast, transparency, load;
 	position: absolute;
 	right: 0;
 	@include viewport(mobile) {
-		position: unset;
+		position: relative;
 		right: unset;
 	}
-	.popup-button, .popup-label {
+	.popup-button {
 		pointer-events: none;
+		width: 179px;
+		height: 43px;
 	}
-	.popup-button:focus, .popup-button:active, .popup-button:checked {
-		&, ~ .popup-label {
-			pointer-events: unset;
-		}
+	.popup-button:focus, .popup-button:focus-visible, .popup-button:active {
+		pointer-events: unset;
 		~ .popup-label {
 			z-index: unset;
 			&, .button:before {
@@ -376,9 +384,7 @@ $options: color, contrast, transparency, load;
 		}
 	}
 	.popup-button:checked {
-		&, ~ .popup-label {
-			pointer-events: unset;
-		}
+		pointer-events: unset;
 		~ .popup-label {
 			z-index: unset;
 			opacity: 1;
