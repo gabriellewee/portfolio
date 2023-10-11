@@ -68,7 +68,7 @@ module.exports = eleventyConfig => {
 			</picture>
 		`;
 
-		return result;
+		return await result;
     });
 
 	eleventyConfig.addNunjucksAsyncShortcode("image", async (src, alt, type, option, figp) => {
@@ -147,9 +147,9 @@ module.exports = eleventyConfig => {
 			figp == null ? figcaption = nbsp(alt) : figcaption = figp;
 			let caption = `<figcaption id="${name}-caption" aria-hidden="true">${figcaption}</figcaption>`;
 			let link = `<a class="expand" href="#${name}-lightbox" aria-label="${alt} Expand image">${picture}</a>`;
-			return `<figure id="${name}" aria-labelledby="${name}-caption">${caption}${link}</figure>`;
+			return await `<figure id="${name}" aria-labelledby="${name}-caption">${caption}${link}</figure>`;
 		} else {
-			return `${picture}`;
+			return await `${picture}`;
 		}
 	});
 };

@@ -2,7 +2,7 @@
 date: 2023-03-02
 title: Why does the letter G look so weird?
 ---
-I don’t know if it’s just me, but finding an aesthetically pleasing G is the bane of my existence. I’ve never liked the way G looks in any font — especially cursive G’s, those are the worst. Lowercase g’s don’t make much sense either, especially the [looptail variety](https://psycnet.apa.org/doiLanding?doi=10.1037%2Fxhp0000532). I used to spend hours as a child rewriting my name over and over because I couldn't get it to look like how I wanted it to look (still haven’t quite gotten it right).
+I don’t know if it’s just me, but finding an aesthetically pleasing G is the bane of my existence. I’ve never liked the way G looks in any font — especially cursive G’s, those are the worst. Lowercase g’s don’t make much sense either, especially the [looptail variety](https://psycnet.apa.org/doiLanding?doi=10.1037%2Fxhp0000532). I used to spend hours as a child rewriting my name over and over because I couldn’t get it to look like how I wanted it to look (still haven’t quite gotten it right).
 
 As time has passed, this search for the perfect G has spilled over into other parts of my life. I spent three hours browsing Etsy the other day because I wanted an initial necklace and all the G’s were too narrow, too angled, not special in any particular way.
 

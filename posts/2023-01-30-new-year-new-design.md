@@ -31,7 +31,7 @@ This was the first opportunity that I had seen to try out container queries, whi
 
 ![Different photo overlay layouts for different container widths](2023-01-30-photo-overlays.png 'Different photo overlay layouts for different container widths')
 
-Portrait photos by default take up half the container width while landscape photos take up the entire container width, but with some photos I overrode the width to emphasize or deemphasize the post. If the post has enough width and height, a thumbnail of the photo shows up that when clicked, expands into a lightbox. If the container isn't tall enough to show a thumbnail, the text "Expand" replaces the thumbnail. On browsers that don’t support container queries, the overlay is scrollable to view all content.
+Portrait photos by default take up half the container width while landscape photos take up the entire container width, but with some photos I overrode the width to emphasize or deemphasize the post. If the post has enough width and height, a thumbnail of the photo shows up that when clicked, expands into a lightbox. If the container isn’t tall enough to show a thumbnail, the text “Expand” replaces the thumbnail. On browsers that don’t support container queries, the overlay is scrollable to view all content.
 
 ``` scss
 .media-container {
@@ -126,7 +126,7 @@ module.exports = eleventyConfig => {
 
 **Implementation:**
 ``` html
-{% raw %}<figure style="aspect-ratio: {% stats './static/images/photography/2022-07-20-cat-garden.jpg', 'ratio' %};">
+{% raw %}<figure style="aspect-ratio: {% stats './static/images/photography/2022-07-20-cat-garden.jpg', ’ratio' %};">
   <!-- image and information -->
 </figure>{% endraw %}
 ```
@@ -245,7 +245,7 @@ I decided to filter my Mastodon posts and remove posts mentioning my site URL (s
 
 ::: highlight
 
-**Edit 01/31/2023:** I’ve realized that if you add `&exclude_replies=true&exclude_reblogs=true` to your url in `mastadon.js`, you don't need to change the tag collection and can remove `data.mastodon.reblog || data.mastodon.in_reply_to_account_id`.
+**Edit 01/31/2023:** I’ve realized that if you add `&exclude_replies=true&exclude_reblogs=true` to your url in `mastadon.js`, you don’t need to change the tag collection and can remove `data.mastodon.reblog || data.mastodon.in_reply_to_account_id`.
 
 :::
 

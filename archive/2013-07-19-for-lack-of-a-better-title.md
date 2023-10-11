@@ -2,9 +2,9 @@
 date: 2013-07-19
 title: For lack of a better title
 ---
-It's been quite a long time, hasn't it? There's been so much going on that I haven't been able to do much - and when I have, I don't feel like doing anything. Quite the dilemma.
+It’s been quite a long time, hasn’t it? There’s been so much going on that I haven’t been able to do much - and when I have, I don’t feel like doing anything. Quite the dilemma.
 
-We finally finished our documentary project - it's up and running on YouTube with over 1000 views and 500+ notes on Tumblr!
+We finally finished our documentary project - it’s up and running on YouTube with over 1000 views and 500+ notes on Tumblr!
 
 <!--more-->
 
@@ -13,7 +13,7 @@ We finally finished our documentary project - it's up and running on YouTube wit
 	<iframe style="aspect-ratio: 16 / 9; width: 100%; height: auto;" src="https://youtube.com/embed/ZibTVfRJWGI" width="800" height="450" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 </figure>
 
-We got so much positive feedback from the community that we decided to continue the project. We filmed again at Fanime 2013 in San Jose, made business cards, and started a new website in the meantime. I just redesigned the splash page yesterday for Comic Con. Wish I was going. Hayley's handing out our business cards over there though! She also designed the logo for our cards and site.
+We got so much positive feedback from the community that we decided to continue the project. We filmed again at Fanime 2013 in San Jose, made business cards, and started a new website in the meantime. I just redesigned the splash page yesterday for Comic Con. Wish I was going. Hayley’s handing out our business cards over there though! She also designed the logo for our cards and site.
 
 ::: row-double
 
@@ -23,9 +23,9 @@ We got so much positive feedback from the community that we decided to continue 
 
 :::
 
-Fanime 2013 - I went with Hayley, Casey, and Hayley's friend Ashley. They cosplayed from Silent Hill and I cosplayed as Adventure Time's Marshall Lee!
+Fanime 2013 - I went with Hayley, Casey, and Hayley’s friend Ashley. They cosplayed from Silent Hill and I cosplayed as Adventure Time’s Marshall Lee!
 
-Ashley's mom actually got us into a real hospital the night before for an amazing Silent Hill photoshoot! I'll post photos up eventually.
+Ashley’s mom actually got us into a real hospital the night before for an amazing Silent Hill photoshoot! I’ll post photos up eventually.
 
 ::: row-triple
 
@@ -43,9 +43,9 @@ I also ended up with quite a few goodies -
 
 ![Artist Alley goodies](2013-07-19-goodies.jpg 'Artist Alley goodies')
 
-I'd been drooling over the Sailor Senshi print for months - since Animation on Display in February, actually - and I finally gave in and bought it! Such a beautiful print, and Sailor Saturn is right up front where she belongs. Love her so much.
+I’d been drooling over the Sailor Senshi print for months - since Animation on Display in February, actually - and I finally gave in and bought it! Such a beautiful print, and Sailor Saturn is right up front where she belongs. Love her so much.
 
-School has been as hectic as ever. I just completed Intro to Animation with a solid B+! I got an A- on both the final project and final exam. With all the hard work I put in and how difficult the class was, I'm satisfied with this grade.
+School has been as hectic as ever. I just completed Intro to Animation with a solid B+! I got an A- on both the final project and final exam. With all the hard work I put in and how difficult the class was, I’m satisfied with this grade.
 
 Some WIP shots -
 
@@ -78,11 +78,11 @@ Nick, Nathan, and I teamed up for the claymation. It started out with blowing up
 	<iframe style="aspect-ratio: 16 / 9; width: 100%; height: auto;" src="https://youtube.com/embed/esC3kLSeytI" width="800" height="450" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 </figure>
 
-For a look at my final animatic (draft), [click here](https://www.dropbox.com/s/bh31cxdme2e8jli/Gabrielle_W_Animatic.mov), and for my final. [click here](https://www.facebook.com/504790226/videos/10153049199150227/). Please don't mind the title - I literally stayed up until 11am the next morning to finish this and I wasn't thinking straight.
+For a look at my final animatic (draft), [click here](https://www.dropbox.com/s/bh31cxdme2e8jli/Gabrielle_W_Animatic.mov), and for my final. [click here](https://www.facebook.com/504790226/videos/10153049199150227/). Please don’t mind the title - I literally stayed up until 11am the next morning to finish this and I wasn’t thinking straight.
 
 Rushing through my updates so I can post this and sleep!
 
-I'm going to start an Etsy shop soon for friendship bracelets! I've been making them like crazy and I figured I might as well profit from it.
+I’m going to start an Etsy shop soon for friendship bracelets! I’ve been making them like crazy and I figured I might as well profit from it.
 
 ::: row-triple no-figcaption
 
@@ -102,7 +102,7 @@ I'm going to start an Etsy shop soon for friendship bracelets! I've been making 
 
 ![Friendship bracelet](2013-07-19-fb-7.jpg 'Friendship bracelet')
 
-Eeveelution pixel art I made in anticipation of a Pokemon friendship bracelet. Based off of [this post](http://croxasworld.tumblr.com/post/23236722570/via-albinoosh) - sorry I can't find the original!
+Eeveelution pixel art I made in anticipation of a Pokemon friendship bracelet. Based off of [this post](http://croxasworld.tumblr.com/post/23236722570/via-albinoosh) - sorry I can’t find the original!
 
 <figure aria-labelledby="2013-07-19-eeveelutions-caption">
 	<figcaption id="2013-07-19-eeveelutions-caption" aria-hidden="true">Pixel Eeveelutions</figcaption>
@@ -113,14 +113,14 @@ Eeveelution pixel art I made in anticipation of a Pokemon friendship bracelet. B
 
 Ordered new business cards (altered from the original mockup I created) and sunglasses and got them in the mail the same day!
 
-<div class="row-double">
+::: row-double
 
 ![Round sunglasses](2013-07-19-giant-vintage.jpg 'Round sunglasses')
 
 ![Business cards](2013-07-19-moo.jpg 'Business cards')
 
-</div>
+:::
 
-Last but not least, I've been working at a store called White House | Black Market near school. It's challenging, because sales associates are required to “wardrobe” rather than “sell” - but I'm actually enjoying myself somewhat. Plus, the clothes are amazing. I can feel my style changing again.
+Last but not least, I’ve been working at a store called White House | Black Market near school. It’s challenging, because sales associates are required to “wardrobe” rather than “sell” - but I’m actually enjoying myself somewhat. Plus, the clothes are amazing. I can feel my style changing again.
 
 That is all, good night. Or morning. Whichever you prefer.

@@ -39,7 +39,7 @@ module.exports = eleventyConfig => {
 	eleventyConfig.setLibrary("md", markdownLibrary);
 
 	eleventyConfig.addFilter("stripAttr", stripped => {
-		let removals = /<div class="lightbox-group" hidden>([\s\S]*?)<\/div>|<figure class="animation">([\s\S]*?)<\/figure>|<\/?a class="expand"[^>]*>|<\/?span[^>]*>|<\/?picture[^>]*>|<\/?source[^>]*>|<\/?div[^>]*>|<\/?script[^>]*>|\t|\r|\n/g;
+		let removals = /<div class="lightbox-group" hidden>([\s\S]*?)<\/div>|<\/?a class="expand"[^>]*>|<\/?span[^>]*>|<\/?picture[^>]*>|<\/?source[^>]*>|<\/?div[^>]*>|<\/?script[^>]*>|\t|\r|\n/g;
 		stripped = stripped.replace(removals, '');
 		stripped = stripped
 			.replace(/<\s*p .*?data-slug-hash="([^<]*)" data-default.*?>[^<]*<\s*a.*?>[^<]*<\/p>/g, '<iframe src="https://codepen.io/gabriellewee/embed/$1">')
@@ -108,7 +108,6 @@ module.exports = eleventyConfig => {
 						`;
 						post = post.replace(image[0], figure);
 					}
-
 				} else {
 					let newWidths;
 
@@ -132,7 +131,6 @@ module.exports = eleventyConfig => {
 						.resize({ fit: sharp.fit.inside })
 						.blur()
 						.toBuffer();
-
 					const base64Placeholder = `data:image/png;base64,${placeholder.toString("base64")}`;
 
 					let webpset;
@@ -204,7 +202,7 @@ module.exports = eleventyConfig => {
 		return name;
 	});
 
-	eleventyConfig.addShortcode('excerpt', async (post, option) => {
+	eleventyConfig.addNunjucksAsyncShortcode('excerpt', async (post, option) => {
 		if (!post.hasOwnProperty('templateContent')) {
 			console.warn('❌ Failed to extract excerpt: Document has no property `templateContent`.');
 			return;
@@ -214,34 +212,24 @@ module.exports = eleventyConfig => {
 		let content = post.templateContent;
 		let pCloseTag = '</p>';
 
+		let images = eleventyConfig.getFilter("images");
+
+		if (content.includes(excerptSeparator)) {
+			excerpt = content.substring(0, content.indexOf(excerptSeparator)).trim();
+			excerpt = await images(excerpt, option);
+		} else if (content.includes(pCloseTag)) {
+			excerpt = content.substring(0, content.indexOf(pCloseTag) + pCloseTag.length);
+			excerpt = await images(excerpt, option);
+		}
+
 		if(option === "lightbox") {
-			if (content.includes(excerptSeparator)) {
-				excerpt = content.substring(0, content.indexOf(excerptSeparator)).trim();
-				excerpt = eleventyConfig.getFilter("images")(excerpt, "lightbox");
-			}
+			excerpt = excerpt.replace(/<p>([\s\S]*?)<\/p>/g, '');
+		}
 
-			if (content.includes(pCloseTag)) {
-				excerpt = content.substring(0, content.indexOf(pCloseTag) + pCloseTag.length);
-				excerpt = eleventyConfig.getFilter("images")(excerpt, "lightbox");
-			}
-
-			if (excerpt != undefined) {
-				return excerpt;
-			} else {
-				return;
-			}
+		if (typeof excerpt !== 'undefined') {
+			return await excerpt;
 		} else {
-			if (content.includes(excerptSeparator)) {
-				excerpt = content.substring(0, content.indexOf(excerptSeparator)).trim();
-				excerpt = eleventyConfig.getFilter("images")(excerpt);
-			}
-
-			if (content.includes(pCloseTag)) {
-				excerpt = content.substring(0, content.indexOf(pCloseTag) + pCloseTag.length);
-				excerpt = eleventyConfig.getFilter("images")(excerpt);
-			}
-
-			return excerpt;
+			return await false;
 		}
 	});
 };

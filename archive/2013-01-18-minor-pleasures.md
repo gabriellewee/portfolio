@@ -9,7 +9,7 @@ Today was certainly one of those days. Sore throat, stuffy nose, coughing and sn
 
 ![Business card mockup](2013-01-18-mockup.png 'Business card mockup')
 
-The colors are so bright and cheerful - I'm thinking of switching up my blog theme colors to match. Hopefully I can find a place to die-cut these inexpensively. The fun part was the QR code - no matter how many times I scan it I can't get over how awesome that technology is!
+The colors are so bright and cheerful - I’m thinking of switching up my blog theme colors to match. Hopefully I can find a place to die-cut these inexpensively. The fun part was the QR code - no matter how many times I scan it I can’t get over how awesome that technology is!
 
 I just got yet another new pair of glasses. The blue pair from the last post broke at the hinges and I decided to replace it instead of going with just one pair. [Coastal.com](http://coastal.com) will send you your first pair of glasses for free - all you have to pay for is shipping. $12 glasses? Yes, please! The glasses came with a beautiful hard case, cleaning kit, and even a screwdriver with two different heads for fixing loose hinges.
 
@@ -23,7 +23,7 @@ I just got yet another new pair of glasses. The blue pair from the last post bro
 
 Shipping was quick - I ordered my glasses on January 3 and received them on January 11 - just one week and a day! The site had said to expect them by the 23rd, but they were way ahead of schedule.
 
-Overall I'm completely satisfied with the new glasses and hope they last a long time! A couple of quick shots with the front-facing iPad camera:
+Overall I’m completely satisfied with the new glasses and hope they last a long time! A couple of quick shots with the front-facing iPad camera:
 
 ::: row-double no-figcaption
 
@@ -33,7 +33,7 @@ Overall I'm completely satisfied with the new glasses and hope they last a long 
 
 :::
 
-I decided that for Comic Con this year, I'll be cosplaying as the human form of Luna, the black cat from Sailor Moon! Her costume is relatively easy to duplicate and isn't quite as flashy as the sailor suits.
+I decided that for Comic Con this year, I’ll be cosplaying as the human form of Luna, the black cat from Sailor Moon! Her costume is relatively easy to duplicate and isn’t quite as flashy as the sailor suits.
 
 ::: row-double
 
@@ -43,6 +43,6 @@ I decided that for Comic Con this year, I'll be cosplaying as the human form of 
 
 :::
 
-The only things I'd have to purchase specially would be the wig and perhaps the contacts. I'm in love with the idea already and Sarah will be helping me make the costume! More updates to come on this.
+The only things I’d have to purchase specially would be the wig and perhaps the contacts. I’m in love with the idea already and Sarah will be helping me make the costume! More updates to come on this.
 
-I'll be starting a new term next week, and will be having classes every day. Having only one class last term was nice, but I'm looking forward to being busy again!
+I’ll be starting a new term next week, and will be having classes every day. Having only one class last term was nice, but I’m looking forward to being busy again!

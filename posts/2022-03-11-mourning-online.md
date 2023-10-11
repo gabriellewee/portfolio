@@ -33,7 +33,7 @@ I miss Ngin Ngin a lot. I didn’t realize what a enormous rift her passing woul
 
 One of the things I never really thought about before she passed away was _mourning online_. I haven’t really had very many people close to me pass away in the recent years, and the few I knew of had some sort of social media presence where people could gather and share memories. My grandmother could barely operate a DVD player — there was no way she could manage Facebook or anything of the kind.
 
-My family ended up asking me to create a website memorializing her. I thought this would be a quick and easy task, but it's actually really difficult to find what I was looking for:
+My family ended up asking me to create a website memorializing her. I thought this would be a quick and easy task, but it’s actually really difficult to find what I was looking for:
 
 ::: highlight
 
@@ -159,7 +159,7 @@ The last part was setting up the HTML for the form submissions, with a couple of
 
 The last part of putting the site together was formatting and uploading my grandmother’s memorial video. This took the longest — I had to gather over 70 years worth of old photos, organize them, scan them, and put them into a video. I did this with [Apple’s scan utility](https://support.apple.com/guide/mac-help/scan-images-documents-a-scanner-mac-mh28032/mac), Photoshop (to clean them up a bit), and Final Cut Pro (for the video itself). You can substitute Final Cut Pro with iMovie or the video editing software of your choice.
 
-I chose not to host the video on YouTube or other sites, so the difficult part was getting the video to work on the website. I had to reduce the size to something that could load on a mobile device. I managed to get it down to about 40mb — which is still really large — but I figured it's the only large media on the site and it's not necessary to load it to use the site. I installed [FFmpeg](https://ffmpeg.org) and used it to reduce and convert my video via command line.
+I chose not to host the video on YouTube or other sites, so the difficult part was getting the video to work on the website. I had to reduce the size to something that could load on a mobile device. I managed to get it down to about 40mb — which is still really large — but I figured it’s the only large media on the site and it’s not necessary to load it to use the site. I installed [FFmpeg](https://ffmpeg.org) and used it to reduce and convert my video via command line.
 
 ```
 ffmpeg -y -i video.mov -c:v libx264 -crf 30 -profile:v high -movflags +faststart -s 1280:720 video.mp4

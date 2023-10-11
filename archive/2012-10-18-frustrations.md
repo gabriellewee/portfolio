@@ -9,6 +9,6 @@ On Sunday, I started work on a group project only to discover that over half the
 
 <!--more-->
 
-I still haven't caught up on sleep, and school/work/relationships have been seriously stressing me out. I'm afraid that everything is going to fall on me all at once and I won't be able to handle it.
+I still haven’t caught up on sleep, and school/work/relationships have been seriously stressing me out. I’m afraid that everything is going to fall on me all at once and I won’t be able to handle it.
 
-I had an idea I was all ready to write out and post, but honestly? I'm just too tired to deal with it.
+I had an idea I was all ready to write out and post, but honestly? I’m just too tired to deal with it.

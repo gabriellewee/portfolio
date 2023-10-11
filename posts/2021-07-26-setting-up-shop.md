@@ -2,7 +2,7 @@
 date: 2021-07-26
 title: Setting up shop.
 ---
-It's been a while since I've really done a proper update on this website. I'd like to talk through the last few years of this site, and what I did to make this current iteration happen.
+It’s been a while since I’ve really done a proper update on this website. I’d like to talk through the last few years of this site, and what I did to make this current iteration happen.
 
 ## 2017 version
 
@@ -22,19 +22,19 @@ I was (and still am) really proud of this portfolio. It was my first big project
 
 ![Website thumbnail icons I created for my portfolio](2021-07-26-portfolio-icons.png 'Website thumbnail icons I created for my portfolio')
 
-After this, I didn't update my portfolio for almost four years. I started working at [Apple](https://apple.com) in 2017 as a vendor and transitioned to full-time in 2018, so there really wasn't any need to change things up. I also really liked the design and couldn't think of how to change it.
+After this, I didn’t update my portfolio for almost four years. I started working at [Apple](https://apple.com) in 2017 as a vendor and transitioned to full-time in 2018, so there really wasn’t any need to change things up. I also really liked the design and couldn’t think of how to change it.
 
 ## 2020 version
 
-Finally, last year, during the height of the pandemic, I decided I needed to change things up. I still didn't have a clue what it should look like, but my work was badly outdated, so I decided to just make it more of a landing page with links to websites that I _was_ updating regularly.
+Finally, last year, during the height of the pandemic, I decided I needed to change things up. I still didn’t have a clue what it should look like, but my work was badly outdated, so I decided to just make it more of a landing page with links to websites that I _was_ updating regularly.
 
 ![Landing page version](2021-07-26-website-v4.png 'Landing page version')
 
 ## Current version
 
-This year is the year I decided to build a full website again. I really wanted something that not only highlighted my work as a developer but also included my hobbies and other non-work activities. I've also been strongly nostalgic for the whacky, quirky Geocities-type websites that used to exist before everything became smooth and clean and minimal. Lastly, I wanted my website to be completely functional without Javascript.
+This year is the year I decided to build a full website again. I really wanted something that not only highlighted my work as a developer but also included my hobbies and other non-work activities. I’ve also been strongly nostalgic for the whacky, quirky Geocities-type websites that used to exist before everything became smooth and clean and minimal. Lastly, I wanted my website to be completely functional without Javascript.
 
-I came up with a design that is busy but organized. Each section represents one of my interests and has its own styles and colors. There's also light and dark versions of this site. I chose [Faune](http://cnap.graphismeenfrance.fr/faune/en.html) as the main font because I really loved the unusual-looking italics.
+I came up with a design that is busy but organized. Each section represents one of my interests and has its own styles and colors. There’s also light and dark versions of this site. I chose [Faune](http://cnap.graphismeenfrance.fr/faune/en.html) as the main font because I really loved the unusual-looking italics.
 
 ![Current website](2021-07-26-current-website.png 'Current website')
 
@@ -42,7 +42,7 @@ This site is built with [Eleventy](http://11ty.dev) and is hosted on Netlify. I 
 
 ## No-JS
 
-Something I'm really proud of is the no-JS functionality. On my visual pages ([Photography](/photography/), [Graphic](/graphic/), and [Art](/art/)), I have a popup for each image that gives you more information when the image is clicked. The trigger is a checkbox with multiple labels.
+Something I’m really proud of is the no-JS functionality. On my visual pages ([Photography](/photography/), [Graphic](/graphic/), and [Art](/art/)), I have a popup for each image that gives you more information when the image is clicked. The trigger is a checkbox with multiple labels.
 
 <figure>
 	<figcaption>CSS-only photo info popup; doesn’t include Javascript.</figcaption>
@@ -83,7 +83,7 @@ Another no-JS component is the lightbox. I found this ingenious solution that us
 <p data-slug-hash="HCoqh" data-default-tab="result" class="codepen" data-height="375" data-theme-id="39292" data-user="gschier" style="height: 375px"><span>See the Pen <a href="https://codepen.io/gschier/pen/HCoqh">Pure CSS Lightbox</a> by Gregory Schier (<a href="https://codepen.io/gschier">@gschier</a>) on <a href="https://codepen.io">CodePen</a>.</span></p>
 </figure>
 
-I styled it with some basic CSS transitions and a loading icon, then added enhanced Javascript functionality on top to cycle through images and use keyboard shortcuts. The background is separate from the image so that it doesn't fade in and out when you use the arrow key to tab to another image.
+I styled it with some basic CSS transitions and a loading icon, then added enhanced Javascript functionality on top to cycle through images and use keyboard shortcuts. The background is separate from the image so that it doesn’t fade in and out when you use the arrow key to tab to another image.
 
 ![Click on this sunset photo to try out the lightbox](2021-07-26-home.jpg 'Click on this sunset photo to try out the lightbox')
 
@@ -103,7 +103,7 @@ eleventyConfig.addFilter("limit", (array, limit) => {
 
 ``` js
 eleventyConfig.addShortcode('excerpt', post => {
-	if (!post.hasOwnProperty('templateContent')) {
+	if (!post.hasOwnProperty(’templateContent')) {
 		console.warn('❌ Failed to extract excerpt: Document has no property `templateContent`.');
 		return;
 	}
@@ -126,7 +126,7 @@ eleventyConfig.addShortcode('excerpt', post => {
 
 ## Previous versions
 
-These days, I'm loath to lose any previous website content, even content that is no longer relevant or even embarrassing. I decided to upload an archive of as many versions of my website as possible. The only one I'm currently missing is the very first version that was built in Wordpress and hosted by Hostgator (I wasn't using Github for versioning at that time), but the posts are preserved in the next version. I'm even working on getting old posts from previous blogs (Xanga, Tumblr, etc) onto this blog.
+These days, I’m loath to lose any previous website content, even content that is no longer relevant or even embarrassing. I decided to upload an archive of as many versions of my website as possible. The only one I’m currently missing is the very first version that was built in Wordpress and hosted by Hostgator (I wasn’t using Github for versioning at that time), but the posts are preserved in the next version. I’m even working on getting old posts from previous blogs (Xanga, Tumblr, etc) onto this blog.
 
 1. [Version 1](/v1/)
 1. [Version 2](/v2/)
@@ -135,12 +135,12 @@ These days, I'm loath to lose any previous website content, even content that is
 
 ## Blog
 
-Last but not least, I have this blog. The layout I'm using for the other pages wasn't really conducive to a blog format, so I created an entirely separate set of styles. One of the things I really love about this site is the font, [Recursive](https://www.recursive.design). It's a variable font that I'm using for every single part of the blog site, including the code snippets. You can even animate between the proportional and monospace versions!
+Last but not least, I have this blog. The layout I’m using for the other pages wasn’t really conducive to a blog format, so I created an entirely separate set of styles. One of the things I really love about this site is the font, [Recursive](https://www.recursive.design). It’s a variable font that I’m using for every single part of the blog site, including the code snippets. You can even animate between the proportional and monospace versions!
 
-## That's all, folks.
+## That’s all, folks.
 
-It's a bit messy, and I have more direct commits than I should, but if you want to check out the code for this website, you can [view the repo](https://github.com/gabriellewee/portfolio).
+It’s a bit messy, and I have more direct commits than I should, but if you want to check out the code for this website, you can [view the repo](https://github.com/gabriellewee/portfolio).
 
-I keep making small changes here and there, but the heavy lifting is done. I'm hoping to write here more regularly in the future!
+I keep making small changes here and there, but the heavy lifting is done. I’m hoping to write here more regularly in the future!
 
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
