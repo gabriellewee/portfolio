@@ -1,5 +1,4 @@
 const Image = require("@11ty/eleventy-img");
-const sharp = require("sharp");
 
 module.exports = eleventyConfig => {
 	eleventyConfig.addNunjucksAsyncShortcode("stats", async (src, type) => {
@@ -54,17 +53,11 @@ module.exports = eleventyConfig => {
 			urlPath: `/static/images/external`,
 			outputDir: `./_site/static/images/external`,
 		});
-
-		const placeholder = await sharp(stats[file][0].outputPath)
-			.resize({ fit: sharp.fit.inside })
-			.blur()
-			.toBuffer();
-		const base64Placeholder = `data:image/png;base64,${placeholder.toString("base64")}`;
 		
 		let result = `
 			<picture>
 				<source type="image/webp" srcset="${stats["webp"][0].url}, ${stats["webp"][1].url} 2x">
-				<img loading=${loading} decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${stats[file][0].url}, ${stats[file][1].url} 2x" width="${stats["webp"][0].width}" height="${stats["webp"][0].height}">
+				<img loading=${loading} decoding="async" alt="${alt}" src="${stats["webp"][0].url}" srcset="${stats[file][0].url}, ${stats[file][1].url} 2x" width="${stats["webp"][0].width}" height="${stats["webp"][0].height}">
 			</picture>
 		`;
 
@@ -95,13 +88,6 @@ module.exports = eleventyConfig => {
 
 		let lowest = stats[file][0];
 		let basic = stats[file][1];
-
-		const placeholder = await sharp(lowest.outputPath)
-			.resize({ fit: sharp.fit.inside })
-			.blur()
-			.toBuffer();
-
-		const base64Placeholder = `data:image/png;base64,${placeholder.toString("base64")}`;
 		
 		let webpset;
 		let regset;
@@ -129,14 +115,14 @@ module.exports = eleventyConfig => {
 		if (type === "default") {
 			if (stats["webp"][4]) {
 				source = `<source type="image/webp" srcset="${webpset}" sizes="${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px, (min-width: 1549px) ${stats["webp"][4].width}px">`;
-				img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" sizes="${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px, (min-width: 1549px) ${stats["webp"][4].width}px" width="${basic.width}" height="${basic.height}">`;
+				img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${stats["webp"][0].url}" srcset="${regset}" sizes="${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px, (min-width: 1549px) ${stats["webp"][4].width}px" width="${basic.width}" height="${basic.height}">`;
 			} else {
 				source = `<source type="image/webp" srcset="${webpset}" sizes="${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px">`;
-				img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" sizes="${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px" width="${basic.width}" height="${basic.height}">`;
+				img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${stats["webp"][0].url}" srcset="${regset}" sizes="${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px" width="${basic.width}" height="${basic.height}">`;
 			}
 		} else if (type === "thumbnail" || type === "screen") {
 			source = `<source type="image/webp" srcset="${webpset}">`;
-			img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" width="${basic.width}" height="${basic.height}">`;
+			img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${stats["webp"][0].url}" srcset="${regset}" width="${basic.width}" height="${basic.height}">`;
 		}
 
 		let picture = `<picture>${source}${img}</picture>`;

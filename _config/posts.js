@@ -6,7 +6,6 @@ const markdownItContainer = require("markdown-it-container");
 const markdownItAttrs = require("markdown-it-attrs");
 const string = require("string");
 const Image = require("@11ty/eleventy-img");
-const sharp = require("sharp");
 
 module.exports = eleventyConfig => {
 	eleventyConfig.addPlugin(pluginRss);
@@ -127,12 +126,6 @@ module.exports = eleventyConfig => {
 					let lowest = stats[file][0];
 					let basic = stats[file][1];
 
-					const placeholder = await sharp(lowest.outputPath)
-						.resize({ fit: sharp.fit.inside })
-						.blur()
-						.toBuffer();
-					const base64Placeholder = `data:image/png;base64,${placeholder.toString("base64")}`;
-
 					let webpset;
 					let regset;
 					let source;
@@ -144,7 +137,7 @@ module.exports = eleventyConfig => {
 							webpset = `${stats["webp"][1].url}, ${stats["webp"][2].url} 2x`;
 							regset = `${stats[file][1].url}, ${stats[file][2].url} 2x`;
 							source = `<source type="image/webp" srcset="${webpset}">`;
-							img = `<img loading="lazy" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" width="${basic.width}" height="${basic.height}">`;
+							img = `<img loading="lazy" decoding="async" alt="${alt}" src="${stats["webp"][0].url}" srcset="${regset}" width="${basic.width}" height="${basic.height}">`;
 
 							let picture = `<picture>${source}${img}</picture>`;
 							let figure = `
@@ -159,17 +152,17 @@ module.exports = eleventyConfig => {
 							webpset = `${stats["webp"][4].srcset}, ${stats["webp"][3].srcset}, ${stats["webp"][2].srcset}, ${stats["webp"][1].srcset}`;
 							regset = `${stats[file][4].srcset}, ${stats[file][3].srcset}, ${stats[file][2].srcset}, ${stats[file][1].srcset}`;
 							source = `<source type="image/webp" srcset="${webpset}" sizes="${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px, (min-width: 1549px) ${stats["webp"][4].width}px">`;
-							img = `<img loading="lazy" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" sizes="${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px, (min-width: 1549px) ${stats["webp"][4].width}px" width="${basic.width}" height="${basic.height}">`;
+							img = `<img loading="lazy" decoding="async" alt="${alt}" src="${stats["webp"][0].url}" srcset="${regset}" sizes="${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px, (min-width: 1549px) ${stats["webp"][4].width}px" width="${basic.width}" height="${basic.height}">`;
 						} else if(stats["webp"][3]) {
 							webpset = `${stats["webp"][3].srcset}, ${stats["webp"][2].srcset}, ${stats["webp"][1].srcset}`;
 							regset = `${stats[file][3].srcset}, ${stats[file][2].srcset}, ${stats[file][1].srcset}`;
 							source = `<source type="image/webp" srcset="${webpset}" sizes="${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px">`;
-							img = `<img loading="lazy" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" sizes="${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px" width="${basic.width}" height="${basic.height}">`;
+							img = `<img loading="lazy" decoding="async" alt="${alt}" src="${stats["webp"][0].url}" srcset="${regset}" sizes="${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px" width="${basic.width}" height="${basic.height}">`;
 						} else {
 							webpset = `${stats["webp"][1].url}`;
 							regset = `${stats[file][1].url}`;
 							source = `<source type="image/webp" srcset="${webpset}">`;
-							img = `<img loading="lazy" decoding="async" alt="${alt}" src="${base64Placeholder}" srcset="${regset}" width="${basic.width}" height="${basic.height}">`;
+							img = `<img loading="lazy" decoding="async" alt="${alt}" src="${stats["webp"][0].url}" srcset="${regset}" width="${basic.width}" height="${basic.height}">`;
 						}
 
 						let picture = `<picture>${source}${img}</picture>`;
