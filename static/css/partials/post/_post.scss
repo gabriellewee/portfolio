@@ -543,13 +543,15 @@
 	}
 
 	.codepen {
+		@include font-weight-width(700, 115);
 		@include clip-path-edges(2px);
 		display: flex;
 		align-items: center;
 		align-content: center;
 		justify-content: center;
 		padding: var(--p);
-		font-weight: 700;
+		height: var(--height);
+		line-height: 1.4;
 		@include theme(light, 2) {
 			background-color: hsla(var(--color-primary-hsl), .1);
 		}
@@ -558,7 +560,8 @@
 		}
 		span {
 			display: block;
-			max-width: 400px;
+			text-align: center;
+			max-width: 500px;
 		}
 	}
 

@@ -1,6 +1,7 @@
 ---
 date: 2023-01-30
 title: New year, new design.
+code: true
 ---
 I think I force myself to keep up with all the new things happening in web development by making myself redesign my site every couple of years or so. I never really consciously sit down to make comps and figure out all the details. The process is really more of me noodling on an idea I’ve had for a while until it crystallizes into something I can use.
 
@@ -142,7 +143,8 @@ module.exports = eleventyConfig => {
 
 Each code post has an iframe, a link to the original CodePen pen, and a reload/replay button that refreshes the frame. I wanted to style my code posts independent of the CodePen UI, so the frame source code is hosted on my own site. Each frame source also has its own front matter, just like my text posts, so that it can be included on the front page.
 
-<div class="row-double">
+::: row-double
+
 <figure>
 <figcaption>My no-UI embed for <a href="https://codepen.io/gabriellewee/pen/zYGxNKa" target="_blank">Four-Quadrant CSS-Only Gradient</a></figcaption>
 <iframe src="https://gabriellew.ee/code/quadrant/" width="600" height="400" title="Four-Quadrant CSS-Only Gradient" loading="lazy"></iframe>
@@ -150,14 +152,14 @@ Each code post has an iframe, a link to the original CodePen pen, and a reload/r
 
 <figure>
 <figcaption>CodePen embed for <a href="https://codepen.io/gabriellewee/pen/zYGxNKa" target="_blank">Four-Quadrant CSS-Only Gradient</a></figcaption>
-<p class="codepen" style="height: 400px;" data-height="400" data-theme-id="39292" data-default-tab="result" data-slug-hash="zYGxNKa" data-user="gabriellewee">
+<p class="codepen" style="--height: 400px;" data-height="400" data-theme-id="39292" data-default-tab="result" data-slug-hash="zYGxNKa" data-user="gabriellewee">
   <span>See the Pen <a href="https://codepen.io/gabriellewee/pen/zYGxNKa">
   Four-Quadrant CSS-Only Gradient</a> by Gabrielle Wee (<a href="https://codepen.io/gabriellewee">@gabriellewee</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 </figure>
-</div>
+
+:::
 
 ## Social media posts
 

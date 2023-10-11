@@ -1,6 +1,7 @@
 ---
 date: 2021-07-26
 title: Setting up shop.
+code: true
 ---
 It’s been a while since I’ve really done a proper update on this website. I’d like to talk through the last few years of this site, and what I did to make this current iteration happen.
 
@@ -80,7 +81,7 @@ Another no-JS component is the lightbox. I found this ingenious solution that us
 
 <figure>
 <figcaption>Pure CSS Lightbox by <a href="https://codepen.io/gschier">Gregory Schier</a></figcaption>
-<p data-slug-hash="HCoqh" data-default-tab="result" class="codepen" data-height="375" data-theme-id="39292" data-user="gschier" style="height: 375px"><span>See the Pen <a href="https://codepen.io/gschier/pen/HCoqh">Pure CSS Lightbox</a> by Gregory Schier (<a href="https://codepen.io/gschier">@gschier</a>) on <a href="https://codepen.io">CodePen</a>.</span></p>
+<p class="codepen" style="--height: 375px" data-slug-hash="HCoqh" data-default-tab="result" data-height="375" data-theme-id="39292" data-user="gschier"><span>See the Pen <a href="https://codepen.io/gschier/pen/HCoqh">Pure CSS Lightbox</a> by Gregory Schier (<a href="https://codepen.io/gschier">@gschier</a>) on <a href="https://codepen.io">CodePen</a>.</span></p>
 </figure>
 
 I styled it with some basic CSS transitions and a loading icon, then added enhanced Javascript functionality on top to cycle through images and use keyboard shortcuts. The background is separate from the image so that it doesn’t fade in and out when you use the arrow key to tab to another image.
@@ -142,5 +143,3 @@ Last but not least, I have this blog. The layout I’m using for the other pages
 It’s a bit messy, and I have more direct commits than I should, but if you want to check out the code for this website, you can [view the repo](https://github.com/gabriellewee/portfolio).
 
 I keep making small changes here and there, but the heavy lifting is done. I’m hoping to write here more regularly in the future!
-
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
