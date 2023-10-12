@@ -1454,8 +1454,8 @@ $windows: welcome, taskbar, printers, control-panel, computer, notepad, explorer
 			top: 0 !important;
 			.window-inside {
 				max-width: calc(100vw - 12px);
-				width: calc(100vw - 12px);
-				height: calc(100vh - 44px - 12px);
+				width: calc(100vw - 12px) !important;
+				height: calc(100vh - 44px - 12px) !important;
 				.maximize {
 					&:before, &:after {
 						width: 9px;
