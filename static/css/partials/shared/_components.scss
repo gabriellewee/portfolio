@@ -2,8 +2,8 @@
 @import 'lightbox';
 @import 'memoji';
 @import 'button';
-@import 'colors';
 @import 'contact';
+@import 'colors';
 
 .title {
 	@include font-weight-width(900, 125);
@@ -52,10 +52,12 @@
 	display: inline-flex;
 	align-items: center;
 	position: relative;
+	width: fit-content;
 	&:before, &:after {
 		opacity: 0;
 		visibility: hidden;
 		display: block;
+		position: absolute;
 		transition: .1s ease-out;
 		@include theme(light, 2) {
 			background-color: var(--color-primary);
@@ -66,22 +68,13 @@
 	}
 	&:before {
 		content: "";
-		position: absolute;
-		top: calc(50% - 5px);
-		left: 100%;
-		translate: calc(var(--p)/2) 0;
-		width: 10px;
-		height: 10px;
-		border-bottom-left-radius: 2px;
 		rotate: 45deg;
 	}
 	&:after {
 		@include font-weight-width(600, 100);
-		content: "Copied";
+		content: "";
 		color: white;
-		position: absolute;
-		left: 100%;
-		translate: calc(var(--p)/2 + 4px) 0;
+		width: fit-content;
 		padding: 6px 8px;
 		border-radius: 2px;
 		font-size: .75rem;
@@ -91,6 +84,9 @@
 		&:before, &:after {
 			opacity: 1;
 			visibility: visible;
+		}
+		&:after {
+			content: "Copied";
 		}
 	}
 }

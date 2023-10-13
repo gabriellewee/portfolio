@@ -171,24 +171,13 @@
 			}
 			span {
 				@include font-weight-width(600, 100);
-				width: fit-content;
-				display: inline-flex;
-				align-items: center;
-				align-content: center;
-				position: relative;
 				font-size: 0.875rem;
 				opacity: 0.6;
 				&:before, &:after {
-					opacity: 0;
-					display: block;
-					transition: .1s ease-out;
 					background-color: black;
 				}
 				&:before {
 					clip-path: polygon(0 0, 0 100%, 100% 100%);
-					rotate: 45deg;
-					content: "";
-					position: absolute;
 					top: 4px;
 					right: -16px;
 					z-index: -1;
@@ -198,20 +187,9 @@
 				}
 				&:after {
 					@include font-weight-width(600, 100);
-					content: "Copied";
-					position: absolute;
-					right: -69px;
+					left: calc(100% + 12px);
 					padding: 4px 6px;
 					border-radius: 3px;
-					font-size: .75rem;
-					text-transform: uppercase;
-				}
-			}
-			&.copied {
-				span {
-					&:before, &:after {
-						opacity: 1;
-					}
 				}
 			}
 		}

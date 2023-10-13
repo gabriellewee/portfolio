@@ -240,7 +240,7 @@ const popup = ((containers = Array.from(document.querySelectorAll(".popup"))) =>
 		});
 
 		if (container.hasAttribute("data-copy")) {
-			let copyElem = container.querySelector(".username");
+			let copyElem = container.querySelector(".username-input");
 			triggers.forEach(trigger =>{
 				trigger.addEventListener("keydown",  e => {
 					if (e.key === "Enter") {
@@ -264,7 +264,7 @@ const popup = ((containers = Array.from(document.querySelectorAll(".popup"))) =>
 
 			clipboard.on("success", e => {
 				let copy = container.querySelector(e.trigger.getAttribute("data-clipboard-target"));
-				copy.parentNode.classList.add("copied");
+				copyElem.classList.add("copied");
 				e.clearSelection();
 			});
 			copyButton.addEventListener("keydown", e => {

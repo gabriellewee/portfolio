@@ -192,6 +192,20 @@
 				}
 			}
 		}
+		.clip-container {
+			&:before {
+				top: calc(50% - 5px);
+				left: 100%;
+				translate: calc(var(--p)/2) 0;
+				width: 10px;
+				height: 10px;
+				border-bottom-left-radius: 2px;
+			}
+			&:after {
+				left: 100%;
+				translate: calc(var(--p)/2 + 4px) 0;
+			}
+		}
 	}
 }
 
