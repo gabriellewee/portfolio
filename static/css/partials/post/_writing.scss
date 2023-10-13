@@ -149,7 +149,7 @@
 							@include gradient-text(var(--color-iron-12-hsl), var(--color-iron-1-hsl), true);
 						}
 						@include theme(dark, 2) {
-							@include gradient-text(var(--color-iron-12-hsl), var(--color-iron-10-hsl), true);
+							@include gradient-text(var(--color-iron-white-80-hsl), var(--color-slate-hsl), true);
 						}
 					}
 					&:after {
@@ -157,7 +157,7 @@
 							color: var(--color-iron-1);
 						}
 						@include theme(dark, 2) {
-							color: var(--color-iron-white-80);
+							color: var(--color-slate);
 						}
 					}
 				}
