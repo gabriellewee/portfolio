@@ -314,7 +314,6 @@ $violet: #D18FF0;
 	border-radius: $radius;
 	overflow: hidden;
 	@include clip-path {
-		-webkit-clip-path: inset(0 round $radius);
 		clip-path: inset(0 round $radius);
 	}
 }
