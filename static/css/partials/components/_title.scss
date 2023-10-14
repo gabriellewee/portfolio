@@ -1,0 +1,42 @@
+.title {
+	@include font-weight-width(900, 125);
+	font-size: clamp(1.5rem, 3vw, 2.5rem);
+	@media (prefers-reduced-motion: no-preference) {
+		opacity: 0;
+	}
+	.apple {
+		display: inline-block;
+		span {
+			&:before {
+				content: " ";
+			}
+		}
+		svg {
+			position: relative;
+			top: 2px;
+			width: clamp(1.3rem, 3vw, 2.3rem);
+			height: clamp(1.3rem, 3vw, 2.3rem);
+		}
+	}
+}
+
+.cursor {
+	@media (prefers-reduced-motion: no-preference) {
+		opacity: 0;
+	}
+	@media (prefers-reduced-motion) {
+		display: none;
+	}
+	&:after {
+		content: "_";
+		display: inline-block;
+	}
+	&.animated {
+		&:after {
+			animation: blink 1s cubic-bezier(1,0,0,1) infinite forwards;
+		}
+	}
+}
+@keyframes blink {
+	from { opacity: 1 } to { opacity: 0 }
+}

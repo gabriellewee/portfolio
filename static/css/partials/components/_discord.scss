@@ -1,0 +1,222 @@
+.discord-popup {
+	.popup-button {
+		width: 127px;
+		height: 36px;
+		@include viewport($desktop-small) {
+			width: 145px;
+			height: 38px;
+		}
+	}
+	.popup-label {
+		&:after {
+			background-color: #EECAC1;
+			bottom: -16px;
+			width: 16px;
+			height: 16px;
+			border-top-left-radius: 2px;
+			@media (prefers-reduced-motion: no-preference) {
+				translate: 0 calc(var(--p)*2);
+			}
+		}
+	}
+	.popup-window {
+		color: white;
+		margin-top: calc(var(--p)/2);
+		border-radius: 3px;
+		.inside {
+			@include border-radius(3px);
+			@include blur(10px, null, .9, .8, #18191C);
+			display: block;
+			position: relative;
+			width: 100%;
+			min-height: 250px;
+			overflow: hidden;
+		}
+		.header {
+			position: relative;
+			display: block;
+			height: 60px;
+			&:before {
+				content: "";
+				display: block;
+				width: 100%;
+				height: 100%;
+				background-color: #EECAC1;
+				mask: url('data:image/svg+xml;utf8,<svg width="600px" height="60px" viewBox="0 0 600 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M600,0 L600,60 L88,60 L88,60 C88,39.0131795 70.9868205,22 50,22 C29.0131795,22 12,39.0131795 12,60 L0,60 L0,0 L600,0 Z"></path></svg>') no-repeat;
+			}
+		}
+		.avatar {
+			@include background-image(avatars/discord, jpg);
+			position: absolute;
+			bottom: -30px;
+			left: calc(var(--p) + 8px);
+			border-radius: 100%;
+			overflow: hidden;
+			width: 60px;
+			height: 60px;
+		}
+		.username {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			position: relative;
+			margin-top: 38px;
+			margin-left: var(--p);
+			h3 {
+				width: fit-content;
+				margin-bottom: calc(var(--p)/3);
+				font-size: 1.75rem;
+			}
+			span {
+				@include font-weight-width(600, 100);
+				font-size: 0.875rem;
+				opacity: 0.6;
+				&:before, &:after {
+					background-color: black;
+				}
+				&:before {
+					clip-path: polygon(0 0, 0 100%, 100% 100%);
+					top: 4px;
+					right: -16px;
+					z-index: -1;
+					width: 8px;
+					height: 8px;
+					border-bottom-left-radius: 2px;
+				}
+				&:after {
+					@include font-weight-width(600, 100);
+					left: calc(100% + 12px);
+					padding: 4px 6px;
+					border-radius: 3px;
+				}
+			}
+		}
+		.description {
+			display: block;
+			border-top: 1px solid hsla(var(--color-white-hsl), .1);
+			margin-top: 16px;
+			padding: 16px;
+			@include contrast(both, 2) {
+				border-color: white;
+			}
+		}
+		.about-header {
+			@include font-weight-width(600, 100);
+			display: block;
+			margin-bottom: 8px;
+			color: #b9bbbe;
+			font-size: .75rem;
+			text-transform: uppercase;
+		}
+		.about-content {
+			@include border-radius(3px);
+			display: inline-block;
+			padding: 2px 4px;
+			background-color: #2f3136;
+			font-family: var(--font-mono);
+			font-size: .75rem;
+			line-height: 1.5;
+			white-space: pre-wrap;
+		}
+		.links {
+			border-top: 1px solid hsla(var(--color-white-hsl), .1);
+			margin-top: 16px;
+			padding-top: 16px;
+			@include contrast(both, 2) {
+				border-color: white;
+			}
+			@include viewport(450px) {
+				display: flex;
+				justify-content: space-between;
+			}
+			li {
+				width: 100%;
+				&:last-child {
+					margin-top: 16px;
+					@include viewport(450px) {
+						margin-top: 0;
+					}
+				}
+				@include viewport(450px) {
+					width: calc(50% - 8px);
+				}
+			}
+			a, button {
+				@include font-weight-width(600, 100);
+				transition: .1s ease-out;
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				align-content: center;
+				justify-content: space-between;
+				appearance: none;
+				width: 100%;
+				margin: 0;
+				padding: 8px;
+				border-radius: 3px;
+				border: 1px solid hsla(var(--color-white-hsl), .1);
+				background: none;
+				color: white;
+				font-size: 1rem;
+				text-align: left;
+				@include contrast(both, 2) {
+					border-color: white;
+				}
+				span span {
+					display: none;
+				}
+				&:after {
+					content: "";
+					display: block;
+					width: 20px;
+					height: 20px;
+					opacity: .8;
+					background-position: center;
+					background-size: 20px 20px;
+				}
+				&:hover, &:focus {
+					background-color: hsla(var(--color-white-hsl), .1);
+					border-color: transparent;
+					@include contrast(both, 2) {
+						border-color: white;
+					}
+					&:after {
+						opacity: 1;
+					}
+				}
+				&:focus-visible {
+					@include focus-shadow;
+				}
+				&:active {
+					background-color: #18191C;
+				}
+			}
+			a {
+				&:after {
+					background-image: url(/static/images/svg/icons/external.svg);
+				}
+			}
+			button {
+				&:after {
+					background-image: url(/static/images/svg/icons/copy.svg);
+				}
+			}
+			@media (hover: hover) {
+				.touch {
+					display: none;
+				}
+				.no-touch {
+					display: block;
+				}
+			}
+			@media (hover: none) {
+				.touch {
+					display: block;
+				}
+				.no-touch {
+					display: none;
+				}
+			}
+		}
+	}
+}

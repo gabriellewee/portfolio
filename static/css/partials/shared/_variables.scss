@@ -44,6 +44,7 @@
 	--color-mauve-hsl:#{hexToHSL($mauve)};
 
 	--color-slate:#{$slate};
+	--color-slate-iron:#{mix($slate, $iron)};
 	--color-slate-5:#{darken($slate, 5%)};
 	--color-slate-hsl:#{hexToHSL($slate)};
 

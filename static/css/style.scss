@@ -1,13 +1,23 @@
+// utilities
 @import 'partials/shared/utilities';
 @import 'partials/shared/variables';
 @import 'partials/shared/reset';
 @import 'partials/shared/core';
 
-@import 'partials/shared/components';
+// components
+@import 'partials/components/popup';
+@import 'partials/components/button';
+@import 'partials/components/toggle';
+@import 'partials/components/accessibility';
+@import 'partials/components/memoji';
+@import 'partials/components/contact';
+@import 'partials/components/lightbox';
+@import 'partials/shared/colors';
 @import 'partials/shared/navigation';
-@import 'partials/post/mentions';
 
+// posts
 @import 'partials/post/post';
+@import 'partials/post/mentions';
 
 .post-writing {
 	@import 'partials/post/writing';

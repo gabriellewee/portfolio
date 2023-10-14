@@ -1,0 +1,43 @@
+.toggle {
+	display: block;
+	position: relative;
+	height: calc(var(--p)*2);
+	width: calc(var(--p)*3.5);
+	background: var(--color-slate-iron);
+	border-radius: calc(var(--p)*2);
+	margin-right: var(--p);
+	padding: calc(var(--p)/4);
+	&:before {
+		@include contrast(both, 2) {
+			content: "";
+			display: block;
+			position: absolute;
+			z-index: -1;
+			top: -1px;
+			left: -1px;
+			width: calc(100% + 2px);
+			height: calc(100% + 2px);
+			background-color: white;
+			border-radius: calc(var(--p)*3);
+		}
+	}
+	&:after {
+		transition: translate .3s ease-out;
+		content: "";
+		display: block;
+		width: auto;
+		height: 100%;
+		aspect-ratio: 1 / 1;
+		border-radius: 100%;
+		background-color: white;
+	}
+	*:focus-visible & {
+		outline: calc(var(--p)/4) solid var(--color-blush);
+	}
+	&.active {
+		background-color: var(--color-mint);
+		&:after {
+			translate: 100% 0;
+		}
+	}
+}

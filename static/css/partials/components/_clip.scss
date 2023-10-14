@@ -1,0 +1,42 @@
+.clip-container {
+	display: inline-flex;
+	align-items: center;
+	position: relative;
+	width: fit-content;
+	&:before, &:after {
+		opacity: 0;
+		visibility: hidden;
+		display: block;
+		position: absolute;
+		transition: .1s ease-out;
+		@include theme(light, 2) {
+			background-color: var(--color-primary);
+		}
+		@include theme(dark, 2) {
+			background-color: var(--color-iron-8);
+		}
+	}
+	&:before {
+		content: "";
+		rotate: 45deg;
+	}
+	&:after {
+		@include font-weight-width(600, 100);
+		content: "";
+		color: white;
+		width: fit-content;
+		padding: 6px 8px;
+		border-radius: 2px;
+		font-size: .75rem;
+		text-transform: uppercase;
+	}
+	&.copied {
+		&:before, &:after {
+			opacity: 1;
+			visibility: visible;
+		}
+		&:after {
+			content: "Copied";
+		}
+	}
+}

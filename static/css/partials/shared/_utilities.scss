@@ -357,9 +357,11 @@ $violet: #D18FF0;
 	}
 }
 
-@mixin focus-shadow($color: var(--color-focus), $inset: null) {
-	border-radius: 1px;
-	box-shadow: $inset 0 0 0 calc(var(--p)/4) $color;
+@mixin focus-shadow($color: var(--color-focus), $radius: 1px) {
+	@if $radius {
+		border-radius: $radius;
+	}
+	box-shadow: 0 0 0 calc(var(--p)/4) $color;
 }
 
 @mixin svg-path {

@@ -1,0 +1,132 @@
+$options: color, contrast, transparency, load;
+@each $option in $options {
+	#option-#{$option}:checked ~ .top label[for="option-#{$option}"] {
+		.toggle {
+			background-color: var(--color-mint);
+			&:after {
+				translate: 100% 0;
+			}
+		}
+	}
+}
+.option {
+	@include hide;
+}
+
+.accessibility-popup {
+	position: absolute;
+	right: 0;
+	@include viewport(mobile) {
+		position: relative;
+		right: unset;
+	}
+	.popup-button {
+		pointer-events: none;
+		width: 179px;
+		height: 43px;
+	}
+	.popup-button:focus, .popup-button:focus-visible, .popup-button:active {
+		pointer-events: unset;
+		~ .popup-label {
+			z-index: unset;
+			&, .button:before {
+				opacity: 1;
+			}
+		}
+	}
+	.popup-button:checked {
+		pointer-events: unset;
+		~ .popup-label {
+			z-index: unset;
+			opacity: 1;
+		}
+	}
+	.popup-label:after, .popup-window .inside {
+		@include blur(10px, "var(--color-iron-12-hsl)", .9, .8);
+	}
+	.popup-label {
+		z-index: -1;
+		opacity: 0;
+		&:after {
+			bottom: -24px;
+			width: 16px;
+			height: 16px;
+			border-top-left-radius: 2px;
+			@media (prefers-reduced-motion: no-preference) {
+				translate: 0 calc(var(--p)*2);
+			}
+		}
+		.button:before {
+			@include theme(light, 2) {
+				background-color: var(--color-mauve-iron);
+			}
+			@include theme(dark, 2) {
+				background-color: var(--color-blush);
+			}
+		}
+	}
+	.popup-window {
+		right: 0;
+		left: unset;
+		max-width: 360px;
+		color: white;
+		margin-top: 16px;
+		border-radius: 3px;
+		.inside {
+			@include border-radius(3px);
+			display: block;
+			position: relative;
+			width: 100%;
+			overflow: hidden;
+		}
+		ul {
+			list-style: none;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: flex-end;
+			padding: var(--p);
+		}
+		li {
+			@include font-weight-width(500, 115);
+			width: 100%;
+			padding: var(--p);
+		}
+		.option-no-js {
+			.js & {
+				display: none;
+			}
+		}
+		.option-js {
+			.no-js & {
+				display: none;
+			}
+		}
+		p {
+			line-height: 1.3;
+		}
+		.option-label {
+			cursor: pointer;
+			display: inline-flex;
+			align-items: flex-start;
+			align-content: center;
+			justify-content: flex-start;
+			font-size: 1.25rem;
+			line-height: calc(var(--p)*2);
+		}
+		.has-button {
+			@include viewport($iphone) {
+				width: 50%;
+			}
+		}
+		.button {
+			display: inline-block;
+			text-align: center;
+			width: 100%;
+		}
+	}
+	.popup-button:checked {
+		+ .popup-label:after {
+			rotate: 45deg;
+		}
+	}
+}

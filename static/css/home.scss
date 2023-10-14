@@ -1,4 +1,10 @@
+// utilities
 @import 'partials/shared/utilities';
+
+// components
+@import 'partials/components/discord';
+@import 'partials/components/clip';
+@import 'partials/components/title';
 
 .page-home {
 	.contact-sites, .contact-messages {
