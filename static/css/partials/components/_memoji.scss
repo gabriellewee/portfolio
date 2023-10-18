@@ -113,8 +113,8 @@
 			}
 			~ .text.message {
 				@media (prefers-reduced-motion: no-preference) {
-					opacity: .3;
-					translate: 0 calc(-100% - 5px);
+					opacity: .3 !important;
+					translate: 0 calc(-100% - 5px) !important;
 				}
 				@media (prefers-reduced-motion: reduce) {
 					opacity: 0;
