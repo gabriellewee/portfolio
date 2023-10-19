@@ -111,7 +111,7 @@
 					translate: 0 -50%;
 				}
 			}
-			~ .text.message {
+			~ .text.message:not(.hidden) {
 				@media (prefers-reduced-motion: no-preference) {
 					opacity: .3 !important;
 					translate: 0 calc(-100% - 5px) !important;

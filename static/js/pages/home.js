@@ -1,10 +1,11 @@
 let key = document.body.classList[0].slice(5);
 let enter = gsap.timeline({ paused: true });
 let text = document.querySelector(".text");
+let message = document.querySelector(".message");
 let posts = Array.from(document.querySelectorAll(".post-animate"));
 posts.push(document.querySelector(".bottom"));
 
-enter.fromTo(".message", {
+enter.fromTo(message, {
 	opacity: 0,
 	y: "100%"
 }, {
@@ -36,11 +37,14 @@ enter.from('.apple', {
 	ease: "none"
 });
 enter.set('.cursor', { className: 'cursor animated' });
-enter.to('.message', {
+enter.to(message, {
 	duration: .2,
 	opacity: 0,
 	y: "-100%",
-	ease: "power1.out"
+	ease: "power1.out",
+	onComplete() {
+		message.classList.add("hidden");
+	}
 });
 enter.fromTo(".contact-sites", {
 	opacity: 0,
