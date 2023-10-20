@@ -56,14 +56,6 @@ $options: color, contrast, transparency, load;
 				translate: 0 calc(var(--p)*2);
 			}
 		}
-		.button:before {
-			@include theme(light, 2) {
-				background-color: var(--color-mauve-iron);
-			}
-			@include theme(dark, 2) {
-				background-color: var(--color-blush);
-			}
-		}
 	}
 	.popup-window {
 		right: 0;

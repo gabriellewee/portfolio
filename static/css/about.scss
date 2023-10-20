@@ -133,7 +133,7 @@
 			transition: .2s ease-out;
 		}
 		&:before {
-			@include before;
+			@include before(var(--color-blush));
 		}
 		&:after {
 			@include contrast(both, 2) {

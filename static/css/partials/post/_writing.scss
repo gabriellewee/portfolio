@@ -229,17 +229,28 @@
 	}
 	.post-footer {
 		.button {
+			&:before {
+				@include theme(light, 2) {
+					background: radial-gradient(
+						circle at center left,
+						var(--color-iron-white-70),
+						var(--color-iron-white-80)
+					);
+				}
+				@include theme(dark, 2) {
+					background: radial-gradient(
+						circle at center left,
+						var(--color-iron-white-10),
+						var(--color-iron-white-30)
+					);
+				}
+			}
 			> span {
 				background: var(--color-iron-white-70);
 			}
 			&:hover, &:focus {
 				> span {
 					background: var(--color-iron-white);
-				}
-			}
-			&:active {
-				> span {
-					background: var(--color-iron-white-90);
 				}
 			}
 		}

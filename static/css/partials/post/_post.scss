@@ -525,12 +525,20 @@
 		position: relative;
 		transition: .2s ease-out;
 		&:before {
-			@include before(null);
+			@include before;
 			@include theme(light, 2) {
-				background-color: hsla(var(--color-mauve-hsl), .5);
+				background: radial-gradient(
+					circle at center left,
+					hsla(var(--color-rose-hsl), .5),
+					hsla(var(--color-mauve-hsl), .5)
+				);
 			}
 			@include theme(dark, 2) {
-				background-color: var(--color-mauve);
+				background: radial-gradient(
+					circle at center left,
+					var(--color-rose),
+					var(--color-mauve)
+				);
 			}
 		}
 		&:focus-visible {
@@ -658,16 +666,32 @@
 .button-mastodon {
 	&:before {
 		@include theme(light, 2) {
-			background-color: hsla(var(--color-mastodon-white-hsl), 0.75);
+			background: radial-gradient(
+				circle at center left,
+				hsla(var(--color-mastodon-white-hsl), 0.75),
+				hsla(var(--color-mastodon-white-hsl), 1)
+			);
 		}
 		@include theme(dark, 2) {
-			background-color: var(--color-mastodon-white);
+			background: radial-gradient(
+				circle at center left,
+				var(--color-mastodon-white-30),
+				var(--color-mastodon-light)
+			);
 		}
 		@include contrast(light, 2) {
-			background-color: var(--color-mastodon-white);
+			background: radial-gradient(
+				circle at center left,
+				var(--color-mastodon-white),
+				var(--color-mastodon-light)
+			);
 		}
 		@include contrast(dark, 2) {
-			background-color: var(--color-mastodon-white-30);
+			background: radial-gradient(
+				circle at center left,
+				var(--color-mastodon-white-30),
+				var(--color-mastodon-white)
+			);
 		}
 	}
 	> span {

@@ -93,7 +93,7 @@
 			transition: .2s ease-out;
 		}
 		&:before {
-			@include before;
+			@include before(var(--color-blush));
 		}
 		span {
 			color: white;

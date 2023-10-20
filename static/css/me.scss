@@ -50,7 +50,12 @@
 	display: block;
 	position: relative;
 	&:before {
-		@include before(var(--color-rose));
+		@include before;
+		background: radial-gradient(
+			circle at center left,
+			var(--color-rose),
+			var(--color-mauve)
+		);
 	}
 	picture {
 		@include clip-path-edges(2px);

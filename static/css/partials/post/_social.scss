@@ -131,10 +131,18 @@
 	}
 	.media-attachment a:before {
 		@include theme(light, 2) {
-			background-color: hsla(var(--color-mastodon-white-hsl), 0.75);
+			background: radial-gradient(
+				circle at center left,
+				hsla(var(--color-mastodon-white-hsl), 0.75),
+				hsla(var(--color-mastodon-white-hsl), 1)
+			);
 		}
 		@include theme(dark, 2) {
-			background-color: var(--color-mastodon-white);
+			background: radial-gradient(
+				circle at center left,
+				var(--color-mastodon-white-30),
+				var(--color-mastodon-light)
+			);
 		}
 	}
 }

@@ -5,8 +5,13 @@
 	background: unset;
 	&:before {
 		@include viewport($iphone-max) {
-			@include before(var(--color-rose));
+			@include before;
 			z-index: -1;
+			background: radial-gradient(
+				circle at center left,
+				var(--color-rose),
+				var(--color-mauve)
+			);
 		}
 	}
 	&:after {
