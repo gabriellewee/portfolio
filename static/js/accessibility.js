@@ -1,3 +1,14 @@
+const noJS = ((container = document.documentElement) => {
+	container.classList.remove("no-js");
+	container.classList.add("js");
+	hidden = Array.from(document.querySelectorAll("[hidden]"));
+	if (hidden) {
+		hidden.forEach(el => {
+			el.removeAttribute("hidden");
+		});
+	}
+})();
+
 const accessibility = (() => {
 	const options = Array.from(document.querySelectorAll("[data-option"));
 	const labels = Array.from(document.querySelectorAll("[data-option-label"));
