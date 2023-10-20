@@ -94,7 +94,12 @@
 		display: block;
 		margin-right: var(--p);
 		&:focus-visible {
-			@include focus-shadow(hsla(var(--color-mauve-hsl), .5));
+			@include theme(light, 2) {
+				@include focus-shadow(hsla(var(--color-mauve-hsl), .5));
+			}
+			@include theme(dark, 2) {
+				@include focus-shadow(var(--color-mauve));
+			}
 			.memoji {
 				&-default {
 					opacity: 0;

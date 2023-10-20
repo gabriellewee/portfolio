@@ -427,7 +427,9 @@ $violet: #D18FF0;
 	left: calc(var(--p)/-4);
 	width: calc(100% + var(--p)/2);
 	height: calc(100% + var(--p)/2);
-	background: $color;
+	@if $color {
+		background: $color;
+	}
 }
 @mixin button-shape($a: 1.25, $b: 5%, $c: null, $dir: null) {
 	@if $dir == left and $c != null {

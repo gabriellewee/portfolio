@@ -377,7 +377,12 @@
 
 	a, pre, button {
 		&:focus-visible {
-			@include focus-shadow(hsla(var(--color-mauve-hsl), .5));
+			@include theme(light, 2) {
+				@include focus-shadow(hsla(var(--color-mauve-hsl), .5));
+			}
+			@include theme(dark, 2) {
+				@include focus-shadow(var(--color-mauve));
+			}
 		}
 	}
 
@@ -520,7 +525,13 @@
 		position: relative;
 		transition: .2s ease-out;
 		&:before {
-			@include before(hsla(var(--color-mauve-hsl), .5));
+			@include before(null);
+			@include theme(light, 2) {
+				background-color: hsla(var(--color-mauve-hsl), .5);
+			}
+			@include theme(dark, 2) {
+				background-color: var(--color-mauve);
+			}
 		}
 		&:focus-visible {
 			box-shadow: none;
@@ -646,9 +657,17 @@
 
 .button-mastodon {
 	&:before {
-		background-color: hsla(var(--color-mastodon-white-hsl), 0.75);
-		@include contrast(both, 2) {
+		@include theme(light, 2) {
+			background-color: hsla(var(--color-mastodon-white-hsl), 0.75);
+		}
+		@include theme(dark, 2) {
 			background-color: var(--color-mastodon-white);
+		}
+		@include contrast(light, 2) {
+			background-color: var(--color-mastodon-white);
+		}
+		@include contrast(dark, 2) {
+			background-color: var(--color-mastodon-white-30);
 		}
 	}
 	> span {

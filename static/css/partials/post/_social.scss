@@ -112,7 +112,12 @@
 				}
 			}
 			&:focus-visible {
-				@include focus-shadow(hsla(var(--color-mastodon-white-hsl), 0.75));
+				@include theme(light, 2) {
+					@include focus-shadow(hsla(var(--color-mastodon-white-hsl), 0.75));
+				}
+				@include theme(dark, 2) {
+					@include focus-shadow(var(--color-mastodon-white));
+				}
 			}
 			&:active {
 				@include theme(light, 2) {
@@ -125,6 +130,11 @@
 		}
 	}
 	.media-attachment a:before {
-		background-color: hsla(var(--color-mastodon-white-hsl), 0.75);
+		@include theme(light, 2) {
+			background-color: hsla(var(--color-mastodon-white-hsl), 0.75);
+		}
+		@include theme(dark, 2) {
+			background-color: var(--color-mastodon-white);
+		}
 	}
 }
