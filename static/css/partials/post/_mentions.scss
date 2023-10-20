@@ -190,7 +190,7 @@
 		}
 	}
 	.username, .time {
-		@include font-weight-width(600, 80);
+		@include font-weight-width(600, 90);
 		z-index: 1;
 		color: white;
 		font-size: .875rem;

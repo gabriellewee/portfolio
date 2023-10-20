@@ -223,7 +223,7 @@
 		white-space: nowrap;
 		&.time-default {
 			@include button;
-			@include font-weight-width(600, 80);
+			@include font-weight-width(600, 90);
 			position: relative;
 			background-color: hsla(var(--color-iron-1-hsl), .75);
 			text-transform: uppercase;
