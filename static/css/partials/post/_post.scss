@@ -435,7 +435,7 @@
 					@include gradient-text(
 						gHSL(iron, .95),
 						gHSL(iron, .35),
-						gHSLa(iron, .35, .5)
+						gHSLa(iron, .95, .5)
 					);
 				}
 				@include theme(dark, 2) {

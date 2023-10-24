@@ -228,6 +228,52 @@
 			}
 		}
 	}
+	p, figcaption, ul, ol {
+		a {
+			@include gradient-text(
+				var(--color-slate),
+				var(--color-mauve),
+				gHSLa(slate, 1, .5)
+			);
+			@include theme(light, 2) {
+				filter: unset;
+			}
+			@include theme(dark, 2) {
+				filter: brightness(1.3);
+			}
+			&:hover, &:focus {
+				@include gradient-text(
+					var(--color-mauve),
+					var(--color-rose),
+					gHSLa(mauve, 1, .5)
+				);
+			}
+			&:active {
+				@include theme(light, 2) {
+					@include gradient-text(
+						gHSL(iron, .35),
+						gHSL(iron, .95),
+						gHSLa(iron, .35, .5)
+					);
+				}
+				@include theme(dark, 2) {
+					@include gradient-text(
+						color-mix(
+							in srgb,
+							var(--color-iron) 80%,
+							var(--color-white)
+						),
+						var(--color-slate),
+						color-mix(
+							in srgb,
+							gHSLa(iron, 1, .5) 80%,
+							gHSLa(white, 1, .5)
+						)
+					);
+				}
+			}
+		}
+	}
 }
 
 &.post-archive {
