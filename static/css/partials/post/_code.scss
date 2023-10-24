@@ -321,9 +321,9 @@
 			background-color: var(--color-mint);
 			background: radial-gradient(
 				circle at center left,
-				gHSL(slate, .8) -10%,
-				var(--color-mint) 50%,
-				var(--color-oak) 100%,
+				gHSL(slate, .8),
+				var(--color-mint),
+				var(--color-oak),
 			) 50% 0% / 200% 100%;
 			@include clip-path(false) {
 				@include border-radius(0);
@@ -343,8 +343,8 @@
 				background-color: var(--color-iron);
 				background: radial-gradient(
 					circle at center right,
-					gHSL(iron, .45) 0,
-					var(--color-iron) 100%
+					gHSL(iron, .45),
+					var(--color-iron)
 				);
 			}
 		}

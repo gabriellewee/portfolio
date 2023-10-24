@@ -715,10 +715,10 @@
 	> span {
 		background: radial-gradient(
 			circle at center left,
-			var(--color-mastodon-light) 0,
-			var(--color-mastodon) 30%,
-			var(--color-mastodon-dark) 60%,
-			var(--color-mastodon-dark) 100%,
+			var(--color-mastodon-light),
+			var(--color-mastodon),
+			var(--color-mastodon-dark),
+			var(--color-mastodon-dark),
 		) 50% 0% / 200% 100%;
 		span:before {
 			content: "";

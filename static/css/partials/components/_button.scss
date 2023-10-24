@@ -60,10 +60,10 @@
 		background-color: var(--color-mauve);
 		background: radial-gradient(
 			circle at center left,
-			var(--color-rose) 0,
-			var(--color-mauve) 25%,
-			var(--color-slate) 75%,
-			var(--color-slate) 100%,
+			var(--color-rose),
+			var(--color-mauve),
+			var(--color-slate),
+			var(--color-slate)
 		) 50% 0% / 200% 100%;
 		&:before {
 			opacity: 0;
