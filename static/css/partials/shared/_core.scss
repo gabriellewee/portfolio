@@ -27,18 +27,18 @@ body {
 	font-family: var(--font-default);
     font-feature-settings: "liga","ss01";
 	@include theme(light, 3) {
-		background-color: var(--color-blush-8);
+		background-color: gHSL(blush, 1.09);
 		color: var(--color-primary);
 	}
 	@include theme(dark, 3) {
-		background-color: var(--color-iron-5);
-		color: hsla(var(--color-white-hsl), .9);
+		background-color: gHSL(iron, .73);
+		color: gHSLa(white, 1, .9);
 	}
 	@include contrast(light, 3) {
-		background-color: var(--color-blush-10);
+		background-color: gHSL(blush, 1.12);
 	}
 	@include contrast(dark, 3) {
-		background-color: var(--color-iron-10);
+		background-color: gHSL(iron, .45);
 	}
 }
 
@@ -49,19 +49,19 @@ a {
 * {
 	::-moz-selection {
 		@include theme(light, 1) {
-			background-color: hsla(var(--color-rose-hsl), .5);
+			background-color: gHSLa(rose, 1, .5);
 		}
 		@include theme(dark, 1) {
-			background-color: hsla(var(--color-white-hsl), .2);
+			background-color: gHSLa(white, 1, .2);
 		}
 	}
 
 	::selection {
 		@include theme(light, 1) {
-			background-color: hsla(var(--color-rose-hsl), .5);
+			background-color: gHSLa(rose, 1, .5);
 		}
 		@include theme(dark, 1) {
-			background-color: hsla(var(--color-white-hsl), .2);
+			background-color: gHSLa(white, 1, .2);
 		}
 	}
 }

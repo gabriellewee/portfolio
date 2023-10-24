@@ -54,7 +54,11 @@
 				background-color: var(--color-primary);
 			}
 			@include theme(dark, 2) {
-				background-color: var(--color-iron-white);
+				background-color: color-mix(
+					in srgb,
+					var(--color-iron),
+					var(--color-white)
+				);
 			}
 		}
 	}
@@ -68,7 +72,11 @@
 				background-color: var(--color-primary);
 			}
 			@include theme(dark, 2) {
-				background-color: var(--color-iron-white);
+				background-color: color-mix(
+					in srgb,
+					var(--color-iron),
+					var(--color-white)
+				);
 			}
 		}
 		&:before {
@@ -92,7 +100,11 @@
 			background: var(--color-blush);
 		}
 		> span {
-			background: var(--color-iron-white-90);
+			background: color-mix(
+				in srgb,
+				var(--color-iron) 90%,
+				var(--color-white)
+			);
 			&:before {
 				display: none;
 			}
@@ -153,7 +165,11 @@
 			@include clip-path-edges(2px);
 			display: inline-block;
 			padding: calc(var(--p)/3*2) var(--p);
-			background-color: var(--color-iron-white-90);
+			background-color: color-mix(
+				in srgb,
+				var(--color-iron) 90%,
+				var(--color-white)
+			);
 		}
 		&:hover, &:focus {
 			span {
@@ -224,7 +240,7 @@
 					color: var(--color-primary);
 				}
 				@include theme(dark, 2) {
-					background-color: var(--color-iron-5);
+					background-color: gHSL(iron, .7);
 					color: white;
 				}
 				@include contrast(both, 2) {
@@ -246,7 +262,7 @@
 						background-color: var(--color-message);
 					}
 					@include theme(dark, 2) {
-						background-color: var(--color-iron-5);
+						background-color: gHSL(iron, .7);
 					}
 					@include contrast(both, 2) {
 						display: none;
@@ -300,12 +316,16 @@
 		text-transform: uppercase;
 		line-height: 1.715;
 		@include theme(light, 2) {
-			background-color: hsla(var(--color-iron-white-70-hsl), .2);
-			color: var(--color-iron-white-70);
+			background-color: color-mix(
+				in srgb,
+				gHSLa(iron, 1, .2) 70%,
+				gHSLa(white, 1, .2)
+			);
+			color: gHSLa(iron, 1, .7);
 		}
 		@include theme(dark, 2) {
-			background-color: hsla(var(--color-iron-8-hsl), .4);
-			color: hsla(var(--color-white-hsl), .7);
+			background-color: gHSLa(iron, .55, .4);
+			color: gHSLa(white, 1, .7);
 		}
 		@include viewport(mobile) {
 			margin-bottom: unset;
@@ -337,20 +357,24 @@
 				height: 100%;
 			}
 		}
-		@include contrast(dark, 2) {
-			&:before {
-				background-color: hsla(var(--color-primary-hsl), .7);
-			}
-			&:after {
-				background-color: var(--color-iron-5);
-			}
-		}
 		@include contrast(light, 2) {
 			&:before {
-				background-color: hsla(var(--color-primary-hsl), .5);
+				background-color: gHSLa(primary, 1, .5);
 			}
 			&:after {
-				background-color: var(--color-iron-white-10);
+				background-color: color-mix(
+					in srgb,
+					var(--color-iron) 10%,
+					var(--color-white)
+				);
+			}
+		}
+		@include contrast(dark, 2) {
+			&:before {
+				background-color: gHSLa(primary, 1, .7);
+			}
+			&:after {
+				background-color: gHSL(iron, .7);
 			}
 		}
 	}
@@ -376,7 +400,7 @@
 			color: var(--color-primary);
 		}
 		@include theme(dark, 2) {
-			color: hsla(var(--color-primary-hsl), .7);
+			color: gHSLa(primary, 1, .7);
 		}
 		ul {
 			padding: 0;

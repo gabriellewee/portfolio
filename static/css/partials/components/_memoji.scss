@@ -32,17 +32,17 @@
 		display: inline-block;
 		padding: calc(var(--p)*.75) calc(var(--p)*1.5);
 		line-height: 1.4;
-		color: var(--color-iron-10);
+		color: gHSL(iron, .45);
 		border-radius: 2em;
 		@media (prefers-reduced-motion: no-preference) {
 			opacity: 0;
 		}
 		@include theme(light, 2) {
-			background-color: hsla(var(--color-white-hsl), .8);
+			background-color: gHSLa(white, 1, .8);
 			color: var(--color-iron);
 		}
 		@include theme(dark, 2) {
-			background-color: hsla(var(--color-iron-hsl), .8);
+			background-color: gHSLa(iron, 1, .8);
 			color: white;
 		}
 		@include contrast(both, 2) {
@@ -56,7 +56,11 @@
 				opacity: 1;
 			}
 			.page-index & {
-				color: var(--color-iron-white-70);
+				color: color-mix(
+					in srgb,
+					var(--color-iron),
+					var(--color-white)
+				);
 				@media (prefers-reduced-motion: reduce) {
 					display: none;
 				}
@@ -95,7 +99,7 @@
 		margin-right: var(--p);
 		&:focus-visible {
 			@include theme(light, 2) {
-				@include focus-shadow(hsla(var(--color-mauve-hsl), .5));
+				@include focus-shadow(gHSLa(mauve, 1, .5));
 			}
 			@include theme(dark, 2) {
 				@include focus-shadow(var(--color-mauve));

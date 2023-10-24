@@ -12,25 +12,28 @@ $mbp-16: 1728px;
 $lg-5k: 2560px;
 $container-mobile: 350px;
 
-// colors
-$message: #e9e9eb;
-
-$iron: #263238;
-$blush: #F5C8BF;
-$rose: #D19487;
-$mauve: #B2738E;
-$slate: #577783;
-$mint: #8BB29A;
-$oak: #D1AE87;
-
-$aqua: #73d1c8;
-$peach: #f78c6a;
-$periwinkle: #82aaff;
-$violet: #D18FF0;
-
 // functions
 @function hexToHSL($color) {
 	@return "#{hue($color)},#{saturation($color)},#{lightness($color)}";
+}
+@function hexToH($color) {
+	@return "#{hue($color)}";
+}
+@function hexToS($color) {
+	@return "#{saturation($color)}";
+}
+@function hexToL($color) {
+	@return "#{lightness($color)}";
+}
+@function gHSL($color, $lightness) {
+	@return hsl(var(--color-#{$color}-h), var(--color-#{$color}-s), calc(var(--color-#{$color}-l) * #{$lightness}));
+}
+@function gHSLa($color, $lightness, $opacity) {
+	@if $lightness == 1 {
+		@return hsla(var(--color-#{$color}-hsl), #{$opacity});
+	} @else {
+		@return hsla(var(--color-#{$color}-h), var(--color-#{$color}-s), calc(var(--color-#{$color}-l) * #{$lightness}), #{$opacity});
+	}
 }
 
 // mixins
@@ -291,19 +294,19 @@ $violet: #D18FF0;
 	}
 }
 
-@mixin gradient-text($one, $two, $underline) {
-	color: hsl($one);
-	@supports (-webkit-text-fill-color: transparent) or (text-fill-color: transparent) {
-		background-color: hsl($one);
-		background: linear-gradient(135deg, hsl($one), hsl($two));
+@mixin gradient-text($one, $two, $three: null) {
+	color: $one;
+	@supports (-webkit-text-fill-color: transparent) {
+		background-color: $one;
+		background: linear-gradient(135deg, $one, $two);
 		background-clip: text;
+		@if $three {
+			-webkit-text-fill-color: $three;
+		} @else {
+			-webkit-text-fill-color: $one;
+		}
 		@include theme(dark, 2) {
 			filter: brightness(1.1);
-		}
-		@if $underline == true {
-			-webkit-text-fill-color: hsla($one, .5);
-		} @else {
-			-webkit-text-fill-color: transparent;
 		}
 	}
 }
@@ -316,41 +319,14 @@ $violet: #D18FF0;
 	}
 }
 
-@mixin blur-check {
+@mixin blur($amount, $color, $lightness, $crisp, $blur) {
+	background-color: gHSLa($color, $lightness, $crisp);
 	@supports ((-webkit-backdrop-filter: blur(0px)) or (backdrop-filter: blur(0px))) {
-		@content;
-	}
-}
-
-@mixin blur-bg($bg, $crisp, $blur, $rgb: null) {
-	@if $rgb != null {
-		background-color: rgba($rgb, $crisp);
-	} @else {
-		background-color: hsla(#{$bg}, $crisp);
-	}
-	@include blur-check {
-		@if $rgb != null {
-			background-color: rgba($rgb, $blur);
-		} @else {
-			background-color: hsla(#{$bg}, $blur);
-		}
-		@include reduce-transparency(2) {
-			@if $rgb != null {
-				background-color: rgba($rgb, 1);
-			} @else {
-				background-color: hsla(#{$bg}, 1);
-			}
-		}
-	}
-}
-
-@mixin blur($blur, $bg, $crisp, $blurry, $rgb: null) {
-	@include blur-bg($bg, $crisp, $blurry, $rgb);
-	@include blur-check {
-		backdrop-filter: blur($blur);
-		@content;
+		backdrop-filter: blur($amount);
+		background-color: gHSLa($color, $lightness, $blur);
 		@include reduce-transparency(2) {
 			backdrop-filter: unset;
+			background-color: gHSL($color, $lightness);
 		}
 	}
 }

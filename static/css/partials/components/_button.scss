@@ -79,8 +79,12 @@
 				background-color: var(--color-iron);
 				background: radial-gradient(
 					circle at center left,
-					var(--color-iron),
-					var(--color-iron-12)
+					color-mix(
+						in srgb,
+						var(--color-iron) 80%,
+						var(--color-white)
+					),
+					var(--color-iron)
 				);
 			}
 			@include theme(dark, 2) {
@@ -88,7 +92,11 @@
 				background: radial-gradient(
 					circle at center left,
 					var(--color-slate),
-					var(--color-iron-white-80)
+					color-mix(
+						in srgb,
+						var(--color-iron) 80%,
+						var(--color-white)
+					)
 				);
 			}
 		}
@@ -150,18 +158,26 @@
 			) 50% 0% / 200% 100%;
 			&:before {
 				@include theme(light, 2) {
-					background-color: var(--color-iron-5);
+					background-color: var(--color-iron);
 					background: radial-gradient(
-						circle at center right,
+						circle at center left,
 						var(--color-iron),
-						var(--color-iron-5)
+						color-mix(
+							in srgb,
+							var(--color-iron) 80%,
+							var(--color-white)
+						)
 					);
 				}
 				@include theme(dark, 2) {
-					background-color: var(--color-iron-white-80);
+					background-color: var(--color-slate);
 					background: radial-gradient(
 						circle at center left,
-						var(--color-iron-white-80),
+						color-mix(
+							in srgb,
+							var(--color-iron) 80%,
+							var(--color-white)
+						),
 						var(--color-slate)
 					);
 				}
@@ -182,12 +198,16 @@
 		}
 		&:hover, &:focus {
 			> span {
-				background: var(--color-iron-white-70);
+				background: color-mix(
+					in srgb,
+					var(--color-iron) 70%,
+					var(--color-white)
+				);
 			}
 		}
 		&:active {
 			> span {
-				background: var(--color-iron-12);
+				background: gHSL(iron, .35);
 			}
 		}
 	}

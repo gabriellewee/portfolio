@@ -18,7 +18,7 @@
 				transition: .2s ease-out;
 				text-decoration: underline;
 				text-underline-offset: 8px;
-				text-decoration-color: hsla(var(--color-white-hsl), 0);
+				text-decoration-color: gHSLa(white, 1, 0);
 				@include contrast(both, 2) {
 					text-underline-offset: 4px;
 					text-decoration-color: unset;
@@ -32,18 +32,22 @@
 			}
 			&:hover, &:focus {
 				span {
-					text-decoration-color: var(--color-mauve-rose);
+					text-decoration-color: color-mix(
+						in hsl,
+						hsl(var(--color-mauve-h), calc(var(--color-mauve-s) * .9), var(--color-mauve-l)) 30%,
+						hsl(var(--color-rose-h), calc(var(--color-rose-s) * .9), var(--color-rose-l))
+					);
 				}
 			}
 			&:focus {
 				@include contrast(both, 2) {
-					@include focus-shadow(hsla(var(--color-mauve-hsl), .5));
+					@include focus-shadow(gHSLa(mauve, 1, .5));
 				}
 			}
 			&:active {
 				span {
 					@include theme(light, 2) {
-						text-decoration-color: var(--color-iron-1);
+						text-decoration-color: gHSL(iron, .95);
 					}
 					@include theme(dark, 2) {
 						text-decoration-color: var(--color-slate);
@@ -64,20 +68,40 @@
 		h2 {
 			a {
 				span {
-					@include gradient-text(var(--color-mauve-hsl), var(--color-slate-hsl), true);
+					@include gradient-text(
+						var(--color-mauve),
+						var(--color-slate),
+						gHSLa(mauve, 1, .5)
+					);
 				}
 				&:hover, &:focus {
 					span {
-						@include gradient-text(var(--color-rose-hsl), var(--color-mauve-hsl), true);
+						@include gradient-text(
+							var(--color-rose),
+							var(--color-mauve),
+							gHSLa(rose, 1, .5)
+						);
 					}
 				}
 				&:active {
 					span {
 						@include theme(light, 2) {
-							@include gradient-text(var(--color-iron-1-hsl), var(--color-iron-12-hsl), true);
+							@include gradient-text(
+								gHSL(iron, .95),
+								gHSL(iron, .35),
+								gHSLa(iron, .95, .5)
+							);
 						}
 						@include theme(dark, 2) {
-							@include gradient-text(var(--color-slate-hsl), var(--color-iron-white-80-hsl), true);
+							@include gradient-text(
+								var(--color-slate),
+								color-mix(
+									in srgb,
+									var(--color-iron) 80%,
+									var(--color-white)
+								),
+								gHSLa(slate, 1, .5)
+							);
 						}
 					}
 				}
@@ -125,7 +149,11 @@
 		h2 {
 			a {
 				span {
-					@include gradient-text(var(--color-slate-hsl), var(--color-mauve-hsl), true);
+					@include gradient-text(
+						var(--color-slate),
+						var(--color-mauve),
+						gHSLa(slate, 1, .5)
+					);
 				}
 				&:after {
 					content: "↗";
@@ -133,28 +161,56 @@
 					top: 2px;
 					margin-left: calc(var(--p)/3*2);
 					line-height: 1;
-					color: var(--color-slate-mauve);
+					color: color-mix(
+						in hsl,
+						hsl(var(--color-slate-h), calc(var(--color-slate-s) * .2), var(--color-slate-l)),
+						hsl(var(--color-mauve-h), calc(var(--color-mauve-s) * .2), var(--color-mauve-l))
+					);
 				}
 				&:hover, &:focus {
 					span {
-						@include gradient-text(var(--color-mauve-hsl), var(--color-rose-hsl), true);
+						@include gradient-text(
+							var(--color-mauve),
+							var(--color-rose),
+							gHSLa(mauve, 1, .5)
+						);
 					}
 					&:after {
-						color: var(--color-mauve-rose);
+						color: color-mix(
+							in hsl,
+							hsl(var(--color-mauve-h), calc(var(--color-mauve-s) * .9), var(--color-mauve-l)) 30%,
+							hsl(var(--color-rose-h), calc(var(--color-rose-s) * .9), var(--color-rose-l))
+						);
 					}
 				}
 				&:active {
 					span {
 						@include theme(light, 2) {
-							@include gradient-text(var(--color-iron-12-hsl), var(--color-iron-1-hsl), true);
+							@include gradient-text(
+								gHSL(iron, .35),
+								gHSL(iron, .95),
+								gHSLa(iron, .35, .5)
+							);
 						}
 						@include theme(dark, 2) {
-							@include gradient-text(var(--color-iron-white-80-hsl), var(--color-slate-hsl), true);
+							@include gradient-text(
+								color-mix(
+									in srgb,
+									var(--color-iron) 80%,
+									var(--color-white)
+								),
+								var(--color-slate),
+								color-mix(
+									in srgb,
+									gHSLa(iron, 1, .5) 80%,
+									gHSLa(white, 1, .5)
+								)
+							);
 						}
 					}
 					&:after {
 						@include theme(light, 2) {
-							color: var(--color-iron-1);
+							color: gHSL(iron, .95);
 						}
 						@include theme(dark, 2) {
 							color: var(--color-slate);
@@ -179,50 +235,90 @@
 		h2 {
 			a {
 				@include theme(light, 2) {
-					color: var(--color-iron-white-70);
+					color: color-mix(
+						in srgb,
+						var(--color-iron) 70%,
+						var(--color-white)
+					);
 				}
 				@include theme(dark, 2) {
-					color: var(--color-iron-white);
+					color: color-mix(
+						in srgb,
+						var(--color-iron),
+						var(--color-white)
+					);
 				}
 				&:hover, &:focus {
 					@include theme(light, 2) {
-						color: var(--color-iron-white);
+						color: color-mix(
+							in srgb,
+							var(--color-iron),
+							var(--color-white)
+						);
 					}
 					@include theme(dark, 2) {
-						color: hsla(var(--color-white-hsl), .7);
+						color: gHSLa(white, 1, .7);
 					}
 					span {
 						@include theme(light, 2) {
-							text-decoration-color: var(--color-iron-white);
+							text-decoration-color: color-mix(
+								in srgb,
+								var(--color-iron),
+								var(--color-white)
+							);
 						}
 						@include theme(dark, 2) {
-							text-decoration-color: hsla(var(--color-white-hsl), .7);
+							text-decoration-color: gHSLa(white, 1, .7);
 						}
 					}
 				}
 				&:active {
 					@include theme(light, 2) {
-						color: var(--color-iron-white-90);
+						color: color-mix(
+							in srgb,
+							var(--color-iron) 90%,
+							var(--color-white)
+						);
 					}
 					@include theme(dark, 2) {
-						color: var(--color-iron-white-70);
+						color: color-mix(
+							in srgb,
+							var(--color-iron) 70%,
+							var(--color-white)
+						);
 					}
 					span {
 						@include theme(light, 2) {
-							text-decoration-color: var(--color-iron-white-90);
+							text-decoration-color: color-mix(
+								in srgb,
+								var(--color-iron) 90%,
+								var(--color-white)
+							);
 						}
 						@include theme(dark, 2) {
-							text-decoration-color: var(--color-iron-white-70);
+							text-decoration-color: color-mix(
+								in srgb,
+								var(--color-iron) 70%,
+								var(--color-white)
+							);
 						}
 					}
 				}
 			}
 		}
 		time {
-			background-color: var(--color-iron-white-60);
+			background-color: color-mix(
+				in srgb,
+				var(--color-iron) 60%,
+				var(--color-white)
+			);
 			&:after {
 				@include contrast(both, 2) {
-					background-color: var(--color-iron-white-60);
+					background-color: color-mix(
+						in srgb,
+						var(--color-iron) 60%,
+						var(--color-white)
+					);
 				}
 			}
 		}
@@ -233,24 +329,49 @@
 				@include theme(light, 2) {
 					background: radial-gradient(
 						circle at center left,
-						var(--color-iron-white-70),
-						var(--color-iron-white-80)
+						color-mix(
+							in srgb,
+							var(--color-iron) 70%,
+							var(--color-white)
+						),
+						color-mix(
+							in srgb,
+							var(--color-iron) 80%,
+							var(--color-white)
+						)
 					);
 				}
+
 				@include theme(dark, 2) {
 					background: radial-gradient(
 						circle at center left,
-						var(--color-iron-white-10),
-						var(--color-iron-white-30)
+						color-mix(
+							in srgb,
+							var(--color-iron) 10%,
+							var(--color-white)
+						),
+						color-mix(
+							in srgb,
+							var(--color-iron) 30%,
+							var(--color-white)
+						)
 					);
 				}
 			}
 			> span {
-				background: var(--color-iron-white-70);
+				background: color-mix(
+					in srgb,
+					var(--color-iron) 70%,
+					var(--color-white)
+				);
 			}
 			&:hover, &:focus {
 				> span {
-					background: var(--color-iron-white);
+					background: color-mix(
+						in srgb,
+						var(--color-iron),
+						var(--color-white)
+					);
 				}
 			}
 		}

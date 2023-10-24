@@ -42,14 +42,14 @@ figure {
 }
 
 .media-view-touch {
-	@include blur(3px, "var(--color-iron-10-hsl)", .5, .3);
+	@include blur(3px, iron, .45, .5, .3);
 	@include font-weight-width(600, 80);
 	display: block;
 	position: absolute;
 	bottom: 0;
 	right: 0;
 	padding: calc(var(--p)*.75) var(--p);
-	color: hsla(var(--color-white-hsl), .8);
+	color: gHSLa(white, 1, .8);
 	font-size: 1rem;
 	text-transform: uppercase;
 	@include clip-path(false) {
@@ -74,8 +74,8 @@ figure {
 	height: 100%;
 	background: linear-gradient(
 		to bottom,
-		hsla(var(--color-iron-10-hsl), 0.7) 0%,
-		hsla(var(--color-iron-10-hsl), 0) 45%
+		gHSLa(iron, .45, .7) 0%,
+		gHSLa(iron, .45, 0) 45%
 	);
 	@include hover {
 		display: flex;
@@ -95,7 +95,15 @@ figure {
 		> span {
 			&:before {
 				background-color: var(--color-slate);
-				background: radial-gradient(circle at center left, var(--color-slate) 0, var(--color-iron-white-80) 100%);
+				background: radial-gradient(
+					circle at center left,
+					var(--color-slate),
+					color-mix(
+						in srgb,
+						var(--color-iron) 80%,
+						var(--color-white)
+					)
+				);
 			}
 		}
 	}
@@ -111,7 +119,7 @@ figcaption {
 	width: 100%;
 	height: 100%;
 	min-height: 100%;
-	background-color: hsla(var(--color-iron-10-hsl), .9);
+	background-color: gHSLa(iron, .45, .9);
 	color: white;
 	font-size: 1.125rem;
 	@media (prefers-reduced-motion: no-preference) {
@@ -155,13 +163,13 @@ figcaption {
 		mask-size: 100% calc(var(--p)*2.5), 100% calc(100% - var(--p)*2.5);
 	}
 	.time-default {
-		background-color: hsla(var(--color-iron-12-hsl), .9);
+		background-color: gHSLa(iron, .35, .9);
 		@include reduce-transparency(2) {
-			background-color: hsla(var(--color-iron-hsl), .9);
+			background-color: gHSL(iron, .35);
 		}
 		&:before {
 			@include contrast(light, 2) {
-				background-color: hsla(var(--color-white-hsl), .8);
+				background-color: gHSLa(white, 1, .8);
 			}
 		}
 	}
@@ -225,8 +233,8 @@ figcaption {
 					height: 100%;
 					background: linear-gradient(
 						to bottom,
-						hsla(var(--color-iron-10-hsl), 0.7) 0%,
-						hsla(var(--color-iron-10-hsl), 0) 45%
+						gHSLa(iron, .45, .7) 0%,
+						gHSLa(iron, .45, 0) 45%
 					);
 				}
 			}
@@ -237,7 +245,7 @@ figcaption {
 				margin-left: calc(var(--p) * .75);
 				text-decoration: underline;
 				text-underline-offset: 8px;
-				text-decoration-color: hsla(var(--color-white-hsl), 0);
+				text-decoration-color: gHSLa(white, 1, 0);
 				@include contrast(both, 2) {
 					text-underline-offset: 4px;
 					text-decoration-color: unset;
@@ -254,7 +262,7 @@ figcaption {
 			&:focus {
 				.no-image {
 					@include contrast(both, 2) {
-						@include focus-shadow(hsla(var(--color-white-hsl), .8));
+						@include focus-shadow(gHSLa(white, 1, .8));
 					}
 				}
 			}
@@ -402,7 +410,7 @@ figcaption {
 			transition: .2s ease-out;
 			text-decoration: underline;
 			text-underline-offset: 8px;
-			text-decoration-color: hsla(var(--color-white-hsl), 0);
+			text-decoration-color: gHSLa(white, 1, 0);
 			@include contrast(both, 2) {
 				text-underline-offset: 4px;
 				text-decoration-color: unset;
@@ -417,7 +425,7 @@ figcaption {
 		&:focus {
 			span {
 				@include contrast(both, 2) {
-					@include focus-shadow(hsla(var(--color-white-hsl), .8));
+					@include focus-shadow(gHSLa(white, 1, .8));
 				}
 			}
 		}
@@ -603,7 +611,7 @@ figcaption {
 			}
 			.post-content {
 				figcaption {
-					@include blur(10px, "var(--color-iron-10-hsl)", .9, .7);
+					@include blur(10px, iron, .45, .9, .7);
 					transition: .5s cubic-bezier(.64, 0, .78, 0);
 					opacity: 1;
 					@media (prefers-reduced-motion: no-preference) {

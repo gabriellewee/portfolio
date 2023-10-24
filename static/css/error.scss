@@ -18,7 +18,7 @@ header {
 		left: 0;
 		width: 100vw;
 		height: 100vh;
-		background-color: hsla(var(--color-iron-hsl), .2);
+		background-color: gHSLa(iron, 1, .2);
 	}
 }
 
@@ -51,13 +51,13 @@ main {
 	a {
 		display: inline-block;
 		text-decoration: underline;
-		text-decoration-color: hsla(var(--color-white-hsl), .4);
+		text-decoration-color: gHSLa(white, 1, .4);
 		text-underline-offset: 5px;
 		&:hover, &:focus {
-			background-color: hsla(var(--color-iron-hsl), .5);
+			background-color: gHSLa(iron, 1, .5);
 		}
 		&:focus-visible {
-			@include focus-shadow(hsla(var(--color-white-hsl), .8));
+			@include focus-shadow(gHSLa(white, 1, .8));
 		}
 		&:active {
 			background-color: var(--color-iron);
@@ -66,21 +66,19 @@ main {
 }
 
 .bottom {
+	opacity: 1;
 	a {
 		span {
-			background: var(--color-blush);
-			color: var(--color-iron);
+			background: var(--color-iron);
 		}
 		&:hover, &:focus {
 			span {
-				background: var(--color-iron);
-				color: white;
+				background: var(--color-slate);
 			}
 		}
 		&:active {
 			span {
-				background: var(--color-iron-12);
-				color: white;
+				background: gHSL(iron, .35);
 			}
 		}
 	}

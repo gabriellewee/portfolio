@@ -4,116 +4,79 @@
 
 	--font-mono:'Dank Mono',ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
 	--font-default:-apple-system,"Mona Sans",system-ui,BlinkMacSystemFont,Roboto,Ubuntu,Cantarell,Helvetica,Arial,sans-serif;
+
+	$colors: (
+		white: white,
+		iron: #263238,
+		blush: #F5C8BF,
+		rose: #D19487,
+		mauve: #B2738E,
+		slate: #577783,
+
+		mastodon: #6364ff
+	);
+	@each $name, $color in $colors {
+		--color-#{"" + $name}:hsl(#{hexToHSL($color)});
+		--color-#{"" + $name}-hsl:#{hexToHSL($color)};
+		--color-#{"" + $name}-h:#{hexToH($color)};
+		--color-#{"" + $name}-s:#{hexToS($color)};
+		--color-#{"" + $name}-l:#{hexToL($color)};
+	}
+
+	$colors-no-hsl: (
+		mint: #8BB29A,
+		oak: #D1AE87,
+		aqua: #73d1c8,
+		peach: #f78c6a,
+		periwinkle: #82aaff,
+		violet: #D18FF0,
+		message: #e9e9eb,
+
+		focus: #5E9ED6,
+		discord: #5865F2,
+		mastodon-dark: #563ACC,
+		mastodon-light: #858AFA,
+		text: #34a853,
+		codepen: #717790,
+		github: #4969ed,
+		instagram: #cd486b,
+		twitter: #1D9BF0,
+		pinterest: #e60023,
+		dribbble: #ea4c89,
+		music: #fa2d48,
+		imessage: #0d84ff,
+		tumblr: mix(#35465D,#5487b3),
+		tumblr-light: #5487b3,
+		threads: #C43DFB,
+		bluesky: #0085FF,
+
+		medium: #51A653,
+		apple-podcasts: #852dc4,
+		spotify: #1BD760,
+	);
+	@each $name, $color in $colors-no-hsl {
+		--color-#{"" + $name}:hsl(#{hexToHSL($color)});
+	}
 	
-	--color-white-hsl:#{hexToHSL(#fff)};
-	--color-iron-white-5:#{mix($iron,white,5%)};
-	--color-iron-white-10:#{mix($iron,white,10%)};
-	--color-iron-white-30:#{mix($iron,white,30%)};
-	--color-iron-white:#{mix($iron,white)};
-	--color-iron-white-60:#{mix($iron,white,60%)};
-	--color-iron-white-70:#{mix($iron,white,70%)};
-	--color-iron-white-80:#{mix($iron,white,80%)};
-	--color-iron-white-90:#{mix($iron,white,90%)};
-	--color-iron-white-hsl:#{hexToHSL(mix($iron,white))};
-	--color-iron-white-70-hsl:#{hexToHSL(mix($iron,white,70%))};
-	--color-iron-white-80-hsl:#{hexToHSL(mix($iron,white,80%))};
-	
-	--color-iron:#{$iron};
-	--color-iron-1:#{darken($iron,1%)};
-	--color-iron-5:#{darken($iron,5%)};
-	--color-iron-8:#{darken($iron,8%)};
-	--color-iron-10:#{darken($iron,10%)};
-	--color-iron-12:#{darken($iron,12%)};
-	--color-iron-hsl:#{hexToHSL($iron)};
-	--color-iron-1-hsl:#{hexToHSL(darken($iron,1%))};
-	--color-iron-5-hsl:#{hexToHSL(darken($iron,5%))};
-	--color-iron-8-hsl:#{hexToHSL(darken($iron,8%))};
-	--color-iron-10-hsl:#{hexToHSL(darken($iron,10%))};
-	--color-iron-12-hsl:#{hexToHSL(darken($iron,12%))};
-	
-	--color-blush:#{$blush};
-	--color-blush-5:#{lighten($blush,5%)};
-	--color-blush-8:#{lighten($blush,8%)};
-	--color-blush-10:#{lighten($blush,10%)};
-	--color-blush-hsl:#{hexToHSL($blush)};
-	--color-blush-8-hsl:#{hexToHSL(lighten($blush,8%))};
-
-	--color-rose:#{$rose};
-	--color-rose-hsl:#{hexToHSL($rose)};
-
-	--color-mauve:#{$mauve};
-	--color-mauve-hsl:#{hexToHSL($mauve)};
-
-	--color-slate:#{$slate};
-	--color-slate-iron:#{mix($slate, $iron)};
-	--color-slate-5:#{darken($slate, 5%)};
-	--color-slate-hsl:#{hexToHSL($slate)};
-
-	--color-slate-mauve:#{darken(mix($slate,$mauve),5%)};
-	--color-slate-mauve-hsl:#{hexToHSL(darken(mix($slate,$mauve),5%))};
-	--color-mauve-rose:#{mix($mauve,$rose)};
-	--color-mauve-rose-hsl:#{hexToHSL(mix($mauve,$rose))};
-	--color-mauve-iron:#{mix($mauve,$iron)};
-
-	--color-mint:#{$mint};
-	--color-mint-hsl:#{hexToHSL($mint)};
-
-	--color-oak:#{$oak};
-	--color-oak-hsl:#{hexToHSL($oak)};
-
-	--color-aqua:#{$aqua};
-	--color-peach:#{$peach};
-	--color-peach-hsl:#{hexToHSL($peach)};
-	--color-periwinkle:#{$periwinkle};
-	--color-violet:#{$violet};
-	
-	--color-message:#{$message};
-	--color-message-hsl:#{hexToHSL($message)};
-	
-	--color-grey:#f1f1f1;
-	--color-grey-dark:#e5e5e5;
-	
-	--color-focus:#5E9ED6;
-
-	--color-discord:#5865F2;
-	--color-mastodon:#6364ff;
-	--color-mastodon-dark:#563ACC;
-	--color-mastodon-light:#858AFA;
-	--color-mastodon-slate:#{mix(#563ACC,$slate,30%)};
-	--color-mastodon-white:#{mix(#563ACC,white)};
-	--color-mastodon-white-hsl:#{hexToHSL(mix(#563ACC,white))};
-	--color-mastodon-white-30:#{mix(#563ACC,white,30%)};
-	--color-text:#34a853;
-	--color-codepen:#717790;
-	--color-github:#4969ed;
-	--color-instagram:#cd486b;
-	--color-twitter:#1D9BF0;
-	--color-pinterest:#e60023;
-	--color-dribbble:#ea4c89;
-	--color-music:#fa2d48;
-	--color-imessage:#0d84ff;
-	--color-tumblr:#{mix(#35465D,#5487b3)};
-	--color-tumblr-light:#5487b3;
-	--color-threads:#C43DFB;
-	--color-bluesky:#0085FF;
-
-	--color-medium:#51A653;
-	--color-apple-podcasts:#852dc4;
-	--color-spotify:#1BD760;
-
-	--color-email:var(--color-iron-white-70);
+	--color-email:color-mix(in srgb,var(--color-iron) 70%,var(--color-white));
 }
+
+$values: h, s, l;
 
 @include theme(light, 4, true) {
 	--color-secondary:white;
-	--color-primary:#{mix($iron, white, 95%)};
-	--color-secondary-hsl:var(--color-white-hsl);
-	--color-primary-hsl:var(--color-iron-hsl);
+	--color-primary:color-mix(in srgb,var(--color-iron) 95%,var(--color-white));
+	@each $value in $values {
+		--color-secondary-#{$value}:var(--color-white-$value);
+		--color-primary-#{$value}:var(--color-iron-$value);
+	}
 }
 
 @include theme(dark, 4, true) {
 	--color-secondary:var(--color-iron);
-	--color-primary:var(--color-iron-white-5);
-	--color-secondary-hsl:var(--color-iron-hsl);
-	--color-primary-hsl:var(--color-white-hsl);
+	--color-primary:color-mix(in srgb,var(--color-iron) 5%,var(--color-white));
+	@each $value in $values {
+		--color-secondary-#{$value}:var(--color-iron-$value);
+		--color-primary-#{$value}:var(--color-white-$value);
+	}
 }

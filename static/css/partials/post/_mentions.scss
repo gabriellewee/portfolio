@@ -81,10 +81,10 @@
 		li {
 			padding: calc(var(--p)*2);
 			@include theme(light, 2) {
-				background-color: hsla(var(--color-secondary-hsl), .75);
+				background-color: gHSLa(secondary, 1, .75);
 			}
 			@include theme(dark, 2) {
-				background-color: hsla(var(--color-iron-8-hsl), .65)
+				background-color: gHSLa(iron, .55, .65);
 			}
 			@include viewport($iphone-max) {
 				@include clip-path-edges(2px);
@@ -128,7 +128,7 @@
 					background-color: white;
 				}
 				@include contrast(dark, 2) {
-					background-color: var(--color-iron-5);
+					background-color: gHSL(iron, .7);
 				}
 			}
 			&:not(:first-child) {
@@ -197,13 +197,17 @@
 		&:before {
 			@include before;
 			@include theme(light, 2) {
-				background-color: hsla(var(--color-mauve-hsl), .5);
+				background-color: gHSLa(mauve, 1, .5);
 			}
 			@include theme(dark, 2) {
 				background-color: var(--color-blush);
 			}
 			@include contrast(both, 2) {
-				background-color: var(--color-mauve-iron);
+				background-color: color-mix(
+					in srgb,
+					var(--color-iron) 60%,
+					var(--color-slate)
+				);
 			}
 		}
 		&:after {
@@ -255,7 +259,11 @@
 	}
 	.time {
 		time {
-			background-color: var(--color-iron-white-70);
+			background-color: color-mix(
+				in srgb,
+				var(--color-iron) 70%,
+				var(--color-white)
+			);
 		}
 		&:hover, &:focus {
 			time {
@@ -264,7 +272,11 @@
 		}
 		&:active {
 			time {
-				background-color: var(--color-iron-white-90);
+				background-color: color-mix(
+					in srgb,
+					var(--color-iron) 90%,
+					var(--color-white)
+				);
 			}
 		}
 	}

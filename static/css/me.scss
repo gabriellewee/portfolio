@@ -169,16 +169,20 @@
 			font-size: 1.125rem;
 			color: var(--color-primary);
 			@include theme(light, 2) {
-				background-color: hsla(var(--color-primary-hsl), .1);
+				background-color: gHSLa(primary, 1, .1);
 			}
 			@include theme(dark, 2) {
-				background-color: hsla(var(--color-iron-8-hsl), .4);
+				background-color: gHSLa(iron, .55, .4);
 			}
 			@include contrast(dark, 2) {
-				background-color: var(--color-iron-5);
+				background-color: gHSL(iron, .7);
 			}
 			@include contrast(light, 2) {
-				background-color: var(--color-iron-white-10);
+				background-color: color-mix(
+					in srgb,
+					var(--color-iron) 10%,
+					var(--color-white)
+				);
 			}
 		}
 		.clip-container-border {
@@ -225,9 +229,9 @@
 	}
 	picture {
 		@include clip-path-edges(2px);
-		background-color: hsla(var(--color-primary-hsl), .05);
+		background-color: gHSLa(primary, 1, .05);
 		@include contrast(dark, 2) {
-			background-color: hsla(var(--color-primary-hsl), .2);
+			background-color: gHSLa(primary, 1, .2);
 		}
 	}
 }

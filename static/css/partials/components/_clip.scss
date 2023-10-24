@@ -13,7 +13,7 @@
 			background-color: var(--color-primary);
 		}
 		@include theme(dark, 2) {
-			background-color: var(--color-iron-8);
+			background-color: gHSL(iron, .55);
 		}
 	}
 	&:before {

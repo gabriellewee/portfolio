@@ -19,10 +19,14 @@
 	padding: 0 calc(var(--p) * 2);
 	font-size: 1.25rem;
 	@include theme(light, 2) {
-		color: var(--color-iron-white-90);
+		color: color-mix(
+			in srgb,
+			var(--color-iron) 90%,
+			var(--color-white)
+		);
 	}
 	@include theme(dark, 2) {
-		color: hsla(var(--color-white-hsl), .8);
+		color: gHSLa(white, 1, .8);
 	}
 	a {
 		text-decoration: underline;
@@ -55,7 +59,12 @@
 	a {
 		transition: .2s ease-out;
 		&:before {
-			@include before(hsla(var(--color-mauve-hsl), 0.5));
+			@include before;
+			background: radial-gradient(
+				circle at center left,
+				var(--color-rose),
+				var(--color-mauve)
+			);
 		}
 		&:focus-visible {
 			&:before {
@@ -81,10 +90,18 @@
 	}
 	.post-header {
 		time {
-			background-color: var(--color-mastodon-slate);
+			background-color: color-mix(
+				in srgb,
+				hsl(var(--color-mastodon-h), calc(var(--color-mastodon-s) * .8), var(--color-mastodon-l)) 40%,
+				gHSL(slate, .8)
+			);
 			&:after {
 				@include contrast(both, 2) {
-					background-color: var(--color-mastodon-slate);
+					background-color: color-mix(
+						in srgb,
+						hsl(var(--color-mastodon-h), calc(var(--color-mastodon-s) * .8), var(--color-mastodon-l)) 40%,
+						gHSL(slate, .8)
+					);
 				}
 			}
 		}
@@ -101,22 +118,42 @@
 				color: var(--color-mastodon);
 			}
 			@include theme(dark, 2) {
-				color: var(--color-mastodon-white);
+				color: color-mix(
+					in hsl,
+					gHSL(mastodon, 1.1) 90%,
+					white
+				);
 			}
 			&:hover, &:focus {
 				@include theme(light, 2) {
 					color: var(--color-mastodon-light);
 				}
 				@include theme(dark, 2) {
-					color: var(--color-mastodon-white-30);
+					color: color-mix(
+						in hsl,
+						gHSL(mastodon, 1.2) 90%,
+						white
+					);
 				}
 			}
 			&:focus-visible {
 				@include theme(light, 2) {
-					@include focus-shadow(hsla(var(--color-mastodon-white-hsl), 0.75));
+					@include focus-shadow(
+						color-mix(
+							in hsl,
+							gHSLa(mastodon, 1.15, .75) 90%,
+							gHSLa(white, 1, .75)
+						)
+					);
 				}
 				@include theme(dark, 2) {
-					@include focus-shadow(var(--color-mastodon-white));
+					@include focus-shadow(
+						color-mix(
+							in hsl,
+							gHSLa(mastodon, 1.15, .9) 90%,
+							gHSLa(white, 1, .9)
+						)
+					);
 				}
 			}
 			&:active {
@@ -133,14 +170,26 @@
 		@include theme(light, 2) {
 			background: radial-gradient(
 				circle at center left,
-				hsla(var(--color-mastodon-white-hsl), 0.75),
-				hsla(var(--color-mastodon-white-hsl), 1)
+				color-mix(
+					in hsl,
+					gHSLa(mastodon, 1.15, .75) 90%,
+					gHSLa(white, 1, .75)
+				),
+				color-mix(
+					in hsl,
+					gHSLa(mastodon, 1.15, 1) 90%,
+					gHSLa(white, 1, 1)
+				)
 			);
 		}
 		@include theme(dark, 2) {
 			background: radial-gradient(
 				circle at center left,
-				var(--color-mastodon-white-30),
+				color-mix(
+					in hsl,
+					gHSLa(mastodon, 1.15, .75) 30%,
+					gHSLa(white, 1, .75)
+				),
 				var(--color-mastodon-light)
 			);
 		}

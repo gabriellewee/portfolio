@@ -10,7 +10,7 @@
 		color: var(--color-iron);
 	}
 	@include theme(dark, 2) {
-		color: hsla(var(--color-white-hsl), .8);
+		color: gHSLa(white, 1, .8);
 	}
 	.contact-sites, .contact-messages {
 		@include font-weight-width(900, 125);
@@ -42,13 +42,13 @@
 				}
 				&:not(:hover):not(:focus) {
 					@include theme(light, 2) {
-						text-decoration-color: hsla(var(--color-blush-8-hsl), 0);
+						text-decoration-color: gHSLa(blush, 1.1, 0);
 					}
 					@include theme(dark, 2) {
-						text-decoration-color: hsla(var(--color-iron-5-hsl), 0);
+						text-decoration-color: gHSLa(iron, .7, 0);
 					}
 					@include contrast(both, 2) {
-						text-decoration-color: hsla(var(--color-primary-hsl), .5);
+						text-decoration-color: gHSLa(primary, 1, .5);
 					}
 				}
 			}
@@ -81,13 +81,13 @@
 				color: var(--color-link);
 				span {
 					@include theme(light, 2) {
-						text-decoration-color: hsla(var(--color-blush-8-hsl), 0);
+						text-decoration-color: gHSLa(blush, 1.1, 0);
 					}
 					@include theme(dark, 2) {
-						text-decoration-color: hsla(var(--color-iron-5-hsl), 0);
+						text-decoration-color: gHSLa(iron, .7, 0);
 					}
 					@include contrast(both, 2) {
-						text-decoration-color: hsla(var(--color-primary-hsl), .5);
+						text-decoration-color: gHSLa(primary, 1, .5);
 					}
 				}
 			}
@@ -104,7 +104,7 @@
 			}
 			.link:focus, .popup-button:focus ~ .popup-label span {
 				@include contrast(both, 2) {
-					text-decoration-color: hsla(var(--color-primary-hsl), 0);
+					text-decoration-color: gHSLa(primary, 1, 0);
 					@include focus-shadow(var(--color-link));
 				}
 			}
@@ -189,9 +189,9 @@
 						text-underline-offset: 3px;
 					}
 					&:not(:hover):not(:focus) {
-						text-decoration-color: hsla(var(--color-white-hsl), 0);
+						text-decoration-color: gHSLa(white, 1, 0);
 						@include contrast(both, 2) {
-							text-decoration-color: hsla(var(--color-primary-hsl), .5);
+							text-decoration-color: gHSLa(primary, 1, .5);
 						}
 					}
 				}

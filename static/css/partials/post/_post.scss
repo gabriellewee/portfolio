@@ -53,7 +53,11 @@
 		margin-right: var(--p);
 	}
 	a {
-		color: var(--color-iron-white-70);
+		color: color-mix(
+			in srgb,
+			var(--color-iron) 70%,
+			var(--color-white)
+		);
 		@media (prefers-reduced-motion: no-preference) {
 			opacity: 0;
 		}
@@ -67,16 +71,24 @@
 			text-decoration: underline;
 			text-decoration-thickness: 2px;
 			text-underline-offset: 8px;
-			text-decoration-color: hsla(var(--color-blush-8-hsl), 0);
+			text-decoration-color: gHSLa(blush, 1.1, 0);
 			@include contrast(both, 2) {
 				text-underline-offset: 4px;
 				text-decoration-color: unset;
 			}
 		}
 		&:hover, &:focus {
-			color: var(--color-iron-white);
+			color: color-mix(
+				in srgb,
+				var(--color-iron),
+				var(--color-white)
+			);
 			span {
-				text-decoration-color: var(--color-iron-white);
+				text-decoration-color: color-mix(
+					in srgb,
+					var(--color-iron),
+					var(--color-white)
+				);
 			}
 		}
 		&:hover, &:focus, &:active {
@@ -88,11 +100,11 @@
 			@include focus-shadow(var(--color-rose));
 		}
 		&:active, &.active {
-			color: var(--color-iron-12);
+			color: gHSL(iron, .35);
 		}
 		&:active, &.active:hover, &.active:focus {
 			span {
-				text-decoration-color: var(--color-iron-12);
+				text-decoration-color: gHSL(iron, .35);
 			}
 		}
 		&.active {
@@ -211,7 +223,11 @@
 				background-color: var(--color-primary);
 			}
 			@include contrast(dark, 2) {
-				background-color: var(--color-iron-white-5);
+				background-color: color-mix(
+					in srgb,
+					var(--color-iron) 5%,
+					var(--color-white)
+				);
 			}
 		}
 		&:after {
@@ -225,7 +241,7 @@
 			@include button;
 			@include font-weight-width(600, 90);
 			position: relative;
-			background-color: hsla(var(--color-iron-1-hsl), .75);
+			background-color: gHSLa(iron, .95, .75);
 			text-transform: uppercase;
 			@include contrast(both, 2) {
 				background-color: unset !important;
@@ -350,7 +366,7 @@
 		margin: calc(var(--p)*3) auto;
 		border: 0;
 		height: 2px;
-		background-color: hsla(var(--color-primary-hsl), .2);
+		background-color: gHSLa(primary, 1, .2);
 	}
 
 	p:not(.codepen), blockquote, pre, ul, ol, figure {
@@ -378,7 +394,7 @@
 	a, pre, button {
 		&:focus-visible {
 			@include theme(light, 2) {
-				@include focus-shadow(hsla(var(--color-mauve-hsl), .5));
+				@include focus-shadow(gHSLa(mauve, 1, .5));
 			}
 			@include theme(dark, 2) {
 				@include focus-shadow(var(--color-mauve));
@@ -392,7 +408,11 @@
 	}
 	p, figcaption, ul, ol {
 		a {
-			@include gradient-text(var(--color-mauve-hsl), var(--color-slate-hsl), true);
+			@include gradient-text(
+				var(--color-mauve),
+				var(--color-slate),
+				gHSLa(mauve, 1, .5)
+			);
 			position: relative;
 			text-decoration: underline;
 			text-decoration-thickness: 1.5px;
@@ -404,14 +424,30 @@
 				filter: brightness(1.2);
 			}
 			&:hover, &:focus {
-				@include gradient-text(var(--color-rose-hsl), var(--color-mauve-hsl), true);
+				@include gradient-text(
+					var(--color-rose),
+					var(--color-mauve),
+					gHSLa(rose, 1, .5)
+				);
 			}
 			&:active {
 				@include theme(light, 2) {
-					@include gradient-text(var(--color-iron-1-hsl), var(--color-iron-12-hsl), true);
+					@include gradient-text(
+						gHSL(iron, .95),
+						gHSL(iron, .35),
+						gHSLa(iron, .35, .5)
+					);
 				}
 				@include theme(dark, 2) {
-					@include gradient-text(var(--color-slate-hsl), var(--color-iron-white-80-hsl), true);
+					@include gradient-text(
+						var(--color-slate),
+						color-mix(
+							in srgb,
+							var(--color-iron) 80%,
+							var(--color-white)
+						),
+						gHSLa(slate, 1, .5)
+					);
 				}
 			}
 		}
@@ -423,7 +459,7 @@
 			border-radius: 2px;
 			padding-left: calc(var(--p)/6);
 			padding-right: calc(var(--p)/6);
-			background-color: hsla(var(--color-iron-hsl), .2);
+			background-color: gHSLa(iron, 1, .2);
 			font-size: 1.0625rem;
 		}
 	}
@@ -450,7 +486,7 @@
 			background-color: var(--color-iron);
 		}
 		@include theme(dark, 2) {
-			background-color: var(--color-iron-8);
+			background-color: gHSL(iron, .55);
 		}
 	}
 	blockquote {
@@ -512,7 +548,7 @@
 		padding: calc(var(--p)*1.5) calc(var(--p)*2);
 		margin-bottom: calc(var(--p)*2);
 		border-radius: 3px;
-		background-color: hsla(var(--color-primary-hsl), .1);
+		background-color: gHSLa(primary, 1, .1);
 		> * {
 			font-weight: 450;
 			code {
@@ -529,8 +565,8 @@
 			@include theme(light, 2) {
 				background: radial-gradient(
 					circle at center left,
-					hsla(var(--color-rose-hsl), .5),
-					hsla(var(--color-mauve-hsl), .5)
+					gHSLa(rose, 1, .5),
+					gHSLa(mauve, 1, .5),
 				);
 			}
 			@include theme(dark, 2) {
@@ -572,10 +608,10 @@
 		height: var(--height);
 		line-height: 1.4;
 		@include theme(light, 2) {
-			background-color: hsla(var(--color-primary-hsl), .1);
+			background-color: gHSLa(primary, 1, .1);
 		}
 		@include theme(dark, 2) {
-			background-color: hsla(var(--color-iron-10-hsl), .5);
+			background-color: gHSLa(iron, .45, .5);
 		}
 		span {
 			display: block;
@@ -665,34 +701,15 @@
 
 .button-mastodon {
 	&:before {
-		@include theme(light, 2) {
-			background: radial-gradient(
-				circle at center left,
-				hsla(var(--color-mastodon-white-hsl), 0.75),
-				hsla(var(--color-mastodon-white-hsl), 1)
-			);
-		}
-		@include theme(dark, 2) {
-			background: radial-gradient(
-				circle at center left,
-				var(--color-mastodon-white-30),
-				var(--color-mastodon-light)
-			);
-		}
-		@include contrast(light, 2) {
-			background: radial-gradient(
-				circle at center left,
-				var(--color-mastodon-white),
-				var(--color-mastodon-light)
-			);
-		}
-		@include contrast(dark, 2) {
-			background: radial-gradient(
-				circle at center left,
-				var(--color-mastodon-white-30),
-				var(--color-mastodon-white)
-			);
-		}
+		background: radial-gradient(
+			circle at center left,
+			color-mix(
+				in hsl,
+				var(--color-mastodon),
+				white
+			),
+			var(--color-mastodon-light)
+		);
 	}
 	> span {
 		background: radial-gradient(
