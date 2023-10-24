@@ -169,10 +169,10 @@
 			font-size: 1.125rem;
 			color: var(--color-primary);
 			@include theme(light, 2) {
-				background-color: gHSLa(primary, 1, .1);
+				background-color: gHSL(primary, 1, .1);
 			}
 			@include theme(dark, 2) {
-				background-color: gHSLa(iron, .55, .4);
+				background-color: gHSL(iron, .55, .4);
 			}
 			@include contrast(dark, 2) {
 				background-color: gHSL(iron, .7);
@@ -229,9 +229,9 @@
 	}
 	picture {
 		@include clip-path-edges(2px);
-		background-color: gHSLa(primary, 1, .05);
+		background-color: gHSL(primary, 1, .05);
 		@include contrast(dark, 2) {
-			background-color: gHSLa(primary, 1, .2);
+			background-color: gHSL(primary, 1, .2);
 		}
 	}
 }

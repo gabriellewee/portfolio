@@ -38,11 +38,11 @@
 			opacity: 0;
 		}
 		@include theme(light, 2) {
-			background-color: gHSLa(white, 1, .8);
+			background-color: gHSL(white, 1, .8);
 			color: var(--color-iron);
 		}
 		@include theme(dark, 2) {
-			background-color: gHSLa(iron, 1, .8);
+			background-color: gHSL(iron, 1, .8);
 			color: white;
 		}
 		@include contrast(both, 2) {
@@ -99,7 +99,7 @@
 		margin-right: var(--p);
 		&:focus-visible {
 			@include theme(light, 2) {
-				@include focus-shadow(gHSLa(mauve, 1, .5));
+				@include focus-shadow(gHSL(mauve, 1, .5));
 			}
 			@include theme(dark, 2) {
 				@include focus-shadow(var(--color-mauve));

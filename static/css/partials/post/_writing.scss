@@ -18,7 +18,7 @@
 				transition: all .1s ease-out;
 				text-decoration: underline;
 				text-underline-offset: 8px;
-				text-decoration-color: gHSLa(white, 1, 0);
+				text-decoration-color: gHSL(white, 1, 0);
 				@include contrast(both, 2) {
 					text-underline-offset: 4px;
 					text-decoration-color: unset;
@@ -34,14 +34,14 @@
 				span {
 					text-decoration-color: color-mix(
 						in hsl,
-						hsl(var(--color-mauve-h), calc(var(--color-mauve-s) * .9), var(--color-mauve-l)) 30%,
-						hsl(var(--color-rose-h), calc(var(--color-rose-s) * .9), var(--color-rose-l))
+						hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .9) var(--color-mauve-l) / 1) 30%,
+						hsl(var(--color-rose-h) calc(var(--color-rose-s) * .9) var(--color-rose-l) / 1)
 					);
 				}
 			}
 			&:focus {
 				@include contrast(both, 2) {
-					@include focus-shadow(gHSLa(mauve, 1, .5));
+					@include focus-shadow(gHSL(mauve, 1, .5));
 				}
 			}
 			&:active {
@@ -71,7 +71,7 @@
 					@include gradient-text(
 						var(--color-mauve),
 						var(--color-slate),
-						gHSLa(mauve, 1, .5)
+						gHSL(mauve, 1, .5)
 					);
 				}
 				&:hover, &:focus {
@@ -79,7 +79,7 @@
 						@include gradient-text(
 							var(--color-rose),
 							var(--color-mauve),
-							gHSLa(rose, 1, .5)
+							gHSL(rose, 1, .5)
 						);
 					}
 				}
@@ -89,7 +89,7 @@
 							@include gradient-text(
 								gHSL(iron, .95),
 								gHSL(iron, .35),
-								gHSLa(iron, .95, .5)
+								gHSL(iron, .95, .5)
 							);
 						}
 						@include theme(dark, 2) {
@@ -100,7 +100,7 @@
 									var(--color-iron) 80%,
 									var(--color-white)
 								),
-								gHSLa(slate, 1, .5)
+								gHSL(slate, 1, .5)
 							);
 						}
 					}
@@ -152,7 +152,7 @@
 					@include gradient-text(
 						var(--color-slate),
 						var(--color-mauve),
-						gHSLa(slate, 1, .5)
+						gHSL(slate, 1, .5)
 					);
 				}
 				&:after {
@@ -163,8 +163,8 @@
 					line-height: 1;
 					color: color-mix(
 						in hsl,
-						hsl(var(--color-slate-h), calc(var(--color-slate-s) * .2), var(--color-slate-l)),
-						hsl(var(--color-mauve-h), calc(var(--color-mauve-s) * .2), var(--color-mauve-l))
+						hsl(var(--color-slate-h) calc(var(--color-slate-s) * .2) var(--color-slate-l) / 1),
+						hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .2) var(--color-mauve-l) / 1)
 					);
 				}
 				&:hover, &:focus {
@@ -172,14 +172,14 @@
 						@include gradient-text(
 							var(--color-mauve),
 							var(--color-rose),
-							gHSLa(mauve, 1, .5)
+							gHSL(mauve, 1, .5)
 						);
 					}
 					&:after {
 						color: color-mix(
 							in hsl,
-							hsl(var(--color-mauve-h), calc(var(--color-mauve-s) * .9), var(--color-mauve-l)) 30%,
-							hsl(var(--color-rose-h), calc(var(--color-rose-s) * .9), var(--color-rose-l))
+							hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .9) var(--color-mauve-l) / 1) 30%,
+							hsl(var(--color-rose-h) calc(var(--color-rose-s) * .9) var(--color-rose-l) / 1)
 						);
 					}
 				}
@@ -189,7 +189,7 @@
 							@include gradient-text(
 								gHSL(iron, .35),
 								gHSL(iron, .95),
-								gHSLa(iron, .35, .5)
+								gHSL(iron, .35, .5)
 							);
 						}
 						@include theme(dark, 2) {
@@ -202,8 +202,8 @@
 								var(--color-slate),
 								color-mix(
 									in srgb,
-									gHSLa(iron, 1, .5) 80%,
-									gHSLa(white, 1, .5)
+									gHSL(iron, 1, .5) 80%,
+									gHSL(white, 1, .5)
 								)
 							);
 						}
@@ -233,7 +233,7 @@
 			@include gradient-text(
 				var(--color-slate),
 				var(--color-mauve),
-				gHSLa(slate, 1, .5)
+				gHSL(slate, 1, .5)
 			);
 			@include theme(light, 2) {
 				filter: unset;
@@ -245,7 +245,7 @@
 				@include gradient-text(
 					var(--color-mauve),
 					var(--color-rose),
-					gHSLa(mauve, 1, .5)
+					gHSL(mauve, 1, .5)
 				);
 			}
 			&:active {
@@ -253,7 +253,7 @@
 					@include gradient-text(
 						gHSL(iron, .35),
 						gHSL(iron, .95),
-						gHSLa(iron, .35, .5)
+						gHSL(iron, .35, .5)
 					);
 				}
 				@include theme(dark, 2) {
@@ -266,8 +266,8 @@
 						var(--color-slate),
 						color-mix(
 							in srgb,
-							gHSLa(iron, 1, .5) 80%,
-							gHSLa(white, 1, .5)
+							gHSL(iron, 1, .5) 80%,
+							gHSL(white, 1, .5)
 						)
 					);
 				}
@@ -303,7 +303,7 @@
 						);
 					}
 					@include theme(dark, 2) {
-						color: gHSLa(white, 1, .7);
+						color: gHSL(white, 1, .7);
 					}
 					span {
 						@include theme(light, 2) {
@@ -314,7 +314,7 @@
 							);
 						}
 						@include theme(dark, 2) {
-							text-decoration-color: gHSLa(white, 1, .7);
+							text-decoration-color: gHSL(white, 1, .7);
 						}
 					}
 				}

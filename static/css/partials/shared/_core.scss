@@ -32,7 +32,7 @@ body {
 	}
 	@include theme(dark, 3) {
 		background-color: gHSL(iron, .73);
-		color: gHSLa(white, 1, .9);
+		color: gHSL(white, 1, .9);
 	}
 	@include contrast(light, 3) {
 		background-color: gHSL(blush, 1.12);
@@ -49,19 +49,19 @@ a {
 * {
 	::-moz-selection {
 		@include theme(light, 1) {
-			background-color: gHSLa(rose, 1, .5);
+			background-color: gHSL(rose, 1, .5);
 		}
 		@include theme(dark, 1) {
-			background-color: gHSLa(white, 1, .2);
+			background-color: gHSL(white, 1, .2);
 		}
 	}
 
 	::selection {
 		@include theme(light, 1) {
-			background-color: gHSLa(rose, 1, .5);
+			background-color: gHSL(rose, 1, .5);
 		}
 		@include theme(dark, 1) {
-			background-color: gHSLa(white, 1, .2);
+			background-color: gHSL(white, 1, .2);
 		}
 	}
 }

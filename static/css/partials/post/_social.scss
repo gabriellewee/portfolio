@@ -26,7 +26,7 @@
 		);
 	}
 	@include theme(dark, 2) {
-		color: gHSLa(white, 1, .8);
+		color: gHSL(white, 1, .8);
 	}
 	a {
 		text-decoration: underline;
@@ -92,14 +92,14 @@
 		time {
 			background-color: color-mix(
 				in srgb,
-				hsl(var(--color-mastodon-h), calc(var(--color-mastodon-s) * .8), var(--color-mastodon-l)) 40%,
+				hsl(var(--color-mastodon-h) calc(var(--color-mastodon-s) * .8) var(--color-mastodon-l) / 1) 40%,
 				gHSL(slate, .8)
 			);
 			&:after {
 				@include contrast(both, 2) {
 					background-color: color-mix(
 						in srgb,
-						hsl(var(--color-mastodon-h), calc(var(--color-mastodon-s) * .8), var(--color-mastodon-l)) 40%,
+						hsl(var(--color-mastodon-h) calc(var(--color-mastodon-s) * .8) var(--color-mastodon-l) / 1) 40%,
 						gHSL(slate, .8)
 					);
 				}
@@ -141,8 +141,8 @@
 					@include focus-shadow(
 						color-mix(
 							in hsl,
-							gHSLa(mastodon, 1.15, .75) 90%,
-							gHSLa(white, 1, .75)
+							gHSL(mastodon, 1.15, .75) 90%,
+							gHSL(white, 1, .75)
 						)
 					);
 				}
@@ -150,8 +150,8 @@
 					@include focus-shadow(
 						color-mix(
 							in hsl,
-							gHSLa(mastodon, 1.15, .9) 90%,
-							gHSLa(white, 1, .9)
+							gHSL(mastodon, 1.15, .9) 90%,
+							gHSL(white, 1, .9)
 						)
 					);
 				}
@@ -172,13 +172,13 @@
 				circle at center left,
 				color-mix(
 					in hsl,
-					gHSLa(mastodon, 1.15, .75) 90%,
-					gHSLa(white, 1, .75)
+					gHSL(mastodon, 1.15, .75) 90%,
+					gHSL(white, 1, .75)
 				),
 				color-mix(
 					in hsl,
-					gHSLa(mastodon, 1.15, 1) 90%,
-					gHSLa(white, 1, 1)
+					gHSL(mastodon, 1.15, 1) 90%,
+					gHSL(white, 1, 1)
 				)
 			);
 		}
@@ -187,8 +187,8 @@
 				circle at center left,
 				color-mix(
 					in hsl,
-					gHSLa(mastodon, 1.15, .75) 30%,
-					gHSLa(white, 1, .75)
+					gHSL(mastodon, 1.15, .75) 30%,
+					gHSL(white, 1, .75)
 				),
 				var(--color-mastodon-light)
 			);

@@ -81,10 +81,10 @@
 		li {
 			padding: calc(var(--p)*2);
 			@include theme(light, 2) {
-				background-color: gHSLa(secondary, 1, .75);
+				background-color: gHSL(secondary, 1, .75);
 			}
 			@include theme(dark, 2) {
-				background-color: gHSLa(iron, .55, .65);
+				background-color: gHSL(iron, .55, .65);
 			}
 			@include viewport($iphone-max) {
 				@include clip-path-edges(2px);
@@ -197,7 +197,7 @@
 		&:before {
 			@include before;
 			@include theme(light, 2) {
-				background-color: gHSLa(mauve, 1, .5);
+				background-color: gHSL(mauve, 1, .5);
 			}
 			@include theme(dark, 2) {
 				background-color: var(--color-blush);

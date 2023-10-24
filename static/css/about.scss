@@ -318,14 +318,14 @@
 		@include theme(light, 2) {
 			background-color: color-mix(
 				in srgb,
-				gHSLa(iron, 1, .2) 70%,
-				gHSLa(white, 1, .2)
+				gHSL(iron, 1, .2) 70%,
+				gHSL(white, 1, .2)
 			);
-			color: gHSLa(iron, 1, .7);
+			color: gHSL(iron, 1, .7);
 		}
 		@include theme(dark, 2) {
-			background-color: gHSLa(iron, .55, .4);
-			color: gHSLa(white, 1, .7);
+			background-color: gHSL(iron, .55, .4);
+			color: gHSL(white, 1, .7);
 		}
 		@include viewport(mobile) {
 			margin-bottom: unset;
@@ -359,7 +359,7 @@
 		}
 		@include contrast(light, 2) {
 			&:before {
-				background-color: gHSLa(primary, 1, .5);
+				background-color: gHSL(primary, 1, .5);
 			}
 			&:after {
 				background-color: color-mix(
@@ -371,7 +371,7 @@
 		}
 		@include contrast(dark, 2) {
 			&:before {
-				background-color: gHSLa(primary, 1, .7);
+				background-color: gHSL(primary, 1, .7);
 			}
 			&:after {
 				background-color: gHSL(iron, .7);
@@ -400,7 +400,7 @@
 			color: var(--color-primary);
 		}
 		@include theme(dark, 2) {
-			color: gHSLa(primary, 1, .7);
+			color: gHSL(primary, 1, .7);
 		}
 		ul {
 			padding: 0;

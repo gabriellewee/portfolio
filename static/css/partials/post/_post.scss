@@ -71,7 +71,7 @@
 			text-decoration: underline;
 			text-decoration-thickness: 2px;
 			text-underline-offset: 8px;
-			text-decoration-color: gHSLa(blush, 1.1, 0);
+			text-decoration-color: gHSL(blush, 1.1, 0);
 			@include contrast(both, 2) {
 				text-underline-offset: 4px;
 				text-decoration-color: unset;
@@ -241,7 +241,7 @@
 			@include button;
 			@include font-weight-width(600, 90);
 			position: relative;
-			background-color: gHSLa(iron, .95, .75);
+			background-color: gHSL(iron, .95, .75);
 			text-transform: uppercase;
 			@include contrast(both, 2) {
 				background-color: unset !important;
@@ -366,7 +366,7 @@
 		margin: calc(var(--p)*3) auto;
 		border: 0;
 		height: 2px;
-		background-color: gHSLa(primary, 1, .2);
+		background-color: gHSL(primary, 1, .2);
 	}
 
 	p:not(.codepen), blockquote, pre, ul, ol, figure {
@@ -394,7 +394,7 @@
 	a, pre, button {
 		&:focus-visible {
 			@include theme(light, 2) {
-				@include focus-shadow(gHSLa(mauve, 1, .5));
+				@include focus-shadow(gHSL(mauve, 1, .5));
 			}
 			@include theme(dark, 2) {
 				@include focus-shadow(var(--color-mauve));
@@ -411,7 +411,7 @@
 			@include gradient-text(
 				var(--color-mauve),
 				var(--color-slate),
-				gHSLa(mauve, 1, .5)
+				gHSL(mauve, 1, .5)
 			);
 			transition: all .1s ease-out;
 			position: relative;
@@ -428,7 +428,7 @@
 				@include gradient-text(
 					var(--color-rose),
 					var(--color-mauve),
-					gHSLa(rose, 1, .5)
+					gHSL(rose, 1, .5)
 				);
 			}
 			&:active {
@@ -436,7 +436,7 @@
 					@include gradient-text(
 						gHSL(iron, .95),
 						gHSL(iron, .35),
-						gHSLa(iron, .95, .5)
+						gHSL(iron, .95, .5)
 					);
 				}
 				@include theme(dark, 2) {
@@ -447,7 +447,7 @@
 							var(--color-iron) 80%,
 							var(--color-white)
 						),
-						gHSLa(slate, 1, .5)
+						gHSL(slate, 1, .5)
 					);
 				}
 			}
@@ -460,7 +460,7 @@
 			border-radius: 2px;
 			padding-left: calc(var(--p)/6);
 			padding-right: calc(var(--p)/6);
-			background-color: gHSLa(iron, 1, .2);
+			background-color: gHSL(iron, 1, .2);
 			font-size: 1.0625rem;
 		}
 	}
@@ -549,7 +549,7 @@
 		padding: calc(var(--p)*1.5) calc(var(--p)*2);
 		margin-bottom: calc(var(--p)*2);
 		border-radius: 3px;
-		background-color: gHSLa(primary, 1, .1);
+		background-color: gHSL(primary, 1, .1);
 		> * {
 			font-weight: 450;
 			code {
@@ -566,8 +566,8 @@
 			@include theme(light, 2) {
 				background: radial-gradient(
 					circle at center left,
-					gHSLa(rose, 1, .5),
-					gHSLa(mauve, 1, .5),
+					gHSL(rose, 1, .5),
+					gHSL(mauve, 1, .5),
 				);
 			}
 			@include theme(dark, 2) {
@@ -609,10 +609,10 @@
 		height: var(--height);
 		line-height: 1.4;
 		@include theme(light, 2) {
-			background-color: gHSLa(primary, 1, .1);
+			background-color: gHSL(primary, 1, .1);
 		}
 		@include theme(dark, 2) {
-			background-color: gHSLa(iron, .45, .5);
+			background-color: gHSL(iron, .45, .5);
 		}
 		span {
 			display: block;

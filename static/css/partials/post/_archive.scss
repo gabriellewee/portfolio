@@ -22,12 +22,12 @@
 				@include gradient-text(
 					var(--color-mauve),
 					var(--color-slate),
-					gHSLa(mauve, 1, .5)
+					gHSL(mauve, 1, .5)
 				);
 				transition: all .1s ease-out;
 				text-decoration: underline;
 				text-underline-offset: 8px;
-				text-decoration-color: gHSLa(blush, 1.1, 0);
+				text-decoration-color: gHSL(blush, 1.1, 0);
 				@include contrast(both, 2) {
 					text-underline-offset: 4px;
 					text-decoration-color: unset;
@@ -46,12 +46,12 @@
 					@include gradient-text(
 						var(--color-rose),
 						var(--color-mauve),
-						gHSLa(rose, 1, .5)
+						gHSL(rose, 1, .5)
 					);
 					text-decoration-color: color-mix(
 						in hsl,
-						hsl(var(--color-mauve-h), calc(var(--color-mauve-s) * .9), var(--color-mauve-l)) 30%,
-						hsl(var(--color-rose-h), calc(var(--color-rose-s) * .9), var(--color-rose-l))
+						hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .9) var(--color-mauve-l) / 1) 30%,
+						hsl(var(--color-rose-h) calc(var(--color-rose-s) * .9) var(--color-rose-l) / 1)
 					);
 				}
 			}
@@ -61,7 +61,7 @@
 						@include gradient-text(
 							gHSL(iron, .95),
 							gHSL(iron, .35),
-							gHSLa(iron, .95, .5)
+							gHSL(iron, .95, .5)
 						);
 						text-decoration-color: gHSL(iron, .95);
 					}
@@ -73,7 +73,7 @@
 								var(--color-iron) 80%,
 								var(--color-white)
 							),
-							gHSLa(slate, 1, .5)
+							gHSL(slate, 1, .5)
 						);
 						text-decoration-color: var(--color-slate);
 					}

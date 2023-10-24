@@ -18,7 +18,7 @@ header {
 		left: 0;
 		width: 100vw;
 		height: 100vh;
-		background-color: gHSLa(iron, 1, .2);
+		background-color: gHSL(iron, 1, .2);
 	}
 }
 
@@ -51,13 +51,13 @@ main {
 	a {
 		display: inline-block;
 		text-decoration: underline;
-		text-decoration-color: gHSLa(white, 1, .4);
+		text-decoration-color: gHSL(white, 1, .4);
 		text-underline-offset: 5px;
 		&:hover, &:focus {
-			background-color: gHSLa(iron, 1, .5);
+			background-color: gHSL(iron, 1, .5);
 		}
 		&:focus-visible {
-			@include focus-shadow(gHSLa(white, 1, .8));
+			@include focus-shadow(gHSL(white, 1, .8));
 		}
 		&:active {
 			background-color: var(--color-iron);
