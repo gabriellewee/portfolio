@@ -1,5 +1,5 @@
 .post-inner {
-	transition: .2s ease-out;
+	transition: scale .2s ease-out;
 	clip-path: unset;
 	overflow: unset;
 	background: unset;
@@ -12,6 +12,9 @@
 				var(--color-rose),
 				var(--color-mauve)
 			);
+		}
+		@media (prefers-reduced-motion: reduce) {
+			transition: opacity .2s ease-out;
 		}
 	}
 	&:after {
@@ -65,7 +68,7 @@ figure {
 
 .media-view-hover {
 	opacity: 0;
-	transition: .2s ease-out;
+	transition: opacity .2s ease-out;
 	display: none;
 	position: absolute;
 	top: 0;
@@ -81,7 +84,7 @@ figure {
 		display: flex;
 	}
 	.button {
-		transition: .2s ease-out;
+		transition: translate .2s ease-out, scale .2s ease-out;
 		position: absolute;
 		display: inline-block;
 		top: calc(var(--p)*2);
@@ -111,7 +114,7 @@ figure {
 
 figcaption {
 	@include font-weight-width(700, 120);
-	transition: .5s cubic-bezier(.64, 0, .78, 0);
+	transition: opacity .3s ease-out, translate .3s ease-out;
 	opacity: 0;
 	position: absolute;
 	top: 0;
@@ -198,7 +201,7 @@ figcaption {
 			margin-top: calc(var(--p) * 2);
 		}
 		.media-expand {
-			transition: .2s ease-out;
+			transition: scale .2s ease-out;
 			position: relative;
 			display: flex;
 			align-items: center;
@@ -239,7 +242,7 @@ figcaption {
 				}
 			}
 			.no-image {
-				transition: .2s ease-out;
+				transition: all .1s ease-out;
 				opacity: .7;
 				content: "Expand";
 				margin-left: calc(var(--p) * .75);
@@ -407,7 +410,7 @@ figcaption {
 		}
 		span {
 			opacity: .7;
-			transition: .2s ease-out;
+			transition: all .1s ease-out;
 			text-decoration: underline;
 			text-underline-offset: 8px;
 			text-decoration-color: gHSLa(white, 1, 0);
@@ -538,7 +541,7 @@ figcaption {
 							}
 						}
 						&, > span, > span:before {
-							transition: all .2s ease-out;
+							transition: background .2s ease-out, scale .2s ease-out, opacity .2s ease-out;
 						}
 						> span {
 							&:before {
@@ -612,7 +615,7 @@ figcaption {
 			.post-content {
 				figcaption {
 					@include blur(10px, iron, .45, .9, .7);
-					transition: .5s cubic-bezier(.64, 0, .78, 0);
+					transition: opacity .5s cubic-bezier(.64, 0, .78, 0), translate .5s cubic-bezier(.64, 0, .78, 0);
 					opacity: 1;
 					@media (prefers-reduced-motion: no-preference) {
 						translate: 0 0;

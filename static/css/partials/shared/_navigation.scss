@@ -88,14 +88,13 @@
 	}
 	a {
 		@include font-weight-width(600, 115);
+		transition: scale .2s ease-out;
 		margin-right: var(--p);
-		&, span {
-			transition: .2s ease-out;
-		}
 		&:before {
 			@include before(var(--color-blush));
 		}
 		span {
+			transition: background .2s ease-out;
 			color: white;
 			background: color-mix(
 				in hsl,

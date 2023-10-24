@@ -35,7 +35,7 @@
 		opacity: 0;
 		visibility: hidden;
 		z-index: -1;
-		transition: .2s ease-out;
+		transition: opacity .2s ease-out, translate .2s ease-out, visibility .2s ease-out, z-index .2s ease-out;
 		position: absolute;
 		left: 0;
 		display: block;

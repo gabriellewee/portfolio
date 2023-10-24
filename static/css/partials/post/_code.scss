@@ -254,7 +254,7 @@
 		display: block;
 		width: 100%;
 		opacity: 0;
-		transition: .2s ease-out;
+		transition: opacity .2s ease-out;
 	}
 	.warning {
 		display: none;
@@ -273,25 +273,12 @@
 	.button {
 		@include font-weight-width(600, 90);
 		order: 2;
-		text-align: center;
-		text-decoration: underline;
-		text-decoration-color: gHSLa(white, 1, 0);
-		text-decoration-thickness: 3px;
-		text-underline-offset: 8px;
-		transition: .2s ease-out;
 		@include viewport(mobile) {
 			order: 1;
 			position: absolute;
 			z-index: 3;
 			bottom: calc(var(--p)*2);
 			right: calc(var(--p)*2);
-			text-decoration: none;
-		}
-		&:before {
-			display: none;
-			@include viewport(mobile) {
-				display: block;
-			}
 		}
 		&:hover {
 			@media (prefers-reduced-motion: no-preference) {
@@ -300,10 +287,6 @@
 					scale: 1.02;
 				}
 			}
-		}
-		&:hover, &:focus {
-			text-decoration-color: gHSLa(white, 1, 1);
-			text-underline-offset: 4px;
 		}
 		&:active {
 			@media (prefers-reduced-motion: no-preference) {
@@ -314,7 +297,7 @@
 			}
 		}
 		&:before {
-			background-color: color-mix(
+			background: color-mix(
 				in srgb,
 				var(--color-iron) 60%,
 				var(--color-white)
@@ -338,9 +321,8 @@
 			background-color: var(--color-mint);
 			background: radial-gradient(
 				circle at center left,
-				gHSL(slate, .8) 0,
+				gHSL(slate, .8) -10%,
 				var(--color-mint) 50%,
-				var(--color-mint) 60%,
 				var(--color-oak) 100%,
 			) 50% 0% / 200% 100%;
 			@include clip-path(false) {

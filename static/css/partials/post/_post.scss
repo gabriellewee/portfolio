@@ -65,7 +65,7 @@
 			content: "#";
 		}
 		span, &:before {
-			transition: .2s ease-out;
+			transition: all .1s ease-out;
 		}
 		span {
 			text-decoration: underline;
@@ -413,6 +413,7 @@
 				var(--color-slate),
 				gHSLa(mauve, 1, .5)
 			);
+			transition: all .1s ease-out;
 			position: relative;
 			text-decoration: underline;
 			text-decoration-thickness: 1.5px;
@@ -559,7 +560,7 @@
 
 	.expand {
 		position: relative;
-		transition: .2s ease-out;
+		transition: scale .2s ease-out;
 		&:before {
 			@include before;
 			@include theme(light, 2) {
@@ -686,7 +687,7 @@
 		&:before {
 			content: "";
 			display: block;
-			transition: .2s ease-out;
+			transition: all .2s ease-out;
 			position: relative;
 			z-index: 1;
 			width: 18px;

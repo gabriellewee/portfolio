@@ -8,7 +8,7 @@
 		visibility: hidden;
 		display: block;
 		position: absolute;
-		transition: .1s ease-out;
+		transition: opacity .1s ease-out, visibility .1s ease-out;
 		@include theme(light, 2) {
 			background-color: var(--color-primary);
 		}

@@ -24,7 +24,7 @@
 					var(--color-slate),
 					gHSLa(mauve, 1, .5)
 				);
-				transition: .2s ease-out;
+				transition: all .1s ease-out;
 				text-decoration: underline;
 				text-underline-offset: 8px;
 				text-decoration-color: gHSLa(blush, 1.1, 0);

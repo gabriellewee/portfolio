@@ -57,7 +57,7 @@
 		margin-top: calc(var(--p)*2);
 	}
 	a {
-		transition: .2s ease-out;
+		transition: scale .2s ease-out;
 		&:before {
 			@include before;
 			background: radial-gradient(

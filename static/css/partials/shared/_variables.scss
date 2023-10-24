@@ -1,3 +1,5 @@
+$iron: #263238;
+
 :root{
 	--p:12px;
 	--width:70rem;
@@ -7,7 +9,7 @@
 
 	$colors: (
 		white: white,
-		iron: #263238,
+		iron: $iron,
 		blush: #F5C8BF,
 		rose: #D19487,
 		mauve: #B2738E,
@@ -62,10 +64,14 @@
 }
 
 $values: h, s, l;
+$light: mix($iron, white, 95%);
+$dark: mix($iron, white, 5%);
 
 @include theme(light, 4, true) {
 	--color-secondary:white;
-	--color-primary:color-mix(in srgb,var(--color-iron) 95%,var(--color-white));
+	--color-secondary-hsl:var(--color-white-hsl);
+	--color-primary:hsl(#{hexToHSL($light)});
+	--color-primary-hsl:#{hexToHSL($light)};
 	@each $value in $values {
 		--color-secondary-#{$value}:var(--color-white-$value);
 		--color-primary-#{$value}:var(--color-iron-$value);
@@ -74,7 +80,9 @@ $values: h, s, l;
 
 @include theme(dark, 4, true) {
 	--color-secondary:var(--color-iron);
-	--color-primary:color-mix(in srgb,var(--color-iron) 5%,var(--color-white));
+	--color-secondary-hsl:var(--color-iron-hsl);
+	--color-primary:hsl(#{hexToHSL($dark)});
+	--color-primary-hsl:#{hexToHSL($dark)};
 	@each $value in $values {
 		--color-secondary-#{$value}:var(--color-iron-$value);
 		--color-primary-#{$value}:var(--color-white-$value);

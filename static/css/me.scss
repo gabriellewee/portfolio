@@ -46,7 +46,7 @@
 }
 
 .post-expand, .post-external {
-	transition: .2s ease-out;
+	transition: opacity .2s ease-out, scale .2s ease-out;
 	display: block;
 	position: relative;
 	&:before {

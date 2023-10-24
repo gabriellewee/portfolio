@@ -28,7 +28,7 @@
 
 .lightbox-background {
 	@include blur(10px, iron, .35, .98, .9);
-	transition: .2s opacity ease-out, 0s visibility .2s, 0s z-index .2s;
+	transition: opacity .2s ease-out, visibility 0s .2s, z-index 0s .2s;
 	z-index: -999;
 	&:before {
 		opacity: 0;
@@ -52,11 +52,11 @@
 }
 
 .lightbox {
-	transition: 0s visibility .2s, 0s z-index .2s;
+	transition: visibility 0s .2s, z-index 0s .2s;
 	z-index: -998;
 	+ [data-content] {
 		opacity: 0;
-		transition: .2s opacity ease-out .1s, 0s display .2s;
+		transition: opacity .2s ease-out .1s, display 0s .2s;
 		display: none;
 		position: fixed;
 		top: 50%;
@@ -71,7 +71,7 @@
 		&.iframe {
 			iframe {
 				opacity: 0;
-				transition: .2s ease-out .3s;
+				transition: opacity .2s ease-out .3s;
 				width: 100vw;
 				height: 100vh;
 				max-width: calc(100vw - (var(--p)*4));
@@ -120,12 +120,12 @@
 		}
 	}
 	.no-js &:target, &.active {
-		transition: .2s opacity ease-out;
+		transition: opacity .2s ease-out, visibility .2s ease-out;
 		opacity: 1;
 		visibility: visible;
 		z-index: 999;
 		~ .lightbox-background {
-			transition: .2s opacity ease-out;
+			transition: opacity .2s ease-out, visibility .2s ease-out;
 			opacity: 1;
 			visibility: visible;
 			z-index: 998;

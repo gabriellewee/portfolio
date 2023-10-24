@@ -27,7 +27,7 @@
 	.text {
 		@include font-weight-width(600, 115);
 		opacity: 0;
-		transition: .2s ease-out;
+		transition: opacity .2s ease-out, translate .2s ease-out;
 		order: 1;
 		display: inline-block;
 		padding: calc(var(--p)*.75) calc(var(--p)*1.5);
