@@ -236,9 +236,10 @@
 	}
 }
 
-.post-graphic {
+.post-thumbnails {
 	img {
 		aspect-ratio: 4 / 3;
 		object-fit: cover;
+		object-position: var(--focus-x) var(--focus-y);
 	}
 }

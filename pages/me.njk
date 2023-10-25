@@ -98,7 +98,7 @@
 			</div>
 		</article>
 
-		<article class="post post-photography post-me post-size-s grid-item">
+		<article class="post post-thumbnails post-photography post-me post-size-s grid-item">
 			<div class="post-inner post-animate">
 				<header class="post-header">
 					<h2>I enjoy taking photos of the world around me.</h2>
@@ -107,8 +107,8 @@
 					{% for media in photography|limit(4) %}
 						<li>
 							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
-								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-expanded="false" aria-label="Expand image">
-									{% image './static/images/photography/' + media.date + '-' + media.name + '-thumbnail.jpg', media.description, 'thumbnail', loop.index %}
+								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-expanded="false" aria-label="Expand image"{% if media.focus %} style="--focus-x: {{media.focus.x}}%; --focus-y: {{media.focus.y}}%;"{% endif %}>
+									{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail', loop.index %}
 								</a>
 							</figure>
 						</li>
@@ -120,7 +120,7 @@
 			</div>
 		</article>
 
-		<article class="post post-graphic post-me post-size-s grid-item">
+		<article class="post post-thumbnails post-graphic post-me post-size-s grid-item">
 			<div class="post-inner post-animate">
 				<header class="post-header">
 					<h2>I dabble in illustration and design.</h2>
@@ -129,7 +129,7 @@
 					{% for media in graphic|limit(4) %}
 						<li>
 							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
-								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-expanded="false" aria-label="Expand image">
+								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-expanded="false" aria-label="Expand image"{% if media.focus %} style="--focus-x: {{media.focus.x}}%; --focus-y: {{media.focus.y}}%;"{% endif %}>
 									{% if media.svg == true %}
 										<picture>
 											<img src="/static/images/graphic/{{media.date}}-{{media.name}}.svg" alt="{{media.description}}" width="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'width' %}" height="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'height' %}"/>
@@ -148,7 +148,7 @@
 			</div>
 		</article>
 
-		<article class="post post-art post-me post-size-s grid-item">
+		<article class="post post-thumbnails post-art post-me post-size-s grid-item">
 			<div class="post-inner post-animate">
 				<header class="post-header">
 					<h2>I like to draw.</h2>
@@ -157,8 +157,8 @@
 					{% for media in art|limit(4) %}
 						<li>
 							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
-								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-expanded="false" aria-label="Expand image">
-									{% image './static/images/art/' + media.date + '-' + media.name + '-thumbnail.jpg', media.description, 'thumbnail', loop.index %}
+								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-expanded="false" aria-label="Expand image"{% if media.focus %} style="--focus-x: {{media.focus.x}}%; --focus-y: {{media.focus.y}}%;"{% endif %}>
+									{% image './static/images/art/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail', loop.index %}
 								</a>
 							</figure>
 						</li>

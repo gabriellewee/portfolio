@@ -12,7 +12,11 @@
 			 	"platform": "instagram",
 			 	"url": "https://www.instagram.com/p/CryxQ6zPyMC/"
 			 }
-		]
+		],
+		"focus": {
+		 	"x": 0,
+		 	"y": 42
+		 }
 	},
 	{
 		"name": "plant-cat",
@@ -27,7 +31,11 @@
 			 	"platform": "instagram",
 			 	"url": "https://www.instagram.com/p/CrE-R4tPGUO/"
 			 }
-		]
+		],
+		"focus": {
+		 	"x": 0,
+		 	"y": 52
+		 }
 	},
 	{
 		"name": "golden-gate",
@@ -42,7 +50,11 @@
 			 	"platform": "instagram",
 			 	"url": "https://www.instagram.com/p/Cp3_DB2OWnv/"
 			 }
-		]
+		],
+		"focus": {
+		 	"x": 0,
+		 	"y": 64
+		 }
 	},
 	{
 		"name": "alfie",
@@ -57,7 +69,11 @@
 			 	"platform": "instagram",
 			 	"url": "https://www.instagram.com/p/CpgN7-MDS50/"
 			 }
-		]
+		],
+		"focus": {
+		 	"x": 0,
+		 	"y": 36
+		 }
 	},
 	{
 		"name": "spoons",
@@ -640,6 +656,31 @@
 		"size": "m"
 	},
 	{
+		"name": "kinkaku-ji",
+		"date": "2019-11-22",
+		"location": "Kinkaku-ji, Kita-ku, Kyoto, Japan",
+		"camera": "iPhone XS Max",
+		"editor": "VSCO",
+		"tags": "landscape water plants nature architecture outdoor",
+		"description": "Kinkaku-ji, a golden Zen Buddhist shrine in Kyoko, surreounded by still water and green trees on a foggy day."
+	},
+	{
+		"name": "fushimi-inari-taisha",
+		"date": "2019-11-21",
+		"location": "Fushimi Inari-taisha, Fushimi-ku, Kyoto, Japan",
+		"camera": "iPhone XS Max",
+		"editor": "VSCO",
+		"tags": "sunset landscape architecture outdoor",
+		"description": "A closeup of the architectural details and structure of Fushimi Inari-taisha in Kyoto, the head shrine of the Japanese fox deity Inari Ōkami.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/CC94wJ1p-tr/"
+			 }
+		],
+		"size": "xs"
+	},
+	{
 		"name": "sunset",
 		"date": "2019-11-16",
 		"location": "Black Rock Beach, Kaanapali, HI, USA",
@@ -664,6 +705,15 @@
 		]
 	},
 	{
+		"name": "philodendron",
+		"date": "2019-09-22",
+		"location": "Fairchild Tropical Botanic Garden, Coral Gables, FL, USA",
+		"camera": "iPhone XS Max",
+		"editor": "VSCO",
+		"tags": "outdoor plants nature",
+		"description": "A vining philodendron Verrucosum climbing up a moss-covered wall."
+	},
+	{
 		"name": "palm-trees",
 		"date": "2019-09-18",
 		"location": "Fairchild Tropical Botanic Garden, Coral Gables, FL, USA",
@@ -677,5 +727,50 @@
 			 	"url": "https://www.instagram.com/p/B9AxrwmJBnk/"
 			 }
 		]
+	},
+	{
+		"name": "rocks",
+		"date": "2019-04-13",
+		"location": "Point Lobos State Natural Reserve, Carmel-By-The-Sea, CA, USA",
+		"camera": "iPhone XS Max",
+		"editor": "VSCO",
+		"tags": "landscape outdoor water plants nature",
+		"description": "The ocean waves crashing into the rocks along the shoreline of Point Lobos under a blue sky."
+	},
+	{
+		"name": "succulents",
+		"date": "2019-03-02",
+		"location": "San Jose, CA, USA",
+		"camera": "iPhone XS Max",
+		"editor": "VSCO",
+		"tags": "indoor plants nature",
+		"description": "My hand holding a small round clear tray filled with colorful pink and violet succulents."
+	},
+	{
+		"name": "succulents",
+		"date": "2019-01-26",
+		"location": "San Jose, CA, USA",
+		"camera": "iPhone XS Max",
+		"editor": "VSCO",
+		"tags": "outdoor plants nature",
+		"description": "Hundreds of blue-green echeveria succulents."
+	},
+	{
+		"name": "beach",
+		"date": "2017-12-02",
+		"location": "La Jolla, CA, USA",
+		"camera": "iPhone 8 Plus",
+		"editor": "VSCO",
+		"tags": "outdoor beach water plants nature",
+		"description": "The La Jolla shoreline with tidepools and seagulls and people in the distance."
+	},
+	{
+		"name": "bird",
+		"date": "2017-10-13",
+		"location": "Old Hammond Road Ditch, Saint John the Baptist Parish, LA, USA",
+		"camera": "iPhone 8 Plus",
+		"editor": "VSCO",
+		"tags": "outdoor water plants animal bird nature",
+		"description": "A long necked white bird perched on top of the water surrounded by lush green plants in the Lousiana bayou."
 	}
 ]
