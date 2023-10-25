@@ -418,12 +418,6 @@
 			text-decoration: underline;
 			text-decoration-thickness: 1.5px;
 			text-underline-offset: 2px;
-			@include theme(light, 2) {
-				filter: unset;
-			}
-			@include theme(dark, 2) {
-				filter: brightness(1.2);
-			}
 			&:hover, &:focus {
 				@include gradient-text(
 					var(--color-rose),

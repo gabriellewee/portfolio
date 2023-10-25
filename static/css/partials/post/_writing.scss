@@ -14,30 +14,25 @@
 			font-size: 2.25rem;
 		}
 		a {
-			span {
+			text-decoration: underline;
+			text-underline-offset: 8px;
+			text-decoration-color: gHSL(white, 1, 0);
+			@include contrast(both, 2) {
+				text-underline-offset: 4px;
+				text-decoration-color: unset;
+			}
+			&, span {
 				transition: all .1s ease-out;
-				text-decoration: underline;
-				text-underline-offset: 8px;
-				text-decoration-color: gHSL(white, 1, 0);
-				@include contrast(both, 2) {
-					text-underline-offset: 4px;
-					text-decoration-color: unset;
-				}
 			}
 			&:hover, &:focus, &:active {
-				span {
-					text-underline-offset: 4px;
-				}
-
+				text-underline-offset: 4px;
 			}
 			&:hover, &:focus {
-				span {
-					text-decoration-color: color-mix(
-						in hsl,
-						hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .9) var(--color-mauve-l) / 1) 30%,
-						hsl(var(--color-rose-h) calc(var(--color-rose-s) * .9) var(--color-rose-l) / 1)
-					);
-				}
+				text-decoration-color: color-mix(
+					in hsl,
+					hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .9) var(--color-mauve-l) / 1) 30%,
+					hsl(var(--color-rose-h) calc(var(--color-rose-s) * .9) var(--color-rose-l) / 1)
+				);
 			}
 			&:focus {
 				@include contrast(both, 2) {
@@ -45,13 +40,11 @@
 				}
 			}
 			&:active {
-				span {
-					@include theme(light, 2) {
-						text-decoration-color: gHSL(iron, .95);
-					}
-					@include theme(dark, 2) {
-						text-decoration-color: var(--color-slate);
-					}
+				@include theme(light, 2) {
+					text-decoration-color: gHSL(iron, .95);
+				}
+				@include theme(dark, 2) {
+					text-decoration-color: var(--color-slate);
 				}
 			}
 		}
@@ -63,23 +56,21 @@
 	}
 }
 
-&:not(.post-feature):not(.post-archive) {
+&.post-blog {
 	.post-header {
 		h2 {
 			a {
 				span {
 					@include gradient-text(
 						var(--color-mauve),
-						var(--color-slate),
-						gHSL(mauve, 1, .5)
+						var(--color-slate)
 					);
 				}
 				&:hover, &:focus {
 					span {
 						@include gradient-text(
 							var(--color-rose),
-							var(--color-mauve),
-							gHSL(rose, 1, .5)
+							var(--color-mauve)
 						);
 					}
 				}
@@ -88,8 +79,7 @@
 						@include theme(light, 2) {
 							@include gradient-text(
 								gHSL(iron, .95),
-								gHSL(iron, .35),
-								gHSL(iron, .95, .5)
+								gHSL(iron, .35)
 							);
 						}
 						@include theme(dark, 2) {
@@ -99,8 +89,7 @@
 									in srgb,
 									var(--color-iron) 80%,
 									var(--color-white)
-								),
-								gHSL(slate, 1, .5)
+								)
 							);
 						}
 					}
@@ -118,32 +107,6 @@
 	}
 }
 
-.post-footer {
-	display: flex;
-	flex-flow: row wrap;
-	&:not(:empty) {
-		margin-top: calc(var(--p)*-1.5);
-		padding: 0 calc(var(--p)*2) calc(var(--p)*2);
-	}
-	.button {
-		margin-top: var(--p);
-		line-height: 1.334;
-		&:not(:last-child) {
-			margin-right: var(--p);
-		}
-	}
-}
-
-.post-content {
-	&:empty + .post-footer {
-		margin-top: 0;
-	}
-
-	&:not(:empty) {
-		padding: 0 calc(var(--p)*2) calc(var(--p)*2);
-	}
-}
-
 &.post-feature {
 	.post-header {
 		h2 {
@@ -151,8 +114,7 @@
 				span {
 					@include gradient-text(
 						var(--color-slate),
-						var(--color-mauve),
-						gHSL(slate, 1, .5)
+						var(--color-mauve)
 					);
 				}
 				&:after {
@@ -171,8 +133,7 @@
 					span {
 						@include gradient-text(
 							var(--color-mauve),
-							var(--color-rose),
-							gHSL(mauve, 1, .5)
+							var(--color-rose)
 						);
 					}
 					&:after {
@@ -188,8 +149,7 @@
 						@include theme(light, 2) {
 							@include gradient-text(
 								gHSL(iron, .35),
-								gHSL(iron, .95),
-								gHSL(iron, .35, .5)
+								gHSL(iron, .95)
 							);
 						}
 						@include theme(dark, 2) {
@@ -199,12 +159,7 @@
 									var(--color-iron) 80%,
 									var(--color-white)
 								),
-								var(--color-slate),
-								color-mix(
-									in srgb,
-									gHSL(iron, 1, .5) 80%,
-									gHSL(white, 1, .5)
-								)
+								var(--color-slate)
 							);
 						}
 					}
@@ -235,12 +190,6 @@
 				var(--color-mauve),
 				gHSL(slate, 1, .5)
 			);
-			@include theme(light, 2) {
-				filter: unset;
-			}
-			@include theme(dark, 2) {
-				filter: brightness(1.3);
-			}
 			&:hover, &:focus {
 				@include gradient-text(
 					var(--color-mauve),
@@ -305,18 +254,6 @@
 					@include theme(dark, 2) {
 						color: gHSL(white, 1, .7);
 					}
-					span {
-						@include theme(light, 2) {
-							text-decoration-color: color-mix(
-								in srgb,
-								var(--color-iron),
-								var(--color-white)
-							);
-						}
-						@include theme(dark, 2) {
-							text-decoration-color: gHSL(white, 1, .7);
-						}
-					}
 				}
 				&:active {
 					@include theme(light, 2) {
@@ -332,22 +269,6 @@
 							var(--color-iron) 70%,
 							var(--color-white)
 						);
-					}
-					span {
-						@include theme(light, 2) {
-							text-decoration-color: color-mix(
-								in srgb,
-								var(--color-iron) 90%,
-								var(--color-white)
-							);
-						}
-						@include theme(dark, 2) {
-							text-decoration-color: color-mix(
-								in srgb,
-								var(--color-iron) 70%,
-								var(--color-white)
-							);
-						}
 					}
 				}
 			}
@@ -421,5 +342,31 @@
 				}
 			}
 		}
+	}
+}
+
+.post-footer {
+	display: flex;
+	flex-flow: row wrap;
+	&:not(:empty) {
+		margin-top: calc(var(--p)*-1.5);
+		padding: 0 calc(var(--p)*2) calc(var(--p)*2);
+	}
+	.button {
+		margin-top: var(--p);
+		line-height: 1.334;
+		&:not(:last-child) {
+			margin-right: var(--p);
+		}
+	}
+}
+
+.post-content {
+	&:empty + .post-footer {
+		margin-top: 0;
+	}
+
+	&:not(:empty) {
+		padding: 0 calc(var(--p)*2) calc(var(--p)*2);
 	}
 }
