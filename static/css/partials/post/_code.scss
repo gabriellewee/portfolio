@@ -50,6 +50,8 @@
 		}
 		&:hover, &:focus {
 			color: var(--color-peach);
+		}
+		&:focus-visible {
 			@include contrast(both, 2) {
 				@include focus-shadow(var(--color-peach));
 			}
@@ -184,7 +186,7 @@
 			border-radius: 1px;
 			height: 20px;
 			margin-bottom: 2px;
-			&:focus {
+			&:focus-visible {
 				outline: 1px solid var(--color-peach);
 				@include contrast(both, 2) {
 					outline: unset;

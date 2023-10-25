@@ -262,7 +262,7 @@ figcaption {
 				}
 			}
 
-			&:focus {
+			&:focus-visible {
 				.no-image {
 					@include contrast(both, 2) {
 						@include focus-shadow(gHSL(white, 1, .8));
@@ -425,7 +425,7 @@ figcaption {
 				text-decoration-color: white;
 			}
 		}
-		&:focus {
+		&:focus-visible {
 			span {
 				@include contrast(both, 2) {
 					@include focus-shadow(gHSL(white, 1, .8));

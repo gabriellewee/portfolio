@@ -19,10 +19,9 @@
 			text-decoration-color: gHSL(white, 1, 0);
 			@include contrast(both, 2) {
 				text-underline-offset: 4px;
-				text-decoration-color: unset;
 			}
 			&, span {
-				transition: all .1s ease-out;
+				transition: all .1s ease-out, box-shadow 0s;
 			}
 			&:hover, &:focus, &:active {
 				text-underline-offset: 4px;
@@ -34,7 +33,7 @@
 					hsl(var(--color-rose-h) calc(var(--color-rose-s) * .9) var(--color-rose-l) / 1)
 				);
 			}
-			&:focus {
+			&:focus-visible {
 				@include contrast(both, 2) {
 					@include focus-shadow(gHSL(mauve, 1, .5));
 				}
@@ -60,6 +59,9 @@
 	.post-header {
 		h2 {
 			a {
+				@include contrast(both, 2) {
+					text-decoration-color: var(--color-mauve);
+				}
 				span {
 					@include gradient-text(
 						var(--color-mauve),
@@ -111,6 +113,9 @@
 	.post-header {
 		h2 {
 			a {
+				@include contrast(both, 2) {
+					text-decoration-color: var(--color-slate);
+				}
 				span {
 					@include gradient-text(
 						var(--color-slate),

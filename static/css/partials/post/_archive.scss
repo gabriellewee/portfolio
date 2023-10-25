@@ -23,10 +23,10 @@
 			text-decoration-color: gHSL(blush, 1.1, 0);
 			@include contrast(both, 2) {
 				text-underline-offset: 4px;
-				text-decoration-color: unset;
+				text-decoration-color: var(--color-mauve);
 			}
 			&, span {
-				transition: all .1s ease-out;
+				transition: all .1s ease-out, box-shadow 0s;
 			}
 			span {
 				@include gradient-text(
@@ -36,9 +36,6 @@
 			}
 			&:hover, &:focus, &:active {
 				text-underline-offset: 4px;
-				@include contrast(both, 2) {
-					@include focus-shadow(var(--color-rose));
-				}
 			}
 			&:hover, &:focus {
 				text-decoration-color: color-mix(
@@ -51,6 +48,11 @@
 						var(--color-rose),
 						var(--color-mauve)
 					);
+				}
+			}
+			&:focus-visible {
+				@include contrast(both, 2) {
+					@include focus-shadow(var(--color-rose));
 				}
 			}
 			&:active {
