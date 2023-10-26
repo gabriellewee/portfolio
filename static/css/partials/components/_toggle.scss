@@ -3,11 +3,15 @@
 	position: relative;
 	height: calc(var(--p)*2);
 	width: calc(var(--p)*3.5);
-	background: color-mix(
-		in srgb,
-		var(--color-slate),
-		var(--color-iron)
+	@include mix(
+		color-mix(
+			in srgb,
+			var(--color-slate),
+			var(--color-iron)
+		),
+		mix($slate, $iron, 10%)
 	);
+	background-color: var(--color-mix);
 	border-radius: calc(var(--p)*2);
 	margin-right: var(--p);
 	padding: calc(var(--p)/4);

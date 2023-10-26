@@ -89,11 +89,15 @@
 				max-height: 300px;
 				width: 100vh;
 				max-width: calc(var(--width) - (var(--p)*4) - env(safe-area-inset-left) - env(safe-area-inset-right));
-				color: color-mix(
-					in srgb,
-					var(--color-iron) 70%,
-					var(--color-white)
+				@include mix(
+					color-mix(
+						in srgb,
+						var(--color-iron) 70%,
+						white
+					),
+					mix($iron, white, 70%)
 				);
+				color: var(--color-mix);
 				font-weight: 600;
 				line-height: 1.3;
 			}

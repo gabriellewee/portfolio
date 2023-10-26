@@ -20,7 +20,12 @@
 		a {
 			text-decoration: underline;
 			text-underline-offset: 8px;
-			text-decoration-color: gHSL(blush, 1.1, 0);
+			@include theme(light, 2) {
+				text-decoration-color: gHSL(blush, 1.1, 0);
+			}
+			@include theme(dark, 2) {
+				text-decoration-color: gHSL(iron, .73, 0);
+			}
 			@include contrast(both, 2) {
 				text-underline-offset: 4px;
 				text-decoration-color: var(--color-mauve);
@@ -38,11 +43,15 @@
 				text-underline-offset: 4px;
 			}
 			&:hover, &:focus {
-				text-decoration-color: color-mix(
-					in hsl,
-					hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .9) var(--color-mauve-l) / 1) 30%,
-					hsl(var(--color-rose-h) calc(var(--color-rose-s) * .9) var(--color-rose-l) / 1)
+				@include mix(
+					color-mix(
+						in hsl,
+						hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .9) var(--color-mauve-l) / 1) 30%,
+						hsl(var(--color-rose-h) calc(var(--color-rose-s) * .9) var(--color-rose-l) / 1)
+					),
+					mix($iron, white, 10%)
 				);
+				text-decoration-color: var(--color-mix);
 				span {
 					@include gradient-text(
 						var(--color-rose),
@@ -70,13 +79,17 @@
 						);
 					}
 					@include theme(dark, 2) {
-						@include gradient-text(
-							var(--color-slate),
+						@include mix(
 							color-mix(
 								in srgb,
 								var(--color-iron) 80%,
-								var(--color-white)
-							)
+								white
+							),
+							mix($iron, white, 80%)
+						);
+						@include gradient-text(
+							var(--color-slate),
+							var(--color-mix)
 						);
 					}
 				}

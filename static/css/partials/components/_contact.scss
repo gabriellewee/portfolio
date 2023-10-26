@@ -45,7 +45,7 @@
 						text-decoration-color: gHSL(blush, 1.1, 0);
 					}
 					@include theme(dark, 2) {
-						text-decoration-color: gHSL(iron, .7, 0);
+						text-decoration-color: gHSL(iron, .73, 0);
 					}
 					@include contrast(both, 2) {
 						text-decoration-color: gHSL(primary, 1, .5);
@@ -84,7 +84,7 @@
 						text-decoration-color: gHSL(blush, 1.1, 0);
 					}
 					@include theme(dark, 2) {
-						text-decoration-color: gHSL(iron, .7, 0);
+						text-decoration-color: gHSL(iron, .73, 0);
 					}
 					@include contrast(both, 2) {
 						text-decoration-color: gHSL(primary, 1, .5);

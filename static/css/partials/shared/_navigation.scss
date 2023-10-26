@@ -96,11 +96,15 @@
 		span {
 			transition: background .2s ease-out;
 			color: white;
-			background: color-mix(
-				in hsl,
-				hsl(var(--color-slate-h) calc(var(--color-slate-s) * .3) calc(var(--color-slate-l) * .85) / 1) 30%,
-				hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .3) calc(var(--color-mauve-l) * .85) / 1)
+			@include mix(
+				color-mix(
+					in hsl,
+					hsl(var(--color-slate-h) calc(var(--color-slate-s) * .3) calc(var(--color-slate-l) * .85) / 1) 30%,
+					hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .3) calc(var(--color-mauve-l) * .85) / 1)
+				),
+				darken(mix($slate, $mauve), 5%)
 			);
+			background: var(--color-mix);
 		}
 		&:hover, &:focus {
 			span {

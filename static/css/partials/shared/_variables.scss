@@ -1,5 +1,3 @@
-$iron: #263238;
-
 :root{
 	--p:12px;
 	--width:70rem;
@@ -10,12 +8,12 @@ $iron: #263238;
 	$colors: (
 		white: white,
 		iron: $iron,
-		blush: #F5C8BF,
-		rose: #D19487,
-		mauve: #B2738E,
-		slate: #577783,
+		blush: $blush,
+		rose: $rose,
+		mauve: $mauve,
+		slate: $slate,
 
-		mastodon: #6364ff
+		mastodon: $mastodon
 	);
 	@each $name, $color in $colors {
 		--color-#{"" + $name}:hsl(#{hexToHSL($color)});
@@ -59,8 +57,8 @@ $iron: #263238;
 	@each $name, $color in $colors-no-hsl {
 		--color-#{"" + $name}:hsl(#{hexToHSL($color)});
 	}
-	
-	--color-email:color-mix(in srgb,var(--color-iron) 70%,var(--color-white));
+
+	--color-email:hsl(#{hexToHSL(mix($iron, white, 70%))});
 }
 
 $light: mix($iron, white, 95%);

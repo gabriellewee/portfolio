@@ -12,9 +12,19 @@ $mbp-16: 1728px;
 $lg-5k: 2560px;
 $container-mobile: 350px;
 
-// functions
+// colors
+$iron: #263238;
+$blush: #F5C8BF;
+$rose: #D19487;
+$mauve: #B2738E;
+$slate: #577783;
+$mastodon: #6364ff;
+
 @function hexToHSL($color) {
 	@return "#{hue($color)} #{saturation($color)} #{lightness($color)}";
+}
+@function hexToHSLa($color) {
+	@return "#{hue($color)} #{saturation($color)} #{lightness($color)} / #{alpha($color)}";
 }
 @function hexToH($color) {
 	@return "#{hue($color)}";
@@ -30,6 +40,24 @@ $container-mobile: 350px;
 		@return hsl(var(--color-#{$color}-hsl) / #{$opacity});
 	} @else {
 		@return hsl(var(--color-#{$color}-h) var(--color-#{$color}-s) calc(var(--color-#{$color}-l) * #{$lightness}) / #{$opacity});
+	}
+}
+
+@mixin mix($color, $fallback, $label: null) {
+	@if $label {
+		@supports not (color: color-mix(in srgb, red, blue)) {
+			--color-#{$label}: hsla(#{hexToHSLa($fallback)});
+		}
+		@supports (color: color-mix(in srgb, red, blue)) {
+			--color-#{$label}: #{$color};
+		}
+	} @else {
+		@supports not (color: color-mix(in srgb, red, blue)) {
+			--color-mix: hsla(#{hexToHSLa($fallback)});
+		}
+		@supports (color: color-mix(in srgb, red, blue)) {
+			--color-mix: #{$color};
+		}
 	}
 }
 

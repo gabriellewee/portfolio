@@ -76,27 +76,35 @@
 			width: 100%;
 			height: 100%;
 			@include theme(light, 2) {
-				background-color: var(--color-iron);
-				background: radial-gradient(
-					circle at center left,
+				@include mix(
 					color-mix(
 						in srgb,
 						var(--color-iron) 80%,
-						var(--color-white)
+						white
 					),
+					mix($iron, white, 80%)
+				);
+				background-color: var(--color-iron);
+				background: radial-gradient(
+					circle at center left,
+					var(--color-mix),
 					var(--color-iron)
 				);
 			}
 			@include theme(dark, 2) {
+				@include mix(
+					color-mix(
+						in srgb,
+						var(--color-iron) 80%,
+						white
+					),
+					mix($iron, white, 80%)
+				);
 				background-color: var(--color-slate);
 				background: radial-gradient(
 					circle at center left,
 					var(--color-slate),
-					color-mix(
-						in srgb,
-						var(--color-iron) 80%,
-						var(--color-white)
-					)
+					var(--color-mix)
 				);
 			}
 		}
@@ -158,26 +166,34 @@
 			) 50% 0% / 200% 100%;
 			&:before {
 				@include theme(light, 2) {
+					@include mix(
+						color-mix(
+							in srgb,
+							var(--color-iron) 80%,
+							white
+						),
+						mix($iron, white, 80%)
+					);
 					background-color: var(--color-iron);
 					background: radial-gradient(
 						circle at center left,
 						var(--color-iron),
-						color-mix(
-							in srgb,
-							var(--color-iron) 80%,
-							var(--color-white)
-						)
+						var(--color-mix)
 					);
 				}
 				@include theme(dark, 2) {
-					background-color: var(--color-slate);
-					background: radial-gradient(
-						circle at center left,
+					@include mix(
 						color-mix(
 							in srgb,
 							var(--color-iron) 80%,
-							var(--color-white)
+							white
 						),
+						mix($iron, white, 80%)
+					);
+					background-color: var(--color-slate);
+					background: radial-gradient(
+						circle at center left,
+						var(--color-mix),
 						var(--color-slate)
 					);
 				}
@@ -198,11 +214,15 @@
 		}
 		&:hover, &:focus {
 			> span {
-				background: color-mix(
-					in srgb,
-					var(--color-iron) 70%,
-					var(--color-white)
+				@include mix(
+					color-mix(
+						in srgb,
+						var(--color-iron) 70%,
+						white
+					),
+					mix($iron, white, 70%)
 				);
+				background: var(--color-mix);
 			}
 		}
 		&:active {
