@@ -124,7 +124,7 @@
 			@include theme(dark, 2) {
 				@include mix(
 					color-mix(
-						in hsl,
+						in srgb,
 						gHSL(mastodon, 1.1) 90%,
 						white
 					),
@@ -139,7 +139,7 @@
 				@include theme(dark, 2) {
 					@include mix(
 						color-mix(
-							in hsl,
+							in srgb,
 							gHSL(mastodon, 1.2) 90%,
 							white
 						),
@@ -152,7 +152,7 @@
 				@include theme(light, 2) {
 					@include mix(
 						color-mix(
-							in hsl,
+							in srgb,
 							gHSL(mastodon, 1.15, .75) 90%,
 							gHSL(white, 1, .75)
 						),
@@ -163,7 +163,7 @@
 				@include theme(dark, 2) {
 					@include mix(
 						color-mix(
-							in hsl,
+							in srgb,
 							gHSL(mastodon, 1.15, .9) 90%,
 							gHSL(white, 1, .9)
 						),
@@ -184,45 +184,18 @@
 		}
 	}
 	.media-attachment a:before {
-		@include theme(light, 2) {
-			@include mix(
-				color-mix(
-					in hsl,
-					gHSL(mastodon, 1.15, .75) 90%,
-					gHSL(white, 1, .75)
-				),
-				rgba(mix($mastodon, white, 90%), .75),
-				mix-one
-			);
-			@include mix(
-				color-mix(
-					in hsl,
-					gHSL(mastodon, 1.15, 1) 90%,
-					gHSL(white, 1, 1)
-				),
-				mix($mastodon, white, 90%),
-				mix-two
-			);
-			background: radial-gradient(
-				circle at center left,
-				var(--color-mix-one),
-				var(--color-mix-two)
-			);
-		}
-		@include theme(dark, 2) {
-			@include mix(
-				color-mix(
-					in hsl,
-					gHSL(mastodon, 1.15, .75) 30%,
-					gHSL(white, 1, .75)
-				),
-				mix($mastodon, white, 30%)
-			);
-			background: radial-gradient(
-				circle at center left,
-				var(--color-mix),
-				var(--color-mastodon-light)
-			);
-		}
+		@include mix(
+			color-mix(
+				in srgb,
+				var(--color-mastodon) 40%,
+				white
+			),
+			mix($mastodon, white, 40%)
+		);
+		background: radial-gradient(
+			circle at center left,
+			var(--color-mix),
+			var(--color-mastodon-light)
+		);
 	}
 }
