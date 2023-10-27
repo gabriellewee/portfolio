@@ -4,9 +4,9 @@ title: General life updates
 ---
 Finally got my new design up, after over a month! I’ve been getting more and more busy with school. My final Bootcamp project turned out to be much, much better than I expected. I think I’m actually a better artist than I thought! I mean, I do know that I’m decent at design, but I always told people I was not good at drawing, and yet here is undeniable proof that I can do more than scribble.
 
-![Skeleton war drawing](2013-04-23-skeletons.jpg 'Skeleton war drawing')
-
 <!--more-->
+
+![Skeleton war drawing](2013-04-23-skeletons.jpg 'Skeleton war drawing')
 
 The human skeletons are riding cheetahs, if you’re wondering. I loved the way even a cheetah’s skeleton looks lean and graceful, built perfectly for running. I considered trying out different animal skeletons for each rider, but that would be far too much detail and ruin the overall effect.
 

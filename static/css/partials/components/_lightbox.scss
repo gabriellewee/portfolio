@@ -65,7 +65,7 @@
 		height: min-content;
 		width: min-content;
 		z-index: 1;
-		&.iframe, .warning, img {
+		&.iframe, .warning, picture {
 			@include clip-path-edges(2px);
 		}
 		&.iframe {
@@ -119,6 +119,16 @@
 				@include viewport($ipad-11) {
 					max-width: calc(100vw - (var(--p)*8));
 					max-height: calc(100vh - (var(--p)*8));
+				}
+				&.upscale {
+					@media screen and (orientation:portrait) {
+						width: 100vw;
+						height: auto;
+					}
+ 					@media screen and (orientation:landscape) {
+ 						width: auto;
+ 						height: 100vh;
+ 					}
 				}
 			}
 		}
