@@ -38,13 +38,13 @@
 		"summary": "Today we’re talking to Gabrielle Wee on her adventures on web development and web design! I hope you enjoy this show!",
 		"external": [
 			{
+				"platform": "spotify",
+				"url": "https://open.spotify.com/episode/7oEcqfovAS8N6q4z6Ct04e"
+			},
+			{
 				"platform": "apple-podcasts",
 				"title": "Apple Podcasts",
 				"url": "https://podcasts.apple.com/us/podcast/7-gabrielle-wee/id1190447982"
-			},
-			{
-				"platform": "spotify",
-				"url": "https://open.spotify.com/episode/7oEcqfovAS8N6q4z6Ct04e"
 			}
 		]
 	},
