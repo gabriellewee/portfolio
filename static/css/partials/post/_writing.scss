@@ -14,28 +14,32 @@
 			font-size: 2.25rem;
 		}
 		a {
-			text-decoration: underline;
-			text-underline-offset: 8px;
-			text-decoration-color: gHSL(white, 1, 0);
-			@include contrast(both, 2) {
-				text-underline-offset: 4px;
-			}
-			&, span {
+			&, span, span span {
 				transition: all .1s ease-out, box-shadow 0s;
+			}
+			> span {
+				text-decoration: underline;
+				text-underline-offset: 8px;
+				text-decoration-color: gHSL(white, 1, 0);
+				@include contrast(both, 2) {
+					text-underline-offset: 4px;
+				}
 			}
 			&:hover, &:focus, &:active {
 				text-underline-offset: 4px;
 			}
 			&:hover, &:focus {
-				@include mix(
-					color-mix(
-						in hsl,
-						hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .9) var(--color-mauve-l) / 1) 30%,
-						hsl(var(--color-rose-h) calc(var(--color-rose-s) * .9) var(--color-rose-l) / 1)
-					),
-					mix($mauve, $rose)
-				);
-				text-decoration-color: var(--color-mix);
+				> span {
+					@include mix(
+						color-mix(
+							in hsl,
+							hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .9) var(--color-mauve-l) / 1) 30%,
+							hsl(var(--color-rose-h) calc(var(--color-rose-s) * .9) var(--color-rose-l) / 1)
+						),
+						mix($mauve, $rose)
+					);
+					text-decoration-color: var(--color-mix);
+				}
 			}
 			&:focus-visible {
 				@include contrast(both, 2) {
@@ -44,10 +48,14 @@
 			}
 			&:active {
 				@include theme(light, 2) {
-					text-decoration-color: gHSL(iron, .95);
+					> span {
+						text-decoration-color: gHSL(iron, .95);
+					}
 				}
 				@include theme(dark, 2) {
-					text-decoration-color: var(--color-slate);
+					> span {
+						text-decoration-color: var(--color-slate);
+					}
 				}
 			}
 		}
@@ -64,24 +72,25 @@
 		h2 {
 			a {
 				@include contrast(both, 2) {
-					text-decoration-color: var(--color-mauve);
+					> span {
+						text-decoration-color: var(--color-mauve);
+					}
 				}
-				span {
-					@include gradient-text(
+				span span {
+					@include gradient-headline(
+						var(--color-rose),
 						var(--color-mauve),
+						var(--color-slate),
 						var(--color-slate)
 					);
 				}
 				&:hover, &:focus {
-					span {
-						@include gradient-text(
-							var(--color-rose),
-							var(--color-mauve)
-						);
+					span span {
+						background-position-x: 0%;
 					}
 				}
 				&:active {
-					span {
+					span span {
 						@include theme(light, 2) {
 							@include gradient-text(
 								gHSL(iron, .95),
@@ -122,12 +131,17 @@
 		h2 {
 			a {
 				@include contrast(both, 2) {
-					text-decoration-color: var(--color-slate);
+					> span {
+						text-decoration-color: var(--color-slate);
+					}
 				}
-				span {
-					@include gradient-text(
+				span span {
+					@include gradient-headline(
 						var(--color-slate),
-						var(--color-mauve)
+						var(--color-mauve),
+						var(--color-rose),
+						var(--color-rose),
+						0%
 					);
 				}
 				&:after {
@@ -139,34 +153,23 @@
 					@include mix(
 						color-mix(
 							in hsl,
-							hsl(var(--color-slate-h) calc(var(--color-slate-s) * .2) var(--color-slate-l) / 1),
-							hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .2) var(--color-mauve-l) / 1)
+							var(--color-mauve) 30%,
+							var(--color-rose)
 						),
-						mix($slate, $mauve)
+						mix($mauve, $rose, 30%)
 					);
 					color: var(--color-mix);
 				}
 				&:hover, &:focus {
-					span {
-						@include gradient-text(
-							var(--color-mauve),
-							var(--color-rose)
-						);
+					span span {
+						background-position-x: 50%;
 					}
 					&:after {
-						@include mix(
-							color-mix(
-								in hsl,
-								hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .9) var(--color-mauve-l) / 1) 30%,
-								hsl(var(--color-rose-h) calc(var(--color-rose-s) * .9) var(--color-rose-l) / 1)
-							),
-							mix($mauve, $rose, 30%)
-						);
-						color: var(--color-mix);
+						color: var(--color-rose);
 					}
 				}
 				&:active {
-					span {
+					span span {
 						@include theme(light, 2) {
 							@include gradient-text(
 								gHSL(iron, .35),

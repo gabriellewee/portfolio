@@ -38,9 +38,9 @@ pagination:
 							{% if post.data.category == "writing" %}
 								<h2>
 									{% if post.url %}
-										<a href="{{post.url|url}}"><span>{{post.data.title|safe}}</span></a>
+										<a href="{{post.url|url}}"><span><span>{{post.data.title|safe}}</span></span></a>
 									{% else %}
-										<a href="{{post.data.url|url}}" target="_blank"><span>{{post.data.title|safe}}</span></a>
+										<a href="{{post.data.url|url}}" target="_blank"><span><span>{{post.data.title|safe}}</span></span></a>
 									{% endif %}
 								</h2>
 							{% elseif post.data.category == "code" %}
