@@ -46,6 +46,7 @@
 			}
 		}
 		.avatar {
+			@include invert(100%);
 			@include background-image(avatars/discord, jpg);
 			position: absolute;
 			bottom: -30px;

@@ -81,6 +81,7 @@
 	}
 	$width: 320px;
 	.post-image {
+		@include invert(100%);
 		display: grid;
 		place-items: center;
 		position: relative;

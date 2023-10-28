@@ -264,6 +264,12 @@ $mastodon: #6364ff;
 	}
 }
 
+@mixin invert($amount: 0%) {
+	@media (inverted-colors: inverted) {
+		filter: invert($amount);
+	}
+}
+
 @mixin clip-path($support: true) {
 	@if $support == true {
 		@supports (-webkit-clip-path: polygon(0 0)) or (clip-path: polygon(0 0)) {

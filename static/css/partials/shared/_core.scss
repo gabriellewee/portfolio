@@ -73,6 +73,7 @@ figure, picture, img {
 }
 
 img {
+	@include invert;
 	font-style: normal;
 	font-size: 1.125rem;
 }

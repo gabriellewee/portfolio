@@ -1,4 +1,5 @@
 .memoji {
+	@include invert(100%);
 	display: block;
 	width: 48px;
 	height: 68px;
