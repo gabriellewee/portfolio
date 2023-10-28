@@ -21,7 +21,7 @@ message: Post archive for gabriellew.ee
 				{% set postYear = post.date.getFullYear() %}
 				{% if currentYear != postYear %}
 					{% set currentYear = postYear %}
-					<li class="year">
+					<li>
 						<h2>{{postYear}}</h2>
 					</li>
 				{% endif %}
