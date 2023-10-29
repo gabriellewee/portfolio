@@ -97,10 +97,10 @@
 			@include mix(
 				color-mix(
 					in srgb,
-					hsl(var(--color-mastodon-h) calc(var(--color-mastodon-s) * .8) var(--color-mastodon-l) / 1) 40%,
+					hsl(var(--color-mastodon-h) calc(var(--color-mastodon-s) * .3) var(--color-mastodon-l) / 1) 40%,
 					gHSL(slate, .8)
 				),
-				mix($mastodon, $slate)
+				mix(darken(desaturate($mastodon, 80%), 15%), $slate, 40%)
 			);
 			background-color: var(--color-mix);
 			&:after {

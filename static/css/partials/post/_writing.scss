@@ -116,10 +116,10 @@
 			}
 		}
 		time {
-			background-color: var(--color-slate);
+			background-color: hsl(var(--color-slate-h) calc(var(--color-slate-s) * .75) var(--color-slate-l) / 1);
 			&:after {
 				@include contrast(both, 2) {
-					background-color: var(--color-slate);
+					background-color: hsl(var(--color-slate-h) calc(var(--color-slate-s) * .75) var(--color-slate-l) / 1);
 				}
 			}
 		}
@@ -203,10 +203,18 @@
 			}
 		}
 		time {
-			background-color: var(--color-mauve);
+			@include mix(
+				color-mix(
+					in srgb,
+					hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .75) var(--color-mauve-l) / 1),
+					gHSL(slate, .8)
+				),
+				mix(desaturate($mauve, 5%), $slate)
+			);
+			background-color: var(--color-mix);
 			&:after {
 				@include contrast(both, 2) {
-					background-color: var(--color-mauve);
+					background-color: var(--color-mix);
 				}
 			}
 		}
