@@ -4,16 +4,17 @@
 		"slug": "the-legend-of-zelda-tears-of-the-kingdom"
 	},
 	{
-		"title": "The Legend of Zelda: Link’s Awakening",
-		"slug": "the-legend-of-zelda-links-awakening"
-	},
-	{
 		"title": "Animal Crossing: New Horizons",
 		"slug": "animal-crossing-new-horizons"
 	},
 	{
 		"title": "Hades",
 		"slug": "hades"
+	},
+	{
+		"title": "The Legend of Zelda: Link’s Awakening",
+		"slug": "the-legend-of-zelda-links-awakening",
+		"archive": true
 	},
 	{
 		"title": "Fire Emblem: Three Houses",
