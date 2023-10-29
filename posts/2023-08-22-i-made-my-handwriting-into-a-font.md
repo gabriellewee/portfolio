@@ -22,4 +22,4 @@ Honestly, it’s a little bit weird to see my handwriting so neat and even. I fe
 
 I’m still not sure what I’m going to do with my new font. I would love to add a bold variant but the app is a little bit limited and I can’t edit stroke width after drawing out the character, so I’d have to start from scratch. I ran into a problem I also have with my physical handwriting — at small sizes, it’s difficult to read. I think it’s because the letters are so narrow and tall. Maybe I’ll refine it more and put it on my website. All in all, it was a really fun afternoon project!
 
-It’s far from complete, but if you wanted to check out the font, you can [download it here](https://github.com/gabriellewee/portfolio/raw/netlify/static/fonts/gabrielle.otf).
+It’s far from complete, but if you wanted to check out the font, you can [download it here](https://github.com/gabriellewee/portfolio/raw/main/static/fonts/gabrielle.otf).
