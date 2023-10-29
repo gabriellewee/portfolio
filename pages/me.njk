@@ -37,21 +37,21 @@
 					<ul class="grid">
 						{% for game in steam.response.games %}
 							<li>
-								<a class="post-external" href="https://store.steampowered.com/app/{{game.appid}}/" target="_blank">
+								<a class="post-external" href="https://store.steampowered.com/app/{{game.appid}}/">
 									{% external "https://cdn.cloudflare.steamstatic.com/steam/apps/" + game.appid + "/capsule_616x353.jpg", game.name, 300, "eager" %}
 								</a>
 							</li>
 						{% endfor %}
 					</ul>
 				{% endif %}
-				<a class="button" href="https://steamcommunity.com/id/gabriellewee" target="_blank"><span><span>Add me on Steam</span></span></a>
+				<a class="button" href="https://steamcommunity.com/id/gabriellewee"><span><span>Add me on Steam</span></span></a>
 
 				<h3>Nintendo Switch:</h3>
 				<ul class="grid">
 					{% for game in about.switch %}{% if game.archive != true %}
 						<li>
 							{% set letter = game.slug|first %}
-							<a class="post-external" href="https://www.nintendo.com/store/products/{{game.slug}}-switch/" target="_blank">
+							<a class="post-external" href="https://www.nintendo.com/store/products/{{game.slug}}-switch/">
 								{% external "https://assets.nintendo.com/image/upload/ar_16:9,c_limit,w_1240/b_white/f_auto/q_auto/ncom/en_US/games/switch/" + letter + "/" + game.slug + "-switch/hero.jpg", game.title, 300, "eager" %}
 							</a>
 						</li>
@@ -188,7 +188,7 @@
 					{% endfor %}
 				</ul>
 				<footer class="post-footer">
-					<a class="button" href="https://instagram.com/greyalphonsecat" target="_blank"><span><span>See Cat</span></span></a>
+					<a class="button" href="https://instagram.com/greyalphonsecat"><span><span>See Cat</span></span></a>
 				</footer>
 			</div>
 		</article>
@@ -210,7 +210,7 @@
 					{% endfor %}
 				</ul>
 				<footer class="post-footer">
-					<a class="button" href="https://instagram.com/ellocasia" target="_blank"><span><span>See Plants</span></span></a>
+					<a class="button" href="https://instagram.com/ellocasia"><span><span>See Plants</span></span></a>
 				</footer>
 			</div>
 		</article>

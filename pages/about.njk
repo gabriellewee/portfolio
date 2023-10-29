@@ -49,7 +49,7 @@
 					<h2>Build</h2>
 				</header>
 				<div class="post-content post-text">
-					<p>This website is built with <a href="https://www.11ty.dev" target="_blank">Eleventy</a>, hosted on <a href="https://github.com/gabriellewee/portfolio" target="_blank">Github</a>, and deployed via <a href="https://netlify.com/" target="_blank">Netlify</a>. The domain provider is <a href="https://www.netim.com" target="_blank">Netim</a>. Templates are built from a combination of <a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a>, Markdown, and vanilla HTML. Styles are built with <a href="https://sass-lang.com" target="_blank">SASS</a> and <a href="https://github.com/postcss/autoprefixer" target="_blank">Autoprefixer</a>.</p>
+					<p>This website is built with <a href="https://www.11ty.dev">Eleventy</a>, hosted on <a href="https://github.com/gabriellewee/portfolio">Github</a>, and deployed via <a href="https://netlify.com/">Netlify</a>. The domain provider is <a href="https://www.netim.com">Netim</a>. Templates are built from a combination of <a href="https://mozilla.github.io/nunjucks/">Nunjucks</a>, Markdown, and vanilla HTML. Styles are built with <a href="https://sass-lang.com">SASS</a> and <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>.</p>
 				</div>
 			</div>
 		</article>
@@ -119,7 +119,7 @@
 						{% for mention in about.mentions %}
 							<li>
 								<span class="external-platform">{{mention.publication}}</span>
-								<a class="external-title" href="{{mention.url|url}}" target="_blank">{{mention.title|nbsp|safe}}</a>
+								<a class="external-title" href="{{mention.url|url}}">{{mention.title|nbsp|safe}}</a>
 							</li>
 						{% endfor %}
 					</ul>
@@ -138,9 +138,9 @@
 							<li>
 								<span class="external-platform">{{feature.platform}}</span>
 								{% if feature.url %}
-									<a class="external-title" href="{{feature.url|url}}" target="_blank">{{feature.title|nbsp|safe}}</a>
+									<a class="external-title" href="{{feature.url|url}}">{{feature.title|nbsp|safe}}</a>
 								{% elseif feature.external %}
-									<a class="external-title" href="{{feature.external[0].url|url}}" target="_blank">{{feature.title|nbsp|safe}}</a>
+									<a class="external-title" href="{{feature.external[0].url|url}}">{{feature.title|nbsp|safe}}</a>
 								{% endif %}
 							</li>
 						{% endif %}{% endfor %}
@@ -156,7 +156,7 @@
 				</header>
 				<div class="post-content post-text">
 					<ul>
-						<li><a href="https://www.11ty.dev" target="_blank">Eleventy</a> by <a href="https://www.zachleat.com" target="_blank">Zach Leatherman</a></li><li><a href="https://isotope.metafizzy.co" target="_blank">Isotope</a> and <a href="https://infinite-scroll.com" target="_blank">Infinite Scroll</a> by <a href="https://desandro.com" target="_blank">Dave DeSandro</a> of <a href="https://metafizzy.co" target="_blank">Metafizzy</a></li><li><a href="https://gumroad.com/l/dank-mono" target="_blank">Dank Mono</a> font by <a href="https://kitten.sh" target="_blank">Phil Pluckthun</a></li><li><a href="https://github.com/github/mona-sans" target="_blank">Mona Sans</a> font by <a href="https://github.com/github" target="_blank">Github</a></li><li><a href="https://greensock.com/" target="_blank">Greensock</a></li>
+						<li><a href="https://www.11ty.dev">Eleventy</a> by <a href="https://www.zachleat.com">Zach Leatherman</a></li><li><a href="https://isotope.metafizzy.co">Isotope</a> and <a href="https://infinite-scroll.com">Infinite Scroll</a> by <a href="https://desandro.com">Dave DeSandro</a> of <a href="https://metafizzy.co">Metafizzy</a></li><li><a href="https://gumroad.com/l/dank-mono">Dank Mono</a> font by <a href="https://kitten.sh">Phil Pluckthun</a></li><li><a href="https://github.com/github/mona-sans">Mona Sans</a> font by <a href="https://github.com/github">Github</a></li><li><a href="https://greensock.com/">Greensock</a></li>
 					</ul>
 				</div>
 			</div>

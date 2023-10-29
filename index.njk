@@ -40,14 +40,14 @@ pagination:
 									{% if post.url %}
 										<a href="{{post.url|url}}"><span><span>{{post.data.title|safe}}</span></span></a>
 									{% else %}
-										<a href="{{post.data.url|url}}" target="_blank"><span><span>{{post.data.title|safe}}</span></span></a>
+										<a href="{{post.data.url|url}}"><span><span>{{post.data.title|safe}}</span></span></a>
 									{% endif %}
 								</h2>
 							{% elseif post.data.category == "code" %}
 								<div class="post-header-left">
 									<h2 class="post-headline">
 										{% if post.data.uri %}
-											<a href="https://codepen.io/gabriellewee/pen/{{post.data.uri}}" target="_blank"><span>{{post.data.title|safe}}</span></a>
+											<a href="https://codepen.io/gabriellewee/pen/{{post.data.uri}}"><span>{{post.data.title|safe}}</span></a>
 										{% else %}
 											{{post.data.title|safe}}
 										{% endif %}
@@ -115,7 +115,7 @@ pagination:
 										{% if post.data.external %}
 											<div class="media-links">
 												{% for link in post.data.external %}
-													<a class="media-link external {{link.platform}}" target="_blank" href="{{link.url|url}}" tabindex="-1" aria-label="View on {{link.platform|capitalize}}"><span>{{link.platform|capitalize}}</span></a>
+													<a class="media-link external {{link.platform}}" href="{{link.url|url}}" tabindex="-1" aria-label="View on {{link.platform|capitalize}}"><span>{{link.platform|capitalize}}</span></a>
 												{% endfor %}
 											</div>
 										{% endif %}
@@ -184,10 +184,10 @@ pagination:
 								{% if post.url %}
 									<a class="button" href="{{post.url|url}}"><span><span>Read post</span></span></a>
 								{% elseif post.data.url %}
-									<a class="button button-reverse" href="{{post.data.url|url}}" target="_blank"><span><span>Read more{% if post.data.platform %} at {{post.data.platform}}{% endif %}</span></a>
+									<a class="button button-reverse" href="{{post.data.url|url}}"><span><span>Read more{% if post.data.platform %} at {{post.data.platform}}{% endif %}</span></a>
 								{% endif %}
 								{% for link in post.data.external %}
-									<a class="button link-platform {{link.platform}} background" href="{{link.url|url}}" target="_blank"><span><span>{% if post.data.type == "audio" %}Listen on {% elseif post.data.type == "writing" %}Read on {% else %}View on {% endif %}{% if link.title %}{{link.title}}{% else %}{{link.platform|capitalize}}{% endif %}</span></a>
+									<a class="button link-platform {{link.platform}} background" href="{{link.url|url}}"><span><span>{% if post.data.type == "audio" %}Listen on {% elseif post.data.type == "writing" %}Read on {% else %}View on {% endif %}{% if link.title %}{{link.title}}{% else %}{{link.platform|capitalize}}{% endif %}</span></a>
 								{% endfor %}
 							{% endif %}
 							{% if post.data.archive == true %}

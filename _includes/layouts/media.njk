@@ -56,7 +56,7 @@
 									{% if post.external %}
 										<div class="media-links">
 											{% for link in post.external %}
-												<a class="media-link external {{link.platform}}" target="_blank" href="{{link.url|url}}" tabindex="-1" aria-label="View on {{link.platform|capitalize}}"><span>{{link.platform|capitalize}}</span></a>
+												<a class="media-link external {{link.platform}}" href="{{link.url|url}}" tabindex="-1" aria-label="View on {{link.platform|capitalize}}"><span>{{link.platform|capitalize}}</span></a>
 											{% endfor %}
 										</div>
 									{% endif %}

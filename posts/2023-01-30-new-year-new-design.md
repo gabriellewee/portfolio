@@ -146,12 +146,12 @@ Each code post has an iframe, a link to the original CodePen pen, and a reload/r
 ::: row-double
 
 <figure>
-<figcaption>My no-UI embed for <a href="https://codepen.io/gabriellewee/pen/zYGxNKa" target="_blank">Four-Quadrant CSS-Only Gradient</a></figcaption>
+<figcaption>My no-UI embed for <a href="https://codepen.io/gabriellewee/pen/zYGxNKa">Four-Quadrant CSS-Only Gradient</a></figcaption>
 <iframe src="https://gabriellew.ee/code/quadrant/" width="600" height="400" title="Four-Quadrant CSS-Only Gradient" loading="lazy"></iframe>
 </figure>
 
 <figure>
-<figcaption>CodePen embed for <a href="https://codepen.io/gabriellewee/pen/zYGxNKa" target="_blank">Four-Quadrant CSS-Only Gradient</a></figcaption>
+<figcaption>CodePen embed for <a href="https://codepen.io/gabriellewee/pen/zYGxNKa">Four-Quadrant CSS-Only Gradient</a></figcaption>
 <p class="codepen" style="--height: 400px;" data-height="400" data-theme-id="39292" data-default-tab="result" data-slug-hash="zYGxNKa" data-user="gabriellewee">
   <span>See the Pen <a href="https://codepen.io/gabriellewee/pen/zYGxNKa">
   Four-Quadrant CSS-Only Gradient</a> by Gabrielle Wee (<a href="https://codepen.io/gabriellewee">@gabriellewee</a>)
