@@ -161,7 +161,7 @@
 		}
 		&:after {
 			@include contrast(both, 2) {
-				@include clip-path-edges(2.5px);
+				@include clip-path-edges(3px);
 				content: "";
 				display: block;
 				position: absolute;
@@ -361,7 +361,7 @@
 				position: absolute;
 			}
 			&:before {
-				@include clip-path-edges(2.5px);
+				@include clip-path-edges(3px);
 				z-index: -2;
 				top: -1.5px;
 				left: -1.5px;

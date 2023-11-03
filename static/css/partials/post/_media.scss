@@ -20,7 +20,7 @@
 	&:after {
 		@include viewport($iphone-max) {
 			@include contrast(both, 2) {
-				@include clip-path-edges(2.5px);
+				@include clip-path-edges(3px);
 				z-index: -2;
 				top: -1.5px;
 				left: -1.5px;

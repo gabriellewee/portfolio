@@ -119,7 +119,7 @@
 					position: absolute;
 				}
 				&:before {
-					@include clip-path-edges(2.5px);
+					@include clip-path-edges(3px);
 					z-index: -2;
 					top: -1.5px;
 					left: -1.5px;
