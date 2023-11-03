@@ -23,7 +23,7 @@ pagination:
 		{% for post in pagination.items %}
 			{% if post.data.svg == true %}{%- set file = "svg" %}{% elseif post.data.extension %}{%- set file = post.data.extension %}{% endif %}
 			<article
-				class="post {% if pagination.pageNumber == 0 %} post-animate{% endif %}{% if (post.data.pagination.alias) and (post.data.pagination.alias != post.data.category) %} post-{{post.data.category}} post-{{post.data.pagination.alias}}{% else %} post-{{post.data.category}}{% endif %}{% if post.data.tags %}{% for tag in post.data.tags %}{% if tag != 'entries' %} post-{{tag}}{% endif %}{% endfor %}{% endif %}{% if post.data.size %} post-size-{{post.data.size}}{% endif %}{% if post.data.category == 'media' %} post-{{post.data.pagination.data}}{% endif %} grid-item gabrielle"
+				class="post {% if pagination.pageNumber == 0 %} post-animate{% endif %}{% if (post.data.pagination.alias) and (post.data.pagination.alias != post.data.category) %} post-{{post.data.category}} post-{{post.data.pagination.alias}}{% else %} post-{{post.data.category}}{% endif %}{% if post.data.tags %}{% for tag in post.data.tags %}{% if tag != 'entries' %} post-{{tag}}{% endif %}{% endfor %}{% endif %}{% if post.data.size %} post-size-{{post.data.size}}{% endif %}{% if post.data.category == 'media' %} post-{{post.data.pagination.data}}{% endif %} grid-item"
 				{% if post.data.extension %}data-orientation="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'orientation' %}"{% endif %}
 				{% if post.data.width %}style="max-width: {{post.data.width}}"{% endif %}
 				{% if post.data.category == "social" %}aria-label="{{post.data.pagination.alias|capitalize}} post"
