@@ -372,9 +372,17 @@
 	}
 	.post-mobile-button + .reload, .post-mobile ~ .frame-wrapper {
 		display: none;
+	}
+	.post-mobile-button + .reload {
+		@include viewport(mobile) {
+			.js & {
+				display: block;
+			}
+		}
+	}
+	.post-mobile ~ .frame-wrapper {
 		@include viewport(mobile) {
 			display: block;
 		}
-
 	}
 }
