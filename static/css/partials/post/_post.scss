@@ -203,7 +203,7 @@
 
 	.post-inner {
 		overflow: hidden;
-		background-color: var(--color-secondary);
+		background-color: gHSL(secondary, 1, .9);
 		@include viewport($iphone-max) {
 			@include clip-path-edges(2px);
 		}
