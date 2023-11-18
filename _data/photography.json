@@ -1,5 +1,49 @@
 [
 	{
+		"name": "harold-washington-library",
+		"date": "2023-11-13",
+		"location": "Winter Garden, Harold Washington Library Center, South Loop, Chicago, IL, USA",
+		"camera": "Panasonic Lumix DMC-GX85",
+		"editor": "VSCO",
+		"tags": "indoor architecture",
+		"description": "A person with long hair in a light top and gray wide-leg pants standing with their back to the camera in a large mint-green room with a glass roof and sunshine streaming through.",
+		"size": "m"
+	},
+	{
+		"name": "golden-hour",
+		"date": "2023-11-12",
+		"location": "Garfield Park Conservatory, Chicago, IL, USA",
+		"camera": "iPhone 14 Pro Max",
+		"editor": "VSCO",
+		"tags": "indoor architecture plants",
+		"description": "Golden hour sunlight streaming through the glass roof of a greenhouse filled with tropical plants.",
+		"size": "xs"
+	},
+	{
+		"name": "selfie",
+		"date": "2023-11-09",
+		"location": "South Pier, Chicago, IL, USA",
+		"camera": "iPhone 14 Pro Max",
+		"editor": "VSCO",
+		"tags": "outdoor landscape water portrait",
+		"description": "A woman in a beige cap and an orange/green scarf partially covering her face taking a selfie in front of Chicago’s waterfront.",
+		"size": "xs",
+		"focus": {
+		 	"x": 0,
+		 	"y": 60
+		 }
+	},
+	{
+		"name": "south-pier",
+		"date": "2023-11-09",
+		"location": "South Pier, Chicago, IL, USA",
+		"camera": "Panasonic Lumix DMC-GX85",
+		"editor": "VSCO",
+		"tags": "outdoor landscape water",
+		"description": "The fire station on Chicago’s South Pier surrounded by blue water and blue sky.",
+		"size": "m"
+	},
+	{
 		"name": "alfie",
 		"date": "2023-05-03",
 		"location": "San Francisco, CA, USA",
