@@ -7,6 +7,12 @@
 		"editor": "VSCO",
 		"tags": "indoor architecture",
 		"description": "A person with long hair in a light top and gray wide-leg pants standing with their back to the camera in a large mint-green room with a glass roof and sunshine streaming through.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/C0M5O5hP-Um/"
+			 }
+		],
 		"size": "m"
 	},
 	{
@@ -27,6 +33,12 @@
 		"editor": "VSCO",
 		"tags": "outdoor landscape water portrait",
 		"description": "A woman in a beige cap and an orange/green scarf partially covering her face taking a selfie in front of Chicago’s waterfront.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/C0M4_kgvJda/"
+			 }
+		],
 		"size": "xs",
 		"focus": {
 		 	"x": 0,
@@ -41,6 +53,12 @@
 		"editor": "VSCO",
 		"tags": "outdoor landscape water",
 		"description": "The fire station on Chicago’s South Pier surrounded by blue water and blue sky.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/C0M5O5hP-Um/"
+			 }
+		],
 		"size": "m"
 	},
 	{
