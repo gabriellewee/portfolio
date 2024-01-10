@@ -1,5 +1,11 @@
 [
 	{
+		"title": "The Most Hearted of 2023",
+		"date": "2024-01-08",
+		"url": "https://codepen.io/spark/372",
+		"publication": "CodePen Spark"
+	},
+	{
 		"title": "Collective #784",
 		"date": "2023-09-29",
 		"url": "https://tympanus.net/codrops/collective/collective-784/",
@@ -124,5 +130,11 @@
 		"date": "2017-01-16",
 		"url": "https://codepen.io/spark/7",
 		"publication": "CodePen Spark"
+	},
+	{
+		"title": "Most Hearted of 2016!",
+		"date": "2017-01-11",
+		"url": "https://blog.codepen.io/2017/01/11/the-most-hearted-of-2016/",
+		"publication": "CodePen Blog"
 	}
 ]
