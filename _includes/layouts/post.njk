@@ -24,7 +24,11 @@ category: writing
 				
 				<footer class="post-footer">
 					{% if archive == true %}
-						<a class="button" href="{{site.url}}/v1/{{page.date|ISO|date('archive')}}/{{page.fileSlug}}" target="_blank"><span><span>View original</span></span></a>
+						{% if full == true %}
+							<a class="button" href="{{site.url}}/v1/{{page.date|ISO|date('archive')}}/{{title|slugify}}" target="_blank"><span><span>View original</span></span></a>
+						{% else %}
+							<a class="button" href="{{site.url}}/v1/{{page.date|ISO|date('archive')}}/{{page.fileSlug}}" target="_blank"><span><span>View original</span></span></a>
+						{% endif %}
 					{% endif %}
 					{% if external %}
 						{% for link in external %}

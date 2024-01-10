@@ -191,7 +191,11 @@ pagination:
 								{% endfor %}
 							{% endif %}
 							{% if post.data.archive == true %}
-								<a class="button" href="{{site.url}}/v1/{{post.page.date|ISO|date('archive')}}/{{post.page.fileSlug}}" target="_blank"><span><span>View original</span></span></a>
+								{% if post.data.full == true %}
+									<a class="button" href="{{site.url}}/v1/{{post.page.date|ISO|date('archive')}}/{{post.data.title|slugify}}" target="_blank"><span><span>View original</span></span></a>
+								{% else %}
+									<a class="button" href="{{site.url}}/v1/{{post.page.date|ISO|date('archive')}}/{{post.page.fileSlug}}" target="_blank"><span><span>View original</span></span></a>
+								{% endif %}
 							{% endif %}
 						</footer>
 					{% endif %}
