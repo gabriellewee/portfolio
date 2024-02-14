@@ -1,5 +1,13 @@
 [
 	{
+		"title": "Super Mario Bros. Wonder",
+		"slug": "super-mario-bros-wonder"
+	},
+	{
+		"title": "Yoshi’s Crafted World",
+		"slug": "yoshis-crafted-world"
+	},
+	{
 		"title": "The Legend of Zelda: Tears of the Kingdom",
 		"slug": "the-legend-of-zelda-tears-of-the-kingdom"
 	},
@@ -9,7 +17,8 @@
 	},
 	{
 		"title": "Hades",
-		"slug": "hades"
+		"slug": "hades",
+		"archive": true
 	},
 	{
 		"title": "The Legend of Zelda: Link’s Awakening",
