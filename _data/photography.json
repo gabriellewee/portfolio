@@ -13,7 +13,7 @@
 			 	"url": "https://www.instagram.com/p/C0M5O5hP-Um/"
 			 }
 		],
-		"size": "m"
+		"size": "s"
 	},
 	{
 		"name": "golden-hour",
@@ -22,8 +22,7 @@
 		"camera": "iPhone 14 Pro Max",
 		"editor": "VSCO",
 		"tags": "indoor architecture plants",
-		"description": "Golden hour sunlight streaming through the glass roof of a greenhouse filled with tropical plants.",
-		"size": "xs"
+		"description": "Golden hour sunlight streaming through the glass roof of a greenhouse filled with tropical plants."
 	},
 	{
 		"name": "selfie",
@@ -39,7 +38,6 @@
 			 	"url": "https://www.instagram.com/p/C0M4_kgvJda/"
 			 }
 		],
-		"size": "xs",
 		"focus": {
 		 	"x": 0,
 		 	"y": 60
@@ -58,8 +56,7 @@
 			 	"platform": "instagram",
 			 	"url": "https://www.instagram.com/p/C0M5O5hP-Um/"
 			 }
-		],
-		"size": "m"
+		]
 	},
 	{
 		"name": "alfie",
