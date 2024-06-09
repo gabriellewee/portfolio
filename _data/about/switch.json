@@ -1,15 +1,33 @@
 [
 	{
+		"title": "Paper Mario: The Thousand-Year Door",
+		"slug": "paper-mario-the-thousand-year-door",
+		"image": "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1240/b_white/f_auto/q_auto/ncom/software/switch/70010000072957/fdd5d8ca46d7ea4e45397ae560e807742de2d7d744570297ddbabf69d6d23f33"
+	},
+	{
+		"title": "Advance Wars 1+2: Re-Boot Camp",
+		"slug": "advance-wars-1-plus-2-re-boot-camp"
+	},
+	{
+		"title": "Princess Peach: Showtime!",
+		"slug": "princess-peach-showtime",
+		"image": "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1240/b_white/f_auto/q_auto/ncom/software/switch/70010000005022/45d91d342db7435bf142eb96e9abfe92500b21ec3130228e25b43c57cd580b78",
+		"archive": true
+	},
+	{
 		"title": "Yoshi’s Crafted World",
-		"slug": "yoshis-crafted-world"
+		"slug": "yoshis-crafted-world",
+		"archive": true
 	},
 	{
 		"title": "Animal Crossing: New Horizons",
-		"slug": "animal-crossing-new-horizons"
+		"slug": "animal-crossing-new-horizons",
+		"archive": true
 	},
 	{
 		"title": "Hades",
-		"slug": "hades"
+		"slug": "hades",
+		"archive": true
 	},
 	{
 		"title": "The Legend of Zelda: Tears of the Kingdom",

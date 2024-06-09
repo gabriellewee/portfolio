@@ -1,5 +1,61 @@
 [
 	{
+		"name": "jewelry",
+		"date": "2024-06-02",
+		"location": "San Francisco, CA, USA",
+		"camera": "iPhone 14 Pro Max",
+		"editor": "VSCO",
+		"tags": "indoor flatlay",
+		"description": "A collection of jewerly on a white marble background, including a slim dual-faced watch, pink sapphire rings, rainbow beads, and a bright green jade pendant",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/C7uz_F9uwSx/"
+			 }
+		],
+		"focus": {
+		 	"x": 0,
+		 	"y": 60
+		 }
+	},
+	{
+		"name": "getty",
+		"date": "2024-03-30",
+		"location": "Getty Villa Museum, Pacific Palisades, CA, USA",
+		"camera": "iPhone 14 Pro Max",
+		"editor": "VSCO",
+		"tags": "indoor people architecture art",
+		"description": "A person in a bright blue jacket facing away from the camera and looking towards a Roman statue made from white marble in a museum gallery."
+	},
+	{
+		"name": "bart",
+		"date": "2024-01-08",
+		"location": "Oakland, CA, USA",
+		"camera": "iPhone 14 Pro Max",
+		"editor": "VSCO",
+		"tags": "outdoor indoor landscape",
+		"description": "The inside of a BART train, with the window overlooking the Oakland raising cranes at sunrise",
+		"focus": {
+		 	"x": 0,
+		 	"y": 65
+		 }
+	},
+	{
+		"name": "home-depot",
+		"date": "2023-11-21",
+		"location": "Colma, CA, USA",
+		"camera": "iPhone 14 Pro Max",
+		"editor": "VSCO",
+		"tags": "people portrait indoor",
+		"description": "A person with long bleached hair and a bright blue jacket sitting on a yellow rolling ladder in front of wood supplies at Home Depot.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/C0kuWQougsQ/"
+			 }
+		]
+	},
+	{
 		"name": "harold-washington-library",
 		"date": "2023-11-13",
 		"location": "Winter Garden, Harold Washington Library Center, South Loop, Chicago, IL, USA",
