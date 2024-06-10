@@ -80,7 +80,11 @@
 					<ul>
 						{% for post in collections.pages %}
 							<li>
-								<a class="page" href="{{post.url|url}}"><span>{{post.data.key|safe|capitalize}}</span></a>
+								{% if post.data.key == "home" %}
+									<a class="page" href="{{post.url|url}}"><span>{{post.data.key|safe|capitalize}}</span></a>
+								{% else %}
+									<a class="page" href="{{post.url|url}}"><span>{{post.data.title|safe|capitalize}}</span></a>
+								{% endif %}
 							</li>
 						{% endfor %}
 						<li><a class="page" href="/posts/feed.xml"><span>RSS</span></a></li>
