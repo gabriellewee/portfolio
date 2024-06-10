@@ -53,15 +53,11 @@
 		margin-right: var(--p);
 	}
 	a {
-		@include mix(
-			color-mix(
-				in srgb,
-				var(--color-iron) 70%,
-				white
-			),
-			mix($iron, white, 70%)
+		color: color-mix(
+			in srgb,
+			var(--color-iron) 70%,
+			white
 		);
-		color: var(--color-mix);
 		@media (prefers-reduced-motion: no-preference) {
 			opacity: 0;
 		}
@@ -87,15 +83,11 @@
 			}
 		}
 		&:hover, &:focus {
-			@include mix(
-				color-mix(
-					in srgb,
-					var(--color-iron),
-					white
-				),
-				mix($iron, white)
+			color: color-mix(
+				in srgb,
+				var(--color-iron),
+				white
 			);
-			color: var(--color-mix);
 			span {
 				text-decoration-color: var(--color-mix);
 			}
@@ -242,15 +234,11 @@
 				background-color: var(--color-primary);
 			}
 			@include contrast(dark, 2) {
-				@include mix(
-					color-mix(
-						in srgb,
-						var(--color-iron) 5%,
-						white
-					),
-					mix($iron, white, 5%)
+				background-color: color-mix(
+					in srgb,
+					var(--color-iron) 5%,
+					white
 				);
-				background-color: var(--color-mix);
 			}
 		}
 		&:after {
@@ -319,7 +307,7 @@
 		.post-header-content {
 			display: flex;
 			flex-wrap: wrap;
-			@include container(header, mobile, $container-mobile) {
+			@include container(header, mobile, $iphone-max) {
 				flex-wrap: nowrap;
 				align-items: flex-start;
 				justify-content: space-between;
@@ -328,7 +316,7 @@
 		h2 {
 			order: 2;
 			width: 100%;
-			@include container(header, mobile, $container-mobile) {
+			@include container(header, mobile, $iphone-max) {
 				order: 1;
 				width: unset;
 			}
@@ -344,7 +332,7 @@
 		time {
 			order: 1;
 			margin-bottom: calc(var(--p)*1.25);
-			@include container(header, mobile, $container-mobile) {
+			@include container(header, mobile, $iphone-max) {
 				order: 2;
 				margin-bottom: 0;
 			}
@@ -457,17 +445,13 @@
 					);
 				}
 				@include theme(dark, 2) {
-					@include mix(
+					@include gradient-text(
+						var(--color-slate),
 						color-mix(
 							in srgb,
 							var(--color-iron) 80%,
 							white
 						),
-						mix($iron, white, 80%)
-					);
-					@include gradient-text(
-						var(--color-slate),
-						var(--color-mix),
 						gHSL(slate, 1, .5)
 					);
 				}
@@ -723,17 +707,13 @@
 
 .button-mastodon {
 	&:before {
-		@include mix(
+		background: radial-gradient(
+			circle at center left,
 			color-mix(
 				in srgb,
 				var(--color-mastodon),
 				white
 			),
-			mix($mastodon, white)
-		);
-		background: radial-gradient(
-			circle at center left,
-			var(--color-mix),
 			var(--color-mastodon-light)
 		);
 	}

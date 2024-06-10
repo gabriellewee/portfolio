@@ -1,0 +1,271 @@
+& {
+	@supports (container-type: inline-size) {
+		container-type: inline-size;
+		container-name: recipe;
+	}
+}
+
+.post-header {
+	position: relative;
+	h2 {
+		@include font-weight-width(800, 130);
+		order: 2;
+		font-size: 2.5rem;
+		line-height: 1.1;
+		@include container(recipe, mobile, $mobile) {
+			font-size: 3rem;
+		}
+		a {
+			text-decoration: underline;
+			text-underline-offset: 4px;
+			color: gHSL(primary, 1, .9);
+			transition: color .2s ease-out;
+			&:hover, &:focus {
+				color: gHSL(primary, 1, .7);
+			}
+			&:focus-visible {
+				text-decoration-color: gHSL(primary, 1, 0);
+				@include focus-shadow(color-mix(
+					in hsl,
+					var(--color-slate) 70%,
+					var(--color-mint)
+				));
+			}
+			&:active {
+				color: gHSL(primary, 1, 1);
+			}
+		}
+	}
+	time {
+		--color-mix: color-mix(
+			in srgb,
+			var(--color-slate),
+			var(--color-mint)
+		);
+		order: 1;
+		margin-bottom: var(--p);
+		color: var(--color-white);
+		background-color: var(--color-mix);
+		&:after {
+			@include contrast(both, 2) {
+				background-color: var(--color-mix);
+			}
+		}
+	}
+	.post-header-content {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		position: relative;
+		z-index: 2;
+		padding: calc(var(--p)*2) calc(var(--p)*2) 0;
+		@include container(recipe, mobile, $mobile) {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			padding: calc(var(--p)*1.5) calc(var(--p)*2);
+		}
+	}
+	.post-header-image {
+		picture {
+			@include viewport($iphone-max) {
+				@include clip-path-edges(2px, up);
+			}
+		}
+		@include container(recipe, mobile, $mobile) {
+			&.theme-light + .post-header-content {
+				h2 a {
+					color: gHSL(iron, 1, .9);
+					&:hover, &:focus {
+						color: gHSL(iron, 1, .7);
+					}
+					&:focus-visible {
+						@include focus-shadow(gHSL(iron, 1, .7));
+					}
+					&:active {
+						color: gHSL(iron, 1, 1);
+					}
+				}
+				time {
+					background-color: gHSL(iron, 1, .9);
+					color: var(--color-white);
+					&:before {
+						opacity: 0;
+					}
+					&:after {
+						@include contrast(both, 2) {
+							background-color: gHSL(iron, 1, .9);
+						}
+					}
+				}
+			}
+			&.theme-dark + .post-header-content {
+				h2 a {
+					color: gHSL(white, 1, .9);
+					&:hover, &:focus {
+						color: gHSL(white, 1, .7);
+					}
+					&:focus-visible {
+						@include focus-shadow(var(--color-mint));
+					}
+					&:active {
+						color: gHSL(white, 1, 1);
+					}
+				}
+				time {
+					background-color: gHSL(white, 1, .9);
+					color: var(--color-iron);
+					&:before {
+						opacity: 0;
+					}
+					&:after {
+						@include contrast(both, 2) {
+							background-color: gHSL(white, 1, .9);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.post-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: calc(var(--p) * 2);
+	margin-top: calc(var(--p)*2);
+	padding: calc(var(--p)*2);
+	background-color: gHSL(mint, 1, .15);
+	@include container(recipe, mobile, $mobile) {
+		justify-content: center;
+		margin-top: 0;
+	}
+	.recipe-servings {
+		width: 100%;
+		@include viewport(mobile) {
+			text-align: center;
+		}
+	}
+	&:has(.recipe-prep:last-child) {
+		.recipe-servings {
+			width: auto;
+			@include viewport(mobile) {
+				text-align: initial;
+			}
+		}
+	}
+	strong {
+		font-weight: 600;
+	}
+}
+
+.post-content {
+	padding: calc(var(--p)*2);
+
+	h2 {
+		font-size: 2rem;
+	}
+
+	a, pre, button {
+		&:focus-visible {
+			@include theme(light, 2) {
+				@include focus-shadow(gHSL(mint, 1, .5));
+			}
+			@include theme(dark, 2) {
+				@include focus-shadow(var(--color-mint));
+			}
+		}
+	}
+
+	#ingredients + ul {
+		list-style: none;
+		padding: 0;
+		li:not(:last-child) {
+			padding-bottom: calc(var(--p)*.75);
+		}
+		label {
+			display: flex;
+			cursor: pointer;
+			position: relative;
+			font-weight: 500;
+			color: gHSL(primary, 1, .75);
+			&:before, &:after {
+				content: "";
+				display: block;
+			}
+			&:before {
+				width: calc(var(--p)*2);
+				height: calc(var(--p)*2);
+				border-radius: calc(var(--p)*2);
+				margin-right: calc(var(--p)*.75);
+				@include theme(light, 2) {
+					background-color: gHSL(primary, 1, .1);
+				}
+				@include theme(dark, 2) {
+					background-color: var(--color-primary);
+				}
+				@include contrast(light, 2) {
+					border: 2px solid color-mix(
+						in srgb,
+						var(--color-slate),
+						var(--color-mint)
+					);
+				}
+			}
+			&:after {
+				opacity: 0;
+				width: calc(var(--p)/3*4);
+				height: calc(var(--p)/3*4);
+				border-radius: calc(var(--p)/3*4);
+				position: absolute;
+				left: calc(var(--p)/3);
+				top: calc(var(--p)/3);
+				background-color: var(--color-mint);
+			}
+		}
+		input:focus + label, input:hover + label, label:hover {
+			text-decoration: underline;
+			color: gHSL(primary, 1, 1);
+		}
+		input {
+			@include hide;
+			&:focus-visible + label {
+				&:before {
+					@include focus-shadow(gHSL(mint, 1, .7), false);
+				}
+			}
+			&:active + label {
+				color: gHSL(primary, 1, .45);
+			}
+			&:checked + label {
+				color: gHSL(primary, 1, 1);
+				&:after {
+					opacity: 1;
+				}
+			}
+		}
+	}
+}
+
+.button {
+	@include recipe-button;
+}
+
+.post-footer {
+	display: flex;
+	flex-flow: row wrap;
+	&:not(:empty) {
+		margin-top: calc(var(--p)*-1.5);
+		padding: 0 calc(var(--p)*2) calc(var(--p)*2);
+	}
+	.button {
+		margin-top: var(--p);
+		line-height: 1.334;
+		&:not(:last-child) {
+			margin-right: var(--p);
+		}
+	}
+	&.hide {
+		display: none;
+	}
+}

@@ -19,15 +19,11 @@
 	padding: 0 calc(var(--p) * 2);
 	font-size: 1.25rem;
 	@include theme(light, 2) {
-		@include mix(
-			color-mix(
-				in srgb,
-				var(--color-iron) 90%,
-				white
-			),
-			mix($iron, white, 90%)
+		color: color-mix(
+			in srgb,
+			var(--color-iron) 90%,
+			white
 		);
-		color: var(--color-mix);
 	}
 	@include theme(dark, 2) {
 		color: gHSL(white, 1, .8);
@@ -94,13 +90,10 @@
 	}
 	.post-header {
 		time {
-			@include mix(
-				color-mix(
-					in srgb,
-					hsl(var(--color-mastodon-h) calc(var(--color-mastodon-s) * .3) var(--color-mastodon-l) / 1) 40%,
-					gHSL(slate, .8)
-				),
-				mix(darken(desaturate($mastodon, 80%), 15%), $slate, 40%)
+			--color-mix: color-mix(
+				in srgb,
+				hsl(var(--color-mastodon-h) calc(var(--color-mastodon-s) * .3) var(--color-mastodon-l) / 1) 40%,
+				#{gHSL(slate, .8)}
 			);
 			background-color: var(--color-mix);
 			&:after {
@@ -122,56 +115,40 @@
 				color: var(--color-mastodon);
 			}
 			@include theme(dark, 2) {
-				@include mix(
-					color-mix(
-						in srgb,
-						gHSL(mastodon, 1.1) 90%,
-						white
-					),
-					mix($iron, white, 70%)
+				color: color-mix(
+					in srgb,
+					gHSL(mastodon, 1.1) 90%,
+					white
 				);
-				color: var(--color-mix);
 			}
 			&:hover, &:focus {
 				@include theme(light, 2) {
 					color: var(--color-mastodon-light);
 				}
 				@include theme(dark, 2) {
-					@include mix(
-						color-mix(
-							in srgb,
-							gHSL(mastodon, 1.2) 90%,
-							white
-						),
-						mix($mastodon, white, 30%)
+					color: color-mix(
+						in srgb,
+						gHSL(mastodon, 1.2) 90%,
+						white
 					);
-					color: var(--color-mix);
 				}
 			}
 			&:focus-visible {
 				@include theme(light, 2) {
-					@include mix(
-						color-mix(
-							in srgb,
-							gHSL(mastodon, 1.15, .75) 90%,
-							gHSL(white, 1, .75)
-						),
-						rgba(mix($mastodon, white, 30%), .75),
-						mix-focus
+					--color-mix: color-mix(
+						in srgb,
+						gHSL(mastodon, 1.15, .75) 90%,
+						gHSL(white, 1, .75)
 					);
 				}
 				@include theme(dark, 2) {
-					@include mix(
-						color-mix(
-							in srgb,
-							gHSL(mastodon, 1.15, .9) 90%,
-							gHSL(white, 1, .9)
-						),
-						rgba(mix($mastodon, white, 30%), .9),
-						mix-focus
+					--color-mix: color-mix(
+						in srgb,
+						gHSL(mastodon, 1.15, .9) 90%,
+						gHSL(white, 1, .9)
 					);
 				}
-				@include focus-shadow(var(--color-mix-focus));
+				@include focus-shadow(var(--color-mix));
 			}
 			&:active {
 				@include theme(light, 2) {
@@ -184,17 +161,13 @@
 		}
 	}
 	.media-attachment a:before {
-		@include mix(
+		background: radial-gradient(
+			circle at center left,
 			color-mix(
 				in srgb,
 				var(--color-mastodon) 40%,
 				white
 			),
-			mix($mastodon, white, 40%)
-		);
-		background: radial-gradient(
-			circle at center left,
-			var(--color-mix),
 			var(--color-mastodon-light)
 		);
 	}

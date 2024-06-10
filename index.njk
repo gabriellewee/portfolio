@@ -5,8 +5,8 @@ description: I’m a front‑end developer working at Apple .
 layout: layouts/base.njk
 key: home
 style: true
-isotope: true
 add: true
+isotope: true
 tags: pages
 message: Scroll to skip animation
 
@@ -23,7 +23,7 @@ pagination:
 		{% for post in pagination.items %}
 			{% if post.data.svg == true %}{%- set file = "svg" %}{% elseif post.data.extension %}{%- set file = post.data.extension %}{% endif %}
 			<article
-				class="post {% if pagination.pageNumber == 0 %} post-animate{% endif %}{% if (post.data.pagination.alias) and (post.data.pagination.alias != post.data.category) %} post-{{post.data.category}} post-{{post.data.pagination.alias}}{% else %} post-{{post.data.category}}{% endif %}{% if post.data.tags %}{% for tag in post.data.tags %}{% if tag != 'entries' %} post-{{tag}}{% endif %}{% endfor %}{% endif %}{% if post.data.size %} post-size-{{post.data.size}}{% endif %}{% if post.data.category == 'media' %} post-{{post.data.pagination.data}}{% endif %} grid-item"
+				class="post {% if pagination.pageNumber == 0 %} post-animate{% endif %}{% if (post.data.pagination.alias) and (post.data.pagination.alias != post.data.category) %} post-{{post.data.category}} post-{{post.data.pagination.alias}}{% else %} post-{{post.data.category}}{% endif %}{% if post.data.tags %}{% for tag in post.data.tags %}{% if tag != 'entries' and tag != 'posts' %} post-{{tag}}{% endif %}{% endfor %}{% endif %}{% if post.data.size %} post-size-{{post.data.size}}{% endif %}{% if post.data.category == 'media' %} post-{{post.data.pagination.data}}{% endif %} grid-item"
 				{% if post.data.extension %}data-orientation="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'orientation' %}"{% endif %}
 				{% if post.data.width %}style="max-width: {{post.data.width}}"{% endif %}
 				{% if post.data.category == "social" %}aria-label="{{post.data.pagination.alias|capitalize}} post"
@@ -34,11 +34,16 @@ pagination:
 				{% endif %}
 				<div class="post-inner">
 					<header class="post-header{% if (post.data.category == 'writing') or (post.data.category == 'code') %} inline-header{% endif %}">
+						{% if post.data.category == "cooking" %}
+							<div class="post-header-image theme-{{post.data.headline}}">
+								{% image './static/images/' + post.data.key + 's/' + post.page.fileSlug + '.jpg', 'Hero image showing ' + post.data.title, 'default' %}
+							</div>
+						{% endif %}
 						<div class="post-header-content">
-							{% if post.data.category == "writing" %}
+							{% if (post.data.category == "writing") or (post.data.category == "cooking") %}
 								<h2>
 									{% if post.url %}
-										<a href="{{post.url|url}}"><span><span>{{post.data.title|safe}}</span></span></a>
+										<a href="{{post.url|url}}"{% if post.data.category == "cooking" %} aria-label="Recipe for {{post.data.title|safe}}"{% endif %}><span><span>{{post.data.title|safe}}</span></span></a>
 									{% else %}
 										<a href="{{post.data.url|url}}"><span><span>{{post.data.title|safe}}</span></span></a>
 									{% endif %}
@@ -72,7 +77,22 @@ pagination:
 							{% endif %}
 						</div>
 					</header>
-					<div class="post-content{% if post.data.category == 'writing' %} post-text{% endif %}"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %}>
+					<aside class="post-meta">
+						{% if post.data.servings %}
+							<p class="recipe-servings"><strong>Servings:</strong> <span>{{post.data.servings}}</span></p>
+						{% endif %}
+						{% if post.data.prep %}
+							<p class="recipe-prep"><strong>Prep:</strong> <span class="recipe-duration" data-duration="{{post.data.prep}}">{{post.data.prep}} minutes</span></p>
+						{% endif %}
+						{% if post.data.cook %}
+							<p class="recipe-cook"><strong>Cook:</strong> <span class="recipe-duration" data-duration="{{post.data.cook}}">{{post.data.cook}} minutes</span></p>
+						{% endif %}
+						{% if post.data.prep and post.data.cook %}
+							{% set total = [post.data.prep,post.data.cook] %}
+							<p class="recipe-total"><strong>Total:</strong> <span class="recipe-duration" data-duration="{{total|sum}}">{{total|sum}} minutes</span></p>
+						{% endif %}
+					</aside>
+					<div class="post-content{% if (post.data.category == 'writing') or (post.data.category == 'cooking') %} post-text{% endif %}"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %}>
 						{% if post.data.category == "media" %}
 							<figure id="{{post.data.date|safe}}-{{post.data.name}}" aria-label="{{post.data.type|capitalize}}{% if post.data.location %}, {{post.data.location}}{% elseif post.data.title %}, {{post.data.title}}{% endif %}" style="aspect-ratio: {% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'ratio' %};">
 								{% if post.data.upscale %}
@@ -176,7 +196,7 @@ pagination:
 							{% excerpt post %}
 						{% endif %}
 					</div>
-					{% if (post.data.category == "writing") or (post.data.category == "social") %}
+					{% if (post.data.category == "writing") or (post.data.category == "social") or (post.data.category == "cooking") %}
 						<footer class="post-footer">
 							{% if post.data.category == "social" %}
 								<a class="button button-social button-{{post.data.pagination.alias}}" href="{{post.data.url|url}}" aria-label="View post on {{post.data.pagination.alias|capitalize}}"><span><span>View post</span></span></a>
@@ -189,6 +209,8 @@ pagination:
 								{% for link in post.data.external %}
 									<a class="button link-platform {{link.platform}} background" href="{{link.url|url}}"><span><span>{% if post.data.type == "audio" %}Listen on {% elseif post.data.type == "writing" %}Read on {% else %}View on {% endif %}{% if link.title %}{{link.title}}{% else %}{{link.platform|capitalize}}{% endif %}</span></a>
 								{% endfor %}
+							{% elseif post.data.category == "cooking" %}
+								<a class="button" href="{{post.url|url}}"><span><span>Read recipe</span></span></a>
 							{% endif %}
 							{% if post.data.archive == true %}
 								{% if post.data.full == true %}

@@ -26,15 +26,16 @@
 
 	{% if blank != true %}
 		<meta name="color-scheme" content="light dark">
+		<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1D2429">
 	{% endif %}
 	{% if theme %}
-		<meta name="theme-color" content="{{theme}}">
+		<meta name="theme-color" media="(prefers-color-scheme: light)" content="{{theme}}">
 	{% else %}
-		<meta name="theme-color" content="#fcf1ef">
+		<meta name="theme-color" media="(prefers-color-scheme: light)" content="#fcf1ef">
 	{% endif %}
 
-	<title>{{site.author}} · {{title}}</title>
-	<meta property="og:title" content="{{title}}">
+	<title>{{site.author}} · {% if titleModifier %}{{titleModifier}}{% endif %}{{title}}</title>
+	<meta property="og:title" content="{% if titleModifier %}{{titleModifier}}{% endif %}{{title}}">
 
 	<meta property="og:description" content="{{description}}">
 	<meta property="og:site_name" content="{{site.author}}">
@@ -51,7 +52,7 @@
 	<meta property="og:image:width" content="1200">
 	<meta property="og:image:height" content="630">
 	
-	<meta name="twitter:title" content="{{title}}">
+	<meta name="twitter:title" content="{% if titleModifier %}{{titleModifier}}{% endif %}{{title}}">
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:site" content="@gabriewee">
 	<meta name="twitter:creator" content="@gabriewee">
@@ -99,7 +100,7 @@
 	{% if blank != true %}
 		<footer class="bottom" aria-label="Footer">
 			<nav aria-label="Site links">
-				<ul class="links">
+				<menu class="links">
 					{% if key != "about" %}
 						<li><a href="/about/"><span>About</span></a></li>
 						<li><a href="/me/"><span>Me</span></a></li>
@@ -110,7 +111,7 @@
 					{% if ((key == "home") and (pagination.pageNumber == 0)) or (key == "about") or (key == "me") %}{% else %}
 						<li><a href="mailto:mail@gabriellew.ee"><span>Email</span></a></li>
 					{% endif %}
-				</ul>
+				</menu>
 				<p class="copyright">
 					<span>&copy; {{site.author}} {% year 'start' %}–{% year 'current' %}</span>
 				</p>

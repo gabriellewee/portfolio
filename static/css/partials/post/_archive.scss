@@ -43,15 +43,11 @@
 				text-underline-offset: 4px;
 			}
 			&:hover, &:focus {
-				@include mix(
-					color-mix(
-						in hsl,
-						hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .9) var(--color-mauve-l) / 1) 30%,
-						hsl(var(--color-rose-h) calc(var(--color-rose-s) * .9) var(--color-rose-l) / 1)
-					),
-					mix($iron, white, 10%)
+				text-decoration-color: color-mix(
+					in hsl,
+					hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .9) var(--color-mauve-l) / 1) 30%,
+					hsl(var(--color-rose-h) calc(var(--color-rose-s) * .9) var(--color-rose-l) / 1)
 				);
-				text-decoration-color: var(--color-mix);
 				span {
 					@include gradient-text(
 						var(--color-rose),
@@ -79,17 +75,13 @@
 						);
 					}
 					@include theme(dark, 2) {
-						@include mix(
+						@include gradient-text(
+							var(--color-slate),
 							color-mix(
 								in srgb,
 								var(--color-iron) 80%,
 								white
-							),
-							mix($iron, white, 80%)
-						);
-						@include gradient-text(
-							var(--color-slate),
-							var(--color-mix)
+							)
 						);
 					}
 				}

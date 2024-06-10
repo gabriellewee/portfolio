@@ -93,6 +93,12 @@ $options: color, contrast, transparency, load;
 				display: none;
 			}
 		}
+		.option-index-only {
+			display: none;
+			.page-home & {
+				display: block;
+			}
+		}
 		p {
 			line-height: 1.3;
 		}

@@ -3,8 +3,8 @@ layout: layouts/base.njk
 key: post
 og: posts
 tags:
-    - entries
-    - writing
+  - entries
+  - writing
 category: writing
 ---
 
@@ -18,10 +18,11 @@ category: writing
 						<time class="time-default dt-published" datetime="{{page.date|ISO|date('string')}}" title="{{page.date|ISO|date('readable')}}" data-time="{{page.date|ISO}}">{{page.date|ISO|date('readable')}}</time>
 					</div>
 				</header>
+
 				<div class="post-content post-text e-content">
 					{{content|images|safe}}
 				</div>
-				
+
 				<footer class="post-footer">
 					{% if archive == true %}
 						{% if full == true %}

@@ -1,7 +1,7 @@
 const sass = require("sass");
 const path = require("path");
 const minify = require("terser").minify;
-const htmlmin = require("html-minifier");
+const htmlmin = require("html-minifier-terser");
 
 module.exports = eleventyConfig => {
 	eleventyConfig.addTransform("minify", async (content, outputPath) => {

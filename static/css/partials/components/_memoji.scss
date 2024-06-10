@@ -57,15 +57,11 @@
 				opacity: 1;
 			}
 			.page-index & {
-				@include mix(
-					color-mix(
-						in srgb,
-						var(--color-iron),
-						white
-					),
-					mix($iron, white, 10%)
+				color: color-mix(
+					in srgb,
+					var(--color-iron),
+					white
 				);
-				color: var(--color-mix);
 				@media (prefers-reduced-motion: reduce) {
 					display: none;
 				}

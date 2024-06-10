@@ -1,0 +1,8 @@
+{
+	"tags": [
+		"recipe"
+	],
+	"permalink": "/recipes/{{title|slugify}}/",
+	"layout": "layouts/recipe.njk",
+	"templateEngineOverride": "md,njk"
+}

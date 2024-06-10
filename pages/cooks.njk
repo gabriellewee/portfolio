@@ -1,0 +1,67 @@
+---
+title: Recipes
+description: Recipes I’ve developed over the years
+
+layout: layouts/base.njk
+permalink: /cooks/
+key: recipe
+theme: #B1CBBB
+style: true
+add: true
+isotope: true
+tags: pages
+message: Recipes I’ve developed
+---
+
+<section class="posts-container" aria-label="Posts">
+	<div class="posts grid-isotope grid-scroll">
+		{% for post in collections.cooking %}
+			<article
+				class="post {% if pagination.pageNumber == 0 %} post-animate{% endif %}{% if (post.data.pagination.alias) and (post.data.pagination.alias != post.data.category) %} post-{{post.data.category}} post-{{post.data.pagination.alias}}{% else %} post-{{post.data.category}}{% endif %}{% if post.data.tags %}{% for tag in post.data.tags %}{% if tag != 'entries' and tag != 'posts' %} post-{{tag}}{% endif %}{% endfor %}{% endif %}{% if post.data.size %} post-size-{{post.data.size}}{% endif %} grid-item"
+			>
+				<div class="post-inner">
+					<header class="post-header{% if (post.data.category == 'writing') or (post.data.category == 'code') %} inline-header{% endif %}">
+						<div class="post-header-image theme-{{post.data.headline}}">
+							{% image './static/images/' + post.data.key + 's/' + post.page.fileSlug + '.jpg', 'Hero image showing ' + post.data.title, 'default' %}
+						</div>
+						<div class="post-header-content">
+							<h2>
+								{% if post.url %}
+									<a href="{{post.url|url}}" aria-label="Recipe for {{post.data.title|safe}}"><span><span>{{post.data.title|safe}}</span></span></a>
+								{% else %}
+									<a href="{{post.data.url|url}}"><span><span>{{post.data.title|safe}}</span></span></a>
+								{% endif %}
+							</h2>
+							<time class="time{% if post.data.category != 'code' %} time-default{% endif %}{% if post.data.category == 'social' %} time-external{% endif %}" datetime="{{post.page.date|ISO|date('string')}}" data-time="{{post.page.date|ISO}}" title="{{post.page.date|ISO|date('readable')}}">{{post.page.date|ISO|date('readable')}}</time>
+						</div>
+					</header>
+
+					<aside class="post-meta">
+						{% if post.data.servings %}
+							<p class="recipe-servings"><strong>Servings:</strong> <span>{{post.data.servings}}</span></p>
+						{% endif %}
+						{% if post.data.prep %}
+							<p class="recipe-prep"><strong>Prep:</strong> <span class="recipe-duration" data-duration="{{post.data.prep}}">{{post.data.prep}} minutes</span></p>
+						{% endif %}
+						{% if post.data.cook %}
+							<p class="recipe-cook"><strong>Cook:</strong> <span class="recipe-duration" data-duration="{{post.data.cook}}">{{post.data.cook}} minutes</span></p>
+						{% endif %}
+						{% if post.data.prep and post.data.cook %}
+							{% set total = [post.data.prep,post.data.cook] %}
+							<p class="recipe-total"><strong>Total:</strong> <span class="recipe-duration" data-duration="{{total|sum}}">{{total|sum}} minutes</span></p>
+						{% endif %}
+					</aside>
+
+					<div class="post-content post-text">
+						{% excerpt post %}
+					</div>
+
+					<footer class="post-footer">
+						<a class="button" href="{{post.url|url}}"><span><span>Read recipe</span></span></a>
+					</footer>
+			</div>
+			</article>
+		{% endfor %}
+	</div>
+</section>
+

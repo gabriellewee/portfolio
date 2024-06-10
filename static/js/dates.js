@@ -15,3 +15,15 @@ const timeAgo = (dates) => {
 		if (platform) date.append(platform);
 	});
 }
+
+const durationFormat = (times) => {
+	let timesISO = Array.from(document.querySelectorAll(times));
+	if (!timesISO) return;
+	timesISO.forEach(time =>{
+		let duration = time.getAttribute("data-duration");
+		if(duration > 60) {
+			let conversion = luxon.Duration.fromObject({minutes: duration}).shiftTo('hours', 'minutes').toHuman({listStyle: "narrow", type: "unit"});
+			time.innerHTML = conversion;
+		}
+	});
+}

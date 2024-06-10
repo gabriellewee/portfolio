@@ -44,24 +44,6 @@ $mastodon: #6364ff;
 	}
 }
 
-@mixin mix($color, $fallback, $label: null) {
-	@if $label {
-		@supports not (color: color-mix(in srgb, red, blue)) {
-			--color-#{$label}: hsla(#{hexToHSLa($fallback)});
-		}
-		@supports (color: color-mix(in srgb, red, blue)) {
-			--color-#{$label}: #{$color};
-		}
-	} @else {
-		@supports not (color: color-mix(in srgb, red, blue)) {
-			--color-mix: hsla(#{hexToHSLa($fallback)});
-		}
-		@supports (color: color-mix(in srgb, red, blue)) {
-			--color-mix: #{$color};
-		}
-	}
-}
-
 // mixins
 @mixin viewport($viewport) {
 	@if $viewport == "mobile" {
@@ -483,5 +465,69 @@ $mastodon: #6364ff;
 	@include clip-path {
 		@include button-shape;
 		padding: var(--p) calc(var(--p)*2.5);
+	}
+}
+
+// button colors for recipe theme
+@mixin recipe-button {
+	&:before {
+		background: radial-gradient(
+			circle at center left,
+			color-mix(
+				in srgb,
+				var(--color-white),
+				var(--color-mint)
+			),
+			color-mix(
+				in srgb,
+				var(--color-white) 70%,
+				var(--color-mint)
+			)
+		);
+	}
+	> span {
+		background-color: var(--color-slate);
+		background: radial-gradient(
+			circle at center right,
+			color-mix(
+				in srgb,
+				var(--color-periwinkle),
+				var(--color-mint)
+			) 0,
+			var(--color-mint) 25%,
+			var(--color-slate) 75%,
+			var(--color-slate) 100%
+		) 50% 0% / 200% 100%;
+		&:before {
+			@include theme(light, 2) {
+				background-color: var(--color-iron);
+				background: radial-gradient(
+					circle at center left,
+					var(--color-iron),
+					color-mix(
+						in srgb,
+						var(--color-iron) 80%,
+						white
+					)
+				);
+			}
+			@include theme(dark, 2) {
+				background-color: var(--color-slate);
+				background: radial-gradient(
+					circle at center left,
+					color-mix(
+						in srgb,
+						var(--color-iron) 80%,
+						white
+					),
+					var(--color-slate)
+				);
+			}
+		}
+	}
+	&:hover, &:focus {
+		> span {
+			background-position-x: 100%;
+		}
 	}
 }

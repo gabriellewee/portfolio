@@ -80,6 +80,7 @@ const mediaTriggers = (media) => {
 
 frames(".reload");
 timeAgo("time");
+durationFormat(".recipe-duration");
 mediaTriggers(".post-media");
 
 let container = document.querySelector(".grid-isotope");
@@ -137,6 +138,7 @@ if (scrollContainer && lightboxContainer) {
 	scroll.on('append', (body, path, items, response) => {
 		frames(".reload");
 		timeAgo("time");
+		durationFormat(".recipe-duration");
 		mediaTriggers(".post-media");
 	});
 } else {

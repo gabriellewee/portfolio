@@ -48,6 +48,12 @@
 	force = true
 
 [[redirects]]
+	from = "/recipes/"
+	to = "/cooks/"
+	status = 302
+	force = true
+
+[[redirects]]
 	from = "/static/images/writing/*"
 	to = "/static/images/posts/:splat"
 	status = 302

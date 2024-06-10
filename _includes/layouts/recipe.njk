@@ -1,0 +1,63 @@
+---
+titleModifier: "Recipe for "
+layout: layouts/base.njk
+key: recipe
+og: posts
+tags:
+  - entries
+  - cooking
+category: cooking
+scripts: true
+style: true
+add: true
+---
+
+<section class="posts-container h-entry">
+	<div class="posts">
+		<article class="post post-{{category}}{% for tag in tags %}{% if tag != 'entries' %} post-{{tag}}{% endif %}{% endfor %}">
+			<div class="post-inner">
+				<header class="post-header">
+					<div class="post-header-image theme-{{headline}}">
+						{% image './static/images/' + key + 's/' + page.fileSlug + '.jpg', 'Hero image showing ' + title, 'default' %}
+					</div>
+					<div class="post-header-content">
+						<h2><a class="u-url" href="{{page.url}}" aria-label="Recipe for {{title|safe}}"><span class="p-name"><span>{{title|safe}}</span></span></a></h2>
+						<time class="time-default dt-published" datetime="{{page.date|ISO|date('string')}}" title="{{page.date|ISO|date('readable')}}" data-time="{{page.date|ISO}}">{{page.date|ISO|date('readable')}}</time>
+					</div>
+				</header>
+
+				<aside class="post-meta">
+					<p class="recipe-servings"><strong>Servings:</strong> <span>{{servings}}</span></p>
+					{% if prep %}
+						<p class="recipe-prep"><strong>Prep:</strong> <span class="recipe-duration" data-duration="{{prep}}">{{prep}} minutes</span></p>
+					{% endif %}
+					{% if cook %}
+						<p class="recipe-cook"><strong>Cook:</strong> <span class="recipe-duration" data-duration="{{cook}}">{{cook}} minutes</span></p>
+					{% endif %}
+					{% if prep and cook %}
+						{% set total = [prep,cook] %}
+						<p class="recipe-total"><strong>Total:</strong> <span class="recipe-duration" data-duration="{{total|sum}}">{{total|sum}} minutes</span></p>
+					{% endif %}
+				</aside>
+
+				<div class="post-content post-text e-content">
+					{{content|images|safe}}
+				</div>
+
+				<footer class="post-footer hide" data-reset-container>
+					<a class="button recipe-reset" href="#" data-reset><span><span>Reset ingredients</span></span></a>
+				</footer>
+			</div>
+		</article>
+	</div>
+
+	{% include 'pages/posts/author.html' %}
+	{% include 'pages/posts/mentions.html' %}
+
+	<nav class="pagination" aria-label="Pagination">
+		<a class="button" href="/cooks/"><span><span>Back to recipes</span></span></a>
+	</nav>
+
+	{% include 'pages/posts/lightbox.html' %}
+</section>
+{% if code == true %}<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>{% endif %}

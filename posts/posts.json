@@ -1,7 +1,7 @@
 {
 	"tags": [
 		"posts",
-		"blog"
+		"current"
 	],
 	"permalink": "/posts/{{date|ISO|date}}/{{title|slugify}}/",
 	"layout": "layouts/post.njk",

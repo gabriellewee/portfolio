@@ -1,0 +1,107 @@
+// utilities
+@import 'partials/shared/utilities';
+@import 'partials/shared/variables';
+
+.page-recipe {
+	@include theme(light, 3) {
+		background-color: gHSL(mint, 1.2);
+	}
+	@include theme(dark, 3) {
+		background-color: gHSL(iron, .73);
+	}
+	@include contrast(light, 3) {
+		background-color: gHSL(mint, 1.4);
+	}
+	@include contrast(dark, 3) {
+		background-color: gHSL(iron, .45);
+	}
+}
+
+* {
+	::-moz-selection {
+		@include theme(light, 1) {
+			background-color: gHSL(mint, 1, .8);
+		}
+		@include theme(dark, 1) {
+			background-color: gHSL(mint, 1, .8);
+		}
+	}
+
+	::selection {
+		@include theme(light, 1) {
+			background-color: gHSL(mint, 1, .8);
+		}
+		@include theme(dark, 1) {
+			background-color: gHSL(mint, 1, .8);
+		}
+	}
+}
+
+.memoji-link {
+	a {
+		&:focus-visible {
+			@include theme(light, 2) {
+				@include focus-shadow(color-mix(
+					in hsl,
+					var(--color-slate) 70%,
+					var(--color-mint)
+				));
+			}
+			@include theme(dark, 2) {
+				@include focus-shadow(color-mix(
+					in hsl,
+					var(--color-slate) 70%,
+					var(--color-mint)
+				));
+			}
+		}
+	}
+}
+
+.bottom {
+	a {
+		&:before {
+			@include theme(light, 2) {
+				@include before(var(--color-white));
+			}
+			@include theme(dark, 2) {
+				@include before(color-mix(
+					in srgb,
+					var(--color-white) 70%,
+					var(--color-mint)
+				));
+			}
+		}
+		span {
+			background: color-mix(
+				in hsl,
+				var(--color-slate) 70%,
+				var(--color-mint)
+			);
+		}
+		&:hover, &:focus {
+			span {
+				background: var(--color-slate);
+			}
+		}
+		&:active {
+			span {
+				background: var(--color-iron);
+			}
+		}
+	}
+}
+
+.button {
+	@include recipe-button;
+}
+
+.toggle {
+	*:focus-visible & {
+		outline: calc(var(--p)/4) solid color-mix(
+			in srgb,
+			var(--color-white),
+			var(--color-mint)
+		);
+	}
+}

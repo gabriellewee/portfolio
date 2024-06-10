@@ -58,15 +58,11 @@
 					background-color: var(--color-primary);
 				}
 				@include theme(dark, 2) {
-					@include mix(
-						color-mix(
-							in srgb,
-							var(--color-iron),
-							white
-						),
-						mix($iron, white)
+					background-color: color-mix(
+						in srgb,
+						var(--color-iron),
+						white
 					);
-					background-color: var(--color-mix);
 				}
 			}
 		}
@@ -88,15 +84,11 @@
 					background-color: var(--color-primary);
 				}
 				@include theme(dark, 2) {
-					@include mix(
-						color-mix(
-							in srgb,
-							var(--color-iron),
-							white
-						),
-						mix($iron, white)
+					background-color: color-mix(
+						in srgb,
+						var(--color-iron),
+						white
 					);
-					background-color: var(--color-mix);
 				}
 			}
 			&:before {
@@ -121,15 +113,11 @@
 			background: var(--color-blush);
 		}
 		> span {
-			@include mix(
-				color-mix(
-					in srgb,
-					var(--color-iron) 90%,
-					var(--color-white)
-				),
-				mix($iron, white, 90%)
+			background: color-mix(
+				in srgb,
+				var(--color-iron) 90%,
+				var(--color-white)
 			);
-			background: var(--color-mix);
 			&:before {
 				display: none;
 			}
@@ -190,15 +178,11 @@
 			@include clip-path-edges(2px);
 			display: inline-block;
 			padding: calc(var(--p)/3*2) var(--p);
-			@include mix(
-				color-mix(
-					in srgb,
-					var(--color-iron) 90%,
-					white
-				),
-				mix($iron, white, 90%)
+			background-color: color-mix(
+				in srgb,
+				var(--color-iron) 90%,
+				white
 			);
-			background-color: var(--color-mix);
 		}
 		&:hover, &:focus {
 			span {
@@ -345,15 +329,11 @@
 		text-transform: uppercase;
 		line-height: 1.715;
 		@include theme(light, 2) {
-			@include mix(
-				color-mix(
-					in srgb,
-					gHSL(iron, 1, .2) 70%,
-					gHSL(white, 1, .2)
-				),
-				mix($iron, white)
+			background-color: color-mix(
+				in srgb,
+				gHSL(iron, 1, .2) 70%,
+				gHSL(white, 1, .2)
 			);
-			background-color: var(--color-mix);
 			color: gHSL(iron, 1, .7);
 		}
 		@include theme(dark, 2) {
@@ -395,15 +375,11 @@
 				background-color: gHSL(primary, 1, .5);
 			}
 			&:after {
-				@include mix(
-					color-mix(
-						in srgb,
-						var(--color-iron) 10%,
-						white
-					),
-					mix($iron, white, 10%)
+				background-color: color-mix(
+					in srgb,
+					var(--color-iron) 10%,
+					white
 				);
-				background-color: var(--color-mix);
 			}
 		}
 		@include contrast(dark, 2) {

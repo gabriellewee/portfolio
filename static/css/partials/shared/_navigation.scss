@@ -44,7 +44,7 @@
 	opacity: 0;
 	padding-top: calc(var(--p)*2);
 	padding-bottom: calc(var(--p) + env(safe-area-inset-bottom));
-	.page-home:not(.page-index) &, .page-post &, .page-code & {
+	.page-home:not(.page-index) &, .page-post &, .page-code &, .page-recipe & {
 		opacity: 1;
 	}
 	nav, .links {
@@ -79,10 +79,11 @@
 	.copyright {
 		span {
 			@include theme(light, 1) {
-				background-color: white;
+				background-color: var(--color-white);
 			}
 			@include theme(dark, 1) {
 				background-color: var(--color-iron);
+				color: var(--color-white);
 			}
 		}
 	}
@@ -96,15 +97,11 @@
 		span {
 			transition: background .2s ease-out;
 			color: white;
-			@include mix(
-				color-mix(
-					in hsl,
-					hsl(var(--color-slate-h) calc(var(--color-slate-s) * .3) calc(var(--color-slate-l) * .85) / 1) 30%,
-					hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .3) calc(var(--color-mauve-l) * .85) / 1)
-				),
-				darken(mix($slate, $mauve), 5%)
+			background: color-mix(
+				in hsl,
+				hsl(var(--color-slate-h) calc(var(--color-slate-s) * .3) calc(var(--color-slate-l) * .85) / 1) 30%,
+				hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .3) calc(var(--color-mauve-l) * .85) / 1)
 			);
-			background: var(--color-mix);
 		}
 		&:hover, &:focus {
 			span {

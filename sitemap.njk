@@ -20,4 +20,12 @@ eleventyExcludeFromCollections: true
 		<priority>0.5</priority>
 	</url>
 	{% endfor %}
+	{% for page in collections.cooking %}
+	<url>
+		<loc>{{site.url}}{{page.url|url}}</loc>
+		<lastmod>{{page.date.toISOString()}}</lastmod>
+		<changefreq>daily</changefreq>
+		<priority>1.0</priority>
+	</url>
+	{% endfor %}
 </urlset>

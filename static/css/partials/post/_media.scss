@@ -98,19 +98,15 @@ figure {
 		}
 		> span {
 			&:before {
-				@include mix(
-					color-mix(
-						in srgb,
-						var(--color-iron) 80%,
-						white
-					),
-					mix($iron, white, 80%)
-				);
 				background-color: var(--color-slate);
 				background: radial-gradient(
 					circle at center left,
 					var(--color-slate),
-					var(--color-mix)
+					color-mix(
+						in srgb,
+						var(--color-iron) 80%,
+						white
+					)
 				);
 			}
 		}

@@ -13,7 +13,9 @@
 		mauve: $mauve,
 		slate: $slate,
 
-		mastodon: $mastodon
+		mastodon: $mastodon,
+
+		mint: #8BB29A
 	);
 	@each $name, $color in $colors {
 		--color-#{"" + $name}:hsl(#{hexToHSL($color)});
@@ -24,7 +26,6 @@
 	}
 
 	$colors-no-hsl: (
-		mint: #8BB29A,
 		oak: #D1AE87,
 		aqua: #73d1c8,
 		peach: #f78c6a,

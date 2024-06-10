@@ -10,8 +10,8 @@ const noJS = ((container = document.documentElement) => {
 })();
 
 const accessibility = (() => {
-	const options = Array.from(document.querySelectorAll("[data-option"));
-	const labels = Array.from(document.querySelectorAll("[data-option-label"));
+	const options = Array.from(document.querySelectorAll("[data-option]"));
+	const labels = Array.from(document.querySelectorAll("[data-option-label]"));
 	if (!options || !window.matchMedia) return;
 
 	let _true = (option, index) => {
@@ -198,5 +198,5 @@ const accessibility = (() => {
 				location.reload();
 			});
 		}
-	})
+	});
 })();

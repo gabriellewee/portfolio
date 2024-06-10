@@ -30,15 +30,11 @@
 			}
 			&:hover, &:focus {
 				> span {
-					@include mix(
-						color-mix(
-							in hsl,
-							hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .9) var(--color-mauve-l) / 1) 30%,
-							hsl(var(--color-rose-h) calc(var(--color-rose-s) * .9) var(--color-rose-l) / 1)
-						),
-						mix($mauve, $rose)
+					text-decoration-color: color-mix(
+						in hsl,
+						hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .9) var(--color-mauve-l) / 1) 30%,
+						hsl(var(--color-rose-h) calc(var(--color-rose-s) * .9) var(--color-rose-l) / 1)
 					);
-					text-decoration-color: var(--color-mix);
 				}
 			}
 			&:focus-visible {
@@ -61,13 +57,13 @@
 		}
 	}
 	time {
-		@include container(header, mobile, $container-mobile) {
+		@include container(header, mobile, $iphone-max) {
 			margin-left: var(--p);
 		}
 	}
 }
 
-&.post-blog {
+&.post-current {
 	.post-header {
 		h2 {
 			a {
@@ -98,17 +94,13 @@
 							);
 						}
 						@include theme(dark, 2) {
-							@include mix(
+							@include gradient-text(
+								var(--color-slate),
 								color-mix(
 									in srgb,
 									var(--color-iron) 80%,
 									white
-								),
-								mix($iron, white, 80%)
-							);
-							@include gradient-text(
-								var(--color-slate),
-								var(--color-mix)
+								)
 							);
 						}
 					}
@@ -116,10 +108,11 @@
 			}
 		}
 		time {
-			background-color: hsl(var(--color-slate-h) calc(var(--color-slate-s) * .75) var(--color-slate-l) / 1);
+			--color-mix: hsl(var(--color-slate-h) calc(var(--color-slate-s) * .75) var(--color-slate-l) / 1);
+			background-color: var(--color-mix);
 			&:after {
 				@include contrast(both, 2) {
-					background-color: hsl(var(--color-slate-h) calc(var(--color-slate-s) * .75) var(--color-slate-l) / 1);
+					background-color: var(--color-mix);
 				}
 			}
 		}
@@ -150,15 +143,11 @@
 					top: 2px;
 					margin-left: calc(var(--p)/3*2);
 					line-height: 1;
-					@include mix(
-						color-mix(
-							in hsl,
-							var(--color-mauve) 30%,
-							var(--color-rose)
-						),
-						mix($mauve, $rose, 30%)
+					color: color-mix(
+						in hsl,
+						var(--color-mauve) 30%,
+						var(--color-rose)
 					);
-					color: var(--color-mix);
 				}
 				&:hover, &:focus {
 					span span {
@@ -177,16 +166,12 @@
 							);
 						}
 						@include theme(dark, 2) {
-							@include mix(
+							@include gradient-text(
 								color-mix(
 									in srgb,
 									var(--color-iron) 80%,
 									white
 								),
-								mix($iron, white, 80%)
-							);
-							@include gradient-text(
-								var(--color-mix),
 								var(--color-slate)
 							);
 						}
@@ -203,13 +188,10 @@
 			}
 		}
 		time {
-			@include mix(
-				color-mix(
-					in srgb,
-					hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .75) var(--color-mauve-l) / 1),
-					gHSL(slate, .8)
-				),
-				mix(desaturate($mauve, 5%), $slate)
+			--color-mix: color-mix(
+				in srgb,
+				hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .75) var(--color-mauve-l) / 1),
+				gHSL(slate, .8)
 			);
 			background-color: var(--color-mix);
 			&:after {
@@ -242,28 +224,18 @@
 					);
 				}
 				@include theme(dark, 2) {
-					@include mix(
+					@include gradient-text(
 						color-mix(
 							in srgb,
 							var(--color-iron) 80%,
 							white
 						),
-						mix($iron, white, 80%),
-						mix-one
-					);
-					@include mix(
+						var(--color-slate),
 						color-mix(
 							in srgb,
 							gHSL(iron, 1, .5) 80%,
 							gHSL(white, 1, .5)
-						),
-						rgba(mix($iron, white, 80%), .5),
-						mix-two
-					);
-					@include gradient-text(
-						var(--color-mix-one),
-						var(--color-slate),
-						var(--color-mix-two)
+						)
 					);
 				}
 			}
@@ -276,38 +248,26 @@
 		h2 {
 			a {
 				@include theme(light, 2) {
-					@include mix(
-						color-mix(
-							in srgb,
-							var(--color-iron) 70%,
-							white
-						),
-						mix($iron, white, 70%)
+					color: color-mix(
+						in srgb,
+						var(--color-iron) 70%,
+						white
 					);
-					color: var(--color-mix);
 				}
 				@include theme(dark, 2) {
-					@include mix(
-						color-mix(
-							in srgb,
-							var(--color-iron),
-							white
-						),
-						mix($iron, white)
+					color: color-mix(
+						in srgb,
+						var(--color-iron),
+						white
 					);
-					color: var(--color-mix);
 				}
 				&:hover, &:focus {
 					@include theme(light, 2) {
-						@include mix(
-							color-mix(
-								in srgb,
-								var(--color-iron),
-								white
-							),
-							mix($iron, white)
+						color: color-mix(
+							in srgb,
+							var(--color-iron),
+							white
 						);
-						color: var(--color-mix);
 					}
 					@include theme(dark, 2) {
 						color: gHSL(white, 1, .7);
@@ -315,38 +275,27 @@
 				}
 				&:active {
 					@include theme(light, 2) {
-						@include mix(
-							color-mix(
-								in srgb,
-								var(--color-iron) 90%,
-								white
-							),
-							mix($iron, white, 90%)
+						color: color-mix(
+							in srgb,
+							var(--color-iron) 90%,
+							white
 						);
-						color: var(--color-mix);
 					}
 					@include theme(dark, 2) {
-						@include mix(
-							color-mix(
-								in srgb,
-								var(--color-iron) 70%,
-								white
-							),
-							mix($iron, white, 70%)
+						color: color-mix(
+							in srgb,
+							var(--color-iron) 70%,
+							white
 						);
-						color: var(--color-mix);
 					}
 				}
 			}
 		}
 		time {
-			@include mix(
-				color-mix(
-					in srgb,
-					var(--color-iron) 60%,
-					white
-				),
-				mix($iron, white, 60%)
+			--color-mix: color-mix(
+				in srgb,
+				var(--color-iron) 60%,
+				white
 			);
 			background-color: var(--color-mix);
 			&:after {
@@ -360,79 +309,51 @@
 		.button {
 			&:before {
 				@include theme(light, 2) {
-					@include mix(
+					background: radial-gradient(
+						circle at center left,
 						color-mix(
 							in srgb,
 							var(--color-iron) 70%,
 							white
 						),
-						mix($iron, white, 70%),
-						mix-one
-					);
-					@include mix(
 						color-mix(
 							in srgb,
 							var(--color-iron) 80%,
 							white
-						),
-						mix($iron, white, 80%),
-						mix-two
-					);
-					background: radial-gradient(
-						circle at center left,
-						var(--color-mix-one),
-						var(--color-mix-two)
+						)
 					);
 				}
 
 				@include theme(dark, 2) {
-					@include mix(
+					background: radial-gradient(
+						circle at center left,
 						color-mix(
 							in srgb,
 							var(--color-iron) 10%,
 							white
 						),
-						mix($iron, white, 10%),
-						mix-one
-					);
-					@include mix(
 						color-mix(
 							in srgb,
 							var(--color-iron) 30%,
 							white
-						),
-						mix($iron, white, 30%),
-						mix-two
-					);
-					background: radial-gradient(
-						circle at center left,
-						var(--color-mix-one),
-						var(--color-mix-two)
+						)
 					);
 				}
 			}
 			> span {
-				@include mix(
-					color-mix(
-						in srgb,
-						var(--color-iron) 70%,
-						white
-					),
-					mix($iron, white, 70%)
+				background: color-mix(
+					in srgb,
+					var(--color-iron) 70%,
+					white
 				);
-				background: var(--color-mix);
 			}
 			&:hover, &:focus {
 				> span {
-					@include mix(
-						color-mix(
-							in srgb,
-							var(--color-iron),
-							white
-						),
-						mix($iron, white)
+					background: color-mix(
+						in srgb,
+						var(--color-iron),
+						white
 					);
-					background: var(--color-mix);
 				}
 			}
 		}

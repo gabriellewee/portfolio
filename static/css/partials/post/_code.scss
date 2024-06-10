@@ -264,15 +264,11 @@
 		justify-content: center;
 		height: 300px;
 		padding: calc(var(--p)*2);
-		@include mix(
-			color-mix(
-				in srgb,
-				var(--color-iron) 70%,
-				white
-			),
-			mix($iron, white, 70%)
+		color: color-mix(
+			in srgb,
+			var(--color-iron) 70%,
+			white
 		);
-		color: var(--color-mix);
 		font-weight: 600;
 		line-height: 1.3;
 	}
@@ -303,15 +299,11 @@
 			}
 		}
 		&:before {
-			@include mix(
-				color-mix(
-					in srgb,
-					var(--color-iron) 60%,
-					white
-				),
-				mix($iron, white, 60%)
+			background: color-mix(
+				in srgb,
+				var(--color-iron) 60%,
+				white
 			);
-			background: var(--color-mix);
 			@include clip-path(false) {
 				@include border-radius(0);
 			}

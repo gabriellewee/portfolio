@@ -182,15 +182,11 @@
 				background-color: gHSL(iron, .7);
 			}
 			@include contrast(light, 2) {
-				@include mix(
-					color-mix(
-						in srgb,
-						var(--color-iron) 10%,
-						white
-					),
-					mix($iron, white, 10%)
+				background-color: color-mix(
+					in srgb,
+					var(--color-iron) 10%,
+					white
 				);
-				background-color: var(--color-mix);
 			}
 		}
 		.clip-container-border {

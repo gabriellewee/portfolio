@@ -203,15 +203,11 @@
 				background-color: var(--color-blush);
 			}
 			@include contrast(both, 2) {
-				@include mix(
-					color-mix(
-						in srgb,
-						var(--color-iron) 60%,
-						var(--color-slate)
-					),
-					mix($iron, $slate, 60%)
+				background-color: color-mix(
+					in srgb,
+					var(--color-iron) 60%,
+					var(--color-slate)
 				);
-				background-color: var(--color-mix);
 			}
 		}
 		&:after {
@@ -263,15 +259,11 @@
 	}
 	.time {
 		time {
-			@include mix(
-				color-mix(
-					in srgb,
-					var(--color-iron) 70%,
-					white
-				),
-				mix($iron, white, 70%)
+			background-color: color-mix(
+				in srgb,
+				var(--color-iron) 70%,
+				white
 			);
-			background-color: var(--color-mix);
 		}
 		&:hover, &:focus {
 			time {
@@ -280,15 +272,11 @@
 		}
 		&:active {
 			time {
-				@include mix(
-					color-mix(
-						in srgb,
-						var(--color-iron) 90%,
-						white
-					),
-					mix($iron, white, 90%)
+				background-color: color-mix(
+					in srgb,
+					var(--color-iron) 90%,
+					white
 				);
-				background-color: var(--color-mix);
 			}
 		}
 	}
