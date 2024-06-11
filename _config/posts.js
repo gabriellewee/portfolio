@@ -171,11 +171,11 @@ module.exports = eleventyConfig => {
 						let figure;
 
 						if (stats["webp"][4] || stats["webp"][3]) {
-							let caption = `<figcaption id="${name}-caption" aria-hidden="true">${title}</figcaption>`;
+							let caption = `<figcaption id="${name}-caption" aria-hidden="true">${nbsp(title)}</figcaption>`;
 							let link = `<a class="expand" href="#${name}-lightbox" aria-label="${alt} Expand image">${picture}</a>`;
 							figure = `<figure id="${name}" aria-labelledby="${name}-caption">${caption}${link}</figure>`;
 						} else {
-							let caption = `<figcaption id="${name}-caption" aria-hidden="true">${title}</figcaption>`;
+							let caption = `<figcaption id="${name}-caption" aria-hidden="true">${nbsp(title)}</figcaption>`;
 							figure = `<figure id="${name}" aria-labelledby="${name}-caption">${caption}${picture}</figure>`;
 						}
 						post = post.replace(image[0], figure);
@@ -207,12 +207,15 @@ module.exports = eleventyConfig => {
 		let pCloseTag = '</p>';
 
 		let images = eleventyConfig.getFilter("images");
+		let nbsp = eleventyConfig.getFilter("nbsp");
 
 		if (content.includes(excerptSeparator)) {
 			excerpt = content.substring(0, content.indexOf(excerptSeparator)).trim();
+			excerpt = nbsp(excerpt);
 			excerpt = await images(excerpt, option);
 		} else if (content.includes(pCloseTag)) {
 			excerpt = content.substring(0, content.indexOf(pCloseTag) + pCloseTag.length);
+			excerpt = nbsp(excerpt);
 			excerpt = await images(excerpt, option);
 		}
 
