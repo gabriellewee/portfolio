@@ -12,13 +12,22 @@ const ingredients = (() => {
 		if(name) {
 			localStorage.setItem(name, "true");
 		}
+		if(resetContainer.classList.contains("hide")) {
+			resetContainer.classList.remove("hide");
+			localStorage.setItem("resetIngredients", "true");
+		}
 	}
 	let _false = (option, index, name) => {
 		option.checked = false;
 		option.removeAttribute("checked");
 		labels[index].setAttribute("aria-pressed", "false");
 		if(name) {
-			localStorage.setItem(name, "false");
+			localStorage.removeItem(name);
+		}
+		let checked = document.querySelector(".task-list-item-checkbox:checked");
+		if(!checked) {
+			localStorage.removeItem("resetIngredients");
+			resetContainer.classList.add("hide");
 		}
 	}
 
@@ -28,33 +37,39 @@ const ingredients = (() => {
 
 	options.forEach((option, index) =>{
 		let name = option.getAttribute("id");
+
 		if(localStorage.getItem(name) === "true") {
 			_true(option, index, name);
-		} else if(localStorage.getItem(name) === "false") {
+		} else {
 			_false(option, index, name);
 		}
+
 		option.addEventListener("click", e => {
 			if (option.checked) {
 				_true(option, index, name);
-				if(resetContainer.classList.contains("hide")) {
-					resetContainer.classList.remove("hide");
-					localStorage.setItem("resetIngredients", "true");
-				}
 			} else {
 				_false(option, index, name);
+			}
+		});
+
+		option.addEventListener("keydown", e =>{
+			if (e.key === "Enter") {
+				if (option.checked) {
+					_false(option, index, name);
+				} else {
+					_true(option, index, name);
+				}
 			}
 		});
 	});
 
 	reset.addEventListener("click", e => {
 		e.preventDefault();
-		resetContainer.classList.add("hide");
 		localStorage.removeItem("resetIngredients");
+		resetContainer.classList.add("hide");
 		options.forEach((option, index) => {
 			let name = option.getAttribute("id");
-			_false(option, index);
-			localStorage.removeItem(name);
+			_false(option, index, name);
 		});
-
 	});
 })();

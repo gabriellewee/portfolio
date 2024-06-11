@@ -1,11 +1,14 @@
 ---
 date: 2024-06-09
 title: Cucumber Salad
-hero: true
 headline: light
 servings: 6
 prep: 20
-size: s
+tags:
+  - salad
+  - vegetarian
+  - cucumber
+  - spicy
 ---
 I’ve been making this spicy and refreshing cucumber salad every week since the weather started to warm up. It’s easy to prepare and goes well with all kinds of food. I mainly make it for Asian-style meals but have also loved adding this on top of crackers and creamy Brie cheese.
 
