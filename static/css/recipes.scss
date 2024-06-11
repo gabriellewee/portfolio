@@ -2,7 +2,7 @@
 @import 'partials/shared/utilities';
 @import 'partials/shared/variables';
 
-.page-recipe {
+.page-recipes {
 	@include theme(light, 3) {
 		background-color: gHSL(mint, 1.2);
 	}

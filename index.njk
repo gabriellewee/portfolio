@@ -36,7 +36,7 @@ pagination:
 					<header class="post-header{% if (post.data.category == 'writing') or (post.data.category == 'code') %} inline-header{% endif %}">
 						{% if post.data.category == "cooking" %}
 							<div class="post-header-image theme-{{post.data.headline}}">
-								{% image './static/images/' + post.data.key + 's/' + post.page.fileSlug + '.jpg', 'Hero image showing ' + post.data.title, 'default' %}
+								{% image './static/images/' + post.data.key + '/' + post.page.fileSlug + '.jpg', 'Hero image showing ' + post.data.title, 'default' %}
 							</div>
 						{% endif %}
 						<div class="post-header-content">

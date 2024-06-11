@@ -1,8 +1,8 @@
 ---
 titleModifier: "Recipe for "
 layout: layouts/base.njk
-key: recipe
-og: posts
+key: recipes
+og: recipes
 tags:
   - entries
   - cooking
@@ -19,7 +19,7 @@ size: s
 			<div class="post-inner">
 				<header class="post-header">
 					<div class="post-header-image theme-{{headline}}">
-						{% image './static/images/' + key + 's/' + page.fileSlug + '.jpg', 'Hero image showing ' + title, 'default' %}
+						{% image './static/images/' + key + '/' + page.fileSlug + '.jpg', 'Hero image showing ' + title, 'default' %}
 					</div>
 					<div class="post-header-content">
 						<h2><a class="u-url" href="{{page.url}}" aria-label="Recipe for {{title|safe}}"><span class="p-name"><span>{{title|safe}}</span></span></a></h2>
