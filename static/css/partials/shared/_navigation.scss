@@ -78,13 +78,8 @@
 	}
 	.copyright {
 		span {
-			@include theme(light, 1) {
-				background-color: var(--color-white);
-			}
-			@include theme(dark, 1) {
-				background-color: var(--color-iron);
-				color: var(--color-white);
-			}
+			background-color: var(--color-secondary);
+			color: var(--color-primary);
 		}
 	}
 	a {
