@@ -1,3 +1,8 @@
+let key = document.body.classList[0].slice(5);
+let posts = Array.from(document.querySelectorAll(".post-animate"));
+posts.push(document.querySelector(".bottom"));
+animateItems(posts, key);
+
 const ingredients = (() => {
 	const options = Array.from(document.querySelectorAll(".task-list-item-checkbox"));
 	const labels = Array.from(document.querySelectorAll(".task-list-item-label"));
