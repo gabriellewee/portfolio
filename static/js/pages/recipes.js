@@ -6,8 +6,7 @@ animateItems(posts, key);
 const ingredients = (() => {
 	const options = Array.from(document.querySelectorAll(".task-list-item-checkbox"));
 	const labels = Array.from(document.querySelectorAll(".task-list-item-label"));
-	const resetContainer = document.querySelector("[data-reset-container]");
-	const reset = resetContainer.querySelector("[data-reset]");
+	const reset = document.querySelector("[data-reset]");
 	if (!options) return;
 
 	let _true = (option, index, name) => {
@@ -17,8 +16,8 @@ const ingredients = (() => {
 		if(name) {
 			localStorage.setItem(name, "true");
 		}
-		if(resetContainer.classList.contains("hide")) {
-			resetContainer.classList.remove("hide");
+		if(reset.classList.contains("hide")) {
+			reset.classList.remove("hide");
 			localStorage.setItem("resetIngredients", "true");
 		}
 	}
@@ -32,12 +31,12 @@ const ingredients = (() => {
 		let checked = document.querySelector(".task-list-item-checkbox:checked");
 		if(!checked) {
 			localStorage.removeItem("resetIngredients");
-			resetContainer.classList.add("hide");
+			reset.classList.add("hide");
 		}
 	}
 
-	if(localStorage.getItem("resetIngredients") === "true" && resetContainer.classList.contains("hide")) {
-		resetContainer.classList.remove("hide");
+	if(localStorage.getItem("resetIngredients") === "true" && reset.classList.contains("hide")) {
+		reset.classList.remove("hide");
 	}
 
 	options.forEach((option, index) =>{
@@ -71,7 +70,7 @@ const ingredients = (() => {
 	reset.addEventListener("click", e => {
 		e.preventDefault();
 		localStorage.removeItem("resetIngredients");
-		resetContainer.classList.add("hide");
+		reset.classList.add("hide");
 		options.forEach((option, index) => {
 			let name = option.getAttribute("id");
 			_false(option, index, name);

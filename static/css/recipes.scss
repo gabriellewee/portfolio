@@ -1,6 +1,5 @@
 // utilities
 @import 'partials/shared/utilities';
-@import 'partials/shared/variables';
 
 .page-recipes {
 	@include theme(light, 3) {

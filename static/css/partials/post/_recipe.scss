@@ -264,8 +264,17 @@
 		&:not(:last-child) {
 			margin-right: var(--p);
 		}
+		&.hide {
+			display: none;
+		}
 	}
-	&.hide {
-		display: none;
+	.emoji {
+		width: 100%;
+		text-align: center;
+		margin-top: calc(var(--p)*2);
+		&:before {
+			content: var(--emoji);
+			font-size: 2rem;
+		}
 	}
 }
