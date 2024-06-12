@@ -43,6 +43,8 @@ I was fortunate enough to get my hands on a Steam Deck last month. I’d been wa
 
 ![Playing my Steam Deck at Game Night with my cat](2022-07-20-steam-deck-cat.jpg 'Playing my Steam Deck at Game Night with my cat')
 
+:::
+
 I’ve never owned a gaming PC (all my computers have been MacBooks) and most of my consoles have been from Nintendo, so being able to play PC and Steam games on a portable computer has been incredible. I also installed an emulator so that I’m able to play some of my favorite older games such as Fire Emblem: Path of Radiance.
 
 ## Loved ones
