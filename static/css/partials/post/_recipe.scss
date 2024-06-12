@@ -16,23 +16,42 @@
 			font-size: 3rem;
 		}
 		a {
+			transition: all .2s ease-out;
 			text-decoration: underline;
-			text-underline-offset: 4px;
-			color: gHSL(primary, 1, .9);
-			transition: color .2s ease-out;
-			&:hover, &:focus {
-				color: gHSL(primary, 1, .7);
-			}
-			&:focus-visible {
+			text-underline-offset: 8px;
+
+			@include theme(light, 2) {
+				color: gHSL(primary, 1, .9);
 				text-decoration-color: gHSL(primary, 1, 0);
-				@include focus-shadow(color-mix(
-					in hsl,
-					var(--color-slate) 70%,
-					var(--color-mint)
-				));
+				&:hover, &:focus {
+					color: gHSL(primary, 1, .7);
+					text-decoration-color: gHSL(primary, 1, .7);
+				}
+				&:active {
+					color: gHSL(primary, 1, 1);
+					text-decoration-color: gHSL(primary, 1, 1);
+				}
 			}
-			&:active {
-				color: gHSL(primary, 1, 1);
+
+			@include theme(dark, 2) {
+				color: gHSL(primary, 1, .75);
+				text-decoration-color: gHSL(primary, 1, 0);
+				&:hover, &:focus {
+					color: gHSL(primary, 1, 1);
+					text-decoration-color: gHSL(primary, 1, 1);
+				}
+				&:active {
+					color: gHSL(primary, 1, .5);
+					text-decoration-color: gHSL(primary, 1, .5);
+				}
+			}
+
+			@include contrast(both, 2) {
+				text-underline-offset: 4px;
+			}
+
+			&:hover, &:focus, &:active {
+				text-underline-offset: 4px;
 			}
 		}
 	}
@@ -76,14 +95,14 @@
 			&.theme-light + .post-header-content {
 				h2 a {
 					color: gHSL(iron, 1, .9);
+					text-decoration-color: gHSL(iron, 1, 0);
 					&:hover, &:focus {
 						color: gHSL(iron, 1, .7);
-					}
-					&:focus-visible {
-						@include focus-shadow(gHSL(iron, 1, .7));
+						text-decoration-color: gHSL(iron, 1, .7);
 					}
 					&:active {
 						color: gHSL(iron, 1, 1);
+						text-decoration-color: gHSL(iron, 1, 1);
 					}
 				}
 				time {
@@ -101,15 +120,15 @@
 			}
 			&.theme-dark + .post-header-content {
 				h2 a {
-					color: gHSL(white, 1, .9);
+					color: gHSL(white, 1, .75);
+					text-decoration-color: gHSL(white, 1, 0);
 					&:hover, &:focus {
-						color: gHSL(white, 1, .7);
-					}
-					&:focus-visible {
-						@include focus-shadow(var(--color-mint));
+						color: gHSL(white, 1, 1);
+						text-decoration-color: gHSL(white, 1, 1);
 					}
 					&:active {
-						color: gHSL(white, 1, 1);
+						color: gHSL(white, 1, .5);
+						text-decoration-color: gHSL(white, 1, .5);
 					}
 				}
 				time {
