@@ -49,18 +49,10 @@
 				<h3>Nintendo Switch:</h3>
 				<ul class="grid">
 					{% for game in about.switch %}{% if game.archive != true %}
-						<li>
-							{% set letter = game.slug|first %}
-							<a class="post-external" href="https://www.nintendo.com/store/products/{{game.slug}}-switch/">
-								{% if game.image %}
-									{% external game.image + ".jpg", game.title, 300, "eager" %}
-								{% else %}
-									{% external "https://assets.nintendo.com/image/upload/ar_16:9,c_limit,w_1240/b_white/f_auto/q_auto/ncom/en_US/games/switch/" + letter + "/" + game.slug + "-switch/hero.jpg", game.title, 300, "eager" %}
-								{% endif %}
-							</a>
-						</li>
+						<li>{% unfurlGame game.url, game.title, "post-external", 300, "eager" %}</li>
 					{% endif %}{% endfor %}
 				</ul>
+				
 				<div class="friend-code-container">
 					<label for="friend-code">Friend Code:</label>
 					<div class="clip-container-border"><div class="clip-container"><input id="friend-code" class="friend-code clip" type="text" value="SW‑0918‑7153‑9794" data-clipboard-target=".friend-code"/></div></div>

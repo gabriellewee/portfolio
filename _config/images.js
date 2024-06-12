@@ -1,4 +1,5 @@
 const Image = require("@11ty/eleventy-img");
+const EleventyFetch = require("@11ty/eleventy-fetch");
 
 module.exports = eleventyConfig => {
 	eleventyConfig.addNunjucksAsyncShortcode("stats", async (src, type) => {
@@ -63,6 +64,28 @@ module.exports = eleventyConfig => {
 
 		return await result;
     });
+
+
+	eleventyConfig.addNunjucksAsyncShortcode("unfurlGame", async (link, title, className, width, loading) => {
+		try {
+			const metadata = await EleventyFetch(
+				`https://api.microlink.io/?url=${link}`,
+				{
+					duration: "1d",
+					type: "json",
+				}
+			);
+
+			let image = `${metadata.data.image.url}.${metadata.data.image.type}`;
+			let picture = await eleventyConfig.nunjucksAsyncShortcodes.external(image, title, width, loading);
+			let result = `<a class="${className}" href="${metadata.data.url}">${picture}</a>`;
+
+			return result;
+		} catch (error) {
+			console.error(error);
+			return link;
+		}
+	});
 
 	eleventyConfig.addNunjucksAsyncShortcode("image", async (src, alt, type, option, figp) => {
 		let category = src.split('/')[3];

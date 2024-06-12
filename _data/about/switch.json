@@ -1,47 +1,45 @@
 [
 	{
 		"title": "Paper Mario: The Thousand-Year Door",
-		"slug": "paper-mario-the-thousand-year-door",
-		"image": "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1240/b_white/f_auto/q_auto/ncom/software/switch/70010000072957/fdd5d8ca46d7ea4e45397ae560e807742de2d7d744570297ddbabf69d6d23f33"
+		"url": "https://www.nintendo.com/us/store/products/paper-mario-the-thousand-year-door-switch/"
 	},
 	{
 		"title": "Advance Wars 1+2: Re-Boot Camp",
-		"slug": "advance-wars-1-plus-2-re-boot-camp"
+		"url": "https://www.nintendo.com/us/store/products/advance-wars-1-plus-2-re-boot-camp-switch/"
 	},
 	{
 		"title": "Princess Peach: Showtime!",
-		"slug": "princess-peach-showtime",
-		"image": "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1240/b_white/f_auto/q_auto/ncom/software/switch/70010000005022/45d91d342db7435bf142eb96e9abfe92500b21ec3130228e25b43c57cd580b78",
+		"url": "https://www.nintendo.com/us/store/products/princess-peach-showtime-switch/",
 		"archive": true
 	},
 	{
 		"title": "Yoshi’s Crafted World",
-		"slug": "yoshis-crafted-world",
+		"url": "https://www.nintendo.com/us/store/products/yoshis-crafted-world-switch/",
 		"archive": true
 	},
 	{
 		"title": "Animal Crossing: New Horizons",
-		"slug": "animal-crossing-new-horizons",
+		"url": "https://www.nintendo.com/us/store/products/animal-crossing-new-horizons-switch/",
 		"archive": true
 	},
 	{
 		"title": "Hades",
-		"slug": "hades",
+		"url": "https://www.nintendo.com/us/store/products/hades-switch/",
 		"archive": true
 	},
 	{
 		"title": "The Legend of Zelda: Tears of the Kingdom",
-		"slug": "the-legend-of-zelda-tears-of-the-kingdom",
+		"url": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-tears-of-the-kingdom-switch/",
 		"archive": true
 	},
 	{
 		"title": "The Legend of Zelda: Link’s Awakening",
-		"slug": "the-legend-of-zelda-links-awakening",
+		"url": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-links-awakening-switch/",
 		"archive": true
 	},
 	{
 		"title": "Fire Emblem: Three Houses",
-		"slug": "fire-emblem-three-houses",
+		"url": "https://www.nintendo.com/us/store/products/fire-emblem-three-houses-switch/",
 		"archive": true
 	}
 ]
