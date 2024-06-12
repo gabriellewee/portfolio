@@ -116,7 +116,7 @@
 			background: color-mix(
 				in srgb,
 				var(--color-iron) 90%,
-				var(--color-white)
+				white
 			);
 			&:before {
 				display: none;
