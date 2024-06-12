@@ -475,12 +475,12 @@ $mastodon: #6364ff;
 			circle at center left,
 			color-mix(
 				in srgb,
-				var(--color-white),
+				white,
 				var(--color-mint)
 			),
 			color-mix(
 				in srgb,
-				var(--color-white) 70%,
+				white 70%,
 				var(--color-mint)
 			)
 		);

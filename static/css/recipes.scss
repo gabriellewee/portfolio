@@ -61,12 +61,12 @@
 	a {
 		&:before {
 			@include theme(light, 2) {
-				@include before(var(--color-white));
+				@include before(white);
 			}
 			@include theme(dark, 2) {
 				@include before(color-mix(
 					in srgb,
-					var(--color-white) 70%,
+					white 70%,
 					var(--color-mint)
 				));
 			}
@@ -99,7 +99,7 @@
 	*:focus-visible & {
 		outline: calc(var(--p)/4) solid color-mix(
 			in srgb,
-			var(--color-white),
+			white,
 			var(--color-mint)
 		);
 	}
