@@ -1,4 +1,5 @@
 const Image = require("@11ty/eleventy-img");
+const Sharp = require('sharp');
 const EleventyFetch = require("@11ty/eleventy-fetch");
 
 module.exports = eleventyConfig => {
@@ -32,27 +33,27 @@ module.exports = eleventyConfig => {
 		}
 
 		return result;
-    });
+	});
 
-    eleventyConfig.addNunjucksAsyncShortcode("external", async (src, alt, width, loading) => {
-    	let file = src.split(".");
-    	file = file[file.length - 1];
-    	if (file === "jpg") file = "jpeg";
-    	if (!loading) loading = "lazy";
-    	alt = alt.replace(/ :(.*?):$/g, '');
+	eleventyConfig.addNunjucksAsyncShortcode("external", async (src, alt, width, loading) => {
+		let file = src.split(".");
+		file = file[file.length - 1];
+		if (file === "jpg") file = "jpeg";
+		if (!loading) loading = "lazy";
+		alt = alt.replace(/ :(.*?):$/g, '');
 
-    	let newWidths;
-    	if (width > 1000) {
-    		newWidths = [width/2, width]
-    	} else {
-    		newWidths = [width, width*2]
-    	}
+		let newWidths;
+		if (width > 1000) {
+			newWidths = [width/2, width]
+		} else {
+			newWidths = [width, width*2]
+		}
 
 		let stats = await Image(src, {
 			widths: newWidths,
 			formats: ["webp", file],
 			urlPath: `/static/images/external`,
-			outputDir: `./_site/static/images/external`,
+			outputDir: `./_site/static/images/external`
 		});
 		
 		let result = `
@@ -63,7 +64,29 @@ module.exports = eleventyConfig => {
 		`;
 
 		return await result;
-    });
+	});
+
+	eleventyConfig.addNunjucksAsyncShortcode("ogPhoto", async (src) => {
+		let file = src.split(".");
+		file = file[file.length - 1];
+		if (file === "jpg") file = "jpeg";
+
+		let image = await Sharp(src).resize({
+			width: 1200,
+			height: 630
+		}).toFormat(file).toBuffer();
+
+		let stats = await Image( image, {
+			widths: [null],
+			formats: [file],
+			urlPath: `/static/images/og`,
+			outputDir: `./_site/static/images/og`
+		});
+		
+		let result = stats[file][0].url;
+
+		return await result;
+	});
 
 
 	eleventyConfig.addNunjucksAsyncShortcode("unfurlGame", async (link, title, className, width, loading) => {
@@ -106,7 +129,7 @@ module.exports = eleventyConfig => {
 			widths: newWidths,
 			formats: ["webp", file],
 			urlPath: `/static/images/${category}/built`,
-			outputDir: `./_site/static/images/${category}/built`,
+			outputDir: `./_site/static/images/${category}/built`
 		});
 
 		let lowest = stats[file][0];

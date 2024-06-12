@@ -42,6 +42,7 @@
 		"postcss": "^8.4.38",
 		"postcss-cli": "^11.0.0",
 		"sass": "^1.77.2",
+		"sharp": "^0.33.4",
 		"string": "^3.3.3",
 		"terser": "^5.31.0",
 		"vanilla-lazyload": "^19.1.3"
