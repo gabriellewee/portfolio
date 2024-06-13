@@ -1,29 +1,47 @@
-.memoji {
+.avatar {
 	@include invert(100%);
 	display: block;
-	width: 48px;
-	height: 68px;
-	background-size: 48px 68px;
-	background-position: center left;
+	width: var(--width);
+	height: var(--height);
 	&-default {
 		@include background-image(avatars/memoji, png);
 	}
 	&-hm {
 		@include background-image(avatars/memoji-hm, png);
+		background-size: var(--width) var(--height);
+		background-position: center left;
+	}
+	&-cooks {
+		@include background-image(avatars/memoji-cooks, png);
+		width: 65px;
+		height: 80px;
+		background-size: cover;
 	}
 }
 
-.memoji-link {
+.avatar-link {
+	--width: 48px;
+	--height: 68px;
 	display: flex;
 	align-items: center;
 	align-content: center;
 	position: relative;
 	margin-bottom: var(--p);
-	.memoji-hm {
-		opacity: 0;
+	a {
+		width: var(--width);
+		height: var(--height);
+	}
+	.avatar:not(.avatar-default) {
 		position: absolute;
+	}
+	.avatar-hm {
+		opacity: 0;
 		left: 0;
 		top: 0;
+	}
+	.avatar-cooks {
+		left: -18px;
+		bottom: 0;
 	}
 	.text {
 		@include font-weight-width(600, 115);
@@ -105,8 +123,8 @@
 			@include theme(dark, 2) {
 				@include focus-shadow(var(--color-mauve));
 			}
-			.memoji {
-				&-default {
+			.avatar {
+				&:not(.avatar-hm) {
 					opacity: 0;
 				}
 				&-hm {
