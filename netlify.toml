@@ -60,6 +60,12 @@
 	force = true
 
 [[redirects]]
+	from = "/static/css/warning.css"
+	to = "https://archive.gabriellew.ee/static/css/warning.css"
+	status = 200
+	force = true
+
+[[redirects]]
 	from = "/v1/*"
 	to = "https://archive.gabriellew.ee/v1/:splat"
 	status = 200
