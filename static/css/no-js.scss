@@ -1,7 +1,7 @@
 .load,
 .post-code .post-content iframe:not(.css-only), .post-code .reload,
 .lightbox + .iframe iframe:not(.css-only),
-.page-index .memoji-link .text.message {
+.page-index .avatar-link .text.message {
 	display: none;
 }
 
@@ -48,14 +48,14 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-	.memoji-link .text.message {
+	.avatar-link .text.message {
 		translate: 0 0;
 		opacity: 1;
 	}
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.memoji-link .text.message {
+	.avatar-link .text.message {
 		translate: 0 0;
 		opacity: 1;
 	}
