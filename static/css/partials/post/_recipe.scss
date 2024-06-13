@@ -95,10 +95,34 @@
 		z-index: 2;
 		padding: calc(var(--p)*2) calc(var(--p)*2) 0;
 		@include container(recipe, mobile, $mobile) {
+			justify-content: flex-end;
 			position: absolute;
 			bottom: 0;
 			left: 0;
-			padding: calc(var(--p)*1.5) calc(var(--p)*2);
+			width: 100%;
+			height: 100%;
+			padding: 0;
+			time {
+				margin-left: calc(var(--p)*2);
+			}
+			h2 {
+				position: relative;
+				padding: 0 calc(var(--p)*2) calc(var(--p)*1.5);
+				width: 100%;
+				&:before {
+					content: "";
+					display: block;
+					position: absolute;
+					z-index: 0;
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					height: calc(100% + 240px);
+				}
+				a {
+					z-index: 1;
+				}
+			}
 		}
 	}
 	.post-header-image {
@@ -109,8 +133,13 @@
 		}
 		@include container(recipe, mobile, $mobile) {
 			&.theme-light + .post-header-content {
-				h2 a {
-					color: gHSL(iron, 1, .9);
+				h2 {
+					&:before {
+						background: linear-gradient(to top, #{gHSL(white, 1, .7)}, #{gHSL(white, 1, 0)});
+					}
+					a {
+						color: gHSL(iron, 1, .9);
+					}
 				}
 				time {
 					background-color: gHSL(iron, 1, .9);
@@ -126,8 +155,13 @@
 				}
 			}
 			&.theme-dark + .post-header-content {
-				h2 a {
-					color: gHSL(white, 1, .75);
+				h2 {
+					&:before {
+						background: linear-gradient(to top, #{gHSL(iron, 1, .7)}, #{gHSL(iron, 1, 0)});
+					}
+					a {
+						color: gHSL(white, 1, .9);
+					}
 				}
 				time {
 					background-color: gHSL(white, 1, .9);
@@ -190,7 +224,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: calc(var(--p) * 2);
-	margin-top: calc(var(--p)*2);
+	margin-top: calc(var(--p)*1.5);
 	padding: calc(var(--p)*2);
 	background-color: gHSL(mint, 1, .15);
 	@include container(recipe, mobile, $mobile) {
@@ -199,7 +233,7 @@
 	}
 	.recipe-servings {
 		width: 100%;
-		@include viewport(mobile) {
+		@include container(recipe, mobile, $mobile) {
 			text-align: center;
 		}
 	}
@@ -230,75 +264,6 @@
 			}
 			@include theme(dark, 2) {
 				@include focus-shadow(var(--color-mint));
-			}
-		}
-	}
-
-	#ingredients + ul {
-		list-style: none;
-		padding: 0;
-		li:not(:last-child) {
-			padding-bottom: calc(var(--p)*.75);
-		}
-		label {
-			display: flex;
-			cursor: pointer;
-			position: relative;
-			font-weight: 500;
-			color: gHSL(primary, 1, .75);
-			&:before, &:after {
-				content: "";
-				display: block;
-			}
-			&:before {
-				width: calc(var(--p)*2);
-				height: calc(var(--p)*2);
-				border-radius: calc(var(--p)*2);
-				margin-right: calc(var(--p)*.75);
-				@include theme(light, 2) {
-					background-color: gHSL(primary, 1, .1);
-				}
-				@include theme(dark, 2) {
-					background-color: var(--color-primary);
-				}
-				@include contrast(light, 2) {
-					border: 2px solid color-mix(
-						in srgb,
-						var(--color-slate),
-						var(--color-mint)
-					);
-				}
-			}
-			&:after {
-				opacity: 0;
-				width: calc(var(--p)/3*4);
-				height: calc(var(--p)/3*4);
-				border-radius: calc(var(--p)/3*4);
-				position: absolute;
-				left: calc(var(--p)/3);
-				top: calc(var(--p)/3);
-				background-color: var(--color-mint);
-			}
-		}
-		input:focus + label, input:hover + label, label:hover {
-			text-decoration: underline;
-			color: gHSL(primary, 1, 1);
-		}
-		input {
-			@include hide;
-			&:focus-visible + label {
-				&:before {
-					@include focus-shadow(gHSL(mint, 1, .7), false);
-				}
-			}
-			&:active + label {
-				color: gHSL(primary, 1, .45);
-			}
-			&:checked + label {
-				color: gHSL(primary, 1, 1);
-				&:after {
-					opacity: 1;
-				}
 			}
 		}
 	}

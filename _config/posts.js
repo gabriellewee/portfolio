@@ -4,7 +4,7 @@ const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const markdownItContainer = require("markdown-it-container");
 const markdownItAttrs = require("markdown-it-attrs");
-const markdownItTaskLists = require('markdown-it-task-lists');
+const markdownItTasks = require('markdown-it-task-checkbox');
 const string = require("string");
 const Image = require("@11ty/eleventy-img");
 
@@ -35,7 +35,7 @@ module.exports = eleventyConfig => {
 				return '</div>';
 			}
 		},
-	}).use(markdownItAttrs).use(markdownItTaskLists, {enabled: true, label: true, labelAfter: true});
+	}).use(markdownItAttrs).use(markdownItTasks, {disabled: false, idPrefix: "task-list-checkbox-"});
 	eleventyConfig.setLibrary("md", markdownLibrary);
 
 	eleventyConfig.addFilter("stripAttr", stripped => {
