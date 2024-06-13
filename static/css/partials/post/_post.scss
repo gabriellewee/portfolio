@@ -549,6 +549,13 @@
 			}
 		}
 	}
+	.task-list {
+		list-style: none;
+		padding: 0;
+		li:not(:last-child) {
+			padding-bottom: calc(var(--p)*.75);
+		}
+	}
 	.highlight {
 		position: relative;
 		padding: calc(var(--p)*1.5) calc(var(--p)*2);

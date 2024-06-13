@@ -3,10 +3,11 @@ let posts = Array.from(document.querySelectorAll(".post-animate"));
 posts.push(document.querySelector(".bottom"));
 animateItems(posts, key);
 
-const ingredients = (() => {
-	const options = Array.from(document.querySelectorAll(".task-list-item-checkbox"));
-	const labels = Array.from(document.querySelectorAll(".task-list-item-label"));
-	const reset = document.querySelector("[data-reset]");
+const taskListCheckboxes = (() => {
+	const taskList = document.querySelector(".task-list");
+	const options = Array.from(taskList.querySelectorAll("input[type='checkbox']"));
+	const labels = Array.from(taskList.querySelectorAll("label"));
+	const reset = document.querySelector("[data-task-list-reset]");
 	if (!options) return;
 
 	let _true = (option, index, name) => {
@@ -28,7 +29,7 @@ const ingredients = (() => {
 		if(name) {
 			localStorage.removeItem(name);
 		}
-		let checked = document.querySelector(".task-list-item-checkbox:checked");
+		let checked = document.querySelector("[class^='task-list-checkbox']:checked");
 		if(!checked) {
 			localStorage.removeItem("resetIngredients");
 			reset.classList.add("hide");
