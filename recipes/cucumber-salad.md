@@ -10,6 +10,7 @@ tags:
   - vegetarian
   - cucumber
   - spicy
+  - asian
 ---
 I’ve been making this spicy and refreshing cucumber salad every week since the weather started to warm up. It’s easy to prepare and goes well with all kinds of food. I mainly make it as a side dish for Asian-style meals but have also loved adding this on top of crackers and creamy Brie cheese.
 
@@ -25,7 +26,7 @@ I’ve been making this spicy and refreshing cucumber salad every week since the
 - [ ] Sesame oil - 2 tsp
 - [ ] Sesame seeds - 2 tbsp
 - [ ] Korean red chili powder - 1/4 cup
-- [ ] Kosher salt - 1 tbsp
+- [ ] Kosher salt - 2 tbsp
 
 ## Steps
 1. Thinly slice cucumbers using a mandolin or knife. Mix in a bowl with the kosher salt and set aside.
