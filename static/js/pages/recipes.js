@@ -29,7 +29,7 @@ const taskListCheckboxes = (() => {
 		if(name) {
 			localStorage.removeItem(name);
 		}
-		let checked = document.querySelector("[class^='task-list-checkbox']:checked");
+		let checked = document.querySelector("[id^='task-list-checkbox']:checked");
 		if(!checked) {
 			localStorage.removeItem("resetIngredients");
 			reset.classList.add("hide");
