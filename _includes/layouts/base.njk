@@ -82,6 +82,8 @@
 	{% endif %}
 </head>
 <body class="{% if key %}page-{{key}}{% endif %}{% if pagination.pageNumber == 0 %} page-index{% endif %}">
+	{% if key == "post" %}<hr class="progress"/>{% endif %}
+
 	{% if blank != true %}{% include 'pages/shared/header.html' %}{% endif %}
 
 	<main class="main">

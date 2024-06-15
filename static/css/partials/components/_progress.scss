@@ -1,0 +1,27 @@
+.progress {
+	display: none;
+	@supports (animation-timeline: scroll()) {
+		display: block;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 10;
+		border: 0;
+		margin: 0;
+		width: 100%;
+		height: 2px;
+		background: linear-gradient(to right, var(--color-rose), var(--color-mauve), var(--color-slate));
+
+		transform: scaleX(0);
+		transform-origin: left center;
+		animation-name: progress;
+		animation-duration: 1ms;
+		animation-direction: alternate;
+		animation-timeline: scroll(block nearest);
+	}
+}
+
+@keyframes progress {
+	from { transform: scaleX(0); }
+	to { transform: scaleX(1); }
+}
