@@ -535,9 +535,6 @@
 			line-height: inherit;
 		}
 	}
-	ul {
-		list-style-type: circle;
-	}
 	ul, ol {
 		padding-left: calc(var(--p)*2);
 		ul, ol {
@@ -548,6 +545,12 @@
 				padding-bottom: calc(var(--p)/2);
 			}
 		}
+	}
+	ul {
+		list-style-type: circle;
+	}
+	ol:has(> :nth-child(10)) {
+		padding-left: calc(var(--p)*3);
 	}
 	.task-list {
 		list-style: none;
