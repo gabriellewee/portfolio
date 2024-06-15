@@ -35,10 +35,10 @@ Chinese eggplant is one of my favorite things to cook. This recipe is something 
 1. Slice eggplants into 2½ inch pieces and slice each piece into quarters lengthwise. Add to a colander, mix with salt, and set aside for about 15 minutes.
 2. Add minced pork, white pepper, 2 tbsp of vegetable oil, soy sauce, Shaoxing wine, and fish sauce to another bowl.
 3. Finely dice shiitaki mushrooms if using. I like my mushrooms to blend in with the pork, but you can also thinly slice them if you prefer them to stand out more!
-3. Mince garlic and ginger. Add half of the minced ginger to the bowl with the minced pork and mix well.
-4. Finely slice green onions and Thai chili peppers. Set aside the green parts of the onions and add the white parts to a small bowl with the rest of the aromatics (minced garlic, ginger, and Thai chili peppers).
-5. Bring a medium pot of water to boil and add the vinegar and eggplants. Parboil for a couple of minutes and then drain the eggplants and set aside.
-6. Heat up 1 tbsp of oil in a wok and add your minced pork mix. Stir fry until no more pink is visible and either move the pork to the edge of the wok or remove.
-6. Heat up the remaining oil (2 tbsp) in a wok and add your small bowl of aromatics. Stir fry for 30-60 seconds and then add in mushrooms if using. Cook the mixture for another couple of minutes, add the doubanjiang, and then cook for another minute.
-7. Add the pork and eggplant back in and fry for another couple of minutes. Add the sugar and sesame oil, mix well, and turn off the heat.
-8. Add the green parts of the onions as a garnish or mix them into the wok. Serve over white rice.
+4. Mince garlic and ginger. Add half of the minced ginger to the bowl with the minced pork and mix well.
+5. Finely slice green onions and Thai chili peppers. Set aside the green parts of the onions and add the white parts to a small bowl with the rest of the aromatics (minced garlic, ginger, and Thai chili peppers).
+6. Bring a medium pot of water to boil and add the vinegar and eggplants. Parboil for a couple of minutes and then drain the eggplants and set aside.
+7. Heat up 1 tbsp of oil in a wok and add your minced pork mix. Stir fry until no more pink is visible and either move the pork to the edge of the wok or remove.
+8. Heat up the remaining oil (2 tbsp) in a wok and add your small bowl of aromatics. Stir fry for 30-60 seconds and then add in mushrooms if using. Cook the mixture for another couple of minutes, add the doubanjiang, and then cook for another minute.
+9. Add the pork and eggplant back in and fry for another couple of minutes. Add the sugar and sesame oil, mix well, and turn off the heat.
+10. Add the green parts of the onions as a garnish or mix them into the wok. Serve over white rice.
