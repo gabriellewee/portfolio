@@ -9,6 +9,10 @@
 		padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
 		padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
 	}
+	@media print {
+		margin: unset;
+		padding: 0;
+	}
 }
 .posts {
 	display: grid;
@@ -27,6 +31,10 @@
 			}
 		}
 	}
+	@media print {
+		display: flex;
+		flex-wrap: wrap;
+	}
 }
 
 .filters {
@@ -37,6 +45,10 @@
 	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
 	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
 	@include viewport($iphone-max) {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	@media print {
 		padding-left: 0;
 		padding-right: 0;
 	}
@@ -141,50 +153,57 @@
 	width: 100%;
 	font-size: 1.125rem;
 
-	@include viewport(mobile) {
-		&:not([style]) {
-			grid-column: 1 / span 12;
-		}
+	@media print {
+		position: relative !important;
+		left: 0 !important;
 	}
 
-	&[data-orientation="portrait"] {
+	@media screen {
 		@include viewport(mobile) {
 			&:not([style]) {
-				grid-column: 1 / span 6;
-			}
-			&[style] {
-				width: calc(50% - var(--p));
+				grid-column: 1 / span 12;
 			}
 		}
-	}
 
-	&.post-size-xs {
-		@include viewport(mobile) {
-			&:not([style]) {
-				grid-column: 1 / span 4;
-			}
-			&[style] {
-				width: calc((100% / 3) - var(--p));
-			}
-		}
-	}
-	&.post-size-s {
-		@include viewport(mobile) {
-			&:not([style]) {
-				grid-column: 1 / span 6;
-			}
-			&[style] {
-				width: calc(50% - var(--p));
+		&[data-orientation="portrait"] {
+			@include viewport(mobile) {
+				&:not([style]) {
+					grid-column: 1 / span 6;
+				}
+				&[style] {
+					width: calc(50% - var(--p));
+				}
 			}
 		}
-	}
-	&.post-size-m {
-		@include viewport(mobile) {
-			&:not([style]) {
-				grid-column: 1 / span 8;
+
+		&.post-size-xs {
+			@include viewport(mobile) {
+				&:not([style]) {
+					grid-column: 1 / span 4;
+				}
+				&[style] {
+					width: calc((100% / 3) - var(--p));
+				}
 			}
-			&[style] {
-				width: calc((100% / 3) * 2 - var(--p));
+		}
+		&.post-size-s {
+			@include viewport(mobile) {
+				&:not([style]) {
+					grid-column: 1 / span 6;
+				}
+				&[style] {
+					width: calc(50% - var(--p));
+				}
+			}
+		}
+		&.post-size-m {
+			@include viewport(mobile) {
+				&:not([style]) {
+					grid-column: 1 / span 8;
+				}
+				&[style] {
+					width: calc((100% / 3) * 2 - var(--p));
+				}
 			}
 		}
 	}
@@ -197,7 +216,9 @@
 		overflow: hidden;
 		background-color: gHSL(secondary, 1, .9);
 		@include viewport($iphone-max) {
-			@include clip-path-edges(2px);
+			@media screen {
+				@include clip-path-edges(2px);
+			}
 		}
 		@include viewport($iphone-max) {
 			@include contrast(both, 2) {
@@ -300,6 +321,9 @@
 	}
 	.inline-header {
 		padding: calc(var(--p)*2);
+		@media print {
+			padding: 0 0 calc(var(--p)*2);
+		}
 		@supports (container-type: inline-size) {
 			container-type: inline-size;
 			container-name: header;
@@ -327,6 +351,12 @@
 						text-underline-offset: 4px;
 					}
 				}
+				span {
+					@media print {
+						text-decoration: underline;
+						text-underline-offset: 4px;
+					}
+				}
 			}
 		}
 		time {
@@ -336,6 +366,11 @@
 				order: 2;
 				margin-bottom: 0;
 			}
+		}
+	}
+	.post-footer {
+		@media print {
+			display: none !important;
 		}
 	}
 }
@@ -368,6 +403,9 @@
 		color: var(--color-primary);
 		&:hover, &:focus {
 			opacity: 1;
+		}
+		@media print {
+			display: none;
 		}
 	}
 
@@ -535,9 +573,6 @@
 			line-height: inherit;
 		}
 	}
-	ul {
-		list-style-type: circle;
-	}
 	ul, ol {
 		padding-left: calc(var(--p)*2);
 		ul, ol {
@@ -548,6 +583,12 @@
 				padding-bottom: calc(var(--p)/2);
 			}
 		}
+	}
+	ul {
+		list-style-type: circle;
+	}
+	ol:has(> :nth-child(10)) {
+		padding-left: calc(var(--p)*3);
 	}
 	.task-list {
 		list-style: none;
@@ -662,6 +703,26 @@
 		}
 		.row-quint {
 			 grid-template-columns: repeat(5, 1fr);
+		}
+	}
+
+	@media print {
+		.row-double, .row-triple, .row-quad, .row-quint {
+			display: flex;
+		}
+		@include viewport($mobile) {
+			.row-double > * {
+			 	width: 50%;
+			}
+			.row-triple > * {
+			 	width: calc(100% / 3);
+			}
+			.row-quad > * {
+			 	width: 25%;
+			}
+			.row-quint > * {
+			 	width: 20%;
+			}
 		}
 	}
 

@@ -1,5 +1,9 @@
 .post-header {
 	padding: calc(var(--p) * 2) calc(var(--p) * 2) var(--p);
+	@media print {
+		padding-left: 0;
+		padding-right: 0;
+	}
 	@supports (container-type: inline-size) {
 		container-type: inline-size;
 		container-name: header;
@@ -9,7 +13,9 @@
 		flex-wrap: nowrap;
 		align-items: flex-start;
 		@include container(header, mobile, $container-mobile) {
-			justify-content: flex-end;
+			@media screen {
+				justify-content: flex-end;
+			}
 		}
 	}
 }
@@ -18,6 +24,10 @@
 	@include font-weight-width(450, 110);
 	padding: 0 calc(var(--p) * 2);
 	font-size: 1.25rem;
+	@media print {
+		padding-left: 0;
+		padding-right: 0;
+	}
 	@include theme(light, 2) {
 		color: color-mix(
 			in srgb,
@@ -53,6 +63,9 @@
 	display: block;
 	position: relative;
 	margin-top: 1em;
+	@media print {
+		width: 640px;
+	}
 	+ .media-attachment {
 		margin-top: calc(var(--p)*2);
 	}

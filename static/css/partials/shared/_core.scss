@@ -40,6 +40,9 @@ body {
 	@include contrast(dark, 3) {
 		background-color: gHSL(iron, .45);
 	}
+	@media print {
+		background-color: unset;
+	}
 }
 
 a {
@@ -67,6 +70,7 @@ a {
 }
 
 figure, picture, img {
+	page-break-inside: avoid;
 	display: block;
 	width: 100%;
 	height: auto;

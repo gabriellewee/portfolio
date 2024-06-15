@@ -33,6 +33,9 @@
 			width: 65px;
 			height: 80px;
 			background-size: cover;
+			@media print {
+				left: 0;
+			}
 		}
 		&:not(.avatar-default) {
 			position: absolute;

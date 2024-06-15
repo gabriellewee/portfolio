@@ -6,6 +6,10 @@
 	margin-right: auto;
 	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
 	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
+	@media print {
+		margin: unset;
+		padding: 0;
+	}
 	@include theme(light, 2) {
 		color: var(--color-iron);
 	}
@@ -41,14 +45,16 @@
 					margin-right: .75rem;
 				}
 				&:not(:hover):not(:focus) {
-					@include theme(light, 2) {
-						text-decoration-color: gHSL(blush, 1.1, 0);
-					}
-					@include theme(dark, 2) {
-						text-decoration-color: gHSL(iron, .73, 0);
-					}
-					@include contrast(both, 2) {
-						text-decoration-color: gHSL(primary, 1, .5);
+					@media screen {
+						@include theme(light, 2) {
+							text-decoration-color: gHSL(blush, 1.1, 0);
+						}
+						@include theme(dark, 2) {
+							text-decoration-color: gHSL(iron, .73, 0);
+						}
+						@include contrast(both, 2) {
+							text-decoration-color: gHSL(primary, 1, .5);
+						}
 					}
 				}
 			}
@@ -73,6 +79,9 @@
 				text-decoration-thickness: 3px;
 				text-underline-offset: 8px;
 				@include contrast(both, 2) {
+					text-underline-offset: 4px;
+				}
+				@media print {
 					text-underline-offset: 4px;
 				}
 			}

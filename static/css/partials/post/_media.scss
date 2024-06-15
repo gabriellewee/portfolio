@@ -42,6 +42,11 @@ figure {
 		container-type: size;
 		container-name: metadata;
 	}
+	> picture {
+		@media print {
+			max-width: 640px;
+		}
+	}
 }
 
 .media-view-touch {

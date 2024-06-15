@@ -1,3 +1,9 @@
+& {
+	@media print {
+		page-break-inside: avoid;
+	}
+}
+
 .post-header.inline-header {
 	padding: calc(var(--p)*1.5) calc(var(--p)*2);
 	background-color: var(--color-iron);

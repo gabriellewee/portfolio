@@ -21,6 +21,10 @@
 			padding-left: 0;
 			padding-right: 0;
 		}
+		@media print {
+			padding-left: 0;
+			padding-right: 0;
+		}
 	}
 	.mentions-like-content + .button,
 	.mentions-repost-content + .button {
@@ -61,6 +65,9 @@
 				margin-top: 0;
 				margin-bottom: 0;
 			}
+			@media print {
+				display: none;
+			}
 		}
 	}
 	.mentions-reply-content + .mentions-reply-header-wrapper {
@@ -77,9 +84,18 @@
 		grid-gap: var(--p);
 		grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
 	}
+	.mentions-like-content, .mentions-repost-content,
+	.mentions-like-header, .mentions-repost-header {
+		@media print {
+			display: none;
+		}
+	}
 	.mentions-reply-content, .mentions-link-content {
 		li {
 			padding: calc(var(--p)*2);
+			@media print {
+				padding: 0;
+			}
 			@include theme(light, 2) {
 				background-color: gHSL(secondary, 1, .75);
 			}

@@ -311,22 +311,24 @@ $mastodon: #6364ff;
 @mixin gradient-text($one, $two, $three: null) {
 	color: $one;
 	@supports (-webkit-text-fill-color: transparent) {
-		background-color: $one;
-		background: linear-gradient(135deg, $one, $two);
-		background-clip: text;
-		@if $three {
-			-webkit-text-fill-color: $three;
-		} @else {
-			-webkit-text-fill-color: transparent;
-		}
-		@include theme(light, 2) {
-			filter: unset;
-		}
-		@include theme(dark, 2) {
+		@media screen {
+			background-color: $one;
+			background: linear-gradient(135deg, $one, $two);
+			background-clip: text;
 			@if $three {
-				filter: brightness(1.3);
+				-webkit-text-fill-color: $three;
 			} @else {
-				filter: brightness(1.2);
+				-webkit-text-fill-color: transparent;
+			}
+			@include theme(light, 2) {
+				filter: unset;
+			}
+			@include theme(dark, 2) {
+				@if $three {
+					filter: brightness(1.3);
+				} @else {
+					filter: brightness(1.2);
+				}
 			}
 		}
 	}
@@ -335,18 +337,20 @@ $mastodon: #6364ff;
 @mixin gradient-headline($one, $two, $three, $four, $position: 50%) {
 	color: $one;
 	@supports (-webkit-text-fill-color: transparent) {
-		background-color: $one;
-		background: linear-gradient(
-			135deg,
-			$one,
-			$two,
-			$three,
-			$four
-		) $position 0% / 200% 100%;
-		background-clip: text;
-		-webkit-text-fill-color: transparent;
-		@include theme(dark, 2) {
-			filter: brightness(1.2);
+		@media screen {
+			background-color: $one;
+			background: linear-gradient(
+				135deg,
+				$one,
+				$two,
+				$three,
+				$four
+			) $position 0% / 200% 100%;
+			background-clip: text;
+			-webkit-text-fill-color: transparent;
+			@include theme(dark, 2) {
+				filter: brightness(1.2);
+			}
 		}
 	}
 }
