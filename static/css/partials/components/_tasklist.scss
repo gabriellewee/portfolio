@@ -48,15 +48,15 @@
 		text-decoration: underline;
 		color: gHSL(primary, 1, 1);
 	}
+	input:active + label, input:active + label:hover {
+		color: gHSL(primary, 1, .45);
+	}
 	input {
 		@include hide;
 		&:focus-visible + label {
 			&:before {
 				@include focus-shadow(gHSL(mint, 1, .7), false);
 			}
-		}
-		&:active + label {
-			color: gHSL(primary, 1, .45);
 		}
 		&:checked + label {
 			color: gHSL(primary, 1, 1);
