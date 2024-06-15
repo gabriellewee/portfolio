@@ -99,7 +99,13 @@ module.exports = eleventyConfig => {
 				}
 			);
 
-			let image = `${metadata.data.image.url}.${metadata.data.image.type}`;
+			let type;
+			if(metadata.data.image.type === "j2k") {
+				type = "jpeg"
+			} else {
+				type = metadata.data.image.type;
+			}
+			let image = `${metadata.data.image.url}.${type}`;
 			let picture = await eleventyConfig.nunjucksAsyncShortcodes.external(image, title, width, loading);
 			let result = `<a class="${className}" href="${metadata.data.url}">${picture}</a>`;
 
