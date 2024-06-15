@@ -1,24 +1,3 @@
-.avatar {
-	@include invert(100%);
-	display: block;
-	width: var(--width);
-	height: var(--height);
-	&-default {
-		@include background-image(avatars/memoji, png);
-	}
-	&-hm {
-		@include background-image(avatars/memoji-hm, png);
-		background-size: var(--width) var(--height);
-		background-position: center left;
-	}
-	&-cooks {
-		@include background-image(avatars/memoji-cooks, png);
-		width: 65px;
-		height: 80px;
-		background-size: cover;
-	}
-}
-
 .avatar-link {
 	--width: 48px;
 	--height: 68px;
@@ -31,17 +10,33 @@
 		width: var(--width);
 		height: var(--height);
 	}
-	.avatar:not(.avatar-default) {
-		position: absolute;
-	}
-	.avatar-hm {
-		opacity: 0;
-		left: 0;
-		top: 0;
-	}
-	.avatar-cooks {
-		left: -18px;
-		bottom: 0;
+	.avatar {
+		@include invert(100%);
+		display: block;
+		width: var(--width);
+		height: var(--height);
+		&-default {
+			@include background-image(avatars/memoji, png);
+		}
+		&-hm {
+			@include background-image(avatars/memoji-hm, png);
+			opacity: 0;
+			left: 0;
+			top: 0;
+			background-size: var(--width) var(--height);
+			background-position: center left;
+		}
+		&-cooks {
+			@include background-image(avatars/memoji-cooks, png);
+			left: -18px;
+			bottom: 0;
+			width: 65px;
+			height: 80px;
+			background-size: cover;
+		}
+		&:not(.avatar-default) {
+			position: absolute;
+		}
 	}
 	.text {
 		@include font-weight-width(600, 115);
