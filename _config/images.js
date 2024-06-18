@@ -107,12 +107,12 @@ module.exports = eleventyConfig => {
 			}
 			let image = `${metadata.data.image.url}.${type}`;
 			let picture = await eleventyConfig.nunjucksAsyncShortcodes.external(image, title, width, loading);
-			let result = `<a class="${className}" href="${metadata.data.url}">${picture}</a>`;
+			let result = `<a class="${className}" href="${link}" target="_blank">${picture}</a>`;
 
 			return result;
 		} catch (error) {
 			console.error(error);
-			return link;
+			return `<a class="${className}" href="${link}"><span>${title}</span></a>`;
 		}
 	});
 

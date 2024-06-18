@@ -49,7 +49,15 @@
 				<h3>Nintendo Switch:</h3>
 				<ul class="grid">
 					{% for game in about.switch %}{% if game.archive != true %}
-						<li>{% unfurlGame game.url, game.title, "post-external", 300, "eager" %}</li>
+						<li>
+							{% if game.image %}
+								<a class="post-external" href="{{game.url}}" target="_blank">
+									{% external game.image, game.title, 300, "eager" %}
+								</a>
+							{% else %}
+								{% unfurlGame game.url, game.title, "post-external", 300, "eager" %}
+							{% endif %}
+						</li>
 					{% endif %}{% endfor %}
 				</ul>
 				
