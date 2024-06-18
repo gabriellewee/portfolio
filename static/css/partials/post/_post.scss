@@ -64,10 +64,10 @@
 		&:not(.reset):before {
 			content: "#";
 		}
-		&:before, span {
+		&, &:before, span {
 			transition: all .1s ease-out;
 		}
-		span {
+		> span {
 			text-decoration: underline;
 			text-decoration-thickness: 2px;
 			text-underline-offset: 8px;
@@ -83,39 +83,45 @@
 			}
 		}
 		&:hover, &:focus {
-			color: color-mix(
+			--color-mix: color-mix(
 				in srgb,
-				var(--color-iron),
-				white
+				var(--color-mauve),
+				var(--color-rose)
 			);
-			span {
+			&, > span {
+				color: var(--color-mix);
 				text-decoration-color: var(--color-mix);
 			}
 		}
-		&:hover, &:focus, &:active {
-			span {
+		&:hover, &:focus, &:active, &.active {
+			> span {
 				text-underline-offset: 4px;
 			}
 		}
-		&:focus-visible {
-			@include focus-shadow(var(--color-rose));
-		}
-		&:active, &.active {
-			@include theme(light, 2) {
-				color: gHSL(iron, .35);
-			}
-			@include theme(dark, 2) {
-				color: gHSL(white, 1, .9);
+		&:active {
+			&, > span {
+				color: var(--color-slate);
+				text-decoration-color: var(--color-slate);
 			}
 		}
-		&:active, &.active:hover, &.active:focus {
-			span {
-				@include theme(light, 2) {
-					text-decoration-color: gHSL(iron, .35);
-				}
-				@include theme(dark, 2) {
-					text-decoration-color: gHSL(white, 1, .9);
-				}
+
+		&.active {
+			--color-mix: color-mix(
+				in hsl,
+				hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .9) var(--color-mauve-l) / 1) 30%,
+				hsl(var(--color-rose-h) calc(var(--color-rose-s) * .9) var(--color-rose-l) / 1)
+			);
+			&, > span {
+				color: var(--color-mix);
+				text-decoration-color: var(--color-mix);
+			}
+			span span {
+				@include gradient-headline(
+					var(--color-rose),
+					var(--color-mauve),
+					var(--color-slate),
+					var(--color-slate)
+				);
 			}
 		}
 		&.active {

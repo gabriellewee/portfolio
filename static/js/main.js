@@ -171,11 +171,11 @@ const mediaFilters = ((filters = document.querySelector(".filters")) => {
 			} else if (active) {
 				active.classList.remove("active");
 				active.tabIndex = 0;
-				e.target.parentElement.classList.add("active");
-				e.target.parentElement.tabIndex = -1;
+				e.target.closest("a").classList.add("active");
+				e.target.closest("a").tabIndex = -1;
 			} else {
-				e.target.parentElement.classList.add("active");
-				e.target.parentElement.tabIndex = -1;
+				e.target.closest("a").classList.add("active");
+				e.target.closest("a").tabIndex = -1;
 			};
 			iso.layout();
 		});
