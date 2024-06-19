@@ -14,19 +14,23 @@
 			font-size: 2.25rem;
 		}
 		a {
-			&, span, span span {
-				transition: all .1s ease-out, box-shadow 0s, font-size 0s;
-			}
+			transition: color .1s ease-out;
 			> span {
+				transition: text-underline-offset .1s ease-out, text-decoration-color .1s ease-out;
 				text-decoration: underline;
 				text-underline-offset: 8px;
 				text-decoration-color: gHSL(white, 1, 0);
 				@include contrast(both, 2) {
 					text-underline-offset: 4px;
 				}
+				span {
+					transition: background-position .4s ease-out;
+				}
 			}
 			&:hover, &:focus, &:active {
-				text-underline-offset: 4px;
+				> span {
+					text-underline-offset: 4px;
+				}
 			}
 			&:hover, &:focus {
 				> span {
@@ -248,41 +252,47 @@
 		h2 {
 			a {
 				@include theme(light, 2) {
-					color: color-mix(
+					--color-mix: color-mix(
 						in srgb,
 						var(--color-iron) 70%,
 						white
 					);
 				}
 				@include theme(dark, 2) {
-					color: color-mix(
+					--color-mix: color-mix(
 						in srgb,
 						var(--color-iron),
 						white
 					);
 				}
+				color: var(--color-mix);
+				&:hover, &:focus, &:active {
+					> span {
+						text-decoration-color: var(--color-mix);
+					}
+				}
 				&:hover, &:focus {
 					@include theme(light, 2) {
-						color: color-mix(
+						--color-mix: color-mix(
 							in srgb,
 							var(--color-iron),
 							white
 						);
 					}
 					@include theme(dark, 2) {
-						color: gHSL(white, 1, .7);
+						--color-mix: gHSL(white, 1, .7);
 					}
 				}
 				&:active {
 					@include theme(light, 2) {
-						color: color-mix(
+						--color-mix: color-mix(
 							in srgb,
 							var(--color-iron) 90%,
 							white
 						);
 					}
 					@include theme(dark, 2) {
-						color: color-mix(
+						--color-mix: color-mix(
 							in srgb,
 							var(--color-iron) 70%,
 							white

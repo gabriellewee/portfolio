@@ -50,6 +50,10 @@
 		}
 		&:hover, &:focus {
 			color: var(--color-peach);
+			> span {
+				text-decoration: underline;
+				text-underline-offset: 4px;
+			}
 		}
 		&:focus-visible {
 			@include contrast(both, 2) {

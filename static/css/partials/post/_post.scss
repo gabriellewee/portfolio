@@ -326,14 +326,6 @@
 				order: 1;
 				width: unset;
 			}
-			a {
-				&:hover, &:focus {
-					span {
-						text-decoration: underline;
-						text-underline-offset: 4px;
-					}
-				}
-			}
 		}
 		time {
 			order: 1;
