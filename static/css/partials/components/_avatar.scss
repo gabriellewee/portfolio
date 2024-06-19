@@ -6,10 +6,6 @@
 	align-content: center;
 	position: relative;
 	margin-bottom: var(--p);
-	a {
-		width: var(--width);
-		height: var(--height);
-	}
 	.avatar {
 		@include invert(100%);
 		display: block;
@@ -96,6 +92,7 @@
 			}
 		}
 		&.go-home {
+			pointer-events: none;
 			position: absolute;
 			top: 50%;
 			left: calc(var(--p)*5);
@@ -111,6 +108,17 @@
 	a {
 		display: block;
 		margin-right: var(--p);
+		width: var(--width);
+		height: var(--height);
+		&:after {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: var(--width);
+			width: var(--p);
+			height: 100%;
+		}
 		&:focus-visible {
 			@include theme(light, 2) {
 				@include focus-shadow(gHSL(mauve, 1, .5));
@@ -129,6 +137,7 @@
 		}
 		&:hover, &:focus, &:active {
 			.go-home {
+				pointer-events: unset;
 				opacity: 1;
 				@media (prefers-reduced-motion: no-preference) {
 					translate: 0 -50%;
