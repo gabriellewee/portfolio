@@ -9,6 +9,14 @@ const string = require("string");
 const Image = require("@11ty/eleventy-img");
 
 module.exports = eleventyConfig => {
+	eleventyConfig.addCollection("entries", function (collectionApi) {
+		const entries = [...collectionApi.getFilteredByTag("entries")];
+		return entries.filter(entry => {
+			if (entry.data.self == true || entry.data.hide == true || entry.data.in_reply != null || entry.data.visibility === "direct") return false;
+			return entry.data;
+		});
+	});
+
 	eleventyConfig.addPlugin(pluginRss);
 	eleventyConfig.addPlugin(syntaxHighlight);
 
