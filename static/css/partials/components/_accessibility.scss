@@ -20,11 +20,6 @@ $options: color, contrast, transparency, load;
 		position: relative;
 		right: unset;
 	}
-	.popup-button {
-		pointer-events: none;
-		width: 179px;
-		height: 43px;
-	}
 	.popup-button:focus, .popup-button:focus-visible, .popup-button:active {
 		pointer-events: unset;
 		~ .popup-label {
@@ -55,6 +50,10 @@ $options: color, contrast, transparency, load;
 			@media (prefers-reduced-motion: no-preference) {
 				translate: 0 calc(var(--p)*2);
 			}
+		}
+		&:active {
+			z-index: unset;
+			opacity: 1;
 		}
 	}
 	.popup-window {
