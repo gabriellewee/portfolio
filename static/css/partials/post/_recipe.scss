@@ -133,7 +133,7 @@
 			}
 		}
 		@include container(recipe, mobile, $mobile) {
-			&.theme-light + .post-header-content {
+			&.header-light + .post-header-content {
 				h2 {
 					&:before {
 						background: linear-gradient(to top, #{gHSL(white, 1, .7)}, #{gHSL(white, 1, 0)});
@@ -155,7 +155,7 @@
 					}
 				}
 			}
-			&.theme-dark + .post-header-content {
+			&.header-dark + .post-header-content {
 				h2 {
 					&:before {
 						background: linear-gradient(to top, #{gHSL(iron, 1, .7)}, #{gHSL(iron, 1, 0)});

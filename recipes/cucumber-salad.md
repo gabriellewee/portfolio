@@ -1,7 +1,6 @@
 ---
 date: 2024-06-09
 title: Cucumber Salad
-headline: light
 servings: 6
 prep: 20
 emoji: '🥒'

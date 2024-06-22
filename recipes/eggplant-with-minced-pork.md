@@ -1,7 +1,6 @@
 ---
 date: 2024-06-12
 title: Eggplant with Minced Pork
-headline: dark
 servings: 4
 prep: 35
 cook: 25

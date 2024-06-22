@@ -5,15 +5,8 @@ const EleventyFetch = require("@11ty/eleventy-fetch");
 module.exports = eleventyConfig => {
 	eleventyConfig.addNunjucksAsyncShortcode("stats", async (src, type) => {
 		try {
-			let stats = await Image(src, {
-				widths: [null],
-				statsOnly: true
-			});
-			let width = stats["webp"][0].width;
-			let height = stats["webp"][0].height;
+			let stats = await Sharp(src); 
 			let result;
-			let orientation;
-
 			let reduce = (numerator, denominator) => {
 				let gcd = (a, b) => {
 					return b ? gcd(b, a%b) : a;
@@ -22,15 +15,31 @@ module.exports = eleventyConfig => {
 				return [numerator/gcd, denominator/gcd];
 			}
 
-			if (type === "width") {
-				result = width;
-			} else if (type === "height") {
-				result = height;
-			} else if (type === "orientation") {
-				width > height ? orientation = "landscape" : orientation = "portrait"
-				result = orientation
-			} else if (type === "ratio") {
-				result = `${reduce(width, height)[0]} / ${reduce(width, height)[1]}`
+			if (type != "color") {
+				let metadata = await stats.metadata();
+				let width = metadata.width;
+				let height = metadata.height;
+
+				if (type === "width") {
+					result = width;
+				} else if (type === "height") {
+					result = height;
+				} else if (type === "orientation") {
+					let orientation;
+					width > height ? orientation = "landscape" : orientation = "portrait";
+					result = orientation;
+				} else if (type === "ratio") {
+					result = `${reduce(width, height)[0]} / ${reduce(width, height)[1]}`
+				}
+			} else {
+				const { dominant } = await stats.stats();
+				const { r, g, b } = dominant;
+				let brightness = r * 0.2126 + g * 0.7152 + b * 0.0722;
+				if (brightness > 180) {
+					result = "light"
+				} else {
+					result = "dark"
+				}
 			}
 
 			return result;
@@ -85,7 +94,7 @@ module.exports = eleventyConfig => {
 				height: 630
 			}).toFormat(file).toBuffer();
 
-			let stats = await Image( image, {
+			let stats = await Image(image, {
 				widths: [null],
 				formats: [file],
 				urlPath: `/static/images/og`,
