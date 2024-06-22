@@ -112,7 +112,7 @@ module.exports = eleventyConfig => {
 			);
 
 			let type;
-			if(metadata.data.image.type === "j2k") {
+			if (metadata.data.image.type === "j2k") {
 				type = "jpeg"
 			} else {
 				type = metadata.data.image.type;

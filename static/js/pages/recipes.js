@@ -14,10 +14,10 @@ const taskListCheckboxes = (() => {
 		option.checked = true;
 		option.setAttribute("checked", "");
 		labels[index].setAttribute("aria-pressed", "true");
-		if(name) {
+		if (name) {
 			localStorage.setItem(name, "true");
 		}
-		if(reset.classList.contains("hide")) {
+		if (reset.classList.contains("hide")) {
 			reset.classList.remove("hide");
 			localStorage.setItem("resetIngredients", "true");
 		}
@@ -26,24 +26,24 @@ const taskListCheckboxes = (() => {
 		option.checked = false;
 		option.removeAttribute("checked");
 		labels[index].setAttribute("aria-pressed", "false");
-		if(name) {
+		if (name) {
 			localStorage.removeItem(name);
 		}
 		let checked = document.querySelector("[id^='task-list-checkbox']:checked");
-		if(!checked) {
+		if (!checked) {
 			localStorage.removeItem("resetIngredients");
 			reset.classList.add("hide");
 		}
 	}
 
-	if(localStorage.getItem("resetIngredients") === "true" && reset.classList.contains("hide")) {
+	if (localStorage.getItem("resetIngredients") === "true" && reset.classList.contains("hide")) {
 		reset.classList.remove("hide");
 	}
 
 	options.forEach((option, index) =>{
 		let name = option.getAttribute("id");
 
-		if(localStorage.getItem(name) === "true") {
+		if (localStorage.getItem(name) === "true") {
 			_true(option, index, name);
 		} else {
 			_false(option, index, name);

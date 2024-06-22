@@ -75,7 +75,7 @@ module.exports = eleventyConfig => {
 		let pattern = /<\s*p><img src="(?<src>[^<]*)" alt="(?<alt>[^<]*)" title="(?<title>[^<]*)"><\/p>/g;
 		let lightboxes = "";
 		let images = post.matchAll(pattern);
-		if(images) {
+		if (images) {
 			for (const image of images) {
 				let src = image.groups.src;
 				let url = `./static/images/posts/${src}`;
@@ -85,7 +85,7 @@ module.exports = eleventyConfig => {
 				let file = src.split(".")[1];
 				if (file === "jpg") file = "jpeg";
 
-				if(file === "svg") {
+				if (file === "svg") {
 					let stats = await Image(url, {
 						widths: [null],
 						statsOnly: true
@@ -93,7 +93,7 @@ module.exports = eleventyConfig => {
 					let width = stats["webp"][0].width;
 					let height = stats["webp"][0].height;
 
-					if(option === "lightbox") {
+					if (option === "lightbox") {
 						let figure = `
 							<a class="lightbox" id="${name}-lightbox" role="button" aria-expanded="true" aria-label="Close image" href="#${name}"></a>
 							<figure class="image" role="dialog" aria-label="Image preview" aria-modal="true" data-content>
@@ -119,7 +119,7 @@ module.exports = eleventyConfig => {
 				} else {
 					let newWidths;
 
-					if(option === "lightbox") {
+					if (option === "lightbox") {
 						newWidths = [100, 1728, "auto"];
 					} else {
 						newWidths = [100, 900, 1728, 2268, "auto"];
@@ -141,7 +141,7 @@ module.exports = eleventyConfig => {
 					let img;
 					let completed;
 
-					if(option === "lightbox") {
+					if (option === "lightbox") {
 						if (stats["webp"][2]) {
 							webpset = `${stats["webp"][1].url}, ${stats["webp"][2].url} 2x`;
 							regset = `${stats[file][1].url}, ${stats[file][2].url} 2x`;
@@ -162,7 +162,7 @@ module.exports = eleventyConfig => {
 							regset = `${stats[file][4].srcset}, ${stats[file][3].srcset}, ${stats[file][2].srcset}, ${stats[file][1].srcset}`;
 							source = `<source type="image/webp" srcset="${webpset}" sizes="${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px, (min-width: 1549px) ${stats["webp"][4].width}px">`;
 							img = `<img loading="lazy" decoding="async" alt="${alt}" src="${stats["webp"][0].url}" srcset="${regset}" sizes="${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px, (min-width: 1549px) ${stats["webp"][4].width}px" width="${basic.width}" height="${basic.height}">`;
-						} else if(stats["webp"][3]) {
+						} else if (stats["webp"][3]) {
 							webpset = `${stats["webp"][3].srcset}, ${stats["webp"][2].srcset}, ${stats["webp"][1].srcset}`;
 							regset = `${stats[file][3].srcset}, ${stats[file][2].srcset}, ${stats[file][1].srcset}`;
 							source = `<source type="image/webp" srcset="${webpset}" sizes="${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px">`;
@@ -192,7 +192,7 @@ module.exports = eleventyConfig => {
 			}
 		}
 
-		if(option === "lightbox") {
+		if (option === "lightbox") {
 			return lightboxes;
 		} else {
 			return post;
@@ -227,7 +227,7 @@ module.exports = eleventyConfig => {
 			excerpt = await images(excerpt, option);
 		}
 
-		if(option === "lightbox") {
+		if (option === "lightbox") {
 			excerpt = excerpt.replace(/<p>([\s\S]*?)<\/p>/g, '');
 		}
 
