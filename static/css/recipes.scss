@@ -104,3 +104,18 @@
 		);
 	}
 }
+
+.progress {
+	@supports (animation-timeline: scroll()) {
+		background: linear-gradient(
+			to right,
+			color-mix(
+				in srgb,
+				var(--color-periwinkle),
+				var(--color-mint)
+			),
+			var(--color-mint),
+			var(--color-slate)
+		);
+	}
+}
