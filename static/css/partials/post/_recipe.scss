@@ -105,6 +105,8 @@
 			padding: 0;
 			time {
 				margin-left: calc(var(--p)*2);
+				position: relative;
+				z-index: 1;
 			}
 			h2 {
 				position: relative;
@@ -144,14 +146,15 @@
 				}
 				time {
 					background-color: gHSL(iron, 1, .9);
-					color: var(--color-white);
+					color: white;
+					@include reduce-transparency(2) {
+						background-color: var(--color-iron);
+					}
 					&:before {
-						opacity: 0;
+						background-color: white;
 					}
 					&:after {
-						@include contrast(both, 2) {
-							background-color: gHSL(iron, 1, .9);
-						}
+						background-color: gHSL(iron, 1, .9);
 					}
 				}
 			}
@@ -167,13 +170,14 @@
 				time {
 					background-color: gHSL(white, 1, .9);
 					color: var(--color-iron);
+					@include reduce-transparency(2) {
+						background-color: white;
+					}
 					&:before {
-						opacity: 0;
+						background-color: var(--color-iron);
 					}
 					&:after {
-						@include contrast(both, 2) {
-							background-color: gHSL(white, 1, .9);
-						}
+						background-color: gHSL(white, 1, .9);
 					}
 				}
 			}
@@ -198,7 +202,17 @@
 						z-index: -1;
 						width: calc(100% + (var(--p) * 2));
 						height: calc(100% + var(--p));
-						background-color: white;
+						background-color: gHSL(white, 1, .95);
+						@include reduce-transparency(2) {
+							background-color: white;
+						}
+					}
+					&:hover, &:focus, &:active {
+						&:before {
+							opacity: 1;
+							scale: 1 1;
+							translate: 0 0;
+						}
 					}
 					&:hover, &:focus {
 						color: color-mix(
@@ -206,16 +220,21 @@
 							var(--color-iron) 30%,
 							var(--color-slate)
 						);
-						&:before {
-							opacity: 1;
-							scale: 1 1;
-							translate: 0 0;
+						@include contrast(both, 2) {
+							color: var(--color-iron);
 						}
 					}
 					&:active {
-						color: var(--color-iron);
+						color: gHSL(iron, .65);
 						&:before {
-							opacity: 0.6;
+							background-color: gHSL(white, 1, .75);
+							@include reduce-transparency(2) {
+								background-color: color-mix(
+									in srgb,
+									white 75%,
+									var(--color-iron)
+								);
+							}
 						}
 					}
 				}
@@ -231,6 +250,11 @@
 	margin-top: calc(var(--p)*1.5);
 	padding: calc(var(--p)*2);
 	background-color: gHSL(mint, 1, .15);
+	@include contrast(both, 2) {
+		border-top: 1.5px solid var(--color-primary);
+		border-bottom: 1.5px solid var(--color-primary);
+		background-color: gHSL(mint, 1, .1);
+	}
 	@include container(recipe, mobile, $mobile) {
 		justify-content: center;
 		margin-top: 0;
