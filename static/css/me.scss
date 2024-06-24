@@ -112,6 +112,15 @@
 	}
 }
 
+.post-books {
+	.grid {
+		grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+		@include viewport(mobile) {
+			grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		}
+	}
+}
+
 .post-music {
 	width: 100%;
 	min-width: 345px;

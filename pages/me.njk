@@ -26,6 +26,24 @@
 			</div>
 		</article>
 
+		<article class="post post-books post-me grid-item">
+			<div class="post-inner post-animate">
+				<header class="post-header">
+					<h2>I’m an avid reader. Lately, I’ve been enjoying these books.</h2>
+				</header>
+
+				<ul class="grid">
+					{% for book in about.loans.timeline|limit(4) %}
+						<li>
+							<a class="post-external" href="{{book.title.url}}" target="_blank">
+								{% external book.cover.url, book.title.text + "by" + book.author, 300, "eager" %}
+							</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</article>
+
 		<article class="post post-game post-me grid-item">
 			<div class="post-inner post-animate">
 				<header class="post-header">
