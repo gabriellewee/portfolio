@@ -66,14 +66,14 @@
 
 				<h3>Nintendo Switch:</h3>
 				<ul class="grid">
-					{% for game in about.switch %}{% if game.archive != true %}
+					{% for game in notion.switch.results %}{% if game.properties.Archive.checkbox != true %}
 						<li>
-							{% if game.image %}
-								<a class="post-external" href="{{game.url}}" target="_blank">
-									{% external game.image, game.title, 300, "eager" %}
+							{% if game.properties.Image.url %}
+								<a class="post-external" href="{{game.properties.URL.url}}" target="_blank">
+									{% external game.properties.Image.url, game.properties.Name.title[0].plain_text, 300, "eager" %}
 								</a>
 							{% else %}
-								{% unfurlGame game.url, game.title, "post-external", 300, "eager" %}
+								{% unfurlGame game.properties.URL.url, game.properties.Name.title[0].plain_text, "post-external", 300, "eager" %}
 							{% endif %}
 						</li>
 					{% endif %}{% endfor %}
