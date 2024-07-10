@@ -2,7 +2,7 @@
 @import 'partials/shared/utilities';
 
 // components
-@import 'partials/components/clip';
+@import 'partials/components/tooltip';
 
 .post-me {
 	.post-inner {
@@ -198,7 +198,7 @@
 				);
 			}
 		}
-		.clip-container-border {
+		.tooltip-border {
 			position: relative;
 			margin-top: var(--p);
 			@include viewport(mobile) {
@@ -218,7 +218,7 @@
 				}
 			}
 		}
-		.clip-container {
+		.tooltip {
 			&:before {
 				top: calc(50% - 5px);
 				left: 100%;

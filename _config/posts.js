@@ -30,7 +30,8 @@ module.exports = eleventyConfig => {
 		permalink: markdownItAnchor.permalink.ariaHidden({
 			class: "direct-link",
 			symbol: "¶",
-			placement: "after"
+			placement: "after",
+			renderAttrs: (s) => ({ 'data-anchor': '' })
 		})
 	}).use(markdownItContainer, 'dynamic', {
 		validate: function() { return true; },
@@ -95,7 +96,7 @@ module.exports = eleventyConfig => {
 
 					if (option === "lightbox") {
 						let figure = `
-							<a class="lightbox" id="${name}-lightbox" role="button" aria-expanded="true" aria-label="Close image" href="#${name}"></a>
+							<a class="lightbox" id="${name}-lightbox" role="button" aria-expanded="true" aria-label="Close image" href="#${name}" data-lightbox></a>
 							<figure class="image" role="dialog" aria-label="Image preview" aria-modal="true" data-content>
 								<picture>
 									<img src="/static/images/posts/${src}" alt="${alt}" width="${width}" height="${height}"/>
@@ -150,7 +151,7 @@ module.exports = eleventyConfig => {
 
 							let picture = `<picture>${source}${img}</picture>`;
 							let figure = `
-								<a class="lightbox" id="${name}-lightbox" role="button" aria-expanded="true" aria-label="Close image" href="#${name}"></a>
+								<a class="lightbox" id="${name}-lightbox" role="button" aria-expanded="true" aria-label="Close image" href="#${name}" data-lightbox></a>
 								<figure class="image" role="dialog" aria-label="Image preview" aria-modal="true" data-content>${picture}</figure>
 							`;
 
@@ -180,7 +181,7 @@ module.exports = eleventyConfig => {
 
 						if (stats["webp"][4] || stats["webp"][3]) {
 							let caption = `<figcaption id="${name}-caption" aria-hidden="true">${nbsp(title)}</figcaption>`;
-							let link = `<a class="expand" href="#${name}-lightbox" aria-label="${alt} Expand image">${picture}</a>`;
+							let link = `<a class="expand" href="#${name}-lightbox" aria-label="${alt} Expand image" data-media-expand>${picture}</a>`;
 							figure = `<figure id="${name}" aria-labelledby="${name}-caption">${caption}${link}</figure>`;
 						} else {
 							let caption = `<figcaption id="${name}-caption" aria-hidden="true">${nbsp(title)}</figcaption>`;

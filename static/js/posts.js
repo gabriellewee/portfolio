@@ -1,7 +1,7 @@
-lightbox(".expand", ".lightbox");
-timeAgo("time");
+lightbox("[data-media-expand]", "[data-lightbox]");
+timeAgo("[data-time]");
 
-const smoothScrollLinks = ((links = Array.from(document.querySelectorAll(".direct-link"))) => {
+const smoothScrollLinks = ((links = Array.from(document.querySelectorAll("[data-anchor]"))) => {
 	let mainContent = document.querySelector("main");
 	links.forEach(link=>{
 		link.setAttribute("aria-hidden", "true");

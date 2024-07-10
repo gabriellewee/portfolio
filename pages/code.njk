@@ -18,9 +18,9 @@
 ---
 
 <section class="posts-container">
-	<div class="posts grid-isotope">
+	<div class="posts" data-grid>
 		{% for post in collections.code | reverse %}
-			<article class="post post-code {% if post.data.size %} post-size-{{post.data.size}}{% endif %} grid-item"{% if post.data.width %} style="max-width: {{post.data.width}}"{% endif %}>
+			<article class="post post-code {% if post.data.size %} post-size-{{post.data.size}}{% endif %}" data-grid-item{% if post.data.width %} style="max-width: {{post.data.width}}"{% endif %}>
 				<div class="post-inner">
 					<header class="post-header{% if (post.data.category == 'writing') or (post.data.category == 'code') %} inline-header{% endif %}">
 						<div class="post-header-content">
@@ -42,7 +42,7 @@
 							</div>
 							<div class="post-header-right">
 								<time class="time{% if post.data.category != 'code' %} time-default{% endif %}{% if post.data.category == 'social' %} time-external{% endif %}" datetime="{{post.page.date|ISO|date('string')}}" data-time="{{post.page.date|ISO}}">{{post.page.date|ISO|date('readable')}}</time>
-								<a class="expand" id="{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}" aria-label="Expand preview of {{post.data.title}}" role="button" aria-expanded="false" href="#{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}-lightbox"></a>
+								<a class="expand" id="{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}" aria-label="Expand preview of {{post.data.title}}" role="button" aria-expanded="false" href="#{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}-lightbox" data-media-expand></a>
 								<a class="external-expand" href="{{post.url|url}}" aria-label="View {{post.data.category}} in new window" target="_blank"></a>
 							</div>
 						</div>
@@ -52,7 +52,7 @@
 							<a class="post-mobile-button button" href="{{post.url|url}}" target="_blank"><span><span>View animation</span></span></a>
 						{% endif %}
 						{% if post.data.button %}
-							<button class="reload button"><span><span>{{post.data.button|capitalize}}</span></span></button>
+							<button class="reload button" data-reload><span><span>{{post.data.button|capitalize}}</span></span></button>
 						{% endif %}
 						{% if post.url %}
 							{% if post.data.mobile == false %}
@@ -80,7 +80,7 @@
 
 <div class="lightbox-group" hidden>
 	{% for post in collections.code | reverse %}
-		<a class="lightbox" id="{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}-lightbox" role="button" aria-expanded="true" aria-label="Close preview of {{post.data.title}}" href="#{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}"></a>
+		<a class="lightbox" id="{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}-lightbox" role="button" aria-expanded="true" aria-label="Close preview of {{post.data.title}}" href="#{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}" data-lightbox></a>
 		<figure class="iframe"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %} role="dialog" aria-label="Preview of {{post.data.title}}" aria-modal="true" data-content>
 			{% if post.url %}
 				<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"></iframe>

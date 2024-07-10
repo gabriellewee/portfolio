@@ -76,7 +76,7 @@ const lightbox = (buttons, boxes, scroll) => {
 		let href = lightbox.getAttribute("href").slice(1);
 		let info = document.querySelector(`[id="${href}-info"]`);
 		let element = document.querySelector(`[id="${href}"]`);
-		let expand = element.querySelector(".expand");
+		let expand = element.querySelector("[data-media-expand]");
 		if (info) {
 			info.scrollIntoView({ behavior: "smooth" });
 			info.focus();

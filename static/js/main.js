@@ -18,12 +18,12 @@ const mediaTriggers = (media) => {
 	let figures = Array.from(document.querySelectorAll(media));
 	if (!figures) return;
 	figures.forEach(figure=>{
-		let trigger = figure.querySelector(".media-trigger");
-		let data = figure.querySelector(".media-data");
-		let expand = figure.querySelector(".media-expand");
-		let external = Array.from(figure.querySelectorAll(".external"));
+		let trigger = figure.querySelector("[data-media-trigger]");
+		let data = figure.querySelector("[data-media-info]");
+		let expand = figure.querySelector("[data-media-expand]");
+		let external = Array.from(figure.querySelectorAll("[data-media-external]"));
 		let name = trigger.getAttribute("id").slice(0, -5);
-		let labels = Array.from(figure.querySelectorAll("label"));
+		let labels = Array.from(figure.querySelectorAll("[data-media-label]"));
 		data.setAttribute("aria-hidden", "true");
 		trigger.addEventListener("focus", e => {
 			document.getElementById(name).scrollIntoView({ behavior: "smooth" });
@@ -78,12 +78,12 @@ const mediaTriggers = (media) => {
 	});
 }
 
-frames(".reload");
-timeAgo("time");
-durationFormat(".recipe-duration");
-mediaTriggers(".post-media");
+frames("[data-reload]");
+timeAgo("[data-time]");
+durationFormat("[data-duration]");
+mediaTriggers("[data-media-container]");
 
-let container = document.querySelector(".grid-isotope");
+let container = document.querySelector("[data-grid]");
 let iso;
 let motionClass = document.documentElement.classList.contains("theme-reduce-motion");
 let motion = window.matchMedia("(prefers-reduced-motion: no-preference)");
@@ -92,7 +92,7 @@ const layout = (items) => {
 		iso = new Isotope(items, {
 			percentPosition: true,
 			layoutMode: "packery",
-			itemSelector: ".grid-item",
+			itemSelector: "[data-grid-item]",
 			packery: {
 				gutter: 24
 			}
@@ -101,7 +101,7 @@ const layout = (items) => {
 		iso = new Isotope(items, {
 			percentPosition: true,
 			layoutMode: "packery",
-			itemSelector: ".grid-item",
+			itemSelector: "[data-grid-item]",
 			packery: {
 				gutter: 24
 			},
@@ -117,32 +117,32 @@ const layout = (items) => {
 
 if (container) layout(container);
 
-let scrollContainer = document.querySelector(".grid-scroll");
-let lightboxContainer = document.querySelector(".posts-lightbox-group");
+let scrollContainer = document.querySelector("[data-scroll]");
+let lightboxContainer = document.querySelector("[data-lightbox-container]");
 if (scrollContainer && lightboxContainer) {
 	let scroll = new InfiniteScroll(scrollContainer, {
-		button: '.load',
-		path: '.older',
-		append: '.post',
+		button: '[data-load]',
+		path: '[data-load-path]',
+		append: '[data-post-append]',
 		scrollThreshold: false,
 		outlayer: iso
 	});
 	let lightboxScroll = new InfiniteScroll(lightboxContainer, {
-		button: '.load',
-		path: '.older',
-		append: '[data-append]',
+		button: '[data-load]',
+		path: '[data-load-path]',
+		append: '[data-lightbox-append]',
 		scrollThreshold: false,
 		history: false
 	});
-	lightbox(".expand", ".lightbox", scroll);
+	lightbox("[data-media-expand]", "[data-lightbox]", scroll);
 	scroll.on('append', (body, path, items, response) => {
-		frames(".reload");
-		timeAgo("time");
-		durationFormat(".recipe-duration");
-		mediaTriggers(".post-media");
+		frames("[data-reload]");
+		timeAgo("[data-time]");
+		durationFormat("[data-duration]");
+		mediaTriggers("[data-media-container]");
 	});
 } else {
-	lightbox(".expand", ".lightbox");
+	lightbox("[data-media-expand]", "[data-lightbox]");
 }
 
 new imagesLoaded(document.body, () => {
@@ -152,12 +152,12 @@ new imagesLoaded(document.body, () => {
 	document.documentElement.classList.add("loaded");
 });
 
-const mediaFilters = ((filters = document.querySelector(".filters")) => {
+const mediaFilters = ((filters = document.querySelector("[data-filter-container]")) => {
 	if (!filters) return;
 	let links = filters.querySelectorAll("[data-filter]");
 	links.forEach(link=>{
 		let value = link.getAttribute("data-filter");
-		let reset = filters.querySelector(".reset");
+		let reset = filters.querySelector("[data-reset]");
 		link.addEventListener("click", e => {
 			e.preventDefault();
 			iso.arrange({ filter: value });
@@ -182,7 +182,7 @@ const mediaFilters = ((filters = document.querySelector(".filters")) => {
 	});
 })();
 
-const copyButtons = ((buttons = Array.from(document.querySelectorAll(".clip"))) => {
+const copyButtons = ((buttons = Array.from(document.querySelectorAll("[data-clip]"))) => {
 	if (!buttons) return;
 	buttons.forEach(button=>{
 		button.addEventListener("click", e => {

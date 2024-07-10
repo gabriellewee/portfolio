@@ -31,7 +31,7 @@
 				display: inline-block;
 			}
 			.link {
-				&:not(.clip-container) {
+				&:not(.tooltip) {
 					display: inline-block;
 				}
 				&:not(:last-child) {
@@ -158,6 +158,9 @@
 			grid-gap: calc(var(--p)*2);
 			grid-template-columns: 1fr 1fr;
 		}
+		.tooltip {
+			display: inline-block;
+		}
 		.contact-sites, .contact-messages {
 			@include font-weight-width(800, 120);
 			position: relative;
@@ -203,7 +206,7 @@
 				margin-top: 0;
 			}
 		}
-		.clip-container {
+		.tooltip {
 			&:before {
 				clip-path: polygon(0 0, 0 100%, 100% 0);
 				left: 50%;

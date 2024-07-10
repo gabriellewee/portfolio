@@ -1,16 +1,16 @@
-<div class="discord-popup popup" data-copy>
-	<input type="checkbox" id="discord" class="popup-button" tabindex="0" role="button" aria-pressed="false" aria-haspopup="menu" aria-controls="discord-window" aria-labelledby="discord-label"/>
-	<label class="popup-label" for="discord">
+<div class="discord-popup popup" data-copy data-popup>
+	<input type="checkbox" id="discord" class="popup-button" tabindex="0" role="button" aria-pressed="false" aria-haspopup="menu" aria-controls="discord-window" aria-labelledby="discord-label" data-popup-trigger/>
+	<label class="popup-label" for="discord" data-popup-label>
 		<span aria-hidden="true" id="discord-label">Discord</span>
 	</label>
-	<menu id="discord-window" class="popup-window">
+	<menu id="discord-window" class="popup-window" data-popup-window>
 		<div class="inside">
 			<div class="header">
 				<span class="avatar"></span>
 			</div>
 			<div class="username">
 				<h3 aria-label="Discord display name: Gabrielle">Gabrielle</h3>
-				<span id="username-input" class="username-input clip-container" data-clipboard-target aria-label="Discord username: gabriellewee">gabriellewee</span>
+				<span id="username-input" class="username-input tooltip" data-clipboard-target data-clipboard-text aria-label="Discord username: gabriellewee">gabriellewee</span>
 			</div>
 			<div class="description">
 				<h3 class="about-header">About Me</h3>
@@ -27,13 +27,13 @@
 						</a>
 					</li>
 					<li>
-						<button disabled class="copy-button" data-clipboard-target="#username-input">
+						<button disabled class="copy-button" data-clipboard-target="#username-input" data-clipboard-button>
 							<span>Copy username</span>
 						</button>
 					</li>
 				</ul>
 			</div>
-			<label class="close" for="discord" tabindex="0" role="button" aria-pressed="true" aria-haspopup="true" aria-controls="discord-window">{% include 'svg/icons/close.svg' %}</label>
+			<label class="close" for="discord" tabindex="0" role="button" aria-pressed="true" aria-haspopup="true" aria-controls="discord-window" data-popup-close>{% include 'svg/icons/close.svg' %}</label>
 		</div>
 	</menu>
 </div>

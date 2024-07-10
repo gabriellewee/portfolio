@@ -1,28 +1,40 @@
-const popup = ((containers = Array.from(document.querySelectorAll(".popup"))) => {
+const popup = ((containers = Array.from(document.querySelectorAll("[data-popup]"))) => {
 	if (!containers) return;
 	containers.forEach(container =>{
-		let popupWindow = container.querySelector(".popup-window");
-		let popupLabel = container.querySelector(".popup-label");
-		let popupTrigger = container.querySelector(".popup-button");
-		let popupClose = container.querySelector(".close");
+		let popupWindow = container.querySelector("[data-popup-window]");
+		let popupLabel = container.querySelector("[data-popup-label]");
+		let popupTrigger = container.querySelector("[data-popup-trigger]");
+		let popupClose = container.querySelector("[data-popup-close]");
 		let triggers = Array.from([popupTrigger, popupClose]);
+
+		let _true = () => {
+			popupTrigger.checked = true;
+			popupTrigger.setAttribute("checked", "");
+			popupTrigger.setAttribute("aria-pressed", "true");
+		}
+		let _false = (focus) => {
+			popupTrigger.checked = false;
+			popupTrigger.removeAttribute("checked");
+			popupTrigger.setAttribute("aria-pressed", "false");
+			if (focus === true) {
+				popupTrigger.focus();
+			}
+		}
 
 		triggers.forEach(trigger =>{
 			trigger.addEventListener("click",  e => {
 				if (popupTrigger.checked) {
-					popupTrigger.checked = true;
+					_true();
 				} else {
-					popupTrigger.checked = false;
-					popupTrigger.focus();
+					_false();
 				}
 			});
 			trigger.addEventListener("keydown",  e => {
 				if (e.key === "Enter") {
 					if (popupTrigger.checked) {
-						popupTrigger.checked = false;
-						popupTrigger.focus();
+						_false(true);
 					} else {
-						popupTrigger.checked = true;
+						_true();
 					}
 				}
 			});
@@ -30,8 +42,7 @@ const popup = ((containers = Array.from(document.querySelectorAll(".popup"))) =>
 
 		container.addEventListener("keydown",  e => {
 			if (e.key === "Escape") {
-				popupTrigger.checked = false;
-				popupTrigger.focus();
+				_false(true);
 			}
 		});
 
@@ -41,13 +52,13 @@ const popup = ((containers = Array.from(document.querySelectorAll(".popup"))) =>
 			end: "bottom top",
 			onLeave: self => {
 				if (popupTrigger.checked) {
-					popupTrigger.checked = false;
+					_false();
 				}
 			}
 		});
 
 		if (container.hasAttribute("data-copy")) {
-			let copyElem = container.querySelector(".username-input");
+			let copyElem = container.querySelector("[data-clipboard-text]");
 			triggers.forEach(trigger =>{
 				trigger.addEventListener("keydown",  e => {
 					if (e.key === "Enter") {
@@ -65,12 +76,11 @@ const popup = ((containers = Array.from(document.querySelectorAll(".popup"))) =>
 				});
 			});
 
-			let copyButton = container.querySelector(".copy-button");
+			let copyButton = container.querySelector("[data-clipboard-button]");
 			copyButton.removeAttribute("disabled");
 			let clipboard = new ClipboardJS(copyButton);
 
 			clipboard.on("success", e => {
-				let copy = container.querySelector(e.trigger.getAttribute("data-clipboard-target"));
 				copyElem.classList.add("copied");
 				e.clearSelection();
 			});

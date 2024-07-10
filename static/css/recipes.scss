@@ -120,7 +120,7 @@
 	}
 }
 
-.post-recipe:not(.grid-item) {
+.post-single .post-recipe {
 	.post-header-content {
 		display: flex;
 		flex-direction: column;

@@ -19,18 +19,18 @@ pagination:
 {% if pagination.pageNumber == 0 %}{% include 'pages/shared/links.html' %}{% endif %}
 
 <section class="posts-container" aria-label="Posts">
-	<div class="posts grid-isotope grid-scroll">
+	<div class="posts" data-grid data-scroll>
 		{% for post in pagination.items %}
 			{% if post.data.svg == true %}{%- set file = "svg" %}{% elseif post.data.extension %}{%- set file = post.data.extension %}{% endif %}
 			<article
-				class="post{% if pagination.pageNumber == 0 %} post-animate{% endif %}{% if (post.data.pagination.alias) and (post.data.pagination.alias != post.data.category) %} post-{{post.data.category}} post-{{post.data.pagination.alias}}{% else %} post-{{post.data.category}}{% endif %}{% if post.data.tags %}{% for tag in post.data.tags %}{% if tag != 'entries' and tag != 'posts' %} post-{{tag}}{% endif %}{% endfor %}{% endif %}{% if post.data.size %} post-size-{{post.data.size}}{% endif %}{% if post.data.category == 'media' %} post-{{post.data.pagination.data}}{% endif %} grid-item"
+				class="post{% if pagination.pageNumber == 0 %} post-animate{% endif %}{% if (post.data.pagination.alias) and (post.data.pagination.alias != post.data.category) %} post-{{post.data.category}} post-{{post.data.pagination.alias}}{% else %} post-{{post.data.category}}{% endif %}{% if post.data.tags %}{% for tag in post.data.tags %}{% if tag != 'entries' and tag != 'posts' %} post-{{tag}}{% endif %}{% endfor %}{% endif %}{% if post.data.size %} post-size-{{post.data.size}}{% endif %}{% if post.data.category == 'media' %} post-{{post.data.pagination.data}}{% endif %}" data-grid-item data-post-append
 				{% if post.data.extension %}data-orientation="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'orientation' %}"{% endif %}
 				{% if post.data.width %}style="max-width: {{post.data.width}}"{% endif %}
 				{% if post.data.category == "social" %}aria-label="{{post.data.pagination.alias|capitalize}} post"
-				{% elseif post.data.category == "media" %}aria-label="{{post.data.type|capitalize}} post"{% endif %}
+				{% elseif post.data.category == "media" %}data-media-container aria-label="{{post.data.type|capitalize}} post"{% endif %}
 			>
 				{% if post.data.category == "media" %}
-					<input class="{{post.data.category}}-trigger" id="{{post.data.date|safe}}-{{post.data.name}}-info" type="checkbox" tabindex="0" aria-label="View information about this {{post.data.type}}" role="switch"/>
+					<input class="media-trigger" id="{{post.data.date|safe}}-{{post.data.name}}-info" type="checkbox" tabindex="0" aria-label="View information about this {{post.data.type}}" role="switch" data-media-trigger/>
 				{% endif %}
 				<div class="post-inner">
 					<header class="post-header{% if (post.data.category == 'writing') or (post.data.category == 'code') %} inline-header{% endif %}">
@@ -69,7 +69,7 @@ pagination:
 							{% if post.data.category == "code" %}
 								<div class="post-header-right">
 									<time class="time{% if post.data.category != 'code' %} time-default{% endif %}{% if post.data.category == 'social' %} time-external{% endif %}" datetime="{{post.page.date|ISO|date('string')}}" data-time="{{post.page.date|ISO}}" title="{{post.page.date|ISO|date('readable')}}">{{post.page.date|ISO|date('readable')}}</time>
-									<a class="expand" id="{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}" role="button" aria-expanded="false" aria-label="Expand preview of {{post.data.title}}" href="#{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}-lightbox" data-desktop></a>
+									<a class="expand" id="{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}" role="button" aria-expanded="false" aria-label="Expand preview of {{post.data.title}}" href="#{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}-lightbox" data-media-expand data-desktop></a>
 									<a class="external-expand" href="{{post.url|url}}" aria-label="View {{post.data.category}} in new window" target="_blank"></a>
 								</div>
 							{% elseif (post.data.category != "media") and (post.data.category != "code") %}
@@ -106,16 +106,16 @@ pagination:
 								{% else %}
 									{% image './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 'default', loop.index %}
 								{% endif %}
-								<label class="media-view-hover" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true">
+								<label class="media-view-hover" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true" data-media-label>
 									<span class="button"><span><span>View info</span></span></span>
 								</label>
-								<label class="media-view-touch" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true">View info</label>
-								<figcaption class="{{post.data.category}}-data">
+								<label class="media-view-touch" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true" data-media-label>View info</label>
+								<figcaption class="media-data" data-media-info>
 									<div class="media-data-wrapper">
 										<time class="time-default" datetime="{{post.page.date|ISO|date('string')}}" title="{{post.page.date|ISO|date('readable')}}" data-time="{{post.page.date|ISO}}">{{post.page.date|ISO|date('readable')}}</time>
-										<label class="media-down media-icon" for="{{post.data.date|safe}}-{{post.data.name}}-info"></label>
+										<label class="media-down media-icon" for="{{post.data.date|safe}}-{{post.data.name}}-info" data-media-label></label>
 										<div class="media-thumbnail">
-											<a class="media-expand expand" href="#{{post.data.date|safe}}-{{post.data.name}}-lightbox" role="button" aria-expanded="false" aria-label="Expand image" tabindex="-1">
+											<a class="media-expand expand" href="#{{post.data.date|safe}}-{{post.data.name}}-lightbox" role="button" aria-expanded="false" aria-label="Expand image" tabindex="-1" data-media-expand>
 												<span class="no-image">Expand</span>
 												<span aria-hidden="true">
 													{% if post.data.upscale %}
@@ -171,7 +171,7 @@ pagination:
 							</figure>
 						{% elseif post.data.category == "code" %}
 							{% if post.data.button %}
-								<button class="reload button"><span><span>{{post.data.button|capitalize}}</span></span></button>
+								<button class="reload button" data-reload><span><span>{{post.data.button|capitalize}}</span></span></button>
 							{% endif %}
 							{% if post.url %}
 								<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title|safe}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %}></iframe>
@@ -185,7 +185,7 @@ pagination:
 								{% for media in post.data.media %}
 									{% if media.url %}
 										<figure id="external-{{media.id}}" class="media-attachment" aria-label="{{media.description}}">
-											<a class="expand" href="#external-{{media.id}}-lightbox" role="button" aria-expanded="false" aria-label="Expand image">
+											<a class="expand" href="#external-{{media.id}}-lightbox" role="button" aria-expanded="false" aria-label="Expand image" data-media-expand>
 												{% external media.url, media.description, 500 %}
 											</a>
 										</figure>
@@ -227,24 +227,24 @@ pagination:
 	</div>
 	<nav class="pagination main-pagination" aria-label="Pagination">
 		{% if (pagination.href.next != null) %}
-			<button class="load button"><span><span>Load more</span></span></button>
+			<button class="load button" data-load><span><span>Load more</span></span></button>
 		{% endif %}
 		{% if (pagination.href.previous) and (pagination.pageNumber != 0) %}
 			<a class="newer button button-reverse" href="{{pagination.href.previous}}"><span><span>Newer</span></span></a>
 		{% endif %}
 		{% if pagination.href.next %}
-			<a class="older button" href="{{pagination.href.next}}"><span><span>Older</span></span></a>
+			<a class="older button" href="{{pagination.href.next}}" data-load-path><span><span>Older</span></span></a>
 		{% endif %}
 	</nav>
 </section>
 
 {% include 'pages/posts/author.html' %}
 
-<div class="lightbox-group posts-lightbox-group" hidden>
+<div class="lightbox-group" data-lightbox-container hidden>
 	{% for post in pagination.items %}
 		{% if post.data.category == "media" %}
-			<a class="lightbox" id="{{post.data.date|safe}}-{{post.data.name}}-lightbox" role="button" aria-expanded="true" aria-label="Close image" href="#{{post.data.date|safe}}-{{post.data.name}}" data-append></a>
-			<figure class="image" role="dialog" aria-label="Image preview" aria-modal="true" data-content data-append>
+			<a class="lightbox" id="{{post.data.date|safe}}-{{post.data.name}}-lightbox" role="button" aria-expanded="true" aria-label="Close image" href="#{{post.data.date|safe}}-{{post.data.name}}" data-lightbox data-lightbox-append></a>
+			<figure class="image" role="dialog" aria-label="Image preview" aria-modal="true" data-content data-lightbox-append>
 				{% if post.data.upscale %}
 					<picture>
 						<img class="upscale" src="{% include post.data.upscale %}"{% if post.data.upscaleWidth %} width="{{post.data.upscaleWidth}}"{% endif %}{% if post.data.upscaleHeight %} height="{{post.data.upscaleHeight}}"{% endif %} alt="{{post.data.description}}"/>
@@ -260,8 +260,8 @@ pagination:
 		{% elseif (post.data.category == "social") and (post.data.media) %}
 			{% for media in post.data.media %}
 				{% if media.url %}
-					<a class="lightbox" id="external-{{media.id}}-lightbox" role="button" aria-expanded="true" aria-label="Close image" href="#external-{{media.id}}" data-append></a>
-					<figure class="image" role="dialog" aria-label="Image preview" aria-modal="true" data-content data-append>
+					<a class="lightbox" id="external-{{media.id}}-lightbox" role="button" aria-expanded="true" aria-label="Close image" href="#external-{{media.id}}" data-lightbox data-lightbox-append></a>
+					<figure class="image" role="dialog" aria-label="Image preview" aria-modal="true" data-content data-lightbox-append>
 						{% external media.url, media.description, media.meta.original.width %}
 					</figure>
 				{% endif %}
@@ -269,8 +269,8 @@ pagination:
 		{% elseif (post.data.category == "writing") %}
 			{% excerpt post, "lightbox" %}
 		{% elseif post.data.category == "code" %}
-			<a class="lightbox" id="{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}-lightbox" role="button" aria-expanded="true" aria-label="Close preview of {{post.data.title}}" href="#{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}" data-append data-desktop></a>
-			<figure class="iframe" role="dialog" aria-label="Preview of {{post.data.title}}" aria-modal="true" data-append data-content>
+			<a class="lightbox" id="{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}-lightbox" role="button" aria-expanded="true" aria-label="Close preview of {{post.data.title}}" href="#{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}" data-lightbox data-lightbox-append data-desktop></a>
+			<figure class="iframe" role="dialog" aria-label="Preview of {{post.data.title}}" aria-modal="true" data-lightbox-append data-content>
 				{% if post.url %}
 					<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %}></iframe>
 					<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}">Please enable Javascript to view this code demo.</noscript>
@@ -280,5 +280,5 @@ pagination:
 			</figure>
 		{% endif %}
 	{% endfor %}
-	<div class="lightbox-background" data-append></div>
+	<div class="lightbox-background" data-lightbox-append></div>
 </div>
