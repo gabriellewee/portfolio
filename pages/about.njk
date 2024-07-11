@@ -54,24 +54,7 @@
 			</div>
 		</article>
 
-		<article class="post post-about post-size-xs post-versions" data-grid-item>
-			<div class="post-inner post-animate">
-				<header class="post-header">
-					<h2>Versions</h2>
-				</header>
-				<div class="post-links">
-					<ol>
-						{% for link in range(1, 6) %}
-  							<li>
-								<a class="button" href="/v{{link}}/" target="blank"><span><span>Version {{link}}</span></span></a>
-							</li>
-						{% endfor %}
-					</ol>
-				</div>
-			</div>
-		</article>
-
-		<article class="post post-about post-size-m post-sitemap" data-grid-item>
+		<article class="post post-about post-size-xs post-sitemap" data-grid-item>
 			<div class="post-inner post-animate">
 				<header class="post-header">
 					<h2>Site Map</h2>
@@ -109,6 +92,27 @@
 							</li>
 						{% endfor %}
 					</ul>
+				</div>
+			</div>
+		</article>
+
+		<article class="post post-about post-versions" data-grid-item>
+			<div class="post-inner post-animate">
+				<header class="post-header">
+					<h2>Versions</h2>
+				</header>
+				<div class="post-links">
+					<ol>
+						{% for link in range(1, 6) %}
+  							<li>
+								<a href="/v{{link}}/" target="blank" aria-label="Version {{link}}" style="--label: 'Version {{link}}'">
+									<picture>
+										<img src="/static/images/svg/versions/v{{link}}.svg" width="100" height="100" alt=""/>
+									</picture>
+								</a>
+							</li>
+						{% endfor %}
+					</ol>
 				</div>
 			</div>
 		</article>
