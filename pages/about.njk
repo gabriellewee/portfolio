@@ -49,7 +49,11 @@
 					<h2>Build</h2>
 				</header>
 				<div class="post-content post-text">
-					<p>This website is built with <a href="https://www.11ty.dev">Eleventy</a>, hosted on <a href="https://github.com/gabriellewee/portfolio">Github</a>, and deployed via <a href="https://netlify.com/">Netlify</a>. The domain provider is <a href="https://www.netim.com">Netim</a>. Templates are built from a combination of <a href="https://mozilla.github.io/nunjucks/">Nunjucks</a>, Markdown, and vanilla HTML. Styles are built with <a href="https://sass-lang.com">SASS</a> and <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>.</p>
+					<p>This website is built with <a href="https://www.11ty.dev">Eleventy</a>, hosted on <a href="https://github.com/gabriellewee/portfolio">Github</a>, and deployed via <a href="https://netlify.com/">Netlify</a>. The domain provider is <a href="https://www.netim.com">Netim</a>. Templates are built from a combination of <a href="https://mozilla.github.io/nunjucks/">Nunjucks</a>, <a href="https://github.com/markdown-it/markdown-it">Markdown</a>, and vanilla HTML. Styles are built with <a href="https://sass-lang.com">SASS</a> and <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>.</p>
+					<h3>Resources</h3>
+					<ul>
+						<li><a href="https://isotope.metafizzy.co">Isotope</a> and <a href="https://infinite-scroll.com">Infinite Scroll</a> by <a href="https://desandro.com">Dave DeSandro</a> of <a href="https://metafizzy.co">Metafizzy</a></li><li><a href="https://gumroad.com/l/dank-mono">Dank Mono</a> font by <a href="https://kitten.sh">Phil Pluckthun</a></li><li><a href="https://github.com/github/mona-sans">Mona Sans</a> font by <a href="https://github.com/github">Github</a></li><li><a href="https://greensock.com/">Greensock</a></li>
+					</ul>
 				</div>
 			</div>
 		</article>
@@ -76,27 +80,7 @@
 			</div>
 		</article>
 
-		<article class="post post-about post-size-m post-colors" data-grid-item>
-			<div class="post-inner post-animate">
-				<header class="post-header">
-					<h2>Colors</h2>
-				</header>
-				<div class="post-links">
-					<ul>
-						{% for color in colors %}
-							<li>
-								<div class="color color-{{color.name}}">
-									<span></span>
-									<span aria-label="{{color.name|capitalize}}">{{color.hex}}</span>
-								</div>
-							</li>
-						{% endfor %}
-					</ul>
-				</div>
-			</div>
-		</article>
-
-		<article class="post post-about post-versions" data-grid-item>
+		<article class="post post-about post-size-m post-versions" data-grid-item>
 			<div class="post-inner post-animate">
 				<header class="post-header">
 					<h2>Versions</h2>
@@ -113,6 +97,26 @@
 							</li>
 						{% endfor %}
 					</ol>
+				</div>
+			</div>
+		</article>
+
+		<article class="post post-about post-size-xs post-colors" data-grid-item>
+			<div class="post-inner post-animate">
+				<header class="post-header">
+					<h2>Colors</h2>
+				</header>
+				<div class="post-links">
+					<ul>
+						{% for color in colors %}
+							<li>
+								<div class="color color-{{color.name}}">
+									<span></span>
+									<span aria-label="{{color.name|capitalize}}">{{color.hex}}</span>
+								</div>
+							</li>
+						{% endfor %}
+					</ul>
 				</div>
 			</div>
 		</article>
@@ -152,19 +156,6 @@
 								{% endif %}
 							</li>
 						{% endif %}{% endfor %}
-					</ul>
-				</div>
-			</div>
-		</article>
-
-		<article class="post post-about post-thanks" data-grid-item>
-			<div class="post-inner post-animate">
-				<header class="post-header">
-					<h2>Thanks</h2>
-				</header>
-				<div class="post-content post-text">
-					<ul>
-						<li><a href="https://www.11ty.dev">Eleventy</a> by <a href="https://www.zachleat.com">Zach Leatherman</a></li><li><a href="https://isotope.metafizzy.co">Isotope</a> and <a href="https://infinite-scroll.com">Infinite Scroll</a> by <a href="https://desandro.com">Dave DeSandro</a> of <a href="https://metafizzy.co">Metafizzy</a></li><li><a href="https://gumroad.com/l/dank-mono">Dank Mono</a> font by <a href="https://kitten.sh">Phil Pluckthun</a></li><li><a href="https://github.com/github/mona-sans">Mona Sans</a> font by <a href="https://github.com/github">Github</a></li><li><a href="https://greensock.com/">Greensock</a></li>
 					</ul>
 				</div>
 			</div>
