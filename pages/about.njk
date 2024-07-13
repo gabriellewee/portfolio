@@ -89,10 +89,13 @@
 					<ol>
 						{% for link in range(1, 6) %}
   							<li>
-								<a href="/v{{link}}/" target="blank" aria-label="Version {{link}}" style="--label: 'Version {{link}}'">
-									<picture>
-										<img src="/static/images/svg/versions/v{{link}}.svg" width="100" height="100" alt=""/>
-									</picture>
+								<a href="/v{{link}}/" target="blank">
+									<span>
+										<picture>
+											<img src="/static/images/svg/versions/v{{link}}.svg" width="100" height="100" alt=""/>
+										</picture>
+										<span>Version <span>{{link}}</span></span>
+									</span>
 								</a>
 							</li>
 						{% endfor %}

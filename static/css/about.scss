@@ -66,30 +66,48 @@
 	}
 	a {
 		display: block;
-		position: relative;
 		width: 100%;
 		height: auto;
 		aspect-ratio: 1 / 1;
-		border-radius: 6%;
 		transition: scale .2s ease-out;
-		&:after {
-			@include blur(4px, rose, 1, .9, .75);
-			@include font-weight-width(600, 120);
-			opacity: 0;
-			transition: opacity .2s ease-out;
-			content: var(--label);
-			display: grid;
-			place-items: center;
-			position: absolute;
-			top: 0;
-			left: 0;
+		border-radius: 6%;
+		> span {
+			@include border-radius(6%);
+			display: block;
 			width: 100%;
 			height: 100%;
-			border-radius: 6%;
-			color: white;
+			position: relative;
+			@supports ((-webkit-backdrop-filter: blur(0px)) or (backdrop-filter: blur(0px))) {
+				backdrop-filter: blur(0px);
+			}
+			> span {
+				@include blur(4px, mauve, 1, .9, .8);
+				@include font-weight-width(600, 120);
+				opacity: 0;
+				transition: opacity .2s ease-out, background-color .2s ease-out;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				align-content: center;
+				justify-content: center;
+				position: absolute;
+				top: -4px;
+				left: -4px;
+				width: calc(100% + 8px);
+				height: calc(100% + 8px);
+				font-size: 0.75rem;
+				color: white;
+				text-align: center;
+				text-transform: uppercase;
+				span {
+					@include font-weight-width(800, 120);
+					display: block;
+					font-size: 2.5rem;
+				}
+			}
 		}
 		&:hover, &:focus, &:active {
-			&:after {
+			> span > span {
 				opacity: 1;
 			}
 		}
@@ -104,6 +122,9 @@
 		&:active {
 			@media (prefers-reduced-motion: no-preference) {
 				scale: .98;
+			}
+			> span > span {
+				@include blur(4px, slate, 1, .98, .9);
 			}
 		}
 	}
