@@ -52,7 +52,7 @@ a {
 			background-color: gHSL(rose, 1, .5);
 		}
 		@include theme(dark, 1) {
-			background-color: gHSL(white, 1, .2);
+			background-color: gHSL(blush, 1, .3);
 		}
 	}
 
@@ -61,7 +61,7 @@ a {
 			background-color: gHSL(rose, 1, .5);
 		}
 		@include theme(dark, 1) {
-			background-color: gHSL(white, 1, .2);
+			background-color: gHSL(blush, 1, .3);
 		}
 	}
 }
