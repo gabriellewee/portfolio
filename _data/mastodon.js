@@ -2,19 +2,17 @@ const Cache = require('@11ty/eleventy-fetch');
 
 module.exports = async () => {
 	try {
-		let key = process.env.MASTODON_API_KEY;
-		let url = "https://front-end.social/api/v1/accounts/110827735972976242/statuses?limit=40&exclude_replies=true&exclude_reblogs=true";
-
-		return Cache(url, {
+		return Cache("https://front-end.social/api/v1/accounts/110827735972976242/statuses?limit=40&exclude_replies=true&exclude_reblogs=true", {
 			duration: '1d',
 			type: 'json',
 			fetchOptions: {
 				headers: {
-					'Authorization': `Bearer ${key}`
+					'Authorization': `Bearer ${process.env.MASTODON_API_KEY}`
 				}
 			}
 		});
 	} catch(e) {
+		console.error(e);
 		return [];
 	}
 };
