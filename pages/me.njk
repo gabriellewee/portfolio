@@ -66,11 +66,11 @@
 
 				<h3>Nintendo Switch:</h3>
 				<ul class="grid">
-					{% for game in notion.switch.results %}{% if game.properties.Archive.checkbox != true %}
+					{% for game in notion.switch.results %}
 						<li>
 							{% unfurlGame game.properties.URL.url, game.properties.Name.title[0].plain_text, "post-external", 300, "eager" %}
 						</li>
-					{% endif %}{% endfor %}
+					{% endfor %}
 				</ul>
 				
 				<div class="friend-code-container">

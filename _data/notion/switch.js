@@ -8,6 +8,14 @@ module.exports = async () => {
 			type: 'json',
 			fetchOptions: {
 				method: 'POST',
+				body: JSON.stringify({
+					filter: {
+						property: "Archive",
+						checkbox: {
+							equals: false
+						}
+					}
+				}),
 				headers: {
 					'Authorization': `Bearer ${process.env.NOTION_API_KEY}`,
 					'Notion-Version': '2022-06-28',
