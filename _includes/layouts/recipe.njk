@@ -16,11 +16,11 @@ size: s
 
 <section class="posts-container post-single h-entry">
 	<div class="posts">
-		<article class="post post-{{category}}{% for tag in tags %}{% if tag != 'entries' %} post-{{tag}}{% endif %}{% endfor %}">
+		<article class="post post-{{category}}{% for tag in tags %}{% if tag != 'entries' %} post-{{tag}}{% endif %}{% endfor %}{% for tag in tagslist %} post-{{tag}}{% endfor %}">
 			<div class="post-inner">
 				<header class="post-header">
-					<div class="post-header-image header-{% stats './static/images/' + key + '/' + page.fileSlug + '.jpg', 'color' %}">
-						{% image './static/images/' + key + '/' + page.fileSlug + '.jpg', 'Hero image showing ' + title, 'default' %}
+					<div class="post-header-image header-{% stats './static/images/' + pagination.alias + '/' + page.fileSlug + '.jpg', 'color' %}">
+						{% image './static/images/' + pagination.alias + '/' + page.fileSlug + '.jpg', 'Hero image showing ' + title, 'default' %}
 					</div>
 					<div class="post-header-content">
 						<h2><a class="u-url" href="{{page.url}}" aria-label="Recipe for {{title|safe}}"><span class="p-name"><span>{{title|safe}}</span></span></a></h2>
@@ -43,12 +43,12 @@ size: s
 				</aside>
 
 				<div class="post-content post-text e-content">
-					{{content|images|safe}}
+					{{recipe|markdown|safe}}
 				</div>
 
 				<footer class="post-footer">
 					<a class="button hide" href="#" data-task-list-reset><span><span>Reset ingredients</span></span></a>
-					<div class="emoji" style="--emoji: '{{emoji}}'"></div>
+					<div class="emoji" style="--emoji: '{{icon}}'"></div>
 				</footer>
 			</div>
 		</article>

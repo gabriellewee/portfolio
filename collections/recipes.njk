@@ -1,0 +1,31 @@
+---js
+{
+    tags: "recipe",
+    category: "cooking",
+    pagination: {
+        data: "notion.recipes",
+        size: 1,
+        addAllPagesToCollections: true,
+        alias: "recipes"
+    },
+    eleventyComputed: {
+        recipes(data) {
+            data.page.date = new Date(data.recipes.date);
+            data.page.fileSlug = this.slugify(data.recipes.title);
+            data.excerpt = data.recipes.excerpt;
+            data.recipe = data.recipes.content;
+            data.tagslist = data.recipes.tags;
+            data.title = data.recipes.title;
+            data.icon = data.recipes.icon;
+            data.servings = data.recipes.servings;
+            data.prep = data.recipes.prep;
+            data.cook = data.recipes.cook;
+        },
+        permalink: function (data) {
+            return `/recipes/${this.slugify(data.recipes.title)}/`
+        }
+    },
+    layout: "layouts/recipe.njk",
+    templateEngineOverride: "md,njk"
+}
+---

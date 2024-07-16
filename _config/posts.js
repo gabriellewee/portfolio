@@ -47,6 +47,10 @@ module.exports = eleventyConfig => {
 	}).use(markdownItAttrs).use(markdownItTasks, {disabled: false, idPrefix: "task-list-checkbox-"});
 	eleventyConfig.setLibrary("md", markdownLibrary);
 
+	eleventyConfig.addFilter("markdown", content => {
+		return markdownLibrary.render(content);
+	});
+
 	eleventyConfig.addFilter("stripAttr", stripped => {
 		let removals = /<div class="lightbox-group" hidden>([\s\S]*?)<\/div>|<\/?a class="expand"[^>]*>|<\/?span[^>]*>|<\/?picture[^>]*>|<\/?source[^>]*>|<\/?div[^>]*>|<\/?script[^>]*>|\t|\r|\n/g;
 		stripped = stripped.replace(removals, '');
