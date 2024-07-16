@@ -68,13 +68,7 @@
 				<ul class="grid">
 					{% for game in notion.switch.results %}{% if game.properties.Archive.checkbox != true %}
 						<li>
-							{% if game.properties.Image.url %}
-								<a class="post-external" href="{{game.properties.URL.url}}" target="_blank">
-									{% external game.properties.Image.url, game.properties.Name.title[0].plain_text, 300, "eager" %}
-								</a>
-							{% else %}
-								{% unfurlGame game.properties.URL.url, game.properties.Name.title[0].plain_text, "post-external", 300, "eager" %}
-							{% endif %}
+							{% unfurlGame game.properties.URL.url, game.properties.Name.title[0].plain_text, "post-external", 300, "eager" %}
 						</li>
 					{% endif %}{% endfor %}
 				</ul>
