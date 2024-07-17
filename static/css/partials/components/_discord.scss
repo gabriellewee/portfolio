@@ -75,21 +75,6 @@
 				&:before, &:after {
 					background-color: black;
 				}
-				&:before {
-					clip-path: polygon(0 0, 0 100%, 100% 100%);
-					top: 4px;
-					right: -16px;
-					z-index: -1;
-					width: 8px;
-					height: 8px;
-					border-bottom-left-radius: 2px;
-				}
-				&:after {
-					left: calc(100% + 12px);
-					padding: 4px 6px;
-					border-radius: 3px;
-					@include font-weight-width(600, 100);
-				}
 			}
 		}
 		.description {
@@ -112,7 +97,7 @@
 		.about-content {
 			display: inline-block;
 			padding: 2px 4px;
-			background-color: var(--color-iron);
+			background-color: gHSL(iron, .75);
 			font-family: var(--font-mono);
 			font-size: .75rem;
 			line-height: 1.5;

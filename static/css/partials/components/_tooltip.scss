@@ -1,42 +1,112 @@
 .tooltip {
+	--t: 10px;
 	display: inline-flex;
 	align-items: center;
 	position: relative;
 	width: fit-content;
 	&:before, &:after {
-		opacity: 0;
-		visibility: hidden;
 		display: block;
 		position: absolute;
-		transition: opacity .1s ease-out, visibility .1s ease-out;
 		@include theme(light, 2) {
-			background-color: var(--color-primary);
+			background-color: var(--color-message);
+			color: var(--color-primary);
 		}
 		@include theme(dark, 2) {
-			background-color: gHSL(iron, .55);
+			background-color: gHSL(iron, .7);
+			color: white;
 		}
 	}
 	&:before {
 		content: "";
 		rotate: 45deg;
+		z-index: 0;
+		width: var(--t);
+		height: var(--t);
 	}
 	&:after {
-		content: "";
-		color: white;
+		content: var(--tooltip-label);
+		z-index: 1;
 		width: fit-content;
-		padding: 6px 8px;
+		padding: calc(var(--p)/2) calc(var(--p)/3*2);
 		border-radius: 2px;
 		font-size: .75rem;
 		text-transform: uppercase;
 		@include font-weight-width(600, 100);
 	}
-	&.copied {
+	&.hidden {
 		&:before, &:after {
-			opacity: 1;
-			visibility: visible;
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+	&.small {
+		--t: 8px;
+		&:after {
+			padding: calc(var(--p)/3) calc(var(--p)/2);
+		}
+	}
+	&.large {
+		--t: 12px;
+		&:after {
+			font-size: 1rem;
+			padding: calc(var(--p)/3*2) var(--p) calc(var(--p)/2);
+			border-radius: 4px;
+		}
+	}
+	&-bottom {
+		&:before {
+			border-top-left-radius: 2px;
+			left: calc(50% - var(--t)/2);
+		}
+		&.inline {
+			margin-top: var(--p);
+			&:before {
+				top: calc(var(--p)/-2);
+			}
+		}
+		&:not(.inline) {
+			&:before {
+				top: calc(100% + var(--p)/3*2 - var(--t)/2)
+			}
+			&:after {
+				top: calc(100% + var(--p)/3*2);
+				left: 50%;
+				translate: -50% 0;
+			}
+		}
+	}
+	&-right {
+		&:before {
+			border-bottom-left-radius: 2px;
+			top: calc(50% - var(--t)/2);
+			left: calc(100% + var(--p)/3*2);
 		}
 		&:after {
-			content: "Copied";
+			left: calc(100% + var(--p)/3*2 + var(--t)/2);
+		}
+	}
+	&.monospace {
+		&:after {
+			font-family: var(--font-mono);
+			@include font-weight-width(700, 100);
+		}
+	}
+	&.inline {
+		&:after {
+			position: relative;
+		}
+	}
+	&.dark {
+		&:before, &:after {
+			@include theme(light, 2) {
+				background-color: var(--color-primary);
+			}
+			@include theme(dark, 2) {
+				background-color: gHSL(iron, .55);
+			}
+		}
+		&:after {
+			color: white;
 		}
 	}
 }

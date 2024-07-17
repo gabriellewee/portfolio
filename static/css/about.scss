@@ -212,87 +212,45 @@
 	li {
 		margin-bottom: var(--p);
 	}
+	.color-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 	.color {
-		span {
-			display: block;
-			margin-left: auto;
-			margin-right: auto;
-			text-align: center;
-			&:first-child {
-				width: 36px;
-				height: 36px;
-				border-radius: 100%;
-				border: calc(var(--p)/4) solid;
-				@include theme(light, 2) {
-					border-color: var(--color-message);
-				}
-				@include theme(dark, 2) {
-					border-color: white;
-				}
-				@include contrast(both, 2) {
-					border-color: var(--color-primary);
-				}
-			}
-			&:last-child {
-				position: relative;
-				margin-top: var(--p);
-				padding: calc(var(--p)/3*2) var(--p) calc(var(--p)/2);
-				border-radius: calc(var(--p)/3);
-				font-family: var(--font-mono);
-				font-weight: bold;
-				font-size: 1rem;
-				text-transform: uppercase;
-				@include theme(light, 2) {
-					background-color: var(--color-message);
-					color: var(--color-primary);
-				}
-				@include theme(dark, 2) {
-					background-color: gHSL(iron, .7);
-					color: white;
-				}
-				@include contrast(both, 2) {
-					outline: 1.5px solid var(--color-primary);
-				}
-				&:before {
-					rotate: 45deg;
-					content: "";
-					display: block;
-					position: absolute;
-					z-index: -1;
-					width: var(--p);
-					height: var(--p);
-					border-top-left-radius: 2px;
-					top: calc(var(--p)/-2);
-					left: 50%;
-					margin-left: calc(var(--p)/-2);
-					@include theme(light, 2) {
-						background-color: var(--color-message);
-					}
-					@include theme(dark, 2) {
-						background-color: gHSL(iron, .7);
-					}
-					@include contrast(both, 2) {
-						display: none;
-					}
-				}
-			}
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+		width: 36px;
+		height: 36px;
+		border-radius: 100%;
+		border: calc(var(--p)/4) solid;
+		@include theme(light, 2) {
+			border-color: var(--color-message);
 		}
-		&-iron span:first-child {
+		@include theme(dark, 2) {
+			border-color: white;
+		}
+		@include contrast(both, 2) {
+			border-color: var(--color-primary);
+		}
+		&-iron {
 			background-color: var(--color-iron);
 		}
-		&-blush span:first-child {
+		&-blush {
 			background-color: var(--color-blush);
 		}
-		&-rose span:first-child {
+		&-rose {
 			background-color: var(--color-rose);
 		}
-		&-mauve span:first-child {
+		&-mauve {
 			background-color: var(--color-mauve);
 		}
-		&-slate span:first-child {
+		&-slate {
 			background-color: var(--color-slate);
 		}
-		&-mint span:first-child {
+		&-mint {
 			background-color: var(--color-mint);
 		}
 	}

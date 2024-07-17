@@ -1,4 +1,4 @@
-.top, .bottom {
+header.top, .bottom {
 	max-width: var(--width);
 	margin-left: auto;
 	margin-right: auto;
@@ -6,7 +6,7 @@
 	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
 }
 
-.top {
+header.top {
 	padding-top: calc((var(--p)*2) + env(safe-area-inset-top));
 	line-height: 1.2;
 	@include viewport($ipad-mini) {

@@ -192,15 +192,15 @@ const copyButtons = ((buttons = Array.from(document.querySelectorAll("[data-clip
 		let clipboard = new ClipboardJS(button);
 		clipboard.on("success", e => {
 			if (button.tagName === "INPUT") {
-				e.trigger.parentNode.classList.add("copied");
+				e.trigger.parentNode.classList.remove("hidden");
 			} else {
-				e.trigger.classList.add("copied");
+				e.trigger.classList.remove("hidden");
 			}
 			setTimeout(() => {
 				if (button.tagName === "INPUT") {
-					e.trigger.parentNode.classList.remove("copied");
+					e.trigger.parentNode.classList.add("hidden");
 				} else {
-					e.trigger.classList.remove("copied");
+					e.trigger.classList.add("hidden");
 				}
 			}, 3000);
 		});

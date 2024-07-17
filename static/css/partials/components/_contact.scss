@@ -158,9 +158,6 @@
 			grid-gap: calc(var(--p)*2);
 			grid-template-columns: 1fr 1fr;
 		}
-		.tooltip {
-			display: inline-block;
-		}
 		.contact-sites, .contact-messages {
 			position: relative;
 			z-index: 1;
@@ -204,28 +201,6 @@
 			margin-top: 1rem;
 			@include viewport(mobile) {
 				margin-top: 0;
-			}
-		}
-		.tooltip {
-			&:before {
-				clip-path: polygon(0 0, 0 100%, 100% 0);
-				left: 50%;
-				top: 100%;
-				width: 10px;
-				height: 10px;
-				translate: -50% calc(var(--p)/3);
-				border-top-left-radius: 2px;
-				border-bottom-left-radius: unset;
-			}
-			&:after {
-				left: 50%;
-				top: 100%;
-				translate: -50% calc(var(--p)/3 + 4px);
-			}
-			&.copied {
-				&:after {
-					content: "Username copied"
-				}
 			}
 		}
 	}

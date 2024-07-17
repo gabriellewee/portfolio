@@ -461,8 +461,8 @@
 			word-break: break-all;
 			overflow-wrap: break-word;
 			border-radius: 2px;
-			padding-left: calc(var(--p)/6);
-			padding-right: calc(var(--p)/6);
+			padding-left: 2px;
+			padding-right: 2px;
 			background-color: gHSL(iron, 1, .2);
 			font-size: 1.0625rem;
 		}

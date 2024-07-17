@@ -63,14 +63,14 @@ const popup = ((containers = Array.from(document.querySelectorAll("[data-popup]"
 				trigger.addEventListener("keydown",  e => {
 					if (e.key === "Enter") {
 						if (popupTrigger.checked) {
-							copyElem.classList.remove("copied");
+							copyElem.classList.add("hidden");
 						}
 					}
 				});
 				trigger.addEventListener("click",  e => {
 					if (popupTrigger.checked) {
 						setTimeout(() => {
-							copyElem.classList.remove("copied");
+							copyElem.classList.add("hidden");
 						}, 300);
 					}
 				});
@@ -81,7 +81,7 @@ const popup = ((containers = Array.from(document.querySelectorAll("[data-popup]"
 			let clipboard = new ClipboardJS(copyButton);
 
 			clipboard.on("success", e => {
-				copyElem.classList.add("copied");
+				copyElem.classList.remove("hidden");
 				e.clearSelection();
 			});
 			copyButton.addEventListener("keydown", e => {
@@ -93,7 +93,7 @@ const popup = ((containers = Array.from(document.querySelectorAll("[data-popup]"
 			});
 			container.addEventListener("keydown",  e => {
 				if (e.key === "Escape") {
-					copyElem.classList.remove("copied");
+					copyElem.classList.add("hidden");
 				}
 			});
 		}

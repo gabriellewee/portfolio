@@ -113,9 +113,9 @@
 					<ul>
 						{% for color in colors %}
 							<li>
-								<div class="color color-{{color.name}}">
-									<span></span>
-									<span aria-label="{{color.name|capitalize}}">{{color.hex}}</span>
+								<div class="color-container" aria-label="{{color.name|capitalize}} - {{color.hex}}">
+									<span class="color color-{{color.name}}"></span>
+									<span class="tooltip tooltip-bottom large inline monospace" style="--tooltip-label: '{{color.hex}}'"></span>
 								</div>
 							</li>
 						{% endfor %}
@@ -176,6 +176,6 @@
 		</article>
 	</div>
 
-	{% include 'pages/shared/links.html' %}
+	{% include 'pages/shared/contact.html' %}
 	{% include 'pages/posts/author.html' %}
 </section>
