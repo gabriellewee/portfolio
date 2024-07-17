@@ -29,11 +29,11 @@
 		margin-top: calc(var(--p)*2);
 	}
 	.mentions-header {
-		@include font-weight-width(800, 120);
 		font-size: 2rem;
 		margin-top: calc(var(--p)*2.5);
 		margin-bottom: calc(var(--p)*1.5);
 		grid-column: 1/-1;
+		@include font-weight-width(800, 120);
 		@include viewport(mobile) {
 			font-size: 2.25rem;
 		}
@@ -105,21 +105,21 @@
 						position: absolute;
 					}
 					&:before {
-						@include clip-path-edges(3px);
 						z-index: -2;
 						top: -1.5px;
 						left: -1.5px;
 						width: calc(100% + 3px);
 						height: calc(100% + 3px);
 						background-color: var(--color-primary);
+						@include clip-path-edges(3px);
 					}
 					&:after {
-						@include clip-path-edges(2px);
 						z-index: -1;
 						top: 0;
 						left: 0;
 						width: 100%;
 						height: 100%;
+						@include clip-path-edges(2px);
 					}
 				}
 			}
@@ -166,12 +166,12 @@
 	}
 	.avatar {
 		&:before {
-			@include before;
 			background: radial-gradient(
 				circle at center left,
 				var(--color-blush),
 				var(--color-rose)
 			);
+			@include before;
 		}
 		&:hover {
 			@media (prefers-reduced-motion: no-preference) {
@@ -184,16 +184,16 @@
 			}
 		}
 		picture {
-			@include clip-path-edges(2px);
 			width: 48px;
 			height: 48px;
+			@include clip-path-edges(2px);
 		}
 	}
 	.username, .time {
-		@include font-weight-width(600, 90);
 		z-index: 1;
 		color: white;
 		font-size: .875rem;
+		@include font-weight-width(600, 90);
 		&:before {
 			@include before;
 			@include theme(light, 2) {
@@ -212,7 +212,6 @@
 		}
 		&:after {
 			@include contrast(both, 2) {
-				@include clip-path-edges(3px);
 				content: "";
 				display: block;
 				position: absolute;
@@ -222,6 +221,7 @@
 				width: calc(100% + 3px);
 				height: calc(100% + 3px);
 				background-color: var(--color-primary);
+				@include clip-path-edges(3px);
 			}
 		}
 		&:focus-visible {
@@ -235,10 +235,10 @@
 			}
 		}
 		> * {
-			@include clip-path-edges(2px);
 			transition: background-color .2s ease-out;
 			display: inline-block;
 			padding: calc(var(--p)/3*2) var(--p);
+			@include clip-path-edges(2px);
 		}
 	}
 	.username {

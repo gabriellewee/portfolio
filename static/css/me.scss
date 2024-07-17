@@ -14,9 +14,9 @@
 	.post-header {
 		margin-bottom: calc(var(--p)*1.5);
 		h2 {
-			@include font-weight-width(800, 120);
 			font-size: 1.5rem;
 			line-height: 1.2;
+			@include font-weight-width(800, 120);
 			@include viewport(mobile) {
 				font-size: 1.75rem;
 			}
@@ -50,12 +50,12 @@
 	display: block;
 	position: relative;
 	&:before {
-		@include before;
 		background: radial-gradient(
 			circle at center left,
 			var(--color-rose),
 			var(--color-mauve)
 		);
+		@include before;
 	}
 	picture {
 		@include clip-path-edges(2px);
@@ -81,21 +81,23 @@
 	}
 	$width: 320px;
 	.post-image {
-		@include invert(100%);
 		display: grid;
 		place-items: center;
 		position: relative;
 		width: 100%;
 		height: $width;
+		@include invert(100%);
 		&:before, &:after {
-			@include background-image(avatars/intro, jpg);
 			content: "";
 			display: block;
 			position: absolute;
-			background-size: contain;
-			background-repeat: repeat;
-			background-position: center;
 			height: $width;
+			@include background-image(avatars/intro, jpg);
+			& {
+				background-size: contain;
+				background-repeat: repeat;
+				background-position: center;
+			}
 		}
 		&:before {
 			width: 100%;
@@ -154,10 +156,10 @@
 		}
 	}
 	h3 {
-		@include font-weight-width(450, 110);
 		font-size: 1.25rem;
 		margin-top: calc(var(--p)*2);
 		margin-bottom: var(--p);
+		@include font-weight-width(450, 110);
 	}
 	.button, .friend-code-container {
 		margin-top: calc(var(--p)*2);
@@ -168,12 +170,11 @@
 			align-items: center;
 		}
 		label {
-			@include font-weight-width(450, 110);
 			margin-right: var(--p);
 			font-size: 1.25rem;
+			@include font-weight-width(450, 110);
 		}
 		input {
-			@include clip-path-edges(2px);
 			appearance: none;
 			border: 0;
 			max-width: 208px;
@@ -181,6 +182,7 @@
 			font-family: var(--font-mono);
 			font-size: 1.125rem;
 			color: var(--color-primary);
+			@include clip-path-edges(2px);
 			@include theme(light, 2) {
 				background-color: gHSL(primary, 1, .1);
 			}
@@ -206,7 +208,6 @@
 			}
 			&:before {
 				@include contrast(both, 2) {
-					@include clip-path-edges(3px);
 					content: "";
 					display: block;
 					position: absolute;
@@ -215,6 +216,7 @@
 					width: calc(100% + 3px);
 					height: calc(100% + 3px);
 					background-color: var(--color-primary);
+					@include clip-path-edges(3px);
 				}
 			}
 		}
@@ -241,8 +243,8 @@
 		grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
 	}
 	picture {
-		@include clip-path-edges(2px);
 		background-color: gHSL(primary, 1, .05);
+		@include clip-path-edges(2px);
 		@include contrast(dark, 2) {
 			background-color: gHSL(primary, 1, .2);
 		}

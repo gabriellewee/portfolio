@@ -13,9 +13,9 @@
 		color: gHSL(white, 1, .8);
 	}
 	.contact-sites, .contact-messages {
-		@include font-weight-width(900, 125);
 		font-size: clamp(1.5rem, 3vw, 2rem);
 		line-height: 1.2;
+		@include font-weight-width(900, 125);
 		@include viewport($ipad-mini) {
 			line-height: 1.1;
 		}
@@ -124,7 +124,6 @@
 		margin-top: calc(var(--p)*2);
 		opacity: 0;
 		&:before {
-			@include clip-path-edges(2px);
 			content: "";
 			display: block;
 			position: absolute;
@@ -132,6 +131,7 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
+			@include clip-path-edges(2px);
 			@include theme(light, 2) {
 				background-color: white;
 			}
@@ -141,7 +141,6 @@
 		}
 		&:after {
 			@include contrast(both, 2) {
-				@include clip-path-edges(3px);
 				content: "";
 				display: block;
 				position: absolute;
@@ -151,6 +150,7 @@
 				width: calc(100% + 3px);
 				height: calc(100% + 3px);
 				background-color: var(--color-primary);
+				@include clip-path-edges(3px);
 			}
 		}
 		@include viewport(mobile) {
@@ -162,11 +162,11 @@
 			display: inline-block;
 		}
 		.contact-sites, .contact-messages {
-			@include font-weight-width(800, 120);
 			position: relative;
 			z-index: 1;
 			margin-top: 0;
 			font-size: 1.25rem;
+			@include font-weight-width(800, 120);
 			@include viewport($ipad-mini) {
 				line-height: 1.2;
 			}

@@ -119,7 +119,6 @@ section {
 }
 
 button[class*="pk"] {
-	@include btn-bg(#607D8B);
 	appearance: none;
 	padding: math.div($p, 3) math.div($p, 3)*2;
 	border: 0;
@@ -129,6 +128,7 @@ button[class*="pk"] {
 	font-weight: 500;
 	letter-spacing: 1px;
 	text-transform: uppercase;
+	@include btn-bg(#607D8B);
 	&[class*="gen1"] {
 		@include btn-bg(#82B92F);
 	}

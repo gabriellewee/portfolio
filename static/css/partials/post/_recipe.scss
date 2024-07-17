@@ -8,10 +8,10 @@
 .post-header {
 	position: relative;
 	h2 {
-		@include font-weight-width(800, 130);
 		order: 2;
 		font-size: 2.5rem;
 		line-height: 1.1;
+		@include font-weight-width(800, 130);
 		@include container(recipe, mobile, $mobile) {
 			font-size: 3rem;
 		}

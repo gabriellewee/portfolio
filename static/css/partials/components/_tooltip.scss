@@ -21,7 +21,6 @@
 		rotate: 45deg;
 	}
 	&:after {
-		@include font-weight-width(600, 100);
 		content: "";
 		color: white;
 		width: fit-content;
@@ -29,6 +28,7 @@
 		border-radius: 2px;
 		font-size: .75rem;
 		text-transform: uppercase;
+		@include font-weight-width(600, 100);
 	}
 	&.copied {
 		&:before, &:after {

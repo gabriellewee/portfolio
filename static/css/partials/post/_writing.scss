@@ -3,11 +3,11 @@
 		padding-bottom: var(--p);
 	}
 	h2 {
-		@include font-weight-width(800, 120);
 		order: 2;
 		width: 100%;
 		font-size: 2rem;
 		line-height: 1.1;
+		@include font-weight-width(800, 120);
 		@include viewport(mobile) {
 			order: 1;
 			width: unset;
@@ -265,7 +265,9 @@
 						white
 					);
 				}
-				color: var(--color-mix);
+				& {
+					color: var(--color-mix);
+				}
 				&:hover, &:focus, &:active {
 					> span {
 						text-decoration-color: var(--color-mix);

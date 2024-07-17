@@ -102,12 +102,12 @@
 			margin-right: calc(var(--p)*1.5);
 		}
 		span {
-			@include clip-path-edges(2px);
 			display: block;
 			position: relative;
 			padding-left: calc(var(--p)/2);
 			padding-right: calc(var(--p)/2);
 			line-height: 1.5;
+			@include clip-path-edges(2px);
 			&.tag-css-only {
 				background-color: var(--color-slate);
 			}
@@ -123,21 +123,21 @@
 					position: absolute;
 				}
 				&:before {
-					@include clip-path-edges(3px);
 					z-index: -2;
 					top: -1.5px;
 					left: -1.5px;
 					width: calc(100% + 3px);
 					height: calc(100% + 3px);
 					background-color: gHSL(primary, 1, .7);
+					@include clip-path-edges(3px);
 				}
 				&:after {
-					@include clip-path-edges(2px);
 					z-index: -1;
 					top: 0;
 					left: 0;
 					width: 100%;
 					height: 100%;
+					@include clip-path-edges(2px);
 				}
 				&.tag-css-only {
 					background-color: unset;
@@ -277,8 +277,8 @@
 		line-height: 1.3;
 	}
 	.button {
-		@include font-weight-width(600, 90);
 		order: 2;
+		@include font-weight-width(600, 90);
 		@include viewport(mobile) {
 			order: 1;
 			position: absolute;

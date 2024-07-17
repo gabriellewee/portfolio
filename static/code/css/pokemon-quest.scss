@@ -326,18 +326,20 @@ $types: (
 			}
 		}
 	} @else {
-		display: flex;
-		justify-content: space-between;
-		@if $b or $t == b0 {
-			align-items: flex-end;
-		}
-		&:before, &:after {
-			position: relative;
-			@if $t != b0 {
-				top: $t;
+		& {
+			display: flex;
+			justify-content: space-between;
+			@if $b or $t == b0 {
+				align-items: flex-end;
 			}
-			@if $b and $b != 0 {
-				bottom: $b;
+			&:before, &:after {
+				position: relative;
+				@if $t != b0 {
+					top: $t;
+				}
+				@if $b and $b != 0 {
+					bottom: $b;
+				}
 			}
 		}
 	}
@@ -2124,9 +2126,9 @@ label {
 			}
 		}
 		&:nth-child(4) {
+			clip-path: polygon(36.72% 29.82%, 63.28% 29.82%, 63.28% 0, 101% 0, 101% 100%, 0 100%, 0 0, 36.72% 0);
 			@include r(#977a7d, 100%, 22.27%, 58.98%);
 			@include o(white, 26.56%, 56.14%, $b: 0);
-			clip-path: polygon(36.72% 29.82%, 63.28% 29.82%, 63.28% 0, 101% 0, 101% 100%, 0 100%, 0 0, 36.72% 0);
 			&:before {
 				z-index: 1;
 				clip-path: polygon(22.06% 0, 22.06% 56.25%, 101% 56.25%, 101% 100%, 0 100%, 0 0);
@@ -2144,8 +2146,8 @@ label {
 #clefairy {
 	background: #f7d8db;
 	&:before {
-		@include r(#ebcdcf, 65.23%, 19.92%, $l: 6.64%);
 		clip-path: polygon(83.83% 66.67%, 83.83% 0, 100% 0, 100% 100%, 17.96% 100%, 0 54.9%, 10.78% 25.49%, 25.75% 66.67%);
+		@include r(#ebcdcf, 65.23%, 19.92%, $l: 6.64%);
 	}
 	> div {
 		@include nth(1, 2) {
@@ -2857,9 +2859,9 @@ label {
 		&:nth-child(4) {
 			display: flex;
 			align-items: flex-end;
+			clip-path: polygon(4.79% 13.73%, 95.21% 13.73%, 100% 0, 100% 100%, 0 100%, 0 0);
 			@include r(#a2768a, 73.44%, 19.92%, 63.67%, center);
 			@include o(#fffff1, 8.51%, 45.1%, 11.17%);
-			clip-path: polygon(4.79% 13.73%, 95.21% 13.73%, 100% 0, 100% 100%, 0 100%, 0 0);
 			div {
 				@include s(#d7a7be, $h: 33.33%);
 				position: unset;
@@ -2906,8 +2908,8 @@ label {
 		@include b(3.66%, 2, before);
 		@include b(50%, 2, div);
 		&:nth-child(4) {
-			@include r(#b07d8f, 57.81%, 20.7%, 62.89%, center);
 			clip-path: polygon(50% 0, 57.43% 20.75%, 100% 20.75%, 100% 100%, 0 100%, 0 20.75%, 42.57% 20.75%);
+			@include r(#b07d8f, 57.81%, 20.7%, 62.89%, center);
 			@include o(#efefe7, 11.49%, 50.94%, 8.11%);
 			div {
 				@include r(#cf9db2, 100%, 28.3%, b0);
@@ -2923,13 +2925,13 @@ label {
 	}
 	> div {
 		&:nth-child(1) {
-			@include r(null, 81.25%, 17.97%, 62.5%, center);
 			z-index: 1;
+			@include r(null, 81.25%, 17.97%, 62.5%, center);
 			@include o(#F3F7F7, 32.21%);
 			div {
+				z-index: 2;
 				@include r(null, 73.08%, 26.09%, 34.78%, center);
 				@include o(#363636, 7.89%);
-				z-index: 2;
 			}
 		}
 		&:nth-child(2) {
@@ -2944,8 +2946,8 @@ label {
 		&:nth-child(3) {
 			@include r();
 			&:before, &:after {
-				@include r(#484848, 10.94%, 46.88%, 5.08%, center);
 				border-radius: 10.71% 10.71% 0 0 / 2.5% 2.5% 0 0;
+				@include r(#484848, 10.94%, 46.88%, 5.08%, center);
 			}
 			&:before {
 				transform: rotate(-36deg) translateX(-120%) translateY(5%);
@@ -2954,8 +2956,8 @@ label {
 				transform: rotate(36deg) translateX(120%) translateY(5%);
 			}
 			div {
-				@include r(#484848, 10.16%, 46.88%, 5.08%, center);
 				border-radius: 11.54% 11.54% 0 0 / 2.5% 2.5% 0 0;
+				@include r(#484848, 10.16%, 46.88%, 5.08%, center);
 			}
 		}
 	}
@@ -3316,16 +3318,16 @@ label {
 		right: 8.98%;
 	}
 	> div {
+		clip-path: polygon(0 14.93%, 9.8% 0, 90.2% 0, 100% 14.93%, 100% 79.1%, 90.2% 100%, 9.8% 100%, 0 79.1%);
 		@include r(#f5e5b3, 39.84%, 26.17%, 59.38%, center);
 		@include o(#dcc482, 6.86%, 20.9%, 34.31%, 56.72%);
-		clip-path: polygon(0 14.93%, 9.8% 0, 90.2% 0, 100% 14.93%, 100% 79.1%, 90.2% 100%, 9.8% 100%, 0 79.1%);
 	}
 }
 #kadabra {
 	background: #f3d94a;
 	&:after {
-		@include s(#edb39a, 26.56%, 25.39%, 3.91%);
 		clip-path: polygon(50% 0, 70.59% 33.85%, 100% 41.54%, 77.94% 66.15%, 79.41% 100%, 50% 81.54%, 20.59% 100%, 22.06% 66.15%, 0 41.54%, 29.41% 33.85%);
+		@include s(#edb39a, 26.56%, 25.39%, 3.91%);
 	}
 	> div {
 		&:nth-child(1) {
@@ -3338,9 +3340,9 @@ label {
 			}
 		}
 		&:nth-child(2) {
+			clip-path: polygon(0 0, 100% 0, 100% 90.63%, 89.8% 100%, 10.2% 100%, 0 90.63%);
 			@include r(#f3d94a, 38.28%, 50%, 45.31%, center);
 			@include o(#d9c13d, 8.16%, 10.94%, 23.47%, 73.44%);
-			clip-path: polygon(0 0, 100% 0, 100% 90.63%, 89.8% 100%, 10.2% 100%, 0 90.63%);
 		}
 		@include nth(3, 4) {
 			@include r(null, 36.72%, 60.55%, 12.89%);
@@ -3382,9 +3384,9 @@ label {
 	}
 	> div {
 		&:nth-child(1) {
+			clip-path: polygon(0 0, 100% 0, 100% 93.75%, 91% 100%, 9% 100%, 0% 93.75%);
 			@include r(#f2dd45, 39.06%, 50%, 43.75%, center);
 			@include o(#dfcb41, 9%, 11.72%, 23%, 73.44%);
-			clip-path: polygon(0 0, 100% 0, 100% 93.75%, 91% 100%, 9% 100%, 0% 93.75%);
 		}
 		@include nth(2, 3) {
 			@include r(null, 35.55%, 57.03%, 13.28%);
@@ -3764,9 +3766,9 @@ label {
 			@include r(null, 100%, 38.67%, 0);
 			@include o(#c74f7a, 16.8%);
 			div {
+				z-index: 1;
 				@include r();
 				@include o(#b2344d, 8.98%, 80.81%);
-				z-index: 1;
 				&:before {
 					clip-path: polygon(0 0, 100% 0, 100% 85%, 52.17% 100%, 0 100%);
 				}
@@ -4037,15 +4039,15 @@ label {
 			@include r(null, 81.25%, 25.39%, 16.02%, center);
 			@include o(#F3F5F7, 30.77%);
 			div {
+				z-index: 1;
 				@include r(null, 73.08%, 18.46%, 24.62%, center);
 				@include o(#333, 7.89%);
-				z-index: 1;
 			}
 		}
 		&:nth-child(2) {
-			@include r(#917982, 80.47%, 21.88%, 62.5%, center);
 			clip-path: polygon(0 0, 8.25% 17.86%, 91.75% 17.86%, 100% 0, 100% 100%, 0 100%);
 			z-index: 1;
+			@include r(#917982, 80.47%, 21.88%, 62.5%, center);
 			@include o(#eee, 10.68%, 35.71%, 22.82%);
 			div {
 				@include r(#A58A95, 52.34%, 39.29%, bottom-center);
@@ -5760,9 +5762,9 @@ label {
 				clip-path: polygon(0 39.29%, 15.46% 0, 84.54% 0, 100% 39.29%, 100% 100%, 0 100%);
 			}
 			div {
+				z-index: 1;
 				@include r(null, 52.99%, 38.1%, bottom-center);
 				@include o(#E66965, 27.42%);
-				z-index: 1;
 			}
 		}
 		&:nth-child(2) {

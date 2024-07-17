@@ -97,7 +97,9 @@ $mastodon: #6364ff;
 		}
 	} @else {
 		@if $theme == light {
-			@content;
+			& {
+				@content;
+			}
 		}
 		@media (prefers-color-scheme: #{$theme}) {
 			@content;
@@ -360,7 +362,9 @@ $mastodon: #6364ff;
 }
 
 @mixin blur($amount, $color, $lightness, $crisp, $blur) {
-	background-color: gHSL($color, $lightness, $crisp);
+	& {
+		background-color: gHSL($color, $lightness, $crisp);
+	}
 	@supports ((-webkit-backdrop-filter: blur(0px)) or (backdrop-filter: blur(0px))) {
 		backdrop-filter: blur($amount);
 		background-color: gHSL($color, $lightness, $blur);
@@ -432,7 +436,6 @@ $mastodon: #6364ff;
 	opacity: 0;
 }
 @mixin before($color: null) {
-	@include clip-path-edges(3px);
 	opacity: 0;
 	content: "";
 	display: block;
@@ -444,6 +447,7 @@ $mastodon: #6364ff;
 	@if $color {
 		background: $color;
 	}
+	@include clip-path-edges(3px);
 }
 @mixin button-shape($a: 1.25, $b: 5%, $c: null, $dir: null) {
 	@if $dir == left and $c != null {
@@ -459,12 +463,12 @@ $mastodon: #6364ff;
 	color: white;
 	font-size: 1rem;
 	@include clip-path(false) {
-		@include border-radius(calc(var(--p)/4));
 		padding: var(--p) calc(var(--p)*2);
+		@include border-radius(calc(var(--p)/4));
 	}
 	@include clip-path {
-		@include button-shape;
 		padding: var(--p) calc(var(--p)*2.5);
+		@include button-shape;
 	}
 }
 

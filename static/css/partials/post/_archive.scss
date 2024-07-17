@@ -10,13 +10,13 @@
 		list-style: none;
 	}
 	h2 {
-		@include font-weight-width(1000, 120);
 		font-size: 4rem;
+		@include font-weight-width(1000, 120);
 	}
 	h3 {
-		@include font-weight-width(800, 120);
 		font-size: 2rem;
 		line-height: 1.1;
+		@include font-weight-width(800, 120);
 		a {
 			text-decoration: underline;
 			text-underline-offset: 8px;

@@ -64,11 +64,11 @@ $options: color, contrast, transparency, load;
 		margin-top: 16px;
 		border-radius: 3px;
 		.inside {
-			@include border-radius(3px);
 			display: block;
 			position: relative;
 			width: 100%;
 			overflow: hidden;
+			@include border-radius(3px);
 		}
 		ul {
 			list-style: none;
@@ -78,9 +78,9 @@ $options: color, contrast, transparency, load;
 			padding: var(--p);
 		}
 		li {
-			@include font-weight-width(500, 115);
 			width: 100%;
 			padding: var(--p);
+			@include font-weight-width(500, 115);
 		}
 		.option-no-js {
 			.js & {

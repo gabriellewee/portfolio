@@ -73,8 +73,8 @@
 		}
 	}
 	.popup-button {
-		@include hide;
 		pointer-events: none;
+		@include hide;
 		&:active {
 			+ .popup-label:after {
 				@media (prefers-reduced-motion: no-preference) {

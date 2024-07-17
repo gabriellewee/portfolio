@@ -40,10 +40,10 @@
 }
 
 .bottom {
-	@include font-weight-width(500, 115);
 	opacity: 0;
 	padding-top: calc(var(--p)*2);
 	padding-bottom: calc(var(--p) + env(safe-area-inset-bottom));
+	@include font-weight-width(500, 115);
 	.page-home:not(.page-index) &, .page-post &, .page-code &, .page-recipe & {
 		opacity: 1;
 	}
@@ -57,13 +57,12 @@
 		position: relative;
 		margin-bottom: var(--p);
 		span {
-			@include clip-path-edges(2px);
 			display: inline-block;
 			padding: calc(var(--p)/3*2) var(--p);
+			@include clip-path-edges(2px);
 		}
 		&:after {
 			@include contrast(both, 2) {
-				@include clip-path-edges(3px);
 				content: "";
 				display: block;
 				position: absolute;
@@ -73,6 +72,7 @@
 				width: calc(100% + 3px);
 				height: calc(100% + 3px);
 				background-color: var(--color-primary);
+				@include clip-path-edges(3px);
 			}
 		}
 	}
@@ -83,9 +83,9 @@
 		}
 	}
 	a {
-		@include font-weight-width(600, 115);
 		transition: scale .2s ease-out;
 		margin-right: var(--p);
+		@include font-weight-width(600, 115);
 		&:before {
 			@include before(var(--color-blush));
 		}

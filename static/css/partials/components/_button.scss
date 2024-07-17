@@ -1,5 +1,4 @@
 .button {
-	@include font-weight-width(700, 125);
 	cursor: pointer;
 	appearance: none;
 	display: block;
@@ -9,6 +8,7 @@
 	padding: 0;
 	border: 0;
 	background: none;
+	@include font-weight-width(700, 125);
 	&, > span, > span:before {
 		transition: background .4s ease-out, scale .2s ease-out, opacity .2s ease-out;
 	}
@@ -55,7 +55,6 @@
 		}
 	}
 	> span {
-		@include button;
 		position: relative;
 		background-color: var(--color-mauve);
 		background: radial-gradient(
@@ -65,6 +64,7 @@
 			var(--color-slate),
 			var(--color-slate)
 		) 50% 0% / 200% 100%;
+		@include button;
 		&:before {
 			opacity: 0;
 			content: "";

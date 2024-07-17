@@ -1030,12 +1030,12 @@ $large-icons: taskbar, customize-start-menu, recycle-bin-folder;
 		padding: 32px;
 	}
 	.preview-container {
-		@include sh(3px, inset);
 		display: grid;
 		place-items: center;
 		width: 100%;
 		height: 200px;
 		background: $bg;
+		@include sh(3px, inset);
 	}
 	.preview {
 		position: relative;

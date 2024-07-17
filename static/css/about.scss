@@ -72,17 +72,15 @@
 		transition: scale .2s ease-out;
 		border-radius: 6%;
 		> span {
-			@include border-radius(6%);
 			display: block;
 			width: 100%;
 			height: 100%;
 			position: relative;
+			@include border-radius(6%);
 			@supports ((-webkit-backdrop-filter: blur(0px)) or (backdrop-filter: blur(0px))) {
 				backdrop-filter: blur(0px);
 			}
 			> span {
-				@include blur(4px, mauve, 1, .9, .8);
-				@include font-weight-width(600, 120);
 				opacity: 0;
 				transition: opacity .2s ease-out, background-color .2s ease-out;
 				display: flex;
@@ -99,10 +97,12 @@
 				color: white;
 				text-align: center;
 				text-transform: uppercase;
+				@include font-weight-width(600, 120);
+				@include blur(4px, mauve, 1, .9, .8);
 				span {
-					@include font-weight-width(800, 120);
 					display: block;
 					font-size: 2.5rem;
+					@include font-weight-width(800, 120);
 				}
 			}
 		}
@@ -145,10 +145,10 @@
 		}
 	}
 	.page {
-		@include font-weight-width(500, 115);
 		display: inline-block;
 		position: relative;
 		color: white;
+		@include font-weight-width(500, 115);
 		&, span {
 			transition: background-color .2s ease-out, scale .2s ease-out;
 		}
@@ -157,7 +157,6 @@
 		}
 		&:after {
 			@include contrast(both, 2) {
-				@include clip-path-edges(3px);
 				content: "";
 				display: block;
 				position: absolute;
@@ -167,10 +166,10 @@
 				width: calc(100% + 3px);
 				height: calc(100% + 3px);
 				background-color: var(--color-primary);
+				@include clip-path-edges(3px);
 			}
 		}
 		span {
-			@include clip-path-edges(2px);
 			display: inline-block;
 			padding: calc(var(--p)/3*2) var(--p);
 			background-color: color-mix(
@@ -178,6 +177,7 @@
 				var(--color-iron) 90%,
 				white
 			);
+			@include clip-path-edges(2px);
 		}
 		&:hover, &:focus {
 			span {
@@ -312,8 +312,6 @@
 		}
 	}
 	.external-platform {
-		@include font-weight-width(600, 90);
-		@include clip-path-edges(2px);
 		display: inline-block;
 		position: relative;
 		margin-bottom: calc(var(--p)/3);
@@ -322,6 +320,8 @@
 		font-size: .875rem;
 		text-transform: uppercase;
 		line-height: 1.715;
+		@include font-weight-width(600, 90);
+		@include clip-path-edges(2px);
 		@include theme(light, 2) {
 			background-color: color-mix(
 				in srgb,
@@ -348,20 +348,20 @@
 				position: absolute;
 			}
 			&:before {
-				@include clip-path-edges(3px);
 				z-index: -2;
 				top: -1.5px;
 				left: -1.5px;
 				width: calc(100% + 3px);
 				height: calc(100% + 3px);
+				@include clip-path-edges(3px);
 			}
 			&:after {
-				@include clip-path-edges(2px);
 				z-index: -1;
 				top: 0;
 				left: 0;
 				width: 100%;
 				height: 100%;
+				@include clip-path-edges(2px);
 			}
 		}
 		@include contrast(light, 2) {
@@ -386,9 +386,9 @@
 		}
 	}
 	.external-title {
-		@include font-weight-width(600, 115);
 		display: block;
 		line-height: 1.333;
+		@include font-weight-width(600, 115);
 		@include viewport(mobile) {
 			display: inline;
 		}

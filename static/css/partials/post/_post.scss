@@ -30,12 +30,12 @@
 }
 
 .filters {
-	@include font-weight-width(600, 110);
 	font-size: 1.5rem;
 	line-height: 1.334;
 	position: relative;
 	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
 	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
+	@include font-weight-width(600, 110);
 	@include viewport($iphone-max) {
 		padding-left: 0;
 		padding-right: 0;
@@ -218,20 +218,20 @@
 					position: absolute;
 				}
 				&:before {
-					@include clip-path-edges(3px);
 					z-index: -2;
 					top: -1.5px;
 					left: -1.5px;
 					width: calc(100% + 3px);
 					height: calc(100% + 3px);
+					@include clip-path-edges(3px);
 				}
 				&:after {
-					@include clip-path-edges(2px);
 					z-index: -1;
 					top: 0;
 					left: 0;
 					width: 100%;
 					height: 100%;
+					@include clip-path-edges(2px);
 				}
 			}
 		}
@@ -255,11 +255,11 @@
 		display: block;
 		white-space: nowrap;
 		&.time-default {
-			@include button;
-			@include font-weight-width(600, 90);
 			position: relative;
 			background-color: gHSL(iron, .95, .75);
 			text-transform: uppercase;
+			@include font-weight-width(600, 90);
+			@include button;
 			@include contrast(both, 2) {
 				background-color: unset !important;
 				@include clip-path(false) {
@@ -360,10 +360,10 @@
 		}
 	}
 	.direct-link {
-		@include font-weight-width(800, 100);
 		opacity: .3;
 		margin-left: var(--p);
 		color: var(--color-primary);
+		@include font-weight-width(800, 100);
 		&:hover, &:focus {
 			opacity: 1;
 		}
@@ -417,16 +417,16 @@
 	}
 	p, figcaption, ul, ol {
 		a {
-			@include gradient-text(
-				var(--color-mauve),
-				var(--color-slate),
-				gHSL(mauve, 1, .5)
-			);
 			transition: all .1s ease-out;
 			position: relative;
 			text-decoration: underline;
 			text-decoration-thickness: 1.5px;
 			text-underline-offset: 2px;
+			@include gradient-text(
+				var(--color-mauve),
+				var(--color-slate),
+				gHSL(mauve, 1, .5)
+			);
 			&:hover, &:focus {
 				@include gradient-text(
 					var(--color-rose),
@@ -481,11 +481,11 @@
 		line-height: 1.412;
 	}
 	pre {
-		@include clip-path-edges(2px);
 		padding: calc(var(--p)*1.5) calc(var(--p)*2);
 		color: white;
 		font-size: 1rem;
 		line-height: 1.5;
+		@include clip-path-edges(2px);
 		@include theme(light, 2) {
 			background-color: var(--color-iron);
 		}
@@ -494,11 +494,11 @@
 		}
 	}
 	blockquote {
-		@include font-weight-width(450, 110);
 		quotes: auto;
 		position: relative;
 		font-size: 1.25rem;
 		line-height: 1.334;
+		@include font-weight-width(450, 110);
 		@include viewport(mobile) {
 			padding: 0 calc(var(--p)*2);
 		}
@@ -612,8 +612,6 @@
 	}
 
 	.codepen {
-		@include font-weight-width(700, 115);
-		@include clip-path-edges(2px);
 		display: flex;
 		align-items: center;
 		align-content: center;
@@ -621,6 +619,8 @@
 		padding: var(--p);
 		height: var(--height);
 		line-height: 1.4;
+		@include font-weight-width(700, 115);
+		@include clip-path-edges(2px);
 		@include theme(light, 2) {
 			background-color: gHSL(primary, 1, .1);
 		}

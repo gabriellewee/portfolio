@@ -15,9 +15,9 @@
 }
 
 .post-content {
-	@include font-weight-width(450, 110);
 	padding: 0 calc(var(--p) * 2);
 	font-size: 1.25rem;
+	@include font-weight-width(450, 110);
 	@include theme(light, 2) {
 		color: color-mix(
 			in srgb,
@@ -59,12 +59,12 @@
 	a {
 		transition: scale .2s ease-out;
 		&:before {
-			@include before;
 			background: radial-gradient(
 				circle at center left,
 				var(--color-rose),
 				var(--color-mauve)
 			);
+			@include before;
 		}
 		&:focus-visible {
 			&:before {
@@ -148,7 +148,9 @@
 						#{gHSL(white, 1, .9)}
 					);
 				}
-				@include focus-shadow(var(--color-mix));
+				& {
+					@include focus-shadow(var(--color-mix));
+				}
 			}
 			&:active {
 				@include theme(light, 2) {

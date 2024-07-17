@@ -7,35 +7,33 @@
 	position: relative;
 	margin-bottom: var(--p);
 	.avatar {
-		@include invert(100%);
 		display: block;
 		width: var(--width);
 		height: var(--height);
+		@include invert(100%);
 		&-default {
 			@include background-image(avatars/memoji, png);
 		}
 		&-hm {
-			@include background-image(avatars/memoji-hm, png);
 			opacity: 0;
 			left: 0;
 			top: 0;
 			background-size: var(--width) var(--height);
-			background-position: center left;
+			@include background-image(avatars/memoji-hm, png);
 		}
 		&-cooks {
-			@include background-image(avatars/memoji-cooks, png);
 			left: -18px;
 			bottom: 0;
 			width: 65px;
 			height: 80px;
 			background-size: cover;
+			@include background-image(avatars/memoji-cooks, png);
 		}
 		&:not(.avatar-default) {
 			position: absolute;
 		}
 	}
 	.text {
-		@include font-weight-width(600, 115);
 		opacity: 0;
 		transition: opacity .2s ease-out, translate .2s ease-out;
 		order: 1;
@@ -44,6 +42,7 @@
 		line-height: 1.4;
 		color: gHSL(iron, .45);
 		border-radius: 2em;
+		@include font-weight-width(600, 115);
 		@media (prefers-reduced-motion: no-preference) {
 			opacity: 0;
 		}

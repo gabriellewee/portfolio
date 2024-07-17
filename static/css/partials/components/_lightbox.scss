@@ -27,9 +27,9 @@
 }
 
 .lightbox-background {
-	@include blur(10px, iron, .35, .98, .9);
 	transition: opacity .2s ease-out, visibility 0s .2s, z-index 0s .2s;
 	z-index: -999;
+	@include blur(10px, iron, .35, .98, .9);
 	&:before {
 		opacity: 0;
 		animation: loading 1s linear infinite forwards;

@@ -221,7 +221,6 @@
 				h2 a {
 					text-decoration: none;
 					&:before {
-						@include clip-path-edges(2px);
 						transition: all .2s ease-out;
 						opacity: 0;
 						transform-origin: center bottom;
@@ -236,6 +235,7 @@
 						width: calc(100% + (var(--p) * 2));
 						height: calc(100% + var(--p));
 						background-color: gHSL(white, 1, .95);
+						@include clip-path-edges(2px);
 						@include reduce-transparency(2) {
 							background-color: white;
 						}

@@ -38,8 +38,8 @@ main {
 		font-size: clamp(3rem, 6vw, 5rem);
 	}
 	h1, p {
-		@include font-weight-width(900, 125);
 		line-height: 1.2;
+		@include font-weight-width(900, 125);
 		@include viewport($ipad-mini) {
 			line-height: 1.1;
 		}

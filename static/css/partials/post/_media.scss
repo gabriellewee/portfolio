@@ -5,13 +5,13 @@
 	background: unset;
 	&:before {
 		@include viewport($iphone-max) {
-			@include before;
 			z-index: -1;
 			background: radial-gradient(
 				circle at center left,
 				var(--color-rose),
 				var(--color-mauve)
 			);
+			@include before;
 		}
 		@media (prefers-reduced-motion: reduce) {
 			transition: opacity .2s ease-out;
@@ -20,13 +20,13 @@
 	&:after {
 		@include viewport($iphone-max) {
 			@include contrast(both, 2) {
-				@include clip-path-edges(3px);
 				z-index: -2;
 				top: -1.5px;
 				left: -1.5px;
 				width: calc(100% + 3px);
 				height: calc(100% + 3px);
 				background-color: var(--color-primary);
+				@include clip-path-edges(3px);
 			}
 		}
 	}
@@ -45,8 +45,6 @@ figure {
 }
 
 .media-view-touch {
-	@include blur(3px, iron, .45, .5, .3);
-	@include font-weight-width(600, 80);
 	display: block;
 	position: absolute;
 	bottom: 0;
@@ -55,6 +53,8 @@ figure {
 	color: gHSL(white, 1, .8);
 	font-size: 1rem;
 	text-transform: uppercase;
+	@include font-weight-width(600, 80);
+	@include blur(3px, iron, .45, .5, .3);
 	@include clip-path(false) {
 		border-top-left-radius: 3px;
 	}
@@ -114,7 +114,6 @@ figure {
 }
 
 figcaption {
-	@include font-weight-width(700, 120);
 	transition: opacity .3s ease-out, translate .3s ease-out;
 	opacity: 0;
 	position: absolute;
@@ -126,6 +125,7 @@ figcaption {
 	background-color: gHSL(iron, .45, .9);
 	color: white;
 	font-size: 1.125rem;
+	@include font-weight-width(700, 120);
 	@media (prefers-reduced-motion: no-preference) {
 		translate: 0 50%;
 	}
@@ -226,7 +226,6 @@ figcaption {
 				display: block;
 				position: relative;
 				&:after {
-					@include clip-path-edges(2px);
 					content: "";
 					display: block;
 					position: absolute;
@@ -240,6 +239,7 @@ figcaption {
 						gHSL(iron, .45, .7) 0%,
 						gHSL(iron, .45, 0) 45%
 					);
+					@include clip-path-edges(2px);
 				}
 			}
 			.no-image {
@@ -354,11 +354,11 @@ figcaption {
 			}
 		}
 		picture {
-			@include clip-path-edges(2px);
 			position: relative;
 			z-index: 1;
 			width: 150px;
 			display: none;
+			@include clip-path-edges(2px);
 			@supports not(container-type: size) {
 				@include viewport($iphone) {
 					display: block;
@@ -615,9 +615,9 @@ figcaption {
 			}
 			.post-content {
 				figcaption {
-					@include blur(10px, iron, .45, .9, .7);
 					transition: opacity .5s cubic-bezier(.64, 0, .78, 0), translate .5s cubic-bezier(.64, 0, .78, 0);
 					opacity: 1;
+					@include blur(10px, iron, .45, .9, .7);
 					@media (prefers-reduced-motion: no-preference) {
 						translate: 0 0;
 					}
