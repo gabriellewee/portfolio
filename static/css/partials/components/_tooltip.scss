@@ -19,19 +19,47 @@
 	&:before {
 		content: "";
 		rotate: 45deg;
-		z-index: 0;
+		z-index: 1;
 		width: var(--t);
 		height: var(--t);
 	}
 	&:after {
 		content: var(--tooltip-label);
-		z-index: 1;
+		z-index: 2;
 		width: fit-content;
 		padding: calc(var(--p)/2) calc(var(--p)/3*2);
 		border-radius: 2px;
 		font-size: .75rem;
 		text-transform: uppercase;
 		@include font-weight-width(600, 100);
+	}
+	span {
+		&:before, &:after {
+			content: "";
+			display: block;
+			position: absolute;
+		}
+		&:before {
+			rotate: 45deg;
+			z-index: 0;
+			width: calc(var(--t) + 3px);
+			height: calc(var(--t) + 3px);
+			@include contrast(both, 2) {
+				background-color: var(--color-primary);
+			}
+		}
+		&:after {
+			bottom: 0;
+			left: 0;
+			z-index: 0;
+			width: 100%;
+			height: 100%;
+			border-radius: 2px;
+			outline: 1.5px solid transparent;
+			@include contrast(both, 2) {
+				outline-color: var(--color-primary);
+			}
+		}
 	}
 	&.hidden {
 		&:before, &:after {
@@ -58,15 +86,22 @@
 			border-top-left-radius: 2px;
 			left: calc(50% - var(--t)/2);
 		}
+		span:before {
+			border-top-left-radius: 3px;
+			left: calc(50% - (var(--t) + 3px)/2);
+		}
 		&.inline {
 			margin-top: var(--p);
 			&:before {
 				top: calc(var(--p)/-2);
 			}
+			span:before {
+				top: calc((var(--p) + 3px)/-2);
+			}
 		}
 		&:not(.inline) {
 			&:before {
-				top: calc(100% + var(--p)/3*2 - var(--t)/2)
+				top: calc(100% + var(--p)/3*2 - var(--t)/2);
 			}
 			&:after {
 				top: calc(100% + var(--p)/3*2);
@@ -107,6 +142,16 @@
 		}
 		&:after {
 			color: white;
+		}
+	}
+	&:not(.dark) {
+		&:before, &:after {
+			@include contrast(light, 2) {
+				background-color: white;
+			}
+			@include contrast(dark, 2) {
+				background-color: gHSL(iron, .75);
+			}
 		}
 	}
 }

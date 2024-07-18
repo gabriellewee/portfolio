@@ -375,11 +375,11 @@ $mastodon: #6364ff;
 	}
 }
 
-@mixin focus-shadow($color: var(--color-focus), $radius: 1px) {
+@mixin focus-shadow($color: var(--color-focus), $radius: 1px, $width: calc(var(--p)/4)) {
 	@if $radius {
 		border-radius: $radius;
 	}
-	box-shadow: 0 0 0 calc(var(--p)/4) $color;
+	box-shadow: 0 0 0 $width $color;
 }
 
 @mixin svg-path {
