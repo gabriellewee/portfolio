@@ -96,19 +96,21 @@ module.exports = eleventyConfig => {
 
 					if (option === "lightbox") {
 						let figure = `
-							<a class="lightbox" id="${name}-lightbox" role="button" aria-expanded="true" aria-label="Close image" href="#${name}" data-lightbox></a>
-							<figure class="image" role="dialog" aria-label="Image preview" aria-modal="true" data-content>
-								<picture>
-									<img src="/static/images/posts/${src}" alt="${alt}" width="${width}" height="${height}"/>
-								</picture>
-							</figure>
+							<a class="lightbox" id="${name}-lightbox" role="button" aria-label="Close image" href="#${name}" data-lightbox></a>
+							<dialog class="image" aria-label="Image preview" autofocus>
+								<figure>
+									<picture>
+										<img src="/static/images/posts/${src}" alt="${alt}" width="${width}" height="${height}"/>
+									</picture>
+								</figure>
+							</dialog>
 						`;
 						lightboxes = lightboxes.concat(figure);
 					} else {
 						let figure = `
 							<figure id="${name}">
 								<figcaption>${title}</figcaption>
-								<a class="expand" href="#${name}-lightbox" aria-role="button" aria-expanded="false" aria-label="${alt} Expand image">
+								<a class="expand" href="#${name}-lightbox" aria-role="button" aria-label="${alt} Expand image">
 									<picture>
 										<img src="/static/images/posts/${src}" alt="${alt}" width="${width}" height="${height}"/>
 									</picture>
@@ -151,8 +153,10 @@ module.exports = eleventyConfig => {
 
 							let picture = `<picture>${source}${img}</picture>`;
 							let figure = `
-								<a class="lightbox" id="${name}-lightbox" role="button" aria-expanded="true" aria-label="Close image" href="#${name}" data-lightbox></a>
-								<figure class="image" role="dialog" aria-label="Image preview" aria-modal="true" data-content>${picture}</figure>
+								<a class="lightbox" id="${name}-lightbox" role="button" aria-label="Close image" href="#${name}" data-lightbox></a>
+								<dialog class="lightbox-content image" aria-label="Image preview" autofocus>
+									<figure>${picture}</figure>
+								</dialog>
 							`;
 
 							lightboxes = lightboxes.concat(figure);

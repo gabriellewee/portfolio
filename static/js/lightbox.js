@@ -4,13 +4,26 @@ const lightbox = (buttons, boxes, scroll) => {
 
 	let scrollPosition = document.documentElement.scrollTop;
 
+	const closeDialog = (e, lightbox) => {
+		let content = lightbox.nextElementSibling;
+		if (!e.target.contains(content)) return;
+		deactivate(lightbox);
+	}
+
 	const deactivate = (lightboxes) => {
 		const remove = (lightbox) => {
 			let content = lightbox.nextElementSibling;
 			if (lightbox.classList.contains("active")) {
 				lightbox.classList.remove("active");
 				content.classList.remove("active");
+				setTimeout(() => {
+					content.close();
+				}, 200);
+				content.setAttribute("inert", true);
 				scrollPosition = document.documentElement.scrollTop;
+				document.removeEventListener('click', e => {
+					closeDialog(e, lightbox);
+				}, { passive: true });
 			}
 		}
 		if (lightboxes instanceof Array) {
@@ -28,11 +41,15 @@ const lightbox = (buttons, boxes, scroll) => {
 		if (frame) frame.src = frame.src;
 
 		lightbox.classList.add("active");
-		lightbox.focus();
 		scrollPosition = document.documentElement.scrollTop;
 
 		imagesLoaded(content, () => {
+			content.showModal();
 			content.classList.add("active");
+			content.setAttribute("inert", false);
+			setTimeout(() => {
+				content.inert = false;
+			}, 200);
 		});
 
 		const scrollOut = ScrollTrigger.create({
@@ -44,6 +61,10 @@ const lightbox = (buttons, boxes, scroll) => {
 			onLeaveBack: () => deactivate(lightboxes),
 			invalidateOnRefresh: true,
 		});
+
+		document.addEventListener('click', e => {
+			closeDialog(e, lightbox);
+		}, { passive: true });
 	}
 
 	const shortcut = (e, lightbox, lightboxes, index) => {
@@ -53,7 +74,7 @@ const lightbox = (buttons, boxes, scroll) => {
 				scrollTo(lightbox);
 			} else if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
 				setTimeout(() => {
-				    let ctrl = false;
+					let ctrl = false;
 					if (e.key === "Ctrl") {
 						ctrl = true;
 					}

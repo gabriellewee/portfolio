@@ -53,11 +53,13 @@
 	display: block;
 	position: relative;
 	margin-top: 1em;
+	width: auto;
 	+ .media-attachment {
 		margin-top: calc(var(--p)*2);
 	}
-	a {
+	.expand {
 		transition: scale .2s ease-out;
+		display: block;
 		&:before {
 			background: radial-gradient(
 				circle at center left,

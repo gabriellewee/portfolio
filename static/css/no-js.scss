@@ -1,5 +1,6 @@
 .load,
 .post-code .post-content iframe:not(.css-only), .post-code .reload,
+.post-music,
 .lightbox + .iframe iframe:not(.css-only),
 .page-index .avatar-link .text.message {
 	display: none;
@@ -11,8 +12,13 @@
 	grid-column: 1 / span 12 !important;
 }
 
-.media-attachment img {
-	width: auto;
+.media-attachment {
+	&, a {
+		display: inline-block;
+	}
+	img {
+		width: auto;
+	}
 }
 
 .lightbox + .iframe {

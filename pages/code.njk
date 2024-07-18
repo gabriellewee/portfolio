@@ -37,7 +37,7 @@
 							</div>
 							<div class="post-header-right">
 								<time class="time{% if post.data.category != 'code' %} time-default{% endif %}{% if post.data.category == 'social' %} time-external{% endif %}" datetime="{{post.page.date|ISO|date('string')}}" data-time="{{post.page.date|ISO}}">{{post.page.date|ISO|date('readable')}}</time>
-								<a class="expand" id="{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}" aria-label="Expand preview of {{post.data.title}}" role="button" aria-expanded="false" href="#{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}-lightbox" data-media-expand></a>
+								<a class="expand" id="{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}" aria-label="Expand preview of {{post.data.title}}" role="button" href="#{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}-lightbox" data-media-expand></a>
 								<a class="external-expand" href="{{post.url|url}}" aria-label="View {{post.data.category}} in new window" target="_blank"></a>
 							</div>
 						</div>
@@ -75,15 +75,17 @@
 
 <div class="lightbox-group" hidden>
 	{% for post in collections.code | reverse %}
-		<a class="lightbox" id="{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}-lightbox" role="button" aria-expanded="true" aria-label="Close preview of {{post.data.title}}" href="#{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}" data-lightbox></a>
-		<figure class="iframe"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %} role="dialog" aria-label="Preview of {{post.data.title}}" aria-modal="true" data-content>
-			{% if post.url %}
-				<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"></iframe>
-				<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}">Please enable Javascript to view this code demo.</noscript>
-			{% else %}
-				{{post.content|safe}}
-			{% endif %}
-		</figure>
+		<a class="lightbox" id="{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}-lightbox" role="button" aria-label="Close preview of {{post.data.title}}" href="#{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}" data-lightbox></a>
+		<dialog class="lightbox-content iframe"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %} aria-label="Preview of {{post.data.title}}" autofocus>
+			<figure>
+				{% if post.url %}
+					<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"></iframe>
+					<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}">Please enable Javascript to view this code demo.</noscript>
+				{% else %}
+					{{post.content|safe}}
+				{% endif %}
+			</figure>
+		</dialog>
 	{% endfor %}
 	<div class="lightbox-background"></div>
 </div>

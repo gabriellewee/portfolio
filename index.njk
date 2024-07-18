@@ -69,7 +69,7 @@ pagination:
 							{% if post.data.category == "code" %}
 								<div class="post-header-right">
 									<time class="time{% if post.data.category != 'code' %} time-default{% endif %}{% if post.data.category == 'social' %} time-external{% endif %}" datetime="{{post.page.date|ISO|date('string')}}" data-time="{{post.page.date|ISO}}" title="{{post.page.date|ISO|date('readable')}}">{{post.page.date|ISO|date('readable')}}</time>
-									<a class="expand" id="{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}" role="button" aria-expanded="false" aria-label="Expand preview of {{post.data.title}}" href="#{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}-lightbox" data-media-expand data-desktop></a>
+									<a class="expand" id="{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}" role="button" aria-label="Expand preview of {{post.data.title}}" href="#{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}-lightbox" data-media-expand data-desktop></a>
 									<a class="external-expand" href="{{post.url|url}}" aria-label="View {{post.data.category}} in new window" target="_blank"></a>
 								</div>
 							{% elseif (post.data.category != "media") and (post.data.category != "code") %}
@@ -115,7 +115,7 @@ pagination:
 										<time class="time-default" datetime="{{post.page.date|ISO|date('string')}}" title="{{post.page.date|ISO|date('readable')}}" data-time="{{post.page.date|ISO}}">{{post.page.date|ISO|date('readable')}}</time>
 										<label class="media-down media-icon" for="{{post.data.date|safe}}-{{post.data.name}}-info" data-media-label></label>
 										<div class="media-thumbnail">
-											<a class="media-expand expand" href="#{{post.data.date|safe}}-{{post.data.name}}-lightbox" role="button" aria-expanded="false" aria-label="Expand image" tabindex="-1" data-media-expand>
+											<a class="media-expand expand" href="#{{post.data.date|safe}}-{{post.data.name}}-lightbox" role="button" aria-label="Expand image" tabindex="-1" data-media-expand>
 												<span class="no-image">Expand</span>
 												<span aria-hidden="true">
 													{% if post.data.upscale %}
@@ -185,7 +185,7 @@ pagination:
 								{% for media in post.data.media %}
 									{% if media.url %}
 										<figure id="external-{{media.id}}" class="media-attachment" aria-label="{{media.description}}">
-											<a class="expand" href="#external-{{media.id}}-lightbox" role="button" aria-expanded="false" aria-label="Expand image" data-media-expand>
+											<a class="expand" href="#external-{{media.id}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
 												{% external media.url, media.description, 500 %}
 											</a>
 										</figure>
@@ -243,42 +243,48 @@ pagination:
 <div class="lightbox-group" data-lightbox-container hidden>
 	{% for post in pagination.items %}
 		{% if post.data.category == "media" %}
-			<a class="lightbox" id="{{post.data.date|safe}}-{{post.data.name}}-lightbox" role="button" aria-expanded="true" aria-label="Close image" href="#{{post.data.date|safe}}-{{post.data.name}}" data-lightbox data-lightbox-append></a>
-			<figure class="image" role="dialog" aria-label="Image preview" aria-modal="true" data-content data-lightbox-append>
-				{% if post.data.upscale %}
-					<picture>
-						<img class="upscale" src="{% include post.data.upscale %}"{% if post.data.upscaleWidth %} width="{{post.data.upscaleWidth}}"{% endif %}{% if post.data.upscaleHeight %} height="{{post.data.upscaleHeight}}"{% endif %} alt="{{post.data.description}}"/>
-					</picture>
-				{% elseif post.data.svg == true %}
-					<picture>
-						<img src="/static/images/{{post.data.pagination.data}}/{{post.data.date}}-{{post.data.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'width' %}" height="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'height' %}"/>
-					</picture>
-				{% else %}
-					{% image './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 'screen' %}
-				{% endif %}
-			</figure>
+			<a class="lightbox" id="{{post.data.date|safe}}-{{post.data.name}}-lightbox" role="button" aria-label="Close image" href="#{{post.data.date|safe}}-{{post.data.name}}" data-lightbox data-lightbox-append></a>
+			<dialog class="lightbox-content image" aria-label="Image preview" autofocus data-lightbox-append>
+				<figure>
+					{% if post.data.upscale %}
+						<picture>
+							<img class="upscale" src="{% include post.data.upscale %}"{% if post.data.upscaleWidth %} width="{{post.data.upscaleWidth}}"{% endif %}{% if post.data.upscaleHeight %} height="{{post.data.upscaleHeight}}"{% endif %} alt="{{post.data.description}}"/>
+						</picture>
+					{% elseif post.data.svg == true %}
+						<picture>
+							<img src="/static/images/{{post.data.pagination.data}}/{{post.data.date}}-{{post.data.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'width' %}" height="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'height' %}"/>
+						</picture>
+					{% else %}
+						{% image './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 'screen' %}
+					{% endif %}
+				</figure>
+			</dialog>
 		{% elseif (post.data.category == "social") and (post.data.media) %}
 			{% for media in post.data.media %}
 				{% if media.url %}
-					<a class="lightbox" id="external-{{media.id}}-lightbox" role="button" aria-expanded="true" aria-label="Close image" href="#external-{{media.id}}" data-lightbox data-lightbox-append></a>
-					<figure class="image" role="dialog" aria-label="Image preview" aria-modal="true" data-content data-lightbox-append>
-						{% external media.url, media.description, media.meta.original.width %}
-					</figure>
+					<a class="lightbox" id="external-{{media.id}}-lightbox" role="button" aria-label="Close image" href="#external-{{media.id}}" data-lightbox data-lightbox-append></a>
+					<dialog class="lightbox-content image" aria-label="Image preview" autofocus data-lightbox-append>
+						<figure>
+							{% external media.url, media.description, media.meta.original.width %}
+						</figure>
+					</dialog>
 				{% endif %}
 			{% endfor %}
 		{% elseif (post.data.category == "writing") %}
 			{% excerpt post, "lightbox" %}
 		{% elseif post.data.category == "code" %}
-			<a class="lightbox" id="{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}-lightbox" role="button" aria-expanded="true" aria-label="Close preview of {{post.data.title}}" href="#{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}" data-lightbox data-lightbox-append data-desktop></a>
-			<figure class="iframe" role="dialog" aria-label="Preview of {{post.data.title}}" aria-modal="true" data-lightbox-append data-content>
-				{% if post.url %}
-					<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %}></iframe>
-					<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}">Please enable Javascript to view this code demo.</noscript>
-				{% else %}
-					{{post.content|safe}}
-				{% endif %}
-			</figure>
+			<a class="lightbox" id="{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}-lightbox" role="button" aria-label="Close preview of {{post.data.title}}" href="#{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}" data-lightbox data-lightbox-append data-desktop></a>
+			<dialog class="lightbox-content iframe" aria-label="Preview of {{post.data.title}}" autofocus data-lightbox-append>
+				<figure>
+					{% if post.url %}
+						<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %}></iframe>
+						<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}">Please enable Javascript to view this code demo.</noscript>
+					{% else %}
+						{{post.content|safe}}
+					{% endif %}
+				</figure>
+			</dialog>
 		{% endif %}
 	{% endfor %}
-	<div class="lightbox-background" data-lightbox-append></div>
+	<div class="lightbox-background"></div>
 </div>
