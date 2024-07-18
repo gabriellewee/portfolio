@@ -28,7 +28,6 @@
 			position: relative;
 			width: 100%;
 			min-height: 250px;
-			overflow: hidden;
 			@include border-radius(3px);
 			@include blur(10px, iron, .45, .9, .8);
 		}

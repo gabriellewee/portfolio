@@ -135,7 +135,7 @@ pagination:
 										{% if post.data.external %}
 											<div class="media-links">
 												{% for link in post.data.external %}
-													<a class="media-link external {{link.platform}}" href="{{link.url|url}}" tabindex="-1" aria-label="View on {{link.platform|capitalize}}"><span>{{link.platform|capitalize}}</span></a>
+													<a class="media-link external {{link.platform}}" href="{{link.url|url}}" tabindex="-1" aria-label="View on {{link.platform|capitalize}}" data-media-external><span>{{link.platform|capitalize}}</span></a>
 												{% endfor %}
 											</div>
 										{% endif %}
