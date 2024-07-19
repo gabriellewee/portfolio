@@ -87,7 +87,11 @@ header.top {
 		margin-right: var(--p);
 		@include font-weight-width(600, 115);
 		&:before {
-			@include before(var(--color-blush));
+			@include before(color-mix(
+				in srgb,
+				var(--color-blush),
+				var(--color-rose)
+			));
 		}
 		span {
 			transition: background .2s ease-out;

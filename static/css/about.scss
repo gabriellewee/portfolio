@@ -197,7 +197,11 @@
 		}
 		&:hover, &:focus {
 			span {
-				background-color: var(--color-rose);
+				background-color: color-mix(
+					in srgb,
+					var(--color-rose) 40%,
+					var(--color-mauve)
+				);
 			}
 		}
 		&:focus-visible {
