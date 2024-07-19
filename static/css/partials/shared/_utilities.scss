@@ -24,9 +24,6 @@ $mastodon: #6364ff;
 @function hexToHSL($color) {
 	@return "#{hue($color)} #{saturation($color)} #{lightness($color)}";
 }
-@function hexToHSLa($color) {
-	@return "#{hue($color)} #{saturation($color)} #{lightness($color)} / #{alpha($color)}";
-}
 @function hexToH($color) {
 	@return "#{hue($color)}";
 }
