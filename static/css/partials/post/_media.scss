@@ -245,7 +245,6 @@ figcaption {
 			.no-image {
 				transition: all .1s ease-out;
 				opacity: .7;
-				content: "Expand";
 				margin-left: calc(var(--p) * .75);
 				text-decoration: underline;
 				text-underline-offset: 8px;
