@@ -8,7 +8,7 @@
 		}
 	}
 	.popup-label {
-		&:after {
+		&::after {
 			background-color: var(--color-blush);
 			bottom: -16px;
 			width: 16px;
@@ -35,7 +35,7 @@
 			position: relative;
 			display: block;
 			height: 60px;
-			&:before {
+			&::before {
 				content: "";
 				display: block;
 				width: 100%;
@@ -71,7 +71,7 @@
 				font-size: 0.875rem;
 				opacity: 0.6;
 				@include font-weight-width(600, 100);
-				&:before, &:after {
+				&::before, &::after {
 					background-color: black;
 				}
 			}
@@ -150,7 +150,7 @@
 				span span {
 					display: none;
 				}
-				&:after {
+				&::after {
 					transition: opacity .1s ease-out;
 					content: "";
 					display: block;
@@ -166,7 +166,7 @@
 					@include contrast(both, 2) {
 						border-color: white;
 					}
-					&:after {
+					&::after {
 						opacity: 1;
 					}
 				}
@@ -178,12 +178,12 @@
 				}
 			}
 			a {
-				&:after {
+				&::after {
 					background-image: url(/static/images/svg/icons/external.svg);
 				}
 			}
 			button {
-				&:after {
+				&::after {
 					background-image: url(/static/images/svg/icons/copy.svg);
 				}
 			}

@@ -10,7 +10,7 @@ body, a {
 }
 
 header {
-	&:before {
+	&::before {
 		content: "";
 		display: block;
 		position: fixed;

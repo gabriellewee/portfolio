@@ -59,7 +59,7 @@
 
 .bottom {
 	a {
-		&:before {
+		&::before {
 			@include theme(light, 2) {
 				@include before(white);
 			}
@@ -145,7 +145,7 @@
 				position: relative;
 				padding: 0 calc(var(--p)*2) calc(var(--p)*1.5);
 				width: 100%;
-				&:before {
+				&::before {
 					content: "";
 					display: block;
 					position: absolute;
@@ -170,7 +170,7 @@
 		@include container(recipe, mobile, $mobile) {
 			&.header-light + .post-header-content {
 				h2 {
-					&:before {
+					&::before {
 						background: linear-gradient(to top, #{gHSL(white, 1, .7)}, #{gHSL(white, 1, 0)});
 					}
 					a {
@@ -183,17 +183,17 @@
 					@include reduce-transparency(2) {
 						background-color: var(--color-iron);
 					}
-					&:before {
+					&::before {
 						background-color: white;
 					}
-					&:after {
+					&::after {
 						background-color: gHSL(iron, 1, .9);
 					}
 				}
 			}
 			&.header-dark + .post-header-content {
 				h2 {
-					&:before {
+					&::before {
 						background: linear-gradient(to top, #{gHSL(iron, 1, .7)}, #{gHSL(iron, 1, 0)});
 					}
 					a {
@@ -206,10 +206,10 @@
 					@include reduce-transparency(2) {
 						background-color: white;
 					}
-					&:before {
+					&::before {
 						background-color: var(--color-iron);
 					}
-					&:after {
+					&::after {
 						background-color: gHSL(white, 1, .9);
 					}
 				}
@@ -220,7 +220,7 @@
 				}
 				h2 a {
 					text-decoration: none;
-					&:before {
+					&::before {
 						transition: all .2s ease-out;
 						opacity: 0;
 						transform-origin: center bottom;
@@ -241,7 +241,7 @@
 						}
 					}
 					&:hover, &:focus, &:active {
-						&:before {
+						&::before {
 							opacity: 1;
 							scale: 1 1;
 							translate: 0 0;
@@ -259,7 +259,7 @@
 					}
 					&:active {
 						color: gHSL(iron, .65);
-						&:before {
+						&::before {
 							background-color: gHSL(white, 1, .75);
 							@include reduce-transparency(2) {
 								background-color: color-mix(

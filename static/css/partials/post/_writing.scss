@@ -114,7 +114,7 @@
 		time {
 			--color-mix: hsl(var(--color-slate-h) calc(var(--color-slate-s) * .75) var(--color-slate-l) / 1);
 			background-color: var(--color-mix);
-			&:after {
+			&::after {
 				@include contrast(both, 2) {
 					background-color: var(--color-mix);
 				}
@@ -141,7 +141,7 @@
 						0%
 					);
 				}
-				&:after {
+				&::after {
 					content: "↗";
 					position: relative;
 					top: 2px;
@@ -157,7 +157,7 @@
 					span span {
 						background-position-x: 50%;
 					}
-					&:after {
+					&::after {
 						color: var(--color-rose);
 					}
 				}
@@ -180,7 +180,7 @@
 							);
 						}
 					}
-					&:after {
+					&::after {
 						@include theme(light, 2) {
 							color: gHSL(iron, .95);
 						}
@@ -198,7 +198,7 @@
 				gHSL(slate, .8)
 			);
 			background-color: var(--color-mix);
-			&:after {
+			&::after {
 				@include contrast(both, 2) {
 					background-color: var(--color-mix);
 				}
@@ -310,7 +310,7 @@
 				white
 			);
 			background-color: var(--color-mix);
-			&:after {
+			&::after {
 				@include contrast(both, 2) {
 					background-color: var(--color-mix);
 				}
@@ -319,7 +319,7 @@
 	}
 	.post-footer {
 		.button {
-			&:before {
+			&::before {
 				@include theme(light, 2) {
 					background: radial-gradient(
 						circle at center left,

@@ -61,7 +61,7 @@ header.top {
 			padding: calc(var(--p)/3*2) var(--p);
 			@include clip-path-edges(2px);
 		}
-		&:after {
+		&::after {
 			@include contrast(both, 2) {
 				content: "";
 				display: block;
@@ -86,7 +86,7 @@ header.top {
 		transition: scale .2s ease-out;
 		margin-right: var(--p);
 		@include font-weight-width(600, 115);
-		&:before {
+		&::before {
 			@include before(color-mix(
 				in srgb,
 				var(--color-blush),
@@ -108,7 +108,7 @@ header.top {
 			}
 		}
 		&:focus-visible {
-			&:before {
+			&::before {
 				opacity: 1;
 			}
 		}
@@ -148,10 +148,10 @@ header.top {
 		height: calc(100% + var(--p)/3);
 	}
 	.older {
-		&:before {
+		&::before {
 			@include button-shape(1.375, 7%, 3px, right);
 		}
-		&:after {
+		&::after {
 			@include contrast(both, 2) {
 				@include button-shape(1.3125, 6%, 2.5px, right);
 			}
@@ -162,10 +162,10 @@ header.top {
 		}
 	}
 	.newer {
-		&:before {
+		&::before {
 			@include button-shape(1.375, 7%, 3px, left);
 		}
-		&:after {
+		&::after {
 			@include contrast(both, 2) {
 				@include button-shape(1.3125, 6%, 2.5px, left);
 			}

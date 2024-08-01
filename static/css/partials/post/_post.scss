@@ -61,10 +61,10 @@
 		@media (prefers-reduced-motion: no-preference) {
 			opacity: 0;
 		}
-		&:not(.reset):before {
+		&:not(.reset)::before {
 			content: "#";
 		}
-		&, &:before, span {
+		&, &::before, span {
 			transition: all .1s ease-out;
 		}
 		> span {
@@ -212,12 +212,12 @@
 				clip-path: unset;
 				border-radius: unset;
 				background-color: unset;
-				&:before, &:after {
+				&::before, &::after {
 					content: "";
 					display: block;
 					position: absolute;
 				}
-				&:before {
+				&::before {
 					z-index: -2;
 					top: -1.5px;
 					left: -1.5px;
@@ -225,7 +225,7 @@
 					height: calc(100% + 3px);
 					@include clip-path-edges(3px);
 				}
-				&:after {
+				&::after {
 					z-index: -1;
 					top: 0;
 					left: 0;
@@ -235,7 +235,7 @@
 				}
 			}
 		}
-		&:before {
+		&::before {
 			@include contrast(light, 2) {
 				background-color: var(--color-primary);
 			}
@@ -247,7 +247,7 @@
 				);
 			}
 		}
-		&:after {
+		&::after {
 			background-color: var(--color-secondary);
 		}
 	}
@@ -268,12 +268,12 @@
 				@include clip-path {
 					clip-path: unset;
 				}
-				&:before, &:after {
+				&::before, &::after {
 					content: "";
 					display: block;
 					position: absolute;
 				}
-				&:before {
+				&::before {
 					z-index: -2;
 					top: calc(var(--p)/-8);
 					left: calc(var(--p)/-8);
@@ -287,7 +287,7 @@
 						@include button-shape(1.3125, 6%);
 					}
 				}
-				&:after {
+				&::after {
 					z-index: -1;
 					top: 0;
 					left: 0;
@@ -502,14 +502,14 @@
 		@include viewport(mobile) {
 			padding: 0 calc(var(--p)*2);
 		}
-		&:before, &:after {
+		&::before, &::after {
 			opacity: .2;
 			display: block;
 			position: absolute;
 			font-size: 5rem;
 			line-height: 1;
 		}
-		&:before {
+		&::before {
 			content: open-quote;
 			content: open-quote / "";
 			top: calc(var(--p)*-1.5);
@@ -518,7 +518,7 @@
 				left: calc(var(--p)*-.5);
 			}
 		}
-		&:after {
+		&::after {
 			content: close-quote;
 			content: close-quote / "";
 			visibility: hidden;
@@ -574,7 +574,7 @@
 	.expand {
 		position: relative;
 		transition: scale .2s ease-out;
-		&:before {
+		&::before {
 			@include before;
 			@include theme(light, 2) {
 				background: radial-gradient(
@@ -593,7 +593,7 @@
 		}
 		&:focus-visible {
 			box-shadow: none;
-			&:before {
+			&::before {
 				opacity: 1;
 			}
 		}
@@ -697,7 +697,7 @@
 		display: flex;
 		align-items: flex-start;
 		align-content: flex-start;
-		&:before {
+		&::before {
 			content: "";
 			display: block;
 			transition: all .2s ease-out;
@@ -714,7 +714,7 @@
 }
 
 .button-mastodon {
-	&:before {
+	&::before {
 		background: radial-gradient(
 			circle at center left,
 			color-mix(
@@ -733,7 +733,7 @@
 			var(--color-mastodon-dark),
 			var(--color-mastodon-dark),
 		) 50% 0% / 200% 100%;
-		span:before {
+		span::before {
 			content: "";
 			background-image: url(/static/images/svg/logos/mastodon-fill.svg);
 		}

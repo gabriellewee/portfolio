@@ -99,12 +99,12 @@
 					clip-path: unset;
 					border-radius: unset;
 					background-color: unset;
-					&:before, &:after {
+					&::before, &::after {
 						content: "";
 						display: block;
 						position: absolute;
 					}
-					&:before {
+					&::before {
 						z-index: -2;
 						top: -1.5px;
 						left: -1.5px;
@@ -113,7 +113,7 @@
 						background-color: var(--color-primary);
 						@include clip-path-edges(3px);
 					}
-					&:after {
+					&::after {
 						z-index: -1;
 						top: 0;
 						left: 0;
@@ -123,7 +123,7 @@
 					}
 				}
 			}
-			&:after {
+			&::after {
 				@include contrast(light, 2) {
 					background-color: white;
 				}
@@ -159,13 +159,13 @@
 		display: inline-block;
 		position: relative;
 		&:focus-visible {
-			&:before {
+			&::before {
 				opacity: 1;
 			}
 		}
 	}
 	.avatar {
-		&:before {
+		&::before {
 			background: radial-gradient(
 				circle at center left,
 				var(--color-blush),
@@ -194,7 +194,7 @@
 		color: white;
 		font-size: .875rem;
 		@include font-weight-width(600, 90);
-		&:before {
+		&::before {
 			@include before;
 			@include theme(light, 2) {
 				background-color: gHSL(mauve, 1, .5);
@@ -210,7 +210,7 @@
 				);
 			}
 		}
-		&:after {
+		&::after {
 			@include contrast(both, 2) {
 				content: "";
 				display: block;
@@ -225,7 +225,7 @@
 			}
 		}
 		&:focus-visible {
-			&:before {
+			&::before {
 				opacity: 1;
 			}
 		}

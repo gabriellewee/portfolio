@@ -3,7 +3,7 @@
 	clip-path: unset;
 	overflow: unset;
 	background: unset;
-	&:before {
+	&::before {
 		@include viewport($iphone-max) {
 			z-index: -1;
 			background: radial-gradient(
@@ -17,7 +17,7 @@
 			transition: opacity .2s ease-out;
 		}
 	}
-	&:after {
+	&::after {
 		@include viewport($iphone-max) {
 			@include contrast(both, 2) {
 				z-index: -2;
@@ -93,11 +93,11 @@ figure {
 		@media (prefers-reduced-motion: no-preference) {
 			translate: 0 100%;
 		}
-		&:after {
+		&::after {
 			background-color: white;
 		}
 		> span {
-			&:before {
+			&::before {
 				background-color: var(--color-slate);
 				background: radial-gradient(
 					circle at center left,
@@ -171,7 +171,7 @@ figcaption {
 		@include reduce-transparency(2) {
 			background-color: gHSL(iron, .35);
 		}
-		&:before {
+		&::before {
 			@include contrast(light, 2) {
 				background-color: gHSL(white, 1, .8);
 			}
@@ -207,25 +207,25 @@ figcaption {
 			display: flex;
 			align-items: center;
 			color: white;
-			&:before, &:after {
+			&::before, &::after {
 				content: "";
 				display: block;
 			}
-			&:before {
+			&::before {
 				position: relative;
 				z-index: 3;
 				width: 25px;
 				height: 25px;
 				background: url(/static/images/svg/icons/expand.svg) no-repeat center / 25px;
 			}
-			&:after {
+			&::after {
 				@include before(white);
 			}
 
 			.has-image {
 				display: block;
 				position: relative;
-				&:after {
+				&::after {
 					content: "";
 					display: block;
 					position: absolute;
@@ -277,7 +277,7 @@ figcaption {
 			}
 
 			&:active {
-				&:before, .no-image {
+				&::before, .no-image {
 					opacity: .2;
 				}
 			}
@@ -289,13 +289,13 @@ figcaption {
 							scale: 1.02;
 						}
 						@media (prefers-reduced-motion: reduce) {
-							&:after {
+							&::after {
 								opacity: 1;
 							}
 						}
 					}
 					&:focus-visible {
-						&:after {
+						&::after {
 							opacity: 1;
 						}
 					}
@@ -303,11 +303,11 @@ figcaption {
 						@media (prefers-reduced-motion: no-preference) {
 							scale: .98;
 						}
-						&:before {
+						&::before {
 							opacity: 1;
 						}
 					}
-					&:before {
+					&::before {
 						position: absolute;
 						top: var(--p);
 						left: var(--p);
@@ -324,13 +324,13 @@ figcaption {
 						scale: 1.02;
 					}
 					@media (prefers-reduced-motion: reduce) {
-						&:after {
+						&::after {
 							opacity: 1;
 						}
 					}
 				}
 				&:focus-visible {
-					&:after {
+					&::after {
 						opacity: 1;
 					}
 				}
@@ -338,11 +338,11 @@ figcaption {
 					@media (prefers-reduced-motion: no-preference) {
 						scale: .98;
 					}
-					&:before {
+					&::before {
 						opacity: 1;
 					}
 				}
-				&:before {
+				&::before {
 					position: absolute;
 					top: var(--p);
 					left: var(--p);
@@ -399,7 +399,7 @@ figcaption {
 		color: white;
 		line-height: 1.2;
 		margin-right: calc(var(--p)*1.25);
-		&:before {
+		&::before {
 			content: "";
 			display: block;
 			box-sizing: content-box;
@@ -438,23 +438,23 @@ figcaption {
 			}
 		}
 		&:active {
-			&:before, span {
+			&::before, span {
 				opacity: .2;
 			}
 		}
 
 		&.instagram {
-			&:before {
+			&::before {
 				background: url("/static/images/svg/icons/instagram.svg") no-repeat center / 25px;
 			}
 		}
 		&.dribbble {
-			&:before {
+			&::before {
 				background: url("/static/images/svg/icons/dribbble.svg") no-repeat center / 25px;
 			}
 		}
 		&.codepen {
-			&:before {
+			&::before {
 				background: url("/static/images/svg/icons/codepen.svg") no-repeat center / 25px;
 			}
 		}
@@ -477,7 +477,7 @@ figcaption {
 		}
 		dt {
 			opacity: .7;
-			&:after {
+			&::after {
 				content: ": ";
 			}
 		}
@@ -540,11 +540,11 @@ figcaption {
 								scale: .98;
 							}
 						}
-						&, > span, > span:before {
+						&, > span, > span::before {
 							transition: background .2s ease-out, scale .2s ease-out, opacity .2s ease-out;
 						}
 						> span {
-							&:before {
+							&::before {
 								opacity: 1;
 							}
 						}
@@ -561,7 +561,7 @@ figcaption {
 				}
 			}
 			@media (prefers-reduced-motion: reduce) {
-				&:before {
+				&::before {
 					opacity: 1;
 				}
 			}
@@ -569,7 +569,7 @@ figcaption {
 	}
 	&:focus-visible {
 		+ .post-inner {
-			&:before {
+			&::before {
 				opacity: 1;
 			}
 		}

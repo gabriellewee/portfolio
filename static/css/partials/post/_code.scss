@@ -63,7 +63,7 @@
 		&:active {
 			color: var(--color-periwinkle);
 		}
-		&:after {
+		&::after {
 			display: inline;
 			font-size: 1.375rem;
 			line-height: 1;
@@ -76,7 +76,7 @@
 			margin-right: calc(var(--p)*1.5);
 		}
 		a {
-			&:after {
+			&::after {
 				content: "\2197";
 				margin-left: calc(var(--p)/2);
 			}
@@ -117,12 +117,12 @@
 			@include contrast(both, 2) {
 				clip-path: unset;
 				border-radius: unset;
-				&:before, &:after {
+				&::before, &::after {
 					content: "";
 					display: block;
 					position: absolute;
 				}
-				&:before {
+				&::before {
 					z-index: -2;
 					top: -1.5px;
 					left: -1.5px;
@@ -131,7 +131,7 @@
 					background-color: gHSL(primary, 1, .7);
 					@include clip-path-edges(3px);
 				}
-				&:after {
+				&::after {
 					z-index: -1;
 					top: 0;
 					left: 0;
@@ -141,13 +141,13 @@
 				}
 				&.tag-css-only {
 					background-color: unset;
-					&:after {
+					&::after {
 						background-color: var(--color-slate);
 					}
 				}
-				&.tag-award:after {
+				&.tag-award::after {
 					background-color: unset;
-					&:after {
+					&::after {
 						background-color: var(--color-mauve);
 					}
 				}
@@ -203,7 +203,7 @@
 				margin-top: 0;
 				margin-left: var(--p);
 			}
-			&:after {
+			&::after {
 				content: "\26F6";
 			}
 		}
@@ -302,7 +302,7 @@
 				}
 			}
 		}
-		&:before {
+		&::before {
 			background: color-mix(
 				in srgb,
 				var(--color-iron) 60%,
@@ -345,7 +345,7 @@
 					@include button-shape;
 				}
 			}
-			&:before {
+			&::before {
 				background-color: var(--color-iron);
 				background: radial-gradient(
 					circle at center right,

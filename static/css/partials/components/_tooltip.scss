@@ -4,7 +4,7 @@
 	align-items: center;
 	position: relative;
 	width: fit-content;
-	&:before, &:after {
+	&::before, &::after {
 		display: block;
 		position: absolute;
 		@include theme(light, 2) {
@@ -16,14 +16,14 @@
 			color: white;
 		}
 	}
-	&:before {
+	&::before {
 		content: "";
 		rotate: 45deg;
 		z-index: 1;
 		width: var(--t);
 		height: var(--t);
 	}
-	&:after {
+	&::after {
 		content: var(--tooltip-label);
 		z-index: 2;
 		width: fit-content;
@@ -34,12 +34,12 @@
 		@include font-weight-width(600, 100);
 	}
 	span {
-		&:before, &:after {
+		&::before, &::after {
 			content: "";
 			display: block;
 			position: absolute;
 		}
-		&:before {
+		&::before {
 			rotate: 45deg;
 			z-index: 0;
 			width: calc(var(--t) + 3px);
@@ -48,7 +48,7 @@
 				background-color: var(--color-primary);
 			}
 		}
-		&:after {
+		&::after {
 			bottom: 0;
 			left: 0;
 			z-index: 0;
@@ -62,48 +62,48 @@
 		}
 	}
 	&.hidden {
-		&:before, &:after {
+		&::before, &::after {
 			opacity: 0;
 			visibility: hidden;
 		}
 	}
 	&.small {
 		--t: 8px;
-		&:after {
+		&::after {
 			padding: calc(var(--p)/3) calc(var(--p)/2);
 		}
 	}
 	&.large {
 		--t: 12px;
-		&:after {
+		&::after {
 			font-size: 1rem;
 			padding: calc(var(--p)/3*2) var(--p) calc(var(--p)/2);
 			border-radius: 4px;
 		}
 	}
 	&-bottom {
-		&:before {
+		&::before {
 			border-top-left-radius: 2px;
 			left: calc(50% - var(--t)/2);
 		}
-		span:before {
+		span::before {
 			border-top-left-radius: 3px;
 			left: calc(50% - (var(--t) + 3px)/2);
 		}
 		&.inline {
 			margin-top: var(--p);
-			&:before {
+			&::before {
 				top: calc(var(--p)/-2);
 			}
-			span:before {
+			span::before {
 				top: calc((var(--p) + 3px)/-2);
 			}
 		}
 		&:not(.inline) {
-			&:before {
+			&::before {
 				top: calc(100% + var(--p)/3*2 - var(--t)/2);
 			}
-			&:after {
+			&::after {
 				top: calc(100% + var(--p)/3*2);
 				left: 50%;
 				translate: -50% 0;
@@ -111,28 +111,28 @@
 		}
 	}
 	&-right {
-		&:before {
+		&::before {
 			border-bottom-left-radius: 2px;
 			top: calc(50% - var(--t)/2);
 			left: calc(100% + var(--p)/3*2);
 		}
-		&:after {
+		&::after {
 			left: calc(100% + var(--p)/3*2 + var(--t)/2);
 		}
 	}
 	&.monospace {
-		&:after {
+		&::after {
 			font-family: var(--font-mono);
 			@include font-weight-width(700, 100);
 		}
 	}
 	&.inline {
-		&:after {
+		&::after {
 			position: relative;
 		}
 	}
 	&.dark {
-		&:before, &:after {
+		&::before, &::after {
 			@include theme(light, 2) {
 				background-color: var(--color-primary);
 			}
@@ -140,12 +140,12 @@
 				background-color: gHSL(iron, .55);
 			}
 		}
-		&:after {
+		&::after {
 			color: white;
 		}
 	}
 	&:not(.dark) {
-		&:before, &:after {
+		&::before, &::after {
 			@include contrast(light, 2) {
 				background-color: white;
 			}

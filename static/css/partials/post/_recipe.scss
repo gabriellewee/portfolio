@@ -82,7 +82,7 @@
 		margin-bottom: var(--p);
 		color: var(--color-white);
 		background-color: var(--color-mix);
-		&:after {
+		&::after {
 			@include contrast(both, 2) {
 				background-color: var(--color-mix);
 			}
@@ -177,7 +177,7 @@
 		width: 100%;
 		text-align: center;
 		margin-top: calc(var(--p)*2);
-		&:before {
+		&::before {
 			content: var(--emoji);
 			font-size: 2rem;
 		}

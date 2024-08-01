@@ -9,7 +9,7 @@
 		justify-content: center;
 		position: relative;
 		cursor: pointer;
-		&:after {
+		&::after {
 			clip-path: polygon(0 0, 0 100%, 100% 0);
 			rotate: 45deg;
 			opacity: 0;
@@ -76,7 +76,7 @@
 		pointer-events: none;
 		@include hide;
 		&:active {
-			+ .popup-label:after {
+			+ .popup-label::after {
 				@media (prefers-reduced-motion: no-preference) {
 					transition: translate .2s ease-out, opacity .1s ease-out .1s;
 				}
@@ -87,12 +87,12 @@
 			}
 		}
 		&:checked {
-			~ .popup-label:after, ~ .popup-window {
+			~ .popup-label::after, ~ .popup-window {
 				opacity: 1;
 				visibility: visible;
 				z-index: unset;
 			}
-			~ .popup-label:after, ~ .popup-window {
+			~ .popup-label::after, ~ .popup-window {
 				@media (prefers-reduced-motion: no-preference) {
 					translate: 0;
 				}

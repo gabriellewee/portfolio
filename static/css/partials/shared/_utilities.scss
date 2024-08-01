@@ -471,7 +471,7 @@ $mastodon: #6364ff;
 
 // button colors for recipe theme
 @mixin recipe-button {
-	&:before {
+	&::before {
 		background: radial-gradient(
 			circle at center left,
 			color-mix(
@@ -499,7 +499,7 @@ $mastodon: #6364ff;
 			var(--color-slate) 75%,
 			var(--color-slate) 100%
 		) 50% 0% / 200% 100%;
-		&:before {
+		&::before {
 			@include theme(light, 2) {
 				background-color: var(--color-iron);
 				background: radial-gradient(

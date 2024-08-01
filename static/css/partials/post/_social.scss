@@ -60,7 +60,7 @@
 	.expand {
 		transition: scale .2s ease-out;
 		display: block;
-		&:before {
+		&::before {
 			background: radial-gradient(
 				circle at center left,
 				var(--color-rose),
@@ -69,7 +69,7 @@
 			@include before;
 		}
 		&:focus-visible {
-			&:before {
+			&::before {
 				opacity: 1;
 			}
 		}
@@ -98,7 +98,7 @@
 				#{gHSL(slate, .8)}
 			);
 			background-color: var(--color-mix);
-			&:after {
+			&::after {
 				@include contrast(both, 2) {
 					background-color: var(--color-mix);
 				}
@@ -164,7 +164,7 @@
 			}
 		}
 	}
-	.media-attachment a:before {
+	.media-attachment a::before {
 		background: radial-gradient(
 			circle at center left,
 			color-mix(

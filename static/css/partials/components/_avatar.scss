@@ -109,7 +109,7 @@
 		margin-right: var(--p);
 		width: var(--width);
 		height: var(--height);
-		&:after {
+		&::after {
 			content: "";
 			display: block;
 			position: absolute;

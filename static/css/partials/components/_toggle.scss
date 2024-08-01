@@ -11,7 +11,7 @@
 	border-radius: calc(var(--p)*2);
 	margin-right: var(--p);
 	padding: calc(var(--p)/4);
-	&:before {
+	&::before {
 		@include contrast(both, 2) {
 			content: "";
 			display: block;
@@ -25,7 +25,7 @@
 			border-radius: calc(var(--p)*3);
 		}
 	}
-	&:after {
+	&::after {
 		transition: translate .3s ease-out;
 		content: "";
 		display: block;
@@ -40,7 +40,7 @@
 	}
 	&.active {
 		background-color: var(--color-mint);
-		&:after {
+		&::after {
 			translate: 100% 0;
 		}
 	}

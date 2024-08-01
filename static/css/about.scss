@@ -43,7 +43,7 @@
 	li {
 		display: inline;
 		&:not(:last-child) {
-			&:after {
+			&::after {
 				content: "\00B7";
 				display: inline-block;
 				font-weight: 800;
@@ -115,7 +115,7 @@
 			}
 		}
 		.tooltip {
-			&:after {
+			&::after {
 				white-space: nowrap;
 			}
 		}
@@ -168,10 +168,10 @@
 		&, span {
 			transition: background-color .2s ease-out, scale .2s ease-out;
 		}
-		&:before {
+		&::before {
 			@include before(var(--color-blush));
 		}
-		&:after {
+		&::after {
 			@include contrast(both, 2) {
 				content: "";
 				display: block;
@@ -205,7 +205,7 @@
 			}
 		}
 		&:focus-visible {
-			&:before {
+			&::before {
 				opacity: 1;
 			}
 		}
@@ -320,12 +320,12 @@
 			clip-path: unset;
 			border-radius: unset;
 			background-color: unset;
-			&:before, &:after {
+			&::before, &::after {
 				content: "";
 				display: block;
 				position: absolute;
 			}
-			&:before {
+			&::before {
 				z-index: -2;
 				top: -1.5px;
 				left: -1.5px;
@@ -333,7 +333,7 @@
 				height: calc(100% + 3px);
 				@include clip-path-edges(3px);
 			}
-			&:after {
+			&::after {
 				z-index: -1;
 				top: 0;
 				left: 0;
@@ -343,10 +343,10 @@
 			}
 		}
 		@include contrast(light, 2) {
-			&:before {
+			&::before {
 				background-color: gHSL(primary, 1, .5);
 			}
-			&:after {
+			&::after {
 				background-color: color-mix(
 					in srgb,
 					var(--color-iron) 10%,
@@ -355,10 +355,10 @@
 			}
 		}
 		@include contrast(dark, 2) {
-			&:before {
+			&::before {
 				background-color: gHSL(primary, 1, .7);
 			}
-			&:after {
+			&::after {
 				background-color: gHSL(iron, .7);
 			}
 		}

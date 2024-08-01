@@ -9,15 +9,15 @@
 	border: 0;
 	background: none;
 	@include font-weight-width(700, 125);
-	&, > span, > span:before {
+	&, > span, > span::before {
 		transition: background .4s ease-out, scale .2s ease-out, opacity .2s ease-out;
 	}
-	&:before, &:after {
+	&::before, &::after {
 		content: "";
 		display: block;
 		position: absolute;
 	}
-	&:before {
+	&::before {
 		opacity: 0;
 		z-index: -1;	
 		top: calc(var(--p)/-4);
@@ -37,7 +37,7 @@
 			@include button-shape(1.375, 7%);
 		}
 	}
-	&:after {
+	&::after {
 		@include contrast(both, 2) {
 			z-index: -2;
 			top: calc(var(--p)/-8);
@@ -65,7 +65,7 @@
 			var(--color-slate)
 		) 50% 0% / 200% 100%;
 		@include button;
-		&:before {
+		&::before {
 			opacity: 0;
 			content: "";
 			display: block;
@@ -120,7 +120,7 @@
 			@include focus-shadow(var(--color-slate));
 		}
 		@include clip-path(true) {
-			&:before {
+			&::before {
 				opacity: 1;
 			}
 		}
@@ -129,18 +129,18 @@
 		@media (prefers-reduced-motion: no-preference) {
 			scale: .98;
 		}
-		&, > span, > span:before {
+		&, > span, > span::before {
 			transition: background .2s ease-out, scale .2s ease-out, opacity .2s ease-out;
 		}
 		> span {
-			&:before {
+			&::before {
 				opacity: 1;
 			}
 		}
 	}
 
 	&.button-reverse {
-		&:before {
+		&::before {
 			background: radial-gradient(
 				circle at center left,
 				var(--color-rose),
@@ -156,7 +156,7 @@
 				var(--color-slate) 75%,
 				var(--color-slate) 100%
 			) 50% 0% / 200% 100%;
-			&:before {
+			&::before {
 				@include theme(light, 2) {
 					background-color: var(--color-iron);
 					background: radial-gradient(
@@ -192,7 +192,7 @@
 
 	&.link-platform {
 		> span {
-			&:before {
+			&::before {
 				display: none;
 			}
 		}

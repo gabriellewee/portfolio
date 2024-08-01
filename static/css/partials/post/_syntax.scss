@@ -1,42 +1,42 @@
 // labels
 pre[class$="js"], pre[class$="javascript"] {
-	&:before {
+	&::before {
 		content: "JavaScript";
 	}
 }
 pre[class$="css"] {
-	&:before {
+	&::before {
 		content: "CSS";
 	}
 }
 pre[class$="scss"] {
-	&:before {
+	&::before {
 		content: "SCSS";
 	}
 }
 pre[class$="html"] {
-	&:before {
+	&::before {
 		content: "HTML";
 	}
 }
 pre[class$="haml"] {
-	&:before {
+	&::before {
 		content: "Haml";
 	}
 }
 pre[class$="markdown"] {
-	&:before {
+	&::before {
 		content: "Markdown";
 	}
 }
 pre[class$="yaml"] {
-	&:before {
+	&::before {
 		content: "YAML";
 	}
 }
 
 pre {
-	&:before {
+	&::before {
 		position: absolute;
 		top: calc(var(--p)/3);
 		right: calc(var(--p)/2);

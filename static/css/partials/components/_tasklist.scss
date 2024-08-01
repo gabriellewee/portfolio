@@ -10,11 +10,11 @@
 		position: relative;
 		font-weight: 500;
 		color: gHSL(primary, 1, .75);
-		&:before, &:after {
+		&::before, &::after {
 			content: "";
 			display: block;
 		}
-		&:before {
+		&::before {
 			min-width: calc(var(--p)*2);
 			height: calc(var(--p)*2);
 			border-radius: calc(var(--p)*2);
@@ -33,7 +33,7 @@
 				);
 			}
 		}
-		&:after {
+		&::after {
 			opacity: 0;
 			width: calc(var(--p)/3*4);
 			height: calc(var(--p)/3*4);
@@ -54,13 +54,13 @@
 	input {
 		@include hide;
 		&:focus-visible + label {
-			&:before {
+			&::before {
 				@include focus-shadow(gHSL(mint, 1, .7), false);
 			}
 		}
 		&:checked + label {
 			color: gHSL(primary, 1, 1);
-			&:after {
+			&::after {
 				opacity: 1;
 			}
 		}

@@ -1,6 +1,6 @@
 .expand {
 	display: block;
-	&, &:before, &:after {
+	&, &::before, &::after {
 		cursor: zoom-in;
 	}
 }
@@ -146,7 +146,7 @@
 				opacity: 1;
 				visibility: visible;
 				z-index: 998;
-				&:before {
+				&::before {
 					opacity: 1;
 				}
 			}

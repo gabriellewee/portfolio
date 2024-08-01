@@ -7,7 +7,7 @@
 	.apple {
 		display: inline-block;
 		span {
-			&:before {
+			&::before {
 				content: " ";
 			}
 		}
@@ -27,12 +27,12 @@
 	@media (prefers-reduced-motion) {
 		display: none;
 	}
-	&:after {
+	&::after {
 		content: "_";
 		display: inline-block;
 	}
 	&.animated {
-		&:after {
+		&::after {
 			animation: blink 1s cubic-bezier(1,0,0,1) infinite forwards;
 		}
 	}

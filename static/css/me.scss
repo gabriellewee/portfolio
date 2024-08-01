@@ -49,7 +49,7 @@
 	transition: opacity .2s ease-out, scale .2s ease-out;
 	display: block;
 	position: relative;
-	&:before {
+	&::before {
 		background: radial-gradient(
 			circle at center left,
 			var(--color-rose),
@@ -61,7 +61,7 @@
 		@include clip-path-edges(2px);
 	}
 	&:focus-visible {
-		&:before {
+		&::before {
 			opacity: 1;
 		}
 	}
@@ -87,7 +87,7 @@
 		width: 100%;
 		height: $width;
 		@include invert(100%);
-		&:before, &:after {
+		&::before, &::after {
 			content: "";
 			display: block;
 			position: absolute;
@@ -99,7 +99,7 @@
 				background-position: center;
 			}
 		}
-		&:before {
+		&::before {
 			width: 100%;
 			@include theme(light, 2) {
 				filter: contrast(50%) saturate(30%) brightness(120%) opacity(60%);
@@ -108,7 +108,7 @@
 				filter: contrast(50%) saturate(30%);
 			}
 		}
-		&:after {
+		&::after {
 			width: $width;
 		}
 	}
@@ -203,7 +203,7 @@
 			@include viewport(mobile) {
 				margin-top: 0;
 			}
-			&:before {
+			&::before {
 				@include contrast(both, 2) {
 					content: "";
 					display: block;
