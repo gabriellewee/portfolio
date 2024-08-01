@@ -170,7 +170,7 @@
 				grid-column: 1 / span 4;
 			}
 			&[style] {
-				width: calc((100% / 3) - var(--p));
+				width: calc((100% - (var(--p) * 4)) / 3);
 			}
 		}
 	}
@@ -190,7 +190,7 @@
 				grid-column: 1 / span 8;
 			}
 			&[style] {
-				width: calc((100% / 3) * 2 - var(--p));
+				width: calc((100% - var(--p)) / 3 * 2);
 			}
 		}
 	}
