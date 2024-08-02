@@ -50,11 +50,11 @@ figure {
 	bottom: 0;
 	right: 0;
 	padding: calc(var(--p)*.75) var(--p);
-	color: gHSL(white, 1, .8);
+	color: hsl(from white h s l / .8);
 	font-size: 1rem;
 	text-transform: uppercase;
 	@include font-weight-width(600, 80);
-	@include blur(3px, iron, .45, .5, .3);
+	@include blur(3px, var(--color-iron), .45, .5, .3);
 	@include clip-path(false) {
 		border-top-left-radius: 3px;
 	}
@@ -77,9 +77,9 @@ figure {
 	height: 100%;
 	background: linear-gradient(
 		to bottom,
-		gHSL(iron, .45, .7) 0,
-		gHSL(iron, .45, .2) 45%,
-		gHSL(iron, .45, 0) 100%
+		hsl(from var(--color-iron) h s calc(l * .45) / .7) 0,
+		hsl(from var(--color-iron) h s calc(l * .45) / .2) 45%,
+		hsl(from var(--color-iron) h s calc(l * .45) / 0) 100%
 	);
 	@include hover {
 		display: flex;
@@ -122,7 +122,7 @@ figcaption {
 	width: 100%;
 	height: 100%;
 	min-height: 100%;
-	background-color: gHSL(iron, .45, .9);
+	background-color: hsl(from var(--color-iron) h s calc(l * .45) / .9);
 	color: white;
 	font-size: 1.125rem;
 	@include font-weight-width(700, 120);
@@ -167,13 +167,13 @@ figcaption {
 		mask-size: 100% calc(var(--p)*2.5), 100% calc(100% - var(--p)*2.5);
 	}
 	.time-default {
-		background-color: gHSL(iron, .35, .9);
+		background-color: hsl(from var(--color-iron) h s calc(l * .35) / .9);
 		@include reduce-transparency(2) {
-			background-color: gHSL(iron, .35);
+			background-color: hsl(from var(--color-iron) h s calc(l * .35));
 		}
 		&::before {
 			@include contrast(light, 2) {
-				background-color: gHSL(white, 1, .8);
+				background-color: hsl(from white h s l / .8);
 			}
 		}
 	}
@@ -236,8 +236,8 @@ figcaption {
 					height: 100%;
 					background: linear-gradient(
 						to bottom,
-						gHSL(iron, .45, .7) 0%,
-						gHSL(iron, .45, 0) 45%
+						hsl(from var(--color-iron) h s calc(l * .45) / .7) 0,
+						hsl(from var(--color-iron) h s calc(l * .45) / 0) 45%
 					);
 					@include clip-path-edges(2px);
 				}
@@ -248,7 +248,7 @@ figcaption {
 				margin-left: calc(var(--p) * .75);
 				text-decoration: underline;
 				text-underline-offset: 8px;
-				text-decoration-color: gHSL(white, 1, 0);
+				text-decoration-color: hsl(from white h s l / 0);
 				@include contrast(both, 2) {
 					text-underline-offset: 4px;
 					text-decoration-color: unset;
@@ -265,7 +265,7 @@ figcaption {
 			&:focus-visible {
 				.no-image {
 					@include contrast(both, 2) {
-						@include focus-shadow(gHSL(white, 1, .8));
+						@include focus-shadow(hsl(from white h s l / .8));
 					}
 				}
 			}
@@ -413,7 +413,7 @@ figcaption {
 			transition: all .1s ease-out;
 			text-decoration: underline;
 			text-underline-offset: 8px;
-			text-decoration-color: gHSL(white, 1, 0);
+			text-decoration-color: hsl(from white h s l / 0);
 			@include contrast(both, 2) {
 				text-underline-offset: 4px;
 				text-decoration-color: unset;
@@ -428,7 +428,7 @@ figcaption {
 		&:focus-visible {
 			span {
 				@include contrast(both, 2) {
-					@include focus-shadow(gHSL(white, 1, .8));
+					@include focus-shadow(hsl(from white h s l / .8));
 				}
 			}
 		}
@@ -616,7 +616,7 @@ figcaption {
 				figcaption {
 					transition: opacity .5s cubic-bezier(.64, 0, .78, 0), translate .5s cubic-bezier(.64, 0, .78, 0);
 					opacity: 1;
-					@include blur(10px, iron, .45, .9, .7);
+					@include blur(10px, var(--color-iron), .45, .9, .7);
 					@media (prefers-reduced-motion: no-preference) {
 						translate: 0 0;
 					}

@@ -106,7 +106,7 @@
 				text-align: center;
 				text-transform: uppercase;
 				@include font-weight-width(600, 120);
-				@include blur(4px, mauve, 1, .9, .8);
+				@include blur(4px, var(--color-mauve), 1, .9, .8);
 				span {
 					display: block;
 					font-size: 2.5rem;
@@ -140,7 +140,7 @@
 				scale: .98;
 			}
 			.icon > span {
-				@include blur(4px, slate, 1, .98, .9);
+				@include blur(4px, var(--color-slate), 1, .98, .9);
 			}
 		}
 	}
@@ -301,16 +301,12 @@
 		@include font-weight-width(600, 90);
 		@include clip-path-edges(2px);
 		@include theme(light, 2) {
-			background-color: color-mix(
-				in srgb,
-				gHSL(iron, 1, .2) 70%,
-				gHSL(white, 1, .2)
-			);
-			color: gHSL(iron, 1, .7);
+			background-color: hsl(from var(--color-iron) h s l / .1);
+			color: hsl(from var(--color-iron) h s l / .7);
 		}
 		@include theme(dark, 2) {
-			background-color: gHSL(iron, .55, .4);
-			color: gHSL(white, 1, .7);
+			background-color: hsl(from var(--color-iron) h s calc(l * .55) / .4);
+			color: hsl(from white h s l / .8);
 		}
 		@include viewport(mobile) {
 			margin-bottom: unset;
@@ -344,7 +340,7 @@
 		}
 		@include contrast(light, 2) {
 			&::before {
-				background-color: gHSL(primary, 1, .5);
+				background-color: hsl(from var(--color-primary) h s l / .5);
 			}
 			&::after {
 				background-color: color-mix(
@@ -356,10 +352,10 @@
 		}
 		@include contrast(dark, 2) {
 			&::before {
-				background-color: gHSL(primary, 1, .7);
+				background-color: hsl(from var(--color-primary) h s l / .7);
 			}
 			&::after {
-				background-color: gHSL(iron, .7);
+				background-color: hsl(from var(--color-iron) h s l / .7);
 			}
 		}
 	}

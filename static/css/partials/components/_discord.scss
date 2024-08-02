@@ -29,7 +29,7 @@
 			width: 100%;
 			min-height: 250px;
 			@include border-radius(3px);
-			@include blur(10px, iron, .45, .9, .8);
+			@include blur(10px, var(--color-iron), .45, .9, .8);
 		}
 		.header {
 			position: relative;
@@ -78,7 +78,7 @@
 		}
 		.description {
 			display: block;
-			border-top: 1px solid gHSL(white, 1, .1);
+			border-top: 1px solid hsl(from white h s l / .1);
 			margin-top: 16px;
 			padding: 16px;
 			@include contrast(both, 2) {
@@ -96,7 +96,7 @@
 		.about-content {
 			display: inline-block;
 			padding: 2px 4px;
-			background-color: gHSL(iron, .75);
+			background-color: hsl(from var(--color-iron) h s calc(l * .75));
 			font-family: var(--font-mono);
 			font-size: .75rem;
 			line-height: 1.5;
@@ -104,7 +104,7 @@
 			@include border-radius(3px);
 		}
 		.links {
-			border-top: 1px solid gHSL(white, 1, .1);
+			border-top: 1px solid hsl(from white h s l / .1);
 			margin-top: 16px;
 			padding-top: 16px;
 			@include contrast(both, 2) {
@@ -138,7 +138,7 @@
 				margin: 0;
 				padding: 8px;
 				border-radius: 3px;
-				border: 1px solid gHSL(white, 1, .1);
+				border: 1px solid hsl(from white h s l / .1);
 				background: none;
 				color: white;
 				font-size: 1rem;
@@ -161,7 +161,7 @@
 					background-size: 20px 20px;
 				}
 				&:hover, &:focus {
-					background-color: gHSL(white, 1, .1);
+					background-color: hsl(from white h s l / .1);
 					border-color: transparent;
 					@include contrast(both, 2) {
 						border-color: white;
@@ -174,7 +174,7 @@
 					@include focus-shadow;
 				}
 				&:active {
-					background-color: gHSL(iron, .45);
+					background-color: hsl(from var(--color-iron) h s calc(l * .45));
 				}
 			}
 			a {

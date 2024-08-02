@@ -46,7 +46,7 @@
 }
 
 .post-code .post-content {
-	background: gHSL(iron, .95) !important;
+	background: hsl(from var(--color-iron) h s l / .95) !important;
 }
 
 .cursor::after {

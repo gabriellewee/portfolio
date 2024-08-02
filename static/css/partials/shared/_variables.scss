@@ -1,3 +1,5 @@
+$iron: #263238;
+
 :root{
 	--p:12px;
 	--width:70rem;
@@ -6,26 +8,13 @@
 	--font-default:-apple-system,"Mona Sans",system-ui,BlinkMacSystemFont,Roboto,Ubuntu,Cantarell,Helvetica,Arial,sans-serif;
 
 	$colors: (
-		white: white,
 		iron: $iron,
-		blush: $blush,
-		rose: $rose,
-		mauve: $mauve,
-		slate: $slate,
+		blush: #F5C8BF,
+		rose: #D19487,
+		mauve: #B2738E,
+		slate: #577783,
 
-		mastodon: $mastodon,
-
-		mint: #8BB29A
-	);
-	@each $name, $color in $colors {
-		--color-#{"" + $name}:hsl(#{hexToHSL($color)});
-		--color-#{"" + $name}-hsl:#{hexToHSL($color)};
-		--color-#{"" + $name}-h:#{hexToH($color)};
-		--color-#{"" + $name}-s:#{hexToS($color)};
-		--color-#{"" + $name}-l:#{hexToL($color)};
-	}
-
-	$colors-no-hsl: (
+		mint: #8BB29A,
 		oak: #D1AE87,
 		aqua: #73d1c8,
 		peach: #f78c6a,
@@ -42,6 +31,7 @@
 		github: #4969ed,
 		instagram: #cd486b,
 		twitter: #1D9BF0,
+		mastodon: #6364ff,
 		pinterest: #e60023,
 		dribbble: #ea4c89,
 		music: #fa2d48,
@@ -55,34 +45,19 @@
 		apple-podcasts: #852dc4,
 		spotify: #1BD760,
 	);
-	@each $name, $color in $colors-no-hsl {
+	@each $name, $color in $colors {
 		--color-#{"" + $name}:hsl(#{hexToHSL($color)});
 	}
 
 	--color-email:hsl(#{hexToHSL(mix($iron, white, 70%))});
 }
 
-$light: mix($iron, white, 95%);
-$dark: mix($iron, white, 5%);
-
 @include theme(light, 4, true) {
 	--color-secondary:white;
-	--color-secondary-hsl:var(--color-white-hsl);
-	--color-primary:hsl(#{hexToHSL($light)});
-	--color-primary-hsl:#{hexToHSL($light)};
-	@each $value in h, s, l {
-		--color-secondary-#{$value}:var(--color-white-$value);
-		--color-primary-#{$value}:var(--color-iron-$value);
-	}
+	--color-primary:#{mix($iron, white, 95%)};
 }
 
 @include theme(dark, 4, true) {
 	--color-secondary:var(--color-iron);
-	--color-secondary-hsl:var(--color-iron-hsl);
-	--color-primary:hsl(#{hexToHSL($dark)});
-	--color-primary-hsl:#{hexToHSL($dark)};
-	@each $value in h, s, l {
-		--color-secondary-#{$value}:var(--color-iron-$value);
-		--color-primary-#{$value}:var(--color-white-$value);
-	}
+	--color-primary:#{mix($iron, white, 5%)};
 }

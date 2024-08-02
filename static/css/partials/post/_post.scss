@@ -72,10 +72,10 @@
 			text-decoration-thickness: 2px;
 			text-underline-offset: 8px;
 			@include theme(light, 2) {
-				text-decoration-color: gHSL(blush, 1.1, 0);
+				text-decoration-color: hsl(from var(--color-blush) h s calc(l * 1.1) / 0);
 			}
 			@include theme(dark, 2) {
-				text-decoration-color: gHSL(iron, .73, 0);
+				text-decoration-color: hsl(from var(--color-iron) h s calc(l * .73) / 0);
 			}
 			@include contrast(both, 2) {
 				text-underline-offset: 4px;
@@ -108,8 +108,8 @@
 		&.active {
 			--color-mix: color-mix(
 				in hsl,
-				hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .9) var(--color-mauve-l) / 1) 30%,
-				hsl(var(--color-rose-h) calc(var(--color-rose-s) * .9) var(--color-rose-l) / 1)
+				hsl(from var(--color-mauve) h calc(s * .9) l) 30%,
+				hsl(from var(--color-rose) h calc(s * .9) l)
 			);
 			&, > span {
 				color: var(--color-mix);
@@ -201,7 +201,7 @@
 
 	.post-inner {
 		overflow: hidden;
-		background-color: gHSL(secondary, 1, .9);
+		background-color: hsl(from var(--color-secondary) h s l / .9);
 		@include viewport($iphone-max) {
 			@include clip-path-edges(2px);
 		}
@@ -256,7 +256,7 @@
 		white-space: nowrap;
 		&.time-default {
 			position: relative;
-			background-color: gHSL(iron, .95, .75);
+			background-color: hsl(from var(--color-iron) h s calc(l * .95) / .75);
 			text-transform: uppercase;
 			@include font-weight-width(600, 90);
 			@include button;
@@ -375,7 +375,7 @@
 		margin: calc(var(--p)*3) auto;
 		border: 0;
 		height: 2px;
-		background-color: gHSL(primary, 1, .2);
+		background-color: hsl(from var(--color-primary) h s l / .2);
 	}
 
 	p:not(.codepen), blockquote, pre, ul, ol, figure {
@@ -403,7 +403,7 @@
 	a, pre, button {
 		&:focus-visible {
 			@include theme(light, 2) {
-				@include focus-shadow(gHSL(mauve, 1, .5));
+				@include focus-shadow(hsl(from var(--color-mauve) h s l / .5));
 			}
 			@include theme(dark, 2) {
 				@include focus-shadow(var(--color-mauve));
@@ -425,21 +425,21 @@
 			@include gradient-text(
 				var(--color-mauve),
 				var(--color-slate),
-				gHSL(mauve, 1, .5)
+				hsl(from var(--color-mauve) h s l / .5)
 			);
 			&:hover, &:focus {
 				@include gradient-text(
 					var(--color-rose),
 					var(--color-mauve),
-					gHSL(rose, 1, .5)
+					hsl(from var(--color-rose) h s l / .5)
 				);
 			}
 			&:active {
 				@include theme(light, 2) {
 					@include gradient-text(
-						gHSL(iron, .95),
-						gHSL(iron, .35),
-						gHSL(iron, .95, .5)
+						hsl(from var(--color-iron) h s calc(l * .95)),
+						hsl(from var(--color-iron) h s calc(l * .35)),
+						hsl(from var(--color-iron) h s calc(l * .95) / .5)
 					);
 				}
 				@include theme(dark, 2) {
@@ -450,7 +450,7 @@
 							var(--color-iron) 80%,
 							white
 						),
-						gHSL(slate, 1, .5)
+						hsl(from var(--color-slate) h s l / .5)
 					);
 				}
 			}
@@ -463,7 +463,7 @@
 			border-radius: 2px;
 			padding-left: 2px;
 			padding-right: 2px;
-			background-color: gHSL(iron, 1, .2);
+			background-color: hsl(from var(--color-primary) h s l / .1);
 			font-size: 1.0625rem;
 		}
 	}
@@ -490,7 +490,7 @@
 			background-color: var(--color-iron);
 		}
 		@include theme(dark, 2) {
-			background-color: gHSL(iron, .55);
+			background-color: hsl(from var(--color-iron) h s calc(l * .55));
 		}
 	}
 	blockquote {
@@ -562,7 +562,7 @@
 		padding: calc(var(--p)*1.5) calc(var(--p)*2);
 		margin-bottom: calc(var(--p)*2);
 		border-radius: 3px;
-		background-color: gHSL(primary, 1, .1);
+		background-color: hsl(from var(--color-primary) h s l / .1);
 		> * {
 			font-weight: 450;
 			code {
@@ -579,8 +579,8 @@
 			@include theme(light, 2) {
 				background: radial-gradient(
 					circle at center left,
-					gHSL(rose, 1, .5),
-					gHSL(mauve, 1, .5),
+					hsl(from var(--color-rose) h s l / .5),
+					hsl(from var(--color-mauve) h s l / .5)
 				);
 			}
 			@include theme(dark, 2) {
@@ -622,10 +622,10 @@
 		@include font-weight-width(700, 115);
 		@include clip-path-edges(2px);
 		@include theme(light, 2) {
-			background-color: gHSL(primary, 1, .1);
+			background-color: hsl(from var(--color-primary) h s l / .1);
 		}
 		@include theme(dark, 2) {
-			background-color: gHSL(iron, .45, .5);
+			background-color: hsl(from var(--color-iron) h s calc(l * .45) / .5);
 		}
 		span {
 			display: block;

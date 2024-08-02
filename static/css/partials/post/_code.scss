@@ -128,7 +128,7 @@
 					left: -1.5px;
 					width: calc(100% + 3px);
 					height: calc(100% + 3px);
-					background-color: gHSL(primary, 1, .7);
+					background-color: hsl(from var(--color-primary) h s l / .7);
 					@include clip-path-edges(3px);
 				}
 				&::after {
@@ -327,7 +327,7 @@
 			background-color: var(--color-mint);
 			background: radial-gradient(
 				circle at center left,
-				gHSL(slate, .8),
+				hsl(from var(--color-slate) h s calc(l * .8)),
 				var(--color-mint),
 				var(--color-oak),
 			) 50% 0% / 200% 100%;
@@ -349,7 +349,7 @@
 				background-color: var(--color-iron);
 				background: radial-gradient(
 					circle at center right,
-					gHSL(iron, .45),
+					hsl(from var(--color-iron) h s calc(l * .45)),
 					var(--color-iron)
 				);
 			}

@@ -207,7 +207,7 @@
 		}
 		&:active {
 			> span {
-				background: gHSL(iron, .35);
+				background: hsl(from var(--color-iron) h s calc(l * .35));
 			}
 		}
 	}

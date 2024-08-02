@@ -37,7 +37,7 @@ $options: color, contrast, transparency, load;
 		}
 	}
 	.popup-label::after, .popup-window .inside {
-		@include blur(10px, iron, .45, .9, .8);
+		@include blur(10px, var(--color-iron), .45, .9, .8);
 	}
 	.popup-label {
 		z-index: -1;

@@ -23,8 +23,8 @@
 			text-underline-offset: 8px;
 
 			@include theme(light, 2) {
-				color: gHSL(primary, 1, .9);
-				text-decoration-color: gHSL(primary, 1, 0);
+				color: hsl(from var(--color-primary) h s l / .9);
+				text-decoration-color: hsl(from var(--color-primary) h s l / 0);
 				&:hover, &:focus {
 					--color-mix: color-mix(
 						in srgb,
@@ -35,21 +35,21 @@
 					text-decoration-color: color-mix(
 						in srgb,
 						var(--color-mix) 60%,
-						var(--color-white)
+						white
 					);
 				}
 				&:active {
-					color: gHSL(primary, 1, 1);
-					text-decoration-color: gHSL(primary, 1, 1);
+					color: var(--color-primary);
+					text-decoration-color: var(--color-primary);
 				}
 			}
 
 			@include theme(dark, 2) {
-				color: gHSL(primary, 1, .75);
-				text-decoration-color: gHSL(primary, 1, 0);
+				color: hsl(from var(--color-primary) h s l / .75);
+				text-decoration-color: hsl(from var(--color-primary) h s l / 0);
 				&:hover, &:focus {
-					color: gHSL(primary, 1, 1);
-					text-decoration-color: gHSL(primary, 1, .75);
+					color: var(--color-primary);
+					text-decoration-color: hsl(from var(--color-primary) h s l / .75);
 				}
 				&:active {
 					--color-mix: color-mix(
@@ -80,7 +80,7 @@
 		transition: translate .2s ease-out;
 		order: 1;
 		margin-bottom: var(--p);
-		color: var(--color-white);
+		color: white;
 		background-color: var(--color-mix);
 		&::after {
 			@include contrast(both, 2) {
@@ -111,11 +111,11 @@
 	gap: calc(var(--p) * 2);
 	margin-top: calc(var(--p)*1.5);
 	padding: calc(var(--p)*2);
-	background-color: gHSL(mint, 1, .15);
+	background-color: hsl(from var(--color-mint) h s l / .15);
 	@include contrast(both, 2) {
 		border-top: 1.5px solid var(--color-primary);
 		border-bottom: 1.5px solid var(--color-primary);
-		background-color: gHSL(mint, 1, .1);
+		background-color: hsl(from var(--color-mint) h s l / .1);
 	}
 	.recipe-servings {
 		width: 100%;
@@ -143,7 +143,7 @@
 	a, pre, button {
 		&:focus-visible {
 			@include theme(light, 2) {
-				@include focus-shadow(gHSL(mint, 1, .5));
+				@include focus-shadow(hsl(from var(--color-mint) h s l / .5));
 			}
 			@include theme(dark, 2) {
 				@include focus-shadow(var(--color-mint));

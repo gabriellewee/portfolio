@@ -19,7 +19,7 @@
 				transition: text-underline-offset .1s ease-out, text-decoration-color .1s ease-out;
 				text-decoration: underline;
 				text-underline-offset: 8px;
-				text-decoration-color: gHSL(white, 1, 0);
+				text-decoration-color: hsl(from white h s l / 0);
 				@include contrast(both, 2) {
 					text-underline-offset: 4px;
 				}
@@ -36,20 +36,20 @@
 				> span {
 					text-decoration-color: color-mix(
 						in hsl,
-						hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .9) var(--color-mauve-l) / 1) 30%,
-						hsl(var(--color-rose-h) calc(var(--color-rose-s) * .9) var(--color-rose-l) / 1)
+						hsl(from var(--color-mauve) h calc(s * .9) l) 30%,
+						hsl(from var(--color-rose) h calc(s * .9) l)
 					);
 				}
 			}
 			&:focus-visible {
 				@include contrast(both, 2) {
-					@include focus-shadow(gHSL(mauve, 1, .5));
+					@include focus-shadow(hsl(from var(--color-mauve) h s l / .5));
 				}
 			}
 			&:active {
 				@include theme(light, 2) {
 					> span {
-						text-decoration-color: gHSL(iron, .95);
+						text-decoration-color: hsl(from var(--color-iron) h s calc(l * .95));
 					}
 				}
 				@include theme(dark, 2) {
@@ -93,8 +93,8 @@
 					span span {
 						@include theme(light, 2) {
 							@include gradient-text(
-								gHSL(iron, .95),
-								gHSL(iron, .35)
+								hsl(from var(--color-iron) h s calc(l * .95)),
+								hsl(from var(--color-iron) h s calc(l * .35))
 							);
 						}
 						@include theme(dark, 2) {
@@ -112,7 +112,7 @@
 			}
 		}
 		time {
-			--color-mix: hsl(var(--color-slate-h) calc(var(--color-slate-s) * .75) var(--color-slate-l) / 1);
+			--color-mix: hsl(from var(--color-slate) h calc(s * .75) l);
 			background-color: var(--color-mix);
 			&::after {
 				@include contrast(both, 2) {
@@ -165,8 +165,8 @@
 					span span {
 						@include theme(light, 2) {
 							@include gradient-text(
-								gHSL(iron, .35),
-								gHSL(iron, .95)
+								hsl(from var(--color-iron) h s calc(l * .35)),
+								hsl(from var(--color-iron) h s calc(l * .95))
 							);
 						}
 						@include theme(dark, 2) {
@@ -182,7 +182,7 @@
 					}
 					&::after {
 						@include theme(light, 2) {
-							color: gHSL(iron, .95);
+							color: hsl(from var(--color-iron) h s calc(l * .95));
 						}
 						@include theme(dark, 2) {
 							color: var(--color-slate);
@@ -194,8 +194,8 @@
 		time {
 			--color-mix: color-mix(
 				in srgb,
-				hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .75) var(--color-mauve-l) / 1),
-				gHSL(slate, .8)
+				hsl(from var(--color-mauve) h calc(s * .75) l),
+				hsl(from var(--color-slate) h s calc(l * .8))
 			);
 			background-color: var(--color-mix);
 			&::after {
@@ -210,21 +210,21 @@
 			@include gradient-text(
 				var(--color-slate),
 				var(--color-mauve),
-				gHSL(slate, 1, .5)
+				hsl(from var(--color-slate) h s l / .5)
 			);
 			&:hover, &:focus {
 				@include gradient-text(
 					var(--color-mauve),
 					var(--color-rose),
-					gHSL(mauve, 1, .5)
+					hsl(from var(--color-mauve) h s l / .5)
 				);
 			}
 			&:active {
 				@include theme(light, 2) {
 					@include gradient-text(
-						gHSL(iron, .35),
-						gHSL(iron, .95),
-						gHSL(iron, .35, .5)
+						hsl(from var(--color-iron) h s calc(l * .35)),
+						hsl(from var(--color-iron) h s calc(l * .95)),
+						hsl(from var(--color-iron) h s calc(l * .35) / .5)
 					);
 				}
 				@include theme(dark, 2) {
@@ -237,8 +237,8 @@
 						var(--color-slate),
 						color-mix(
 							in srgb,
-							gHSL(iron, 1, .5) 80%,
-							gHSL(white, 1, .5)
+							hsl(from var(--color-iron) h s l / .5) 80%,
+							hsl(from white h s l / .5)
 						)
 					);
 				}
@@ -282,7 +282,7 @@
 						);
 					}
 					@include theme(dark, 2) {
-						--color-mix: gHSL(white, 1, .7);
+						--color-mix: hsl(from white h s l / .7);
 					}
 				}
 				&:active {

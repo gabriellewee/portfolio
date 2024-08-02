@@ -3,35 +3,26 @@
 
 .page-recipes {
 	@include theme(light, 3) {
-		background-color: gHSL(mint, 1.2);
+		background-color: hsl(from var(--color-mint) h s calc(l * 1.2));
 	}
 	@include theme(dark, 3) {
-		background-color: gHSL(iron, .73);
+		background-color: hsl(from var(--color-iron) h s calc(l * .73));
 	}
 	@include contrast(light, 3) {
-		background-color: gHSL(mint, 1.4);
+		background-color: hsl(from var(--color-mint) h s calc(l * 1.4));
 	}
 	@include contrast(dark, 3) {
-		background-color: gHSL(iron, .45);
+		background-color: hsl(from var(--color-iron) h s calc(l * .45));
 	}
 }
 
 * {
-	::-moz-selection {
+	@include selection {
 		@include theme(light, 1) {
-			background-color: gHSL(mint, 1, .8);
+			background-color: hsl(from var(--color-mint) h s l / .8);
 		}
 		@include theme(dark, 1) {
-			background-color: gHSL(mint, 1, .8);
-		}
-	}
-
-	::selection {
-		@include theme(light, 1) {
-			background-color: gHSL(mint, 1, .8);
-		}
-		@include theme(dark, 1) {
-			background-color: gHSL(mint, 1, .8);
+			background-color: hsl(from var(--color-mint) h s l / .8);
 		}
 	}
 }
@@ -171,14 +162,18 @@
 			&.header-light + .post-header-content {
 				h2 {
 					&::before {
-						background: linear-gradient(to top, #{gHSL(white, 1, .7)}, #{gHSL(white, 1, 0)});
+						background: linear-gradient(
+							to top,
+							hsl(from white h s l / .7),
+							hsl(from white h s l / 0)
+						);
 					}
 					a {
-						color: gHSL(iron, 1, .9);
+						color: hsl(from var(--color-iron) h s l / .9);
 					}
 				}
 				time {
-					background-color: gHSL(iron, 1, .9);
+					background-color: hsl(from var(--color-iron) h s l / .9);
 					color: white;
 					@include reduce-transparency(2) {
 						background-color: var(--color-iron);
@@ -187,21 +182,25 @@
 						background-color: white;
 					}
 					&::after {
-						background-color: gHSL(iron, 1, .9);
+						background-color: hsl(from var(--color-iron) h s l / .9);
 					}
 				}
 			}
 			&.header-dark + .post-header-content {
 				h2 {
 					&::before {
-						background: linear-gradient(to top, #{gHSL(iron, 1, .7)}, #{gHSL(iron, 1, 0)});
+						background: linear-gradient(
+							to top,
+							hsl(from var(--color-iron) h s l / .7),
+							hsl(from var(--color-iron) h s l / 0)
+						);
 					}
 					a {
-						color: gHSL(white, 1, .9);
+						color: hsl(from white h s l / .9);
 					}
 				}
 				time {
-					background-color: gHSL(white, 1, .9);
+					background-color: hsl(from white h s l / .9);
 					color: var(--color-iron);
 					@include reduce-transparency(2) {
 						background-color: white;
@@ -210,7 +209,7 @@
 						background-color: var(--color-iron);
 					}
 					&::after {
-						background-color: gHSL(white, 1, .9);
+						background-color: hsl(from white h s l / .9);
 					}
 				}
 			}
@@ -234,7 +233,7 @@
 						z-index: -1;
 						width: calc(100% + (var(--p) * 2));
 						height: calc(100% + var(--p));
-						background-color: gHSL(white, 1, .95);
+						background-color: hsl(from white h s l / .95);
 						@include clip-path-edges(2px);
 						@include reduce-transparency(2) {
 							background-color: white;
@@ -258,9 +257,9 @@
 						}
 					}
 					&:active {
-						color: gHSL(iron, .65);
+						color: hsl(from var(--color-iron) h s calc(l * .65));
 						&::before {
-							background-color: gHSL(white, 1, .75);
+							background-color: hsl(from white h s l / .75);
 							@include reduce-transparency(2) {
 								background-color: color-mix(
 									in srgb,

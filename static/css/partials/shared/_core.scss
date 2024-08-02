@@ -27,18 +27,18 @@ body {
 	font-family: var(--font-default);
     font-feature-settings: "liga","ss01";
 	@include theme(light, 3) {
-		background-color: gHSL(blush, 1.09);
+		background-color: hsl(from var(--color-blush) h s calc(l * 1.09));
 		color: var(--color-primary);
 	}
 	@include theme(dark, 3) {
-		background-color: gHSL(iron, .73);
-		color: gHSL(white, 1, .9);
+		background-color: hsl(from var(--color-iron) h s calc(l * .73));
+		color: hsl(from white h s l / .9);
 	}
 	@include contrast(light, 3) {
-		background-color: gHSL(blush, 1.12);
+		background-color: hsl(from var(--color-blush) h s calc(l * 1.12));
 	}
 	@include contrast(dark, 3) {
-		background-color: gHSL(iron, .45);
+		background-color: hsl(from var(--color-iron) h s calc(l * .45));
 	}
 }
 
@@ -47,21 +47,12 @@ a {
 }
 
 * {
-	::-moz-selection {
+	@include selection {
 		@include theme(light, 1) {
-			background-color: gHSL(rose, 1, .5);
+			background-color: hsl(from var(--color-rose) h s l / .5);
 		}
 		@include theme(dark, 1) {
-			background-color: gHSL(blush, 1, .3);
-		}
-	}
-
-	::selection {
-		@include theme(light, 1) {
-			background-color: gHSL(rose, 1, .5);
-		}
-		@include theme(dark, 1) {
-			background-color: gHSL(blush, 1, .3);
+			background-color: hsl(from var(--color-blush) h s l / .3);
 		}
 	}
 }

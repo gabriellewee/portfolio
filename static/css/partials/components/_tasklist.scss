@@ -9,7 +9,7 @@
 		cursor: pointer;
 		position: relative;
 		font-weight: 500;
-		color: gHSL(primary, 1, .75);
+		color: hsl(from var(--color-primary) h s l / .75);
 		&::before, &::after {
 			content: "";
 			display: block;
@@ -20,7 +20,7 @@
 			border-radius: calc(var(--p)*2);
 			margin-right: calc(var(--p)*.75);
 			@include theme(light, 2) {
-				background-color: gHSL(primary, 1, .1);
+				background-color: hsl(from var(--color-primary) h s l / .1);
 			}
 			@include theme(dark, 2) {
 				background-color: var(--color-primary);
@@ -44,25 +44,35 @@
 			background-color: var(--color-mint);
 		}
 	}
-	input:focus + label, input:hover + label, label:hover {
-		text-decoration: underline;
-		color: gHSL(primary, 1, 1);
-	}
-	input:active + label, input:active + label:hover {
-		color: gHSL(primary, 1, .45);
-	}
 	input {
 		@include hide;
 		&:focus-visible + label {
 			&::before {
-				@include focus-shadow(gHSL(mint, 1, .7), false);
+				@include focus-shadow(hsl(from var(--color-mint) h s l / .7), false);
 			}
 		}
 		&:checked + label {
-			color: gHSL(primary, 1, 1);
+			color: var(--color-primary);
 			&::after {
 				opacity: 1;
 			}
+		}
+	}
+	input:focus + label, input:hover + label, label:hover {
+		text-decoration: underline;
+		@include theme(light, 2) {
+			color: hsl(from var(--color-primary) h s l / .55);
+		}
+		@include theme(dark, 2) {
+			color: var(--color-primary);
+		}
+	}
+	input:active + label, input:active + label:hover {
+		@include theme(light, 2) {
+			color: hsl(from var(--color-primary) h s calc(l * .5));
+		}
+		@include theme(dark, 2) {
+			color: hsl(from var(--color-primary) h s l / .45);
 		}
 	}
 }

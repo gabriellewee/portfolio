@@ -40,18 +40,18 @@
 		display: inline-block;
 		padding: calc(var(--p)*.75) calc(var(--p)*1.5);
 		line-height: 1.4;
-		color: gHSL(iron, .45);
+		color: hsl(from var(--color-iron) h s calc(l * .45));
 		border-radius: 2em;
 		@include font-weight-width(600, 115);
 		@media (prefers-reduced-motion: no-preference) {
 			opacity: 0;
 		}
 		@include theme(light, 2) {
-			background-color: gHSL(white, 1, .8);
+			background-color: hsl(from white h s l / .8);
 			color: var(--color-iron);
 		}
 		@include theme(dark, 2) {
-			background-color: gHSL(iron, 1, .8);
+			background-color: hsl(from var(--color-iron) h s l / .8);
 			color: white;
 		}
 		@include contrast(both, 2) {
@@ -120,7 +120,7 @@
 		}
 		&:focus-visible {
 			@include theme(light, 2) {
-				@include focus-shadow(gHSL(mauve, 1, .5));
+				@include focus-shadow(hsl(from var(--color-mauve) h s l / .5));
 			}
 			@include theme(dark, 2) {
 				@include focus-shadow(var(--color-mauve));

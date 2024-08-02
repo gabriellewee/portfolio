@@ -13,32 +13,9 @@ $desktop: 1280px;
 
 $container-mobile: 350px;
 
-// colors
-$iron: #263238;
-$blush: #F5C8BF;
-$rose: #D19487;
-$mauve: #B2738E;
-$slate: #577783;
-$mastodon: #6364ff;
-
+// functions
 @function hexToHSL($color) {
 	@return "#{hue($color)} #{saturation($color)} #{lightness($color)}";
-}
-@function hexToH($color) {
-	@return "#{hue($color)}";
-}
-@function hexToS($color) {
-	@return "#{saturation($color)}";
-}
-@function hexToL($color) {
-	@return "#{lightness($color)}";
-}
-@function gHSL($color, $lightness, $opacity: 1) {
-	@if $lightness == 1 {
-		@return hsl(var(--color-#{$color}-hsl) / #{$opacity});
-	} @else {
-		@return hsl(var(--color-#{$color}-h) var(--color-#{$color}-s) calc(var(--color-#{$color}-l) * #{$lightness}) / #{$opacity});
-	}
 }
 
 // mixins
@@ -73,6 +50,15 @@ $mastodon: #6364ff;
 
 @mixin max {
 	@supports (padding: max(0px)) {
+		@content;
+	}
+}
+
+@mixin selection {
+	::-moz-selection {
+		@content;
+	}
+	::selection {
 		@content;
 	}
 }
@@ -360,14 +346,14 @@ $mastodon: #6364ff;
 
 @mixin blur($amount, $color, $lightness, $crisp, $blur) {
 	& {
-		background-color: gHSL($color, $lightness, $crisp);
+		background-color: hsl(from $color h s calc(l * #{$lightness}) / $crisp);
 	}
 	@supports ((-webkit-backdrop-filter: blur(0px)) or (backdrop-filter: blur(0px))) {
 		backdrop-filter: blur($amount);
-		background-color: gHSL($color, $lightness, $blur);
+		background-color: hsl(from $color h s calc(l * #{$lightness}) / $blur);
 		@include reduce-transparency(2) {
 			backdrop-filter: unset;
-			background-color: gHSL($color, $lightness);
+			background-color: hsl(from $color h s calc(l * #{$lightness}));
 		}
 	}
 }

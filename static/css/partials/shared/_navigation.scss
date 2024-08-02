@@ -98,8 +98,8 @@ header.top {
 			color: white;
 			background: color-mix(
 				in hsl,
-				hsl(var(--color-slate-h) calc(var(--color-slate-s) * .3) calc(var(--color-slate-l) * .85) / 1) 30%,
-				hsl(var(--color-mauve-h) calc(var(--color-mauve-s) * .3) calc(var(--color-mauve-l) * .85) / 1)
+				hsl(from var(--color-slate) h calc(s * .3) calc(l * .85)) 30%,
+				hsl(from var(--color-mauve) h calc(s * .3) calc(l * .85))
 			);
 		}
 		&:hover, &:focus {
