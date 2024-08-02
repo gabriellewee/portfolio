@@ -45,7 +45,7 @@
 	grid-gap: calc(var(--p)*2);
 }
 
-.post-expand, .post-external {
+.post-expand, .post-external:not(.button) {
 	transition: opacity .2s ease-out, scale .2s ease-out;
 	display: block;
 	position: relative;
@@ -141,6 +141,7 @@
 		max-width: 672px;
 	}
 	.grid {
+		margin-top: calc(var(--p) * 1.75);
 		grid-template-columns: repeat(2, 1fr);
 		@include viewport(mobile) {
 			grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -150,6 +151,14 @@
 		}
 		@include viewport($desktop) {
 			grid-template-columns: repeat(2, 1fr);
+		}
+		&:has(.button) {
+			grid-template-columns: 1fr;
+
+			.button {
+				margin-top: 0;
+				line-height: 1.2;
+			}
 		}
 	}
 	h3 {

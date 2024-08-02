@@ -76,7 +76,6 @@ module.exports = eleventyConfig => {
 					<img loading=${loading} decoding="async" alt="${alt}" src="${stats["webp"][0].url}" srcset="${stats[file][0].url}, ${stats[file][1].url} 2x" width="${stats["webp"][0].width}" height="${stats["webp"][0].height}">
 				</picture>
 			`;
-
 			return result;
 		} catch (error) {
 			console.error(src, '\n', error);
@@ -133,7 +132,7 @@ module.exports = eleventyConfig => {
 			return result;
 		} catch (error) {
 			console.error(error);
-			return `<a class="${className}" href="${link}"><span>${title}</span></a>`;
+			return `<a class="${className} button" href="${link}"><span><span>${title}</span></span></a>`;
 		}
 	});
 
