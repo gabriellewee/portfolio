@@ -102,7 +102,7 @@
 	}
 }
 
-.no-js {
+@media (scripting: none) {
 	.lightbox, .lightbox-background {
 		cursor: zoom-out;
 		opacity: 0;

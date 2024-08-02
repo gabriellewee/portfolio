@@ -278,6 +278,7 @@
 	}
 	.button {
 		order: 2;
+		text-align: center;
 		@include font-weight-width(600, 90);
 		@include viewport(mobile) {
 			order: 1;
@@ -371,7 +372,7 @@
 	}
 	.post-mobile-button + .reload {
 		@include viewport(mobile) {
-			.js & {
+			@media (scripting: enabled) {
 				display: block;
 			}
 		}

@@ -185,7 +185,7 @@ header.top {
 			}
 		}
 		.older {
-			.js & {
+			@media (scripting: enabled) {
 				display: none;
 			}
 			.theme-no-load & {
