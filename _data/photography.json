@@ -1,12 +1,59 @@
 [
 	{
+		"name": "alfie",
+		"date": "2024-07-26",
+		"location": "San Francisco, CA, USA",
+		"camera": "iPhone 14 Pro Max",
+		"editor": "VSCO",
+		"tags": "outdoor nature plants cat",
+		"description": "A grey cat with a gray harness sitting on the concrete ground of a backyard garden."
+	},
+	{
+		"name": "kaws",
+		"date": "2024-06-28",
+		"location": "Art Gallery of Ontario, Toronto, ON, CA",
+		"camera": "iPhone 14 Pro Max",
+		"editor": "VSCO",
+		"tags": "indoor architecture art",
+		"description": "A giant wooden cartoon statue created by the artist KAWS, standing in a wooden art gallery with gently sloping windows supported by wooden beams.",
+		"size": "xs"
+	},
+	{
+		"name": "agave",
+		"date": "2024-06-27",
+		"location": "Toronto, ON, CA",
+		"camera": "iPhone 14 Pro Max",
+		"editor": "VSCO",
+		"tags": "outdoor nature plants",
+		"description": "An agave planted in a black pot with a long stem of bell-shaped white flowers growing from the center.",
+		"size": "xs",
+		"focus": {
+		 	"x": 0,
+		 	"y": 70
+		 }
+	},
+	{
+		"name": "baldwin-steps",
+		"date": "2024-06-27",
+		"location": "Baldwin Steps, Toronto, ON, CA",
+		"camera": "iPhone 14 Pro Max",
+		"editor": "VSCO",
+		"tags": "outdoor architecture landscape plants nature",
+		"description": "The view from the top of the Baldwin Steps at sunset, overlooking the street below and surrounded by trees and greenery, with a view of downtown Toronto in the distance.",
+		"size": "m",
+		"focus": {
+		 	"x": 0,
+		 	"y": 60
+		 }
+	},
+	{
 		"name": "jewelry",
 		"date": "2024-06-02",
 		"location": "San Francisco, CA, USA",
 		"camera": "iPhone 14 Pro Max",
 		"editor": "VSCO",
 		"tags": "indoor flatlay",
-		"description": "A collection of jewerly on a white marble background, including a slim dual-faced watch, pink sapphire rings, rainbow beads, and a bright green jade pendant",
+		"description": "A collection of jewerly on a white marble background, including a slim dual-faced watch, pink sapphire rings, rainbow beads, and a bright green jade pendant.",
 		"external": [
 			 {
 			 	"platform": "instagram",
