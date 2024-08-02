@@ -14,17 +14,25 @@
 	display: grid;
 	grid-gap: calc(var(--p)*2);
 	margin-top: calc(var(--p)*2);
-	grid-template-columns: 1fr;
+	grid-template-columns: repeat(12, 1fr);
 	position: relative;
 	list-style: none;
-	&[style] {
+	@media (scripting: enabled) {
+		grid-template-columns: 1fr;
+	}
+	@supports (grid-template-rows: masonry) {
+		grid-template-rows: masonry;
+		@media (scripting: enabled) {
+			grid-template-rows: unset;
+		}
+	}
+	&[data-grid="true"] {
 		grid-gap: unset;
 	}
-	&:not([style]) {
-		@include viewport(mobile) {
-			.js & {
-				grid-template-columns: repeat(12, 1fr);
-			}
+	&:not([data-grid="true"]) {
+		grid-template-columns: repeat(12, 1fr);
+		@supports (grid-template-rows: masonry) {
+			grid-template-rows: masonry;
 		}
 	}
 }
@@ -147,18 +155,22 @@
 	width: 100%;
 	font-size: 1.125rem;
 
+	.post-single & {
+		grid-column-end: span 12;
+	}
+
 	@include viewport(mobile) {
-		&:not([style]) {
-			grid-column: 1 / span 12;
+		.posts:not([data-grid="true"]) & {
+			grid-column-end: span 12;
 		}
 	}
 
 	&[data-orientation="portrait"] {
 		@include viewport(mobile) {
-			&:not([style]) {
-				grid-column: 1 / span 6;
+			.posts:not([data-grid="true"]) & {
+				grid-column-end: span 6;
 			}
-			&[style] {
+			.posts[data-grid="true"] & {
 				width: calc(50% - var(--p));
 			}
 		}
@@ -166,30 +178,30 @@
 
 	&.post-size-xs {
 		@include viewport(mobile) {
-			&:not([style]) {
-				grid-column: 1 / span 4;
+			.posts:not([data-grid="true"]) & {
+				grid-column-end: span 4;
 			}
-			&[style] {
+			.posts[data-grid="true"] & {
 				width: calc((100% - (var(--p) * 4)) / 3);
 			}
 		}
 	}
 	&.post-size-s {
 		@include viewport(mobile) {
-			&:not([style]) {
-				grid-column: 1 / span 6;
+			.posts:not([data-grid="true"]) & {
+				grid-column-end: span 6;
 			}
-			&[style] {
+			.posts[data-grid="true"] & {
 				width: calc(50% - var(--p));
 			}
 		}
 	}
 	&.post-size-m {
 		@include viewport(mobile) {
-			&:not([style]) {
-				grid-column: 1 / span 8;
+			.posts:not([data-grid="true"]) & {
+				grid-column-end: span 8;
 			}
-			&[style] {
+			.posts[data-grid="true"] & {
 				width: calc((100% - var(--p)) / 3 * 2);
 			}
 		}

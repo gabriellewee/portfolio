@@ -83,19 +83,22 @@ $options: color, contrast, transparency, load;
 			@include font-weight-width(500, 115);
 		}
 		.option-no-js {
-			.js & {
+			@media (scripting: enabled) {
 				display: none;
 			}
 		}
 		.option-js {
-			.no-js & {
-				display: none;
+			display: none;
+			@media (scripting: enabled) {
+				display: block;
 			}
 		}
 		.option-index-only {
 			display: none;
-			.page-home & {
-				display: block;
+			@media (scripting: enabled) {
+				.page-home & {
+					display: block;
+				}
 			}
 		}
 		p {

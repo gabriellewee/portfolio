@@ -88,6 +88,7 @@ let iso;
 let motionClass = document.documentElement.classList.contains("theme-reduce-motion");
 let motion = window.matchMedia("(prefers-reduced-motion: no-preference)");
 const layout = (items) => {
+	items.setAttribute("data-grid", "true");
 	if ((motionClass == false && motion.matches == true) || (!motionClass && motion.matches == true)) {
 		iso = new Isotope(items, {
 			percentPosition: true,

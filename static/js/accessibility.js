@@ -1,6 +1,4 @@
-const noJS = ((container = document.documentElement) => {
-	container.classList.remove("no-js");
-	container.classList.add("js");
+const show = ((container = document.documentElement) => {
 	hidden = Array.from(document.querySelectorAll("[hidden]"));
 	if (hidden) {
 		hidden.forEach(el => {
