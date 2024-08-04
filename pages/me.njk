@@ -98,7 +98,7 @@
 					<h2>I mod my keyboards and console controllers for fun.</h2>
 				</header>
 				<figure id="2022-07-20-keyboard" aria-label="My pastel-themed custom mechanical keyboard and Logitech Lift Mouse.">
-					<a class="post-expand expand" href="#2022-07-20-keyboard-lightbox" role="button" aria-label="Expand image">
+					<a class="post-expand expand" href="#2022-07-20-keyboard-lightbox" role="button" aria-label="Expand image" data-media-expand>
 						{% image './static/images/posts/2022-07-20-keyboard.jpg', 'My pastel-themed custom mechanical keyboard and Logitech Lift Mouse', 'default' %}
 					</a>
 				</figure>
@@ -123,7 +123,7 @@
 					{% for media in photography|limit(4) %}
 						<li>
 							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
-								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image"{% if media.focus %} style="--focus-x: {{media.focus.x}}%; --focus-y: {{media.focus.y}}%;"{% endif %}>
+								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image" data-media-expand{% if media.focus %} style="--focus-x: {{media.focus.x}}%; --focus-y: {{media.focus.y}}%;"{% endif %}>
 									{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail', loop.index %}
 								</a>
 							</figure>
@@ -145,7 +145,7 @@
 					{% for media in graphic|limit(4) %}
 						<li>
 							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
-								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image"{% if media.focus %} style="--focus-x: {{media.focus.x}}%; --focus-y: {{media.focus.y}}%;"{% endif %}>
+								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image" data-media-expand{% if media.focus %} style="--focus-x: {{media.focus.x}}%; --focus-y: {{media.focus.y}}%;"{% endif %}>
 									{% if media.svg == true %}
 										<picture>
 											<img src="/static/images/graphic/{{media.date}}-{{media.name}}.svg" alt="{{media.description}}" width="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'width' %}" height="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'height' %}"/>
@@ -173,7 +173,7 @@
 					{% for media in art|limit(4) %}
 						<li>
 							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
-								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image"{% if media.focus %} style="--focus-x: {{media.focus.x}}%; --focus-y: {{media.focus.y}}%;"{% endif %}>
+								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image" data-media-expand{% if media.focus %} style="--focus-x: {{media.focus.x}}%; --focus-y: {{media.focus.y}}%;"{% endif %}>
 									{% image './static/images/art/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail', loop.index %}
 								</a>
 							</figure>
@@ -196,7 +196,7 @@
 					{% for media in about.cat|limit(2) %}
 						<li>
 							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
-								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image">
+								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
 									{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail' %}
 								</a>
 							</figure>
@@ -218,7 +218,7 @@
 					{% for media in about.plants|limit(2) %}
 						<li>
 							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
-								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand photo">
+								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand photo" data-media-expand>
 									{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail' %}
 								</a>
 							</figure>
@@ -237,7 +237,7 @@
 </section>
 
 <div class="lightbox-group" hidden>
-	<a class="lightbox" id="2022-07-20-keyboard-lightbox" role="button" aria-label="Close image" href="#2022-07-20-keyboard"></a>
+	<a class="lightbox" id="2022-07-20-keyboard-lightbox" role="button" aria-label="Close image" href="#2022-07-20-keyboard" data-lightbox></a>
 	<dialog class="lightbox-content image" aria-label="Image preview" autofocus>
 		<figure>
 			{% image './static/images/posts/2022-07-20-keyboard.jpg', 'My pastel-themed custom mechanical keyboard and Logitech Lift Mouse', 'screen' %}
@@ -245,7 +245,7 @@
 	</dialog>
 
 	{% for media in photography|limit(4) %}
-		<a class="lightbox" id="{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Close image" href="#{{media.date|safe}}-{{media.name}}"></a>
+		<a class="lightbox" id="{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Close image" href="#{{media.date|safe}}-{{media.name}}" data-lightbox></a>
 		<dialog class="lightbox-content image" aria-label="Image preview" autofocus>
 			<figure>
 				{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
@@ -254,7 +254,7 @@
 	{% endfor %}
 
 	{% for media in graphic|limit(4) %}
-		<a class="lightbox" id="{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Close image" href="#{{media.date|safe}}-{{media.name}}"></a>
+		<a class="lightbox" id="{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Close image" href="#{{media.date|safe}}-{{media.name}}" data-lightbox></a>
 		<dialog class="lightbox-content image" aria-label="Image preview" autofocus>
 			<figure>
 				{% if media.svg == true %}
@@ -269,7 +269,7 @@
 	{% endfor %}
 
 	{% for media in art|limit(4) %}
-		<a class="lightbox" id="{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Close image" href="#{{media.date|safe}}-{{media.name}}"></a>
+		<a class="lightbox" id="{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Close image" href="#{{media.date|safe}}-{{media.name}}" data-lightbox></a>
 		<dialog class="lightbox-content image" aria-label="Image preview" autofocus>
 			<figure>
 				{% image './static/images/art/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
@@ -278,7 +278,7 @@
 	{% endfor %}
 
 	{% for media in about.cat|limit(2) %}
-		<a class="lightbox" id="{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Close image" href="#{{media.date|safe}}-{{media.name}}"></a>
+		<a class="lightbox" id="{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Close image" href="#{{media.date|safe}}-{{media.name}}" data-lightbox></a>
 		<dialog class="lightbox-content image" aria-label="Image preview" autofocus>
 			<figure>
 				{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
@@ -287,7 +287,7 @@
 	{% endfor %}
 
 	{% for media in about.plants|limit(2) %}
-		<a class="lightbox" id="{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Close image" href="#{{media.date|safe}}-{{media.name}}"></a>
+		<a class="lightbox" id="{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Close image" href="#{{media.date|safe}}-{{media.name}}" data-lightbox></a>
 		<dialog class="lightbox-content image" aria-label="Image preview" autofocus>
 			<figure>
 				{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
