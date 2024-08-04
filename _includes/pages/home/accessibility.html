@@ -5,43 +5,41 @@
 			<span><span aria-hidden="true" id="accessibility-label">Accessibility</span></span>
 		</span>
 	</label>
-	<menu id="accessibility-window" class="popup-window" data-popup-window>
-		<div class="inside">
-			<ul>
-				<li class="option-no-js">
-					<p>Please turn on Javascript in order to keep your settings after refreshing or leaving the page.</p>
-				</li>
-				<li>
-					<label class="option-label" for="option-color" tabindex="0" role="button" aria-pressed="false" data-option-label>
-						<span class="toggle"></span>
-						<span>Dark mode</span>
-					</label>
-				</li>
-				<li>
-					<label class="option-label" for="option-contrast" tabindex="0" role="button" aria-pressed="false" data-option-label>
-						<span class="toggle"></span>
-						<span>Increase contrast</span>
-					</label>
-				</li>
-				<li>
-					<label class="option-label" for="option-transparency" tabindex="0" role="button" aria-pressed="false" data-option-label>
-						<span class="toggle"></span>
-						<span>Reduce transparency</span>
-					</label>
-				</li>
-				<li class="option-index-only">
-					<label class="option-label" for="option-load" tabindex="0" role="button" aria-pressed="true" data-option-label>
-						<span class="toggle"></span>
-						<span>Load posts</span>
-					</label>
-				</li>
-				<li class="has-button option-js">
-					<button class="button" data-option="reset"><span><span>Reset</span></span></button>
-				</li>
-				<li class="has-button">
-					<label class="close button" for="accessibility" tabindex="0" role="button" aria-pressed="true" aria-haspopup="true" aria-controls="accessibility-window" data-popup-close><span><span>Close</span></span></label>
-				</li>
-			</ul>
-		</div>
-	</menu>
+	<div id="accessibility-window" class="popup-window" data-popup-window>
+		<menu class="inside">
+			<li class="option-no-js">
+				<p>Please turn on Javascript in order to keep your settings after refreshing or leaving the page.</p>
+			</li>
+			<li>
+				<label class="option-label" for="option-color" tabindex="0" role="button" aria-pressed="false" data-option-label>
+					<span class="toggle"></span>
+					<span>Dark mode</span>
+				</label>
+			</li>
+			<li>
+				<label class="option-label" for="option-contrast" tabindex="0" role="button" aria-pressed="false" data-option-label>
+					<span class="toggle"></span>
+					<span>Increase contrast</span>
+				</label>
+			</li>
+			<li>
+				<label class="option-label" for="option-transparency" tabindex="0" role="button" aria-pressed="false" data-option-label>
+					<span class="toggle"></span>
+					<span>Reduce transparency</span>
+				</label>
+			</li>
+			<li class="option-index-only">
+				<label class="option-label" for="option-load" tabindex="0" role="button" aria-pressed="true" data-option-label>
+					<span class="toggle"></span>
+					<span>Load posts</span>
+				</label>
+			</li>
+			<li class="has-button option-js">
+				<button class="button" data-option="reset"><span><span>Reset</span></span></button>
+			</li>
+			<li class="has-button">
+				<label class="close button" for="accessibility" tabindex="0" role="button" aria-pressed="true" aria-haspopup="true" aria-controls="accessibility-window" data-popup-close><span><span>Close</span></span></label>
+			</li>
+		</menu>
+	</div>
 </div>

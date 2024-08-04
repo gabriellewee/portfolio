@@ -64,18 +64,15 @@ $options: color, contrast, transparency, load;
 		margin-top: 16px;
 		border-radius: 3px;
 		.inside {
-			display: block;
-			position: relative;
-			width: 100%;
-			overflow: hidden;
-			@include border-radius(3px);
-		}
-		ul {
 			list-style: none;
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: flex-end;
+			position: relative;
+			width: 100%;
+			overflow: hidden;
 			padding: var(--p);
+			@include border-radius(3px);
 		}
 		li {
 			width: 100%;
