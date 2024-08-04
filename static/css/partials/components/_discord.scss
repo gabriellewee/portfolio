@@ -81,7 +81,7 @@
 			border-top: 1px solid hsl(from white h s l / .1);
 			margin-top: 16px;
 			padding: 16px;
-			@include contrast(both, 2) {
+			@include contrast(both) {
 				border-color: white;
 			}
 		}
@@ -107,7 +107,7 @@
 			border-top: 1px solid hsl(from white h s l / .1);
 			margin-top: 16px;
 			padding-top: 16px;
-			@include contrast(both, 2) {
+			@include contrast(both) {
 				border-color: white;
 			}
 			@include viewport(450px) {
@@ -144,7 +144,7 @@
 				font-size: 1rem;
 				text-align: left;
 				@include font-weight-width(600, 100);
-				@include contrast(both, 2) {
+				@include contrast(both) {
 					border-color: white;
 				}
 				span span {
@@ -163,7 +163,7 @@
 				&:hover, &:focus {
 					background-color: hsl(from white h s l / .1);
 					border-color: transparent;
-					@include contrast(both, 2) {
+					@include contrast(both) {
 						border-color: white;
 					}
 					&::after {

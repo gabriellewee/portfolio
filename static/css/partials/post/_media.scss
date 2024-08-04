@@ -19,7 +19,7 @@
 	}
 	&::after {
 		@include viewport($iphone-max) {
-			@include contrast(both, 2) {
+			@include contrast(both) {
 				z-index: -2;
 				top: -1.5px;
 				left: -1.5px;
@@ -168,11 +168,11 @@ figcaption {
 	}
 	.time-default {
 		background-color: hsl(from var(--color-iron) h s calc(l * .35) / .9);
-		@include reduce-transparency(2) {
+		@include reduce-transparency {
 			background-color: hsl(from var(--color-iron) h s calc(l * .35));
 		}
 		&::before {
-			@include contrast(light, 2) {
+			@include contrast(light) {
 				background-color: hsl(from white h s l / .8);
 			}
 		}
@@ -249,7 +249,7 @@ figcaption {
 				text-decoration: underline;
 				text-underline-offset: 8px;
 				text-decoration-color: hsl(from white h s l / 0);
-				@include contrast(both, 2) {
+				@include contrast(both) {
 					text-underline-offset: 4px;
 					text-decoration-color: unset;
 				}
@@ -264,7 +264,7 @@ figcaption {
 
 			&:focus-visible {
 				.no-image {
-					@include contrast(both, 2) {
+					@include contrast(both) {
 						@include focus-shadow(hsl(from white h s l / .8));
 					}
 				}
@@ -414,7 +414,7 @@ figcaption {
 			text-decoration: underline;
 			text-underline-offset: 8px;
 			text-decoration-color: hsl(from white h s l / 0);
-			@include contrast(both, 2) {
+			@include contrast(both) {
 				text-underline-offset: 4px;
 				text-decoration-color: unset;
 			}
@@ -427,7 +427,7 @@ figcaption {
 		}
 		&:focus-visible {
 			span {
-				@include contrast(both, 2) {
+				@include contrast(both) {
 					@include focus-shadow(hsl(from white h s l / .8));
 				}
 			}

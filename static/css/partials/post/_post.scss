@@ -79,13 +79,13 @@
 			text-decoration: underline;
 			text-decoration-thickness: 2px;
 			text-underline-offset: 8px;
-			@include theme(light, 2) {
+			@include theme(light) {
 				text-decoration-color: hsl(from var(--color-blush) h s calc(l * 1.1) / 0);
 			}
-			@include theme(dark, 2) {
+			@include theme(dark) {
 				text-decoration-color: hsl(from var(--color-iron) h s calc(l * .73) / 0);
 			}
-			@include contrast(both, 2) {
+			@include contrast(both) {
 				text-underline-offset: 4px;
 				text-decoration-color: unset;
 			}
@@ -218,7 +218,7 @@
 			@include clip-path-edges(2px);
 		}
 		@include viewport($iphone-max) {
-			@include contrast(both, 2) {
+			@include contrast(both) {
 				overflow: unset;
 				position: relative;
 				clip-path: unset;
@@ -248,10 +248,10 @@
 			}
 		}
 		&::before {
-			@include contrast(light, 2) {
+			@include contrast(light) {
 				background-color: var(--color-primary);
 			}
-			@include contrast(dark, 2) {
+			@include contrast(dark) {
 				background-color: color-mix(
 					in srgb,
 					var(--color-iron) 5%,
@@ -272,7 +272,7 @@
 			text-transform: uppercase;
 			@include font-weight-width(600, 90);
 			@include button;
-			@include contrast(both, 2) {
+			@include contrast(both) {
 				background-color: unset !important;
 				@include clip-path(false) {
 					border-radius: unset;
@@ -414,10 +414,10 @@
 
 	a, pre, button {
 		&:focus-visible {
-			@include theme(light, 2) {
+			@include theme(light) {
 				@include focus-shadow(hsl(from var(--color-mauve) h s l / .5));
 			}
-			@include theme(dark, 2) {
+			@include theme(dark) {
 				@include focus-shadow(var(--color-mauve));
 			}
 		}
@@ -447,14 +447,14 @@
 				);
 			}
 			&:active {
-				@include theme(light, 2) {
+				@include theme(light) {
 					@include gradient-text(
 						hsl(from var(--color-iron) h s calc(l * .95)),
 						hsl(from var(--color-iron) h s calc(l * .35)),
 						hsl(from var(--color-iron) h s calc(l * .95) / .5)
 					);
 				}
-				@include theme(dark, 2) {
+				@include theme(dark) {
 					@include gradient-text(
 						var(--color-slate),
 						color-mix(
@@ -498,10 +498,10 @@
 		font-size: 1rem;
 		line-height: 1.5;
 		@include clip-path-edges(2px);
-		@include theme(light, 2) {
+		@include theme(light) {
 			background-color: var(--color-iron);
 		}
-		@include theme(dark, 2) {
+		@include theme(dark) {
 			background-color: hsl(from var(--color-iron) h s calc(l * .55));
 		}
 	}
@@ -588,14 +588,14 @@
 		transition: scale .2s ease-out;
 		&::before {
 			@include before;
-			@include theme(light, 2) {
+			@include theme(light) {
 				background: radial-gradient(
 					circle at center left,
 					hsl(from var(--color-rose) h s l / .5),
 					hsl(from var(--color-mauve) h s l / .5)
 				);
 			}
-			@include theme(dark, 2) {
+			@include theme(dark) {
 				background: radial-gradient(
 					circle at center left,
 					var(--color-rose),
@@ -633,10 +633,10 @@
 		line-height: 1.4;
 		@include font-weight-width(700, 115);
 		@include clip-path-edges(2px);
-		@include theme(light, 2) {
+		@include theme(light) {
 			background-color: hsl(from var(--color-primary) h s l / .1);
 		}
-		@include theme(dark, 2) {
+		@include theme(dark) {
 			background-color: hsl(from var(--color-iron) h s calc(l * .45) / .5);
 		}
 		span {
