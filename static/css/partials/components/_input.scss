@@ -13,7 +13,7 @@
 	margin-right: var(--p);
 	padding: calc(var(--p)/4);
 	&::before {
-		@include contrast(both, 2) {
+		@include contrast(both) {
 			content: "";
 			display: block;
 			position: absolute;

@@ -38,7 +38,7 @@
 		}
 	}
 	&::after {
-		@include contrast(both, 2) {
+		@include contrast(both) {
 			z-index: -2;
 			top: calc(var(--p)/-8);
 			left: calc(var(--p)/-8);
@@ -75,7 +75,7 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			@include theme(light, 2) {
+			@include theme(light) {
 				background-color: var(--color-iron);
 				background: radial-gradient(
 					circle at center left,
@@ -87,7 +87,7 @@
 					var(--color-iron)
 				);
 			}
-			@include theme(dark, 2) {
+			@include theme(dark) {
 				background-color: var(--color-slate);
 				background: radial-gradient(
 					circle at center left,
@@ -157,7 +157,7 @@
 				var(--color-slate) 100%
 			) 50% 0% / 200% 100%;
 			&::before {
-				@include theme(light, 2) {
+				@include theme(light) {
 					background-color: var(--color-iron);
 					background: radial-gradient(
 						circle at center left,
@@ -169,7 +169,7 @@
 						)
 					);
 				}
-				@include theme(dark, 2) {
+				@include theme(dark) {
 					background-color: var(--color-slate);
 					background: radial-gradient(
 						circle at center left,

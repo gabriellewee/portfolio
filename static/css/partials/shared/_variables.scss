@@ -55,12 +55,12 @@ $iron: #263238;
 	--color-email:hsl(#{hexToHSL(mix($iron, white, 70%))});
 }
 
-@include theme(light, 4, true) {
+@include theme(light, true) {
 	--color-secondary:white;
 	--color-primary:#{mix($iron, white, 95%)};
 }
 
-@include theme(dark, 4, true) {
+@include theme(dark, true) {
 	--color-secondary:var(--color-iron);
 	--color-primary:#{mix($iron, white, 5%)};
 }

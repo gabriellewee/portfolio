@@ -6,10 +6,10 @@
 	margin-right: auto;
 	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
 	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
-	@include theme(light, 2) {
+	@include theme(light) {
 		color: var(--color-iron);
 	}
-	@include theme(dark, 2) {
+	@include theme(dark) {
 		color: hsl(from white h s l / .8);
 	}
 	.contact-sites, .contact-messages {
@@ -42,10 +42,10 @@
 				}
 			}
 			.link.tumblr {
-				@include theme(light, 2) {
+				@include theme(light) {
 					--color-link: var(--color-tumblr);
 				}
-				@include theme(dark, 2) {
+				@include theme(dark) {
 					--color-link: var(--color-tumblr-light);
 				}
 			}
@@ -61,18 +61,18 @@
 				text-decoration: underline;
 				text-decoration-thickness: 3px;
 				text-underline-offset: 8px;
-				@include contrast(both, 2) {
+				@include contrast(both) {
 					text-underline-offset: 4px;
 				}
 			}
 			.link:not(:hover):not(:focus), .popup-label span {
-				@include theme(light, 2) {
+				@include theme(light) {
 					text-decoration-color: hsl(from var(--color-blush) h s calc(l * 1.1) / 0);
 				}
-				@include theme(dark, 2) {
+				@include theme(dark) {
 					text-decoration-color: hsl(from var(--color-iron) h s calc(l * .73) / 0);
 				}
-				@include contrast(both, 2) {
+				@include contrast(both) {
 					text-decoration-color: hsl(from var(--color-primary) h s l / .5);
 				}
 			}
@@ -84,15 +84,15 @@
 				text-decoration-color: var(--color-link);
 			}
 			.link:hover, .link:focus, .popup-label:hover span, .popup-button:focus ~ .popup-label span {
-				@include theme(light, 2) {
+				@include theme(light) {
 					color: var(--color-iron);
 				}
-				@include theme(dark, 2) {
+				@include theme(dark) {
 					color: white;
 				}
 			}
 			.link:focus, .popup-button:focus ~ .popup-label span {
-				@include contrast(both, 2) {
+				@include contrast(both) {
 					text-decoration-color: hsl(from var(--color-primary) h s l / 0);
 					@include focus-shadow(var(--color-link));
 				}
@@ -121,15 +121,15 @@
 			width: 100%;
 			height: 100%;
 			@include clip-path-edges(2px);
-			@include theme(light, 2) {
+			@include theme(light) {
 				background-color: white;
 			}
-			@include theme(dark, 2) {
+			@include theme(dark) {
 				background-color: var(--color-iron);
 			}
 		}
 		&::after {
-			@include contrast(both, 2) {
+			@include contrast(both) {
 				content: "";
 				display: block;
 				position: absolute;
@@ -171,7 +171,7 @@
 				.link {
 					text-decoration-thickness: 2px;
 					text-underline-offset: 6px;
-					@include contrast(both, 2) {
+					@include contrast(both) {
 						text-underline-offset: 3px;
 					}
 					&:hover, &:focus {
@@ -179,7 +179,7 @@
 					}
 					&:not(:hover):not(:focus) {
 						text-decoration-color: hsl(from white h s l / 0);
-						@include contrast(both, 2) {
+						@include contrast(both) {
 							text-decoration-color: hsl(from var(--color-primary) h s l / .5);
 						}
 					}

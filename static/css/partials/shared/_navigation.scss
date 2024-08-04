@@ -62,7 +62,7 @@ header.top {
 			@include clip-path-edges(2px);
 		}
 		&::after {
-			@include contrast(both, 2) {
+			@include contrast(both) {
 				content: "";
 				display: block;
 				position: absolute;
@@ -152,7 +152,7 @@ header.top {
 			@include button-shape(1.375, 7%, 3px, right);
 		}
 		&::after {
-			@include contrast(both, 2) {
+			@include contrast(both) {
 				@include button-shape(1.3125, 6%, 2.5px, right);
 			}
 		}
@@ -166,7 +166,7 @@ header.top {
 			@include button-shape(1.375, 7%, 3px, left);
 		}
 		&::after {
-			@include contrast(both, 2) {
+			@include contrast(both) {
 				@include button-shape(1.3125, 6%, 2.5px, left);
 			}
 		}

@@ -20,7 +20,7 @@
 				text-decoration: underline;
 				text-underline-offset: 8px;
 				text-decoration-color: hsl(from white h s l / 0);
-				@include contrast(both, 2) {
+				@include contrast(both) {
 					text-underline-offset: 4px;
 				}
 				span {
@@ -42,17 +42,17 @@
 				}
 			}
 			&:focus-visible {
-				@include contrast(both, 2) {
+				@include contrast(both) {
 					@include focus-shadow(hsl(from var(--color-mauve) h s l / .5));
 				}
 			}
 			&:active {
-				@include theme(light, 2) {
+				@include theme(light) {
 					> span {
 						text-decoration-color: hsl(from var(--color-iron) h s calc(l * .95));
 					}
 				}
-				@include theme(dark, 2) {
+				@include theme(dark) {
 					> span {
 						text-decoration-color: var(--color-slate);
 					}
@@ -71,7 +71,7 @@
 	.post-header {
 		h2 {
 			a {
-				@include contrast(both, 2) {
+				@include contrast(both) {
 					> span {
 						text-decoration-color: var(--color-mauve);
 					}
@@ -91,13 +91,13 @@
 				}
 				&:active {
 					span span {
-						@include theme(light, 2) {
+						@include theme(light) {
 							@include gradient-text(
 								hsl(from var(--color-iron) h s calc(l * .95)),
 								hsl(from var(--color-iron) h s calc(l * .35))
 							);
 						}
-						@include theme(dark, 2) {
+						@include theme(dark) {
 							@include gradient-text(
 								var(--color-slate),
 								color-mix(
@@ -115,7 +115,7 @@
 			--color-mix: hsl(from var(--color-slate) h calc(s * .75) l);
 			background-color: var(--color-mix);
 			&::after {
-				@include contrast(both, 2) {
+				@include contrast(both) {
 					background-color: var(--color-mix);
 				}
 			}
@@ -127,7 +127,7 @@
 	.post-header {
 		h2 {
 			a {
-				@include contrast(both, 2) {
+				@include contrast(both) {
 					> span {
 						text-decoration-color: var(--color-slate);
 					}
@@ -163,13 +163,13 @@
 				}
 				&:active {
 					span span {
-						@include theme(light, 2) {
+						@include theme(light) {
 							@include gradient-text(
 								hsl(from var(--color-iron) h s calc(l * .35)),
 								hsl(from var(--color-iron) h s calc(l * .95))
 							);
 						}
-						@include theme(dark, 2) {
+						@include theme(dark) {
 							@include gradient-text(
 								color-mix(
 									in srgb,
@@ -181,10 +181,10 @@
 						}
 					}
 					&::after {
-						@include theme(light, 2) {
+						@include theme(light) {
 							color: hsl(from var(--color-iron) h s calc(l * .95));
 						}
-						@include theme(dark, 2) {
+						@include theme(dark) {
 							color: var(--color-slate);
 						}
 					}
@@ -199,7 +199,7 @@
 			);
 			background-color: var(--color-mix);
 			&::after {
-				@include contrast(both, 2) {
+				@include contrast(both) {
 					background-color: var(--color-mix);
 				}
 			}
@@ -220,14 +220,14 @@
 				);
 			}
 			&:active {
-				@include theme(light, 2) {
+				@include theme(light) {
 					@include gradient-text(
 						hsl(from var(--color-iron) h s calc(l * .35)),
 						hsl(from var(--color-iron) h s calc(l * .95)),
 						hsl(from var(--color-iron) h s calc(l * .35) / .5)
 					);
 				}
-				@include theme(dark, 2) {
+				@include theme(dark) {
 					@include gradient-text(
 						color-mix(
 							in srgb,
@@ -251,14 +251,14 @@
 	.post-header {
 		h2 {
 			a {
-				@include theme(light, 2) {
+				@include theme(light) {
 					--color-mix: color-mix(
 						in srgb,
 						var(--color-iron) 70%,
 						white
 					);
 				}
-				@include theme(dark, 2) {
+				@include theme(dark) {
 					--color-mix: color-mix(
 						in srgb,
 						var(--color-iron),
@@ -274,26 +274,26 @@
 					}
 				}
 				&:hover, &:focus {
-					@include theme(light, 2) {
+					@include theme(light) {
 						--color-mix: color-mix(
 							in srgb,
 							var(--color-iron),
 							white
 						);
 					}
-					@include theme(dark, 2) {
+					@include theme(dark) {
 						--color-mix: hsl(from white h s l / .7);
 					}
 				}
 				&:active {
-					@include theme(light, 2) {
+					@include theme(light) {
 						--color-mix: color-mix(
 							in srgb,
 							var(--color-iron) 90%,
 							white
 						);
 					}
-					@include theme(dark, 2) {
+					@include theme(dark) {
 						--color-mix: color-mix(
 							in srgb,
 							var(--color-iron) 70%,
@@ -311,7 +311,7 @@
 			);
 			background-color: var(--color-mix);
 			&::after {
-				@include contrast(both, 2) {
+				@include contrast(both) {
 					background-color: var(--color-mix);
 				}
 			}
@@ -320,7 +320,7 @@
 	.post-footer {
 		.button {
 			&::before {
-				@include theme(light, 2) {
+				@include theme(light) {
 					background: radial-gradient(
 						circle at center left,
 						color-mix(
@@ -336,7 +336,7 @@
 					);
 				}
 
-				@include theme(dark, 2) {
+				@include theme(dark) {
 					background: radial-gradient(
 						circle at center left,
 						color-mix(

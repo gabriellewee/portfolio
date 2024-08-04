@@ -46,15 +46,15 @@
 		@media (prefers-reduced-motion: no-preference) {
 			opacity: 0;
 		}
-		@include theme(light, 2) {
+		@include theme(light) {
 			background-color: hsl(from white h s l / .8);
 			color: var(--color-iron);
 		}
-		@include theme(dark, 2) {
+		@include theme(dark) {
 			background-color: hsl(from var(--color-iron) h s l / .8);
 			color: white;
 		}
-		@include contrast(both, 2) {
+		@include contrast(both) {
 			outline: 1.5px solid var(--color-primary);
 		}
 		&.message {
@@ -119,10 +119,10 @@
 			height: 100%;
 		}
 		&:focus-visible {
-			@include theme(light, 2) {
+			@include theme(light) {
 				@include focus-shadow(hsl(from var(--color-mauve) h s l / .5));
 			}
-			@include theme(dark, 2) {
+			@include theme(dark) {
 				@include focus-shadow(var(--color-mauve));
 			}
 			.avatar {

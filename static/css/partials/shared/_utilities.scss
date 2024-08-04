@@ -63,14 +63,18 @@ $container-mobile: 350px;
 	}
 }
 
-@mixin theme($theme, $level: null, $root: false) {
+@mixin theme($theme, $root: false) {
 	@if $root == true {
-		@if $theme == light {
+		@media (prefers-color-scheme: #{$theme}) {
 			:root {
 				@content;
 			}
 		}
-		@media (prefers-color-scheme: #{$theme}) {
+		@if $theme == dark {
+			:root:has(#option-color:not(.inactive):checked) {
+				@content;
+			}
+		} @else if $theme == light {
 			:root {
 				@content;
 			}
@@ -79,77 +83,34 @@ $container-mobile: 350px;
 			@content;
 		}
 	} @else {
-		@if $theme == light {
+		@media (prefers-color-scheme: #{$theme}) {
+			@content;
+		}
+		@if $theme == dark {
+			:root:has(#option-color:not(.inactive):checked) & {
+				@content;
+			}
+		} @else if $theme == light {
 			& {
 				@content;
 			}
-		}
-		@media (prefers-color-scheme: #{$theme}) {
-			@content;
 		}
 		.theme-#{$theme} & {
 			@content;
 		}
 	}
-	@if $theme == dark {
-		@if $level == 1 {
-			#option-color:not(.inactive):checked ~ & {
-				@content;
-			}
-		} @else if $level == 2 {
-			#option-color:not(.inactive):checked ~ * & {
-				@content;
-			}
-		} @else if $level == 3 {
-			&:has(#option-color:not(.inactive):checked) {
-				@content;
-			}
-		} @else if $level == 4 {
-			:root:has(#option-color:not(.inactive):checked) {
-				@content;
-			}
-		}
-	} @else if $theme == light {
-		@if $level == 1 {
-			#option-color:not(.inactive):not(:checked) ~ & {
-				@content;
-			}
-		} @else if $level == 2 {
-			#option-color:not(.inactive):not(:checked) ~ * & {
-				@content;
-			}
-		} @else if $level == 3 {
-			&:has(#option-color:not(.inactive):not(:checked)) {
-				@content;
-			}
-		} @else if $level == 4 {
-			:root:has(#option-color:not(.inactive):not(:checked)) {
-				@content;
-			}
-		}
-	}
  }
 
-@mixin contrast($theme, $level: null) {
+@mixin contrast($theme) {
 	@if $theme == both {
 		@media (prefers-contrast: more) {
 			@content;
 		}
-		.theme-contrast & {
+		:root:has(#option-contrast:not(.inactive):checked) & {
 			@content;
 		}
-		@if $level == 1 {
-			#option-contrast:not(.inactive):checked & {
-				@content;
-			}
-		} @else if $level == 2 {
-			#option-contrast:not(.inactive):checked ~ * & {
-				@content;
-			}
-		} @else if $level == 3 {
-			&:has(#option-contrast:not(.inactive):checked) {
-				@content;
-			}
+		.theme-contrast & {
+			@content;
 		}
 	} @else if $theme == dark {
 		@media (prefers-color-scheme: #{$theme}) and (prefers-contrast: more) {
@@ -160,21 +121,11 @@ $container-mobile: 350px;
 				@content;
 			}
 		}
-		.theme-#{$theme}.theme-contrast & {
+		:root:has(#option-color:not(.inactive):checked ~ #option-contrast:not(.inactive):checked) & {
 			@content;
 		}
-		@if $level == 1 {
-			#option-color:not(.inactive):checked ~ #option-contrast:not(.inactive):checked & {
-				@content;
-			}
-		} @else if $level == 2 {
-			#option-color:not(.inactive):checked ~ #option-contrast:not(.inactive):checked ~ * & {
-				@content;
-			}
-		} @else if $level == 3 {
-			&:has(#option-color:not(.inactive):checked ~ #option-contrast:not(.inactive):checked) {
-				@content;
-			}
+		.theme-#{$theme}.theme-contrast & {
+			@content;
 		}
 	} @else if $theme == light {
 		@media (prefers-color-scheme: #{$theme}) and (prefers-contrast: more) {
@@ -185,21 +136,11 @@ $container-mobile: 350px;
 				@content;
 			}
 		}
-		.theme-#{$theme}.theme-contrast & {
+		:root:has(#option-color:not(.inactive):not(:checked) ~ #option-contrast:not(.inactive):checked) & {
 			@content;
 		}
-		@if $level == 1 {
-			#option-color:not(.inactive):not(:checked) ~ #option-contrast:not(.inactive):checked ~ & {
-				@content;
-			}
-		} @else if $level == 2 {
-			#option-color:not(.inactive):not(:checked) ~ #option-contrast:not(.inactive):checked ~ * & {
-				@content;
-			}
-		} @else if $level == 3 {
-			&:has(#option-color:not(.inactive):not(:checked) ~ #option-contrast:not(.inactive):checked) {
-				@content;
-			}
+		.theme-#{$theme}.theme-contrast & {
+			@content;
 		}
 	}
 }
@@ -208,21 +149,11 @@ $container-mobile: 350px;
 	@media (prefers-reduced-transparency: reduce) {
 		@content;
 	}
-	.theme-reduce-transparency & {
+	:root:has(#option-contrast:not(.inactive):checked) & {
 		@content;
 	}
-	@if $level == 1 {
-		#option-transparency:not(.inactive):checked ~ & {
-			@content;
-		}
-	} @else if $level == 2 {
-		#option-transparency:not(.inactive):checked ~ * & {
-			@content;
-		}
-	} @else if $level == 3 {
-		&:has(#option-contrast:not(.inactive):checked) {
-			@content;
-		}
+	.theme-reduce-transparency & {
+		@content;
 	}
 }
 
@@ -304,10 +235,10 @@ $container-mobile: 350px;
 		} @else {
 			-webkit-text-fill-color: transparent;
 		}
-		@include theme(light, 2) {
+		@include theme(light) {
 			filter: unset;
 		}
-		@include theme(dark, 2) {
+		@include theme(dark) {
 			@if $three {
 				filter: brightness(1.3);
 			} @else {
@@ -330,7 +261,7 @@ $container-mobile: 350px;
 		) $position 0% / 200% 100%;
 		background-clip: text;
 		-webkit-text-fill-color: transparent;
-		@include theme(dark, 2) {
+		@include theme(dark) {
 			filter: brightness(1.2);
 		}
 	}
@@ -351,7 +282,7 @@ $container-mobile: 350px;
 	@supports ((-webkit-backdrop-filter: blur(0px)) or (backdrop-filter: blur(0px))) {
 		backdrop-filter: blur($amount);
 		background-color: hsl(from $color h s calc(l * #{$lightness}) / $blur);
-		@include reduce-transparency(2) {
+		@include reduce-transparency {
 			backdrop-filter: unset;
 			background-color: hsl(from $color h s calc(l * #{$lightness}));
 		}
@@ -488,7 +419,7 @@ $container-mobile: 350px;
 			var(--color-slate) 100%
 		) 50% 0% / 200% 100%;
 		&::before {
-			@include theme(light, 2) {
+			@include theme(light) {
 				background-color: var(--color-iron);
 				background: radial-gradient(
 					circle at center left,
@@ -500,7 +431,7 @@ $container-mobile: 350px;
 					)
 				);
 			}
-			@include theme(dark, 2) {
+			@include theme(dark) {
 				background-color: var(--color-slate);
 				background: radial-gradient(
 					circle at center left,
@@ -539,7 +470,7 @@ $container-mobile: 350px;
 		@if $background {
 			background-color: $background;
 		}
-		@include contrast(light, 2) {
+		@include contrast(light) {
 			border: 2px solid color-mix(
 				in srgb,
 				var(--color-slate),

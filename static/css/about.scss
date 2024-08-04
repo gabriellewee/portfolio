@@ -77,7 +77,7 @@
 			height: auto;
 			aspect-ratio: 1 / 1;
 			border-radius: 6%;
-			@include contrast(both, 2) {
+			@include contrast(both) {
 				background-color: var(--color-primary);
 				@include focus-shadow(var(--color-primary), null, 1.5px);
 			}
@@ -172,7 +172,7 @@
 			@include before(var(--color-blush));
 		}
 		&::after {
-			@include contrast(both, 2) {
+			@include contrast(both) {
 				content: "";
 				display: block;
 				position: absolute;
@@ -246,13 +246,13 @@
 		height: 36px;
 		border-radius: 100%;
 		border: calc(var(--p)/4) solid;
-		@include theme(light, 2) {
+		@include theme(light) {
 			border-color: var(--color-message);
 		}
-		@include theme(dark, 2) {
+		@include theme(dark) {
 			border-color: white;
 		}
-		@include contrast(both, 2) {
+		@include contrast(both) {
 			border-color: var(--color-primary);
 		}
 		&-iron {
@@ -300,11 +300,11 @@
 		line-height: 1.715;
 		@include font-weight-width(600, 90);
 		@include clip-path-edges(2px);
-		@include theme(light, 2) {
+		@include theme(light) {
 			background-color: hsl(from var(--color-iron) h s l / .1);
 			color: hsl(from var(--color-iron) h s l / .7);
 		}
-		@include theme(dark, 2) {
+		@include theme(dark) {
 			background-color: hsl(from var(--color-iron) h s calc(l * .55) / .4);
 			color: hsl(from white h s l / .8);
 		}
@@ -312,7 +312,7 @@
 			margin-bottom: unset;
 			margin-right: calc(var(--p)/3);
 		}
-		@include contrast(both, 2) {
+		@include contrast(both) {
 			clip-path: unset;
 			border-radius: unset;
 			background-color: unset;
@@ -338,7 +338,7 @@
 				@include clip-path-edges(2px);
 			}
 		}
-		@include contrast(light, 2) {
+		@include contrast(light) {
 			&::before {
 				background-color: hsl(from var(--color-primary) h s l / .5);
 			}
@@ -350,7 +350,7 @@
 				);
 			}
 		}
-		@include contrast(dark, 2) {
+		@include contrast(dark) {
 			&::before {
 				background-color: hsl(from var(--color-primary) h s l / .7);
 			}

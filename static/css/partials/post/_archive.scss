@@ -20,13 +20,13 @@
 		a {
 			text-decoration: underline;
 			text-underline-offset: 8px;
-			@include theme(light, 2) {
+			@include theme(light) {
 				text-decoration-color: hsl(from var(--color-blush) h s calc(l * 1.1) / 0);
 			}
-			@include theme(dark, 2) {
+			@include theme(dark) {
 				text-decoration-color: hsl(from var(--color-iron) h s calc(l * .73) / 0);
 			}
-			@include contrast(both, 2) {
+			@include contrast(both) {
 				text-underline-offset: 4px;
 				text-decoration-color: var(--color-mauve);
 			}
@@ -56,25 +56,25 @@
 				}
 			}
 			&:focus-visible {
-				@include contrast(both, 2) {
+				@include contrast(both) {
 					@include focus-shadow(var(--color-rose));
 				}
 			}
 			&:active {
-				@include theme(light, 2) {
+				@include theme(light) {
 					text-decoration-color: hsl(from var(--color-iron) h s calc(l * .95));
 				}
-				@include theme(dark, 2) {
+				@include theme(dark) {
 					text-decoration-color: var(--color-slate);
 				}
 				span {
-					@include theme(light, 2) {
+					@include theme(light) {
 						@include gradient-text(
 							hsl(from var(--color-iron) h s calc(l * .95)),
 							hsl(from var(--color-iron) h s calc(l * .35))
 						);
 					}
-					@include theme(dark, 2) {
+					@include theme(dark) {
 						@include gradient-text(
 							var(--color-slate),
 							color-mix(
