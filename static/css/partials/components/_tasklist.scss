@@ -5,43 +5,16 @@
 		padding-bottom: calc(var(--p)*.75);
 	}
 	label {
-		display: flex;
-		cursor: pointer;
-		position: relative;
 		font-weight: 500;
 		color: hsl(from var(--color-primary) h s l / .75);
-		&::before, &::after {
-			content: "";
-			display: block;
-		}
+		@include radio;
 		&::before {
-			min-width: calc(var(--p)*2);
-			height: calc(var(--p)*2);
-			border-radius: calc(var(--p)*2);
-			margin-right: calc(var(--p)*.75);
 			@include theme(light, 2) {
 				background-color: hsl(from var(--color-primary) h s l / .1);
 			}
 			@include theme(dark, 2) {
 				background-color: var(--color-primary);
 			}
-			@include contrast(light, 2) {
-				border: 2px solid color-mix(
-					in srgb,
-					var(--color-slate),
-					var(--color-mint)
-				);
-			}
-		}
-		&::after {
-			opacity: 0;
-			width: calc(var(--p)/3*4);
-			height: calc(var(--p)/3*4);
-			border-radius: calc(var(--p)/3*4);
-			position: absolute;
-			left: calc(var(--p)/3);
-			top: calc(var(--p)/3);
-			background-color: var(--color-mint);
 		}
 	}
 	input {

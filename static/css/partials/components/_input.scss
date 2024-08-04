@@ -1,5 +1,6 @@
 .toggle {
 	display: block;
+	cursor: pointer;
 	position: relative;
 	height: calc(var(--p)*2);
 	width: calc(var(--p)*3.5);
@@ -44,4 +45,8 @@
 			translate: 100% 0;
 		}
 	}
+}
+
+.radio {
+	@include radio(white);
 }
