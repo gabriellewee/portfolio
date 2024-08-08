@@ -6,12 +6,7 @@
 	margin-right: auto;
 	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
 	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
-	@include theme(light) {
-		color: var(--color-iron);
-	}
-	@include theme(dark) {
-		color: hsl(from white h s l / .8);
-	}
+	color: var(--color-primary);
 	.contact-sites, .contact-messages {
 		font-size: clamp(1.5rem, 3vw, 2rem);
 		line-height: 1.2;
