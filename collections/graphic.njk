@@ -1,14 +1,14 @@
 ---js
 {
-    tags: "entries",
-    category: "media",
-    pagination: {
-        data: "graphic",
-        size: 1,
-        addAllPagesToCollections: true,
-        alias: "media"
-    },
-    permalink: false,
+	tags: "entries",
+	category: "media",
+	pagination: {
+		data: "graphic",
+		size: 1,
+		addAllPagesToCollections: true,
+		alias: "media"
+	},
+	permalink: false,
 	eleventyComputed: {
 		media(data) {
 			data.page.date = new Date(data.media.date);

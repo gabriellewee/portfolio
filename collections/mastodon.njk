@@ -1,29 +1,29 @@
 ---js
 {
-    tags: "entries",
-    category: "social",
-    pagination: {
-        data: "mastodon",
-        size: 1,
-        addAllPagesToCollections: true,
-        alias: "mastodon"
-    },
-    permalink: false,
-    eleventyComputed: {
-        mastodon(data) {
-            data.page.date = new Date(data.mastodon.created_at);
-            data.content = data.mastodon.content;
-            data.url = data.mastodon.url;
-            data.media = data.mastodon.media_attachments;
-            data.size = "s";
-            data.visibility = data.mastodon.visibility;
-            data.in_reply = data.mastodon.in_reply_to_account_id;
-            if (data.mastodon.replies_count > 0) data.replies = data.mastodon.replies_count;
-            if (data.mastodon.reblogs_count > 0) data.reblogs = data.mastodon.reblogs_count;
-            if (data.mastodon.favourites_count > 0) data.favourites = data.mastodon.favourites_count;
-            if (data.mastodon.content.includes("https://gabriellew.ee")) data.self = true;
-            if (data.mastodon.content.includes("@codepen")) data.self = true;
-        }
-    }
+	tags: "entries",
+	category: "social",
+	pagination: {
+		data: "mastodon",
+		size: 1,
+		addAllPagesToCollections: true,
+		alias: "mastodon"
+	},
+	permalink: false,
+	eleventyComputed: {
+		mastodon(data) {
+			data.page.date = new Date(data.mastodon.created_at);
+			data.content = data.mastodon.content;
+			data.url = data.mastodon.url;
+			data.media = data.mastodon.media_attachments;
+			data.size = "s";
+			data.visibility = data.mastodon.visibility;
+			data.in_reply = data.mastodon.in_reply_to_account_id;
+			if (data.mastodon.replies_count > 0) data.replies = data.mastodon.replies_count;
+			if (data.mastodon.reblogs_count > 0) data.reblogs = data.mastodon.reblogs_count;
+			if (data.mastodon.favourites_count > 0) data.favourites = data.mastodon.favourites_count;
+			if (data.mastodon.content.includes("https://gabriellew.ee")) data.self = true;
+			if (data.mastodon.content.includes("@codepen")) data.self = true;
+		}
+	}
 }
 ---

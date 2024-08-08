@@ -25,7 +25,7 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-overflow-scrolling: touch;
 	font-family: var(--font-default);
-    font-feature-settings: "liga","ss01";
+	font-feature-settings: "liga","ss01";
 	@include theme(light) {
 		background-color: hsl(from var(--color-blush) h s calc(l * 1.09));
 		color: var(--color-primary);
