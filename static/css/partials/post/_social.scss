@@ -28,6 +28,9 @@
 	@include theme(dark) {
 		color: hsl(from white h s l / .8);
 	}
+	@include contrast(both) {
+		color: var(--color-primary);
+	}
 	a {
 		text-decoration: underline;
 		text-underline-offset: 2px;

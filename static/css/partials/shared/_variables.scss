@@ -64,3 +64,11 @@ $iron: #263238;
 	--color-secondary:var(--color-iron);
 	--color-primary:#{mix($iron, white, 5%)};
 }
+
+@include contrast(light, true) {
+	--color-primary:#{darken($iron, 15%)};
+}
+
+@include contrast(dark, true) {
+	--color-primary:white;
+}
