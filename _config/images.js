@@ -120,13 +120,27 @@ module.exports = eleventyConfig => {
 			);
 
 			let type;
-			if (metadata.data.image.type === "j2k") {
+			if (metadata.data.image.type === "j2k" || metadata.data.image.type === "jpg") {
 				type = "jpeg"
 			} else {
 				type = metadata.data.image.type;
 			}
 			let image = `${metadata.data.image.url}.${type}`;
-			let picture = await eleventyConfig.nunjucksAsyncShortcodes.external(image, title, width, loading);
+
+			let stats = await Image(image, {
+				widths: [width, width*2],
+				formats: ["webp", type],
+				urlPath: `/static/images/external`,
+				outputDir: `./_site/static/images/external`
+			});
+			
+			let picture = `
+				<picture>
+					<source type="image/webp" srcset="${stats["webp"][0].url}, ${stats["webp"][1].url} 2x">
+					<img loading=${loading} decoding="async" alt="${title}" src="${stats["webp"][0].url}" srcset="${stats[type][0].url}, ${stats[type][1].url} 2x" width="${stats["webp"][0].width}" height="${stats["webp"][0].height}">
+				</picture>
+			`;
+
 			let result = `<a class="${className}" href="${link}" target="_blank">${picture}</a>`;
 
 			return result;
