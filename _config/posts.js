@@ -29,9 +29,9 @@ module.exports = eleventyConfig => {
 		slugify: s => string(s).slugify().toString(),
 		permalink: markdownItAnchor.permalink.ariaHidden({
 			class: "direct-link",
-			symbol: "¶",
+			symbol: "",
 			placement: "after",
-			renderAttrs: (s) => ({ 'data-anchor': '' })
+			renderAttrs: (s) => ({ 'data-anchor': '', 'aria-label': 'Jump link to heading' })
 		})
 	}).use(markdownItContainer, 'dynamic', {
 		validate: function() { return true; },
