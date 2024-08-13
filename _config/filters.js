@@ -29,7 +29,7 @@ module.exports = eleventyConfig => {
 		return date;
 	});
 
-	eleventyConfig.addNunjucksAsyncShortcode("year", async (year) => {
+	eleventyConfig.addShortcode("year", async (year) => {
 		if (year === "start") {
 			year = "2012";
 		} else if (year === "current") {
@@ -40,7 +40,7 @@ module.exports = eleventyConfig => {
 		return year;
 	});
 
-	eleventyConfig.addNunjucksAsyncShortcode("icondate", async (icondate) => {
+	eleventyConfig.addShortcode("icondate", async (icondate) => {
 		icondate = DateTime.fromJSDate(new Date(), {zone: 'utc'}).toFormat("yyyyLLdd");
 		return icondate;
 	});

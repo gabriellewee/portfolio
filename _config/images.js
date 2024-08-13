@@ -3,7 +3,7 @@ const Sharp = require('sharp');
 const EleventyFetch = require("@11ty/eleventy-fetch");
 
 module.exports = eleventyConfig => {
-	eleventyConfig.addNunjucksAsyncShortcode("stats", async (src, type) => {
+	eleventyConfig.addShortcode("stats", async (src, type) => {
 		try {
 			let stats = await Sharp(src); 
 			let result;
@@ -48,7 +48,7 @@ module.exports = eleventyConfig => {
 		}
 	});
 
-	eleventyConfig.addNunjucksAsyncShortcode("external", async (src, alt, width, loading) => {
+	eleventyConfig.addShortcode("external", async (src, alt, width, loading) => {
 		try {
 			let file = src.split(".");
 			file = file[file.length - 1];
@@ -82,7 +82,7 @@ module.exports = eleventyConfig => {
 		}
 	});
 
-	eleventyConfig.addNunjucksAsyncShortcode("ogPhoto", async (src) => {
+	eleventyConfig.addShortcode("ogPhoto", async (src) => {
 		try {
 			let file = src.split(".");
 			file = file[file.length - 1];
@@ -109,7 +109,7 @@ module.exports = eleventyConfig => {
 	});
 
 
-	eleventyConfig.addNunjucksAsyncShortcode("unfurlGame", async (link, title, className, width, loading) => {
+	eleventyConfig.addShortcode("unfurlGame", async (link, title, className, width, loading) => {
 		try {
 			const metadata = await EleventyFetch(
 				`https://api.microlink.io/?url=${link}`,
@@ -150,7 +150,7 @@ module.exports = eleventyConfig => {
 		}
 	});
 
-	eleventyConfig.addNunjucksAsyncShortcode("image", async (src, alt, type, option, figp) => {
+	eleventyConfig.addShortcode("image", async (src, alt, type, option, figp) => {
 		try {
 			let category = src.split('/')[3];
 			let name = src.split('/')[4].slice(0, -4);

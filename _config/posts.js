@@ -209,7 +209,7 @@ module.exports = eleventyConfig => {
 		return name;
 	});
 
-	eleventyConfig.addNunjucksAsyncShortcode('excerpt', async (post, option) => {
+	eleventyConfig.addShortcode('excerpt', async (post, option) => {
 		if (!post.hasOwnProperty('templateContent')) {
 			console.warn('❌ Failed to extract excerpt: Document has no property `templateContent`.');
 			return;
