@@ -1,8 +1,14 @@
 .task-list {
-	list-style: none;
+	list-style: initial!important;
 	padding: 0;
-	li:not(:last-child) {
-		padding-bottom: calc(var(--p)*.75);
+	li {
+		&::marker {
+			content: "";
+			color: hsl(from var(--color-primary) h s l / 0);
+		}
+		&:not(:last-child) {
+			padding-bottom: calc(var(--p)*.75);
+		}
 	}
 	label {
 		font-weight: 500;
