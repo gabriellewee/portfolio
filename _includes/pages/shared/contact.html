@@ -1,14 +1,14 @@
 <aside class="contact"{% if key == "about" %} data-anim{% endif %}>
-	<nav class="contact-sites" aria-label="Social media links"{% if key == "home" %} data-anim{% endif %}>
+	<address class="contact-sites" aria-label="Social media links"{% if key == "home" %} data-anim{% endif %}>
 		<h2>You can find me here:</h2>
 		<ul>
 			{% for link in about.links %}
 				<li{% if link.class %} class="{{link.class}}"{% endif %}><a class="link {{link.name}} color u-url" href="{{link.url}}" rel="me">{{link.name | capitalize}}</a></li>
 			{% endfor %}
 		</ul>
-	</nav>
+	</address>
 
-	<nav class="contact-messages" aria-label="Contact links"{% if key == "home" %} data-anim{% endif %}>
+	<address class="contact-messages" aria-label="Contact links"{% if key == "home" %} data-anim{% endif %}>
 		<h2>You can contact me here:</h2>
 		<ul>
 			<li><a class="link email color" href="mailto:mail@gabriellew.ee">Email</a></li>
@@ -21,5 +21,5 @@
 			{% endif %}
 			<li><a class="discord color no-css">Discord: gabriellewee</a></li>
 		</ul>
-	</nav>
+	</address>
 </aside>
