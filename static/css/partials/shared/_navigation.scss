@@ -95,15 +95,15 @@ header.top {
 		span {
 			transition: background .2s ease-out;
 			color: white;
-			background: color-mix(
-				in hsl,
-				hsl(from var(--color-slate) h calc(s * .3) calc(l * .85)) 30%,
-				hsl(from var(--color-mauve) h calc(s * .3) calc(l * .85))
+			background-color: color-mix(
+				in srgb,
+				hsl(from var(--color-slate) h calc(s * .3) l) 30%,
+				var(--color-mauve)
 			);
 		}
 		&:hover, &:focus {
 			span {
-				background: var(--color-slate);
+				background-color: var(--color-slate);
 			}
 		}
 		&:focus-visible {
@@ -116,7 +116,7 @@ header.top {
 				scale: .98;
 			}
 			span {
-				background: var(--color-iron);
+				background-color: var(--color-iron);
 			}
 		}
 	}

@@ -169,7 +169,11 @@
 			transition: background-color .2s ease-out, scale .2s ease-out;
 		}
 		&::before {
-			@include before(var(--color-blush));
+			@include before(color-mix(
+				in srgb,
+				var(--color-blush),
+				var(--color-rose)
+			));
 		}
 		&::after {
 			@include contrast(both) {
@@ -190,8 +194,8 @@
 			padding: calc(var(--p)/3*2) var(--p);
 			background-color: color-mix(
 				in srgb,
-				var(--color-iron) 90%,
-				white
+				var(--color-iron) 40%,
+				var(--color-slate)
 			);
 			@include clip-path-edges(2px);
 		}
@@ -199,7 +203,7 @@
 			span {
 				background-color: color-mix(
 					in srgb,
-					var(--color-rose) 40%,
+					hsl(from var(--color-slate) h calc(s * .3) l) 30%,
 					var(--color-mauve)
 				);
 			}
@@ -214,7 +218,7 @@
 				scale: .98;
 			}
 			span {
-				background-color: var(--color-mint);
+				background-color: var(--color-iron);
 			}
 		}
 	}
