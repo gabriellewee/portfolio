@@ -260,7 +260,7 @@ const animateItems = (items, key) => {
 			opacity: 1,
 			y: 0,
 			onComplete() {
-				if (item.classList.contains("post-animate")) item.classList.remove("post-animate");
+				if (item.hasAttribute("data-anim")) item.removeAttribute("data-anim");
 		    }
 		}, "<.1");
 	});

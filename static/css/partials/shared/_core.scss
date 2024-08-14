@@ -76,3 +76,9 @@ img {
 .no-css {
 	display: none;
 }
+
+[data-anim] {
+	@media (prefers-reduced-motion: no-preference) {
+		opacity: 0;
+	}
+}

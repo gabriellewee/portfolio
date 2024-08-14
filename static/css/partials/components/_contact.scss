@@ -106,7 +106,6 @@
 		position: relative;
 		padding: calc(var(--p)*2);
 		margin-top: calc(var(--p)*2);
-		opacity: 0;
 		&::before {
 			content: "";
 			display: block;

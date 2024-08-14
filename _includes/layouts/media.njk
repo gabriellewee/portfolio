@@ -3,7 +3,7 @@
 		<h2>Tags</h2>
 		<ul>
 			{% for filter in filters %}
-				<li><a class="grid-filter" href="#" data-filter=".filter-{{filter.name}}" aria-label="Posts tagged “{% if filter.label %}{{filter.label}}{% else %}{{filter.name}}{% endif %}”"><span><span>{% if filter.label %}{{filter.label}}{% else %}{{filter.name}}{% endif %}</span></span></a></li>
+				<li><a class="grid-filter" href="#" data-filter=".filter-{{filter.name}}" aria-label="Posts tagged “{% if filter.label %}{{filter.label}}{% else %}{{filter.name}}{% endif %}”" data-anim><span><span>{% if filter.label %}{{filter.label}}{% else %}{{filter.name}}{% endif %}</span></span></a></li>
 			{% endfor %}
 			<li><a class="grid-filter reset" href="#" data-filter="*" data-reset><span>reset</span></a></li>
 		</ul>
@@ -11,7 +11,7 @@
 	<div class="posts" data-grid>
 		{% for post in media %}
 			{% if post.svg == true %}{%- set file = "svg" %}{% else %}{%- set file = extension %}{% endif %}
-			<article class="post post-animate post-media post-photography{% if post.size %} post-size-{{post.size}}{% endif %} {{post.tags|isoFilter}}" data-media-container data-grid-item data-orientation="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'orientation' %}">
+			<article class="post post-media post-photography{% if post.size %} post-size-{{post.size}}{% endif %} {{post.tags|isoFilter}}" data-media-container data-grid-item data-anim data-orientation="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'orientation' %}">
 				<input class="media-trigger" id="{{post.date|safe}}-{{post.name}}-info" type="checkbox" tabindex="0" aria-label="View information about this {{type}}" role="switch" data-media-trigger hidden/>
 				<div class="post-inner">
 					<div class="post-content">

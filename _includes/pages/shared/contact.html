@@ -1,5 +1,5 @@
-<aside class="contact">
-	<nav class="contact-sites" aria-label="Social media links">
+<aside class="contact"{% if key == "about" %} data-anim{% endif %}>
+	<nav class="contact-sites" aria-label="Social media links"{% if key == "home" %} data-anim{% endif %}>
 		<h2>You can find me here:</h2>
 		<ul>
 			{% for link in about.links %}
@@ -8,7 +8,7 @@
 		</ul>
 	</nav>
 
-	<nav class="contact-messages" aria-label="Contact links">
+	<nav class="contact-messages" aria-label="Contact links"{% if key == "home" %} data-anim{% endif %}>
 		<h2>You can contact me here:</h2>
 		<ul>
 			<li><a class="link email color" href="mailto:mail@gabriellew.ee">Email</a></li>

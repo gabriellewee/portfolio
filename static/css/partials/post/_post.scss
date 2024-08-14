@@ -144,12 +144,6 @@
 	}
 }
 
-.post-animate {
-	@media (prefers-reduced-motion: no-preference) {
-		opacity: 0;
-	}
-}
-
 .post {
 	position: relative;
 	width: 100%;

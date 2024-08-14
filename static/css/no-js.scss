@@ -33,15 +33,12 @@
 	display: flex;
 }
 
+[data-anim],
 .title, .cursor,
 .posts-archive li,
 .posts-archive h2,
 .page-home .contact-sites,
 .page-home .contact-messages,
-.posts-container .contact,
-.bottom,
-.filters a,
-.post-animate,
 .post-code .post-content iframe,
 .lightbox + .iframe iframe {
 	opacity: 1;

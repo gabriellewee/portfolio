@@ -40,7 +40,6 @@ header.top {
 }
 
 .bottom {
-	opacity: 0;
 	padding-top: calc(var(--p)*2);
 	padding-bottom: calc(var(--p) + env(safe-area-inset-bottom));
 	@include font-weight-width(500, 115);
