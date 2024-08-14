@@ -12,7 +12,7 @@
 		{% for post in media %}
 			{% if post.svg == true %}{%- set file = "svg" %}{% else %}{%- set file = extension %}{% endif %}
 			<article class="post post-animate post-media post-photography{% if post.size %} post-size-{{post.size}}{% endif %} {{post.tags|isoFilter}}" data-media-container data-grid-item data-orientation="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'orientation' %}">
-				<input class="media-trigger" id="{{post.date|safe}}-{{post.name}}-info" type="checkbox" tabindex="0" aria-label="View information about this {{type}}" role="switch" data-media-trigger/>
+				<input class="media-trigger" id="{{post.date|safe}}-{{post.name}}-info" type="checkbox" tabindex="0" aria-label="View information about this {{type}}" role="switch" data-media-trigger hidden/>
 				<div class="post-inner">
 					<div class="post-content">
 						<figure id="{{post.date|safe}}-{{post.name}}" aria-label="{{type|capitalize}}{% if post.location %}, {{post.location}}{% elseif post.title %}, {{post.title}}{% endif %}" style="aspect-ratio: {% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'ratio' %};">
@@ -27,10 +27,10 @@
 							{% else %}
 								{% image './static/images/' + key + '/' + post.date + '-' + post.name + '.' + extension, post.description, 'default', loop.index %}
 							{% endif %}
-							<label class="media-view-hover" for="{{post.date|safe}}-{{post.name}}-info" aria-hidden="true" data-media-label>
+							<label class="media-view-hover" for="{{post.date|safe}}-{{post.name}}-info" aria-hidden="true" data-media-label hidden>
 								<span class="button"><span><span>View info</span></span></span>
 							</label>
-							<label class="media-view-touch" for="{{post.date|safe}}-{{post.name}}-info" aria-hidden="true" data-media-label>View info</label>
+							<label class="media-view-touch" for="{{post.date|safe}}-{{post.name}}-info" aria-hidden="true" data-media-label hidden>View info</label>
 							<figcaption class="media-data" data-media-info>
 								<div class="media-data-wrapper">
 									<time class="time-default" datetime="{{post.date}}" title="{{post.date|date('readable')}}" data-time="{{post.date|ISO}}">{{post.date|date('readable')}}</time>
@@ -38,7 +38,7 @@
 									<div class="media-thumbnail">
 										<a class="media-expand expand" href="#{{post.date|safe}}-{{post.name}}-lightbox" role="button" aria-label="Expand image" tabindex="-1" data-media-expand>
 											<span class="no-image">Expand</span>
-											<span class="has-image" aria-hidden="true">
+											<span class="has-image" aria-hidden="true" hidden>
 												{% if post.upscale %}
 													<picture>
 														<img class="upscale" src="{% include post.upscale %}"{% if post.upscaleWidth %} width="{{post.upscaleWidth}}"{% endif %}{% if post.upscaleHeight %} height="{{post.upscaleHeight}}"{% endif %} alt="{{post.description}}"/>

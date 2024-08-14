@@ -15,10 +15,11 @@
 			<li><a class="link text color" href="sms:5102142241">Text</a></li>
 			<li><a class="link imessage color" href="sms:mail@gabriellew.ee">iMessage</a></li>
 			{% if key == "home" %}
-				<li>{% include 'pages/home/discord.html' %}</li>
+				<li hidden>{% include 'pages/home/discord.html' %}</li>
 			{% else %}
-				<li><a class="link discord color tooltip tooltip-bottom dark hidden" href="#" data-clip data-clipboard-text="gabriellewee" style="--tooltip-label: 'Username copied'">Discord</a></li>
+				<li hidden><a class="link discord color tooltip tooltip-bottom dark hidden" href="#" data-clip data-clipboard-text="gabriellewee" style="--tooltip-label: 'Username copied'">Discord</a></li>
 			{% endif %}
+			<li><a class="discord color no-css">Discord: gabriellewee</a></li>
 		</ul>
 	</nav>
 </aside>

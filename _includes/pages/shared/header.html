@@ -1,9 +1,9 @@
-<input type="checkbox" class="option" id="option-color" data-option="color" aria-hidden="true" tabindex="-1"/>
-<input type="checkbox" class="option" id="option-contrast" data-option="contrast" aria-hidden="true" tabindex="-1"/>
-<input type="checkbox" class="option" id="option-transparency" data-option="transparency" aria-hidden="true" tabindex="-1"/>
-<input type="checkbox" class="option" id="option-load" data-option="load" aria-hidden="true" tabindex="-1" checked/>
+<input type="checkbox" class="option" id="option-color" data-option="color" hidden aria-hidden="true" tabindex="-1"/>
+<input type="checkbox" class="option" id="option-contrast" data-option="contrast" hidden aria-hidden="true" tabindex="-1"/>
+<input type="checkbox" class="option" id="option-transparency" data-option="transparency" hidden aria-hidden="true" tabindex="-1"/>
+<input type="checkbox" class="option" id="option-load" data-option="load" hidden aria-hidden="true" tabindex="-1" checked/>
 
-{% if category == "writing" or category == "cooking" %}<hr class="progress"/>{% endif %}
+{% if category == "writing" or category == "cooking" %}<hr class="progress" hidden/>{% endif %}
 
 <header class="top" aria-label="Header">
 	<div class="top-content">
@@ -24,7 +24,7 @@
 			{% if message == true %}
 				<h1 class="text message">{{description}}</h1>
 			{% elseif (message) and (key == "home") and (pagination.pageNumber == 0) %}
-				<p class="text message" aria-hidden="true">{{message|nbsp|safe}}</p>
+				<p class="text message" aria-hidden="true" hidden>{{message|nbsp|safe}}</p>
 			{% elseif message %}
 				<h1 class="text message">{{message|nbsp|safe}}</h1>
 			{% endif %}

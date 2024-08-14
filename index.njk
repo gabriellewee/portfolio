@@ -30,7 +30,7 @@ pagination:
 				{% elseif post.data.category == "media" %}data-media-container aria-label="{{post.data.type|capitalize}} post"{% endif %}
 			>
 				{% if post.data.category == "media" %}
-					<input class="media-trigger" id="{{post.data.date|safe}}-{{post.data.name}}-info" type="checkbox" tabindex="0" aria-label="View information about this {{post.data.type}}" role="switch" data-media-trigger/>
+					<input class="media-trigger" id="{{post.data.date|safe}}-{{post.data.name}}-info" type="checkbox" tabindex="0" aria-label="View information about this {{post.data.type}}" role="switch" data-media-trigger hidden/>
 				{% endif %}
 				<div class="post-inner">
 					<header class="post-header{% if (post.data.category == 'writing') or (post.data.category == 'code') %} inline-header{% endif %}">
@@ -106,10 +106,10 @@ pagination:
 								{% else %}
 									{% image './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 'default', loop.index %}
 								{% endif %}
-								<label class="media-view-hover" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true" data-media-label>
+								<label class="media-view-hover" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true" data-media-label hidden>
 									<span class="button"><span><span>View info</span></span></span>
 								</label>
-								<label class="media-view-touch" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true" data-media-label>View info</label>
+								<label class="media-view-touch" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true" data-media-label hidden>View info</label>
 								<figcaption class="media-data" data-media-info>
 									<div class="media-data-wrapper">
 										<time class="time-default" datetime="{{post.page.date|ISO|date('string')}}" title="{{post.page.date|ISO|date('readable')}}" data-time="{{post.page.date|ISO}}">{{post.page.date|ISO|date('readable')}}</time>
@@ -117,7 +117,7 @@ pagination:
 										<div class="media-thumbnail">
 											<a class="media-expand expand" href="#{{post.data.date|safe}}-{{post.data.name}}-lightbox" role="button" aria-label="Expand image" tabindex="-1" data-media-expand>
 												<span class="no-image">Expand</span>
-												<span class="has-image" aria-hidden="true">
+												<span class="has-image" aria-hidden="true" hidden>
 													{% if post.data.upscale %}
 														<picture>
 															<img class="upscale" src="{% include post.data.upscale %}"{% if post.data.upscaleWidth %} width="{{post.data.upscaleWidth}}"{% endif %}{% if post.data.upscaleHeight %} height="{{post.data.upscaleHeight}}"{% endif %} alt="{{post.data.description}}"/>
@@ -175,7 +175,7 @@ pagination:
 							{% endif %}
 							{% if post.url %}
 								<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title|safe}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %}></iframe>
-								<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}">Please enable Javascript to view this code demo.</noscript>
+								<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}"><p>Please enable Javascript to view this code demo.</p></noscript>
 							{% else %}
 								{{post.content|safe}}
 							{% endif %}
@@ -227,7 +227,7 @@ pagination:
 	</div>
 	<nav class="pagination main-pagination" aria-label="Pagination">
 		{% if (pagination.href.next != null) %}
-			<button class="load button" data-load><span><span>Load more</span></span></button>
+			<button class="load button" data-load hidden><span><span>Load more</span></span></button>
 		{% endif %}
 		{% if (pagination.href.previous) and (pagination.pageNumber != 0) %}
 			<a class="newer button button-reverse" href="{{pagination.href.previous}}"><span><span>Newer</span></span></a>
@@ -278,7 +278,7 @@ pagination:
 				<figure>
 					{% if post.url %}
 						<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %}></iframe>
-						<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}">Please enable Javascript to view this code demo.</noscript>
+						<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}"><p>Please enable Javascript to view this code demo.</p></noscript>
 					{% else %}
 						{{post.content|safe}}
 					{% endif %}

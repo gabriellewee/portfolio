@@ -59,7 +59,7 @@
 							{% endif %}
 							<div class="frame-wrapper"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %}>
 								<iframe class="frame{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title|safe}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"></iframe>
-								<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}">Please enable Javascript to view this code demo.</noscript>
+								<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}"><p>Please enable Javascript to view this code demo.</p></noscript>
 							</div>
 						{% else %}
 							{{post.content|safe}}
@@ -80,7 +80,7 @@
 			<figure>
 				{% if post.url %}
 					<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"></iframe>
-					<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}">Please enable Javascript to view this code demo.</noscript>
+					<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}"><p>Please enable Javascript to view this code demo.</p></noscript>
 				{% else %}
 					{{post.content|safe}}
 				{% endif %}

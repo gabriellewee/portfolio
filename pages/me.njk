@@ -23,6 +23,10 @@
 					<h2>Hi there! 👋🏼 This is what I currently look like.</h2	>
 				</header>
 				<figure class="post-image" aria-label="{{site.photoDescription}}" role="img"></figure>
+				<picture class="no-css">
+					<source type="image/webp" srcset="{{site.url}}/static/images/avatars/author.webp">
+					<img class="u-photo" src="{{site.url}}/static/images/avatars/author.jpg" alt="{{site.photoDescription}}" width="512" height="512"/>
+				</picture>
 			</div>
 		</article>
 
@@ -80,7 +84,7 @@
 			</div>
 		</article>
 
-		<article class="post post-music post-me" data-grid-item>
+		<article class="post post-music post-me" data-grid-item hidden>
 			<div class="post-inner post-animate">
 				<header class="post-header">
 					<h2>I listen to a bit of music here and there.</h2>
