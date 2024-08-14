@@ -5,10 +5,10 @@ animateItems(posts, key);
 
 const taskListCheckboxes = (() => {
 	const taskList = document.querySelector(".task-list");
+	if (!taskList) return;
 	const options = Array.from(taskList.querySelectorAll("input[type='checkbox']"));
 	const labels = Array.from(taskList.querySelectorAll("label"));
 	const reset = document.querySelector("[data-task-list-reset]");
-	if (!options) return;
 
 	let _true = (option, index, name) => {
 		option.checked = true;

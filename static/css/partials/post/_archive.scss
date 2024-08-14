@@ -8,10 +8,16 @@
 
 	ul {
 		list-style: none;
+		&:not(:first-child) {
+			margin-bottom: 2rem;
+		}
 	}
 	h2 {
 		font-size: 4rem;
 		@include font-weight-width(1000, 120);
+	}
+	h2, li {
+		opacity: 0;
 	}
 	h3 {
 		font-size: 2rem;
@@ -96,12 +102,6 @@
 		text-transform: uppercase;
 	}
 	li {
-		opacity: 0;
-		&:not(:first-child) {
-			margin-top: .75rem;
-			h2 {
-				margin-top: 2rem;
-			}
-		}
+		margin-top: .75rem;
 	}
 }

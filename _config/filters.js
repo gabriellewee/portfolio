@@ -28,6 +28,11 @@ module.exports = eleventyConfig => {
 		date = DateTime.fromJSDate(date, {zone: 'utc'}).toISO() || DateTime.fromISO(date, {zone: 'utc'}).toISO();
 		return date;
 	});
+	
+	eleventyConfig.addFilter("year", date => {
+		date = DateTime.fromJSDate(date, {zone: 'utc'}).toFormat('yyyy') || DateTime.fromISO(date, {zone: 'utc'}).toFormat('yyyy');
+		return date;
+	});
 
 	eleventyConfig.addShortcode("year", async (year) => {
 		if (year === "start") {

@@ -12,25 +12,19 @@ og: posts
 message: Post archive for gabriellew.ee
 ---
 
-{% set currentYear = "" %}
-
 <section class="posts-container">
 	<article class="posts-archive">
-		<ul>
-			{% for post in collections.writing|reverse %}
-				{% set postYear = post.date.getFullYear() %}
-				{% if currentYear != postYear %}
-					{% set currentYear = postYear %}
-					<li>
-						<h2>{{postYear}}</h2>
+		{% for year, posts in collections.writing | groupby("data.year") | dictsort | reverse %}
+			<h2 data-anim>{{year}}</h2>
+			<ul>
+				{% for post in posts | reverse %}
+					<li data-anim>
+						<h3><a href="{{post.url|url}}"><span>{{post.data.title|safe}}</span></a></h3>
+						<time datetime="{{post.date|ISO|date('string')}}">{{post.date|ISO|date('readable')}}</time>
 					</li>
-				{% endif %}
-				<li>
-					<h3><a href="{{post.url|url}}"><span>{{post.data.title|safe}}</span></a></h3>
-					<time datetime="{{post.date|ISO|date('string')}}">{{post.date|ISO|date('readable')}}</time>
-				</li>
-			{% endfor %}
-		</ul>
+				{% endfor %}
+			</ul>
+		{% endfor %}
 	</article>
 
 	{% include 'pages/posts/author.html' %}
