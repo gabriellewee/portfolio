@@ -8,14 +8,25 @@
 	og: true,
 	message: true,
 	isotope: true,
-	tags: "pages"
+	tags: "pages",
+	scripts: "posts",
+	filters: [
+		{ name: "css-only" },
+		{ name: "animation" },
+		{ name: "gaming" },
+		{ name: "retro" },
+		{ name: "tools" },
+		{ name: "ui" }
+	],
 }
 ---
 
 <section class="posts-container">
+	{% include 'pages/posts/tags.html' %}
+
 	<div class="posts" data-grid>
 		{% for post in collections.code | reverse %}
-			<article class="post post-code {% if post.data.size %} post-size-{{post.data.size}}{% endif %}" data-grid-item{% if post.data.width %} style="max-width: {{post.data.width}}"{% endif %}>
+			<article class="post post-code {% if post.data.size %} post-size-{{post.data.size}}{% endif %} {% for filter in post.data.filters %} filter-{{filter}}{% endfor %}" data-anim data-grid-item{% if post.data.width %} style="max-width: {{post.data.width}}"{% endif %}>
 				<div class="post-inner">
 					<header class="post-header{% if (post.data.category == 'writing') or (post.data.category == 'code') %} inline-header{% endif %}">
 						<div class="post-header-content">

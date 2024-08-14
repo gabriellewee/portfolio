@@ -66,9 +66,6 @@
 			var(--color-iron) 70%,
 			white
 		);
-		@media (prefers-reduced-motion: no-preference) {
-			opacity: 0;
-		}
 		&:not(.reset)::before {
 			content: "#";
 		}

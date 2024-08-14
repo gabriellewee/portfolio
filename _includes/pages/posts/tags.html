@@ -1,0 +1,9 @@
+<nav hidden class="filters" data-filter-container>
+	<h2>Tags</h2>
+	<ul>
+		{% for filter in filters %}
+			<li><a class="grid-filter" href="#" data-filter=".filter-{{filter.name}}" aria-label="Posts tagged “{% if filter.label %}{{filter.label}}{% else %}{{filter.name}}{% endif %}”" data-anim><span><span>{% if filter.label %}{{filter.label}}{% else %}{{filter.name}}{% endif %}</span></span></a></li>
+		{% endfor %}
+		<li><a class="grid-filter reset" href="#" data-filter="*" data-reset><span>reset</span></a></li>
+	</ul>
+</nav>
