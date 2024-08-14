@@ -43,7 +43,6 @@ eleventyComputed:
 		</article>
 	</div>
 
-	{% include 'pages/posts/author.html' %}
 	{% include 'pages/posts/mentions.html' %}
 
 	<nav class="pagination" aria-label="Pagination">
@@ -77,7 +76,9 @@ eleventyComputed:
 			{% endif %}
 		{%- endif %}
 	</nav>
-
-	{% include 'pages/posts/lightbox.html' %}
 </section>
+
+{% include 'pages/posts/author.html' %}
+{% include 'pages/posts/lightbox.html' %}
+
 {% if code == true %}<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>{% endif %}
