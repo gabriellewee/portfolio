@@ -45,9 +45,7 @@
 							{% endif %}
 							{% if type == "reply" %}
 								<div>
-									<a class="username" href="{{webmention.data.author.url}}">
-										<span>{{webmention.data.author.name|removeEmoji}}</span>
-									</a>
+									<a class="username" href="{{webmention.data.author.url}}"><span>{{webmention.data.author.name|removeEmoji}}</span></a>
 									<a class="time" href="{{webmention.data.url}}">
 										<time class="time-external" datetime="{{webmention.data.published|date('string')}}" title="{{webmention.data.published|date('readable')}}" data-time="{{webmention.data.published|ISO}}">Posted {{webmention.data.published|date('readable')}}{{webmention.source|platform|safe}}</time>
 									</a>

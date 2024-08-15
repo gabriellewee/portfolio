@@ -38,7 +38,7 @@
 													</picture>
 												{% elseif post.svg == true %}
 													<picture>
-														<img src="/static/images/{{key}}/{{post.date}}-{{post.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'width' %}" height="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'height' %}"/>
+														<img src="/static/images/{{key}}/{{post.date}}-{{post.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'width', 500 %}" height="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'height', 500 %}"/>
 													</picture>
 												{% else %}
 													{% image './static/images/' + key + '/' + post.date + '-' + post.name + '.' + extension, post.description, 'thumbnail', loop.index %}

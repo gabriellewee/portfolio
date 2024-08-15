@@ -246,6 +246,7 @@ figcaption {
 				transition: all .1s ease-out;
 				opacity: .7;
 				margin-left: calc(var(--p) * .75);
+				display: block;
 				text-decoration: underline;
 				text-underline-offset: 8px;
 				text-decoration-color: hsl(from white h s l / 0);

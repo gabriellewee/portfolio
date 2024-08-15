@@ -57,11 +57,11 @@ pagination:
 										{% endif %}
 									</h2>
 									{% if post.data.type %}
-										<ul class="post-tags">
+										<div class="post-tags">
 											{% for type in post.data.type %}
-												<li><span class="tag-{{type}}">#{{type}}</span></li>
+												<u class="tag-{{type}}">#{{type}}</u>
 											{% endfor %}
-										</ul>
+										</div>
 									{% endif %}
 								</div>
 							{% endif %}
@@ -115,7 +115,7 @@ pagination:
 										<label class="media-down media-icon" for="{{post.data.date|safe}}-{{post.data.name}}-info" data-media-label></label>
 										<div class="media-thumbnail">
 											<a class="media-expand expand" href="#{{post.data.date|safe}}-{{post.data.name}}-lightbox" role="button" aria-label="Expand image" tabindex="-1" data-media-expand>
-												<span class="no-image">Expand</span>
+												<span class="no-image" hidden>Expand</span>
 												<span class="has-image" aria-hidden="true" hidden>
 													{% if post.data.upscale %}
 														<picture>
@@ -123,7 +123,7 @@ pagination:
 														</picture>
 													{% elseif post.data.svg == true %}
 														<picture>
-															<img src="/static/images/{{post.data.pagination.data}}/{{post.data.date}}-{{post.data.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'width' %}" height="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'height' %}"/>
+															<img src="/static/images/{{post.data.pagination.data}}/{{post.data.date}}-{{post.data.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'width', 500 %}" height="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'height', 500 %}"/>
 														</picture>
 													{% else %}
 														{% image './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 'thumbnail', loop.index %}
@@ -170,11 +170,11 @@ pagination:
 							</figure>
 						{% elseif post.data.category == "code" %}
 							{% if post.data.button %}
-								<button class="reload button" data-reload><span><span>{{post.data.button|capitalize}}</span></span></button>
+								<button class="reload button" data-reload hidden><span><span>{{post.data.button|capitalize}}</span></span></button>
 							{% endif %}
 							{% if post.url %}
+								<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}"><p><em>Please enable Javascript to view this code demo.</em></p></noscript>
 								<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title|safe}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %}></iframe>
-								<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}"><p>Please enable Javascript to view this code demo.</p></noscript>
 							{% else %}
 								{{post.content|safe}}
 							{% endif %}
@@ -276,8 +276,8 @@ pagination:
 			<dialog class="lightbox-content iframe" aria-label="Preview of {{post.data.title}}" autofocus data-lightbox-append>
 				<figure>
 					{% if post.url %}
+						<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}"><p><em>Please enable Javascript to view this code demo.</em></p></noscript>
 						<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %}></iframe>
-						<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}"><p>Please enable Javascript to view this code demo.</p></noscript>
 					{% else %}
 						{{post.content|safe}}
 					{% endif %}

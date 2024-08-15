@@ -152,7 +152,7 @@
 								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image" data-media-expand{% if media.focus %} style="--focus-x: {{media.focus.x}}%; --focus-y: {{media.focus.y}}%;"{% endif %}>
 									{% if media.svg == true %}
 										<picture>
-											<img src="/static/images/graphic/{{media.date}}-{{media.name}}.svg" alt="{{media.description}}" width="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'width' %}" height="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'height' %}"/>
+											<img src="/static/images/graphic/{{media.date}}-{{media.name}}.svg" alt="{{media.description}}" width="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'width', 600 %}" height="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'height', 600 %}"/>
 										</picture>
 									{% else %}
 										{% image './static/images/graphic/' + media.date + '-' + media.name + '.png', media.description, 'thumbnail', loop.index %}

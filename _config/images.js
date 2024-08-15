@@ -3,7 +3,7 @@ const Sharp = require('sharp');
 const EleventyFetch = require("@11ty/eleventy-fetch");
 
 module.exports = eleventyConfig => {
-	eleventyConfig.addShortcode("stats", async (src, type) => {
+	eleventyConfig.addShortcode("stats", async (src, type, value) => {
 		try {
 			let stats = await Sharp(src); 
 			let result;
@@ -19,11 +19,21 @@ module.exports = eleventyConfig => {
 				let metadata = await stats.metadata();
 				let width = metadata.width;
 				let height = metadata.height;
+				let percent;
+				if(value) percent = value / metadata.width;
 
 				if (type === "width") {
-					result = width;
+					if(value) {
+						result = width * percent;
+					} else {
+						result = width;
+					}
 				} else if (type === "height") {
-					result = height;
+					if(value) {
+						result = height * percent;
+					} else {
+						result = height;
+					}
 				} else if (type === "orientation") {
 					let orientation;
 					width > height ? orientation = "landscape" : orientation = "portrait";

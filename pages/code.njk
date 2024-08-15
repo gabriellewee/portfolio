@@ -39,11 +39,11 @@
 									{% endif %}
 								</h2>
 								{% if post.data.type %}
-									<ul class="post-tags">
+									<div class="post-tags">
 										{% for type in post.data.type %}
-											<li><span class="tag-{{type}}">#{{type}}</span></li>
+											<u class="tag-{{type}}">#{{type}}</u>
 										{% endfor %}
-									</ul>
+									</div>
 								{% endif %}
 							</div>
 							<div class="post-header-right">
@@ -58,7 +58,7 @@
 							<a class="post-mobile-button button" href="{{post.url|url}}" target="_blank"><span><span>View animation</span></span></a>
 						{% endif %}
 						{% if post.data.button %}
-							<button class="reload button" data-reload><span><span>{{post.data.button|capitalize}}</span></span></button>
+							<button class="reload button" data-reload hidden><span><span>{{post.data.button|capitalize}}</span></span></button>
 						{% endif %}
 						{% if post.url %}
 							{% if post.data.mobile == false %}
@@ -69,8 +69,8 @@
 								</div>
 							{% endif %}
 							<div class="frame-wrapper"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %}>
+								<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}"><p><em>Please enable Javascript to view this code demo.</em></p></noscript>
 								<iframe class="frame{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title|safe}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"></iframe>
-								<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}"><p>Please enable Javascript to view this code demo.</p></noscript>
 							</div>
 						{% else %}
 							{{post.content|safe}}
@@ -94,8 +94,8 @@
 		<dialog class="lightbox-content iframe"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %} aria-label="Preview of {{post.data.title}}" autofocus>
 			<figure>
 				{% if post.url %}
+					<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}"><p><em>Please enable Javascript to view this code demo.</em></p></noscript>
 					<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"></iframe>
-					<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}"><p>Please enable Javascript to view this code demo.</p></noscript>
 				{% else %}
 					{{post.content|safe}}
 				{% endif %}
