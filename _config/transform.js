@@ -11,8 +11,8 @@ module.exports = eleventyConfig => {
 				removeComments: true,  
 				useShortDoctype: true,
 			});
-	    }
-	    return content;
+		}
+		return content;
 	});
 
 	eleventyConfig.addTemplateFormats("js");
