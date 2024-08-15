@@ -10,7 +10,7 @@
 		@include clip-path-edges(2px, up);
 	}
 	.post-header-content {
-		@include container(header, mobile, $container-mobile) {
+		@include container(header, mobile, $iphone-max) {
 			align-items: stretch;
 			align-content: flex-start;
 		}
@@ -25,7 +25,7 @@
 		flex-wrap: wrap;
 		order: 2;
 		width: 100%;
-		@include container(header, mobile, $container-mobile) {
+		@include container(header, mobile, $iphone-max) {
 			align-items: flex-start;
 			align-content: flex-start;
 		}
@@ -35,7 +35,7 @@
 		}
 	}
 	.post-header-left, .post-headline {
-		@include container(header, mobile, $container-mobile) {
+		@include container(header, mobile, $iphone-max) {
 			order: 1;
 			width: unset;
 		}
@@ -72,7 +72,7 @@
 	.post-headline {
 		order: 1;
 		line-height: 1.5;
-		@include container(header, mobile, $container-mobile) {
+		@include container(header, mobile, $iphone-max) {
 			margin-right: calc(var(--p)*1.5);
 		}
 		a {
@@ -86,10 +86,9 @@
 		order: 2;
 		display: flex;
 		flex-wrap: wrap;
-		list-style: none;
 		margin-top: var(--p);
 		margin-bottom: calc(var(--p)*.75);
-		@include container(header, mobile, $container-mobile) {
+		@include container(header, mobile, $iphone-max) {
 			width: 100%;
 			margin-top: calc(var(--p)*.75);
 			margin-bottom: 0;
@@ -98,14 +97,13 @@
 			width: unset;
 			margin-top: 0;
 		}
-		li {
-			margin-right: calc(var(--p)*1.5);
-		}
-		span {
+		u {
 			display: block;
 			position: relative;
+			margin-right: calc(var(--p)*1.5);
 			padding-left: calc(var(--p)/2);
 			padding-right: calc(var(--p)/2);
+			text-decoration: none;
 			line-height: 1.5;
 			@include clip-path-edges(2px);
 			&.tag-css-only {
@@ -162,7 +160,7 @@
 		justify-content: space-between;
 		width: 100%;
 		margin-bottom: calc(var(--p)*.75);
-		@include container(header, mobile, $container-mobile) {
+		@include container(header, mobile, $iphone-max) {
 			order: 2;
 			justify-content: flex-end;
 			align-content: space-between;
@@ -176,7 +174,7 @@
 		}
 		.time {
 			margin-bottom: 0;
-			@include container(header, mobile, $container-mobile) {
+			@include container(header, mobile, $iphone-max) {
 				width: 100%;
 				text-align: right;
 			}
@@ -196,7 +194,7 @@
 					outline: unset;
 				}
 			}
-			@include container(header, mobile, $container-mobile) {
+			@include container(header, mobile, $iphone-max) {
 				margin-top: calc(var(--p)/2);
 			}
 			@include container(header, $ipad-mini) {
@@ -221,7 +219,7 @@
 		}
 	}
 	.post-header-left:not(:has(.post-tags)) + .post-header-right {
-		@include container(header, mobile, $container-mobile) {
+		@include container(header, mobile, $iphone-max) {
 			flex-wrap: nowrap;
 			align-items: flex-start;
 			align-content: unset;
@@ -230,12 +228,12 @@
 			align-items: center;
 		}
 		.time {
-			@include container(header, mobile, $container-mobile) {
+			@include container(header, mobile, $iphone-max) {
 				width: unset;
 			}
 		}
 		.expand, .external-expand {
-			@include container(header, mobile, $container-mobile) {
+			@include container(header, mobile, $iphone-max) {
 				margin-top: 0;
 				margin-left: var(--p);
 			}

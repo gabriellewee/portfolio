@@ -11,8 +11,6 @@ $mobile: 568px;
 $desktop-small: 1024px;
 $desktop: 1280px;
 
-$container-mobile: 350px;
-
 // functions
 @function hexToHSL($color) {
 	@return "#{hue($color)} #{saturation($color)} #{lightness($color)}";
