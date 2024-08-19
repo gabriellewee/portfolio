@@ -36,14 +36,6 @@
 					margin-right: .75rem;
 				}
 			}
-			.link.tumblr {
-				@include theme(light) {
-					--color-link: var(--color-tumblr);
-				}
-				@include theme(dark) {
-					--color-link: var(--color-tumblr-light);
-				}
-			}
 			.link, .popup-label, .popup-label span {
 				transition: all .1s ease-out;
 				font-size: clamp(1.75rem, 3vw, 2rem);

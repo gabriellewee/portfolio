@@ -117,7 +117,11 @@
 		}
 		a:not(.expand) {
 			@include theme(light) {
-				color: var(--color-mastodon);
+				color: color-mix(
+					in srgb,
+					var(--color-mastodon) 40%,
+					var(--color-mastodon-dark)
+				);
 			}
 			@include theme(dark) {
 				color: color-mix(

@@ -31,20 +31,24 @@ $iron: #263238;
 		mastodon-light: #858AFA,
 
 		text: #34a853,
+		text-dark: #03796B,
 		codepen: #717790,
 		github: #4969ed,
 		instagram: #cd486b,
 		twitter: #1D9BF0,
 		pinterest: #e60023,
 		dribbble: #ea4c89,
+		dribbble-dark: #CB4C7D,
 		music: #fa2d48,
 		imessage: #0d84ff,
-		tumblr: mix(#35465D,#5487b3),
-		tumblr-light: #5487b3,
+		tumblr: #5487b3,
+		tumblr-dark: mix(#35465D,#5487b3),
 		threads: #C43DFB,
-		bluesky: #0085FF,
+		bluesky: #0285FF,
+		bluesky-dark: mix(#0285FF,#005CE1),
 
 		medium: #51A653,
+		medium-dark: #3C863D,
 		apple-podcasts: #852dc4,
 		spotify: #1BD760,
 	);
@@ -52,7 +56,8 @@ $iron: #263238;
 		--color-#{"" + $name}:hsl(#{hexToHSL($color)});
 	}
 
-	--color-email:hsl(#{hexToHSL(mix($iron, white, 70%))});
+	--color-email:hsl(#{hexToHSL(mix($iron, #577783, 5%))});
+	--color-email-dark:hsl(#{hexToHSL(mix($iron, white, 70%))});
 }
 
 @include theme(light, true) {

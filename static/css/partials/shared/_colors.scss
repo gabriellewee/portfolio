@@ -1,8 +1,20 @@
-$links: "codepen", "dribbble", "github", "instagram", "twitter", "pinterest", "medium", "tumblr", "music", "email", "text", "imessage", "discord", "mastodon", "apple-podcasts", "spotify", "threads", "bluesky";
+$links: "codepen", "github", "instagram", "twitter", "pinterest", "music", "imessage", "discord", "mastodon", "apple-podcasts", "spotify", "threads";
+$dark-links: "tumblr", "email", "text", "medium", "dribbble", "bluesky";
 
 @each $link in $links {
 	a.#{$link} {
 		--color-link: var(--color-#{$link});
+	}
+}
+
+@each $link in $dark-links {
+	a.#{$link} {
+		@include theme(light) {
+			--color-link: var(--color-#{$link}-dark);
+		}
+		@include theme(dark) {
+			--color-link: var(--color-#{$link});
+		}
 	}
 }
 
