@@ -103,7 +103,7 @@
 				</header>
 				<figure id="2022-07-20-keyboard" aria-label="My pastel-themed custom mechanical keyboard and Logitech Lift Mouse.">
 					<a class="post-expand expand" href="#2022-07-20-keyboard-lightbox" role="button" aria-label="Expand image" data-media-expand>
-						{% image './static/images/posts/2022-07-20-keyboard.jpg', 'My pastel-themed custom mechanical keyboard and Logitech Lift Mouse', 'default' %}
+						{% image './static/images/posts/2022-07-20-keyboard.jpg', 'My pastel-themed custom mechanical keyboard and Logitech Lift Mouse', 700 %}
 					</a>
 				</figure>
 				<ul class="grid">
@@ -128,7 +128,7 @@
 						<li>
 							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
 								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image" data-media-expand{% if media.focus %} style="--focus-x: {{media.focus.x}}%; --focus-y: {{media.focus.y}}%;"{% endif %}>
-									{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail', loop.index %}
+									{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 350, loop.index %}
 								</a>
 							</figure>
 						</li>
@@ -152,10 +152,10 @@
 								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image" data-media-expand{% if media.focus %} style="--focus-x: {{media.focus.x}}%; --focus-y: {{media.focus.y}}%;"{% endif %}>
 									{% if media.svg == true %}
 										<picture>
-											<img src="/static/images/graphic/{{media.date}}-{{media.name}}.svg" alt="{{media.description}}" width="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'width', 600 %}" height="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'height', 600 %}"/>
+											<img src="/static/images/graphic/{{media.date}}-{{media.name}}.svg" alt="{{media.description}}" width="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'width', 700 %}" height="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'height', 700 %}"/>
 										</picture>
 									{% else %}
-										{% image './static/images/graphic/' + media.date + '-' + media.name + '.png', media.description, 'thumbnail', loop.index %}
+										{% image './static/images/graphic/' + media.date + '-' + media.name + '.png', media.description, 350, loop.index %}
 									{% endif %}
 								</a>
 							</figure>
@@ -178,7 +178,7 @@
 						<li>
 							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
 								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image" data-media-expand{% if media.focus %} style="--focus-x: {{media.focus.x}}%; --focus-y: {{media.focus.y}}%;"{% endif %}>
-									{% image './static/images/art/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail', loop.index %}
+									{% image './static/images/art/' + media.date + '-' + media.name + '.jpg', media.description, 350, loop.index %}
 								</a>
 							</figure>
 						</li>
@@ -201,7 +201,7 @@
 						<li>
 							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
 								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
-									{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail' %}
+									{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 350 %}
 								</a>
 							</figure>
 						</li>
@@ -223,7 +223,7 @@
 						<li>
 							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
 								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand photo" data-media-expand>
-									{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'thumbnail' %}
+									{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 350 %}
 								</a>
 							</figure>
 						</li>

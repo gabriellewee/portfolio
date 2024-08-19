@@ -170,10 +170,10 @@ module.exports = eleventyConfig => {
 			let newWidths;
 			if (type === "default") {
 				newWidths = [100, 900, 1728, 2268, "auto"]
-			} else if (type === "thumbnail") {
-				newWidths = [50, 300, 600];
 			} else if (type === "screen") {
 				newWidths = [100, 1728, "auto"];
+			} else if (Number.isInteger(type)) {
+				newWidths = [50, type, type*2];
 			}
 
 			let stats = await Image(src, {
@@ -196,7 +196,7 @@ module.exports = eleventyConfig => {
 					webpset = `${stats["webp"][3].srcset}, ${stats["webp"][2].srcset}, ${stats["webp"][1].srcset}`;
 					regset = `${stats[file][3].srcset}, ${stats[file][2].srcset}, ${stats[file][1].srcset}`;
 				}
-			} else if (type === "thumbnail" || type === "screen") {
+			} else if (type === "screen" || Number.isInteger(type)) {
 				webpset = `${stats["webp"][1].url}, ${stats["webp"][2].url} 2x`;
 				regset = `${stats[file][1].url}, ${stats[file][2].url} 2x`;
 			}
@@ -217,7 +217,7 @@ module.exports = eleventyConfig => {
 					source = `<source type="image/webp" srcset="${webpset}" sizes="${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px">`;
 					img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${stats["webp"][0].url}" srcset="${regset}" sizes="${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px" width="${basic.width}" height="${basic.height}">`;
 				}
-			} else if (type === "thumbnail" || type === "screen") {
+			} else if (type === "screen" | Number.isInteger(type)) {
 				source = `<source type="image/webp" srcset="${webpset}">`;
 				img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${stats["webp"][0].url}" srcset="${regset}" width="${basic.width}" height="${basic.height}">`;
 			}

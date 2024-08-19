@@ -123,10 +123,10 @@ pagination:
 														</picture>
 													{% elseif post.data.svg == true %}
 														<picture>
-															<img src="/static/images/{{post.data.pagination.data}}/{{post.data.date}}-{{post.data.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'width', 500 %}" height="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'height', 500 %}"/>
+															<img src="/static/images/{{post.data.pagination.data}}/{{post.data.date}}-{{post.data.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'width', 400 %}" height="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'height', 400 %}"/>
 														</picture>
 													{% else %}
-														{% image './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 'thumbnail', loop.index %}
+														{% image './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 200, loop.index %}
 													{% endif %}
 												</span>
 											</a>
