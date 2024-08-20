@@ -74,8 +74,8 @@
 	time {
 		--color-mix: color-mix(
 			in srgb,
-			var(--color-slate),
-			var(--color-mint)
+			hsl(from var(--color-slate) h s calc(l * .6)),
+			hsl(from var(--color-mint) h calc(s * .5) l)
 		);
 		transition: translate .2s ease-out;
 		order: 1;

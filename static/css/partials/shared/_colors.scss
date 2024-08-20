@@ -1,5 +1,5 @@
-$links: "codepen", "github", "instagram", "twitter", "pinterest", "music", "imessage", "discord", "mastodon", "apple-podcasts", "spotify", "threads";
-$dark-links: "tumblr", "email", "text", "medium", "dribbble", "bluesky";
+$links: "github", "instagram", "twitter", "pinterest", "music", "imessage", "discord", "mastodon", "apple-podcasts", "spotify", "threads";
+$dark-links: "codepen", "tumblr", "email", "text", "medium", "dribbble", "bluesky";
 
 @each $link in $links {
 	a.#{$link} {
