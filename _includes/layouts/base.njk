@@ -81,7 +81,7 @@
 		</noscript>
 	{% endif %}
 </head>
-<body class="{% if key %}page-{{key}}{% endif %}{% if pagination.pageNumber == 0 %} page-index{% endif %}">
+<body class="{% if key %}page-{{key}}{% endif %}{% if pagination.pageNumber == 0 %} page-index{% endif %}{% if filters %} page-filters{% endif %}">
 	{% if blank != true %}{% include 'pages/shared/header.html' %}{% endif %}
 
 	<main class="main">

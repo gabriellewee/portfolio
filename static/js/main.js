@@ -116,7 +116,11 @@ const layout = (items) => {
 	}
 }
 
-if (container) layout(container);
+if (container && document.body.classList.contains("page-filters")) layout(container);
+let gmm = gsap.matchMedia();
+gmm.add("(min-width: 568px) and (max-height: 450px), (min-width: 768px)", () => {
+	if (container && !iso && !document.body.classList.contains("page-filters")) layout(container);
+});
 
 let scrollContainer = document.querySelector("[data-scroll]");
 let lightboxContainer = document.querySelector("[data-lightbox-container]");

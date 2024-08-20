@@ -41,16 +41,7 @@
 	position: relative;
 	width: 100%;
 	font-size: 1.125rem;
-
-	.post-single & {
-		grid-column-end: span 12;
-	}
-
-	@include viewport(mobile) {
-		.posts:not([data-grid="true"]) & {
-			grid-column-end: span 12;
-		}
-	}
+	grid-column-end: span 12;
 
 	&[data-orientation="portrait"] {
 		@include viewport(mobile) {
