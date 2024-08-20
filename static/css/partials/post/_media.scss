@@ -545,7 +545,7 @@ figcaption {
 							transition: background .2s ease-out, scale .2s ease-out, opacity .2s ease-out;
 						}
 						> span {
-							&::before {
+							&::after {
 								opacity: 1;
 							}
 						}

@@ -147,7 +147,7 @@
 				@include contrast(both) {
 					border-color: white;
 				}
-				span span {
+				strong {
 					display: none;
 				}
 				&::after {

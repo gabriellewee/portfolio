@@ -32,9 +32,9 @@ eleventyImport:
 						<div class="post-header-content">
 							<h2>
 								{% if post.url %}
-									<a href="{{post.url|url}}" aria-label="Recipe for {{post.data.title|safe}}"><span><span>{{post.data.title|safe}}</span></span></a>
+									<a href="{{post.url|url}}" aria-label="Recipe for {{post.data.title|safe}}"><span>{{post.data.title|safe}}</span></a>
 								{% else %}
-									<a href="{{post.data.url|url}}"><span><span>{{post.data.title|safe}}</span></span></a>
+									<a href="{{post.data.url|url}}"><span>{{post.data.title|safe}}</span></a>
 								{% endif %}
 							</h2>
 							<time class="time{% if post.data.category != 'code' %} time-default{% endif %}{% if post.data.category == 'social' %} time-external{% endif %}" datetime="{{post.page.date|ISO|date('string')}}" data-time="{{post.page.date|ISO}}" title="{{post.page.date|ISO|date('readable')}}">{{post.page.date|ISO|date('readable')}}</time>
@@ -62,7 +62,7 @@ eleventyImport:
 					</div>
 
 					<footer class="post-footer">
-						<a class="button" href="{{post.url|url}}"><span><span>Read recipe</span></span></a>
+						<a class="button" href="{{post.url|url}}"><span>Read recipe</span></a>
 					</footer>
 				</div>
 			</article>

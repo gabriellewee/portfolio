@@ -595,7 +595,7 @@
 
 .button-social {
 	line-height: 1.125;
-	> span span {
+	> span {
 		display: flex;
 		align-items: flex-start;
 		align-content: flex-start;
@@ -635,7 +635,7 @@
 			var(--color-mastodon-dark),
 			var(--color-mastodon-dark),
 		) 50% 0% / 200% 100%;
-		span::before {
+		&::before {
 			content: "";
 			background-image: url(/static/images/svg/logos/mastodon-fill.svg);
 		}

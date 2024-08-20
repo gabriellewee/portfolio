@@ -344,7 +344,7 @@
 					@include button-shape;
 				}
 			}
-			&::before {
+			&::after {
 				background-color: var(--color-iron);
 				background: radial-gradient(
 					circle at center right,

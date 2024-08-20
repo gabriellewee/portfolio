@@ -156,7 +156,7 @@ module.exports = eleventyConfig => {
 			return result;
 		} catch (error) {
 			console.error(error);
-			return `<a class="${className} button" href="${link}"><span><span>${title}</span></span></a>`;
+			return `<a class="${className} button" href="${link}"><span>${title}</span></a>`;
 		}
 	});
 

@@ -65,12 +65,12 @@
 			var(--color-slate)
 		) 50% 0% / 200% 100%;
 		@include button;
-		&::before {
+		&::after {
 			opacity: 0;
 			content: "";
 			display: block;
 			position: absolute;
-			z-index: 0;
+			z-index: -1;
 			top: 0;
 			left: 0;
 			width: 100%;
@@ -99,10 +99,6 @@
 					)
 				);
 			}
-		}
-		span {
-			position: relative;
-			z-index: 1;
 		}
 	}
 	&:hover {
@@ -133,7 +129,7 @@
 			transition: background .2s ease-out, scale .2s ease-out, opacity .2s ease-out;
 		}
 		> span {
-			&::before {
+			&::after {
 				opacity: 1;
 			}
 		}
@@ -156,7 +152,7 @@
 				var(--color-slate) 75%,
 				var(--color-slate) 100%
 			) 50% 0% / 200% 100%;
-			&::before {
+			&::after {
 				@include theme(light) {
 					background-color: var(--color-iron);
 					background: radial-gradient(
@@ -192,7 +188,7 @@
 
 	&.link-platform {
 		> span {
-			&::before {
+			&::after {
 				display: none;
 			}
 		}

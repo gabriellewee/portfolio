@@ -28,14 +28,15 @@ eleventyComputed:
 				<footer class="post-footer">
 					{% if archive == true %}
 						{% if full == true %}
-							<a class="button" href="{{site.url}}/v1/{{page.date|ISO|date('archive')}}/{{title|slugify}}" target="_blank"><span><span>View original</span></span></a>
+							{%- set pageUrl = title %}
 						{% else %}
-							<a class="button" href="{{site.url}}/v1/{{page.date|ISO|date('archive')}}/{{page.fileSlug}}" target="_blank"><span><span>View original</span></span></a>
+							{%- set pageUrl = page.fileSlug %}
 						{% endif %}
+						<a class="button" href="{{site.url}}/v1/{{page.date|ISO|date('archive')}}/{{pageUrl|slugify}}" target="_blank"><span>View original</span></a>
 					{% endif %}
 					{% if external %}
 						{% for link in external %}
-							<a rel="syndication" class="u-syndication button link-platform {{link.platform}} background" href="{{link.url|url}}"><span><span>Read on {{link.platform|capitalize}}</span></span></a>
+							<a rel="syndication" class="u-syndication button link-platform {{link.platform}} background" href="{{link.url|url}}"><span>Read on {{link.platform|capitalize}}</span></a>
 						{% endfor %}
 					{% endif %}
 				</footer>
@@ -48,33 +49,11 @@ eleventyComputed:
 	<nav class="pagination" aria-label="Pagination">
 		{%- set nextPost = collections.posts|getNextCollectionItem(page) %}
 		{%- set previousPost = collections.posts|getPreviousCollectionItem(page) %}
-		{%- if nextPost or previousPost %}
-			{%- if nextPost %}
-				<a class="newer button button-reverse" href="{{nextPost.url|url}}"><span><span>Newer</span></span></a>
-			{% else %}
-				<a class="button" href="/"><span><span>Back to home</span></span></a>
-			{% endif %}
-			{%- if previousPost %}
-				<a class="older button" href="{{previousPost.url|url}}"><span><span>Older</span></span></a>
-			{% else %}
-				<a class="button" href="/archive/"><span><span>Back to archive</span></span></a>
-			{% endif %}
-		{%- endif %}
+		{% include 'pages/posts/pagination.html' %}
 
 		{%- set nextPost = collections.archive|getNextCollectionItem(page) %}
 		{%- set previousPost = collections.archive|getPreviousCollectionItem(page) %}
-		{%- if nextPost or previousPost %}
-			{%- if nextPost %}
-				<a class="newer button button-reverse" href="{{nextPost.url|url}}"><span><span>Newer</span></span></a>
-			{% else %}
-				<a class="button" href="/archive/"><span><span>Back to archive</span></span></a>
-			{% endif %}
-			{%- if previousPost %}
-				<a class="older button" href="{{previousPost.url|url}}"><span><span>Older</span></span></a>
-			{% else %}
-				<a class="button" href="/archive/"><span><span>Back to archive</span></span></a>
-			{% endif %}
-		{%- endif %}
+		{% include 'pages/posts/pagination.html' %}
 	</nav>
 </section>
 

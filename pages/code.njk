@@ -55,10 +55,10 @@
 					</header>
 					<div class="post-content{% if post.data.category == 'writing' %} post-text{% endif %}">
 						{% if post.data.mobile == false %}
-							<a class="post-mobile-button button" href="{{post.url|url}}" target="_blank"><span><span>View animation</span></span></a>
+							<a class="post-mobile-button button" href="{{post.url|url}}" target="_blank"><span>View animation</span></a>
 						{% endif %}
 						{% if post.data.button %}
-							<button class="reload button" data-reload hidden><span><span>{{post.data.button|capitalize}}</span></span></button>
+							<button class="reload button" data-reload hidden><span>{{post.data.button|capitalize}}</span></button>
 						{% endif %}
 						{% if post.url %}
 							{% if post.data.mobile == false %}
@@ -82,7 +82,7 @@
 	</div>
 
 	<nav class="pagination" aria-label="Pagination">
-		<a class="button" href="https://codepen.io/gabriellewee"><span><span>View more</span></span></a>
+		<a class="button" href="https://codepen.io/gabriellewee"><span>View more</span></a>
 	</nav>
 </section>
 

@@ -30,7 +30,7 @@
 					{% if (type == 'reply') and (hidden != true) %}
 						{% for source in collections.sources %}
 							{% if source.data.content.includes(pageLink) %}
-								<a class="button button-social button-mastodon" href="{{source.data.url|url}}"><span><span>Reply on Mastodon</span></span></a>
+								<a class="button button-social button-mastodon" href="{{source.data.url|url}}"><span>Reply on Mastodon</span></a>
 							{% endif %}
 						{% endfor %}
 					{% endif %}
@@ -71,7 +71,7 @@
 
 	{% for source in collections.sources %}
 		{% if source.data.content.includes(pageLink) %}
-			<a class="button button-social button-mastodon" href="{{source.data.url|url}}"><span><span>Reply on Mastodon</span></span></a>
+			<a class="button button-social button-mastodon" href="{{source.data.url|url}}"><span>Reply on Mastodon</span></a>
 		{% endif %}
 	{% endfor %}
 </aside>

@@ -106,7 +106,7 @@ pagination:
 									{% image './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 'default', loop.index %}
 								{% endif %}
 								<label class="media-view-hover" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true" data-media-label hidden>
-									<span class="button"><span><span>View info</span></span></span>
+									<span class="button"><span>View info</span></span>
 								</label>
 								<label class="media-view-touch" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true" data-media-label hidden>View info</label>
 								<figcaption class="media-data" data-media-info>
@@ -170,7 +170,7 @@ pagination:
 							</figure>
 						{% elseif post.data.category == "code" %}
 							{% if post.data.button %}
-								<button class="reload button" data-reload hidden><span><span>{{post.data.button|capitalize}}</span></span></button>
+								<button class="reload button" data-reload hidden><span>{{post.data.button|capitalize}}</span></button>
 							{% endif %}
 							{% if post.url %}
 								<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}"><p><em>Please enable Javascript to view this code demo.</em></p></noscript>
@@ -198,24 +198,24 @@ pagination:
 					{% if (post.data.category == "writing") or (post.data.category == "social") or (post.data.category == "cooking") %}
 						<footer class="post-footer">
 							{% if post.data.category == "social" %}
-								<a class="button button-social button-{{post.data.pagination.alias}}" href="{{post.data.url|url}}" aria-label="View post on {{post.data.pagination.alias|capitalize}}"><span><span>View post</span></span></a>
+								<a class="button button-social button-{{post.data.pagination.alias}}" href="{{post.data.url|url}}" aria-label="View post on {{post.data.pagination.alias|capitalize}}"><span>View post</span></a>
 							{% elseif (post.data.category == "writing") and (post.data.size != "s") %}
 								{% if post.url %}
-									<a class="button" href="{{post.url|url}}"><span><span>Read post</span></span></a>
+									<a class="button" href="{{post.url|url}}"><span>Read post</span></a>
 								{% elseif post.data.url %}
-									<a class="button button-reverse" href="{{post.data.url|url}}"><span><span>Read more{% if post.data.platform %} at {{post.data.platform}}{% endif %}</span></a>
+									<a class="button button-reverse" href="{{post.data.url|url}}"><span>Read more{% if post.data.platform %} at {{post.data.platform}}{% endif %}</span></a>
 								{% endif %}
 								{% for link in post.data.external %}
-									<a class="button link-platform {{link.platform}} background" href="{{link.url|url}}"><span><span>{% if post.data.type == "audio" %}Listen on {% elseif post.data.type == "writing" %}Read on {% else %}View on {% endif %}{% if link.title %}{{link.title}}{% else %}{{link.platform|capitalize}}{% endif %}</span></a>
+									<a class="button link-platform {{link.platform}} background" href="{{link.url|url}}"><span>{% if post.data.type == "audio" %}Listen on {% elseif post.data.type == "writing" %}Read on {% else %}View on {% endif %}{% if link.title %}{{link.title}}{% else %}{{link.platform|capitalize}}{% endif %}</span></a>
 								{% endfor %}
 							{% elseif post.data.category == "cooking" %}
-								<a class="button" href="{{post.url|url}}"><span><span>Read recipe</span></span></a>
+								<a class="button" href="{{post.url|url}}"><span>Read recipe</span></a>
 							{% endif %}
 							{% if post.data.archive == true %}
 								{% if post.data.full == true %}
-									<a class="button" href="{{site.url}}/v1/{{post.page.date|ISO|date('archive')}}/{{post.data.title|slugify}}" target="_blank"><span><span>View original</span></span></a>
+									<a class="button" href="{{site.url}}/v1/{{post.page.date|ISO|date('archive')}}/{{post.data.title|slugify}}" target="_blank"><span>View original</span></a>
 								{% else %}
-									<a class="button" href="{{site.url}}/v1/{{post.page.date|ISO|date('archive')}}/{{post.page.fileSlug}}" target="_blank"><span><span>View original</span></span></a>
+									<a class="button" href="{{site.url}}/v1/{{post.page.date|ISO|date('archive')}}/{{post.page.fileSlug}}" target="_blank"><span>View original</span></a>
 								{% endif %}
 							{% endif %}
 						</footer>
@@ -226,13 +226,13 @@ pagination:
 	</div>
 	<nav class="pagination main-pagination" aria-label="Pagination">
 		{% if (pagination.href.next != null) %}
-			<button class="load button" data-load hidden><span><span>Load more</span></span></button>
+			<button class="load button" data-load hidden><span>Load more</span></button>
 		{% endif %}
 		{% if (pagination.href.previous) and (pagination.pageNumber != 0) %}
-			<a class="newer button button-reverse" href="{{pagination.href.previous}}"><span><span>Newer</span></span></a>
+			<a class="newer button button-reverse" href="{{pagination.href.previous}}"><span>Newer</span></a>
 		{% endif %}
 		{% if pagination.href.next %}
-			<a class="older button" href="{{pagination.href.next}}" data-load-path><span><span>Older</span></span></a>
+			<a class="older button" href="{{pagination.href.next}}" data-load-path><span>Older</span></a>
 		{% endif %}
 	</nav>
 </section>

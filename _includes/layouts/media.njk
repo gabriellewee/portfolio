@@ -21,7 +21,7 @@
 								{% image './static/images/' + key + '/' + post.date + '-' + post.name + '.' + extension, post.description, 'default', loop.index %}
 							{% endif %}
 							<label class="media-view-hover" for="{{post.date|safe}}-{{post.name}}-info" aria-hidden="true" data-media-label hidden>
-								<span class="button"><span><span>View info</span></span></span>
+								<span class="button"><span>View info</span></span>
 							</label>
 							<label class="media-view-touch" for="{{post.date|safe}}-{{post.name}}-info" aria-hidden="true" data-media-label hidden>View info</label>
 							<figcaption class="media-data" data-media-info>
