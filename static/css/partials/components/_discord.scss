@@ -147,9 +147,6 @@
 				@include contrast(both) {
 					border-color: white;
 				}
-				strong {
-					display: none;
-				}
 				&::after {
 					transition: opacity .1s ease-out;
 					content: "";
