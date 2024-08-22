@@ -8,32 +8,10 @@
 @import 'partials/components/popup';
 @import 'partials/components/button';
 @import 'partials/components/input';
-@import 'partials/components/tasklist';
 @import 'partials/components/accessibility';
 @import 'partials/components/avatar';
 @import 'partials/components/contact';
 @import 'partials/components/lightbox';
-@import 'partials/components/progress';
 @import 'partials/components/filters';
 @import 'partials/shared/colors';
 @import 'partials/shared/navigation';
-
-// posts
-@import 'partials/post/post';
-@import 'partials/post/mentions';
-
-.post-writing {
-	@import 'partials/post/writing';
-}
-.post-recipe {
-	@import 'partials/post/recipe';
-}
-.post-media {
-	@import 'partials/post/media';
-}
-.post-code {
-	@import 'partials/post/code';
-}
-
-@import 'partials/post/archive';
-@import 'partials/post/syntax';

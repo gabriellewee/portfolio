@@ -82,3 +82,20 @@ img {
 		opacity: 0;
 	}
 }
+
+.posts-container {
+	width: 100vw;
+	max-width: var(--width);
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: env(safe-area-inset-left);
+	padding-right: env(safe-area-inset-right);
+	@include viewport($iphone-max) {
+		padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
+		padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
+	}
+}
+
+.post-author {
+	display: none;
+}

@@ -1,22 +1,12 @@
 ---js
 {
-	layout: "layouts/base.njk",
+	layout: "layouts/media.njk",
 	title: "Art",
 	description: "Sketches and artwork",
 	permalink: "/art/",
 	key: "art",
-	og: true,
-	message: true,
-	isotope: true,
-	scripts: "posts",
 	type: "artwork",
 	extension: "jpg",
-	eleventyComputed: {
-		media(data) {
-			return data[data.key];
-		}
-	},
-	tags: "pages",
 	filters: [
 		{ name: "digital" },
 		{ name: "traditional" },
@@ -24,5 +14,3 @@
 	]
 }
 ---
-
-{% include 'layouts/media.njk' %}

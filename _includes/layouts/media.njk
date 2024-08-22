@@ -1,3 +1,20 @@
+---js
+{
+	layout: "layouts/base.njk",
+	og: true,
+	message: true,
+	isotope: true,
+	style: "css/media",
+	scripts: "posts",
+	tags: "pages",
+	eleventyComputed: {
+		media(data) {
+			return data[data.key];
+		}
+	}
+}
+---
+
 <section class="posts-container">
 	{% include 'pages/posts/tags.html' %}
 

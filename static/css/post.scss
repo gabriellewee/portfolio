@@ -1,0 +1,24 @@
+// utilities
+@import 'partials/shared/utilities';
+
+// components
+@import 'partials/components/progress';
+
+// posts
+@import 'partials/post/post';
+.post-writing {
+	@import 'partials/post/writing';
+}
+.post-recipe {
+	@import 'partials/post/recipe';
+}
+.post-media {
+	@import 'partials/post/media';
+}
+.post-code {
+	@import 'partials/post/code';
+}
+
+// post extras
+@import 'partials/post/mentions';
+@import 'partials/post/syntax';

@@ -6,6 +6,25 @@
 @import 'partials/components/tooltip';
 @import 'partials/components/title';
 
+// posts
+@import 'partials/post/post';
+.post-writing {
+	@import 'partials/post/writing';
+}
+.post-recipe {
+	@import 'partials/post/recipe';
+}
+.post-media {
+	@import 'partials/post/media';
+}
+.post-code {
+	@import 'partials/post/code';
+}
+.post-social {
+	@import 'partials/post/social';
+}
+
+// home-specific
 .page-home {
 	.contact-sites, .contact-messages {
 		@media (prefers-reduced-motion: no-preference) {
@@ -20,11 +39,5 @@
 				display: inline-block;
 			}
 		}
-	}
-}
-
-.post {
-	&-social {
-		@import 'partials/post/social';
 	}
 }

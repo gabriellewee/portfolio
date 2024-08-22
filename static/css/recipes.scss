@@ -1,6 +1,16 @@
 // utilities
 @import 'partials/shared/utilities';
 
+// components
+@import 'partials/components/progress';
+@import 'partials/components/tasklist';
+
+// posts
+@import 'partials/post/post';
+.post-recipe {
+	@import 'partials/post/recipe';
+}
+
 .page-recipes {
 	@include theme(light) {
 		background-color: hsl(from var(--color-mint) h s calc(l * 1.2));
