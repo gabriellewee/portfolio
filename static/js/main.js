@@ -146,7 +146,7 @@ if (scrollContainer && lightboxContainer) {
 		durationFormat("[data-duration]");
 		mediaTriggers("[data-media-container]");
 	});
-} else {
+} else if(lightboxContainer) {
 	lightbox("[data-media-expand]", "[data-lightbox]");
 }
 

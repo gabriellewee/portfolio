@@ -1,6 +1,13 @@
 {
+	"layout": "layouts/base.njk",
 	"tags": [
-		"code"
+		"code",
+		"entries"
 	],
-	"add": false
+	"key": "code",
+	"permalink": "/code/{{page.fileSlug}}/",
+	"style": true,
+	"blank": true,
+	"hidden": true,
+	"category": "code"
 }

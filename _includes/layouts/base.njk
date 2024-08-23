@@ -60,14 +60,15 @@
 
 	<meta name="generator" content="{{eleventy.generator}}">
 
-	<link rel="preload" as="font" href="{{'/static/fonts/mona-sans.woff2'|url}}" crossorigin>
-	<link rel="preload" as="style" href="{{'/static/css/fonts.css'|url}}">
-
-	<link rel="stylesheet" href="{{'/static/css/fonts.css'|url}}">
-	{% if add != false %}
+	{% if blank != true %}
+		<link rel="preload" as="font" href="{{'/static/fonts/mona-sans.woff2'|url}}" crossorigin>
+		<link rel="preload" as="style" href="{{'/static/css/fonts.css'|url}}">
+		<link rel="stylesheet" href="{{'/static/css/fonts.css'|url}}">
 		<link rel="stylesheet" href="{{'/static/css/style.css'|url}}">
 	{% endif %}
-	{% if style == true %}
+	{% if (style == true) and (blank == true) %}
+		<link rel="stylesheet" href="{{'/static/' + key + '/css/' + page.fileSlug + '.css'|url}}">
+	{% elseif (style == true) and key %}
 		<link rel="stylesheet" href="{{'/static/css/' + key + '.css'|url}}">
 	{% elseif style %}
 		<link rel="stylesheet" href="{{'/static/' + style + '.css'|url}}">
@@ -109,12 +110,14 @@
 			</nav>
 		</footer>
 
-		<script src="{{'/static/js/lightbox.js'|url}}"></script>
 		<script src="{{'/static/js/luxon.min.js'|url}}"></script>
 		<script src="{{'/static/js/dates.js'|url}}"></script>
 		<script src="{{'/static/js/gsap.min.js'|url}}"></script>
 		<script src="{{'/static/js/scroll-trigger.min.js'|url}}"></script>
 		<script src="{{'/static/js/smoothscroll.min.js'|url}}"></script>
+		{% if lightbox != false %}
+			<script src="{{'/static/js/lightbox.js'|url}}"></script>
+		{% endif %}
 		{% if isotope == true %}
 			<script src="{{'/static/js/isotope.min.js'|url}}"></script>
 			<script src="{{'/static/js/packery.min.js'|url}}"></script>
@@ -127,7 +130,6 @@
 		{% if key == "post" %}
 			<script src="{{'/static/js/posts.js'|url}}"></script>
 		{% else %}
-			<script src="{{'/static/js/clipboard.min.js'|url}}"></script>
 			<script src="{{'/static/js/main.js'|url}}"></script>
 		{% endif %}
 		{% if scripts == true %}
