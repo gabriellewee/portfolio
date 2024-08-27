@@ -265,7 +265,7 @@ const animateItems = (items, key) => {
 			y: 0,
 			onComplete() {
 				if (item.hasAttribute("data-anim")) item.removeAttribute("data-anim");
-		    }
+			}
 		}, "<.1");
 	});
 

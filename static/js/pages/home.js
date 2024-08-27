@@ -54,8 +54,8 @@ posts.forEach(post => {
 		opacity: 1,
 		y: 0,
 		onComplete() {
-			if (post.hasAttribute("[data-anim]")) post.removeAttribute("[data-anim]");
-	    }
+			if (post.hasAttribute("data-anim")) post.removeAttribute("data-anim");
+		}
 	}, "<.1");
 });
 
