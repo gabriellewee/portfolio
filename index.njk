@@ -181,13 +181,17 @@ pagination:
 							<blockquote>{{post.data.content|nbsp|safe}}</blockquote>
 							{% if (post.data.category == "social") and (post.data.media) %}
 								{% for media in post.data.media %}
-									{% if media.url %}
-										<figure id="external-{{media.id}}" class="media-attachment" aria-label="{{media.description}}">
+									<figure id="external-{{media.id}}" class="media-attachment" aria-label="{{media.description}}">
+										{% if (media.url) and (media.type == "gifv") %}
+											<video width="1280" height="720" controls preload="metadata" poster="{{media.preview_url}}" aria-label="{{media.description}}">
+												<source src="{{media.url}}" type="video/mp4">
+											</video>
+										{% elseif media.url %}
 											<a class="expand" href="#external-{{media.id}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
 												{% external media.url, media.description, 500 %}
 											</a>
-										</figure>
-									{% endif %}
+										{% endif %}
+									</figure>
 								{% endfor %}
 							{% endif %}
 						{% else %}
@@ -259,7 +263,7 @@ pagination:
 			</dialog>
 		{% elseif (post.data.category == "social") and (post.data.media) %}
 			{% for media in post.data.media %}
-				{% if media.url %}
+				{% if (media.url) and (media.type != "gifv") %}
 					<a class="lightbox" id="external-{{media.id}}-lightbox" role="button" aria-label="Close image" href="#external-{{media.id}}" data-lightbox data-lightbox-append></a>
 					<dialog class="lightbox-content image" aria-label="Image preview" autofocus data-lightbox-append>
 						<figure>
