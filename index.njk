@@ -181,17 +181,19 @@ pagination:
 							<blockquote>{{post.data.content|nbsp|safe}}</blockquote>
 							{% if (post.data.category == "social") and (post.data.media) %}
 								{% for media in post.data.media %}
-									<figure id="external-{{media.id}}" class="media-attachment" aria-label="{{media.description}}">
-										{% if (media.url) and (media.type == "gifv") %}
+									{% if (media.url) and (media.type == "gifv") %}
+										<figure id="external-{{media.id}}" class="media-attachment">
 											<video width="1280" height="720" controls preload="metadata" poster="{{media.preview_url}}" aria-label="{{media.description}}">
 												<source src="{{media.url}}" type="video/mp4">
 											</video>
-										{% elseif media.url %}
+										</figure>
+									{% elseif media.url %}
+										<figure id="external-{{media.id}}" class="media-attachment" aria-label="{{media.description}}">
 											<a class="expand" href="#external-{{media.id}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
-												{% external media.url, media.description, 500 %}
+												{% external media.url, '', 500 %}
 											</a>
-										{% endif %}
-									</figure>
+										</figure>
+									{% endif %}
 								{% endfor %}
 							{% endif %}
 						{% else %}
