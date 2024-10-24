@@ -9,11 +9,7 @@
 	<div class="top-content">
 		<div class="avatar-link">
 			<a href="/" tabindex="0" aria-labelledby="avatar-message">
-				{% if avatar %}
-					<span class="avatar avatar-{{avatar}}"></span>
-				{% else %}
-					<span class="avatar avatar-default"></span>
-				{% endif %}
+				<span class="avatar avatar-{% if avatar %}{{avatar}}{% else %}default{% endif %}"></span>
 				<span class="avatar avatar-hm"></span>
 				{% if (key == "home") and (pagination.pageNumber == 0) %}
 					<span id="avatar-message" aria-hidden="true" class="text go-home">Refresh?</span>
