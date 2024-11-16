@@ -126,7 +126,7 @@
 					{% for media in photography|limit(4) %}
 						<li>
 							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
-								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image" data-media-expand{% if media.focus %} style="--focus-x: {{media.focus.x}}%; --focus-y: {{media.focus.y}}%;"{% endif %}>
+								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image" data-media-expand{% if media.focus %} style="--focus-x: {% if media.focus.x %}{{media.focus.x}}{% else %}0{% endif %}%; --focus-y: {% if media.focus.y %}{{media.focus.y}}{% else %}0{% endif %}%;"{% endif %}>
 									{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 350, loop.index %}
 								</a>
 							</figure>
@@ -148,7 +148,7 @@
 					{% for media in graphic|limit(4) %}
 						<li>
 							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
-								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image" data-media-expand{% if media.focus %} style="--focus-x: {{media.focus.x}}%; --focus-y: {{media.focus.y}}%;"{% endif %}>
+								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image" data-media-expand{% if media.focus %} style="--focus-x: {% if media.focus.x %}{{media.focus.x}}{% else %}0{% endif %}%; --focus-y: {% if media.focus.y %}{{media.focus.y}}{% else %}0{% endif %}%;"{% endif %}>
 									{% if media.svg == true %}
 										<picture>
 											<img src="/static/images/graphic/{{media.date}}-{{media.name}}.svg" alt="{{media.description}}" width="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'width', 700 %}" height="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'height', 700 %}"/>
@@ -176,7 +176,7 @@
 					{% for media in art|limit(4) %}
 						<li>
 							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
-								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image" data-media-expand{% if media.focus %} style="--focus-x: {{media.focus.x}}%; --focus-y: {{media.focus.y}}%;"{% endif %}>
+								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image" data-media-expand{% if media.focus %} style="--focus-x: {% if media.focus.x %}{{media.focus.x}}{% else %}0{% endif %}%; --focus-y: {% if media.focus.y %}{{media.focus.y}}{% else %}0{% endif %}%;"{% endif %}>
 									{% image './static/images/art/' + media.date + '-' + media.name + '.jpg', media.description, 350, loop.index %}
 								</a>
 							</figure>

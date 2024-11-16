@@ -1,5 +1,85 @@
 [
 	{
+		"name": "impa",
+		"date": "2024-11-13",
+		"location": "San Francisco, CA, USA",
+		"camera": "iPhone 16 Pro Max",
+		"editor": "VSCO",
+		"tags": "indoor cat animal portrait",
+		"description": "A grey kitten sitting on top of a fuzzy cat tree in front of a shelf filled with plushies and stuffed animals.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/DCVo8VRJObU/"
+			 }
+		],
+		"focus": {
+		 	"y": 65
+		 }
+	},
+	{
+		"name": "jeselle",
+		"date": "2024-10-30",
+		"location": "Washington, D.C., USA",
+		"camera": "iPhone 16 Pro Max",
+		"editor": "VSCO",
+		"tags": "outdoor architecture people nature",
+		"description": "A person in an oversized collared shirt walking along a street in Washington, D.C. surrounded by trees and autumn leaves.",
+		"size": "m",
+		"focus": {
+		 	"y": 80
+		 }
+	},
+	{
+		"name": "isabelle",
+		"date": "2024-08-16",
+		"location": "Legion of Honor, San Francisco, CA, USA",
+		"camera": "iPhone 14 Pro Max",
+		"editor": "VSCO",
+		"tags": "outdoor architecture people",
+		"description": "An Asian woman in a short poofy baby pink dress holding her long matching train as the wind blows, standing between columns with sunslight shining through.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/DBhGCtySVsA/"
+			 }
+		],
+		"focus": {
+		 	"y": 40
+		 }
+	},
+	{
+		"name": "alfie",
+		"date": "2024-07-26",
+		"location": "San Francisco, CA, USA",
+		"camera": "iPhone 14 Pro Max",
+		"editor": "VSCO",
+		"tags": "outdoor nature plants cat animal portrait",
+		"description": "A grey cat with green eyes with a grey harness and green leash sitting quietly in an outdoor garden surrounded by large plants. He looks cold and his fur is puffed up so keep him warm.",
+		"external": [
+			 {
+			 	"platform": "instagram",
+			 	"url": "https://www.instagram.com/p/C9_GeR9y2Ed/"
+			 }
+		],
+		"focus": {
+		 	"y": 45
+		 }
+	},
+	{
+		"name": "baldwin-steps",
+		"date": "2024-06-27",
+		"location": "Baldwin Steps, Toronto, ON, Canada",
+		"camera": "iPhone 14 Pro Max",
+		"editor": "VSCO",
+		"tags": "outdoor city nature architecture landscape",
+		"description": "The view at sunset from the Baldwin Steps overlooking the street below and the cityscape of Toronto beyond.",
+		"size": "xs",
+		"focus": {
+		 	"y": 40
+		 }
+	},
+	{
 		"name": "jewelry",
 		"date": "2024-06-02",
 		"location": "San Francisco, CA, USA",
@@ -14,7 +94,6 @@
 			 }
 		],
 		"focus": {
-		 	"x": 0,
 		 	"y": 60
 		 }
 	},
@@ -36,7 +115,6 @@
 		"tags": "outdoor indoor landscape",
 		"description": "The inside of a BART train, with the window overlooking the Oakland raising cranes at sunrise",
 		"focus": {
-		 	"x": 0,
 		 	"y": 65
 		 }
 	},
@@ -95,7 +173,6 @@
 			 }
 		],
 		"focus": {
-		 	"x": 0,
 		 	"y": 60
 		 }
 	},
@@ -129,7 +206,6 @@
 			 }
 		],
 		"focus": {
-		 	"x": 0,
 		 	"y": 42
 		 }
 	},
@@ -148,7 +224,6 @@
 			 }
 		],
 		"focus": {
-		 	"x": 0,
 		 	"y": 52
 		 }
 	},
@@ -167,27 +242,7 @@
 			 }
 		],
 		"focus": {
-		 	"x": 0,
 		 	"y": 64
-		 }
-	},
-	{
-		"name": "alfie",
-		"date": "2023-03-07",
-		"location": "San Francisco, CA, USA",
-		"camera": "iPhone 14 Pro Max",
-		"editor": "VSCO",
-		"tags": "cat animal portrait indoor",
-		"description": "A grey cat sitting on a sofa, wrapped in a grey and white fuzzy blanket.",
-		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/CpgN7-MDS50/"
-			 }
-		],
-		"focus": {
-		 	"x": 0,
-		 	"y": 36
 		 }
 	},
 	{
