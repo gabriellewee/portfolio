@@ -48,7 +48,7 @@ module.exports = eleventyConfig => {
 	eleventyConfig.setLibrary("md", markdownLibrary);
 
 	eleventyConfig.addFilter("stripAttr", stripped => {
-		let removals = /<div class="lightbox-group" hidden>([\s\S]*?)<\/div>|<\/?a class="expand"[^>]*>|<\/?span[^>]*>|<\/?picture[^>]*>|<\/?source[^>]*>|<\/?div[^>]*>|<\/?script[^>]*>|\t|\r|\n/g;
+		let removals = /<div class="lightbox-group" data-lightbox-container hidden>([\s\S]*?)<\/div>|<\/?a class="expand"[^>]*>|<\/?span[^>]*>|<\/?picture[^>]*>|<\/?source[^>]*>|<\/?div[^>]*>|<\/?script[^>]*>|\t|\r|\n/g;
 		stripped = stripped.replace(removals, '');
 		stripped = stripped
 			.replace(/<\s*p .*?data-slug-hash="([^<]*)" data-default.*?>[^<]*<\s*a.*?>[^<]*<\/p>/g, '<iframe src="https://codepen.io/gabriellewee/embed/$1">')
