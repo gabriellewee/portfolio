@@ -2,7 +2,9 @@
 @import 'partials/components/tooltip';
 @import 'partials/post/post';
 
-.post-me {
+.post {
+	--intro-width: 320px;
+
 	.post-inner {
 		padding: calc(var(--p) * 2);
 	}
@@ -70,26 +72,33 @@
 
 .post-intro {
 	width: 100%;
+	@include viewport(mobile) {
+		width: var(--intro-width);
+	}
 	.post-inner {
 		padding: 0;
 	}
 	.post-header {
 		padding: calc(var(--p)*2);
 		margin-bottom: 0;
+		h2 {
+			@include viewport(mobile) {
+				font-size: 1.25rem;
+			}
+		}
 	}
-	$width: 320px;
 	.post-image {
 		display: grid;
 		place-items: center;
 		position: relative;
 		width: 100%;
-		height: $width;
+		height: var(--intro-width);
 		@include invert(100%);
 		&::before, &::after {
 			content: "";
 			display: block;
 			position: absolute;
-			height: $width;
+			height: var(--intro-width);
 			@include background-image(avatars/intro, jpg);
 			& {
 				background-size: contain;
@@ -107,16 +116,22 @@
 			}
 		}
 		&::after {
-			width: $width;
+			width: var(--intro-width);
 		}
 	}
 }
 
 .post-books {
+	@include viewport(mobile) {
+		width: calc(100% - var(--intro-width) - var(--p) * 2);
+	}
 	.grid {
 		grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-		@include viewport(mobile) {
-			grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		li:nth-last-child(-n+4) {
+			display: none;
+			@include viewport(mobile) {
+				display: block;
+			}
 		}
 	}
 }

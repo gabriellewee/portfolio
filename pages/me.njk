@@ -16,10 +16,10 @@
 
 <section class="posts-container">
 	<div class="posts" data-grid>
-		<article class="post post-intro post-me" data-grid-item>
+		<article class="post post-intro" data-grid-item>
 			<div class="post-inner" data-anim>
 				<header class="post-header">
-					<h2>Hi there! 👋🏼 This is what I currently look like.</h2	>
+					<h2>Hi there! 👋🏼 This is what I currently look like.</h2>
 				</header>
 				<figure class="post-image" aria-label="{{site.photoDescription}}" role="img"></figure>
 				<picture class="no-css">
@@ -29,14 +29,14 @@
 			</div>
 		</article>
 
-		<article class="post post-books post-me" data-grid-item>
+		<article class="post post-books" data-grid-item>
 			<div class="post-inner" data-anim>
 				<header class="post-header">
 					<h2>I’m an avid reader. Lately, I’ve been enjoying these books.</h2>
 				</header>
 
 				<ul class="grid">
-					{% for book in about.loans.timeline|limit(4) %}
+					{% for book in about.loans.timeline|limit(8) %}
 						<li>
 							<a class="post-external" href="{{book.title.url}}" target="_blank">
 								{% external book.cover.url, book.title.text + "by" + book.author, 300, "eager" %}
@@ -47,7 +47,7 @@
 			</div>
 		</article>
 
-		<article class="post post-game post-me" data-grid-item>
+		<article class="post post-game" data-grid-item>
 			<div class="post-inner" data-anim>
 				<header class="post-header">
 					<h2>I love playing video games - here’s what I’m currently playing.</h2>
@@ -83,7 +83,7 @@
 			</div>
 		</article>
 
-		<article class="post post-music post-me" data-grid-item hidden>
+		<article class="post post-music" data-grid-item hidden>
 			<div class="post-inner" data-anim>
 				<header class="post-header">
 					<h2>I listen to a bit of music here and there.</h2>
@@ -95,7 +95,7 @@
 			</div>
 		</article>
 
-		<article class="post post-mods post-me post-size-s" data-grid-item>
+		<article class="post post-mods post-size-s" data-grid-item>
 			<div class="post-inner" data-anim>
 				<header class="post-header">
 					<h2>I mod my keyboards and console controllers for fun.</h2>
@@ -117,7 +117,7 @@
 			</div>
 		</article>
 
-		<article class="post post-thumbnails post-photography post-me post-size-s" data-grid-item>
+		<article class="post post-thumbnails post-photography post-size-s" data-grid-item>
 			<div class="post-inner" data-anim>
 				<header class="post-header">
 					<h2>I enjoy taking photos of the world around me.</h2>
@@ -139,7 +139,7 @@
 			</div>
 		</article>
 
-		<article class="post post-thumbnails post-graphic post-me post-size-s" data-grid-item>
+		<article class="post post-thumbnails post-graphic post-size-s" data-grid-item>
 			<div class="post-inner" data-anim>
 				<header class="post-header">
 					<h2>I dabble in illustration and design.</h2>
@@ -167,7 +167,7 @@
 			</div>
 		</article>
 
-		<article class="post post-thumbnails post-art post-me post-size-s" data-grid-item>
+		<article class="post post-thumbnails post-art post-size-s" data-grid-item>
 			<div class="post-inner" data-anim>
 				<header class="post-header">
 					<h2>I like to draw.</h2>
@@ -189,7 +189,7 @@
 			</div>
 		</article>
 
-		<article class="post post-cat post-me post-size-s" data-grid-item>
+		<article class="post post-cat post-size-s" data-grid-item>
 			<div class="post-inner" data-anim>
 				<header class="post-header">
 					<h2>I spend a lot of time with Alfie, my cat.</h2>
@@ -212,7 +212,7 @@
 			</div>
 		</article>
 
-		<article class="post post-plants post-me post-size-s" data-grid-item>
+		<article class="post post-plants post-size-s" data-grid-item>
 			<div class="post-inner" data-anim>
 				<header class="post-header">
 					<h2>I’m an avid plant collector with over 200 plants, including aroids and succulents! 🪴</h2>
