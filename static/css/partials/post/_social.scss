@@ -60,10 +60,6 @@
 	+ .media-attachment {
 		margin-top: calc(var(--p)*2);
 	}
-	video {
-		width: 100%;
-		height: auto;
-	}
 	.expand {
 		transition: scale .2s ease-out;
 		display: block;
@@ -86,7 +82,11 @@
 			}
 		}
 	}
-	img {
+	video {
+		width: 100%;
+		height: auto;
+	}
+	img, video {
 		@include clip-path-edges(2px);
 	}
 }
