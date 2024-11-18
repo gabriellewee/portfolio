@@ -112,6 +112,45 @@
 			</div>
 		</article>
 
+		<article class="post post-resume" data-grid-item>
+			<div class="post-inner" data-anim>
+				<header class="post-header">
+					<h2>Resume</h2>
+				</header>
+				<div class="post-content">
+					<ul class="grid">
+						{% for job in about.resume.experience %}
+							{% set titleTemplate %}
+								{{job.title}}{% if job.company %} at {{job.company}}{% endif %}
+							{% endset %}
+							<li>
+								<div class="job">
+									<h3>
+										{% if job.website %}
+											<a href="{{job.website}}"><span>{{titleTemplate}}</span></a>
+										{% else %}
+											{{titleTemplate}}
+										{% endif %}
+									</h3>
+									<div>
+										<p>{{job.start}} — {{job.end}}</p>
+										<p>{{job.location}}</p>
+									</div>
+								</div>
+							</li>
+						{% endfor %}
+						<li>
+							<ul class="links">
+								{% for link in about.resume.links %}
+									<li><a class="button" href="{{link.url}}"><span>{{link.title}}</span></a></li>
+								{% endfor %}
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</article>
+
 		<article class="post post-external" data-grid-item>
 			<div class="post-inner" data-anim>
 				<header class="post-header">

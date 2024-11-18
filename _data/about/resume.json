@@ -1,0 +1,53 @@
+{
+	"experience": [
+		{
+			"start": 2024,
+			"end": "Now",
+			"title": "Senior Developer",
+			"company": "Apple",
+			"website": "https://apple.com",
+			"location": "Sunnyvale, CA"
+		},
+		{
+			"start": 2018,
+			"end": 2024,
+			"title": "Front‑End Engineer",
+			"company": "Apple",
+			"website": "https://apple.com",
+			"location": "Sunnyvale, CA"
+		},
+		{
+			"start": 2017,
+			"end": 2018,
+			"title": "UI Developer",
+			"company": "LEVEL Studios",
+			"website": "https://level-studios.com",
+			"location": "San Jose, CA"
+		},
+		{
+			"start": 2015,
+			"end": 2016,
+			"title": "UI Developer",
+			"company": "Uguru",
+			"website": "https://gabriellew.ee/v3/uguru/",
+			"location": "San Francisco, CA"
+		},
+		{
+			"start": 2009,
+			"end": 2015,
+			"title": "Freelance Web Developer",
+			"website": "https://elletricity.com",
+			"location": "Oakland, CA"
+		}
+	],
+	"links": [
+		{
+			"title": "View read.cv profile",
+			"url": "https://read.cv/gabrielle"
+		},
+		{
+			"title": "View LinkedIn profile",
+			"url": "https://www.linkedin.com/in/gabriellewee/"
+		}
+	]
+}
