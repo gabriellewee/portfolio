@@ -151,54 +151,26 @@
 	.post-inner {
 		padding-bottom: var(--p);
 	}
-	ul {
-		display: flex;
-		flex-wrap: wrap;
-	}
-	li {
-		margin-bottom: var(--p);
-		&:not(:last-child) {
-			margin-right: var(--p);
-		}
-	}
-	.page {
-		display: inline-block;
-		position: relative;
-		color: white;
+	.button-reduced {
 		@include font-weight-width(500, 115);
-		&, span {
-			transition: background-color .2s ease-out, scale .2s ease-out;
+		&::after {
+			@include contrast(both) {
+				background-color: var(--color-primary);
+			}
 		}
 		&::before {
-			@include before(color-mix(
+			background-color: color-mix(
 				in srgb,
 				var(--color-blush),
 				var(--color-rose)
-			));
-		}
-		&::after {
-			@include contrast(both) {
-				content: "";
-				display: block;
-				position: absolute;
-				z-index: -1;
-				top: -1.5px;
-				left: -1.5px;
-				width: calc(100% + 3px);
-				height: calc(100% + 3px);
-				background-color: var(--color-primary);
-				@include clip-path-edges(3px);
-			}
+			);
 		}
 		span {
-			display: inline-block;
-			padding: calc(var(--p)/3*2) var(--p);
 			background-color: color-mix(
 				in srgb,
 				var(--color-iron) 40%,
 				var(--color-slate)
 			);
-			@include clip-path-edges(2px);
 		}
 		&:hover, &:focus {
 			span {
@@ -209,15 +181,7 @@
 				);
 			}
 		}
-		&:focus-visible {
-			&::before {
-				opacity: 1;
-			}
-		}
 		&:active {
-			@media (prefers-reduced-motion: no-preference) {
-				scale: .98;
-			}
 			span {
 				background-color: var(--color-iron);
 			}

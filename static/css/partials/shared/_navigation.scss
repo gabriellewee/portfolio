@@ -46,78 +46,10 @@ header.top {
 	.page-home:not(.page-index) &, .page-post &, .page-code &, .page-recipe & {
 		opacity: 1;
 	}
-	nav, .links {
-		display: inline;
-	}
-	li, a, .copyright {
-		display: inline-block;
-	}
-	a, .copyright {
-		position: relative;
-		margin-bottom: var(--p);
-		span {
-			display: inline-block;
-			padding: calc(var(--p)/3*2) var(--p);
-			@include clip-path-edges(2px);
-		}
-		&::after {
-			@include contrast(both) {
-				content: "";
-				display: block;
-				position: absolute;
-				z-index: -1;
-				top: -1.5px;
-				left: -1.5px;
-				width: calc(100% + 3px);
-				height: calc(100% + 3px);
-				background-color: var(--color-primary);
-				@include clip-path-edges(3px);
-			}
-		}
-	}
 	.copyright {
 		span {
 			background-color: var(--color-secondary);
 			color: var(--color-primary);
-		}
-	}
-	a {
-		transition: scale .2s ease-out;
-		margin-right: var(--p);
-		@include font-weight-width(600, 115);
-		&::before {
-			@include before(color-mix(
-				in srgb,
-				var(--color-blush),
-				var(--color-rose)
-			));
-		}
-		span {
-			transition: background .2s ease-out;
-			color: white;
-			background-color: color-mix(
-				in srgb,
-				hsl(from var(--color-slate) h calc(s * .3) l) 30%,
-				var(--color-mauve)
-			);
-		}
-		&:hover, &:focus {
-			span {
-				background-color: var(--color-slate);
-			}
-		}
-		&:focus-visible {
-			&::before {
-				opacity: 1;
-			}
-		}
-		&:active {
-			@media (prefers-reduced-motion: no-preference) {
-				scale: .98;
-			}
-			span {
-				background-color: var(--color-iron);
-			}
 		}
 	}
 }

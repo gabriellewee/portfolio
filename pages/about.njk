@@ -10,13 +10,16 @@ hidden: true
 tags: ["pages", "footer"]
 versions: ["2013-2014", "2014-2015", "2015-2020", "2020-2021", "2021-2023" ]
 colors: [
-	{ hex: "#263238", name: "iron" },
-	{ hex: "#F5C8BF", name: "blush" },
-	{ hex: "#D19487", name: "rose" },
-	{ hex: "#B2738E", name: "mauve" },
-	{ hex: "#577783", name: "slate" },
-	{ hex: "#8BB29A", name: "mint" }
+    { hex: "#263238", name: "iron" },
+    { hex: "#F5C8BF", name: "blush" },
+    { hex: "#D19487", name: "rose" },
+    { hex: "#B2738E", name: "mauve" },
+    { hex: "#577783", name: "slate" },
+    { hex: "#8BB29A", name: "mint" }
 ]
+eleventyNavigation:
+    key: About
+    order: 1
 ---
 
 <section class="posts-container">
@@ -42,18 +45,18 @@ colors: [
 					<h2>Site Map</h2>
 				</header>
 				<div class="post-links">
-					<ul>
+					<menu class="button-reduced-group">
 						{% for post in collections.pages %}
 							<li>
 								{% if post.data.key == "home" %}
-									<a class="page" href="{{post.url|url}}"><span>{{post.data.key|safe|capitalize}}</span></a>
+									<a class="button-reduced" href="{{post.url|url}}"><span>{{post.data.key|safe|capitalize}}</span></a>
 								{% else %}
-									<a class="page" href="{{post.url|url}}"><span>{{post.data.title|safe|capitalize}}</span></a>
+									<a class="button-reduced" href="{{post.url|url}}"><span>{{post.data.title|safe|capitalize}}</span></a>
 								{% endif %}
 							</li>
 						{% endfor %}
-						<li><a class="page" href="/posts/feed.xml"><span>RSS</span></a></li>
-					</ul>
+						<li><a class="button-reduced" href="/posts/feed.xml"><span>RSS</span></a></li>
+					</menu>
 				</div>
 			</div>
 		</article>

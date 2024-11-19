@@ -208,3 +208,74 @@
 		}
 	}
 }
+
+.button-reduced {
+	transition: scale .2s ease-out;
+	display: inline-block;
+	position: relative;
+	margin-bottom: var(--p);
+	margin-right: var(--p);
+	@include font-weight-width(600, 115);
+	span {
+		transition: background-color .2s ease-out;
+		display: inline-block;
+		position: relative;
+		z-index: 2;
+		padding: calc(var(--p)/3*2) var(--p);
+		color: white;
+		background-color: color-mix(
+			in srgb,
+			hsl(from var(--color-slate) h calc(s * .3) l) 30%,
+			var(--color-mauve)
+		);
+		@include clip-path-edges(2px);
+	}
+	&::after {
+		@include contrast(both) {
+			content: "";
+			display: block;
+			position: absolute;
+			z-index: 0;
+			top: -1.5px;
+			left: -1.5px;
+			width: calc(100% + 3px);
+			height: calc(100% + 3px);
+			background-color: var(--color-primary);
+			@include clip-path-edges(3px);
+		}
+	}
+}
+a.button-reduced {
+	&::before {
+		z-index: 1;
+		@include before(color-mix(
+			in srgb,
+			var(--color-blush),
+			var(--color-rose)
+		));
+	}
+	&:hover, &:focus {
+		span {
+			background-color: var(--color-slate);
+		}
+	}
+	&:focus-visible {
+		&::before {
+			opacity: 1;
+		}
+	}
+	&:active {
+		@media (prefers-reduced-motion: no-preference) {
+			scale: .98;
+		}
+		span {
+			background-color: var(--color-iron);
+		}
+	}
+}
+
+.button-reduced-group {
+	&, li {
+		display: contents;
+	}
+}
