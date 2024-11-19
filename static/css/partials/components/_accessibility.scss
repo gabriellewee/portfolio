@@ -16,7 +16,7 @@ $options: color, contrast, transparency, load;
 .accessibility-popup {
 	position: absolute;
 	right: 0;
-	@include viewport(mobile) {
+	@include viewport(medium) {
 		position: relative;
 		right: unset;
 	}
@@ -115,7 +115,6 @@ $options: color, contrast, transparency, load;
 			}
 		}
 		.button {
-			display: inline-block;
 			text-align: center;
 			width: 100%;
 		}

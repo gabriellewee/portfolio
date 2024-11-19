@@ -8,7 +8,7 @@
 		font-size: 2rem;
 		line-height: 1.1;
 		@include font-weight-width(800, 120);
-		@include viewport(mobile) {
+		@include viewport(medium) {
 			order: 1;
 			width: unset;
 			font-size: 2.25rem;
@@ -61,7 +61,7 @@
 		}
 	}
 	time {
-		@include container(header, mobile, $iphone-max) {
+		@include container(header, medium, $iphone-max) {
 			margin-left: var(--p);
 		}
 	}
@@ -319,54 +319,49 @@
 	}
 	.post-footer {
 		.button {
-			&::before {
-				@include theme(light) {
-					background: radial-gradient(
-						circle at center left,
-						color-mix(
-							in srgb,
-							var(--color-iron) 70%,
-							white
-						),
-						color-mix(
-							in srgb,
-							var(--color-iron) 80%,
-							white
-						)
-					);
-				}
+			--background: color-mix(
+				in srgb,
+				var(--color-iron) 70%,
+				white
+			);
 
-				@include theme(dark) {
-					background: radial-gradient(
-						circle at center left,
-						color-mix(
-							in srgb,
-							var(--color-iron) 10%,
-							white
-						),
-						color-mix(
-							in srgb,
-							var(--color-iron) 30%,
-							white
-						)
-					);
-				}
-			}
-			> span {
-				background: color-mix(
-					in srgb,
-					var(--color-iron) 70%,
-					white
+			@include theme(light) {
+				--outline: radial-gradient(
+					circle at center left,
+					color-mix(
+						in srgb,
+						var(--color-iron) 70%,
+						white
+					),
+					color-mix(
+						in srgb,
+						var(--color-iron) 80%,
+						white
+					)
 				);
 			}
-			&:hover, &:focus {
-				> span {
-					background: color-mix(
+			@include theme(dark) {
+				--outline: radial-gradient(
+					circle at center left,
+					color-mix(
 						in srgb,
-						var(--color-iron),
+						var(--color-iron) 10%,
 						white
-					);
-				}
+					),
+					color-mix(
+						in srgb,
+						var(--color-iron) 30%,
+						white
+					)
+				);
+			}
+
+			&:hover, &:focus {
+				--background: color-mix(
+					in srgb,
+					var(--color-iron),
+					white
+				);
 			}
 		}
 	}

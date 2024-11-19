@@ -59,35 +59,23 @@
 }
 
 .bottom {
-	a {
-		&::before {
-			@include theme(light) {
-				@include before(white);
-			}
-			@include theme(dark) {
-				@include before(color-mix(
-					in srgb,
-					white 70%,
-					var(--color-mint)
-				));
-			}
+	.button-reduced[href] {
+		--background: color-mix(
+			in hsl,
+			var(--color-slate) 70%,
+			var(--color-mint)
+		);
+		--background-hover: var(--color-slate);
+		--background-active: var(--color-iron);
+		@include theme(light) {
+			--outline: white;
 		}
-		span {
-			background: color-mix(
-				in hsl,
-				var(--color-slate) 70%,
+		@include theme(dark) {
+			--outline: color-mix(
+				in srgb,
+				white 70%,
 				var(--color-mint)
 			);
-		}
-		&:hover, &:focus {
-			span {
-				background: var(--color-slate);
-			}
-		}
-		&:active {
-			span {
-				background: var(--color-iron);
-			}
 		}
 	}
 }
@@ -129,7 +117,7 @@
 		position: relative;
 		z-index: 2;
 		padding: calc(var(--p)*2) calc(var(--p)*2) 0;
-		@include container(recipe, mobile, $mobile) {
+		@include container(recipe, medium, $medium) {
 			justify-content: flex-end;
 			position: absolute;
 			bottom: 0;
@@ -168,7 +156,7 @@
 				@include clip-path-edges(2px, up);
 			}
 		}
-		@include container(recipe, mobile, $mobile) {
+		@include container(recipe, medium, $medium) {
 			&.header-light + .post-header-content {
 				h2 {
 					&::before {
@@ -284,12 +272,12 @@
 		}
 	}
 	.post-meta {
-		@include container(recipe, mobile, $mobile) {
+		@include container(recipe, medium, $medium) {
 			justify-content: center;
 			margin-top: 0;
 		}
 		.recipe-servings {
-			@include container(recipe, mobile, $mobile) {
+			@include container(recipe, medium, $medium) {
 				text-align: center;
 			}
 		}

@@ -12,7 +12,7 @@
 		font-size: 2.5rem;
 		line-height: 1.1;
 		@include font-weight-width(800, 130);
-		@include container(recipe, mobile, $mobile) {
+		@include container(recipe, medium, $medium) {
 			font-size: 3rem;
 		}
 		a {
@@ -123,7 +123,7 @@
 	&:has(.recipe-prep:last-child) {
 		.recipe-servings {
 			width: auto;
-			@include viewport(mobile) {
+			@include viewport(medium) {
 				text-align: initial;
 			}
 		}

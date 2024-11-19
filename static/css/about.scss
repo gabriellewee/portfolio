@@ -152,40 +152,17 @@
 		padding-bottom: var(--p);
 	}
 	.button-reduced {
+		--background: color-mix(
+			in srgb,
+			var(--color-iron) 40%,
+			var(--color-slate)
+		);
+		--background-hover: color-mix(
+			in srgb,
+			hsl(from var(--color-slate) h calc(s * .3) l) 30%,
+			var(--color-mauve)
+		);
 		@include font-weight-width(500, 115);
-		&::after {
-			@include contrast(both) {
-				background-color: var(--color-primary);
-			}
-		}
-		&::before {
-			background-color: color-mix(
-				in srgb,
-				var(--color-blush),
-				var(--color-rose)
-			);
-		}
-		span {
-			background-color: color-mix(
-				in srgb,
-				var(--color-iron) 40%,
-				var(--color-slate)
-			);
-		}
-		&:hover, &:focus {
-			span {
-				background-color: color-mix(
-					in srgb,
-					hsl(from var(--color-slate) h calc(s * .3) l) 30%,
-					var(--color-mauve)
-				);
-			}
-		}
-		&:active {
-			span {
-				background-color: var(--color-iron);
-			}
-		}
 	}
 }
 
@@ -384,7 +361,7 @@
 	li {
 		&:not(:first-child) {
 			margin-top: .75rem;
-			@include viewport(mobile) {
+			@include viewport(medium) {
 				margin-top: .5rem;
 			}
 		}
@@ -408,7 +385,7 @@
 			background-color: hsl(from var(--color-iron) h s calc(l * .55) / .4);
 			color: hsl(from white h s l / .8);
 		}
-		@include viewport(mobile) {
+		@include viewport(medium) {
 			margin-bottom: unset;
 			margin-right: calc(var(--p)/3);
 		}
@@ -463,7 +440,7 @@
 		display: block;
 		line-height: 1.333;
 		@include font-weight-width(600, 115);
-		@include viewport(mobile) {
+		@include viewport(medium) {
 			display: inline;
 		}
 	}

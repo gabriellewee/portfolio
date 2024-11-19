@@ -128,7 +128,7 @@
 				@include clip-path-edges(3px);
 			}
 		}
-		@include viewport(mobile) {
+		@include viewport(medium) {
 			display: grid;
 			grid-gap: calc(var(--p)*2);
 			grid-template-columns: 1fr 1fr;
@@ -174,7 +174,7 @@
 		}
 		.contact-messages {
 			margin-top: 1rem;
-			@include viewport(mobile) {
+			@include viewport(medium) {
 				margin-top: 0;
 			}
 		}

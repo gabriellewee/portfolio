@@ -1,14 +1,58 @@
 .button {
-	cursor: pointer;
-	appearance: none;
-	display: block;
-	position: relative;
-	z-index: 3;
-	margin: 0;
-	padding: 0;
-	border: 0;
-	background: none;
-	@include font-weight-width(700, 125);
+	--color: white;
+	--background: var(--color-mauve) radial-gradient(
+		circle at center left,
+		var(--color-rose),
+		var(--color-mauve),
+		var(--color-slate),
+		var(--color-slate)
+	);
+	--outline: radial-gradient(
+		circle at center left,
+		var(--color-blush),
+		var(--color-rose)
+	);
+	--contrast: var(--color-primary);
+	--background-hover-position: 0%;
+
+	@include theme(light) {
+		--background-active: var(--color-iron) radial-gradient(
+			circle at center left,
+			color-mix(
+				in srgb,
+				var(--color-iron) 80%,
+				white
+			),
+			var(--color-iron)
+		);
+	}
+	@include theme(dark) {
+		--background-active: var(--color-slate) radial-gradient(
+			circle at center left,
+			var(--color-slate),
+			color-mix(
+				in srgb,
+				var(--color-iron) 80%,
+				white
+			)
+		);
+	}
+
+	& {
+		cursor: pointer;
+		appearance: none;
+		display: block;
+		position: relative;
+		z-index: 3;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		width: fit-content;
+		background: none;
+		color: var(--color);
+		@include font-weight-width(700, 125);
+	}
+
 	&, > span, > span::before {
 		transition: background .4s ease-out, scale .2s ease-out, opacity .2s ease-out;
 	}
@@ -25,11 +69,7 @@
 		width: calc(100% + var(--p)/2);
 		height: calc(100% + var(--p)/2);
 		padding: var(--p) calc(var(--p)*2.5);
-		background: radial-gradient(
-			circle at center left,
-			var(--color-blush),
-			var(--color-rose)
-		);
+		background: var(--outline);
 		@include clip-path(false) {
 			@include border-radius(calc(var(--p)/2));
 		}
@@ -45,7 +85,7 @@
 			width: calc(100% + var(--p)/4);
 			height: calc(100% + var(--p)/4);
 			padding: var(--p) calc(var(--p)*2.5);
-			background-color: var(--color-primary);
+			background-color: var(--contrast);
 			@include clip-path(false) {
 				@include border-radius(calc(var(--p)/4));
 			}
@@ -56,14 +96,7 @@
 	}
 	> span {
 		position: relative;
-		background-color: var(--color-mauve);
-		background: radial-gradient(
-			circle at center left,
-			var(--color-rose),
-			var(--color-mauve),
-			var(--color-slate),
-			var(--color-slate)
-		) 50% 0% / 200% 100%;
+		background: var(--background) 50% 0% / 200% 100%;
 		@include button;
 		&::after {
 			opacity: 0;
@@ -75,30 +108,7 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			@include theme(light) {
-				background-color: var(--color-iron);
-				background: radial-gradient(
-					circle at center left,
-					color-mix(
-						in srgb,
-						var(--color-iron) 80%,
-						white
-					),
-					var(--color-iron)
-				);
-			}
-			@include theme(dark) {
-				background-color: var(--color-slate);
-				background: radial-gradient(
-					circle at center left,
-					var(--color-slate),
-					color-mix(
-						in srgb,
-						var(--color-iron) 80%,
-						white
-					)
-				);
-			}
+			background: var(--background-active);
 		}
 	}
 	&:hover {
@@ -108,7 +118,7 @@
 	}
 	&:hover, &:focus {
 		> span {
-			background-position-x: 0%;
+			background-position-x: var(--background-hover-position);
 		}
 	}
 	&:focus-visible {
@@ -136,53 +146,40 @@
 	}
 
 	&.button-reverse {
-		&::before {
-			background: radial-gradient(
+		--background: var(--color-slate) radial-gradient(
+			circle at center right,
+			var(--color-rose) 0,
+			var(--color-mauve) 25%,
+			var(--color-slate) 75%,
+			var(--color-slate) 100%
+		);
+		--outline: radial-gradient(
+			circle at center left,
+			var(--color-rose),
+			var(--color-blush)
+		);
+		--background-hover-position: 100%;
+		@include theme(light) {
+			--background-active: var(--color-iron) radial-gradient(
 				circle at center left,
-				var(--color-rose),
-				var(--color-blush)
+				var(--color-iron),
+				color-mix(
+					in srgb,
+					var(--color-iron) 80%,
+					white
+				)
 			);
 		}
-		> span {
-			background-color: var(--color-slate);
-			background: radial-gradient(
-				circle at center right,
-				var(--color-rose) 0,
-				var(--color-mauve) 25%,
-				var(--color-slate) 75%,
-				var(--color-slate) 100%
-			) 50% 0% / 200% 100%;
-			&::after {
-				@include theme(light) {
-					background-color: var(--color-iron);
-					background: radial-gradient(
-						circle at center left,
-						var(--color-iron),
-						color-mix(
-							in srgb,
-							var(--color-iron) 80%,
-							white
-						)
-					);
-				}
-				@include theme(dark) {
-					background-color: var(--color-slate);
-					background: radial-gradient(
-						circle at center left,
-						color-mix(
-							in srgb,
-							var(--color-iron) 80%,
-							white
-						),
-						var(--color-slate)
-					);
-				}
-			}
-		}
-		&:hover, &:focus {
-			> span {
-				background-position-x: 100%;
-			}
+		@include theme(dark) {
+			--background-active: var(--color-slate) radial-gradient(
+				circle at center left,
+				color-mix(
+					in srgb,
+					var(--color-iron) 80%,
+					white
+				),
+				var(--color-slate)
+			);
 		}
 	}
 
@@ -210,6 +207,21 @@
 }
 
 .button-reduced {
+	--color: white;
+	--background: color-mix(
+		in srgb,
+		hsl(from var(--color-slate) h calc(s * .3) l) 30%,
+		var(--color-mauve)
+	);
+	--outline: color-mix(
+			in srgb,
+			var(--color-blush),
+			var(--color-rose)
+	);
+	--contrast: var(--color-primary);
+	--background-hover: var(--color-slate);
+	--background-active: var(--color-iron);
+
 	transition: scale .2s ease-out;
 	display: inline-block;
 	position: relative;
@@ -222,12 +234,8 @@
 		position: relative;
 		z-index: 2;
 		padding: calc(var(--p)/3*2) var(--p);
-		color: white;
-		background-color: color-mix(
-			in srgb,
-			hsl(from var(--color-slate) h calc(s * .3) l) 30%,
-			var(--color-mauve)
-		);
+		color: var(--color);
+		background-color: var(--background);
 		@include clip-path-edges(2px);
 	}
 	&::after {
@@ -240,7 +248,7 @@
 			left: -1.5px;
 			width: calc(100% + 3px);
 			height: calc(100% + 3px);
-			background-color: var(--color-primary);
+			background-color: var(--contrast);
 			@include clip-path-edges(3px);
 		}
 	}
@@ -248,15 +256,11 @@
 a.button-reduced {
 	&::before {
 		z-index: 1;
-		@include before(color-mix(
-			in srgb,
-			var(--color-blush),
-			var(--color-rose)
-		));
+		@include before(var(--outline));
 	}
 	&:hover, &:focus {
 		span {
-			background-color: var(--color-slate);
+			background-color: var(--background-hover);
 		}
 	}
 	&:focus-visible {
@@ -269,7 +273,7 @@ a.button-reduced {
 			scale: .98;
 		}
 		span {
-			background-color: var(--color-iron);
+			background-color: var(--background-active);
 		}
 	}
 }

@@ -34,7 +34,7 @@
 		margin-bottom: calc(var(--p)*1.5);
 		grid-column: 1/-1;
 		@include font-weight-width(800, 120);
-		@include viewport(mobile) {
+		@include viewport(medium) {
 			font-size: 2.25rem;
 		}
 	}
@@ -42,7 +42,7 @@
 		grid-column: 1/-1;
 		margin-top: calc(var(--p)*2.5);
 		margin-bottom: calc(var(--p)*1.5);
-		@include container(mentions, mobile, 480px) {
+		@include container(mentions, medium, 480px) {
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
@@ -54,10 +54,9 @@
 			margin-bottom: 0;
 		}
 		.button {
-			display: inline-block;
 			margin-top: calc(var(--p)*1.75);
 			margin-bottom: calc(var(--p)/2);
-			@include container(mentions, mobile, 480px) {
+			@include container(mentions, medium, 480px) {
 				margin-top: 0;
 				margin-bottom: 0;
 			}
@@ -89,7 +88,7 @@
 			@include viewport($iphone-max) {
 				@include clip-path-edges(2px);
 			}
-			@include viewport(mobile) {
+			@include viewport(medium) {
 				display: flex;
 				align-items: flex-start;
 			}
@@ -139,7 +138,7 @@
 					.username, .time {
 						margin-top: var(--p);
 					}
-					@include viewport(mobile) {
+					@include viewport(medium) {
 						margin-left: calc(var(--p)*2);
 						.username, .time {
 							margin-top: 0;
@@ -284,7 +283,7 @@
 		font-size: 1.125rem;
 		line-height: 1.334;
 		margin-top: var(--p);
-		@include viewport(mobile) {
+		@include viewport(medium) {
 			margin-top: calc(var(--p)/2);
 		}
 	}

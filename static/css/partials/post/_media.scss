@@ -85,6 +85,8 @@ figure {
 		display: flex;
 	}
 	.button {
+		--contrast: white;
+
 		transition: translate .2s ease-out, scale .2s ease-out;
 		position: absolute;
 		display: inline-block;
@@ -92,23 +94,6 @@ figure {
 		right: calc(var(--p)*2);
 		@media (prefers-reduced-motion: no-preference) {
 			translate: 0 100%;
-		}
-		&::after {
-			background-color: white;
-		}
-		> span {
-			&::before {
-				background-color: var(--color-slate);
-				background: radial-gradient(
-					circle at center left,
-					var(--color-slate),
-					color-mix(
-						in srgb,
-						var(--color-iron) 80%,
-						white
-					)
-				);
-			}
 		}
 	}
 }
@@ -133,7 +118,7 @@ figcaption {
 		@media only screen and (min-width: 450px) {
 			font-size: 1.25rem;
 		}
-		@include viewport(mobile) {
+		@include viewport(medium) {
 			font-size: 1.125rem;
 		}
 		@include viewport($ipad-11) {
@@ -366,7 +351,7 @@ figcaption {
 				@media only screen and (min-width: 450px) {
 					width: 200px;
 				}
-				@include viewport(mobile) {
+				@include viewport(medium) {
 					width: 150px;
 				}
 				@include viewport($ipad-11) {
@@ -493,7 +478,7 @@ figcaption {
 				@media only screen and (min-width: 450px) {
 					width: 250px;
 				}
-				@include viewport(mobile) {
+				@include viewport(medium) {
 					width: 200px;
 				}
 				@include viewport($ipad-11) {

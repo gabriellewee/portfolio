@@ -10,7 +10,7 @@
 		@include clip-path-edges(2px, up);
 	}
 	.post-header-content {
-		@include container(header, mobile, $iphone-max) {
+		@include container(header, medium, $iphone-max) {
 			align-items: stretch;
 			align-content: flex-start;
 		}
@@ -25,7 +25,7 @@
 		flex-wrap: wrap;
 		order: 2;
 		width: 100%;
-		@include container(header, mobile, $iphone-max) {
+		@include container(header, medium, $iphone-max) {
 			align-items: flex-start;
 			align-content: flex-start;
 		}
@@ -35,7 +35,7 @@
 		}
 	}
 	.post-header-left, .post-headline {
-		@include container(header, mobile, $iphone-max) {
+		@include container(header, medium, $iphone-max) {
 			order: 1;
 			width: unset;
 		}
@@ -72,7 +72,7 @@
 	.post-headline {
 		order: 1;
 		line-height: 1.5;
-		@include container(header, mobile, $iphone-max) {
+		@include container(header, medium, $iphone-max) {
 			margin-right: calc(var(--p)*1.5);
 		}
 		a {
@@ -88,7 +88,7 @@
 		flex-wrap: wrap;
 		margin-top: var(--p);
 		margin-bottom: calc(var(--p)*.75);
-		@include container(header, mobile, $iphone-max) {
+		@include container(header, medium, $iphone-max) {
 			width: 100%;
 			margin-top: calc(var(--p)*.75);
 			margin-bottom: 0;
@@ -160,7 +160,7 @@
 		justify-content: space-between;
 		width: 100%;
 		margin-bottom: calc(var(--p)*.75);
-		@include container(header, mobile, $iphone-max) {
+		@include container(header, medium, $iphone-max) {
 			order: 2;
 			justify-content: flex-end;
 			align-content: space-between;
@@ -174,7 +174,7 @@
 		}
 		.time {
 			margin-bottom: 0;
-			@include container(header, mobile, $iphone-max) {
+			@include container(header, medium, $iphone-max) {
 				width: 100%;
 				text-align: right;
 			}
@@ -194,7 +194,7 @@
 					outline: unset;
 				}
 			}
-			@include container(header, mobile, $iphone-max) {
+			@include container(header, medium, $iphone-max) {
 				margin-top: calc(var(--p)/2);
 			}
 			@include container(header, $ipad-mini) {
@@ -219,7 +219,7 @@
 		}
 	}
 	.post-header-left:not(:has(.post-tags)) + .post-header-right {
-		@include container(header, mobile, $iphone-max) {
+		@include container(header, medium, $iphone-max) {
 			flex-wrap: nowrap;
 			align-items: flex-start;
 			align-content: unset;
@@ -228,12 +228,12 @@
 			align-items: center;
 		}
 		.time {
-			@include container(header, mobile, $iphone-max) {
+			@include container(header, medium, $iphone-max) {
 				width: unset;
 			}
 		}
 		.expand, .external-expand {
-			@include container(header, mobile, $iphone-max) {
+			@include container(header, medium, $iphone-max) {
 				margin-top: 0;
 				margin-left: var(--p);
 			}
@@ -250,7 +250,7 @@
 	}
 	.frame-wrapper {
 		order: 1;
-		@include viewport(mobile) {
+		@include viewport(medium) {
 			order: 2;
 		}
 	}
@@ -275,93 +275,64 @@
 		line-height: 1.3;
 	}
 	.button {
+		--background: var(--color-mint) radial-gradient(
+			circle at center left,
+			hsl(from var(--color-slate) h s calc(l * .8)),
+			var(--color-mint),
+			var(--color-oak)
+		);
+		--outline: color-mix(
+			in srgb,
+			var(--color-iron) 60%,
+			white
+		);
+		--background-active: var(--color-iron) radial-gradient(
+			circle at center right,
+			hsl(from var(--color-iron) h s calc(l * .45)),
+			var(--color-iron)
+		);
+		--background-hover-position: 100%;
+
 		order: 2;
-		text-align: center;
 		@include font-weight-width(600, 90);
-		@include viewport(mobile) {
+		@include viewport(small) {
+			text-align: center;
+			width: 100%;
+		}
+		@include viewport(medium) {
 			order: 1;
 			position: absolute;
 			z-index: 3;
 			bottom: calc(var(--p)*2);
 			right: calc(var(--p)*2);
 		}
-		&:hover {
-			@media (prefers-reduced-motion: no-preference) {
-				scale: unset;
-				@include viewport(mobile) {
-					scale: 1.02;
-				}
-			}
-		}
-		&:active {
-			@media (prefers-reduced-motion: no-preference) {
-				scale: unset;
-				@include viewport(mobile) {
-					scale: .98;
-				}
-			}
-		}
 		&::before {
-			background: color-mix(
-				in srgb,
-				var(--color-iron) 60%,
-				white
-			);
-			@include clip-path(false) {
-				@include border-radius(0);
+			@include viewport(small) {
+				display: none;
 			}
-			@include clip-path {
-				clip-path: none;
-			}
-			@include viewport(mobile) {
-				@include clip-path(false) {
-					@include border-radius(calc(var(--p)/2));
-				}
-				@include clip-path {
-					@include button-shape(1.375, 7%);
+		}
+		&:hover, &:active {
+			@media (prefers-reduced-motion: no-preference) {
+				@include viewport(small) {
+					scale: unset;
 				}
 			}
 		}
-		> span {
-			background-color: var(--color-mint);
-			background: radial-gradient(
-				circle at center left,
-				hsl(from var(--color-slate) h s calc(l * .8)),
-				var(--color-mint),
-				var(--color-oak),
-			) 50% 0% / 200% 100%;
-			@include clip-path(false) {
-				@include border-radius(0);
-			}
-			@include clip-path {
-				clip-path: none;
-			}
-			@include viewport(mobile) {
-				@include clip-path(false) {
-					@include border-radius(calc(var(--p)/4));
-				}
-				@include clip-path {
-					@include button-shape;
-				}
-			}
-			&::after {
-				background-color: var(--color-iron);
-				background: radial-gradient(
-					circle at center right,
-					hsl(from var(--color-iron) h s calc(l * .45)),
-					var(--color-iron)
-				);
-			}
-		}
-		&:hover, &:focus {
+		&:focus-visible {
 			> span {
-				background-position-x: 100%;
+				@include viewport(small) {
+					box-shadow: inset 0 0 0 3px var(--outline);
+				}
+			}
+		}
+		&::before, > span {
+			@include viewport(small) {
+				@include clip-path-edges(0);
 			}
 		}
 	}
 	.post-mobile-button, .post-mobile {
-		display: block;
-		@include viewport(mobile) {
+		@include viewport(medium) {
 			display: none;
 		}
 	}
@@ -369,14 +340,14 @@
 		display: none;
 	}
 	.post-mobile-button + .reload {
-		@include viewport(mobile) {
+		@include viewport(medium) {
 			@media (scripting: enabled) {
 				display: block;
 			}
 		}
 	}
 	.post-mobile ~ .frame-wrapper {
-		@include viewport(mobile) {
+		@include viewport(medium) {
 			display: block;
 		}
 	}

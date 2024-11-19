@@ -2,7 +2,7 @@
 	.popup-button {
 		width: 127px;
 		height: 36px;
-		@include viewport($desktop-small) {
+		@include viewport($large) {
 			width: 145px;
 			height: 38px;
 		}

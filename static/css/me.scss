@@ -17,7 +17,7 @@
 			font-size: 1.5rem;
 			line-height: 1.2;
 			@include font-weight-width(800, 120);
-			@include viewport(mobile) {
+			@include viewport(medium) {
 				font-size: 1.75rem;
 			}
 		}
@@ -32,9 +32,6 @@
 		+ .button {
 			margin-top: 0;
 		}
-	}
-	.button {
-		display: inline-block;
 	}
 }
 
@@ -72,7 +69,7 @@
 
 .post-intro {
 	width: 100%;
-	@include viewport(mobile) {
+	@include viewport(medium) {
 		width: var(--intro-width);
 	}
 	.post-inner {
@@ -82,7 +79,7 @@
 		padding: calc(var(--p)*2);
 		margin-bottom: 0;
 		h2 {
-			@include viewport(mobile) {
+			@include viewport(medium) {
 				font-size: 1.25rem;
 			}
 		}
@@ -122,14 +119,14 @@
 }
 
 .post-books {
-	@include viewport(mobile) {
+	@include viewport(medium) {
 		width: calc(100% - var(--intro-width) - var(--p) * 2);
 	}
 	.grid {
 		grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
 		li:nth-last-child(-n+4) {
 			display: none;
-			@include viewport(mobile) {
+			@include viewport(medium) {
 				display: block;
 			}
 		}
@@ -143,7 +140,7 @@
 	width: 100%;
 	min-width: 345px;
 	max-width: 700px;
-	@include viewport($desktop) {
+	@include viewport($x-large) {
 		max-width: 376px;
 	}
 	iframe {
@@ -153,19 +150,19 @@
 
 .post-game {
 	width: 100%;
-	@include viewport($desktop) {
+	@include viewport($x-large) {
 		max-width: 672px;
 	}
 	.grid {
 		margin-top: calc(var(--p) * 1.75);
 		grid-template-columns: repeat(2, 1fr);
-		@include viewport(mobile) {
+		@include viewport(medium) {
 			grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 		}
-		@include viewport($desktop-small) {
+		@include viewport($large) {
 			grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 		}
-		@include viewport($desktop) {
+		@include viewport($x-large) {
 			grid-template-columns: repeat(2, 1fr);
 		}
 		&:has(.button) {
@@ -187,7 +184,7 @@
 		margin-top: calc(var(--p)*2);
 	}
 	.friend-code-container {
-		@include viewport(mobile) {
+		@include viewport(medium) {
 			display: inline-flex;
 			align-items: center;
 		}
@@ -225,7 +222,7 @@
 		.friend-code-border {
 			position: relative;
 			margin-top: var(--p);
-			@include viewport(mobile) {
+			@include viewport(medium) {
 				margin-top: 0;
 			}
 			&::before {

@@ -47,10 +47,8 @@ header.top {
 		opacity: 1;
 	}
 	.copyright {
-		span {
-			background-color: var(--color-secondary);
-			color: var(--color-primary);
-		}
+		--color: var(--color-primary);
+		--background: var(--color-secondary);
 	}
 }
 

@@ -7,9 +7,9 @@ $ipad-11: 834px;
 $mbp-14: 1512px;
 $mbp-16: 1728px;
 
-$mobile: 568px;
-$desktop-small: 1024px;
-$desktop: 1280px;
+$medium: 568px;
+$large: 1024px;
+$x-large: 1280px;
 
 // functions
 @function hexToHSL($color) {
@@ -18,8 +18,12 @@ $desktop: 1280px;
 
 // mixins
 @mixin viewport($viewport) {
-	@if $viewport == "mobile" {
-		@media screen and (min-width: $mobile) and (max-height: 450px), screen and (min-width: $ipad-mini) {
+	@if $viewport == "medium" {
+		@media screen and (min-width: $medium) {
+			@content;
+		}
+	} @else if $viewport == "small" {
+		@media screen and (max-width: #{$medium - 1px}) {
 			@content;
 		}
 	} @else {
@@ -262,6 +266,13 @@ $desktop: 1280px;
 		@include clip-path {
 			clip-path: polygon(0 0, calc(100% - #{$cut}) 0%, 100% #{$cut}, 100% calc(100% - #{$cut}), calc(100% - #{$cut}) 100%, 0 100%);
 		}
+	} @else if $cut == 0 {
+		@include clip-path(false) {
+			border-radius: 0;
+		}
+		@include clip-path {
+			clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+		}
 	} @else {
 		@include clip-path(false) {
 			border-radius: #{$cut + 1px};
@@ -425,7 +436,6 @@ $desktop: 1280px;
 
 @mixin button {
 	display: block;
-	color: white;
 	font-size: 1rem;
 	@include clip-path(false) {
 		padding: var(--p) calc(var(--p)*2);
@@ -438,65 +448,53 @@ $desktop: 1280px;
 }
 
 @mixin recipe-button {
-	&::before {
-		background: radial-gradient(
+	--background: var(--color-slate) radial-gradient(
+		circle at center right,
+		color-mix(
+			in srgb,
+			var(--color-periwinkle),
+			var(--color-mint)
+		) 0,
+		var(--color-mint) 25%,
+		var(--color-slate) 75%,
+		var(--color-slate) 100%
+	);
+	--outline: radial-gradient(
+		circle at center left,
+		color-mix(
+			in srgb,
+			white,
+			var(--color-mint)
+		),
+		color-mix(
+			in srgb,
+			white 70%,
+			var(--color-mint)
+		)
+	);
+	--background-hover-position: 100%;
+
+	@include theme(light) {
+		--background-active: var(--color-iron) radial-gradient(
 			circle at center left,
+			var(--color-iron),
 			color-mix(
 				in srgb,
-				white,
-				var(--color-mint)
-			),
-			color-mix(
-				in srgb,
-				white 70%,
-				var(--color-mint)
+				var(--color-iron) 80%,
+				white
 			)
 		);
 	}
-	> span {
-		background-color: var(--color-slate);
-		background: radial-gradient(
-			circle at center right,
+	@include theme(dark) {
+		--background-active: var(--color-slate) radial-gradient(
+			circle at center left,
 			color-mix(
 				in srgb,
-				var(--color-periwinkle),
-				var(--color-mint)
-			) 0,
-			var(--color-mint) 25%,
-			var(--color-slate) 75%,
-			var(--color-slate) 100%
-		) 50% 0% / 200% 100%;
-		&::after {
-			@include theme(light) {
-				background-color: var(--color-iron);
-				background: radial-gradient(
-					circle at center left,
-					var(--color-iron),
-					color-mix(
-						in srgb,
-						var(--color-iron) 80%,
-						white
-					)
-				);
-			}
-			@include theme(dark) {
-				background-color: var(--color-slate);
-				background: radial-gradient(
-					circle at center left,
-					color-mix(
-						in srgb,
-						var(--color-iron) 80%,
-						white
-					),
-					var(--color-slate)
-				);
-			}
-		}
-	}
-	&:hover, &:focus {
-		> span {
-			background-position-x: 100%;
-		}
+				var(--color-iron) 80%,
+				white
+			),
+			var(--color-slate)
+		);
 	}
 }
 
