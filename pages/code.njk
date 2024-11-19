@@ -1,25 +1,18 @@
----js
-{
-	layout: "layouts/base.njk",
-	title: "Code",
-	description: "Code snippets and ideas",
-	permalink: "/code/",
-	key: "code",
-	og: true,
-	message: true,
-	isotope: true,
-	tags: "pages",
-	style: true,
-	scripts: "posts",
-	filters: [
-		{ name: "css-only" },
-		{ name: "animation" },
-		{ name: "gaming" },
-		{ name: "retro" },
-		{ name: "tools" },
-		{ name: "ui" }
-	],
-}
+---
+title: Code
+description: Code snippets and ideas
+layout: layouts/page.njk
+scripts: posts
+og: false
+tags: ["pages", "footer"]
+filters: [
+	{ name: "css-only" },
+	{ name: "animation" },
+	{ name: "gaming" },
+	{ name: "retro" },
+	{ name: "tools" },
+	{ name: "ui" }
+]
 ---
 
 <section class="posts-container">

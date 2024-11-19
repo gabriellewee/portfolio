@@ -1,3 +1,4 @@
+{% if key == true %}{%- set key = title.toLowerCase() %}{% endif %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -45,7 +46,7 @@
 		<meta property="og:image" content="{{site.url}}/static/images/og/{{key}}.jpg">
 	{% elseif og == "image" %}
 		<meta property="og:image" content="{% ogPhoto './static/images/' + key + '/' + page.fileSlug + '.jpg' %}">
-	{% elseif og %}
+	{% elseif og and (og !== false) %}
 		<meta property="og:image" content="{{site.url}}/static/images/og/{{og}}.jpg">
 	{% else %}
 		<meta property="og:image" content="{{site.url}}/static/images/og/default.jpg">
