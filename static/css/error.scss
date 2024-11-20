@@ -13,12 +13,8 @@ header {
 	&::before {
 		content: "";
 		display: block;
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100vw;
-		height: 100vh;
 		background-color: hsl(from var(--color-iron) h s l / .2);
+		@include full-offset(screen, $p: fixed);
 	}
 }
 

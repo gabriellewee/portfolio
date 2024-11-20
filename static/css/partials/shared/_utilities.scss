@@ -326,6 +326,27 @@ $x-large: 1280px;
 	}
 }
 
+@mixin full-offset($offset, $y: top, $x: left, $p: absolute) {
+	position: #{$p};
+	@if $offset == screen {
+		#{$y}: 0;
+		#{$x}: 0;
+	} @else {
+		#{$y}: $offset * -1;
+		#{$x}: $offset * -1;
+	}
+	@if $offset == 0 {
+		height: 100%;
+		width: 100%;
+	} @else if $offset == screen {
+		height: 100vh;
+		width: 100vw;
+	} @else {
+		height: calc(100% + #{$offset * 2});
+		width: calc(100% + #{$offset * 2});
+	}
+}
+
 @mixin border-radius($radius) {
 	border-radius: $radius;
 	overflow: hidden;

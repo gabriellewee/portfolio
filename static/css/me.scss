@@ -230,11 +230,8 @@
 					content: "";
 					display: block;
 					position: absolute;
-					top: -1.5px;
-					left: -1.5px;
-					width: calc(100% + 3px);
-					height: calc(100% + 3px);
 					background-color: var(--color-primary);
+					@include full-offset(1.5px);
 					@include clip-path-edges(3px);
 				}
 			}

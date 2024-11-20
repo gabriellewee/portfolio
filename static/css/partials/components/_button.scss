@@ -63,7 +63,7 @@
 	}
 	&::before {
 		opacity: 0;
-		z-index: -1;	
+		z-index: -1;
 		top: calc(var(--p)/-4);
 		left: calc(var(--p)/-4);
 		width: calc(100% + var(--p)/2);
@@ -102,13 +102,9 @@
 			opacity: 0;
 			content: "";
 			display: block;
-			position: absolute;
 			z-index: -1;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
 			background: var(--background-active);
+			@include full-offset(0);
 		}
 	}
 	&:hover {
@@ -242,13 +238,9 @@
 		@include contrast(both) {
 			content: "";
 			display: block;
-			position: absolute;
 			z-index: 0;
-			top: -1.5px;
-			left: -1.5px;
-			width: calc(100% + 3px);
-			height: calc(100% + 3px);
 			background-color: var(--contrast);
+			@include full-offset(1.5px);
 			@include clip-path-edges(3px);
 		}
 	}

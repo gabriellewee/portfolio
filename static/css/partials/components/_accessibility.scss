@@ -2,7 +2,7 @@ $options: color, contrast, transparency, load;
 @each $option in $options {
 	#option-#{$option}:checked ~ .top label[for="option-#{$option}"] {
 		.toggle {
-			background-color: var(--color-mint);
+			background-color: var(--background-active);
 			&::after {
 				translate: 100% 0;
 			}
@@ -115,6 +115,7 @@ $options: color, contrast, transparency, load;
 			}
 		}
 		.button {
+			--contrast: white;
 			text-align: center;
 			width: 100%;
 		}

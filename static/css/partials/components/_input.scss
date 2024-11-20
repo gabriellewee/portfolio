@@ -1,29 +1,33 @@
 .toggle {
-	display: block;
-	cursor: pointer;
-	position: relative;
-	height: calc(var(--p)*2);
-	width: calc(var(--p)*3.5);
-	background-color: color-mix(
+	--background: color-mix(
 		in srgb,
 		var(--color-slate),
 		var(--color-iron)
 	);
-	border-radius: calc(var(--p)*2);
+	--indicator: white;
+	--outline: var(--color-blush);
+	--contrast: white;
+	--background-active: var(--color-mint);
+	--height: calc(var(--p)*2);
+
+	display: block;
+	cursor: pointer;
+	position: relative;
+	height: calc(var(--height));
+	width: calc(var(--height)/2*3.5);
+	background-color: var(--background);
+	border-radius: calc(var(--height));
 	margin-right: var(--p);
-	padding: calc(var(--p)/4);
+	padding: calc(var(--height)/8);
+
 	&::before {
 		@include contrast(both) {
 			content: "";
 			display: block;
-			position: absolute;
 			z-index: -1;
-			top: -1px;
-			left: -1px;
-			width: calc(100% + 2px);
-			height: calc(100% + 2px);
-			background-color: white;
-			border-radius: calc(var(--p)*3);
+			background-color: var(--contrast);
+			border-radius: calc(var(--height)*1.5);
+			@include full-offset(1px);
 		}
 	}
 	&::after {
@@ -34,13 +38,14 @@
 		height: 100%;
 		aspect-ratio: 1 / 1;
 		border-radius: 100%;
-		background-color: white;
+		background-color: var(--indicator);
 	}
+
 	*:focus-visible & {
-		outline: calc(var(--p)/4) solid var(--color-blush);
+		outline: calc(var(--p)/4) solid var(--outline);
 	}
 	&.active {
-		background-color: var(--color-mint);
+		background-color: var(--background-active);
 		&::after {
 			translate: 100% 0;
 		}

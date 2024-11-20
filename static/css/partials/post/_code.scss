@@ -118,23 +118,16 @@
 				&::before, &::after {
 					content: "";
 					display: block;
-					position: absolute;
 				}
 				&::before {
 					z-index: -2;
-					top: -1.5px;
-					left: -1.5px;
-					width: calc(100% + 3px);
-					height: calc(100% + 3px);
 					background-color: hsl(from var(--color-primary) h s l / .7);
+					@include full-offset(1.5px);
 					@include clip-path-edges(3px);
 				}
 				&::after {
 					z-index: -1;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
+					@include full-offset(0);
 					@include clip-path-edges(2px);
 				}
 				&.tag-css-only {

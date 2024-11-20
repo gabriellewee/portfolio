@@ -85,13 +85,11 @@
 }
 
 .toggle {
-	*:focus-visible & {
-		outline: calc(var(--p)/4) solid color-mix(
-			in srgb,
-			white,
-			var(--color-mint)
-		);
-	}
+	--outline: color-mix(
+		in srgb,
+		white,
+		var(--color-mint)
+	);
 }
 
 .progress {
@@ -119,12 +117,8 @@
 		padding: calc(var(--p)*2) calc(var(--p)*2) 0;
 		@include container(recipe, medium, $medium) {
 			justify-content: flex-end;
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
 			padding: 0;
+			@include full-offset(0, bottom);
 			time {
 				margin-left: calc(var(--p)*2);
 				position: relative;
@@ -137,12 +131,10 @@
 				&::before {
 					content: "";
 					display: block;
-					position: absolute;
 					z-index: 0;
-					bottom: 0;
-					left: 0;
-					width: 100%;
-					height: calc(100% + 240px);
+					scale: 1 5;
+					transform-origin: center bottom;
+					@include full-offset(0, bottom);
 				}
 				a {
 					z-index: 1;

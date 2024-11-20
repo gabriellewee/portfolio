@@ -37,10 +37,10 @@
 		&::before, &::after {
 			content: "";
 			display: block;
-			position: absolute;
 		}
 		&::before {
 			rotate: 45deg;
+			position: absolute;
 			z-index: 0;
 			width: calc(var(--t) + 3px);
 			height: calc(var(--t) + 3px);
@@ -49,13 +49,10 @@
 			}
 		}
 		&::after {
-			bottom: 0;
-			left: 0;
 			z-index: 0;
-			width: 100%;
-			height: 100%;
 			border-radius: 2px;
 			outline: 1.5px solid transparent;
+			@include full-offset(0, bottom);
 			@include contrast(both) {
 				outline-color: var(--color-primary);
 			}

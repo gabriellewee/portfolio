@@ -97,15 +97,11 @@
 				align-items: center;
 				align-content: center;
 				justify-content: center;
-				position: absolute;
-				top: -4px;
-				left: -4px;
-				width: calc(100% + 8px);
-				height: calc(100% + 8px);
 				font-size: 0.75rem;
 				color: white;
 				text-align: center;
 				text-transform: uppercase;
+				@include full-offset(4px);
 				@include font-weight-width(600, 120);
 				@include blur(4px, var(--color-mauve), 1, .9, .8);
 				span {
@@ -201,23 +197,11 @@
 		@include contrast(both) {
 			border-color: var(--color-primary);
 		}
-		&-iron {
-			background-color: var(--color-iron);
-		}
-		&-blush {
-			background-color: var(--color-blush);
-		}
-		&-rose {
-			background-color: var(--color-rose);
-		}
-		&-mauve {
-			background-color: var(--color-mauve);
-		}
-		&-slate {
-			background-color: var(--color-slate);
-		}
-		&-mint {
-			background-color: var(--color-mint);
+		$colors: iron, blush, rose, mauve, slate, mint;
+		@each $color in $colors {
+			&-#{$color} {
+				background-color: var(--color-#{$color});
+			}
 		}
 	}
 }
@@ -268,22 +252,15 @@
 			&::before, &::after {
 				content: "";
 				display: block;
-				position: absolute;
 			}
 			&::before {
 				z-index: -2;
-				top: -1.5px;
-				left: -1.5px;
-				width: calc(100% + 3px);
-				height: calc(100% + 3px);
+				@include full-offset(1.5px);
 				@include clip-path-edges(3px);
 			}
 			&::after {
 				z-index: -1;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
+				@include full-offset(0);
 				@include clip-path-edges(2px);
 			}
 		}
@@ -396,22 +373,15 @@
 			&::before, &::after {
 				content: "";
 				display: block;
-				position: absolute;
 			}
 			&::before {
 				z-index: -2;
-				top: -1.5px;
-				left: -1.5px;
-				width: calc(100% + 3px);
-				height: calc(100% + 3px);
+				@include full-offset(1.5px);
 				@include clip-path-edges(3px);
 			}
 			&::after {
 				z-index: -1;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
+				@include full-offset(0);
 				@include clip-path-edges(2px);
 			}
 		}
