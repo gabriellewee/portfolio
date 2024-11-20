@@ -46,11 +46,10 @@ eleventyNavigation:
 				</header>
 				<div class="post-links">
 					<menu class="button-reduced-group">
+						<li><a class="button-reduced" href="/"><span>Home</span></a></li>
 						{% for post in collections.pages %}
 							<li>
-								{% if post.data.key == "home" %}
-									<a class="button-reduced" href="{{post.url|url}}"><span>{{post.data.key|safe|capitalize}}</span></a>
-								{% else %}
+								{% if post.data.key !== "home" %}
 									<a class="button-reduced" href="{{post.url|url}}"><span>{{post.data.title|safe|capitalize}}</span></a>
 								{% endif %}
 							</li>
