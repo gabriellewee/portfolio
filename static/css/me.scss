@@ -78,11 +78,6 @@
 	.post-header {
 		padding: calc(var(--p)*2);
 		margin-bottom: 0;
-		h2 {
-			@include viewport(medium) {
-				font-size: 1.25rem;
-			}
-		}
 	}
 	.post-image {
 		display: grid;
