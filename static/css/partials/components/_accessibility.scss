@@ -44,9 +44,6 @@ $options: color, contrast, transparency, load;
 		opacity: 0;
 		&::after {
 			bottom: -24px;
-			width: 16px;
-			height: 16px;
-			border-top-left-radius: 2px;
 			@media (prefers-reduced-motion: no-preference) {
 				translate: 0 calc(var(--p)*2);
 			}
@@ -61,8 +58,7 @@ $options: color, contrast, transparency, load;
 		left: unset;
 		max-width: 360px;
 		color: white;
-		margin-top: 16px;
-		border-radius: 3px;
+		margin-top: var(--tip);
 		.inside {
 			list-style: none;
 			display: flex;

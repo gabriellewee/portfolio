@@ -1,4 +1,5 @@
 .discord-popup {
+	--m: 16px;
 	.popup-button {
 		width: 127px;
 		height: 36px;
@@ -10,10 +11,7 @@
 	.popup-label {
 		&::after {
 			background-color: var(--color-blush);
-			bottom: -16px;
-			width: 16px;
-			height: 16px;
-			border-top-left-radius: 2px;
+			bottom: calc(var(--tip)*-1);
 			@media (prefers-reduced-motion: no-preference) {
 				translate: 0 calc(var(--p)*2);
 			}
@@ -22,7 +20,6 @@
 	.popup-window {
 		color: white;
 		margin-top: calc(var(--p)/2);
-		border-radius: 3px;
 		.inside {
 			display: block;
 			position: relative;
@@ -51,7 +48,7 @@
 			border-radius: 100%;
 			overflow: hidden;
 			width: 60px;
-			height: 60px;
+			aspect-ratio: 1 / 1;
 			@include background-image(avatars/discord, jpg);
 			@include invert(100%);
 		}
@@ -79,8 +76,8 @@
 		.description {
 			display: block;
 			border-top: 1px solid hsl(from white h s l / .1);
-			margin-top: 16px;
-			padding: 16px;
+			margin-top: var(--m);
+			padding: var(--m);
 			@include contrast(both) {
 				border-color: white;
 			}
@@ -105,8 +102,8 @@
 		}
 		.links {
 			border-top: 1px solid hsl(from white h s l / .1);
-			margin-top: 16px;
-			padding-top: 16px;
+			margin-top: var(--m);
+			padding-top: var(--m);
 			@include contrast(both) {
 				border-color: white;
 			}
@@ -117,7 +114,7 @@
 			li {
 				width: 100%;
 				&:last-child {
-					margin-top: 16px;
+					margin-top: var(--m);
 					@include viewport(450px) {
 						margin-top: 0;
 					}
@@ -152,7 +149,7 @@
 					content: "";
 					display: block;
 					width: 20px;
-					height: 20px;
+					aspect-ratio: 1 / 1;
 					opacity: .8;
 					background-position: center;
 					background-size: 20px 20px;
