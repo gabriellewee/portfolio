@@ -1,7 +1,8 @@
-@use "sass:math";
-@import url("https://use.typekit.net/ytd4ine.css");
-@import 'reset';
-@import 'presets';
+@use 'sass:color';
+@use 'sass:math';
+@use 'reset';
+@use 'presets' as *;
+@import url('https://use.typekit.net/ytd4ine.css');
 
 * { box-sizing: border-box; -webkit-tap-highlight-color: rgba(0,0,0,0); }
 body, html { height: 100%; }
@@ -9,7 +10,7 @@ body {
 	overflow: hidden;
 	color: $forest;
 	font-family: $font;
-	background: lighten($beige, 5%);
+	background: color.adjust($beige, $lightness: 5%);
 	margin: 0;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;

@@ -1,5 +1,6 @@
-@use "sass:math";
-@import 'reset';
+@use 'sass:color';
+@use 'sass:math';
+@use 'reset';
 
 $p: 12px;
 
@@ -291,11 +292,11 @@ main {
 				> div {
 					&:nth-child(2) {
 						&:before {
-							background: lighten(#FDAE56, 2%);
+							background: color.adjust(#FDAE56, $lightness: 2%);
 						}
 						&:after {
-							background: lighten(#EF9355, 2%);
-							border-color: lighten(#FEEE57, 10%);
+							background: color.adjust(#EF9355, $lightness: 2%);
+							border-color: color.adjust(#FEEE57, $lightness: 10%);
 						}
 					}
 				}
@@ -304,11 +305,11 @@ main {
 				> div {
 					&:nth-child(3) {
 						&:before {
-							background: lighten(#FDAA55, 2%);
+							background: color.adjust(#FDAA55, $lightness: 2%);
 						}
 						&:after {
-							background: lighten(#FDAA55, 2%);
-							border-color: lighten(#FFFD60, 10%);
+							background: color.adjust(#FDAA55, $lightness: 2%);
+							border-color: color.adjust(#FFFD60, $lightness: 10%);
 						}
 					}
 				}

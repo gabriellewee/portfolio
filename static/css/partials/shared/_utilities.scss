@@ -1,3 +1,6 @@
+@use 'sass:color';
+@use 'sass:string';
+
 // viewports
 $iphone-mini: 320px;
 $iphone: 375px;
@@ -13,7 +16,7 @@ $x-large: 1280px;
 
 // functions
 @function hexToHSL($color) {
-	@return "#{hue($color)} #{saturation($color)} #{lightness($color)}";
+	@return "#{color.channel($color, "hue", $space: hsl)} #{color.channel($color, "saturation", $space: hsl)} #{color.channel($color, "lightness", $space: hsl)}";
 }
 
 // mixins
@@ -39,7 +42,7 @@ $x-large: 1280px;
 			@content;
 		}
 	}
-	@if (str-index(#{$b}, "min")) {
+	@if (string.index(#{$b}, "min")) {
 		@container #{$container} #{$b} {
 			@content;
 		}

@@ -1,6 +1,6 @@
-@import 'partials/shared/utilities';
-@import 'partials/components/tooltip';
-@import 'partials/post/post';
+@use 'partials/shared/utilities' as *;
+@use 'partials/components/tooltip';
+@use 'partials/post/post';
 
 .post {
 	--intro-width: 320px;

@@ -1,3 +1,6 @@
+@use 'sass:color';
+@use 'partials/shared/utilities' as *;
+
 $iron: #263238;
 
 :root{
@@ -43,10 +46,10 @@ $iron: #263238;
 		music: #fa2d48,
 		imessage: #0d84ff,
 		tumblr: #5487b3,
-		tumblr-dark: mix(#35465D,#5487b3),
+		tumblr-dark: color.mix(#35465D,#5487b3),
 		threads: #C43DFB,
 		bluesky: #0285FF,
-		bluesky-dark: mix(#0285FF,#005CE1),
+		bluesky-dark: color.mix(#0285FF,#005CE1),
 
 		medium: #51A653,
 		medium-dark: #3C863D,
@@ -57,22 +60,22 @@ $iron: #263238;
 		--color-#{"" + $name}:hsl(#{hexToHSL($color)});
 	}
 
-	--color-email:hsl(#{hexToHSL(mix($iron, #577783, 5%))});
-	--color-email-dark:hsl(#{hexToHSL(mix($iron, white, 70%))});
+	--color-email:hsl(#{hexToHSL(color.mix($iron, #577783, 5%))});
+	--color-email-dark:hsl(#{hexToHSL(color.mix($iron, white, 70%))});
 }
 
 @include theme(light, true) {
 	--color-secondary:white;
-	--color-primary:#{mix($iron, white, 95%)};
+	--color-primary:#{color.mix($iron, white, 95%)};
 }
 
 @include theme(dark, true) {
 	--color-secondary:var(--color-iron);
-	--color-primary:#{mix($iron, white, 5%)};
+	--color-primary:#{color.mix($iron, white, 5%)};
 }
 
 @include contrast(light, true) {
-	--color-primary:#{darken($iron, 15%)};
+	--color-primary:#{color.adjust($iron, $lightness: -15%)};
 }
 
 @include contrast(dark, true) {

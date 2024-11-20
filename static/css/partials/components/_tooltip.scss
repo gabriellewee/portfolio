@@ -1,3 +1,5 @@
+@use 'partials/shared/utilities' as *;
+
 .tooltip {
 	--t: 10px;
 	--r: 3px;

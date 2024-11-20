@@ -1,3 +1,5 @@
+@use 'partials/shared/utilities' as *;
+
 .button {
 	--color: white;
 	--background: var(--color-mauve) radial-gradient(

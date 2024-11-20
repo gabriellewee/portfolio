@@ -1,5 +1,6 @@
-@use "sass:math";
-@import 'reset';
+@use 'sass:color';
+@use 'sass:math';
+@use 'reset';
 
 $p: 12px;
 
@@ -324,10 +325,10 @@ main {
 								width: calc(100% - #{$p*1.5});
 								height: calc(100% - #{$p*1.5});
 								transform: translateZ(#{math.div(-$p, 1.2)}) translateX(#{math.div(-$p, 2.4)});
-								border: $p*1.5 solid mix(#FFB2BD, #d55372);
+								border: $p*1.5 solid color.mix(#FFB2BD, #d55372);
 							}
 							&:after {
-								border-color: mix(#FFB2BD, #e46584, 75%);
+								border-color: color.mix(#FFB2BD, #e46584, 75%);
 							}
 						}
 						&:nth-child(2) {
@@ -434,7 +435,7 @@ main {
 							> div {
 								&:nth-child(1) {
 									&:before {
-										border-color: mix(#FFBFBF, #e46584);
+										border-color: color.mix(#FFBFBF, #e46584);
 										transform: translateZ(#{math.div(-$p, 0.8)});
 									}
 									&:after {
@@ -506,7 +507,7 @@ main {
 							}
 							&:before {
 								transform: translateZ(#{math.div(-$p, 0.6)});
-								border-color: mix(#FFBFBF, #e46584);
+								border-color: color.mix(#FFBFBF, #e46584);
 							}
 							&:after {
 								border-color: #FFBFBF;
@@ -630,7 +631,7 @@ main {
 					&:nth-child(2) {
 						> div {
 							&:after {
-								border-color: lighten(#FFD7A4, 10%);
+								border-color: color.adjust(#FFD7A4, $lightness: 10%);
 							}
 						}
 					}
@@ -644,7 +645,7 @@ main {
 					&:nth-child(3) {
 						> div {
 							&:after {
-								border-color: lighten(#ffebc9, 5%);
+								border-color: color.adjust(#ffebc9, $lightness: 5%);
 							}
 						}
 					}

@@ -1,3 +1,5 @@
+@use 'partials/shared/utilities' as *;
+
 .mentions {
 	display: flex;
 	flex-direction: column;

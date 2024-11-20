@@ -1,3 +1,5 @@
+@use 'partials/shared/utilities' as *;
+
 header.top, .bottom {
 	max-width: var(--width);
 	margin-inline: auto;

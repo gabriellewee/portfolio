@@ -1,3 +1,5 @@
+@use 'partials/shared/utilities' as *;
+
 $options: color, contrast, transparency, load;
 @each $option in $options {
 	#option-#{$option}:checked ~ .top label[for="option-#{$option}"] {

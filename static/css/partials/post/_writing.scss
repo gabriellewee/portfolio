@@ -1,394 +1,398 @@
-.post-header {
-	&.inline-header {
-		padding-bottom: var(--p);
-	}
-	h2 {
-		order: 2;
-		width: 100%;
-		font-size: 2rem;
-		line-height: 1.1;
-		@include font-weight-width(800, 120);
-		@include viewport(medium) {
-			order: 1;
-			width: unset;
-			font-size: 2.25rem;
+@use 'partials/shared/utilities' as *;
+
+.post-writing {
+	.post-header {
+		&.inline-header {
+			padding-bottom: var(--p);
 		}
-		a {
-			transition: color .1s ease-out;
-			> span {
-				transition: text-underline-offset .1s ease-out, text-decoration-color .1s ease-out;
-				text-decoration: underline;
-				text-underline-offset: 8px;
-				text-decoration-color: hsl(from white h s l / 0);
-				@include contrast(both) {
-					text-underline-offset: 4px;
-				}
-				span {
-					transition: background-position .4s ease-out;
-				}
+		h2 {
+			order: 2;
+			width: 100%;
+			font-size: 2rem;
+			line-height: 1.1;
+			@include font-weight-width(800, 120);
+			@include viewport(medium) {
+				order: 1;
+				width: unset;
+				font-size: 2.25rem;
 			}
-			&:hover, &:focus, &:active {
+			a {
+				transition: color .1s ease-out;
 				> span {
-					text-underline-offset: 4px;
-				}
-			}
-			&:hover, &:focus {
-				> span {
-					text-decoration-color: color-mix(
-						in hsl,
-						hsl(from var(--color-mauve) h calc(s * .9) l) 30%,
-						hsl(from var(--color-rose) h calc(s * .9) l)
-					);
-				}
-			}
-			&:focus-visible {
-				@include contrast(both) {
-					@include focus-shadow(hsl(from var(--color-mauve) h s l / .5));
-				}
-			}
-			&:active {
-				@include theme(light) {
-					> span {
-						text-decoration-color: hsl(from var(--color-iron) h s calc(l * .95));
+					transition: text-underline-offset .1s ease-out, text-decoration-color .1s ease-out;
+					text-decoration: underline;
+					text-underline-offset: 8px;
+					text-decoration-color: hsl(from white h s l / 0);
+					@include contrast(both) {
+						text-underline-offset: 4px;
 					}
-				}
-				@include theme(dark) {
-					> span {
-						text-decoration-color: var(--color-slate);
+					span {
+						transition: background-position .4s ease-out;
 					}
-				}
-			}
-		}
-	}
-	time {
-		@include container(header, medium, $iphone-max) {
-			margin-left: var(--p);
-		}
-	}
-}
-
-&.post-current {
-	.post-header {
-		h2 {
-			a {
-				@include contrast(both) {
-					> span {
-						text-decoration-color: var(--color-mauve);
-					}
-				}
-				span span {
-					@include gradient-headline(
-						var(--color-rose),
-						var(--color-mauve),
-						var(--color-slate),
-						var(--color-slate)
-					);
-				}
-				&:hover, &:focus {
-					span span {
-						background-position-x: 0%;
-					}
-				}
-				&:active {
-					span span {
-						@include theme(light) {
-							@include gradient-text(
-								hsl(from var(--color-iron) h s calc(l * .95)),
-								hsl(from var(--color-iron) h s calc(l * .35))
-							);
-						}
-						@include theme(dark) {
-							@include gradient-text(
-								var(--color-slate),
-								color-mix(
-									in srgb,
-									var(--color-iron) 80%,
-									white
-								)
-							);
-						}
-					}
-				}
-			}
-		}
-		time {
-			--color-mix: hsl(from var(--color-slate) h calc(s * .75) l);
-			background-color: var(--color-mix);
-			&::after {
-				@include contrast(both) {
-					background-color: var(--color-mix);
-				}
-			}
-		}
-	}
-}
-
-&.post-feature {
-	.post-header {
-		h2 {
-			a {
-				@include contrast(both) {
-					> span {
-						text-decoration-color: var(--color-slate);
-					}
-				}
-				span span {
-					@include gradient-headline(
-						var(--color-slate),
-						var(--color-mauve),
-						var(--color-rose),
-						var(--color-rose),
-						0%
-					);
-				}
-				&::after {
-					content: "↗";
-					position: relative;
-					top: 2px;
-					margin-left: calc(var(--p)/3*2);
-					line-height: 1;
-					color: color-mix(
-						in hsl,
-						var(--color-mauve) 30%,
-						var(--color-rose)
-					);
-				}
-				&:hover, &:focus {
-					span span {
-						background-position-x: 50%;
-					}
-					&::after {
-						color: var(--color-rose);
-					}
-				}
-				&:active {
-					span span {
-						@include theme(light) {
-							@include gradient-text(
-								hsl(from var(--color-iron) h s calc(l * .35)),
-								hsl(from var(--color-iron) h s calc(l * .95))
-							);
-						}
-						@include theme(dark) {
-							@include gradient-text(
-								color-mix(
-									in srgb,
-									var(--color-iron) 80%,
-									white
-								),
-								var(--color-slate)
-							);
-						}
-					}
-					&::after {
-						@include theme(light) {
-							color: hsl(from var(--color-iron) h s calc(l * .95));
-						}
-						@include theme(dark) {
-							color: var(--color-slate);
-						}
-					}
-				}
-			}
-		}
-		time {
-			--color-mix: color-mix(
-				in srgb,
-				hsl(from var(--color-mauve) h calc(s * .75) l),
-				hsl(from var(--color-slate) h s calc(l * .8))
-			);
-			background-color: var(--color-mix);
-			&::after {
-				@include contrast(both) {
-					background-color: var(--color-mix);
-				}
-			}
-		}
-	}
-	p, figcaption, ul, ol {
-		a {
-			@include gradient-text(
-				var(--color-slate),
-				var(--color-mauve),
-				hsl(from var(--color-slate) h s l / .5)
-			);
-			&:hover, &:focus {
-				@include gradient-text(
-					var(--color-mauve),
-					var(--color-rose),
-					hsl(from var(--color-mauve) h s l / .5)
-				);
-			}
-			&:active {
-				@include theme(light) {
-					@include gradient-text(
-						hsl(from var(--color-iron) h s calc(l * .35)),
-						hsl(from var(--color-iron) h s calc(l * .95)),
-						hsl(from var(--color-iron) h s calc(l * .35) / .5)
-					);
-				}
-				@include theme(dark) {
-					@include gradient-text(
-						color-mix(
-							in srgb,
-							var(--color-iron) 80%,
-							white
-						),
-						var(--color-slate),
-						color-mix(
-							in srgb,
-							hsl(from var(--color-iron) h s l / .5) 80%,
-							hsl(from white h s l / .5)
-						)
-					);
-				}
-			}
-		}
-	}
-}
-
-&.post-archive {
-	.post-header {
-		h2 {
-			a {
-				@include theme(light) {
-					--color-mix: color-mix(
-						in srgb,
-						var(--color-iron) 70%,
-						white
-					);
-				}
-				@include theme(dark) {
-					--color-mix: color-mix(
-						in srgb,
-						var(--color-iron),
-						white
-					);
-				}
-				& {
-					color: var(--color-mix);
 				}
 				&:hover, &:focus, &:active {
 					> span {
-						text-decoration-color: var(--color-mix);
+						text-underline-offset: 4px;
 					}
 				}
 				&:hover, &:focus {
-					@include theme(light) {
-						--color-mix: color-mix(
-							in srgb,
-							var(--color-iron),
-							white
+					> span {
+						text-decoration-color: color-mix(
+							in hsl,
+							hsl(from var(--color-mauve) h calc(s * .9) l) 30%,
+							hsl(from var(--color-rose) h calc(s * .9) l)
 						);
 					}
-					@include theme(dark) {
-						--color-mix: hsl(from white h s l / .7);
+				}
+				&:focus-visible {
+					@include contrast(both) {
+						@include focus-shadow(hsl(from var(--color-mauve) h s l / .5));
 					}
 				}
 				&:active {
 					@include theme(light) {
-						--color-mix: color-mix(
-							in srgb,
-							var(--color-iron) 90%,
-							white
+						> span {
+							text-decoration-color: hsl(from var(--color-iron) h s calc(l * .95));
+						}
+					}
+					@include theme(dark) {
+						> span {
+							text-decoration-color: var(--color-slate);
+						}
+					}
+				}
+			}
+		}
+		time {
+			@include container(header, medium, $iphone-max) {
+				margin-left: var(--p);
+			}
+		}
+	}
+
+	&.post-current {
+		.post-header {
+			h2 {
+				a {
+					@include contrast(both) {
+						> span {
+							text-decoration-color: var(--color-mauve);
+						}
+					}
+					span span {
+						@include gradient-headline(
+							var(--color-rose),
+							var(--color-mauve),
+							var(--color-slate),
+							var(--color-slate)
+						);
+					}
+					&:hover, &:focus {
+						span span {
+							background-position-x: 0%;
+						}
+					}
+					&:active {
+						span span {
+							@include theme(light) {
+								@include gradient-text(
+									hsl(from var(--color-iron) h s calc(l * .95)),
+									hsl(from var(--color-iron) h s calc(l * .35))
+								);
+							}
+							@include theme(dark) {
+								@include gradient-text(
+									var(--color-slate),
+									color-mix(
+										in srgb,
+										var(--color-iron) 80%,
+										white
+									)
+								);
+							}
+						}
+					}
+				}
+			}
+			time {
+				--color-mix: hsl(from var(--color-slate) h calc(s * .75) l);
+				background-color: var(--color-mix);
+				&::after {
+					@include contrast(both) {
+						background-color: var(--color-mix);
+					}
+				}
+			}
+		}
+	}
+
+	&.post-feature {
+		.post-header {
+			h2 {
+				a {
+					@include contrast(both) {
+						> span {
+							text-decoration-color: var(--color-slate);
+						}
+					}
+					span span {
+						@include gradient-headline(
+							var(--color-slate),
+							var(--color-mauve),
+							var(--color-rose),
+							var(--color-rose),
+							0%
+						);
+					}
+					&::after {
+						content: "↗";
+						position: relative;
+						top: 2px;
+						margin-left: calc(var(--p)/3*2);
+						line-height: 1;
+						color: color-mix(
+							in hsl,
+							var(--color-mauve) 30%,
+							var(--color-rose)
+						);
+					}
+					&:hover, &:focus {
+						span span {
+							background-position-x: 50%;
+						}
+						&::after {
+							color: var(--color-rose);
+						}
+					}
+					&:active {
+						span span {
+							@include theme(light) {
+								@include gradient-text(
+									hsl(from var(--color-iron) h s calc(l * .35)),
+									hsl(from var(--color-iron) h s calc(l * .95))
+								);
+							}
+							@include theme(dark) {
+								@include gradient-text(
+									color-mix(
+										in srgb,
+										var(--color-iron) 80%,
+										white
+									),
+									var(--color-slate)
+								);
+							}
+						}
+						&::after {
+							@include theme(light) {
+								color: hsl(from var(--color-iron) h s calc(l * .95));
+							}
+							@include theme(dark) {
+								color: var(--color-slate);
+							}
+						}
+					}
+				}
+			}
+			time {
+				--color-mix: color-mix(
+					in srgb,
+					hsl(from var(--color-mauve) h calc(s * .75) l),
+					hsl(from var(--color-slate) h s calc(l * .8))
+				);
+				background-color: var(--color-mix);
+				&::after {
+					@include contrast(both) {
+						background-color: var(--color-mix);
+					}
+				}
+			}
+		}
+		p, figcaption, ul, ol {
+			a {
+				@include gradient-text(
+					var(--color-slate),
+					var(--color-mauve),
+					hsl(from var(--color-slate) h s l / .5)
+				);
+				&:hover, &:focus {
+					@include gradient-text(
+						var(--color-mauve),
+						var(--color-rose),
+						hsl(from var(--color-mauve) h s l / .5)
+					);
+				}
+				&:active {
+					@include theme(light) {
+						@include gradient-text(
+							hsl(from var(--color-iron) h s calc(l * .35)),
+							hsl(from var(--color-iron) h s calc(l * .95)),
+							hsl(from var(--color-iron) h s calc(l * .35) / .5)
 						);
 					}
 					@include theme(dark) {
+						@include gradient-text(
+							color-mix(
+								in srgb,
+								var(--color-iron) 80%,
+								white
+							),
+							var(--color-slate),
+							color-mix(
+								in srgb,
+								hsl(from var(--color-iron) h s l / .5) 80%,
+								hsl(from white h s l / .5)
+							)
+						);
+					}
+				}
+			}
+		}
+	}
+
+	&.post-archive {
+		.post-header {
+			h2 {
+				a {
+					@include theme(light) {
 						--color-mix: color-mix(
 							in srgb,
 							var(--color-iron) 70%,
 							white
 						);
 					}
+					@include theme(dark) {
+						--color-mix: color-mix(
+							in srgb,
+							var(--color-iron),
+							white
+						);
+					}
+					& {
+						color: var(--color-mix);
+					}
+					&:hover, &:focus, &:active {
+						> span {
+							text-decoration-color: var(--color-mix);
+						}
+					}
+					&:hover, &:focus {
+						@include theme(light) {
+							--color-mix: color-mix(
+								in srgb,
+								var(--color-iron),
+								white
+							);
+						}
+						@include theme(dark) {
+							--color-mix: hsl(from white h s l / .7);
+						}
+					}
+					&:active {
+						@include theme(light) {
+							--color-mix: color-mix(
+								in srgb,
+								var(--color-iron) 90%,
+								white
+							);
+						}
+						@include theme(dark) {
+							--color-mix: color-mix(
+								in srgb,
+								var(--color-iron) 70%,
+								white
+							);
+						}
+					}
 				}
 			}
-		}
-		time {
-			--color-mix: color-mix(
-				in srgb,
-				var(--color-iron) 60%,
-				white
-			);
-			background-color: var(--color-mix);
-			&::after {
-				@include contrast(both) {
-					background-color: var(--color-mix);
-				}
-			}
-		}
-	}
-	.post-footer {
-		.button {
-			--background: color-mix(
-				in srgb,
-				var(--color-iron) 70%,
-				white
-			);
-
-			@include theme(light) {
-				--outline: radial-gradient(
-					circle at center left,
-					color-mix(
-						in srgb,
-						var(--color-iron) 70%,
-						white
-					),
-					color-mix(
-						in srgb,
-						var(--color-iron) 80%,
-						white
-					)
-				);
-			}
-			@include theme(dark) {
-				--outline: radial-gradient(
-					circle at center left,
-					color-mix(
-						in srgb,
-						var(--color-iron) 10%,
-						white
-					),
-					color-mix(
-						in srgb,
-						var(--color-iron) 30%,
-						white
-					)
-				);
-			}
-
-			&:hover, &:focus {
-				--background: color-mix(
+			time {
+				--color-mix: color-mix(
 					in srgb,
-					var(--color-iron),
+					var(--color-iron) 60%,
 					white
 				);
+				background-color: var(--color-mix);
+				&::after {
+					@include contrast(both) {
+						background-color: var(--color-mix);
+					}
+				}
+			}
+		}
+		.post-footer {
+			.button {
+				--background: color-mix(
+					in srgb,
+					var(--color-iron) 70%,
+					white
+				);
+
+				@include theme(light) {
+					--outline: radial-gradient(
+						circle at center left,
+						color-mix(
+							in srgb,
+							var(--color-iron) 70%,
+							white
+						),
+						color-mix(
+							in srgb,
+							var(--color-iron) 80%,
+							white
+						)
+					);
+				}
+				@include theme(dark) {
+					--outline: radial-gradient(
+						circle at center left,
+						color-mix(
+							in srgb,
+							var(--color-iron) 10%,
+							white
+						),
+						color-mix(
+							in srgb,
+							var(--color-iron) 30%,
+							white
+						)
+					);
+				}
+
+				&:hover, &:focus {
+					--background: color-mix(
+						in srgb,
+						var(--color-iron),
+						white
+					);
+				}
 			}
 		}
 	}
-}
 
-.post-footer {
-	display: flex;
-	flex-flow: row wrap;
-	&:not(:empty) {
-		margin-top: calc(var(--p)*-1.5);
-		padding: 0 calc(var(--p)*2) calc(var(--p)*2);
-	}
-	.button {
-		margin-top: var(--p);
-		line-height: 1.334;
-		&:not(:last-child) {
-			margin-right: var(--p);
+	.post-footer {
+		display: flex;
+		flex-flow: row wrap;
+		&:not(:empty) {
+			margin-top: calc(var(--p)*-1.5);
+			padding: 0 calc(var(--p)*2) calc(var(--p)*2);
+		}
+		.button {
+			margin-top: var(--p);
+			line-height: 1.334;
+			&:not(:last-child) {
+				margin-right: var(--p);
+			}
 		}
 	}
-}
 
-.post-content {
-	&:empty + .post-footer {
-		margin-top: 0;
-	}
+	.post-content {
+		&:empty + .post-footer {
+			margin-top: 0;
+		}
 
-	&:not(:empty) {
-		padding: 0 calc(var(--p)*2) calc(var(--p)*2);
+		&:not(:empty) {
+			padding: 0 calc(var(--p)*2) calc(var(--p)*2);
+		}
 	}
 }

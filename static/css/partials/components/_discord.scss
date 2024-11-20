@@ -1,3 +1,5 @@
+@use 'partials/shared/utilities' as *;
+
 .discord-popup {
 	--m: 16px;
 	.popup-button {

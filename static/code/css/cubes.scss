@@ -1,5 +1,6 @@
-@import url("https://use.typekit.net/ytd4ine.css");
-@import 'reset';
+@use 'sass:color';
+@use 'reset';
+@import url('https://use.typekit.net/ytd4ine.css');
 
 $indigo: #3023ae;
 $iris: #53a0fe;
@@ -22,7 +23,7 @@ body {
 	justify-content: center;
 	overflow: hidden;
 	padding: $p;
-	background: mix($iris, $lime);
+	background: color.mix($iris, $lime);
 	background: linear-gradient(135deg, $indigo 0%, $iris 50%, $lime 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$indigo', endColorstr='$lime',GradientType=1 );
 	font-family: $f;
@@ -208,19 +209,19 @@ ul {
 		div {
 			// top
 			&:nth-child(1) {
-				background: lighten($codepen, 35%);
+				background: color.adjust($codepen, $lightness: 35%);
 			}
 			// bottom
 			&:nth-child(2) {
-				background: lighten($codepen, 10%);
+				background: color.adjust($codepen, $lightness: 10%);
 			}
 			// left
 			&:nth-child(3) {
-				background: lighten($codepen, 20%);
+				background: color.adjust($codepen, $lightness: 20%);
 			}
 			// right
 			&:nth-child(4) {
-				background: lighten($codepen, 20%);
+				background: color.adjust($codepen, $lightness: 20%);
 			}
 			// front
 			&:nth-child(5) {
@@ -237,19 +238,19 @@ ul {
 		div {
 			// top
 			&:nth-child(1) {
-				background: lighten($github, 35%);
+				background: color.adjust($github, $lightness: 35%);
 			}
 			// bottom
 			&:nth-child(2) {
-				background: lighten($github, 10%);
+				background: color.adjust($github, $lightness: 10%);
 			}
 			// left
 			&:nth-child(3) {
-				background: lighten($github, 20%);
+				background: color.adjust($github, $lightness: 20%);
 			}
 			// right
 			&:nth-child(4) {
-				background: lighten($github, 20%);
+				background: color.adjust($github, $lightness: 20%);
 			}
 			// front
 			&:nth-child(5) {

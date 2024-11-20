@@ -1,7 +1,8 @@
-@use "sass:math";
-@import url("https://use.typekit.net/ytd4ine.css");
-@import 'reset';
-@import 'presets';
+@use 'sass:color';
+@use 'sass:math';
+@use 'reset';
+@use 'presets' as *;
+@import url('https://use.typekit.net/ytd4ine.css');
 
 $p: $padding;
 
@@ -11,7 +12,7 @@ body {
 	overflow: hidden;
 	color: $forest;
 	font-family: $font;
-	background: lighten($grey, 15%);
+	background: color.adjust($grey, $lightness: 15%);
 	margin: 0;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
@@ -32,7 +33,7 @@ a {
 	color: $forest;
 	&:hover, &:focus {
 		color: white;
-		background: desaturate(darken($beige, 15%), 15%);
+		background: color.adjust(color.adjust($beige, $lightness: -15%), $saturation: -15%);
 		border-radius: 2px;
 	}
 	&:active {
@@ -49,7 +50,7 @@ code {
 	color: $slate;
 	span {
 		border-radius: 2px;
-		background: desaturate(darken($beige, 15%), 15%);
+		background: color.adjust(color.adjust($beige, $lightness: -15%), $saturation: -15%);
 		color: white;
 	}
 }
@@ -118,7 +119,7 @@ input {
 
 button {
 	cursor: pointer;
-	background: darken($green, 5%);
+	background: color.adjust($green, $lightness: -5%);
 	color: white;
 	font-size: 20px;
 	font-weight: 600;

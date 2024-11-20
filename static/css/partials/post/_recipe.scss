@@ -1,185 +1,187 @@
-& {
+@use 'partials/shared/utilities' as *;
+
+.post-recipe {
 	@supports (container-type: inline-size) {
 		container-type: inline-size;
 		container-name: recipe;
 	}
-}
 
-.post-header {
-	position: relative;
-	h2 {
-		order: 2;
-		font-size: 2.5rem;
-		line-height: 1.1;
-		@include font-weight-width(800, 130);
-		@include container(recipe, medium, $medium) {
-			font-size: 3rem;
-		}
-		a {
-			transition: color .1s ease-out, text-decoration-color .1s ease-out, text-underline-offset .1s ease-out;
-			display: inline-block;
-			position: relative;
-			text-decoration: underline;
-			text-underline-offset: 8px;
-
-			@include theme(light) {
-				color: hsl(from var(--color-primary) h s l / .9);
-				text-decoration-color: hsl(from var(--color-primary) h s l / 0);
-				&:hover, &:focus {
-					--color-mix: color-mix(
-						in srgb,
-						var(--color-slate) 80%,
-						var(--color-mint)
-					);
-					color: var(--color-mix);
-					text-decoration-color: color-mix(
-						in srgb,
-						var(--color-mix) 60%,
-						white
-					);
-				}
-				&:active {
-					color: var(--color-primary);
-					text-decoration-color: var(--color-primary);
-				}
-			}
-
-			@include theme(dark) {
-				color: hsl(from var(--color-primary) h s l / .75);
-				text-decoration-color: hsl(from var(--color-primary) h s l / 0);
-				&:hover, &:focus {
-					color: var(--color-primary);
-					text-decoration-color: hsl(from var(--color-primary) h s l / .75);
-				}
-				&:active {
-					--color-mix: color-mix(
-						in srgb,
-						var(--color-slate) 80%,
-						var(--color-mint)
-					);
-					color: var(--color-mix);
-					text-decoration-color: var(--color-mix);
-				}
-			}
-
-			@include contrast(both) {
-				text-underline-offset: 4px;
-			}
-
-			&:hover, &:focus, &:active {
-				text-underline-offset: 4px;
-			}
-		}
-	}
-	time {
-		--color-mix: color-mix(
-			in srgb,
-			hsl(from var(--color-slate) h s calc(l * .6)),
-			hsl(from var(--color-mint) h calc(s * .5) l)
-		);
-		transition: translate .2s ease-out;
-		order: 1;
-		margin-bottom: var(--p);
-		color: white;
-		background-color: var(--color-mix);
-		&::after {
-			@include contrast(both) {
-				background-color: var(--color-mix);
-			}
-		}
-	}
-	.post-header-content {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
+	.post-header {
 		position: relative;
-		z-index: 2;
-		padding: calc(var(--p)*2) calc(var(--p)*2) 0;
-	}
-	.post-header-image {
-		picture {
-			@include viewport($iphone-max) {
-				@include clip-path-edges(2px, up);
+		h2 {
+			order: 2;
+			font-size: 2.5rem;
+			line-height: 1.1;
+			@include font-weight-width(800, 130);
+			@include container(recipe, medium, $medium) {
+				font-size: 3rem;
+			}
+			a {
+				transition: color .1s ease-out, text-decoration-color .1s ease-out, text-underline-offset .1s ease-out;
+				display: inline-block;
+				position: relative;
+				text-decoration: underline;
+				text-underline-offset: 8px;
+
+				@include theme(light) {
+					color: hsl(from var(--color-primary) h s l / .9);
+					text-decoration-color: hsl(from var(--color-primary) h s l / 0);
+					&:hover, &:focus {
+						--color-mix: color-mix(
+							in srgb,
+							var(--color-slate) 80%,
+							var(--color-mint)
+						);
+						color: var(--color-mix);
+						text-decoration-color: color-mix(
+							in srgb,
+							var(--color-mix) 60%,
+							white
+						);
+					}
+					&:active {
+						color: var(--color-primary);
+						text-decoration-color: var(--color-primary);
+					}
+				}
+
+				@include theme(dark) {
+					color: hsl(from var(--color-primary) h s l / .75);
+					text-decoration-color: hsl(from var(--color-primary) h s l / 0);
+					&:hover, &:focus {
+						color: var(--color-primary);
+						text-decoration-color: hsl(from var(--color-primary) h s l / .75);
+					}
+					&:active {
+						--color-mix: color-mix(
+							in srgb,
+							var(--color-slate) 80%,
+							var(--color-mint)
+						);
+						color: var(--color-mix);
+						text-decoration-color: var(--color-mix);
+					}
+				}
+
+				@include contrast(both) {
+					text-underline-offset: 4px;
+				}
+
+				&:hover, &:focus, &:active {
+					text-underline-offset: 4px;
+				}
+			}
+		}
+		time {
+			--color-mix: color-mix(
+				in srgb,
+				hsl(from var(--color-slate) h s calc(l * .6)),
+				hsl(from var(--color-mint) h calc(s * .5) l)
+			);
+			transition: translate .2s ease-out;
+			order: 1;
+			margin-bottom: var(--p);
+			color: white;
+			background-color: var(--color-mix);
+			&::after {
+				@include contrast(both) {
+					background-color: var(--color-mix);
+				}
+			}
+		}
+		.post-header-content {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			position: relative;
+			z-index: 2;
+			padding: calc(var(--p)*2) calc(var(--p)*2) 0;
+		}
+		.post-header-image {
+			picture {
+				@include viewport($iphone-max) {
+					@include clip-path-edges(2px, up);
+				}
 			}
 		}
 	}
-}
 
-.post-meta {
-	display: flex;
-	flex-wrap: wrap;
-	gap: calc(var(--p) * 2);
-	margin-top: calc(var(--p)*1.5);
-	padding: calc(var(--p)*2);
-	background-color: hsl(from var(--color-mint) h s l / .15);
-	@include contrast(both) {
-		border-top: 1.5px solid var(--color-primary);
-		border-bottom: 1.5px solid var(--color-primary);
-		background-color: hsl(from var(--color-mint) h s l / .1);
-	}
-	.recipe-servings {
-		width: 100%;
-	}
-	&:has(.recipe-prep:last-child) {
+	.post-meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: calc(var(--p) * 2);
+		margin-top: calc(var(--p)*1.5);
+		padding: calc(var(--p)*2);
+		background-color: hsl(from var(--color-mint) h s l / .15);
+		@include contrast(both) {
+			border-top: 1.5px solid var(--color-primary);
+			border-bottom: 1.5px solid var(--color-primary);
+			background-color: hsl(from var(--color-mint) h s l / .1);
+		}
 		.recipe-servings {
-			width: auto;
-			@include viewport(medium) {
-				text-align: initial;
+			width: 100%;
+		}
+		&:has(.recipe-prep:last-child) {
+			.recipe-servings {
+				width: auto;
+				@include viewport(medium) {
+					text-align: initial;
+				}
 			}
 		}
-	}
-	strong {
-		font-weight: 600;
-	}
-}
-
-.post-content {
-	padding: calc(var(--p)*2);
-
-	h2 {
-		font-size: 2rem;
-	}
-
-	a, pre, button {
-		&:focus-visible {
-			@include theme(light) {
-				@include focus-shadow(hsl(from var(--color-mint) h s l / .5));
-			}
-			@include theme(dark) {
-				@include focus-shadow(var(--color-mint));
-			}
+		strong {
+			font-weight: 600;
 		}
 	}
-}
 
-.button {
-	@include recipe-button;
-}
+	.post-content {
+		padding: calc(var(--p)*2);
 
-.post-footer {
-	display: flex;
-	flex-flow: row wrap;
-	&:not(:empty) {
-		margin-top: calc(var(--p)*-1.5);
-		padding: 0 calc(var(--p)*2) calc(var(--p)*2);
-	}
-	.button {
-		margin-top: var(--p);
-		line-height: 1.334;
-		&:not(:last-child) {
-			margin-right: var(--p);
-		}
-		&.hide {
-			display: none;
-		}
-	}
-	.emoji {
-		width: 100%;
-		text-align: center;
-		margin-top: calc(var(--p)*2);
-		&::before {
-			content: var(--emoji);
+		h2 {
 			font-size: 2rem;
+		}
+
+		a, pre, button {
+			&:focus-visible {
+				@include theme(light) {
+					@include focus-shadow(hsl(from var(--color-mint) h s l / .5));
+				}
+				@include theme(dark) {
+					@include focus-shadow(var(--color-mint));
+				}
+			}
+		}
+	}
+
+	.button {
+		@include recipe-button;
+	}
+
+	.post-footer {
+		display: flex;
+		flex-flow: row wrap;
+		&:not(:empty) {
+			margin-top: calc(var(--p)*-1.5);
+			padding: 0 calc(var(--p)*2) calc(var(--p)*2);
+		}
+		.button {
+			margin-top: var(--p);
+			line-height: 1.334;
+			&:not(:last-child) {
+				margin-right: var(--p);
+			}
+			&.hide {
+				display: none;
+			}
+		}
+		.emoji {
+			width: 100%;
+			text-align: center;
+			margin-top: calc(var(--p)*2);
+			&::before {
+				content: var(--emoji);
+				font-size: 2rem;
+			}
 		}
 	}
 }

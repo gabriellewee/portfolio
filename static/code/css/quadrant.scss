@@ -1,5 +1,6 @@
-@import url("https://use.typekit.net/ytd4ine.css");
-@import 'reset';
+@use 'sass:color';
+@use 'reset';
+@import url('https://use.typekit.net/ytd4ine.css');
 
 $p: 12px;
 
@@ -52,10 +53,10 @@ div {
 		width: 100%;
 		border-radius: $p;
 		background: white;
-		color: darken(#a49596, 15%);
+		color: color.adjust(#a49596, $lightness: -15%);
 		font-size: $p*2;
 		line-height: 1.4;
 		font-weight: 500;
-		box-shadow: 0 5px 5px rgba(darken(#a49596, 50%), .2);
+		box-shadow: 0 5px 5px rgba(color.adjust(#a49596, $lightness: -50%), .2);
 	}
 }

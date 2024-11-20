@@ -1,6 +1,2 @@
-@import 'partials/shared/utilities';
-@import 'partials/post/post';
-
-.post-media {
-	@import 'partials/post/media';
-}
+@use 'partials/post/post';
+@use 'partials/post/media';

@@ -31,7 +31,11 @@
 		position: relative;
 		z-index: 99999;
 		font-size: 16px;
-		background-color: mix(#d34836, white, 75%);
+		background-color: color-mix(
+			in srgb,
+			#d34836 75%,
+			white
+		);
 		color: white;
 		a {
 			color: white;
@@ -40,7 +44,11 @@
 	}
 	&.v2 {
 		font-size: 16px;
-		background-color: mix(#444349, #737375);
+		background-color: color-mix(
+			in srgb,
+			#444349,
+			#737375
+		);
 		color: white;
 		a {
 			color: white;
@@ -50,7 +58,11 @@
 	}
 	&.v3 {
 		font-size: 18px;
-		background-color: mix(#AEBFAF, #495453);
+		background-color: color-mix(
+			in srgb,
+			#AEBFAF,
+			#495453
+		);
 		color: white;
 		a {
 			color: white;

@@ -1,3 +1,5 @@
+@use 'partials/shared/utilities' as *;
+
 .posts {
 	display: grid;
 	grid-gap: calc(var(--p)*2);

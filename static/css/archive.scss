@@ -1,4 +1,4 @@
-@import 'partials/shared/utilities';
+@use 'partials/shared/utilities' as *;
 
 .posts-archive {
 	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));

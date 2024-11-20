@@ -1,189 +1,193 @@
-.post-header {
-	padding: calc(var(--p) * 2) calc(var(--p) * 2) var(--p);
-	@supports (container-type: inline-size) {
-		container-type: inline-size;
-		container-name: header;
-	}
-	.post-header-content {
-		display: flex;
-		flex-wrap: nowrap;
-		align-items: flex-start;
-		@include container(header, medium, $iphone-max) {
-			justify-content: flex-end;
-		}
-	}
-}
+@use 'partials/shared/utilities' as *;
 
-.post-content {
-	padding: 0 calc(var(--p) * 2);
-	font-size: 1.25rem;
-	@include font-weight-width(450, 110);
-	@include theme(light) {
-		color: color-mix(
-			in srgb,
-			var(--color-iron) 90%,
-			white
-		);
-	}
-	@include theme(dark) {
-		color: hsl(from white h s l / .8);
-	}
-	@include contrast(both) {
-		color: var(--color-primary);
-	}
-	a {
-		text-decoration: underline;
-		text-underline-offset: 2px;
-	}
-}
-
-.post-footer {
-	display: flex;
-	flex-flow: row wrap;
-	&:not(:empty) {
-		margin-top: calc(var(--p)/2);
-		padding: 0 calc(var(--p)*2) calc(var(--p)*2);
-	}
-	.button-social {
-		margin-top: var(--p);
-		&:not(:last-child) {
-			margin-right: var(--p);
-		}
-	}
-}
-
-.media-attachment {
-	display: block;
-	position: relative;
-	margin-top: 1em;
-	width: auto;
-	+ .media-attachment {
-		margin-top: calc(var(--p)*2);
-	}
-	.expand {
-		transition: scale .2s ease-out;
-		display: block;
-		&::before {
-			background: radial-gradient(
-				circle at center left,
-				var(--color-rose),
-				var(--color-mauve)
-			);
-			@include before;
-		}
-		&:focus-visible {
-			&::before {
-				opacity: 1;
-			}
-		}
-		&:active {
-			@media (prefers-reduced-motion: no-preference) {
-				scale: .98;
-			}
-		}
-	}
-	video {
-		width: 100%;
-		height: auto;
-	}
-	img, video {
-		@include clip-path-edges(2px);
-	}
-}
-
-&.post-mastodon {
-	&.post-size-xs {
-		@include viewport(medium) {
-			min-width: 290px;
-		}
-	}
+.post-social {
 	.post-header {
-		time {
-			--color-mix: color-mix(
+		padding: calc(var(--p) * 2) calc(var(--p) * 2) var(--p);
+		@supports (container-type: inline-size) {
+			container-type: inline-size;
+			container-name: header;
+		}
+		.post-header-content {
+			display: flex;
+			flex-wrap: nowrap;
+			align-items: flex-start;
+			@include container(header, medium, $iphone-max) {
+				justify-content: flex-end;
+			}
+		}
+	}
+
+	.post-content {
+		padding: 0 calc(var(--p) * 2);
+		font-size: 1.25rem;
+		@include font-weight-width(450, 110);
+		@include theme(light) {
+			color: color-mix(
 				in srgb,
-				hsl(from var(--color-mastodon) h calc(s * .3) l) 40%,
-				hsl(from var(--color-slate) h s calc(l * .8))
+				var(--color-iron) 90%,
+				white
 			);
-			background-color: var(--color-mix);
-			&::after {
-				@include contrast(both) {
-					background-color: var(--color-mix);
+		}
+		@include theme(dark) {
+			color: hsl(from white h s l / .8);
+		}
+		@include contrast(both) {
+			color: var(--color-primary);
+		}
+		a {
+			text-decoration: underline;
+			text-underline-offset: 2px;
+		}
+	}
+
+	.post-footer {
+		display: flex;
+		flex-flow: row wrap;
+		&:not(:empty) {
+			margin-top: calc(var(--p)/2);
+			padding: 0 calc(var(--p)*2) calc(var(--p)*2);
+		}
+		.button-social {
+			margin-top: var(--p);
+			&:not(:last-child) {
+				margin-right: var(--p);
+			}
+		}
+	}
+
+	.media-attachment {
+		display: block;
+		position: relative;
+		margin-top: 1em;
+		width: auto;
+		+ .media-attachment {
+			margin-top: calc(var(--p)*2);
+		}
+		.expand {
+			transition: scale .2s ease-out;
+			display: block;
+			&::before {
+				background: radial-gradient(
+					circle at center left,
+					var(--color-rose),
+					var(--color-mauve)
+				);
+				@include before;
+			}
+			&:focus-visible {
+				&::before {
+					opacity: 1;
+				}
+			}
+			&:active {
+				@media (prefers-reduced-motion: no-preference) {
+					scale: .98;
 				}
 			}
 		}
+		video {
+			width: 100%;
+			height: auto;
+		}
+		img, video {
+			@include clip-path-edges(2px);
+		}
 	}
-	.post-content {
-		p {
-			line-height: 1.2;
-			+ p {
-				margin-top: .75em;
+
+	&.post-mastodon {
+		&.post-size-xs {
+			@include viewport(medium) {
+				min-width: 290px;
 			}
 		}
-		a:not(.expand) {
-			@include theme(light) {
-				color: color-mix(
+		.post-header {
+			time {
+				--color-mix: color-mix(
 					in srgb,
-					var(--color-mastodon) 40%,
-					var(--color-mastodon-dark)
+					hsl(from var(--color-mastodon) h calc(s * .3) l) 40%,
+					hsl(from var(--color-slate) h s calc(l * .8))
 				);
+				background-color: var(--color-mix);
+				&::after {
+					@include contrast(both) {
+						background-color: var(--color-mix);
+					}
+				}
 			}
-			@include theme(dark) {
-				color: color-mix(
-					in srgb,
-					hsl(from var(--color-mastodon) h s calc(l * 1.1)) 90%,
-					white
-				);
+		}
+		.post-content {
+			p {
+				line-height: 1.2;
+				+ p {
+					margin-top: .75em;
+				}
 			}
-			&:hover, &:focus {
+			a:not(.expand) {
 				@include theme(light) {
-					color: var(--color-mastodon-light);
+					color: color-mix(
+						in srgb,
+						var(--color-mastodon) 40%,
+						var(--color-mastodon-dark)
+					);
 				}
 				@include theme(dark) {
 					color: color-mix(
 						in srgb,
-						hsl(from var(--color-mastodon) h s calc(l * 1.2)) 90%,
+						hsl(from var(--color-mastodon) h s calc(l * 1.1)) 90%,
 						white
 					);
 				}
-			}
-			&:focus-visible {
-				@include theme(light) {
-					--color-mix: color-mix(
-						in srgb,
-						hsl(from var(--color-mastodon) h s calc(l * 1.15) / .75) 90%,
-						hsl(from white h s l / .75)
-					);
+				&:hover, &:focus {
+					@include theme(light) {
+						color: var(--color-mastodon-light);
+					}
+					@include theme(dark) {
+						color: color-mix(
+							in srgb,
+							hsl(from var(--color-mastodon) h s calc(l * 1.2)) 90%,
+							white
+						);
+					}
 				}
-				@include theme(dark) {
-					--color-mix: color-mix(
-						in srgb,
-						hsl(from var(--color-mastodon) h s calc(l * 1.15) / .9) 90%,
-						hsl(from white h s l / .9)
-					);
+				&:focus-visible {
+					@include theme(light) {
+						--color-mix: color-mix(
+							in srgb,
+							hsl(from var(--color-mastodon) h s calc(l * 1.15) / .75) 90%,
+							hsl(from white h s l / .75)
+						);
+					}
+					@include theme(dark) {
+						--color-mix: color-mix(
+							in srgb,
+							hsl(from var(--color-mastodon) h s calc(l * 1.15) / .9) 90%,
+							hsl(from white h s l / .9)
+						);
+					}
+					& {
+						@include focus-shadow(var(--color-mix));
+					}
 				}
-				& {
-					@include focus-shadow(var(--color-mix));
-				}
-			}
-			&:active {
-				@include theme(light) {
-					color: var(--color-mastodon-dark);
-				}
-				@include theme(dark) {
-					color: var(--color-mastodon-light);
+				&:active {
+					@include theme(light) {
+						color: var(--color-mastodon-dark);
+					}
+					@include theme(dark) {
+						color: var(--color-mastodon-light);
+					}
 				}
 			}
 		}
-	}
-	.media-attachment a::before {
-		background: radial-gradient(
-			circle at center left,
-			color-mix(
-				in srgb,
-				var(--color-mastodon) 40%,
-				white
-			),
-			var(--color-mastodon-light)
-		);
+		.media-attachment a::before {
+			background: radial-gradient(
+				circle at center left,
+				color-mix(
+					in srgb,
+					var(--color-mastodon) 40%,
+					white
+				),
+				var(--color-mastodon-light)
+			);
+		}
 	}
 }

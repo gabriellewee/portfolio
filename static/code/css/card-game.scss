@@ -1,5 +1,6 @@
-@import url("https://use.typekit.net/ytd4ine.css");
-@import 'reset';
+@use 'sass:color';
+@use 'reset';
+@import url('https://use.typekit.net/ytd4ine.css');
 
 $red: #F04F54;
 $black: #40484b;
@@ -95,16 +96,16 @@ button {
 		transition: all 250ms ease-out;
 	}
 	&:hover, &:focus {
-		background: mix(white, $green);
-		color: mix($black, $green);
+		background: color.mix(white, $green);
+		color: color.mix($black, $green);
 		svg {
 			* {
-				stroke: mix($black, $green);
+				stroke: color.mix($black, $green);
 			}
 		}
 	}
 	&:active {
-		background: mix($black, $green);
+		background: color.mix($black, $green);
 		color: white;
 		svg {
 			* {
@@ -195,11 +196,11 @@ button {
 		height: 64px;
 		min-width: 256px;
 		&:hover, &:focus {
-			background: mix(white, $green);
-			color: mix($black, $green);
+			background: color.mix(white, $green);
+			color: color.mix($black, $green);
 		}
 		&:active {
-			background: mix($black, $green);
+			background: color.mix($black, $green);
 			color: white;
 		}
 	}
@@ -464,7 +465,7 @@ button {
 					> div {
 						width: 36px;
 						height: 36px;
-						background: mix(white, $black, 80%);
+						background: color.mix(white, $black, 80%);
 						transform: translate3d(0,-100%,0);
 					}
 				}

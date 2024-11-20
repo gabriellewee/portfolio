@@ -1,4 +1,5 @@
-@import 'reset';
+@use 'sass:list';
+@use 'reset';
 
 $p: 12px;
 $types: (
@@ -23,7 +24,7 @@ $types: (
 );
 
 @mixin nth($a...) {
-	@for $i from nth($a, 1) through nth($a, length($a)) {
+	@for $i from list.nth($a, 1) through list.nth($a, list.length($a)) {
 		&:nth-child(#{$i}) {
 			@content;
 		}

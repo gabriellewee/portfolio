@@ -1,256 +1,294 @@
-.post-inner {
-	transition: scale .2s ease-out;
-	clip-path: unset;
-	overflow: unset;
-	background: unset;
-	&::before {
-		@include viewport($iphone-max) {
-			z-index: -1;
-			background: radial-gradient(
-				circle at center left,
-				var(--color-rose),
-				var(--color-mauve)
-			);
-			@include before;
-		}
-		@media (prefers-reduced-motion: reduce) {
-			transition: opacity .2s ease-out;
-		}
-	}
-	&::after {
-		@include viewport($iphone-max) {
-			@include contrast(both) {
-				z-index: -2;
-				background-color: var(--color-primary);
-				@include full-offset(1.5px);
-				@include clip-path-edges(3px);
-			}
-		}
-	}
-}
+@use 'partials/shared/utilities' as *;
 
-figure {
-	@include viewport($iphone-max) {
-		@include clip-path-edges(2px);
-	}
-	@supports (container-type: size) {
-		width: 100%;
-		height: auto;
-		container-type: size;
-		container-name: metadata;
-	}
-}
-
-.media-view-touch {
-	display: block;
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	padding: calc(var(--p)*.75) var(--p);
-	color: hsl(from white h s l / .8);
-	font-size: 1rem;
-	text-transform: uppercase;
-	@include font-weight-width(600, 80);
-	@include blur(3px, var(--color-iron), .45, .5, .3);
-	@include clip-path(false) {
-		border-top-left-radius: 3px;
-	}
-	@include clip-path {
-		clip-path: polygon(2px 0, 100% 0, 100% 100%, 0 100%, 0 2px);
-	}
-	@include hover {
-		display: none;
-	}
-}
-
-.media-view-hover {
-	opacity: 0;
-	transition: opacity .2s ease-out;
-	display: none;
-	background: linear-gradient(
-		to bottom,
-		hsl(from var(--color-iron) h s calc(l * .45) / .7) 0,
-		hsl(from var(--color-iron) h s calc(l * .45) / .2) 45%,
-		hsl(from var(--color-iron) h s calc(l * .45) / 0) 100%
-	);
-	@include full-offset(0);
-	@include hover {
-		display: flex;
-	}
-	.button {
-		--contrast: white;
-
-		transition: translate .2s ease-out, scale .2s ease-out;
-		position: absolute;
-		display: inline-block;
-		top: calc(var(--p)*2);
-		right: calc(var(--p)*2);
-		@media (prefers-reduced-motion: no-preference) {
-			translate: 0 100%;
-		}
-	}
-}
-
-figcaption {
-	transition: opacity .3s ease-out, translate .3s ease-out;
-	opacity: 0;
-	min-height: 100%;
-	background-color: hsl(from var(--color-iron) h s calc(l * .45) / .9);
-	color: white;
-	font-size: 1.125rem;
-	@include full-offset(0);
-	@include font-weight-width(700, 120);
-	@media (prefers-reduced-motion: no-preference) {
-		translate: 0 50%;
-	}
-	@supports not(container-type: inline-size) {
-		@media only screen and (min-width: 450px) {
-			font-size: 1.25rem;
-		}
-		@include viewport(medium) {
-			font-size: 1.125rem;
-		}
-		@include viewport($ipad-11) {
-			font-size: 1.25rem;
-		}
-	}
-	@container metadata (min-width: 400px) {
-		font-size: 1.25rem;
-	}
-	.media-data-wrapper {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: flex-start;
-		align-content: flex-start;
-		justify-content: space-between;
-		padding: calc(var(--p)*2);
-		overflow-y: auto;
-		mask-image: linear-gradient(
-			to bottom,
-			rgba(black, 1),
-			rgba(black, 0)),
-		linear-gradient(
-			to bottom,
-			rgba(black, 1),
-			rgba(black, 1)
-		);
-		mask-position: bottom center, top center;
-		mask-repeat: no-repeat, no-repeat;
-		mask-size: 100% calc(var(--p)*2.5), 100% calc(100% - var(--p)*2.5);
-		@include full-size;
-	}
-	.time-default {
-		background-color: hsl(from var(--color-iron) h s calc(l * .35) / .9);
-		@include reduce-transparency {
-			background-color: hsl(from var(--color-iron) h s calc(l * .35));
-		}
+.post-media {
+	.post-inner {
+		transition: scale .2s ease-out;
+		clip-path: unset;
+		overflow: unset;
+		background: unset;
 		&::before {
-			@include contrast(light) {
-				background-color: hsl(from white h s l / .8);
+			@include viewport($iphone-max) {
+				z-index: -1;
+				background: radial-gradient(
+					circle at center left,
+					var(--color-rose),
+					var(--color-mauve)
+				);
+				@include before;
+			}
+			@media (prefers-reduced-motion: reduce) {
+				transition: opacity .2s ease-out;
+			}
+		}
+		&::after {
+			@include viewport($iphone-max) {
+				@include contrast(both) {
+					z-index: -2;
+					background-color: var(--color-primary);
+					@include full-offset(1.5px);
+					@include clip-path-edges(3px);
+				}
 			}
 		}
 	}
-	.media-icon {
-		display: block;
-		@include square(25px);
-	}
-	label {
-		cursor: pointer;
-	}
-	.media-down {
-		position: absolute;
-		top: 0;
-		right: 0;
-		@include square(40px + 18px + 8px);
-		background: url(/static/images/svg/icons/caret-down.svg) no-repeat center / 25px;
-	}
-	.media-thumbnail {
-		display: flex;
-		position: relative;
-		width: 100%;
-		margin-top: calc(var(--p) * 1.5);
-		@include container(metadata, $iphone, "(min-width: #{$iphone-mini}) and (min-height: 400px)") {
-			margin-top: calc(var(--p) * 2);
+
+	figure {
+		@include viewport($iphone-max) {
+			@include clip-path-edges(2px);
 		}
-		.media-expand {
-			transition: scale .2s ease-out;
-			position: relative;
+		@supports (container-type: size) {
+			width: 100%;
+			height: auto;
+			container-type: size;
+			container-name: metadata;
+		}
+	}
+
+	.media-view-touch {
+		display: block;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		padding: calc(var(--p)*.75) var(--p);
+		color: hsl(from white h s l / .8);
+		font-size: 1rem;
+		text-transform: uppercase;
+		@include font-weight-width(600, 80);
+		@include blur(3px, var(--color-iron), .45, .5, .3);
+		@include clip-path(false) {
+			border-top-left-radius: 3px;
+		}
+		@include clip-path {
+			clip-path: polygon(2px 0, 100% 0, 100% 100%, 0 100%, 0 2px);
+		}
+		@include hover {
+			display: none;
+		}
+	}
+
+	.media-view-hover {
+		opacity: 0;
+		transition: opacity .2s ease-out;
+		display: none;
+		background: linear-gradient(
+			to bottom,
+			hsl(from var(--color-iron) h s calc(l * .45) / .7) 0,
+			hsl(from var(--color-iron) h s calc(l * .45) / .2) 45%,
+			hsl(from var(--color-iron) h s calc(l * .45) / 0) 100%
+		);
+		@include full-offset(0);
+		@include hover {
 			display: flex;
-			align-items: center;
-			color: white;
-			&::before, &::after {
-				content: "";
-				display: block;
+		}
+		.button {
+			--contrast: white;
+
+			transition: translate .2s ease-out, scale .2s ease-out;
+			position: absolute;
+			display: inline-block;
+			top: calc(var(--p)*2);
+			right: calc(var(--p)*2);
+			@media (prefers-reduced-motion: no-preference) {
+				translate: 0 100%;
+			}
+		}
+	}
+
+	figcaption {
+		transition: opacity .3s ease-out, translate .3s ease-out;
+		opacity: 0;
+		min-height: 100%;
+		background-color: hsl(from var(--color-iron) h s calc(l * .45) / .9);
+		color: white;
+		font-size: 1.125rem;
+		@include full-offset(0);
+		@include font-weight-width(700, 120);
+		@media (prefers-reduced-motion: no-preference) {
+			translate: 0 50%;
+		}
+		@supports not(container-type: inline-size) {
+			@media only screen and (min-width: 450px) {
+				font-size: 1.25rem;
+			}
+			@include viewport(medium) {
+				font-size: 1.125rem;
+			}
+			@include viewport($ipad-11) {
+				font-size: 1.25rem;
+			}
+		}
+		@container metadata (min-width: 400px) {
+			font-size: 1.25rem;
+		}
+		.media-data-wrapper {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: flex-start;
+			align-content: flex-start;
+			justify-content: space-between;
+			padding: calc(var(--p)*2);
+			overflow-y: auto;
+			mask-image: linear-gradient(
+				to bottom,
+				rgba(black, 1),
+				rgba(black, 0)),
+			linear-gradient(
+				to bottom,
+				rgba(black, 1),
+				rgba(black, 1)
+			);
+			mask-position: bottom center, top center;
+			mask-repeat: no-repeat, no-repeat;
+			mask-size: 100% calc(var(--p)*2.5), 100% calc(100% - var(--p)*2.5);
+			@include full-size;
+		}
+		.time-default {
+			background-color: hsl(from var(--color-iron) h s calc(l * .35) / .9);
+			@include reduce-transparency {
+				background-color: hsl(from var(--color-iron) h s calc(l * .35));
 			}
 			&::before {
-				position: relative;
-				z-index: 3;
-				background: url(/static/images/svg/icons/expand.svg) no-repeat center / cover;
-				@include square(25px);
+				@include contrast(light) {
+					background-color: hsl(from white h s l / .8);
+				}
 			}
-			&::after {
-				@include before(white);
+		}
+		.media-icon {
+			display: block;
+			@include square(25px);
+		}
+		label {
+			cursor: pointer;
+		}
+		.media-down {
+			position: absolute;
+			top: 0;
+			right: 0;
+			@include square(40px + 18px + 8px);
+			background: url(/static/images/svg/icons/caret-down.svg) no-repeat center / 25px;
+		}
+		.media-thumbnail {
+			display: flex;
+			position: relative;
+			width: 100%;
+			margin-top: calc(var(--p) * 1.5);
+			@include container(metadata, $iphone, "(min-width: #{$iphone-mini}) and (min-height: 400px)") {
+				margin-top: calc(var(--p) * 2);
 			}
-
-			.has-image {
-				display: block;
+			.media-expand {
+				transition: scale .2s ease-out;
 				position: relative;
-				&::after {
+				display: flex;
+				align-items: center;
+				color: white;
+				&::before, &::after {
 					content: "";
 					display: block;
-					z-index: 2;
-					background: linear-gradient(
-						to bottom,
-						hsl(from var(--color-iron) h s calc(l * .45) / .7) 0,
-						hsl(from var(--color-iron) h s calc(l * .45) / 0) 45%
-					);
-					@include full-offset(0);
-					@include clip-path-edges(2px);
 				}
-			}
-			.no-image {
-				transition: all .1s ease-out;
-				opacity: .7;
-				margin-left: calc(var(--p) * .75);
-				display: block;
-				text-decoration: underline;
-				text-underline-offset: 8px;
-				text-decoration-color: hsl(from white h s l / 0);
-				@include contrast(both) {
-					text-underline-offset: 4px;
-					text-decoration-color: unset;
+				&::before {
+					position: relative;
+					z-index: 3;
+					background: url(/static/images/svg/icons/expand.svg) no-repeat center / cover;
+					@include square(25px);
 				}
-			}
+				&::after {
+					@include before(white);
+				}
 
-			&:hover, &:focus {
-				.no-image {
-					opacity: 1;
-					text-decoration-color: white;
-				}
-			}
-
-			&:focus-visible {
-				.no-image {
-					@include contrast(both) {
-						@include focus-shadow(hsl(from white h s l / .8));
+				.has-image {
+					display: block;
+					position: relative;
+					&::after {
+						content: "";
+						display: block;
+						z-index: 2;
+						background: linear-gradient(
+							to bottom,
+							hsl(from var(--color-iron) h s calc(l * .45) / .7) 0,
+							hsl(from var(--color-iron) h s calc(l * .45) / 0) 45%
+						);
+						@include full-offset(0);
+						@include clip-path-edges(2px);
 					}
 				}
-			}
-
-			&:hover, &:focus, &:active {
 				.no-image {
-					text-underline-offset: 4px;
+					transition: all .1s ease-out;
+					opacity: .7;
+					margin-left: calc(var(--p) * .75);
+					display: block;
+					text-decoration: underline;
+					text-underline-offset: 8px;
+					text-decoration-color: hsl(from white h s l / 0);
+					@include contrast(both) {
+						text-underline-offset: 4px;
+						text-decoration-color: unset;
+					}
 				}
-			}
 
-			&:active {
-				&::before, .no-image {
-					opacity: .2;
+				&:hover, &:focus {
+					.no-image {
+						opacity: 1;
+						text-decoration-color: white;
+					}
 				}
-			}
 
-			@supports not(container-type: size) {
-				@include viewport($iphone) {
+				&:focus-visible {
+					.no-image {
+						@include contrast(both) {
+							@include focus-shadow(hsl(from white h s l / .8));
+						}
+					}
+				}
+
+				&:hover, &:focus, &:active {
+					.no-image {
+						text-underline-offset: 4px;
+					}
+				}
+
+				&:active {
+					&::before, .no-image {
+						opacity: .2;
+					}
+				}
+
+				@supports not(container-type: size) {
+					@include viewport($iphone) {
+						&:hover {
+							@media (prefers-reduced-motion: no-preference) {
+								scale: 1.02;
+							}
+							@media (prefers-reduced-motion: reduce) {
+								&::after {
+									opacity: 1;
+								}
+							}
+						}
+						&:focus-visible {
+							&::after {
+								opacity: 1;
+							}
+						}
+						&:active {
+							@media (prefers-reduced-motion: no-preference) {
+								scale: .98;
+							}
+							&::before {
+								opacity: 1;
+							}
+						}
+						&::before {
+							position: absolute;
+							top: var(--p);
+							left: var(--p);
+						}
+						.no-image {
+							display: none;
+						}
+					}
+				}
+
+				@container metadata (min-width: #{$iphone-mini}) and (min-height: 400px) {
 					&:hover {
 						@media (prefers-reduced-motion: no-preference) {
 							scale: 1.02;
@@ -284,273 +322,220 @@ figcaption {
 					}
 				}
 			}
-
-			@container metadata (min-width: #{$iphone-mini}) and (min-height: 400px) {
-				&:hover {
-					@media (prefers-reduced-motion: no-preference) {
-						scale: 1.02;
+			picture {
+				position: relative;
+				z-index: 1;
+				width: 150px;
+				display: none;
+				@include clip-path-edges(2px);
+				@supports not(container-type: size) {
+					@include viewport($iphone) {
+						display: block;
 					}
-					@media (prefers-reduced-motion: reduce) {
-						&::after {
-							opacity: 1;
+					@media only screen and (min-width: 450px) {
+						width: 200px;
+					}
+					@include viewport(medium) {
+						width: 150px;
+					}
+					@include viewport($ipad-11) {
+						width: 200px;
+					}
+				}
+				@container metadata (min-width: #{$iphone-mini}) and (min-height: 400px) {
+					display: block;
+				}
+				@container metadata (min-width: 400px) {
+					width: 200px;
+				}
+			}
+			+ * {
+				margin-top: var(--p);
+				@include container(metadata, $iphone, "(min-width: #{$iphone-mini}) and (min-height: 400px)") {
+					margin-top: calc(var(--p) * 1.5);
+				}
+				+ * {
+					margin-top: calc(var(--p) * 1.5);
+				}
+			}
+		}
+		.media-links {
+			display: flex;
+			flex-wrap: wrap;
+		}
+		.media-link {
+			display: flex;
+			align-items: center;
+			color: white;
+			line-height: 1.2;
+			margin-right: calc(var(--p)*1.25);
+			&::before {
+				content: "";
+				display: block;
+				box-sizing: content-box;
+				margin-right: calc(var(--p) * .5);
+				padding: 0;
+				@include square(25px);
+			}
+			span {
+				opacity: .7;
+				transition: all .1s ease-out;
+				text-decoration: underline;
+				text-underline-offset: 8px;
+				text-decoration-color: hsl(from white h s l / 0);
+				@include contrast(both) {
+					text-underline-offset: 4px;
+					text-decoration-color: unset;
+				}
+			}
+			&:hover, &:focus {
+				span {
+					opacity: 1;
+					text-decoration-color: white;
+				}
+			}
+			&:focus-visible {
+				span {
+					@include contrast(both) {
+						@include focus-shadow(hsl(from white h s l / .8));
+					}
+				}
+			}
+			&:hover, &:focus, &:active {
+				span {
+					text-underline-offset: 4px;
+				}
+			}
+			&:active {
+				&::before, span {
+					opacity: .2;
+				}
+			}
+
+			&.instagram {
+				&::before {
+					background: url("/static/images/svg/icons/instagram.svg") no-repeat center / 25px;
+				}
+			}
+			&.dribbble {
+				&::before {
+					background: url("/static/images/svg/icons/dribbble.svg") no-repeat center / 25px;
+				}
+			}
+			&.codepen {
+				&::before {
+					background: url("/static/images/svg/icons/codepen.svg") no-repeat center / 25px;
+				}
+			}
+		}
+		.media-meta {
+			width: 100%;
+			line-height: 1.2;
+			@supports (container-type: size) {
+				align-self: center;
+			}
+			@container metadata (min-width: #{$iphone-mini}) {
+				align-self: unset;
+			}
+			div {
+				position: relative;
+				margin-bottom: .25rem;
+			}
+			dt, dd {
+				display: inline;
+			}
+			dt {
+				opacity: .7;
+				&::after {
+					content: ": ";
+				}
+			}
+		}
+	}
+
+	&[data-orientation="landscape"] {
+		figcaption {
+			picture {
+				width: 200px;
+				@supports not(container-type: size) {
+					@media only screen and (min-width: 450px) {
+						width: 250px;
+					}
+					@include viewport(medium) {
+						width: 200px;
+					}
+					@include viewport($ipad-11) {
+						width: 250px;
+					}
+				}
+				@container metadata (min-width: 400px) {
+					width: 250px;
+				}
+			}
+		}
+	}
+
+	.media-trigger {
+		cursor: pointer;
+		appearance: none;
+		z-index: 1;
+		margin: 0;
+		opacity: 0;
+		@include full-offset(0);
+		@include hover {
+			&:hover, &:focus, &:active {
+				+ .post-inner {
+					.media-view-hover {
+						opacity: 1;
+						.button {
+							translate: 0 0;
+							> span {
+								background-position-x: 0%;
+							}
 						}
 					}
 				}
-				&:focus-visible {
-					&::after {
-						opacity: 1;
+			}
+			&:active {
+				+ .post-inner {
+					.media-view-hover {
+						.button {
+							@media (prefers-reduced-motion: no-preference) {
+								@include viewport($iphone-max) {
+									scale: .98;
+								}
+							}
+							&, > span, > span::before {
+								transition: background .2s ease-out, scale .2s ease-out, opacity .2s ease-out;
+							}
+							> span {
+								&::after {
+									opacity: 1;
+								}
+							}
+						}
 					}
 				}
-				&:active {
-					@media (prefers-reduced-motion: no-preference) {
-						scale: .98;
+			}
+		}
+		&:hover {
+			+ .post-inner {
+				@media (prefers-reduced-motion: no-preference) {
+					@include viewport($iphone-max) {
+						scale: 1.01;
 					}
+				}
+				@media (prefers-reduced-motion: reduce) {
 					&::before {
 						opacity: 1;
 					}
 				}
-				&::before {
-					position: absolute;
-					top: var(--p);
-					left: var(--p);
-				}
-				.no-image {
-					display: none;
-				}
-			}
-		}
-		picture {
-			position: relative;
-			z-index: 1;
-			width: 150px;
-			display: none;
-			@include clip-path-edges(2px);
-			@supports not(container-type: size) {
-				@include viewport($iphone) {
-					display: block;
-				}
-				@media only screen and (min-width: 450px) {
-					width: 200px;
-				}
-				@include viewport(medium) {
-					width: 150px;
-				}
-				@include viewport($ipad-11) {
-					width: 200px;
-				}
-			}
-			@container metadata (min-width: #{$iphone-mini}) and (min-height: 400px) {
-				display: block;
-			}
-			@container metadata (min-width: 400px) {
-				width: 200px;
-			}
-		}
-		+ * {
-			margin-top: var(--p);
-			@include container(metadata, $iphone, "(min-width: #{$iphone-mini}) and (min-height: 400px)") {
-				margin-top: calc(var(--p) * 1.5);
-			}
-			+ * {
-				margin-top: calc(var(--p) * 1.5);
-			}
-		}
-	}
-	.media-links {
-		display: flex;
-		flex-wrap: wrap;
-	}
-	.media-link {
-		display: flex;
-		align-items: center;
-		color: white;
-		line-height: 1.2;
-		margin-right: calc(var(--p)*1.25);
-		&::before {
-			content: "";
-			display: block;
-			box-sizing: content-box;
-			margin-right: calc(var(--p) * .5);
-			padding: 0;
-			@include square(25px);
-		}
-		span {
-			opacity: .7;
-			transition: all .1s ease-out;
-			text-decoration: underline;
-			text-underline-offset: 8px;
-			text-decoration-color: hsl(from white h s l / 0);
-			@include contrast(both) {
-				text-underline-offset: 4px;
-				text-decoration-color: unset;
-			}
-		}
-		&:hover, &:focus {
-			span {
-				opacity: 1;
-				text-decoration-color: white;
 			}
 		}
 		&:focus-visible {
-			span {
-				@include contrast(both) {
-					@include focus-shadow(hsl(from white h s l / .8));
-				}
-			}
-		}
-		&:hover, &:focus, &:active {
-			span {
-				text-underline-offset: 4px;
-			}
-		}
-		&:active {
-			&::before, span {
-				opacity: .2;
-			}
-		}
-
-		&.instagram {
-			&::before {
-				background: url("/static/images/svg/icons/instagram.svg") no-repeat center / 25px;
-			}
-		}
-		&.dribbble {
-			&::before {
-				background: url("/static/images/svg/icons/dribbble.svg") no-repeat center / 25px;
-			}
-		}
-		&.codepen {
-			&::before {
-				background: url("/static/images/svg/icons/codepen.svg") no-repeat center / 25px;
-			}
-		}
-	}
-	.media-meta {
-		width: 100%;
-		line-height: 1.2;
-		@supports (container-type: size) {
-			align-self: center;
-		}
-		@container metadata (min-width: #{$iphone-mini}) {
-			align-self: unset;
-		}
-		div {
-			position: relative;
-			margin-bottom: .25rem;
-		}
-		dt, dd {
-			display: inline;
-		}
-		dt {
-			opacity: .7;
-			&::after {
-				content: ": ";
-			}
-		}
-	}
-}
-
-&[data-orientation="landscape"] {
-	figcaption {
-		picture {
-			width: 200px;
-			@supports not(container-type: size) {
-				@media only screen and (min-width: 450px) {
-					width: 250px;
-				}
-				@include viewport(medium) {
-					width: 200px;
-				}
-				@include viewport($ipad-11) {
-					width: 250px;
-				}
-			}
-			@container metadata (min-width: 400px) {
-				width: 250px;
-			}
-		}
-	}
-}
-
-.media-trigger {
-	cursor: pointer;
-	appearance: none;
-	z-index: 1;
-	margin: 0;
-	opacity: 0;
-	@include full-offset(0);
-	@include hover {
-		&:hover, &:focus, &:active {
 			+ .post-inner {
-				.media-view-hover {
-					opacity: 1;
-					.button {
-						translate: 0 0;
-						> span {
-							background-position-x: 0%;
-						}
-					}
-				}
-			}
-		}
-		&:active {
-			+ .post-inner {
-				.media-view-hover {
-					.button {
-						@media (prefers-reduced-motion: no-preference) {
-							@include viewport($iphone-max) {
-								scale: .98;
-							}
-						}
-						&, > span, > span::before {
-							transition: background .2s ease-out, scale .2s ease-out, opacity .2s ease-out;
-						}
-						> span {
-							&::after {
-								opacity: 1;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	&:hover {
-		+ .post-inner {
-			@media (prefers-reduced-motion: no-preference) {
-				@include viewport($iphone-max) {
-					scale: 1.01;
-				}
-			}
-			@media (prefers-reduced-motion: reduce) {
 				&::before {
 					opacity: 1;
-				}
-			}
-		}
-	}
-	&:focus-visible {
-		+ .post-inner {
-			&::before {
-				opacity: 1;
-			}
-		}
-	}
-	&:active {
-		+ .post-inner {
-			@media (prefers-reduced-motion: no-preference) {
-				@include viewport($iphone-max) {
-					scale: .99;
-				}
-			}
-		}
-	}
-	&:checked {
-		z-index: -1;
-		&:hover {
-			+ .post-inner {
-				@media (prefers-reduced-motion: no-preference) {
-					scale: 1;
 				}
 			}
 		}
@@ -563,24 +548,43 @@ figcaption {
 				}
 			}
 		}
-		+ .post-inner {
-			@include hover {
-				.media-view-hover {
-					opacity: 0;
-					.button {
-						@media (prefers-reduced-motion: no-preference) {
-							translate: 0 100%;
+		&:checked {
+			z-index: -1;
+			&:hover {
+				+ .post-inner {
+					@media (prefers-reduced-motion: no-preference) {
+						scale: 1;
+					}
+				}
+			}
+			&:active {
+				+ .post-inner {
+					@media (prefers-reduced-motion: no-preference) {
+						@include viewport($iphone-max) {
+							scale: .99;
 						}
 					}
 				}
 			}
-			.post-content {
-				figcaption {
-					transition: opacity .5s cubic-bezier(.64, 0, .78, 0), translate .5s cubic-bezier(.64, 0, .78, 0);
-					opacity: 1;
-					@include blur(10px, var(--color-iron), .45, .9, .7);
-					@media (prefers-reduced-motion: no-preference) {
-						translate: 0 0;
+			+ .post-inner {
+				@include hover {
+					.media-view-hover {
+						opacity: 0;
+						.button {
+							@media (prefers-reduced-motion: no-preference) {
+								translate: 0 100%;
+							}
+						}
+					}
+				}
+				.post-content {
+					figcaption {
+						transition: opacity .5s cubic-bezier(.64, 0, .78, 0), translate .5s cubic-bezier(.64, 0, .78, 0);
+						opacity: 1;
+						@include blur(10px, var(--color-iron), .45, .9, .7);
+						@media (prefers-reduced-motion: no-preference) {
+							translate: 0 0;
+						}
 					}
 				}
 			}

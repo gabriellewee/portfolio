@@ -1,349 +1,353 @@
-.post-header.inline-header {
-	padding: calc(var(--p)*1.5) calc(var(--p)*2);
-	background-color: var(--color-iron);
-	color: white;
-	font-family: var(--font-mono);
-	font-size: 1rem;
-	font-weight: 700;
-	line-height: 1.375;
-	@include contrast(both) {
-		@include clip-path-edges(2px, up);
-	}
-	.post-header-content {
-		@include container(header, medium, $iphone-max) {
-			align-items: stretch;
-			align-content: flex-start;
+@use 'partials/shared/utilities' as *;
+
+.post-code {
+	.post-header.inline-header {
+		padding: calc(var(--p)*1.5) calc(var(--p)*2);
+		background-color: var(--color-iron);
+		color: white;
+		font-family: var(--font-mono);
+		font-size: 1rem;
+		font-weight: 700;
+		line-height: 1.375;
+		@include contrast(both) {
+			@include clip-path-edges(2px, up);
 		}
-		@include container(header, $ipad-mini) {
-			align-items: flex-start;
+		.post-header-content {
+			@include container(header, medium, $iphone-max) {
+				align-items: stretch;
+				align-content: flex-start;
+			}
+			@include container(header, $ipad-mini) {
+				align-items: flex-start;
+			}
 		}
-	}
-	.post-header-left {
-		display: flex;
-		align-items: center;
-		align-content: center;
-		flex-wrap: wrap;
-		order: 2;
-		width: 100%;
-		@include container(header, medium, $iphone-max) {
-			align-items: flex-start;
-			align-content: flex-start;
-		}
-		@include container(header, $ipad-mini) {
+		.post-header-left {
+			display: flex;
 			align-items: center;
 			align-content: center;
-		}
-	}
-	.post-header-left, .post-headline {
-		@include container(header, medium, $iphone-max) {
-			order: 1;
-			width: unset;
-		}
-	}
-	a {
-		color: var(--color-aqua);
-		span {
-			@include contrast(both) {
-				text-decoration: underline;
-				text-underline-offset: 4px;
+			flex-wrap: wrap;
+			order: 2;
+			width: 100%;
+			@include container(header, medium, $iphone-max) {
+				align-items: flex-start;
+				align-content: flex-start;
+			}
+			@include container(header, $ipad-mini) {
+				align-items: center;
+				align-content: center;
 			}
 		}
-		&:hover, &:focus {
-			color: var(--color-peach);
-			> span {
-				text-decoration: underline;
-				text-underline-offset: 4px;
+		.post-header-left, .post-headline {
+			@include container(header, medium, $iphone-max) {
+				order: 1;
+				width: unset;
 			}
-		}
-		&:focus-visible {
-			@include contrast(both) {
-				@include focus-shadow(var(--color-peach));
-			}
-		}
-		&:active {
-			color: var(--color-periwinkle);
-		}
-		&::after {
-			display: inline;
-			font-size: 1.375rem;
-			line-height: 1;
-		}
-	}
-	.post-headline {
-		order: 1;
-		line-height: 1.5;
-		@include container(header, medium, $iphone-max) {
-			margin-right: calc(var(--p)*1.5);
 		}
 		a {
+			color: var(--color-aqua);
+			span {
+				@include contrast(both) {
+					text-decoration: underline;
+					text-underline-offset: 4px;
+				}
+			}
+			&:hover, &:focus {
+				color: var(--color-peach);
+				> span {
+					text-decoration: underline;
+					text-underline-offset: 4px;
+				}
+			}
+			&:focus-visible {
+				@include contrast(both) {
+					@include focus-shadow(var(--color-peach));
+				}
+			}
+			&:active {
+				color: var(--color-periwinkle);
+			}
 			&::after {
-				content: "\2197";
-				margin-left: calc(var(--p)/2);
+				display: inline;
+				font-size: 1.375rem;
+				line-height: 1;
 			}
 		}
-	}
-	.post-tags {
-		order: 2;
-		display: flex;
-		flex-wrap: wrap;
-		margin-top: var(--p);
-		margin-bottom: calc(var(--p)*.75);
-		@include container(header, medium, $iphone-max) {
-			width: 100%;
-			margin-top: calc(var(--p)*.75);
-			margin-bottom: 0;
-		}
-		@include container(header, $ipad-mini) {
-			width: unset;
-			margin-top: 0;
-		}
-		u {
-			display: block;
-			position: relative;
-			margin-right: calc(var(--p)*1.5);
-			padding-inline: calc(var(--p)/2);
-			text-decoration: none;
+		.post-headline {
+			order: 1;
 			line-height: 1.5;
-			@include clip-path-edges(2px);
-			&.tag-css-only {
-				background-color: var(--color-slate);
+			@include container(header, medium, $iphone-max) {
+				margin-right: calc(var(--p)*1.5);
 			}
-			&.tag-award {
-				background-color: var(--color-mauve);
-			}
-			@include contrast(both) {
-				clip-path: unset;
-				border-radius: unset;
-				&::before, &::after {
-					content: "";
-					display: block;
-				}
-				&::before {
-					z-index: -2;
-					background-color: hsl(from var(--color-primary) h s l / .7);
-					@include full-offset(1.5px);
-					@include clip-path-edges(3px);
-				}
+			a {
 				&::after {
-					z-index: -1;
-					@include full-offset(0);
-					@include clip-path-edges(2px);
-				}
-				&.tag-css-only {
-					background-color: unset;
-					&::after {
-						background-color: var(--color-slate);
-					}
-				}
-				&.tag-award::after {
-					background-color: unset;
-					&::after {
-						background-color: var(--color-mauve);
-					}
+					content: "\2197";
+					margin-left: calc(var(--p)/2);
 				}
 			}
 		}
-	}
-	.post-header-right {
-		order: 1;
-		display: flex;
-		flex-wrap: wrap;
-		align-items: flex-start;
-		justify-content: space-between;
-		width: 100%;
-		margin-bottom: calc(var(--p)*.75);
-		@include container(header, medium, $iphone-max) {
+		.post-tags {
 			order: 2;
-			justify-content: flex-end;
-			align-content: space-between;
-			width: unset;
-			margin-bottom: 0;
-		}
-		@include container(header, $ipad-mini) {
-			flex-wrap: nowrap;
-			align-items: center;
-			align-content: unset;
-		}
-		.time {
-			margin-bottom: 0;
+			display: flex;
+			flex-wrap: wrap;
+			margin-top: var(--p);
+			margin-bottom: calc(var(--p)*.75);
 			@include container(header, medium, $iphone-max) {
 				width: 100%;
-				text-align: right;
+				margin-top: calc(var(--p)*.75);
+				margin-bottom: 0;
 			}
 			@include container(header, $ipad-mini) {
 				width: unset;
+				margin-top: 0;
 			}
-		}
-		.expand, .external-expand {
-			order: 2;
-			line-height: 1;
-			border-radius: 1px;
-			height: 20px;
-			margin-bottom: 2px;
-			&:focus-visible {
-				outline: 1px solid var(--color-peach);
+			u {
+				display: block;
+				position: relative;
+				margin-right: calc(var(--p)*1.5);
+				padding-inline: calc(var(--p)/2);
+				text-decoration: none;
+				line-height: 1.5;
+				@include clip-path-edges(2px);
+				&.tag-css-only {
+					background-color: var(--color-slate);
+				}
+				&.tag-award {
+					background-color: var(--color-mauve);
+				}
 				@include contrast(both) {
-					outline: unset;
+					clip-path: unset;
+					border-radius: unset;
+					&::before, &::after {
+						content: "";
+						display: block;
+					}
+					&::before {
+						z-index: -2;
+						background-color: hsl(from var(--color-primary) h s l / .7);
+						@include full-offset(1.5px);
+						@include clip-path-edges(3px);
+					}
+					&::after {
+						z-index: -1;
+						@include full-offset(0);
+						@include clip-path-edges(2px);
+					}
+					&.tag-css-only {
+						background-color: unset;
+						&::after {
+							background-color: var(--color-slate);
+						}
+					}
+					&.tag-award::after {
+						background-color: unset;
+						&::after {
+							background-color: var(--color-mauve);
+						}
+					}
 				}
 			}
+		}
+		.post-header-right {
+			order: 1;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: flex-start;
+			justify-content: space-between;
+			width: 100%;
+			margin-bottom: calc(var(--p)*.75);
 			@include container(header, medium, $iphone-max) {
-				margin-top: calc(var(--p)/2);
+				order: 2;
+				justify-content: flex-end;
+				align-content: space-between;
+				width: unset;
+				margin-bottom: 0;
 			}
 			@include container(header, $ipad-mini) {
-				margin-top: 0;
-				margin-left: var(--p);
+				flex-wrap: nowrap;
+				align-items: center;
+				align-content: unset;
 			}
-			&::after {
-				content: "\26F6";
+			.time {
+				margin-bottom: 0;
+				@include container(header, medium, $iphone-max) {
+					width: 100%;
+					text-align: right;
+				}
+				@include container(header, $ipad-mini) {
+					width: unset;
+				}
 			}
-		}
-		.expand {
-			display: none;
-			@include viewport($ipad-mini) {
-				display: block;
+			.expand, .external-expand {
+				order: 2;
+				line-height: 1;
+				border-radius: 1px;
+				height: 20px;
+				margin-bottom: 2px;
+				&:focus-visible {
+					outline: 1px solid var(--color-peach);
+					@include contrast(both) {
+						outline: unset;
+					}
+				}
+				@include container(header, medium, $iphone-max) {
+					margin-top: calc(var(--p)/2);
+				}
+				@include container(header, $ipad-mini) {
+					margin-top: 0;
+					margin-left: var(--p);
+				}
+				&::after {
+					content: "\26F6";
+				}
 			}
-		}
-		.external-expand {
-			display: block;
-			@include viewport($ipad-mini) {
+			.expand {
 				display: none;
+				@include viewport($ipad-mini) {
+					display: block;
+				}
+			}
+			.external-expand {
+				display: block;
+				@include viewport($ipad-mini) {
+					display: none;
+				}
 			}
 		}
-	}
-	.post-header-left:not(:has(.post-tags)) + .post-header-right {
-		@include container(header, medium, $iphone-max) {
-			flex-wrap: nowrap;
-			align-items: flex-start;
-			align-content: unset;
-		}
-		@include container(header, $ipad-mini) {
-			align-items: center;
-		}
-		.time {
+		.post-header-left:not(:has(.post-tags)) + .post-header-right {
 			@include container(header, medium, $iphone-max) {
-				width: unset;
+				flex-wrap: nowrap;
+				align-items: flex-start;
+				align-content: unset;
+			}
+			@include container(header, $ipad-mini) {
+				align-items: center;
+			}
+			.time {
+				@include container(header, medium, $iphone-max) {
+					width: unset;
+				}
+			}
+			.expand, .external-expand {
+				@include container(header, medium, $iphone-max) {
+					margin-top: 0;
+					margin-left: var(--p);
+				}
 			}
 		}
-		.expand, .external-expand {
-			@include container(header, medium, $iphone-max) {
-				margin-top: 0;
-				margin-left: var(--p);
+	}
+
+	.post-content {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+
+		@include contrast(both) {
+			@include clip-path-edges(2px, down);
+		}
+
+		.frame-wrapper {
+			order: 1;
+			background: var(--background);
+			@include viewport(medium) {
+				order: 2;
 			}
 		}
-	}
-}
-
-.post-content {
-	display: flex;
-	flex-direction: column;
-	position: relative;
-
-	@include contrast(both) {
-		@include clip-path-edges(2px, down);
-	}
-
-	.frame-wrapper {
-		order: 1;
-		background: var(--background);
-		@include viewport(medium) {
-			order: 2;
-		}
-	}
-	iframe {
-		display: block;
-		width: 100%;
-		opacity: 0;
-		transition: opacity .2s ease-out;
-	}
-	.warning {
-		display: none;
-		align-items: center;
-		justify-content: center;
-		height: 300px;
-		padding: calc(var(--p)*2);
-		color: color-mix(
-			in srgb,
-			var(--color-iron) 70%,
-			white
-		);
-		font-weight: 600;
-		line-height: 1.3;
-	}
-	.button {
-		--background: var(--color-mint) radial-gradient(
-			circle at center left,
-			hsl(from var(--color-slate) h s calc(l * .8)),
-			var(--color-mint),
-			var(--color-oak)
-		);
-		--outline: color-mix(
-			in srgb,
-			var(--color-iron) 60%,
-			white
-		);
-		--background-active: var(--color-iron) radial-gradient(
-			circle at center right,
-			hsl(from var(--color-iron) h s calc(l * .45)),
-			var(--color-iron)
-		);
-		--background-hover-position: 100%;
-
-		order: 3;
-		position: absolute;
-		z-index: 3;
-		bottom: calc(var(--p)*2);
-		right: calc(var(--p)*2);
-
-		@include font-weight-width(600, 90);
-
-		@include viewport(small) {
-			position: unset;
-			text-align: center;
+		iframe {
+			display: block;
 			width: 100%;
+			opacity: 0;
+			transition: opacity .2s ease-out;
 		}
-		&::before {
+		.warning {
+			display: none;
+			align-items: center;
+			justify-content: center;
+			height: 300px;
+			padding: calc(var(--p)*2);
+			color: color-mix(
+				in srgb,
+				var(--color-iron) 70%,
+				white
+			);
+			font-weight: 600;
+			line-height: 1.3;
+		}
+		.button {
+			--background: var(--color-mint) radial-gradient(
+				circle at center left,
+				hsl(from var(--color-slate) h s calc(l * .8)),
+				var(--color-mint),
+				var(--color-oak)
+			);
+			--outline: color-mix(
+				in srgb,
+				var(--color-iron) 60%,
+				white
+			);
+			--background-active: var(--color-iron) radial-gradient(
+				circle at center right,
+				hsl(from var(--color-iron) h s calc(l * .45)),
+				var(--color-iron)
+			);
+			--background-hover-position: 100%;
+
+			order: 3;
+			position: absolute;
+			z-index: 3;
+			bottom: calc(var(--p)*2);
+			right: calc(var(--p)*2);
+
+			@include font-weight-width(600, 90);
+
 			@include viewport(small) {
+				position: unset;
+				text-align: center;
+				width: 100%;
+			}
+			&::before {
+				@include viewport(small) {
+					display: none;
+				}
+			}
+			&:hover, &:active {
+				@media (prefers-reduced-motion: no-preference) {
+					@include viewport(small) {
+						scale: unset;
+					}
+				}
+			}
+			&:focus-visible {
+				> span {
+					@include viewport(small) {
+						box-shadow: inset 0 0 0 3px var(--outline);
+					}
+				}
+			}
+			&::before, > span {
+				@include viewport(small) {
+					@include clip-path-edges(0);
+				}
+			}
+		}
+		.post-mobile-button, .post-mobile {
+			@include viewport(medium) {
 				display: none;
 			}
 		}
-		&:hover, &:active {
-			@media (prefers-reduced-motion: no-preference) {
-				@include viewport(small) {
-					scale: unset;
-				}
-			}
-		}
-		&:focus-visible {
-			> span {
-				@include viewport(small) {
-					box-shadow: inset 0 0 0 3px var(--outline);
-				}
-			}
-		}
-		&::before, > span {
-			@include viewport(small) {
-				@include clip-path-edges(0);
-			}
-		}
-	}
-	.post-mobile-button, .post-mobile {
-		@include viewport(medium) {
+		.post-mobile-button + .reload, .post-mobile ~ .frame-wrapper {
 			display: none;
 		}
-	}
-	.post-mobile-button + .reload, .post-mobile ~ .frame-wrapper {
-		display: none;
-	}
-	.post-mobile-button + .reload {
-		@include viewport(medium) {
-			@media (scripting: enabled) {
-				display: block;
+		.post-mobile-button + .reload {
+			@include viewport(medium) {
+				@media (scripting: enabled) {
+					display: block;
+				}
 			}
 		}
-	}
-	.post-mobile ~ .frame-wrapper {
-		@include viewport(medium) {
-			display: block;
+		.post-mobile ~ .frame-wrapper {
+			@include viewport(medium) {
+				display: block;
+			}
 		}
 	}
 }

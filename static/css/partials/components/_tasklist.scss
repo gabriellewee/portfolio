@@ -1,3 +1,5 @@
+@use 'partials/shared/utilities' as *;
+
 .task-list {
 	list-style: initial!important;
 	padding: 0;

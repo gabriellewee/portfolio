@@ -1,5 +1,4 @@
-// utilities
-@import 'partials/shared/utilities';
+@use 'partials/shared/utilities' as *;
 
 body {
 	background: url('../images/error.gif') center center / cover;

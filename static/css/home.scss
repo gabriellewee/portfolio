@@ -1,28 +1,18 @@
 // utilities
-@import 'partials/shared/utilities';
+@use 'partials/shared/utilities' as *;
 
 // components
-@import 'partials/components/discord';
-@import 'partials/components/tooltip';
-@import 'partials/components/title';
+@use 'partials/components/discord';
+@use 'partials/components/tooltip';
+@use 'partials/components/title';
 
 // posts
-@import 'partials/post/post';
-.post-writing {
-	@import 'partials/post/writing';
-}
-.post-recipe {
-	@import 'partials/post/recipe';
-}
-.post-media {
-	@import 'partials/post/media';
-}
-.post-code {
-	@import 'partials/post/code';
-}
-.post-social {
-	@import 'partials/post/social';
-}
+@use 'partials/post/post';
+@use 'partials/post/writing';
+@use 'partials/post/recipe';
+@use 'partials/post/media';
+@use 'partials/post/code';
+@use 'partials/post/social';
 
 // home-specific
 .page-home {

@@ -1,12 +1,15 @@
-@import 'reset';
+@use 'sass:color';
+@use 'reset';
 
 // custom colors
-$g1: lighten(#C5C1C6, 10%);
-$g2: lighten(#C5C1C6, 2%);
-$g3: darken(#C5C1C6, 15%);
+$g: #C5C1C6;
+$g1: color.adjust($g, $lightness: 10%);
+$g2: color.adjust($g, $lightness: 2%);
+$g3: color.adjust($g, $lightness: -15%);
+$g4: color.adjust($g2, $lightness: 15%);
 $hi: #F5C8BF;
 $wh: white;
-$bl: darken(#C5C1C6, 50%);
+$bl: color.adjust($g, $lightness: -50%);
 $bg: #E0D2C5;
 
 // default windows 95 colors
@@ -27,8 +30,8 @@ $re: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAN0lE
 
 @mixin ch {
 	background-color: $wh;
-	background-image: linear-gradient(45deg, lighten($g2, 15%) 25%, transparent 25%, transparent 75%, lighten($g2, 15%) 75%, lighten($g2, 15%)), 
-		linear-gradient(45deg, lighten($g2, 15%) 25%, transparent 25%, transparent 75%, lighten($g2, 15%) 75%, lighten($g2, 15%));
+	background-image: linear-gradient(45deg, $g4 25%, transparent 25%, transparent 75%, $g4 75%, $g4), 
+		linear-gradient(45deg, $g4 25%, transparent 25%, transparent 75%, $g4 75%, $g4);
 	background-size: 2px 2px;
 	background-position: 0 0, 1px 1px
 }

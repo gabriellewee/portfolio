@@ -1,15 +1,13 @@
 // utilities
-@import 'partials/shared/utilities';
+@use 'partials/shared/utilities' as *;
 
 // components
-@import 'partials/components/progress';
-@import 'partials/components/tasklist';
+@use 'partials/components/progress';
+@use 'partials/components/tasklist';
 
 // posts
-@import 'partials/post/post';
-.post-recipe {
-	@import 'partials/post/recipe';
-}
+@use 'partials/post/post';
+@use 'partials/post/recipe';
 
 .page-recipes {
 	@include theme(light) {

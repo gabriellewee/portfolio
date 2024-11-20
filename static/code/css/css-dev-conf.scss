@@ -1,8 +1,13 @@
+@use 'sass:color';
+
 @mixin stroke($s) {
 	opacity: 0;
 	stroke-dasharray: $s;
 	stroke-dashoffset: $s;
 }
+
+$night: #263238;
+$day: #7AB6FB;
 
 html, body { height: 100%; }
 *, *:before, *:after { box-sizing: border-box; }
@@ -19,7 +24,7 @@ body {
 body {
 	will-change: background;
 	animation: bg 500ms 8700ms both;
-	background: #7AB6FB;
+	background: $day;
 }
 
 main {
@@ -47,7 +52,7 @@ main {
 	.floor {
 		display: none;
 		margin: 0;
-		border: 1px solid lighten(#263238, 15%);
+		border: 1px solid #{color.adjust($night, $lightness: 15%)};
 	}
 }
 
@@ -396,8 +401,8 @@ main {
 }
 
 @keyframes bg {
-	from { background: #7AB6FB; }
-	to { background: lighten(#263238, 5%); }
+	from { background: $day; }
+	to { background: #{color.adjust($night, $lightness: 5%)}; }
 }
 
 @keyframes sdo {

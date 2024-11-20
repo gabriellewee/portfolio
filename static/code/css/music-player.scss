@@ -1,6 +1,7 @@
-@use "sass:math";
+@use 'sass:color';
+@use 'sass:math';
+@use 'reset';
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;500&display=swap');
-@import 'reset';
 
 $red: #EB2045;
 $grey: #0B0B0B;
@@ -96,7 +97,7 @@ main {
 	transition: all 500ms $easeOutBack;
 	background: white;
 	border-radius: 2px;
-	box-shadow: 0 0 15px rgba(mix($red, $grey), .2);
+	box-shadow: 0 0 15px rgba(color.mix($red, $grey), .2);
 }
 .back {
 	position: absolute;

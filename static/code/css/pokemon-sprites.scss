@@ -1,5 +1,6 @@
-@use "sass:math";
-@import 'reset';
+@use 'sass:color';
+@use 'sass:math';
+@use 'reset';
 
 $p: 12px;
 $f: "brandon-grotesque", "Brandon Grotesque", "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
@@ -7,7 +8,7 @@ $f: "brandon-grotesque", "Brandon Grotesque", "Source Sans Pro", "Segoe UI", Fru
 @mixin btn-bg($bg) {
 	background: rgba($bg, .25);
 	&:hover, &:focus {
-		background: lighten($bg, 10%);
+		background: color.adjust($bg, $lightness: 10%);
 	}
 	&:active, &.active {
 		background: $bg;
@@ -18,7 +19,7 @@ $f: "brandon-grotesque", "Brandon Grotesque", "Source Sans Pro", "Segoe UI", Fru
 	background-image: url('https://raw.githubusercontent.com/elletricity/sprites/master/pk/#{$pk}.png');
 }
 @mixin pk-bg($bg, $ti) {
-	background-color: lighten($bg, $ti);
+	background-color: color.adjust($bg, $lightness: $ti);
 }
 
 *, *:before, *:after { box-sizing: border-box; }

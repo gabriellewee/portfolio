@@ -1,6 +1,7 @@
-@use "sass:math";
-@import url("https://use.typekit.net/ytd4ine.css");
-@import 'reset';
+@use 'sass:color';
+@use 'sass:math';
+@use 'reset';
+@import url('https://use.typekit.net/ytd4ine.css');
 
 $p: 12px;
 $n: 5;
@@ -13,7 +14,7 @@ $green: #AEBFAF;
 $mint: #f2faf3;
 
 $mauve: #B2738E;
-$bg: mix($mauve, #fbe6e2, 20%);
+$bg: color.mix($mauve, #fbe6e2, 20%);
 
 *, *:before, *:after { box-sizing: border-box; }
 * { -webkit-tap-highlight-color: rgba(0,0,0,0); transform-style: preserve-3d; }
@@ -53,7 +54,7 @@ nav {
 	}
 	a {
 		&:hover, &:focus {
-			border-color: mix($mint, $green);
+			border-color: color.mix($mint, $green);
 		}
 		&:active {
 			border-color: $pink;
@@ -147,7 +148,7 @@ nav {
 		margin: 0;
 		&:hover, &:focus {
 			~ label {
-				border-color: mix($mint, $green);
+				border-color: color.mix($mint, $green);
 			}
 		}
 		&:active {

@@ -1,6 +1,8 @@
+@use 'sass:color';
+
 // custom colors
 $iron: #263238; $blush: #F5C8BF; $rose: #D19487; $mauve: #B2738E; $slate: #577783; $mint: #8BB29A; $oak: #D1AE87; $grey: #C5C1C6;
-$g1: lighten($grey, 10%); $g2: lighten($grey, 2%); $g3: darken($grey, 15%); $hi: $blush; $wh: #fcfcfc; $bl: $iron; $bg: mix($mauve, #fbe6e2, 20%);
+$g1: color.adjust($grey, $lightness: 10%); $g2: color.adjust($grey, $lightness: 2%); $g3: color.adjust($grey, $lightness: -15%); $hi: $blush; $wh: #fcfcfc; $bl: $iron; $bg: color.mix($mauve, #fbe6e2, 20%);
 
 // url
 $url: "/static/code/images/windows-95/";
@@ -1716,7 +1718,7 @@ $explorer-panels: desktop, computer, disk, dos, program-files, windows, control-
 		&:before {
 			content: "";
 			display: block;
-			background-color: desaturate(lighten($slate, 15%), 15%);
+			background-color: color.adjust(color.adjust($slate, $lightness: 15%), $saturation: 15%);
 			width: 32px;
 		}
 		.sub-menu {
@@ -1822,7 +1824,7 @@ $sc-wd: 24px;
 	height: $sc-wd;
 }
 ::-webkit-scrollbar-track {
-	@include ch(lighten($g2, 15%));
+	@include ch(color.adjust($g2, $lightness: 15%));
 }
 ::-webkit-scrollbar-thumb {
 	@include sh(3px);

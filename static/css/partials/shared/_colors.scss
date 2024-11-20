@@ -1,3 +1,5 @@
+@use 'partials/shared/utilities' as *;
+
 $links: "github", "instagram", "twitter", "pinterest", "music", "imessage", "discord", "mastodon", "apple-podcasts", "spotify", "threads";
 $dark-links: "codepen", "tumblr", "email", "text", "medium", "dribbble", "bluesky";
 

@@ -1,4 +1,5 @@
-@import 'reset';
+@use 'sass:color';
+@use 'reset';
 
 $p: 12px;
 $easeOutCubic: cubic-bezier(0.215, 0.610, 0.355, 1.000);
@@ -147,7 +148,7 @@ main {
 				}
 				&:active {
 					.top use {
-						fill: darken(#FF0000, 15%);
+						fill: color.adjust(#FF0000, $lightness: -15%);
 					}
 				}
 			}
