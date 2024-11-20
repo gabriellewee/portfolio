@@ -519,8 +519,12 @@ $x-large: 1280px;
 	}
 }
 
-@mixin radio($background: null, $color: var(--color-mint)) {
+@mixin radio($background: transparent, $color: var(--color-mint), $contrast: color-mix(in srgb, var(--color-slate), $color)) {
 	& {
+		--background: $background;
+		--color: $color;
+		--contrast: $contrast;
+
 		display: flex;
 		cursor: pointer;
 		position: relative;
@@ -534,15 +538,9 @@ $x-large: 1280px;
 		height: calc(var(--p)*2);
 		border-radius: calc(var(--p)*2);
 		margin-right: calc(var(--p)*.75);
-		@if $background {
-			background-color: $background;
-		}
+		background-color: $background;
 		@include contrast(light) {
-			border: 2px solid color-mix(
-				in srgb,
-				var(--color-slate),
-				$color
-			);
+			border: 2px solid var(--contrast);
 		}
 	}
 	&::after {

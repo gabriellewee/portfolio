@@ -2,8 +2,7 @@
 	position: relative;
 	z-index: 10;
 	max-width: var(--width);
-	margin-left: auto;
-	margin-right: auto;
+	margin-inline: auto;
 	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
 	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
 	color: var(--color-primary);

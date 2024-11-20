@@ -101,8 +101,7 @@
 			display: block;
 			position: relative;
 			margin-right: calc(var(--p)*1.5);
-			padding-left: calc(var(--p)/2);
-			padding-right: calc(var(--p)/2);
+			padding-inline: calc(var(--p)/2);
 			text-decoration: none;
 			line-height: 1.5;
 			@include clip-path-edges(2px);

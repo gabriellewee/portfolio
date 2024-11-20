@@ -1,7 +1,6 @@
 header.top, .bottom {
 	max-width: var(--width);
-	margin-left: auto;
-	margin-right: auto;
+	margin-inline: auto;
 	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
 	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
 }
@@ -59,8 +58,7 @@ header.top {
 	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
 	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
 	@include viewport($iphone-max) {
-		padding-left: 0;
-		padding-right: 0;
+		padding-inline: 0;
 	}
 	&:empty {
 		display: none;

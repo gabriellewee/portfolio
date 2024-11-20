@@ -26,8 +26,7 @@ main, .bottom {
 main {
 	height: calc(100vh - 104px - 82px);
 	max-width: var(--width);
-	margin-left: auto;
-	margin-right: auto;
+	margin-inline: auto;
 	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
 	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
 	h1 {

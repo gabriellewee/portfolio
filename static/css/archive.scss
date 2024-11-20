@@ -4,8 +4,7 @@
 	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
 	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
 	@include viewport($iphone-max) {
-		padding-left: 0;
-		padding-right: 0;
+		padding-inline: 0;
 	}
 
 	ul {
