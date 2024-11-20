@@ -1,5 +1,8 @@
 .progress {
+	--background: linear-gradient(to right, var(--color-rose), var(--color-mauve), var(--color-slate));
+
 	display: none;
+
 	@supports (animation-timeline: scroll()) {
 		display: block;
 		position: fixed;
@@ -8,9 +11,9 @@
 		z-index: 101;
 		border: 0;
 		margin: 0;
-		width: 100%;
+		width: 100vw;
 		height: 2px;
-		background: linear-gradient(to right, var(--color-rose), var(--color-mauve), var(--color-slate));
+		background: var(--background);
 
 		transform: scaleX(0);
 		transform-origin: left center;
