@@ -531,11 +531,12 @@ $x-large: 1280px;
 	}
 }
 
-@mixin radio($background: transparent, $color: var(--color-mint), $contrast: color-mix(in srgb, var(--color-slate), $color)) {
+@mixin radio($background: transparent, $color: var(--color-mint), $focus: hsl(from var(--color-mint) h s l / .7), $contrast: color-mix(in srgb, var(--color-slate), $color)) {
 	& {
-		--background: $background;
-		--color: $color;
-		--contrast: $contrast;
+		--background: #{$background};
+		--color: #{$color};
+		--focus: #{$focus};
+		--contrast: #{$contrast};
 
 		display: flex;
 		cursor: pointer;
@@ -550,7 +551,7 @@ $x-large: 1280px;
 		height: calc(var(--p)*2);
 		border-radius: calc(var(--p)*2);
 		margin-right: calc(var(--p)*.75);
-		background-color: $background;
+		background-color: var(--background);
 		@include contrast(light) {
 			border: 2px solid var(--contrast);
 		}
@@ -563,5 +564,10 @@ $x-large: 1280px;
 		top: calc(var(--p)/3);
 		background-color: $color;
 		@include square(calc(var(--p)/3*4));
+	}
+	&:is(input:focus-visible + label) {
+		&::before {
+			@include focus-shadow(var(--focus), false);
+		}
 	}
 }

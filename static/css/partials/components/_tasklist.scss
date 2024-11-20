@@ -25,11 +25,6 @@
 	}
 	input {
 		@include hide;
-		&:focus-visible + label {
-			&::before {
-				@include focus-shadow(hsl(from var(--color-mint) h s l / .7), false);
-			}
-		}
 		&:checked + label {
 			color: var(--color-primary);
 			&::after {
