@@ -575,12 +575,11 @@
 			transition: all .2s ease-out;
 			position: relative;
 			z-index: 1;
-			width: 18px;
-			height: 18px;
 			margin-right: calc(var(--p)/2);
 			background-size: contain;
 			background-repeat: no-repeat;
 			background-position: top left;
+			@include square(18px);
 		}
 	}
 }

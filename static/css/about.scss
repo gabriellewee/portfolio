@@ -73,10 +73,8 @@
 		transition: scale .2s ease-out;
 		.icon-wrapper {
 			display: block;
-			width: 100%;
-			height: auto;
-			aspect-ratio: 1 / 1;
 			border-radius: 6%;
+			@include square(100%);
 			@include contrast(both) {
 				background-color: var(--color-primary);
 				@include focus-shadow(var(--color-primary), null, 1.5px);
@@ -84,9 +82,8 @@
 		}
 		.icon {
 			display: block;
-			width: 100%;
-			height: 100%;
 			position: relative;
+			@include full-size;
 			@include border-radius(6%);
 			> span {
 				opacity: 0;
@@ -182,10 +179,9 @@
 		display: block;
 		margin-inline: auto;
 		text-align: center;
-		width: 36px;
-		height: 36px;
 		border-radius: 100%;
 		border: calc(var(--p)/4) solid;
+		@include square(36px);
 		@include theme(light) {
 			border-color: var(--color-message);
 		}

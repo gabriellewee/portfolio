@@ -44,10 +44,9 @@
 			cursor: default;
 			opacity: 0;
 			transition: opacity .2s ease-out .3s;
-			width: 100vw;
-			height: 100vh;
 			max-width: calc(100vw - (var(--p)*4));
 			max-height: calc(100vh - (var(--p)*4));
+			@include full-size(screen);
 			@include viewport($ipad-11) {
 				max-width: calc(100vw - (var(--p)*8));
 				max-height: calc(100vh - (var(--p)*8));

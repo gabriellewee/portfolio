@@ -175,8 +175,7 @@
 			}
 		}
 		picture {
-			width: 48px;
-			height: 48px;
+			@include square(48px);
 			@include clip-path-edges(2px);
 		}
 	}

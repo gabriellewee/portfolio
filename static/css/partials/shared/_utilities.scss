@@ -326,6 +326,21 @@ $x-large: 1280px;
 	}
 }
 
+@mixin square($width) {
+	width: $width;
+	aspect-ratio: 1 / 1;
+}
+
+@mixin full-size($type: null) {
+	@if $type == screen {
+		height: 100vh;
+		width: 100vw;
+	} @else if $type == null {
+		height: 100%;
+		width: 100%;
+	}
+}
+
 @mixin full-offset($offset, $y: top, $x: left, $p: absolute) {
 	position: #{$p};
 	@if $offset == screen {
@@ -336,11 +351,9 @@ $x-large: 1280px;
 		#{$x}: $offset * -1;
 	}
 	@if $offset == 0 {
-		height: 100%;
-		width: 100%;
+		@include full-size;
 	} @else if $offset == screen {
-		height: 100vh;
-		width: 100vw;
+		@include full-size(screen);
 	} @else {
 		height: calc(100% + #{$offset * 2});
 		width: calc(100% + #{$offset * 2});
@@ -423,11 +436,10 @@ $x-large: 1280px;
 @mixin hide {
 	position: absolute;
 	appearance: none;
-	width: 1px;
-	height: 1px;
 	clip: rect(0,0,0,0);
 	z-index: -1;
 	opacity: 0;
+	@include square(1px);
 }
 
 @mixin before($color: null) {
@@ -545,12 +557,11 @@ $x-large: 1280px;
 	}
 	&::after {
 		opacity: 0;
-		width: calc(var(--p)/3*4);
-		height: calc(var(--p)/3*4);
 		border-radius: calc(var(--p)/3*4);
 		position: absolute;
 		left: calc(var(--p)/3);
 		top: calc(var(--p)/3);
 		background-color: $color;
+		@include square(calc(var(--p)/3*4));
 	}
 }

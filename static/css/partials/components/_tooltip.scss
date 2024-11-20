@@ -20,8 +20,7 @@
 		content: "";
 		rotate: 45deg;
 		z-index: 1;
-		width: var(--t);
-		height: var(--t);
+		@include square(var(--t));
 	}
 	&::after {
 		content: var(--tooltip-label);
@@ -42,8 +41,7 @@
 			rotate: 45deg;
 			position: absolute;
 			z-index: 0;
-			width: calc(var(--t) + 3px);
-			height: calc(var(--t) + 3px);
+			@include square(calc(var(--t) + 3px));
 			@include contrast(both) {
 				background-color: var(--color-primary);
 			}
