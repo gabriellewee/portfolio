@@ -11,7 +11,7 @@
 	.popup-label {
 		&::after {
 			background-color: var(--color-blush);
-			bottom: calc(var(--tip)*-1);
+			bottom: calc(var(--t)*-1);
 			@media (prefers-reduced-motion: no-preference) {
 				translate: 0 calc(var(--p)*2);
 			}

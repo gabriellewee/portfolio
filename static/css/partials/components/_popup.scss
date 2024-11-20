@@ -1,6 +1,6 @@
 .popup {
-	--tip: 16px;
-	--radius: 3px;
+	--t: 16px;
+	--r: 3px;
 
 	display: inline-block;
 	z-index: 2;
@@ -21,9 +21,9 @@
 			content: "";
 			display: block;
 			position: absolute;
-			border-top-left-radius: calc(var(--radius) - 1px);
+			border-top-left-radius: calc(var(--r) - 1px);
 			transform-origin: center center;
-			@include square(var(--tip));
+			@include square(var(--t));
 			@media (prefers-reduced-motion: no-preference) {
 				transition: translate .2s ease-out, opacity .1s ease-out;
 				translate: 0 calc(var(--p)*2);
@@ -46,7 +46,7 @@
 		display: block;
 		width: calc(100vw - var(--p)*4 - env(safe-area-inset-left)*2);
 		max-width: 500px;
-		border-radius: var(--radius);
+		border-radius: var(--r);
 		@media (prefers-reduced-motion: no-preference) {
 			translate: 0 calc(var(--p)*2);
 		}

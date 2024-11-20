@@ -107,11 +107,6 @@
 				}
 			}
 		}
-		.tooltip {
-			&::after {
-				white-space: nowrap;
-			}
-		}
 		&:hover, &:focus, &:active {
 			.icon > span {
 				opacity: 1;
