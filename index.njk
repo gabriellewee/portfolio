@@ -88,7 +88,7 @@ pagination:
 							<p class="recipe-total"><strong>Total:</strong> <span class="recipe-duration" data-duration="{{total|sum}}">{{total|sum}} minutes</span></p>
 						{% endif %}
 					</aside>
-					<div class="post-content{% if (post.data.category == 'writing') or (post.data.category == 'cooking') %} post-text{% endif %}"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %}>
+					<div class="post-content{% if (post.data.category == 'writing') or (post.data.category == 'cooking') %} post-text{% endif %}"{% if post.data.background %} style="--background: {{post.data.background}}"{% endif %}>
 						{% if post.data.category == "media" %}
 							<figure id="{{post.data.date|safe}}-{{post.data.name}}" aria-label="{{post.data.type|capitalize}}{% if post.data.location %}, {{post.data.location}}{% elseif post.data.title %}, {{post.data.title}}{% endif %}" style="aspect-ratio: {% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'ratio' %};">
 								{% if post.data.upscale %}
@@ -169,12 +169,14 @@ pagination:
 							{% if post.data.button %}
 								<button class="reload button" data-reload hidden><span>{{post.data.button|capitalize}}</span></button>
 							{% endif %}
-							{% if post.url %}
-								<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}"><p><em>Please enable Javascript to view this code demo.</em></p></noscript>
-								<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title|safe}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %}></iframe>
-							{% else %}
-								{{post.content|safe}}
-							{% endif %}
+							<div class="frame-wrapper"{% if post.data.background %} style="--background: {{post.data.background}}"{% endif %}>
+								{% if post.url %}
+									<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}"><p><em>Please enable Javascript to view this code demo.</em></p></noscript>
+									<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title|safe}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %}></iframe>
+								{% else %}
+									{{post.content|safe}}
+								{% endif %}
+							</div>
 						{% elseif post.data.content %}
 							<blockquote>{{post.data.content|nbsp|safe}}</blockquote>
 							{% if (post.data.category == "social") and (post.data.media) %}
@@ -277,10 +279,10 @@ pagination:
 		{% elseif post.data.category == "code" %}
 			<a class="lightbox" id="{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}-lightbox" role="button" aria-label="Close preview of {{post.data.title}}" href="#{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}" data-lightbox data-lightbox-append data-desktop></a>
 			<dialog class="lightbox-content iframe" aria-label="Preview of {{post.data.title}}" autofocus data-lightbox-append>
-				<figure>
+				<figure class="frame-wrapper"{% if post.data.background %} style="--background: {{post.data.background}}"{% endif %}>
 					{% if post.url %}
 						<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}"><p><em>Please enable Javascript to view this code demo.</em></p></noscript>
-						<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %}></iframe>
+						<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"></iframe>
 					{% else %}
 						{{post.content|safe}}
 					{% endif %}

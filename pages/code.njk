@@ -65,7 +65,7 @@ eleventyNavigation:
 									</picture>
 								</div>
 							{% endif %}
-							<div class="frame-wrapper"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %}>
+							<div class="frame-wrapper"{% if post.data.background %} style="--background: {{post.data.background}}"{% endif %}>
 								<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}"><p><em>Please enable Javascript to view this code demo.</em></p></noscript>
 								<iframe class="frame{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title|safe}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"></iframe>
 							</div>
@@ -88,8 +88,8 @@ eleventyNavigation:
 <div class="lightbox-group" data-lightbox-container hidden>
 	{% for post in collections.code | reverse %}
 		<a class="lightbox" id="{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}-lightbox" role="button" aria-label="Close preview of {{post.data.title}}" href="#{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}" data-lightbox></a>
-		<dialog class="lightbox-content iframe"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %} aria-label="Preview of {{post.data.title}}" autofocus>
-			<figure>
+		<dialog class="lightbox-content iframe" aria-label="Preview of {{post.data.title}}" autofocus>
+			<figure class="frame-wrapper"{% if post.data.background %} style="--background: {{post.data.background}}"{% endif %}>
 				{% if post.url %}
 					<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}"><p><em>Please enable Javascript to view this code demo.</em></p></noscript>
 					<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"></iframe>

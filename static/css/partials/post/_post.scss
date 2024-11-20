@@ -26,8 +26,14 @@
 }
 
 .post {
+	--width: 100%;
+	--max-width: 100%;
+	--min-width: unset;
+
 	position: relative;
-	width: 100%;
+	width: var(--width);
+	max-width: var(--max-width);
+	min-width: var(--min-width);
 	font-size: 1.125rem;
 	grid-column-end: span 12;
 
@@ -37,7 +43,7 @@
 				grid-column-end: span 6;
 			}
 			.posts[data-grid="true"] & {
-				width: calc(50% - var(--p));
+				--width: calc(50% - var(--p));
 			}
 		}
 	}
@@ -48,7 +54,7 @@
 				grid-column-end: span 4;
 			}
 			.posts[data-grid="true"] & {
-				width: calc((100% - (var(--p) * 4)) / 3);
+				--width: calc((100% - (var(--p) * 4)) / 3);
 			}
 		}
 	}
@@ -58,7 +64,7 @@
 				grid-column-end: span 6;
 			}
 			.posts[data-grid="true"] & {
-				width: calc(50% - var(--p));
+				--width: calc(50% - var(--p));
 			}
 		}
 	}
@@ -68,7 +74,7 @@
 				grid-column-end: span 8;
 			}
 			.posts[data-grid="true"] & {
-				width: calc((100% - var(--p)) / 3 * 2);
+				--width: calc((100% - var(--p)) / 3 * 2);
 			}
 		}
 	}

@@ -6,12 +6,6 @@
 	display: none;
 }
 
-.post {
-	width: 100% !important;
-	max-width: 100% !important;
-
-}
-
 .media-attachment {
 	&, a {
 		display: inline-block;
@@ -44,8 +38,8 @@
 	opacity: 1;
 }
 
-.post-code .post-content {
-	background: hsl(from var(--color-iron) h s l / .95) !important;
+.post-code .post-content .frame-wrapper {
+	background-color: hsl(from var(--color-iron) h s l / .95);
 }
 
 .cursor::after {

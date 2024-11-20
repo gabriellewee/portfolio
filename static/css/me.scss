@@ -68,9 +68,9 @@
 }
 
 .post-intro {
-	width: 100%;
+	--width: 100%;
 	@include viewport(medium) {
-		width: var(--intro-width);
+		--width: var(--intro-width);
 	}
 	.post-inner {
 		padding: 0;
@@ -95,7 +95,7 @@
 			content: "";
 			display: block;
 			position: absolute;
-			height: var(--intro-width);
+			height: 100%;
 			@include background-image(avatars/intro, jpg);
 			& {
 				background-size: contain;
@@ -119,8 +119,9 @@
 }
 
 .post-books {
+	--width: 100%;
 	@include viewport(medium) {
-		width: calc(100% - var(--intro-width) - var(--p) * 2);
+		--width: calc(100% - var(--intro-width) - var(--p) * 2);
 	}
 	.grid {
 		grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
@@ -137,11 +138,11 @@
 }
 
 .post-music {
-	width: 100%;
-	min-width: 345px;
-	max-width: 700px;
+	--width: 100%;
+	--max-width: 700px;
+	--min-width: 345px;
 	@include viewport($x-large) {
-		max-width: 376px;
+		--max-width: 376px;
 	}
 	iframe {
 		display: block;
@@ -149,9 +150,9 @@
 }
 
 .post-game {
-	width: 100%;
+	--width: 100%;
 	@include viewport($x-large) {
-		max-width: 672px;
+		--max-width: 672px;
 	}
 	.grid {
 		margin-top: calc(var(--p) * 1.75);

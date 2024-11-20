@@ -40,6 +40,9 @@
 		@include clip-path-edges(2px);
 	}
 	&.iframe {
+		.frame-wrapper {
+			background: var(--background);
+		}
 		iframe {
 			cursor: default;
 			opacity: 0;

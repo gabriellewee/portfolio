@@ -19,11 +19,11 @@ $x-large: 1280px;
 // mixins
 @mixin viewport($viewport) {
 	@if $viewport == "medium" {
-		@media screen and (min-width: $medium) {
+		@media screen and (min-width: $medium) and (max-height: 450px), screen and (min-width: $ipad-mini) {
 			@content;
 		}
 	} @else if $viewport == "small" {
-		@media screen and (max-width: #{$medium - 1px}) {
+		@media screen and (max-width: #{$medium - 1px}) and (min-height: 451px), screen and (max-width: #{$ipad-mini}) {
 			@content;
 		}
 	} @else {
