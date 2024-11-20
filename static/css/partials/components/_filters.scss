@@ -27,12 +27,22 @@
 		margin-right: var(--p);
 	}
 	a {
-		color: color-mix(
+		--color-mix: color-mix(
 			in srgb,
 			var(--color-iron) 70%,
 			white
 		);
-		&:not(.reset)::before {
+		@include theme(light) {
+			--color-mix-underline: hsl(from var(--color-blush) h s calc(l * 1.1) / 0);
+		}
+		@include theme(dark) {
+			--color-mix-underline: hsl(from var(--color-iron) h s calc(l * .73) / 0);
+		}
+ 
+		&, > span {
+			color: var(--color-mix);
+		}
+		&:not(.reset):not(.emoji)::before {
 			content: "#";
 		}
 		&, &::before, span {
@@ -42,15 +52,21 @@
 			text-decoration: underline;
 			text-decoration-thickness: 2px;
 			text-underline-offset: 8px;
-			@include theme(light) {
-				text-decoration-color: hsl(from var(--color-blush) h s calc(l * 1.1) / 0);
-			}
-			@include theme(dark) {
-				text-decoration-color: hsl(from var(--color-iron) h s calc(l * .73) / 0);
-			}
+			text-decoration-color: var(--color-mix-underline);
 			@include contrast(both) {
 				text-underline-offset: 4px;
 				text-decoration-color: unset;
+			}
+		}
+		&.emoji {
+			text-underline-offset: 10px;
+			@include contrast(both) {
+				text-underline-offset: 6px;
+			}
+			span span {
+				background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-color: var(--color-mix);
 			}
 		}
 		&:hover, &:focus {
@@ -59,21 +75,21 @@
 				var(--color-mauve),
 				var(--color-rose)
 			);
-			&, > span {
-				color: var(--color-mix);
-				text-decoration-color: var(--color-mix);
-			}
+			--color-mix-underline: var(--color-mix);
 		}
 		&:hover, &:focus, &:active, &.active {
 			> span {
 				text-underline-offset: 4px;
 			}
+			&.emoji {
+				> span {
+					text-underline-offset: 6px;
+				}
+			}
 		}
 		&:active {
-			&, > span {
-				color: var(--color-slate);
-				text-decoration-color: var(--color-slate);
-			}
+			--color-mix: var(--color-slate);
+			--color-mix-underline: var(--color-mix);
 		}
 
 		&.active {
@@ -82,10 +98,7 @@
 				hsl(from var(--color-mauve) h calc(s * .9) l) 30%,
 				hsl(from var(--color-rose) h calc(s * .9) l)
 			);
-			&, > span {
-				color: var(--color-mix);
-				text-decoration-color: var(--color-mix);
-			}
+			--color-mix-underline: var(--color-mix);
 			span span {
 				@include gradient-headline(
 					var(--color-rose),
