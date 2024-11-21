@@ -17,10 +17,19 @@
 					<span id="avatar-message" aria-hidden="true" class="text go-home">Go home?</span>
 				{% endif %}
 			</a>
+
+			{% if (loading and (key != "home")) or (loading and (key == "home") and (pagination.pageNumber == 0)) %}
+				<p class="text message loading" aria-hidden="true" hidden>
+					<span>{{loading|nbsp|safe}}</span><span class="indicator"><span>.</span><span>.</span><span>.</span></span>
+				</p>
+			{% elseif (key == "post") or ((key == "home") and (pagination.pageNumber != 0)) %}{% else %}
+				<p class="text message loading" aria-hidden="true" hidden>
+					<span>Loading</span><span class="indicator"><span>.</span><span>.</span><span>.</span></span>
+				</p>
+			{% endif %}
+
 			{% if message == true %}
 				<h1 class="text message">{{description}}</h1>
-			{% elseif (message) and (key == "home") and (pagination.pageNumber == 0) %}
-				<p class="text message" aria-hidden="true" hidden>{{message|nbsp|safe}}</p>
 			{% elseif message %}
 				<h1 class="text message">{{message|nbsp|safe}}</h1>
 			{% endif %}

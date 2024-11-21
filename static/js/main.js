@@ -212,6 +212,7 @@ const copyButtons = ((buttons = Array.from(document.querySelectorAll("[data-clip
 	});
 })();
 
+const loading = document.querySelector(".loading");
 const animateQueries = (timeline, key) => {
 	new imagesLoaded(document.body, () => {
 		if (window.scrollY > 0) {
@@ -223,6 +224,13 @@ const animateQueries = (timeline, key) => {
 	window.onload = () => {
 		gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
 			if (sessionStorage.getItem(storageItem) === null) {
+				gsap.to(loading, {
+					duration: .2,
+					opacity: 1,
+					y: 0,
+					ease: "power1.out"
+				});
+
 				ScrollTrigger.create({
 					trigger: document.body,
 					start: "-10",
@@ -255,6 +263,27 @@ const animateQueries = (timeline, key) => {
 
 const animateItems = (items, key) => {
 	let enter = gsap.timeline({ paused: true });
+
+	if(loading) {
+		let loaded = loading.nextElementSibling;
+
+		enter.to(loading, {
+			duration: .2,
+			opacity: 0,
+			y: "-100%",
+			ease: "power1.out",
+			onComplete() {
+				loading.classList.add("hidden");
+			}
+		});
+		enter.to(loaded, {
+			duration: .2,
+			opacity: 1,
+			y: 0,
+			ease: "power1.out"
+		});
+	}
+
 	items.forEach(item => {
 		enter.fromTo(item, {
 			opacity: 0,
