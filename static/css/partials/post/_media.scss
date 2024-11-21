@@ -173,7 +173,7 @@
 			width: 100%;
 			margin-top: calc(var(--p) * 1.5);
 			@include container(metadata, $iphone, "(min-width: #{$iphone-mini}) and (min-height: 400px)") {
-				margin-top: calc(var(--p) * 2);
+				margin-top: calc(var(--p)*2);
 			}
 			.media-expand {
 				transition: scale .2s ease-out;

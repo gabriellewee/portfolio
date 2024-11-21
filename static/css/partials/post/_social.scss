@@ -2,7 +2,7 @@
 
 .post-social {
 	.post-header {
-		padding: calc(var(--p) * 2) calc(var(--p) * 2) var(--p);
+		padding: calc(var(--p)*2) calc(var(--p)*2) var(--p);
 		@supports (container-type: inline-size) {
 			container-type: inline-size;
 			container-name: header;
@@ -18,7 +18,7 @@
 	}
 
 	.post-content {
-		padding: 0 calc(var(--p) * 2);
+		padding: 0 calc(var(--p)*2);
 		font-size: 1.25rem;
 		@include font-weight-width(450, 110);
 		@include theme(light) {

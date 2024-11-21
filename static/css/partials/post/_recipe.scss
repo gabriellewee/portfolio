@@ -109,7 +109,7 @@
 	.post-meta {
 		display: flex;
 		flex-wrap: wrap;
-		gap: calc(var(--p) * 2);
+		gap: calc(var(--p)*2);
 		margin-top: calc(var(--p)*1.5);
 		padding: calc(var(--p)*2);
 		background-color: hsl(from var(--color-mint) h s l / .15);

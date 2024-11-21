@@ -94,11 +94,9 @@
 		<footer class="bottom" aria-label="Footer" data-anim>
 			<nav aria-label="Site links">
 				<menu class="button-reduced-group">
-
-						{% for page in collections.footer | eleventyNavigation %}
-							<li><a class="button-reduced" href="{{page.url}}"><span>{{page.title}}</span></a></li>
-						{% endfor %}
-
+					{% for page in collections.footer | eleventyNavigation %}
+						<li><a class="button-reduced" href="{{page.url}}"><span>{{page.title}}</span></a></li>
+					{% endfor %}
 					{% if ((key == "home") and (pagination.pageNumber == 0)) or (key == "about") or (key == "me") %}{% else %}
 						<li><a class="button-reduced" href="mailto:mail@gabriellew.ee"><span>Email</span></a></li>
 					{% endif %}
