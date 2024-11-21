@@ -231,7 +231,20 @@ pagination:
 	</div>
 	<nav class="pagination main-pagination" aria-label="Pagination">
 		{% if (pagination.href.next != null) %}
-			<button class="load button" data-load hidden><span>Load more</span></button>
+			<div class="load">
+				<div class="page-load-status">
+					<p class="infinite-scroll-request">
+						<span><span>Loading</span><span class="indicator"><span>.</span><span>.</span><span>.</span></span></span>
+					</p>
+					<p class="infinite-scroll-last">
+						<span>You‘ve reached the end.</span>
+					</p>
+					<p class="infinite-scroll-error">
+						<span>Oops! Please refresh and try again.</span>
+					</p>
+				</div>
+				<button class="button" data-load hidden><span>Load more</span></button>
+			</div>
 		{% endif %}
 		{% if (pagination.href.previous) and (pagination.pageNumber != 0) %}
 			<a class="newer button button-reverse" href="{{pagination.href.previous}}"><span>Newer</span></a>

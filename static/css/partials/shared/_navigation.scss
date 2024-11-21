@@ -53,6 +53,57 @@ header.top {
 	}
 }
 
+.page-load-status {
+	display: none;
+
+	&[style="display: block;"] + .button {
+		display: none;
+	}
+
+	p {
+		position: relative;
+		width: fit-content;
+		line-height: 1.125;
+		@include font-weight-width(600, 115);
+		&::before {
+			content: "";
+			display: block;
+			position: absolute;
+			@include contrast(both) {
+				z-index: -1;
+				top: calc(var(--p)/-8);
+				left: calc(var(--p)/-8);
+				width: calc(100% + var(--p)/4);
+				height: calc(100% + var(--p)/4);
+				padding: var(--p) calc(var(--p)*2.5);
+				background-color: var(--color-primary);
+				@include clip-path(false) {
+					@include border-radius(calc(var(--p)/4));
+				}
+				@include clip-path {
+					@include button-shape(1.3125, 6%);
+				}
+			}
+		}
+		> span {
+			--background: color-mix(
+				in srgb,
+				var(--background-body),
+				var(--color-secondary) 70%
+			);
+			--color: hsl(from var(--color-primary) h s l / .6);
+			display: inline-block;
+			background-color: var(--background);
+			color: var(--color);
+			@include button;
+			@include contrast(both) {
+				--background: var(--color-secondary);
+				--color: var(--color-primary);
+			}
+		}
+	}
+}
+
 .pagination {
 	display: flex;
 	justify-content: space-between;

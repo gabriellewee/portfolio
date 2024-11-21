@@ -11,26 +11,26 @@
 
 .page-recipes {
 	@include theme(light) {
-		background-color: hsl(from var(--color-mint) h s calc(l * 1.2));
+		--background-body: hsl(from var(--color-mint) h s calc(l * 1.2));
 	}
 	@include theme(dark) {
-		background-color: hsl(from var(--color-iron) h s calc(l * .73));
+		--background-body: hsl(from var(--color-iron) h s calc(l * .73));
 	}
 	@include contrast(light) {
-		background-color: hsl(from var(--color-mint) h s calc(l * 1.4));
+		--background-body: hsl(from var(--color-mint) h s calc(l * 1.4));
 	}
 	@include contrast(dark) {
-		background-color: hsl(from var(--color-iron) h s calc(l * .45));
+		--background-body: hsl(from var(--color-iron) h s calc(l * .45));
 	}
 }
 
 * {
 	@include selection {
 		@include theme(light) {
-			background-color: hsl(from var(--color-mint) h s l / .8);
+			--selection: hsl(from var(--color-mint) h s l / .8);
 		}
 		@include theme(dark) {
-			background-color: hsl(from var(--color-mint) h s l / .8);
+			--selection: hsl(from var(--color-mint) h s l / .8);
 		}
 	}
 }
@@ -39,18 +39,18 @@
 	a {
 		&:focus-visible {
 			@include theme(light) {
-				@include focus-shadow(color-mix(
+				--focus: color-mix(
 					in hsl,
 					var(--color-slate) 70%,
 					var(--color-mint)
-				));
+				);
 			}
 			@include theme(dark) {
-				@include focus-shadow(color-mix(
+				--focus: color-mix(
 					in hsl,
 					var(--color-slate) 70%,
 					var(--color-mint)
-				));
+				);
 			}
 		}
 	}

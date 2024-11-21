@@ -130,7 +130,8 @@ if (scrollContainer && lightboxContainer) {
 		path: '[data-load-path]',
 		append: '[data-post-append]',
 		scrollThreshold: false,
-		outlayer: iso
+		outlayer: iso,
+		status: '.page-load-status'
 	});
 	let lightboxScroll = new InfiniteScroll(lightboxContainer, {
 		button: '[data-load]',

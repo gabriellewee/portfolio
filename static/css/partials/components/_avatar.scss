@@ -79,22 +79,6 @@
 			@media (prefers-reduced-motion: reduce) {
 				display: none;
 			}
-			.indicator {
-				span {
-					display: inline-block;
-					animation: fade-in 1s cubic-bezier(1,0,0,1) infinite forwards;
-
-					@for $i from 1 through 3 {
-						&:nth-child(#{$i}) {
-							animation-delay: .1s * $i;
-						}
-					}
-				}
-
-				@keyframes fade-in {
-					from { opacity: 0 } to { opacity: 1 }
-				}
-			}
 		}
 		&.go-home {
 			pointer-events: none;
@@ -125,11 +109,12 @@
 			height: 100%;
 		}
 		&:focus-visible {
+			@include focus-shadow(var(--focus));
 			@include theme(light) {
-				@include focus-shadow(hsl(from var(--color-mauve) h s l / .5));
+				--focus: hsl(from var(--color-mauve) h s l / .5);
 			}
 			@include theme(dark) {
-				@include focus-shadow(var(--color-mauve));
+				--focus: var(--color-mauve);
 			}
 			.avatar {
 				&:not(.avatar-hm) {
@@ -158,5 +143,22 @@
 				}
 			}
 		}
+	}
+}
+
+.indicator {
+	span {
+		display: inline-block;
+		animation: fade-in 1s cubic-bezier(1,0,0,1) infinite forwards;
+
+		@for $i from 1 through 3 {
+			&:nth-child(#{$i}) {
+				animation-delay: .1s * $i;
+			}
+		}
+	}
+
+	@keyframes fade-in {
+		from { opacity: 0 } to { opacity: 1 }
 	}
 }

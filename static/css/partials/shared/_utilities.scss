@@ -462,7 +462,7 @@ $x-large: 1280px;
 
 @mixin button-shape($a: 1.25, $b: 5%, $c: null, $dir: null) {
 	@if $dir == left and $c != null {
-		clip-path: polygon(calc(var(--p)*#{$a}) 0%, calc(100% - #{$c}) 0%, 100% #{$c}, 100% calc(100% - #{$c}), calc(100% - #{$c}) 100%, calc(var(--p)*#{$a}) 100%, 0 #{50% + $b}, 0 #{50% - $b})
+		clip-path: polygon(calc(var(--p)*#{$a}) 0%, calc(100% - #{$c}) 0%, 100% #{$c}, 100% calc(100% - #{$c}), calc(100% - #{$c}) 100%, calc(var(--p)*#{$a}) 100%, 0 #{50% + $b}, 0 #{50% - $b});
 	} @else if $dir == right and $c != null {
 		clip-path: polygon(#{$c} 0%, calc(100% - calc(var(--p)*#{$a})) 0%, 100% #{50% - $b}, 100% #{50% + $b}, calc(100% - calc(var(--p)*#{$a})) 100%, #{$c} 100%, 0 calc(100% - #{$c}), 0 #{$c});
 	} @else {
