@@ -16,7 +16,7 @@ eleventyNavigation:
 		<article class="post post-intro" data-grid-item>
 			<div class="post-inner" data-anim>
 				<header class="post-header">
-					<h2>Hi there! 👋🏼 This is a fairly recent photo of me.</h2>
+					<h2>Hi there! 👋🏼 This is a recent photo of me.</h2>
 				</header>
 				<figure class="post-image" aria-label="{{site.photoDescription}}" role="img"></figure>
 				<picture class="no-css">
@@ -47,11 +47,10 @@ eleventyNavigation:
 		<article class="post post-game" data-grid-item>
 			<div class="post-inner" data-anim>
 				<header class="post-header">
-					<h2>I love playing video games - here’s what I’m currently playing.</h2>
+					<h2>These are the video games that I’m currently playing.</h2>
 				</header>
 
 				{% if steam.response.games[0] %}
-					<h3>Steam Deck:</h3>
 					<ul class="grid">
 						{% for game in steam.response.games %}
 							<li>
@@ -64,7 +63,6 @@ eleventyNavigation:
 				{% endif %}
 				<a class="button" href="https://steamcommunity.com/id/gabriellewee"><span>Add me on Steam</span></a>
 
-				<h3>Nintendo Switch:</h3>
 				<ul class="grid">
 					{% for game in notion.switch.results %}
 						<li>
@@ -74,7 +72,7 @@ eleventyNavigation:
 				</ul>
 				
 				<div class="friend-code-container">
-					<label for="friend-code">Friend Code:</label>
+					<label for="friend-code">Nintendo Friend Code:</label>
 					<div class="friend-code-border"><div class="tooltip tooltip-right dark hidden" style="--tooltip-label: 'Copied'"><input id="friend-code" class="friend-code" type="text" value="SW‑0918‑7153‑9794" data-clip data-clipboard-target=".friend-code"/></div></div>
 				</div>
 			</div>
@@ -92,34 +90,60 @@ eleventyNavigation:
 			</div>
 		</article>
 
-		<article class="post post-mods post-size-s" data-grid-item>
+		<article class="post post-mods" data-grid-item>
 			<div class="post-inner" data-anim>
 				<header class="post-header">
 					<h2>I mod my keyboards and console controllers for fun.</h2>
 				</header>
-				<figure id="2022-07-20-keyboard" aria-label="My pastel-themed custom mechanical keyboard and Logitech Lift Mouse.">
-					<a class="post-expand expand" href="#2022-07-20-keyboard-lightbox" role="button" aria-label="Expand image" data-media-expand>
-						{% image './static/images/posts/2022-07-20-keyboard.jpg', 'My pastel-themed custom mechanical keyboard and Logitech Lift Mouse', 700 %}
-					</a>
-				</figure>
-				<ul class="grid">
-					{% for controller in about.controllers %}
-						<li>
-							<picture>
-								<img src="/static/images/svg/controllers/{{controller.name}}.svg" width="156" height="156" alt="Icon rendition of modded {{controller.color}} {{controller.brand}} {{controller.type}}"/>
-							</picture>
-						</li>
-					{% endfor %}
-				</ul>
+				<div class="post-content">
+					<figure id="2022-07-20-keyboard" aria-label="My pastel-themed custom mechanical keyboard and Logitech Lift Mouse.">
+						<a class="post-expand expand" href="#2022-07-20-keyboard-lightbox" role="button" aria-label="Expand image" data-media-expand>
+							{% image './static/images/posts/2022-07-20-keyboard.jpg', 'My pastel-themed custom mechanical keyboard and Logitech Lift Mouse', 700 %}
+						</a>
+					</figure>
+					<ul class="grid">
+						{% for controller in about.controllers %}
+							<li>
+								<picture>
+									<img src="/static/images/svg/controllers/{{controller.name}}.svg" width="156" height="156" alt="Icon rendition of modded {{controller.color}} {{controller.brand}} {{controller.type}}"/>
+								</picture>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
 			</div>
 		</article>
 
-		<article class="post post-thumbnails post-photography post-size-s" data-grid-item>
+		<article class="post post-cat" data-grid-item>
+			<div class="post-inner" data-anim>
+				<header class="post-header">
+					<h2>I love my cats, Alfie and Impa.</h2>
+					<p>Alfie is named after Alphonse from Full Metal Alchemist and Impa is named after the character from the Legend of Zelda!</p>
+				</header>
+				<ul class="grid">
+					<li>
+						<figure>
+							{% external './static/images/avatars/alfie.png', 'A grey kitten with green eyes', 300 %}
+						</figure>
+					</li>
+					<li>
+						<figure>
+							{% external './static/images/avatars/impa.png', 'A grey kitten with orange eyes', 300 %}
+						</figure>
+					</li>
+				</ul>
+				<footer class="post-footer">
+					<a class="button" href="https://instagram.com/alfieandimpa"><span>See Cats</span></a>
+				</footer>
+			</div>
+		</article>
+
+		<article class="post post-photography" data-grid-item>
 			<div class="post-inner" data-anim>
 				<header class="post-header">
 					<h2>I enjoy taking photos of the world around me.</h2>
 				</header>
-				<ul class="grid">
+				<ul class="flex">
 					{% for media in photography|limit(4) %}
 						<li>
 							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
@@ -136,96 +160,32 @@ eleventyNavigation:
 			</div>
 		</article>
 
-		<article class="post post-thumbnails post-graphic post-size-s" data-grid-item>
-			<div class="post-inner" data-anim>
+		<article class="post post-graphic post-size-s post-full-bleed" data-grid-item>
+			<div class="post-inner" data-anim data-anim style="aspect-ratio: {% stats './static/images/graphic/2017-05-10-crystal-carillon-large.svg', 'ratio' %};">
 				<header class="post-header">
 					<h2>I dabble in illustration and design.</h2>
 				</header>
-				<ul class="grid">
-					{% for media in graphic|limit(4) %}
-						<li>
-							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
-								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image" data-media-expand{% if media.focus %} style="--focus-x: {% if media.focus.x %}{{media.focus.x}}{% else %}0{% endif %}%; --focus-y: {% if media.focus.y %}{{media.focus.y}}{% else %}0{% endif %}%;"{% endif %}>
-									{% if media.svg == true %}
-										<picture>
-											<img src="/static/images/graphic/{{media.date}}-{{media.name}}.svg" alt="{{media.description}}" width="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'width', 700 %}" height="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'height', 700 %}"/>
-										</picture>
-									{% else %}
-										{% image './static/images/graphic/' + media.date + '-' + media.name + '.png', media.description, 350, loop.index %}
-									{% endif %}
-								</a>
-							</figure>
-						</li>
-					{% endfor %}
-				</ul>
+				<figure>
+					<picture>
+						<img src="/static/images/graphic/2017-05-10-crystal-carillon-large.svg" alt="Vector art inspired by the Crystal Carillon from Sailor Moon, a heart-shaped weapon with a bell at the bottom." width="{% stats './static/images/graphic/2017-05-10-crystal-carillon-large.svg', 'width', 700 %}" height="{% stats './static/images/graphic/2017-05-10-crystal-carillon-large.svg', 'height', 700 %}"/>
+					</picture>
+				</figure>
 				<footer class="post-footer">
 					<a class="button" href="/graphic/"><span>View Graphics</span></a>
 				</footer>
 			</div>
 		</article>
 
-		<article class="post post-thumbnails post-art post-size-s" data-grid-item>
-			<div class="post-inner" data-anim>
+		<article class="post post-art post-size-s post-full-bleed" data-grid-item>
+			<div class="post-inner" data-anim style="aspect-ratio: {% stats './static/images/art/2020-03-12-melanochrysum.jpg', 'ratio' %};">
 				<header class="post-header">
-					<h2>I like to draw.</h2>
+					<h2>I draw art and collect plants.</h2>
 				</header>
-				<ul class="grid">
-					{% for media in art|limit(4) %}
-						<li>
-							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
-								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image" data-media-expand{% if media.focus %} style="--focus-x: {% if media.focus.x %}{{media.focus.x}}{% else %}0{% endif %}%; --focus-y: {% if media.focus.y %}{{media.focus.y}}{% else %}0{% endif %}%;"{% endif %}>
-									{% image './static/images/art/' + media.date + '-' + media.name + '.jpg', media.description, 350, loop.index %}
-								</a>
-							</figure>
-						</li>
-					{% endfor %}
-				</ul>
+				<figure>
+					{% external './static/images/art/2020-03-12-melanochrysum.jpg', 'A sketch of a philodendron Melanochrysum leaf using digital brushes to imitate color pencils.', 700 %}
+				</figure>
 				<footer class="post-footer">
 					<a class="button" href="/art/"><span>View Art</span></a>
-				</footer>
-			</div>
-		</article>
-
-		<article class="post post-cat post-size-s" data-grid-item>
-			<div class="post-inner" data-anim>
-				<header class="post-header">
-					<h2>I spend a lot of time with Alfie, my cat.</h2>
-					<p>We go on adventures together!</p>
-				</header>
-				<ul class="grid">
-					{% for media in about.cat|limit(2) %}
-						<li>
-							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
-								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
-									{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 350 %}
-								</a>
-							</figure>
-						</li>
-					{% endfor %}
-				</ul>
-				<footer class="post-footer">
-					<a class="button" href="https://instagram.com/greyalphonsecat"><span>See Cat</span></a>
-				</footer>
-			</div>
-		</article>
-
-		<article class="post post-plants post-size-s" data-grid-item>
-			<div class="post-inner" data-anim>
-				<header class="post-header">
-					<h2>I’m an avid plant collector with over 200 plants, including aroids and succulents! 🪴</h2>
-				</header>
-				<ul class="grid">
-					{% for media in about.plants|limit(2) %}
-						<li>
-							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
-								<a class="post-expand expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand photo" data-media-expand>
-									{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 350 %}
-								</a>
-							</figure>
-						</li>
-					{% endfor %}
-				</ul>
-				<footer class="post-footer">
 					<a class="button" href="https://instagram.com/ellocasia"><span>See Plants</span></a>
 				</footer>
 			</div>
@@ -245,48 +205,6 @@ eleventyNavigation:
 	</dialog>
 
 	{% for media in photography|limit(4) %}
-		<a class="lightbox" id="{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Close image" href="#{{media.date|safe}}-{{media.name}}" data-lightbox></a>
-		<dialog class="lightbox-content image" aria-label="Image preview" autofocus>
-			<figure>
-				{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
-			</figure>
-		</dialog>
-	{% endfor %}
-
-	{% for media in graphic|limit(4) %}
-		<a class="lightbox" id="{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Close image" href="#{{media.date|safe}}-{{media.name}}" data-lightbox></a>
-		<dialog class="lightbox-content image" aria-label="Image preview" autofocus>
-			<figure>
-				{% if media.svg == true %}
-					<picture>
-						<img src="/static/images/graphic/{{media.date}}-{{media.name}}.svg" alt="{{media.description}}" width="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'width' %}" height="{% stats './static/images/graphic/' + media.date + '-' + media.name + '.svg', 'height' %}"/>
-					</picture>
-				{% else %}
-					{% image './static/images/graphic/' + media.date + '-' + media.name + '.png', media.description, 'screen' %}
-				{% endif %}
-			</figure>
-		</dialog>
-	{% endfor %}
-
-	{% for media in art|limit(4) %}
-		<a class="lightbox" id="{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Close image" href="#{{media.date|safe}}-{{media.name}}" data-lightbox></a>
-		<dialog class="lightbox-content image" aria-label="Image preview" autofocus>
-			<figure>
-				{% image './static/images/art/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
-			</figure>
-		</dialog>
-	{% endfor %}
-
-	{% for media in about.cat|limit(2) %}
-		<a class="lightbox" id="{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Close image" href="#{{media.date|safe}}-{{media.name}}" data-lightbox></a>
-		<dialog class="lightbox-content image" aria-label="Image preview" autofocus>
-			<figure>
-				{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
-			</figure>
-		</dialog>
-	{% endfor %}
-
-	{% for media in about.plants|limit(2) %}
 		<a class="lightbox" id="{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Close image" href="#{{media.date|safe}}-{{media.name}}" data-lightbox></a>
 		<dialog class="lightbox-content image" aria-label="Image preview" autofocus>
 			<figure>

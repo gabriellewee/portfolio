@@ -27,6 +27,7 @@
 		"description": "A person in an oversized collared shirt walking along a street in Washington, D.C. surrounded by trees and autumn leaves.",
 		"size": "m",
 		"focus": {
+			"x": 50,
 		 	"y": 80
 		 }
 	},

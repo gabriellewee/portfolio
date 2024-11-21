@@ -445,19 +445,19 @@ $x-large: 1280px;
 	@include square(1px);
 }
 
-@mixin before($color: null) {
+@mixin before($color: null, $border: 3px, $bezel: #{$border}) {
 	opacity: 0;
 	content: "";
 	display: block;
 	position: absolute;
-	top: calc(var(--p)/-4);
-	left: calc(var(--p)/-4);
-	width: calc(100% + var(--p)/2);
-	height: calc(100% + var(--p)/2);
+	top: $border * -1;
+	left: $border * -1;
+	width: calc(100% + #{$border*2});
+	height: calc(100% + #{$border*2});
 	@if $color {
 		background: $color;
 	}
-	@include clip-path-edges(3px);
+	@include clip-path-edges(#{$bezel});
 }
 
 @mixin button-shape($a: 1.25, $b: 5%, $c: null, $dir: null) {
