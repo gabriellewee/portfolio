@@ -51,11 +51,11 @@ eleventyNavigation:
 				</header>
 
 				{% if steam.response.games[0] %}
-					<ul class="grid">
+					<ul class="grid steam">
 						{% for game in steam.response.games %}
 							<li>
 								<a class="post-external" href="https://store.steampowered.com/app/{{game.appid}}/">
-									{% external "https://cdn.cloudflare.steamstatic.com/steam/apps/" + game.appid + "/capsule_616x353.jpg", game.name, 300, "eager" %}
+									{% external "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/" + game.appid + "/library_600x900_2x.jpg", game.name, 300, "eager" %}
 								</a>
 							</li>
 						{% endfor %}
@@ -63,7 +63,7 @@ eleventyNavigation:
 				{% endif %}
 				<a class="button" href="https://steamcommunity.com/id/gabriellewee"><span>Add me on Steam</span></a>
 
-				<ul class="grid">
+				<ul class="grid nintendo">
 					{% for game in notion.switch.results %}
 						<li>
 							{% unfurlGame game.properties.URL.url, game.properties.Name.title[0].plain_text, "post-external", 300, "eager" %}

@@ -167,14 +167,27 @@
 	.grid {
 		margin-top: calc(var(--p) * 1.75);
 		grid-template-columns: repeat(2, 1fr);
-		@include viewport(medium) {
-			grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		&.steam {
+			@include viewport($medium) {
+				grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+			}
+			@include viewport(medium) {
+				grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+			}
+			@include viewport($large) {
+				grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+			}
 		}
-		@include viewport($large) {
-			grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-		}
-		@include viewport($x-large) {
-			grid-template-columns: repeat(2, 1fr);
+		&.nintendo {
+			@include viewport(medium) {
+				grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+			}
+			@include viewport($large) {
+				grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+			}
+			@include viewport($x-large) {
+				grid-template-columns: repeat(2, 1fr);
+			}
 		}
 		&:has(.button) {
 			grid-template-columns: 1fr;
@@ -410,7 +423,7 @@
 			--color-mix: color-mix(
 				in srgb,
 				var(--color-iron) 10%,
-				var(--color-secondary)
+				white
 			);
 			@include before(var(--color-mix), 1px, 2.5px);
 			@include contrast(light) {
