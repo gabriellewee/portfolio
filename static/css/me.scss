@@ -3,16 +3,16 @@
 @use 'partials/post/post';
 
 .post {
-	--intro-width: 320px;
-	--music-width: 345px;
-	--photography-width: 638px;
+	--width-intro: 320px;
+	--width-music: 345px;
+	--width-photos: 638px;
 
 	@include viewport(medium) {
-		--intro-width: 240px;
+		--width-intro: 240px;
 	}
 
 	@include viewport($large) {
-		--intro-width: 320px;
+		--width-intro: 320px;
 	}
 
 
@@ -85,7 +85,7 @@
 .post-intro {
 	--width: 100%;
 	@include viewport(medium) {
-		--width: var(--intro-width);
+		--width: var(--width-intro);
 	}
 	.post-inner {
 		padding: 0;
@@ -99,7 +99,7 @@
 		place-items: center;
 		position: relative;
 		width: 100%;
-		height: var(--intro-width);
+		height: var(--width-intro);
 		@include invert(100%);
 		&::before, &::after {
 			content: "";
@@ -123,7 +123,7 @@
 			}
 		}
 		&::after {
-			width: var(--intro-width);
+			width: var(--width-intro);
 		}
 	}
 }
@@ -131,7 +131,7 @@
 .post-books {
 	--width: 100%;
 	@include viewport(medium) {
-		--width: calc(100% - var(--intro-width) - var(--p) * 2);
+		--width: calc(100% - var(--width-intro) - var(--p) * 2);
 	}
 	.grid {
 		grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
@@ -149,10 +149,10 @@
 
 .post-music {
 	--width: 100%;
-	--min-width: var(--music-width);
+	--min-width: var(--width-music);
 	@include viewport(medium) {
 		--width: 100%;
-		--max-width: var(--music-width);
+		--max-width: var(--width-music);
 	}
 	iframe {
 		display: block;
@@ -162,7 +162,7 @@
 .post-game {
 	--width: 100%;
 	@include viewport(medium) {
-		--width: calc(100% - var(--music-width) - var(--p) * 2);
+		--width: calc(100% - var(--width-music) - var(--p) * 2);
 	}
 	.grid {
 		margin-top: calc(var(--p) * 1.75);
@@ -284,9 +284,23 @@
 .post-cat {
 	--width: 100%;
 	--min-width: 320px;
+	--background-post: hsl(from var(--color-oak) h calc(s*.3) calc(l*1.2));
+	--color-headline: var(--color-iron);
+
+	color: var(--color-headline);
 
 	@include viewport(medium) {
-		--max-width: calc(100% - var(--photography-width) - var(--p) * 2);
+		--max-width: calc(100% - var(--width-photos) - var(--p) * 2);
+	}
+
+	.button {
+		--background: #37364D radial-gradient(
+			circle at center left,
+			#37364D,
+			#826D67,
+			#826D67
+		);
+		--outline: white;
 	}
 
 	.post-inner {
@@ -346,12 +360,19 @@
 
 .post-photography {
 	--width: 100%;
+	--background-post: hsl(from var(--color-slate) h calc(s*.4) calc(l*1.8));
+	--color-headline: var(--color-iron);
 	$viewport-1: 480px;
 	$viewport-2: 662px;
 
+	@include theme(dark) {
+		--background-post: hsl(from var(--color-secondary) h s l / .9);
+		--color-headline: var(--color-primary);
+	}
+
 	@include viewport(medium) {
 		--width: fit-content;
-		--max-width: var(--photography-width);
+		--max-width: var(--width-photos);
 	}
 
 	.flex {
@@ -467,21 +488,19 @@
 }
 
 .post-full-bleed {
+	--color-headline: var(--color-iron);
+
 	.post-inner {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
 		padding: unset;
-		background-color: var(--highlight);
 	}
 	header {
 		position: relative;
 		z-index: 2;
 		background: linear-gradient(to bottom, var(--highlight), hsl(from var(--highlight) h s l / 0));
 		padding: calc(var(--p)*2) calc(var(--p)*2) calc(var(--p) * 3);
-		h2 {
-			color: var(--color-iron);
-		}
 	}
 	footer {
 		padding: calc(var(--p)*2);
@@ -494,7 +513,7 @@
 }
 
 .post-graphic {
-	--highlight: #F2D6D9;
+	--background-post: #F2D6D9;
 
 	.button {
 		--background: #E365A6 radial-gradient(
@@ -510,12 +529,12 @@
 }
 
 .post-art {
-	--highlight: #EDB16F;
+	--background-post: #EDB16F;
 
 	.button {
-		--background: var(--highlight) radial-gradient(
+		--background: var(--background-post) radial-gradient(
 			circle at center left,
-			hsl(from var(--highlight) h calc(s * .7) calc(l * .7)),
+			hsl(from var(--background-post) h calc(s * .7) calc(l * .7)),
 			hsl(from #3F443E h calc(s * 2) calc(l * 1.5)),
 			#3F443E
 		);

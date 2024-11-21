@@ -30,6 +30,8 @@ body {
 	font-feature-settings: "liga","ss01";
 	background-color: var(--background-body);
 	color: var(--color-body);
+
+	--color-headline: var(--color-primary);
 	@include theme(light) {
 		--background-body: hsl(from var(--color-blush) h s calc(l * 1.09));
 		--color-body: var(--color-primary);

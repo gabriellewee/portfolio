@@ -31,6 +31,7 @@
 	--width: 100%;
 	--max-width: 100%;
 	--min-width: unset;
+	--background-post: hsl(from var(--color-secondary) h s l / .9);
 
 	position: relative;
 	width: var(--width);
@@ -82,12 +83,12 @@
 	}
 
 	h1, h2, h3, h4, h5 {
-		color: var(--color-primary);
+		color: var(--color-headline);
 	}
 
 	.post-inner {
 		overflow: hidden;
-		background-color: hsl(from var(--color-secondary) h s l / .9);
+		background-color: var(--background-post);
 		@include viewport($iphone-max) {
 			@include clip-path-edges(2px);
 		}
