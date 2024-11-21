@@ -130,7 +130,7 @@ eleventyNavigation:
 										{% endif %}
 									</h3>
 									<div>
-										<p>{{job.start}} — {{job.end}}</p>
+										{% if job.start %}<p>{{job.start}} — {% if job.end%}{{job.end}}{% else %}Now{% endif %}</p>{% endif %}
 										<p>{{job.location}}</p>
 									</div>
 								</div>
