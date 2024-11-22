@@ -74,6 +74,9 @@
 	picture {
 		@include clip-path-edges(2px);
 	}
+	&:hover {
+		scale: 1.02;
+	}
 	&:focus-visible {
 		&::before {
 			opacity: 1;
@@ -325,6 +328,14 @@
 	.grid, figure {
 		@include viewport(medium) {
 			width: calc(50% - var(--p));
+		}
+	}
+	.post-expand {
+		&:hover {
+			scale: 1.01;
+		}
+		&:active {
+			scale: .98;
 		}
 	}
 	picture {
