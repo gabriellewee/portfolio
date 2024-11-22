@@ -32,6 +32,7 @@
 	--max-width: 100%;
 	--min-width: unset;
 	--background-post: hsl(from var(--color-secondary) h s l / .9);
+	--background-contrast: var(--color-secondary);
 
 	position: relative;
 	width: var(--width);
@@ -39,6 +40,17 @@
 	min-width: var(--min-width);
 	font-size: 1.125rem;
 	grid-column-end: span 12;
+
+	@include contrast(light) {
+		--background-outline: var(--color-primary);
+	}
+	@include contrast(dark) {
+		--background-outline: color-mix(
+			in srgb,
+			var(--color-iron) 5%,
+			white
+		);
+	}
 
 	&[data-orientation="portrait"] {
 		@include viewport(medium) {
@@ -117,19 +129,10 @@
 			}
 		}
 		&::before {
-			@include contrast(light) {
-				background-color: var(--color-primary);
-			}
-			@include contrast(dark) {
-				background-color: color-mix(
-					in srgb,
-					var(--color-iron) 5%,
-					white
-				);
-			}
+			background-color: var(--background-outline);
 		}
 		&::after {
-			background-color: var(--color-secondary);
+			background-color: var(--background-contrast);
 		}
 	}
 	time {

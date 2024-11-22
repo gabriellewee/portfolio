@@ -130,17 +130,21 @@
 
 .post-books {
 	--width: 100%;
+
 	@include viewport(medium) {
 		--width: calc(100% - var(--width-intro) - var(--p) * 2);
 	}
+
 	.grid {
 		grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+
 		li:nth-last-child(-n+4) {
 			display: none;
 			@include viewport(medium) {
 				display: block;
 			}
 		}
+
 		picture {
 			background-color: var(--color);
 		}
@@ -152,6 +156,7 @@
 	--min-width: var(--width-music);
 	--background-post: #F8F8FA;
 	--color-headline: var(--color-iron);
+	--background-contrast: var(--background-post);
 
 	@include viewport(medium) {
 		--width: 100%;
@@ -329,6 +334,15 @@
 	--color-headline: var(--color-iron);
 
 	color: var(--color-headline);
+
+	@include contrast(light) {
+		--background-contrast: hsl(from var(--color-oak) h calc(s*.3) calc(l*1.4));
+	}
+
+	@include contrast(dark) {
+		--background-contrast: hsl(from var(--color-oak) h calc(s*.3) calc(l*0.4));
+		--color-headline: var(--color-primary);
+	}
 
 	@include viewport(medium) {
 		--max-width: calc(100% - var(--width-photos) - var(--p) * 2);
@@ -530,6 +544,7 @@
 
 .post-graphic {
 	--background-post: #F2D6D9;
+	--background-contrast: var(--background-post);
 
 	.button {
 		--background: #E365A6 radial-gradient(
@@ -546,6 +561,7 @@
 
 .post-art {
 	--background-post: #EDB16F;
+	--background-contrast: var(--background-post);
 
 	.button {
 		--background: var(--background-post) radial-gradient(
