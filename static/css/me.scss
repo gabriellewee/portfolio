@@ -58,15 +58,17 @@
 }
 
 .post-expand, .post-external:not(.button) {
+	--outline: radial-gradient(
+		circle at center left,
+		var(--color-rose),
+		var(--color-mauve)
+	);
 	transition: opacity .2s ease-out, scale .2s ease-out;
 	display: block;
 	position: relative;
+
 	&::before {
-		background: radial-gradient(
-			circle at center left,
-			var(--color-rose),
-			var(--color-mauve)
-		);
+		background: var(--outline);
 		@include before;
 	}
 	picture {
@@ -145,8 +147,40 @@
 			}
 		}
 
-		picture {
-			background-color: var(--color);
+		a {
+			--outline: var(--color-rose);
+
+			&::after {
+				content: "";
+				display: block;
+				z-index: 0;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: calc(100% - var(--p)/2);
+				height: calc(100% - var(--p)/2);
+				background-color: color-mix(
+					in srgb,
+					var(--background-post),
+					var(--color)
+				);
+				@include clip-path-edges(2px);
+			}
+
+			&.tomorrow-and-tomorrow-and-tomorrow::after {
+				--color: #083855;
+			}
+
+			picture {
+				position: relative;
+				z-index: 1;
+				padding-top: calc(var(--p)/2);
+				padding-left: calc(var(--p)/2);
+			}
+
+			img {
+				@include clip-path-edges(2px);
+			}
 		}
 	}
 }

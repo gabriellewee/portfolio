@@ -35,7 +35,7 @@ eleventyNavigation:
 				<ul class="grid">
 					{% for book in about.loans.timeline|limit(8) %}
 						<li>
-							<a class="post-external" href="{{book.title.url}}" target="_blank" style="--color: {{book.cover.color}}">
+							<a class="post-external {{book.title.text|slugify}}" href="{{book.title.url}}" target="_blank" style="--color: {{book.cover.color}}">
 								{% external book.cover.url, book.title.text + "by" + book.author, 300, "eager" %}
 							</a>
 						</li>
