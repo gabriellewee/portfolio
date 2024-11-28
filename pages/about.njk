@@ -9,7 +9,7 @@ lightbox: false
 hidden: true
 tags: ["pages", "footer"]
 versions: ["2013-2014", "2014-2015", "2015-2020", "2020-2021", "2021-2023" ]
-colors: [
+swatches: [
     { hex: "#263238", name: "iron" },
     { hex: "#F5C8BF", name: "blush" },
     { hex: "#D19487", name: "rose" },
@@ -48,11 +48,11 @@ eleventyNavigation:
 					<menu class="button-reduced-group">
 						<li><a class="button-reduced" href="/"><span>Home</span></a></li>
 						{% for post in collections.pages %}
-							<li>
-								{% if post.data.key !== "home" %}
+							{% if post.data.key !== "home" %}
+								<li>
 									<a class="button-reduced" href="{{post.url|url}}"><span>{{post.data.title|safe|capitalize}}</span></a>
-								{% endif %}
-							</li>
+								</li>
+							{% endif %}
 						{% endfor %}
 						<li><a class="button-reduced" href="/posts/feed.xml"><span>RSS</span></a></li>
 					</menu>
@@ -88,20 +88,20 @@ eleventyNavigation:
 			</div>
 		</article>
 
-		<article class="post post-size-xs post-colors" data-grid-item>
+		<article class="post post-size-xs post-swatches" data-grid-item>
 			<div class="post-inner" data-anim>
 				<header class="post-header">
-					<h2>Colors</h2>
+					<h2>Swatches</h2>
 				</header>
-				<div class="post-links">
+				<div class="post-content">
 					<ul>
-						{% for color in colors %}
+						{% for swatch in swatches %}
 							<li>
-								<div class="color-container" aria-label="{{color.name|capitalize}}" role="tooltip">
-									<span class="color color-{{color.name}}" aria-hidden="true"></span>
-									<span class="tooltip tooltip-bottom large inline monospace" style="--tooltip-label: '{{color.hex}}'"><span></span></span>
+								<div class="swatch-container" aria-label="{{swatch.name|capitalize}}" role="tooltip">
+									<span class="swatch swatch-{{swatch.name}}" aria-hidden="true"></span>
+									<span class="tooltip tooltip-bottom large inline monospace" style="--tooltip-label: '{{swatch.hex}}'"><span></span></span>
 								</div>
-								<span class="no-css"><strong>{{color.name|capitalize}}:</strong> {{color.hex}}</span>
+								<span class="no-css"><strong>{{swatch.name|capitalize}}:</strong> {{swatch.hex}}</span>
 							</li>
 						{% endfor %}
 					</ul>
@@ -121,7 +121,7 @@ eleventyNavigation:
 								{{job.title}}{% if job.company %} at {{job.company}}{% endif %}
 							{% endset %}
 							<li>
-								<div class="job">
+								<div class="link-tile">
 									<h3>
 										{% if job.website %}
 											<a href="{{job.website}}"><span>{{titleTemplate}}</span></a>
@@ -137,7 +137,7 @@ eleventyNavigation:
 							</li>
 						{% endfor %}
 						<li>
-							<ul class="links">
+							<ul class="buttons">
 								{% for link in about.resume.links %}
 									<li><a class="button" href="{{link.url}}"><span>{{link.title}}</span></a></li>
 								{% endfor %}
@@ -148,17 +148,19 @@ eleventyNavigation:
 			</div>
 		</article>
 
-		<article class="post post-external" data-grid-item>
+		<article class="post post-mentions post-color" data-grid-item>
 			<div class="post-inner" data-anim>
 				<header class="post-header">
 					<h2>Mentions</h2>
 				</header>
-				<div class="post-content post-text">
-					<ul>
+				<div class="post-content">
+					<ul class="list">
 						{% for mention in about.mentions %}
 							<li>
-								<strong class="external-platform">{{mention.publication}}</strong>
-								<a class="external-title" href="{{mention.url|url}}">{{mention.title|nbsp|safe}}</a>
+								<div class="link-item">
+									<strong>{{mention.publication}}</strong>
+									<a href="{{mention.url|url}}">{{mention.title|nbsp|safe}}</a>
+								</div>
 							</li>
 						{% endfor %}
 					</ul>
@@ -166,21 +168,27 @@ eleventyNavigation:
 			</div>
 		</article>
 
-		<article class="post post-external" data-grid-item>
+		<article class="post post-features post-color" data-grid-item>
 			<div class="post-inner" data-anim>
 				<header class="post-header">
 					<h2>Features</h2>
 				</header>
-				<div class="post-content post-text">
-					<ul>
+				<div class="post-content">
+					<ul class="grid">
 						{% for feature in features %}{% if feature.self != true %}
 							<li>
-								<strong class="external-platform">{{feature.platform}}</strong>
-								{% if feature.url %}
-									<a class="external-title" href="{{feature.url|url}}">{{feature.title|nbsp|safe}}</a>
-								{% elseif feature.external %}
-									<a class="external-title" href="{{feature.external[0].url|url}}">{{feature.title|nbsp|safe}}</a>
-								{% endif %}
+								<div class="link-tile">
+									<h3>
+										{% if feature.url %}
+											<a href="{{feature.url|url}}"><span>{{feature.title|nbsp|safe}}</span></a>
+										{% elseif feature.external %}
+											<a href="{{feature.external[0].url|url}}"><span>{{feature.title|nbsp|safe}}</span></a>
+										{% endif %}
+									</h3>
+									<div>
+										<p>{{feature.platform}}</p>
+									</div>
+								</div>
 							</li>
 						{% endif %}{% endfor %}
 					</ul>

@@ -1,4 +1,6 @@
 @use 'partials/shared/utilities' as *;
+@use 'partials/components/links';
+@use 'partials/components/swatch';
 @use 'partials/components/tooltip';
 @use 'partials/post/post';
 
@@ -31,6 +33,28 @@
 		a {
 			font-weight: 600;
 		}
+	}
+
+	.list, .grid {
+		margin: 0;
+		padding: 0 0 calc(var(--p)/2);
+	}
+
+	.list {
+		li:not(:last-child) {
+			padding-bottom: calc(var(--p)*1.5);
+			@include viewport(medium) {
+				padding-bottom: calc(var(--p)*1.25);
+			}
+		}
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+		grid-auto-rows: 1fr;
+		grid-gap: calc(var(--p)*2);
+		padding-top: calc(var(--p)/2);
 	}
 }
 
@@ -153,7 +177,7 @@
 	}
 }
 
-.post-colors {
+.post-swatches {
 	.post-inner {
 		padding-bottom: var(--p);
 	}
@@ -165,48 +189,10 @@
 	li {
 		margin-bottom: var(--p);
 	}
-	.color-container {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-	.color {
-		display: block;
-		margin-inline: auto;
-		text-align: center;
-		border-radius: 100%;
-		border: calc(var(--p)/4) solid;
-		@include square(36px);
-		@include theme(light) {
-			border-color: var(--color-message);
-		}
-		@include theme(dark) {
-			border-color: white;
-		}
-		@include contrast(both) {
-			border-color: var(--color-primary);
-		}
-		$colors: iron, blush, rose, mauve, slate, mint;
-		@each $color in $colors {
-			&-#{$color} {
-				background-color: var(--color-#{$color});
-			}
-		}
-	}
 }
 
 .post-resume {
-	.post-inner {
-		padding-bottom: calc(var(--p)*2);
-	}
-	.grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-		grid-auto-rows: 1fr;
-		grid-gap: calc(var(--p)*2);
-		padding-top: calc(var(--p)/2);
-	}
-	.links {
+	.buttons {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -218,188 +204,65 @@
 			width: fit-content;
 		}
 	}
-	.job {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		height: 100%;
-		padding: calc(var(--p)*1.25) calc(var(--p)*1.5);
-		@include clip-path-edges(2px);
-		@include theme(light) {
-			background-color: hsl(from var(--color-iron) h s l / .075);
-			color: hsl(from var(--color-iron) h s l / .6);
-		}
-		@include theme(dark) {
-			background-color: hsl(from var(--color-iron) h s calc(l * .55) / .275);
-			color: hsl(from white h s l / .6);
-		}
+}
 
-		@include contrast(both) {
-			clip-path: unset;
-			border-radius: unset;
-			background-color: unset;
-			&::before, &::after {
-				content: "";
-				display: block;
-			}
-			&::before {
-				z-index: -2;
-				@include full-offset(1.5px);
-				@include clip-path-edges(3px);
-			}
-			&::after {
-				z-index: -1;
-				@include full-offset(0);
-				@include clip-path-edges(2px);
-			}
-		}
-		@include contrast(light) {
-			&::before {
-				background-color: hsl(from var(--color-primary) h s l / .5);
-			}
-			&::after {
-				background-color: color-mix(
-					in srgb,
-					hsl(from var(--color-iron) h s calc(l * .55)) 7.5%,
-					white
-				);
-			}
-		}
-		@include contrast(dark) {
-			&::before {
-				background-color: hsl(from var(--color-primary) h s l / .7);
-			}
-			&::after {
-				background-color: color-mix(
-					in srgb,
-					hsl(from var(--color-iron) h s calc(l * .55)) 27.5%,
-					var(--color-iron)
-				);
-			}
-		}
+.post-mentions {
+	a {
+		text-decoration: underline;
+		text-decoration-thickness: 1.5px;
+		text-underline-offset: 2px;
 
-		h3 {
-			margin-bottom: calc(var(--p)/3);
-		}
-		h3, a {
-			display: block;
-			font-size: 1.125rem;
-			color: var(--color-primary);
-			line-height: 1.25;
-			@include font-weight-width(600, 110);
-		}
-		a {
-			&:active {
-				color: hsl(from var(--color-primary) h s calc(l * .7));
+		&:focus-visible {
+			@include theme(light) {
+				@include focus-shadow(hsl(from var(--color-mauve) h s l / .5));
 			}
-			&:hover, &:focus, &:active {
-				span {
-					text-decoration: underline;
-					text-underline-offset: 2px;
-				}
-			}
-			&::after {
-				content: "\2197";
-				margin-left: calc(var(--p)/3);
-			}
-			&.link-download {
-				&::after {
-					content: "\2193";
-				}
-			}
-		}
-		p {
-			font-size: .875rem;
-			font-weight: 500;
-			line-height: 1.2;
-			+ p {
-				margin-top: calc(var(--p)/3);
+			@include theme(dark) {
+				@include focus-shadow(var(--color-mauve));
 			}
 		}
 	}
 }
 
-.post-external {
-	ul {
-		margin: 0;
-		padding: 0;
-	}
-	li {
-		&:not(:first-child) {
-			margin-top: .75rem;
-			@include viewport(medium) {
-				margin-top: .5rem;
-			}
-		}
-	}
-	.external-platform {
-		display: inline-block;
-		position: relative;
-		margin-bottom: calc(var(--p)/3);
-		padding-inline: calc(var(--p)/2);
-		font-size: .875rem;
-		text-transform: uppercase;
-		line-height: 1.715;
-		@include font-weight-width(600, 90);
-		@include clip-path-edges(2px);
+.post-features {
+	.link-tile {
 		@include theme(light) {
-			background-color: hsl(from var(--color-iron) h s l / .1);
-			color: hsl(from var(--color-iron) h s l / .7);
+			--background: hsl(from var(--color-mauve) h s l / .075);
 		}
 		@include theme(dark) {
-			background-color: hsl(from var(--color-iron) h s calc(l * .55) / .4);
-			color: hsl(from white h s l / .8);
+			--background: hsl(from var(--color-mauve) h s calc(l * .55) / .15);
 		}
-		@include viewport(medium) {
-			margin-bottom: unset;
-			margin-right: calc(var(--p)/3);
-		}
-		@include contrast(both) {
-			clip-path: unset;
-			border-radius: unset;
-			background-color: unset;
-			&::before, &::after {
-				content: "";
-				display: block;
-			}
-			&::before {
-				z-index: -2;
-				@include full-offset(1.5px);
-				@include clip-path-edges(3px);
-			}
-			&::after {
-				z-index: -1;
-				@include full-offset(0);
-				@include clip-path-edges(2px);
-			}
-		}
+
 		@include contrast(light) {
-			&::before {
-				background-color: hsl(from var(--color-primary) h s l / .5);
-			}
-			&::after {
-				background-color: color-mix(
-					in srgb,
-					var(--color-iron) 10%,
-					white
-				);
-			}
+			--contrast-outline: color-mix(
+				in srgb,
+				var(--color-mauve) 80%,
+				var(--color-iron)
+			);
+			--contrast-background: color-mix(
+				in srgb,
+				var(--color-mauve) 7.5%,
+				white
+			);
 		}
 		@include contrast(dark) {
-			&::before {
-				background-color: hsl(from var(--color-primary) h s l / .7);
-			}
-			&::after {
-				background-color: hsl(from var(--color-iron) h s l / .7);
-			}
+			--contrast-outline: color-mix(
+				in srgb,
+				var(--color-mauve),
+				white
+			);
+			--contrast-background: color-mix(
+				in srgb,
+				var(--color-mauve) 15%,
+				var(--color-iron)
+			);
 		}
-	}
-	.external-title {
-		display: block;
-		line-height: 1.333;
-		@include font-weight-width(600, 115);
-		@include viewport(medium) {
-			display: inline;
+		p {
+			@include theme(light) {
+				--color: hsl(from var(--color-mauve) h s l / .8);
+			}
+			@include theme(dark) {
+				--color: var(--color-mauve);
+			}
 		}
 	}
 }

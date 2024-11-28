@@ -1,0 +1,176 @@
+@use 'partials/shared/utilities' as *;
+
+.link-item {
+	strong {
+		display: inline-block;
+		position: relative;
+		margin-bottom: calc(var(--p)/3);
+		padding-inline: calc(var(--p)/2);
+		font-size: .875rem;
+		text-transform: uppercase;
+		line-height: 1.715;
+		@include font-weight-width(600, 90);
+		@include clip-path-edges(2px);
+		@include theme(light) {
+			background-color: hsl(from var(--color-iron) h s l / .1);
+			color: hsl(from var(--color-iron) h s l / .7);
+		}
+		@include theme(dark) {
+			background-color: hsl(from var(--color-iron) h s calc(l * .55) / .4);
+			color: hsl(from white h s l / .8);
+		}
+		@include viewport(medium) {
+			margin-bottom: unset;
+			margin-right: calc(var(--p)/3);
+		}
+		@include contrast(both) {
+			clip-path: unset;
+			border-radius: unset;
+			background-color: unset;
+			&::before, &::after {
+				content: "";
+				display: block;
+			}
+			&::before {
+				z-index: -2;
+				@include full-offset(1.5px);
+				@include clip-path-edges(3px);
+			}
+			&::after {
+				z-index: -1;
+				@include full-offset(0);
+				@include clip-path-edges(2px);
+			}
+		}
+		@include contrast(light) {
+			&::before {
+				background-color: hsl(from var(--color-primary) h s l / .5);
+			}
+			&::after {
+				background-color: color-mix(
+					in srgb,
+					var(--color-iron) 10%,
+					white
+				);
+			}
+		}
+		@include contrast(dark) {
+			&::before {
+				background-color: hsl(from var(--color-primary) h s l / .7);
+			}
+			&::after {
+				background-color: hsl(from var(--color-iron) h s l / .7);
+			}
+		}
+	}
+	a {
+		display: block;
+		line-height: 1.333;
+		@include font-weight-width(600, 115);
+		@include viewport(medium) {
+			display: inline;
+		}
+	}
+}
+
+.link-tile {
+	--color: var(--primary);
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+	padding: calc(var(--p)*1.25) calc(var(--p)*1.5);
+	background-color: var(--background);
+	@include clip-path-edges(2px);
+
+	@include theme(light) {
+		--background: hsl(from var(--color-iron) h s l / .075);
+	}
+	@include theme(dark) {
+		--background: hsl(from var(--color-iron) h s calc(l * .55) / .275);
+	}
+
+	@include contrast(light) {
+		--contrast-outline: hsl(from var(--color-primary) h s l / .5);
+		--contrast-background: color-mix(
+			in srgb,
+			hsl(from var(--color-iron) h s calc(l * .55)) 7.5%,
+			white
+		);
+	}
+	@include contrast(dark) {
+		--contrast-outline: hsl(from var(--color-primary) h s l / .7);
+		--contrast-background: color-mix(
+			in srgb,
+			hsl(from var(--color-iron) h s calc(l * .55)) 27.5%,
+			var(--color-iron)
+		);
+	}
+
+	@include contrast(both) {
+		clip-path: unset;
+		border-radius: unset;
+		background-color: unset;
+		&::before, &::after {
+			content: "";
+			display: block;
+		}
+		&::before {
+			z-index: -2;
+			background-color: var(--contrast-outline);
+			@include full-offset(1.5px);
+			@include clip-path-edges(3px);
+		}
+		&::after {
+			z-index: -1;
+			background-color: var(--contrast-background);
+			@include full-offset(0);
+			@include clip-path-edges(2px);
+		}
+	}
+
+	&, * {
+		color: var(--color);
+	}
+	h3 {
+		margin-bottom: calc(var(--p)/2);
+	}
+	h3, a {
+		display: block;
+		font-size: 1.125rem;
+		line-height: 1.25;
+		@include font-weight-width(600, 110);
+	}
+	a {
+		text-decoration: unset;
+		&:active {
+			color: hsl(from var(--color-primary) h s calc(l * .7));
+		}
+		&:hover, &:focus, &:active {
+			span {
+				text-decoration: underline;
+				text-underline-offset: 2px;
+			}
+		}
+		&::after {
+			content: "\2197";
+			margin-left: calc(var(--p)/3);
+		}
+		&.link-download {
+			&::after {
+				content: "\2193";
+			}
+		}
+	}
+	p {
+		--color: hsl(from var(--color-primary) h s l / .6);
+		font-size: .875rem;
+		font-weight: 500;
+		line-height: 1.2;
+
+		+ p {
+			margin-top: calc(var(--p)/3);
+		}
+	}
+}

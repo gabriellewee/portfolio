@@ -220,6 +220,47 @@
 	}
 }
 
+.post-text, .post-color {
+	p, figcaption, ul, ol {
+		a {
+			transition: all .1s ease-out;
+			position: relative;
+			@include gradient-text(
+				var(--color-mauve),
+				var(--color-slate),
+				hsl(from var(--color-mauve) h s l / .5)
+			);
+			&:hover, &:focus {
+				@include gradient-text(
+					var(--color-rose),
+					var(--color-mauve),
+					hsl(from var(--color-rose) h s l / .5)
+				);
+			}
+			&:active {
+				@include theme(light) {
+					@include gradient-text(
+						hsl(from var(--color-iron) h s calc(l * .95)),
+						hsl(from var(--color-iron) h s calc(l * .35)),
+						hsl(from var(--color-iron) h s calc(l * .95) / .5)
+					);
+				}
+				@include theme(dark) {
+					@include gradient-text(
+						var(--color-slate),
+						color-mix(
+							in srgb,
+							var(--color-iron) 80%,
+							white
+						),
+						hsl(from var(--color-slate) h s l / .5)
+					);
+				}
+			}
+		}
+	}
+}
+
 .post-text {
 	h1, h2, h3, h4, h5, h6 {
 		@include font-weight-width(800, 120);
@@ -302,43 +343,9 @@
 	}
 	p, figcaption, ul, ol {
 		a {
-			transition: all .1s ease-out;
-			position: relative;
 			text-decoration: underline;
 			text-decoration-thickness: 1.5px;
 			text-underline-offset: 2px;
-			@include gradient-text(
-				var(--color-mauve),
-				var(--color-slate),
-				hsl(from var(--color-mauve) h s l / .5)
-			);
-			&:hover, &:focus {
-				@include gradient-text(
-					var(--color-rose),
-					var(--color-mauve),
-					hsl(from var(--color-rose) h s l / .5)
-				);
-			}
-			&:active {
-				@include theme(light) {
-					@include gradient-text(
-						hsl(from var(--color-iron) h s calc(l * .95)),
-						hsl(from var(--color-iron) h s calc(l * .35)),
-						hsl(from var(--color-iron) h s calc(l * .95) / .5)
-					);
-				}
-				@include theme(dark) {
-					@include gradient-text(
-						var(--color-slate),
-						color-mix(
-							in srgb,
-							var(--color-iron) 80%,
-							white
-						),
-						hsl(from var(--color-slate) h s l / .5)
-					);
-				}
-			}
 		}
 	}
 	p {
