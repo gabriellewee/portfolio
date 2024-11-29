@@ -75,13 +75,14 @@
 
 .link-tile {
 	--color: var(--primary);
+	--active-color: hsl(from var(--color-primary) h s calc(l * .7));
 
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	height: 100%;
 	padding: calc(var(--p)*1.25) calc(var(--p)*1.5);
-	background-color: var(--background);
+	background: var(--background);
 	@include clip-path-edges(2px);
 
 	@include theme(light) {
@@ -145,7 +146,7 @@
 	a {
 		text-decoration: unset;
 		&:active {
-			color: hsl(from var(--color-primary) h s calc(l * .7));
+			color: var(--active-color);
 		}
 		&:hover, &:focus, &:active {
 			span {

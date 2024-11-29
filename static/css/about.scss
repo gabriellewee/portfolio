@@ -225,14 +225,14 @@
 
 .post-features {
 	.link-tile {
-		@include theme(light) {
-			--background: hsl(from var(--color-mauve) h s l / .075);
-		}
-		@include theme(dark) {
-			--background: hsl(from var(--color-mauve) h s calc(l * .55) / .15);
-		}
+		--background: linear-gradient(
+			135deg,
+			hsl(from var(--color-mauve) h s l / .15),
+			hsl(from color-mix(in srgb, var(--color-mauve), var(--color-slate)) h s l / .15)
+		);
 
 		@include contrast(light) {
+			--background: hsl(from var(--color-mauve) h s l / .075);
 			--contrast-outline: color-mix(
 				in srgb,
 				var(--color-mauve) 80%,
@@ -245,6 +245,7 @@
 			);
 		}
 		@include contrast(dark) {
+			--background: hsl(from var(--color-mauve) h s calc(l * .55) / .15);
 			--contrast-outline: color-mix(
 				in srgb,
 				var(--color-mauve),
@@ -255,6 +256,15 @@
 				var(--color-mauve) 15%,
 				var(--color-iron)
 			);
+		}
+		a {
+			&:active {
+				@include gradient-text(
+					hsl(from var(--color-slate) h s calc(l * .95)),
+					hsl(from var(--color-slate) h s calc(l * .35)),
+					hsl(from var(--color-slate) h s calc(l * .95) / .5)
+				);
+			}
 		}
 		p {
 			@include theme(light) {
