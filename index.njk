@@ -11,6 +11,9 @@ pagination:
     data: collections.entries
     size: 24
     reverse: true
+eleventyNavigation:
+    key: Home
+    order: 1
 ---
 
 {% if pagination.pageNumber == 0 %}{% include 'pages/shared/contact.html' %}{% endif %}

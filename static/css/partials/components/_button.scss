@@ -270,6 +270,10 @@ a.button-reduced {
 			background-color: var(--background-active);
 		}
 	}
+	&.current {
+		pointer-events: none;
+		cursor: default;
+	}
 }
 
 .button-reduced-group {

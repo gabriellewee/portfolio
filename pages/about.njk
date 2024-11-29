@@ -7,7 +7,7 @@ og: false
 scripts: posts
 lightbox: false
 hidden: true
-tags: ["pages", "footer"]
+tags: pages
 versions: ["2013-2014", "2014-2015", "2015-2020", "2020-2021", "2021-2023" ]
 swatches: [
     { hex: "#263238", name: "iron" },
@@ -19,7 +19,8 @@ swatches: [
 ]
 eleventyNavigation:
     key: About
-    order: 1
+    order: 2
+    footer: true
 ---
 
 <section class="posts-container">
@@ -46,15 +47,9 @@ eleventyNavigation:
 				</header>
 				<div class="post-links">
 					<menu class="button-reduced-group">
-						<li><a class="button-reduced" href="/"><span>Home</span></a></li>
-						{% for post in collections.pages %}
-							{% if post.data.key !== "home" %}
-								<li>
-									<a class="button-reduced" href="{{post.url|url}}"><span>{{post.data.title|safe|capitalize}}</span></a>
-								</li>
-							{% endif %}
+						{% for link in collections.pages | eleventyNavigation %}
+							<li><a class="button-reduced{% if link.url == page.url %} current{% endif %}" href="{{link.url|url}}"{% if link.url == page.url %} tabindex="-1"{% endif %}><span>{{link.title}}</span></a></li>
 						{% endfor %}
-						<li><a class="button-reduced" href="/posts/feed.xml"><span>RSS</span></a></li>
 					</menu>
 				</div>
 			</div>

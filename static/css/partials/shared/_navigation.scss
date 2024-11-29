@@ -47,6 +47,14 @@ header.top {
 	.page-home:not(.page-index) &, .page-post &, .page-code &, .page-recipe & {
 		opacity: 1;
 	}
+	.button-reduced.current {
+		--background: color-mix(
+			in srgb,
+			var(--color-slate),
+			var(--color-mauve)
+		);
+		filter: saturate(.2);
+	}
 	.copyright {
 		--color: var(--color-primary);
 		--background: var(--color-secondary);

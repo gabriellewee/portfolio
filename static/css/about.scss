@@ -122,6 +122,23 @@
 			var(--color-mauve)
 		);
 		@include font-weight-width(500, 115);
+
+		&.current span {
+			@include theme(light) {
+				background-color: color-mix(
+					in srgb,
+					var(--color-secondary) 20%,
+					var(--background)
+				);
+			}
+			@include theme(dark) {
+				background-color: color-mix(
+					in srgb,
+					var(--color-secondary) 70%,
+					var(--background)
+				);
+			}
+		}
 	}
 }
 
