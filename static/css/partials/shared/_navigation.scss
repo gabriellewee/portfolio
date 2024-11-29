@@ -50,10 +50,9 @@ header.top {
 	.button-reduced.current {
 		--background: color-mix(
 			in srgb,
-			var(--color-slate),
-			var(--color-mauve)
+			hsl(from var(--color-slate) h calc(s * .1) calc(l * .8)),
+			hsl(from var(--color-mauve) h calc(s * .1) l)
 		);
-		filter: saturate(.2);
 	}
 	.copyright {
 		--color: var(--color-primary);

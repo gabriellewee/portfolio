@@ -208,8 +208,8 @@
 	--color: white;
 	--background: color-mix(
 		in srgb,
-		hsl(from var(--color-slate) h calc(s * .3) l) 30%,
-		var(--color-mauve)
+		hsl(from var(--color-slate) h calc(s * .3) calc(l * .6)) 30%,
+		hsl(from var(--color-mauve) h calc(s * .8) l)
 	);
 	--outline: color-mix(
 			in srgb,

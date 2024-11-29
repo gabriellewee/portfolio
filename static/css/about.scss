@@ -127,7 +127,7 @@
 			@include theme(light) {
 				background-color: color-mix(
 					in srgb,
-					var(--color-secondary) 20%,
+					var(--color-secondary) 15%,
 					var(--background)
 				);
 			}
