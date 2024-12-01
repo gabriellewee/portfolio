@@ -15,7 +15,6 @@
 		--width-intro: 320px;
 	}
 
-
 	.post-inner {
 		padding: calc(var(--p)*2);
 	}
@@ -48,10 +47,14 @@
 			margin-top: 0;
 		}
 	}
+
+	ol, ul {
+		list-style: none;
+		margin: 0;
+	}
 }
 
 .grid {
-	list-style: none;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	grid-gap: calc(var(--p)*2);
@@ -488,7 +491,6 @@
 	}
 
 	.flex {
-		list-style: none;
 		margin: 0;
 		padding-block: calc(var(--p)*2.25) calc(var(--p)*1);
 		display: flex;
