@@ -8,16 +8,18 @@
 	.post-inner {
 		padding: calc(var(--p)*1.5) calc(var(--p)*2);
 	}
-	h2, h3 {
-		@include font-weight-width(800, 120);
-	}
-	h2 {
-		font-size: 2.25rem;
-		margin-bottom: var(--p);
-	}
-	h3 {
-		font-size: 1.5rem;
-		margin-bottom: .375rem;
+	.post-text, .post-header {
+		h2, h3 {
+			@include font-weight-width(800, 120);
+		}
+		h2 {
+			font-size: 2.25rem;
+			margin-bottom: var(--p);
+		}
+		h3 {
+			font-size: 1.5rem;
+			margin-bottom: .375rem;
+		}
 	}
 	.post-content {
 		padding: 0;
@@ -193,37 +195,52 @@
 
 .post-features {
 	.link-tile {
-		--background: linear-gradient(
-			135deg,
-			hsl(from var(--color-mauve) h s l / .15),
-			hsl(from color-mix(in srgb, var(--color-mauve), var(--color-slate)) h s l / .15)
-		);
+		--active-color: var(--color-slate);
+
+		@include theme(light) {
+			--background: white linear-gradient(
+				135deg,
+				hsl(from var(--color-mauve) h s l / .15),
+				hsl(from color-mix(in srgb, var(--color-mauve), var(--color-slate)) h s l / .15)
+			);
+			--active-background: white linear-gradient(
+				135deg,
+				hsl(from var(--color-slate) h s l / .15),
+				hsl(from var(--color-iron) h s l / .15)
+			);
+
+		}
+
+		@include theme(dark) {
+			--background: var(--color-iron) linear-gradient(
+				135deg,
+				hsl(from var(--color-mauve) h s l / .15),
+				hsl(from color-mix(in srgb, var(--color-mauve), var(--color-slate)) h s l / .15)
+			);
+			--active-background: var(--color-iron) linear-gradient(
+				135deg,
+				hsl(from var(--color-slate) h s l / .15),
+				hsl(from color-mix(in srgb, var(--color-slate), var(--color-iron)) h s l / .15)
+			);
+		}
 
 		@include contrast(light) {
-			--background: hsl(from var(--color-mauve) h s l / .075);
-			--contrast-outline: color-mix(
+			--contrast: color-mix(
 				in srgb,
 				var(--color-mauve) 80%,
 				var(--color-iron)
 			);
-			--contrast-background: color-mix(
-				in srgb,
-				var(--color-mauve) 7.5%,
-				white
-			);
 		}
 		@include contrast(dark) {
-			--background: hsl(from var(--color-mauve) h s calc(l * .55) / .15);
-			--contrast-outline: color-mix(
+			--contrast: color-mix(
 				in srgb,
 				var(--color-mauve),
 				white
 			);
-			--contrast-background: color-mix(
-				in srgb,
-				var(--color-mauve) 15%,
-				var(--color-iron)
-			);
+		}
+		&:has(a:active) {
+			--background: var(--active-background);
+			--contrast: var(--color-slate);
 		}
 		a {
 			&:active {
