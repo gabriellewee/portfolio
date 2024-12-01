@@ -75,7 +75,9 @@
 		@include clip-path-edges(2px);
 	}
 	&:hover {
-		scale: 1.02;
+		@media (prefers-reduced-motion: no-preference) {
+			scale: 1.02;
+		}
 	}
 	&:focus-visible {
 		&::before {
@@ -83,7 +85,9 @@
 		}
 	}
 	&:active {
-		scale: 0.98;
+		@media (prefers-reduced-motion: no-preference) {
+			scale: 0.98;
+		}
 	}
 }
 
@@ -332,10 +336,14 @@
 	}
 	.post-expand {
 		&:hover {
-			scale: 1.01;
+			@media (prefers-reduced-motion: no-preference) {
+				scale: 1.01;
+			}
 		}
 		&:active {
-			scale: .98;
+			@media (prefers-reduced-motion: no-preference) {
+				scale: .98;
+			}
 		}
 	}
 	picture {
@@ -427,9 +435,11 @@
 			transform-origin: right bottom;
 			rotate: 0deg;
 			translate: 0;
-			@starting-style {
-				rotate: -20deg;
-				translate: -40px 0;
+			@media (prefers-reduced-motion: no-preference) {
+				@starting-style {
+					rotate: -20deg;
+					translate: -40px 0;
+				}
 			}
 		}
 
@@ -438,9 +448,11 @@
 			transform-origin: left bottom;
 			rotate: 20deg;
 			translate: -40px -10px;
-			@starting-style {
-				rotate: 0;
-				translate: 0;
+			@media (prefers-reduced-motion: no-preference) {
+				@starting-style {
+					rotate: 0;
+					translate: 0;
+				}
 			}
 		}
 	}
@@ -501,36 +513,44 @@
 			z-index: 4;
 			rotate: 15deg;
 			translate: 75px 0;
-			@starting-style {
-				rotate: 0;
-				translate: 0;
+			@media (prefers-reduced-motion: no-preference) {
+				@starting-style {
+					rotate: 0;
+					translate: 0;
+				}
 			}
 		}
 		&:nth-child(2) {
 			z-index: 3;
 			rotate: 5deg;
 			translate: 25px -20px;
-			@starting-style {
-				rotate: 0;
-				translate: 0;
+			@media (prefers-reduced-motion: no-preference) {
+				@starting-style {
+					rotate: 0;
+					translate: 0;
+				}
 			}
 		}
 		&:nth-child(3) {
 			z-index: 2;
 			rotate: -5deg;
 			translate: -25px -20px;
-			@starting-style {
-				rotate: 0;
-				translate: 0;
+			@media (prefers-reduced-motion: no-preference) {
+				@starting-style {
+					rotate: 0;
+					translate: 0;
+				}
 			}
 		}
 		&:nth-child(4) {
 			z-index: 1;
 			rotate: -15deg;
 			translate: -75px 0;
-			@starting-style {
-				rotate: 0;
-				translate: 0;
+			@media (prefers-reduced-motion: no-preference) {
+				@starting-style {
+					rotate: 0;
+					translate: 0;
+				}
 			}
 		}
 		&:has(.expand:hover), &:has(.expand:focus) {
@@ -558,11 +578,15 @@
 			}
 		}
 		&:hover, &:focus {
-			transform: perspective(500px) translateZ(10px);
+			@media (prefers-reduced-motion: no-preference) {
+				transform: perspective(500px) translateZ(10px);
+			}
 		}
 		&:active {
-			transform: perspective(500px) translateZ(0px);
-			scale: 1;
+			@media (prefers-reduced-motion: no-preference) {
+				transform: perspective(500px) translateZ(0px);
+				scale: 1;
+			}
 		}
 	}
 	picture {

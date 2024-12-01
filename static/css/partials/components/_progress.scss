@@ -4,7 +4,6 @@
 	display: none;
 
 	@supports (animation-timeline: scroll()) {
-		display: block;
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -21,6 +20,10 @@
 		animation-duration: 1ms;
 		animation-direction: alternate;
 		animation-timeline: scroll(block nearest);
+
+		@media (prefers-reduced-motion: no-preference) {
+			display: block;
+		}
 	}
 }
 
