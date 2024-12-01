@@ -91,6 +91,9 @@
 		}
 		&.inline {
 			margin-top: var(--p);
+			@include contrast(both) {
+				margin-top: calc(var(--p)*1.25);
+			}
 			&::before {
 				top: calc(var(--p)/-2);
 			}

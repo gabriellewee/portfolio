@@ -133,6 +133,10 @@
 			@include full-offset(0);
 			@include clip-path-edges(2px);
 		}
+		span {
+			text-decoration: underline;
+			text-underline-offset: 2px;
+		}
 	}
 
 	&, * {
