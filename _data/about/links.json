@@ -1,56 +1,95 @@
 [
 	{
-		"name": "codepen",
-		"url": "https://codepen.io/gabriellewee/"
+		"name": "social",
+		"title": "You can find me here:",
+		"label": "Social media links",
+		"links": [
+			{
+				"name": "codepen",
+				"url": "https://codepen.io/gabriellewee/",
+				"theme": true
+			},
+			{
+				"name": "github",
+				"url": "https://github.com/gabriellewee/"
+			},
+			{
+				"name": "instagram",
+				"url": "https://instagram.com/gabriellewee/"
+			},
+			{
+				"name": "mastodon",
+				"url": "https://front-end.social/@gabrielle"
+			},
+			{
+				"name": "threads",
+				"url": "https://threads.net/@gabriellewee"
+			},
+			{
+				"name": "bluesky",
+				"url": "https://bsky.app/profile/gabriellew.ee",
+				"theme": true
+			},
+			{
+				"name": "twitter",
+				"url": "https://twitter.com/gabriewee/",
+				"secondary": true
+			},
+			{
+				"name": "dribbble",
+				"url": "https://dribbble.com/gabriellewee/",
+				"class": "no-mobile",
+				"theme": true
+			},
+			{
+				"name": "linkedin",
+				"url": "https://www.linkedin.com/in/gabriellewee/",
+				"theme": true
+			},
+			{
+				"name": "medium",
+				"url": "https://medium.com/@gabriellewee/",
+				"class": "no-mobile",
+				"theme": true
+			},
+			{
+				"name": "tumblr",
+				"url": "https://gabriellewee.tumblr.com",
+				"class": "no-mobile",
+				"theme": true
+			},
+			{
+				"name": "pinterest",
+				"url": "https://pinterest.com/gabriellewee/",
+				"secondary": true
+			},
+			{
+				"name": "music",
+				"url": "https://music.apple.com/profile/gabriellewee/",
+				"class": "no-mobile"
+			}
+		]
 	},
 	{
-		"name": "github",
-		"url": "https://github.com/gabriellewee/"
-	},
-	{
-		"name": "instagram",
-		"url": "https://instagram.com/gabriellewee/"
-	},
-	{
-		"name": "mastodon",
-		"url": "https://front-end.social/@gabrielle"
-	},
-	{
-		"name": "threads",
-		"url": "https://threads.net/@gabriellewee"
-	},
-	{
-		"name": "bluesky",
-		"url": "https://bsky.app/profile/gabriellew.ee"
-	},
-	{
-		"name": "twitter",
-		"url": "https://twitter.com/gabriewee/",
-		"class": "secondary"
-	},
-{
-		"name": "dribbble",
-		"url": "https://dribbble.com/gabriellewee/",
-		"class": "secondary-mobile"
-	},
-	{
-		"name": "medium",
-		"url": "https://medium.com/@gabriellewee/",
-		"class": "secondary-mobile"
-	},
-	{
-		"name": "tumblr",
-		"url": "https://gabriellewee.tumblr.com",
-		"class": "secondary-mobile"
-	},
-	{
-		"name": "pinterest",
-		"url": "https://pinterest.com/gabriellewee/",
-		"class": "secondary-mobile"
-	},
-	{
-		"name": "music",
-		"url": "https://music.apple.com/profile/gabriellewee/",
-		"class": "secondary-mobile"
+		"name": "messaging",
+		"title": "You can contact me here:",
+		"label": "Contact links",
+		"links": [
+			{
+				"name": "email",
+				"url": "mailto:mail@gabriellew.ee",
+				"theme": true
+			},
+			{
+				"name": "text",
+				"url": "sms:5102142241",
+				"theme": true
+			},
+			{
+				"name": "imessage",
+				"title": "iMessage",
+				"url": "sms:mail@gabriellew.ee"
+			}
+		]
 	}
 ]

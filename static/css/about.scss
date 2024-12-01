@@ -122,6 +122,9 @@
 			var(--color-mauve)
 		);
 		@include font-weight-width(500, 115);
+		@include theme(dark) {
+			--background-active: var(--background-body);
+		}
 
 		&.current span {
 			@include theme(light) {

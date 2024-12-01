@@ -36,7 +36,7 @@
 		white-space: nowrap;
 		@include font-weight-width(600, 100);
 	}
-	span {
+	> span:not([class]) {
 		&::before, &::after {
 			content: "";
 			display: block;
@@ -85,7 +85,7 @@
 			border-top-left-radius: calc(var(--r) - 1px);
 			left: calc(50% - var(--t)/2);
 		}
-		span::before {
+		> span:not([class])::before {
 			border-top-left-radius: var(--r);
 			left: calc(50% - (var(--t) + 3px)/2);
 		}
@@ -94,7 +94,7 @@
 			&::before {
 				top: calc(var(--p)/-2);
 			}
-			span::before {
+			> span:not([class])::before {
 				top: calc((var(--p) + 3px)/-2);
 			}
 		}

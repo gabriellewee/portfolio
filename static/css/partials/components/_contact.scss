@@ -8,7 +8,7 @@
 	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
 	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
 	color: var(--color-primary);
-	.contact-sites, .contact-messages {
+	.contact-social, .contact-messaging {
 		font-size: clamp(1.5rem, 3vw, 2rem);
 		line-height: 1.2;
 		@include font-weight-width(900, 125);
@@ -21,10 +21,28 @@
 		}
 
 		> ul {
-			margin-top: .5rem;
 			list-style: none;
+			&:not([class]) {
+				margin-top: .5rem;
+			}
 			> li {
-				display: inline-block;
+				display: contents;
+			}
+			.color {
+				@include theme(light) {
+					color: var(--color-link-dark);
+				}
+				@include theme(dark) {
+					color: var(--color-link);
+				}
+				&:hover, &:focus {
+					@include theme(light) {
+						text-decoration-color: var(--color-link-dark);
+					}
+					@include theme(dark) {
+						text-decoration-color: var(--color-link);
+					}
+				}
 			}
 			.link {
 				&:not(.tooltip) {
@@ -65,7 +83,6 @@
 				}
 			}
 			.popup-label {
-				--color-link: var(--color-discord);
 				color: var(--color-link);
 			}
 			.popup-label:hover span, .popup-button:focus + .popup-label span {
@@ -82,7 +99,13 @@
 			.link:focus, .popup-button:focus ~ .popup-label span {
 				@include contrast(both) {
 					text-decoration-color: hsl(from var(--color-primary) h s l / 0);
-					@include focus-shadow(var(--color-link));
+					@include focus-shadow(var(--contrast));
+				}
+				@include contrast(light) {
+					--contrast: var(--color-link-dark);
+				}
+				@include contrast(dark) {
+					--contrast: var(--color-link);
 				}
 			}
 			.link:hover, .link:focus, .popup-label:hover span, .popup-button:focus ~ .popup-label span, .link:active, .popup-button:active ~ .popup-label span {
@@ -96,8 +119,11 @@
 		}
 	}
 	.posts-container & {
+		display: grid;
+		grid-gap: var(--p);
+		grid-template-columns: 1fr;
 		position: relative;
-		padding: calc(var(--p)*2);
+		padding: calc(var(--p)*2) calc(var(--p)*2) var(--p);
 		margin-top: calc(var(--p)*2);
 		&::before {
 			content: "";
@@ -124,53 +150,43 @@
 			}
 		}
 		@include viewport(medium) {
-			display: grid;
 			grid-gap: calc(var(--p)*2);
 			grid-template-columns: 1fr 1fr;
 		}
-		.contact-sites, .contact-messages {
+		.contact-social, .contact-messaging {
 			position: relative;
 			z-index: 1;
 			margin-top: 0;
-			font-size: 1.25rem;
-			@include font-weight-width(800, 120);
-			@include viewport($ipad-mini) {
-				line-height: 1.2;
-			}
 			> h2 {
 				margin-top: 0;
+				margin-bottom: calc(var(--p)*.75);
+				font-size: 1.25rem;
+				@include font-weight-width(800, 120);
+				@include viewport($ipad-mini) {
+					line-height: 1.2;
+				}
 			}
 			> ul {
-				margin-top: .25rem;
-				.link, .popup-label, .popup-label span {
-					font-size: 1.25rem;
-					line-height: 1.2;
-					@include viewport($ipad-mini) {
-						line-height: 1.2;
+				display: flex;
+				flex-wrap: wrap;
+				.button-reduced {
+					--background: var(--color-link-dark);
+					font-size: 1rem;
+					line-height: 1;
+
+					@include theme(dark) {
+						--outline: var(--color-primary);
+						--background-active: var(--background-body);
 					}
 				}
-				.link {
-					text-decoration-thickness: 2px;
-					text-underline-offset: 6px;
-					@include contrast(both) {
-						text-underline-offset: 3px;
+				.tooltip-bottom {
+					&::before {
+						top: calc(100% - var(--t)/2);
 					}
-					&:hover, &:focus {
-						text-underline-offset: 3px;
-					}
-					&:not(:hover):not(:focus) {
-						text-decoration-color: hsl(from white h s l / 0);
-						@include contrast(both) {
-							text-decoration-color: hsl(from var(--color-primary) h s l / .5);
-						}
+					&::after {
+						top: 100%;
 					}
 				}
-			}
-		}
-		.contact-messages {
-			margin-top: 1rem;
-			@include viewport(medium) {
-				margin-top: 0;
 			}
 		}
 	}

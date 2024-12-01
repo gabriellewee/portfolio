@@ -16,14 +16,11 @@
 
 // home-specific
 .page-home {
-	.contact-sites, .contact-messages {
+	.contact-social, .contact-messaging {
 		@media (prefers-reduced-motion: no-preference) {
 			opacity: 0;
 		}
-		.secondary {
-			display: none;
-		}
-		.secondary-mobile {
+		.no-mobile {
 			display: none;
 			@include viewport(medium) {
 				display: inline-block;

@@ -1,26 +1,31 @@
 <aside class="contact"{% if key == "about" %} data-anim{% endif %}>
-	<address class="contact-sites" aria-label="Social media links"{% if key == "home" %} data-anim{% endif %}>
-		<h2>You can find me here:</h2>
-		<ul>
-			{% for link in about.links %}
-				<li{% if link.class %} class="{{link.class}}"{% endif %}><a class="link {{link.name}} color u-url" href="{{link.url}}" rel="me">{{link.name | capitalize}}</a></li>
-			{% endfor %}
-		</ul>
-	</address>
-
-	<address class="contact-messages" aria-label="Contact links"{% if key == "home" %} data-anim{% endif %}>
-		<h2>You can contact me here:</h2>
-		<ul>
-			<li><a class="link email color" href="mailto:mail@gabriellew.ee">Email</a></li>
-			<li><a class="link text color" href="sms:5102142241">Text</a></li>
-			<li><a class="link imessage color" href="sms:mail@gabriellew.ee">iMessage</a></li>
-			{% if key == "home" %}
-				<li hidden>{% include 'pages/home/discord.html' %}</li>
-			{% else %}
-				<li hidden><a class="link discord color tooltip tooltip-bottom dark hidden" href="#" data-clip data-clipboard-text="gabriellewee" style="--tooltip-label: 'Username copied'">Discord</a></li>
-			{% endif %}
-			<li class="no-css"><span>Discord: gabriellewee</span></li>
-		</ul>
-	</address>
+	{% for type in about.links %}
+		<address class="contact-{{type.name}}" aria-label="{{type.label}}"{% if key == "home" %} data-anim{% endif %}>
+			<h2>{{type.title}}</h2>
+			<ul{% if key != "home" %} class="button-reduced-group"{% endif %}>
+				{% for link in type.links %}
+					{% if ((key == "home") and (link.secondary != true)) or (key != "home") %}
+						<li{% if link.class %} class="{{link.class}}"{% endif %}>
+							<a class="{{link.name}}{% if key == 'home' %} link color{% else %} button-reduced{% endif %}{% if type.name == 'social' %} u-url{% endif %}" href="{{link.url}}" rel="me" style="--color-link: var(--color-{{link.name}}); --color-link-dark: var(--color-{{link.name}}{% if link.theme == true %}-dark{% endif %})">
+								<span>{% if link.title %}{{link.title}}{% else %}{{link.name | capitalize}}{% endif %}</span>
+							</a>
+						</li>
+					{% endif %}
+				{% endfor %}
+				{% if type.name == "messaging" %}
+					{% if key == "home" %}
+						<li hidden>{% include 'pages/home/discord.html' %}</li>
+					{% else %}
+						<li hidden>
+							<a class="button-reduced-outer tooltip tooltip-bottom dark hidden" href="#" data-clip data-clipboard-text="gabriellewee" style="--tooltip-label: 'Username copied'">
+								<span class="discord button-reduced" style="--color-link: var(--color-discord); --color-link-dark: var(--color-discord)"><span>Discord</span></span>
+							</a>
+						</li>
+					{% endif %}
+					<li class="no-css"><span>Discord: gabriellewee</span></li>
+				{% endif %}
+			</ul>
+		</address>
+	{% endfor %}
 </aside>
 <script src="{{'/static/js/clipboard.min.js'|url}}"></script>
