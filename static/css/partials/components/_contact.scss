@@ -8,6 +8,7 @@
 	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
 	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
 	color: var(--color-primary);
+
 	.contact-social, .contact-messaging {
 		font-size: clamp(1.5rem, 3vw, 2rem);
 		line-height: 1.2;
@@ -18,6 +19,9 @@
 
 		> h2 {
 			margin-top: 1.5rem;
+			@include theme(dark) {
+				color: hsl(from var(--color-primary) h s l / .9);
+			}
 		}
 
 		> ul {

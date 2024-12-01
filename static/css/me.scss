@@ -15,6 +15,9 @@
 		--width-intro: 320px;
 	}
 
+	h2, h3, p {
+		color: var(--color-post);
+	}
 	.post-inner {
 		padding: calc(var(--p)*2);
 	}
@@ -199,7 +202,7 @@
 	--width: 100%;
 	--min-width: var(--width-music);
 	--background-post: #F8F8FA;
-	--color-headline: var(--color-iron);
+	--color-post: var(--color-iron);
 	--background-contrast: var(--background-post);
 
 	@include viewport(medium) {
@@ -359,7 +362,7 @@
 }
 
 .post-full-bleed {
-	--color-headline: var(--color-iron);
+	--color-post: var(--color-iron);
 
 	.post-inner {
 		display: flex;
@@ -387,9 +390,11 @@
 	--width: 100%;
 	--min-width: 320px;
 	--background-post: hsl(from var(--color-oak) h calc(s*.3) calc(l*1.2));
-	--color-headline: var(--color-iron);
-
-	color: var(--color-headline);
+	--color-post: color-mix(
+		in srgb,
+		#37364D 70%,
+		#826D67
+	);
 
 	@include contrast(light) {
 		--background-contrast: hsl(from var(--color-oak) h calc(s*.3) calc(l*1.4));
@@ -397,7 +402,7 @@
 
 	@include contrast(dark) {
 		--background-contrast: hsl(from var(--color-oak) h calc(s*.3) calc(l*0.4));
-		--color-headline: var(--color-primary);
+		--color-post: var(--color-primary);
 	}
 
 	@include viewport(medium) {
@@ -475,14 +480,20 @@
 
 .post-photography {
 	--width: 100%;
-	--background-post: hsl(from var(--color-slate) h calc(s*.4) calc(l*1.8));
-	--color-headline: var(--color-iron);
 	$viewport-1: 480px;
 	$viewport-2: 662px;
 
+	@include theme(light) {
+		--background-post: hsl(from var(--color-slate) h calc(s*.4) calc(l*1.8));
+		--color-post: color-mix(
+			in srgb,
+			var(--color-slate),
+			var(--color-primary)
+		);
+	}
 	@include theme(dark) {
 		--background-post: hsl(from var(--color-secondary) h s l / .9);
-		--color-headline: var(--color-primary);
+		--color-post: var(--color-primary);
 	}
 
 	@include viewport(medium) {
@@ -616,6 +627,11 @@
 .post-graphic {
 	--background-post: #F2D6D9;
 	--background-contrast: var(--background-post);
+	--color-post: color-mix(
+		in srgb,
+		#DD5064,
+		#BF293E
+	);
 
 	.button {
 		--background: #E365A6 radial-gradient(
@@ -633,6 +649,7 @@
 .post-art {
 	--background-post: #EDB16F;
 	--background-contrast: var(--background-post);
+	--color-post: #3F443E;
 
 	.button {
 		--background: var(--background-post) radial-gradient(
