@@ -377,7 +377,7 @@
 				padding: 0;
 				@include square(25px);
 			}
-			span {
+			> span {
 				opacity: .7;
 				transition: all .1s ease-out;
 				text-decoration: underline;
@@ -389,25 +389,25 @@
 				}
 			}
 			&:hover, &:focus {
-				span {
+				> span {
 					opacity: 1;
 					text-decoration-color: white;
 				}
 			}
 			&:focus-visible {
-				span {
+				> span {
 					@include contrast(both) {
 						@include focus-shadow(hsl(from white h s l / .8));
 					}
 				}
 			}
 			&:hover, &:focus, &:active {
-				span {
+				> span {
 					text-underline-offset: 4px;
 				}
 			}
 			&:active {
-				&::before, span {
+				&::before, > span {
 					opacity: .2;
 				}
 			}

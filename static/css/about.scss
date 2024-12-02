@@ -180,7 +180,7 @@
 		flex-direction: column;
 		justify-content: center;
 		height: 100%;
-		li:not(:first-child) {
+		p:not(:first-child) {
 			margin-top: var(--p);
 		}
 		a {

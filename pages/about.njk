@@ -125,11 +125,11 @@ eleventyNavigation:
 							</li>
 						{% endfor %}
 						<li>
-							<ul class="buttons">
+							<div class="buttons">
 								{% for link in about.resume.links %}
-									<li><a class="button" href="{{link.url}}"><span>{{link.title}}</span></a></li>
+									<p><a class="button" href="{{link.url}}"><span>{{link.title}}</span></a></p>
 								{% endfor %}
-							</ul>
+							</div>
 						</li>
 					</ul>
 				</div>
@@ -189,7 +189,7 @@ eleventyNavigation:
 				<header class="post-header">
 					<h3>Content removal</h3>
 				</header>
-				<div class="post-content post-text">
+				<div class="post-content post-text" width=900>
 					<p>When I publish a blog post, I usually write about it on social media and gather the mentions (which include likes, reposts, replies, and comments) to display on the post page. If you would prefer to have your mention removed, please contact me with the post and mention in question and I will delete it as soon as possible. Thanks!</p>
 				</div>
 			</div>

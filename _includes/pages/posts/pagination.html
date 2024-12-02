@@ -1,11 +1,11 @@
 {%- if nextPost or previousPost %}
 	{%- if nextPost %}
-		<a class="newer button button-reverse" href="{{nextPost.url|url}}"><span>Newer</span></a>
+		<a class="newer button button-reverse" href="{{nextPost.url|url}}"><span><span class="no-css">← </span>Newer</span></a>
 	{% else %}
 		<a class="button" href="/"><span>Back to home</span></a>
 	{% endif %}
 	{%- if previousPost %}
-		<a class="older button" href="{{previousPost.url|url}}"><span>Older</span></a>
+		<a class="older button" href="{{previousPost.url|url}}"><span>Older<span class="no-css"> →</span></span></a>
 	{% else %}
 		<a class="button" href="/archive/"><span>Back to archive</span></a>
 	{% endif %}

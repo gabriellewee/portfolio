@@ -74,6 +74,9 @@ eleventyNavigation:
 							{% elseif (post.data.category != "media") and (post.data.category != "code") %}
 								<time class="time{% if post.data.category != 'code' %} time-default{% endif %}{% if post.data.category == 'social' %} time-external{% endif %}" datetime="{{post.page.date|ISO|date('string')}}" data-time="{{post.page.date|ISO}}" title="{{post.page.date|ISO|date('readable')}}">{{post.page.date|ISO|date('readable')}}</time>
 							{% endif %}
+							{% if post.data.category == "media" %}
+								<time class="no-css" datetime="{{post.page.date|ISO|date('string')}}">{{post.page.date|ISO|date('readable')}}</time>
+							{% endif %}
 						</div>
 					</header>
 					<aside class="post-meta">
@@ -111,7 +114,7 @@ eleventyNavigation:
 								<label class="media-view-touch" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true" data-media-label hidden>View info</label>
 								<figcaption class="media-data" data-media-info>
 									<div class="media-data-wrapper">
-										<time class="time-default" datetime="{{post.page.date|ISO|date('string')}}" title="{{post.page.date|ISO|date('readable')}}" data-time="{{post.page.date|ISO}}">{{post.page.date|ISO|date('readable')}}</time>
+										<time class="time-default" datetime="{{post.page.date|ISO|date('string')}}" title="{{post.page.date|ISO|date('readable')}}" data-time="{{post.page.date|ISO}}" hidden>{{post.page.date|ISO|date('readable')}}</time>
 										<label class="media-down media-icon" for="{{post.data.date|safe}}-{{post.data.name}}-info" data-media-label></label>
 										<div class="media-thumbnail">
 											<a class="media-expand expand" href="#{{post.data.date|safe}}-{{post.data.name}}-lightbox" role="button" aria-label="Expand image" tabindex="-1" data-media-expand>
@@ -134,7 +137,7 @@ eleventyNavigation:
 										{% if post.data.external %}
 											<div class="media-links">
 												{% for link in post.data.external %}
-													<a class="media-link external {{link.platform}}" href="{{link.url|url}}" tabindex="-1" aria-label="View on {{link.platform|capitalize}}" data-media-external><span>{{link.platform|capitalize}}</span></a>
+													<a class="media-link external {{link.platform}}" href="{{link.url|url}}" tabindex="-1" aria-label="View on {{link.platform|capitalize}}" data-media-external><span><span class="no-css">View on </span>{{link.platform|capitalize}}</span></a>
 												{% endfor %}
 											</div>
 										{% endif %}
@@ -229,13 +232,14 @@ eleventyNavigation:
 						</footer>
 					{% endif %}
 				</div>
+				<hr class="no-css"/>
 			</article>
 		{% endfor %}
 	</div>
 	<nav class="pagination main-pagination" aria-label="Pagination">
 		{% if (pagination.href.next != null) %}
 			<div class="load">
-				<div class="page-load-status">
+				<div class="page-load-status" hidden>
 					<p class="infinite-scroll-request">
 						<span><span>Loading</span><span class="indicator"><span>.</span><span>.</span><span>.</span></span></span>
 					</p>
@@ -250,10 +254,10 @@ eleventyNavigation:
 			</div>
 		{% endif %}
 		{% if (pagination.href.previous) and (pagination.pageNumber != 0) %}
-			<a class="newer button button-reverse" href="{{pagination.href.previous}}"><span>Newer</span></a>
+			<a class="newer button button-reverse" href="{{pagination.href.previous}}"><span><span class="no-css">← </span>Newer</span></a>
 		{% endif %}
 		{% if pagination.href.next %}
-			<a class="older button" href="{{pagination.href.next}}" data-load-path><span>Older</span></a>
+			<a class="older button" href="{{pagination.href.next}}" data-load-path><span>Older</span><span class="no-css"> →</span></a>
 		{% endif %}
 	</nav>
 </section>

@@ -39,6 +39,7 @@ eleventyNavigation:
 							<a class="post-external {{book.title.text|slugify}}" href="{{book.title.url}}" target="_blank" style="--color: {{book.cover.color}}">
 								{% external book.cover.url, book.title.text + "by" + book.author, 300, "eager" %}
 							</a>
+							<p class="no-css"><a href="{{book.title.url}}" target="_blank">{{book.title.text}} by {{book.author}}</a></p>
 						</li>
 					{% endfor %}
 				</ul>
@@ -55,9 +56,10 @@ eleventyNavigation:
 					<ul class="grid steam">
 						{% for game in steam.response.games %}
 							<li>
-								<a class="post-external" href="https://store.steampowered.com/app/{{game.appid}}/">
+								<a class="post-external" href="https://store.steampowered.com/app/{{game.appid}}/" target="_blank">
 									{% external "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/" + game.appid + "/library_600x900_2x.jpg", game.name, 300, "eager" %}
 								</a>
+								<p class="no-css"><a href="https://store.steampowered.com/app/{{game.appid}}/" target="_blank">{{game.name}}</a></p>
 							</li>
 						{% endfor %}
 					</ul>
@@ -68,6 +70,7 @@ eleventyNavigation:
 					{% for game in notion.switch.results %}
 						<li>
 							{% unfurlGame game.properties.URL.url, game.properties.Name.title[0].plain_text, "post-external", 300, "eager" %}
+							<p class="no-css"><a href="{{game.properties.URL.url}}" target="_blank">{{game.properties.Name.title[0].plain_text}}</a></p>
 						</li>
 					{% endfor %}
 				</ul>
@@ -125,11 +128,13 @@ eleventyNavigation:
 					<li>
 						<figure>
 							{% external './static/images/avatars/alfie.png', 'A grey kitten with green eyes', 300 %}
+							<figcation class="no-css"><p>Alfie</p></figcation>
 						</figure>
 					</li>
 					<li>
 						<figure>
 							{% external './static/images/avatars/impa.png', 'A grey kitten with orange eyes', 300 %}
+							<figcation class="no-css"><p>Impa</p></figcation>
 						</figure>
 					</li>
 				</ul>

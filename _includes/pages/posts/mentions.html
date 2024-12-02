@@ -15,6 +15,7 @@
 						</li>
 					{% endfor %}
 				</ul>
+				<hr class="no-css"/>
 			{% endif %}
 		{% endfor %}
 	{% endfor %}
@@ -65,13 +66,14 @@
 						</li>
 					{% endfor %}
 				</ul>
+				<hr class="no-css"/>
 			{% endif %}
 		{% endfor %}
 	{% endfor %}
 
 	{% for source in collections.sources %}
 		{% if source.data.content.includes(pageLink) %}
-			<a class="button button-social button-mastodon" href="{{source.data.url|url}}"><span>Reply on Mastodon</span></a>
+			<a class="button button-social button-mastodon" href="{{source.data.url|url}}" hidden><span>Reply on Mastodon</span></a>
 		{% endif %}
 	{% endfor %}
 </aside>

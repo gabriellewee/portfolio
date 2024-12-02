@@ -43,9 +43,9 @@
 									<time class="time-default" datetime="{{post.date}}" title="{{post.date|date('readable')}}" data-time="{{post.date|ISO}}">{{post.date|date('readable')}}</time>
 									<label class="media-down media-icon" for="{{post.date|safe}}-{{post.name}}-info" data-media-label></label>
 									<div class="media-thumbnail">
-										<a class="media-expand expand" href="#{{post.date|safe}}-{{post.name}}-lightbox" role="button" aria-label="Expand image" tabindex="-1" data-media-expand>
+										<a class="media-expand expand" href="#{{post.date|safe}}-{{post.name}}-lightbox" role="button" aria-label="Expand image" tabindex="-1" hidden data-media-expand>
 											<span class="no-image">Expand</span>
-											<span class="has-image" aria-hidden="true" hidden>
+											<span class="has-image" aria-hidden="true">
 												{% if post.upscale %}
 													<picture>
 														<img class="upscale" src="{% include post.upscale %}"{% if post.upscaleWidth %} width="{{post.upscaleWidth}}"{% endif %}{% if post.upscaleHeight %} height="{{post.upscaleHeight}}"{% endif %} alt="{{post.description}}"/>
@@ -63,7 +63,7 @@
 									{% if post.external %}
 										<div class="media-links">
 											{% for link in post.external %}
-												<a class="media-link external {{link.platform}}" href="{{link.url|url}}" tabindex="-1" aria-label="View on {{link.platform|capitalize}}" data-media-external><span>{{link.platform|capitalize}}</span></a>
+												<a class="media-link external {{link.platform}}" href="{{link.url|url}}" tabindex="-1" aria-label="View on {{link.platform|capitalize}}" data-media-external><span><span class="no-css">View on </span>{{link.platform|capitalize}}</span></a>
 											{% endfor %}
 										</div>
 									{% endif %}
@@ -99,6 +99,7 @@
 						</figure>
 					</div>
 				</div>
+				<hr class="no-css"/>
 			</article>
 		{% endfor %}
 	</div>
