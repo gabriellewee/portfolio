@@ -66,8 +66,8 @@
 .post-expand, .post-external:not(.button) {
 	--outline: radial-gradient(
 		circle at center left,
-		var(--color-rose),
-		var(--color-mauve)
+		var(--color-medium),
+		var(--color-dark)
 	);
 	transition: opacity .2s ease-out, scale .2s ease-out;
 	display: block;
@@ -161,7 +161,7 @@
 		}
 
 		a {
-			--outline: var(--color-rose);
+			--outline: var(--color-medium);
 
 			&::after {
 				content: "";
@@ -484,10 +484,10 @@
 	$viewport-2: 662px;
 
 	@include theme(light) {
-		--background-post: hsl(from var(--color-slate) h calc(s*.4) calc(l*1.8));
+		--background-post: hsl(from var(--color-grey) h calc(s*.4) calc(l*1.8));
 		--color-post: color-mix(
 			in srgb,
-			var(--color-slate),
+			var(--color-grey),
 			var(--color-primary)
 		);
 	}

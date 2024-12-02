@@ -12,10 +12,16 @@ $iron: #263238;
 
 	$colors: (
 		iron: $iron,
+
 		blush: #F5C8BF,
 		rose: #D19487,
 		mauve: #B2738E,
 		slate: #577783,
+
+		mist: #C5D4D5,
+		cadet: #9EAFCC,
+		marine: #6275B4,
+		monsoon: #857292,
 
 		mint: #8BB29A,
 		oak: #D1AE87,
@@ -64,6 +70,11 @@ $iron: #263238;
 
 	--color-email:hsl(#{hexToHSL(color.mix($iron, #577783, 5%))});
 	--color-email-dark:hsl(#{hexToHSL(color.mix($iron, white, 70%))});
+
+	--color-light: var(--color-blush);
+	--color-medium: var(--color-rose);
+	--color-dark: var(--color-mauve);
+	--color-grey: var(--color-slate);
 }
 
 @include theme(light, true) {
@@ -82,4 +93,20 @@ $iron: #263238;
 
 @include contrast(dark, true) {
 	--color-primary:white;
+}
+
+@include tone(cool, true) {
+	--color-light: var(--color-mist);
+	--color-medium: var(--color-cadet);
+	--color-dark: var(--color-marine);
+	--color-grey: var(--color-monsoon);
+
+	$colors: (
+		music: color.adjust(#fa2d48,$lightness:-5%),
+		imessage: color.adjust(#0d84ff,$lightness:-5%),
+		threads: color.adjust(#C43DFB,$lightness:-5%)
+	);
+	@each $name, $color in $colors {
+		--color-#{"" + $name}:hsl(#{hexToHSL($color)});
+	}
 }

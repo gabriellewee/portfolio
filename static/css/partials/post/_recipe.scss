@@ -29,7 +29,7 @@
 					&:hover, &:focus {
 						--color-mix: color-mix(
 							in srgb,
-							var(--color-slate) 80%,
+							var(--color-grey) 80%,
 							var(--color-mint)
 						);
 						color: var(--color-mix);
@@ -55,7 +55,7 @@
 					&:active {
 						--color-mix: color-mix(
 							in srgb,
-							var(--color-slate) 80%,
+							var(--color-grey) 80%,
 							var(--color-mint)
 						);
 						color: var(--color-mix);
@@ -75,7 +75,7 @@
 		time {
 			--color-mix: color-mix(
 				in srgb,
-				hsl(from var(--color-slate) h s calc(l * .6)),
+				hsl(from var(--color-grey) h s calc(l * .6)),
 				hsl(from var(--color-mint) h calc(s * .5) l)
 			);
 			transition: translate .2s ease-out;

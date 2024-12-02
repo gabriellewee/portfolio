@@ -3,11 +3,11 @@
 .toggle {
 	--background: color-mix(
 		in srgb,
-		var(--color-slate),
+		var(--color-grey),
 		var(--color-iron)
 	);
 	--indicator: white;
-	--outline: var(--color-blush);
+	--outline: var(--color-light);
 	--contrast: white;
 	--background-active: var(--color-mint);
 	--height: calc(var(--p)*2);

@@ -116,12 +116,12 @@
 		--background: color-mix(
 			in srgb,
 			var(--color-iron) 40%,
-			var(--color-slate)
+			var(--color-grey)
 		);
 		--background-hover: color-mix(
 			in srgb,
-			hsl(from var(--color-slate) h calc(s * .3) l) 30%,
-			var(--color-mauve)
+			hsl(from var(--color-grey) h calc(s * .3) l) 30%,
+			var(--color-dark)
 		);
 		@include font-weight-width(500, 115);
 		@include theme(dark) {
@@ -152,9 +152,22 @@
 		padding-bottom: var(--p);
 	}
 	ul {
-		display: grid;
+		display: none;
 		grid-template-columns: repeat(auto-fill, minmax(78px, 1fr));
 		grid-gap: var(--p);
+
+		&.tone-warm {
+			display: grid;
+		}
+
+		@include tone(cool) {
+			&.tone-warm {
+				display: none;
+			}
+			&.tone-cool {
+				display: grid;
+			}
+		}
 	}
 	li {
 		margin-bottom: var(--p);
@@ -184,10 +197,10 @@
 
 		&:focus-visible {
 			@include theme(light) {
-				@include focus-shadow(hsl(from var(--color-mauve) h s l / .5));
+				@include focus-shadow(hsl(from var(--color-dark) h s l / .5));
 			}
 			@include theme(dark) {
-				@include focus-shadow(var(--color-mauve));
+				@include focus-shadow(var(--color-dark));
 			}
 		}
 	}
@@ -195,17 +208,17 @@
 
 .post-features {
 	.link-tile {
-		--active-color: var(--color-slate);
+		--active-color: var(--color-grey);
 
 		@include theme(light) {
 			--background: white linear-gradient(
 				135deg,
-				hsl(from var(--color-mauve) h s l / .15),
-				hsl(from color-mix(in srgb, var(--color-mauve), var(--color-slate)) h s l / .15)
+				hsl(from var(--color-dark) h s l / .15),
+				hsl(from color-mix(in srgb, var(--color-dark), var(--color-grey)) h s l / .15)
 			);
 			--active-background: white linear-gradient(
 				135deg,
-				hsl(from var(--color-slate) h s l / .15),
+				hsl(from var(--color-grey) h s l / .15),
 				hsl(from var(--color-iron) h s l / .15)
 			);
 
@@ -214,49 +227,49 @@
 		@include theme(dark) {
 			--background: var(--color-iron) linear-gradient(
 				135deg,
-				hsl(from var(--color-mauve) h s l / .15),
-				hsl(from color-mix(in srgb, var(--color-mauve), var(--color-slate)) h s l / .15)
+				hsl(from var(--color-dark) h s l / .15),
+				hsl(from color-mix(in srgb, var(--color-dark), var(--color-grey)) h s l / .15)
 			);
 			--active-background: var(--color-iron) linear-gradient(
 				135deg,
-				hsl(from var(--color-slate) h s l / .15),
-				hsl(from color-mix(in srgb, var(--color-slate), var(--color-iron)) h s l / .15)
+				hsl(from var(--color-grey) h s l / .15),
+				hsl(from color-mix(in srgb, var(--color-grey), var(--color-iron)) h s l / .15)
 			);
 		}
 
 		@include contrast(light) {
 			--contrast: color-mix(
 				in srgb,
-				var(--color-mauve) 80%,
+				var(--color-dark) 80%,
 				var(--color-iron)
 			);
 		}
 		@include contrast(dark) {
 			--contrast: color-mix(
 				in srgb,
-				var(--color-mauve),
+				var(--color-dark),
 				white
 			);
 		}
 		&:has(a:active) {
 			--background: var(--active-background);
-			--contrast: var(--color-slate);
+			--contrast: var(--color-grey);
 		}
 		a {
 			&:active {
 				@include gradient-text(
-					hsl(from var(--color-slate) h s calc(l * .95)),
-					hsl(from var(--color-slate) h s calc(l * .35)),
-					hsl(from var(--color-slate) h s calc(l * .95) / .5)
+					hsl(from var(--color-grey) h s calc(l * .95)),
+					hsl(from var(--color-grey) h s calc(l * .35)),
+					hsl(from var(--color-grey) h s calc(l * .95) / .5)
 				);
 			}
 		}
 		p {
 			@include theme(light) {
-				--color: hsl(from var(--color-mauve) h s l / .8);
+				--color: hsl(from var(--color-dark) h s l / .8);
 			}
 			@include theme(dark) {
-				--color: var(--color-mauve);
+				--color: var(--color-dark);
 			}
 		}
 	}

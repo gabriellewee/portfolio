@@ -22,14 +22,33 @@ const accessibility = (() => {
 		option.removeAttribute("checked");
 		labels[index].setAttribute("aria-pressed", "false");
 	}
+	let _toggle = (option, index, _optionTrue, _optionFalse) => {
+		option.addEventListener("click", e => {
+			if (option.checked) {
+				_optionTrue();
+			} else {
+				_optionFalse();
+			}
+		});
+
+		labels[index].addEventListener("keydown", e =>{
+			if (e.key === "Enter") {
+				if (option.checked) {
+					_optionFalse();
+				} else {
+					_optionTrue();
+				}
+			}
+		});
+	}
 
 	options.forEach((option, index) =>{
 		option.classList.add("inactive");
-		if (option.getAttribute("data-option") === "color") {
-			const color = window.matchMedia('(prefers-color-scheme: dark)');
-			if (color.matches && !localStorage.getItem("theme")) {
+		if (option.getAttribute("data-option") === "theme") {
+			const theme = window.matchMedia('(prefers-color-scheme: dark)');
+			if (theme.matches && !localStorage.getItem("theme")) {
 				_true(option, index);
-			} else if (!color.matches && !localStorage.getItem("theme")) {
+			} else if (!theme.matches && !localStorage.getItem("theme")) {
 				_false(option, index);
 			}
 
@@ -52,23 +71,30 @@ const accessibility = (() => {
 				_optionFalse();
 			}
 
-			option.addEventListener("click", e => {
-				if (option.checked) {
-					_optionTrue();
-				} else {
-					_optionFalse();
-				}
-			});
+			_toggle(option, index, _optionTrue, _optionFalse);
+		} else if (option.getAttribute("data-option") === "tone") {
+			const theme = document.querySelector('meta[media="(prefers-color-scheme: light)"]');
 
-			labels[index].addEventListener("keydown", e =>{
-				if (e.key === "Enter") {
-					if (option.checked) {
-						_optionFalse();
-					} else {
-						_optionTrue();
-					}
-				}
-			});
+			let _optionTrue = () => {
+				_true(option, index);
+				document.documentElement.classList.add("theme-cool");
+				theme.setAttribute("content", "#DAE3E4");
+				localStorage.setItem("tone", "true");
+			}
+			let _optionFalse = () => {
+				_false(option, index);
+				document.documentElement.classList.remove("theme-cool");
+				theme.setAttribute("content", "#fcf1ef");
+				localStorage.setItem("tone", "false");
+			}
+
+			if (localStorage.getItem("tone") === "true") {
+				_optionTrue();
+			} else if ((localStorage.getItem("tone") === "false")) {
+				_optionFalse();
+			}
+
+			_toggle(option, index, _optionTrue, _optionFalse);
 		} else if (option.getAttribute("data-option") === "contrast") {
 			const contrast = window.matchMedia('(prefers-contrast: more)');
 			if (contrast.matches && !localStorage.getItem("contrast")) {
@@ -95,23 +121,7 @@ const accessibility = (() => {
 				_optionFalse();
 			}
 
-			option.addEventListener("click", e => {
-				if (option.checked) {
-					_optionTrue();
-				} else {
-					_optionFalse();
-				}
-			});
-
-			labels[index].addEventListener("keydown", e =>{
-				if (e.key === "Enter") {
-					if (option.checked) {
-						_optionFalse();
-					} else {
-						_optionTrue();
-					}
-				}
-			});
+			_toggle(option, index, _optionTrue, _optionFalse);
 		} else if (option.getAttribute("data-option") === "transparency") {
 			const transparency = window.matchMedia('(prefers-reduced-transparency: reduce)');
 			if (transparency.matches && !localStorage.getItem("transparency")) {
@@ -138,23 +148,7 @@ const accessibility = (() => {
 				_optionFalse();
 			}
 
-			option.addEventListener("click", e => {
-				if (option.checked) {
-					_optionTrue();
-				} else {
-					_optionFalse();
-				}
-			});
-
-			labels[index].addEventListener("keydown", e =>{
-				if (e.key === "Enter") {
-					if (option.checked) {
-						_optionFalse();
-					} else {
-						_optionTrue();
-					}
-				}
-			});
+			_toggle(option, index, _optionTrue, _optionFalse);
 		} else if (option.getAttribute("data-option") === "load") {
 			let _optionTrue = () => {
 				_true(option, index);
@@ -173,23 +167,7 @@ const accessibility = (() => {
 				_optionFalse();
 			}
 
-			option.addEventListener("click", e => {
-				if (option.checked) {
-					_optionTrue();
-				} else {
-					_optionFalse();
-				}
-			});
-
-			labels[index].addEventListener("keydown", e =>{
-				if (e.key === "Enter") {
-					if (option.checked) {
-						_optionFalse();
-					} else {
-						_optionTrue();
-					}
-				}
-			});
+			_toggle(option, index, _optionTrue, _optionFalse);
 		} else if (option.getAttribute("data-option") === "reset") {
 			option.addEventListener("click", e => {
 				localStorage.clear();

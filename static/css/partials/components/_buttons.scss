@@ -2,17 +2,17 @@
 
 .button {
 	--color: white;
-	--background: var(--color-mauve) radial-gradient(
+	--background: var(--color-dark) radial-gradient(
 		circle at center left,
-		var(--color-rose),
-		var(--color-mauve),
-		var(--color-slate),
-		var(--color-slate)
+		var(--color-medium),
+		var(--color-dark),
+		var(--color-grey),
+		var(--color-grey)
 	);
 	--outline: radial-gradient(
 		circle at center left,
-		var(--color-blush),
-		var(--color-rose)
+		var(--color-light),
+		var(--color-medium)
 	);
 	--contrast: var(--color-primary);
 	--background-hover-position: 0%;
@@ -29,9 +29,9 @@
 		);
 	}
 	@include theme(dark) {
-		--background-active: var(--color-slate) radial-gradient(
+		--background-active: var(--color-grey) radial-gradient(
 			circle at center left,
-			var(--color-slate),
+			var(--color-grey),
 			color-mix(
 				in srgb,
 				var(--color-iron) 80%,
@@ -121,7 +121,7 @@
 	}
 	&:focus-visible {
 		@include clip-path(false) {
-			@include focus-shadow(var(--color-slate));
+			@include focus-shadow(var(--color-grey));
 		}
 		@include clip-path(true) {
 			&::before {
@@ -144,17 +144,17 @@
 	}
 
 	&.button-reverse {
-		--background: var(--color-slate) radial-gradient(
+		--background: var(--color-grey) radial-gradient(
 			circle at center right,
-			var(--color-rose) 0,
-			var(--color-mauve) 25%,
-			var(--color-slate) 75%,
-			var(--color-slate) 100%
+			var(--color-medium) 0,
+			var(--color-dark) 25%,
+			var(--color-grey) 75%,
+			var(--color-grey) 100%
 		);
 		--outline: radial-gradient(
 			circle at center left,
-			var(--color-rose),
-			var(--color-blush)
+			var(--color-medium),
+			var(--color-light)
 		);
 		--background-hover-position: 100%;
 		@include theme(light) {
@@ -169,14 +169,14 @@
 			);
 		}
 		@include theme(dark) {
-			--background-active: var(--color-slate) radial-gradient(
+			--background-active: var(--color-grey) radial-gradient(
 				circle at center left,
 				color-mix(
 					in srgb,
 					var(--color-iron) 80%,
 					white
 				),
-				var(--color-slate)
+				var(--color-grey)
 			);
 		}
 	}
@@ -208,16 +208,16 @@
 	--color: white;
 	--background: color-mix(
 		in srgb,
-		hsl(from var(--color-slate) h calc(s * .3) calc(l * .6)) 30%,
-		hsl(from var(--color-mauve) h calc(s * .8) l)
+		hsl(from var(--color-grey) h calc(s * .3) calc(l * .6)) 30%,
+		hsl(from var(--color-dark) h calc(s * .8) l)
 	);
 	--outline: color-mix(
 			in srgb,
-			var(--color-blush),
-			var(--color-rose)
+			var(--color-light),
+			var(--color-medium)
 	);
 	--contrast: var(--color-primary);
-	--background-hover: var(--color-slate);
+	--background-hover: var(--color-grey);
 	--background-active: var(--color-iron);
 
 	transition: scale .2s ease-out;

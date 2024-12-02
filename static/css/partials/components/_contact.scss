@@ -77,7 +77,7 @@
 			}
 			.link:not(:hover):not(:focus), .popup-label span {
 				@include theme(light) {
-					text-decoration-color: hsl(from var(--color-blush) h s calc(l * 1.1) / 0);
+					text-decoration-color: hsl(from var(--color-light) h s calc(l * 1.1) / 0);
 				}
 				@include theme(dark) {
 					text-decoration-color: hsl(from var(--color-iron) h s calc(l * .73) / 0);

@@ -9,14 +9,6 @@ lightbox: false
 hidden: true
 tags: pages
 versions: ["2013-2014", "2014-2015", "2015-2020", "2020-2021", "2021-2023" ]
-swatches: [
-    { hex: "#263238", name: "iron" },
-    { hex: "#F5C8BF", name: "blush" },
-    { hex: "#D19487", name: "rose" },
-    { hex: "#B2738E", name: "mauve" },
-    { hex: "#577783", name: "slate" },
-    { hex: "#8BB29A", name: "mint" }
-]
 eleventyNavigation:
     key: About
     order: 2
@@ -89,17 +81,19 @@ eleventyNavigation:
 					<h2>Swatches</h2>
 				</header>
 				<div class="post-content">
-					<ul>
-						{% for swatch in swatches %}
-							<li>
-								<div class="swatch-container" aria-label="{{swatch.name|capitalize}}" role="tooltip">
-									<span class="swatch swatch-{{swatch.name}}" aria-hidden="true"></span>
-									<span class="tooltip tooltip-bottom large inline monospace" style="--tooltip-label: '{{swatch.hex}}'"><span></span></span>
-								</div>
-								<span class="no-css"><strong>{{swatch.name|capitalize}}:</strong> {{swatch.hex}}</span>
-							</li>
-						{% endfor %}
-					</ul>
+					{% for tone in site.tones %}
+						<ul class="tone-{{tone.name}}"{% if tone.name != "warm" %} hidden{% endif %}>
+							{% for swatch in tone.swatches %}
+								<li>
+									<div class="swatch-container" aria-label="{{swatch.name|capitalize}}" role="tooltip">
+										<span class="swatch" aria-hidden="true" style="--background: {{swatch.hex}}"></span>
+										<span class="tooltip tooltip-bottom large inline monospace" style="--tooltip-label: '{{swatch.hex}}'"><span></span></span>
+									</div>
+									<span class="no-css"><strong>{{swatch.name|capitalize}}:</strong> {{swatch.hex}}</span>
+								</li>
+							{% endfor %}
+						</ul>
+					{% endfor %}
 				</div>
 			</div>
 		</article>

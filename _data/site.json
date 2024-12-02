@@ -3,5 +3,29 @@
 	"author": "Gabrielle Wee",
 	"email": "mail@gabriellew.ee",
 	"photoDescription": "An Asian woman with wavy black hair in a coral-colored sweater and square rose gold glasses",
-	"twitter": "@gabriewee"
+	"twitter": "@gabriewee",
+	"tones": [
+		{
+			"name": "warm",
+			"swatches": [
+				{ "hex": "#263238", "name": "iron" },
+				{ "hex": "#F5C8BF", "name": "blush" },
+				{ "hex": "#D19487", "name": "rose" },
+				{ "hex": "#B2738E", "name": "mauve" },
+				{ "hex": "#577783", "name": "slate" },
+				{ "hex": "#8BB29A", "name": "mint" }
+			]
+		},
+		{
+			"name": "cool",
+			"swatches": [
+				{ "hex": "#263238", "name": "iron" },
+				{ "hex": "#C5D4D5", "name": "mist" },
+				{ "hex": "#8BB29A", "name": "mint" },
+				{ "hex": "#9EAFCC", "name": "cadet" },
+				{ "hex": "#6275B4", "name": "marine" },
+				{ "hex": "#857292", "name": "monsoon" }
+			]
+		}
+	]
 }

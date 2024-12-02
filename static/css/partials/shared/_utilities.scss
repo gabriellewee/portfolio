@@ -68,6 +68,24 @@ $x-large: 1280px;
 	}
 }
 
+@mixin tone($tone, $root: false) {
+	@if $root == true {
+		.theme-#{$tone} {
+			@content;
+		}
+		:root:has(#option-tone:not(.inactive):checked) {
+			@content;
+		}
+	} @else {
+		.theme-#{$tone} & {
+			@content;
+		}
+		:root:has(#option-tone:not(.inactive):checked) & {
+			@content;
+		}
+	}
+}
+
 @mixin theme($theme, $root: false) {
 	@if $root == true {
 		@media (prefers-color-scheme: #{$theme}) {
@@ -76,7 +94,7 @@ $x-large: 1280px;
 			}
 		}
 		@if $theme == dark {
-			:root:has(#option-color:not(.inactive):checked) {
+			:root:has(#option-theme:not(.inactive):checked) {
 				@content;
 			}
 		} @else if $theme == light {
@@ -92,7 +110,7 @@ $x-large: 1280px;
 			@content;
 		}
 		@if $theme == dark {
-			:root:has(#option-color:not(.inactive):checked) & {
+			:root:has(#option-theme:not(.inactive):checked) & {
 				@content;
 			}
 		} @else if $theme == light {
@@ -131,7 +149,7 @@ $x-large: 1280px;
 					@content;
 				}
 			}
-			:root:has(#option-color:not(.inactive):checked ~ #option-contrast:not(.inactive):checked) {
+			:root:has(#option-theme:not(.inactive):checked ~ #option-contrast:not(.inactive):checked) {
 				@content;
 			}
 			.theme-#{$theme}.theme-contrast {
@@ -148,7 +166,7 @@ $x-large: 1280px;
 					@content;
 				}
 			}
-			:root:has(#option-color:not(.inactive):not(:checked) ~ #option-contrast:not(.inactive):checked) {
+			:root:has(#option-theme:not(.inactive):not(:checked) ~ #option-contrast:not(.inactive):checked) {
 				@content;
 			}
 			.theme-#{$theme}.theme-contrast {
@@ -175,7 +193,7 @@ $x-large: 1280px;
 					@content;
 				}
 			}
-			:root:has(#option-color:not(.inactive):checked ~ #option-contrast:not(.inactive):checked) & {
+			:root:has(#option-theme:not(.inactive):checked ~ #option-contrast:not(.inactive):checked) & {
 				@content;
 			}
 			.theme-#{$theme}.theme-contrast & {
@@ -190,7 +208,7 @@ $x-large: 1280px;
 					@content;
 				}
 			}
-			:root:has(#option-color:not(.inactive):not(:checked) ~ #option-contrast:not(.inactive):checked) & {
+			:root:has(#option-theme:not(.inactive):not(:checked) ~ #option-contrast:not(.inactive):checked) & {
 				@content;
 			}
 			.theme-#{$theme}.theme-contrast & {
@@ -200,7 +218,7 @@ $x-large: 1280px;
 	}
 }
 
-@mixin reduce-transparency($level: null) {
+@mixin reduce-transparency {
 	@media (prefers-reduced-transparency: reduce) {
 		@content;
 	}
@@ -484,7 +502,8 @@ $x-large: 1280px;
 }
 
 @mixin recipe-button {
-	--background: var(--color-slate) radial-gradient(
+	--color-grey: var(--color-slate);
+	--background: var(--color-grey) radial-gradient(
 		circle at center right,
 		color-mix(
 			in srgb,
@@ -492,8 +511,8 @@ $x-large: 1280px;
 			var(--color-mint)
 		) 0,
 		var(--color-mint) 25%,
-		var(--color-slate) 75%,
-		var(--color-slate) 100%
+		var(--color-grey) 75%,
+		var(--color-grey) 100%
 	);
 	--outline: radial-gradient(
 		circle at center left,
@@ -522,19 +541,19 @@ $x-large: 1280px;
 		);
 	}
 	@include theme(dark) {
-		--background-active: var(--color-slate) radial-gradient(
+		--background-active: var(--color-grey) radial-gradient(
 			circle at center left,
 			color-mix(
 				in srgb,
 				var(--color-iron) 80%,
 				white
 			),
-			var(--color-slate)
+			var(--color-grey)
 		);
 	}
 }
 
-@mixin radio($background: transparent, $color: var(--color-mint), $focus: hsl(from var(--color-mint) h s l / .7), $contrast: color-mix(in srgb, var(--color-slate), $color)) {
+@mixin radio($background: transparent, $color: var(--color-mint), $focus: hsl(from var(--color-mint) h s l / .7), $contrast: color-mix(in srgb, var(--color-grey), $color)) {
 	& {
 		--background: #{$background};
 		--color: #{$color};

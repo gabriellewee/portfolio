@@ -35,7 +35,7 @@
 			white
 		);
 		@include theme(light) {
-			--color-mix-underline: hsl(from var(--color-blush) h s calc(l * 1.1) / 0);
+			--color-mix-underline: hsl(from var(--color-light) h s calc(l * 1.1) / 0);
 		}
 		@include theme(dark) {
 			--color-mix-underline: hsl(from var(--color-iron) h s calc(l * .73) / 0);
@@ -74,8 +74,8 @@
 		&:hover, &:focus {
 			--color-mix: color-mix(
 				in srgb,
-				var(--color-mauve),
-				var(--color-rose)
+				var(--color-dark),
+				var(--color-medium)
 			);
 			--color-mix-underline: var(--color-mix);
 		}
@@ -90,23 +90,23 @@
 			}
 		}
 		&:active {
-			--color-mix: var(--color-slate);
+			--color-mix: var(--color-grey);
 			--color-mix-underline: var(--color-mix);
 		}
 
 		&.active {
 			--color-mix: color-mix(
 				in hsl,
-				hsl(from var(--color-mauve) h calc(s * .9) l) 30%,
-				hsl(from var(--color-rose) h calc(s * .9) l)
+				hsl(from var(--color-dark) h calc(s * .9) l) 30%,
+				hsl(from var(--color-medium) h calc(s * .9) l)
 			);
 			--color-mix-underline: var(--color-mix);
 			span span {
 				@include gradient-headline(
-					var(--color-rose),
-					var(--color-mauve),
-					var(--color-slate),
-					var(--color-slate)
+					var(--color-medium),
+					var(--color-dark),
+					var(--color-grey),
+					var(--color-grey)
 				);
 			}
 		}

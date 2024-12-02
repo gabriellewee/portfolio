@@ -50,9 +50,17 @@ header.top {
 	.button-reduced.current {
 		--background: color-mix(
 			in srgb,
-			hsl(from var(--color-slate) h calc(s * .1) calc(l * .8)),
-			hsl(from var(--color-mauve) h calc(s * .1) l)
+			hsl(from var(--color-grey) h calc(s * .1) calc(l * .8)),
+			hsl(from var(--color-dark) h calc(s * .1) l)
 		);
+
+		@include tone(cool) {
+			--background: color-mix(
+				in srgb,
+				hsl(from var(--color-grey) h calc(s * .1) calc(l * .6)),
+				hsl(from var(--color-dark) h calc(s * .1) l)
+			);
+		}
 	}
 	.copyright {
 		--color: var(--color-primary);

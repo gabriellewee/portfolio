@@ -111,10 +111,10 @@
 		&:focus-visible {
 			@include focus-shadow(var(--focus));
 			@include theme(light) {
-				--focus: hsl(from var(--color-mauve) h s l / .5);
+				--focus: hsl(from var(--color-dark) h s l / .5);
 			}
 			@include theme(dark) {
-				--focus: var(--color-mauve);
+				--focus: var(--color-dark);
 			}
 			.avatar {
 				&:not(.avatar-hm) {

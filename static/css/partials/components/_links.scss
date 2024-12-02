@@ -191,12 +191,12 @@
 }
 
 .link-thumbnail {
-	--focus: var(--color-blush);
+	--focus: var(--color-light);
 	--contrast: var(--color-primary);
 	--radius: 3px;
 	--radius-outline: 4px;
-	--background: var(--color-mauve);
-	--background-active: var(--color-slate);
+	--background: var(--color-dark);
+	--background-active: var(--color-grey);
 
 	display: flex;
 	flex-direction: column;

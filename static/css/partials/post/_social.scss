@@ -69,8 +69,8 @@
 			&::before {
 				background: radial-gradient(
 					circle at center left,
-					var(--color-rose),
-					var(--color-mauve)
+					var(--color-medium),
+					var(--color-dark)
 				);
 				@include before;
 			}
@@ -105,9 +105,16 @@
 				--color-mix: color-mix(
 					in srgb,
 					hsl(from var(--color-mastodon) h calc(s * .3) l) 40%,
-					hsl(from var(--color-slate) h s calc(l * .8))
+					hsl(from var(--color-grey) h s calc(l * .8))
 				);
 				background-color: var(--color-mix);
+				@include tone(cool) {
+					--color-mix: color-mix(
+						in srgb,
+						hsl(from var(--color-mastodon) h calc(s * .3) l) 40%,
+						hsl(from var(--color-grey) h s calc(l * .5))
+					);
+				}
 				&::after {
 					@include contrast(both) {
 						background-color: var(--color-mix);

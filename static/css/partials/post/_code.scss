@@ -109,10 +109,10 @@
 				line-height: 1.5;
 				@include clip-path-edges(2px);
 				&.tag-css-only {
-					background-color: var(--color-slate);
+					background-color: var(--color-grey);
 				}
 				&.tag-award {
-					background-color: var(--color-mauve);
+					background-color: var(--color-dark);
 				}
 				@include contrast(both) {
 					clip-path: unset;
@@ -135,13 +135,13 @@
 					&.tag-css-only {
 						background-color: unset;
 						&::after {
-							background-color: var(--color-slate);
+							background-color: var(--color-grey);
 						}
 					}
 					&.tag-award::after {
 						background-color: unset;
 						&::after {
-							background-color: var(--color-mauve);
+							background-color: var(--color-dark);
 						}
 					}
 				}
@@ -275,7 +275,7 @@
 		.button {
 			--background: var(--color-mint) radial-gradient(
 				circle at center left,
-				hsl(from var(--color-slate) h s calc(l * .8)),
+				hsl(from var(--color-grey) h s calc(l * .8)),
 				var(--color-mint),
 				var(--color-oak)
 			);

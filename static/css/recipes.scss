@@ -10,6 +10,7 @@
 @use 'partials/post/recipe';
 
 .page-recipes {
+	--color-grey: var(--color-slate);
 	@include theme(light) {
 		--background-body: hsl(from var(--color-mint) h s calc(l * 1.2));
 	}
@@ -41,14 +42,14 @@
 			@include theme(light) {
 				--focus: color-mix(
 					in hsl,
-					var(--color-slate) 70%,
+					var(--color-grey) 70%,
 					var(--color-mint)
 				);
 			}
 			@include theme(dark) {
 				--focus: color-mix(
 					in hsl,
-					var(--color-slate) 70%,
+					var(--color-grey) 70%,
 					var(--color-mint)
 				);
 			}
@@ -60,10 +61,10 @@
 	.button-reduced[href] {
 		--background: color-mix(
 			in hsl,
-			var(--color-slate) 70%,
+			var(--color-grey) 70%,
 			var(--color-mint)
 		);
-		--background-hover: var(--color-slate);
+		--background-hover: var(--color-grey);
 		--background-active: var(--color-iron);
 		@include theme(light) {
 			--outline: white;
@@ -99,7 +100,7 @@
 			var(--color-mint)
 		),
 		var(--color-mint),
-		var(--color-slate)
+		var(--color-grey)
 	);
 }
 
@@ -236,7 +237,7 @@
 						color: color-mix(
 							in srgb,
 							var(--color-iron) 30%,
-							var(--color-slate)
+							var(--color-grey)
 						);
 						@include contrast(both) {
 							color: var(--color-iron);

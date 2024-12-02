@@ -12,7 +12,7 @@
 	}
 	.popup-label {
 		&::after {
-			background-color: var(--color-blush);
+			background-color: var(--color-light);
 			bottom: calc(var(--t)*-1);
 			@media (prefers-reduced-motion: no-preference) {
 				translate: 0 calc(var(--p)*2);
@@ -37,7 +37,7 @@
 			&::before {
 				content: "";
 				display: block;
-				background-color: var(--color-blush);
+				background-color: var(--color-light);
 				mask: url('data:image/svg+xml;utf8,<svg width="600px" height="60px" viewBox="0 0 600 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M600,0 L600,60 L88,60 L88,60 C88,39.0131795 70.9868205,22 50,22 C29.0131795,22 12,39.0131795 12,60 L0,60 L0,0 L600,0 Z"></path></svg>') no-repeat;
 				@include full-size;
 			}

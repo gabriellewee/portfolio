@@ -33,13 +33,13 @@ body {
 
 	--color-body: var(--color-primary);
 	@include theme(light) {
-		--background-body: hsl(from var(--color-blush) h s calc(l * 1.09));
+		--background-body: hsl(from var(--color-light) h s calc(l * 1.09));
 	}
 	@include theme(dark) {
 		--background-body: hsl(from var(--color-iron) h s calc(l * .73));
 	}
 	@include contrast(light) {
-		--background-body: hsl(from var(--color-blush) h s calc(l * 1.12));
+		--background-body: hsl(from var(--color-light) h s calc(l * 1.12));
 	}
 	@include contrast(dark) {
 		--background-body: hsl(from var(--color-iron) h s calc(l * .45));
@@ -54,10 +54,10 @@ a {
 	@include selection {
 		background-color: var(--selection);
 		@include theme(light) {
-			--selection: hsl(from var(--color-rose) h s l / .5);
+			--selection: hsl(from var(--color-medium) h s l / .5);
 		}
 		@include theme(dark) {
-			--selection: hsl(from var(--color-blush) h s l / .3);
+			--selection: hsl(from var(--color-light) h s l / .3);
 		}
 	}
 }

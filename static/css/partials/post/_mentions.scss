@@ -161,8 +161,8 @@
 		&::before {
 			background: radial-gradient(
 				circle at center left,
-				var(--color-blush),
-				var(--color-rose)
+				var(--color-light),
+				var(--color-medium)
 			);
 			@include before;
 		}
@@ -189,16 +189,16 @@
 		&::before {
 			@include before;
 			@include theme(light) {
-				background-color: hsl(from var(--color-mauve) h s l / .5);
+				background-color: hsl(from var(--color-dark) h s l / .5);
 			}
 			@include theme(dark) {
-				background-color: var(--color-blush);
+				background-color: var(--color-light);
 			}
 			@include contrast(both) {
 				background-color: color-mix(
 					in srgb,
 					var(--color-iron) 60%,
-					var(--color-slate)
+					var(--color-grey)
 				);
 			}
 		}
@@ -232,11 +232,11 @@
 	.username {
 		margin-right: var(--p);
 		span {
-			background-color: var(--color-mauve);
+			background-color: var(--color-dark);
 		}
 		&:hover, &:focus {
 			span {
-				background-color: var(--color-slate);
+				background-color: var(--color-grey);
 			}
 		}
 		&:active {
@@ -255,7 +255,7 @@
 		}
 		&:hover, &:focus {
 			time {
-				background-color: var(--color-slate);
+				background-color: var(--color-grey);
 			}
 		}
 		&:active {

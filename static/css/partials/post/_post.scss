@@ -222,15 +222,15 @@
 			transition: all .1s ease-out;
 			position: relative;
 			@include gradient-text(
-				var(--color-mauve),
-				var(--color-slate),
-				hsl(from var(--color-mauve) h s l / .5)
+				var(--color-dark),
+				var(--color-grey),
+				hsl(from var(--color-dark) h s l / .5)
 			);
 			&:hover, &:focus {
 				@include gradient-text(
-					var(--color-rose),
-					var(--color-mauve),
-					hsl(from var(--color-rose) h s l / .5)
+					var(--color-medium),
+					var(--color-dark),
+					hsl(from var(--color-medium) h s l / .5)
 				);
 			}
 			&:active {
@@ -243,13 +243,13 @@
 				}
 				@include theme(dark) {
 					@include gradient-text(
-						var(--color-slate),
+						var(--color-grey),
 						color-mix(
 							in srgb,
 							var(--color-iron) 80%,
 							white
 						),
-						hsl(from var(--color-slate) h s l / .5)
+						hsl(from var(--color-grey) h s l / .5)
 					);
 				}
 			}
@@ -325,10 +325,10 @@
 	a, pre, button {
 		&:focus-visible {
 			@include theme(light) {
-				@include focus-shadow(hsl(from var(--color-mauve) h s l / .5));
+				@include focus-shadow(hsl(from var(--color-dark) h s l / .5));
 			}
 			@include theme(dark) {
-				@include focus-shadow(var(--color-mauve));
+				@include focus-shadow(var(--color-dark));
 			}
 		}
 	}
@@ -466,15 +466,15 @@
 			@include theme(light) {
 				background: radial-gradient(
 					circle at center left,
-					hsl(from var(--color-rose) h s l / .5),
-					hsl(from var(--color-mauve) h s l / .5)
+					hsl(from var(--color-medium) h s l / .5),
+					hsl(from var(--color-dark) h s l / .5)
 				);
 			}
 			@include theme(dark) {
 				background: radial-gradient(
 					circle at center left,
-					var(--color-rose),
-					var(--color-mauve)
+					var(--color-medium),
+					var(--color-dark)
 				);
 			}
 		}

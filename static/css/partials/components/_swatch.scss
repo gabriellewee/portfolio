@@ -9,6 +9,7 @@
 	display: block;
 	margin-inline: auto;
 	text-align: center;
+	background-color: var(--background);
 	border-radius: 100%;
 	border: calc(var(--p)/4) solid;
 	@include square(36px);
@@ -20,11 +21,5 @@
 	}
 	@include contrast(both) {
 		border-color: var(--color-primary);
-	}
-	$swatches: iron, blush, rose, mauve, slate, mint;
-	@each $swatch in $swatches {
-		&-#{$swatch} {
-			background-color: var(--color-#{$swatch});
-		}
 	}
 }
