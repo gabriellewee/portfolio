@@ -40,7 +40,7 @@
 						text-decoration-color: color-mix(
 							in hsl,
 							hsl(from var(--color-dark) h calc(s * .9) l) 30%,
-							hsl(from var(--color-medium) h calc(s * .9) l)
+							hsl(from var(--color-middle) h calc(s * .9) l)
 						);
 					}
 				}
@@ -81,7 +81,7 @@
 					}
 					span span {
 						@include gradient-headline(
-							var(--color-medium),
+							var(--color-middle),
 							var(--color-dark),
 							var(--color-grey),
 							var(--color-grey)
@@ -142,8 +142,8 @@
 						@include gradient-headline(
 							var(--color-grey),
 							var(--color-dark),
-							var(--color-medium),
-							var(--color-medium),
+							var(--color-middle),
+							var(--color-middle),
 							0%
 						);
 					}
@@ -156,7 +156,7 @@
 						color: color-mix(
 							in hsl,
 							var(--color-dark) 30%,
-							var(--color-medium)
+							var(--color-middle)
 						);
 					}
 					&:hover, &:focus {
@@ -164,7 +164,7 @@
 							background-position-x: 50%;
 						}
 						&::after {
-							color: var(--color-medium);
+							color: var(--color-middle);
 						}
 					}
 					&:active {
@@ -221,7 +221,7 @@
 				&:hover, &:focus {
 					@include gradient-text(
 						var(--color-dark),
-						var(--color-medium),
+						var(--color-middle),
 						hsl(from var(--color-dark) h s l / .5)
 					);
 				}

@@ -228,9 +228,9 @@
 			);
 			&:hover, &:focus {
 				@include gradient-text(
-					var(--color-medium),
+					var(--color-middle),
 					var(--color-dark),
-					hsl(from var(--color-medium) h s l / .5)
+					hsl(from var(--color-middle) h s l / .5)
 				);
 			}
 			&:active {
@@ -466,14 +466,14 @@
 			@include theme(light) {
 				background: radial-gradient(
 					circle at center left,
-					hsl(from var(--color-medium) h s l / .5),
+					hsl(from var(--color-middle) h s l / .5),
 					hsl(from var(--color-dark) h s l / .5)
 				);
 			}
 			@include theme(dark) {
 				background: radial-gradient(
 					circle at center left,
-					var(--color-medium),
+					var(--color-middle),
 					var(--color-dark)
 				);
 			}

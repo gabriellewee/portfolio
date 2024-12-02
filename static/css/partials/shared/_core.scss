@@ -54,7 +54,7 @@ a {
 	@include selection {
 		background-color: var(--selection);
 		@include theme(light) {
-			--selection: hsl(from var(--color-medium) h s l / .5);
+			--selection: hsl(from var(--color-middle) h s l / .5);
 		}
 		@include theme(dark) {
 			--selection: hsl(from var(--color-light) h s l / .3);

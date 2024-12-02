@@ -75,7 +75,7 @@
 			--color-mix: color-mix(
 				in srgb,
 				var(--color-dark),
-				var(--color-medium)
+				var(--color-middle)
 			);
 			--color-mix-underline: var(--color-mix);
 		}
@@ -98,12 +98,12 @@
 			--color-mix: color-mix(
 				in hsl,
 				hsl(from var(--color-dark) h calc(s * .9) l) 30%,
-				hsl(from var(--color-medium) h calc(s * .9) l)
+				hsl(from var(--color-middle) h calc(s * .9) l)
 			);
 			--color-mix-underline: var(--color-mix);
 			span span {
 				@include gradient-headline(
-					var(--color-medium),
+					var(--color-middle),
 					var(--color-dark),
 					var(--color-grey),
 					var(--color-grey)

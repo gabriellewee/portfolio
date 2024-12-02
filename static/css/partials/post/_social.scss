@@ -69,7 +69,7 @@
 			&::before {
 				background: radial-gradient(
 					circle at center left,
-					var(--color-medium),
+					var(--color-middle),
 					var(--color-dark)
 				);
 				@include before;

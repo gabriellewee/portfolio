@@ -72,7 +72,7 @@ $iron: #263238;
 	--color-email-dark:hsl(#{hexToHSL(color.mix($iron, white, 70%))});
 
 	--color-light: var(--color-blush);
-	--color-medium: var(--color-rose);
+	--color-middle: var(--color-rose);
 	--color-dark: var(--color-mauve);
 	--color-grey: var(--color-slate);
 }

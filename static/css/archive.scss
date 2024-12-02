@@ -50,18 +50,18 @@
 				text-decoration-color: color-mix(
 					in hsl,
 					hsl(from var(--color-dark) h calc(s * .9) l) 30%,
-					hsl(from var(--color-medium) h calc(s * .9) l)
+					hsl(from var(--color-middle) h calc(s * .9) l)
 				);
 				span {
 					@include gradient-text(
-						var(--color-medium),
+						var(--color-middle),
 						var(--color-dark)
 					);
 				}
 			}
 			&:focus-visible {
 				@include contrast(both) {
-					@include focus-shadow(var(--color-medium));
+					@include focus-shadow(var(--color-middle));
 				}
 			}
 			&:active {

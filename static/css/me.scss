@@ -66,7 +66,7 @@
 .post-expand, .post-external:not(.button) {
 	--outline: radial-gradient(
 		circle at center left,
-		var(--color-medium),
+		var(--color-middle),
 		var(--color-dark)
 	);
 	transition: opacity .2s ease-out, scale .2s ease-out;
@@ -161,7 +161,7 @@
 		}
 
 		a {
-			--outline: var(--color-medium);
+			--outline: var(--color-middle);
 
 			&::after {
 				content: "";
