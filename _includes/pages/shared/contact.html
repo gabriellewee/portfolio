@@ -1,5 +1,5 @@
 <aside class="contact"{% if key == "about" %} data-anim{% endif %}>
-	{% for type in about.links %}
+	{% for type in site.links %}
 		<address class="contact-{{type.name}}" aria-label="{{type.label}}"{% if key == "home" %} data-anim{% endif %}>
 			<h2>{{type.title}}</h2>
 			<ul{% if key != "home" %} class="button-reduced-group"{% endif %}>

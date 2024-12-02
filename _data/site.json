@@ -2,8 +2,9 @@
 	"url": "https://gabriellew.ee",
 	"author": "Gabrielle Wee",
 	"email": "mail@gabriellew.ee",
-	"photoDescription": "An Asian woman with wavy black hair in a coral-colored sweater and square rose gold glasses",
+	"photo": "An Asian woman with wavy black hair in a coral-colored sweater and square rose gold glasses",
 	"twitter": "@gabriewee",
+	"versions": ["2013-2014", "2014-2015", "2015-2020", "2020-2021", "2021-2023" ],
 	"tones": [
 		{
 			"name": "warm",
@@ -25,6 +26,101 @@
 				{ "hex": "#9EAFCC", "name": "cadet" },
 				{ "hex": "#6275B4", "name": "marine" },
 				{ "hex": "#857292", "name": "monsoon" }
+			]
+		}
+	],
+	"links": [
+		{
+			"name": "social",
+			"title": "You can find me here:",
+			"label": "Social media links",
+			"links": [
+				{
+					"name": "codepen",
+					"url": "https://codepen.io/gabriellewee/",
+					"theme": true
+				},
+				{
+					"name": "github",
+					"url": "https://github.com/gabriellewee/"
+				},
+				{
+					"name": "instagram",
+					"url": "https://instagram.com/gabriellewee/"
+				},
+				{
+					"name": "mastodon",
+					"url": "https://front-end.social/@gabrielle"
+				},
+				{
+					"name": "threads",
+					"url": "https://threads.net/@gabriellewee"
+				},
+				{
+					"name": "bluesky",
+					"url": "https://bsky.app/profile/gabriellew.ee",
+					"theme": true
+				},
+				{
+					"name": "twitter",
+					"url": "https://twitter.com/gabriewee/",
+					"secondary": true
+				},
+				{
+					"name": "dribbble",
+					"url": "https://dribbble.com/gabriellewee/",
+					"class": "no-mobile",
+					"theme": true
+				},
+				{
+					"name": "linkedin",
+					"url": "https://www.linkedin.com/in/gabriellewee/",
+					"theme": true
+				},
+				{
+					"name": "medium",
+					"url": "https://medium.com/@gabriellewee/",
+					"class": "no-mobile",
+					"theme": true
+				},
+				{
+					"name": "tumblr",
+					"url": "https://gabriellewee.tumblr.com",
+					"class": "no-mobile",
+					"theme": true
+				},
+				{
+					"name": "pinterest",
+					"url": "https://pinterest.com/gabriellewee/",
+					"secondary": true
+				},
+				{
+					"name": "music",
+					"url": "https://music.apple.com/profile/gabriellewee/",
+					"class": "no-mobile"
+				}
+			]
+		},
+		{
+			"name": "messaging",
+			"title": "You can contact me here:",
+			"label": "Contact links",
+			"links": [
+				{
+					"name": "email",
+					"url": "mailto:mail@gabriellew.ee",
+					"theme": true
+				},
+				{
+					"name": "text",
+					"url": "sms:5102142241",
+					"theme": true
+				},
+				{
+					"name": "imessage",
+					"title": "iMessage",
+					"url": "sms:mail@gabriellew.ee"
+				}
 			]
 		}
 	]
