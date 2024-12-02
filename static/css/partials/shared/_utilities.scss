@@ -392,6 +392,9 @@ $x-large: 1280px;
 @mixin blur($amount, $color, $lightness, $crisp, $blur) {
 	& {
 		background-color: hsl(from $color h s calc(l * #{$lightness}) / $crisp);
+		@include reduce-transparency {
+			background-color: hsl(from $color h s calc(l * #{$lightness}));
+		}
 	}
 	@supports ((-webkit-backdrop-filter: blur(0px)) or (backdrop-filter: blur(0px))) {
 		backdrop-filter: blur($amount);

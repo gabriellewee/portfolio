@@ -145,7 +145,7 @@
 		.time-default {
 			background-color: hsl(from var(--color-iron) h s calc(l * .35) / .9);
 			@include reduce-transparency {
-				background-color: hsl(from var(--color-iron) h s calc(l * .35));
+				background-color: var(--color-iron);
 			}
 			&::before {
 				@include contrast(light) {
