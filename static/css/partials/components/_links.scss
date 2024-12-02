@@ -215,6 +215,10 @@
 		}
 
 		&:hover, &:focus, &:active {
+			picture {
+				filter: blur(4px);
+				transform: scale(1.02);
+			}
 			.icon-copy {
 				opacity: 1;
 			}
@@ -257,8 +261,8 @@
 		color: white;
 		text-align: center;
 		text-transform: uppercase;
-		@include full-offset(4px);
+		background-color: hsl(from var(--background) h s l / .8);
+		@include full-offset(100%);
 		@include font-weight-width(600, 120);
-		@include blur(4px, var(--background), 1, .9, .8);
 	}
 }
