@@ -45,8 +45,8 @@ eleventyNavigation:
 								{% endif %}
 							</div>
 							<div class="post-header-right">
-								<time class="time{% if post.data.category != 'code' %} time-default{% endif %}{% if post.data.category == 'social' %} time-external{% endif %}" datetime="{{post.page.date|ISO|date('string')}}" data-time="{{post.page.date|ISO}}">{{post.page.date|ISO|date('readable')}}</time>
-								<a class="expand" id="{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}" aria-label="Expand preview of {{post.data.title}}" role="button" href="#{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}-lightbox" data-media-expand></a>
+								<time class="time{% if post.data.category != 'code' %} time-default{% endif %}{% if post.data.category == 'social' %} time-external{% endif %}" datetime="{{post.page.date|iso|date('string')}}" data-time="{{post.page.date|iso}}">{{post.page.date|iso|date('readable')}}</time>
+								<a class="expand" id="{{post.page.date|iso|date('string')}}-{{post.page.fileSlug}}" aria-label="Expand preview of {{post.data.title}}" role="button" href="#{{post.page.date|iso|date('string')}}-{{post.page.fileSlug}}-lightbox" data-media-expand></a>
 								<a class="external-expand" href="{{post.url|url}}" aria-label="View {{post.data.category}} in new window" target="_blank"></a>
 							</div>
 						</div>
@@ -89,7 +89,7 @@ eleventyNavigation:
 
 <div class="lightbox-group" data-lightbox-container hidden>
 	{% for post in collections.code | reverse %}
-		<a class="lightbox" id="{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}-lightbox" role="button" aria-label="Close preview of {{post.data.title}}" href="#{{post.page.date|ISO|date('string')}}-{{post.page.fileSlug}}" data-lightbox></a>
+		<a class="lightbox" id="{{post.page.date|iso|date('string')}}-{{post.page.fileSlug}}-lightbox" role="button" aria-label="Close preview of {{post.data.title}}" href="#{{post.page.date|iso|date('string')}}-{{post.page.fileSlug}}" data-lightbox></a>
 		<dialog class="lightbox-content iframe" aria-label="Preview of {{post.data.title}}" autofocus>
 			<figure class="frame-wrapper"{% if post.data.background %} style="--background: {{post.data.background}}"{% endif %}>
 				{% if post.url %}

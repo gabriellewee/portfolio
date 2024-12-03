@@ -1,6 +1,6 @@
-const Cache = require('@11ty/eleventy-fetch');
+import Cache from '@11ty/eleventy-fetch';
 
-module.exports = async () => {
+export default async function() {
 	try {
 		return Cache(`https://webmention.io/api/mentions.json?token=${process.env.WEBMENTION_IO_KEY}&per-page=90001`, {
 			duration: '1d',

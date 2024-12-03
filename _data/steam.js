@@ -1,6 +1,6 @@
-const Cache = require('@11ty/eleventy-fetch');
+import Cache from '@11ty/eleventy-fetch';
 
-module.exports = async () => {
+export default async function() {
 	try {
 		// https://cdn.cloudflare.steamstatic.com/steam/apps/0000000/hero_capsule.jpg
 		// https://cdn.cloudflare.steamstatic.com/steam/apps/0000000/capsule_616x353.jpg

@@ -3,7 +3,7 @@
 		"posts",
 		"current"
 	],
-	"permalink": "/posts/{{date|ISO|date}}/{{title|slugify}}/",
+	"permalink": "/posts/{{date|iso|date}}/{{title|slugify}}/",
 	"layout": "layouts/post.njk",
 	"templateEngineOverride": "md,njk"
 }

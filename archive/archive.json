@@ -4,7 +4,7 @@
 	],
 	"archive": true,
 	"hidden": true,
-	"permalink": "/archive/{{date|ISO|date}}/{{title|slugify}}/",
+	"permalink": "/archive/{{date|iso|date}}/{{title|slugify}}/",
 	"templateEngineOverride": "md,njk",
 	"layout": "layouts/post.njk"
 }

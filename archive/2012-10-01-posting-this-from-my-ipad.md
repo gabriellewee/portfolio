@@ -1,7 +1,7 @@
 ---
 date: 2012-10-01
 title: I’m posting this from my iPad!
-permalink: /archive/{{date|ISO|date}}/posting-this-from-my-ipad/
+permalink: /archive/{{date|iso|date}}/posting-this-from-my-ipad/
 ---
 I used to think iPads were useless toys parents bought to amuse their children, but no longer!
 

@@ -48,7 +48,7 @@
 								<div>
 									<a class="username" href="{{webmention.data.author.url}}"><span>{{webmention.data.author.name|removeEmoji}}</span></a>
 									<a class="time" href="{{webmention.data.url}}">
-										<time class="time-external" datetime="{{webmention.data.published|date('string')}}" title="{{webmention.data.published|date('readable')}}" data-time="{{webmention.data.published|ISO}}">Posted {{webmention.data.published|date('readable')}}{{webmention.source|platform|safe}}</time>
+										<time class="time-external" datetime="{{webmention.data.published|date('string')}}" title="{{webmention.data.published|date('readable')}}" data-time="{{webmention.data.published|iso}}">Posted {{webmention.data.published|date('readable')}}{{webmention.source|platform|safe}}</time>
 									</a>
 									<div class="reply post-text">{{webmention.data.content|safe}}</div>
 								</div>
@@ -56,9 +56,9 @@
 								<div class="post-link post-text">
 									<p>
 										{% if webmention.data.author.name %}
-											<a href="{{webmention.data.author.url}}">{{webmention.data.author.name|removeEmoji}}</a> mentioned this post{% if webmention.data.published %} <a href="{{webmention.data.url}}"><time datetime="{{webmention.data.published|date('string')}}" title="{{webmention.data.published|date('readable')}}" data-time="{{webmention.data.published|ISO}}">{{webmention.data.published|date('readable')}}</time></a>{% endif %}
+											<a href="{{webmention.data.author.url}}">{{webmention.data.author.name|removeEmoji}}</a> mentioned this post{% if webmention.data.published %} <a href="{{webmention.data.url}}"><time datetime="{{webmention.data.published|date('string')}}" title="{{webmention.data.published|date('readable')}}" data-time="{{webmention.data.published|iso}}">{{webmention.data.published|date('readable')}}</time></a>{% endif %}
 										{% else %}
-											<a href="{{webmention.data.url}}">Someone mentioned this post{% if webmention.data.published %} <time datetime="{{webmention.data.published|date('string')}}" title="{{webmention.data.published|date('readable')}}" data-time="{{webmention.data.published|ISO}}">on {{webmention.data.published|date('readable')}}</time>{% endif %}</a>
+											<a href="{{webmention.data.url}}">Someone mentioned this post{% if webmention.data.published %} <time datetime="{{webmention.data.published|date('string')}}" title="{{webmention.data.published|date('readable')}}" data-time="{{webmention.data.published|iso}}">on {{webmention.data.published|date('readable')}}</time>{% endif %}</a>
 										{% endif %}
 									</p>
 								</div>

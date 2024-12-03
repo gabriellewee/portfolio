@@ -1,7 +1,7 @@
 ---
 date: 2013-01-18
 title: One of the minor pleasures in life is to be slightly ill.
-permalink: /archive/{{date|ISO|date}}/minor-pleasures/
+permalink: /archive/{{date|iso|date}}/minor-pleasures/
 full: true
 ---
 Today was certainly one of those days. Sore throat, stuffy nose, coughing and sneezing and all sorts of nonsense, but not bad enough that I was incapacitated. A nice day in bed and lots of fluids did the trick, and I kept myself occupied by creating a mockup on my future business cards in Photoshop.

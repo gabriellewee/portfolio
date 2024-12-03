@@ -33,7 +33,7 @@ eleventyNavigation:
 									<a href="{{post.data.url|url}}"><span>{{post.data.title|safe}}</span></a>
 								{% endif %}
 							</h2>
-							<time class="time{% if post.data.category != 'code' %} time-default{% endif %}{% if post.data.category == 'social' %} time-external{% endif %}" datetime="{{post.page.date|ISO|date('string')}}" data-time="{{post.page.date|ISO}}" title="{{post.page.date|ISO|date('readable')}}">{{post.page.date|ISO|date('readable')}}</time>
+							<time class="time{% if post.data.category != 'code' %} time-default{% endif %}{% if post.data.category == 'social' %} time-external{% endif %}" datetime="{{post.page.date|iso|date('string')}}" data-time="{{post.page.date|iso}}" title="{{post.page.date|iso|date('readable')}}">{{post.page.date|iso|date('readable')}}</time>
 						</div>
 					</header>
 

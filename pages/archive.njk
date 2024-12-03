@@ -21,7 +21,7 @@ eleventyNavigation:
 				{% for post in posts | reverse %}
 					<li data-anim>
 						<h3><a href="{{post.url|url}}"><span>{{post.data.title|safe}}</span></a></h3>
-						<time datetime="{{post.date|ISO|date('string')}}">{{post.date|ISO|date('readable')}}</time>
+						<time datetime="{{post.date|iso|date('string')}}">{{post.date|iso|date('readable')}}</time>
 					</li>
 				{% endfor %}
 			</ul>

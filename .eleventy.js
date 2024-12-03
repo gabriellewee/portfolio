@@ -1,17 +1,138 @@
-require('dotenv').config();
-const eleventyNavigationPlugin = require('@11ty/eleventy-navigation');
+import dotenv from 'dotenv';
+dotenv.config();
 
-module.exports = eleventyConfig => {
+import filters from './_config/filters.js';
+import plugins from './_config/plugins.js';
+import shortcodes from './_config/shortcodes.js';
+
+// trqnsform
+import * as sass from 'sass'
+import path from 'path';
+import { minify } from 'terser';
+import htmlmin from 'html-minifier-terser';
+
+export default function (eleventyConfig) {
 	eleventyConfig.setQuietMode(true);
 
-	eleventyConfig.addPlugin(eleventyNavigationPlugin);
-	eleventyConfig.addPlugin(require('./_config/passthrough.js'));
-	eleventyConfig.addPlugin(require('./_config/transform.js'));
-	eleventyConfig.addPlugin(require('./_config/filters.js'));
-	eleventyConfig.addPlugin(require('./_config/posts.js'));
-	eleventyConfig.addPlugin(require('./_config/images.js'));
-	eleventyConfig.addPlugin(require('./_config/watch.js'));
+	// filters
+	eleventyConfig.addFilter('nbsp', filters.nbspFilter(2, 100));
+	eleventyConfig.addFilter('date', filters.date);
+	eleventyConfig.addFilter('year', filters.year);
+	eleventyConfig.addFilter('iso', filters.iso);
+	eleventyConfig.addFilter('images', filters.images);
+	eleventyConfig.addFilter('limit', filters.limit);
+	eleventyConfig.addFilter('index', filters.index);
+	eleventyConfig.addFilter('isoFilter', filters.isoFilter);
+	eleventyConfig.addFilter('removeEmoji', filters.removeEmoji);
+	eleventyConfig.addFilter('platform', filters.platform);
+	eleventyConfig.addFilter('stripAttr', filters.stripAttr);
 
+	// plugins
+	eleventyConfig.addPlugin(plugins.eleventyNavigationPlugin);
+	eleventyConfig.addPlugin(plugins.feedPlugin);
+	eleventyConfig.addPlugin(plugins.syntaxHighlight);
+
+	// libraries
+	eleventyConfig.setLibrary('md', plugins.markdownLibrary);
+
+	// shortcodes
+	eleventyConfig.addShortcode('copyright', shortcodes.copyright);
+	eleventyConfig.addShortcode('today', shortcodes.today);
+	eleventyConfig.addShortcode('stats', shortcodes.stats);
+	eleventyConfig.addShortcode('external', shortcodes.external);
+	eleventyConfig.addShortcode('ogPhoto', shortcodes.ogPhoto);
+	eleventyConfig.addShortcode('unfurlGame', shortcodes.unfurlGame);
+	eleventyConfig.addShortcode('image', shortcodes.image);
+	eleventyConfig.addShortcode('excerpt', shortcodes.excerpt);
+
+	// passthrough
+	[
+		"robots.txt",
+		"contact.vcf",
+		"static/fonts",
+		"static/css/fonts",
+		"static/images",
+		"static/code/images"
+	].forEach(path =>
+		eleventyConfig.addPassthroughCopy(path)
+	);
+
+	eleventyConfig.addPassthroughCopy({
+		"static/images/favicons": "/",
+		"_includes/svg": "static/images/svg",
+		"node_modules/clipboard/dist/clipboard.min.js": "static/js/clipboard.min.js",
+		"node_modules/gsap/dist/gsap.min.js": "static/js/gsap.min.js",
+		"node_modules/gsap/dist/ScrollTrigger.min.js": "static/js/scroll-trigger.min.js",
+		"node_modules/gsap/dist/TextPlugin.min.js": "static/js/text.min.js",
+		"node_modules/imagesloaded/imagesloaded.pkgd.min.js": "static/js/imagesloaded.min.js",
+		"node_modules/isotope-layout/dist/isotope.pkgd.min.js": "static/js/isotope.min.js",
+		"node_modules/isotope-packery/packery-mode.pkgd.min.js": "static/js/packery.min.js",
+		"node_modules/luxon/build/global/luxon.min.js": "static/js/luxon.min.js",
+		"node_modules/smoothscroll-polyfill/dist/smoothscroll.min.js": "static/js/smoothscroll.min.js"
+	});
+
+	// posts
+	eleventyConfig.setFrontMatterParsingOptions({
+		excerpt: true,
+		excerpt_separator: "<!-- more -->"
+	});
+
+	eleventyConfig.addCollection("entries", function (collectionApi) {
+		const entries = [...collectionApi.getFilteredByTag("entries")];
+		return entries.filter(entry => {
+			if (entry.data.self == true || entry.data.hide == true || entry.data.in_reply != null || entry.data.visibility === "direct") return false;
+			return entry.data;
+		});
+	});
+
+	// transform
+	eleventyConfig.addTransform("minify", async (content, outputPath) => {
+		if (outputPath && outputPath.endsWith(".html")) {
+			return await htmlmin.minify(content, {
+				collapseWhitespace: true,
+				removeComments: true,  
+				useShortDoctype: true,
+			});
+		}
+		return content;
+	});
+
+	eleventyConfig.addTemplateFormats("js");
+	eleventyConfig.addExtension("js", {
+		outputFileExtension: "js",
+		compile: (inputContent, inputPath) => {
+			let parsed = path.parse(inputPath);
+			if (parsed.name.startsWith(".")) {
+				return;
+			}
+			return async (data) => {
+				let minified = await minify(inputContent, {});
+				return minified.code;
+			};
+		}
+	});
+
+	eleventyConfig.addTemplateFormats("scss");
+	eleventyConfig.addExtension("scss", {
+		outputFileExtension: "css",
+		compile: (inputContent, inputPath) => {
+			let parsed = path.parse(inputPath);
+			if (parsed.name.startsWith("_")) {
+				return;
+			}
+			return async (data) => {
+				let result = sass.compileString(inputContent, {
+					style: "compressed",
+					loadPaths: [
+						parsed.dir || "."
+					]
+				});
+				return result.css.toString("utf8");
+			};
+		}
+	});
+
+	// formats
 	return {
 		templateFormats: [
 			"md",
@@ -23,4 +144,20 @@ module.exports = eleventyConfig => {
 		htmlTemplateEngine: "njk",
 		dataTemplateEngine: "njk",
 	};
+
+	// watch
+	eleventyConfig.setBrowserSyncConfig({
+		callbacks: {
+			ready: function(err, browserSync) {
+				const content_404 = fs.readFileSync('_site/404.html');
+
+				browserSync.addMiddleware("*", (req, res) => {
+					res.write(content_404);
+					res.end();
+				});
+			},
+		},
+		ui: false,
+		ghostMode: false
+	});
 };

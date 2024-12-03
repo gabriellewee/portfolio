@@ -18,7 +18,7 @@ eleventyComputed:
 				<header class="post-header inline-header">
 					<div class="post-header-content">
 						<h2><a class="u-url" href="{{page.url}}"><span><span class="p-name">{{title|nbsp|safe}}</span></span></a></h2>
-						<time class="time-default dt-published" datetime="{{page.date|ISO|date('string')}}" title="{{page.date|ISO|date('readable')}}" data-time="{{page.date|ISO}}">{{page.date|ISO|date('readable')}}</time>
+						<time class="time-default dt-published" datetime="{{page.date|iso|date('string')}}" title="{{page.date|iso|date('readable')}}" data-time="{{page.date|iso}}">{{page.date|iso|date('readable')}}</time>
 					</div>
 				</header>
 
@@ -33,7 +33,7 @@ eleventyComputed:
 						{% else %}
 							{%- set pageUrl = page.fileSlug %}
 						{% endif %}
-						<a class="button" href="{{site.url}}/v1/{{page.date|ISO|date('archive')}}/{{pageUrl|slugify}}" target="_blank"><span>View original</span></a>
+						<a class="button" href="{{site.url}}/v1/{{page.date|iso|date('archive')}}/{{pageUrl|slugify}}" target="_blank"><span>View original</span></a>
 					{% endif %}
 					{% if external %}
 						{% for link in external %}
