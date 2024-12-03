@@ -19,7 +19,7 @@ $iron: #263238;
 		slate: #577783,
 
 		mist: #C5D4D5,
-		cadet: #9EAFCC,
+		glacier: #85AEC0,
 		marine: #6275B4,
 		monsoon: #857292,
 
@@ -97,7 +97,7 @@ $iron: #263238;
 
 @include tone(cool, true) {
 	--color-light: var(--color-mist);
-	--color-medium: var(--color-cadet);
+	--color-middle: var(--color-glacier);
 	--color-dark: var(--color-marine);
 	--color-grey: var(--color-monsoon);
 
