@@ -95,7 +95,7 @@ $iron: #263238;
 	--color-primary:white;
 }
 
-@include tone(cool, true) {
+@include tone(blue, true) {
 	--color-light: var(--color-mist);
 	--color-middle: var(--color-glacier);
 	--color-dark: var(--color-marine);

@@ -68,7 +68,7 @@
 		--background-active: var(--color-iron);
 		@include theme(light) {
 			--outline: white;
-			@include tone(cool) {
+			@include tone(blue) {
 				--color-mix: color-mix(
 					in srgb,
 					var(--color-mint) 70%,

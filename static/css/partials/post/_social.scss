@@ -108,7 +108,7 @@
 					hsl(from var(--color-grey) h s calc(l * .8))
 				);
 				background-color: var(--color-mix);
-				@include tone(cool) {
+				@include tone(blue) {
 					--color-mix: color-mix(
 						in srgb,
 						hsl(from var(--color-mastodon) h calc(s * .3) l) 40%,

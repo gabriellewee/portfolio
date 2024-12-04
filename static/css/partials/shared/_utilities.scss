@@ -70,14 +70,14 @@ $x-large: 1280px;
 
 @mixin tone($tone, $root: false) {
 	@if $root == true {
-		.theme-#{$tone} {
+		.theme-#{"" + $tone} {
 			@content;
 		}
 		:root:has(#option-tone:not(.inactive):checked) {
 			@content;
 		}
 	} @else {
-		.theme-#{$tone} & {
+		.theme-#{"" + $tone} & {
 			@content;
 		}
 		:root:has(#option-tone:not(.inactive):checked) & {
@@ -567,7 +567,7 @@ $x-large: 1280px;
 		cursor: pointer;
 		position: relative;
 
-		@include tone(cool) {
+		@include tone(blue) {
 			--color: color-mix(
 				in srgb,
 				var(--color-glacier),

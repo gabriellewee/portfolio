@@ -117,7 +117,7 @@
 			time {
 				--color-mix: hsl(from var(--color-grey) h calc(s * .75) l);
 				background-color: var(--color-mix);
-				@include tone(cool) {
+				@include tone(blue) {
 					--color-mix: hsl(from var(--color-grey) h calc(s * .75) calc(l * .8));
 				}
 				&::after {

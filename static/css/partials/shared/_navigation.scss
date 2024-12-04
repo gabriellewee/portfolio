@@ -54,7 +54,7 @@ header.top {
 			hsl(from var(--color-dark) h calc(s * .1) l)
 		);
 
-		@include tone(cool) {
+		@include tone(blue) {
 			--background: color-mix(
 				in srgb,
 				hsl(from var(--color-grey) h calc(s * .1) calc(l * .6)),

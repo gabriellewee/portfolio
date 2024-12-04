@@ -73,18 +73,18 @@ const accessibility = (() => {
 
 			_toggle(option, index, _optionTrue, _optionFalse);
 		} else if (option.getAttribute("data-option") === "tone") {
-			const theme = document.querySelector('meta[media="(prefers-color-scheme: light)"]');
+			const theme = document.querySelector('meta[content="#fae5e1"]');
 
 			let _optionTrue = () => {
 				_true(option, index);
-				document.documentElement.classList.add("theme-cool");
-				theme.setAttribute("content", "#DAE3E4");
+				document.documentElement.classList.add("theme-blue");
+				if(theme) theme.setAttribute("content", "#DAE3E4");
 				localStorage.setItem("tone", "true");
 			}
 			let _optionFalse = () => {
 				_false(option, index);
-				document.documentElement.classList.remove("theme-cool");
-				theme.setAttribute("content", "#fcf1ef");
+				document.documentElement.classList.remove("theme-blue");
+				if(theme) theme.setAttribute("content", "#fae5e1");
 				localStorage.setItem("tone", "false");
 			}
 

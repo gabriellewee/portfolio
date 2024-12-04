@@ -160,11 +160,11 @@
 			display: grid;
 		}
 
-		@include tone(cool) {
-			&.tone-warm {
+		@include tone(blue) {
+			&:not(.tone-blue) {
 				display: none;
 			}
-			&.tone-cool {
+			&.tone-blue {
 				display: grid;
 			}
 		}

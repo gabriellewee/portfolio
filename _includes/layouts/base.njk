@@ -27,12 +27,12 @@
 
 	{% if blank != true %}
 		<meta name="color-scheme" content="light dark">
-		<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1D2429">
+		<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1c2429">
 	{% endif %}
 	{% if theme %}
 		<meta name="theme-color" media="(prefers-color-scheme: light)" content="{{theme}}">
 	{% else %}
-		<meta name="theme-color" media="(prefers-color-scheme: light)" content="#fcf1ef">
+		<meta name="theme-color" media="(prefers-color-scheme: light)" content="#fae5e1">
 	{% endif %}
 
 	<title>{{site.author}} · {% if titleModifier %}{{titleModifier}}{% endif %}{{title}}</title>
