@@ -27,7 +27,7 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-overflow-scrolling: touch;
 	font-family: var(--font-default);
-	font-feature-settings: "liga","ss01";
+	font-feature-settings: "liga", "ss05" on, "ss07" on;
 	background-color: var(--background-body);
 	color: var(--color-body);
 
@@ -43,6 +43,9 @@ body {
 	}
 	@include contrast(dark) {
 		--background-body: hsl(from var(--color-iron) h s calc(l * .45));
+	}
+	@include safari {
+		font-feature-settings: "liga";
 	}
 }
 

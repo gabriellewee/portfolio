@@ -68,6 +68,12 @@ $x-large: 1280px;
 	}
 }
 
+@mixin safari {
+	@supports (hanging-punctuation: first) and (font: -apple-system-body) and (-webkit-appearance: none) {
+		@content;
+	}
+}
+
 @mixin tone($tone, $root: false) {
 	@if $root == true {
 		.tone-#{'' + $tone} {
