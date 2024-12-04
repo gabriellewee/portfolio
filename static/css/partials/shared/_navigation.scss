@@ -47,19 +47,36 @@ header.top {
 	.page-home:not(.page-index) &, .page-post &, .page-code &, .page-recipe & {
 		opacity: 1;
 	}
-	.button-reduced.current {
-		--background: color-mix(
-			in srgb,
-			hsl(from var(--color-grey) h calc(s * .1) calc(l * .8)),
-			hsl(from var(--color-dark) h calc(s * .1) l)
-		);
-
-		@include tone(blue) {
+	a.button-reduced {
+		@include tone(yellow) {
 			--background: color-mix(
 				in srgb,
-				hsl(from var(--color-grey) h calc(s * .1) calc(l * .6)),
+				hsl(from var(--color-grey) h calc(s * .3) calc(l * .4)) 30%,
+				hsl(from var(--color-dark) h calc(s * .8) l)
+			);
+		}
+		&.current {
+			--background: color-mix(
+				in srgb,
+				hsl(from var(--color-grey) h calc(s * .1) calc(l * .8)),
 				hsl(from var(--color-dark) h calc(s * .1) l)
 			);
+
+			@include tone(blue) {
+				--background: color-mix(
+					in srgb,
+					hsl(from var(--color-grey) h calc(s * .1) calc(l * .6)),
+					hsl(from var(--color-dark) h calc(s * .1) l)
+				);
+			}
+
+			@include tone(yellow) {
+				--background: color-mix(
+					in srgb,
+					hsl(from var(--color-grey) h calc(s * .1) calc(l * .4)),
+					hsl(from var(--color-dark) h calc(s * .1) l)
+				);
+			}
 		}
 	}
 	.copyright {

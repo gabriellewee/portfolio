@@ -70,17 +70,27 @@ $x-large: 1280px;
 
 @mixin tone($tone, $root: false) {
 	@if $root == true {
-		.theme-#{"" + $tone} {
+		.tone-#{'' + $tone} {
 			@content;
 		}
-		:root:has(#option-tone:not(.inactive):checked) {
+		@if $tone == pink {
+			:root {
+				@content;
+			}
+		}
+		:root:has(#option-#{'' + $tone}:not(.inactive):checked) {
 			@content;
 		}
 	} @else {
-		.theme-#{"" + $tone} & {
+		.tone-#{'' + $tone} & {
 			@content;
 		}
-		:root:has(#option-tone:not(.inactive):checked) & {
+		@if $tone == pink {
+			:root & {
+				@content;
+			}
+		}
+		:root:has(#option-#{'' + $tone}:not(.inactive):checked) & {
 			@content;
 		}
 	}
@@ -566,14 +576,6 @@ $x-large: 1280px;
 		display: flex;
 		cursor: pointer;
 		position: relative;
-
-		@include tone(blue) {
-			--color: color-mix(
-				in srgb,
-				var(--color-glacier),
-				#{$color}
-			);
-		}
 	}
 	&::before, &::after {
 		content: "";

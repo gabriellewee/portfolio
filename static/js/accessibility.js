@@ -41,10 +41,21 @@ const accessibility = (() => {
 			}
 		});
 	}
+	let _multiple = (option, index, _optionTrue) => {
+		option.addEventListener("click", e => {
+			_optionTrue();
+		});
+
+		labels[index].addEventListener("keydown", e =>{
+			if (e.key === "Enter") {
+				_optionTrue();
+			}
+		});
+	}
 
 	options.forEach((option, index) =>{
 		option.classList.add("inactive");
-		if (option.getAttribute("data-option") === "theme") {
+		if (option.getAttribute("name") === "theme") {
 			const theme = window.matchMedia('(prefers-color-scheme: dark)');
 			if (theme.matches && !localStorage.getItem("theme")) {
 				_true(option, index);
@@ -72,30 +83,36 @@ const accessibility = (() => {
 			}
 
 			_toggle(option, index, _optionTrue, _optionFalse);
-		} else if (option.getAttribute("data-option") === "tone") {
+		} else if (option.getAttribute("name") === "tone") {
 			const theme = document.querySelector('meta[content="#fae5e1"]');
+			const tone = option.getAttribute("data-option");
+			const color = option.getAttribute("data-hex");
+			const prefix = "tone-";
 
 			let _optionTrue = () => {
 				_true(option, index);
-				document.documentElement.classList.add("theme-blue");
-				if(theme) theme.setAttribute("content", "#DAE3E4");
-				localStorage.setItem("tone", "true");
-			}
-			let _optionFalse = () => {
-				_false(option, index);
-				document.documentElement.classList.remove("theme-blue");
-				if(theme) theme.setAttribute("content", "#fae5e1");
-				localStorage.setItem("tone", "false");
+				options.forEach((other, index) =>{
+					if(other.getAttribute("name") === "tone" && other != option) {
+						_false(other, index)
+					}
+				});
+
+				document.documentElement.classList.add(prefix + tone);
+				let toneClasses = Array.from(document.documentElement.classList);
+				toneClasses.forEach(toneClass => {
+					if(toneClass.includes(prefix) && toneClass != prefix + tone) document.documentElement.classList.remove(toneClass);
+				});
+
+				if(theme) theme.setAttribute("content", color);
+				if (localStorage.getItem("tone") != tone) localStorage.setItem("tone", tone);
 			}
 
-			if (localStorage.getItem("tone") === "true") {
+			if (localStorage.getItem("tone") === tone) {
 				_optionTrue();
-			} else if ((localStorage.getItem("tone") === "false")) {
-				_optionFalse();
 			}
 
-			_toggle(option, index, _optionTrue, _optionFalse);
-		} else if (option.getAttribute("data-option") === "contrast") {
+			_multiple(option, index, _optionTrue);
+		} else if (option.getAttribute("name") === "contrast") {
 			const contrast = window.matchMedia('(prefers-contrast: more)');
 			if (contrast.matches && !localStorage.getItem("contrast")) {
 				_true(option, index);
@@ -122,7 +139,7 @@ const accessibility = (() => {
 			}
 
 			_toggle(option, index, _optionTrue, _optionFalse);
-		} else if (option.getAttribute("data-option") === "transparency") {
+		} else if (option.getAttribute("name") === "transparency") {
 			const transparency = window.matchMedia('(prefers-reduced-transparency: reduce)');
 			if (transparency.matches && !localStorage.getItem("transparency")) {
 				_true(option, index);
@@ -149,7 +166,7 @@ const accessibility = (() => {
 			}
 
 			_toggle(option, index, _optionTrue, _optionFalse);
-		} else if (option.getAttribute("data-option") === "load") {
+		} else if (option.getAttribute("name") === "load") {
 			let _optionTrue = () => {
 				_true(option, index);
 				document.documentElement.classList.remove("theme-no-load");

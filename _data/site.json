@@ -7,7 +7,8 @@
 	"versions": ["2013-2014", "2014-2015", "2015-2020", "2020-2021", "2021-2023" ],
 	"tones": [
 		{
-			"name": "warm",
+			"name": "pink",
+			"color": "#fae5e1",
 			"swatches": [
 				{ "hex": "#263238", "name": "iron" },
 				{ "hex": "#F5C8BF", "name": "blush" },
@@ -19,6 +20,7 @@
 		},
 		{
 			"name": "blue",
+			"color": "#dae4e4",
 			"swatches": [
 				{ "hex": "#263238", "name": "iron" },
 				{ "hex": "#C5D4D5", "name": "mist" },
@@ -26,6 +28,18 @@
 				{ "hex": "#85AEC0", "name": "glacier" },
 				{ "hex": "#6275B4", "name": "marine" },
 				{ "hex": "#857292", "name": "monsoon" }
+			]
+		},
+		{
+			"name": "yellow",
+			"color": "#f6e6c0",
+			"swatches": [
+				{ "hex": "#263238", "name": "iron" },
+				{ "hex": "#697C75", "name": "storm" },
+				{ "hex": "#8BB29A", "name": "mint" },
+				{ "hex": "#F2DAA0", "name": "marzipan" },
+				{ "hex": "#E5844A", "name": "tigress" },
+				{ "hex": "#E56465", "name": "carmine" }
 			]
 		}
 	],

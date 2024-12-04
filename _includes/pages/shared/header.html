@@ -1,8 +1,10 @@
-<input type="checkbox" class="option" id="option-theme" data-option="theme" hidden aria-hidden="true" tabindex="-1"/>
-<input type="checkbox" class="option" id="option-tone" data-option="tone" hidden aria-hidden="true" tabindex="-1"/>
-<input type="checkbox" class="option" id="option-contrast" data-option="contrast" hidden aria-hidden="true" tabindex="-1"/>
-<input type="checkbox" class="option" id="option-transparency" data-option="transparency" hidden aria-hidden="true" tabindex="-1"/>
-<input type="checkbox" class="option" id="option-load" data-option="load" hidden aria-hidden="true" tabindex="-1" checked/>
+<input type="checkbox" class="option" id="option-theme" name="theme" data-option hidden aria-hidden="true" tabindex="-1"/>
+{% for tone in site.tones %}
+	<input type="radio" class="option" id="option-{{tone.name}}" name="tone" data-option="{{tone.name}}" data-hex="{{tone.color}}" hidden aria-hidden="true" tabindex="-1"{% if tone.name == "pink" %} checked{% endif %}/>
+{% endfor %}
+<input type="checkbox" class="option" id="option-contrast" name="contrast" data-option hidden aria-hidden="true" tabindex="-1"/>
+<input type="checkbox" class="option" id="option-transparency" name="transparency" data-option hidden aria-hidden="true" tabindex="-1"/>
+<input type="checkbox" class="option" id="option-load" name="load" data-option hidden aria-hidden="true" tabindex="-1" checked/>
 
 {% if category == "writing" or category == "cooking" %}<hr class="progress" hidden/>{% endif %}
 

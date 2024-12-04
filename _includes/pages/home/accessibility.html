@@ -14,11 +14,12 @@
 					<span>Dark mode</span>
 				</label>
 			</li>
-			<li>
-				<label class="option-label" for="option-tone" tabindex="0" role="button" aria-pressed="false" data-option-label>
-					<span class="toggle"></span>
-					<span>Blue tones</span>
-				</label>
+			<li class="option-grouped">
+				{% for tone in site.tones %}
+					<label class="option-label radio" for="option-{{tone.name}}" tabindex="0" role="button" aria-pressed="false" data-option-label>
+						<span>{{tone.name|capitalize}}</span>
+					</label>
+				{% endfor %}
 			</li>
 			<li>
 				<label class="option-label" for="option-contrast" tabindex="0" role="button" aria-pressed="false" data-option-label>

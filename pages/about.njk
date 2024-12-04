@@ -81,7 +81,7 @@ eleventyNavigation:
 				</header>
 				<div class="post-content">
 					{% for tone in site.tones %}
-						<ul class="tone-{{tone.name}}"{% if tone.name != "warm" %} hidden{% endif %}>
+						<ul class="tone-{{tone.name}}"{% if tone.name != "pink" %} hidden{% endif %}>
 							{% for swatch in tone.swatches %}
 								<li>
 									<div class="swatch-container" aria-label="{{swatch.name|capitalize}}" role="tooltip">

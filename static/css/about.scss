@@ -152,22 +152,9 @@
 		padding-bottom: var(--p);
 	}
 	ul {
-		display: none;
+		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(78px, 1fr));
 		grid-gap: var(--p);
-
-		&.tone-warm {
-			display: grid;
-		}
-
-		@include tone(blue) {
-			&:not(.tone-blue) {
-				display: none;
-			}
-			&.tone-blue {
-				display: grid;
-			}
-		}
 	}
 	li {
 		margin-bottom: var(--p);
