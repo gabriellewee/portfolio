@@ -22,6 +22,14 @@
 	margin-right: var(--p);
 	padding: calc(var(--height)/8);
 
+	@include tone(cool) {
+		--background-active: color-mix(
+			in srgb,
+			var(--color-glacier),
+			var(--color-mint)
+		);
+	}
+
 	&::before {
 		@include contrast(both) {
 			content: "";

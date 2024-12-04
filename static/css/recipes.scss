@@ -12,7 +12,7 @@
 .page-recipes {
 	--color-grey: var(--color-slate);
 	@include theme(light) {
-		--background-body: hsl(from var(--color-mint) h s calc(l * 1.2));
+		--background-body: hsl(from var(--color-mint) h s calc(l * 1.25));
 	}
 	@include theme(dark) {
 		--background-body: hsl(from var(--color-iron) h s calc(l * .73));
@@ -58,16 +58,28 @@
 }
 
 .bottom {
-	.button-reduced[href] {
+	a.button-reduced {
 		--background: color-mix(
 			in hsl,
-			var(--color-grey) 70%,
+			var(--color-grey) 95%,
 			var(--color-mint)
 		);
 		--background-hover: var(--color-grey);
 		--background-active: var(--color-iron);
 		@include theme(light) {
 			--outline: white;
+			@include tone(cool) {
+				--color-mix: color-mix(
+					in srgb,
+					var(--color-mint) 70%,
+					var(--color-marine)
+				);
+				--background: color-mix(
+					in srgb,
+					var(--color-grey) 90%,
+					var(--color-mix)
+				);
+			}
 		}
 		@include theme(dark) {
 			--outline: color-mix(
@@ -94,12 +106,8 @@
 .progress {
 	--background: linear-gradient(
 		to right,
-		color-mix(
-			in srgb,
-			var(--color-periwinkle),
-			var(--color-mint)
-		),
 		var(--color-mint),
+		var(--color-marine),
 		var(--color-grey)
 	);
 }

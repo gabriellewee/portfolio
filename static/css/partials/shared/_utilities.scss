@@ -510,7 +510,7 @@ $x-large: 1280px;
 		circle at center right,
 		color-mix(
 			in srgb,
-			var(--color-periwinkle),
+			var(--color-glacier),
 			var(--color-mint)
 		) 0,
 		var(--color-mint) 25%,
@@ -521,12 +521,12 @@ $x-large: 1280px;
 		circle at center left,
 		color-mix(
 			in srgb,
-			white,
+			white 60%,
 			var(--color-mint)
 		),
 		color-mix(
 			in srgb,
-			white 70%,
+			white 90%,
 			var(--color-mint)
 		)
 	);
@@ -566,6 +566,14 @@ $x-large: 1280px;
 		display: flex;
 		cursor: pointer;
 		position: relative;
+
+		@include tone(cool) {
+			--color: color-mix(
+				in srgb,
+				var(--color-glacier),
+				#{$color}
+			);
+		}
 	}
 	&::before, &::after {
 		content: "";
@@ -587,7 +595,7 @@ $x-large: 1280px;
 		position: absolute;
 		left: calc(var(--p)/3);
 		top: calc(var(--p)/3);
-		background-color: $color;
+		background-color: var(--color);
 		@include square(calc(var(--p)/3*4));
 	}
 	&:is(input:focus-visible + label) {
