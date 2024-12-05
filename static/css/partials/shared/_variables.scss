@@ -2,6 +2,7 @@
 @use 'partials/shared/utilities' as *;
 
 $iron: #263238;
+$thunder: #38262A;
 
 :root{
 	--p:12px;
@@ -12,6 +13,7 @@ $iron: #263238;
 
 	$colors: (
 		iron: $iron,
+		thunder: $thunder,
 
 		blush: #F5C8BF,
 		rose: #D19487,
@@ -76,10 +78,10 @@ $iron: #263238;
 	--color-email:hsl(#{hexToHSL(color.mix($iron, #577783, 5%))});
 	--color-email-dark:hsl(#{hexToHSL(color.mix($iron, white, 70%))});
 
-	--color-light: var(--color-blush);
-	--color-middle: var(--color-rose);
-	--color-dark: var(--color-mauve);
-	--color-grey: var(--color-slate);
+	--color-light:var(--color-blush);
+	--color-middle:var(--color-rose);
+	--color-dark:var(--color-mauve);
+	--color-grey:var(--color-slate);
 }
 
 @include theme(light, true) {
@@ -101,10 +103,10 @@ $iron: #263238;
 }
 
 @include tone(blue, true) {
-	--color-light: var(--color-mist);
-	--color-middle: var(--color-glacier);
-	--color-dark: var(--color-marine);
-	--color-grey: var(--color-monsoon);
+	--color-light:var(--color-mist);
+	--color-middle:var(--color-glacier);
+	--color-dark:var(--color-marine);
+	--color-grey:var(--color-monsoon);
 
 	$colors: (
 		music: color.adjust(#fa2d48,$lightness:-5%),
@@ -117,10 +119,10 @@ $iron: #263238;
 }
 
 @include tone(yellow, true) {
-	--color-light: var(--color-marzipan);
-	--color-middle: var(--color-tigress);
-	--color-dark: var(--color-carmine); 
-	--color-grey: var(--color-storm);
+	--color-light:var(--color-marzipan);
+	--color-middle:var(--color-tigress);
+	--color-dark:var(--color-carmine); 
+	--color-grey:var(--color-storm);
 
 	$colors: (
 		imessage: color.adjust(#0d84ff,$lightness:-5%)

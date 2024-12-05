@@ -1,0 +1,54 @@
+@use 'partials/shared/utilities' as *;
+
+@mixin recipe-button {
+	--color-grey: var(--color-slate);
+	--background: var(--color-grey) radial-gradient(
+		circle at center right,
+		color-mix(
+			in srgb,
+			var(--color-glacier),
+			var(--color-mint)
+		) 0,
+		var(--color-mint) 25%,
+		var(--color-grey) 75%,
+		var(--color-grey) 100%
+	);
+	--outline: radial-gradient(
+		circle at center left,
+		color-mix(
+			in srgb,
+			white 60%,
+			var(--color-mint)
+		),
+		color-mix(
+			in srgb,
+			white 90%,
+			var(--color-mint)
+		)
+	);
+	--background-hover-position: 100%;
+
+	@include theme(light) {
+		--background-active: var(--color-iron) radial-gradient(
+			circle at center left,
+			var(--color-iron),
+			color-mix(
+				in srgb,
+				var(--color-iron) 80%,
+				white
+			)
+		);
+	}
+	@include theme(dark) {
+		--background-active: var(--color-grey) radial-gradient(
+			circle at center left,
+			color-mix(
+				in srgb,
+				var(--color-iron) 80%,
+				white
+			),
+			var(--color-grey)
+		);
+	}
+}
+

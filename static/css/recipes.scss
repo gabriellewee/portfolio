@@ -1,5 +1,6 @@
 // utilities
 @use 'partials/shared/utilities' as *;
+@use 'partials/shared/mixins' as *;
 
 // components
 @use 'partials/components/progress';

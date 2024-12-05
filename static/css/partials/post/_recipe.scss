@@ -1,4 +1,5 @@
 @use 'partials/shared/utilities' as *;
+@use 'partials/shared/mixins' as *;
 
 .post-recipe {
 	@supports (container-type: inline-size) {
