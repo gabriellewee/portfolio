@@ -80,7 +80,7 @@ eleventyNavigation:
 					<h2>Swatches</h2>
 				</header>
 				<div class="post-content">
-					{% for tone in site.tones %}
+					{% for tone in site.accessibility[0].items[0].options %}
 						<ul class="tone-{{tone.name}}"{% if tone.name != "pink" %} hidden{% endif %}>
 							{% for swatch in tone.swatches %}
 								<li>

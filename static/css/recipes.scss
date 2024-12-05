@@ -57,6 +57,14 @@
 	}
 }
 
+.accessibility-popup .popup-window {
+	.toggle {
+		@include tone(pink) {
+			--background-active: var(--color-mint);
+		}
+	}
+}
+
 .bottom {
 	a.button-reduced {
 		--background: color-mix(

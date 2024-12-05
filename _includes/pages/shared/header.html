@@ -1,10 +1,16 @@
-<input type="checkbox" class="option" id="option-theme" name="theme" data-option hidden aria-hidden="true" tabindex="-1"/>
-{% for tone in site.tones %}
-	<input type="radio" class="option" id="option-{{tone.name}}" name="tone" data-option="{{tone.name}}" data-hex="{{tone.color}}" hidden aria-hidden="true" tabindex="-1"{% if tone.name == "pink" %} checked{% endif %}/>
+{% for category in site.accessibility %}
+	{% for item in category.items %}
+		{% if item.options %}
+			{% for option in item.options %}
+				<input type="radio" class="option" id="option-{{option.name}}" name="tone" data-option="{{option.name}}"{% if option.color %} data-color="{{option.color}}"{% endif %} hidden aria-hidden="true" tabindex="-1"{% if option.default == true %} checked{% endif %}/>
+			{% endfor %}
+		{% else %}
+			{% if (item.visibility != "home" and key == "home") or (item.visibility == "home" and key == "home") or (item.visibility != "home" and key != "home") %}
+				<input type="checkbox" class="option" id="option-{{item.name}}" name="{{item.name}}" data-option hidden aria-hidden="true" tabindex="-1"{% if item.default == true %} checked{% endif %}/>
+			{% endif %}
+		{% endif %}
+	{% endfor %}
 {% endfor %}
-<input type="checkbox" class="option" id="option-contrast" name="contrast" data-option hidden aria-hidden="true" tabindex="-1"/>
-<input type="checkbox" class="option" id="option-transparency" name="transparency" data-option hidden aria-hidden="true" tabindex="-1"/>
-<input type="checkbox" class="option" id="option-load" name="load" data-option hidden aria-hidden="true" tabindex="-1" checked/>
 
 {% if category == "writing" or category == "cooking" %}<hr class="progress" hidden/>{% endif %}
 
@@ -12,7 +18,7 @@
 	<div class="top-content">
 		<div class="avatar-link">
 			<a href="/" tabindex="0" aria-labelledby="avatar-message">
-				<span class="avatar avatar-{% if avatar %}{{avatar}}{% else %}default{% endif %}"></span>
+				<span class="avatar avatar-{{avatar if avatar else 'default'}}"></span>
 				<span class="avatar avatar-hm"></span>
 				{% if (key == "home") and (pagination.pageNumber == 0) %}
 					<span id="avatar-message" aria-hidden="true" class="text go-home">Refresh?</span>
@@ -21,11 +27,11 @@
 				{% endif %}
 			</a>
 
-			{% if (loading and (key != "home")) or (loading and (key == "home") and (pagination.pageNumber == 0)) %}
+			{% if (loading and key != "home") or (loading and key == "home" and pagination.pageNumber == 0) %}
 				<p class="text message loading" aria-hidden="true" hidden>
 					<span>{{loading|nbsp|safe}}</span><span class="indicator"><span>.</span><span>.</span><span>.</span></span>
 				</p>
-			{% elseif (key == "post") or ((key == "home") and (pagination.pageNumber != 0)) %}{% else %}
+			{% elseif (key == "post") or (key == "home" and pagination.pageNumber != 0) %}{% else %}
 				<p class="text message loading" aria-hidden="true" hidden>
 					<span>Loading</span><span class="indicator"><span>.</span><span>.</span><span>.</span></span>
 				</p>

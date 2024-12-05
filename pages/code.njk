@@ -26,7 +26,7 @@ eleventyNavigation:
 		{% for post in collections.code | reverse %}
 			<article class="post post-code {% if post.data.size %} post-size-{{post.data.size}}{% endif %} {% for filter in post.data.filters %} filter-{{filter}}{% endfor %}" data-anim data-grid-item{% if post.data.width %} style="max-width: {{post.data.width}}"{% endif %}>
 				<div class="post-inner">
-					<header class="post-header{% if (post.data.category == 'writing') or (post.data.category == 'code') %} inline-header{% endif %}">
+					<header class="post-header inline-header">
 						<div class="post-header-content">
 							<div class="post-header-left">
 								<h2 class="post-headline">

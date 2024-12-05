@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 	<meta name="format-detection" content="telephone=no">
 
-	{% if (hidden == true) or ((key == "home") and (pagination.pageNumber != 0)) %}
+	{% if hidden == true or (key == "home" and pagination.pageNumber != 0) %}
 		<meta name="robots" content="noindex,nofollow">
 	{% endif %}
 
@@ -28,11 +28,7 @@
 	{% if blank != true %}
 		<meta name="color-scheme" content="light dark">
 		<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1c2429">
-	{% endif %}
-	{% if theme %}
-		<meta name="theme-color" media="(prefers-color-scheme: light)" content="{{theme}}">
-	{% else %}
-		<meta name="theme-color" media="(prefers-color-scheme: light)" content="#fae5e1">
+		<meta name="theme-color" media="(prefers-color-scheme: light)" content="{{theme if theme else '#fae5e1'}}"{% if theme %} data-default="{{theme}}"{% endif %}>
 	{% endif %}
 
 	<title>{{site.author}} · {% if titleModifier %}{{titleModifier}}{% endif %}{{title}}</title>
@@ -46,7 +42,7 @@
 		<meta property="og:image" content="{{site.url}}/static/images/og/{{key}}.jpg">
 	{% elseif og == "image" %}
 		<meta property="og:image" content="{% ogPhoto './static/images/' + key + '/' + page.fileSlug + '.jpg' %}">
-	{% elseif og and (og !== false) %}
+	{% elseif og and og !== false %}
 		<meta property="og:image" content="{{site.url}}/static/images/og/{{og}}.jpg">
 	{% else %}
 		<meta property="og:image" content="{{site.url}}/static/images/og/default.jpg">
@@ -67,9 +63,9 @@
 		<link rel="stylesheet" href="{{'/static/css/fonts.css'|url}}">
 		<link rel="stylesheet" href="{{'/static/css/style.css'|url}}">
 	{% endif %}
-	{% if (style == true) and (blank == true) %}
+	{% if style == true and blank == true %}
 		<link rel="stylesheet" href="{{'/static/' + key + '/css/' + page.fileSlug + '.css'|url}}">
-	{% elseif (style == true) and key %}
+	{% elseif style == true and key %}
 		<link rel="stylesheet" href="{{'/static/css/' + key + '.css'|url}}">
 	{% elseif style %}
 		<link rel="stylesheet" href="{{'/static/' + style + '.css'|url}}">
@@ -99,7 +95,7 @@
 							<li><a class="button-reduced{% if link.url == page.url %} current{% endif %}" href="{{link.url|url}}"{% if link.url == page.url %} tabindex="-1"{% endif %}><span>{{link.title}}</span></a></li>
 						{% endif %}
 					{% endfor %}
-					{% if ((key == "home") and (pagination.pageNumber == 0)) or (key == "about") or (key == "me") %}{% else %}
+					{% if (key == "home" and pagination.pageNumber == 0) or (key == "about") or (key == "me") %}{% else %}
 						<li><a class="button-reduced" href="mailto:mail@gabriellew.ee"><span>Email</span></a></li>
 					{% endif %}
 				</menu>
@@ -136,7 +132,7 @@
 		{% elseif scripts %}
 			<script src="{{'/static/js/pages/' + scripts + '.js'|url}}"></script>
 		{% endif %}
-		{% if (key == "home") and (pagination.pageNumber == 0) %}
+		{% if key == "home" and pagination.pageNumber == 0 %}
 			<script src="{{'/static/js/text.min.js'|url}}"></script>
 			<script src="{{'/static/js/pages/home.js'|url}}"></script>
 		{% endif %}

@@ -23,7 +23,7 @@ eleventyNavigation:
 		{% for post in pagination.items %}
 			{% if post.data.svg == true %}{%- set file = "svg" %}{% elseif post.data.extension %}{%- set file = post.data.extension %}{% endif %}
 			<article
-				class="post{% if (post.data.pagination.alias) and (post.data.pagination.alias != post.data.category) %} post-{{post.data.category}} post-{{post.data.pagination.alias}}{% else %} post-{{post.data.category}}{% endif %}{% if post.data.tags %}{% for tag in post.data.tags %}{% if tag != 'entries' and tag != 'posts' %} post-{{tag}}{% endif %}{% endfor %}{% endif %}{% if post.data.size %} post-size-{{post.data.size}}{% endif %}{% if post.data.category == 'media' %} post-{{post.data.pagination.data}}{% endif %}" data-grid-item data-post-append{% if pagination.pageNumber == 0 %} data-anim{% endif %}{% if post.data.extension %} data-orientation="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'orientation' %}"{% endif %}
+				class="post{% if post.data.pagination.alias and post.data.pagination.alias != post.data.category %} post-{{post.data.category}} post-{{post.data.pagination.alias}}{% else %} post-{{post.data.category}}{% endif %}{% if post.data.tags %}{% for tag in post.data.tags %}{% if tag != 'entries' and tag != 'posts' %} post-{{tag}}{% endif %}{% endfor %}{% endif %}{% if post.data.size %} post-size-{{post.data.size}}{% endif %}{% if post.data.category == 'media' %} post-{{post.data.pagination.data}}{% endif %}" data-grid-item data-post-append{% if pagination.pageNumber == 0 %} data-anim{% endif %}{% if post.data.extension %} data-orientation="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'orientation' %}"{% endif %}
 				{% if post.data.width %}style="max-width: {{post.data.width}}"{% endif %}
 				{% if post.data.category == "social" %}aria-label="{{post.data.pagination.alias|capitalize}} post"
 				{% elseif post.data.category == "media" %}data-media-container aria-label="{{post.data.type|capitalize}} post"{% endif %}
@@ -32,14 +32,14 @@ eleventyNavigation:
 					<input class="media-trigger" id="{{post.data.date|safe}}-{{post.data.name}}-info" type="checkbox" tabindex="0" aria-label="View information about this {{post.data.type}}" role="switch" data-media-trigger hidden/>
 				{% endif %}
 				<div class="post-inner">
-					<header class="post-header{% if (post.data.category == 'writing') or (post.data.category == 'code') %} inline-header{% endif %}">
+					<header class="post-header{% if post.data.category == 'writing' or post.data.category == 'code' %} inline-header{% endif %}">
 						{% if post.data.category == "cooking" %}
 							<div class="post-header-image theme-{{post.data.headline}}">
 								{% image './static/images/' + post.data.key + '/' + post.page.fileSlug + '.jpg', 'Hero image showing ' + post.data.title, 'default', loop.index %}
 							</div>
 						{% endif %}
 						<div class="post-header-content">
-							{% if (post.data.category == "writing") or (post.data.category == "cooking") %}
+							{% if post.data.category == "writing" or post.data.category == "cooking" %}
 								<h2>
 									{% if post.url %}
 										<a href="{{post.url|url}}"{% if post.data.category == "cooking" %} aria-label="Recipe for {{post.data.title|safe}}"{% endif %}><span><span>{{post.data.title|safe}}</span></span></a>
@@ -71,7 +71,7 @@ eleventyNavigation:
 									<a class="expand" id="{{post.page.date|iso|date('string')}}-{{post.page.fileSlug}}" role="button" aria-label="Expand preview of {{post.data.title}}" href="#{{post.page.date|iso|date('string')}}-{{post.page.fileSlug}}-lightbox" data-media-expand data-desktop></a>
 									<a class="external-expand" href="{{post.url|url}}" aria-label="View {{post.data.category}} in new window" target="_blank"></a>
 								</div>
-							{% elseif (post.data.category != "media") and (post.data.category != "code") %}
+							{% elseif post.data.category != "media" and post.data.category != "code" %}
 								<time class="time{% if post.data.category != 'code' %} time-default{% endif %}{% if post.data.category == 'social' %} time-external{% endif %}" datetime="{{post.page.date|iso|date('string')}}" data-time="{{post.page.date|iso}}" title="{{post.page.date|iso|date('readable')}}">{{post.page.date|iso|date('readable')}}</time>
 							{% endif %}
 							{% if post.data.category == "media" %}
@@ -94,7 +94,7 @@ eleventyNavigation:
 							<p class="recipe-total"><strong>Total:</strong> <span class="recipe-duration" data-duration="{{total|sum}}">{{total|sum}} minutes</span></p>
 						{% endif %}
 					</aside>
-					<div class="post-content{% if (post.data.category == 'writing') or (post.data.category == 'cooking') %} post-text{% endif %}"{% if post.data.background %} style="--background: {{post.data.background}}"{% endif %}>
+					<div class="post-content{% if post.data.category == 'writing' or post.data.category == 'cooking' %} post-text{% endif %}"{% if post.data.background %} style="--background: {{post.data.background}}"{% endif %}>
 						{% if post.data.category == "media" %}
 							<figure id="{{post.data.date|safe}}-{{post.data.name}}" aria-label="{{post.data.type|capitalize}}{% if post.data.location %}, {{post.data.location}}{% elseif post.data.title %}, {{post.data.title}}{% endif %}" style="aspect-ratio: {% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'ratio' %};">
 								{% if post.data.upscale %}
@@ -185,9 +185,9 @@ eleventyNavigation:
 							</div>
 						{% elseif post.data.content %}
 							<blockquote>{{post.data.content|nbsp|safe}}</blockquote>
-							{% if (post.data.category == "social") and (post.data.media) %}
+							{% if post.data.category == "social" and post.data.media %}
 								{% for media in post.data.media %}
-									{% if (media.url) and (media.type == "gifv") %}
+									{% if media.url and media.type == "gifv" %}
 										<figure id="external-{{media.id}}" class="media-attachment">
 											<video width="1280" height="720" controls preload="metadata" poster="{{media.preview_url}}" aria-label="{{media.description}}">
 												<source src="{{media.url}}" type="video/mp4">
@@ -206,11 +206,11 @@ eleventyNavigation:
 							{% excerpt post %}
 						{% endif %}
 					</div>
-					{% if (post.data.category == "writing") or (post.data.category == "social") or (post.data.category == "cooking") %}
+					{% if post.data.category == "writing" or post.data.category == "social" or post.data.category == "cooking" %}
 						<footer class="post-footer">
 							{% if post.data.category == "social" %}
 								<a class="button button-social button-{{post.data.pagination.alias}}" href="{{post.data.url|url}}" aria-label="View post on {{post.data.pagination.alias|capitalize}}"><span>View post</span></a>
-							{% elseif (post.data.category == "writing") and (post.data.size != "s") %}
+							{% elseif post.data.category == "writing" and post.data.size != "s" %}
 								{% if post.url %}
 									<a class="button" href="{{post.url|url}}"><span>Read post</span></a>
 								{% elseif post.data.url %}
@@ -237,7 +237,7 @@ eleventyNavigation:
 		{% endfor %}
 	</div>
 	<nav class="pagination main-pagination" aria-label="Pagination">
-		{% if (pagination.href.next != null) %}
+		{% if pagination.href.next != null %}
 			<div class="load">
 				<div class="page-load-status" hidden>
 					<p class="infinite-scroll-request">
@@ -253,7 +253,7 @@ eleventyNavigation:
 				<button class="button" data-load hidden><span>Load more</span></button>
 			</div>
 		{% endif %}
-		{% if (pagination.href.previous) and (pagination.pageNumber != 0) %}
+		{% if pagination.href.previous and pagination.pageNumber != 0 %}
 			<a class="newer button button-reverse" href="{{pagination.href.previous}}"><span><span class="no-css">← </span>Newer</span></a>
 		{% endif %}
 		{% if pagination.href.next %}
@@ -283,9 +283,9 @@ eleventyNavigation:
 					{% endif %}
 				</figure>
 			</dialog>
-		{% elseif (post.data.category == "social") and (post.data.media) %}
+		{% elseif post.data.category == "social" and post.data.media %}
 			{% for media in post.data.media %}
-				{% if (media.url) and (media.type != "gifv") %}
+				{% if media.url and media.type != "gifv" %}
 					<a class="lightbox" id="external-{{media.id}}-lightbox" role="button" aria-label="Close image" href="#external-{{media.id}}" data-lightbox data-lightbox-append></a>
 					<dialog class="lightbox-content image" aria-label="Image preview" autofocus data-lightbox-append>
 						<figure>
@@ -294,7 +294,7 @@ eleventyNavigation:
 					</dialog>
 				{% endif %}
 			{% endfor %}
-		{% elseif (post.data.category == "writing") %}
+		{% elseif post.data.category == "writing" %}
 			{% excerpt post, "lightbox" %}
 		{% elseif post.data.category == "code" %}
 			<a class="lightbox" id="{{post.page.date|iso|date('string')}}-{{post.page.fileSlug}}-lightbox" role="button" aria-label="Close preview of {{post.data.title}}" href="#{{post.page.date|iso|date('string')}}-{{post.page.fileSlug}}" data-lightbox data-lightbox-append data-desktop></a>

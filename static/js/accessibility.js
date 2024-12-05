@@ -15,15 +15,15 @@ const accessibility = (() => {
 	let _true = (option, index) => {
 		option.checked = true;
 		option.setAttribute("checked", "");
-		labels[index].setAttribute("aria-pressed", "true");
+		if (labels[index]) labels[index].setAttribute("aria-pressed", "true");
 	}
 	let _false = (option, index) => {
 		option.checked = false;
 		option.removeAttribute("checked");
-		labels[index].setAttribute("aria-pressed", "false");
+		if (labels[index]) labels[index].setAttribute("aria-pressed", "false");
 	}
 	let _toggle = (option, index, _optionTrue, _optionFalse) => {
-		option.addEventListener("click", e => {
+		if (option) option.addEventListener("click", e => {
 			if (option.checked) {
 				_optionTrue();
 			} else {
@@ -31,7 +31,7 @@ const accessibility = (() => {
 			}
 		});
 
-		labels[index].addEventListener("keydown", e =>{
+		if (labels[index]) labels[index].addEventListener("keydown", e =>{
 			if (e.key === "Enter") {
 				if (option.checked) {
 					_optionFalse();
@@ -57,6 +57,9 @@ const accessibility = (() => {
 		option.classList.add("inactive");
 		if (option.getAttribute("name") === "theme") {
 			const theme = window.matchMedia('(prefers-color-scheme: dark)');
+			const themeLight = document.querySelector('meta[media="(prefers-color-scheme: light)"]');
+			const themeDark = document.querySelector('meta[media="(prefers-color-scheme: dark)"]');
+
 			if (theme.matches && !localStorage.getItem("theme")) {
 				_true(option, index);
 			} else if (!theme.matches && !localStorage.getItem("theme")) {
@@ -65,14 +68,27 @@ const accessibility = (() => {
 
 			let _optionTrue = () => {
 				_true(option, index);
+
 				document.documentElement.classList.remove("theme-light");
 				document.documentElement.classList.add("theme-dark");
+
+				if(themeLight) themeLight.setAttribute("content", '#1c2429');
+				if(themeDark) themeDark.setAttribute("content", '#1c2429');
+
 				localStorage.setItem("theme", "dark");
 			}
 			let _optionFalse = () => {
 				_false(option, index);
+
 				document.documentElement.classList.remove("theme-dark");
 				document.documentElement.classList.add("theme-light");
+
+				let tone = document.querySelector('input[name="tone"]:checked');
+				let color = themeLight.getAttribute("data-default") || tone.getAttribute("data-color") || "#fae5e1";
+
+				if(themeLight) themeLight.setAttribute("content", color);
+				if(themeDark) themeDark.setAttribute("content", color);
+
 				localStorage.setItem("theme", "light");
 			}
 
@@ -86,7 +102,7 @@ const accessibility = (() => {
 		} else if (option.getAttribute("name") === "tone") {
 			const theme = document.querySelector('meta[content="#fae5e1"]');
 			const tone = option.getAttribute("data-option");
-			const color = option.getAttribute("data-hex");
+			const color = option.getAttribute("data-color");
 			const prefix = "tone-";
 
 			let _optionTrue = () => {
@@ -103,7 +119,7 @@ const accessibility = (() => {
 					if(toneClass.includes(prefix) && toneClass != prefix + tone) document.documentElement.classList.remove(toneClass);
 				});
 
-				if(theme) theme.setAttribute("content", color);
+				if(theme && !document.documentElement.classList.contains("theme-dark")) theme.setAttribute("content", color);
 				if (localStorage.getItem("tone") != tone) localStorage.setItem("tone", tone);
 			}
 

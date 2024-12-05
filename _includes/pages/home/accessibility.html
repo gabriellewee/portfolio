@@ -4,47 +4,41 @@
 		<span class="button"><span aria-hidden="true" id="accessibility-label">Accessibility</span></span>
 	</label>
 	<div id="accessibility-window" class="popup-window" data-popup-window>
-		<menu class="inside">
-			<li class="option-no-js">
-				<p>Please turn on Javascript in order to keep your settings after refreshing or leaving the page.</p>
-			</li>
-			<li>
-				<label class="option-label" for="option-theme" tabindex="0" role="button" aria-pressed="false" data-option-label>
-					<span class="toggle"></span>
-					<span>Dark mode</span>
-				</label>
-			</li>
-			<li class="option-grouped">
-				{% for tone in site.tones %}
-					<label class="option-label radio" for="option-{{tone.name}}" tabindex="0" role="button" aria-pressed="false" data-option-label>
-						<span>{{tone.name|capitalize}}</span>
-					</label>
-				{% endfor %}
-			</li>
-			<li>
-				<label class="option-label" for="option-contrast" tabindex="0" role="button" aria-pressed="false" data-option-label>
-					<span class="toggle"></span>
-					<span>Increase contrast</span>
-				</label>
-			</li>
-			<li>
-				<label class="option-label" for="option-transparency" tabindex="0" role="button" aria-pressed="false" data-option-label>
-					<span class="toggle"></span>
-					<span>Reduce transparency</span>
-				</label>
-			</li>
-			<li class="option-index-only">
-				<label class="option-label" for="option-load" tabindex="0" role="button" aria-pressed="true" data-option-label>
-					<span class="toggle"></span>
-					<span>Load posts</span>
-				</label>
-			</li>
-			<li class="has-button option-js">
+		<div class="inside">
+			<p class="option-no-js">Please turn on Javascript in order to keep your settings after refreshing or leaving the page.</p>
+			{% for category in site.accessibility %}
+				<h4 class="{% if category.js == true %}option-js{% endif %}">{{category.name|capitalize}}</h4>
+				<menu class="{% if category.js == true %}option-js{% endif %}">
+					{% for item in category.items %}
+						{% if item.options %}
+							{% for option in item.options %}
+								{% if item.visibility == null or (item.visibility == "theme" and theme == null) %}
+									<li>
+										<label class="option-label radio" for="option-{{option.name}}" tabindex="0" role="button" aria-pressed="{% if item.default == true %}true{% else %}false{% endif %}" data-option-label>
+											<span>{{option.name|capitalize}}</span>
+										</label>
+									</li>
+								{% endif %}
+							{% endfor %}
+						{% else %}
+							{% if (item.visibility != "load" and pagination) or (item.visibility == "load" and pagination) or (item.visibility != "load" and pagination == null) %}
+								<li>
+									<label class="option-label" for="option-{{item.name}}" tabindex="0" role="button" aria-pressed="{% if item.default == true %}true{% else %}false{% endif %}" data-option-label>
+										<span class="toggle"></span>
+										<span>{{item.label}}</span>
+									</label>
+								</li>
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+				</menu>
+			{% endfor %}
+			<div class="option-js">
 				<button class="button" data-option="reset"><span>Reset</span></button>
-			</li>
-			<li class="has-button">
+			</div>
+			<div>
 				<label class="close button" for="accessibility" tabindex="0" role="button" aria-pressed="true" aria-haspopup="true" aria-controls="accessibility-window" data-popup-close><span>Close</span></label>
-			</li>
-		</menu>
+			</div>
+		</div>
 	</div>
 </div>
