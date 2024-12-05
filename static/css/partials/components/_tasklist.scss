@@ -1,4 +1,5 @@
 @use 'partials/shared/utilities' as *;
+@use 'partials/components/input' as input;
 
 .task-list {
 	list-style: initial!important;
@@ -15,7 +16,7 @@
 	label {
 		font-weight: 500;
 		color: hsl(from var(--color-primary) h s l / .75);
-		@include radio;
+		@include input.radio;
 		&::before {
 			@include theme(light) {
 				background-color: hsl(from var(--color-primary) h s l / .1);

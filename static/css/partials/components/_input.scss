@@ -29,7 +29,7 @@
 			z-index: -1;
 			background-color: var(--contrast);
 			border-radius: calc(var(--height)*1.5);
-			@include full-offset(1px);
+			@include full-offset(2px);
 		}
 	}
 	&::after {
@@ -50,6 +50,48 @@
 		background-color: var(--background-active);
 		&::after {
 			translate: 100% 0;
+		}
+	}
+}
+
+@mixin radio($background: transparent, $color: var(--color-mint)) {
+	& {
+		--background: #{$background};
+		--color: #{$color};
+		--outline: var(--color);
+		--contrast: color-mix(in srgb, var(--color-grey), var(--color));
+
+		display: flex;
+		cursor: pointer;
+		position: relative;
+	}
+	&::before, &::after {
+		content: "";
+		display: block;
+	}
+	&::before {
+		min-width: calc(var(--p)*2);
+		height: calc(var(--p)*2);
+		border-radius: calc(var(--p)*2);
+		margin-right: calc(var(--p)*.75);
+		background-color: var(--background);
+		@include contrast(both) {
+			outline: 2px solid var(--contrast);
+		}
+	}
+	&::after {
+		opacity: 0;
+		border-radius: calc(var(--p)/3*4);
+		position: absolute;
+		left: calc(var(--p)/3);
+		top: calc(var(--p)/3);
+		background-color: var(--color);
+		@include square(calc(var(--p)/3*4));
+	}
+	&:is(input:focus-visible + label), &:focus-visible {
+		&::before {
+			outline-color: transparent;
+			@include focus-shadow(var(--outline), false);
 		}
 	}
 }

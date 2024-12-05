@@ -143,6 +143,7 @@ $tones: pink, blue, yellow;
 			}
 		}
 		.toggle {
+			--outline: color-mix(in srgb, white, var(--background-active));
 			@include tone(pink) {
 				--background-active: var(--color-rose);
 			}
