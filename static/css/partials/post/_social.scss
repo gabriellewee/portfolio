@@ -1,4 +1,5 @@
 @use 'partials/shared/utilities' as *;
+@use 'partials/shared/mixins' as *;
 
 .post-social {
 	.post-header {
@@ -66,6 +67,7 @@
 		.expand {
 			transition: scale .2s ease-out;
 			display: block;
+			@include expand-hover;
 			&::before {
 				background: radial-gradient(
 					circle at center left,

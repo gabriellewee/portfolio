@@ -1,5 +1,41 @@
 @use 'partials/shared/utilities' as *;
 
+@mixin expand-hover {
+	picture {
+		&::before, &::after {
+			content: "";
+			display: block;
+			transition: opacity .2s ease-out;
+			opacity: 0;
+		}
+		&::before {
+			position: absolute;
+			z-index: 3;
+			top: var(--p);
+			left: var(--p);
+			background: url(/static/images/svg/icons/expand.svg) no-repeat center / 24px;
+			@include square(24px);
+		}
+		&::after {
+			z-index: 2;
+			background: radial-gradient(
+				farthest-corner at 0% 0%,
+				hsl(from var(--color-iron) h s calc(l * .45) / .4) 0,
+				hsl(from var(--color-iron) h s calc(l * .45) / 0) 45%
+			);
+			@include full-offset(0);
+			@include clip-path-edges(2px);
+		}
+	}
+	&:hover, &:focus {
+		picture {
+			&::before, &::after {
+				opacity: 1;
+			}
+		}
+	}
+}
+
 @mixin recipe-button {
 	--color-grey: var(--color-slate);
 	--background: var(--color-grey) radial-gradient(

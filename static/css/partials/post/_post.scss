@@ -1,4 +1,5 @@
 @use 'partials/shared/utilities' as *;
+@use 'partials/shared/mixins' as *;
 
 .posts {
 	display: grid;
@@ -461,6 +462,7 @@
 	.expand {
 		position: relative;
 		transition: scale .2s ease-out;
+		@include expand-hover;
 		&::before {
 			@include before;
 			@include theme(light) {

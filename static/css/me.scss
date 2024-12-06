@@ -1,4 +1,5 @@
 @use 'partials/shared/utilities' as *;
+@use 'partials/shared/mixins' as *;
 @use 'partials/components/tooltip';
 @use 'partials/post/post';
 
@@ -72,7 +73,6 @@
 	transition: opacity .2s ease-out, scale .2s ease-out;
 	display: block;
 	position: relative;
-
 	&::before {
 		background: var(--outline);
 		@include before;
@@ -341,6 +341,7 @@
 		}
 	}
 	.post-expand {
+		@include expand-hover;
 		&:hover {
 			@media (prefers-reduced-motion: no-preference) {
 				scale: 1.01;
