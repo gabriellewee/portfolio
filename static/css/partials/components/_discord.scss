@@ -150,7 +150,7 @@
 					display: block;
 					opacity: .8;
 					background-position: center;
-					background-size: cover;
+					background-repeat: no-repeat;
 					@include square(20px);
 				}
 				&:hover, &:focus {

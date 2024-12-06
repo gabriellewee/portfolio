@@ -160,12 +160,12 @@
 		label {
 			cursor: pointer;
 		}
-		.media-down {
+				.media-down {
 			position: absolute;
 			top: 0;
 			right: 0;
 			@include square(40px + 18px + 8px);
-			background: url(/static/images/svg/icons/caret-down.svg) no-repeat center / 25px;
+			background: url(/static/images/svg/icons/caret-down.svg) no-repeat center / 21px;
 		}
 		.media-thumbnail {
 			display: flex;
@@ -188,8 +188,8 @@
 				&::before {
 					position: relative;
 					z-index: 3;
-					background: url(/static/images/svg/icons/expand.svg) no-repeat center / cover;
-					@include square(25px);
+					background: url(/static/images/svg/icons/expand.svg) no-repeat center / 24px;
+					@include square(24px);
 				}
 				&::after {
 					@include before(white);
