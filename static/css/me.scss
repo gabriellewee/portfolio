@@ -162,6 +162,9 @@
 
 		a {
 			--outline: var(--color-middle);
+			--background: var(--color);
+
+			@include expand-hover(book, 21px, 27px, calc(var(--p)*1.25));
 
 			&::after {
 				content: "";
@@ -175,13 +178,9 @@
 				background-color: color-mix(
 					in srgb,
 					var(--background-post),
-					var(--color)
+					hsl(from var(--color) h s calc(l *.4))
 				);
 				@include clip-path-edges(2px);
-			}
-
-			&.tomorrow-and-tomorrow-and-tomorrow::after {
-				--color: #083855;
 			}
 
 			picture {
@@ -256,6 +255,9 @@
 			@include viewport($x-large) {
 				grid-template-columns: repeat(2, 1fr);
 			}
+		}
+		a {
+			@include expand-hover(arcade-stick, 35px, 22px, calc(var(--p)*1.25));
 		}
 		&:has(.button) {
 			grid-template-columns: 1fr;

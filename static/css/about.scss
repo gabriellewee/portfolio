@@ -99,10 +99,18 @@
 		}
 
 		.icon-copy {
-			span {
-				display: block;
-				font-size: 2.5rem;
-				@include font-weight-width(800, 120);
+			[class^="icon"] {
+				margin-top: calc(var(--p)/2);
+				width: 44px;
+				height: 44px;
+				background-position: center;
+				background-size: contain;
+				background-repeat: no-repeat;
+			}
+			@for $i from 1 through 5 {
+				.icon-#{$i} {
+					background-image: url(/static/images/svg/icons/number-#{$i}.svg)
+				}
 			}
 		}
 	}

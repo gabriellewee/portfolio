@@ -1,6 +1,6 @@
 @use 'partials/shared/utilities' as *;
 
-@mixin expand-hover {
+@mixin expand-hover($icon: expand, $width: 23px, $height: $width, $padding: var(--p)) {
 	picture {
 		&::before, &::after {
 			content: "";
@@ -11,10 +11,11 @@
 		&::before {
 			position: absolute;
 			z-index: 3;
-			top: var(--p);
-			left: var(--p);
-			background: url(/static/images/svg/icons/expand.svg) no-repeat center / 24px;
-			@include square(24px);
+			top: #{$padding};
+			left: #{$padding};
+			background: url(/static/images/svg/icons/#{$icon}.svg) no-repeat center / contain;
+			width: $width;
+			height: $height;
 		}
 		&::after {
 			z-index: 2;

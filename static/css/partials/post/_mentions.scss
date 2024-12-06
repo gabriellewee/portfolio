@@ -177,6 +177,11 @@
 			}
 		}
 		picture {
+			background-color: color-mix(
+				in srgb,
+				var(--color-iron),
+				var(--color-slate)
+			);
 			@include square(48px);
 			@include clip-path-edges(2px);
 		}

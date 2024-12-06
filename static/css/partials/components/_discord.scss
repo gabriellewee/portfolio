@@ -173,11 +173,13 @@
 			a {
 				&::after {
 					background-image: url(/static/images/svg/icons/external.svg);
+					background-size: 15px 20px;
 				}
 			}
 			button {
 				&::after {
 					background-image: url(/static/images/svg/icons/copy.svg);
+					background-size: 17px 20px;
 				}
 			}
 			@media (hover: hover) {

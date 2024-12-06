@@ -61,7 +61,10 @@ eleventyNavigation:
 											<picture>
 												<img src="/static/images/svg/versions/v{{loop.index}}.svg" width="100" height="100" alt="Version {{loop.index}} - {{version}}"/>
 											</picture>
-											<span class="icon-copy" hidden aria-hidden="true">Version <span>{{loop.index}}</span></span>
+											<span class="icon-copy" hidden aria-hidden="true">
+												<span>Version</span>
+												<span class="icon-{{loop.index}}"></span>
+											</span>
 										</span>
 									</a>
 									<span class="tooltip tooltip-bottom large inline monospace" style="--tooltip-label: '{{version}}'" aria-hidden="true"><span></span></span>
