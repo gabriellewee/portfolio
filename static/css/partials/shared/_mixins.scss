@@ -21,9 +21,10 @@
 			z-index: 2;
 			background: radial-gradient(
 				farthest-corner at 0% 0%,
-				hsl(from var(--color-iron) h s calc(l * .45) / .4) 0,
+				hsl(from var(--color-iron) h s calc(l * .45) / .2) 0,
 				hsl(from var(--color-iron) h s calc(l * .45) / 0) 45%
 			);
+			mix-blend-mode: multiply;
 			@include full-offset(0);
 			@include clip-path-edges(2px);
 		}
