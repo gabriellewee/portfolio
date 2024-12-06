@@ -70,15 +70,20 @@
 		opacity: 0;
 		transition: opacity .2s ease-out;
 		display: none;
-		background: linear-gradient(
-			to bottom,
-			hsl(from var(--color-iron) h s calc(l * .45) / .7) 0,
-			hsl(from var(--color-iron) h s calc(l * .45) / .2) 45%,
-			hsl(from var(--color-iron) h s calc(l * .45) / 0) 100%
-		);
 		@include full-offset(0);
 		@include hover {
 			display: flex;
+		}
+		&:before {
+			content: "";
+			display: block;
+			mix-blend-mode: multiply;
+			background: radial-gradient(
+				farthest-corner at 100% 0%,
+				hsl(from var(--color-iron) h s calc(l * .45) / 0.4) 0,
+				hsl(from var(--color-iron) h s calc(l * .45) / 0) 45%
+			);
+			@include full-offset(0);
 		}
 		.button {
 			--contrast: white;
@@ -202,9 +207,9 @@
 						content: "";
 						display: block;
 						z-index: 2;
-						background: linear-gradient(
-							to bottom,
-							hsl(from var(--color-iron) h s calc(l * .45) / .7) 0,
+						background: radial-gradient(
+							farthest-corner at 0% 0%,
+							hsl(from var(--color-iron) h s calc(l * .45) / .4) 0,
 							hsl(from var(--color-iron) h s calc(l * .45) / 0) 45%
 						);
 						@include full-offset(0);
