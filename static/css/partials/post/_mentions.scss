@@ -63,7 +63,7 @@
 			}
 		}
 	}
-	.mentions-reply-content + .mentions-reply-header-wrapper {
+	.mentions-reply-content ~ .mentions-reply-header-wrapper {
 		display: none;
 		+ .mentions-reply-content {
 			margin-top: calc(var(--p)*2);
