@@ -4,6 +4,56 @@
     {
       "cover": {
         "contentType": "image/jpeg",
+        "url": "https://img1.od-cdn.com/ImageType-100/0439-1/{41DDA0E2-F56C-4C11-9A4A-15F82182C9BA}IMG100.JPG",
+        "title": "The School for Good Mothers",
+        "color": "#F36A72",
+        "format": "ebook"
+      },
+      "title": {
+        "text": "The School for Good Mothers",
+        "url": "https://share.libbyapp.com/title/6241439",
+        "titleId": "6241439"
+      },
+      "author": "Jessamine Chan",
+      "publisher": "Simon & Schuster",
+      "isbn": "9781982156145",
+      "timestamp": 1740681561000,
+      "activity": "Borrowed",
+      "details": " 21 days ",
+      "library": {
+        "text": "San Francisco Public Library",
+        "url": "https://libbyapp.com/library/sfpl",
+        "key": "sfpl"
+      }
+    },
+    {
+      "cover": {
+        "contentType": "image/jpeg",
+        "url": "https://img2.od-cdn.com/ImageType-100/2363-1/{3C9ACCE5-9B89-4537-B2FB-0C3E13A32879}IMG100.JPG",
+        "title": "Deerskin",
+        "color": "#060606",
+        "format": "ebook"
+      },
+      "title": {
+        "text": "Deerskin",
+        "url": "https://share.libbyapp.com/title/2012412",
+        "titleId": "2012412"
+      },
+      "author": "Robin McKinley",
+      "publisher": "Open Road Media",
+      "isbn": "9781497673670",
+      "timestamp": 1735655915000,
+      "activity": "Borrowed",
+      "details": " 21 days ",
+      "library": {
+        "text": "San Francisco Public Library",
+        "url": "https://libbyapp.com/library/sfpl",
+        "key": "sfpl"
+      }
+    },
+    {
+      "cover": {
+        "contentType": "image/jpeg",
         "url": "https://img2.od-cdn.com/ImageType-100/0439-1/{78510737-69A2-4578-9E1A-7E3857B26153}IMG100.JPG",
         "title": "Lady Tan's Circle of Women",
         "color": "#025738",
@@ -29,32 +79,7 @@
     {
       "cover": {
         "contentType": "image/jpeg",
-        "url": "https://img2.od-cdn.com/ImageType-100/0111-1/{E19C204F-428B-4BFE-825F-3DDAEA4C6E05}IMG100.JPG",
-        "title": "Jolene",
-        "color": "#314043",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Jolene",
-        "url": "https://share.libbyapp.com/title/5373903",
-        "titleId": "5373903"
-      },
-      "author": "Mercedes Lackey",
-      "publisher": "Astra Publishing House",
-      "isbn": "9780756412166",
-      "timestamp": 1731959000000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "Sacramento Public Library",
-        "url": "https://libbyapp.com/library/saclibrary",
-        "key": "saclibrary"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img3.od-cdn.com/ImageType-100/0111-1/{17FF1132-F408-4ADE-AF88-910809DA47EE}IMG100.JPG",
+        "url": "https://img2.od-cdn.com/ImageType-100/0111-1/{17FF1132-F408-4ADE-AF88-910809DA47EE}IMG100.JPG",
         "title": "Tomorrow, and Tomorrow, and Tomorrow",
         "color": "#F9FBE3",
         "format": "ebook"
@@ -79,7 +104,7 @@
     {
       "cover": {
         "contentType": "image/jpeg",
-        "url": "https://img1.od-cdn.com/ImageType-100/0111-1/{C122A37F-F984-4062-8F35-1072A99305A0}IMG100.JPG",
+        "url": "https://img3.od-cdn.com/ImageType-100/0111-1/{C122A37F-F984-4062-8F35-1072A99305A0}IMG100.JPG",
         "title": "Project Hail Mary",
         "color": "#9A7F26",
         "format": "ebook"
@@ -106,7 +131,7 @@
         "contentType": "image/jpeg",
         "url": "https://img2.od-cdn.com/ImageType-100/0439-1/{0632D2F1-1B5F-406D-99C1-F66B9305E79C}IMG100.JPG",
         "title": "Speaking Bones",
-        "color": "#020204",
+        "color": "#464A49",
         "format": "ebook"
       },
       "title": {
@@ -118,31 +143,6 @@
       "publisher": "S&S/Saga Press",
       "isbn": "9781982148997",
       "timestamp": 1726444498000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "Sacramento Public Library",
-        "url": "https://libbyapp.com/library/saclibrary",
-        "key": "saclibrary"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img3.od-cdn.com/ImageType-100/0044-1/{95419FE0-F927-410C-AC13-A45E0DFBCBAD}Img100.jpg",
-        "title": "Norse Mythology",
-        "color": "#4C6869",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Norse Mythology",
-        "url": "https://share.libbyapp.com/title/2833420",
-        "titleId": "2833420"
-      },
-      "author": "Neil Gaiman",
-      "publisher": "W. W. Norton & Company",
-      "isbn": "9780393609103",
-      "timestamp": 1725643536000,
       "activity": "Borrowed",
       "details": " 21 days ",
       "library": {
@@ -179,57 +179,7 @@
     {
       "cover": {
         "contentType": "image/jpeg",
-        "url": "https://img2.od-cdn.com/ImageType-100/0439-1/{3E75DC94-7EF9-4220-A7E1-5F0CC415C558}IMG100.JPG",
-        "title": "Watership Down",
-        "color": "#006766",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Watership Down",
-        "url": "https://share.libbyapp.com/title/288680",
-        "titleId": "288680"
-      },
-      "author": "Richard Adams",
-      "publisher": "Scribner",
-      "isbn": "9781439176122",
-      "timestamp": 1722090739000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "San Francisco Public Library",
-        "url": "https://libbyapp.com/library/sfpl",
-        "key": "sfpl"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img2.od-cdn.com/ImageType-100/0111-1/{7FEB8FB5-2400-4B2A-88ED-389B1E3F19B1}IMG100.JPG",
-        "title": "Dragonquest",
-        "color": "#050100",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Dragonquest",
-        "url": "https://share.libbyapp.com/title/9068",
-        "titleId": "9068"
-      },
-      "author": "Anne McCaffrey",
-      "publisher": "Random House Worlds",
-      "isbn": "9780345453969",
-      "timestamp": 1722074046000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "Oakland Public Library",
-        "url": "https://libbyapp.com/library/oakland",
-        "key": "oakland"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img1.od-cdn.com/ImageType-100/2390-1/{DCEDDC24-45BB-4869-82C4-7818E3965B53}IMG100.JPG",
+        "url": "https://img3.od-cdn.com/ImageType-100/2390-1/{DCEDDC24-45BB-4869-82C4-7818E3965B53}IMG100.JPG",
         "title": "Siren Queen",
         "color": "#020106",
         "format": "ebook"
@@ -249,777 +199,6 @@
         "text": "San Francisco Public Library",
         "url": "https://libbyapp.com/library/sfpl",
         "key": "sfpl"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img1.od-cdn.com/ImageType-100/0111-1/{4D3DCFEC-A484-49B2-A1F2-06D6D51A5F61}IMG100.JPG",
-        "title": "Dragonflight",
-        "color": "#000200",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Dragonflight",
-        "url": "https://share.libbyapp.com/title/8955",
-        "titleId": "8955"
-      },
-      "author": "Anne McCaffrey",
-      "publisher": "Random House Worlds",
-      "isbn": "9780345453952",
-      "timestamp": 1722065986000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "Sonoma County Library",
-        "url": "https://libbyapp.com/library/sonoma",
-        "key": "sonoma"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img3.od-cdn.com/ImageType-100/0111-1/{B671C6D6-6D0E-4EAA-8D7B-CFA12FF67B23}Img100.jpg",
-        "title": "Dragonsdawn",
-        "color": "#6D687F",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Dragonsdawn",
-        "url": "https://share.libbyapp.com/title/9069",
-        "titleId": "9069"
-      },
-      "author": "Anne McCaffrey",
-      "publisher": "Random House Worlds",
-      "isbn": "9780345453983",
-      "timestamp": 1721986411000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "Sonoma County Library",
-        "url": "https://libbyapp.com/library/sonoma",
-        "key": "sonoma"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img3.od-cdn.com/ImageType-100/0044-1/{AE056A8A-E106-4C14-882F-7B14A592C134}Img100.jpg",
-        "title": "Lesser Known Monsters of the 21st Century",
-        "color": "#564E20",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Lesser Known Monsters of the 21st Century",
-        "url": "https://share.libbyapp.com/title/8740587",
-        "titleId": "8740587"
-      },
-      "author": "Kim Fu",
-      "publisher": "Tin House Books",
-      "isbn": "9781953534064",
-      "timestamp": 1721953294000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "San Francisco Public Library",
-        "url": "https://libbyapp.com/library/sfpl",
-        "key": "sfpl"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img2.od-cdn.com/ImageType-100/6852-1/{B6367D0E-ECE7-4D22-9BC1-F4EFB0C288C3}IMG100.JPG",
-        "title": "Fifth Chinese Daughter",
-        "color": "#67818E",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Fifth Chinese Daughter",
-        "url": "https://share.libbyapp.com/title/9063991",
-        "titleId": "9063991"
-      },
-      "author": "Jade Snow Wong",
-      "publisher": "University of Washington Press",
-      "isbn": "9780295745916",
-      "timestamp": 1721952548000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "Los Angeles Public Library",
-        "url": "https://libbyapp.com/library/lapl",
-        "key": "lapl"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img3.od-cdn.com/ImageType-100/1523-1/{F7E2681A-D69B-4515-956A-55E2C8CB0E70}Img100.jpg",
-        "title": "China Boy",
-        "color": "#EDD652",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "China Boy",
-        "url": "https://share.libbyapp.com/title/2033028",
-        "titleId": "2033028"
-      },
-      "author": "Gus Lee",
-      "publisher": "Penguin Publishing Group",
-      "isbn": "9781101664742",
-      "timestamp": 1721895931000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "Sacramento Public Library",
-        "url": "https://libbyapp.com/library/saclibrary",
-        "key": "saclibrary"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img1.od-cdn.com/ImageType-100/1523-1/{E0A13D8B-4407-4EA8-BE1F-453E34AC5150}Img100.jpg",
-        "title": "The Blythes are Quoted",
-        "color": "#FDFBE4",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "The Blythes are Quoted",
-        "url": "https://share.libbyapp.com/title/1027143",
-        "titleId": "1027143"
-      },
-      "author": "L. M. Montgomery",
-      "publisher": "Penguin Canada",
-      "isbn": "9780143175346",
-      "timestamp": 1720004794000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "San Francisco Public Library",
-        "url": "https://libbyapp.com/library/sfpl",
-        "key": "sfpl"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img1.od-cdn.com/ImageType-100/0293-1/{0253B749-4258-4C1C-8341-D807077CDB4D}IMG100.JPG",
-        "title": "Galatea",
-        "color": "#357F98",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Galatea",
-        "url": "https://share.libbyapp.com/title/1355364",
-        "titleId": "1355364"
-      },
-      "author": "Madeline Miller",
-      "publisher": "HarperCollins",
-      "isbn": "9780062319654",
-      "timestamp": 1719676692000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "Oakland Public Library",
-        "url": "https://libbyapp.com/library/oakland",
-        "key": "oakland"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img2.od-cdn.com/ImageType-100/0439-1/{007D1DD4-F1EE-46C5-8831-6CFFCAE57E56}IMG100.JPG",
-        "title": "Yolk",
-        "color": "#FEE600",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Yolk",
-        "url": "https://share.libbyapp.com/title/5274862",
-        "titleId": "5274862"
-      },
-      "author": "Mary H. K. Choi",
-      "publisher": "Simon & Schuster Books for Young Readers",
-      "isbn": "9781534446021",
-      "timestamp": 1719665791000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "MARINet",
-        "url": "https://libbyapp.com/library/marinet",
-        "key": "marinet"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img1.od-cdn.com/ImageType-100/0111-1/{800BFE22-97D0-4B2C-AF02-1126A7771010}IMG100.JPG",
-        "title": "Blood Over Bright Haven",
-        "color": "#060409",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Blood Over Bright Haven",
-        "url": "https://share.libbyapp.com/title/10514226",
-        "titleId": "10514226"
-      },
-      "author": "M. L. Wang",
-      "publisher": "Random House Worlds",
-      "isbn": "9780593873366",
-      "timestamp": 1719350637000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "San Francisco Public Library",
-        "url": "https://libbyapp.com/library/sfpl",
-        "key": "sfpl"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img2.od-cdn.com/ImageType-100/0293-1/{18E967C0-20DC-42CB-BF7A-BAD0EB61CF75}IMG100.JPG",
-        "title": "Yellowface",
-        "color": "#FAE438",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Yellowface",
-        "url": "https://share.libbyapp.com/title/9191516",
-        "titleId": "9191516"
-      },
-      "author": "R. F. Kuang",
-      "publisher": "HarperCollins",
-      "isbn": "9780063250840",
-      "timestamp": 1719190244000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "Los Angeles Public Library",
-        "url": "https://libbyapp.com/library/lapl",
-        "key": "lapl"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img1.od-cdn.com/ImageType-100/0887-1/{4218A4F8-3994-4D1C-A765-7431EB9BF400}IMG100.JPG",
-        "title": "Shōgun, Part One",
-        "color": "#0C6261",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Shōgun, Part One",
-        "url": "https://share.libbyapp.com/title/10316929",
-        "titleId": "10316929"
-      },
-      "author": "James Clavell",
-      "publisher": "Blackstone Publishing",
-      "isbn": "9798212910996",
-      "timestamp": 1719190237000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "Sonoma County Library",
-        "url": "https://libbyapp.com/library/sonoma",
-        "key": "sonoma"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img1.od-cdn.com/ImageType-100/0111-1/{66227E65-A2C4-42E1-883A-43B8272BBE13}IMG100.JPG",
-        "title": "Lessons in Chemistry",
-        "color": "#F06B62",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Lessons in Chemistry",
-        "url": "https://share.libbyapp.com/title/6384649",
-        "titleId": "6384649"
-      },
-      "author": "Bonnie Garmus",
-      "publisher": "Knopf Doubleday Publishing Group",
-      "isbn": "9780385547376",
-      "timestamp": 1719162112000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "San Francisco Public Library",
-        "url": "https://libbyapp.com/library/sfpl",
-        "key": "sfpl"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img2.od-cdn.com/ImageType-100/2390-1/{96F27AF3-D5A9-4378-B59A-C43E614BF102}IMG100.JPG",
-        "title": "A Conjuring of Light",
-        "color": "#58519E",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "A Conjuring of Light",
-        "url": "https://share.libbyapp.com/title/2687025",
-        "titleId": "2687025"
-      },
-      "author": "V. E. Schwab",
-      "publisher": "Tor Publishing Group",
-      "isbn": "9780765387486",
-      "timestamp": 1717532517000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "Sacramento Public Library",
-        "url": "https://libbyapp.com/library/saclibrary",
-        "key": "saclibrary"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img1.od-cdn.com/ImageType-100/2390-1/{E5C43AEF-F799-4704-992D-5962B4F1B7DC}IMG100.JPG",
-        "title": "A Gathering of Shadows",
-        "color": "#E72724",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "A Gathering of Shadows",
-        "url": "https://share.libbyapp.com/title/2192566",
-        "titleId": "2192566"
-      },
-      "author": "V. E. Schwab",
-      "publisher": "Tor Publishing Group",
-      "isbn": "9780765376497",
-      "timestamp": 1717321044000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "Sonoma County Library",
-        "url": "https://libbyapp.com/library/sonoma",
-        "key": "sonoma"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img1.od-cdn.com/ImageType-100/0439-1/{D007CC5C-2F03-4C74-B946-D26A14C21C1D}IMG100.JPG",
-        "title": "The Grace of Kings",
-        "color": "#000000",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "The Grace of Kings",
-        "url": "https://share.libbyapp.com/title/2115035",
-        "titleId": "2115035"
-      },
-      "author": "Ken Liu",
-      "publisher": "S&S/Saga Press",
-      "isbn": "9781481424295",
-      "timestamp": 1716574838000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "MARINet",
-        "url": "https://libbyapp.com/library/marinet",
-        "key": "marinet"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img1.od-cdn.com/ImageType-100/0111-1/{66227E65-A2C4-42E1-883A-43B8272BBE13}IMG100.JPG",
-        "title": "Lessons in Chemistry",
-        "color": "#F06B62",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Lessons in Chemistry",
-        "url": "https://share.libbyapp.com/title/6384649",
-        "titleId": "6384649"
-      },
-      "author": "Bonnie Garmus",
-      "publisher": "Knopf Doubleday Publishing Group",
-      "isbn": "9780385547376",
-      "timestamp": 1714285234000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "San Francisco Public Library",
-        "url": "https://libbyapp.com/library/sfpl",
-        "key": "sfpl"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img1.od-cdn.com/ImageType-100/0439-1/{D007CC5C-2F03-4C74-B946-D26A14C21C1D}IMG100.JPG",
-        "title": "The Grace of Kings",
-        "color": "#000000",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "The Grace of Kings",
-        "url": "https://share.libbyapp.com/title/2115035",
-        "titleId": "2115035"
-      },
-      "author": "Ken Liu",
-      "publisher": "S&S/Saga Press",
-      "isbn": "9781481424295",
-      "timestamp": 1714103459000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "MARINet",
-        "url": "https://libbyapp.com/library/marinet",
-        "key": "marinet"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img1.od-cdn.com/ImageType-100/2390-1/{36482FD2-AE45-460E-9644-10CC8D578F35}IMG100.JPG",
-        "title": "A Darker Shade of Magic",
-        "color": "#088575",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "A Darker Shade of Magic",
-        "url": "https://share.libbyapp.com/title/1897372",
-        "titleId": "1897372"
-      },
-      "author": "V. E. Schwab",
-      "publisher": "Tor Publishing Group",
-      "isbn": "9781466851375",
-      "timestamp": 1714033603000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "Sonoma County Library",
-        "url": "https://libbyapp.com/library/sonoma",
-        "key": "sonoma"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img3.od-cdn.com/ImageType-100/0439-1/{0EE26012-0F01-40B3-BE14-3360AC0F9E2A}IMG100.JPG",
-        "title": "I'm Glad My Mom Died",
-        "color": "#FBF3A2",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "I'm Glad My Mom Died",
-        "url": "https://share.libbyapp.com/title/7454561",
-        "titleId": "7454561"
-      },
-      "author": "Jennette McCurdy",
-      "publisher": "Simon & Schuster",
-      "isbn": "9781982185848",
-      "timestamp": 1711223518000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "Oakland Public Library",
-        "url": "https://libbyapp.com/library/oakland",
-        "key": "oakland"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img2.od-cdn.com/ImageType-100/0017-1/{69075C11-F791-430F-8DEB-62ACC5E349F5}Img100.jpg",
-        "title": "Circe",
-        "color": "#170900",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Circe",
-        "url": "https://share.libbyapp.com/title/3390977",
-        "titleId": "3390977"
-      },
-      "author": "Madeline Miller",
-      "publisher": "Little, Brown and Company",
-      "isbn": "9780316556330",
-      "timestamp": 1710535025000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "San Francisco Public Library",
-        "url": "https://libbyapp.com/library/sfpl",
-        "key": "sfpl"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img2.od-cdn.com/ImageType-100/0111-1/{FFBB26CC-639E-4673-A3B7-1EBD3A87E892}IMG100.JPG",
-        "title": "A Fate Inked in Blood",
-        "color": "#598C85",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "A Fate Inked in Blood",
-        "url": "https://share.libbyapp.com/title/9879237",
-        "titleId": "9879237"
-      },
-      "author": "Danielle L. Jensen",
-      "publisher": "Random House Worlds",
-      "isbn": "9780593599846",
-      "timestamp": 1710209967000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "Sacramento Public Library",
-        "url": "https://libbyapp.com/library/saclibrary",
-        "key": "saclibrary"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img3.od-cdn.com/ImageType-100/1523-1/{7ADAA55C-DE16-4188-8E97-DCA1259D87A3}Img100.jpg",
-        "title": "Redwall",
-        "color": "#554989",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Redwall",
-        "url": "https://share.libbyapp.com/title/2582451",
-        "titleId": "2582451"
-      },
-      "author": "Brian Jacques",
-      "publisher": "Penguin Young Readers Group",
-      "isbn": "9781101665985",
-      "timestamp": 1706784754000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "San Jose Public Library",
-        "url": "https://libbyapp.com/library/sanjose",
-        "key": "sanjose"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img1.od-cdn.com/ImageType-100/6378-1/{161C3DD5-10C3-4B75-BDCA-A2C5CD69972B}Img100.jpg",
-        "title": "Boys Over Flowers, Season 2, Volume 1",
-        "color": "#FFFFFF",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Boys Over Flowers, Season 2, Volume 1",
-        "url": "https://share.libbyapp.com/title/3266569",
-        "titleId": "3266569"
-      },
-      "author": "Yoko Kamio",
-      "publisher": "VIZMedia",
-      "isbn": "9781421588926",
-      "timestamp": 1706214941000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "Sacramento Public Library",
-        "url": "https://libbyapp.com/library/saclibrary",
-        "key": "saclibrary"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img3.od-cdn.com/ImageType-100/6378-1/{49F54EF7-36AF-4AC7-A623-AB6E01778A60}Img100.jpg",
-        "title": "Boys Over Flowers: Jewelry Box",
-        "color": "#FFFFFF",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Boys Over Flowers: Jewelry Box",
-        "url": "https://share.libbyapp.com/title/3115777",
-        "titleId": "3115777"
-      },
-      "author": "Yoko Kamio",
-      "publisher": "VIZMedia",
-      "isbn": "9781421577579",
-      "timestamp": 1706209526000,
-      "activity": "Borrowed",
-      "library": {
-        "text": "Sacramento Public Library",
-        "url": "https://libbyapp.com/library/saclibrary",
-        "key": "saclibrary"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img3.od-cdn.com/ImageType-100/6378-1/{012361A1-6732-4FCA-B551-B2FF794AF64A}Img100.jpg",
-        "title": "Boys Over Flowers, Volume 2",
-        "color": "#FFFFFF",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Boys Over Flowers, Volume 2",
-        "url": "https://share.libbyapp.com/title/3115752",
-        "titleId": "3115752"
-      },
-      "author": "Yoko Kamio",
-      "publisher": "VIZMedia",
-      "isbn": "9781421570266",
-      "timestamp": 1706208838000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "Sonoma County Library",
-        "url": "https://libbyapp.com/library/sonoma",
-        "key": "sonoma"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img3.od-cdn.com/ImageType-100/6378-1/{F3FC3D0B-4E4A-42F7-A3B1-C9008B46B453}Img100.jpg",
-        "title": "Boys Over Flowers, Volume 1",
-        "color": "#FFFFFF",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Boys Over Flowers, Volume 1",
-        "url": "https://share.libbyapp.com/title/3115741",
-        "titleId": "3115741"
-      },
-      "author": "Yoko Kamio",
-      "publisher": "VIZMedia",
-      "isbn": "9781421568904",
-      "timestamp": 1706207720000,
-      "activity": "Borrowed",
-      "library": {
-        "text": "Sacramento Public Library",
-        "url": "https://libbyapp.com/library/saclibrary",
-        "key": "saclibrary"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img3.od-cdn.com/ImageType-100/0111-1/{E509A486-D372-43B0-8662-29E8A678C8BE}IMG100.JPG",
-        "title": "The Case of the Spellbound Child",
-        "color": "#224144",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "The Case of the Spellbound Child",
-        "url": "https://share.libbyapp.com/title/4514080",
-        "titleId": "4514080"
-      },
-      "author": "Mercedes Lackey",
-      "publisher": "Astra Publishing House",
-      "isbn": "9780756412135",
-      "timestamp": 1706160368000,
-      "activity": "Borrowed",
-      "library": {
-        "text": "Sacramento Public Library",
-        "url": "https://libbyapp.com/library/saclibrary",
-        "key": "saclibrary"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img2.od-cdn.com/ImageType-100/0111-1/{2C8F9BF5-BB26-4D15-8D9F-9B1008E2B79F}IMG100.JPG",
-        "title": "The Bartered Brides",
-        "color": "#6A2D2A",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "The Bartered Brides",
-        "url": "https://share.libbyapp.com/title/3802026",
-        "titleId": "3802026"
-      },
-      "author": "Mercedes Lackey",
-      "publisher": "Astra Publishing House",
-      "isbn": "9780756411664",
-      "timestamp": 1706143969000,
-      "activity": "Borrowed",
-      "library": {
-        "text": "Sacramento Public Library",
-        "url": "https://libbyapp.com/library/saclibrary",
-        "key": "saclibrary"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img2.od-cdn.com/ImageType-100/0111-1/{DCD451F3-AAFC-4C86-9A04-5381B4FEA047}IMG100.JPG",
-        "title": "A Scandal in Battersea",
-        "color": "#145551",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "A Scandal in Battersea",
-        "url": "https://share.libbyapp.com/title/2968752",
-        "titleId": "2968752"
-      },
-      "author": "Mercedes Lackey",
-      "publisher": "Astra Publishing House",
-      "isbn": "9780756411626",
-      "timestamp": 1706039422000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "Sacramento Public Library",
-        "url": "https://libbyapp.com/library/saclibrary",
-        "key": "saclibrary"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img1.od-cdn.com/ImageType-100/0111-1/{5B7EF5CC-FBC8-4F6E-AB2C-24C62FD10AF2}IMG100.JPG",
-        "title": "A Study in Sable",
-        "color": "#4A4C49",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "A Study in Sable",
-        "url": "https://share.libbyapp.com/title/2461821",
-        "titleId": "2461821"
-      },
-      "author": "Mercedes Lackey",
-      "publisher": "Astra Publishing House",
-      "isbn": "9780756411640",
-      "timestamp": 1705915158000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "Sacramento Public Library",
-        "url": "https://libbyapp.com/library/saclibrary",
-        "key": "saclibrary"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img3.od-cdn.com/ImageType-100/0111-1/{E400CC04-F24D-4402-85C9-C7DDCD5388A1}IMG100.JPG",
-        "title": "Unnatural Issue",
-        "color": "#849644",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Unnatural Issue",
-        "url": "https://share.libbyapp.com/title/599807",
-        "titleId": "599807"
-      },
-      "author": "Mercedes Lackey",
-      "publisher": "Astra Publishing House",
-      "isbn": "9781101515952",
-      "timestamp": 1705442191000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "Sacramento Public Library",
-        "url": "https://libbyapp.com/library/saclibrary",
-        "key": "saclibrary"
       }
     }
   ]
