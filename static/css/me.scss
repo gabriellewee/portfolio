@@ -164,7 +164,7 @@
 			--outline: var(--color-middle);
 			--background: var(--color);
 
-			@include expand-hover(book, 21px, 27px, calc(var(--p)*1.25));
+			@include expand-hover(external, 23px, 23px, calc(var(--p)*1.25));
 
 			&::after {
 				content: "";
@@ -257,7 +257,7 @@
 			}
 		}
 		a {
-			@include expand-hover(arcade-stick, 35px, 22px, calc(var(--p)*1.25));
+			@include expand-hover(external, 23px, 23px, var(--p));
 		}
 		&:has(.button) {
 			grid-template-columns: 1fr;
