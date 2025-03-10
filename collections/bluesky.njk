@@ -1,0 +1,38 @@
+---js
+{
+	tags: ["entries", "bluesky"],
+	category: "social",
+	pagination: {
+		data: "bluesky.feed",
+		size: 1,
+		addAllPagesToCollections: true,
+		alias: "bluesky"
+	},
+	hidden: [
+		"bafyreidr6yfxhw4ca7gftuux7xworhdeidxyjhuuz7cy2t5fjuvg7cbqei",
+		"bafyreif75x2iudrq53kvgwragjef6g3wmdeibqbea4jyxk23lmaw4a5phi",
+		"bafyreidqzn67mj2c3pajanq4fb4wgbqvcm3zbsjecjzmevb4souvjkiwbu",
+		"bafyreihwew26bmnqowsr7sdslvapnmv2upw3nanuterh3gjd4z45cqistq",
+		"bafyreiesjhb4w7put2dsc7uireeqsj3ynrl5c5qy3sdcdyf26recrntjjm",
+		"bafyreihkeaoytfi3lrf2brl33eb6atznbsjqbhb5p7zsvwrkec3yqdfn6u"
+	],
+	permalink: false,
+	eleventyComputed: {
+		bluesky(data) {
+			data.source = "bluesky",
+			data.page.date = new Date(data.bluesky.post.record.createdAt);
+			data.cid = data.bluesky.post.cid;
+			data.content = data.bluesky.post.record.text;
+			let uri = data.bluesky.post.uri.split("/");
+			data.url = `https://bsky.app/profile/${process.env.BLUESKY_USERNAME}/post/${uri[uri.length - 1]}`;
+			data.media = data.bluesky.post.embed?.images;
+			if (data.bluesky.post.embed?.$type === "app.bsky.embed.video#view") data.video = data.bluesky.post.embed;
+			data.size = "s";
+			if (data.bluesky.post.record.text.includes("https://gabriellew.ee")) data.self = true;
+			if (data.bluesky.post.record.text.includes("@codepen")) data.self = true;
+			if (data.bluesky.post.author.did != `${process.env.BLUESKY_DID}`) data.hide = true;
+			if (data.hidden.indexOf(data.bluesky.post.cid) !== -1) data.hide = true;
+		}
+	}
+}
+---

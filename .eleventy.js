@@ -10,6 +10,7 @@ import * as sass from 'sass'
 import path from 'path';
 import { minify } from 'terser';
 import htmlmin from 'html-minifier-terser';
+import string from 'string';
 
 export default function (eleventyConfig) {
 	eleventyConfig.setQuietMode(true);
@@ -79,8 +80,40 @@ export default function (eleventyConfig) {
 
 	eleventyConfig.addCollection("entries", function (collectionApi) {
 		const entries = [...collectionApi.getFilteredByTag("entries")];
+
+		let blueskyPosts = new Map();
+		for (let entry of entries) {
+			if (entry.data.source === "bluesky") {
+				let timestamp = new Date(entry.date).getTime();
+				blueskyPosts.set(timestamp, entry);
+			}
+		}
+
 		return entries.filter(entry => {
 			if (entry.data.self == true || entry.data.hide == true || entry.data.in_reply != null || entry.data.visibility === "direct") return false;
+
+			if (entry.data.source === "mastodon") {
+				for (let [timestamp, blueskyEntry] of blueskyPosts) {
+					let mastodonContent = string(entry.data.content).stripTags().s;
+					if (
+						(Math.abs(timestamp - new Date(entry.date).getTime()) < 7200000) &&
+						(mastodonContent && blueskyEntry.data.content &&
+					mastodonContent.trim().substring(0, 20) === blueskyEntry.data.content.trim().substring(0, 20))
+					) {
+						if (!blueskyEntry.data.platforms) {
+							blueskyEntry.data.platforms = [];
+						}
+						if (!blueskyEntry.data.platforms.some(item => item.url === entry.data.url)) {
+							blueskyEntry.data.platforms.push({
+								platform: entry.data.source,
+								url: entry.data.url
+							});
+						}
+						return false;
+					}
+				}
+			}
+
 			return entry.data;
 		});
 	});

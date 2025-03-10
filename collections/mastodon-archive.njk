@@ -1,6 +1,6 @@
 ---js
 {
-	tags: "entries",
+	tags: ["entries", "mastodon"],
 	category: "social",
 	pagination: {
 		data: "mastodon-archive",
@@ -12,6 +12,7 @@
 	permalink: false,
 	eleventyComputed: {
 		mastodon(data) {
+			data.source = "mastodon",
 			data.page.date = new Date(data.mastodon.created_at);
 			data.content = data.mastodon.content;
 			data.url = data.mastodon.url;

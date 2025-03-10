@@ -16,11 +16,40 @@
 				justify-content: flex-end;
 			}
 		}
+		time {
+			--color-highlight: var(--color-slate);
+			--color-mix: color-mix(
+				in srgb,
+				hsl(from var(--color-highlight) h calc(s * .3) l) 40%,
+				hsl(from var(--color-grey) h s calc(l * .8))
+			);
+			background-color: var(--color-mix);
+			@include tone(blue) {
+				--color-mix: color-mix(
+					in srgb,
+					hsl(from var(--color-highlight) h calc(s * .3) l) 40%,
+					hsl(from var(--color-grey) h s calc(l * .5))
+				);
+			}
+			@include tone(yellow) {
+				--color-mix: color-mix(
+					in srgb,
+					hsl(from var(--color-highlight) h calc(s * .3) l) 40%,
+					hsl(from var(--color-grey) h s calc(l * .5))
+				);
+			}
+			&::after {
+				@include contrast(both) {
+					background-color: var(--color-mix);
+				}
+			}
+		}
 	}
 
 	.post-content {
 		padding: 0 calc(var(--p)*2);
 		font-size: 1.25rem;
+		line-height: 1.2;
 		@include font-weight-width(450, 110);
 		@include theme(light) {
 			color: color-mix(
@@ -39,6 +68,9 @@
 			text-decoration: underline;
 			text-underline-offset: 2px;
 		}
+		p + p {
+			margin-top: .75em;
+		}
 	}
 
 	.post-footer {
@@ -50,6 +82,16 @@
 		}
 		.button-social {
 			margin-top: var(--p);
+			> span {
+				padding: calc(var(--p)*.75) calc(var(--p)*2);
+				align-items: center;
+				align-content: center;
+				&::before {
+					margin-right: unset;
+					background-position: center;
+					@include square(24px);
+				}
+			}
 			&:not(:last-child) {
 				margin-right: var(--p);
 			}
@@ -96,6 +138,14 @@
 		}
 	}
 
+	&.post-bluesky {
+		.post-header {
+			time {
+				--color-highlight: var(--color-bluesky);
+			}
+		}
+	}
+
 	&.post-mastodon {
 		&.post-size-xs {
 			@include viewport(medium) {
@@ -104,40 +154,10 @@
 		}
 		.post-header {
 			time {
-				--color-mix: color-mix(
-					in srgb,
-					hsl(from var(--color-mastodon) h calc(s * .3) l) 40%,
-					hsl(from var(--color-grey) h s calc(l * .8))
-				);
-				background-color: var(--color-mix);
-				@include tone(blue) {
-					--color-mix: color-mix(
-						in srgb,
-						hsl(from var(--color-mastodon) h calc(s * .3) l) 40%,
-						hsl(from var(--color-grey) h s calc(l * .5))
-					);
-				}
-				@include tone(yellow) {
-					--color-mix: color-mix(
-						in srgb,
-						hsl(from var(--color-mastodon) h calc(s * .3) l) 40%,
-						hsl(from var(--color-grey) h s calc(l * .5))
-					);
-				}
-				&::after {
-					@include contrast(both) {
-						background-color: var(--color-mix);
-					}
-				}
+				--color-highlight: var(--color-mastodon);
 			}
 		}
 		.post-content {
-			p {
-				line-height: 1.2;
-				+ p {
-					margin-top: .75em;
-				}
-			}
 			a:not(.expand) {
 				@include theme(light) {
 					color: color-mix(

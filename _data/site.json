@@ -100,17 +100,17 @@
 					"url": "https://instagram.com/gabriellewee/"
 				},
 				{
+					"name": "bluesky",
+					"url": "https://bsky.app/profile/gabriellew.ee",
+					"theme": true
+				},
+				{
 					"name": "mastodon",
 					"url": "https://front-end.social/@gabrielle"
 				},
 				{
 					"name": "threads",
 					"url": "https://threads.net/@gabriellewee"
-				},
-				{
-					"name": "bluesky",
-					"url": "https://bsky.app/profile/gabriellew.ee",
-					"theme": true
 				},
 				{
 					"name": "twitter",

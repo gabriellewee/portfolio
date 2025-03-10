@@ -70,6 +70,8 @@
 		opacity: 0;
 		transition: opacity .2s ease-out;
 		display: none;
+		z-index: 10;
+		cursor: pointer;
 		@include full-offset(0);
 		@include hover {
 			display: flex;
@@ -165,7 +167,7 @@
 		label {
 			cursor: pointer;
 		}
-				.media-down {
+		.media-down {
 			position: absolute;
 			top: 0;
 			right: 0;
@@ -574,6 +576,7 @@
 			+ .post-inner {
 				@include hover {
 					.media-view-hover {
+						z-index: unset;
 						opacity: 0;
 						.button {
 							@media (prefers-reduced-motion: no-preference) {

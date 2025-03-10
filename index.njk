@@ -9,7 +9,7 @@ tags: pages
 loading: Scroll to skip animation
 pagination:
     data: collections.entries
-    size: 24
+    size: 16
     reverse: true
 eleventyNavigation:
     key: Home
@@ -25,7 +25,7 @@ eleventyNavigation:
 			<article
 				class="post{% if post.data.pagination.alias and post.data.pagination.alias != post.data.category %} post-{{post.data.category}} post-{{post.data.pagination.alias}}{% else %} post-{{post.data.category}}{% endif %}{% if post.data.tags %}{% for tag in post.data.tags %}{% if tag != 'entries' and tag != 'posts' %} post-{{tag}}{% endif %}{% endfor %}{% endif %}{% if post.data.size %} post-size-{{post.data.size}}{% endif %}{% if post.data.category == 'media' %} post-{{post.data.pagination.data}}{% endif %}" data-grid-item data-post-append{% if pagination.pageNumber == 0 %} data-anim{% endif %}{% if post.data.extension %} data-orientation="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'orientation' %}"{% endif %}
 				{% if post.data.width %}style="max-width: {{post.data.width}}"{% endif %}
-				{% if post.data.category == "social" %}aria-label="{{post.data.pagination.alias|capitalize}} post"
+				{% if post.data.category == "social" %}aria-label="{{post.data.source|capitalize}} post"
 				{% elseif post.data.category == "media" %}data-media-container aria-label="{{post.data.type|capitalize}} post"{% endif %}
 			>
 				{% if post.data.category == "media" %}
@@ -185,11 +185,25 @@ eleventyNavigation:
 							</div>
 						{% elseif post.data.content %}
 							<blockquote>{{post.data.content|nbsp|safe}}</blockquote>
-							{% if post.data.category == "social" and post.data.media %}
+							{%- set postindex = loop.index %}
+							{% if post.data.category == "social" %}
+								{% if post.data.video %}
+									<figure id="external-{{postindex}}-{{post.data.video.cid|truncate(5, true, '')}}" class="media-attachment">
+										<video width="{{post.data.video.aspectRatio.width}}" height="{{post.data.video.aspectRatio.height}}" controls preload="metadata" poster="{{post.data.video.thumbnail}}" aria-label="{{post.data.video.alt}}">
+											<source src="{{post.data.video.playlist}}" type="application/x-mpegURL">
+										</video>
+									</figure>
+								{% endif %}
 								{% for media in post.data.media %}
-									{% if media.url and media.type == "gifv" %}
+									{% if media.thumb %}
+										<figure id="external-{{postindex}}-{{post.data.cid|truncate(5, true, '')}}" class="media-attachment" aria-label="{{media.alt}}">
+											<a class="expand" href="#external-{{postindex}}-{{post.data.cid|truncate(5, true, '')}}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
+												{% external media.thumb, '', 500 %}
+											</a>
+										</figure>
+									{% elseif media.url and media.type == "gifv" %}
 										<figure id="external-{{media.id}}" class="media-attachment">
-											<video width="1280" height="720" controls preload="metadata" poster="{{media.preview_url}}" aria-label="{{media.description}}">
+											<video width="{{media.meta.original.width}}" height="{{media.meta.original.height}}" controls preload="metadata" poster="{{media.preview_url}}" aria-label="{{media.description}}">
 												<source src="{{media.url}}" type="video/mp4">
 											</video>
 										</figure>
@@ -209,7 +223,10 @@ eleventyNavigation:
 					{% if post.data.category == "writing" or post.data.category == "social" or post.data.category == "cooking" %}
 						<footer class="post-footer">
 							{% if post.data.category == "social" %}
-								<a class="button button-social button-{{post.data.pagination.alias}}" href="{{post.data.url|url}}" aria-label="View post on {{post.data.pagination.alias|capitalize}}"><span>View post</span></a>
+								<a class="button button-social button-{{post.data.source}}" href="{{post.data.url|url}}" aria-label="View post on {{post.data.source|capitalize}}"><span></span></a>
+								{% for link in post.data.platforms %}
+									<a class="button button-social button-{{link.platform}}" href="{{link.url}}" aria-label="View post on {{link.platform|capitalize}}"><span></span></a>
+								{% endfor %}
 							{% elseif post.data.category == "writing" and post.data.size != "s" %}
 								{% if post.url %}
 									<a class="button" href="{{post.url|url}}"><span>Read post</span></a>
@@ -284,8 +301,16 @@ eleventyNavigation:
 				</figure>
 			</dialog>
 		{% elseif post.data.category == "social" and post.data.media %}
+			{%- set postindex = loop.index %}
 			{% for media in post.data.media %}
-				{% if media.url and media.type != "gifv" %}
+				{% if media.thumb %}
+					<a class="lightbox" id="external-{{postindex}}-{{post.data.cid|truncate(5, true, '')}}" role="button" aria-label="Close image" href="#external-{{postindex}}-{{post.data.cid|truncate(5, true, '')}}" data-lightbox data-lightbox-append></a>
+					<dialog class="lightbox-content image" aria-label="Image preview" autofocus data-lightbox-append>
+						<figure>
+							{% external media.fullsize, media.alt, media.aspectRatio.width %}
+						</figure>
+					</dialog>
+				{% elseif media.url and media.type != "gifv" %}
 					<a class="lightbox" id="external-{{media.id}}-lightbox" role="button" aria-label="Close image" href="#external-{{media.id}}" data-lightbox data-lightbox-append></a>
 					<dialog class="lightbox-content image" aria-label="Image preview" autofocus data-lightbox-append>
 						<figure>

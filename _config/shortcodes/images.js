@@ -1,3 +1,4 @@
+import { promises as fs } from "fs"
 import Image from '@11ty/eleventy-img';
 import Sharp from 'sharp';
 import EleventyFetch from '@11ty/eleventy-fetch';
@@ -5,7 +6,7 @@ import nbspFilter from 'eleventy-nbsp-filter';
 
 export const stats = async (src, type, value) => {
 	try {
-		let stats = await Sharp(src); 
+		let stats = await Sharp(src);
 		let result;
 		let reduce = (numerator, denominator) => {
 			let gcd = (a, b) => {
@@ -54,26 +55,63 @@ export const stats = async (src, type, value) => {
 
 		return result;
 	} catch (error) {
-		console.error(src, '\n', error);
+		console.error('IMAGE: ' + src, '\n', error, '\n');
+	}
+};
+
+const fetchImageBuffer = async (url) => {
+	try {
+		return await EleventyFetch(url, {
+			duration: "1d",
+			type: "buffer",
+		});
+	} catch (error) {
+		console.error("Error fetching image:", error);
+		return null;
 	}
 };
 
 export const external = async (src, alt, width, loading) => {
 	try {
-		let file = src.split(".");
-		file = file[file.length - 1];
-		if (file === "jpg") file = "jpeg";
+		let file;
+		if(src.includes("@")) {
+			file = src.split("@");
+			file = file[file.length - 1];
+		} else {
+			file = src.split(".");
+			file = file[file.length - 1];
+		}
+		if (file.toLowerCase() === "jpg") file = "jpeg";
 		if (!loading) loading = "lazy";
 		alt = alt.replace(/ :(.*?):$/g, '');
+		let image;
+
+		if(src.includes("@")) {
+			let hash = src.match(/([^/]+)(?=@)/)[0];
+			await fs.mkdir('./_site/static/images/external/bluesky', { recursive: true });
+			const buffer = await fetchImageBuffer(src);
+			if (!buffer) throw new Error("Image fetch failed");
+
+			const outputPath = `./_site/static/images/external/bluesky/${hash}.${file}`;
+			await fs.writeFile(outputPath, buffer);
+
+			image = outputPath;
+		} else {
+			image = src;
+		}
 
 		let newWidths;
 		if (width > 1000) {
 			newWidths = [width/2, width]
-		} else {
+		} else if (width <= 1000) {
 			newWidths = [width, width*2]
+		} else if (width === undefined) {
+			let metadata = await Sharp(image).metadata();
+			let newWidth = metadata.width;
+			newWidths = [newWidth/2, newWidth];
 		}
 
-		let stats = await Image(src, {
+		let stats = await Image(image, {
 			widths: newWidths,
 			formats: ["webp", file],
 			urlPath: `/static/images/external`,
@@ -88,7 +126,7 @@ export const external = async (src, alt, width, loading) => {
 		`;
 		return result;
 	} catch (error) {
-		console.error(src, '\n', error);
+		console.error('IMAGE: ' + src, '\n', error, '\n');
 	}
 };
 
@@ -96,7 +134,7 @@ export const ogPhoto = async (src) => {
 	try {
 		let file = src.split(".");
 		file = file[file.length - 1];
-		if (file === "jpg") file = "jpeg";
+		if (file.toLowerCase() === "jpg") file = "jpeg";
 
 		let image = await Sharp(src).resize({
 			width: 1200,
@@ -114,7 +152,7 @@ export const ogPhoto = async (src) => {
 
 		return result;
 	} catch (error) {
-		console.error(src, '\n', error);
+		console.error('IMAGE: ' + src, '\n', error, '\n');
 	}
 };
 
@@ -164,7 +202,7 @@ export const image = async (src, alt, type, option, figp) => {
 		let category = src.split('/')[3];
 		let name = src.split('/')[4].slice(0, -4);
 		let file = src.split(".")[2];
-		if (file === "jpg") file = "jpeg";
+		if (file.toLowerCase() === "jpg") file = "jpeg";
 
 		let newWidths;
 		if (type === "default") {
@@ -234,6 +272,6 @@ export const image = async (src, alt, type, option, figp) => {
 			return await `${picture}`;
 		}
 	} catch (error) {
-		console.error(src, '\n', error);
+		console.error('IMAGE: ' + src, '\n', error, '\n');
 	}
 };

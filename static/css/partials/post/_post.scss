@@ -140,6 +140,7 @@
 			color: white;
 			background-color: hsl(from var(--color-iron) h s calc(l * .95) / .75);
 			text-transform: uppercase;
+			line-height: 1.15;
 			@include font-weight-width(600, 90);
 			@include button;
 			@include contrast(both) {
@@ -601,6 +602,20 @@
 	}
 }
 
+.button-bluesky {
+	--background: radial-gradient(
+		circle at center left,
+		var(--color-bluesky),
+		var(--color-bluesky-dark),
+		hsl(from var(--color-bluesky-dark) h s calc(l*.5))
+	);
+	> span {
+		&::before {
+			background-image: url(/static/images/svg/social/bluesky.svg);
+		}
+	}
+}
+
 .button-mastodon {
 	--background: radial-gradient(
 		circle at center left,
@@ -620,7 +635,7 @@
 	);
 	> span {
 		&::before {
-			background-image: url(/static/images/svg/icons/mastodon.svg);
+			background-image: url(/static/images/svg/social/mastodon.svg);
 		}
 	}
 }
