@@ -1,0 +1,37 @@
+---js
+{
+	tags: ["entries", "threads"],
+	category: "social",
+	pagination: {
+		data: "threads.data",
+		size: 1,
+		addAllPagesToCollections: true,
+		alias: "threads"
+	},
+	hidden: [
+		"18032613500497261",
+		"18006082693849250",
+		"18097472725329661",
+		"18378272833035095",
+		"17849677209017908",
+
+	],
+	permalink: false,
+	eleventyComputed: {
+		threads(data) {
+			data.source = "threads",
+			data.page.date = new Date(data.threads.timestamp);
+			data.id = data.threads.id;
+			data.content = data.threads.text;
+			data.url = data.threads.permalink;
+			data.size = "s";
+			data.mediaType = data.threads.media_type;
+			data.mediaThumbnail = data.threads.thumbnail_url;
+			data.mediaUrl = data.threads.media_url;
+			data.mediaAlt = data.threads.alt_text;
+			if (!data.threads.text) data.hide = true;
+			if (data.hidden.indexOf(data.threads.id) !== -1) data.hide = true;
+		}
+	}
+}
+---

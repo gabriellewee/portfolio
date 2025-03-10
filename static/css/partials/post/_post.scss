@@ -616,6 +616,20 @@
 	}
 }
 
+.button-threads {
+	--background: radial-gradient(
+		circle at center left,
+		var(--color-instagram-start),
+		var(--color-instagram-middle),
+		var(--color-instagram-end)
+	);
+	> span {
+		&::before {
+			background-image: url(/static/images/svg/social/threads.svg);
+		}
+	}
+}
+
 .button-mastodon {
 	--background: radial-gradient(
 		circle at center left,

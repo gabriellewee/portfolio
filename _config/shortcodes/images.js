@@ -4,9 +4,67 @@ import Sharp from 'sharp';
 import EleventyFetch from '@11ty/eleventy-fetch';
 import nbspFilter from 'eleventy-nbsp-filter';
 
-export const stats = async (src, type, value) => {
+const fetchImageBuffer = async (url) => {
 	try {
-		let stats = await Sharp(src);
+		return await EleventyFetch(url, {
+			duration: "1d",
+			type: "buffer",
+		});
+	} catch (error) {
+		console.error("Error fetching image:", error);
+		return null;
+	}
+};
+
+const findExtension = (src) => {
+	let file;
+	if (src.includes("@")) {
+		file = src.split("@");
+		file = file[file.length - 1];
+	} else if (src.includes("?")) {
+		const urlObj = new URL(src);
+		urlObj.search = '';
+		urlObj.hash = '';
+		file = urlObj.toString().split(".");
+		file = file[file.length - 1];
+	} else {
+		file = src.split(".");
+		file = file[file.length - 1];
+	}
+	if (file.toLowerCase() === "jpg") file = "jpeg";
+
+	return file;
+};
+
+const saveImageBuffer = async (src, platform, id, extension) => {
+	try {
+		let image;
+		if((src.includes("@") || src.includes("?"))) {
+			let file ;
+			extension ? file = extension : file = findExtension(src);
+			await fs.mkdir(`./_site/static/images/external/${platform}`, { recursive: true });
+			const buffer = await fetchImageBuffer(src);
+			if (!buffer) throw new Error("Image fetch failed");
+
+			const outputPath = `./_site/static/images/external/${platform}/${id}.${file}`;
+			await fs.writeFile(outputPath, buffer);
+
+			image = outputPath;
+		} else {
+			image = src;
+		}
+
+		return image;
+	} catch (error) {
+		console.error("Error saving image:", error);
+		return null;
+	}
+};
+
+export const stats = async (src, type, value, platform, id) => {
+	try {
+		let image = await saveImageBuffer(src, platform, id);
+		let stats = await Sharp(image);
 		let result;
 		let reduce = (numerator, denominator) => {
 			let gcd = (a, b) => {
@@ -59,46 +117,12 @@ export const stats = async (src, type, value) => {
 	}
 };
 
-const fetchImageBuffer = async (url) => {
+export const external = async (src, alt, width, loading, platform, id) => {
 	try {
-		return await EleventyFetch(url, {
-			duration: "1d",
-			type: "buffer",
-		});
-	} catch (error) {
-		console.error("Error fetching image:", error);
-		return null;
-	}
-};
-
-export const external = async (src, alt, width, loading) => {
-	try {
-		let file;
-		if(src.includes("@")) {
-			file = src.split("@");
-			file = file[file.length - 1];
-		} else {
-			file = src.split(".");
-			file = file[file.length - 1];
-		}
-		if (file.toLowerCase() === "jpg") file = "jpeg";
+		let file = findExtension(src);
+		let image = await saveImageBuffer(src, platform, id, file);
 		if (!loading) loading = "lazy";
 		alt = alt.replace(/ :(.*?):$/g, '');
-		let image;
-
-		if(src.includes("@")) {
-			let hash = src.match(/([^/]+)(?=@)/)[0];
-			await fs.mkdir('./_site/static/images/external/bluesky', { recursive: true });
-			const buffer = await fetchImageBuffer(src);
-			if (!buffer) throw new Error("Image fetch failed");
-
-			const outputPath = `./_site/static/images/external/bluesky/${hash}.${file}`;
-			await fs.writeFile(outputPath, buffer);
-
-			image = outputPath;
-		} else {
-			image = src;
-		}
 
 		let newWidths;
 		if (width > 1000) {
@@ -126,33 +150,25 @@ export const external = async (src, alt, width, loading) => {
 		`;
 		return result;
 	} catch (error) {
-		console.error('IMAGE: ' + src, '\n', error, '\n');
+		console.error('Image: ' + src, '\n', error, '\n');
 	}
 };
 
 export const ogPhoto = async (src) => {
 	try {
-		let file = src.split(".");
-		file = file[file.length - 1];
-		if (file.toLowerCase() === "jpg") file = "jpeg";
+		let file = findExtension(src);
+		let name = src.split(".");
+		name = name[1].split("/");
+		name = name[name.length-1];
 
-		let image = await Sharp(src).resize({
+		let result = await Sharp(src).resize({
 			width: 1200,
 			height: 630
-		}).toFormat(file).toBuffer();
+		}).toFormat(file).clone().toFile(`./_site/static/images/og/${name}.${file}`);
 
-		let stats = await Image(image, {
-			widths: [null],
-			formats: [file],
-			urlPath: `/static/images/og`,
-			outputDir: `./_site/static/images/og`
-		});
-		
-		let result = stats[file][0].url;
-
-		return result;
+		return `/static/images/og/${name}.${file}`;
 	} catch (error) {
-		console.error('IMAGE: ' + src, '\n', error, '\n');
+		console.error('Image: ' + src, '\n', error, '\n');
 	}
 };
 
@@ -192,7 +208,7 @@ export const unfurlGame = async (link, title, className, width, loading) => {
 
 		return result;
 	} catch (error) {
-		console.error(error);
+		console.error('Title: ' + title, '\n', error, '\n');
 		return `<a class="${className} button" href="${link}"><span>${title}</span></a>`;
 	}
 };
@@ -272,6 +288,6 @@ export const image = async (src, alt, type, option, figp) => {
 			return await `${picture}`;
 		}
 	} catch (error) {
-		console.error('IMAGE: ' + src, '\n', error, '\n');
+		console.error('Image: ' + src, '\n', error, '\n');
 	}
 };

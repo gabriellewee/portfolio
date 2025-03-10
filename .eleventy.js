@@ -78,37 +78,74 @@ export default function (eleventyConfig) {
 		excerpt_separator: "<!-- more -->"
 	});
 
+	const stripTags = (content) => {
+		if (content.startsWith("<")) {
+			return string(content).stripTags().s;
+		} else {
+			return content;
+		}
+	};
+
+	const createPlatforms = (entry, mainEntry) => {
+		if (!mainEntry.data.platforms) {
+			mainEntry.data.platforms = [];
+		}
+		if (!mainEntry.data.platforms.some(item => item.url === entry.data.url)) {
+			mainEntry.data.platforms.push({
+				platform: entry.data.source,
+				url: entry.data.url
+			});
+		}
+	};
+
+	const compareTime = (timestamp, date) => {
+		return Math.abs(timestamp - new Date(date).getTime());
+	};
+
 	eleventyConfig.addCollection("entries", function (collectionApi) {
 		const entries = [...collectionApi.getFilteredByTag("entries")];
-
-		let blueskyPosts = new Map();
-		for (let entry of entries) {
-			if (entry.data.source === "bluesky") {
-				let timestamp = new Date(entry.date).getTime();
-				blueskyPosts.set(timestamp, entry);
-			}
-		}
+		const threshold = 21600000;
 
 		return entries.filter(entry => {
 			if (entry.data.self == true || entry.data.hide == true || entry.data.in_reply != null || entry.data.visibility === "direct") return false;
 
-			if (entry.data.source === "mastodon") {
+			let blueskyPosts = new Map();
+			let mastodonPosts = new Map();
+
+			for (let entry of entries) {
+				if (entry.data.source === "bluesky") {
+					let timestamp = new Date(entry.date).getTime();
+					blueskyPosts.set(timestamp, entry);
+				} else if (entry.data.source === "mastodon") {
+					let timestamp = new Date(entry.date).getTime();
+					mastodonPosts.set(timestamp, entry);
+				}
+			}
+
+			if (entry.data.source === "mastodon" || entry.data.source === "threads") {
 				for (let [timestamp, blueskyEntry] of blueskyPosts) {
-					let mastodonContent = string(entry.data.content).stripTags().s;
+					let entryContent = stripTags(entry.data.content);
+					let blueskyContent = blueskyEntry.data.content;
 					if (
-						(Math.abs(timestamp - new Date(entry.date).getTime()) < 7200000) &&
-						(mastodonContent && blueskyEntry.data.content &&
-					mastodonContent.trim().substring(0, 20) === blueskyEntry.data.content.trim().substring(0, 20))
+						(compareTime(timestamp, entry.date) < threshold) &&
+						(entryContent && blueskyContent &&
+					entryContent.trim().substring(0, 20) === blueskyContent.trim().substring(0, 20))
 					) {
-						if (!blueskyEntry.data.platforms) {
-							blueskyEntry.data.platforms = [];
-						}
-						if (!blueskyEntry.data.platforms.some(item => item.url === entry.data.url)) {
-							blueskyEntry.data.platforms.push({
-								platform: entry.data.source,
-								url: entry.data.url
-							});
-						}
+						createPlatforms(entry, blueskyEntry);
+						return false;
+					}
+				}
+			}
+			if (entry.data.source === "threads") {
+				for (let [timestamp, mastodonEntry] of mastodonPosts) {
+					let entryContent = entry.data.content;
+					let mastodonContent = stripTags(mastodonEntry.data.content);
+					if (
+						(compareTime(timestamp, entry.date) < threshold) &&
+						(entryContent && mastodonContent &&
+					entryContent.trim().substring(0, 20) === mastodonContent.trim().substring(0, 20))
+					) {
+						createPlatforms(entry, mastodonEntry);
 						return false;
 					}
 				}
