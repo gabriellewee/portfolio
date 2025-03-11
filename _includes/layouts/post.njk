@@ -11,7 +11,7 @@ eleventyComputed:
   year: "{{date|year}}"
 ---
 
-<section class="posts-container post-single h-entry">
+<section class="content post-single h-entry">
 	<div class="posts">
 		<article class="post post-{{category}}{% for tag in tags %}{% if tag != 'entries' %} post-{{tag}}{% endif %}{% endfor %}">
 			<div class="post-inner">

@@ -39,6 +39,25 @@
 			"location": "Oakland, CA"
 		}
 	],
+	"education": [
+		{
+			"start": 2012,
+			"end": 2016,
+			"type": "Bachelor of Applied Science",
+			"major": "Game Art and Design",
+			"school": "SAE Ex’pression College",
+			"location": "Emeryville, CA"
+		}
+	],
+	"volunteering": [
+		{
+			"start": 2013,
+			"end": 2016,
+			"title": "Graphic Designer",
+			"organization": "Chinese Independent Baptist Church",
+			"location": "Oakland, CA"
+		}
+	],
 	"links": [
 		{
 			"title": "View read.cv profile",

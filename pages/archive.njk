@@ -13,7 +13,7 @@ eleventyNavigation:
     footer: true
 ---
 
-<section class="posts-container">
+<section class="content">
 	<article class="posts-archive">
 		{% for year, posts in collections.writing | groupby("data.year") | dictsort | reverse %}
 			<h2 data-anim>{{year}}</h2>

@@ -30,7 +30,7 @@ $x-large: 1280px;
 			@content;
 		}
 	} @else {
-		@media only screen and (min-width: $viewport) {
+		@media screen and (min-width: $viewport) {
 			@content;
 		}
 	}
