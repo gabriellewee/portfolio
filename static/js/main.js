@@ -78,10 +78,19 @@ const mediaTriggers = (media) => {
 	});
 }
 
+const targetBlankLinks = (links = document.getElementsByTagName("a")) => {
+	for (var i = 0; i < links.length; i++) {
+		if (/^(https?:)?\/\//.test(links[i].getAttribute("href"))) {
+			links[i].target = "_blank";
+		}
+	}
+}
+
 frames("[data-reload]");
 timeAgo("[data-time]");
 durationFormat("[data-duration]");
 mediaTriggers("[data-media-container]");
+targetBlankLinks();
 
 let container = document.querySelector("[data-grid]");
 let iso;
@@ -146,6 +155,7 @@ if (scrollContainer && lightboxContainer) {
 		timeAgo("[data-time]");
 		durationFormat("[data-duration]");
 		mediaTriggers("[data-media-container]");
+		targetBlankLinks();
 	});
 } else if(lightboxContainer) {
 	lightbox("[data-media-expand]", "[data-lightbox]");
@@ -301,11 +311,3 @@ const animateItems = (items, key) => {
 
 	animateQueries(enter, key);
 }
-
-const targetBlankLinks = ((links = document.getElementsByTagName("a")) => {
-	for (var i = 0; i < links.length; i++) {
-		if (/^(https?:)?\/\//.test(links[i].getAttribute("href"))) {
-			links[i].target = "_blank";
-		}
-	}
-})();
