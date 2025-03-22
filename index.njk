@@ -210,7 +210,7 @@ eleventyNavigation:
 								{% for media in post.data.media %}
 									{% if media.thumb %}
 										<figure id="external-{{postindex}}-{{post.data.cid|truncate(5, true, '')}}" class="media-attachment" aria-label="{{media.alt}}">
-											<a class="expand" href="#external-{{postindex}}-{{post.data.cid|truncate(5, true, '')}}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
+											<a class="expand" href="#external-{{postindex}}-{{post.data.cid|truncate(5, true, '')}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
 												{% external media.thumb, '', 500, 'lazy', post.data.source, post.data.cid %}
 											</a>
 										</figure>
@@ -317,7 +317,7 @@ eleventyNavigation:
 			{%- set postindex = loop.index %}
 			{% for media in post.data.media %}
 				{% if media.thumb %}
-					<a class="lightbox" id="external-{{postindex}}-{{post.data.cid|truncate(5, true, '')}}" role="button" aria-label="Close image" href="#external-{{postindex}}-{{post.data.cid|truncate(5, true, '')}}" data-lightbox data-lightbox-append></a>
+					<a class="lightbox" id="external-{{postindex}}-{{post.data.cid|truncate(5, true, '')}}-lightbox" role="button" aria-label="Close image" href="#external-{{postindex}}-{{post.data.cid|truncate(5, true, '')}}" data-lightbox data-lightbox-append></a>
 					<dialog class="lightbox-content image" aria-label="Image preview" autofocus data-lightbox-append>
 						<figure>
 							{% external media.fullsize, media.alt, media.aspectRatio.width %}
