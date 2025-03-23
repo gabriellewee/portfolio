@@ -127,7 +127,6 @@ const lightbox = (buttons, boxes, scroll) => {
 			lightbox.addEventListener("click", e => {
 				e.preventDefault();
 				deactivate(lightbox);
-				scrollTo(lightbox);
 			}, { signal });
 
 			let content = lightbox.nextElementSibling;
@@ -135,7 +134,6 @@ const lightbox = (buttons, boxes, scroll) => {
 				content.addEventListener("click", e => {
 					e.preventDefault();
 					deactivate(lightbox);
-					scrollTo(lightbox);
 				}, { signal });
 			}
 
