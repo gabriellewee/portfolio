@@ -2,6 +2,8 @@
 @use 'partials/shared/mixins' as *;
 
 .post-recipe {
+	view-transition-name: post;
+
 	@supports (container-type: inline-size) {
 		container-type: inline-size;
 		container-name: recipe;
@@ -10,6 +12,7 @@
 	.post-header {
 		position: relative;
 		h2 {
+			view-transition-name: title;
 			order: 2;
 			font-size: 2.5rem;
 			line-height: 1.1;
@@ -79,6 +82,7 @@
 				hsl(from var(--color-grey) h s calc(l * .6)),
 				hsl(from var(--color-mint) h calc(s * .5) l)
 			);
+			view-transition-name: date;
 			transition: translate .2s ease-out;
 			order: 1;
 			margin-bottom: var(--p);

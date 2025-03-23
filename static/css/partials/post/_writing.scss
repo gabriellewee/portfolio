@@ -1,11 +1,13 @@
 @use 'partials/shared/utilities' as *;
 
 .post-writing {
+	view-transition-name: post;
 	.post-header {
 		&.inline-header {
 			padding-bottom: var(--p);
 		}
 		h2 {
+			view-transition-name: title;
 			order: 2;
 			width: 100%;
 			font-size: 2rem;
@@ -64,6 +66,7 @@
 			}
 		}
 		time {
+			view-transition-name: date;
 			@include container(header, medium, $iphone-max) {
 				margin-left: var(--p);
 			}

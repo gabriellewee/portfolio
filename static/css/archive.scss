@@ -18,6 +18,7 @@
 		@include font-weight-width(1000, 120);
 	}
 	h3 {
+		view-transition-name: title;
 		font-size: 2rem;
 		line-height: 1.1;
 		@include font-weight-width(800, 120);
@@ -93,13 +94,15 @@
 		}
 	}
 	time {
-		@include font-weight-width(600, 90);
+		view-transition-name: date;
 		display: block;
 		margin-top: calc(var(--p)/2);
 		white-space: nowrap;
 		text-transform: uppercase;
+		@include font-weight-width(600, 90);
 	}
 	li {
+		view-transition-name: post;
 		margin-top: .75rem;
 	}
 }
