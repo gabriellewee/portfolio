@@ -68,9 +68,15 @@ $x-large: 1280px;
 	}
 }
 
-@mixin safari {
-	@supports (hanging-punctuation: first) and (font: -apple-system-body) and (-webkit-appearance: none) {
-		@content;
+@mixin safari($supports: true) {
+	@if $supports == true {
+		@supports (hanging-punctuation: first) and (font: -apple-system-body) and (-webkit-appearance: none) {
+			@content;
+		}
+	} @else if $supports == false {
+		@supports not ((hanging-punctuation: first) and (font: -apple-system-body) and (-webkit-appearance: none)) {
+			@content;
+		}
 	}
 }
 
