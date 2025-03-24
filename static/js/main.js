@@ -224,6 +224,7 @@ const copyButtons = ((buttons = Array.from(document.querySelectorAll("[data-clip
 })();
 
 const loading = document.querySelector(".loading");
+const refresh = document.querySelector(".go-home");
 const animateQueries = (timeline, key) => {
 	new imagesLoaded(document.body, () => {
 		if (window.scrollY > 0) {
@@ -305,6 +306,7 @@ const animateItems = (items, key) => {
 			y: 0,
 			onComplete() {
 				if (item.hasAttribute("data-anim")) item.removeAttribute("data-anim");
+				if (refresh) refresh.classList.remove("hidden");
 			}
 		}, "<.1");
 	});

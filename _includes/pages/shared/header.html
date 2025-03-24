@@ -20,11 +20,9 @@
 			<a href="/" tabindex="0" aria-labelledby="avatar-message">
 				<span class="avatar avatar-{{avatar if avatar else 'default'}}"></span>
 				<span class="avatar avatar-hm"></span>
-				{% if (key == "home") and (pagination.pageNumber == 0) %}
-					<span id="avatar-message" aria-hidden="true" class="text go-home">Refresh?</span>
-				{% else %}
-					<span id="avatar-message" aria-hidden="true" class="text go-home">Go home?</span>
-				{% endif %}
+				<span id="avatar-message" aria-hidden="true" class="text go-home hidden">
+					{% if (key == "home") and (pagination.pageNumber == 0) %}Refresh?{% else %}Go home?{% endif %}
+				</span>
 			</a>
 
 			{% if (loading and key != "home") or (loading and key == "home" and pagination.pageNumber == 0) %}

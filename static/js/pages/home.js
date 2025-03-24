@@ -45,6 +45,7 @@ posts.forEach(post => {
 		y: 0,
 		onComplete() {
 			if (post.hasAttribute("data-anim")) post.removeAttribute("data-anim");
+			if (refresh) refresh.classList.remove("hidden");
 		}
 	}, "<.1");
 });

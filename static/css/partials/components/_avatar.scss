@@ -94,6 +94,9 @@
 				translate: 0 -50%;
 			}
 		}
+		&.hidden {
+			display: none;
+		}
 	}
 	a {
 		display: block;
