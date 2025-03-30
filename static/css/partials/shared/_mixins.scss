@@ -17,16 +17,35 @@
 		&::before {
 			position: absolute;
 			z-index: 3;
-			top: #{$padding};
-			left: #{$padding};
 			background: url(/static/images/svg/icons/#{$icon}.svg) no-repeat center / contain;
 			width: $width;
 			height: $height;
+			@if $touch == true {
+				bottom: #{$padding};
+				right: #{$padding};
+				@include hover {
+					top: #{$padding};
+					left: #{$padding};
+					bottom: unset;
+					right: unset;
+				}
+			} @else {
+				top: #{$padding};
+				left: #{$padding};
+			}
 		}
 		&::after {
 			z-index: 2;
+			@if $touch == true {
+				--position: 100% 100%;
+				@include hover {
+					--position: 0% 0%;
+				}
+			} @else {
+				--position: 0% 0%;
+			}
 			background: radial-gradient(
-				farthest-corner at 0% 0%,
+				farthest-corner at var(--position),
 				hsl(from var(--color-iron) h s calc(l * .45) / .2) 0,
 				hsl(from var(--color-iron) h s calc(l * .45) / 0) 45%
 			);
