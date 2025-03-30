@@ -1,12 +1,18 @@
 @use 'partials/shared/utilities' as *;
 
-@mixin expand-hover($icon: expand, $width: 23px, $height: $width, $padding: var(--p)) {
+@mixin expand-hover($icon: expand, $width: 23px, $height: $width, $padding: var(--p), $touch: false) {
 	picture {
 		&::before, &::after {
 			content: "";
 			display: block;
 			transition: opacity .2s ease-out;
-			opacity: 0;
+			@if $touch == true {
+				@include hover {
+					opacity: 0;
+				}
+			} @else {
+				opacity: 0;
+			}
 		}
 		&::before {
 			position: absolute;

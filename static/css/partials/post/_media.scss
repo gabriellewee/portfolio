@@ -45,21 +45,32 @@
 	}
 
 	.media-view-touch {
+		transition: opacity .2s ease-out;
 		display: block;
-		position: absolute;
-		bottom: 0;
-		right: 0;
-		padding: calc(var(--p)*.75) var(--p);
-		color: hsl(from white h s l / .8);
-		font-size: 1rem;
-		text-transform: uppercase;
-		@include font-weight-width(600, 80);
-		@include blur(3px, var(--color-iron), .45, .5, .3);
-		@include clip-path(false) {
-			border-top-left-radius: 3px;
+		&::before, &::after {
+			content: "";
+			display: block;
 		}
-		@include clip-path {
-			clip-path: polygon(2px 0, 100% 0, 100% 100%, 0 100%, 0 2px);
+		&::before {
+			transition: transform .2s ease-out .3s;
+			position: absolute;
+			z-index: 3;
+			bottom: var(--p);
+			right: var(--p);
+			background: url(/static/images/svg/icons/info.svg) no-repeat center / contain;
+			width: 23px;
+			height: 23px;
+		}
+		&::after {
+			z-index: 2;
+			background: radial-gradient(
+				farthest-corner at 100% 100%,
+				hsl(from var(--color-iron) h s calc(l * .45) / .2) 0,
+				hsl(from var(--color-iron) h s calc(l * .45) / 0) 45%
+			);
+			mix-blend-mode: multiply;
+			@include full-offset(0);
+			@include clip-path-edges(2px);
 		}
 		@include hover {
 			display: none;
@@ -582,6 +593,15 @@
 							@media (prefers-reduced-motion: no-preference) {
 								translate: 0 100%;
 							}
+						}
+					}
+				}
+				.media-view-touch {
+					opacity: 0;
+					&::before {
+						transition: transform .2s ease-out;
+						@media (prefers-reduced-motion: no-preference) {
+							translate: 0 100%;
 						}
 					}
 				}

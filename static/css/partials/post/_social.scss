@@ -109,7 +109,7 @@
 		.expand {
 			transition: scale .2s ease-out;
 			display: block;
-			@include expand-hover;
+			@include expand-hover($touch: true);
 			&::before {
 				background: radial-gradient(
 					circle at center left,

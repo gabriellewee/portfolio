@@ -343,7 +343,7 @@
 		}
 	}
 	.post-expand {
-		@include expand-hover;
+		@include expand-hover($touch: true);
 		&:hover {
 			@media (prefers-reduced-motion: no-preference) {
 				scale: 1.01;
