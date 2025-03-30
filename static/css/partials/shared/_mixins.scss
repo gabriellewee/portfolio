@@ -2,6 +2,14 @@
 
 @mixin expand-hover($icon: expand, $width: 23px, $height: $width, $padding: var(--p), $touch: false) {
 	picture {
+		@if $touch == true {
+			--position: 100% 100%;
+			@include hover {
+				--position: 0% 0%;
+			}
+		} @else {
+			--position: 0% 0%;
+		}
 		&::before, &::after {
 			content: "";
 			display: block;
@@ -36,14 +44,6 @@
 		}
 		&::after {
 			z-index: 2;
-			@if $touch == true {
-				--position: 100% 100%;
-				@include hover {
-					--position: 0% 0%;
-				}
-			} @else {
-				--position: 0% 0%;
-			}
 			background: radial-gradient(
 				farthest-corner at var(--position),
 				hsl(from var(--color-iron) h s calc(l * .45) / .2) 0,
