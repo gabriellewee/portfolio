@@ -3,7 +3,7 @@ import markdownItAnchor from 'markdown-it-anchor';
 import markdownItContainer from 'markdown-it-container';
 import markdownItAttrs from 'markdown-it-attrs';
 import markdownItTasks from 'markdown-it-task-checkbox';
-import string from 'string';
+import voca from 'voca';
 
 export const markdownLibrary = markdownIt({
 	html: true,
@@ -11,7 +11,7 @@ export const markdownLibrary = markdownIt({
 	linkify: true,
 	typographer: true
 }).use(markdownItAnchor, {
-	slugify: s => string(s).slugify().toString(),
+	slugify: s => voca.slugify(s),
 	permalink: markdownItAnchor.permalink.ariaHidden({
 		class: "direct-link",
 		symbol: "",

@@ -10,7 +10,7 @@ import * as sass from 'sass'
 import path from 'path';
 import { minify } from 'terser';
 import htmlmin from 'html-minifier-terser';
-import string from 'string';
+import voca from 'voca';
 
 export default function (eleventyConfig) {
 	eleventyConfig.setQuietMode(true);
@@ -80,7 +80,7 @@ export default function (eleventyConfig) {
 
 	const stripTags = (content) => {
 		if (content.startsWith("<")) {
-			return string(content).stripTags().s;
+			return voca.stripTags(content);
 		} else {
 			return content;
 		}
