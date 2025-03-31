@@ -1,29 +1,29 @@
 <svg viewBox="0 0 200 125" width="200" height="125" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 	<defs>
 		<linearGradient x1="50%" y1="130%" x2="50%" y2="0%" id="quadrant-gradient-1">
-			<stop stop-color="#FFFFFF" offset="0%"></stop>
-			<stop stop-color="#FFFFFF" stop-opacity="0" offset="100%"></stop>
+			<stop stop-color="#FFFFFF" offset="0%"/>
+			<stop stop-color="#FFFFFF" stop-opacity="0" offset="100%"/>
 		</linearGradient>
 		<linearGradient x1="0%" y1="50%" x2="100%" y2="50%" id="quadrant-gradient-2">
-			<stop stop-color="#FF0000" offset="0%"></stop>
-			<stop stop-color="#0000FF" offset="100%"></stop>
+			<stop stop-color="#FF0000" offset="0%"/>
+			<stop stop-color="#0000FF" offset="100%"/>
 		</linearGradient>
 		<linearGradient x1="50%" y1="100%" x2="50%" y2="-40%" id="quadrant-gradient-3">
-			<stop stop-color="#FFFFFF" stop-opacity="0" offset="0%"></stop>
-			<stop stop-color="#FFFFFF" offset="100%"></stop>
+			<stop stop-color="#FFFFFF" stop-opacity="0" offset="0%"/>
+			<stop stop-color="#FFFFFF" offset="100%"/>
 		</linearGradient>
 		<linearGradient x1="0%" y1="50%" x2="100%" y2="50%" id="quadrant-gradient-4">
-			<stop stop-color="#FFA500" offset="0%"></stop>
-			<stop stop-color="#FFFF00" offset="100%"></stop>
+			<stop stop-color="#FFA500" offset="0%"/>
+			<stop stop-color="#FFFF00" offset="100%"/>
 		</linearGradient>
 	</defs>
 	<g>
-		<rect fill="url(#quadrant-gradient-1)" x="0" y="0" width="200" height="125"></rect>
-		<rect fill="url(#quadrant-gradient-2)" style="mix-blend-mode: lighten;" x="0" y="0" width="200" height="125"></rect>
+		<rect fill="url(#quadrant-gradient-1)" x="0" y="0" width="200" height="125"/>
+		<rect fill="url(#quadrant-gradient-2)" style="mix-blend-mode: lighten;" x="0" y="0" width="200" height="125"/>
 	</g>
 	<g style="mix-blend-mode: darken;">
-		<rect fill="url(#quadrant-gradient-3)" x="0" y="0" width="200" height="125"></rect>
-		<rect fill="url(#quadrant-gradient-4)" style="mix-blend-mode: lighten;" x="0" y="0" width="200" height="125"></rect>
+		<rect fill="url(#quadrant-gradient-3)" x="0" y="0" width="200" height="125"/>
+		<rect fill="url(#quadrant-gradient-4)" style="mix-blend-mode: lighten;" x="0" y="0" width="200" height="125"/>
 	</g>
-	<rect fill="#FFFFFF" x="64" y="45" width="72" height="36" rx="2"></rect>
+	<rect fill="#FFFFFF" x="64" y="45" width="72" height="36" rx="2"/>
 </svg>

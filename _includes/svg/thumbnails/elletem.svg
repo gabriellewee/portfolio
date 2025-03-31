@@ -1,23 +1,23 @@
 <svg viewBox="0 0 200 125" width="200" height="125" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 	<defs>
 		<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="gradient-elletem">
-			<stop stop-color="#FF7C8E" offset="0%"></stop>
-			<stop stop-color="#FF91BA" offset="100%"></stop>
+			<stop stop-color="#FF7C8E" offset="0%"/>
+			<stop stop-color="#FF91BA" offset="100%"/>
 		</linearGradient>
 	</defs>
-		<rect fill="url(#gradient-elletem)" x="0" y="0" width="100%" height="100%"></rect>
+		<rect fill="url(#gradient-elletem)" x="0" y="0" width="100%" height="100%"/>
 		<g fill="#FEECB6">
-			<rect x="90.5" y="16.5" width="20" height="20" rx="2"></rect>
-			<rect x="90.5" y="40.5" width="20" height="20" rx="2"></rect>
-			<rect x="90.5" y="64.5" width="20" height="20" rx="2"></rect>
-			<rect x="90.5" y="88.5" width="20" height="20" rx="2"></rect>
+			<rect x="90.5" y="16.5" width="20" height="20" rx="2"/>
+			<rect x="90.5" y="40.5" width="20" height="20" rx="2"/>
+			<rect x="90.5" y="64.5" width="20" height="20" rx="2"/>
+			<rect x="90.5" y="88.5" width="20" height="20" rx="2"/>
 		</g>
-		<circle fill="#FEBFC0" cx="100.5" cy="50.5" r="7"></circle>
-		<circle fill="#CEABB3" cx="100.5" cy="50.5" r="5"></circle>
-		<circle fill="#FFFFFF" cx="100.5" cy="26.5" r="7"></circle>
-		<circle fill="#625978" cx="100.5" cy="26.5" r="4"></circle>
-		<circle fill="#FFF7E0" cx="100.5" cy="74.5" r="6"></circle>
-		<circle fill="#D35573" cx="100.5" cy="74.5" r="3"></circle>
-		<circle fill="#FFF7E0" cx="100.5" cy="98.5" r="6"></circle>
-		<circle fill="#D35573" cx="100.5" cy="98.5" r="3"></circle>
+		<circle fill="#FEBFC0" cx="100.5" cy="50.5" r="7"/>
+		<circle fill="#CEABB3" cx="100.5" cy="50.5" r="5"/>
+		<circle fill="#FFFFFF" cx="100.5" cy="26.5" r="7"/>
+		<circle fill="#625978" cx="100.5" cy="26.5" r="4"/>
+		<circle fill="#FFF7E0" cx="100.5" cy="74.5" r="6"/>
+		<circle fill="#D35573" cx="100.5" cy="74.5" r="3"/>
+		<circle fill="#FFF7E0" cx="100.5" cy="98.5" r="6"/>
+		<circle fill="#D35573" cx="100.5" cy="98.5" r="3"/>
 </svg>

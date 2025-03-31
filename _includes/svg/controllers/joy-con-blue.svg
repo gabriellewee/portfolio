@@ -1,30 +1,30 @@
 <svg viewBox="0 0 156 156" width="156" height="156" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 	<g stroke="none" stroke-linecap="round" stroke-linejoin="round">
-		<!-- <rect class="background" fill="#FFFFFF" x="0" y="0" width="156" height="156"></rect> -->
+		<!-- <rect class="background" fill="#FFFFFF" x="0" y="0" width="156" height="156"/> -->
 		<g class="lights">
-			<rect stroke="#BED0DF" fill="#7BA0BF" x="64.5" y="14.5" width="11" height="11" rx="1"></rect>
-			<rect stroke="#BED0DF" fill="#7BA0BF" x="48.5" y="14.5" width="11" height="11" rx="1"></rect>
-			<rect stroke="#BED0DF" fill="#7BA0BF" x="80.5" y="14.5" width="11" height="11" rx="1"></rect>
-			<rect stroke="#BED0DF" fill="#7BA0BF" x="96.5" y="14.5" width="11" height="11" rx="1"></rect>
+			<rect stroke="#BED0DF" fill="#7BA0BF" x="64.5" y="14.5" width="11" height="11" rx="1"/>
+			<rect stroke="#BED0DF" fill="#7BA0BF" x="48.5" y="14.5" width="11" height="11" rx="1"/>
+			<rect stroke="#BED0DF" fill="#7BA0BF" x="80.5" y="14.5" width="11" height="11" rx="1"/>
+			<rect stroke="#BED0DF" fill="#7BA0BF" x="96.5" y="14.5" width="11" height="11" rx="1"/>
 		</g>
 		<g class="left">
-			<path d="M55.5,49 C47.5197983,49 40,56.4780197 40,65 C40,79 40,93 40,107 C40,115.52198 47.5197983,123 55.5,123 L70.5,123 C71.0522847,123 71.5,122.552285 71.5,122 L71.5,50 C71.5,49.4477153 71.0522847,49 70.5,49 C63,49 63,49 55.5,49 Z" stroke="#697D8F" stroke-width="2" fill="#7BA0BF"></path>
-			<rect fill="#BED0DF" x="55.5" y="57" width="10" height="3" rx="1"></rect>
-			<circle fill="#BED0DF" cx="55.5" cy="73.5" r="5.5"></circle>
-			<circle fill="#BED0DF" cx="55.5" cy="88" r="3"></circle>
-			<circle fill="#BED0DF" cx="55.5" cy="100" r="3"></circle>
-			<circle fill="#BED0DF" cx="49.5" cy="94" r="3"></circle>
-			<circle fill="#BED0DF" cx="61.5" cy="94" r="3"></circle>
+			<path d="M55.5,49 C47.5197983,49 40,56.4780197 40,65 C40,79 40,93 40,107 C40,115.52198 47.5197983,123 55.5,123 L70.5,123 C71.0522847,123 71.5,122.552285 71.5,122 L71.5,50 C71.5,49.4477153 71.0522847,49 70.5,49 C63,49 63,49 55.5,49 Z" stroke="#697D8F" stroke-width="2" fill="#7BA0BF"/>
+			<rect fill="#BED0DF" x="55.5" y="57" width="10" height="3" rx="1"/>
+			<circle fill="#BED0DF" cx="55.5" cy="73.5" r="5.5"/>
+			<circle fill="#BED0DF" cx="55.5" cy="88" r="3"/>
+			<circle fill="#BED0DF" cx="55.5" cy="100" r="3"/>
+			<circle fill="#BED0DF" cx="49.5" cy="94" r="3"/>
+			<circle fill="#BED0DF" cx="61.5" cy="94" r="3"/>
 		</g>
 		<g class="right">
-			<path d="M99.5,49 C107.480202,49 115,56.4780197 115,65 L115,107 L115,107 C115,115.52198 107.480202,123 99.5,123 L84.5,123 C83.9477153,123 83.5,122.552285 83.5,122 L83.5,50 C83.5,49.4477153 83.9477153,49 84.5,49 L99.5,49 L99.5,49 Z" stroke="#697D8F" stroke-width="2" fill="#7BA0BF"></path>
-			<circle fill="#BED0DF" cx="99.5" cy="71" r="3"></circle>
-			<circle fill="#BED0DF" cx="99.5" cy="83" r="3"></circle>
-			<circle fill="#BED0DF" cx="93.5" cy="77" r="3"></circle>
-			<circle fill="#BED0DF" cx="105.5" cy="77" r="3"></circle>
-			<circle fill="#BED0DF" cx="99.5" cy="96.5" r="5.5"></circle>
-			<rect fill="#BED0DF" x="93.5" y="53" width="3" height="10" rx="1"></rect>
-			<rect fill="#BED0DF" x="90" y="56.5" width="10" height="3" rx="1"></rect>
+			<path d="M99.5,49 C107.480202,49 115,56.4780197 115,65 L115,107 L115,107 C115,115.52198 107.480202,123 99.5,123 L84.5,123 C83.9477153,123 83.5,122.552285 83.5,122 L83.5,50 C83.5,49.4477153 83.9477153,49 84.5,49 L99.5,49 L99.5,49 Z" stroke="#697D8F" stroke-width="2" fill="#7BA0BF"/>
+			<circle fill="#BED0DF" cx="99.5" cy="71" r="3"/>
+			<circle fill="#BED0DF" cx="99.5" cy="83" r="3"/>
+			<circle fill="#BED0DF" cx="93.5" cy="77" r="3"/>
+			<circle fill="#BED0DF" cx="105.5" cy="77" r="3"/>
+			<circle fill="#BED0DF" cx="99.5" cy="96.5" r="5.5"/>
+			<rect fill="#BED0DF" x="93.5" y="53" width="3" height="10" rx="1"/>
+			<rect fill="#BED0DF" x="90" y="56.5" width="10" height="3" rx="1"/>
 		</g>
 	</g>
 </svg>
