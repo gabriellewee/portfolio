@@ -8,14 +8,14 @@
 		"tags": "indoor cat animal portrait",
 		"description": "A grey kitten sitting on top of a fuzzy cat tree in front of a shelf filled with plushies and stuffed animals.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/DCVo8VRJObU/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/DCVo8VRJObU/"
+			}
 		],
 		"focus": {
-		 	"y": 65
-		 }
+			"y": 65
+		}
 	},
 	{
 		"name": "jeselle",
@@ -28,8 +28,8 @@
 		"size": "m",
 		"focus": {
 			"x": 50,
-		 	"y": 80
-		 }
+			"y": 80
+		}
 	},
 	{
 		"name": "isabelle",
@@ -40,14 +40,14 @@
 		"tags": "outdoor architecture people",
 		"description": "An Asian woman in a short poofy baby pink dress holding her long matching train as the wind blows, standing between columns with sunslight shining through.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/DBhGCtySVsA/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/DBhGCtySVsA/"
+			}
 		],
 		"focus": {
-		 	"y": 40
-		 }
+			"y": 40
+		}
 	},
 	{
 		"name": "alfie",
@@ -58,14 +58,14 @@
 		"tags": "outdoor nature plants cat animal portrait",
 		"description": "A grey cat with green eyes with a grey harness and green leash sitting quietly in an outdoor garden surrounded by large plants. He looks cold and his fur is puffed up so keep him warm.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/C9_GeR9y2Ed/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/C9_GeR9y2Ed/"
+			}
 		],
 		"focus": {
-		 	"y": 45
-		 }
+			"y": 45
+		}
 	},
 	{
 		"name": "baldwin-steps",
@@ -77,8 +77,8 @@
 		"description": "The view at sunset from the Baldwin Steps overlooking the street below and the cityscape of Toronto beyond.",
 		"size": "xs",
 		"focus": {
-		 	"y": 40
-		 }
+			"y": 40
+		}
 	},
 	{
 		"name": "jewelry",
@@ -89,14 +89,14 @@
 		"tags": "indoor flatlay",
 		"description": "A collection of jewerly on a white marble background, including a slim dual-faced watch, pink sapphire rings, rainbow beads, and a bright green jade pendant",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/C7uz_F9uwSx/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/C7uz_F9uwSx/"
+			}
 		],
 		"focus": {
-		 	"y": 60
-		 }
+			"y": 60
+		}
 	},
 	{
 		"name": "getty",
@@ -116,8 +116,8 @@
 		"tags": "outdoor indoor landscape",
 		"description": "The inside of a BART train, with the window overlooking the Oakland raising cranes at sunrise",
 		"focus": {
-		 	"y": 65
-		 }
+			"y": 65
+		}
 	},
 	{
 		"name": "home-depot",
@@ -128,10 +128,10 @@
 		"tags": "people portrait indoor",
 		"description": "A person with long bleached hair and a bright blue jacket sitting on a yellow rolling ladder in front of wood supplies at Home Depot.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/C0kuWQougsQ/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/C0kuWQougsQ/"
+			}
 		]
 	},
 	{
@@ -143,10 +143,10 @@
 		"tags": "indoor architecture",
 		"description": "A person with long hair in a light top and gray wide-leg pants standing with their back to the camera in a large mint-green room with a glass roof and sunshine streaming through.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/C0M5O5hP-Um/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/C0M5O5hP-Um/"
+			}
 		],
 		"size": "s"
 	},
@@ -168,14 +168,14 @@
 		"tags": "outdoor landscape water portrait",
 		"description": "A woman in a beige cap and an orange/green scarf partially covering her face taking a selfie in front of Chicago’s waterfront.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/C0M4_kgvJda/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/C0M4_kgvJda/"
+			}
 		],
 		"focus": {
-		 	"y": 60
-		 }
+			"y": 60
+		}
 	},
 	{
 		"name": "south-pier",
@@ -186,10 +186,10 @@
 		"tags": "outdoor landscape water",
 		"description": "The fire station on Chicago’s South Pier surrounded by blue water and blue sky.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/C0M5O5hP-Um/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/C0M5O5hP-Um/"
+			}
 		]
 	},
 	{
@@ -201,14 +201,14 @@
 		"tags": "cat animal portrait indoor",
 		"description": "A grey cat sitting on a fluffy cat tree surrounded by stuffed animals.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/CryxQ6zPyMC/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/CryxQ6zPyMC/"
+			}
 		],
 		"focus": {
-		 	"y": 42
-		 }
+			"y": 42
+		}
 	},
 	{
 		"name": "plant-cat",
@@ -219,14 +219,14 @@
 		"tags": "plants cat indoor",
 		"description": "A person’s hand holding out a small variegated banana tree in a pot, with a grey cat relaxing on a blanket in the background.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/CrE-R4tPGUO/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/CrE-R4tPGUO/"
+			}
 		],
 		"focus": {
-		 	"y": 52
-		 }
+			"y": 52
+		}
 	},
 	{
 		"name": "golden-gate",
@@ -237,14 +237,14 @@
 		"tags": "fog landscape city outdoor beach water bridge",
 		"description": "Fog rolling over Golden Gate Bridge in San Francisco.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/Cp3_DB2OWnv/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/Cp3_DB2OWnv/"
+			}
 		],
 		"focus": {
-		 	"y": 64
-		 }
+			"y": 64
+		}
 	},
 	{
 		"name": "spoons",
@@ -285,10 +285,10 @@
 		"tags": "cat animal portrait outdoor",
 		"description": "A grey cat with a grey harness sitting in a garden on an outdoor couch with orange cushions.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/CgQgAmZL1ul/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/CgQgAmZL1ul/"
+			}
 		],
 		"size": "m"
 	},
@@ -340,10 +340,10 @@
 		"tags": "flower plants nature indoor",
 		"description": "A bouquet of deep pink peonies.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/CdZZi6-pzlT/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/CdZZi6-pzlT/"
+			}
 		]
 	},
 	{
@@ -373,10 +373,10 @@
 		"tags": "cat animal portrait indoor",
 		"description": "A grey kitten lying down inside a cubby on a cat tower with his head sticking out.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/CfTOmMbO0tl/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/CfTOmMbO0tl/"
+			}
 		]
 	},
 	{
@@ -406,10 +406,10 @@
 		"tags": "art indoor nature",
 		"description": "An art gallery empty of people in the de Young Museum in San Francisco.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/CQb8AzEpnLp/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/CQb8AzEpnLp/"
+			}
 		],
 		"size": "m"
 	},
@@ -470,10 +470,10 @@
 		"tags": "sunset beach landscape outdoor water nature",
 		"description": "Sunset over Lands End Lookout in San Francisco.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/CNEaD0Pptf3/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/CNEaD0Pptf3/"
+			}
 		]
 	},
 	{
@@ -485,10 +485,10 @@
 		"tags": "trees flower plants outdoor nature",
 		"description": "Cherry blossoms lit by fairy lights during an evening in San Francisco’s Japantown.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/CMrGC2EJ5Gp/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/CMrGC2EJ5Gp/"
+			}
 		]
 	},
 	{
@@ -555,10 +555,10 @@
 		"tags": "sunset beach people landscape outdoor water nature",
 		"description": "Four people in the distance walking towards the camera from the water’s edge at a beach in Waldport, Oregon.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/CL8teVipWS5/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/CL8teVipWS5/"
+			}
 		]
 	},
 	{
@@ -580,10 +580,10 @@
 		"tags": "sunset beach landscape outdoor water nature",
 		"description": "Sunset over a beach in Waldport, Oregon.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/CLyOsC5pDzM/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/CLyOsC5pDzM/"
+			}
 		]
 	},
 	{
@@ -652,10 +652,10 @@
 		"tags": "fog landscape city outdoor",
 		"description": "Fog coming towards the camera from the top of Twin Peaks in San Francisco.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/CLanDMjpmXX/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/CLanDMjpmXX/"
+			}
 		]
 	},
 	{
@@ -667,10 +667,10 @@
 		"tags": "park flower plants outdoor nature",
 		"description": "Unknown white flowers at Glen Canyon Park in San Francisco.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/CLXzgsBpqY2/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/CLXzgsBpqY2/"
+			}
 		]
 	},
 	{
@@ -691,10 +691,10 @@
 		"tags": "outdoor city night rain landscape water",
 		"description": "San Francsico Chinatown during a rainy night, decorated with red lanterns for Lunar New Year.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/CLNLWq0J027/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/CLNLWq0J027/"
+			}
 		]
 	},
 	{
@@ -715,10 +715,10 @@
 		"tags": "sunset landscape outdoor beach water nature people",
 		"description": "Sunset over Ocean Beach in San Francisco.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/CKu5FiOpSxv/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/CKu5FiOpSxv/"
+			}
 		]
 	},
 	{
@@ -730,10 +730,10 @@
 		"tags": "forest sunset landscape park outdoor nature",
 		"description": "Sunset through the trees at Lands End in San Francisco.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/CKdRu2TJNHY/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/CKdRu2TJNHY/"
+			}
 		]
 	},
 	{
@@ -754,10 +754,10 @@
 		"tags": "sunset landscape city outdoor",
 		"description": "Clouds and golden light over San Francisco.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/CKA5273J7Qd/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/CKA5273J7Qd/"
+			}
 		]
 	},
 	{
@@ -779,10 +779,10 @@
 		"tags": "sunset landscape city outdoor beach water bridge",
 		"description": "San Francisco’s Golden Gate Bridge at sunset facing Sausalito.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/CJCq3X-pHNz/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/CJCq3X-pHNz/"
+			}
 		]
 	},
 	{
@@ -803,10 +803,10 @@
 		"tags": "people indoor perspective",
 		"description": "A man in a striped shirt standing in the center of a long aisle of white metal storage units.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/CG_nVcZJCcO/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/CG_nVcZJCcO/"
+			}
 		],
 		"size": "xs"
 	},
@@ -819,10 +819,10 @@
 		"tags": "sunset landscape outdoor people",
 		"description": "Sunset over the salt ponds at Alviso Marina County Park in San Jose, California.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/CEuSAN-pcf6/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/CEuSAN-pcf6/"
+			}
 		],
 		"size": "m"
 	},
@@ -844,10 +844,10 @@
 		"tags": "sunset landscape architecture outdoor",
 		"description": "A closeup of the architectural details and structure of Fushimi Inari-taisha in Kyoto, the head shrine of the Japanese fox deity Inari Ōkami.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/CC94wJ1p-tr/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/CC94wJ1p-tr/"
+			}
 		],
 		"size": "xs"
 	},
@@ -869,10 +869,10 @@
 		"tags": "landscape outdoor aerial nature",
 		"description": "Red rock formations from a bird’s eye view of Thoreau, New Mexico.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/B9AxAu5p8TQ/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/B9AxAu5p8TQ/"
+			}
 		]
 	},
 	{
@@ -893,10 +893,10 @@
 		"tags": "landscape outdoor water trees plants nature",
 		"description": "Blue palm trees at Fairchild Tropical Botanic Garden in Coral Gables, Florida.",
 		"external": [
-			 {
-			 	"platform": "instagram",
-			 	"url": "https://www.instagram.com/p/B9AxrwmJBnk/"
-			 }
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/B9AxrwmJBnk/"
+			}
 		]
 	},
 	{

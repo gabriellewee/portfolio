@@ -267,11 +267,11 @@ $x-large: 1280px;
 @mixin clip-path($support: true) {
 	@if $support == true {
 		@supports (-webkit-clip-path: polygon(0 0)) or (clip-path: polygon(0 0)) {
-		  	@content;
+			@content;
 		}
 	} @else {
 		@supports not ((-webkit-clip-path: polygon(0 0)) or (clip-path: polygon(0 0))) {
-		  	@content;
+			@content;
 		}
 	}
 }

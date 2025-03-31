@@ -7,9 +7,9 @@
 		"tags": "typography digital plants",
 		"description": "A sketch of a philodendron Melanochrysum leaf using digital brushes to imitate color pencils.",
 		"focus": {
-		 	"x": 0,
-		 	"y": 12
-		 }
+			"x": 0,
+			"y": 12
+		}
 	},
 	{
 		"name": "slow-down",
@@ -19,9 +19,9 @@
 		"tags": "typography digital nature",
 		"description": "White cursive text that reads “Slow Down” over a faded photograph of trees.",
 		"focus": {
-		 	"x": 0,
-		 	"y": 29
-		 }
+			"x": 0,
+			"y": 29
+		}
 	},
 	{
 		"name": "therapy",
