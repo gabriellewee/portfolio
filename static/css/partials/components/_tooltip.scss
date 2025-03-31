@@ -7,17 +7,19 @@
 	align-items: center;
 	position: relative;
 	width: fit-content;
+	@include theme(light) {
+		--background: var(--color-message);
+		--color: var(--iron);
+	}
+	@include theme(dark) {
+		--background: hsl(from var(--color-iron) h s calc(l * .7));
+		--color: white;
+	}
 	&::before, &::after {
 		display: block;
 		position: absolute;
-		@include theme(light) {
-			background-color: var(--color-message);
-			color: var(--color-primary);
-		}
-		@include theme(dark) {
-			background-color: hsl(from var(--color-iron) h s calc(l * .7));
-			color: white;
-		}
+		background-color: var(--background);
+		color: var(--color);
 	}
 	&::before {
 		content: "";
@@ -29,9 +31,10 @@
 		content: var(--tooltip-label);
 		z-index: 2;
 		width: fit-content;
-		padding: calc(var(--p)/2) calc(var(--p)/3*2);
+		padding: calc(var(--p)/3*2);
 		border-radius: calc(var(--r) - 1px);
 		font-size: .75rem;
+		line-height: 1;
 		text-transform: uppercase;
 		white-space: nowrap;
 		@include font-weight-width(600, 100);
@@ -76,7 +79,7 @@
 		--t: 12px;
 		&::after {
 			font-size: 1rem;
-			padding: calc(var(--p)/3*2) var(--p) calc(var(--p)/2);
+			padding: calc(var(--p)/3*2);
 			border-radius: calc(var(--r) + 1px);
 		}
 	}
@@ -122,6 +125,16 @@
 			left: calc(100% + var(--p)/3*2 + var(--t)/2);
 		}
 	}
+	&-left {
+		&::before {
+			border-top-right-radius: calc(var(--r) - 1px);
+			top: calc(50% - var(--t)/2);
+			right: calc(100% + var(--p)/3*2);
+		}
+		&::after {
+			right: calc(100% + var(--p)/3*2 + var(--t)/2);
+		}
+	}
 	&.monospace {
 		&::after {
 			font-family: var(--font-mono);
@@ -134,26 +147,14 @@
 		}
 	}
 	&.dark {
-		&::before, &::after {
-			@include theme(light) {
-				background-color: var(--color-primary);
-			}
-			@include theme(dark) {
-				background-color: hsl(from var(--color-iron) h s calc(l * .55));
-			}
+		@include theme(light) {
+			--background: var(--color-primary);
+		}
+		@include theme(dark) {
+			--background: hsl(from var(--color-iron) h s calc(l * .55));
 		}
 		&::after {
 			color: white;
-		}
-	}
-	&:not(.dark) {
-		&::before, &::after {
-			@include contrast(light) {
-				background-color: white;
-			}
-			@include contrast(dark) {
-				background-color: hsl(from var(--color-iron) h s calc(l * .75));
-			}
 		}
 	}
 }

@@ -65,12 +65,10 @@
 				font-size: 1.75rem;
 			}
 			span {
+				--background: black;
 				font-size: 0.875rem;
-				opacity: 0.6;
+				color: hsl(from white h s l / .6);
 				@include font-weight-width(600, 100);
-				&::before, &::after {
-					background-color: black;
-				}
 			}
 		}
 		.description {
@@ -183,7 +181,7 @@
 				}
 				&::after {
 					background-image: url(/static/images/svg/icons/copy.svg);
-					background-size: 14px 22px;
+					background-size: 17px 17px;
 				}
 			}
 			@media (hover: hover) {

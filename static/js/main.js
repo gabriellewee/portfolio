@@ -79,7 +79,7 @@ const mediaTriggers = (media) => {
 }
 
 const copyText = ((buttons = Array.from(document.querySelectorAll("[data-clip]"))) => {
-	if (!buttons) return;
+	if (!buttons || !navigator.clipboard) return;
 	buttons.forEach(button=>{
 		button.removeAttribute("disabled")
 		let text = button.getAttribute("data-clip");

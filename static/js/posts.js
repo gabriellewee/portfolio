@@ -2,6 +2,7 @@ lightbox("[data-media-expand]", "[data-lightbox]");
 timeAgo("[data-time]");
 
 const smoothScrollLinks = ((links = Array.from(document.querySelectorAll("[data-anchor]"))) => {
+	if (!links) return;
 	let mainContent = document.querySelector("main");
 	links.forEach(link=>{
 		link.setAttribute("aria-hidden", "true");
@@ -22,4 +23,25 @@ const smoothScrollLinks = ((links = Array.from(document.querySelectorAll("[data-
 			});
 		}
 	}
+})();
+
+const copyCode = ((pres = Array.from(document.querySelectorAll("pre:has(code)"))) => {
+	if (!pres || !navigator.clipboard) return;
+	pres.forEach(pre=> {
+		let button = document.createElement("button");
+		button.innerHTML = `<span></span>`;
+		button.style.setProperty('--tooltip-label', `"Copied"`);
+		button.setAttribute("aria-label", "Copy code");
+		button.classList.add("tooltip", "tooltip-left", "dark", "hidden");
+		pre.appendChild(button);
+		let code = pre.querySelector("code");
+
+		button.addEventListener("click", async () => {
+			button.classList.remove("hidden");
+			await navigator.clipboard.writeText(code.innerText);
+			setTimeout(() => {
+				button.classList.add("hidden");
+			}, 3000);
+		});
+	});
 })();
