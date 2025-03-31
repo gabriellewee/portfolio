@@ -81,6 +81,7 @@ const mediaTriggers = (media) => {
 const copyText = ((buttons = Array.from(document.querySelectorAll("[data-clip]"))) => {
 	if (!buttons) return;
 	buttons.forEach(button=>{
+		button.removeAttribute("disabled")
 		let text = button.getAttribute("data-clip");
 		let element;
 		if (/^[^a-zA-Z0-9]/.test(text)) {

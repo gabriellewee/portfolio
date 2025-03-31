@@ -2,8 +2,16 @@
 .post-code .post-content iframe:not(.css-only), .post-code .reload,
 .post-music,
 .lightbox + .iframe iframe:not(.css-only),
-.text.loading {
+.text.loading,
+.contact .contact-messaging > ul > .discord-button {
 	display: none;
+}
+
+.contact .contact-messaging > ul > .discord-button + .no-css {
+	display: contents !important;
+	.button-reduced {
+		--background: hsl(from var(--color-discord) h s l / .2);
+	}
 }
 
 .media-attachment {

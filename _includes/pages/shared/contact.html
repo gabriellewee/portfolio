@@ -16,13 +16,13 @@
 					{% if key == "home" %}
 						<li hidden>{% include 'pages/home/discord.html' %}</li>
 					{% else %}
-						<li hidden>
+						<li hidden class="discord-button">
 							<a class="button-reduced-outer tooltip tooltip-bottom dark hidden" href="#" data-clip="gabriellewee" style="--tooltip-label: 'Username copied'">
 								<span class="discord button-reduced" style="--color-link: var(--color-discord); --color-link-dark: var(--color-discord)"><span>Discord</span></span>
 							</a>
 						</li>
 					{% endif %}
-					<li class="no-css"><span>Discord: gabriellewee</span></li>
+					<li class="no-css"><span class="discord button-reduced"><span>Discord: gabriellewee</span></span></li>
 				{% endif %}
 			</ul>
 		</address>

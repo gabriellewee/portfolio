@@ -177,6 +177,10 @@
 				}
 			}
 			button {
+				&:disabled {
+					pointer-events: none;
+					opacity: 0.5;
+				}
 				&::after {
 					background-image: url(/static/images/svg/icons/copy.svg);
 					background-size: 14px 22px;
