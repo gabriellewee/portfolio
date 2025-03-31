@@ -68,6 +68,7 @@
 			padding: 4px;
 			&, svg {
 				@include square(16px);
+				height: 16px;
 			}
 			&:focus-visible {
 				@include focus-shadow;

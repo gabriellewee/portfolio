@@ -17,7 +17,7 @@
 						<li hidden>{% include 'pages/home/discord.html' %}</li>
 					{% else %}
 						<li hidden>
-							<a class="button-reduced-outer tooltip tooltip-bottom dark hidden" href="#" data-clip data-clipboard-text="gabriellewee" style="--tooltip-label: 'Username copied'">
+							<a class="button-reduced-outer tooltip tooltip-bottom dark hidden" href="#" data-clip="gabriellewee" style="--tooltip-label: 'Username copied'">
 								<span class="discord button-reduced" style="--color-link: var(--color-discord); --color-link-dark: var(--color-discord)"><span>Discord</span></span>
 							</a>
 						</li>
@@ -29,4 +29,3 @@
 	{% endfor %}
 </aside>
 <hr class="no-css"/>
-<script src="{{'/static/js/clipboard.min.js'|url}}"></script>

@@ -78,7 +78,44 @@ const mediaTriggers = (media) => {
 	});
 }
 
-const targetBlankLinks = (links = document.getElementsByTagName("a")) => {
+const copyText = ((buttons = Array.from(document.querySelectorAll("[data-clip]"))) => {
+	if (!buttons) return;
+	buttons.forEach(button=>{
+		let text = button.getAttribute("data-clip");
+		let element;
+		if (/^[^a-zA-Z0-9]/.test(text)) {
+			element = document.querySelector(`${text}`);
+			text = element.value || element.textContent;
+		}
+
+		button.addEventListener("click", async (e) => {
+			e.preventDefault();
+			await navigator.clipboard.writeText(text);
+
+			if (button.hasAttribute("data-clip-target")) {
+				element.classList.remove("hidden");
+			} else if (button instanceof HTMLInputElement) {
+				button.parentNode.classList.remove("hidden");
+				button.select();
+			} else {
+				button.classList.remove("hidden");
+			}
+
+			setTimeout(() => {
+				if (button.hasAttribute("data-clip-target")) {
+					element.classList.add("hidden");
+				} else if (button instanceof HTMLInputElement) {
+					button.parentNode.classList.add("hidden");
+					button.select();
+				} else {
+					button.classList.add("hidden");
+				}
+			}, 3000);
+		});
+	});
+})();
+
+const targetBlankLinks = (links = Array.from(document.getElementsByTagName("a"))) => {
 	for (var i = 0; i < links.length; i++) {
 		if (/^(https?:)?\/\//.test(links[i].getAttribute("href"))) {
 			links[i].target = "_blank";
@@ -194,31 +231,6 @@ const mediaFilters = ((filters = document.querySelector("[data-filter-container]
 				e.target.closest("a").tabIndex = -1;
 			};
 			iso.layout();
-		});
-	});
-})();
-
-const copyButtons = ((buttons = Array.from(document.querySelectorAll("[data-clip]"))) => {
-	if (!buttons) return;
-	buttons.forEach(button=>{
-		button.addEventListener("click", e => {
-			e.preventDefault();
-			return false;
-		});
-		let clipboard = new ClipboardJS(button);
-		clipboard.on("success", e => {
-			if (button.tagName === "INPUT") {
-				e.trigger.parentNode.classList.remove("hidden");
-			} else {
-				e.trigger.classList.remove("hidden");
-			}
-			setTimeout(() => {
-				if (button.tagName === "INPUT") {
-					e.trigger.parentNode.classList.add("hidden");
-				} else {
-					e.trigger.classList.add("hidden");
-				}
-			}, 3000);
 		});
 	});
 })();

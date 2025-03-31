@@ -61,7 +61,6 @@ export default function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy({
 		"static/images/favicons": "/",
 		"_includes/svg": "static/images/svg",
-		"node_modules/clipboard/dist/clipboard.min.js": "static/js/clipboard.min.js",
 		"node_modules/gsap/dist/gsap.min.js": "static/js/gsap.min.js",
 		"node_modules/gsap/dist/ScrollTrigger.min.js": "static/js/scroll-trigger.min.js",
 		"node_modules/gsap/dist/TextPlugin.min.js": "static/js/text.min.js",
@@ -69,7 +68,11 @@ export default function (eleventyConfig) {
 		"node_modules/isotope-layout/dist/isotope.pkgd.min.js": "static/js/isotope.min.js",
 		"node_modules/isotope-packery/packery-mode.pkgd.min.js": "static/js/packery.min.js",
 		"node_modules/luxon/build/global/luxon.min.js": "static/js/luxon.min.js",
-		"node_modules/smoothscroll-polyfill/dist/smoothscroll.min.js": "static/js/smoothscroll.min.js"
+		"node_modules/smoothscroll-polyfill/dist/smoothscroll.min.js": "static/js/smoothscroll.min.js",
+		"node_modules/jquery/dist/jquery.min.js": "static/code/js/jquery.min.js",
+		"node_modules/clipboard/dist/clipboard.min.js": "static/code/js/clipboard.min.js",
+		"node_modules/draggabilly/dist/draggabilly.pkgd.min.js": "static/code/js/draggabilly.min.js",
+		"node_modules/zdog/dist/zdog.pkgd.min.js": "static/code/js/zdog.min.js"
 	});
 
 	// posts

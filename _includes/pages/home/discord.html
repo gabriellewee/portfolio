@@ -1,4 +1,4 @@
-<div class="discord-popup popup" data-copy data-popup>
+<div class="discord-popup popup" data-popup>
 	<input type="checkbox" id="discord" class="popup-button" tabindex="0" role="button" aria-pressed="false" aria-haspopup="menu" aria-controls="discord-window" aria-labelledby="discord-label" data-popup-trigger/>
 	<label class="popup-label" for="discord" style="--color-link: var(--color-discord);" data-popup-label>
 		<span aria-hidden="true" id="discord-label">Discord</span>
@@ -10,7 +10,7 @@
 			</div>
 			<div class="username">
 				<h3 aria-label="Discord display name: Gabrielle">Gabrielle</h3>
-				<span id="username-input" class="username-input tooltip tooltip-right small dark hidden" data-clipboard-target data-clipboard-text aria-label="Discord username: gabriellewee" style="--tooltip-label: 'Copied'">gabriellewee</span>
+				<span id="username-input" class="username-input tooltip tooltip-right small dark hidden" aria-label="Discord username: gabriellewee" style="--tooltip-label: 'Copied'">gabriellewee</span>
 			</div>
 			<div class="description">
 				<h3 class="about-header">About Me</h3>
@@ -23,7 +23,7 @@
 						<a href="https://discordapp.com/users/694064940826230865" aria-label="Mobile Discord profile">Discord profile</a>
 					</li>
 					<li>
-						<button disabled class="copy-button" data-clipboard-target="#username-input" data-clipboard-button>
+						<button class="copy-button" data-clip="#username-input" data-clip-target>
 							<span>Copy username</span>
 						</button>
 					</li>

@@ -56,46 +56,5 @@ const popup = ((containers = Array.from(document.querySelectorAll("[data-popup]"
 				}
 			}
 		});
-
-		if (container.hasAttribute("data-copy")) {
-			let copyElem = container.querySelector("[data-clipboard-text]");
-			triggers.forEach(trigger =>{
-				trigger.addEventListener("keydown",  e => {
-					if (e.key === "Enter") {
-						if (popupTrigger.checked) {
-							copyElem.classList.add("hidden");
-						}
-					}
-				});
-				trigger.addEventListener("click",  e => {
-					if (popupTrigger.checked) {
-						setTimeout(() => {
-							copyElem.classList.add("hidden");
-						}, 300);
-					}
-				});
-			});
-
-			let copyButton = container.querySelector("[data-clipboard-button]");
-			copyButton.removeAttribute("disabled");
-			let clipboard = new ClipboardJS(copyButton);
-
-			clipboard.on("success", e => {
-				copyElem.classList.remove("hidden");
-				e.clearSelection();
-			});
-			copyButton.addEventListener("keydown", e => {
-				if (e.key === "Enter") {
-					setTimeout(() => {
-						popupClose.focus();
-					}, 50);
-				}
-			});
-			container.addEventListener("keydown",  e => {
-				if (e.key === "Escape") {
-					copyElem.classList.add("hidden");
-				}
-			});
-		}
 	})
 })();

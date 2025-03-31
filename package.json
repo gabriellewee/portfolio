@@ -57,10 +57,13 @@
 	},
 	"dependencies": {
 		"clipboard": "^2.0.11",
+		"draggabilly": "^3.0.0",
 		"gsap": "^3.12.7",
 		"imagesloaded": "^5.0.0",
 		"isotope-layout": "^3.0.6",
 		"isotope-packery": "^2.0.1",
-		"smoothscroll-polyfill": "^0.4.4"
+		"jquery": "^3.7.1",
+		"smoothscroll-polyfill": "^0.4.4",
+		"zdog": "^1.1.3"
 	}
 }
