@@ -220,7 +220,7 @@
 
 .post-text, .post-color {
 	p, figcaption, ul, ol {
-		a:not([class]) {
+		a {
 			transition: all .1s ease-out;
 			position: relative;
 			@include gradient-text(
@@ -329,7 +329,7 @@
 		}
 	}
 
-	a:not([class]), pre, button {
+	a, pre, button {
 		&:focus-visible {
 			@include theme(light) {
 				@include focus-shadow(hsl(from var(--color-dark) h s l / .5));
