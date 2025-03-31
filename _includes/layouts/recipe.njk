@@ -48,6 +48,9 @@ size: s
 
 				<footer class="post-footer">
 					<a class="button hide" href="#" data-task-list-reset hidden><span>Reset ingredients</span></a>
+					{% for link in external %}
+							<a class="button link-platform {{link.platform}} background" href="{{link.url|url}}" style="--background: var(--color-{{link.platform}}"><span>{% if post.data.type == "audio" %}Listen on {% elseif post.data.type == "writing" %}Read on {% else %}View on {% endif %}{% if link.title %}{{link.title}}{% else %}{{link.platform|capitalize}}{% endif %}</span></a>
+						{% endfor %}
 					<div class="emoji" style="--emoji: '{{emoji}}'"></div>
 				</footer>
 			</div>

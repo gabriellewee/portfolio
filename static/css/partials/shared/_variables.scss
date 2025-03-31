@@ -73,6 +73,7 @@ $thunder: #38262A;
 		medium-dark: #3C863D,
 		apple-podcasts: #852dc4,
 		spotify: #1BD760,
+		notion: #0083FA
 	);
 	@each $name, $color in $colors {
 		--color-#{"" + $name}:hsl(#{hexToHSL($color)});

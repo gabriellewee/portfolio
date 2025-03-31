@@ -8,6 +8,7 @@ emoji: '🍆'
 tags:
   - spicy
   - asian
+external: [{"platform": "notion","url": "https://kaladin.notion.site/Eggplant-with-Minced-Pork-6308293295ca4e8b80587eead75af343"}]
 ---
 Chinese eggplant is one of my favorite things to cook. This recipe is something I know by heart and can cook quickly on a weeknight when I need food for today and leftovers for tomorrow’s lunch. I love adding shiitaki mushrooms to the mix to add some extra vegetables and umami!
 
