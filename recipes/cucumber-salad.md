@@ -10,13 +10,7 @@ tags:
   - cucumber
   - spicy
   - asian
-external: [
-  {
-    "platform": "notion",
-    "url": "https://kaladin.notion.site/Cucumber-Salad-9e78d755f66544ccb2b012c1d076b826",
-    "icon": true
-  }
-]
+external: [{"platform": "notion","url": "https://kaladin.notion.site/Cucumber-Salad-9e78d755f66544ccb2b012c1d076b826"}]
 ---
 I’ve been making this spicy and refreshing cucumber salad every week since the weather started to warm up. It’s easy to prepare and goes well with all kinds of food. I mainly make it as a side dish for Asian-style meals but have also loved adding this on top of crackers and creamy Brie cheese.
 
