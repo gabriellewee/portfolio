@@ -170,14 +170,7 @@
 			padding: 0 calc(var(--p)*2) calc(var(--p)*2);
 		}
 		.button {
-			margin-top: var(--p);
 			line-height: 1.15;
-			&:not(:last-child) {
-				margin-right: var(--p);
-			}
-			&.hide {
-				display: none;
-			}
 		}
 		.emoji {
 			width: 100%;

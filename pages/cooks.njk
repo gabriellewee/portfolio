@@ -60,7 +60,7 @@ eleventyNavigation:
 					<footer class="post-footer">
 						<a class="button" href="{{post.url|url}}"><span>Read recipe</span></a>
 						{% for link in post.data.external %}
-							<a class="button link-platform {{link.platform}} background" href="{{link.url|url}}" style="--background: var(--color-{{link.platform}}"><span>{% if post.data.type == "audio" %}Listen on {% elseif post.data.type == "writing" %}Read on {% else %}View on {% endif %}{% if link.title %}{{link.title}}{% else %}{{link.platform|capitalize}}{% endif %}</span></a>
+							<a class="button link-platform {{link.platform}}" href="{{link.url|url}}" style="--background: var(--color-{{link.platform}}"><span>{% if post.data.type == "audio" %}Listen on {% elseif post.data.type == "writing" %}Read on {% else %}View on {% endif %}{% if link.title %}{{link.title}}{% else %}{{link.platform|capitalize}}{% endif %}</span></a>
 						{% endfor %}
 					</footer>
 				</div>

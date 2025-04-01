@@ -37,7 +37,7 @@ eleventyComputed:
 					{% endif %}
 					{% if external %}
 						{% for link in external %}
-							<a rel="syndication" class="u-syndication button link-platform {{link.platform}} background" href="{{link.url|url}}"><span>Read on {{link.platform|capitalize}}</span></a>
+							<a rel="syndication" class="u-syndication button link-platform {{link.platform}}" href="{{link.url|url}}"><span>Read on {{link.platform|capitalize}}</span></a>
 						{% endfor %}
 					{% endif %}
 				</footer>

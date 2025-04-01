@@ -185,10 +185,10 @@ eleventyNavigation:
 							</div>
 						{% elseif post.data.content %}
 							<blockquote>{{post.data.content|nbsp|safe}}</blockquote>
-							{%- set postindex = loop.index %}
+							{%- set postIndex = loop.index %}
 							{% if post.data.category == "social" %}
 								{% if post.data.video %}
-									<figure id="external-{{postindex}}-{{post.data.video.cid|truncate(5, true, '')}}" class="media-attachment">
+									<figure id="external-{{postIndex}}-{{post.data.video.cid|truncate(5, true, '')}}" class="media-attachment">
 										<video width="{{post.data.video.aspectRatio.width}}" height="{{post.data.video.aspectRatio.height}}" controls preload="metadata" poster="{{post.data.video.thumbnail}}" aria-label="{{post.data.video.alt}}">
 											<source src="{{post.data.video.playlist}}" type="application/x-mpegURL">
 										</video>
@@ -209,8 +209,8 @@ eleventyNavigation:
 								{% endif %}
 								{% for media in post.data.media %}
 									{% if media.thumb %}
-										<figure id="external-{{postindex}}-{{post.data.cid|truncate(5, true, '')}}" class="media-attachment" aria-label="{{media.alt}}">
-											<a class="expand" href="#external-{{postindex}}-{{post.data.cid|truncate(5, true, '')}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
+										<figure id="external-{{postIndex}}-{{post.data.cid|truncate(5, true, '')}}" class="media-attachment" aria-label="{{media.alt}}">
+											<a class="expand" href="#external-{{postIndex}}-{{post.data.cid|truncate(5, true, '')}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
 												{% external media.thumb, '', 500, 'lazy', post.data.source, post.data.cid %}
 											</a>
 										</figure>
@@ -235,29 +235,25 @@ eleventyNavigation:
 					</div>
 					{% if post.data.category == "writing" or post.data.category == "social" or post.data.category == "cooking" %}
 						<footer class="post-footer">
-							{% if post.data.category == "social" %}
-								<a class="button button-social button-{{post.data.source}}" href="{{post.data.url|url}}" aria-label="View post on {{post.data.source|capitalize}}"><span></span></a>
-								{% for link in post.data.platforms %}
-									<a class="button button-social button-{{link.platform}}" href="{{link.url}}" aria-label="View post on {{link.platform|capitalize}}"><span></span></a>
-								{% endfor %}
-							{% elseif post.data.category == "writing" and post.data.size != "s" %}
+							{% if (post.data.category == "writing" and post.data.size != "s") or (post.data.category == "cooking") %}
 								{% if post.url %}
-									<a class="button" href="{{post.url|url}}"><span>Read post</span></a>
+									<a class="button" href="{{post.url|url}}"><span>Read{% if post.data.label %} {{post.data.label}}{% else %} post{% endif %}</span></a>
 								{% elseif post.data.url %}
 									<a class="button button-reverse" href="{{post.data.url|url}}"><span>Read more{% if post.data.platform %} at {{post.data.platform}}{% endif %}</span></a>
 								{% endif %}
-							{% elseif post.data.category == "cooking" %}
-								<a class="button" href="{{post.url|url}}"><span>Read recipe</span></a>
+							{% elseif post.data.category == "social" %}
+								<a class="button button-icon button-{{post.data.source}}" href="{{post.data.url|url}}" aria-label="View post on {{post.data.source|capitalize}}"><span></span></a>
 							{% endif %}
 							{% for link in post.data.external %}
-								<a class="button link-platform {{link.platform}} background" href="{{link.url|url}}" style="--background: var(--color-{{link.platform}}"><span>{% if post.data.type == "audio" %}Listen on {% elseif post.data.type == "writing" %}Read on {% else %}View on {% endif %}{% if link.title %}{{link.title}}{% else %}{{link.platform|capitalize}}{% endif %}</span></a>
+								<a class="button{% if link.icon == true %} button-icon{% endif %} button-{{link.platform}}{% if link.gradient != true %} solid{% endif %}" href="{{link.url|url}}"{% if link.gradient != true %} style="--background: var(--color-{{link.platform}}"{% endif %}><span><span>{% if post.data.type == "audio" %}Listen on {% elseif post.data.type == "writing" %}Read on {% else %}View on {% endif %}{% if link.title %}{{link.title}}{% else %}{{link.platform|capitalize}}{% endif %}</span></span></a>
 							{% endfor %}
 							{% if post.data.archive == true %}
 								{% if post.data.full == true %}
-									<a class="button" href="{{site.url}}/v1/{{post.page.date|iso|date('archive')}}/{{post.data.title|slugify}}" target="_blank"><span>View original</span></a>
+									{%- set postSlug = post.data.title %}
 								{% else %}
-									<a class="button" href="{{site.url}}/v1/{{post.page.date|iso|date('archive')}}/{{post.page.fileSlug}}" target="_blank"><span>View original</span></a>
+									{%- set postSlug = post.page.fileSlug %}
 								{% endif %}
+								<a class="button" href="{{site.url}}/v1/{{post.page.date|iso|date('archive')}}/{{postSlug|slugify}}" target="_blank"><span>View original</span></a>
 							{% endif %}
 						</footer>
 					{% endif %}
@@ -314,10 +310,10 @@ eleventyNavigation:
 				</figure>
 			</dialog>
 		{% elseif post.data.category == "social" and post.data.media %}
-			{%- set postindex = loop.index %}
+			{%- set postIndex = loop.index %}
 			{% for media in post.data.media %}
 				{% if media.thumb %}
-					<a class="lightbox" id="external-{{postindex}}-{{post.data.cid|truncate(5, true, '')}}-lightbox" role="button" aria-label="Close image" href="#external-{{postindex}}-{{post.data.cid|truncate(5, true, '')}}" data-lightbox data-lightbox-append></a>
+					<a class="lightbox" id="external-{{postIndex}}-{{post.data.cid|truncate(5, true, '')}}-lightbox" role="button" aria-label="Close image" href="#external-{{postIndex}}-{{post.data.cid|truncate(5, true, '')}}" data-lightbox data-lightbox-append></a>
 					<dialog class="lightbox-content image" aria-label="Image preview" autofocus data-lightbox-append>
 						<figure>
 							{% external media.fullsize, media.alt, media.aspectRatio.width %}

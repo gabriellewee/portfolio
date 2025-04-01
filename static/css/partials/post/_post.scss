@@ -217,6 +217,17 @@
 			}
 		}
 	}
+	.post-footer {
+		.button {
+			margin-top: var(--p);
+			&:not(:last-child) {
+				margin-right: var(--p);
+			}
+			&.hide {
+				display: none;
+			}
+		}
+	}
 }
 
 .post-text, .post-color {
@@ -621,6 +632,28 @@
 	}
 }
 
+.button-icon {
+	line-height: 1.125;
+	> span {
+		display: flex;
+		align-items: center;
+		align-content: center;
+		padding: calc(var(--p)*.75) calc(var(--p)*2);
+		&::before {
+			content: "";
+			display: block;
+			transition: all .2s ease-out;
+			position: relative;
+			z-index: 1;
+			background: center / contain no-repeat var(--icon);
+			@include square(24px);
+		}
+		span {
+			display: none;
+		}
+	}
+}
+
 .button-social {
 	line-height: 1.125;
 	> span {
@@ -634,12 +667,18 @@
 			position: relative;
 			z-index: 1;
 			margin-right: calc(var(--p)/2);
-			background-size: contain;
-			background-repeat: no-repeat;
-			background-position: top left;
+			background: top left / contain no-repeat var(--icon);
 			@include square(18px);
 		}
 	}
+}
+
+.button-notion {
+	--icon: url(/static/images/svg/social/notion.svg);
+}
+
+.button-medium {
+	--icon: url(/static/images/svg/social/medium.svg);
 }
 
 .button-bluesky {
@@ -649,11 +688,7 @@
 		var(--color-bluesky-dark),
 		hsl(from var(--color-bluesky-dark) h s calc(l*.5))
 	);
-	> span {
-		&::before {
-			background-image: url(/static/images/svg/social/bluesky.svg);
-		}
-	}
+	--icon: url(/static/images/svg/social/bluesky.svg);
 }
 
 .button-threads {
@@ -663,11 +698,7 @@
 		var(--color-instagram-middle),
 		var(--color-instagram-end)
 	);
-	> span {
-		&::before {
-			background-image: url(/static/images/svg/social/threads.svg);
-		}
-	}
+	--icon: url(/static/images/svg/social/threads.svg);
 }
 
 .button-mastodon {
@@ -687,9 +718,5 @@
 		),
 		var(--color-mastodon-light)
 	);
-	> span {
-		&::before {
-			background-image: url(/static/images/svg/social/mastodon.svg);
-		}
-	}
+	--icon: url(/static/images/svg/social/mastodon.svg);
 }

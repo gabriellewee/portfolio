@@ -90,13 +90,15 @@ export default function (eleventyConfig) {
 	};
 
 	const createPlatforms = (entry, mainEntry) => {
-		if (!mainEntry.data.platforms) {
-			mainEntry.data.platforms = [];
+		if (!mainEntry.data.external) {
+			mainEntry.data.external = [];
 		}
-		if (!mainEntry.data.platforms.some(item => item.url === entry.data.url)) {
-			mainEntry.data.platforms.push({
+		if (!mainEntry.data.external.some(item => item.url === entry.data.url)) {
+			mainEntry.data.external.push({
 				platform: entry.data.source,
-				url: entry.data.url
+				url: entry.data.url,
+				icon: true,
+				gradient: true
 			});
 		}
 	};

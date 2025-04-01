@@ -80,22 +80,6 @@
 			margin-top: calc(var(--p)/2);
 			padding: 0 calc(var(--p)*2) calc(var(--p)*2);
 		}
-		.button-social {
-			margin-top: var(--p);
-			> span {
-				padding: calc(var(--p)*.75) calc(var(--p)*2);
-				align-items: center;
-				align-content: center;
-				&::before {
-					margin-right: unset;
-					background-position: center;
-					@include square(24px);
-				}
-			}
-			&:not(:last-child) {
-				margin-right: var(--p);
-			}
-		}
 	}
 
 	.media-attachment {
