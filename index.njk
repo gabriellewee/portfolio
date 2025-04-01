@@ -245,7 +245,7 @@ eleventyNavigation:
 								<a class="button button-icon button-{{post.data.source}}" href="{{post.data.url|url}}" aria-label="View post on {{post.data.source|capitalize}}"><span></span></a>
 							{% endif %}
 							{% for link in post.data.external %}
-								<a class="button{% if link.icon == true %} button-icon{% endif %} button-{{link.platform}}{% if link.gradient != true %} solid{% endif %}" href="{{link.url|url}}"{% if link.gradient != true %} style="--background: var(--color-{{link.platform}}"{% endif %}><span><span>{% if post.data.type == "audio" %}Listen on {% elseif post.data.type == "writing" %}Read on {% else %}View on {% endif %}{% if link.title %}{{link.title}}{% else %}{{link.platform|capitalize}}{% endif %}</span></span></a>
+								<a class="button{% if link.icon == true %} button-icon{% endif %} button-{{link.platform}}{% if link.gradient != true %} solid{% endif %}" href="{{link.url|url}}"{% if link.gradient != true %} style="--background: var(--color-{{link.platform}})"{% endif %}><span><span>{% if post.data.type == "audio" %}Listen on {% elseif post.data.type == "writing" %}Read on {% else %}View on {% endif %}{% if link.title %}{{link.title}}{% else %}{{link.platform|capitalize}}{% endif %}</span></span></a>
 							{% endfor %}
 							{% if post.data.archive == true %}
 								{% if post.data.full == true %}

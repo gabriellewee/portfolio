@@ -59,12 +59,12 @@
 			position: relative;
 			margin-top: 38px;
 			margin-left: var(--p);
-			h3 {
+			.username-header {
 				width: fit-content;
 				margin-bottom: calc(var(--p)/3);
 				font-size: 1.75rem;
 			}
-			span {
+			.username-input {
 				--background: black;
 				font-size: 0.875rem;
 				color: hsl(from white h s l / .6);

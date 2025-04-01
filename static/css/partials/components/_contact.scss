@@ -24,7 +24,7 @@
 			}
 		}
 
-		> ul {
+		address > ul {
 			list-style: none;
 			&:not([class]) {
 				margin-top: .5rem;
@@ -170,7 +170,7 @@
 					line-height: 1.2;
 				}
 			}
-			> ul {
+			address > ul {
 				display: flex;
 				flex-wrap: wrap;
 				.button-reduced {

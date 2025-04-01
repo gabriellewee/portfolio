@@ -3,17 +3,17 @@
 	<label class="popup-label" for="discord" style="--color-link: var(--color-discord);" data-popup-label>
 		<span aria-hidden="true" id="discord-label">Discord</span>
 	</label>
-	<menu id="discord-window" class="popup-window" data-popup-window>
+	<div id="discord-window" class="popup-window" role="menu" data-popup-window>
 		<div class="inside">
 			<div class="header">
 				<span class="avatar"></span>
 			</div>
 			<div class="username">
-				<h3 aria-label="Discord display name: Gabrielle">Gabrielle</h3>
-				<span id="username-input" class="username-input tooltip tooltip-right small dark hidden" aria-label="Discord username: gabriellewee" style="--tooltip-label: 'Copied'">gabriellewee</span>
+				<p class="username-header" aria-label="Discord display name: Gabrielle">Gabrielle</p>
+				<p id="username-input" class="username-input tooltip tooltip-right small dark hidden" aria-label="Discord username: gabriellewee" style="--tooltip-label: 'Copied'">gabriellewee</p>
 			</div>
 			<div class="description">
-				<h3 class="about-header">About Me</h3>
+				<p class="about-header">About Me</p>
 				<code class="about-content">I like to make pretty things with code 👩🏻‍💻</code>
 				<ul class="links">
 					<li class="no-touch">
@@ -31,5 +31,5 @@
 			</div>
 			<label class="close" for="discord" tabindex="0" role="button" aria-pressed="true" aria-haspopup="true" aria-controls="discord-window" data-popup-close>{% include 'svg/icons/close.svg' %}</label>
 		</div>
-	</menu>
+	</div>
 </div>

@@ -264,11 +264,11 @@ export const image = async (src, alt, type, option, figp) => {
 		}
 		if (type === "default") {
 			if (stats["webp"][4]) {
-				source = `<source type="image/webp" srcset="${webpset}" sizes="${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px, (min-width: 1549px) ${stats["webp"][4].width}px">`;
-				img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${stats["webp"][0].url}" srcset="${regset}" sizes="${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px, (min-width: 1549px) ${stats["webp"][4].width}px" width="${basic.width}" height="${basic.height}">`;
+				source = `<source type="image/webp" srcset="${webpset}" sizes="(max-width: 912px) ${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px, (min-width: 1549px) ${stats["webp"][4].width}px">`;
+				img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${stats["webp"][0].url}" srcset="${regset}" sizes="(max-width: 912px) ${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px, (min-width: 1549px) ${stats["webp"][4].width}px" width="${basic.width}" height="${basic.height}">`;
 			} else {
-				source = `<source type="image/webp" srcset="${webpset}" sizes="${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px">`;
-				img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${stats["webp"][0].url}" srcset="${regset}" sizes="${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px" width="${basic.width}" height="${basic.height}">`;
+				source = `<source type="image/webp" srcset="${webpset}" sizes="(max-width: 912px) ${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px">`;
+				img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${stats["webp"][0].url}" srcset="${regset}" sizes="(max-width: 912px) ${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px" width="${basic.width}" height="${basic.height}">`;
 			}
 		} else if (type === "screen" | Number.isInteger(type)) {
 			source = `<source type="image/webp" srcset="${webpset}">`;
