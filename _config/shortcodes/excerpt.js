@@ -32,6 +32,6 @@ export const excerpt = async (post, option) => {
 	if (typeof final !== 'undefined') {
 		return await final;
 	} else {
-		return await false;
+		return '';
 	}
 };
