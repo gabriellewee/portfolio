@@ -247,7 +247,14 @@
 		}
 	}
 }
-a.button-reduced, a.button-reduced-outer > .button-reduced {
+button.button-reduced-outer {
+	cursor: pointer;
+	appearance: none;
+	border: 0;
+	background: none;
+	padding: 0;
+}
+a.button-reduced, button.button-reduced-outer > .button-reduced {
 	&::before {
 		z-index: 1;
 		@include before(var(--outline));
@@ -258,19 +265,19 @@ a.button-reduced, a.button-reduced-outer > .button-reduced {
 	}
 }
 a.button-reduced:hover, a.button-reduced:active,
-a.button-reduced-outer:hover > .button-reduced, a.button-reduced-outer:active > .button-reduced {
+button.button-reduced-outer:hover > .button-reduced, button.button-reduced-outer:active > .button-reduced {
 	span {
 		background-color: var(--background-hover);
 	}
 }
 a.button-reduced:focus-visible,
-a.button-reduced-outer:focus-visible > .button-reduced {
+button.button-reduced-outer:focus-visible > .button-reduced {
 	&::before {
 		opacity: 1;
 	}
 }
 a.button-reduced:active,
-a.button-reduced-outer:active > .button-reduced {
+button.button-reduced-outer:active > .button-reduced {
 	@media (prefers-reduced-motion: no-preference) {
 		scale: .98;
 	}
