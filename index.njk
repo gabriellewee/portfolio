@@ -118,7 +118,7 @@ eleventyNavigation:
 										<label class="media-down media-icon" for="{{post.data.date|safe}}-{{post.data.name}}-info" data-media-label></label>
 										<div class="media-thumbnail">
 											<a class="media-expand expand" href="#{{post.data.date|safe}}-{{post.data.name}}-lightbox" role="button" aria-label="Expand image" tabindex="-1" data-media-expand>
-												<span class="no-image" hidden>Expand</span>
+												<span class="no-image" hidden><span>Expand</span></span>
 												<span class="has-image" aria-hidden="true" hidden>
 													{% if post.data.upscale %}
 														<picture>

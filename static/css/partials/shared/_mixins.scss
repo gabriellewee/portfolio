@@ -1,25 +1,27 @@
 @use 'partials/shared/utilities' as *;
 
-@mixin expand-hover($icon: expand, $width: 23px, $height: $width, $padding: var(--p), $touch: false) {
-	picture {
-		@if $touch == true {
-			--position: 100% 100%;
+@mixin expand-hover($icon: expand, $width: 23px, $height: $width, $padding: var(--p), $hover: true, $position: 0% 0%, $touch: null) {
+	> *:only-child {
+		@if $touch {
+			--position: $touch;
 			@include hover {
-				--position: 0% 0%;
+				--position: $position;
 			}
 		} @else {
-			--position: 0% 0%;
+			--position: $position;
 		}
 		&::before, &::after {
 			content: "";
 			display: block;
 			transition: opacity .2s ease-out;
-			@if $touch == true {
-				@include hover {
+			@if $hover == true {
+				@if $touch == true {
+					@include hover {
+						opacity: 0;
+					}
+				} @else {
 					opacity: 0;
 				}
-			} @else {
-				opacity: 0;
 			}
 		}
 		&::before {
@@ -46,18 +48,20 @@
 			z-index: 2;
 			background: radial-gradient(
 				farthest-corner at var(--position),
-				hsl(from var(--color-iron) h s calc(l * .45) / .2) 0,
+				hsl(from var(--color-iron) h s calc(l * .45) / .7) 0,
 				hsl(from var(--color-iron) h s calc(l * .45) / 0) 45%
 			);
-			mix-blend-mode: multiply;
+			mix-blend-mode: soft-light;
 			@include full-offset(0);
 			@include clip-path-edges(2px);
 		}
 	}
-	&:hover, &:focus {
-		picture {
-			&::before, &::after {
-				opacity: 1;
+	@if $hover == true {
+		&:hover, &:focus {
+			> *:only-child {
+				&::before, &::after {
+					opacity: 1;
+				}
 			}
 		}
 	}
