@@ -306,7 +306,8 @@
 			width: 23px;
 			height: 23px;
 			margin-top: 3px;
-			background: url(/static/images/svg/icons/hash.svg) no-repeat center / contain;
+			background-color: var(--color-primary);
+			mask: url(/static/images/svg/icons/hash.svg) no-repeat center / contain;
 		}
 	}
 
