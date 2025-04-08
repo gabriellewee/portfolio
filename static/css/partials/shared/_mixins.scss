@@ -3,12 +3,12 @@
 @mixin expand-hover($icon: expand, $width: 23px, $height: $width, $padding: var(--p), $hover: true, $position: 0% 0%, $touch: null) {
 	> *:only-child {
 		@if $touch {
-			--position: $touch;
+			--position: #{$touch};
 			@include hover {
-				--position: $position;
+				--position: #{$position};
 			}
 		} @else {
-			--position: $position;
+			--position: #{$position};
 		}
 		&::before, &::after {
 			content: "";
@@ -48,8 +48,8 @@
 			z-index: 2;
 			background: radial-gradient(
 				farthest-corner at var(--position),
-				hsl(from var(--color-iron) h s calc(l * .45) / .7) 0,
-				hsl(from var(--color-iron) h s calc(l * .45) / 0) 45%
+				hsl(from var(--color-iron) h s calc(l * .45) / 1) 0,
+				hsl(from var(--color-iron) h s calc(l * .45) / 0) calc(($width + $padding)*3)
 			);
 			mix-blend-mode: soft-light;
 			@include full-offset(0);
