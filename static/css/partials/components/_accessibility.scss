@@ -2,7 +2,7 @@
 
 $options: theme, contrast, transparency, load;
 @each $option in $options {
-	#option-#{$option}:checked ~ .top label[for="option-#{$option}"] {
+	:root:has(#option-#{$option}:checked) .top label[for="option-#{$option}"] {
 		.toggle {
 			background-color: var(--background-active);
 			&::after {
@@ -13,12 +13,12 @@ $options: theme, contrast, transparency, load;
 }
 $tones: pink, blue, yellow;
 @each $option in $tones {
-	#option-#{'' + $option}:checked ~ .top label[for="option-#{'' + $option}"] {
+	:root:has(#option-#{'' + $option}:checked) .top label[for="option-#{'' + $option}"] {
 		&::after {
 			opacity: 1;
 		}
 	}
-	#option-#{'' + $option}:checked ~ main ul[class^="tone"]:not(.tone-#{'' + $option}) {
+	:root:has(#option-#{'' + $option}:checked) main ul[class^="tone"]:not(.tone-#{'' + $option}) {
 		display: none;
 	}
 }
@@ -29,41 +29,46 @@ $tones: pink, blue, yellow;
 .accessibility-popup {
 	position: absolute;
 	right: 0;
+	opacity: 0;
+	z-index: -1;
 	@include viewport(medium) {
 		position: relative;
 		right: unset;
 	}
-	.popup-button:focus, .popup-button:focus-visible, .popup-button:active {
-		pointer-events: unset;
-		~ .popup-label {
-			z-index: unset;
-			&, .button::before {
-				opacity: 1;
-			}
+	&:has(.popup-button:checked),
+	&:has(.popup-button:focus),
+	&:has(.popup-button:active),
+	&:has(.popup-label:hover) {
+		opacity: 1;
+		z-index: unset;
+		.popup-label {
+			pointer-events: unset;
 		}
 	}
-	.popup-button:checked {
-		pointer-events: unset;
-		~ .popup-label {
-			z-index: unset;
-			opacity: 1;
+	.popup-button {
+		&:checked, &:focus, &:active {
+			~ .popup-label {
+				pointer-events: unset;
+			}
+		}
+		&:focus, &:active {
+			~ .popup-label {
+				.button::before {
+					opacity: 1;
+				}
+			}
 		}
 	}
 	.popup-label::after, .popup-window .inside {
 		@include blur(10px, var(--color-iron), .45, .9, .8);
 	}
 	.popup-label {
-		z-index: -1;
-		opacity: 0;
+		pointer-events: none;
 		&::after {
 			bottom: -24px;
 			@media (prefers-reduced-motion: no-preference) {
 				translate: 0 calc(var(--p)*2);
 			}
-		}
-		&:active {
-			z-index: unset;
-			opacity: 1;
 		}
 	}
 	.popup-window {

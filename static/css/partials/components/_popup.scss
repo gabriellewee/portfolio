@@ -76,7 +76,6 @@
 		}
 	}
 	.popup-button {
-		pointer-events: none;
 		@include hide;
 		&:active {
 			+ .popup-label::after {
