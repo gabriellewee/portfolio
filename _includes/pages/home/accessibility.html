@@ -1,5 +1,5 @@
 <div class="accessibility-popup popup" data-popup hidden>
-	<input type="checkbox" id="accessibility" class="popup-button" tabindex="0" role="button" aria-pressed="false" aria-haspopup="menu" aria-controls="accessibility-window" aria-labelledby="accessibility-label" data-popup-trigger/>
+	<input type="checkbox" id="accessibility" class="popup-button" tabindex="0" role="button" aria-pressed="false" aria-expanded="false" aria-haspopup="menu" aria-controls="accessibility-window" aria-labelledby="accessibility-label" data-popup-trigger/>
 	<label id="accessibility-button" class="popup-label" for="accessibility" data-popup-label>
 		<span class="button"><span aria-hidden="true" id="accessibility-label">Accessibility</span></span>
 	</label>
@@ -7,14 +7,14 @@
 		<div class="inside">
 			<p class="option-no-js">Please turn on Javascript in order to keep your settings after refreshing or leaving the page.</p>
 			{% for category in site.accessibility %}
-				<h4 class="{% if category.js == true %}option-js{% endif %}">{{category.name|capitalize}}</h4>
+				<h4 class="{% if category.js == true %}option-js{% endif %}" aria-label="{{category.name|capitalize}}">{{category.name|capitalize}}</h4>
 				<menu class="{% if category.js == true %}option-js{% endif %}">
 					{% for item in category.items %}
 						{% if item.options %}
 							{% for option in item.options %}
 								{% if item.visibility == null or (item.visibility == "theme" and theme == null) %}
 									<li>
-										<input type="radio" class="option" id="option-{{option.name}}" name="tone" data-option="{{option.name}}"{% if option.color %} data-color="{{option.color}}"{% endif %} hidden tabindex="0" role="button" aria-pressed="{% if option.default == true %}true{% else %}false{% endif %}"{% if option.default == true %} checked{% endif %}/>
+										<input type="radio" class="option" id="option-{{option.name}}" name="tone" data-option="{{option.name}}"{% if option.color %} data-color="{{option.color}}"{% endif %} hidden tabindex="0" {% if option.default == true %} checked{% endif %}/>
 										<label class="option-label radio" for="option-{{option.name}}" aria-hidden="true" data-option-label>
 											<span>{{option.name|capitalize}}</span>
 										</label>
@@ -24,7 +24,7 @@
 						{% else %}
 							{% if (item.visibility != "load" and pagination) or (item.visibility == "load" and pagination) or (item.visibility != "load" and pagination == null) %}
 								<li>
-									<input type="checkbox" class="option" id="option-{{item.name}}" name="{{item.name}}" data-option hidden tabindex="0" role="button" aria-pressed="{% if item.default == true %}true{% else %}false{% endif %}"{% if item.default == true %} checked{% endif %}/>
+									<input type="checkbox" class="option" id="option-{{item.name}}" name="{{item.name}}" data-option hidden tabindex="0" role="switch" {% if item.default == true %} checked{% endif %}/>
 									<label class="option-label" for="option-{{item.name}}" aria-hidden="true" data-option-label>
 										<span class="toggle"></span>
 										<span>{{item.label}}</span>

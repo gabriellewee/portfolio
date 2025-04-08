@@ -14,12 +14,10 @@ const accessibility = (() => {
 	let _true = (option, index) => {
 		option.checked = true;
 		option.setAttribute("checked", "");
-		option.setAttribute("aria-pressed", "true");
 	}
 	let _false = (option, index) => {
 		option.checked = false;
 		option.removeAttribute("checked");
-		option.setAttribute("aria-pressed", "false");
 	}
 	let _toggle = (option, index, _optionTrue, _optionFalse) => {
 		if (option) option.addEventListener("click", e => {

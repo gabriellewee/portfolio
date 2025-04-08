@@ -11,11 +11,13 @@ const popup = ((containers = Array.from(document.querySelectorAll("[data-popup]"
 			popupTrigger.checked = true;
 			popupTrigger.setAttribute("checked", "");
 			popupTrigger.setAttribute("aria-pressed", "true");
+			popupTrigger.setAttribute("aria-expanded", "true");
 		}
 		let _false = (focus) => {
 			popupTrigger.checked = false;
 			popupTrigger.removeAttribute("checked");
 			popupTrigger.setAttribute("aria-pressed", "false");
+			popupTrigger.setAttribute("aria-expanded", "false");
 			if (focus === true) {
 				popupTrigger.focus();
 			}
