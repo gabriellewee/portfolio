@@ -1,23 +1,7 @@
 @use 'partials/shared/utilities' as *;
 
-$options: theme, contrast, transparency, load;
-@each $option in $options {
-	:root:has(#option-#{$option}:checked) .top label[for="option-#{$option}"] {
-		.toggle {
-			background-color: var(--background-active);
-			&::after {
-				translate: 100% 0;
-			}
-		}
-	}
-}
 $tones: pink, blue, yellow;
 @each $option in $tones {
-	:root:has(#option-#{'' + $option}:checked) .top label[for="option-#{'' + $option}"] {
-		&::after {
-			opacity: 1;
-		}
-	}
 	:root:has(#option-#{'' + $option}:checked) main ul[class^="tone"]:not(.tone-#{'' + $option}) {
 		display: none;
 	}
@@ -131,6 +115,19 @@ $tones: pink, blue, yellow;
 			display: flex;
 			flex-wrap: wrap;
 			gap: calc(var(--p)*2);
+		}
+		.option:checked + .radio, .option:focus-visible + .radio {
+			&::after {
+				opacity: 1;
+			}
+		}
+		.option:checked + label {
+			.toggle {
+				background-color: var(--background-active);
+				&::after {
+					translate: 100% 0;
+				}
+			}
 		}
 		.radio {
 			@include tone(pink) {

@@ -9,18 +9,17 @@ const show = ((container = document.documentElement) => {
 
 const accessibility = (() => {
 	const options = Array.from(document.querySelectorAll("[data-option]"));
-	const labels = Array.from(document.querySelectorAll("[data-option-label]"));
 	if (!options || !window.matchMedia) return;
 
 	let _true = (option, index) => {
 		option.checked = true;
 		option.setAttribute("checked", "");
-		if (labels[index]) labels[index].setAttribute("aria-pressed", "true");
+		option.setAttribute("aria-pressed", "true");
 	}
 	let _false = (option, index) => {
 		option.checked = false;
 		option.removeAttribute("checked");
-		if (labels[index]) labels[index].setAttribute("aria-pressed", "false");
+		option.setAttribute("aria-pressed", "false");
 	}
 	let _toggle = (option, index, _optionTrue, _optionFalse) => {
 		if (option) option.addEventListener("click", e => {
@@ -31,7 +30,7 @@ const accessibility = (() => {
 			}
 		});
 
-		if (labels[index]) labels[index].addEventListener("keydown", e =>{
+		if (option) option.addEventListener("keydown", e =>{
 			if (e.key === "Enter") {
 				if (option.checked) {
 					_optionFalse();
@@ -46,7 +45,7 @@ const accessibility = (() => {
 			_optionTrue();
 		});
 
-		labels[index].addEventListener("keydown", e =>{
+		option.addEventListener("keydown", e =>{
 			if (e.key === "Enter") {
 				_optionTrue();
 			}

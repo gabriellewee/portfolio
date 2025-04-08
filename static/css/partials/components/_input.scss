@@ -43,7 +43,7 @@
 		background-color: var(--indicator);
 	}
 
-	*:focus-visible & {
+	*:focus-visible &, *:focus-visible + label & {
 		outline: calc(var(--p)/4) solid var(--outline);
 	}
 	&.active {
