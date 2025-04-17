@@ -108,11 +108,13 @@ img {
 	display: none;
 }
 
-@view-transition {
-	navigation: auto;
-}
-::view-transition-group(*) {
-	animation-duration: .5s;
-	animation-timing-function: ease-out;
-	animation-fill-mode: both;
+@media (prefers-reduced-motion: no-preference) {
+	@view-transition {
+		navigation: auto;
+	}
+	::view-transition-group(*) {
+		animation-duration: .5s;
+		animation-timing-function: ease-out;
+		animation-fill-mode: both;
+	}
 }
