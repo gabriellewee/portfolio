@@ -2,7 +2,10 @@
 	"url": "https://gabriellew.ee",
 	"author": "Gabrielle Wee",
 	"email": "mail@gabriellew.ee",
-	"photo": "An Asian woman with wavy black hair in a coral-colored sweater and square rose gold glasses",
+	"photo": {
+		"personal": "An Asian woman with wavy black hair in a coral-colored sweater and square rose gold glasses",
+		"professional": "A professional headshot of an Asian woman with wavy shoulder-length hair. She is wearing rose gold metal glasses, a white collared shirt, a light pink overcoat with a grey and green crane print, and a jade pendant necklace."
+	},
 	"twitter": "@gabriewee",
 	"versions": ["2013-2014", "2014-2015", "2015-2020", "2020-2021", "2021-2023" ],
 	"accessibility": [
