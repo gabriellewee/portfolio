@@ -1,4 +1,4 @@
-<aside class="contact"{% if key == "about" %} data-anim{% endif %}>
+<aside class="contact"{% if eleventyNavigation.key == "About" or eleventyNavigation.key == "Me" %} data-anim{% endif %}>
 	{% for type in site.links %}
 		<div class="contact-{{type.name}}" aria-label="{{type.label}}"{% if key == "home" %} data-anim{% endif %}>
 			<h2>{{type.title}}</h2>

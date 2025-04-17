@@ -260,8 +260,6 @@
 			@include expand-hover(external, 23px, 23px, var(--p));
 		}
 		&:has(.button) {
-			grid-template-columns: 1fr;
-
 			.button {
 				margin-top: 0;
 				line-height: 1.2;
