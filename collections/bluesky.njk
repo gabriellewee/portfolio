@@ -3,7 +3,7 @@
 	tags: ["entries", "bluesky"],
 	category: "social",
 	pagination: {
-		data: "bluesky.feed",
+		data: "bluesky",
 		size: 1,
 		addAllPagesToCollections: true,
 		alias: "bluesky"
@@ -23,7 +23,7 @@
 			data.source = "bluesky",
 			data.page.date = new Date(data.bluesky.post.record.createdAt);
 			data.cid = data.bluesky.post.cid;
-			data.content = data.bluesky.post.record.text;
+			data.content = data.bluesky.markdown || data.bluesky.post.record.text;
 			let uri = data.bluesky.post.uri.split("/");
 			data.url = `https://bsky.app/profile/${process.env.BLUESKY_USERNAME}/post/${uri[uri.length - 1]}`;
 			data.media = data.bluesky.post.embed?.images;

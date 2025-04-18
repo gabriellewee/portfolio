@@ -362,16 +362,6 @@
 			text-underline-offset: 2px;
 		}
 	}
-	p {
-		> code {
-			word-break: break-all;
-			overflow-wrap: break-word;
-			border-radius: 2px;
-			padding-inline: 2px;
-			background-color: hsl(from var(--color-primary) h s l / .1);
-			font-size: 1.0625rem;
-		}
-	}
 	strong {
 		font-weight: 800;
 	}
@@ -383,7 +373,9 @@
 		font-weight: 400;
 	}
 	p > code {
+		font-size: 1.0625rem;
 		line-height: 1.412;
+		@include code;
 	}
 	pre {
 		padding: calc(var(--p)*1.5) calc(var(--p)*2);

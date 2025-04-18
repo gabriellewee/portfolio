@@ -115,3 +115,11 @@
 	);
 }
 
+
+@mixin code {
+	word-break: break-all;
+	overflow-wrap: break-word;
+	border-radius: 2px;
+	padding-inline: 2px;
+	background-color: hsl(from var(--color-primary) h s l / .1);
+}

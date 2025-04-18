@@ -184,7 +184,7 @@ eleventyNavigation:
 								{% endif %}
 							</div>
 						{% elseif post.data.content %}
-							<blockquote>{{post.data.content|nbsp|safe}}</blockquote>
+							<blockquote>{{post.data.content|nbsp|md|safe}}</blockquote>
 							{%- set postIndex = loop.index %}
 							{% if post.data.category == "social" %}
 								{% if post.data.video %}

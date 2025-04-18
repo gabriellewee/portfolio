@@ -1,3 +1,5 @@
+import markdownIt from 'markdown-it';
+
 export const limit = (array, limit) => array.slice(0, limit);
 
 export const index = (array, index) => array.slice(index - 1, index);
@@ -18,6 +20,16 @@ export const platform = (platform) => {
 	} else {
 		return `<span> on ${platform}</span>`;
 	}
+};
+
+export const md = (copy) => {
+	let markdown = markdownIt({
+		html: true,
+		breaks: true,
+		linkify: true,
+		typographer: true
+	});
+	return markdown.render(copy);
 };
 
 export const stripAttr = (stripped) => {

@@ -62,6 +62,12 @@
 		@include contrast {
 			color: var(--color-primary);
 		}
+		p > code {
+			font-family: var(--font-mono);
+			font-size: 1.0625em;
+			line-height: 1;
+			@include code;
+		}
 		a {
 			text-decoration: underline;
 			text-underline-offset: 2px;
@@ -126,6 +132,53 @@
 				--color-highlight: var(--color-bluesky);
 			}
 		}
+		.post-content {
+			a:not(.expand) {
+				color: light-dark(
+					var(--color-bluesky-link-dark),
+					var(--color-bluesky-link-light)
+				);
+				&:hover, &:focus {
+					color: light-dark(
+						var(--color-bluesky),
+						hsl(from var(--color-bluesky-link-light) h s calc(l * 1.1))
+					);
+				}
+				&:focus-visible {
+					@include focus-shadow(light-dark(
+						var(--color-bluesky-link-dark),
+						var(--color-bluesky-link-light)
+					));
+				}
+				&:active {
+					color: light-dark(
+						color-mix(
+							in srgb,
+							var(--color-bluesky-link-dark) 90%,
+							var(--color-primary)
+						),
+						color-mix(
+							in srgb,
+							var(--color-bluesky-link-light) 60%,
+							var(--color-secondary)
+						)
+					);
+				}
+			}
+		}
+		.media-attachment a::before {
+			background: radial-gradient(
+				circle at center left,
+				light-dark(
+					var(--color-bluesky),
+					hsl(from var(--color-bluesky) h s calc(l * 1.5))
+				),
+				light-dark(
+					var(--color-bluesky-dark),
+					hsl(from var(--color-bluesky-dark) h s calc(l * 1.5))
+				)
+			);
+		}
 	}
 
 	&.post-mastodon {
@@ -167,13 +220,13 @@
 					@include focus-shadow(light-dark(
 						color-mix(
 							in srgb,
-							hsl(from var(--color-mastodon) h s calc(l * 1.15) / .75) 90%,
-							hsl(from white h s l / .75)
+							var(--color-mastodon) 40%,
+							var(--color-mastodon-dark)
 						),
 						color-mix(
 							in srgb,
-							hsl(from var(--color-mastodon) h s calc(l * 1.15) / .9) 90%,
-							hsl(from white h s l / .9)
+							hsl(from var(--color-mastodon) h s calc(l * 1.1)) 90%,
+							white
 						)
 					));
 				}
