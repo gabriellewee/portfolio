@@ -34,12 +34,10 @@
 			var(--color-iron) 70%,
 			white
 		);
-		@include theme(light) {
-			--color-mix-underline: hsl(from var(--color-light) h s calc(l * 1.1) / 0);
-		}
-		@include theme(dark) {
-			--color-mix-underline: hsl(from var(--color-iron) h s calc(l * .73) / 0);
-		}
+		--color-mix-underline: light-dark(
+			hsl(from var(--color-light) h s calc(l * 1.1) / 0),
+			hsl(from var(--color-iron) h s calc(l * .73) / 0)
+		);
  
 		&, > span {
 			color: var(--color-mix);
@@ -55,14 +53,14 @@
 			text-decoration-thickness: 2px;
 			text-underline-offset: 8px;
 			text-decoration-color: var(--color-mix-underline);
-			@include contrast(both) {
+			@include contrast {
 				text-underline-offset: 4px;
 				text-decoration-color: unset;
 			}
 		}
 		&.emoji {
 			text-underline-offset: 10px;
-			@include contrast(both) {
+			@include contrast {
 				text-underline-offset: 6px;
 			}
 			span span {

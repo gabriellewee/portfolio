@@ -36,6 +36,11 @@
 		}
 	}
 	.text {
+		--background: light-dark(
+			hsl(from white h s l / .8),
+			hsl(from var(--color-iron) h s l / .8)
+		);
+		--color: light-dark(var(--color-iron), white);
 		opacity: 0;
 		transition: opacity .2s ease-out, translate .2s ease-out;
 		order: 1;
@@ -46,15 +51,7 @@
 		color: var(--color);
 		background-color: var(--background);
 		@include font-weight-width(600, 115);
-		@include theme(light) {
-			--background: hsl(from white h s l / .8);
-			--color: var(--color-iron);
-		}
-		@include theme(dark) {
-			--background: hsl(from var(--color-iron) h s l / .8);
-			--color: white;
-		}
-		@include contrast(both) {
+		@include contrast {
 			outline: 1.5px solid var(--color-primary);
 		}
 		&.message {
@@ -113,13 +110,8 @@
 			height: 100%;
 		}
 		&:focus-visible {
+			--focus: light-dark(hsl(from var(--color-dark) h s l / .5), var(--color-dark));
 			@include focus-shadow(var(--focus));
-			@include theme(light) {
-				--focus: hsl(from var(--color-dark) h s l / .5);
-			}
-			@include theme(dark) {
-				--focus: var(--color-dark);
-			}
 			.avatar {
 				&:not(.avatar-hm) {
 					opacity: 0;
@@ -143,7 +135,7 @@
 					translate: 0 calc(-100% - 5px) !important;
 				}
 				@media (prefers-reduced-motion: reduce) {
-					opacity: 0;
+					opacity: 0 !important;
 				}
 			}
 		}

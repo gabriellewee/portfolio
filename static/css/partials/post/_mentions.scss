@@ -80,12 +80,10 @@
 	.mentions-reply-content, .mentions-link-content {
 		li {
 			padding: calc(var(--p)*2);
-			@include theme(light) {
-				background-color: hsl(from var(--color-secondary) h s l / .75);
-			}
-			@include theme(dark) {
-				background-color: hsl(from var(--color-iron) h s calc(l * .55) / .65);
-			}
+			background-color: light-dark(
+				hsl(from var(--color-secondary) h s l / .75),
+				hsl(from var(--color-iron) h s calc(l * .55) / .65)
+			);
 			@include viewport($iphone-max) {
 				@include clip-path-edges(2px);
 			}
@@ -94,7 +92,7 @@
 				align-items: flex-start;
 			}
 			@include viewport($iphone-max) {
-				@include contrast(both) {
+				@include contrast {
 					position: relative;
 					clip-path: unset;
 					border-radius: unset;
@@ -117,11 +115,8 @@
 				}
 			}
 			&::after {
-				@include contrast(light) {
-					background-color: white;
-				}
-				@include contrast(dark) {
-					background-color: hsl(from var(--color-iron) h s calc(l * .7));
+				@include contrast {
+					background-color: light-dark(white, hsl(from var(--color-iron) h s calc(l * .7)));
 				}
 			}
 			&:not(:first-child) {
@@ -192,14 +187,12 @@
 		font-size: .875rem;
 		@include font-weight-width(600, 90);
 		&::before {
+			background-color: light-dark(
+				hsl(from var(--color-dark) h s l / .5),
+				var(--color-light)
+			);
 			@include before;
-			@include theme(light) {
-				background-color: hsl(from var(--color-dark) h s l / .5);
-			}
-			@include theme(dark) {
-				background-color: var(--color-light);
-			}
-			@include contrast(both) {
+			@include contrast {
 				background-color: color-mix(
 					in srgb,
 					var(--color-iron) 60%,
@@ -208,7 +201,7 @@
 			}
 		}
 		&::after {
-			@include contrast(both) {
+			@include contrast {
 				content: "";
 				display: block;
 				z-index: -1;

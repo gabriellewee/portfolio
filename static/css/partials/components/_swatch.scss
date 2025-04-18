@@ -6,20 +6,15 @@
 	align-items: center;
 }
 .swatch {
+	--border-color: light-dark(var(--color-message), white);
 	display: block;
 	margin-inline: auto;
 	text-align: center;
 	background-color: var(--background);
 	border-radius: 100%;
-	border: calc(var(--p)/4) solid;
+	border: calc(var(--p)/4) solid var(--border-color);
 	@include square(36px);
-	@include theme(light) {
-		border-color: var(--color-message);
-	}
-	@include theme(dark) {
-		border-color: white;
-	}
-	@include contrast(both) {
-		border-color: var(--color-primary);
+	@include contrast {
+		--border-color: var(--color-primary);
 	}
 }

@@ -146,96 +146,28 @@ $x-large: 1280px;
 	}
  }
 
-@mixin contrast($theme, $root: false) {
+@mixin contrast($root: false) {
 	@if $root == true {
-		@if $theme == both {
-			@media (prefers-contrast: more) {
-				:root {
-					@content;
-				}
-			}
-			:root:has(#option-contrast:not(.inactive):checked) {
-				@content;
-			}
-			.theme-contrast {
-				@content;
-			}
-		} @else if $theme == dark {
-			@media (prefers-color-scheme: #{$theme}) and (prefers-contrast: more) {
-				:root {
-					@content;
-				}
-			}
-			@media (prefers-color-scheme: #{$theme}) {
-				.theme-contrast {
-					@content;
-				}
-			}
-			:root:has(#option-theme:not(.inactive):checked ~ #option-contrast:not(.inactive):checked) {
-				@content;
-			}
-			.theme-#{$theme}.theme-contrast {
-				@content;
-			}
-		} @else if $theme == light {
-			@media (prefers-color-scheme: #{$theme}) and (prefers-contrast: more) {
-				:root {
-					@content;
-				}
-			}
-			@media (prefers-color-scheme: #{$theme}) {
-				.theme-contrast {
-					@content;
-				}
-			}
-			:root:has(#option-theme:not(.inactive):not(:checked) ~ #option-contrast:not(.inactive):checked) {
-				@content;
-			}
-			.theme-#{$theme}.theme-contrast {
+		@media (prefers-contrast: more) {
+			:root {
 				@content;
 			}
 		}
+		:root:has(#option-contrast:not(.inactive):checked) {
+			@content;
+		}
+		.theme-contrast {
+			@content;
+		}
 	} @else {
-		@if $theme == both {
-			@media (prefers-contrast: more) {
-				@content;
-			}
-			:root:has(#option-contrast:not(.inactive):checked) & {
-				@content;
-			}
-			.theme-contrast & {
-				@content;
-			}
-		} @else if $theme == dark {
-			@media (prefers-color-scheme: #{$theme}) and (prefers-contrast: more) {
-				@content;
-			}
-			@media (prefers-color-scheme: #{$theme}) {
-				.theme-contrast & {
-					@content;
-				}
-			}
-			:root:has(#option-theme:not(.inactive):checked ~ #option-contrast:not(.inactive):checked) & {
-				@content;
-			}
-			.theme-#{$theme}.theme-contrast & {
-				@content;
-			}
-		} @else if $theme == light {
-			@media (prefers-color-scheme: #{$theme}) and (prefers-contrast: more) {
-				@content;
-			}
-			@media (prefers-color-scheme: #{$theme}) {
-				.theme-contrast & {
-					@content;
-				}
-			}
-			:root:has(#option-theme:not(.inactive):not(:checked) ~ #option-contrast:not(.inactive):checked) & {
-				@content;
-			}
-			.theme-#{$theme}.theme-contrast & {
-				@content;
-			}
+		@media (prefers-contrast: more) {
+			@content;
+		}
+		:root:has(#option-contrast:not(.inactive):checked) & {
+			@content;
+		}
+		.theme-contrast & {
+			@content;
 		}
 	}
 }
@@ -488,8 +420,8 @@ $x-large: 1280px;
 	@include square(1px);
 }
 
-@mixin before($color: null, $border: 3px, $bezel: #{$border}) {
-	opacity: 0;
+@mixin before($color: null, $border: 3px, $bezel: #{$border}, $opacity: 0) {
+	opacity: $opacity;
 	content: "";
 	display: block;
 	position: absolute;

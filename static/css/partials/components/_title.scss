@@ -1,12 +1,12 @@
 @use 'partials/shared/utilities' as *;
 
 .title {
+	color: light-dark(
+		var(--color-body),
+		hsl(from var(--color-primary) h s l / .9)
+	);
 	font-size: clamp(1.5rem, 3vw, 2.5rem);
 	@include font-weight-width(900, 125);
-
-	@include theme(dark) {
-		color: hsl(from var(--color-primary) h s l / .9);
-	}
 
 	@media (prefers-reduced-motion: no-preference) {
 		opacity: 0;

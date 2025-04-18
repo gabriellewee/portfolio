@@ -2,6 +2,15 @@
 
 :root {
 	color-scheme: light dark;
+	&:has(#option-theme:not(.inactive):checked) {
+		color-scheme: dark;
+	}
+	&.theme-dark {
+		color-scheme: dark;
+	}
+	&.theme-light {
+		color-scheme: light;
+	}
 }
 
 html {
@@ -32,17 +41,16 @@ body {
 	color: var(--color-body);
 
 	--color-body: var(--color-primary);
-	@include theme(light) {
-		--background-body: hsl(from var(--color-light) h s calc(l * 1.09));
-	}
-	@include theme(dark) {
-		--background-body: hsl(from var(--color-iron) h s calc(l * .73));
-	}
-	@include contrast(light) {
-		--background-body: hsl(from var(--color-light) h s calc(l * 1.12));
-	}
-	@include contrast(dark) {
-		--background-body: hsl(from var(--color-iron) h s calc(l * .45));
+	--background-body: light-dark(
+		hsl(from var(--color-light) h s calc(l * 1.09)),
+		hsl(from var(--color-iron) h s calc(l * .73))
+	);
+
+	@include contrast {
+		--background-body: light-dark(
+			hsl(from var(--color-light) h s calc(l * 1.12)),
+			hsl(from var(--color-iron) h s calc(l * .45))
+		);
 	}
 	@include safari(false) {
 		font-family: var(--font-default);
@@ -56,13 +64,11 @@ a {
 
 * {
 	@include selection {
+		--selection: light-dark(
+			hsl(from var(--color-middle) h s l / .5),
+			hsl(from var(--color-light) h s l / .3)
+		);
 		background-color: var(--selection);
-		@include theme(light) {
-			--selection: hsl(from var(--color-middle) h s l / .5);
-		}
-		@include theme(dark) {
-			--selection: hsl(from var(--color-light) h s l / .3);
-		}
 	}
 }
 

@@ -18,12 +18,10 @@
 		color: hsl(from var(--color-primary) h s l / .75);
 		@include input.radio;
 		&::before {
-			@include theme(light) {
-				background-color: hsl(from var(--color-primary) h s l / .1);
-			}
-			@include theme(dark) {
-				background-color: var(--color-primary);
-			}
+			background-color: light-dark(
+				hsl(from var(--color-primary) h s l / .1),
+				var(--color-primary)
+			);
 		}
 	}
 	input {
@@ -37,19 +35,15 @@
 	}
 	input:focus + label, input:hover + label, label:hover {
 		text-decoration: underline;
-		@include theme(light) {
-			color: hsl(from var(--color-primary) h s l / .55);
-		}
-		@include theme(dark) {
-			color: var(--color-primary);
-		}
+		color: light-dark(
+			hsl(from var(--color-primary) h s l / .55),
+			var(--color-primary)
+		);
 	}
 	input:active + label, input:active + label:hover {
-		@include theme(light) {
-			color: hsl(from var(--color-primary) h s calc(l * .5));
-		}
-		@include theme(dark) {
-			color: hsl(from var(--color-primary) h s l / .45);
-		}
+		color: light-dark(
+			hsl(from var(--color-primary) h s calc(l * .5)),
+			hsl(from var(--color-primary) h s l / .45)
+		);
 	}
 }

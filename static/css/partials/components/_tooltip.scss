@@ -3,18 +3,15 @@
 .tooltip {
 	--t: 10px;
 	--r: 3px;
+	--background: light-dark(
+		var(--color-message),
+		hsl(from var(--color-iron) h s calc(l * .7))
+	);
+	--color: light-dark(var(--color-iron), white);
 	display: inline-flex;
 	align-items: center;
 	position: relative;
 	width: fit-content;
-	@include theme(light) {
-		--background: var(--color-message);
-		--color: var(--iron);
-	}
-	@include theme(dark) {
-		--background: hsl(from var(--color-iron) h s calc(l * .7));
-		--color: white;
-	}
 	&::before, &::after {
 		display: block;
 		position: absolute;
@@ -49,7 +46,7 @@
 			position: absolute;
 			z-index: 0;
 			@include square(calc(var(--t) + 3px));
-			@include contrast(both) {
+			@include contrast {
 				background-color: var(--color-primary);
 			}
 		}
@@ -58,7 +55,7 @@
 			border-radius: calc(var(--r) - 1px);
 			outline: 1.5px solid transparent;
 			@include full-offset(0, bottom);
-			@include contrast(both) {
+			@include contrast {
 				outline-color: var(--color-primary);
 			}
 		}
@@ -94,7 +91,7 @@
 		}
 		&.inline {
 			margin-top: var(--p);
-			@include contrast(both) {
+			@include contrast {
 				margin-top: calc(var(--p)*1.25);
 			}
 			&::before {
@@ -147,12 +144,10 @@
 		}
 	}
 	&.dark {
-		@include theme(light) {
-			--background: var(--color-primary);
-		}
-		@include theme(dark) {
-			--background: hsl(from var(--color-iron) h s calc(l * .55));
-		}
+		--background: light-dark(
+			var(--color-primary),
+			hsl(from var(--color-iron) h s calc(l * .55))
+		);
 		&::after {
 			color: white;
 		}

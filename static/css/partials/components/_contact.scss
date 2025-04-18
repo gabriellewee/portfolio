@@ -19,9 +19,7 @@
 
 		> h2 {
 			margin-top: 1.5rem;
-			@include theme(dark) {
-				color: hsl(from var(--color-primary) h s l / .9);
-			}
+			color: light-dark(var(--color-primary), hsl(from var(--color-primary) h s l / .9));
 		}
 
 		address > ul {
@@ -33,19 +31,9 @@
 				display: contents;
 			}
 			.color {
-				@include theme(light) {
-					color: var(--color-link-dark);
-				}
-				@include theme(dark) {
-					color: var(--color-link);
-				}
+				color: light-dark(var(--color-link-dark), var(--color-link));
 				&:hover, &:focus {
-					@include theme(light) {
-						text-decoration-color: var(--color-link-dark);
-					}
-					@include theme(dark) {
-						text-decoration-color: var(--color-link);
-					}
+					text-decoration-color: light-dark(var(--color-link-dark), var(--color-link));
 				}
 			}
 			.link {
@@ -71,18 +59,16 @@
 				text-decoration: underline;
 				text-decoration-thickness: 3px;
 				text-underline-offset: 8px;
-				@include contrast(both) {
+				@include contrast {
 					text-underline-offset: 4px;
 				}
 			}
 			.link:not(:hover):not(:focus), .popup-label span {
-				@include theme(light) {
-					text-decoration-color: hsl(from var(--color-light) h s calc(l * 1.1) / 0);
-				}
-				@include theme(dark) {
-					text-decoration-color: hsl(from var(--color-iron) h s calc(l * .73) / 0);
-				}
-				@include contrast(both) {
+				text-decoration-color: light-dark(
+					hsl(from var(--color-light) h s calc(l * 1.1) / 0),
+					hsl(from var(--color-iron) h s calc(l * .73) / 0)
+				);
+				@include contrast {
 					text-decoration-color: hsl(from var(--color-primary) h s l / .5);
 				}
 			}
@@ -93,23 +79,12 @@
 				text-decoration-color: var(--color-link);
 			}
 			.link:hover, .link:focus, .popup-label:hover span, .popup-button:focus ~ .popup-label span {
-				@include theme(light) {
-					color: var(--color-iron);
-				}
-				@include theme(dark) {
-					color: white;
-				}
+				color: light-dark(var(--color-iron), white);
 			}
 			.link:focus, .popup-button:focus ~ .popup-label span {
-				@include contrast(both) {
+				@include contrast {
 					text-decoration-color: hsl(from var(--color-primary) h s l / 0);
-					@include focus-shadow(var(--contrast));
-				}
-				@include contrast(light) {
-					--contrast: var(--color-link-dark);
-				}
-				@include contrast(dark) {
-					--contrast: var(--color-link);
+					@include focus-shadow(light-dark(var(--color-link-dark), var(--color-link)));
 				}
 			}
 			.link:hover, .link:focus, .popup-label:hover span, .popup-button:focus ~ .popup-label span, .link:active, .popup-button:active ~ .popup-label span {
@@ -133,17 +108,12 @@
 			content: "";
 			display: block;
 			position: absolute;
+			background-color: light-dark(white, var(--color-iron));
 			@include full-offset(0);
 			@include clip-path-edges(2px);
-			@include theme(light) {
-				background-color: white;
-			}
-			@include theme(dark) {
-				background-color: var(--color-iron);
-			}
 		}
 		&::after {
-			@include contrast(both) {
+			@include contrast {
 				content: "";
 				display: block;
 				position: absolute;
@@ -175,13 +145,20 @@
 				flex-wrap: wrap;
 				.button-reduced {
 					--background: var(--color-link-dark);
+					--outline: light-dark(
+						color-mix(
+							in srgb,
+							var(--color-light),
+							var(--color-middle)
+						),
+						var(--color-primary)
+					);
+					--background-active: light-dark(
+						var(--color-iron),
+						var(--background-body)
+					);
 					font-size: 1rem;
 					line-height: 1;
-
-					@include theme(dark) {
-						--outline: var(--color-primary);
-						--background-active: var(--background-body);
-					}
 				}
 				.tooltip-bottom {
 					&::before {

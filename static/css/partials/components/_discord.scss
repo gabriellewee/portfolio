@@ -76,7 +76,7 @@
 			border-top: 1px solid hsl(from white h s l / .1);
 			margin-top: var(--m);
 			padding: var(--m);
-			@include contrast(both) {
+			@include contrast {
 				border-color: white;
 			}
 		}
@@ -102,7 +102,7 @@
 			border-top: 1px solid hsl(from white h s l / .1);
 			margin-top: var(--m);
 			padding-top: var(--m);
-			@include contrast(both) {
+			@include contrast {
 				border-color: white;
 			}
 			@include viewport(450px) {
@@ -139,7 +139,7 @@
 				font-size: 1rem;
 				text-align: left;
 				@include font-weight-width(600, 100);
-				@include contrast(both) {
+				@include contrast {
 					border-color: white;
 				}
 				&::after {
@@ -154,7 +154,7 @@
 				&:hover, &:focus {
 					background-color: hsl(from white h s l / .1);
 					border-color: transparent;
-					@include contrast(both) {
+					@include contrast {
 						border-color: white;
 					}
 					&::after {

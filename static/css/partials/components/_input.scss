@@ -23,7 +23,7 @@
 	padding: calc(var(--height)/8);
 
 	&::before {
-		@include contrast(both) {
+		@include contrast {
 			content: "";
 			display: block;
 			z-index: -1;
@@ -75,7 +75,7 @@
 		border-radius: calc(var(--p)*2);
 		margin-right: calc(var(--p)*.75);
 		background-color: var(--background);
-		@include contrast(both) {
+		@include contrast {
 			outline: 2px solid var(--contrast);
 		}
 	}

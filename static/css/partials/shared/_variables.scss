@@ -86,24 +86,13 @@ $thunder: #38262A;
 	--color-middle:var(--color-rose);
 	--color-dark:var(--color-mauve);
 	--color-grey:var(--color-slate);
+
+	--color-primary:light-dark(color-mix(in srgb,var(--color-iron) 95%,white),color-mix(in srgb,var(--color-iron) 5%,white));
+	--color-secondary:light-dark(white,var(--color-iron));
 }
 
-@include theme(light, true) {
-	--color-secondary:white;
-	--color-primary:#{color.mix($iron, white, 95%)};
-}
-
-@include theme(dark, true) {
-	--color-secondary:var(--color-iron);
-	--color-primary:#{color.mix($iron, white, 5%)};
-}
-
-@include contrast(light, true) {
-	--color-primary:#{color.adjust($iron, $lightness: -15%)};
-}
-
-@include contrast(dark, true) {
-	--color-primary:white;
+@include contrast(true) {
+	--color-primary:light-dark(hsl(from var(--color-iron) h s calc(l*.15)),white);
 }
 
 @include tone(blue, true) {

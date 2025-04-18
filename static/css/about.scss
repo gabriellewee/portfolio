@@ -131,26 +131,22 @@
 			hsl(from var(--color-grey) h calc(s * .3) l) 30%,
 			var(--color-dark)
 		);
+		--background-active: light-dark(var(--color-iron),var(--background-body));
 		@include font-weight-width(500, 115);
-		@include theme(dark) {
-			--background-active: var(--background-body);
-		}
 
 		&.current span {
-			@include theme(light) {
-				background-color: color-mix(
+			background-color: light-dark(
+				color-mix(
 					in srgb,
 					var(--color-secondary) 15%,
 					var(--background)
-				);
-			}
-			@include theme(dark) {
-				background-color: color-mix(
+				),
+				color-mix(
 					in srgb,
 					var(--color-secondary) 70%,
 					var(--background)
-				);
-			}
+				)
+			)
 		}
 	}
 }
@@ -191,12 +187,10 @@
 		text-underline-offset: 2px;
 
 		&:focus-visible {
-			@include theme(light) {
-				@include focus-shadow(hsl(from var(--color-dark) h s l / .5));
-			}
-			@include theme(dark) {
-				@include focus-shadow(var(--color-dark));
-			}
+			@include focus-shadow(light-dark(
+				hsl(from var(--color-dark) h s l / .5),
+				var(--color-dark)
+			));
 		}
 	}
 }
@@ -205,45 +199,29 @@
 	.link-tile {
 		--active-color: var(--color-grey);
 
-		@include theme(light) {
-			--background: white linear-gradient(
-				135deg,
-				hsl(from var(--color-dark) h s l / .15),
-				hsl(from color-mix(in srgb, var(--color-dark), var(--color-grey)) h s l / .15)
-			);
-			--active-background: white linear-gradient(
-				135deg,
-				hsl(from var(--color-grey) h s l / .15),
-				hsl(from var(--color-iron) h s l / .15)
-			);
+		--background: light-dark(white, var(--color-iron)) linear-gradient(
+			135deg,
+			hsl(from var(--color-dark) h s l / .15),
+			hsl(from color-mix(in srgb, var(--color-dark), var(--color-grey)) h s l / .15)
+		);
+		--active-background: light-dark(white, var(--color-iron)) linear-gradient(
+			135deg,
+			hsl(from var(--color-grey) h s l / .15),
+			hsl(from var(--color-iron) h s l / .15)
+		);
 
-		}
-
-		@include theme(dark) {
-			--background: var(--color-iron) linear-gradient(
-				135deg,
-				hsl(from var(--color-dark) h s l / .15),
-				hsl(from color-mix(in srgb, var(--color-dark), var(--color-grey)) h s l / .15)
-			);
-			--active-background: var(--color-iron) linear-gradient(
-				135deg,
-				hsl(from var(--color-grey) h s l / .15),
-				hsl(from color-mix(in srgb, var(--color-grey), var(--color-iron)) h s l / .15)
-			);
-		}
-
-		@include contrast(light) {
-			--contrast: color-mix(
-				in srgb,
-				var(--color-dark) 80%,
-				var(--color-iron)
-			);
-		}
-		@include contrast(dark) {
-			--contrast: color-mix(
-				in srgb,
-				var(--color-dark),
-				white
+		@include contrast {
+			--contrast: light-dark(
+				color-mix(
+					in srgb,
+					var(--color-dark) 80%,
+					var(--color-iron)
+				),
+				color-mix(
+					in srgb,
+					var(--color-dark),
+					white
+				)
 			);
 		}
 		&:has(a:active) {
@@ -260,12 +238,7 @@
 			}
 		}
 		p {
-			@include theme(light) {
-				--color: hsl(from var(--color-dark) h s l / .8);
-			}
-			@include theme(dark) {
-				--color: var(--color-dark);
-			}
+			--color: light-dark(hsl(from var(--color-dark) h s l / .8), var(--color-dark));
 		}
 	}
 }

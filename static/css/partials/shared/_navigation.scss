@@ -101,7 +101,7 @@ header.top {
 			content: "";
 			display: block;
 			position: absolute;
-			@include contrast(both) {
+			@include contrast {
 				z-index: -1;
 				top: calc(var(--p)/-8);
 				left: calc(var(--p)/-8);
@@ -128,7 +128,7 @@ header.top {
 			background-color: var(--background);
 			color: var(--color);
 			@include button;
-			@include contrast(both) {
+			@include contrast {
 				--background: var(--color-secondary);
 				--color: var(--color-primary);
 			}
@@ -164,7 +164,7 @@ header.top {
 			@include button-shape(1.375, 7%, 3px, right);
 		}
 		&::after {
-			@include contrast(both) {
+			@include contrast {
 				@include button-shape(1.3125, 6%, 2.5px, right);
 			}
 		}
@@ -178,7 +178,7 @@ header.top {
 			@include button-shape(1.375, 7%, 3px, left);
 		}
 		&::after {
-			@include contrast(both) {
+			@include contrast {
 				@include button-shape(1.3125, 6%, 2.5px, left);
 			}
 		}

@@ -23,7 +23,7 @@
 		}
 		&::after {
 			@include viewport($iphone-max) {
-				@include contrast(both) {
+				@include contrast {
 					z-index: -2;
 					background-color: var(--color-primary);
 					@include full-offset(1.5px);
@@ -167,8 +167,11 @@
 				background-color: var(--color-iron);
 			}
 			&::before {
-				@include contrast(light) {
-					background-color: hsl(from white h s l / .8);
+				@include contrast {
+					background-color: light-dark(
+						var(--color-primary),
+						hsl(from white h s l / .8)
+					);
 				}
 			}
 		}
@@ -226,7 +229,7 @@
 						text-decoration: underline;
 						text-underline-offset: 8px;
 						text-decoration-color: hsl(from white h s l / 0);
-						@include contrast(both) {
+						@include contrast {
 							text-underline-offset: 4px;
 							text-decoration-color: unset;
 						}
@@ -242,7 +245,7 @@
 
 				&:focus-visible {
 					.no-image span {
-						@include contrast(both) {
+						@include contrast {
 							@include focus-shadow(hsl(from white h s l / .8));
 						}
 					}
@@ -375,7 +378,7 @@
 				text-decoration: underline;
 				text-underline-offset: 8px;
 				text-decoration-color: hsl(from white h s l / 0);
-				@include contrast(both) {
+				@include contrast {
 					text-underline-offset: 4px;
 					text-decoration-color: unset;
 				}
@@ -388,7 +391,7 @@
 			}
 			&:focus-visible {
 				> span {
-					@include contrast(both) {
+					@include contrast {
 						@include focus-shadow(hsl(from white h s l / .8));
 					}
 				}

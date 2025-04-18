@@ -6,24 +6,24 @@
 		position: relative;
 		margin-bottom: calc(var(--p)/3);
 		padding-inline: calc(var(--p)/2);
+		background-color: light-dark(
+			hsl(from var(--color-iron) h s l / .1),
+			hsl(from var(--color-iron) h s calc(l * .55) / .4)
+		);
+		color: light-dark(
+			hsl(from var(--color-iron) h s l / .7),
+			hsl(from white h s l / .8)
+		);
 		font-size: .875rem;
 		text-transform: uppercase;
 		line-height: 1.715;
 		@include font-weight-width(600, 90);
 		@include clip-path-edges(2px);
-		@include theme(light) {
-			background-color: hsl(from var(--color-iron) h s l / .1);
-			color: hsl(from var(--color-iron) h s l / .7);
-		}
-		@include theme(dark) {
-			background-color: hsl(from var(--color-iron) h s calc(l * .55) / .4);
-			color: hsl(from white h s l / .8);
-		}
 		@include viewport(medium) {
 			margin-bottom: unset;
 			margin-right: calc(var(--p)/3);
 		}
-		@include contrast(both) {
+		@include contrast {
 			clip-path: unset;
 			border-radius: unset;
 			background-color: unset;
@@ -33,33 +33,25 @@
 			}
 			&::before {
 				z-index: -2;
+				background-color: light-dark(
+					hsl(from var(--color-primary) h s l / .5),
+					hsl(from var(--color-primary) h s l / .7)
+				);
 				@include full-offset(1.5px);
 				@include clip-path-edges(3px);
 			}
 			&::after {
 				z-index: -1;
+				background-color: light-dark(
+					color-mix(
+						in srgb,
+						var(--color-iron) 10%,
+						white
+					),
+					hsl(from var(--color-iron) h s l / .7)
+				);
 				@include full-offset(0);
 				@include clip-path-edges(2px);
-			}
-		}
-		@include contrast(light) {
-			&::before {
-				background-color: hsl(from var(--color-primary) h s l / .5);
-			}
-			&::after {
-				background-color: color-mix(
-					in srgb,
-					var(--color-iron) 10%,
-					white
-				);
-			}
-		}
-		@include contrast(dark) {
-			&::before {
-				background-color: hsl(from var(--color-primary) h s l / .7);
-			}
-			&::after {
-				background-color: hsl(from var(--color-iron) h s l / .7);
 			}
 		}
 	}
@@ -76,44 +68,40 @@
 .link-tile {
 	--color: var(--primary);
 	--active-color: hsl(from var(--color-primary) h s calc(l * .7));
+	--background: light-dark(
+		color-mix(
+			in srgb,
+			hsl(from var(--color-iron) h s calc(l * .55)) 7.5%,
+			white
+		),
+		color-mix(
+			in srgb,
+			hsl(from var(--color-iron) h s calc(l * .55)) 27.5%,
+			var(--color-iron)
+		)
+	);
+	--active-background: light-dark(
+		color-mix(
+			in srgb,
+			hsl(from var(--color-iron) h s calc(l * .55)) 20%,
+			white
+		),
+		var(--background-body)
+	);
 
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	height: 100%;
-	padding: calc(var(--p)*1.25) calc(var(--p)*1.5);;
+	padding: calc(var(--p)*1.25) calc(var(--p)*1.5);
 	background: var(--background);
 	@include clip-path-edges(2px);
 
-	@include theme(light) {
-		--background: color-mix(
-			in srgb,
-			hsl(from var(--color-iron) h s calc(l * .55)) 7.5%,
-			white
+	@include contrast {
+		--contrast: light-dark(
+			hsl(from var(--color-primary) h s l / .5),
+			hsl(from var(--color-primary) h s l / .7)
 		);
-		--active-background: color-mix(
-			in srgb,
-			hsl(from var(--color-iron) h s calc(l * .55)) 20%,
-			white
-		);
-	}
-	@include theme(dark) {
-		--background: color-mix(
-			in srgb,
-			hsl(from var(--color-iron) h s calc(l * .55)) 27.5%,
-			var(--color-iron)
-		);
-		--active-background: var(--background-body);
-	}
-
-	@include contrast(light) {
-		--contrast: hsl(from var(--color-primary) h s l / .5);
-	}
-	@include contrast(dark) {
-		--contrast: hsl(from var(--color-primary) h s l / .7);
-	}
-
-	@include contrast(both) {
 		clip-path: unset;
 		border-radius: unset;
 		background: unset;
@@ -209,7 +197,7 @@
 		display: block;
 		border-radius: var(--radius-outline);
 
-		@include contrast(both) {
+		@include contrast {
 			background-color: var(--contrast);
 			@include focus-shadow(var(--contrast), null, 1.5px);
 		}

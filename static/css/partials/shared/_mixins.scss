@@ -94,28 +94,24 @@
 		)
 	);
 	--background-hover-position: 100%;
-
-	@include theme(light) {
-		--background-active: var(--color-iron) radial-gradient(
-			circle at center left,
+	--background-active: var(--background-active-color) radial-gradient(
+		circle at center left,
+		light-dark(
 			var(--color-iron),
 			color-mix(
 				in srgb,
 				var(--color-iron) 80%,
 				white
 			)
-		);
-	}
-	@include theme(dark) {
-		--background-active: var(--color-grey) radial-gradient(
-			circle at center left,
+		),
+		light-dark(
 			color-mix(
 				in srgb,
 				var(--color-iron) 80%,
 				white
 			),
 			var(--color-grey)
-		);
-	}
+		)
+	);
 }
 

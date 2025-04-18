@@ -24,55 +24,50 @@
 				transition: color .1s ease-out, text-decoration-color .1s ease-out, text-underline-offset .1s ease-out;
 				display: inline-block;
 				position: relative;
+				color: light-dark(
+					hsl(from var(--color-primary) h s l / .9),
+					hsl(from var(--color-primary) h s l / .75)
+				);
 				text-decoration: underline;
+				text-decoration-color: light-dark(
+					hsl(from var(--color-primary) h s l / 0),
+					hsl(from var(--color-primary) h s l / 0)
+				);
 				text-underline-offset: 8px;
 
-				@include theme(light) {
-					color: hsl(from var(--color-primary) h s l / .9);
-					text-decoration-color: hsl(from var(--color-primary) h s l / 0);
-					&:hover, &:focus {
-						--color-mix: color-mix(
-							in srgb,
-							var(--color-grey) 80%,
-							var(--color-mint)
-						);
-						color: var(--color-mix);
-						text-decoration-color: color-mix(
-							in srgb,
-							var(--color-mix) 60%,
-							white
-						);
-					}
-					&:active {
-						color: var(--color-primary);
-						text-decoration-color: var(--color-primary);
-					}
-				}
-
-				@include theme(dark) {
-					color: hsl(from var(--color-primary) h s l / .75);
-					text-decoration-color: hsl(from var(--color-primary) h s l / 0);
-					&:hover, &:focus {
-						color: var(--color-primary);
-						text-decoration-color: hsl(from var(--color-primary) h s l / .75);
-					}
-					&:active {
-						--color-mix: color-mix(
-							in srgb,
-							var(--color-grey) 80%,
-							var(--color-mint)
-						);
-						color: var(--color-mix);
-						text-decoration-color: var(--color-mix);
-					}
-				}
-
-				@include contrast(both) {
+				@include contrast {
 					text-underline-offset: 4px;
 				}
 
 				&:hover, &:focus, &:active {
 					text-underline-offset: 4px;
+				}
+
+				&:hover, &:focus {
+					--color-mix: color-mix(
+						in srgb,
+						var(--color-grey) 80%,
+						var(--color-mint)
+					);
+					color: light-dark(var(--color-mix), var(--color-primary));
+					text-decoration-color: light-dark(
+						color-mix(
+							in srgb,
+							var(--color-mix) 60%,
+							white
+						),
+						hsl(from var(--color-primary) h s l / .75)
+					);
+				}
+
+				&:active {
+					--color-mix: color-mix(
+						in srgb,
+						var(--color-grey) 80%,
+						var(--color-mint)
+					);
+					color: light-dark(var(--color-primary), var(--color-mix));
+					text-decoration-color: light-dark(var(--color-primary), var(--color-mix));
 				}
 			}
 		}
@@ -89,7 +84,7 @@
 			color: white;
 			background-color: var(--color-mix);
 			&::after {
-				@include contrast(both) {
+				@include contrast {
 					background-color: var(--color-mix);
 				}
 			}
@@ -118,7 +113,7 @@
 		margin-top: calc(var(--p)*1.5);
 		padding: calc(var(--p)*2);
 		background-color: hsl(from var(--color-mint) h s l / .15);
-		@include contrast(both) {
+		@include contrast {
 			border-top: 1.5px solid var(--color-primary);
 			border-bottom: 1.5px solid var(--color-primary);
 			background-color: hsl(from var(--color-mint) h s l / .1);
@@ -148,12 +143,10 @@
 
 		a, pre, button {
 			&:focus-visible {
-				@include theme(light) {
-					@include focus-shadow(hsl(from var(--color-mint) h s l / .5));
-				}
-				@include theme(dark) {
-					@include focus-shadow(var(--color-mint));
-				}
+				@include focus-shadow(light-dark(
+					hsl(from var(--color-mint) h s l / .5),
+					var(--color-mint)
+				));
 			}
 		}
 	}

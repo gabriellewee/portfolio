@@ -33,7 +33,7 @@
 			@media (prefers-reduced-motion: reduce) {
 				transition: opacity .1s ease-out;
 			}
-			@include contrast(both) {
+			@include contrast {
 				display: none;
 			}
 		}
@@ -52,7 +52,7 @@
 		@media (prefers-reduced-motion: no-preference) {
 			translate: 0 calc(var(--p)*2);
 		}
-		@include contrast(both) {
+		@include contrast {
 			outline: 1.5px solid white;
 		}
 		ul {

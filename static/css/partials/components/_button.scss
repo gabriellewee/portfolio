@@ -16,29 +16,26 @@
 	);
 	--contrast: var(--color-primary);
 	--background-hover-position: 0%;
-
-	@include theme(light) {
-		--background-active: var(--color-iron) radial-gradient(
-			circle at center left,
+	--background-active-color: light-dark(var(--color-iron), var(--color-grey));
+	--background-active: var(--background-active-color) radial-gradient(
+		circle at center left,
+		light-dark(
 			color-mix(
 				in srgb,
 				var(--color-iron) 80%,
 				white
 			),
-			var(--color-iron)
-		);
-	}
-	@include theme(dark) {
-		--background-active: var(--color-grey) radial-gradient(
-			circle at center left,
-			var(--color-grey),
+			var(--color-grey)
+		),
+		light-dark(
+			var(--color-iron),
 			color-mix(
 				in srgb,
 				var(--color-iron) 80%,
 				white
 			)
-		);
-	}
+		)
+	);
 
 	& {
 		cursor: pointer;
@@ -80,7 +77,7 @@
 		}
 	}
 	&::after {
-		@include contrast(both) {
+		@include contrast {
 			z-index: -2;
 			top: calc(var(--p)/-8);
 			left: calc(var(--p)/-8);
@@ -157,28 +154,25 @@
 			var(--color-light)
 		);
 		--background-hover-position: 100%;
-		@include theme(light) {
-			--background-active: var(--color-iron) radial-gradient(
-				circle at center left,
+		--background-active: var(--background-active-color) radial-gradient(
+			circle at center left,
+			light-dark(
 				var(--color-iron),
 				color-mix(
 					in srgb,
 					var(--color-iron) 80%,
 					white
 				)
-			);
-		}
-		@include theme(dark) {
-			--background-active: var(--color-grey) radial-gradient(
-				circle at center left,
+			),
+			light-dark(
 				color-mix(
 					in srgb,
 					var(--color-iron) 80%,
 					white
 				),
 				var(--color-grey)
-			);
-		}
+			)
+		);
 	}
 
 	&.solid {
@@ -237,7 +231,7 @@
 		@include clip-path-edges(2px);
 	}
 	&::after {
-		@include contrast(both) {
+		@include contrast {
 			content: "";
 			display: block;
 			z-index: 0;

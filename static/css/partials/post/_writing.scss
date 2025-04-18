@@ -25,7 +25,7 @@
 					text-decoration: underline;
 					text-underline-offset: 8px;
 					text-decoration-color: hsl(from white h s l / 0);
-					@include contrast(both) {
+					@include contrast {
 						text-underline-offset: 4px;
 					}
 					span {
@@ -47,20 +47,16 @@
 					}
 				}
 				&:focus-visible {
-					@include contrast(both) {
+					@include contrast {
 						@include focus-shadow(hsl(from var(--color-dark) h s l / .5));
 					}
 				}
 				&:active {
-					@include theme(light) {
-						> span {
-							text-decoration-color: hsl(from var(--color-iron) h s calc(l * .95));
-						}
-					}
-					@include theme(dark) {
-						> span {
-							text-decoration-color: var(--color-grey);
-						}
+					> span {
+						text-decoration-color: light-dark(
+							hsl(from var(--color-iron) h s calc(l * .95)),
+							var(--color-grey)
+						);
 					}
 				}
 			}
@@ -77,7 +73,7 @@
 		.post-header {
 			h2 {
 				a {
-					@include contrast(both) {
+					@include contrast {
 						> span {
 							text-decoration-color: var(--color-dark);
 						}
@@ -97,22 +93,20 @@
 					}
 					&:active {
 						span span {
-							@include theme(light) {
-								@include gradient-text(
+							@include gradient-text(
+								light-dark(
 									hsl(from var(--color-iron) h s calc(l * .95)),
-									hsl(from var(--color-iron) h s calc(l * .35))
-								);
-							}
-							@include theme(dark) {
-								@include gradient-text(
-									var(--color-grey),
+									var(--color-grey)
+								),
+								light-dark(
+									hsl(from var(--color-iron) h s calc(l * .35)),
 									color-mix(
 										in srgb,
 										var(--color-iron) 80%,
 										white
 									)
-								);
-							}
+								)
+							);
 						}
 					}
 				}
@@ -124,7 +118,7 @@
 					--color-mix: hsl(from var(--color-grey) h calc(s * .75) calc(l * .8));
 				}
 				&::after {
-					@include contrast(both) {
+					@include contrast {
 						background-color: var(--color-mix);
 					}
 				}
@@ -136,7 +130,7 @@
 		.post-header {
 			h2 {
 				a {
-					@include contrast(both) {
+					@include contrast {
 						> span {
 							text-decoration-color: var(--color-grey);
 						}
@@ -172,30 +166,26 @@
 					}
 					&:active {
 						span span {
-							@include theme(light) {
-								@include gradient-text(
+							@include gradient-text(
+								light-dark(
 									hsl(from var(--color-iron) h s calc(l * .35)),
-									hsl(from var(--color-iron) h s calc(l * .95))
-								);
-							}
-							@include theme(dark) {
-								@include gradient-text(
 									color-mix(
 										in srgb,
 										var(--color-iron) 80%,
 										white
-									),
+									)
+								),
+								light-dark(
+									hsl(from var(--color-iron) h s calc(l * .95)),
 									var(--color-grey)
-								);
-							}
+								)
+							);
 						}
 						&::after {
-							@include theme(light) {
-								color: hsl(from var(--color-iron) h s calc(l * .95));
-							}
-							@include theme(dark) {
-								color: var(--color-grey);
-							}
+							color: light-dark(
+								hsl(from var(--color-iron) h s calc(l * .95)),
+								var(--color-grey)
+							);
 						}
 					}
 				}
@@ -208,7 +198,7 @@
 				);
 				background-color: var(--color-mix);
 				&::after {
-					@include contrast(both) {
+					@include contrast {
 						background-color: var(--color-mix);
 					}
 				}
@@ -229,28 +219,28 @@
 					);
 				}
 				&:active {
-					@include theme(light) {
-						@include gradient-text(
+					@include gradient-text(
+						light-dark(
 							hsl(from var(--color-iron) h s calc(l * .35)),
-							hsl(from var(--color-iron) h s calc(l * .95)),
-							hsl(from var(--color-iron) h s calc(l * .35) / .5)
-						);
-					}
-					@include theme(dark) {
-						@include gradient-text(
 							color-mix(
 								in srgb,
 								var(--color-iron) 80%,
 								white
-							),
-							var(--color-grey),
+							)
+						),
+						light-dark(
+							hsl(from var(--color-iron) h s calc(l * .95)),
+							var(--color-grey)
+						),
+						light-dark(
+							hsl(from var(--color-iron) h s calc(l * .35) / .5),
 							color-mix(
 								in srgb,
 								hsl(from var(--color-iron) h s l / .5) 80%,
 								hsl(from white h s l / .5)
 							)
-						);
-					}
+						)
+					);
 				}
 			}
 		}
@@ -260,55 +250,47 @@
 		.post-header {
 			h2 {
 				a {
-					@include theme(light) {
-						--color-mix: color-mix(
+					--color-mix: light-dark(
+						color-mix(
 							in srgb,
 							var(--color-iron) 70%,
 							white
-						);
-					}
-					@include theme(dark) {
-						--color-mix: color-mix(
+						),
+						color-mix(
 							in srgb,
 							var(--color-iron),
 							white
-						);
-					}
-					& {
-						color: var(--color-mix);
-					}
+						)
+					);
+					color: var(--color-mix);
 					&:hover, &:focus, &:active {
 						> span {
 							text-decoration-color: var(--color-mix);
 						}
 					}
 					&:hover, &:focus {
-						@include theme(light) {
-							--color-mix: color-mix(
+						--color-mix: light-dark(
+							color-mix(
 								in srgb,
 								var(--color-iron),
 								white
-							);
-						}
-						@include theme(dark) {
-							--color-mix: hsl(from white h s l / .7);
-						}
+							),
+							hsl(from white h s l / .7)
+						);
 					}
 					&:active {
-						@include theme(light) {
-							--color-mix: color-mix(
+						--color-mix: light-dark(
+							color-mix(
 								in srgb,
 								var(--color-iron) 90%,
 								white
-							);
-						}
-						@include theme(dark) {
-							--color-mix: color-mix(
+							),
+							color-mix(
 								in srgb,
 								var(--color-iron) 70%,
 								white
-							);
-						}
+							)
+						);
 					}
 				}
 			}
@@ -320,7 +302,7 @@
 				);
 				background-color: var(--color-mix);
 				&::after {
-					@include contrast(both) {
+					@include contrast {
 						background-color: var(--color-mix);
 					}
 				}
@@ -333,10 +315,9 @@
 					var(--color-iron) 70%,
 					white
 				);
-
-				@include theme(light) {
-					--outline: radial-gradient(
-						circle at center left,
+				--outline: radial-gradient(
+					circle at center left,
+					light-dark(
 						color-mix(
 							in srgb,
 							var(--color-iron) 70%,
@@ -344,17 +325,14 @@
 						),
 						color-mix(
 							in srgb,
-							var(--color-iron) 80%,
+							var(--color-iron) 10%,
 							white
 						)
-					);
-				}
-				@include theme(dark) {
-					--outline: radial-gradient(
-						circle at center left,
+					),
+					light-dark(
 						color-mix(
 							in srgb,
-							var(--color-iron) 10%,
+							var(--color-iron) 80%,
 							white
 						),
 						color-mix(
@@ -362,8 +340,8 @@
 							var(--color-iron) 30%,
 							white
 						)
-					);
-				}
+					)
+				);
 
 				&:hover, &:focus {
 					--background: color-mix(

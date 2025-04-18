@@ -40,7 +40,7 @@ eleventyNavigation:
 				<div class="post-links">
 					<menu class="button-reduced-group">
 						{% for link in collections.pages | eleventyNavigation %}
-							<li><a class="button-reduced" href="{{link.url|url}}"{% if link.url == page.url %} tabindex="-1"{% endif %}><span>{{link.title}}</span></a></li>
+							<li><a class="button-reduced{% if link.url == page.url %} current{% endif %}" href="{{link.url|url}}"{% if link.url == page.url %} tabindex="-1"{% endif %}><span>{{link.title}}</span></a></li>
 						{% endfor %}
 					</menu>
 				</div>

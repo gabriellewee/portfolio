@@ -12,48 +12,42 @@
 
 .page-recipes {
 	--color-grey: var(--color-slate);
-	@include theme(light) {
-		--background-body: hsl(from var(--color-mint) h s calc(l * 1.25));
-	}
-	@include theme(dark) {
-		--background-body: hsl(from var(--color-iron) h s calc(l * .73));
-	}
-	@include contrast(light) {
-		--background-body: hsl(from var(--color-mint) h s calc(l * 1.4));
-	}
-	@include contrast(dark) {
-		--background-body: hsl(from var(--color-iron) h s calc(l * .45));
+	--background-body: light-dark(
+		hsl(from var(--color-mint) h s calc(l * 1.25)),
+		hsl(from var(--color-iron) h s calc(l * .73))
+	);
+	@include contrast {
+		--background-body: light-dark(
+			hsl(from var(--color-mint) h s calc(l * 1.4)),
+			hsl(from var(--color-iron) h s calc(l * .45))
+		);
 	}
 }
 
 * {
 	@include selection {
-		@include theme(light) {
-			--selection: hsl(from var(--color-mint) h s l / .8);
-		}
-		@include theme(dark) {
-			--selection: hsl(from var(--color-mint) h s l / .8);
-		}
+		--selection: light-dark(
+			hsl(from var(--color-mint) h s l / .8),
+			hsl(from var(--color-mint) h s l / .8)
+		);
 	}
 }
 
 .avatar-link {
 	a {
 		&:focus-visible {
-			@include theme(light) {
-				--focus: color-mix(
+			--focus: light-dark(
+				color-mix(
 					in hsl,
 					var(--color-grey) 70%,
 					var(--color-mint)
-				);
-			}
-			@include theme(dark) {
-				--focus: color-mix(
+				),
+				color-mix(
 					in hsl,
 					var(--color-grey) 70%,
 					var(--color-mint)
-				);
-			}
+				)
+			);
 		}
 	}
 }
@@ -75,28 +69,14 @@
 		);
 		--background-hover: var(--color-grey);
 		--background-active: var(--color-iron);
-		@include theme(light) {
-			--outline: white;
-			@include tone(blue) {
-				--color-mix: color-mix(
-					in srgb,
-					var(--color-mint) 70%,
-					var(--color-marine)
-				);
-				--background: color-mix(
-					in srgb,
-					var(--color-grey) 90%,
-					var(--color-mix)
-				);
-			}
-		}
-		@include theme(dark) {
-			--outline: color-mix(
+		--outline: light-dark(
+			white,
+			color-mix(
 				in srgb,
 				white 70%,
 				var(--color-mint)
-			);
-		}
+			)
+		);
 	}
 }
 
@@ -256,7 +236,7 @@
 							var(--color-iron) 30%,
 							var(--color-grey)
 						);
-						@include contrast(both) {
+						@include contrast {
 							color: var(--color-iron);
 						}
 					}

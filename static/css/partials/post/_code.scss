@@ -9,7 +9,7 @@
 		font-size: 1rem;
 		font-weight: 700;
 		line-height: 1.375;
-		@include contrast(both) {
+		@include contrast {
 			@include clip-path-edges(2px, up);
 		}
 		.post-header-content {
@@ -46,7 +46,7 @@
 		a {
 			color: var(--color-aqua);
 			span {
-				@include contrast(both) {
+				@include contrast {
 					text-decoration: underline;
 					text-underline-offset: 4px;
 				}
@@ -59,7 +59,7 @@
 				}
 			}
 			&:focus-visible {
-				@include contrast(both) {
+				@include contrast {
 					@include focus-shadow(var(--color-peach));
 				}
 			}
@@ -114,7 +114,7 @@
 				&.tag-award {
 					background-color: var(--color-dark);
 				}
-				@include contrast(both) {
+				@include contrast {
 					clip-path: unset;
 					border-radius: unset;
 					&::before, &::after {
@@ -185,7 +185,7 @@
 				margin-bottom: 2px;
 				&:focus-visible {
 					outline: 1px solid var(--color-peach);
-					@include contrast(both) {
+					@include contrast {
 						outline: unset;
 					}
 				}
@@ -241,7 +241,7 @@
 		flex-direction: column;
 		position: relative;
 
-		@include contrast(both) {
+		@include contrast {
 			@include clip-path-edges(2px, down);
 		}
 

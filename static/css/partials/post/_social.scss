@@ -39,7 +39,7 @@
 				);
 			}
 			&::after {
-				@include contrast(both) {
+				@include contrast {
 					background-color: var(--color-mix);
 				}
 			}
@@ -48,20 +48,18 @@
 
 	.post-content {
 		padding: 0 calc(var(--p)*2);
-		font-size: 1.25rem;
-		line-height: 1.2;
-		@include font-weight-width(450, 110);
-		@include theme(light) {
-			color: color-mix(
+		color: light-dark(
+			color-mix(
 				in srgb,
 				var(--color-iron) 90%,
 				white
-			);
-		}
-		@include theme(dark) {
-			color: hsl(from white h s l / .8);
-		}
-		@include contrast(both) {
+			),
+			hsl(from white h s l / .8)
+		);
+		font-size: 1.25rem;
+		line-height: 1.2;
+		@include font-weight-width(450, 110);
+		@include contrast {
 			color: var(--color-primary);
 		}
 		a {
@@ -143,58 +141,44 @@
 		}
 		.post-content {
 			a:not(.expand) {
-				@include theme(light) {
-					color: color-mix(
+				color: light-dark(
+					color-mix(
 						in srgb,
 						var(--color-mastodon) 40%,
 						var(--color-mastodon-dark)
-					);
-				}
-				@include theme(dark) {
-					color: color-mix(
+					),
+					color-mix(
 						in srgb,
 						hsl(from var(--color-mastodon) h s calc(l * 1.1)) 90%,
 						white
-					);
-				}
+					)
+				);
 				&:hover, &:focus {
-					@include theme(light) {
-						color: var(--color-mastodon-light);
-					}
-					@include theme(dark) {
-						color: color-mix(
+					color: light-dark(
+						var(--color-mastodon-light),
+						color-mix(
 							in srgb,
 							hsl(from var(--color-mastodon) h s calc(l * 1.2)) 90%,
 							white
-						);
-					}
+						)
+					);
 				}
 				&:focus-visible {
-					@include theme(light) {
-						--color-mix: color-mix(
+					@include focus-shadow(light-dark(
+						color-mix(
 							in srgb,
 							hsl(from var(--color-mastodon) h s calc(l * 1.15) / .75) 90%,
 							hsl(from white h s l / .75)
-						);
-					}
-					@include theme(dark) {
-						--color-mix: color-mix(
+						),
+						color-mix(
 							in srgb,
 							hsl(from var(--color-mastodon) h s calc(l * 1.15) / .9) 90%,
 							hsl(from white h s l / .9)
-						);
-					}
-					& {
-						@include focus-shadow(var(--color-mix));
-					}
+						)
+					));
 				}
 				&:active {
-					@include theme(light) {
-						color: var(--color-mastodon-dark);
-					}
-					@include theme(dark) {
-						color: var(--color-mastodon-light);
-					}
+					color: light-dark(var(--color-mastodon-dark), var(--color-mastodon-light));
 				}
 			}
 		}

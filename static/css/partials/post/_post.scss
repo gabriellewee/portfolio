@@ -43,14 +43,14 @@
 	font-size: 1.125rem;
 	grid-column-end: span 12;
 
-	@include contrast(light) {
-		--background-outline: var(--color-primary);
-	}
-	@include contrast(dark) {
-		--background-outline: color-mix(
-			in srgb,
-			var(--color-iron) 5%,
-			white
+	@include contrast {
+		--background-outline: light-dark(
+			var(--color-primary),
+			color-mix(
+				in srgb,
+				var(--color-iron) 5%,
+				white
+			)
 		);
 	}
 
@@ -103,7 +103,7 @@
 			@include clip-path-edges(2px);
 		}
 		@include viewport($iphone-max) {
-			@include contrast(both) {
+			@include contrast {
 				overflow: unset;
 				position: relative;
 				clip-path: unset;
@@ -144,7 +144,7 @@
 			line-height: 1.15;
 			@include font-weight-width(600, 90);
 			@include button;
-			@include contrast(both) {
+			@include contrast {
 				background-color: unset !important;
 				@include clip-path(false) {
 					border-radius: unset;
@@ -248,24 +248,24 @@
 				);
 			}
 			&:active {
-				@include theme(light) {
-					@include gradient-text(
+				@include gradient-text(
+					light-dark(
 						hsl(from var(--color-iron) h s calc(l * .95)),
+						var(--color-grey)
+					),
+					light-dark(
 						hsl(from var(--color-iron) h s calc(l * .35)),
-						hsl(from var(--color-iron) h s calc(l * .95) / .5)
-					);
-				}
-				@include theme(dark) {
-					@include gradient-text(
-						var(--color-grey),
 						color-mix(
 							in srgb,
 							var(--color-iron) 80%,
 							white
-						),
+						)
+					),
+					light-dark(
+						hsl(from var(--color-iron) h s calc(l * .95) / .5),
 						hsl(from var(--color-grey) h s l / .5)
-					);
-				}
+					)
+				);
 			}
 		}
 	}
@@ -344,12 +344,10 @@
 
 	a, pre, button {
 		&:focus-visible {
-			@include theme(light) {
-				@include focus-shadow(hsl(from var(--color-dark) h s l / .5));
-			}
-			@include theme(dark) {
-				@include focus-shadow(var(--color-dark));
-			}
+			@include focus-shadow(light-dark(
+				hsl(from var(--color-dark) h s l / .5),
+				var(--color-dark)
+			));
 		}
 	}
 
@@ -389,16 +387,15 @@
 	}
 	pre {
 		padding: calc(var(--p)*1.5) calc(var(--p)*2);
+		background-color: light-dark(
+			var(--color-iron),
+			hsl(from var(--color-iron) h s calc(l * .55))
+		);
 		color: white;
 		font-size: 1rem;
 		line-height: 1.5;
 		@include clip-path-edges(2px);
-		@include theme(light) {
-			background-color: var(--color-iron);
-		}
-		@include theme(dark) {
-			background-color: hsl(from var(--color-iron) h s calc(l * .55));
-		}
+
 		button.dark.tooltip {
 			--background: black;
 			cursor: pointer;
@@ -517,21 +514,18 @@
 		transition: scale .2s ease-out;
 		@include expand-hover;
 		&::before {
-			@include before;
-			@include theme(light) {
-				background: radial-gradient(
-					circle at center left,
+			background: radial-gradient(
+				circle at center left,
+				light-dark(
 					hsl(from var(--color-middle) h s l / .5),
-					hsl(from var(--color-dark) h s l / .5)
-				);
-			}
-			@include theme(dark) {
-				background: radial-gradient(
-					circle at center left,
-					var(--color-middle),
+					var(--color-middle)
+				),
+				light-dark(
+					hsl(from var(--color-dark) h s l / .5),
 					var(--color-dark)
-				);
-			}
+				)
+			);
+			@include before;
 		}
 		&:focus-visible {
 			box-shadow: none;
@@ -560,15 +554,13 @@
 		justify-content: center;
 		padding: var(--p);
 		height: var(--height);
+		background-color: light-dark(
+			hsl(from var(--color-primary) h s l / .1),
+			hsl(from var(--color-iron) h s calc(l * .45) / .5)
+		);
 		line-height: 1.4;
 		@include font-weight-width(700, 115);
 		@include clip-path-edges(2px);
-		@include theme(light) {
-			background-color: hsl(from var(--color-primary) h s l / .1);
-		}
-		@include theme(dark) {
-			background-color: hsl(from var(--color-iron) h s calc(l * .45) / .5);
-		}
 		span {
 			display: block;
 			text-align: center;
