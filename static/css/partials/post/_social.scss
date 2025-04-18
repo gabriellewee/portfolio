@@ -146,8 +146,8 @@
 				}
 				&:focus-visible {
 					@include focus-shadow(light-dark(
-						var(--color-bluesky-link-dark),
-						var(--color-bluesky-link-light)
+						var(--color-bluesky),
+						hsl(from var(--color-bluesky-link-light) h s calc(l * 1.1))
 					));
 				}
 				&:active {
