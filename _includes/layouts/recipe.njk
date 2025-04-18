@@ -20,7 +20,7 @@ label: recipe
 		<article class="post post-{{category}}{% for tag in tags %}{% if tag != 'entries' %} post-{{tag}}{% endif %}{% endfor %}">
 			<div class="post-inner">
 				<header class="post-header">
-					<div class="post-header-image header-{% stats './static/images/' + key + '/' + page.fileSlug + '.jpg', 'color' %}">
+					<div class="post-header-image header-{% stats './static/images/' + key + '/' + page.fileSlug + '.jpg', 'color', 'bottom left' %}">
 						{% image './static/images/' + key + '/' + page.fileSlug + '.jpg', 'Hero image showing ' + title, 'default' %}
 					</div>
 					<div class="post-header-content">

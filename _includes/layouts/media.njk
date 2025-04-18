@@ -43,7 +43,7 @@
 									<time class="time-default" datetime="{{post.date}}" title="{{post.date|date('readable')}}" data-time="{{post.date|iso}}">{{post.date|date('readable')}}</time>
 									<label class="media-down media-icon" for="{{post.date|safe}}-{{post.name}}-info" data-media-label></label>
 									<div class="media-thumbnail">
-										<a class="media-expand expand" href="#{{post.date|safe}}-{{post.name}}-lightbox" role="button" aria-label="Expand image" tabindex="-1" hidden data-media-expand>
+										<a class="media-expand expand{% if file %} {% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'color', 'top left' %}{% endif %}" href="#{{post.date|safe}}-{{post.name}}-lightbox" role="button" aria-label="Expand image" tabindex="-1" hidden data-media-expand>
 											<span class="no-image" hidden><span>Expand</span></span>
 											<span class="has-image" aria-hidden="true">
 												{% if post.upscale %}

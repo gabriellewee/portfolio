@@ -117,7 +117,7 @@ eleventyNavigation:
 										<time class="time-default" datetime="{{post.page.date|iso|date('string')}}" title="{{post.page.date|iso|date('readable')}}" data-time="{{post.page.date|iso}}" hidden>{{post.page.date|iso|date('readable')}}</time>
 										<label class="media-down media-icon" for="{{post.data.date|safe}}-{{post.data.name}}-info" data-media-label></label>
 										<div class="media-thumbnail">
-											<a class="media-expand expand" href="#{{post.data.date|safe}}-{{post.data.name}}-lightbox" role="button" aria-label="Expand image" tabindex="-1" data-media-expand>
+											<a class="media-expand expand{% if file %} {% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'color', 'top left' %}{% endif %}" href="#{{post.data.date|safe}}-{{post.data.name}}-lightbox" role="button" aria-label="Expand image" tabindex="-1" data-media-expand>
 												<span class="no-image" hidden><span>Expand</span></span>
 												<span class="has-image" aria-hidden="true" hidden>
 													{% if post.data.upscale %}
@@ -196,13 +196,13 @@ eleventyNavigation:
 								{% endif %}
 								{% if post.data.mediaType == "IMAGE" %}
 									<figure id="external-{{post.data.id}}" class="media-attachment" aria-label="{{post.data.mediaAlt}}">
-										<a class="expand" href="#external-{{post.data.id}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
-											{% external post.data.mediaUrl, '', 500, 'lazy', post.data.source, post.data.id %}
+										<a class="expand {% stats post.data.mediaUrl, 'color', 'top left' %}" href="#external-{{post.data.id}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
+											{% external post.data.mediaUrl, '', 500, 'lazy' %}
 										</a>
 									</figure>
 								{% elseif post.data.mediaType == "VIDEO" %}
 									<figure id="external-{{post.data.id}}" class="media-attachment">
-										<video width="{% stats post.data.mediaThumbnail, 'width', null, post.data.source, post.data.id %}" height="{% stats post.data.mediaThumbnail, 'height', null, post.data.source, post.data.id %}" controls preload="metadata" poster="{{post.data.mediaThumbnail}}" aria-label="{{post.data.mediaAlt}}">
+										<video width="{% stats post.data.mediaThumbnail, 'width' %}" height="{% stats post.data.mediaThumbnail, 'height' %}" controls preload="metadata" poster="{{post.data.mediaThumbnail}}" aria-label="{{post.data.mediaAlt}}">
 											<source src="{{post.data.mediaUrl}}" type="application/x-mpegURL">
 										</video>
 									</figure>
@@ -210,8 +210,8 @@ eleventyNavigation:
 								{% for media in post.data.media %}
 									{% if media.thumb %}
 										<figure id="external-{{postIndex}}-{{post.data.cid|truncate(5, true, '')}}" class="media-attachment" aria-label="{{media.alt}}">
-											<a class="expand" href="#external-{{postIndex}}-{{post.data.cid|truncate(5, true, '')}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
-												{% external media.thumb, '', 500, 'lazy', post.data.source, post.data.cid %}
+											<a class="expand {% stats media.thumb, 'color', 'top left' %}" href="#external-{{postIndex}}-{{post.data.cid|truncate(5, true, '')}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
+												{% external media.thumb, '', 500, 'lazy' %}
 											</a>
 										</figure>
 									{% elseif media.url and media.type == "gifv" %}
@@ -222,8 +222,8 @@ eleventyNavigation:
 										</figure>
 									{% elseif media.url %}
 										<figure id="external-{{media.id}}" class="media-attachment" aria-label="{{media.description}}">
-											<a class="expand" href="#external-{{media.id}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
-												{% external media.url, '', 500 %}
+											<a class="expand {% stats media.url, 'color', 'top left' %}" href="#external-{{media.id}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
+												{% external media.url, '', 500, 'lazy' %}
 											</a>
 										</figure>
 									{% endif %}

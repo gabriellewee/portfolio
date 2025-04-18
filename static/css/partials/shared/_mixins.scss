@@ -45,13 +45,15 @@
 			}
 		}
 		&::after {
+			--gradient-color: hsl(from var(--color-iron) h s calc(l * .45));
+			--blend-mode: soft-light;
 			z-index: 2;
 			background: radial-gradient(
 				farthest-corner at var(--position),
-				hsl(from var(--color-iron) h s calc(l * .45) / 1) 0,
-				hsl(from var(--color-iron) h s calc(l * .45) / 0) calc(($width + $padding)*3)
+				hsl(from var(--gradient-color) h s l / 1) 0,
+				hsl(from var(--gradient-color) h s l / 0) calc(($width + $padding)*3)
 			);
-			mix-blend-mode: soft-light;
+			mix-blend-mode: var(--blend-mode);
 			@include full-offset(0);
 			@include clip-path-edges(2px);
 		}

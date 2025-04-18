@@ -36,45 +36,21 @@ const findExtension = (src) => {
 	return file;
 };
 
-const saveImageBuffer = async (src, platform, id, extension) => {
-	try {
-		let image;
-		if((src.includes("@") || src.includes("?"))) {
-			let file ;
-			extension ? file = extension : file = findExtension(src);
-			await fs.mkdir(`./_site/static/images/external/${platform}`, { recursive: true });
-			const buffer = await fetchImageBuffer(src);
-			if (!buffer) throw new Error("Image fetch failed");
-
-			const outputPath = `./_site/static/images/external/${platform}/${id}.${file}`;
-			await fs.writeFile(outputPath, buffer);
-
-			image = outputPath;
-		} else {
-			image = src;
-		}
-
-		return image;
-	} catch (error) {
-		console.error("Error saving image:", error);
-		return null;
-	}
+const reduce = (numerator, denominator) => {
+	let gcd = (a, b) => {
+		return b ? gcd(b, a%b) : a;
+	};
+	gcd = gcd(numerator, denominator);
+	return [numerator/gcd, denominator/gcd];
 };
 
-export const stats = async (src, type, value, platform, id) => {
+export const stats = async (src, type, value) => {
 	try {
-		let image = await saveImageBuffer(src, platform, id);
-		let stats = await Sharp(image);
+		let image = src.startsWith("https://") ? await fetchImageBuffer(src) : src;
 		let result;
-		let reduce = (numerator, denominator) => {
-			let gcd = (a, b) => {
-				return b ? gcd(b, a%b) : a;
-			};
-			gcd = gcd(numerator, denominator);
-			return [numerator/gcd, denominator/gcd];
-		}
 
 		if (type != "color") {
+			let stats = await Sharp(image);
 			let metadata = await stats.metadata();
 			let width = metadata.width;
 			let height = metadata.height;
@@ -82,33 +58,36 @@ export const stats = async (src, type, value, platform, id) => {
 			if(value) percent = value / metadata.width;
 
 			if (type === "width") {
-				if(value) {
-					result = width * percent;
-				} else {
-					result = width;
-				}
+				result = value ? width * percent : width;
 			} else if (type === "height") {
-				if(value) {
-					result = height * percent;
-				} else {
-					result = height;
-				}
+				result = value ? height * percent : height;
 			} else if (type === "orientation") {
-				let orientation;
-				width > height ? orientation = "landscape" : orientation = "portrait";
-				result = orientation;
+				result = width > height ? "landscape" : "portrait";
 			} else if (type === "ratio") {
 				result = `${reduce(width, height)[0]} / ${reduce(width, height)[1]}`
 			}
 		} else {
+			let positionTop;
+			let positionLeft;
+			let squareWidth = 100;
+			const metadata = await Sharp(image).metadata();
+			if (value.includes("top")) {
+				positionTop = 0;
+			}
+			if (value.includes("bottom")) {
+				positionTop = metadata.height - squareWidth;
+			}
+			if (value.includes("left")) {
+				positionLeft = 0;
+			}
+			if (value.includes("right")) {
+				positionTop = metadata.width - squareWidth;
+			}
+			let stats = await Sharp(image).extract({ top: positionTop, left: positionLeft, width: squareWidth, height: squareWidth });
 			const { dominant } = await stats.stats();
 			const { r, g, b } = dominant;
 			let brightness = r * 0.2126 + g * 0.7152 + b * 0.0722;
-			if (brightness > 180) {
-				result = "light"
-			} else {
-				result = "dark"
-			}
+			result = brightness > 180 ? "light" : "dark";
 		}
 
 		return result;
@@ -117,10 +96,10 @@ export const stats = async (src, type, value, platform, id) => {
 	}
 };
 
-export const external = async (src, alt, width, loading, platform, id) => {
+export const external = async (src, alt, width, loading) => {
 	try {
 		let file = findExtension(src);
-		let image = await saveImageBuffer(src, platform, id, file);
+		let image = src.startsWith("https://") ? await fetchImageBuffer(src) : src;
 		if (!loading) loading = "lazy";
 		alt = alt.replace(/ :(.*?):$/g, '');
 
