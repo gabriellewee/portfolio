@@ -91,9 +91,11 @@ export const stats = async (src, type, value) => {
 
 			const stats = await extracted.stats();
 
-			const avgR = stats.channels[0].mean;
-			const avgG = stats.channels[1].mean;
-			const avgB = stats.channels[2].mean;
+			const normalize = (value) => value > 255 ? value / 257 : value;
+
+			const avgR = normalize(stats.channels[0].mean);
+			const avgG = normalize(stats.channels[1].mean);
+			const avgB = normalize(stats.channels[2].mean);
 
 			const brightness = avgR * 0.2126 + avgG * 0.7152 + avgB * 0.0722;
 			const result = brightness > 150 ? "light" : "dark";

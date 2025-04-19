@@ -1,5 +1,6 @@
 import Image from '@11ty/eleventy-img';
 import nbspFilter from 'eleventy-nbsp-filter';
+import { stats as getStats } from '../shortcodes/images.js'
 
 export const images = async (post, option) => {
 	let pattern = /<\s*p><img src="(?<src>[^<]*)" alt="(?<alt>[^<]*)" title="(?<title>[^<]*)"><\/p>/g;
@@ -36,10 +37,11 @@ export const images = async (post, option) => {
 					`;
 					lightboxes = lightboxes.concat(figure);
 				} else {
+					let color = await getStats(url, 'color', 'top left');
 					let figure = `
 						<figure id="${name}">
 							<figcaption>${title}</figcaption>
-							<a class="expand" href="#${name}-lightbox" aria-role="button" aria-label="${alt} Expand image">
+							<a class="expand ${color}" href="#${name}-lightbox" aria-role="button" aria-label="${alt} Expand image">
 								<picture>
 									<img src="/static/images/posts/${src}" alt="${alt}" width="${width}" height="${height}"/>
 								</picture>
@@ -111,10 +113,11 @@ export const images = async (post, option) => {
 					let picture = `<picture>${source}${img}</picture>`;
 					let nbsp = nbspFilter(2, 100);
 					let figure;
+					let color = await getStats(url, 'color', 'top left');
 
 					if (stats["webp"][4] || stats["webp"][3]) {
 						let caption = `<figcaption id="${name}-caption" aria-hidden="true">${nbsp(title)}</figcaption>`;
-						let link = `<a class="expand" href="#${name}-lightbox" aria-label="${alt} Expand image" data-media-expand>${picture}</a>`;
+						let link = `<a class="expand ${color}" href="#${name}-lightbox" aria-label="${alt} Expand image" data-media-expand>${picture}</a>`;
 						figure = `<figure id="${name}" aria-labelledby="${name}-caption">${caption}${link}</figure>`;
 					} else {
 						let caption = `<figcaption id="${name}-caption" aria-hidden="true">${nbsp(title)}</figcaption>`;
