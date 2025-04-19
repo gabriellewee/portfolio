@@ -208,17 +208,6 @@
 					@include before(white);
 				}
 
-				&.light .has-image picture {
-					&::before {
-						filter: invert(1);
-						mix-blend-mode: hard-light;
-						opacity: 0.7;
-					}
-					&::after {
-						--gradient-color: hsl(from var(--color-blush) h s l / .75);
-						--blend-mode: hard-light;
-					}
-				}
 				.has-image {
 					display: block;
 					@include expand-hover($hover: false);

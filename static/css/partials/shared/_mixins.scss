@@ -58,11 +58,31 @@
 			@include clip-path-edges(2px);
 		}
 	}
+	&.light picture {
+		&::before {
+			filter: invert(1);
+			mix-blend-mode: hard-light;
+			@if $hover != true {
+				opacity: 0.7;
+			}
+		}
+		&::after {
+			--gradient-color: hsl(from var(--color-blush) h s l / .75);
+			--blend-mode: hard-light;
+		}
+	}
 	@if $hover == true {
 		&:hover, &:focus {
 			> *:only-child {
 				&::before, &::after {
 					opacity: 1;
+				}
+			}
+		}
+		&.light {
+			&:hover, &:focus {
+				picture::before {
+					opacity: 0.7;
 				}
 			}
 		}

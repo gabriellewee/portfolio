@@ -117,9 +117,9 @@ eleventyNavigation:
 										<time class="time-default" datetime="{{post.page.date|iso|date('string')}}" title="{{post.page.date|iso|date('readable')}}" data-time="{{post.page.date|iso}}" hidden>{{post.page.date|iso|date('readable')}}</time>
 										<label class="media-down media-icon" for="{{post.data.date|safe}}-{{post.data.name}}-info" data-media-label></label>
 										<div class="media-thumbnail">
-											<a class="media-expand expand{% if file %} {% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'color', 'top left' %}{% endif %}" href="#{{post.data.date|safe}}-{{post.data.name}}-lightbox" role="button" aria-label="Expand image" tabindex="-1" data-media-expand>
+											<a class="media-expand expand" href="#{{post.data.date|safe}}-{{post.data.name}}-lightbox" role="button" aria-label="Expand image" tabindex="-1" data-media-expand>
 												<span class="no-image" hidden><span>Expand</span></span>
-												<span class="has-image" aria-hidden="true" hidden>
+												<span class="has-image{% if file %} {% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'color', 'top left' %}{% endif %}" aria-hidden="true" hidden>
 													{% if post.data.upscale %}
 														<picture>
 															<img class="upscale" src="{% include post.data.upscale %}"{% if post.data.upscaleWidth %} width="{{post.data.upscaleWidth}}"{% endif %}{% if post.data.upscaleHeight %} height="{{post.data.upscaleHeight}}"{% endif %} alt="{{post.data.description}}"/>

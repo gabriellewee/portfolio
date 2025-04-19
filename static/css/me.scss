@@ -166,6 +166,16 @@
 
 			@include expand-hover(external, 23px, 23px, calc(var(--p)*1.25));
 
+			&.light, &.dark {
+				picture::after {
+					--gradient-color: var(--color);
+					top: calc(var(--p)/2);
+					left: calc(var(--p)/2);
+					width: calc(100% - var(--p)/2);
+					height: calc(100% - var(--p)/2);
+				}
+			}
+
 			&::after {
 				content: "";
 				display: block;

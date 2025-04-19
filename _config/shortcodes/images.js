@@ -67,27 +67,38 @@ export const stats = async (src, type, value) => {
 				result = `${reduce(width, height)[0]} / ${reduce(width, height)[1]}`
 			}
 		} else {
-			let positionTop;
-			let positionLeft;
-			let squareWidth = 100;
-			const metadata = await Sharp(image).metadata();
-			if (value.includes("top")) {
-				positionTop = 0;
-			}
+			const sharpImage = Sharp(image);
+			let positionTop = 0;
+			let positionLeft = 0;
+			const squareWidth = 50;
+
+			const metadata = await sharpImage.metadata();
 			if (value.includes("bottom")) {
 				positionTop = metadata.height - squareWidth;
 			}
-			if (value.includes("left")) {
-				positionLeft = 0;
-			}
 			if (value.includes("right")) {
-				positionTop = metadata.width - squareWidth;
+				positionLeft = metadata.width - squareWidth;
 			}
-			let stats = await Sharp(image).extract({ top: positionTop, left: positionLeft, width: squareWidth, height: squareWidth });
-			const { dominant } = await stats.stats();
-			const { r, g, b } = dominant;
-			let brightness = r * 0.2126 + g * 0.7152 + b * 0.0722;
-			result = brightness > 180 ? "light" : "dark";
+
+			const extracted = sharpImage
+				.clone()
+				.extract({
+					top: positionTop,
+					left: positionLeft,
+					width: squareWidth,
+					height: squareWidth
+				});
+
+			const stats = await extracted.stats();
+
+			const avgR = stats.channels[0].mean;
+			const avgG = stats.channels[1].mean;
+			const avgB = stats.channels[2].mean;
+
+			const brightness = avgR * 0.2126 + avgG * 0.7152 + avgB * 0.0722;
+			const result = brightness > 150 ? "light" : "dark";
+
+			return result;
 		}
 
 		return result;
