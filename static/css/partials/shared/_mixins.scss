@@ -1,18 +1,71 @@
 @use 'partials/shared/utilities' as *;
 
-@mixin expand-hover($icon: expand, $width: 23px, $height: $width, $padding: var(--p), $hover: true, $position: 0% 0%, $touch: null) {
-	> *:only-child {
-		@if $touch {
-			--position: #{$touch};
+@mixin icon-setup($icon: expand, $width: 23px, $height: $width, $padding: var(--p), $hover: true, $position: 0% 0%, $touch: null) {
+	@if $touch {
+		--position: #{$touch};
+		@if $hover == true {
 			@include hover {
 				--position: #{$position};
 			}
-		} @else {
-			--position: #{$position};
 		}
+	} @else {
+		--position: #{$position};
+	}
+	&::before, &::after {
+		content: "";
+		display: block;
+	}
+	&::before {
+		position: absolute;
+		z-index: 3;
+		background: url(/static/images/svg/icons/#{$icon}.svg) no-repeat center / contain;
+		width: $width;
+		height: $height;
+		@if $touch {
+			bottom: #{$padding};
+			right: #{$padding};
+			@if $hover == true {
+				@include hover {
+					top: #{$padding};
+					left: #{$padding};
+					bottom: unset;
+					right: unset;
+				}
+			}
+		} @else {
+			top: #{$padding};
+			left: #{$padding};
+		}
+	}
+	&::after {
+		--gradient-color: hsl(from var(--color-iron) h s calc(l * .45));
+		--blend-mode: soft-light;
+		z-index: 2;
+		background: radial-gradient(
+			farthest-corner at var(--position),
+			hsl(from var(--gradient-color) h s l / 1) 0,
+			hsl(from var(--gradient-color) h s l / 0) calc(($width + $padding)*3)
+		);
+		mix-blend-mode: var(--blend-mode);
+		@include full-offset(0);
+		@include clip-path-edges(2px);
+	}
+}
+
+@mixin icon-invert($hover: true) {
+	&::before {
+		filter: invert(1);
+		mix-blend-mode: hard-light;
+	}
+	&::after {
+		--gradient-color: white;
+	}
+}
+
+@mixin expand-hover($icon: expand, $width: 23px, $height: $width, $padding: var(--p), $hover: true, $position: 0% 0%, $touch: null) {
+	> *:only-child {
+		@include icon-setup($icon, $width, $height, $padding, $hover, $position, $touch);
 		&::before, &::after {
-			content: "";
-			display: block;
 			transition: opacity .2s ease-out;
 			@if $hover == true {
 				@if $touch == true {
@@ -24,65 +77,15 @@
 				}
 			}
 		}
-		&::before {
-			position: absolute;
-			z-index: 3;
-			background: url(/static/images/svg/icons/#{$icon}.svg) no-repeat center / contain;
-			width: $width;
-			height: $height;
-			@if $touch == true {
-				bottom: #{$padding};
-				right: #{$padding};
-				@include hover {
-					top: #{$padding};
-					left: #{$padding};
-					bottom: unset;
-					right: unset;
-				}
-			} @else {
-				top: #{$padding};
-				left: #{$padding};
-			}
-		}
-		&::after {
-			--gradient-color: hsl(from var(--color-iron) h s calc(l * .45));
-			--blend-mode: soft-light;
-			z-index: 2;
-			background: radial-gradient(
-				farthest-corner at var(--position),
-				hsl(from var(--gradient-color) h s l / 1) 0,
-				hsl(from var(--gradient-color) h s l / 0) calc(($width + $padding)*3)
-			);
-			mix-blend-mode: var(--blend-mode);
-			@include full-offset(0);
-			@include clip-path-edges(2px);
-		}
 	}
 	&.light picture {
-		&::before {
-			filter: invert(1);
-			mix-blend-mode: hard-light;
-			@if $hover != true {
-				opacity: 0.7;
-			}
-		}
-		&::after {
-			--gradient-color: hsl(from var(--color-blush) h s l / .75);
-			--blend-mode: hard-light;
-		}
+		@include icon-invert($hover);
 	}
 	@if $hover == true {
 		&:hover, &:focus {
 			> *:only-child {
 				&::before, &::after {
 					opacity: 1;
-				}
-			}
-		}
-		&.light {
-			&:hover, &:focus {
-				picture::before {
-					opacity: 0.7;
 				}
 			}
 		}

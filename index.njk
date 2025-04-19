@@ -111,7 +111,7 @@ eleventyNavigation:
 								<label class="media-view-hover" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true" data-media-label hidden>
 									<span class="button"><span>View info</span></span>
 								</label>
-								<label class="media-view-touch" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true" data-media-label hidden></label>
+								<label class="media-view-touch{% if file %} {% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'color', 'bottom right' %}{% endif %}" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true" data-media-label hidden></label>
 								<figcaption class="media-data" data-media-info>
 									<div class="media-data-wrapper">
 										<time class="time-default" datetime="{{post.page.date|iso|date('string')}}" title="{{post.page.date|iso|date('readable')}}" data-time="{{post.page.date|iso}}" hidden>{{post.page.date|iso|date('readable')}}</time>

@@ -48,33 +48,18 @@
 	.media-view-touch {
 		transition: opacity .2s ease-out;
 		display: block;
-		&::before, &::after {
-			content: "";
-			display: block;
-		}
-		&::before {
-			transition: transform .2s ease-out .3s;
-			position: absolute;
-			z-index: 3;
-			bottom: var(--p);
-			right: var(--p);
-			background: url(/static/images/svg/icons/info.svg) no-repeat center / contain;
-			width: 23px;
-			height: 23px;
-		}
-		&::after {
-			z-index: 2;
-			background: radial-gradient(
-				farthest-corner at 100% 100%,
-				hsl(from var(--color-iron) h s calc(l * .45) / .2) 0,
-				hsl(from var(--color-iron) h s calc(l * .45) / 0) 45%
-			);
-			mix-blend-mode: multiply;
-			@include full-offset(0);
-			@include clip-path-edges(2px);
-		}
+
+		@include icon-setup(info, $hover: false, $position: 100% 100%, $touch: 100% 100%);
 		@include hover {
 			display: none;
+		}
+
+		&::before {
+			transition: transform .2s ease-out .3s;
+		}
+		
+		&.light {
+			@include icon-invert(false);
 		}
 	}
 
