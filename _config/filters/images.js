@@ -1,137 +1,94 @@
 import Image from '@11ty/eleventy-img';
 import nbspFilter from 'eleventy-nbsp-filter';
-import { stats as getStats } from '../shortcodes/images.js'
+import { stats as getStats, findExtension } from '../shortcodes/images.js'
 
 export const images = async (post, option) => {
-	let pattern = /<\s*p><img src="(?<src>[^<]*)" alt="(?<alt>[^<]*)" title="(?<title>[^<]*)"><\/p>/g;
+	const pattern = /<\s*p><img src="(?<src>[^<]*)" alt="(?<alt>[^<]*)" title="(?<title>[^<]*)"><\/p>/g;
 	let lightboxes = "";
-	let images = post.matchAll(pattern);
-	if (images) {
-		for (const image of images) {
-			let src = image.groups.src;
-			let url = `./static/images/posts/${src}`;
-			let alt = image.groups.alt;
-			let title = image.groups.title;
-			let name = src.split(".")[0];
-			let file = src.split(".")[1];
-			if (file === "jpg") file = "jpeg";
+	let matches = post.matchAll(pattern);
 
-			if (file === "svg") {
-				let stats = await Image(url, {
-					widths: [null],
-					statsOnly: true
-				});
-				let width = stats["webp"][0].width;
-				let height = stats["webp"][0].height;
+	if (!matches) return post;
 
-				if (option === "lightbox") {
-					let figure = `
-						<a class="lightbox" id="${name}-lightbox" role="button" aria-label="Close image" href="#${name}" data-lightbox></a>
-						<dialog class="image" aria-label="Image preview" autofocus>
-							<figure>
-								<picture>
-									<img src="/static/images/posts/${src}" alt="${alt}" width="${width}" height="${height}"/>
-								</picture>
-							</figure>
-						</dialog>
-					`;
-					lightboxes = lightboxes.concat(figure);
-				} else {
-					let color = await getStats(url, 'color', 'top left');
-					let figure = `
-						<figure id="${name}">
-							<figcaption>${title}</figcaption>
-							<a class="expand ${color}" href="#${name}-lightbox" aria-role="button" aria-label="${alt} Expand image">
-								<picture>
-									<img src="/static/images/posts/${src}" alt="${alt}" width="${width}" height="${height}"/>
-								</picture>
-							</a>
-						</figure>
-					`;
-					post = post.replace(image[0], figure);
-				}
+	for (const image of matches) {
+		const src = image.groups.src;
+		const url = `./static/images/posts/${src}`;
+		const alt = image.groups.alt;
+		const title = image.groups.title;
+		const name = src.split(".")[0];
+		const file = findExtension(src);
+
+		const { theme, average } = await getStats(url, "color", "top left");
+
+		if (file === "svg") {
+			const metadata = await Image(url, { widths: [null], statsOnly: true });
+			const width = metadata.webp?.[0]?.width ?? 100;
+			const height = metadata.webp?.[0]?.height ?? 100;
+
+			const picture = `<picture><img style="--background: ${average}" src="/static/images/posts/${src}" alt="${alt}" width="${width}" height="${height}"/></picture>`;
+
+			if (option === "lightbox") {
+				const figure = `
+					<a class="lightbox" id="${name}-lightbox" role="button" aria-label="Close image" href="#${name}" data-lightbox></a>
+					<dialog class="image" aria-label="Image preview" autofocus>
+						<figure>${picture}</figure>
+					</dialog>`;
+				lightboxes += figure;
 			} else {
-				let newWidths;
-
-				if (option === "lightbox") {
-					newWidths = [100, 1728, "auto"];
-				} else {
-					newWidths = [100, 900, 1728, 2268, "auto"];
-				}
-
-				let stats = await Image(url, {
-					widths: newWidths,
-					formats: ["webp", file],
-					urlPath: `/static/images/posts/built`,
-					outputDir: `./_site/static/images/posts/built`,
-				});
-
-				let lowest = stats[file][0];
-				let basic = stats[file][1];
-
-				let webpset;
-				let regset;
-				let source;
-				let img;
-				let completed;
-
-				if (option === "lightbox") {
-					if (stats["webp"][2]) {
-						webpset = `${stats["webp"][1].url}, ${stats["webp"][2].url} 2x`;
-						regset = `${stats[file][1].url}, ${stats[file][2].url} 2x`;
-						source = `<source type="image/webp" srcset="${webpset}">`;
-						img = `<img loading="lazy" decoding="async" alt="${alt}" src="${stats["webp"][0].url}" srcset="${regset}" width="${basic.width}" height="${basic.height}">`;
-
-						let picture = `<picture>${source}${img}</picture>`;
-						let figure = `
-							<a class="lightbox" id="${name}-lightbox" role="button" aria-label="Close image" href="#${name}" data-lightbox></a>
-							<dialog class="lightbox-content image" aria-label="Image preview" autofocus>
-								<figure>${picture}</figure>
-							</dialog>
-						`;
-
-						lightboxes = lightboxes.concat(figure);
-					}
-				} else {
-					if (stats["webp"][4]) {
-						webpset = `${stats["webp"][4].srcset}, ${stats["webp"][3].srcset}, ${stats["webp"][2].srcset}, ${stats["webp"][1].srcset}`;
-						regset = `${stats[file][4].srcset}, ${stats[file][3].srcset}, ${stats[file][2].srcset}, ${stats[file][1].srcset}`;
-						source = `<source type="image/webp" srcset="${webpset}" sizes="(max-width: 912px) ${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px, (min-width: 1549px) ${stats["webp"][4].width}px">`;
-						img = `<img loading="lazy" decoding="async" alt="${alt}" src="${stats["webp"][0].url}" srcset="${regset}" sizes="(max-width: 912px) ${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px, (min-width: 1549px) ${stats["webp"][4].width}px" width="${basic.width}" height="${basic.height}">`;
-					} else if (stats["webp"][3]) {
-						webpset = `${stats["webp"][3].srcset}, ${stats["webp"][2].srcset}, ${stats["webp"][1].srcset}`;
-						regset = `${stats[file][3].srcset}, ${stats[file][2].srcset}, ${stats[file][1].srcset}`;
-						source = `<source type="image/webp" srcset="${webpset}" sizes="(max-width: 912px) ${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px">`;
-						img = `<img loading="lazy" decoding="async" alt="${alt}" src="${stats["webp"][0].url}" srcset="${regset}" sizes="(max-width: 912px) ${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px" width="${basic.width}" height="${basic.height}">`;
-					} else {
-						webpset = `${stats["webp"][1].url}`;
-						regset = `${stats[file][1].url}`;
-						source = `<source type="image/webp" srcset="${webpset}">`;
-						img = `<img loading="lazy" decoding="async" alt="${alt}" src="${stats["webp"][0].url}" srcset="${regset}" width="${basic.width}" height="${basic.height}">`;
-					}
-
-					let picture = `<picture>${source}${img}</picture>`;
-					let nbsp = nbspFilter(2, 100);
-					let figure;
-					let color = await getStats(url, 'color', 'top left');
-
-					if (stats["webp"][4] || stats["webp"][3]) {
-						let caption = `<figcaption id="${name}-caption" aria-hidden="true">${nbsp(title)}</figcaption>`;
-						let link = `<a class="expand ${color}" href="#${name}-lightbox" aria-label="${alt} Expand image" data-media-expand>${picture}</a>`;
-						figure = `<figure id="${name}" aria-labelledby="${name}-caption">${caption}${link}</figure>`;
-					} else {
-						let caption = `<figcaption id="${name}-caption" aria-hidden="true">${nbsp(title)}</figcaption>`;
-						figure = `<figure id="${name}" aria-labelledby="${name}-caption">${caption}${picture}</figure>`;
-					}
-					post = post.replace(image[0], figure);
-				}
+				const caption = `<figcaption>${title}</figcaption>`;
+				const link = `<a class="expand ${theme}" href="#${name}-lightbox" aria-label="${alt} Expand image">${picture}</a>`;
+				const figure = `<figure id="${name}">${caption}${link}</figure>`;
+				post = post.replace(image[0], figure);
 			}
+			continue;
+		}
+
+		const widths = option === "lightbox"
+			? [100, 1728, "auto"]
+			: [100, 900, 1728, 2268, "auto"];
+
+		const stats = await Image(url, {
+			widths,
+			formats: ["webp", file],
+			urlPath: `/static/images/posts/built`,
+			outputDir: `./_site/static/images/posts/built`
+		});
+
+		const basic = stats[file][1];
+		const main = stats["webp"];
+		const fallback = stats[file];
+
+		const buildSrcSet = (imgs, max = imgs.length - 1) =>
+			imgs.slice(1, max + 1).map(img => img.srcset || `${img.url} 2x`).join(", ");
+
+		const webpset = buildSrcSet(main);
+		const regset = buildSrcSet(fallback);
+
+		const sizes = main.length >= 5
+			? `(max-width: 912px) ${main[1].width}px, (min-width: 913px) ${main[2].width}px, (min-width: 1183px) ${main[3].width}px, (min-width: 1549px) ${main[4].width}px`
+			: main.length >= 4
+			? `(max-width: 912px) ${main[1].width}px, (min-width: 913px) ${main[2].width}px, (min-width: 1183px) ${main[3].width}px`
+			: undefined;
+
+		const source = `<source type="image/webp" srcset="${webpset}"${sizes ? ` sizes="${sizes}"` : ""}>`;
+		const img = `<img style="--background: ${average}" loading="lazy" decoding="async" alt="${alt}" src="${main[0].url}" srcset="${regset}"${sizes ? ` sizes="${sizes}"` : ""} width="${basic.width}" height="${basic.height}">`;
+		const picture = `<picture>${source}${img}</picture>`;
+
+		if (option === "lightbox") {
+			const figure = `
+				<a class="lightbox" id="${name}-lightbox" role="button" aria-label="Close image" href="#${name}" data-lightbox></a>
+				<dialog class="lightbox-content image" aria-label="Image preview" autofocus>
+					<figure>${picture}</figure>
+				</dialog>`;
+			lightboxes += figure;
+		} else {
+			const caption = `<figcaption id="${name}-caption" aria-hidden="true">${nbspFilter(2, 100)(title)}</figcaption>`;
+			const linkOrPlain = (main.length >= 4)
+				? `<a class="expand ${theme}" href="#${name}-lightbox" aria-label="${alt} Expand image" data-media-expand>${picture}</a>`
+				: picture;
+			const figure = `<figure id="${name}" aria-labelledby="${name}-caption">${caption}${linkOrPlain}</figure>`;
+			post = post.replace(image[0], figure);
 		}
 	}
 
-	if (option === "lightbox") {
-		return lightboxes;
-	} else {
-		return post;
-	}
+	return option === "lightbox" ? lightboxes : post;
 };

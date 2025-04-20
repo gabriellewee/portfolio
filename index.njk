@@ -111,7 +111,7 @@ eleventyNavigation:
 								<label class="media-view-hover" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true" data-media-label hidden>
 									<span class="button"><span>View info</span></span>
 								</label>
-								<label class="media-view-touch{% if file %} {% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'color', 'bottom right' %}{% endif %}" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true" data-media-label hidden></label>
+								<label class="media-view-touch{% if file %} {% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'theme', 'bottom right' %}{% endif %}" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true" data-media-label hidden></label>
 								<figcaption class="media-data" data-media-info>
 									<div class="media-data-wrapper">
 										<time class="time-default" datetime="{{post.page.date|iso|date('string')}}" title="{{post.page.date|iso|date('readable')}}" data-time="{{post.page.date|iso}}" hidden>{{post.page.date|iso|date('readable')}}</time>
@@ -119,7 +119,7 @@ eleventyNavigation:
 										<div class="media-thumbnail">
 											<a class="media-expand expand" href="#{{post.data.date|safe}}-{{post.data.name}}-lightbox" role="button" aria-label="Expand image" tabindex="-1" data-media-expand>
 												<span class="no-image" hidden><span>Expand</span></span>
-												<span class="has-image{% if file %} {% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'color', 'top left' %}{% endif %}" aria-hidden="true" hidden>
+												<span class="has-image{% if file %} {% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'theme', 'top left' %}{% endif %}" aria-hidden="true" hidden>
 													{% if post.data.upscale %}
 														<picture>
 															<img class="upscale" src="{% include post.data.upscale %}"{% if post.data.upscaleWidth %} width="{{post.data.upscaleWidth}}"{% endif %}{% if post.data.upscaleHeight %} height="{{post.data.upscaleHeight}}"{% endif %} alt="{{post.data.description}}"/>
@@ -196,7 +196,7 @@ eleventyNavigation:
 								{% endif %}
 								{% if post.data.mediaType == "IMAGE" %}
 									<figure id="external-{{post.data.id}}" class="media-attachment" aria-label="{{post.data.mediaAlt}}">
-										<a class="expand {% stats post.data.mediaUrl, 'color', 'top left' %}" href="#external-{{post.data.id}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
+										<a class="expand {% stats post.data.mediaUrl, 'theme', 'top left' %}" href="#external-{{post.data.id}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
 											{% external post.data.mediaUrl, '', 500, 'lazy' %}
 										</a>
 									</figure>
@@ -210,7 +210,7 @@ eleventyNavigation:
 								{% for media in post.data.media %}
 									{% if media.thumb %}
 										<figure id="external-{{postIndex}}-{{post.data.cid|truncate(5, true, '')}}" class="media-attachment" aria-label="{{media.alt}}">
-											<a class="expand {% stats media.thumb, 'color', 'top left' %}" href="#external-{{postIndex}}-{{post.data.cid|truncate(5, true, '')}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
+											<a class="expand {% stats media.thumb, 'theme', 'top left' %}" href="#external-{{postIndex}}-{{post.data.cid|truncate(5, true, '')}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
 												{% external media.thumb, '', 500, 'lazy' %}
 											</a>
 										</figure>
@@ -222,7 +222,7 @@ eleventyNavigation:
 										</figure>
 									{% elseif media.url %}
 										<figure id="external-{{media.id}}" class="media-attachment" aria-label="{{media.description}}">
-											<a class="expand {% stats media.url, 'color', 'top left' %}" href="#external-{{media.id}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
+											<a class="expand {% stats media.url, 'theme', 'top left' %}" href="#external-{{media.id}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
 												{% external media.url, '', 500, 'lazy' %}
 											</a>
 										</figure>

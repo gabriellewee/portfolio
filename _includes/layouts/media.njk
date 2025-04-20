@@ -45,7 +45,7 @@
 									<div class="media-thumbnail">
 										<a class="media-expand expand" href="#{{post.date|safe}}-{{post.name}}-lightbox" role="button" aria-label="Expand image" tabindex="-1" hidden data-media-expand>
 											<span class="no-image" hidden><span>Expand</span></span>
-											<span class="has-image{% if file %} {% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'color', 'top left' %}{% endif %}" aria-hidden="true">
+											<span class="has-image{% if file %} {% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'theme', 'top left' %}{% endif %}" aria-hidden="true">
 												{% if post.upscale %}
 													<picture>
 														<img class="upscale" src="{% include post.upscale %}"{% if post.upscaleWidth %} width="{{post.upscaleWidth}}"{% endif %}{% if post.upscaleHeight %} height="{{post.upscaleHeight}}"{% endif %} alt="{{post.description}}"/>

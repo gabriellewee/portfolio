@@ -81,6 +81,7 @@ figure, picture, img {
 img {
 	font-style: normal;
 	font-size: 1.125rem;
+	background-color: var(--background);
 	@include invert;
 }
 

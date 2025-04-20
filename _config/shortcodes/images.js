@@ -1,4 +1,5 @@
 import { promises as fs } from "fs"
+import path from "path";
 import Image from '@11ty/eleventy-img';
 import Sharp from 'sharp';
 import EleventyFetch from '@11ty/eleventy-fetch';
@@ -16,270 +17,297 @@ const fetchImageBuffer = async (url) => {
 	}
 };
 
-const findExtension = (src) => {
-	let file;
-	if (src.includes("@")) {
-		file = src.split("@");
-		file = file[file.length - 1];
-	} else if (src.includes("?")) {
-		const urlObj = new URL(src);
-		urlObj.search = '';
-		urlObj.hash = '';
-		file = urlObj.toString().split(".");
-		file = file[file.length - 1];
-	} else {
-		file = src.split(".");
-		file = file[file.length - 1];
+export const findExtension = (src) => {
+	try {
+		let cleanSrc = src.includes("@") ? src.split("@").pop() : src;
+
+		let ext = "";
+		if (cleanSrc.includes(".")) {
+			const url = new URL(src, "http://dummy");
+			ext = url.pathname.split(".").pop().toLowerCase();
+		} else {
+			ext = cleanSrc.toLowerCase();
+		}
+
+		switch (ext) {
+			case "jpg":
+			case "jpe":
+			case "jfif":
+				return "jpeg";
+			case "tif":
+				return "tiff";
+			default:
+				return ext || "jpeg";
+		}
+	} catch {
+		return "jpeg";
 	}
-	if (file.toLowerCase() === "jpg") file = "jpeg";
-
-	return file;
-};
-
-const reduce = (numerator, denominator) => {
-	let gcd = (a, b) => {
-		return b ? gcd(b, a%b) : a;
-	};
-	gcd = gcd(numerator, denominator);
-	return [numerator/gcd, denominator/gcd];
 };
 
 export const stats = async (src, type, value) => {
 	try {
-		let image = src.startsWith("https://") ? await fetchImageBuffer(src) : src;
-		let result;
+		const isProd = process.env.ELEVENTY_ENV === "production";
+		if (!isProd && type === "average") {
+			return "hsl(0 0% 0% / 0)";
+		} else if (!isProd && type === "both") {
+			return { theme: "dark", average: "hsl(0 0% 0% / 0)" };
+		} else if (!isProd && type === "theme") {
+			return "dark";
+		}
 
-		if (type != "color") {
-			let stats = await Sharp(image);
-			let metadata = await stats.metadata();
-			let width = metadata.width;
-			let height = metadata.height;
-			let percent;
-			if(value) percent = value / metadata.width;
+		const image = src.startsWith("https://") ? await fetchImageBuffer(src) : src;
+		const sharpImage = Sharp(image);
 
-			if (type === "width") {
-				result = value ? width * percent : width;
-			} else if (type === "height") {
-				result = value ? height * percent : height;
-			} else if (type === "orientation") {
-				result = width > height ? "landscape" : "portrait";
-			} else if (type === "ratio") {
-				result = `${reduce(width, height)[0]} / ${reduce(width, height)[1]}`
-			}
-		} else {
-			const sharpImage = Sharp(image);
+		const normalize = (val) => (val > 255 ? val / 257 : val);
+
+		const getTheme = async () => {
+			const squareWidth = 50;
 			let positionTop = 0;
 			let positionLeft = 0;
-			const squareWidth = 50;
 
 			const metadata = await sharpImage.metadata();
-			if (value.includes("bottom")) {
-				positionTop = metadata.height - squareWidth;
-			}
-			if (value.includes("right")) {
-				positionLeft = metadata.width - squareWidth;
-			}
+			if (value?.includes("bottom")) positionTop = metadata.height - squareWidth;
+			if (value?.includes("right")) positionLeft = metadata.width - squareWidth;
 
 			const extracted = sharpImage
 				.clone()
-				.extract({
-					top: positionTop,
-					left: positionLeft,
-					width: squareWidth,
-					height: squareWidth
-				});
+				.extract({ top: positionTop, left: positionLeft, width: squareWidth, height: squareWidth });
 
 			const stats = await extracted.stats();
-
-			const normalize = (value) => value > 255 ? value / 257 : value;
-
 			const avgR = normalize(stats.channels[0].mean);
 			const avgG = normalize(stats.channels[1].mean);
 			const avgB = normalize(stats.channels[2].mean);
 
 			const brightness = avgR * 0.2126 + avgG * 0.7152 + avgB * 0.0722;
-			const result = brightness > 150 ? "light" : "dark";
+			return brightness > 150 ? "light" : "dark";
+		};
 
-			return result;
+		const getAverage = async () => {
+			const stats = await sharpImage.toColourspace("rgb").stats();
+
+			if (!stats.channels || stats.channels.length < 1) {
+				return "hsl(0 0% 0% / 0)";
+			}
+
+			if (stats.channels.length === 1) {
+				const gray = Math.round(normalize(stats.channels[0].mean));
+				return `#${gray.toString(16).padStart(2, "0").repeat(3)}`;
+			} else {
+				const r = Math.round(normalize(stats.channels[0].mean));
+				const g = Math.round(normalize(stats.channels[1].mean));
+				const b = Math.round(normalize(stats.channels[2].mean));
+				return `#${[r, g, b].map(v => v.toString(16).padStart(2, "0")).join("")}`;
+			}
+		};
+
+		if (type === "theme") {
+			return await getTheme();
+		} else if (type === "average") {
+			return await getAverage();
+		} else if (type === "color") {
+			const [theme, average] = await Promise.all([getTheme(), getAverage()]);
+			return { theme, average };
+		} else {
+			const metadata = await sharpImage.metadata();
+			const width = metadata.width;
+			const height = metadata.height;
+			let percent;
+
+			if (value) percent = value / width;
+
+			if (type === "width") return value ? width * percent : width;
+			if (type === "height") return value ? height * percent : height;
+			if (type === "orientation") return width > height ? "landscape" : "portrait";
+			if (type === "ratio") {
+				const reduce = (num, den) => {
+					const gcd = (a, b) => (b ? gcd(b, a % b) : a);
+					const factor = gcd(num, den);
+					return [num / factor, den / factor];
+				};
+				const [w, h] = reduce(width, height);
+				return `${w} / ${h}`;
+			}
 		}
-
-		return result;
 	} catch (error) {
-		console.error('IMAGE: ' + src, '\n', error, '\n');
+		console.error("IMAGE:", src, "\n", error, "\n");
+		return type === "average" ? "hsl(0 0% 0% / 0)" : type === "theme" ? "dark" : undefined;
 	}
 };
 
-export const external = async (src, alt, width, loading) => {
+export const external = async (src, alt = "", width, loading = "lazy") => {
 	try {
-		let file = findExtension(src);
-		let image = src.startsWith("https://") ? await fetchImageBuffer(src) : src;
-		if (!loading) loading = "lazy";
-		alt = alt.replace(/ :(.*?):$/g, '');
+		const file = findExtension(src);
+		const image = src.startsWith("https://") ? await fetchImageBuffer(src) : src;
+		alt = alt.replace(/ :(.*?):$/g, "");
 
 		let newWidths;
-		if (width > 1000) {
-			newWidths = [width/2, width]
-		} else if (width <= 1000) {
-			newWidths = [width, width*2]
-		} else if (width === undefined) {
-			let metadata = await Sharp(image).metadata();
-			let newWidth = metadata.width;
-			newWidths = [newWidth/2, newWidth];
+		if (!width) {
+			const metadata = await Sharp(image).metadata();
+			width = metadata.width;
 		}
+		newWidths = width > 1000 ? [width / 2, width] : [width, width * 2];
 
-		let stats = await Image(image, {
+		const stat = await Image(image, {
 			widths: newWidths,
 			formats: ["webp", file],
-			urlPath: `/static/images/external`,
-			outputDir: `./_site/static/images/external`
+			urlPath: "/static/images/external",
+			outputDir: "./_site/static/images/external"
 		});
-		
-		let result = `
+
+		const average = await stats(src, "average");
+
+		const main = stat["webp"];
+		const fallback = stat[file];
+
+		return `
 			<picture>
-				<source type="image/webp" srcset="${stats["webp"][0].url}, ${stats["webp"][1].url} 2x">
-				<img loading=${loading} decoding="async" alt="${alt}" src="${stats["webp"][0].url}" srcset="${stats[file][0].url}, ${stats[file][1].url} 2x" width="${stats["webp"][0].width}" height="${stats["webp"][0].height}">
+				<source type="image/webp" srcset="${main[0].url}, ${main[1].url} 2x">
+				<img 
+					style="--background: ${average}" 
+					loading="${loading}" 
+					decoding="async" 
+					alt="${alt}"
+					src="${main[0].url}" 
+					srcset="${fallback[0].url}, ${fallback[1].url} 2x" 
+					width="${main[0].width}" 
+					height="${main[0].height}">
 			</picture>
-		`;
-		return result;
+		`.trim();
 	} catch (error) {
-		console.error('Image: ' + src, '\n', error, '\n');
+		console.error("Image:", src, "\n", error, "\n");
 	}
 };
 
 export const ogPhoto = async (src) => {
 	try {
-		let file = findExtension(src);
-		let name = src.split(".");
-		name = name[1].split("/");
-		name = name[name.length-1];
+		const file = findExtension(src).toLowerCase();
+		const basename = path.basename(src, path.extname(src));
+		const outputPath = `./_site/static/images/og/${basename}.${file}`;
+		const outputUrl = `/static/images/og/${basename}.${file}`;
 
-		let result = await Sharp(src).resize({
-			width: 1200,
-			height: 630
-		}).toFormat(file).clone().toFile(`./_site/static/images/og/${name}.${file}`);
+		await Sharp(src)
+			.resize({ width: 1200, height: 630 })
+			.toFormat(file)
+			.toFile(outputPath);
 
-		return `/static/images/og/${name}.${file}`;
+		return outputUrl;
 	} catch (error) {
-		console.error('Image: ' + src, '\n', error, '\n');
+		console.error("OG Image:", src, "\n", error, "\n");
 	}
 };
 
-export const unfurlGame = async (link, title, className, width, loading) => {
+export const unfurlGame = async (link, title, className, width, loading = "lazy") => {
 	try {
-		const metadata = await EleventyFetch(
-			`https://api.microlink.io/?url=${link}`,
-			{
-				duration: "1d",
-				type: "json",
-			}
-		);
-
-		let type;
-		if (metadata.data.image.type === "j2k" || metadata.data.image.type === "jpg") {
-			type = "jpeg"
-		} else {
-			type = metadata.data.image.type;
-		}
-		let image = `${metadata.data.image.url}.${type}`;
-
-		let stats = await Image(image, {
-			widths: [width, width*2],
-			formats: ["webp", type],
-			urlPath: `/static/images/external`,
-			outputDir: `./_site/static/images/external`
+		const metadata = await EleventyFetch(`https://api.microlink.io/?url=${link}`, {
+			duration: "1d",
+			type: "json",
 		});
-		
-		let picture = `
+
+		const rawType = metadata.data?.image?.type || "jpeg";
+		const type = rawType === "j2k" || rawType === "jpg" ? "jpeg" : rawType;
+		const image = `${metadata.data.image.url}.${type}`;
+
+		const stat = await Image(image, {
+			widths: [width, width * 2],
+			formats: ["webp", type],
+			urlPath: "/static/images/external",
+			outputDir: "./_site/static/images/external",
+		});
+
+		const average = await stats(image, "average");
+
+		const main = stat["webp"];
+		const fallback = stat[type];
+
+		const picture = `
 			<picture>
-				<source type="image/webp" srcset="${stats["webp"][0].url}, ${stats["webp"][1].url} 2x">
-				<img loading=${loading} decoding="async" alt="${title}" src="${stats["webp"][0].url}" srcset="${stats[type][0].url}, ${stats[type][1].url} 2x" width="${stats["webp"][0].width}" height="${stats["webp"][0].height}">
+				<source type="image/webp" srcset="${main[0].url}, ${main[1].url} 2x">
+				<img 
+					style="--background: ${average}" 
+					loading="${loading}" 
+					decoding="async" 
+					alt="${title}" 
+					src="${main[0].url}" 
+					srcset="${fallback[0].url}, ${fallback[1].url} 2x" 
+					width="${main[0].width}" 
+					height="${main[0].height}">
 			</picture>
-		`;
+		`.trim();
 
-		let result = `<a class="${className}" href="${link}" target="_blank">${picture}</a>`;
-
-		return result;
+		return `<a class="${className}" href="${link}" target="_blank" rel="noopener noreferrer">${picture}</a>`;
 	} catch (error) {
-		console.error('Title: ' + title, '\n', error, '\n');
+		console.error("unfurlGame error:", title, "\n", error, "\n");
 		return `<a class="${className} button" href="${link}"><span>${title}</span></a>`;
 	}
 };
 
-export const image = async (src, alt, type, option, figp) => {
+export const image = async (src, alt = "", type = "default", option, figp) => {
 	try {
-		let category = src.split('/')[3];
-		let name = src.split('/')[4].slice(0, -4);
-		let file = src.split(".")[2];
-		if (file.toLowerCase() === "jpg") file = "jpeg";
+		const category = src.split("/")[3];
+		const name = path.basename(src, path.extname(src));
+		let file = path.extname(src).slice(1).toLowerCase();
+		if (file === "jpg") file = "jpeg";
 
 		let newWidths;
 		if (type === "default") {
-			newWidths = [100, 900, 1728, 2268, "auto"]
+			newWidths = [100, 900, 1728, 2268, "auto"];
 		} else if (type === "screen") {
 			newWidths = [100, 1728, "auto"];
 		} else if (Number.isInteger(type)) {
-			newWidths = [50, type, type*2];
+			newWidths = [50, type, type * 2];
 		}
 
-		let stats = await Image(src, {
+		const stat = await Image(src, {
 			widths: newWidths,
 			formats: ["webp", file],
 			urlPath: `/static/images/${category}/built`,
-			outputDir: `./_site/static/images/${category}/built`
+			outputDir: `./_site/static/images/${category}/built`,
 		});
 
-		let lowest = stats[file][0];
-		let basic = stats[file][1];
-		
-		let webpset;
-		let regset;
+		const average = await stats(src, "average");
+		const loading = Number.isInteger(option) && option < 7 ? "eager" : "lazy";
+
+		const main = stat["webp"];
+		const fallback = stat[file];
+		const basic = fallback[1];
+
+		let webpset, regset, sizes;
+
 		if (type === "default") {
-			if (stats["webp"][4]) {
-				webpset = `${stats["webp"][4].srcset}, ${stats["webp"][3].srcset}, ${stats["webp"][2].srcset}, ${stats["webp"][1].srcset}`;
-				regset = `${stats[file][4].srcset}, ${stats[file][3].srcset}, ${stats[file][2].srcset}, ${stats[file][1].srcset}`;
-			} else {
-				webpset = `${stats["webp"][3].srcset}, ${stats["webp"][2].srcset}, ${stats["webp"][1].srcset}`;
-				regset = `${stats[file][3].srcset}, ${stats[file][2].srcset}, ${stats[file][1].srcset}`;
-			}
-		} else if (type === "screen" || Number.isInteger(type)) {
-			webpset = `${stats["webp"][1].url}, ${stats["webp"][2].url} 2x`;
-			regset = `${stats[file][1].url}, ${stats[file][2].url} 2x`;
-		}
-		
-		let source;
-		let img;
-		let loading;
-		if (Number.isInteger(option) && option < 7) {
-			loading = "eager";
+			const hasXL = main.length >= 5;
+
+			webpset = main
+				.slice(hasXL ? 1 : 1, hasXL ? 5 : 4)
+				.map((img) => img.srcset)
+				.join(", ");
+			regset = fallback
+				.slice(hasXL ? 1 : 1, hasXL ? 5 : 4)
+				.map((img) => img.srcset)
+				.join(", ");
+
+			sizes = hasXL
+				? `(max-width: 912px) ${main[1].width}px, (min-width: 913px) ${main[2].width}px, (min-width: 1183px) ${main[3].width}px, (min-width: 1549px) ${main[4].width}px`
+				: `(max-width: 912px) ${main[1].width}px, (min-width: 913px) ${main[2].width}px, (min-width: 1183px) ${main[3].width}px`;
 		} else {
-			loading = "lazy";
-		}
-		if (type === "default") {
-			if (stats["webp"][4]) {
-				source = `<source type="image/webp" srcset="${webpset}" sizes="(max-width: 912px) ${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px, (min-width: 1549px) ${stats["webp"][4].width}px">`;
-				img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${stats["webp"][0].url}" srcset="${regset}" sizes="(max-width: 912px) ${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px, (min-width: 1549px) ${stats["webp"][4].width}px" width="${basic.width}" height="${basic.height}">`;
-			} else {
-				source = `<source type="image/webp" srcset="${webpset}" sizes="(max-width: 912px) ${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px">`;
-				img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${stats["webp"][0].url}" srcset="${regset}" sizes="(max-width: 912px) ${stats["webp"][1].width}px, (min-width: 913px) ${stats["webp"][2].width}px, (min-width: 1183px) ${stats["webp"][3].width}px" width="${basic.width}" height="${basic.height}">`;
-			}
-		} else if (type === "screen" | Number.isInteger(type)) {
-			source = `<source type="image/webp" srcset="${webpset}">`;
-			img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${stats["webp"][0].url}" srcset="${regset}" width="${basic.width}" height="${basic.height}">`;
+			webpset = `${main[1].url}, ${main[2].url} 2x`;
+			regset = `${fallback[1].url}, ${fallback[2].url} 2x`;
 		}
 
-		let picture = `<picture>${source}${img}</picture>`;
-		let nbsp = nbspFilter(2, 100);
-		let figcaption;
-		
+		const source = `<source type="image/webp" srcset="${webpset}"${sizes ? ` sizes="${sizes}"` : ""}>`;
+
+		const img = `<img style="--background: ${average}" loading="${loading}" decoding="async" alt="${alt}" src="${main[0].url}" srcset="${regset}"${sizes ? ` sizes="${sizes}"` : ""} width="${basic.width}" height="${basic.height}">`;
+
+		const picture = `<picture>${source}${img}</picture>`;
+
 		if (option === "lightbox") {
-			figp == null ? figcaption = nbsp(alt) : figcaption = figp;
-			let caption = `<figcaption id="${name}-caption" aria-hidden="true">${figcaption}</figcaption>`;
-			let link = `<a class="expand" href="#${name}-lightbox" aria-label="${alt} Expand image">${picture}</a>`;
-			return await `<figure id="${name}" aria-labelledby="${name}-caption">${caption}${link}</figure>`;
-		} else {
-			return await `${picture}`;
+			const figcaption = figp ?? nbspFilter(2, 100)(alt);
+			const caption = `<figcaption id="${name}-caption" aria-hidden="true">${figcaption}</figcaption>`;
+			const link = `<a class="expand" href="#${name}-lightbox" aria-label="${alt} Expand image">${picture}</a>`;
+			return `<figure id="${name}" aria-labelledby="${name}-caption">${caption}${link}</figure>`;
 		}
+
+		return picture;
 	} catch (error) {
-		console.error('Image: ' + src, '\n', error, '\n');
+		console.error("Image:", src, "\n", error, "\n");
 	}
 };

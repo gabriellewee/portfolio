@@ -37,7 +37,7 @@ eleventyNavigation:
 				<ul class="grid">
 					{% for book in about.loans.timeline|limit(8) %}
 						<li>
-							<a class="post-external {{book.title.text|slugify}} {% stats book.cover.url, 'color', 'top left' %}" href="{{book.title.url}}" target="_blank" style="--color: {{book.cover.color}}">
+							<a class="post-external {{book.title.text|slugify}} {% stats book.cover.url, 'theme', 'top left' %}" href="{{book.title.url}}" target="_blank" style="--color: {{book.cover.color}}">
 								{% external book.cover.url, book.title.text + " by " + book.author, 300, "eager" %}
 							</a>
 							<p class="no-css"><a href="{{book.title.url}}" target="_blank">{{book.title.text}} by {{book.author}}</a></p>
@@ -58,7 +58,7 @@ eleventyNavigation:
 					<ul class="grid steam">
 						{% for game in steam.response.games %}
 							<li>
-								<a class="post-external {% stats 'https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/' + game.appid + '/library_600x900_2x.jpg', 'color', 'top left' %}" href="https://store.steampowered.com/app/{{game.appid}}/" target="_blank">
+								<a class="post-external {% stats 'https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/' + game.appid + '/library_600x900_2x.jpg', 'theme', 'top left' %}" href="https://store.steampowered.com/app/{{game.appid}}/" target="_blank">
 									{% external "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/" + game.appid + "/library_600x900_2x.jpg", game.name, 300, "eager" %}
 								</a>
 								<p class="no-css"><a href="https://store.steampowered.com/app/{{game.appid}}/" target="_blank">{{game.name}}</a></p>
@@ -105,7 +105,7 @@ eleventyNavigation:
 				</header>
 				<div class="post-content">
 					<figure id="2022-07-20-keyboard" aria-label="My pastel-themed custom mechanical keyboard and Logitech Lift Mouse.">
-						<a class="post-expand expand {% stats './static/images/posts/2022-07-20-keyboard.jpg', 'color', 'top left' %}" href="#2022-07-20-keyboard-lightbox" role="button" aria-label="Expand image" data-media-expand>
+						<a class="post-expand expand {% stats './static/images/posts/2022-07-20-keyboard.jpg', 'theme', 'top left' %}" href="#2022-07-20-keyboard-lightbox" role="button" aria-label="Expand image" data-media-expand>
 							{% image './static/images/posts/2022-07-20-keyboard.jpg', 'My pastel-themed custom mechanical keyboard and Logitech Lift Mouse', 700 %}
 						</a>
 					</figure>
