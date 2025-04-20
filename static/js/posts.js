@@ -1,47 +1,66 @@
+// Run scripts
 lightbox("[data-media-expand]", "[data-lightbox]");
 timeAgo("[data-time]");
 
-const smoothScrollLinks = ((links = Array.from(document.querySelectorAll("[data-anchor]"))) => {
-	if (!links) return;
-	let mainContent = document.querySelector("main");
-	links.forEach(link=>{
+// Smooth scroll to anchors
+(() => {
+	const links = document.querySelectorAll("[data-anchor]");
+	const mainContent = document.querySelector("main");
+
+	const scrollToId = (id) => {
+		const el = document.getElementById(id);
+		if (el) el.scrollIntoView({ behavior: "smooth" });
+	};
+
+	links.forEach((link) => {
 		link.setAttribute("aria-hidden", "true");
-		let linkHref = link.getAttribute("href").substring(1);
-		let targetLink = document.getElementById(linkHref);
-		link.addEventListener("click", e => {
-			targetLink.scrollIntoView({ behavior: "smooth" });
+		const href = link.getAttribute("href")?.replace(/^#/, "");
+		if (!href) return;
+
+		link.addEventListener("click", (e) => {
+			e.preventDefault();
+			scrollToId(href);
 		});
 	});
+
 	if (window.location.hash) {
-		let scrollHash = window.location.hash.substring(1);
-		let scrollLocation = document.getElementById(scrollHash);
-		if (scrollLocation) {
-			imagesLoaded(mainContent, { background: true }, () =>{
-				setTimeout(() => {
-					scrollLocation.scrollIntoView({ behavior: "smooth" });
-				}, 300);
+		const scrollHash = window.location.hash.substring(1);
+		const scrollTarget = document.getElementById(scrollHash);
+
+		if (scrollTarget) {
+			imagesLoaded(mainContent, { background: true }, () => {
+				setTimeout(() => scrollToId(scrollHash), 300);
 			});
 		}
 	}
 })();
 
-const copyCode = ((pres = Array.from(document.querySelectorAll("pre:has(code)"))) => {
-	if (!pres || !navigator.clipboard) return;
-	pres.forEach(pre=> {
-		let button = document.createElement("button");
+// Copy code
+(() => {
+	if (!navigator.clipboard) return;
+
+	const pres = document.querySelectorAll("pre:has(code)");
+
+	pres.forEach((pre) => {
+		const code = pre.querySelector("code");
+		if (!code) return;
+
+		const button = document.createElement("button");
 		button.innerHTML = `<span></span>`;
-		button.style.setProperty('--tooltip-label', `"Copied"`);
 		button.setAttribute("aria-label", "Copy code");
+		button.style.setProperty("--tooltip-label", `"Copied"`);
 		button.classList.add("tooltip", "tooltip-left", "dark", "hidden");
+
 		pre.appendChild(button);
-		let code = pre.querySelector("code");
+
+		const toggleTooltip = (visible) => {
+			button.classList.toggle("hidden", !visible);
+		};
 
 		button.addEventListener("click", async () => {
-			button.classList.remove("hidden");
+			toggleTooltip(true);
 			await navigator.clipboard.writeText(code.innerText);
-			setTimeout(() => {
-				button.classList.add("hidden");
-			}, 3000);
+			setTimeout(() => toggleTooltip(false), 3000);
 		});
 	});
 })();

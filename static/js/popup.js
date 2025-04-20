@@ -1,50 +1,38 @@
-const popup = ((containers = Array.from(document.querySelectorAll("[data-popup]"))) => {
-	if (!containers) return;
-	containers.forEach(container =>{
-		let popupWindow = container.querySelector("[data-popup-window]");
-		let popupLabel = container.querySelector("[data-popup-label]");
-		let popupTrigger = container.querySelector("[data-popup-trigger]");
-		let popupClose = container.querySelector("[data-popup-close]");
-		let triggers = Array.from([popupTrigger, popupClose]);
+// Popups
+(() => {
+	const containers = document.querySelectorAll("[data-popup]");
+	if (!containers.length) return;
 
-		let _true = () => {
-			popupTrigger.checked = true;
-			popupTrigger.setAttribute("checked", "");
-			popupTrigger.setAttribute("aria-pressed", "true");
-			popupTrigger.setAttribute("aria-expanded", "true");
-		}
-		let _false = (focus) => {
-			popupTrigger.checked = false;
-			popupTrigger.removeAttribute("checked");
-			popupTrigger.setAttribute("aria-pressed", "false");
-			popupTrigger.setAttribute("aria-expanded", "false");
-			if (focus === true) {
-				popupTrigger.focus();
-			}
-		}
+	containers.forEach((container) => {
+		const popupWindow = container.querySelector("[data-popup-window]");
+		const popupTrigger = container.querySelector("[data-popup-trigger]");
+		const popupClose = container.querySelector("[data-popup-close]");
+		if (!popupTrigger || !popupWindow) return;
 
-		triggers.forEach(trigger =>{
-			trigger.addEventListener("click",  e => {
-				if (popupTrigger.checked) {
-					_true();
-				} else {
-					_false();
-				}
+		const triggers = [popupTrigger, popupClose].filter(Boolean);
+
+		const setState = (on, focus = false) => {
+			popupTrigger.checked = on;
+			popupTrigger.toggleAttribute("checked", on);
+			popupTrigger.setAttribute("aria-pressed", on.toString());
+			popupTrigger.setAttribute("aria-expanded", on.toString());
+			if (!on && focus) popupTrigger.focus();
+		};
+
+		triggers.forEach((trigger) => {
+			trigger.addEventListener("click", () => {
+				setState(popupTrigger.checked);
 			});
-			trigger.addEventListener("keydown",  e => {
+			trigger.addEventListener("keydown", (e) => {
 				if (e.key === "Enter") {
-					if (popupTrigger.checked) {
-						_false(true);
-					} else {
-						_true();
-					}
+					setState(!popupTrigger.checked, !popupTrigger.checked);
 				}
 			});
 		});
 
-		container.addEventListener("keydown",  e => {
+		container.addEventListener("keydown", (e) => {
 			if (e.key === "Escape") {
-				_false(true);
+				setState(false, true);
 			}
 		});
 
@@ -52,11 +40,9 @@ const popup = ((containers = Array.from(document.querySelectorAll("[data-popup]"
 			trigger: popupWindow,
 			start: "top top",
 			end: "bottom top",
-			onLeave: self => {
-				if (popupTrigger.checked) {
-					_false();
-				}
-			}
+			onLeave: () => {
+				if (popupTrigger.checked) setState(false);
+			},
 		});
-	})
+	});
 })();

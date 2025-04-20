@@ -1,208 +1,162 @@
-const show = ((container = document.documentElement) => {
-	hidden = Array.from(document.querySelectorAll("[hidden]"));
-	if (hidden) {
-		hidden.forEach(el => {
-			el.removeAttribute("hidden");
-		});
-	}
+// Remove `hidden`` attribute from all elements
+(() => {
+	const hidden = document.querySelectorAll("[hidden]");
+	hidden.forEach((el) => el.removeAttribute("hidden"));
 })();
 
-const accessibility = (() => {
+// Accessibility features
+(() => {
 	const options = Array.from(document.querySelectorAll("[data-option]"));
-	if (!options || !window.matchMedia) return;
+	if (!options.length || !window.matchMedia) return;
 
-	let _true = (option, index) => {
-		option.checked = true;
-		option.setAttribute("checked", "");
-	}
-	let _false = (option, index) => {
-		option.checked = false;
-		option.removeAttribute("checked");
-	}
-	let _toggle = (option, index, _optionTrue, _optionFalse) => {
-		if (option) option.addEventListener("click", e => {
-			if (option.checked) {
-				_optionTrue();
-			} else {
-				_optionFalse();
-			}
+	const $html = document.documentElement;
+
+	const setChecked = (el, checked = true) => {
+		el.checked = checked;
+		checked ? el.setAttribute("checked", "") : el.removeAttribute("checked");
+	};
+
+	const onToggle = (el, onTrue, onFalse) => {
+		el.addEventListener("click", () => (el.checked ? onTrue() : onFalse()));
+		el.addEventListener("keydown", (e) => {
+			if (e.key === "Enter") el.checked ? onFalse() : onTrue();
 		});
+	};
 
-		if (option) option.addEventListener("keydown", e =>{
-			if (e.key === "Enter") {
-				if (option.checked) {
-					_optionFalse();
-				} else {
-					_optionTrue();
+	const onClickOnly = (el, handler) => {
+		el.addEventListener("click", handler);
+		el.addEventListener("keydown", (e) => {
+			if (e.key === "Enter") handler();
+		});
+	};
+
+	const applyThemeDark = () => {
+		$html.classList.remove("theme-light");
+		$html.classList.add("theme-dark");
+		const metaLight = document.querySelector('meta[media="(prefers-color-scheme: light)"]');
+		const metaDark = document.querySelector('meta[media="(prefers-color-scheme: dark)"]');
+		if (metaLight) metaLight.setAttribute("content", "#1c2429");
+		if (metaDark) metaDark.setAttribute("content", "#1c2429");
+		localStorage.setItem("theme", "dark");
+	};
+
+	const applyThemeLight = () => {
+		$html.classList.remove("theme-dark");
+		$html.classList.add("theme-light");
+
+		const metaLight = document.querySelector('meta[media="(prefers-color-scheme: light)"]');
+		const metaDark = document.querySelector('meta[media="(prefers-color-scheme: dark)"]');
+		const tone = document.querySelector('input[name="tone"]:checked');
+		const color = metaLight?.getAttribute("data-default") || tone?.getAttribute("data-color") || "#fae5e1";
+
+		if (metaLight) metaLight.setAttribute("content", color);
+		if (metaDark) metaDark.setAttribute("content", color);
+
+		localStorage.setItem("theme", "light");
+	};
+
+	options.forEach((el) => {
+		const name = el.getAttribute("name");
+		const option = el.getAttribute("data-option");
+		el.classList.add("inactive");
+
+		switch (name) {
+			case "theme": {
+				const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+				const storedTheme = localStorage.getItem("theme");
+
+				if (!storedTheme) setChecked(el, prefersDark);
+				if (storedTheme === "dark") applyThemeDark(), setChecked(el);
+				if (storedTheme === "light") applyThemeLight(), setChecked(el, false);
+
+				onToggle(el, () => (setChecked(el), applyThemeDark()), () => (setChecked(el, false), applyThemeLight()));
+				break;
+			}
+
+			case "tone": {
+				const storedTone = localStorage.getItem("tone");
+				const tone = el.getAttribute("data-option");
+				const color = el.getAttribute("data-color");
+				const prefix = "tone-";
+
+				const applyTone = () => {
+					setChecked(el);
+					options.forEach((o) => {
+						if (o !== el && o.getAttribute("name") === "tone") setChecked(o, false);
+					});
+
+					$html.classList.add(`${prefix}${tone}`);
+					$html.classList.forEach((cls) => {
+						if (cls.startsWith(prefix) && cls !== `${prefix}${tone}`) $html.classList.remove(cls);
+					});
+
+					const themeMeta = document.querySelector('meta[content="#fae5e1"]');
+					if (themeMeta && !$html.classList.contains("theme-dark")) {
+						themeMeta.setAttribute("content", color);
+					}
+
+					localStorage.setItem("tone", tone);
+				};
+
+				if (storedTone === tone) applyTone();
+				onClickOnly(el, applyTone);
+				break;
+			}
+
+			case "contrast": {
+				const prefersContrast = window.matchMedia("(prefers-contrast: more)").matches;
+				const stored = localStorage.getItem("contrast");
+
+				if (!stored) setChecked(el, prefersContrast);
+				if (stored === "true") setChecked(el), $html.classList.add("theme-contrast");
+				if (stored === "false") setChecked(el, false);
+
+				onToggle(
+					el,
+					() => (setChecked(el), $html.classList.add("theme-contrast"), localStorage.setItem("contrast", "true")),
+					() => (setChecked(el, false), $html.classList.remove("theme-contrast"), localStorage.setItem("contrast", "false"))
+				);
+				break;
+			}
+
+			case "transparency": {
+				const prefersReduced = window.matchMedia("(prefers-reduced-transparency: reduce)").matches;
+				const stored = localStorage.getItem("transparency");
+
+				if (!stored) setChecked(el, prefersReduced);
+				if (stored === "false") setChecked(el), $html.classList.add("theme-reduce-transparency");
+				if (stored === "true") setChecked(el, false);
+
+				onToggle(
+					el,
+					() => (setChecked(el), $html.classList.add("theme-reduce-transparency"), localStorage.setItem("transparency", "false")),
+					() => (setChecked(el, false), $html.classList.remove("theme-reduce-transparency"), localStorage.setItem("transparency", "true"))
+				);
+				break;
+			}
+
+			case "load": {
+				const stored = localStorage.getItem("load");
+
+				if (stored === "true") setChecked(el), $html.classList.remove("theme-no-load");
+				if (stored === "false") setChecked(el, false), $html.classList.add("theme-no-load");
+
+				onToggle(
+					el,
+					() => (setChecked(el), $html.classList.remove("theme-no-load"), localStorage.setItem("load", "true")),
+					() => (setChecked(el, false), $html.classList.add("theme-no-load"), localStorage.setItem("load", "false"))
+				);
+				break;
+			}
+
+			default: {
+				if (option === "reset") {
+					el.addEventListener("click", () => {
+						localStorage.clear();
+						location.reload();
+					});
 				}
 			}
-		});
-	}
-	let _multiple = (option, index, _optionTrue) => {
-		option.addEventListener("click", e => {
-			_optionTrue();
-		});
-
-		option.addEventListener("keydown", e =>{
-			if (e.key === "Enter") {
-				_optionTrue();
-			}
-		});
-	}
-
-	options.forEach((option, index) =>{
-		option.classList.add("inactive");
-		if (option.getAttribute("name") === "theme") {
-			const theme = window.matchMedia('(prefers-color-scheme: dark)');
-			const themeLight = document.querySelector('meta[media="(prefers-color-scheme: light)"]');
-			const themeDark = document.querySelector('meta[media="(prefers-color-scheme: dark)"]');
-
-			if (theme.matches && !localStorage.getItem("theme")) {
-				_true(option, index);
-			} else if (!theme.matches && !localStorage.getItem("theme")) {
-				_false(option, index);
-			}
-
-			let _optionTrue = () => {
-				_true(option, index);
-
-				document.documentElement.classList.remove("theme-light");
-				document.documentElement.classList.add("theme-dark");
-
-				if(themeLight) themeLight.setAttribute("content", '#1c2429');
-				if(themeDark) themeDark.setAttribute("content", '#1c2429');
-
-				localStorage.setItem("theme", "dark");
-			}
-			let _optionFalse = () => {
-				_false(option, index);
-
-				document.documentElement.classList.remove("theme-dark");
-				document.documentElement.classList.add("theme-light");
-
-				let tone = document.querySelector('input[name="tone"]:checked');
-				let color = themeLight.getAttribute("data-default") || tone.getAttribute("data-color") || "#fae5e1";
-
-				if(themeLight) themeLight.setAttribute("content", color);
-				if(themeDark) themeDark.setAttribute("content", color);
-
-				localStorage.setItem("theme", "light");
-			}
-
-			if (localStorage.getItem("theme") === "dark") {
-				_optionTrue();
-			} else if ((localStorage.getItem("theme") === "light")) {
-				_optionFalse();
-			}
-
-			_toggle(option, index, _optionTrue, _optionFalse);
-		} else if (option.getAttribute("name") === "tone") {
-			const theme = document.querySelector('meta[content="#fae5e1"]');
-			const tone = option.getAttribute("data-option");
-			const color = option.getAttribute("data-color");
-			const prefix = "tone-";
-
-			let _optionTrue = () => {
-				_true(option, index);
-				options.forEach((other, index) =>{
-					if(other.getAttribute("name") === "tone" && other != option) {
-						_false(other, index)
-					}
-				});
-
-				document.documentElement.classList.add(prefix + tone);
-				let toneClasses = Array.from(document.documentElement.classList);
-				toneClasses.forEach(toneClass => {
-					if(toneClass.includes(prefix) && toneClass != prefix + tone) document.documentElement.classList.remove(toneClass);
-				});
-
-				if(theme && !document.documentElement.classList.contains("theme-dark")) theme.setAttribute("content", color);
-				if (localStorage.getItem("tone") != tone) localStorage.setItem("tone", tone);
-			}
-
-			if (localStorage.getItem("tone") === tone) {
-				_optionTrue();
-			}
-
-			_multiple(option, index, _optionTrue);
-		} else if (option.getAttribute("name") === "contrast") {
-			const contrast = window.matchMedia('(prefers-contrast: more)');
-			if (contrast.matches && !localStorage.getItem("contrast")) {
-				_true(option, index);
-				document.documentElement.classList.add("theme-contrast");
-			} else if (!contrast.matches && !localStorage.getItem("contrast")) {
-				_false(option, index);
-			}
-
-			let _optionTrue = () => {
-				_true(option, index);
-				document.documentElement.classList.add("theme-contrast");
-				localStorage.setItem("contrast", "true");
-			}
-			let _optionFalse = () => {
-				_false(option, index);
-				document.documentElement.classList.remove("theme-contrast");
-				localStorage.setItem("contrast", "false");
-			}
-
-			if (localStorage.getItem("contrast") === "true") {
-				_optionTrue();
-			} else if ((localStorage.getItem("contrast") === "false")) {
-				_optionFalse();
-			}
-
-			_toggle(option, index, _optionTrue, _optionFalse);
-		} else if (option.getAttribute("name") === "transparency") {
-			const transparency = window.matchMedia('(prefers-reduced-transparency: reduce)');
-			if (transparency.matches && !localStorage.getItem("transparency")) {
-				_true(option, index);
-				document.documentElement.classList.add("theme-reduce-transparency");
-			} else if (!transparency.matches && !localStorage.getItem("transparency")) {
-				_false(option, index);
-			}
-
-			let _optionTrue = () => {
-				_true(option, index);
-				document.documentElement.classList.add("theme-reduce-transparency");
-				localStorage.setItem("transparency", "false");
-			}
-			let _optionFalse = () => {
-				_false(option, index);
-				document.documentElement.classList.remove("theme-reduce-transparency");
-				localStorage.setItem("transparency", "true");
-			}
-
-			if (localStorage.getItem("transparency") === "false") {
-				_optionTrue();
-			} else if ((localStorage.getItem("transparency") === "true")) {
-				_optionFalse();
-			}
-
-			_toggle(option, index, _optionTrue, _optionFalse);
-		} else if (option.getAttribute("name") === "load") {
-			let _optionTrue = () => {
-				_true(option, index);
-				document.documentElement.classList.remove("theme-no-load");
-				localStorage.setItem("load", "true");
-			}
-			let _optionFalse = () => {
-				_false(option, index);
-				document.documentElement.classList.add("theme-no-load");
-				localStorage.setItem("load", "false");
-			}
-			
-			if (localStorage.getItem("load") === "true") {
-				_optionTrue();
-			} else if ((localStorage.getItem("load") === "false")) {
-				_optionFalse();
-			}
-
-			_toggle(option, index, _optionTrue, _optionFalse);
-		} else if (option.getAttribute("data-option") === "reset") {
-			option.addEventListener("click", e => {
-				localStorage.clear();
-				location.reload();
-			});
 		}
 	});
 })();

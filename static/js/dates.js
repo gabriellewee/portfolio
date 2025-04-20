@@ -1,29 +1,31 @@
 const timeAgo = (dates) => {
-	let datesISO = Array.from(document.querySelectorAll(dates));
-	if (!datesISO) return;
-	datesISO.forEach(date =>{
-		let datetime = date.getAttribute("data-time");
-		if (!datetime) return;
-		let platform = date.querySelector("span");
-		let relativeTime;
-		if (date.classList.contains("time-external")) {
-			relativeTime = luxon.DateTime.fromISO(datetime).toRelative();
-		} else {
-			relativeTime = luxon.DateTime.fromISO(datetime).plus({'hours': +8}).toRelative();
-		}
-		date.innerHTML = relativeTime;
+	document.querySelectorAll(dates).forEach((date) => {
+		const iso = date.getAttribute("data-time");
+		if (!iso) return;
+
+		const platform = date.querySelector("span");
+		const offset = date.classList.contains("time-external") ? 0 : 8;
+
+		const relative = luxon.DateTime
+			.fromISO(iso)
+			.plus({ hours: offset })
+			.toRelative();
+
+		date.textContent = relative;
 		if (platform) date.append(platform);
 	});
-}
+};
 
 const durationFormat = (times) => {
-	let timesISO = Array.from(document.querySelectorAll(times));
-	if (!timesISO) return;
-	timesISO.forEach(time =>{
-		let duration = time.getAttribute("data-duration");
-		if (duration > 60) {
-			let conversion = luxon.Duration.fromObject({minutes: duration}).shiftTo('hours', 'minutes').toHuman({listStyle: "narrow", type: "unit"});
-			time.innerHTML = conversion;
-		}
+	document.querySelectorAll(times).forEach((time) => {
+		const minutes = parseInt(time.getAttribute("data-duration"), 10);
+		if (!minutes || minutes <= 60) return;
+
+		const duration = luxon.Duration
+			.fromObject({ minutes })
+			.shiftTo("hours", "minutes")
+			.toHuman({ listStyle: "narrow", type: "unit" });
+
+		time.textContent = duration;
 	});
-}
+};
