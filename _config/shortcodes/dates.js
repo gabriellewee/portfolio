@@ -1,13 +1,14 @@
-import { DateTime, Duration } from 'luxon';
+import { DateTime } from "luxon";
+
+const utcNow = () => DateTime.utc();
 
 export const copyright = (year) => {
-	if (year === "start") {
-		return "2012";
-	} else if (year === "current") {
-		return DateTime.fromJSDate(new Date(), {zone: 'utc'}).toFormat("yyyy");
-	} else {
-		return "";
-	}
+	const map = {
+		start: "2012",
+		current: utcNow().toFormat("yyyy"),
+	};
+
+	return map[year] ?? "";
 };
 
-export const today = (date) => DateTime.fromJSDate(new Date(), {zone: 'utc'}).toFormat("yyyyLLdd");
+export const today = () => utcNow().toFormat("yyyyLLdd");

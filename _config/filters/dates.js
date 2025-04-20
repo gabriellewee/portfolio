@@ -1,17 +1,24 @@
-import { DateTime, Duration } from 'luxon';
+import { DateTime } from 'luxon';
 
-export const date = (date, option) => {
-	if (option === "archive") {
-		return DateTime.fromISO(date, {zone: 'utc'}).toFormat('yyyy/L/d');
-	} else if (option === "string") {
-		return DateTime.fromISO(date, {zone: 'utc'}).toFormat('yyyy-LL-dd');
-	} else if (option === "readable") {
-		return DateTime.fromISO(date, {zone: 'utc'}).toFormat("dd LLLL yyyy");
-	} else {
-		return DateTime.fromISO(date, {zone: 'utc'}).toFormat('yyyy/LL/dd');
-	}
+const getUTCDate = (date) =>
+	DateTime.isDateTime(date)
+		? date.setZone('utc')
+		: DateTime.fromJSDate(date, { zone: 'utc' }).isValid
+		? DateTime.fromJSDate(date, { zone: 'utc' })
+		: DateTime.fromISO(date, { zone: 'utc' });
+
+export const date = (date, option = "") => {
+	const dt = getUTCDate(date);
+
+	const formats = {
+		archive: 'yyyy/L/d',
+		string: 'yyyy-LL-dd',
+		readable: 'dd LLLL yyyy',
+	};
+
+	return dt.toFormat(formats[option] || 'yyyy/LL/dd');
 };
 
-export const year = (date) => DateTime.fromJSDate(date, {zone: 'utc'}).toFormat('yyyy') || DateTime.fromISO(date, {zone: 'utc'}).toFormat('yyyy');
+export const year = (date) => getUTCDate(date).toFormat('yyyy');
 
-export const iso = (date) => DateTime.fromJSDate(date, {zone: 'utc'}).toISO() || DateTime.fromISO(date, {zone: 'utc'}).toISO();
+export const iso = (date) => getUTCDate(date).toISO();

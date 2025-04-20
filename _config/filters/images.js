@@ -4,8 +4,8 @@ import { stats as getStats, findExtension } from '../shortcodes/images.js'
 
 export const images = async (post, option) => {
 	const pattern = /<\s*p><img src="(?<src>[^<]*)" alt="(?<alt>[^<]*)" title="(?<title>[^<]*)"><\/p>/g;
-	let lightboxes = "";
-	let matches = post.matchAll(pattern);
+	const matches = post.matchAll(pattern);
+	let lightboxes;
 
 	if (!matches) return post;
 

@@ -21,7 +21,7 @@ export const findExtension = (src) => {
 	try {
 		let cleanSrc = src.includes("@") ? src.split("@").pop() : src;
 
-		let ext = "";
+		let ext;
 		if (cleanSrc.includes(".")) {
 			const url = new URL(src, "http://dummy");
 			ext = url.pathname.split(".").pop().toLowerCase();
