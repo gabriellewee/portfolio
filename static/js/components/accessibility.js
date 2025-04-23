@@ -1,42 +1,23 @@
-// Remove `hidden`` attribute from all elements
-(() => {
-	const hidden = document.querySelectorAll("[hidden]");
-	hidden.forEach((el) => el.removeAttribute("hidden"));
-})();
+// accessibility helpers
+import { setChecked, onToggle, onClickOnly } from '../helpers/accessibilityHelpers.js';
 
-// Accessibility features
-(() => {
-	const options = Array.from(document.querySelectorAll("[data-option]"));
-	if (!options.length || !window.matchMedia) return;
+// Accessibility popup
+export const accessibility = (options = "[data-option]") => {
+	if (!window.matchMedia) return;
 
 	const $html = document.documentElement;
-
-	const setChecked = (el, checked = true) => {
-		el.checked = checked;
-		checked ? el.setAttribute("checked", "") : el.removeAttribute("checked");
-	};
-
-	const onToggle = (el, onTrue, onFalse) => {
-		el.addEventListener("click", () => (el.checked ? onTrue() : onFalse()));
-		el.addEventListener("keydown", (e) => {
-			if (e.key === "Enter") el.checked ? onFalse() : onTrue();
-		});
-	};
-
-	const onClickOnly = (el, handler) => {
-		el.addEventListener("click", handler);
-		el.addEventListener("keydown", (e) => {
-			if (e.key === "Enter") handler();
-		});
-	};
 
 	const applyThemeDark = () => {
 		$html.classList.remove("theme-light");
 		$html.classList.add("theme-dark");
+
 		const metaLight = document.querySelector('meta[media="(prefers-color-scheme: light)"]');
 		const metaDark = document.querySelector('meta[media="(prefers-color-scheme: dark)"]');
-		if (metaLight) metaLight.setAttribute("content", "#1c2429");
-		if (metaDark) metaDark.setAttribute("content", "#1c2429");
+
+		[metaLight, metaDark].forEach((meta) => {
+			meta?.setAttribute("content", "#1c2429");
+		});
+
 		localStorage.setItem("theme", "dark");
 	};
 
@@ -49,13 +30,14 @@
 		const tone = document.querySelector('input[name="tone"]:checked');
 		const color = metaLight?.getAttribute("data-default") || tone?.getAttribute("data-color") || "#fae5e1";
 
-		if (metaLight) metaLight.setAttribute("content", color);
-		if (metaDark) metaDark.setAttribute("content", color);
+		[metaLight, metaDark].forEach((meta) => {
+			meta?.setAttribute("content", color);
+		});
 
 		localStorage.setItem("theme", "light");
 	};
 
-	options.forEach((el) => {
+	document.querySelectorAll(options).forEach((el) => {
 		const name = el.getAttribute("name");
 		const option = el.getAttribute("data-option");
 		el.classList.add("inactive");
@@ -104,10 +86,10 @@
 			}
 
 			case "contrast": {
-				const prefersContrast = window.matchMedia("(prefers-contrast: more)").matches;
+				const prefers = window.matchMedia("(prefers-contrast: more)").matches;
 				const stored = localStorage.getItem("contrast");
 
-				if (!stored) setChecked(el, prefersContrast);
+				if (!stored) setChecked(el, prefers);
 				if (stored === "true") setChecked(el), $html.classList.add("theme-contrast");
 				if (stored === "false") setChecked(el, false);
 
@@ -120,10 +102,10 @@
 			}
 
 			case "transparency": {
-				const prefersReduced = window.matchMedia("(prefers-reduced-transparency: reduce)").matches;
+				const prefers = window.matchMedia("(prefers-reduced-transparency: reduce)").matches;
 				const stored = localStorage.getItem("transparency");
 
-				if (!stored) setChecked(el, prefersReduced);
+				if (!stored) setChecked(el, prefers);
 				if (stored === "false") setChecked(el), $html.classList.add("theme-reduce-transparency");
 				if (stored === "true") setChecked(el, false);
 
@@ -159,4 +141,4 @@
 			}
 		}
 	});
-})();
+};

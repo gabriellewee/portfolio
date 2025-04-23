@@ -1,9 +1,8 @@
-// Popups
-(() => {
-	const containers = document.querySelectorAll("[data-popup]");
-	if (!containers.length) return;
+import { waitForGlobals } from '../helpers/domHelpers.js';
 
-	containers.forEach((container) => {
+// Popups
+export const popup = (containers = "[data-popup]") => {
+	document.querySelectorAll(containers).forEach((container) => {
 		const popupWindow = container.querySelector("[data-popup-window]");
 		const popupTrigger = container.querySelector("[data-popup-trigger]");
 		const popupClose = container.querySelector("[data-popup-close]");
@@ -36,13 +35,15 @@
 			}
 		});
 
-		ScrollTrigger.create({
-			trigger: popupWindow,
-			start: "top top",
-			end: "bottom top",
-			onLeave: () => {
-				if (popupTrigger.checked) setState(false);
-			},
+		waitForGlobals(["gsap", "ScrollTrigger"], (gsap, ScrollTrigger) => {
+			ScrollTrigger.create({
+				trigger: popupWindow,
+				start: "top top",
+				end: "bottom top",
+				onLeave: () => {
+					if (popupTrigger.checked) setState(false);
+				},
+			});
 		});
 	});
-})();
+};

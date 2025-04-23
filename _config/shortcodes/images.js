@@ -57,6 +57,7 @@ export const stats = async (src, type, value) => {
 
 		const image = src.startsWith("https://") ? await fetchImageBuffer(src) : src;
 		const sharpImage = Sharp(image);
+		const metadata = await sharpImage.metadata();
 
 		const normalize = (val) => (val > 255 ? val / 257 : val);
 
@@ -65,7 +66,6 @@ export const stats = async (src, type, value) => {
 			let positionTop = 0;
 			let positionLeft = 0;
 
-			const metadata = await sharpImage.metadata();
 			if (value?.includes("bottom")) positionTop = metadata.height - squareWidth;
 			if (value?.includes("right")) positionLeft = metadata.width - squareWidth;
 
@@ -83,11 +83,10 @@ export const stats = async (src, type, value) => {
 		};
 
 		const getAverage = async () => {
-			const stats = await sharpImage.toColourspace("rgb").stats();
+			if (metadata.hasAlpha) return "hsl(0 0% 0% / 0)";
 
-			if (!stats.channels || stats.channels.length < 1) {
-				return "hsl(0 0% 0% / 0)";
-			}
+			const stats = await sharpImage.toColourspace("rgb").stats();
+			if (!stats.channels || stats.channels.length < 1) return "hsl(0 0% 0% / 0)";
 
 			if (stats.channels.length === 1) {
 				const gray = Math.round(normalize(stats.channels[0].mean));
@@ -108,7 +107,6 @@ export const stats = async (src, type, value) => {
 			const [theme, average] = await Promise.all([getTheme(), getAverage()]);
 			return { theme, average };
 		} else {
-			const metadata = await sharpImage.metadata();
 			const width = metadata.width;
 			const height = metadata.height;
 			let percent;

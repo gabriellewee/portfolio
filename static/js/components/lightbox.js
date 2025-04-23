@@ -1,7 +1,11 @@
-// Lightbox script
-const lightbox = (buttonSelector, boxSelector, scroll) => {
-	if (!buttonSelector || !boxSelector) return;
+import { waitForGlobals } from '../helpers/domHelpers.js';
 
+// Lightbox
+export const lightbox = ({
+	buttonSelector = "[data-media-expand]",
+	boxSelector = "[data-lightbox]",
+	scroll
+} = {}) => {
 	const $html = document.documentElement;
 	let scrollPosition = $html.scrollTop;
 	let controller;
@@ -122,35 +126,37 @@ const lightbox = (buttonSelector, boxSelector, scroll) => {
 		});
 	};
 
-	const breakpoint = 768;
-	const mm = gsap.matchMedia();
 
-	mm.add(
-		{
-			desktop: `(min-width: ${breakpoint}px)`,
-			mobile: `(max-width: ${breakpoint - 1}px)`,
-		},
-		(context) => {
-			const isDesktop = context.conditions.desktop;
-			let buttons = getSiblings(buttonSelector, isDesktop);
-			let boxes = getSiblings(boxSelector, isDesktop);
+	waitForGlobals(["gsap"], (gsap) => {
+		const breakpoint = 768;
+		const mm = gsap.matchMedia();
+		mm.add(
+			{
+				desktop: `(min-width: ${breakpoint}px)`,
+				mobile: `(max-width: ${breakpoint - 1}px)`,
+			},
+			(context) => {
+				const isDesktop = context.conditions.desktop;
+				let buttons = getSiblings(buttonSelector, isDesktop);
+				let boxes = getSiblings(boxSelector, isDesktop);
 
-			bindLightboxes(buttons, boxes);
+				bindLightboxes(buttons, boxes);
 
-			if (scroll?.on) {
-				scroll.on("append", () => {
+				if (scroll?.on) {
+					scroll.on("append", () => {
+						deactivate(boxes);
+						controller.abort();
+						buttons = getSiblings(buttonSelector, isDesktop);
+						boxes = getSiblings(boxSelector, isDesktop);
+						bindLightboxes(buttons, boxes);
+					});
+				}
+
+				return () => {
 					deactivate(boxes);
 					controller.abort();
-					buttons = getSiblings(buttonSelector, isDesktop);
-					boxes = getSiblings(boxSelector, isDesktop);
-					bindLightboxes(buttons, boxes);
-				});
+				};
 			}
-
-			return () => {
-				deactivate(boxes);
-				controller.abort();
-			};
-		}
-	);
+		);
+	});
 };

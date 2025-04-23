@@ -1,12 +1,6 @@
-let key = document.body.classList[0].slice(5);
-let posts = Array.from(document.querySelectorAll("[data-anim]"));
-animateItems(posts, key);
-
 // Store checklist status in tab session
-(() => {
-	const taskList = document.querySelector(".task-list");
-	const reset = document.querySelector("[data-task-list-reset]");
-	if (!taskList || !reset) return;
+export const checklistStatus = (taskList = ".task-list", reset = "[data-task-list-reset]") => {
+	if (!document.querySelector(taskList) || !document.querySelector(reset)) return;
 
 	const options = taskList.querySelectorAll("input[type='checkbox']");
 	const labels = taskList.querySelectorAll("label");
@@ -27,8 +21,7 @@ animateItems(posts, key);
 			}
 		} else {
 			if (id) localStorage.removeItem(id);
-			const anyChecked = taskList.querySelector("[id^='task-list-checkbox']:checked");
-			if (!anyChecked) {
+			if (!taskList.querySelector("[id^='task-list-checkbox']:checked")) {
 				localStorage.removeItem("resetIngredients");
 				reset.classList.add("hide");
 			}
@@ -64,4 +57,4 @@ animateItems(posts, key);
 			setState(false, index, id);
 		});
 	});
-})();
+}

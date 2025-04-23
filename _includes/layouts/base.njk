@@ -105,39 +105,35 @@
 			</nav>
 		</footer>
 
-		<script src="{{'/static/js/luxon.min.js'|url}}"></script>
-		<script src="{{'/static/js/dates.js'|url}}"></script>
-		<script src="{{'/static/js/gsap.min.js'|url}}"></script>
-		<script src="{{'/static/js/scroll-trigger.min.js'|url}}"></script>
-		<script src="{{'/static/js/smoothscroll.min.js'|url}}"></script>
-		{% if lightbox != false %}
-			<script src="{{'/static/js/lightbox.js'|url}}"></script>
+		<script src="{{'/static/js/lib/luxon.min.js'|url}}"></script>
+		<script src="{{'/static/js/lib/gsap/gsap.min.js'|url}}"></script>
+		<script src="{{'/static/js/lib/gsap/scroll-trigger.min.js'|url}}"></script>
+		{% if key == "home" and pagination.pageNumber == 0 %}
+			<script src="{{'/static/js/lib/gsap/text.min.js'|url}}"></script>
 		{% endif %}
+		<script src="{{'/static/js/lib/smoothscroll.min.js'|url}}"></script>
 		{% if isotope == true %}
-			<script src="{{'/static/js/isotope.min.js'|url}}"></script>
-			<script src="{{'/static/js/packery.min.js'|url}}"></script>
+			<script src="{{'/static/js/lib/isotope.min.js'|url}}"></script>
+			<script src="{{'/static/js/lib/packery.min.js'|url}}"></script>
 		{% endif %}
 		{% if key == "home" %}
 			<script src="{{'/static/js/lib/infinite-scroll.js'|url}}"></script>
 		{% else %}
-			<script src="{{'/static/js/imagesloaded.min.js'|url}}"></script>
+			<script src="{{'/static/js/lib/imagesloaded.min.js'|url}}"></script>
 		{% endif %}
 		{% if key == "post" %}
-			<script src="{{'/static/js/posts.js'|url}}"></script>
+			<script type="module" src="{{'/static/js/post.js'|url}}"></script>
 		{% else %}
-			<script src="{{'/static/js/main.js'|url}}"></script>
+			<script type="module" src="{{'/static/js/main.js'|url}}"></script>
 		{% endif %}
 		{% if scripts == true %}
-			<script src="{{'/static/js/pages/' + key + '.js'|url}}"></script>
+			<script type="module" src="{{'/static/js/pages/' + key + '.js'|url}}"></script>
 		{% elseif scripts %}
-			<script src="{{'/static/js/pages/' + scripts + '.js'|url}}"></script>
+			<script type="module" src="{{'/static/js/pages/' + scripts + '.js'|url}}"></script>
 		{% endif %}
 		{% if key == "home" and pagination.pageNumber == 0 %}
-			<script src="{{'/static/js/text.min.js'|url}}"></script>
-			<script src="{{'/static/js/pages/home.js'|url}}"></script>
+			<script type="module" src="{{'/static/js/pages/home.js'|url}}"></script>
 		{% endif %}
-		<script src="{{'/static/js/accessibility.js'|url}}"></script>
-		<script src="{{'/static/js/popup.js'|url}}"></script>
 	{% endif %}
 	<script>document.body.addEventListener('touchstart', function() {}, {passive: true});</script>
 </body>

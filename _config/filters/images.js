@@ -5,7 +5,7 @@ import { stats as getStats, findExtension } from '../shortcodes/images.js'
 export const images = async (post, option) => {
 	const pattern = /<\s*p><img src="(?<src>[^<]*)" alt="(?<alt>[^<]*)" title="(?<title>[^<]*)"><\/p>/g;
 	const matches = post.matchAll(pattern);
-	let lightboxes;
+	let lightboxes = "";
 
 	if (!matches) return post;
 
@@ -29,13 +29,13 @@ export const images = async (post, option) => {
 			if (option === "lightbox") {
 				const figure = `
 					<a class="lightbox" id="${name}-lightbox" role="button" aria-label="Close image" href="#${name}" data-lightbox></a>
-					<dialog class="image" aria-label="Image preview" autofocus>
+					<dialog class="lightbox-content image" aria-label="Image preview" autofocus>
 						<figure>${picture}</figure>
 					</dialog>`;
 				lightboxes += figure;
 			} else {
 				const caption = `<figcaption>${title}</figcaption>`;
-				const link = `<a class="expand ${theme}" href="#${name}-lightbox" aria-label="${alt} Expand image">${picture}</a>`;
+				const link = `<a class="expand ${theme}" href="#${name}-lightbox" aria-label="${alt} Expand image" data-media-expand>${picture}</a>`;
 				const figure = `<figure id="${name}">${caption}${link}</figure>`;
 				post = post.replace(image[0], figure);
 			}
