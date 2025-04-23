@@ -79,7 +79,7 @@ export const stats = async (src, type, value) => {
 			const avgB = normalize(stats.channels[2].mean);
 
 			const brightness = avgR * 0.2126 + avgG * 0.7152 + avgB * 0.0722;
-			return brightness > 150 ? "light" : "dark";
+			return brightness > 180 ? "light" : "dark";
 		};
 
 		const getAverage = async () => {
