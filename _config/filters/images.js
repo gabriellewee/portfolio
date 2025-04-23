@@ -28,8 +28,8 @@ export const images = async (post, option) => {
 
 			if (option === "lightbox") {
 				const figure = `
-					<a class="lightbox" id="${name}-lightbox" role="button" aria-label="Close image" href="#${name}" data-lightbox></a>
-					<dialog class="lightbox-content image" aria-label="Image preview" autofocus>
+					<a class="lightbox" id="${name}-lightbox" role="button" aria-label="Close image" href="#${name}" data-lightbox data-lightbox-append></a>
+					<dialog class="lightbox-content image" aria-label="Image preview" autofocus data-lightbox-append>
 						<figure>${picture}</figure>
 					</dialog>`;
 				lightboxes += figure;
@@ -75,8 +75,8 @@ export const images = async (post, option) => {
 
 		if (option === "lightbox") {
 			const figure = `
-				<a class="lightbox" id="${name}-lightbox" role="button" aria-label="Close image" href="#${name}" data-lightbox></a>
-				<dialog class="lightbox-content image" aria-label="Image preview" autofocus>
+				<a class="lightbox" id="${name}-lightbox" role="button" aria-label="Close image" href="#${name}" data-lightbox data-lightbox-append></a>
+				<dialog class="lightbox-content image" aria-label="Image preview" autofocus data-lightbox-append>
 					<figure>${picture}</figure>
 				</dialog>`;
 			lightboxes += figure;
