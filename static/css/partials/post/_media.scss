@@ -59,7 +59,10 @@
 		}
 		
 		&.light {
-			@include icon-invert(false);
+			@include icon-invert;
+			&::after {
+				--blend-mode: multiply;
+			}
 		}
 	}
 

@@ -24,7 +24,7 @@ export const images = async (post, option) => {
 			const width = metadata.webp?.[0]?.width ?? 100;
 			const height = metadata.webp?.[0]?.height ?? 100;
 
-			const picture = `<picture><img style="--background: ${average}" src="/static/images/posts/${src}" alt="${alt}" width="${width}" height="${height}"/></picture>`;
+			const picture = `<picture style="--background: ${average}"><img src="/static/images/posts/${src}" alt="${alt}" width="${width}" height="${height}"/></picture>`;
 
 			if (option === "lightbox") {
 				const figure = `
@@ -70,8 +70,8 @@ export const images = async (post, option) => {
 			: undefined;
 
 		const source = `<source type="image/webp" srcset="${webpset}"${sizes ? ` sizes="${sizes}"` : ""}>`;
-		const img = `<img style="--background: ${average}" loading="lazy" decoding="async" alt="${alt}" src="${main[0].url}" srcset="${regset}"${sizes ? ` sizes="${sizes}"` : ""} width="${basic.width}" height="${basic.height}">`;
-		const picture = `<picture>${source}${img}</picture>`;
+		const img = `<img loading="lazy" decoding="async" alt="${alt}" src="${main[0].url}" srcset="${regset}"${sizes ? ` sizes="${sizes}"` : ""} width="${basic.width}" height="${basic.height}">`;
+		const picture = `<picture style="--background: ${average}">${source}${img}</picture>`;
 
 		if (option === "lightbox") {
 			const figure = `

@@ -38,8 +38,8 @@
 		}
 	}
 	&::after {
-		--gradient-color: hsl(from var(--color-iron) h s calc(l * .45));
-		--blend-mode: soft-light;
+		--gradient-color: var(--background, hsl(from var(--color-iron) h s calc(l * .45)));
+		--blend-mode: hard-light;
 		z-index: 2;
 		background: radial-gradient(
 			farthest-corner at var(--position),
@@ -52,13 +52,10 @@
 	}
 }
 
-@mixin icon-invert($hover: true) {
+@mixin icon-invert {
 	&::before {
 		filter: invert(1);
-		mix-blend-mode: hard-light;
-	}
-	&::after {
-		--gradient-color: white;
+		mix-blend-mode: multiply;
 	}
 }
 
@@ -79,7 +76,10 @@
 		}
 	}
 	&.light picture {
-		@include icon-invert($hover);
+		@include icon-invert;
+		&::after {
+			--blend-mode: multiply;
+		}
 	}
 	@if $hover == true {
 		&:hover, &:focus {

@@ -24,11 +24,11 @@
 					<div class="post-content">
 						<figure id="{{post.date|safe}}-{{post.name}}" aria-label="{{type|capitalize}}{% if post.location %}, {{post.location}}{% elseif post.title %}, {{post.title}}{% endif %}" style="aspect-ratio: {% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'ratio' %};">
 							{% if post.upscale %}
-								<picture>
+								<picture{% if post.color %} style="--background: {{post.color}}"{% endif %}>
 									<img class="upscale" src="{% include post.upscale %}"{% if post.upscaleWidth %} width="{{post.upscaleWidth}}"{% endif %}{% if post.upscaleHeight %} height="{{post.upscaleHeight}}"{% endif %} alt="{{post.description}}"/>
 								</picture>
 							{% elseif post.svg == true %}
-								<picture>
+								<picture style="--background: {% if post.color %}{{post.color}}{% else %}{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'average' %}{% endif %}">
 									<img src="/static/images/{{key}}/{{post.date}}-{{post.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'width' %}" height="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'height' %}"/>
 								</picture>
 							{% else %}
@@ -47,11 +47,11 @@
 											<span class="no-image" hidden><span>Expand</span></span>
 											<span class="has-image{% if file %} {% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'theme', 'top left' %}{% endif %}" aria-hidden="true">
 												{% if post.upscale %}
-													<picture>
+													<picture{% if post.color %} style="--background: {{post.color}}"{% endif %}>
 														<img class="upscale" src="{% include post.upscale %}"{% if post.upscaleWidth %} width="{{post.upscaleWidth}}"{% endif %}{% if post.upscaleHeight %} height="{{post.upscaleHeight}}"{% endif %} alt="{{post.description}}"/>
 													</picture>
 												{% elseif post.svg == true %}
-													<picture>
+													<picture style="--background: {% if post.color %}{{post.color}}{% else %}{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'average' %}{% endif %}">
 														<img src="/static/images/{{key}}/{{post.date}}-{{post.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'width', 400 %}" height="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'height', 400 %}"/>
 													</picture>
 												{% else %}

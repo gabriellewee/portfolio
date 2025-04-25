@@ -9,7 +9,8 @@
 		"focus": {
 			"x": 0,
 			"y": 12
-		}
+		},
+		"color": "#EDB06F"
 	},
 	{
 		"name": "slow-down",
@@ -29,7 +30,8 @@
 		"date": "2020-07-28",
 		"tools": "Procreate",
 		"tags": "typography digital plants",
-		"description": "White text that reads “Therapy” on a pink background, with white “Silent Princess” flowers inspired by the Legend of Zelda franchise curled around the letters."
+		"description": "White text that reads “Therapy” on a pink background, with white “Silent Princess” flowers inspired by the Legend of Zelda franchise curled around the letters.",
+		"color": "#F0AEA7"
 	},
 	{
 		"name": "portrait",

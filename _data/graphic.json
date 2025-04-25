@@ -7,7 +7,8 @@
 		"tags": "identity ui 2d sketch vector",
 		"description": "Logo/identity design for gabriellew.ee. A capital letter G sits in front of a diamond shape on a gradient background.",
 		"size": "m",
-		"svg": true
+		"svg": true,
+		"color": "#B4768E"
 	},
 	{
 		"name": "cutie-moon-rod",
@@ -26,7 +27,8 @@
 				"url": "https://www.instagram.com/p/CbLbaFSPDh-/"
 			}
 		],
-		"svg": true
+		"svg": true,
+		"color": "#F2D6D9"
 	},
 	{
 		"name": "dailyui-011",
@@ -45,7 +47,8 @@
 				"url": "https://codepen.io/gabriellewee/pen/bYqKPx/"
 			}
 		],
-		"svg": true
+		"svg": true,
+		"color": "#1E3647"
 	},
 	{
 		"name": "desk-setup",
@@ -61,7 +64,8 @@
 			}
 		],
 		"size": "m",
-		"svg": true
+		"svg": true,
+		"color": "#FBEBED"
 	},
 	{
 		"name": "crystal-carillon",
@@ -76,7 +80,8 @@
 				"url": "https://dribbble.com/shots/3490913-Sailor-Moon-Crystal-Carillon"
 			}
 		],
-		"svg": true
+		"svg": true,
+		"color": "#F2D6D9"
 	},
 	{
 		"name": "portfolio-icons",
@@ -91,7 +96,8 @@
 				"url": "https://dribbble.com/shots/3295593-Portfolio-Icons"
 			}
 		],
-		"svg": true
+		"svg": true,
+		"color": "#EBCDC2"
 	},
 	{
 		"name": "easing-graphs",
@@ -106,7 +112,8 @@
 				"url": "https://dribbble.com/shots/3325157-Easing-Graphs-Freebie"
 			}
 		],
-		"svg": true
+		"svg": true,
+		"color": "#CA9BB3"
 	},
 	{
 		"name": "self-portrait",
@@ -121,7 +128,8 @@
 				"url": "https://dribbble.com/shots/3278273-Self-Portrait"
 			}
 		],
-		"size": "m"
+		"size": "m",
+		"color": "#B17276"
 	},
 	{
 		"name": "scissor-blade",
@@ -129,7 +137,8 @@
 		"title": "Scissor Blade",
 		"tools": "Maya 2015, Photoshop CS6, Quixel Suite",
 		"tags": "3d maya",
-		"description": "A 3d model inspired by the Scissor Blade from Studio Trigger’s Kill la Kill anime."
+		"description": "A 3d model inspired by the Scissor Blade from Studio Trigger’s Kill la Kill anime.",
+		"color": "#746A64"
 	},
 	{
 		"name": "transistor",
@@ -138,7 +147,8 @@
 		"tools": "Illustrator CS6",
 		"tags": "illustration 2d illustrator vector",
 		"description": "Vector art inspired by the blade from Supergiant Games’ Transistor.",
-		"svg": true
+		"svg": true,
+		"color": "#312C32"
 	},
 	{
 		"name": "shrine",
@@ -147,7 +157,8 @@
 		"tools": "Maya 2014",
 		"tags": "3d maya",
 		"description": "A shrine tower 3d model based off of the Fushimi Inari shrine in Kyoto, Japan.",
-		"size": "s"
+		"size": "s",
+		"color": "#A1A1A1"
 	},
 	{
 		"name": "eeveelutions",
@@ -158,6 +169,7 @@
 		"description": "Different evolutions of Eevee from Pokémon represented as pixel graphics.",
 		"upscale": "pages/visual/eeveelutions.txt",
 		"upscaleWidth": "100",
-		"upscaleHeight": "100"
+		"upscaleHeight": "100",
+		"color": "#404040"
 	}
 ]

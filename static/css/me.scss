@@ -162,13 +162,11 @@
 
 		a {
 			--outline: var(--color-middle);
-			--background: var(--color);
-
 			@include expand-hover(external, 23px, 23px, calc(var(--p)*1.25));
 
 			&.light, &.dark {
 				picture::after {
-					--gradient-color: var(--color);
+					--gradient-color: var(--background);
 					top: calc(var(--p)/2);
 					left: calc(var(--p)/2);
 					width: calc(100% - var(--p)/2);

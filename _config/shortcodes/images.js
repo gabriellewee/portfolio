@@ -83,8 +83,6 @@ export const stats = async (src, type, value) => {
 		};
 
 		const getAverage = async () => {
-			if (metadata.hasAlpha) return "hsl(0 0% 0% / 0)";
-
 			const stats = await sharpImage.toColourspace("rgb").stats();
 			if (!stats.channels || stats.channels.length < 1) return "hsl(0 0% 0% / 0)";
 
@@ -158,10 +156,9 @@ export const external = async (src, alt = "", width, loading = "lazy") => {
 		const fallback = stat[file];
 
 		return `
-			<picture>
+			<picture style="--background: ${average}">
 				<source type="image/webp" srcset="${main[0].url}, ${main[1].url} 2x">
-				<img 
-					style="--background: ${average}" 
+				<img  
 					loading="${loading}" 
 					decoding="async" 
 					alt="${alt}"
@@ -218,10 +215,9 @@ export const unfurlGame = async (link, title, className, width, loading = "lazy"
 		const fallback = stat[type];
 
 		const picture = `
-			<picture>
+			<picture style="--background: ${average}" >
 				<source type="image/webp" srcset="${main[0].url}, ${main[1].url} 2x">
 				<img 
-					style="--background: ${average}" 
 					loading="${loading}" 
 					decoding="async" 
 					alt="${title}" 
@@ -293,9 +289,9 @@ export const image = async (src, alt = "", type = "default", option, figp) => {
 
 		const source = `<source type="image/webp" srcset="${webpset}"${sizes ? ` sizes="${sizes}"` : ""}>`;
 
-		const img = `<img style="--background: ${average}" loading="${loading}" decoding="async" alt="${alt}" src="${main[0].url}" srcset="${regset}"${sizes ? ` sizes="${sizes}"` : ""} width="${basic.width}" height="${basic.height}">`;
+		const img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${main[0].url}" srcset="${regset}"${sizes ? ` sizes="${sizes}"` : ""} width="${basic.width}" height="${basic.height}">`;
 
-		const picture = `<picture>${source}${img}</picture>`;
+		const picture = `<picture style="--background: ${average}">${source}${img}</picture>`;
 
 		if (option === "lightbox") {
 			const figcaption = figp ?? nbspFilter(2, 100)(alt);
