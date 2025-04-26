@@ -40,12 +40,12 @@ export default function (eleventyConfig) {
 	// shortcodes
 	eleventyConfig.addShortcode('copyright', shortcodes.copyright);
 	eleventyConfig.addShortcode('today', shortcodes.today);
-	eleventyConfig.addShortcode('stats', shortcodes.stats);
-	eleventyConfig.addShortcode('external', shortcodes.external);
-	eleventyConfig.addShortcode('ogPhoto', shortcodes.ogPhoto);
-	eleventyConfig.addShortcode('unfurlGame', shortcodes.unfurlGame);
-	eleventyConfig.addShortcode('image', shortcodes.image);
-	eleventyConfig.addShortcode('excerpt', shortcodes.excerpt);
+	eleventyConfig.addAsyncShortcode('stats', shortcodes.stats);
+	eleventyConfig.addAsyncShortcode('external', shortcodes.external);
+	eleventyConfig.addAsyncShortcode('ogPhoto', shortcodes.ogPhoto);
+	eleventyConfig.addAsyncShortcode('unfurlGame', shortcodes.unfurlGame);
+	eleventyConfig.addAsyncShortcode('image', shortcodes.image);
+	eleventyConfig.addAsyncShortcode('excerpt', shortcodes.excerpt);
 
 	// passthrough
 	[

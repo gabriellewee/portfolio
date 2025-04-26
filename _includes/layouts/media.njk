@@ -18,7 +18,7 @@
 	<div class="posts" data-grid>
 		{% for post in media %}
 			{% if post.svg == true %}{%- set file = "svg" %}{% else %}{%- set file = extension %}{% endif %}
-			<article class="post post-media post-photography{% if post.size %} post-size-{{post.size}}{% endif %} {{post.tags|isoFilter}}" data-media-container data-grid-item data-anim data-orientation="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'orientation' %}">
+			<article class="post post-media post-{{key}}{% if post.size %} post-size-{{post.size}}{% endif %} {{post.tags|isoFilter}}" data-media-container data-grid-item data-anim data-orientation="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'orientation' %}">
 				<input class="media-trigger" id="{{post.date|safe}}-{{post.name}}-info" type="checkbox" tabindex="0" aria-label="View information about this {{type}}" role="switch" data-media-trigger hidden/>
 				<div class="post-inner">
 					<div class="post-content">

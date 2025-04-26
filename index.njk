@@ -23,7 +23,7 @@ eleventyNavigation:
 		{% for post in pagination.items %}
 			{% if post.data.svg == true %}{%- set file = "svg" %}{% elseif post.data.extension %}{%- set file = post.data.extension %}{% endif %}
 			<article
-				class="post{% if post.data.pagination.alias and post.data.pagination.alias != post.data.category %} post-{{post.data.category}} post-{{post.data.pagination.alias}}{% else %} post-{{post.data.category}}{% endif %}{% if post.data.tags %}{% for tag in post.data.tags %}{% if tag != 'entries' and tag != 'posts' %} post-{{tag}}{% endif %}{% endfor %}{% endif %}{% if post.data.size %} post-size-{{post.data.size}}{% endif %}{% if post.data.category == 'media' %} post-{{post.data.pagination.data}}{% endif %}" data-grid-item data-post-append{% if pagination.pageNumber == 0 %} data-anim{% endif %}{% if post.data.extension %} data-orientation="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'orientation' %}"{% endif %}
+				class="post{% if post.data.pagination.alias and post.data.pagination.alias != post.data.category %} post-{{post.data.category}} post-{{post.data.pagination.alias}}{% else %} post-{{post.data.category}}{% endif %}{% if post.data.tags %}{% for tag in post.data.tags %}{% if tag != 'entries' and tag != 'posts' %} post-{{tag}}{% endif %}{% endfor %}{% endif %}{% if post.data.size %} post-size-{{post.data.size}}{% endif %}{% if post.data.category == 'media' %} post-{{post.page.fileSlug}}{% endif %}" data-grid-item data-post-append{% if pagination.pageNumber == 0 %} data-anim{% endif %}{% if post.data.extension %} data-orientation="{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.' + file, 'orientation' %}"{% endif %}
 				{% if post.data.width %}style="max-width: {{post.data.width}}"{% endif %}
 				{% if post.data.category == "social" %}aria-label="{{post.data.source|capitalize}} post"
 				{% elseif post.data.category == "media" %}data-media-container aria-label="{{post.data.type|capitalize}} post"{% endif %}
@@ -79,39 +79,41 @@ eleventyNavigation:
 							{% endif %}
 						</div>
 					</header>
-					<aside class="post-meta">
-						{% if post.data.servings %}
-							<p class="recipe-servings"><strong>Servings:</strong> <span>{{post.data.servings}}</span></p>
-						{% endif %}
-						{% if post.data.prep %}
-							<p class="recipe-prep"><strong>Prep:</strong> <span class="recipe-duration" data-duration="{{post.data.prep}}">{{post.data.prep}} minutes</span></p>
-						{% endif %}
-						{% if post.data.cook %}
-							<p class="recipe-cook"><strong>Cook:</strong> <span class="recipe-duration" data-duration="{{post.data.cook}}">{{post.data.cook}} minutes</span></p>
-						{% endif %}
-						{% if post.data.prep and post.data.cook %}
-							{% set total = [post.data.prep,post.data.cook] %}
-							<p class="recipe-total"><strong>Total:</strong> <span class="recipe-duration" data-duration="{{total|sum}}">{{total|sum}} minutes</span></p>
-						{% endif %}
-					</aside>
+					{% if post.data.category == "cooking" %}
+						<aside class="post-meta">
+							{% if post.data.servings %}
+								<p class="recipe-servings"><strong>Servings:</strong> <span>{{post.data.servings}}</span></p>
+							{% endif %}
+							{% if post.data.prep %}
+								<p class="recipe-prep"><strong>Prep:</strong> <span class="recipe-duration" data-duration="{{post.data.prep}}">{{post.data.prep}} minutes</span></p>
+							{% endif %}
+							{% if post.data.cook %}
+								<p class="recipe-cook"><strong>Cook:</strong> <span class="recipe-duration" data-duration="{{post.data.cook}}">{{post.data.cook}} minutes</span></p>
+							{% endif %}
+							{% if post.data.prep and post.data.cook %}
+								{% set total = [post.data.prep,post.data.cook] %}
+								<p class="recipe-total"><strong>Total:</strong> <span class="recipe-duration" data-duration="{{total|sum}}">{{total|sum}} minutes</span></p>
+							{% endif %}
+						</aside>
+					{% endif %}
 					<div class="post-content{% if post.data.category == 'writing' or post.data.category == 'cooking' %} post-text{% endif %}"{% if post.data.background %} style="--background: {{post.data.background}}"{% endif %}>
 						{% if post.data.category == "media" %}
-							<figure id="{{post.data.date|safe}}-{{post.data.name}}" aria-label="{{post.data.type|capitalize}}{% if post.data.location %}, {{post.data.location}}{% elseif post.data.title %}, {{post.data.title}}{% endif %}" style="aspect-ratio: {% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'ratio' %};">
+							<figure id="{{post.data.date|safe}}-{{post.data.name}}" aria-label="{{post.data.type|capitalize}}{% if post.data.location %}, {{post.data.location}}{% elseif post.data.title %}, {{post.data.title}}{% endif %}" style="aspect-ratio: {% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.' + file, 'ratio' %};">
 								{% if post.data.upscale %}
 									<picture{% if post.data.color %} style="--background: {{post.color}}"{% endif %}>
 										<img class="upscale" src="{% include post.data.upscale %}"{% if post.data.upscaleWidth %} width="{{post.data.upscaleWidth}}"{% endif %}{% if post.data.upscaleHeight %} height="{{post.data.upscaleHeight}}"{% endif %} alt="{{post.data.description}}"/>
 									</picture>
 								{% elseif post.data.svg == true %}
-									<picture style="--background: {% if post.color %}{{post.color}}{% else %}{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'average' %}{% endif %}">
-										<img src="/static/images/{{post.data.pagination.data}}/{{post.data.date}}-{{post.data.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'width' %}" height="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'height' %}"/>
+									<picture style="--background: {% if post.color %}{{post.color}}{% else %}{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.svg', 'average' %}{% endif %}">
+										<img src="/static/images/{{post.page.fileSlug}}/{{post.data.date}}-{{post.data.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.svg', 'width' %}" height="{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.svg', 'height' %}"/>
 									</picture>
 								{% else %}
-									{% image './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 'default', loop.index %}
+									{% image './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 'default', loop.index %}
 								{% endif %}
 								<label class="media-view-hover" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true" data-media-label hidden>
 									<span class="button"><span>View info</span></span>
 								</label>
-								<label class="media-view-touch{% if file %} {% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'theme', 'bottom right' %}{% endif %}" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true" data-media-label hidden></label>
+								<label class="media-view-touch{% if file %} {% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.' + file, 'theme', 'bottom right' %}{% endif %}" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true" data-media-label hidden></label>
 								<figcaption class="media-data" data-media-info>
 									<div class="media-data-wrapper">
 										<time class="time-default" datetime="{{post.page.date|iso|date('string')}}" title="{{post.page.date|iso|date('readable')}}" data-time="{{post.page.date|iso}}" hidden>{{post.page.date|iso|date('readable')}}</time>
@@ -119,17 +121,17 @@ eleventyNavigation:
 										<div class="media-thumbnail">
 											<a class="media-expand expand" href="#{{post.data.date|safe}}-{{post.data.name}}-lightbox" role="button" aria-label="Expand image" tabindex="-1" data-media-expand>
 												<span class="no-image" hidden><span>Expand</span></span>
-												<span class="has-image{% if file %} {% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + file, 'theme', 'top left' %}{% endif %}" aria-hidden="true" hidden>
+												<span class="has-image{% if file %} {% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.' + file, 'theme', 'top left' %}{% endif %}" aria-hidden="true" hidden>
 													{% if post.data.upscale %}
 														<picture{% if post.data.color %} style="--background: {{post.color}}"{% endif %}>
 															<img class="upscale" src="{% include post.data.upscale %}"{% if post.data.upscaleWidth %} width="{{post.data.upscaleWidth}}"{% endif %}{% if post.data.upscaleHeight %} height="{{post.data.upscaleHeight}}"{% endif %} alt="{{post.data.description}}"/>
 														</picture>
 													{% elseif post.data.svg == true %}
-														<picture style="--background: {% if post.color %}{{post.color}}{% else %}{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'average' %}{% endif %}">
-															<img src="/static/images/{{post.data.pagination.data}}/{{post.data.date}}-{{post.data.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'width', 400 %}" height="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'height', 400 %}"/>
+														<picture style="--background: {% if post.color %}{{post.color}}{% else %}{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.svg', 'average' %}{% endif %}">
+															<img src="/static/images/{{post.page.fileSlug}}/{{post.data.date}}-{{post.data.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.svg', 'width', 400 %}" height="{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.svg', 'height', 400 %}"/>
 														</picture>
 													{% else %}
-														{% image './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 200, loop.index %}
+														{% image './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 200, loop.index %}
 													{% endif %}
 												</span>
 											</a>
@@ -303,10 +305,10 @@ eleventyNavigation:
 						</picture>
 					{% elseif post.data.svg == true %}
 						<picture>
-							<img src="/static/images/{{post.data.pagination.data}}/{{post.data.date}}-{{post.data.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'width' %}" height="{% stats './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.svg', 'height' %}"/>
+							<img src="/static/images/{{post.page.fileSlug}}/{{post.data.date}}-{{post.data.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.svg', 'width' %}" height="{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.svg', 'height' %}"/>
 						</picture>
 					{% else %}
-						{% image './static/images/' + post.data.pagination.data + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 'screen' %}
+						{% image './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 'screen' %}
 					{% endif %}
 				</figure>
 			</dialog>
