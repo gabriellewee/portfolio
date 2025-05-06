@@ -44,6 +44,7 @@ eleventyNavigation:
 						</li>
 					{% endfor %}
 				</ul>
+				<a class="button" href="https://kaladin.notion.site/Booklog-1e30033511688088b9c2c9a2589068f6?pvs=4"><span>View booklog</span></a>
 			</div>
 			<hr class="no-css"/>
 		</article>
@@ -66,7 +67,10 @@ eleventyNavigation:
 						{% endfor %}
 					</ul>
 				{% endif %}
-				<a class="button" href="https://steamcommunity.com/id/gabriellewee"><span>Add me on Steam</span></a>
+				<div class="button-group">
+					<a class="button" href="https://steamcommunity.com/id/gabriellewee"><span>Add me on Steam</span></a>
+					<a class="button" href="https://kaladin.notion.site/1e400335116880a9857bedaf20b6710e?v=1e40033511688085bff6000c5b4692c3"><span>View gamelog</span></a>
+				</div>
 
 				<ul class="grid nintendo">
 					{% for game in notion.switch.results %}

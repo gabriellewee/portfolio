@@ -203,6 +203,10 @@
 			}
 		}
 	}
+
+	.button {
+		margin-top: calc(var(--p)*2);
+	}
 }
 
 .post-music {
@@ -274,8 +278,13 @@
 			}
 		}
 	}
-	.button, .friend-code-container {
+	.button-group, .friend-code-container {
 		margin-top: calc(var(--p)*2);
+	}
+	.button-group {
+		display: flex;
+		flex-wrap: wrap;
+		gap: calc(var(--p)*2);
 	}
 	.friend-code-container {
 		@include viewport(medium) {
