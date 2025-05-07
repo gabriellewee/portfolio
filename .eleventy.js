@@ -43,7 +43,6 @@ export default function (eleventyConfig) {
 	eleventyConfig.addAsyncShortcode('stats', shortcodes.stats);
 	eleventyConfig.addAsyncShortcode('external', shortcodes.external);
 	eleventyConfig.addAsyncShortcode('ogPhoto', shortcodes.ogPhoto);
-	eleventyConfig.addAsyncShortcode('unfurlGame', shortcodes.unfurlGame);
 	eleventyConfig.addAsyncShortcode('image', shortcodes.image);
 	eleventyConfig.addAsyncShortcode('excerpt', shortcodes.excerpt);
 

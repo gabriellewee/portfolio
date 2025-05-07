@@ -191,50 +191,6 @@ export const ogPhoto = async (src) => {
 	}
 };
 
-export const unfurlGame = async (link, title, className, width, loading = "lazy") => {
-	try {
-		const metadata = await EleventyFetch(`https://api.microlink.io/?url=${link}`, {
-			duration: "1d",
-			type: "json",
-		});
-
-		const rawType = metadata.data?.image?.type || "jpeg";
-		const type = rawType === "j2k" || rawType === "jpg" ? "jpeg" : rawType;
-		const image = `${metadata.data.image.url}.${type}`;
-
-		const stat = await Image(image, {
-			widths: [width, width * 2],
-			formats: ["webp", type],
-			urlPath: "/static/images/external",
-			outputDir: "./_site/static/images/external",
-		});
-
-		const average = await stats(image, "average");
-
-		const main = stat["webp"];
-		const fallback = stat[type];
-
-		const picture = `
-			<picture style="--background: ${average}" >
-				<source type="image/webp" srcset="${main[0].url}, ${main[1].url} 2x">
-				<img 
-					loading="${loading}" 
-					decoding="async" 
-					alt="${title}" 
-					src="${main[0].url}" 
-					srcset="${fallback[0].url}, ${fallback[1].url} 2x" 
-					width="${main[0].width}" 
-					height="${main[0].height}">
-			</picture>
-		`.trim();
-
-		return `<a class="${className}" href="${link}" target="_blank" rel="noopener noreferrer">${picture}</a>`;
-	} catch (error) {
-		console.error("unfurlGame error:", title, "\n", error, "\n");
-		return `<a class="${className} button" href="${link}"><span>${title}</span></a>`;
-	}
-};
-
 export const image = async (src, alt = "", type = "default", option, figp) => {
 	try {
 		const category = src.split("/")[3];

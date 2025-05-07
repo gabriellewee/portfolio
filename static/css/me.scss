@@ -267,6 +267,16 @@
 			@include viewport($x-large) {
 				grid-template-columns: repeat(2, 1fr);
 			}
+			img {
+				aspect-ratio: 16 / 9;
+				object-fit: cover;
+			}
+			.captain-toad-treasure-tracker img {
+				object-position: 0% 50%
+			}
+			.the-legend-of-zelda-tears-of-the-kingdom img {
+				object-position: 80% 50%;
+			}
 		}
 		a {
 			@include expand-hover(external, 23px, 23px, var(--p));

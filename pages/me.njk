@@ -57,7 +57,7 @@ eleventyNavigation:
 
 				{% if steam.response.games[0] %}
 					<ul class="grid steam">
-						{% for game in steam.response.games %}
+						{% for game in steam.response.games|limit(4) %}
 							<li>
 								<a class="post-external {% stats 'https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/' + game.appid + '/library_600x900_2x.jpg', 'theme', 'top left' %}" href="https://store.steampowered.com/app/{{game.appid}}/" target="_blank">
 									{% external "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/" + game.appid + "/library_600x900_2x.jpg", game.name, 300, "eager" %}
@@ -73,11 +73,16 @@ eleventyNavigation:
 				</div>
 
 				<ul class="grid nintendo">
-					{% for game in notion.switch.results %}
-						<li>
-							{% unfurlGame game.properties.URL.url, game.properties.Name.title[0].plain_text, "post-external", 300, "eager" %}
-							<p class="no-css"><a href="{{game.properties.URL.url}}" target="_blank">{{game.properties.Name.title[0].plain_text}}</a></p>
-						</li>
+					{% for game in gamelog %}
+						{% if (game.properties["Console/Platform"].multi_select[0].name == "Nintendo Switch") and (game.properties.Status.status.name == "In progress") %}
+							<li>
+								{% if game.properties.Cover.files[0].file %}{%- set cover = game.properties.Cover.files[0].file.url %}{% else %}{%- set cover = game.properties.Cover.files[0].external.url %}{% endif %}
+								<a class="post-external button {{game.properties.Title.title[0].plain_text|slugify}}" href="{{game.properties.Link.url}}" target="_blank" rel="noopener noreferrer">
+									{% external cover, game.properties.Title.title[0].plain_text, 600, "lazy" %}
+								</a>
+								<p class="no-css"><a href="{{game.properties.Link.url}}" target="_blank" rel="noopener noreferrer">{{game.properties.Title.title[0].plain_text}}</a></p>
+							</li>
+						{% endif %}
 					{% endfor %}
 				</ul>
 				
