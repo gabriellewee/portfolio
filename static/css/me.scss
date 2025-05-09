@@ -188,6 +188,9 @@
 					var(--background-post),
 					hsl(from var(--color) h s calc(l *.4))
 				);
+			}
+
+			&::after, picture::after {
 				@include clip-path-edges(2px);
 			}
 

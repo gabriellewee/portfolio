@@ -77,7 +77,7 @@ eleventyNavigation:
 						{% if (game.properties["Console/Platform"].multi_select[0].name == "Nintendo Switch") and (game.properties.Status.status.name == "In progress") %}
 							<li>
 								{% if game.properties.Cover.files[0].file %}{%- set cover = game.properties.Cover.files[0].file.url %}{% else %}{%- set cover = game.properties.Cover.files[0].external.url %}{% endif %}
-								<a class="post-external button {{game.properties.Title.title[0].plain_text|slugify}}" href="{{game.properties.Link.url}}" target="_blank" rel="noopener noreferrer">
+								<a class="post-external {{game.properties.Title.title[0].plain_text|slugify}}" href="{{game.properties.Link.url}}" target="_blank" rel="noopener noreferrer">
 									{% external cover, game.properties.Title.title[0].plain_text, 600, "lazy" %}
 								</a>
 								<p class="no-css"><a href="{{game.properties.Link.url}}" target="_blank" rel="noopener noreferrer">{{game.properties.Title.title[0].plain_text}}</a></p>
@@ -90,6 +90,20 @@ eleventyNavigation:
 					<label for="friend-code">Nintendo Friend Code:</label>
 					<div class="friend-code-border"><div class="tooltip tooltip-right dark hidden" style="--tooltip-label: 'Copied'"><input id="friend-code" class="friend-code" type="text" value="SW‑0918‑7153‑9794" data-clip=".friend-code"/></div></div>
 				</div>
+
+				<ul class="grid ios">
+					{% for game in gamelog %}
+						{% if (game.properties["Console/Platform"].multi_select[0].name == "iOS") and (game.properties.Status.status.name == "In progress") %}
+							<li>
+								{% if game.properties.Cover.files[0].file %}{%- set cover = game.properties.Cover.files[0].file.url %}{% else %}{%- set cover = game.properties.Cover.files[0].external.url %}{% endif %}
+								<a class="post-external {{game.properties.Title.title[0].plain_text|slugify}}" href="{{game.properties.Link.url}}" target="_blank" rel="noopener noreferrer">
+									{% external cover, game.properties.Title.title[0].plain_text, 600, "lazy" %}
+								</a>
+								<p class="no-css"><a href="{{game.properties.Link.url}}" target="_blank" rel="noopener noreferrer">{{game.properties.Title.title[0].plain_text}}</a></p>
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
 			</div>
 			<hr class="no-css"/>
 		</article>

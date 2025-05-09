@@ -39,7 +39,6 @@
 	}
 	&::after {
 		--gradient-color: var(--background, hsl(from var(--color-iron) h s calc(l * .45)));
-		--blend-mode: hard-light;
 		z-index: 2;
 		background: radial-gradient(
 			farthest-corner at var(--position),
@@ -48,14 +47,12 @@
 		);
 		mix-blend-mode: var(--blend-mode);
 		@include full-offset(0);
-		@include clip-path-edges(2px);
 	}
 }
 
 @mixin icon-invert {
 	&::before {
 		filter: invert(1);
-		mix-blend-mode: multiply;
 	}
 }
 
