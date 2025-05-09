@@ -104,6 +104,7 @@ img {
 	margin-inline: auto;
 	padding-left: env(safe-area-inset-left);
 	padding-right: env(safe-area-inset-right);
+	overflow: hidden;
 	@include viewport($iphone-max) {
 		padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
 		padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
