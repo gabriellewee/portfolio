@@ -2,7 +2,7 @@
 import { setChecked, onToggle, onClickOnly } from '../helpers/accessibilityHelpers.js';
 
 // Accessibility popup
-export const accessibility = (options = "[data-option]") => {
+export const accessibility = (options = document.querySelectorAll("[data-option]")) => {
 	if (!window.matchMedia) return;
 
 	const $html = document.documentElement;
@@ -37,7 +37,7 @@ export const accessibility = (options = "[data-option]") => {
 		localStorage.setItem("theme", "light");
 	};
 
-	document.querySelectorAll(options).forEach((el) => {
+	options.forEach((el) => {
 		const name = el.getAttribute("name");
 		const option = el.getAttribute("data-option");
 		el.classList.add("inactive");
