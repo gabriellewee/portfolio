@@ -26,7 +26,6 @@ if (container) {
 		// Masonry/Packery layout
 		const motionClass = document.documentElement.classList.contains("theme-reduce-motion");
 		const motionOK = window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
-		let iso;
 
 		const layout = (grid) => {
 			grid.setAttribute("data-grid", "true");
@@ -38,9 +37,9 @@ if (container) {
 			};
 
 			if (!motionClass && motionOK) {
-				iso = new Isotope(grid, config);
+				window.iso = new Isotope(grid, config);
 			} else {
-				iso = new Isotope(grid, {
+				window.iso = new Isotope(grid, {
 					...config,
 					hiddenStyle: { opacity: 0 },
 					visibleStyle: { opacity: 1 },
@@ -53,7 +52,7 @@ if (container) {
 			gsap.registerPlugin(ScrollTrigger);
 			const gmm = gsap.matchMedia();
 			gmm.add("(min-width: 568px) and (max-height: 450px), (min-width: 768px)", () => {
-				if (container && !iso && !document.body.classList.contains("page-filters")) {
+				if (container && !window.iso && !document.body.classList.contains("page-filters")) {
 					layout(container);
 				}
 			});

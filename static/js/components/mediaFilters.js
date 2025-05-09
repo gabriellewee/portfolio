@@ -1,7 +1,6 @@
 // Media page filters list
-export const mediaFilters = () => {
-	const filters = document.querySelector("[data-filter-container]");
-	if (!filters || typeof iso === "undefined") return;
+export const mediaFilters = (filters = document.querySelector("[data-filter-container]")) => {
+	if (typeof iso === "undefined") return;
 
 	const filterLinks = filters.querySelectorAll("[data-filter]");
 	const resetButton = filters.querySelector("[data-reset]");
