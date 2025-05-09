@@ -158,51 +158,52 @@
 				display: block;
 			}
 		}
+	}
 
-		a {
-			--outline: var(--color-middle);
-			@include expand-hover(external, 23px, 23px, calc(var(--p)*1.25));
+	.post-external {
+		--highlight: color-mix(
+			in srgb,
+			var(--background-post),
+			hsl(from var(--color) h s calc(l *.4))
+		);
 
-			&.light, &.dark {
-				picture::after {
-					--gradient-color: var(--background);
-					top: calc(var(--p)/2);
-					left: calc(var(--p)/2);
-					width: calc(100% - var(--p)/2);
-					height: calc(100% - var(--p)/2);
-				}
-			}
+		@include expand-hover(external, 23px, 23px, calc(var(--p)*1.25));
 
-			&::after {
-				content: "";
-				display: block;
-				z-index: 0;
-				position: absolute;
-				top: 0;
-				left: 0;
+		&.light, &.dark {
+			picture::after {
+				--gradient-color: var(--background);
+				top: calc(var(--p)/2);
+				left: calc(var(--p)/2);
 				width: calc(100% - var(--p)/2);
 				height: calc(100% - var(--p)/2);
-				background-color: color-mix(
-					in srgb,
-					var(--background-post),
-					hsl(from var(--color) h s calc(l *.4))
-				);
 			}
+		}
 
-			&::after, picture::after {
-				@include clip-path-edges(2px);
-			}
+		&::after {
+			content: "";
+			display: block;
+			z-index: 0;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: calc(100% - var(--p)/2);
+			height: calc(100% - var(--p)/2);
+			background-color: var(--highlight);
+		}
 
-			picture {
-				position: relative;
-				z-index: 1;
-				padding-top: calc(var(--p)/2);
-				padding-left: calc(var(--p)/2);
-			}
+		&::after, picture::after {
+			@include clip-path-edges(2px);
+		}
 
-			img {
-				@include clip-path-edges(2px);
-			}
+		picture {
+			position: relative;
+			z-index: 1;
+			padding-top: calc(var(--p)/2);
+			padding-left: calc(var(--p)/2);
+		}
+
+		img {
+			@include clip-path-edges(2px);
 		}
 	}
 

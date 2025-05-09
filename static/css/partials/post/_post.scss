@@ -30,10 +30,16 @@
 }
 
 .post {
+	--width: 100%;
+	--max-width: var(--width);
+	--min-width: initial;
+	--background-post: hsl(from var(--color-secondary) h s l / .9);
+	--background-contrast: var(--color-secondary);
+
 	position: relative;
-	width: var(--width, 100%);
-	max-width: var(--max-width, 100%);
-	min-width: var(--min-width, unset);
+	width: var(--width);
+	max-width: var(--max-width);
+	min-width: var(--min-width);
 	font-size: 1.125rem;
 	grid-column-end: span 12;
 
@@ -92,7 +98,7 @@
 
 	.post-inner {
 		overflow: hidden;
-		background-color: var(--background-post, hsl(from var(--color-secondary) h s l / .9));
+		background-color: var(--background-post);
 		@include viewport($iphone-max) {
 			@include clip-path-edges(2px);
 		}
@@ -124,7 +130,7 @@
 			background-color: var(--background-outline);
 		}
 		&::after {
-			background-color: var(--background-contrast, var(--color-secondary));
+			background-color: var(--background-contrast);
 		}
 	}
 	time {

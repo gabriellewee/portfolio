@@ -3,6 +3,10 @@
 .tooltip {
 	--t: 10px;
 	--r: 3px;
+	--background: light-dark(
+		var(--color-message),
+		hsl(from var(--color-iron) h s calc(l * .7))
+	);
 	display: inline-flex;
 	align-items: center;
 	position: relative;
@@ -10,10 +14,7 @@
 	&::before, &::after {
 		display: block;
 		position: absolute;
-		background-color: var(--background, light-dark(
-			var(--color-message),
-			hsl(from var(--color-iron) h s calc(l * .7))
-		));
+		background-color: var(--background);
 		color: var(--color, light-dark(var(--color-iron), white));
 	}
 	&::before {
