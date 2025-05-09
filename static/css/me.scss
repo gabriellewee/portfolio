@@ -65,16 +65,15 @@
 }
 
 .post-expand, .post-external:not(.button) {
-	--outline: radial-gradient(
-		circle at center left,
-		var(--color-middle),
-		var(--color-dark)
-	);
 	transition: opacity .2s ease-out, scale .2s ease-out;
 	display: block;
 	position: relative;
 	&::before {
-		background: var(--outline);
+		background: var(--outline, radial-gradient(
+			circle at center left,
+			var(--color-middle),
+			var(--color-dark)
+		));
 		@include before;
 	}
 	picture {
@@ -382,8 +381,7 @@
 		}
 	}
 	picture {
-		--color-mix: hsl(from var(--color-primary) h s l / .05);
-		background-color: var(--color-mix);
+		background-color: var(--color-mix, hsl(from var(--color-primary) h s l / .05));
 		@include clip-path-edges(2px);
 		@include contrast {
 			background-color: light-dark(
@@ -607,12 +605,11 @@
 		transition: transform .2s ease-out;
 		box-shadow: 0 0 20px hsl(from var(--color-iron) h s l / .05);
 		&::after {
-			--color-mix: color-mix(
+			@include before(var(--color-mix, color-mix(
 				in srgb,
 				var(--color-iron) 10%,
 				white
-			);
-			@include before(var(--color-mix), 1px, 2.5px, 1);
+			)), 1px, 2.5px, 1);
 			@include contrast {
 				--color-mix: light-dark(
 					var(--color-primary),

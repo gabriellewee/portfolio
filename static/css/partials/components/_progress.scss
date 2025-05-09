@@ -1,6 +1,4 @@
 .progress {
-	--background: linear-gradient(to right, var(--color-middle), var(--color-dark), var(--color-grey));
-
 	display: none;
 
 	@supports (animation-timeline: scroll()) {
@@ -12,7 +10,7 @@
 		margin: 0;
 		width: 100vw;
 		height: 2px;
-		background: var(--background);
+		background: var(--background, linear-gradient(to right, var(--color-middle), var(--color-dark), var(--color-grey)));
 
 		transform: scaleX(0);
 		transform-origin: left center;

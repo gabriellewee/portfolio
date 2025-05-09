@@ -6,13 +6,12 @@
 	align-items: center;
 }
 .swatch {
-	--border-color: light-dark(var(--color-message), white);
 	display: block;
 	margin-inline: auto;
 	text-align: center;
 	background-color: var(--background);
 	border-radius: 100%;
-	border: calc(var(--p)/4) solid var(--border-color);
+	border: calc(var(--p)/4) solid var(--border-color, light-dark(var(--color-message), white));
 	@include square(36px);
 	@include contrast {
 		--border-color: var(--color-primary);

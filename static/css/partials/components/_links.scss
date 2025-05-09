@@ -66,7 +66,6 @@
 }
 
 .link-tile {
-	--color: var(--primary);
 	--active-color: hsl(from var(--color-primary) h s calc(l * .7));
 	--background: light-dark(
 		color-mix(
@@ -79,14 +78,6 @@
 			hsl(from var(--color-iron) h s calc(l * .55)) 27.5%,
 			var(--color-iron)
 		)
-	);
-	--active-background: light-dark(
-		color-mix(
-			in srgb,
-			hsl(from var(--color-iron) h s calc(l * .55)) 20%,
-			white
-		),
-		var(--background-body)
 	);
 
 	display: flex;
@@ -128,7 +119,7 @@
 	}
 
 	&, * {
-		color: var(--color);
+		color: var(--color, var(--primary));
 	}
 	h3 {
 		display: block;
@@ -161,7 +152,14 @@
 		}
 	}
 	&:has(a:active) {
-		--background: var(--active-background);
+		--background: var(--active-background, light-dark(
+			color-mix(
+				in srgb,
+				hsl(from var(--color-iron) h s calc(l * .55)) 20%,
+				white
+			),
+			var(--background-body)
+		));
 		p {
 			--color: var(--active-color);
 		}

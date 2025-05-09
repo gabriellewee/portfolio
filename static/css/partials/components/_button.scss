@@ -1,56 +1,18 @@
 @use 'partials/shared/utilities' as *;
 
 .button {
-	--color: white;
-	--background: var(--color-dark) radial-gradient(
-		circle at center left,
-		var(--color-middle),
-		var(--color-dark),
-		var(--color-grey),
-		var(--color-grey)
-	);
-	--outline: radial-gradient(
-		circle at center left,
-		var(--color-light),
-		var(--color-middle)
-	);
-	--contrast: var(--color-primary);
-	--background-hover-position: 0%;
-	--background-active-color: light-dark(var(--color-iron), var(--color-grey));
-	--background-active: var(--background-active-color) radial-gradient(
-		circle at center left,
-		light-dark(
-			color-mix(
-				in srgb,
-				var(--color-iron) 80%,
-				white
-			),
-			var(--color-grey)
-		),
-		light-dark(
-			var(--color-iron),
-			color-mix(
-				in srgb,
-				var(--color-iron) 80%,
-				white
-			)
-		)
-	);
-
-	& {
-		cursor: pointer;
-		appearance: none;
-		display: block;
-		position: relative;
-		z-index: 3;
-		margin: 0;
-		padding: 0;
-		border: 0;
-		width: fit-content;
-		background: none;
-		color: var(--color);
-		@include font-weight-width(700, 125);
-	}
+	cursor: pointer;
+	appearance: none;
+	display: block;
+	position: relative;
+	z-index: 3;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	width: fit-content;
+	background: none;
+	color: var(--color, white);
+	@include font-weight-width(700, 125);
 
 	&, > span, > span::before {
 		transition: background .4s ease-out, scale .2s ease-out, opacity .2s ease-out;
@@ -68,7 +30,11 @@
 		width: calc(100% + var(--p)/2);
 		height: calc(100% + var(--p)/2);
 		padding: var(--p) calc(var(--p)*2.5);
-		background: var(--outline);
+		background: var(--outline, radial-gradient(
+			circle at center left,
+			var(--color-light),
+			var(--color-middle)
+		));
 		@include clip-path(false) {
 			@include border-radius(calc(var(--p)/2));
 		}
@@ -84,7 +50,7 @@
 			width: calc(100% + var(--p)/4);
 			height: calc(100% + var(--p)/4);
 			padding: var(--p) calc(var(--p)*2.5);
-			background-color: var(--contrast);
+			background-color: var(--contrast, var(--color-primary));
 			@include clip-path(false) {
 				@include border-radius(calc(var(--p)/4));
 			}
@@ -95,14 +61,40 @@
 	}
 	> span {
 		position: relative;
-		background: var(--background) 50% 0% / 200% 100%;
+		background: var(--background, var(--color-dark) radial-gradient(
+			circle at center left,
+			var(--color-middle),
+			var(--color-dark),
+			var(--color-grey),
+			var(--color-grey)
+		)) 50% 0% / 200% 100%;
 		@include button;
 		&::after {
 			opacity: 0;
 			content: "";
 			display: block;
 			z-index: -1;
-			background: var(--background-active);
+			background: var(--background-active-color, light-dark(var(--color-iron), var(--color-grey)))
+				var(--background-active-gradient, radial-gradient(
+					circle at center left,
+					light-dark(
+						color-mix(
+							in srgb,
+							var(--color-iron) 80%,
+							white
+						),
+						var(--color-grey)
+					),
+					light-dark(
+						var(--color-iron),
+						color-mix(
+							in srgb,
+							var(--color-iron) 80%,
+							white
+						)
+					)
+				)
+			);
 			@include full-offset(0);
 		}
 	}
@@ -113,7 +105,7 @@
 	}
 	&:hover, &:focus {
 		> span {
-			background-position-x: var(--background-hover-position);
+			background-position-x: var(--background-hover-position, 0%);
 		}
 	}
 	&:focus-visible {
@@ -154,7 +146,7 @@
 			var(--color-light)
 		);
 		--background-hover-position: 100%;
-		--background-active: var(--background-active-color) radial-gradient(
+		--background-active-gradient: radial-gradient(
 			circle at center left,
 			light-dark(
 				var(--color-iron),
@@ -199,21 +191,6 @@
 }
 
 .button-reduced {
-	--color: white;
-	--background: color-mix(
-		in srgb,
-		hsl(from var(--color-grey) h calc(s * .3) calc(l * .6)) 30%,
-		hsl(from var(--color-dark) h calc(s * .8) l)
-	);
-	--outline: color-mix(
-			in srgb,
-			var(--color-light),
-			var(--color-middle)
-	);
-	--contrast: var(--color-primary);
-	--background-hover: var(--color-grey);
-	--background-active: var(--color-iron);
-
 	transition: scale .2s ease-out;
 	display: inline-block;
 	position: relative;
@@ -226,8 +203,12 @@
 		position: relative;
 		z-index: 2;
 		padding: calc(var(--p)/3*2) var(--p);
-		color: var(--color);
-		background-color: var(--background);
+		color: var(--color, white);
+		background-color: var(--background, color-mix(
+			in srgb,
+			hsl(from var(--color-grey) h calc(s * .3) calc(l * .6)) 30%,
+			hsl(from var(--color-dark) h calc(s * .8) l)
+		));
 		@include clip-path-edges(2px);
 	}
 	&::after {
@@ -235,7 +216,7 @@
 			content: "";
 			display: block;
 			z-index: 0;
-			background-color: var(--contrast);
+			background-color: var(--contrast, var(--color-primary));
 			@include full-offset(1.5px);
 			@include clip-path-edges(3px);
 		}
@@ -251,7 +232,11 @@ button.button-reduced-outer {
 a.button-reduced, button.button-reduced-outer > .button-reduced {
 	&::before {
 		z-index: 1;
-		@include before(var(--outline));
+		@include before(var(--outline, color-mix(
+				in srgb,
+				var(--color-light),
+				var(--color-middle)
+		)));
 	}
 	&.current {
 		pointer-events: none;
@@ -261,7 +246,7 @@ a.button-reduced, button.button-reduced-outer > .button-reduced {
 a.button-reduced:hover, a.button-reduced:active,
 button.button-reduced-outer:hover > .button-reduced, button.button-reduced-outer:active > .button-reduced {
 	span {
-		background-color: var(--background-hover);
+		background-color: var(--background-hover, var(--color-grey));
 	}
 }
 a.button-reduced:focus-visible,
@@ -276,7 +261,7 @@ button.button-reduced-outer:active > .button-reduced {
 		scale: .98;
 	}
 	span {
-		background-color: var(--background-active);
+		background-color: var(--background-active, var(--color-iron));
 	}
 }
 

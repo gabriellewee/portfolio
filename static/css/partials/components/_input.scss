@@ -1,23 +1,18 @@
 @use 'partials/shared/utilities' as *;
 
 .toggle {
-	--background: color-mix(
-		in srgb,
-		var(--color-grey),
-		var(--color-iron)
-	);
-	--indicator: white;
-	--outline: var(--color-light);
-	--contrast: white;
-	--background-active: var(--color-mint);
 	--height: calc(var(--p)*2);
 
 	display: block;
 	cursor: pointer;
 	position: relative;
-	height: calc(var(--height));
+	height: var(--height);
 	width: calc(var(--height)/2*3.5);
-	background-color: var(--background);
+	background-color: var(--background, color-mix(
+		in srgb,
+		var(--color-grey),
+		var(--color-iron)
+	));
 	border-radius: calc(var(--height));
 	margin-right: var(--p);
 	padding: calc(var(--height)/8);
@@ -27,7 +22,7 @@
 			content: "";
 			display: block;
 			z-index: -1;
-			background-color: var(--contrast);
+			background-color: var(--contrast, white);
 			border-radius: calc(var(--height)*1.5);
 			@include full-offset(2px);
 		}
@@ -40,14 +35,14 @@
 		height: 100%;
 		aspect-ratio: 1 / 1;
 		border-radius: 100%;
-		background-color: var(--indicator);
+		background-color: var(--indicator, white);
 	}
 
 	*:focus-visible &, *:focus-visible + label & {
-		outline: calc(var(--p)/4) solid var(--outline);
+		outline: calc(var(--p)/4) solid var(--outline, var(--color-light));
 	}
 	&.active {
-		background-color: var(--background-active);
+		background-color: var(--background-active, var(--color-mint));
 		&::after {
 			translate: 100% 0;
 		}
@@ -56,11 +51,6 @@
 
 @mixin radio($background: transparent, $color: var(--color-mint)) {
 	& {
-		--background: #{$background};
-		--color: #{$color};
-		--outline: var(--color);
-		--contrast: color-mix(in srgb, var(--color-grey), var(--color));
-
 		display: flex;
 		cursor: pointer;
 		position: relative;
@@ -74,9 +64,9 @@
 		height: calc(var(--p)*2);
 		border-radius: calc(var(--p)*2);
 		margin-right: calc(var(--p)*.75);
-		background-color: var(--background);
+		background-color: var(--background, #{$background});
 		@include contrast {
-			outline: 2px solid var(--contrast);
+			outline: 2px solid var(--contrast, color-mix(in srgb, var(--color-grey), var(--color)));
 		}
 	}
 	&::after {
@@ -85,13 +75,13 @@
 		position: absolute;
 		left: calc(var(--p)/3);
 		top: calc(var(--p)/3);
-		background-color: var(--color);
+		background-color: var(--color, #{$color});
 		@include square(calc(var(--p)/3*4));
 	}
 	&:is(input:focus-visible + label), &:focus-visible {
 		&::before {
 			outline-color: transparent;
-			@include focus-shadow(var(--outline), false);
+			@include focus-shadow(var(--outline, var(--color)), false);
 		}
 	}
 }

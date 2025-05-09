@@ -64,11 +64,10 @@ a {
 
 * {
 	@include selection {
-		--selection: light-dark(
+		background-color: var(--selection, light-dark(
 			hsl(from var(--color-middle) h s l / .5),
 			hsl(from var(--color-light) h s l / .3)
-		);
-		background-color: var(--selection);
+		));
 	}
 }
 

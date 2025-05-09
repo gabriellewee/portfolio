@@ -45,7 +45,7 @@
 			hsl(from var(--gradient-color) h s l / 1) 0,
 			hsl(from var(--gradient-color) h s l / 0) calc(($width + $padding)*3)
 		);
-		mix-blend-mode: var(--blend-mode);
+		mix-blend-mode: var(--blend-mode, multiply);
 		@include full-offset(0);
 	}
 }

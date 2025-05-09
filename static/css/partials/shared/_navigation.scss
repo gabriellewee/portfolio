@@ -118,15 +118,13 @@ header.top {
 			}
 		}
 		> span {
-			--background: color-mix(
+			display: inline-block;
+			background-color: var(--background, color-mix(
 				in srgb,
 				var(--background-body),
 				var(--color-secondary) 70%
-			);
-			--color: hsl(from var(--color-primary) h s l / .6);
-			display: inline-block;
-			background-color: var(--background);
-			color: var(--color);
+			));
+			color: var(--color, hsl(from var(--color-primary) h s l / .6));
 			@include button;
 			@include contrast {
 				--background: var(--color-secondary);
