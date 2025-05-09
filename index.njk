@@ -296,7 +296,7 @@ eleventyNavigation:
 <div class="lightbox-group" data-lightbox-container hidden>
 	{% for post in pagination.items %}
 		{% if post.data.category == "media" %}
-			<a class="lightbox" id="{{post.data.date|safe}}-{{post.data.name}}-lightbox" role="button" aria-label="Close image" href="#{{post.data.date|safe}}-{{post.data.name}}" data-lightbox data-lightbox-append></a>
+			<a class="lightbox" id="{{post.data.date|safe}}-{{post.data.name}}-lightbox" role="button" aria-label="Close image" href="#{{post.data.date|safe}}-{{post.data.name}}" tabindex="-1" data-lightbox data-lightbox-append></a>
 			<dialog class="lightbox-content image" aria-label="Image preview" autofocus data-lightbox-append>
 				<figure>
 					{% if post.data.upscale %}
@@ -316,7 +316,7 @@ eleventyNavigation:
 			{%- set postIndex = loop.index %}
 			{% for media in post.data.media %}
 				{% if media.thumb %}
-					<a class="lightbox" id="external-{{postIndex}}-{{post.data.cid|truncate(5, true, '')}}-lightbox" role="button" aria-label="Close image" href="#external-{{postIndex}}-{{post.data.cid|truncate(5, true, '')}}" data-lightbox data-lightbox-append></a>
+					<a class="lightbox" id="external-{{postIndex}}-{{post.data.cid|truncate(5, true, '')}}-lightbox" role="button" aria-label="Close image" href="#external-{{postIndex}}-{{post.data.cid|truncate(5, true, '')}}" tabindex="-1" data-lightbox data-lightbox-append></a>
 					<dialog class="lightbox-content image" aria-label="Image preview" autofocus data-lightbox-append>
 						<figure>
 							{% external media.fullsize, media.alt, media.aspectRatio.width %}
@@ -334,7 +334,7 @@ eleventyNavigation:
 		{% elseif post.data.category == "writing" %}
 			{% excerpt post, "lightbox" %}
 		{% elseif post.data.category == "code" %}
-			<a class="lightbox" id="{{post.page.date|iso|date('string')}}-{{post.page.fileSlug}}-lightbox" role="button" aria-label="Close preview of {{post.data.title}}" href="#{{post.page.date|iso|date('string')}}-{{post.page.fileSlug}}" data-lightbox data-lightbox-append data-desktop></a>
+			<a class="lightbox" id="{{post.page.date|iso|date('string')}}-{{post.page.fileSlug}}-lightbox" role="button" aria-label="Close preview of {{post.data.title}}" href="#{{post.page.date|iso|date('string')}}-{{post.page.fileSlug}}" tabindex="-1" data-lightbox data-lightbox-append data-desktop></a>
 			<dialog class="lightbox-content iframe" aria-label="Preview of {{post.data.title}}" autofocus data-lightbox-append>
 				<figure class="frame-wrapper"{% if post.data.background %} style="--background: {{post.data.background}}"{% endif %}>
 					{% if post.url %}

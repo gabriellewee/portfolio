@@ -109,7 +109,7 @@
 
 <div class="lightbox-group" data-lightbox-container hidden>
 	{% for post in media %}
-		<a class="lightbox" id="{{post.date|safe}}-{{post.name}}-lightbox" role="button" aria-label="Close image" href="#{{post.date|safe}}-{{post.name}}" data-lightbox></a>
+		<a class="lightbox" id="{{post.date|safe}}-{{post.name}}-lightbox" role="button" aria-label="Close image" href="#{{post.date|safe}}-{{post.name}}" tabindex="-1" data-lightbox></a>
 		<dialog class="lightbox-content image" aria-label="Image preview" autofocus>
 			<figure>
 				{% if post.upscale %}
