@@ -5,6 +5,7 @@
 	font-size: 1.5rem;
 	line-height: 1.334;
 	position: relative;
+	margin-top: var(--p);
 	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
 	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
 	@include font-weight-width(600, 110);

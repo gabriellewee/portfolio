@@ -1,6 +1,7 @@
 @use 'partials/shared/utilities' as *;
 
 .posts-archive {
+	margin-top: var(--p);
 	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
 	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
 	@include viewport($iphone-max) {

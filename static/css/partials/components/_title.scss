@@ -1,6 +1,7 @@
 @use 'partials/shared/utilities' as *;
 
 .title {
+	margin-top: var(--p);
 	color: light-dark(
 		var(--color-body),
 		hsl(from var(--color-primary) h s l / .9)
