@@ -54,7 +54,7 @@
 				&:active {
 					> span {
 						text-decoration-color: light-dark(
-							hsl(from var(--color-iron) h s calc(l * .95)),
+							hsl(from var(--color-dark-grey) h s calc(l * .95)),
 							var(--color-grey)
 						);
 					}
@@ -95,14 +95,14 @@
 						span span {
 							@include gradient-text(
 								light-dark(
-									hsl(from var(--color-iron) h s calc(l * .95)),
+									hsl(from var(--color-dark-grey) h s calc(l * .95)),
 									var(--color-grey)
 								),
 								light-dark(
-									hsl(from var(--color-iron) h s calc(l * .35)),
+									hsl(from var(--color-dark-grey) h s calc(l * .35)),
 									color-mix(
 										in srgb,
-										var(--color-iron) 80%,
+										var(--color-dark-grey) 80%,
 										white
 									)
 								)
@@ -168,22 +168,22 @@
 						span span {
 							@include gradient-text(
 								light-dark(
-									hsl(from var(--color-iron) h s calc(l * .35)),
+									hsl(from var(--color-dark-grey) h s calc(l * .35)),
 									color-mix(
 										in srgb,
-										var(--color-iron) 80%,
+										var(--color-dark-grey) 80%,
 										white
 									)
 								),
 								light-dark(
-									hsl(from var(--color-iron) h s calc(l * .95)),
+									hsl(from var(--color-dark-grey) h s calc(l * .95)),
 									var(--color-grey)
 								)
 							);
 						}
 						&::after {
 							color: light-dark(
-								hsl(from var(--color-iron) h s calc(l * .95)),
+								hsl(from var(--color-dark-grey) h s calc(l * .95)),
 								var(--color-grey)
 							);
 						}
@@ -221,22 +221,22 @@
 				&:active {
 					@include gradient-text(
 						light-dark(
-							hsl(from var(--color-iron) h s calc(l * .35)),
+							hsl(from var(--color-dark-grey) h s calc(l * .35)),
 							color-mix(
 								in srgb,
-								var(--color-iron) 80%,
+								var(--color-dark-grey) 80%,
 								white
 							)
 						),
 						light-dark(
-							hsl(from var(--color-iron) h s calc(l * .95)),
+							hsl(from var(--color-dark-grey) h s calc(l * .95)),
 							var(--color-grey)
 						),
 						light-dark(
-							hsl(from var(--color-iron) h s calc(l * .35) / .5),
+							hsl(from var(--color-dark-grey) h s calc(l * .35) / .5),
 							color-mix(
 								in srgb,
-								hsl(from var(--color-iron) h s l / .5) 80%,
+								hsl(from var(--color-dark-grey) h s l / .5) 80%,
 								hsl(from white h s l / .5)
 							)
 						)
@@ -253,12 +253,12 @@
 					--color-mix: light-dark(
 						color-mix(
 							in srgb,
-							var(--color-iron) 70%,
+							var(--color-dark-grey) 70%,
 							white
 						),
 						color-mix(
 							in srgb,
-							var(--color-iron),
+							var(--color-dark-grey),
 							white
 						)
 					);
@@ -272,7 +272,7 @@
 						--color-mix: light-dark(
 							color-mix(
 								in srgb,
-								var(--color-iron),
+								var(--color-dark-grey),
 								white
 							),
 							hsl(from white h s l / .7)
@@ -282,12 +282,12 @@
 						--color-mix: light-dark(
 							color-mix(
 								in srgb,
-								var(--color-iron) 90%,
+								var(--color-dark-grey) 90%,
 								white
 							),
 							color-mix(
 								in srgb,
-								var(--color-iron) 70%,
+								var(--color-dark-grey) 70%,
 								white
 							)
 						);
@@ -297,7 +297,7 @@
 			time {
 				--color-mix: color-mix(
 					in srgb,
-					var(--color-iron) 60%,
+					var(--color-dark-grey) 60%,
 					white
 				);
 				background-color: var(--color-mix);
@@ -312,7 +312,7 @@
 			.button {
 				--background: color-mix(
 					in srgb,
-					var(--color-iron) 70%,
+					var(--color-dark-grey) 70%,
 					white
 				);
 				--outline: radial-gradient(
@@ -320,24 +320,24 @@
 					light-dark(
 						color-mix(
 							in srgb,
-							var(--color-iron) 70%,
+							var(--color-dark-grey) 70%,
 							white
 						),
 						color-mix(
 							in srgb,
-							var(--color-iron) 10%,
+							var(--color-dark-grey) 10%,
 							white
 						)
 					),
 					light-dark(
 						color-mix(
 							in srgb,
-							var(--color-iron) 80%,
+							var(--color-dark-grey) 80%,
 							white
 						),
 						color-mix(
 							in srgb,
-							var(--color-iron) 30%,
+							var(--color-dark-grey) 30%,
 							white
 						)
 					)
@@ -346,7 +346,7 @@
 				&:hover, &:focus {
 					--background: color-mix(
 						in srgb,
-						var(--color-iron),
+						var(--color-dark-grey),
 						white
 					);
 				}

@@ -51,7 +51,7 @@
 		color: light-dark(
 			color-mix(
 				in srgb,
-				var(--color-iron) 90%,
+				var(--color-dark-grey) 90%,
 				white
 			),
 			hsl(from white h s l / .8)

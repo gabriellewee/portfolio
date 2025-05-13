@@ -28,7 +28,7 @@
 			text-underline-offset: 8px;
 			text-decoration-color: light-dark(
 				hsl(from var(--color-light) h s calc(l * 1.1) / 0),
-				hsl(from var(--color-iron) h s calc(l * .73) / 0)
+				hsl(from var(--color-dark-grey) h s calc(l * .73) / 0)
 			);
 			@include contrast {
 				text-underline-offset: 4px;
@@ -66,20 +66,20 @@
 			}
 			&:active {
 				text-decoration-color: light-dark(
-					hsl(from var(--color-iron) h s calc(l * .95)),
+					hsl(from var(--color-dark-grey) h s calc(l * .95)),
 					var(--color-grey)
 				);
 				span {
 					@include gradient-text(
 						light-dark(
-							hsl(from var(--color-iron) h s calc(l * .95)),
+							hsl(from var(--color-dark-grey) h s calc(l * .95)),
 							var(--color-grey)
 						),
 						light-dark(
-							hsl(from var(--color-iron) h s calc(l * .35)),
+							hsl(from var(--color-dark-grey) h s calc(l * .35)),
 							color-mix(
 								in srgb,
-								var(--color-iron) 80%,
+								var(--color-dark-grey) 80%,
 								white
 							)
 						)

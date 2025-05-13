@@ -12,7 +12,7 @@ header {
 	&::before {
 		content: "";
 		display: block;
-		background-color: hsl(from var(--color-iron) h s l / .2);
+		background-color: hsl(from var(--color-dark-grey) h s l / .2);
 		@include full-offset(screen, $p: fixed);
 	}
 }
@@ -48,13 +48,13 @@ main {
 		text-: hsl(from white h s l / .4);
 		text-underline-offset: 5px;
 		&:hover, &:focus {
-			background-color: hsl(from var(--color-iron) h s l / .5);
+			background-color: hsl(from var(--color-dark-grey) h s l / .5);
 		}
 		&:focus-visible {
 			@include focus-shadow(hsl(from white h s l / .8));
 		}
 		&:active {
-			background-color: var(--color-iron);
+			background-color: var(--color-dark-grey);
 		}
 	}
 }
@@ -63,7 +63,7 @@ main {
 	opacity: 1;
 	a {
 		span {
-			background-color: var(--color-iron);
+			background-color: var(--color-dark-grey);
 		}
 		&:hover, &:focus {
 			span {
@@ -72,11 +72,11 @@ main {
 		}
 		&:active {
 			span {
-				background-color: hsl(from var(--color-iron) h s calc(l * .35));
+				background-color: hsl(from var(--color-dark-grey) h s calc(l * .35));
 			}
 		}
 	}
 	.copyright {
-		color: var(--color-iron);
+		color: var(--color-dark-grey);
 	}
 }

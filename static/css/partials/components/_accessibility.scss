@@ -44,7 +44,7 @@ $tones: pink, blue, yellow;
 		}
 	}
 	.popup-label::after, .popup-window .inside {
-		@include blur(10px, var(--color-iron), .45, .9, .8);
+		@include blur(10px, var(--color-dark-grey), .45, .9, .8);
 	}
 	.popup-label {
 		pointer-events: none;
@@ -156,7 +156,7 @@ $tones: pink, blue, yellow;
 				--background-active: color-mix(
 					in srgb,
 					var(--color-marzipan),
-					var(--color-tigress)
+					var(--color-sienna)
 				);
 			}
 		}

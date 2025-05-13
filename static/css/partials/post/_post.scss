@@ -48,7 +48,7 @@
 			var(--color-primary),
 			color-mix(
 				in srgb,
-				var(--color-iron) 5%,
+				var(--color-dark-grey) 5%,
 				white
 			)
 		);
@@ -139,7 +139,7 @@
 		&.time-default {
 			position: relative;
 			color: white;
-			background-color: hsl(from var(--color-iron) h s calc(l * .95) / .75);
+			background-color: hsl(from var(--color-dark-grey) h s calc(l * .95) / .75);
 			text-transform: uppercase;
 			line-height: 1.15;
 			@include font-weight-width(600, 90);
@@ -173,7 +173,7 @@
 				}
 				&::after {
 					z-index: -1;
-					background-color: var(--color-iron);
+					background-color: var(--color-dark-grey);
 					@include full-offset(0);
 					@include clip-path(false) {
 						@include border-radius(calc(var(--p)/2));
@@ -250,19 +250,19 @@
 			&:active {
 				@include gradient-text(
 					light-dark(
-						hsl(from var(--color-iron) h s calc(l * .95)),
+						hsl(from var(--color-dark-grey) h s calc(l * .95)),
 						var(--color-grey)
 					),
 					light-dark(
-						hsl(from var(--color-iron) h s calc(l * .35)),
+						hsl(from var(--color-dark-grey) h s calc(l * .35)),
 						color-mix(
 							in srgb,
-							var(--color-iron) 80%,
+							var(--color-dark-grey) 80%,
 							white
 						)
 					),
 					light-dark(
-						hsl(from var(--color-iron) h s calc(l * .95) / .5),
+						hsl(from var(--color-dark-grey) h s calc(l * .95) / .5),
 						hsl(from var(--color-grey) h s l / .5)
 					)
 				);
@@ -380,8 +380,8 @@
 	pre {
 		padding: calc(var(--p)*1.5) calc(var(--p)*2);
 		background-color: light-dark(
-			var(--color-iron),
-			hsl(from var(--color-iron) h s calc(l * .55))
+			var(--color-dark-grey),
+			hsl(from var(--color-dark-grey) h s calc(l * .55))
 		);
 		color: white;
 		font-size: 1rem;
@@ -548,7 +548,7 @@
 		height: var(--height);
 		background-color: light-dark(
 			hsl(from var(--color-primary) h s l / .1),
-			hsl(from var(--color-iron) h s calc(l * .45) / .5)
+			hsl(from var(--color-dark-grey) h s calc(l * .45) / .5)
 		);
 		line-height: 1.4;
 		@include font-weight-width(700, 115);

@@ -28,7 +28,7 @@
 			width: 100%;
 			min-height: 250px;
 			@include border-radius(3px);
-			@include blur(10px, var(--color-iron), .45, .9, .8);
+			@include blur(10px, var(--color-dark-grey), .45, .9, .8);
 		}
 		.header {
 			position: relative;
@@ -91,7 +91,7 @@
 		.about-content {
 			display: inline-block;
 			padding: 2px 4px;
-			background-color: hsl(from var(--color-iron) h s calc(l * .75));
+			background-color: hsl(from var(--color-dark-grey) h s calc(l * .75));
 			font-family: var(--font-mono);
 			font-size: .75rem;
 			line-height: 1.5;
@@ -165,7 +165,7 @@
 					@include focus-shadow;
 				}
 				&:active {
-					background-color: hsl(from var(--color-iron) h s calc(l * .45));
+					background-color: hsl(from var(--color-dark-grey) h s calc(l * .45));
 				}
 			}
 			a {

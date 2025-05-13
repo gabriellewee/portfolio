@@ -3,7 +3,7 @@
 .post-code {
 	.post-header.inline-header {
 		padding: calc(var(--p)*1.5) calc(var(--p)*2);
-		background-color: var(--color-iron);
+		background-color: var(--color-dark-grey);
 		color: white;
 		font-family: var(--font-mono);
 		font-size: 1rem;
@@ -266,7 +266,7 @@
 			padding: calc(var(--p)*2);
 			color: color-mix(
 				in srgb,
-				var(--color-iron) 70%,
+				var(--color-dark-grey) 70%,
 				white
 			);
 			font-weight: 600;
@@ -281,13 +281,13 @@
 			);
 			--outline: color-mix(
 				in srgb,
-				var(--color-iron) 60%,
+				var(--color-dark-grey) 60%,
 				white
 			);
-			--background-active: var(--color-iron) radial-gradient(
+			--background-active: var(--color-dark-grey) radial-gradient(
 				circle at center right,
-				hsl(from var(--color-iron) h s calc(l * .45)),
-				var(--color-iron)
+				hsl(from var(--color-dark-grey) h s calc(l * .45)),
+				var(--color-dark-grey)
 			);
 			--background-hover-position: 100%;
 

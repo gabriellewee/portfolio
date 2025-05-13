@@ -74,22 +74,22 @@
 			content: "";
 			display: block;
 			z-index: -1;
-			background: var(--background-active-color, light-dark(var(--color-iron), var(--color-grey)))
+			background: var(--background-active-color, light-dark(var(--color-dark-grey), var(--color-grey)))
 				var(--background-active-gradient, radial-gradient(
 					circle at center left,
 					light-dark(
 						color-mix(
 							in srgb,
-							var(--color-iron) 80%,
+							var(--color-dark-grey) 80%,
 							white
 						),
 						var(--color-grey)
 					),
 					light-dark(
-						var(--color-iron),
+						var(--color-dark-grey),
 						color-mix(
 							in srgb,
-							var(--color-iron) 80%,
+							var(--color-dark-grey) 80%,
 							white
 						)
 					)
@@ -149,17 +149,17 @@
 		--background-active-gradient: radial-gradient(
 			circle at center left,
 			light-dark(
-				var(--color-iron),
+				var(--color-dark-grey),
 				color-mix(
 					in srgb,
-					var(--color-iron) 80%,
+					var(--color-dark-grey) 80%,
 					white
 				)
 			),
 			light-dark(
 				color-mix(
 					in srgb,
-					var(--color-iron) 80%,
+					var(--color-dark-grey) 80%,
 					white
 				),
 				var(--color-grey)
@@ -177,14 +177,14 @@
 			> span {
 				background: color-mix(
 					in srgb,
-					var(--color-iron) 70%,
+					var(--color-dark-grey) 70%,
 					white
 				);
 			}
 		}
 		&:active {
 			> span {
-				background: hsl(from var(--color-iron) h s calc(l * .35));
+				background: hsl(from var(--color-dark-grey) h s calc(l * .35));
 			}
 		}
 	}
@@ -261,7 +261,7 @@ button.button-reduced-outer:active > .button-reduced {
 		scale: .98;
 	}
 	span {
-		background-color: var(--background-active, var(--color-iron));
+		background-color: var(--background-active, var(--color-dark-grey));
 	}
 }
 

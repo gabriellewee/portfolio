@@ -216,7 +216,7 @@
 	--width: 100%;
 	--min-width: var(--width-music);
 	--background-post: #F8F8FA;
-	--color-post: var(--color-iron);
+	--color-post: var(--color-dark-grey);
 	--background-contrast: var(--background-post);
 
 	@include viewport(medium) {
@@ -319,15 +319,15 @@
 			color: var(--color-primary);
 			background-color: light-dark(
 				hsl(from var(--color-primary) h s l / .1),
-				hsl(from var(--color-iron) h s calc(l * .55) / .4)
+				hsl(from var(--color-dark-grey) h s calc(l * .55) / .4)
 			);
 			@include clip-path-edges(2px);
 			@include contrast {
 				background-color: light-dark(
-					hsl(from var(--color-iron) h s l / .7),
+					hsl(from var(--color-dark-grey) h s l / .7),
 					color-mix(
 						in srgb,
-						var(--color-iron) 10%,
+						var(--color-dark-grey) 10%,
 						white
 					)
 				);
@@ -394,7 +394,7 @@
 }
 
 .post-full-bleed {
-	--color-post: var(--color-iron);
+	--color-post: var(--color-dark-grey);
 
 	.post-inner {
 		display: flex;
@@ -604,17 +604,17 @@
 	}
 	.expand {
 		transition: transform .2s ease-out;
-		box-shadow: 0 0 20px hsl(from var(--color-iron) h s l / .05);
+		box-shadow: 0 0 20px hsl(from var(--color-dark-grey) h s l / .05);
 		&::after {
 			@include before(var(--color-mix, color-mix(
 				in srgb,
-				var(--color-iron) 10%,
+				var(--color-dark-grey) 10%,
 				white
 			)), 1px, 2.5px, 1);
 			@include contrast {
 				--color-mix: light-dark(
 					var(--color-primary),
-					hsl(from var(--color-iron) h s calc(l * 4))
+					hsl(from var(--color-dark-grey) h s calc(l * 4))
 				);
 			}
 		}

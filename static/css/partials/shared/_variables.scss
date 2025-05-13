@@ -2,7 +2,6 @@
 @use 'partials/shared/utilities' as *;
 
 $iron: #263238;
-$thunder: #38262A;
 
 :root{
 	--p:12px;
@@ -13,7 +12,8 @@ $thunder: #38262A;
 
 	$colors: (
 		iron: $iron,
-		thunder: $thunder,
+		gunmetal: #2D2F39,
+		mushroom: #393736,
 
 		blush: #F5C8BF,
 		rose: #D19487,
@@ -26,7 +26,7 @@ $thunder: #38262A;
 		monsoon: #857292,
 
 		marzipan: #F2DAA0,
-		tigress: #E5844A,
+		sienna: #E5844A,
 		carmine: #E56465,
 		storm: #697C75,
 
@@ -88,13 +88,14 @@ $thunder: #38262A;
 	--color-middle:var(--color-rose);
 	--color-dark:var(--color-mauve);
 	--color-grey:var(--color-slate);
+	--color-dark-grey:var(--color-iron);
 
-	--color-primary:light-dark(color-mix(in srgb,var(--color-iron) 95%,white),color-mix(in srgb,var(--color-iron) 5%,white));
-	--color-secondary:light-dark(white,var(--color-iron));
+	--color-primary:light-dark(color-mix(in srgb,var(--color-dark-grey) 95%,white),color-mix(in srgb,var(--color-dark-grey) 5%,white));
+	--color-secondary:light-dark(white,var(--color-dark-grey));
 }
 
 @include contrast(true) {
-	--color-primary:light-dark(hsl(from var(--color-iron) h s calc(l*.15)),white);
+	--color-primary:light-dark(hsl(from var(--color-dark-grey) h s calc(l*.15)),white);
 }
 
 @include tone(blue, true) {
@@ -102,6 +103,7 @@ $thunder: #38262A;
 	--color-middle:var(--color-glacier);
 	--color-dark:var(--color-marine);
 	--color-grey:var(--color-monsoon);
+	--color-dark-grey:var(--color-gunmetal);
 
 	$colors: (
 		music: color.adjust(#fa2d48,$lightness:-5%),
@@ -115,9 +117,10 @@ $thunder: #38262A;
 
 @include tone(yellow, true) {
 	--color-light:var(--color-marzipan);
-	--color-middle:var(--color-tigress);
+	--color-middle:var(--color-sienna);
 	--color-dark:var(--color-carmine); 
 	--color-grey:var(--color-storm);
+	--color-dark-grey:var(--color-mushroom);
 
 	$colors: (
 		imessage: color.adjust(#0d84ff,$lightness:-5%)

@@ -123,7 +123,7 @@
 	.button-reduced {
 		--background: color-mix(
 			in srgb,
-			var(--color-iron) 40%,
+			var(--color-dark-grey) 40%,
 			var(--color-grey)
 		);
 		--background-hover: color-mix(
@@ -131,7 +131,7 @@
 			hsl(from var(--color-grey) h calc(s * .3) l) 30%,
 			var(--color-dark)
 		);
-		--background-active: light-dark(var(--color-iron),var(--background-body));
+		--background-active: light-dark(var(--color-dark-grey),var(--background-body));
 		@include font-weight-width(500, 115);
 
 		&.current span {
@@ -198,15 +198,15 @@
 .post-features {
 	.link-tile {
 		--active-color: var(--color-grey);
-		--background: light-dark(white, var(--color-iron)) linear-gradient(
+		--background: light-dark(white, var(--color-dark-grey)) linear-gradient(
 			135deg,
 			hsl(from var(--color-dark) h s l / .15),
 			hsl(from color-mix(in srgb, var(--color-dark), var(--color-grey)) h s l / .15)
 		);
-		--active-background: light-dark(white, var(--color-iron)) linear-gradient(
+		--active-background: light-dark(white, var(--color-dark-grey)) linear-gradient(
 			135deg,
 			hsl(from var(--color-grey) h s l / .15),
-			hsl(from var(--color-iron) h s l / .15)
+			hsl(from var(--color-dark-grey) h s l / .15)
 		);
 
 		@include contrast {
@@ -214,7 +214,7 @@
 				color-mix(
 					in srgb,
 					var(--color-dark) 80%,
-					var(--color-iron)
+					var(--color-dark-grey)
 				),
 				color-mix(
 					in srgb,

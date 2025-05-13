@@ -43,10 +43,10 @@
 		padding: calc(var(--p)*.75) calc(var(--p)*1.5);
 		border-radius: 2em;
 		line-height: 1.4;
-		color: var(--color, light-dark(var(--color-iron), white));
+		color: var(--color, light-dark(var(--color-dark-grey), white));
 		background-color: var(--background, light-dark(
 			hsl(from white h s l / .8),
-			hsl(from var(--color-iron) h s l / .8)
+			hsl(from var(--color-dark-grey) h s l / .8)
 		));
 		@include font-weight-width(600, 115);
 		@include contrast {
@@ -63,7 +63,7 @@
 		&.loading {
 			--color: color-mix(
 				in srgb,
-				var(--color-iron),
+				var(--color-dark-grey),
 				white
 			);
 			position: absolute;

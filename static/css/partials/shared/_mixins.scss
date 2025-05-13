@@ -38,7 +38,7 @@
 		}
 	}
 	&::after {
-		--gradient-color: var(--background, hsl(from var(--color-iron) h s calc(l * .45)));
+		--gradient-color: var(--background, hsl(from var(--color-dark-grey) h s calc(l * .45)));
 		z-index: 2;
 		background: radial-gradient(
 			farthest-corner at var(--position),
@@ -119,17 +119,17 @@
 	--background-active: var(--background-active-color) radial-gradient(
 		circle at center left,
 		light-dark(
-			var(--color-iron),
+			var(--color-dark-grey),
 			color-mix(
 				in srgb,
-				var(--color-iron) 80%,
+				var(--color-dark-grey) 80%,
 				white
 			)
 		),
 		light-dark(
 			color-mix(
 				in srgb,
-				var(--color-iron) 80%,
+				var(--color-dark-grey) 80%,
 				white
 			),
 			var(--color-grey)

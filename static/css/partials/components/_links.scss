@@ -7,11 +7,11 @@
 		margin-bottom: calc(var(--p)/3);
 		padding-inline: calc(var(--p)/2);
 		background-color: light-dark(
-			hsl(from var(--color-iron) h s l / .1),
-			hsl(from var(--color-iron) h s calc(l * .55) / .4)
+			hsl(from var(--color-dark-grey) h s l / .1),
+			hsl(from var(--color-dark-grey) h s calc(l * .55) / .4)
 		);
 		color: light-dark(
-			hsl(from var(--color-iron) h s l / .7),
+			hsl(from var(--color-dark-grey) h s l / .7),
 			hsl(from white h s l / .8)
 		);
 		font-size: .875rem;
@@ -45,10 +45,10 @@
 				background-color: light-dark(
 					color-mix(
 						in srgb,
-						var(--color-iron) 10%,
+						var(--color-dark-grey) 10%,
 						white
 					),
-					hsl(from var(--color-iron) h s l / .7)
+					hsl(from var(--color-dark-grey) h s l / .7)
 				);
 				@include full-offset(0);
 				@include clip-path-edges(2px);
@@ -70,13 +70,13 @@
 	--background: light-dark(
 		color-mix(
 			in srgb,
-			hsl(from var(--color-iron) h s calc(l * .55)) 7.5%,
+			hsl(from var(--color-dark-grey) h s calc(l * .55)) 7.5%,
 			white
 		),
 		color-mix(
 			in srgb,
-			hsl(from var(--color-iron) h s calc(l * .55)) 27.5%,
-			var(--color-iron)
+			hsl(from var(--color-dark-grey) h s calc(l * .55)) 27.5%,
+			var(--color-dark-grey)
 		)
 	);
 
@@ -155,7 +155,7 @@
 		--background: var(--active-background, light-dark(
 			color-mix(
 				in srgb,
-				hsl(from var(--color-iron) h s calc(l * .55)) 20%,
+				hsl(from var(--color-dark-grey) h s calc(l * .55)) 20%,
 				white
 			),
 			var(--background-body)
