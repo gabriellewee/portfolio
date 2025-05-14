@@ -38,11 +38,11 @@
 		}
 	}
 	&::after {
-		--gradient-color: var(--background, hsl(from var(--color-dark-grey) h s calc(l * .45)));
+		--gradient-color: var(--background, hsl(from var(--color-dark-grey) h s calc(l * 0.8)));
 		z-index: 2;
 		background: radial-gradient(
 			farthest-corner at var(--position),
-			hsl(from var(--gradient-color) h s l / 1) 0,
+			hsl(from var(--gradient-color) h s l / 0.8) 0,
 			hsl(from var(--gradient-color) h s l / 0) calc(($width + $padding)*3)
 		);
 		mix-blend-mode: var(--blend-mode, multiply);

@@ -46,13 +46,15 @@ export const findExtension = (src) => {
 
 export const stats = async (src, type, value) => {
 	try {
+		const defaultColor = "var(--color-dark-grey)";
+		const defaultTheme = "dark";
 		const isProd = process.env.ELEVENTY_ENV === "production";
 		if (!isProd && type === "average") {
-			return "hsl(0 0% 0% / 0)";
+			return defaultColor;
 		} else if (!isProd && type === "both") {
-			return { theme: "dark", average: "hsl(0 0% 0% / 0)" };
+			return { theme: defaultTheme, average: defaultColor };
 		} else if (!isProd && type === "theme") {
-			return "dark";
+			return defaultTheme;
 		}
 
 		const image = src.startsWith("https://") ? await fetchImageBuffer(src) : src;
@@ -84,7 +86,7 @@ export const stats = async (src, type, value) => {
 
 		const getAverage = async () => {
 			const stats = await sharpImage.toColourspace("rgb").stats();
-			if (!stats.channels || stats.channels.length < 1) return "hsl(0 0% 0% / 0)";
+			if (!stats.channels || stats.channels.length < 1) return defaultColor;
 
 			if (stats.channels.length === 1) {
 				const gray = Math.round(normalize(stats.channels[0].mean));
@@ -126,7 +128,7 @@ export const stats = async (src, type, value) => {
 		}
 	} catch (error) {
 		console.error("IMAGE:", src, "\n", error, "\n");
-		return type === "average" ? "hsl(0 0% 0% / 0)" : type === "theme" ? "dark" : undefined;
+		return type === "average" ? defaultColor : type === "theme" ? defaultTheme : undefined;
 	}
 };
 
