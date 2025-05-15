@@ -42,7 +42,7 @@
 		<meta property="og:image" content="{{site.url}}/static/images/og/{{key}}.jpg">
 	{% elseif og == "image" %}
 		<meta property="og:image" content="{% ogPhoto './static/images/' + key + '/' + page.fileSlug + '.jpg' %}">
-	{% elseif og and og !== false %}
+	{% elseif og != false %}
 		<meta property="og:image" content="{{site.url}}/static/images/og/{{og}}.jpg">
 	{% else %}
 		<meta property="og:image" content="{{site.url}}/static/images/og/default.jpg">
@@ -80,30 +80,14 @@
 	{% endif %}
 </head>
 <body class="{% if key %}page-{{key}}{% endif %}{% if pagination.pageNumber == 0 %} page-index{% endif %}{% if filters %} page-filters{% endif %}">
-	{% if blank != true %}{% include 'pages/shared/header.html' %}{% endif %}
+	{% if (blank != true) or (header != false) %}{% include 'pages/shared/header.html' %}{% endif %}
 
 	<main class="main">
 		{% block content %}{{content|safe}}{% endblock %}
 	</main>
 
 	{% if blank != true %}
-		<footer class="bottom" aria-label="Footer" data-anim>
-			<nav aria-label="Site links">
-				<menu class="button-reduced-group">
-					{% for link in collections.pages | eleventyNavigation %}
-						{% if link.footer == true %}
-							<li><a class="button-reduced{% if link.url == page.url %} current{% endif %}" href="{{link.url|url}}"{% if link.url == page.url %} tabindex="-1"{% endif %}><span>{{link.title}}</span></a></li>
-						{% endif %}
-					{% endfor %}
-					{% if (key == "home" and pagination.pageNumber == 0) or (key == "about") or (key == "me") %}{% else %}
-						<li><a class="button-reduced" href="mailto:mail@gabriellew.ee"><span>Email</span></a></li>
-					{% endif %}
-				</menu>
-				<p class="copyright button-reduced">
-					<span>&copy; {{site.author}} {% copyright 'start' %}–{% copyright 'current' %}</span>
-				</p>
-			</nav>
-		</footer>
+		{% if footer != false %}{% include 'pages/shared/footer.html' %}{% endif %}
 
 		<script src="{{'/static/js/lib/luxon.min.js'|url}}"></script>
 		<script src="{{'/static/js/lib/gsap/gsap.min.js'|url}}"></script>

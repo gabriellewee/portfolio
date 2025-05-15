@@ -162,11 +162,13 @@
 			"links": [
 				{
 					"name": "email",
+					"resume": "mail@gabriellew.ee",
 					"url": "mailto:mail@gabriellew.ee",
 					"theme": true
 				},
 				{
 					"name": "text",
+					"resume": "(510) 214-2241",
 					"url": "sms:5102142241",
 					"theme": true
 				},

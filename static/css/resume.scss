@@ -1,0 +1,237 @@
+@use 'partials/shared/utilities' as *;
+@use 'partials/post/post';
+
+body {
+	--background-resume: light-dark(
+		white,
+		hsl(from var(--color-dark-grey) h s calc(l * .73))
+	);
+	--color-resume: color-mix(in srgb,var(--color-dark-grey) 5%, white);
+	--background-body: var(--background-resume);
+	--color-primary: light-dark(
+		var(--color-dark-grey),
+		var(--color-resume)
+	);
+	--highlight: light-dark(
+		var(--color-resume),
+		color-mix(in srgb,var(--color-dark-grey) 95%, white)
+	);
+	@include contrast {
+		--background-body: var(--background-resume);
+	}
+	@media print {
+		--background-body: white;
+		--color-primary: var(--color-dark-grey);
+		--highlight:var(--color-resume);
+
+		print-color-adjust: exact;
+	}
+}
+
+ul, menu {
+	display: grid;
+	gap: calc(var(--p) * 2);
+	list-style: none;
+}
+
+header.top, .content {
+	--width: 50rem;
+
+	@media print {
+		--width: unset;
+		margin-inline: unset;
+		padding-inline: unset;
+	}
+}
+header.top {
+	@media print {
+		padding-top: unset;
+	}
+}
+.avatar-link {
+	--background: var(--highlight);
+	--width: 64px;
+	--height: 64px;
+
+	a, .avatar {
+		border-radius: 100%;
+	}
+	.avatar-default, .avatar-hm {
+		@include background-image(avatars/headshot, jpg);
+	}
+	.text {
+		@include contrast {
+			outline: unset;
+		}
+	}
+}
+.content {
+	padding-left: calc(var(--p)*2 + env(safe-area-inset-left));
+	padding-right: calc(var(--p)*2 + env(safe-area-inset-right));
+}
+
+.post {
+	--background-post: unset;
+	--background-contrast: unset;
+	@include contrast {
+		--background-outline: unset;
+	}
+}
+.post-resume {
+	h2 {
+		@include font-weight-width(800, 120);
+		font-size: 1.5rem;
+	}
+
+	ul {
+		margin-block: calc(var(--p) * 2);
+		@include viewport(medium) {
+			margin-block: var(--p);
+		}
+	}
+	li {
+		list-style: none;
+	}
+}
+
+.post-contact {
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+	}
+}
+
+.link-item, .resume-item {
+	--color: var(--color-primary);
+
+	* {
+		color: var(--color);
+	}
+
+	h3, a, button {
+		font-size: 1.125rem;
+		line-height: 1.25;
+		@include font-weight-width(600, 110);
+	}
+	a, button {
+		text-decoration: unset;
+		&:active {
+			--color: light-dark(
+				hsl(from var(--color-dark-grey) h s calc(l * .5)),
+				color-mix(in srgb,var(--color-dark-grey) 25%, white)
+			);
+		}
+		&:hover, &:focus, &:active {
+			span {
+				text-decoration: underline;
+				text-underline-offset: 2px;
+			}
+		}
+	}
+
+	.date {
+		opacity: 0.6;
+		margin-bottom: calc(var(--p)/2);
+		width: 90px;
+
+		@include viewport(medium) {
+			margin-top: 2px;
+		}
+	}
+
+	.description {
+		h3 {
+			margin-bottom: calc(var(--p)/2);
+		}
+	}
+}
+
+.link-item {
+	a, button {
+		appearance: none;
+		display: block;
+		width: fit-content;
+		opacity: 0.8;
+		margin: 0;
+		padding: 0;
+		background: none;
+		border: 0;
+		cursor: pointer;
+
+		> span {
+			display: block;
+			padding: var(--p) calc(var(--p)*2.5);
+			background-color: var(--highlight);
+			@include button-shape(1.3125, 6%, 2.5px);
+		}
+
+		&:hover, &:focus {
+			--highlight: #F22635;
+			--color: white;
+		}
+
+		&:active {
+			--highlight: light-dark(
+				var(--color-dark-grey),
+				hsl(from var(--color-dark-grey) h s calc(l * .5))
+			);
+		}
+	}
+}
+
+.resume-item {
+	@include viewport(medium) {
+		display: flex;
+		gap: calc(var(--p) * 2);
+	}
+
+	a {
+		&::after {
+			content: "\2197";
+			margin-left: calc(var(--p)/3);
+		}
+	}
+	p {
+		opacity: 0.8;
+		font-size: .875rem;
+		font-weight: 500;
+		line-height: 1.2;
+
+		+ p {
+			margin-top: calc(var(--p)/3);
+		}
+	}
+}
+
+.footer-links {
+	margin-top: calc(var(--p) * 3);
+	margin-bottom: calc(var(--p) * 2);
+	@media print {
+		display: none;
+	}
+	menu {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.button-icon {
+		span {
+			display: flex;
+			align-items: center;
+			&::before {
+				margin-right: calc(var(--p)/2);
+			}
+		}
+	}
+	.print {
+		--icon: url(/static/images/svg/icons/print.svg);
+	}
+	.download {
+		--icon: url(/static/images/svg/icons/document-arrow-down.svg);
+	}
+	.linkedin {
+		--icon: url(/static/images/svg/icons/figures.svg);
+	}
+	.card {
+		--icon: url(/static/images/svg/icons/card.svg);
+	}
+}

@@ -45,7 +45,7 @@
 			"end": 2016,
 			"type": "Bachelor of Applied Science",
 			"major": "Game Art and Design",
-			"school": "SAE Ex’pression College",
+			"school": "SAE Ex’pression College",
 			"location": "Emeryville, CA"
 		}
 	],
@@ -54,18 +54,38 @@
 			"start": 2013,
 			"end": 2016,
 			"title": "Graphic Designer",
-			"organization": "Chinese Independent Baptist Church",
+			"organization": "Chinese Independent Baptist Church",
 			"location": "Oakland, CA"
 		}
 	],
 	"links": [
 		{
-			"title": "View read.cv profile",
-			"url": "https://read.cv/gabrielle"
+			"title": "View resume",
+			"url": "/resume/"
 		},
 		{
 			"title": "View LinkedIn profile",
 			"url": "https://www.linkedin.com/in/gabriellewee/"
+		}
+	],
+	"actions": [
+		{
+			"title": "Print",
+			"element": "button",
+			"function": "onClick='window.print()'"
+		},
+		{
+			"title": "Download",
+			"url": "/static/pdf/resume.pdf"
+		},
+		{
+			"title": "LinkedIn",
+			"url": "https://www.linkedin.com/in/gabriellewee/"
+		},
+		{
+			"title": "Contact",
+			"class": "card",
+			"url": "/contact.vcf"
 		}
 	]
 }

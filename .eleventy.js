@@ -53,6 +53,7 @@ export default function (eleventyConfig) {
 		"static/fonts",
 		"static/css/fonts",
 		"static/images",
+		"static/pdf",
 		"static/code/images"
 	].forEach(path =>
 		eleventyConfig.addPassthroughCopy(path)

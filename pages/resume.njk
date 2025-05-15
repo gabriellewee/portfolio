@@ -1,0 +1,164 @@
+---
+title: Resume
+description: Resume for Gabrielle Wee, front-end developer and creative.
+message: Gabrielle Wee, front-end developer and creative.
+layout: layouts/page.njk
+og: false
+scripts: posts
+theme: '#ffffff'
+accessibility: false
+footer: false
+lightbox: false
+hidden: true
+tags: pages
+eleventyNavigation:
+    key: Resume
+    order: 6
+---
+
+<section class="content">
+	<div class="posts">
+		<article class="post post-resume post-contact">
+			<div class="post-inner" data-anim>
+				<header class="post-header">
+					<h2>Contact</h2>
+				</header>
+				<div class="post-content">
+					<ul>
+						<li>
+							<div class="link-item">
+								<a href="{{site.url}}"><span>{{site.url}}</span></a>
+							</div>
+						</li>
+						{% for type in site.links %}{% if type.name == "messaging" %}{% for link in type.links %}{% if link.resume %}
+							<li>
+								<div class="link-item">
+									<a href="{{link.url}}"><span>{{link.resume}}</span></a>
+								</div>
+							</li>
+						{% endif %}{% endfor %}{% endif %}{% endfor %}
+					</ul>
+				</div>
+			</div>
+			<hr class="no-css"/>
+		</article>
+
+		<article class="post post-resume post-experience">
+			<div class="post-inner" data-anim>
+				<header class="post-header">
+					<h2>Experience</h2>
+				</header>
+				<div class="post-content">
+					<ul>
+						{% for job in about.resume.experience %}
+							{% set titleTemplate %}
+								{{job.title}}{% if job.company %} at {{job.company}}{% endif %}
+							{% endset %}
+							<li>
+								<div class="resume-item">
+									<div class="date">
+										<p>{{job.start}} — {% if job.end%}{{job.end}}{% else %}Now{% endif %}</p>
+									</div>
+									<div class="description">
+										<h3>
+											{% if job.website %}
+												<a href="{{job.website}}"><span>{{titleTemplate}}</span></a>
+											{% else %}
+												{{titleTemplate}}
+											{% endif %}
+										</h3>
+										<p>{{job.location}}</p>
+									</div>
+								</div>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+			<hr class="no-css"/>
+		</article>
+
+		<article class="post post-resume post-education">
+			<div class="post-inner" data-anim>
+				<header class="post-header">
+					<h2>Education</h2>
+				</header>
+				<div class="post-content">
+					<ul>
+						{% for degree in about.resume.education %}
+							<li>
+								{% set titleTemplate %}
+									{{degree.type}} at {{degree.school}}
+								{% endset %}
+								<div class="resume-item">
+									<div class="date">
+										<p>{{degree.start}} — {{degree.end}}</p>
+									</div>
+									<div class="description">
+										<h3>
+											{% if role.website %}
+												<a href="{{role.website}}"><span>{{titleTemplate}}</span></a>
+											{% else %}
+												{{titleTemplate}}
+											{% endif %}
+										</h3>
+										<p>{{degree.major}}</p>
+										<p>{{degree.location}}</p>
+									</div>
+								</div>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+			<hr class="no-css"/>
+		</article>
+
+		<article class="post post-resume post-volunteering">
+			<div class="post-inner" data-anim>
+				<header class="post-header">
+					<h2>Volunteering</h2>
+				</header>
+				<div class="post-content">
+					<ul class="grid">
+						{% for role in about.resume.volunteering %}
+							{% set titleTemplate %}
+								{{role.title}}{% if role.organization %} at {{role.organization}}{% endif %}
+							{% endset %}
+							<li>
+								<div class="resume-item">
+									<div class="date">
+										<p>{{role.start}} — {{role.end}}</p>
+									</div>
+									<div class="description">
+										<h3>
+											{% if role.website %}
+												<a href="{{role.website}}"><span>{{titleTemplate}}</span></a>
+											{% else %}
+												{{titleTemplate}}
+											{% endif %}
+										</h3>
+										<p>{{role.location}}</p>
+									</div>
+								</div>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+			<hr class="no-css"/>
+		</article>
+	</div>
+
+	<footer class="footer-links" aria-label="Links" data-anim>
+		<menu>
+			{% for action in about.resume.actions %}
+				<li>
+					<div class="link-item">
+						<{% if action.element %}{{action.element}}{% else %}a{% endif %} class="{% if action.class %}{{action.class}}{% else %}{{action.title.toLowerCase()}}{% endif %} button-icon" {% if action.function %}{{action.function}}{% else %}href="{{action.url}}"{% endif %}><span>{{action.title}}</span></{% if action.element %}{{action.element}}{% else %}a{% endif %}>
+					</div>
+				</li>
+			{% endfor %}
+		</menu>
+	</footer>
+</section>

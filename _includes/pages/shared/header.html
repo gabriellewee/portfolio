@@ -28,7 +28,7 @@
 			{% endif %}
 		</div>
 
-		{% include 'pages/home/accessibility.html' %}
+		{% if accessibility != false %}{% include 'pages/home/accessibility.html' %}{% endif %}
 	</div>
 
 	{% if (key == "home") and (pagination.pageNumber == 0) %}

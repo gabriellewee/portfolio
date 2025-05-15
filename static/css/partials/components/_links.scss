@@ -119,7 +119,7 @@
 	}
 
 	&, * {
-		color: var(--color, var(--primary));
+		color: var(--color, var(--color-primary));
 	}
 	h3 {
 		display: block;

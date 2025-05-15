@@ -80,7 +80,7 @@
 			pointer-events: none;
 			position: absolute;
 			top: 50%;
-			left: calc(var(--p)*5);
+			left: calc(var(--width) + var(--p));
 			z-index: 2;
 			@media (prefers-reduced-motion: no-preference) {
 				translate: 0 50%;
