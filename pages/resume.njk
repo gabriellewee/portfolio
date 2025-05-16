@@ -154,8 +154,8 @@ eleventyNavigation:
 		<menu>
 			{% for action in about.resume.actions %}
 				<li>
-					<div class="link-item">
-						<{% if action.element %}{{action.element}}{% else %}a{% endif %} class="{% if action.class %}{{action.class}}{% else %}{{action.title.toLowerCase()}}{% endif %} button-icon" {% if action.function %}{{action.function}}{% else %}href="{{action.url}}"{% endif %}><span>{{action.title}}</span></{% if action.element %}{{action.element}}{% else %}a{% endif %}>
+					<div class="link-item footer-item">
+						<{% if action.element %}{{action.element}}{% else %}a{% endif %} class="{% if action.class %}{{action.class}}{% else %}{{action.title.toLowerCase()}}{% endif %}" {% if action.function %}{{action.function}}{% else %}href="{{action.url}}"{% endif %}><span>{{action.title}}</span></{% if action.element %}{{action.element}}{% else %}a{% endif %}>
 					</div>
 				</li>
 			{% endfor %}

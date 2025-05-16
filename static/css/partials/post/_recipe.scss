@@ -151,7 +151,7 @@
 		}
 	}
 
-	.button {
+	.button:not(.solid) {
 		@include recipe-button;
 	}
 

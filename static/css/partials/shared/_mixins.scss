@@ -18,7 +18,8 @@
 	&::before {
 		position: absolute;
 		z-index: 3;
-		background: url(/static/images/svg/icons/#{$icon}.svg) no-repeat center / contain;
+		background-color: white;
+		mask: url(/static/images/svg/icons/#{$icon}.svg) center / contain no-repeat;
 		width: $width;
 		height: $height;
 		@if $touch {
@@ -52,7 +53,7 @@
 
 @mixin icon-invert {
 	&::before {
-		filter: invert(1);
+		background-color: var(--color-dark-grey);
 	}
 }
 
@@ -104,15 +105,13 @@
 	);
 	--outline: radial-gradient(
 		circle at center left,
-		color-mix(
-			in srgb,
-			white 60%,
-			var(--color-mint)
+		light-dark(
+			color-mix(in srgb, white 40%, var(--color-dark-grey)),
+			color-mix(in srgb, white 60%, var(--color-mint))
 		),
-		color-mix(
-			in srgb,
-			white 90%,
-			var(--color-mint)
+		light-dark(
+			color-mix(in srgb, white 20%, var(--color-dark-grey)),
+			color-mix(in srgb, white 90%, var(--color-mint))
 		)
 	);
 	--background-hover-position: 100%;

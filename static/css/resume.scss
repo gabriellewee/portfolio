@@ -213,25 +213,28 @@ header.top {
 		display: flex;
 		flex-wrap: wrap;
 	}
-	.button-icon {
+	.footer-item {
 		span {
 			display: flex;
 			align-items: center;
 			&::before {
+				content: "";
+				display: block;
 				margin-right: calc(var(--p)/2);
+				background-color: var(--color);
+				@include square(24px);
 			}
 		}
-	}
-	.print {
-		--icon: url(/static/images/svg/icons/print.svg);
-	}
-	.download {
-		--icon: url(/static/images/svg/icons/document-arrow-down.svg);
-	}
-	.linkedin {
-		--icon: url(/static/images/svg/icons/figures.svg);
-	}
-	.card {
-		--icon: url(/static/images/svg/icons/card.svg);
+		$actions: (
+			"print": "print",
+			"download": "document-arrow-down",
+			"linkedin": "figures",
+			"card": "card"
+		);
+		@each $action, $icon in $actions {
+			.#{$action} span::before {
+				mask: url(/static/images/svg/icons/#{$icon}.svg) center / contain no-repeat;
+			}
+		}
 	}
 }

@@ -78,20 +78,12 @@
 				var(--background-active-gradient, radial-gradient(
 					circle at center left,
 					light-dark(
-						color-mix(
-							in srgb,
-							var(--color-dark-grey) 80%,
-							white
-						),
+						color-mix(in srgb, var(--color-dark-grey) 80%, white),
 						var(--color-grey)
 					),
 					light-dark(
 						var(--color-dark-grey),
-						color-mix(
-							in srgb,
-							var(--color-dark-grey) 80%,
-							white
-						)
+						color-mix(in srgb, var(--color-dark-grey) 80%, white)
 					)
 				)
 			);
@@ -150,18 +142,10 @@
 			circle at center left,
 			light-dark(
 				var(--color-dark-grey),
-				color-mix(
-					in srgb,
-					var(--color-dark-grey) 80%,
-					white
-				)
+				color-mix(in srgb, var(--color-dark-grey) 80%, white)
 			),
 			light-dark(
-				color-mix(
-					in srgb,
-					var(--color-dark-grey) 80%,
-					white
-				),
+				color-mix(in srgb, var(--color-dark-grey) 80%, white),
 				var(--color-grey)
 			)
 		);
@@ -174,12 +158,9 @@
 			}
 		}
 		&:hover, &:focus {
+			--outline: color-mix(in srgb, var(--background), white);
 			> span {
-				background: color-mix(
-					in srgb,
-					var(--color-dark-grey) 70%,
-					white
-				);
+				background: color-mix(in srgb, var(--color-dark-grey) 70%, white);
 			}
 		}
 		&:active {

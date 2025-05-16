@@ -175,7 +175,7 @@
 			top: 0;
 			right: 0;
 			@include square(40px + 18px + 8px);
-			background: url(/static/images/svg/icons/caret-down.svg) no-repeat center / 21px;
+			background: url(/static/images/svg/icons/caret-down.svg) center / 21px no-repeat;
 		}
 		.media-thumbnail {
 			display: flex;
@@ -208,7 +208,7 @@
 					&::before {
 						content: "";
 						display: inline-block;
-						background: url(/static/images/svg/icons/expand.svg) no-repeat center / contain;
+						background: url(/static/images/svg/icons/expand.svg) center / contain no-repeat;
 						margin-right: calc(var(--p) * .75);
 						@include square(23px);
 					}
@@ -397,19 +397,13 @@
 				}
 			}
 
-			&.instagram {
-				&::before {
-					background: url("/static/images/svg/icons/instagram.svg") no-repeat center / 25px;
-				}
-			}
-			&.dribbble {
-				&::before {
-					background: url("/static/images/svg/icons/dribbble.svg") no-repeat center / 25px;
-				}
-			}
-			&.codepen {
-				&::before {
-					background: url("/static/images/svg/icons/codepen.svg") no-repeat center / 25px;
+			$platforms: instagram, dribbble, codepen;
+
+			@each $platform in $platforms {
+				&.#{$platform} {
+					&::before {
+						background: url("/static/images/svg/icons/#{$platform}.svg") no-repeat center / 25px;
+					}
 				}
 			}
 		}

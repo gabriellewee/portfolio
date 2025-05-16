@@ -307,7 +307,7 @@
 			height: 23px;
 			margin-top: 3px;
 			background-color: var(--color-primary);
-			mask: url(/static/images/svg/icons/hash.svg) no-repeat center / contain;
+			mask: url(/static/images/svg/icons/hash.svg) center / contain no-repeat;
 		}
 	}
 
@@ -406,7 +406,7 @@
 				display: block;
 				width: 100%;
 				height: 100%;
-				background: center / contain no-repeat url(/static/images/svg/icons/clipboard.svg);
+				background: url(/static/images/svg/icons/clipboard.svg) center / contain no-repeat;
 				&::before, &::after {
 					display: none;
 				}
@@ -658,12 +658,12 @@
 	}
 }
 
-.button-notion {
-	--icon: url(/static/images/svg/social/notion.svg);
-}
+$platforms: notion, medium, bluesky, threads, mastodon;
 
-.button-medium {
-	--icon: url(/static/images/svg/social/medium.svg);
+@each $platform in $platforms {
+	.button-#{$platform} {
+		--icon: url(/static/images/svg/social/#{$platform}.svg);
+	}
 }
 
 .button-bluesky {
@@ -673,7 +673,11 @@
 		var(--color-bluesky-dark),
 		hsl(from var(--color-bluesky-dark) h s calc(l*.5))
 	);
-	--icon: url(/static/images/svg/social/bluesky.svg);
+	--outline: radial-gradient(
+		circle at center left,
+		hsl(from var(--color-bluesky-link-light) h s calc(l * 1.2)),
+		var(--color-bluesky-link-light)
+	);
 }
 
 .button-threads {
@@ -683,7 +687,11 @@
 		var(--color-instagram-middle),
 		var(--color-instagram-end)
 	);
-	--icon: url(/static/images/svg/social/threads.svg);
+	--outline: radial-gradient(
+		circle at center left,
+		hsl(from var(--color-instagram-start) h s calc(l * 1.3)),
+		var(--color-instagram-start)
+	);
 }
 
 .button-mastodon {
@@ -696,12 +704,7 @@
 	);
 	--outline: radial-gradient(
 		circle at center left,
-		color-mix(
-			in srgb,
-			var(--color-mastodon),
-			white
-		),
+		hsl(from var(--color-mastodon-light) h s calc(l * 1.2)),
 		var(--color-mastodon-light)
 	);
-	--icon: url(/static/images/svg/social/mastodon.svg);
 }

@@ -80,7 +80,7 @@
 	{% endif %}
 </head>
 <body class="{% if key %}page-{{key}}{% endif %}{% if pagination.pageNumber == 0 %} page-index{% endif %}{% if filters %} page-filters{% endif %}">
-	{% if (blank != true) or (header != false) %}{% include 'pages/shared/header.html' %}{% endif %}
+	{% if blank != true %}{% if header != false %}{% include 'pages/shared/header.html' %}{% endif %}{% endif %}
 
 	<main class="main">
 		{% block content %}{{content|safe}}{% endblock %}
