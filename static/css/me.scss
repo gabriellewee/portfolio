@@ -1,5 +1,6 @@
 @use 'partials/shared/utilities' as *;
 @use 'partials/shared/mixins' as *;
+@use 'partials/components/thumbnail';
 @use 'partials/components/tooltip';
 @use 'partials/post/post';
 
@@ -64,38 +65,6 @@
 	grid-gap: calc(var(--p)*2);
 }
 
-.post-expand, .post-external:not(.button) {
-	transition: opacity .2s ease-out, scale .2s ease-out;
-	display: block;
-	position: relative;
-	&::before {
-		background: var(--outline, radial-gradient(
-			circle at center left,
-			var(--color-middle),
-			var(--color-dark)
-		));
-		@include before;
-	}
-	picture {
-		@include clip-path-edges(2px);
-	}
-	&:hover {
-		@media (prefers-reduced-motion: no-preference) {
-			scale: 1.02;
-		}
-	}
-	&:focus-visible {
-		&::before {
-			opacity: 1;
-		}
-	}
-	&:active {
-		@media (prefers-reduced-motion: no-preference) {
-			scale: 0.98;
-		}
-	}
-}
-
 .post-intro {
 	--width: 100%;
 	@include viewport(medium) {
@@ -158,54 +127,7 @@
 				display: block;
 			}
 		}
-	}
-
-	.post-external {
-		--highlight: color-mix(
-			in srgb,
-			var(--background-post),
-			hsl(from var(--color) h s calc(l *.4))
-		);
-
-		@include expand-hover(external, 23px, 23px, calc(var(--p)*1.25));
-
-		&.light, &.dark {
-			picture::after {
-				--gradient-color: var(--background);
-				top: calc(var(--p)/2);
-				left: calc(var(--p)/2);
-				width: calc(100% - var(--p)/2);
-				height: calc(100% - var(--p)/2);
-			}
-		}
-
-		&::after {
-			content: "";
-			display: block;
-			z-index: 0;
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: calc(100% - var(--p)/2);
-			height: calc(100% - var(--p)/2);
-			background-color: var(--highlight);
-		}
-
-		&::after, picture::after {
-			@include clip-path-edges(2px);
-		}
-
-		picture {
-			position: relative;
-			z-index: 1;
-			padding-top: calc(var(--p)/2);
-			padding-left: calc(var(--p)/2);
-		}
-
-		img {
-			@include clip-path-edges(2px);
-		}
-	}
+	}	
 
 	.button {
 		margin-top: calc(var(--p)*2);
@@ -274,10 +196,10 @@
 				aspect-ratio: 16 / 9;
 				object-fit: cover;
 			}
-			.captain-toad-treasure-tracker img {
+			.game-captain-toad-treasure-tracker img {
 				object-position: 0% 50%
 			}
-			.the-legend-of-zelda-tears-of-the-kingdom img {
+			.game-the-legend-of-zelda-tears-of-the-kingdom img {
 				object-position: 80% 50%;
 			}
 		}
@@ -368,7 +290,7 @@
 			width: calc(50% - var(--p));
 		}
 	}
-	.post-expand {
+	.post-thumbnail {
 		@include expand-hover($touch: 100% 100%);
 		&:hover {
 			@media (prefers-reduced-motion: no-preference) {
