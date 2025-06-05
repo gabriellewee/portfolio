@@ -115,8 +115,8 @@
 					background-color: var(--color-dark);
 				}
 				@include contrast {
-					clip-path: unset;
-					border-radius: unset;
+					@include clip-path-edges(unset);
+
 					&::before, &::after {
 						content: "";
 						display: block;

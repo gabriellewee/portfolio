@@ -94,9 +94,9 @@
 			@include viewport($iphone-max) {
 				@include contrast {
 					position: relative;
-					clip-path: unset;
-					border-radius: unset;
 					background-color: unset;
+					@include clip-path-edges(unset);
+
 					&::before, &::after {
 						content: "";
 						display: block;

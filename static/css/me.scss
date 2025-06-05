@@ -424,8 +424,7 @@
 	}
 	picture {
 		width: 200px;
-		clip-path: unset;
-		border-radius: unset;
+		@include clip-path-edges(unset);
 	}
 	img {
 		aspect-ratio: unset;

@@ -106,9 +106,9 @@
 			@include contrast {
 				overflow: unset;
 				position: relative;
-				clip-path: unset;
-				border-radius: unset;
 				background-color: unset;
+				@include clip-path-edges(unset);
+
 				&::before, &::after {
 					content: "";
 					display: block;

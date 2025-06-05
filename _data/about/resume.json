@@ -58,6 +58,48 @@
 			"location": "Oakland, CA"
 		}
 	],
+	"awards": [
+		{
+			"year": 2025,
+			"organization": "Webby",
+			"award": "Award Winner",
+			"description": "Best Mobile Visual Design",
+			"website": "Mac mini (M4)",
+			"url": "https://winners.webbyawards.com/2025/websites-and-mobile-sites/mobile-features-design/best-mobile-visual-design-function-mobile-features/332646/mac-mini"
+		},
+		{
+			"year": 2025,
+			"organization": "Webby",
+			"award": "People‘s Voice Winner",
+			"description": "Best Visual Design Function",
+			"website": "iMac (M4)",
+			"url": "https://winners.webbyawards.com/2025/websites-and-mobile-sites/features-design/best-visual-design-function/332645/imac"
+		},
+		{
+			"year": 2025,
+			"organization": "Webby",
+			"award": "Honoree",
+			"description": "Best Use of Animation or Motion Graphics",
+			"website": "iPad Pro (M4)",
+			"url": "https://winners.webbyawards.com/2025/websites-and-mobile-sites/features-design/best-use-of-animation-or-motion-graphics/332641/ipad-pro-m4"
+		},
+		{
+			"year": 2025,
+			"organization": "Webby",
+			"award": "Nominee",
+			"description": "Best Visual Design Aesthetic",
+			"website": "iPad Air (M2)",
+			"url": "https://winners.webbyawards.com/2025/websites-and-mobile-sites/features-design/best-visual-design-aesthetic/332642/ipad-air-m2"
+		},
+		{
+			"year": 2024,
+			"organization": "Webby",
+			"award": "Honoree",
+			"description": "Best Visual Design - Aesthetic",
+			"website": "MacBook Pro (M3)",
+			"url": "https://winners.webbyawards.com/2024/websites-and-mobile-sites/features-design/best-visual-design-aesthetic/284125/macbook-pro-m3"
+		}
+	],
 	"links": [
 		{
 			"title": "View resume",

@@ -125,6 +125,30 @@ eleventyNavigation:
 			<hr class="no-css"/>
 		</article>
 
+		<article class="post post-awards post-color" data-grid-item>
+			<div class="post-inner" data-anim>
+				<header class="post-header">
+					<h2>Awards</h2>
+				</header>
+				<div class="post-content">
+					<ul class="grid">
+						{% for award in about.resume.awards %}
+							<li>
+								<div class="link-award">
+									<div>
+										<h3><a href="{{award.url}}"><span>{{award.website}}</span></a></h3>
+										<p>{{award.year}} {{award.organization}} {{award.award}}</p>
+										<p>{{award.description}}</p>
+									</div>
+								</div>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+			<hr class="no-css"/>
+		</article>
+
 		<article class="post post-mentions post-color" data-grid-item>
 			<div class="post-inner" data-anim>
 				<header class="post-header">

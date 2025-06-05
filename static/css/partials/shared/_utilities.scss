@@ -209,51 +209,56 @@ $x-large: 1280px;
 }
 
 @mixin clip-path-edges($cut, $dir: null) {
-	@if $dir == up {
-		@include clip-path(false) {
-			border-top-left-radius: #{$cut + 1px};
-			border-top-right-radius: #{$cut + 1px};
-		}
-		@include clip-path {
-			clip-path: polygon(#{$cut} 0%, calc(100% - #{$cut}) 0%, 100% #{$cut}, 100% 100%, 0 100%, 0% #{$cut});
-		}
-	} @else if $dir == down {
-		@include clip-path(false) {
-			border-bottom-left-radius: #{$cut + 1px};
-			border-bottom-right-radius: #{$cut + 1px};
-		}
-		@include clip-path {
-			clip-path: polygon(100% 0, 100% calc(100% - #{$cut}), calc(100% - #{$cut}) 100%, #{$cut} 100%, 0% calc(100% - #{$cut}), 0 0);
-		}
-	} @else if $dir == left {
-		@include clip-path(false) {
-			border-top-left-radius: #{$cut + 1px};
-			border-bottom-left-radius: #{$cut + 1px};
-		}
-		@include clip-path {
-			clip-path: polygon(#{$cut} 0%, 100% 0, 100% 100%, #{$cut} 100%, 0% calc(100% - #{$cut}), 0% #{$cut});
-		}
-	} @else if $dir == right {
-		@include clip-path(false) {
-			border-top-right-radius: #{$cut + 1px};
-			border-bottom-right-radius: #{$cut + 1px};
-		}
-		@include clip-path {
-			clip-path: polygon(0 0, calc(100% - #{$cut}) 0%, 100% #{$cut}, 100% calc(100% - #{$cut}), calc(100% - #{$cut}) 100%, 0 100%);
-		}
-	} @else if $cut == 0 {
-		@include clip-path(false) {
-			border-radius: 0;
-		}
-		@include clip-path {
-			clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-		}
+	@if $cut == unset {
+		border-radius: 0;
+		clip-path: unset;
 	} @else {
-		@include clip-path(false) {
-			border-radius: #{$cut + 1px};
-		}
-		@include clip-path {
-			clip-path: polygon(#{$cut} 0%, calc(100% - #{$cut}) 0%, 100% #{$cut}, 100% calc(100% - #{$cut}), calc(100% - #{$cut}) 100%, #{$cut} 100%, 0% calc(100% - #{$cut}), 0% #{$cut});
+		@if $dir == up {
+			@include clip-path(false) {
+				border-top-left-radius: #{$cut + 1px};
+				border-top-right-radius: #{$cut + 1px};
+			}
+			@include clip-path {
+				clip-path: polygon(#{$cut} 0%, calc(100% - #{$cut}) 0%, 100% #{$cut}, 100% 100%, 0 100%, 0% #{$cut});
+			}
+		} @else if $dir == down {
+			@include clip-path(false) {
+				border-bottom-left-radius: #{$cut + 1px};
+				border-bottom-right-radius: #{$cut + 1px};
+			}
+			@include clip-path {
+				clip-path: polygon(100% 0, 100% calc(100% - #{$cut}), calc(100% - #{$cut}) 100%, #{$cut} 100%, 0% calc(100% - #{$cut}), 0 0);
+			}
+		} @else if $dir == left {
+			@include clip-path(false) {
+				border-top-left-radius: #{$cut + 1px};
+				border-bottom-left-radius: #{$cut + 1px};
+			}
+			@include clip-path {
+				clip-path: polygon(#{$cut} 0%, 100% 0, 100% 100%, #{$cut} 100%, 0% calc(100% - #{$cut}), 0% #{$cut});
+			}
+		} @else if $dir == right {
+			@include clip-path(false) {
+				border-top-right-radius: #{$cut + 1px};
+				border-bottom-right-radius: #{$cut + 1px};
+			}
+			@include clip-path {
+				clip-path: polygon(0 0, calc(100% - #{$cut}) 0%, 100% #{$cut}, 100% calc(100% - #{$cut}), calc(100% - #{$cut}) 100%, 0 100%);
+			}
+		} @else if $cut == 0 {
+			@include clip-path(false) {
+				border-radius: 0;
+			}
+			@include clip-path {
+				clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+			}
+		} @else {
+			@include clip-path(false) {
+				border-radius: #{$cut + 1px};
+			}
+			@include clip-path {
+				clip-path: polygon(#{$cut} 0%, calc(100% - #{$cut}) 0%, 100% #{$cut}, 100% calc(100% - #{$cut}), calc(100% - #{$cut}) 100%, #{$cut} 100%, 0% calc(100% - #{$cut}), 0% #{$cut});
+			}
 		}
 	}
 }
