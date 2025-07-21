@@ -7,7 +7,7 @@ export default async function() {
 		// https://cdn.cloudflare.steamstatic.com/steam/apps/0000000/header.jpg
 		// https://cdn.cloudflare.steamstatic.com/steam/apps/0000000/capsule_231x87.jpg
 
-		const data = await Cache(`http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${process.env.STEAM_API_KEY}&steamid=76561198135921646&format=json`, {
+		const data = await Cache(`http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${process.env.STEAM_API_KEY}&steamid=${process.env.STEAM_ID}&format=json`, {
 			duration: '1d',
 			type: 'json'
 		});
