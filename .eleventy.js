@@ -73,7 +73,7 @@ export default function (eleventyConfig) {
 		"node_modules/jquery/dist/jquery.min.js": "static/code/js/jquery.min.js",
 		"node_modules/clipboard/dist/clipboard.min.js": "static/code/js/clipboard.min.js",
 		"node_modules/draggabilly/dist/draggabilly.pkgd.min.js": "static/code/js/draggabilly.min.js",
-		"node_modules/zdog/dist/zdog.pkgd.min.js": "static/code/js/zdog.min.js"
+		"node_modules/zdog/dist/zdog.dist.min.js": "static/code/js/zdog.min.js"
 	});
 
 	// posts
