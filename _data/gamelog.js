@@ -2,7 +2,7 @@ import Cache from '@11ty/eleventy-fetch';
 
 export default async function() {
 	try {
-		const response = await Cache(`https://api.notion.com/v1/databases/${process.env.NOTION_GAMELOG}/query`, {
+		const response = await Cache(`https://api.notion.com/v1/data_sources/${process.env.NOTION_GAMELOG}/query`, {
 			directory: ".cache",
 			duration: '1d',
 			type: 'json',
@@ -10,7 +10,7 @@ export default async function() {
 				method: 'POST',
 				headers: {
 					'Authorization': `Bearer ${process.env.NOTION_API_KEY}`,
-					'Notion-Version': '2022-06-28',
+					'Notion-Version': '2025-09-03',
 					'Content-Type': 'application/json'
 				}
 			}

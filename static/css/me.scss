@@ -171,6 +171,9 @@
 	.grid {
 		margin-top: calc(var(--p) * 1.75);
 		grid-template-columns: repeat(2, 1fr);
+		&:empty {
+			margin-top: unset;
+		}
 		&.steam {
 			@include viewport($medium) {
 				grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
