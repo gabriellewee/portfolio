@@ -1,5 +1,5 @@
-import dotenv from 'dotenv';
-dotenv.config();
+import 'dotenv/config';
+import fs from 'fs';
 
 import filters from './_config/filters.js';
 import plugins from './_config/plugins.js';
@@ -184,7 +184,7 @@ export default function (eleventyConfig) {
 			return async (data) => {
 				let minified = await minify(inputContent, {});
 				return minified.code;
-			};
+			}
 		}
 	});
 
@@ -204,8 +204,23 @@ export default function (eleventyConfig) {
 					]
 				});
 				return result.css.toString("utf8");
-			};
+			}
 		}
+	});
+
+	// watch
+	eleventyConfig.setBrowserSyncConfig({
+		callbacks: {
+			ready(err, browserSync) {
+				const content_404 = fs.readFileSync('_site/404.html');
+				browserSync.addMiddleware("*", (req, res) => {
+					res.write(content_404);
+					res.end();
+				});
+			}
+		},
+		ui: false,
+		ghostMode: false
 	});
 
 	// formats
@@ -219,21 +234,5 @@ export default function (eleventyConfig) {
 		markdownTemplateEngine: "liquid",
 		htmlTemplateEngine: "njk",
 		dataTemplateEngine: "njk",
-	};
-
-	// watch
-	eleventyConfig.setBrowserSyncConfig({
-		callbacks: {
-			ready: function(err, browserSync) {
-				const content_404 = fs.readFileSync('_site/404.html');
-
-				browserSync.addMiddleware("*", (req, res) => {
-					res.write(content_404);
-					res.end();
-				});
-			},
-		},
-		ui: false,
-		ghostMode: false
-	});
-};
+	}
+}

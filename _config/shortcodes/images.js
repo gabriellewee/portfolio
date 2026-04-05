@@ -19,14 +19,18 @@ const fetchImageBuffer = async (url) => {
 
 export const findExtension = (src) => {
 	try {
-		let cleanSrc = src.includes("@") ? src.split("@").pop() : src;
-
 		let ext;
-		if (cleanSrc.includes(".")) {
-			const url = new URL(src, "http://dummy");
-			ext = url.pathname.split(".").pop().toLowerCase();
+
+		if (src.includes("@")) {
+			ext = src.split("@").pop().toLowerCase();
 		} else {
-			ext = cleanSrc.toLowerCase();
+			const pathname = new URL(src, "http://dummy").pathname;
+			const parts = pathname.split(".");
+			if (parts.length > 1) {
+				ext = parts.pop().toLowerCase();
+			} else {
+				ext = "";
+			}
 		}
 
 		switch (ext) {
@@ -36,8 +40,14 @@ export const findExtension = (src) => {
 				return "jpeg";
 			case "tif":
 				return "tiff";
+			case "jpeg":
+			case "png":
+			case "webp":
+			case "gif":
+			case "avif":
+				return ext;
 			default:
-				return ext || "jpeg";
+				return "jpeg";
 		}
 	} catch {
 		return "jpeg";
@@ -127,7 +137,7 @@ export const stats = async (src, type, value) => {
 			}
 		}
 	} catch (error) {
-		console.error("IMAGE:", src, "\n", error, "\n");
+		console.error("Image (stats):", src, "\n", error, "\n");
 		return type === "average" ? defaultColor : type === "theme" ? defaultTheme : undefined;
 	}
 };
@@ -171,7 +181,7 @@ export const external = async (src, alt = "", width, loading = "lazy") => {
 			</picture>
 		`.trim();
 	} catch (error) {
-		console.error("Image:", src, "\n", error, "\n");
+		console.error("Image (external):", src, "\n", error, "\n");
 	}
 };
 
@@ -189,7 +199,7 @@ export const ogPhoto = async (src) => {
 
 		return outputUrl;
 	} catch (error) {
-		console.error("OG Image:", src, "\n", error, "\n");
+		console.error("Image (OG):", src, "\n", error, "\n");
 	}
 };
 
@@ -260,6 +270,6 @@ export const image = async (src, alt = "", type = "default", option, figp) => {
 
 		return picture;
 	} catch (error) {
-		console.error("Image:", src, "\n", error, "\n");
+		console.error("Image (image):", src, "\n", error, "\n");
 	}
 };
