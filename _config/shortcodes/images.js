@@ -1,4 +1,4 @@
-import { promises as fs } from "fs"
+import fs from "fs";
 import path from "path";
 import Image from '@11ty/eleventy-img';
 import Sharp from 'sharp';
@@ -54,92 +54,117 @@ export const findExtension = (src) => {
 	}
 };
 
-export const stats = async (src, type, value) => {
+const cacheFolder = path.join(process.cwd(), ".cache");
+const imagesJsonPath = path.join(cacheFolder, "images.json");
+if (!fs.existsSync(cacheFolder)) fs.mkdirSync(cacheFolder, { recursive: true });
+
+const loadImagesJson = () => {
 	try {
-		const defaultColor = "var(--color-dark-grey)";
-		const defaultTheme = "dark";
-		const isProd = process.env.ELEVENTY_ENV === "production";
-		if (!isProd && type === "average") {
-			return defaultColor;
-		} else if (!isProd && type === "both") {
-			return { theme: defaultTheme, average: defaultColor };
-		} else if (!isProd && type === "theme") {
-			return defaultTheme;
+		if (fs.existsSync(imagesJsonPath)) {
+			const content = fs.readFileSync(imagesJsonPath, "utf-8");
+			return JSON.parse(content);
 		}
-
-		const image = src.startsWith("https://") ? await fetchImageBuffer(src) : src;
-		const sharpImage = Sharp(image);
-		const metadata = await sharpImage.metadata();
-
-		const normalize = (val) => (val > 255 ? val / 257 : val);
-
-		const getTheme = async () => {
-			const squareWidth = 50;
-			let positionTop = 0;
-			let positionLeft = 0;
-
-			if (value?.includes("bottom")) positionTop = metadata.height - squareWidth;
-			if (value?.includes("right")) positionLeft = metadata.width - squareWidth;
-
-			const extracted = sharpImage
-				.clone()
-				.extract({ top: positionTop, left: positionLeft, width: squareWidth, height: squareWidth });
-
-			const stats = await extracted.stats();
-			const avgR = normalize(stats.channels[0].mean);
-			const avgG = normalize(stats.channels[1].mean);
-			const avgB = normalize(stats.channels[2].mean);
-
-			const brightness = avgR * 0.2126 + avgG * 0.7152 + avgB * 0.0722;
-			return brightness > 180 ? "light" : "dark";
-		};
-
-		const getAverage = async () => {
-			const stats = await sharpImage.toColourspace("rgb").stats();
-			if (!stats.channels || stats.channels.length < 1) return defaultColor;
-
-			if (stats.channels.length === 1) {
-				const gray = Math.round(normalize(stats.channels[0].mean));
-				return `#${gray.toString(16).padStart(2, "0").repeat(3)}`;
-			} else {
-				const r = Math.round(normalize(stats.channels[0].mean));
-				const g = Math.round(normalize(stats.channels[1].mean));
-				const b = Math.round(normalize(stats.channels[2].mean));
-				return `#${[r, g, b].map(v => v.toString(16).padStart(2, "0")).join("")}`;
-			}
-		};
-
-		if (type === "theme") {
-			return await getTheme();
-		} else if (type === "average") {
-			return await getAverage();
-		} else if (type === "color") {
-			const [theme, average] = await Promise.all([getTheme(), getAverage()]);
-			return { theme, average };
-		} else {
-			const width = metadata.width;
-			const height = metadata.height;
-			let percent;
-
-			if (value) percent = value / width;
-
-			if (type === "width") return value ? width * percent : width;
-			if (type === "height") return value ? height * percent : height;
-			if (type === "orientation") return width > height ? "landscape" : "portrait";
-			if (type === "ratio") {
-				const reduce = (num, den) => {
-					const gcd = (a, b) => (b ? gcd(b, a % b) : a);
-					const factor = gcd(num, den);
-					return [num / factor, den / factor];
-				};
-				const [w, h] = reduce(width, height);
-				return `${w} / ${h}`;
-			}
-		}
-	} catch (error) {
-		console.error("Image (stats):", src, "\n", error, "\n");
-		return type === "average" ? defaultColor : type === "theme" ? defaultTheme : undefined;
+	} catch (err) {
+		console.error("Error reading images.json", err);
 	}
+	return [];
+};
+
+const saveImagesJson = (data) => {
+	fs.writeFileSync(imagesJsonPath, JSON.stringify(data, null, 2), "utf-8");
+};
+
+const normalize = (val) => (val > 255 ? val / 257 : val);
+
+export const stats = async (src, type, value) => {
+	const defaultColor = "var(--color-dark-grey)";
+	const defaultTheme = "dark";
+
+	const images = loadImagesJson();
+	let imageEntry = images.find((img) => img.src === src);
+
+	if (!imageEntry) {
+		imageEntry = { src };
+		images.push(imageEntry);
+	}
+
+	const image = src.startsWith("https://") ? await fetchImageBuffer(src) : src;
+	const sharpImage = Sharp(image);
+	const metadata = await sharpImage.metadata();
+
+	if (!imageEntry.width) imageEntry.width = metadata.width;
+	if (!imageEntry.height) imageEntry.height = metadata.height;
+	if (!imageEntry.orientation)
+		imageEntry.orientation = metadata.width > metadata.height ? "landscape" : "portrait";
+
+	const reduce = (num, den) => {
+		const gcd = (a, b) => (b ? gcd(b, a % b) : a);
+		const factor = gcd(num, den);
+		return [num / factor, den / factor];
+	};
+	if (!imageEntry.ratio) {
+		const [w, h] = reduce(metadata.width, metadata.height);
+		imageEntry.ratio = `${w} / ${h}`;
+	}
+
+	const getTheme = async () => {
+		const squareWidth = 50;
+		let positionTop = 0;
+		let positionLeft = 0;
+
+		if (value?.includes("bottom")) positionTop = metadata.height - squareWidth;
+		if (value?.includes("right")) positionLeft = metadata.width - squareWidth;
+
+		const extracted = sharpImage
+			.clone()
+			.extract({ top: positionTop, left: positionLeft, width: squareWidth, height: squareWidth });
+
+		const stats = await extracted.stats();
+		const avgR = normalize(stats.channels[0].mean);
+		const avgG = normalize(stats.channels[1].mean);
+		const avgB = normalize(stats.channels[2].mean);
+
+		const brightness = avgR * 0.2126 + avgG * 0.7152 + avgB * 0.0722;
+		return brightness > 180 ? "light" : "dark";
+	};
+
+	const getAverage = async () => {
+		const stats = await sharpImage.toColourspace("rgb").stats();
+		if (!stats.channels || stats.channels.length < 1) return defaultColor;
+
+		if (stats.channels.length === 1) {
+			const gray = Math.round(normalize(stats.channels[0].mean));
+			return `#${gray.toString(16).padStart(2, "0").repeat(3)}`;
+		} else {
+			const r = Math.round(normalize(stats.channels[0].mean));
+			const g = Math.round(normalize(stats.channels[1].mean));
+			const b = Math.round(normalize(stats.channels[2].mean));
+			return `#${[r, g, b].map((v) => v.toString(16).padStart(2, "0")).join("")}`;
+		}
+	};
+
+	if ((type === "theme" || type === "color" || type === "both") && !imageEntry.theme) {
+		imageEntry.theme = await getTheme();
+	}
+	if ((type === "average" || type === "color" || type === "both") && !imageEntry.average) {
+		imageEntry.average = await getAverage();
+	}
+	if (type === "color" && !imageEntry.color) {
+		imageEntry.color = imageEntry.average;
+	}
+
+	saveImagesJson(images);
+
+	if (type === "theme") return imageEntry.theme || defaultTheme;
+	if (type === "average") return imageEntry.average || defaultColor;
+	if (type === "color" || type === "both")
+		return { theme: imageEntry.theme || defaultTheme, average: imageEntry.average || defaultColor };
+	if (type === "width") return metadata.width;
+	if (type === "height") return metadata.height;
+	if (type === "orientation") return imageEntry.orientation || "portrait";
+	if (type === "ratio") return imageEntry.ratio;
+
+	return undefined;
 };
 
 export const external = async (src, alt = "", width, loading = "lazy") => {
