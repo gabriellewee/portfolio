@@ -68,7 +68,7 @@ if (container) {
 					path: '[data-load-path]',
 					append: '[data-post-append]',
 					scrollThreshold: false,
-					outlayer: iso,
+					outlayer: window.iso,
 					status: '.page-load-status'
 				});
 
@@ -97,8 +97,8 @@ if (container) {
 		// Relayout on image load
 		waitForGlobals(["imagesLoaded", "Isotope"], (ImagesLoaded, Isotope) => {
 			new imagesLoaded(document.body, () => {
-				if (container && iso) {
-					iso.layout();
+				if (container && window.iso) {
+					window.iso.layout();
 				}
 				document.documentElement.classList.add("loaded");
 			});

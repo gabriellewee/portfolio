@@ -14,7 +14,7 @@ export const mediaFilters = (filters = document.querySelector("[data-filter-cont
 			const target = e.target.closest("a");
 			if (!target) return;
 
-			iso.arrange({ filter: value });
+			window.iso.arrange({ filter: value });
 
 			const currentActive = filters.querySelector(".active");
 			if (!resetButton.classList.contains("visible")) {
@@ -31,7 +31,7 @@ export const mediaFilters = (filters = document.querySelector("[data-filter-cont
 				target.tabIndex = -1;
 			}
 
-			iso.layout();
+			window.iso.layout();
 		});
 	});
 };
