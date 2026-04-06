@@ -74,7 +74,7 @@ eleventyNavigation:
 
 				<ul class="grid nintendo">
 					{% for game in gamelog %}
-						{% if (game.properties["Console/Platform"].multi_select[0].name == "Nintendo Switch") and (game.properties.Status.status.name == "In progress") %}
+						{% if ((game.properties["Console/Platform"].multi_select[0].name == "Nintendo Switch") or (game.properties["Console/Platform"].multi_select[0].name == "Nintendo Switch 2")) and (game.properties.Status.status.name == "In progress") %}
 							<li>
 								{% if game.properties.Cover.files[0].file %}{%- set cover = game.properties.Cover.files[0].file.url %}{% else %}{%- set cover = game.properties.Cover.files[0].external.url %}{% endif %}
 								<a class="post-thumbnail post-thumbnail-game game-{{game.properties.Title.title[0].plain_text|slugify}}" href="{{game.properties.Link.url}}" target="_blank" rel="noopener noreferrer">

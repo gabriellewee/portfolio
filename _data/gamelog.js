@@ -12,7 +12,16 @@ export default async function() {
 					'Authorization': `Bearer ${process.env.NOTION_API_KEY}`,
 					'Notion-Version': '2025-09-03',
 					'Content-Type': 'application/json'
-				}
+				},
+				body: JSON.stringify({
+					sorts: [
+						{
+							timestamp: "created_time",
+							direction: "descending"
+						}
+					],
+					page_size: 100
+				})
 			}
 		});
 
