@@ -4,170 +4,20 @@
     {
       "cover": {
         "contentType": "image/jpeg",
-        "url": "https://img1.od-cdn.com/ImageType-100/0439-1/{41DDA0E2-F56C-4C11-9A4A-15F82182C9BA}IMG100.JPG",
-        "title": "The School for Good Mothers",
-        "color": "#F36A72",
+        "url": "https://img2.od-cdn.com/ImageType-100/0111-1/{2E1380D9-AF04-4382-A851-0C4654764A6E}IMG100.JPG",
+        "title": "James",
+        "color": "#0C1921",
         "format": "ebook"
       },
       "title": {
-        "text": "The School for Good Mothers",
-        "url": "https://share.libbyapp.com/title/6241439",
-        "titleId": "6241439"
+        "text": "James",
+        "url": "https://share.libbyapp.com/title/9935544",
+        "titleId": "9935544"
       },
-      "author": "Jessamine Chan",
-      "publisher": "Simon & Schuster",
-      "isbn": "9781982156145",
-      "timestamp": 1740681561000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "San Francisco Public Library",
-        "url": "https://libbyapp.com/library/sfpl",
-        "key": "sfpl"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img2.od-cdn.com/ImageType-100/2363-1/{3C9ACCE5-9B89-4537-B2FB-0C3E13A32879}IMG100.JPG",
-        "title": "Deerskin",
-        "color": "#060606",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Deerskin",
-        "url": "https://share.libbyapp.com/title/2012412",
-        "titleId": "2012412"
-      },
-      "author": "Robin McKinley",
-      "publisher": "Open Road Media",
-      "isbn": "9781497673670",
-      "timestamp": 1735655915000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "San Francisco Public Library",
-        "url": "https://libbyapp.com/library/sfpl",
-        "key": "sfpl"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img2.od-cdn.com/ImageType-100/0439-1/{78510737-69A2-4578-9E1A-7E3857B26153}IMG100.JPG",
-        "title": "Lady Tan's Circle of Women",
-        "color": "#025738",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Lady Tan's Circle of Women",
-        "url": "https://share.libbyapp.com/title/9311354",
-        "titleId": "9311354"
-      },
-      "author": "Lisa See",
-      "publisher": "Scribner",
-      "isbn": "9781982117108",
-      "timestamp": 1731959075000,
-      "activity": "Borrowed",
-      "details": " 7 days ",
-      "library": {
-        "text": "Los Angeles Public Library",
-        "url": "https://libbyapp.com/library/lapl",
-        "key": "lapl"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img2.od-cdn.com/ImageType-100/0111-1/{17FF1132-F408-4ADE-AF88-910809DA47EE}IMG100.JPG",
-        "title": "Tomorrow, and Tomorrow, and Tomorrow",
-        "color": "#F9FBE3",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Tomorrow, and Tomorrow, and Tomorrow",
-        "url": "https://share.libbyapp.com/title/7349338",
-        "titleId": "7349338"
-      },
-      "author": "Gabrielle Zevin",
+      "author": "Percival Everett",
       "publisher": "Knopf Doubleday Publishing Group",
-      "isbn": "9780593321218",
-      "timestamp": 1730917054000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "Oakland Public Library",
-        "url": "https://libbyapp.com/library/oakland",
-        "key": "oakland"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img3.od-cdn.com/ImageType-100/0111-1/{C122A37F-F984-4062-8F35-1072A99305A0}IMG100.JPG",
-        "title": "Project Hail Mary",
-        "color": "#9A7F26",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Project Hail Mary",
-        "url": "https://share.libbyapp.com/title/5665700",
-        "titleId": "5665700"
-      },
-      "author": "Andy Weir",
-      "publisher": "Random House Publishing Group",
-      "isbn": "9780593135211",
-      "timestamp": 1727318713000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "Sacramento Public Library",
-        "url": "https://libbyapp.com/library/saclibrary",
-        "key": "saclibrary"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img2.od-cdn.com/ImageType-100/0439-1/{0632D2F1-1B5F-406D-99C1-F66B9305E79C}IMG100.JPG",
-        "title": "Speaking Bones",
-        "color": "#464A49",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "Speaking Bones",
-        "url": "https://share.libbyapp.com/title/7454986",
-        "titleId": "7454986"
-      },
-      "author": "Ken Liu",
-      "publisher": "S&S/Saga Press",
-      "isbn": "9781982148997",
-      "timestamp": 1726444498000,
-      "activity": "Borrowed",
-      "details": " 21 days ",
-      "library": {
-        "text": "Sacramento Public Library",
-        "url": "https://libbyapp.com/library/saclibrary",
-        "key": "saclibrary"
-      }
-    },
-    {
-      "cover": {
-        "contentType": "image/jpeg",
-        "url": "https://img3.od-cdn.com/ImageType-100/0439-1/{2CA3782D-846B-4667-9F00-F1E8230D8E87}IMG100.JPG",
-        "title": "The Island of Sea Women",
-        "color": "#0370A9",
-        "format": "ebook"
-      },
-      "title": {
-        "text": "The Island of Sea Women",
-        "url": "https://share.libbyapp.com/title/4246193",
-        "titleId": "4246193"
-      },
-      "author": "Lisa See",
-      "publisher": "Scribner",
-      "isbn": "9781501154874",
-      "timestamp": 1724741424000,
+      "isbn": "9780385550376",
+      "timestamp": 1774985122000,
       "activity": "Borrowed",
       "details": " 21 days ",
       "library": {
@@ -179,20 +29,170 @@
     {
       "cover": {
         "contentType": "image/jpeg",
-        "url": "https://img3.od-cdn.com/ImageType-100/2390-1/{DCEDDC24-45BB-4869-82C4-7818E3965B53}IMG100.JPG",
-        "title": "Siren Queen",
-        "color": "#020106",
+        "url": "https://img1.od-cdn.com/ImageType-100/0111-1/{10BA7036-E2E5-4581-8B9F-7258DA124586}IMG100.JPG",
+        "title": "A Curse Carved in Bone",
+        "color": "#AA4121",
         "format": "ebook"
       },
       "title": {
-        "text": "Siren Queen",
-        "url": "https://share.libbyapp.com/title/6477360",
-        "titleId": "6477360"
+        "text": "A Curse Carved in Bone",
+        "url": "https://share.libbyapp.com/title/11025368",
+        "titleId": "11025368"
       },
-      "author": "Nghi Vo",
+      "author": "Danielle L. Jensen",
+      "publisher": "Random House Worlds",
+      "isbn": "9780593599877",
+      "timestamp": 1773093854000,
+      "activity": "Borrowed",
+      "details": " 21 days ",
+      "library": {
+        "text": "Sacramento Public Library",
+        "url": "https://libbyapp.com/library/saclibrary",
+        "key": "saclibrary"
+      }
+    },
+    {
+      "cover": {
+        "contentType": "image/jpeg",
+        "url": "https://img3.od-cdn.com/ImageType-100/2390-1/{62D02A23-DA7C-46CC-B583-73BF44E80DB3}IMG100.JPG",
+        "title": "A Song to Drown Rivers",
+        "color": "#003883",
+        "format": "ebook"
+      },
+      "title": {
+        "text": "A Song to Drown Rivers",
+        "url": "https://share.libbyapp.com/title/10346176",
+        "titleId": "10346176"
+      },
+      "author": "Ann Liang",
+      "publisher": "St. Martin's Publishing Group",
+      "isbn": "9781250289476",
+      "timestamp": 1773093834000,
+      "activity": "Borrowed",
+      "details": " 21 days ",
+      "library": {
+        "text": "Sacramento Public Library",
+        "url": "https://libbyapp.com/library/saclibrary",
+        "key": "saclibrary"
+      }
+    },
+    {
+      "cover": {
+        "contentType": "image/jpeg",
+        "url": "https://img1.od-cdn.com/ImageType-100/0174-1/{5D7EEB73-4FEC-4B62-997D-F714F02F0244}Img100.jpg",
+        "title": "The Blue Castle",
+        "color": "#004231",
+        "format": "ebook"
+      },
+      "title": {
+        "text": "The Blue Castle",
+        "url": "https://share.libbyapp.com/title/1578605",
+        "titleId": "1578605"
+      },
+      "author": "L. M. Montgomery",
+      "publisher": "Sourcebooks",
+      "isbn": "9781402289378",
+      "timestamp": 1772271567000,
+      "activity": "Borrowed",
+      "details": " 14 days ",
+      "library": {
+        "text": "Peninsula Library System",
+        "url": "https://libbyapp.com/library/pls",
+        "key": "pls"
+      }
+    },
+    {
+      "cover": {
+        "contentType": "image/jpeg",
+        "url": "https://img2.od-cdn.com/ImageType-100/0439-1/{8F11C9CE-BDA7-4556-8FD5-9F3895170D13}IMG100.JPG",
+        "title": "The Paper Menagerie and Other Stories",
+        "color": "#FFFFFF",
+        "format": "ebook"
+      },
+      "title": {
+        "text": "The Paper Menagerie and Other Stories",
+        "url": "https://share.libbyapp.com/title/2144324",
+        "titleId": "2144324"
+      },
+      "author": "Ken Liu",
+      "publisher": "S&S/Saga Press",
+      "isbn": "9781481424370",
+      "timestamp": 1770153556000,
+      "activity": "Borrowed",
+      "details": " 21 days ",
+      "library": {
+        "text": "San Jose Public Library",
+        "url": "https://libbyapp.com/library/sanjose",
+        "key": "sanjose"
+      }
+    },
+    {
+      "cover": {
+        "contentType": "image/jpeg",
+        "url": "https://img3.od-cdn.com/ImageType-100/2390-1/{5BE894C1-E770-4628-9C1D-1B05F0D80A42}IMG100.JPG",
+        "title": "Brighter than Scale, Swifter than Flame",
+        "color": "#AE0701",
+        "format": "ebook"
+      },
+      "title": {
+        "text": "Brighter than Scale, Swifter than Flame",
+        "url": "https://share.libbyapp.com/title/11091190",
+        "titleId": "11091190"
+      },
+      "author": "Neon Yang",
       "publisher": "Tor Publishing Group",
-      "isbn": "9781250788856",
-      "timestamp": 1722067326000,
+      "isbn": "9781250357359",
+      "timestamp": 1767658921000,
+      "activity": "Borrowed",
+      "details": " 21 days ",
+      "library": {
+        "text": "San Francisco Public Library",
+        "url": "https://libbyapp.com/library/sfpl",
+        "key": "sfpl"
+      }
+    },
+    {
+      "cover": {
+        "contentType": "image/jpeg",
+        "url": "https://img3.od-cdn.com/ImageType-100/2390-1/{F630013F-C01F-4D3D-A210-109B74F5B874}IMG100.JPG",
+        "title": "The Incandescent",
+        "color": "#1C1B19",
+        "format": "ebook"
+      },
+      "title": {
+        "text": "The Incandescent",
+        "url": "https://share.libbyapp.com/title/11091369",
+        "titleId": "11091369"
+      },
+      "author": "Emily Tesh",
+      "publisher": "Tor Publishing Group",
+      "isbn": "9781250835024",
+      "timestamp": 1767658841000,
+      "activity": "Borrowed",
+      "details": " 14 days ",
+      "library": {
+        "text": "Peninsula Library System",
+        "url": "https://libbyapp.com/library/pls",
+        "key": "pls"
+      }
+    },
+    {
+      "cover": {
+        "contentType": "image/jpeg",
+        "url": "https://img2.od-cdn.com/ImageType-100/0017-1/{BE7EEB42-BA7E-4AB9-AE4F-A1CDD7589475}IMG100.JPG",
+        "title": "The Raven Scholar",
+        "color": "#BFA8C2",
+        "format": "ebook"
+      },
+      "title": {
+        "text": "The Raven Scholar",
+        "url": "https://share.libbyapp.com/title/11060586",
+        "titleId": "11060586"
+      },
+      "author": "Antonia Hodgson",
+      "publisher": "Orbit",
+      "isbn": "9780316577236",
+      "timestamp": 1761959112000,
       "activity": "Borrowed",
       "details": " 21 days ",
       "library": {
