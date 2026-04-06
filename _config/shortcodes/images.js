@@ -3,7 +3,7 @@ import path from "path";
 import Image from '@11ty/eleventy-img';
 import Sharp from 'sharp';
 import EleventyFetch from '@11ty/eleventy-fetch';
-import nbspFilter from 'eleventy-nbsp-filter';
+import { nbspFilter } from '../filters/posts.js';
 
 const fetchImageBuffer = async (url) => {
 	try {

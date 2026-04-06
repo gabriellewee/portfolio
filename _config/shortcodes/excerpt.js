@@ -1,5 +1,5 @@
 import { images } from "../filters/images.js";
-import nbspFilter from "eleventy-nbsp-filter";
+import { nbspFilter } from '../filters/posts.js';
 
 export const excerpt = async (post, option) => {
 	if (!post?.templateContent) return "";

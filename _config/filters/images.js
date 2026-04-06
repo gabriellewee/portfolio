@@ -1,5 +1,5 @@
 import Image from '@11ty/eleventy-img';
-import nbspFilter from 'eleventy-nbsp-filter';
+import { nbspFilter } from '../filters/posts.js';
 import { stats as getStats, findExtension } from '../shortcodes/images.js'
 
 export const images = async (post, option) => {

@@ -38,3 +38,15 @@ export const stripAttr = (stripped) => {
 		.replace(/<\s*pre.*?>/g, '<pre>')
 		.replace(/<\s*code.*?>/g, '<code>');
 };
+
+export const nbspFilter = (words = 2, maxLength = 100) => (value = "") => {
+	if (typeof value !== "string") return value;
+
+	const parts = value.split(" ");
+	if (parts.length <= words) return value;
+
+	const pre = parts.slice(0, -words);
+	const last = parts.slice(-words).join("\u00A0");
+
+	return last.length <= maxLength ? [...pre, last].join(" ") : value;
+};
