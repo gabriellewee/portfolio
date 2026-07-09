@@ -7,8 +7,6 @@ export const images = async (post, option) => {
 	const matches = post.matchAll(pattern);
 	let lightboxes = "";
 
-	if (!matches) return post;
-
 	for (const image of matches) {
 		const src = image.groups.src;
 		const url = `./static/images/posts/${src}`;

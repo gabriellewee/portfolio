@@ -4,16 +4,17 @@ import { enter, loading, refresh, animateQueries } from '../components/onloadAni
 waitForGlobals(["gsap", "TextPlugin"], (gsap, TextPlugin) => {
 	gsap.registerPlugin(TextPlugin);
 
+	const timeline = enter();
 	const text = document.querySelector(".text");
 	const posts = document.querySelectorAll("[data-anim]");
 
-	enter.set('.title', {
+	timeline.set('.title', {
 		opacity: 1
 	});
-	enter.set('.cursor', {
+	timeline.set('.cursor', {
 		opacity: 1
 	});
-	enter.from('.copy', {
+	timeline.from('.copy', {
 		duration: text.innerHTML.length * .3,
 		text: {
 			value: "",
@@ -21,7 +22,7 @@ waitForGlobals(["gsap", "TextPlugin"], (gsap, TextPlugin) => {
 		},
 		ease: "none"
 	});
-	enter.from('.apple', {
+	timeline.from('.apple', {
 		duration: .6 * .3,
 		text: {
 			value: "",
@@ -29,8 +30,8 @@ waitForGlobals(["gsap", "TextPlugin"], (gsap, TextPlugin) => {
 		},
 		ease: "none"
 	});
-	enter.set('.cursor', { className: 'cursor animated' });
-	enter.to(loading, {
+	timeline.set('.cursor', { className: 'cursor animated' });
+	timeline.to(loading, {
 		duration: .2,
 		opacity: 0,
 		y: "-100%",
@@ -40,7 +41,7 @@ waitForGlobals(["gsap", "TextPlugin"], (gsap, TextPlugin) => {
 		}
 	});
 	posts.forEach(post => {
-		enter.fromTo(post, {
+		timeline.fromTo(post, {
 			opacity: 0,
 			y: 20
 		}, {
@@ -54,5 +55,5 @@ waitForGlobals(["gsap", "TextPlugin"], (gsap, TextPlugin) => {
 		}, "<.1");
 	});
 
-	animateQueries(enter);
+	animateQueries(timeline);
 });

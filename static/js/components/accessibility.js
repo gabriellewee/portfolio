@@ -48,10 +48,26 @@ export const accessibility = (options = document.querySelectorAll("[data-option]
 				const storedTheme = localStorage.getItem("theme");
 
 				if (!storedTheme) setChecked(el, prefersDark);
-				if (storedTheme === "dark") applyThemeDark(), setChecked(el);
-				if (storedTheme === "light") applyThemeLight(), setChecked(el, false);
+				if (storedTheme === "dark") {
+					applyThemeDark();
+					setChecked(el);
+				}
+				if (storedTheme === "light") {
+					applyThemeLight();
+					setChecked(el, false);
+				}
 
-				onToggle(el, () => (setChecked(el), applyThemeDark()), () => (setChecked(el, false), applyThemeLight()));
+				onToggle(
+					el,
+					() => {
+						setChecked(el);
+						applyThemeDark();
+					},
+					() => {
+						setChecked(el, false);
+						applyThemeLight();
+					}
+				);
 				break;
 			}
 
@@ -90,13 +106,24 @@ export const accessibility = (options = document.querySelectorAll("[data-option]
 				const stored = localStorage.getItem("contrast");
 
 				if (!stored) setChecked(el, prefers);
-				if (stored === "true") setChecked(el), $html.classList.add("theme-contrast");
+				if (stored === "true") {
+					setChecked(el);
+					$html.classList.add("theme-contrast");
+				}
 				if (stored === "false") setChecked(el, false);
 
 				onToggle(
 					el,
-					() => (setChecked(el), $html.classList.add("theme-contrast"), localStorage.setItem("contrast", "true")),
-					() => (setChecked(el, false), $html.classList.remove("theme-contrast"), localStorage.setItem("contrast", "false"))
+					() => {
+						setChecked(el);
+						$html.classList.add("theme-contrast");
+						localStorage.setItem("contrast", "true");
+					},
+					() => {
+						setChecked(el, false);
+						$html.classList.remove("theme-contrast");
+						localStorage.setItem("contrast", "false");
+					}
 				);
 				break;
 			}
@@ -106,13 +133,24 @@ export const accessibility = (options = document.querySelectorAll("[data-option]
 				const stored = localStorage.getItem("transparency");
 
 				if (!stored) setChecked(el, prefers);
-				if (stored === "false") setChecked(el), $html.classList.add("theme-reduce-transparency");
+				if (stored === "false") {
+					setChecked(el);
+					$html.classList.add("theme-reduce-transparency");
+				}
 				if (stored === "true") setChecked(el, false);
 
 				onToggle(
 					el,
-					() => (setChecked(el), $html.classList.add("theme-reduce-transparency"), localStorage.setItem("transparency", "false")),
-					() => (setChecked(el, false), $html.classList.remove("theme-reduce-transparency"), localStorage.setItem("transparency", "true"))
+					() => {
+						setChecked(el);
+						$html.classList.add("theme-reduce-transparency");
+						localStorage.setItem("transparency", "false");
+					},
+					() => {
+						setChecked(el, false);
+						$html.classList.remove("theme-reduce-transparency");
+						localStorage.setItem("transparency", "true");
+					}
 				);
 				break;
 			}
@@ -120,13 +158,27 @@ export const accessibility = (options = document.querySelectorAll("[data-option]
 			case "load": {
 				const stored = localStorage.getItem("load");
 
-				if (stored === "true") setChecked(el), $html.classList.remove("theme-no-load");
-				if (stored === "false") setChecked(el, false), $html.classList.add("theme-no-load");
+				if (stored === "true") {
+					setChecked(el);
+					$html.classList.remove("theme-no-load");
+				}
+				if (stored === "false") {
+					setChecked(el, false);
+					$html.classList.add("theme-no-load");
+				}
 
 				onToggle(
 					el,
-					() => (setChecked(el), $html.classList.remove("theme-no-load"), localStorage.setItem("load", "true")),
-					() => (setChecked(el, false), $html.classList.add("theme-no-load"), localStorage.setItem("load", "false"))
+					() => {
+						setChecked(el);
+						$html.classList.remove("theme-no-load");
+						localStorage.setItem("load", "true");
+					},
+					() => {
+						setChecked(el, false);
+						$html.classList.add("theme-no-load");
+						localStorage.setItem("load", "false");
+					}
 				);
 				break;
 			}

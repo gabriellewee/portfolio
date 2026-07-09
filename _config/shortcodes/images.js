@@ -58,21 +58,33 @@ const cacheFolder = path.join(process.cwd(), ".cache");
 const imagesJsonPath = path.join(cacheFolder, "images.json");
 if (!fs.existsSync(cacheFolder)) fs.mkdirSync(cacheFolder, { recursive: true });
 
+let imagesCache = null;
+let cacheDirty = false;
+
 const loadImagesJson = () => {
+	if (imagesCache) return imagesCache;
 	try {
 		if (fs.existsSync(imagesJsonPath)) {
-			const content = fs.readFileSync(imagesJsonPath, "utf-8");
-			return JSON.parse(content);
+			imagesCache = JSON.parse(fs.readFileSync(imagesJsonPath, "utf-8"));
 		}
 	} catch (err) {
 		console.error("Error reading images.json", err);
 	}
-	return [];
+	if (!Array.isArray(imagesCache)) imagesCache = [];
+	return imagesCache;
 };
 
-const saveImagesJson = (data) => {
-	fs.writeFileSync(imagesJsonPath, JSON.stringify(data, null, 2), "utf-8");
+const saveImagesJson = () => {
+	if (!cacheDirty || !imagesCache) return;
+	fs.writeFileSync(imagesJsonPath, JSON.stringify(imagesCache, null, 2), "utf-8");
+	cacheDirty = false;
 };
+
+process.on("exit", saveImagesJson);
+process.on("SIGINT", () => {
+	saveImagesJson();
+	process.exit();
+});
 
 const normalize = (val) => (val > 255 ? val / 257 : val);
 
@@ -86,16 +98,19 @@ export const stats = async (src, type, value) => {
 	if (!imageEntry) {
 		imageEntry = { src };
 		images.push(imageEntry);
+		cacheDirty = true;
 	}
 
 	const image = src.startsWith("https://") ? await fetchImageBuffer(src) : src;
 	const sharpImage = Sharp(image);
 	const metadata = await sharpImage.metadata();
 
-	if (!imageEntry.width) imageEntry.width = metadata.width;
-	if (!imageEntry.height) imageEntry.height = metadata.height;
-	if (!imageEntry.orientation)
+	if (!imageEntry.width) { imageEntry.width = metadata.width; cacheDirty = true; }
+	if (!imageEntry.height) { imageEntry.height = metadata.height; cacheDirty = true; }
+	if (!imageEntry.orientation) {
 		imageEntry.orientation = metadata.width > metadata.height ? "landscape" : "portrait";
+		cacheDirty = true;
+	}
 
 	const reduce = (num, den) => {
 		const gcd = (a, b) => (b ? gcd(b, a % b) : a);
@@ -105,6 +120,7 @@ export const stats = async (src, type, value) => {
 	if (!imageEntry.ratio) {
 		const [w, h] = reduce(metadata.width, metadata.height);
 		imageEntry.ratio = `${w} / ${h}`;
+		cacheDirty = true;
 	}
 
 	const getTheme = async () => {
@@ -145,15 +161,16 @@ export const stats = async (src, type, value) => {
 
 	if ((type === "theme" || type === "color" || type === "both") && !imageEntry.theme) {
 		imageEntry.theme = await getTheme();
+		cacheDirty = true;
 	}
 	if ((type === "average" || type === "color" || type === "both") && !imageEntry.average) {
 		imageEntry.average = await getAverage();
+		cacheDirty = true;
 	}
 	if (type === "color" && !imageEntry.color) {
 		imageEntry.color = imageEntry.average;
+		cacheDirty = true;
 	}
-
-	saveImagesJson(images);
 
 	if (type === "theme") return imageEntry.theme || defaultTheme;
 	if (type === "average") return imageEntry.average || defaultColor;

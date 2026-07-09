@@ -112,24 +112,22 @@ export default function (eleventyConfig) {
 		const entries = [...collectionApi.getFilteredByTag("entries")];
 		const threshold = 21600000;
 
+		const blueskyPosts = [];
+		const mastodonPosts = [];
+		for (const entry of entries) {
+			const timestamp = new Date(entry.date).getTime();
+			if (entry.data.source === "bluesky") {
+				blueskyPosts.push({ timestamp, entry });
+			} else if (entry.data.source === "mastodon") {
+				mastodonPosts.push({ timestamp, entry });
+			}
+		}
+
 		return entries.filter(entry => {
 			if (entry.data.self == true || entry.data.hide == true || entry.data.in_reply != null || entry.data.visibility === "direct") return false;
 
-			let blueskyPosts = new Map();
-			let mastodonPosts = new Map();
-
-			for (let entry of entries) {
-				if (entry.data.source === "bluesky") {
-					let timestamp = new Date(entry.date).getTime();
-					blueskyPosts.set(timestamp, entry);
-				} else if (entry.data.source === "mastodon") {
-					let timestamp = new Date(entry.date).getTime();
-					mastodonPosts.set(timestamp, entry);
-				}
-			}
-
 			if (entry.data.source === "mastodon" || entry.data.source === "threads") {
-				for (let [timestamp, blueskyEntry] of blueskyPosts) {
+				for (const { timestamp, entry: blueskyEntry } of blueskyPosts) {
 					let entryContent = stripTags(entry.data.content);
 					let blueskyContent = blueskyEntry.data.content;
 					if (
@@ -143,7 +141,7 @@ export default function (eleventyConfig) {
 				}
 			}
 			if (entry.data.source === "threads") {
-				for (let [timestamp, mastodonEntry] of mastodonPosts) {
+				for (const { timestamp, entry: mastodonEntry } of mastodonPosts) {
 					let entryContent = entry.data.content;
 					let mastodonContent = stripTags(mastodonEntry.data.content);
 					if (

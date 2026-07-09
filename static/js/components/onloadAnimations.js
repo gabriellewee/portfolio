@@ -1,13 +1,14 @@
 import { waitForGlobals } from '../helpers/domHelpers.js';
 
 // avatar messages
-export const enter = gsap.timeline({ paused: true });
+let enterTimeline;
+export const enter = () => (enterTimeline ??= gsap.timeline({ paused: true }));
 export const loading = document.querySelector(".loading");
 export const refresh = document.querySelector(".go-home");
 
 // onload animation setup
 export const animateQueries = (
-	timeline = enter,
+	timeline = enter(),
 	key = document.body.classList[0].slice(5)
 ) => {
 	new imagesLoaded(document.body, () => {
@@ -62,10 +63,12 @@ export const animateItems = (
 	key = document.body.classList[0].slice(5),
 ) => {
 	waitForGlobals(["gsap", "ScrollTrigger"], (gsap, ScrollTrigger) => {
+		const timeline = enter();
+
 		if(loading) {
 			let loaded = loading.nextElementSibling;
 
-			enter.to(loading, {
+			timeline.to(loading, {
 				duration: .2,
 				opacity: 0,
 				y: "-100%",
@@ -74,7 +77,7 @@ export const animateItems = (
 					loading.classList.add("hidden");
 				}
 			});
-			enter.to(loaded, {
+			timeline.to(loaded, {
 				duration: .2,
 				opacity: 1,
 				y: 0,
@@ -83,7 +86,7 @@ export const animateItems = (
 		}
 
 		items.forEach(item => {
-			enter.fromTo(item, {
+			timeline.fromTo(item, {
 				opacity: 0,
 				y: 20
 			}, {

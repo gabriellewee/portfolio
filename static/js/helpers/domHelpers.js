@@ -84,10 +84,14 @@ export const enableClipboardCode = (pres = "pre:has(code)") => {
 };
 
 // Open external links in new tab
+const blankChecked = new WeakSet();
 export const targetBlankLinks = (links = "a") => {
 	document.querySelectorAll(links).forEach((anchor) => {
+		if (blankChecked.has(anchor)) return;
+		blankChecked.add(anchor);
+
 		const href = anchor.getAttribute("href");
-		if (/^(https?:)?\/\//.test(href)) {
+		if (href && /^(https?:)?\/\//.test(href)) {
 			anchor.target = "_blank";
 			anchor.rel = "noopener noreferrer";
 		}
