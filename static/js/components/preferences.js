@@ -1,8 +1,8 @@
-// accessibility helpers
-import { setChecked, onToggle, onClickOnly } from '../helpers/accessibilityHelpers.js';
+// preferences helpers
+import { setChecked, onToggle, onClickOnly } from '../helpers/preferencesHelpers.js';
 
-// Accessibility popup
-export const accessibility = (options = document.querySelectorAll("[data-option]")) => {
+// Preferences popup
+export const preferences = (options = document.querySelectorAll("[data-option]")) => {
 	if (!window.matchMedia) return;
 
 	const $html = document.documentElement;

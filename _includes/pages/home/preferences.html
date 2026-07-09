@@ -1,12 +1,12 @@
-<div class="accessibility-popup popup" data-popup hidden>
-	<input type="checkbox" id="accessibility" class="popup-button" tabindex="0" role="button" aria-pressed="false" aria-expanded="false" aria-haspopup="menu" aria-controls="accessibility-window" aria-labelledby="accessibility-label" data-popup-trigger/>
-	<label id="accessibility-button" class="popup-label" for="accessibility" data-popup-label>
-		<span class="button"><span aria-hidden="true" id="accessibility-label">Accessibility</span></span>
+<div class="preferences-popup popup" data-popup hidden>
+	<input type="checkbox" id="preferences" class="popup-button" tabindex="0" role="button" aria-pressed="false" aria-expanded="false" aria-haspopup="menu" aria-controls="preferences-window" aria-labelledby="preferences-label" data-popup-trigger/>
+	<label id="preferences-button" class="popup-label" for="preferences" data-popup-label>
+		<span class="button"><span aria-hidden="true" id="preferences-label">Preferences</span></span>
 	</label>
-	<div id="accessibility-window" class="popup-window" role="menu" data-popup-window>
+	<div id="preferences-window" class="popup-window" role="menu" data-popup-window>
 		<div class="inside">
 			<p class="option-no-js">Please turn on Javascript in order to keep your settings after refreshing or leaving the page.</p>
-			{% for category in site.accessibility %}
+			{% for category in site.preferences %}
 				<h4 class="{% if category.js == true %}option-js{% endif %}" aria-label="{{category.name|capitalize}}">{{category.name|capitalize}}</h4>
 				<menu class="{% if category.js == true %}option-js{% endif %}">
 					{% for item in category.items %}
@@ -39,7 +39,7 @@
 				<button class="button" data-option="reset"><span>Reset</span></button>
 			</div>
 			<div>
-				<label class="close button" for="accessibility" tabindex="0" role="button" aria-pressed="true" aria-haspopup="true" aria-controls="accessibility-window" data-popup-close><span>Close</span></label>
+				<label class="close button" for="preferences" tabindex="0" role="button" aria-pressed="true" aria-haspopup="true" aria-controls="preferences-window" data-popup-close><span>Close</span></label>
 			</div>
 		</div>
 	</div>

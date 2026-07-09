@@ -1,7 +1,7 @@
 import { showAllHidden, refreshIframes, enableClipboardButtons, targetBlankLinks, waitForGlobals } from './helpers/domHelpers.js';
 import { timeAgo, durationFormat } from './helpers/timeHelpers.js';
 
-import { accessibility } from './components/accessibility.js';
+import { preferences } from './components/preferences.js';
 import { lightbox } from './components/lightbox.js';
 import { mediaInfoToggle } from './components/mediaInfoToggle.js';
 import { popup } from './components/popup.js';
@@ -10,7 +10,7 @@ import { popup } from './components/popup.js';
 showAllHidden();
 
 popup();
-accessibility();
+preferences();
 enableClipboardButtons();
 
 // Recall for infinite scroll
