@@ -18,24 +18,28 @@
 		}
 		time {
 			--color-highlight: var(--color-slate);
+			--color-lowlight: var(--color-grey);
 			--color-mix: color-mix(
 				in srgb,
 				hsl(from var(--color-highlight) h calc(s * .3) l) 40%,
-				hsl(from var(--color-grey) h s calc(l * .8))
+				hsl(from var(--color-lowlight) h s calc(l * .8))
 			);
 			background-color: var(--color-mix);
+			@include contrast {
+				--color-lowlight: var(--color-dark-grey);
+			}
 			@include tone(blue) {
 				--color-mix: color-mix(
 					in srgb,
 					hsl(from var(--color-highlight) h calc(s * .3) l) 40%,
-					hsl(from var(--color-grey) h s calc(l * .5))
+					hsl(from var(--color-lowlight) h s calc(l * .5))
 				);
 			}
 			@include tone(yellow) {
 				--color-mix: color-mix(
 					in srgb,
 					hsl(from var(--color-highlight) h calc(s * .3) l) 40%,
-					hsl(from var(--color-grey) h s calc(l * .5))
+					hsl(from var(--color-lowlight) h s calc(l * .5))
 				);
 			}
 			&::after {

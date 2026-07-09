@@ -146,6 +146,7 @@
 			@include button;
 			@include contrast {
 				background-color: unset !important;
+				isolation: isolate;
 				@include clip-path(false) {
 					border-radius: unset;
 				}
