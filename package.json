@@ -22,10 +22,10 @@
 	"homepage": "https://gabriellew.ee",
 	"type": "module",
 	"engines": {
-		"node": ">=20.20.2"
+		"node": ">=22.23.1"
 	},
 	"volta": {
-		"node": "20.20.2"
+		"node": "22.23.1"
 	},
 	"dependencies": {
 		"@11ty/eleventy": "^3.1.6",
