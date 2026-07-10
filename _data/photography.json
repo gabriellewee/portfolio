@@ -1,12 +1,180 @@
 [
 	{
+		"name": "otagi-nenbutsu-ji",
+		"date": "2025-11-30",
+		"location": "Otagi Nenbutsu-ji, Ukyo-ku, Kyoto, Japan",
+		"camera": "iPhone 16 Pro Max",
+		"editor": "VSCO",
+		"tags": "outdoor nature plants architecture",
+		"description": "Sunlight streams through the trees onto a stone rakan statue with a gentle smile at Otagi Nenbutsu-ji.",
+		"external": [
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/DX0Adidgf3u/"
+			}
+		],
+		"size": "xs"
+	},
+	{
+		"name": "bamboo",
+		"date": "2025-11-29",
+		"location": "Arashiyama Chikurin-no-Komichi, Ukyo-ko, Kyoto, Japan",
+		"camera": "iPhone 16 Pro Max",
+		"editor": "VSCO",
+		"tags": "outdoor nature plants",
+		"description": "Looking up from beneath the bamboo grove in Arashiyama, with tall bamboo stalks reaching toward the sky and sunlight illuminating their tips.",
+		"external": [
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/DXuVkAVGph9/?img_index=8"
+			}
+		],
+		"size": "xs"
+	},
+	{
+		"name": "yasaka",
+		"date": "2025-11-27",
+		"location": "Hōkan-ji, Higashiyama-ku, Kyoto, Japan",
+		"camera": "iPhone 16 Pro Max",
+		"editor": "VSCO",
+		"tags": "outdoor city night architecture",
+		"description": "A close-up view of the intricate wooden joinery beneath Yasaka Pagoda’s roof, softly illuminated by warm light from within at night.",
+		"external": [
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/DXuVkAVGph9/"
+			}
+		],
+		"size": "m",
+		"focus": {
+			"y": 30
+		}
+	},
+	{
+		"name": "kurama-dera",
+		"date": "2025-11-27",
+		"location": "Kurama-dera, Sakyo-ku, Kyoto, Japan",
+		"camera": "iPhone 16 Pro Max",
+		"editor": "VSCO",
+		"tags": "outdoor nature landscape architecture plants",
+		"description": "A stone lantern at Kurama-dera, framed by a vermilion wooden fence and the surrounding forested mountains.",
+		"external": [
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/DXuVkAVGph9/?img_index=2"
+			}
+		],
+		"size": "xs",
+		"focus": {
+			"y": 10
+		}
+	},
+	{
+		"name": "altars",
+		"date": "2025-11-26",
+		"location": "Fushimi Inari-taisha, Fushimi-ku, Kyoto, Japan",
+		"camera": "iPhone 16 Pro Max",
+		"editor": "VSCO",
+		"tags": "outdoor nature architecture plants",
+		"description": "A narrow walkway through moss-covered stone altars, each with small torii gates and fox statues adorned with red bibs, illuminated by rays of sunlight filtering through the trees.",
+		"external": [
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/DW7oxZFGqcC/?img_index=7"
+			}
+		],
+		"focus": {
+			"y": 10
+		}
+	},
+	{
+		"name": "matcha",
+		"date": "2025-11-25",
+		"location": "Shimogyo-ku, Kyoto, Japan",
+		"camera": "iPhone 16 Pro Max",
+		"editor": "VSCO",
+		"tags": "indoor food",
+		"description": "A carefully arranged spread of matcha lattes, kinako-dusted sticky rice balls, and baby castella on a wooden tray atop a wooden table with a minimalist concrete backdrop.",
+		"external": [
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/DW7oxZFGqcC/"
+			}
+		],
+		"focus": {
+			"y": 80
+		}
+	},
+	{
+		"name": "gyeongbokgung",
+		"date": "2025-11-22",
+		"location": "Gyeongbokgung, Jongno, Seoul, South Korea",
+		"camera": "iPhone 16 Pro Max",
+		"editor": "VSCO",
+		"tags": "outdoor city architecture",
+		"description": "Close-up of the ornate underside of a corner roof at Gyeongbokgung Palace, showing detailed painted wooden carvings and decorative patterns.",
+		"external": [
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/DMqq5Roy5FM/"
+			}
+		]
+	},
+	{
+		"name": "alfie",
+		"date": "2025-07-27",
+		"location": "San Francisco, CA, USA",
+		"camera": "iPhone 16 Pro Max",
+		"editor": "VSCO",
+		"tags": "outdoor nature cat animal portrait",
+		"description": "A grey cat wearing a bright green harness and leash sits on a picnic blanket in a grassy outdoor area.",
+		"external": [
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/DMqq5Roy5FM/"
+			}
+		],
+		"size": "xs",
+		"focus": {
+			"y": 10
+		}
+	},
+	{
+		"name": "impa",
+		"date": "2025-06-14",
+		"location": "San Francisco, CA, USA",
+		"camera": "iPhone 16 Pro Max",
+		"editor": "VSCO",
+		"tags": "indoor cat animal portrait",
+		"description": "A grey cat lies on her side on brown kitchen mats on a linoleum floor, looking toward the camera.",
+		"external": [
+			{
+				"platform": "instagram",
+				"url": "https://www.instagram.com/p/DLl20aLuvd8/"
+			}
+		],
+		"size": "xs",
+		"focus": {
+			"y": 50
+		}
+	},
+	{
+		"name": "rodeo-beach",
+		"date": "2025-03-29",
+		"location": "Rodeo Beach, Marin Headlands, CA, USA",
+		"camera": "iPhone 16 Pro Max",
+		"editor": "VSCO",
+		"tags": "nature outdoor beach landscape",
+		"description": "Hikers walk up Hill 88 on a sunny day, with Rodeo Beach and the coastline visible behind them in the Marin Headlands."
+	},
+	{
 		"name": "impa",
 		"date": "2024-11-13",
 		"location": "San Francisco, CA, USA",
 		"camera": "iPhone 16 Pro Max",
 		"editor": "VSCO",
 		"tags": "indoor cat animal portrait",
-		"description": "A grey kitten sitting on top of a fuzzy cat tree in front of a shelf filled with plushies and stuffed animals.",
+		"description": "A grey kitten sits on a fuzzy cat tree in front of a shelf filled with plush toys and stuffed animals.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -24,7 +192,7 @@
 		"camera": "iPhone 16 Pro Max",
 		"editor": "VSCO",
 		"tags": "outdoor architecture people nature",
-		"description": "A person in an oversized collared shirt walking along a street in Washington, D.C. surrounded by trees and autumn leaves.",
+		"description": "A person in an oversized collared shirt walks along a tree-lined street in Washington, D.C., surrounded by autumn leaves.",
 		"size": "m",
 		"focus": {
 			"x": 50,
@@ -38,7 +206,7 @@
 		"camera": "iPhone 14 Pro Max",
 		"editor": "VSCO",
 		"tags": "outdoor architecture people",
-		"description": "An Asian woman in a short poofy baby pink dress holding her long matching train as the wind blows, standing between columns with sunslight shining through.",
+		"description": "A person wearing a flowing pink dress with a long train stands between columns at the Legion of Honor, holding the train as sunlight shines through.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -56,7 +224,7 @@
 		"camera": "iPhone 14 Pro Max",
 		"editor": "VSCO",
 		"tags": "outdoor nature plants cat animal portrait",
-		"description": "A grey cat with green eyes with a grey harness and green leash sitting quietly in an outdoor garden surrounded by large plants. He looks cold and his fur is puffed up so keep him warm.",
+		"description": "A grey cat wearing a grey harness and green leash sits in an outdoor garden surrounded by large plants, with his fur slightly puffed up.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -74,7 +242,7 @@
 		"camera": "iPhone 14 Pro Max",
 		"editor": "VSCO",
 		"tags": "outdoor city nature architecture landscape",
-		"description": "The view at sunset from the Baldwin Steps overlooking the street below and the cityscape of Toronto beyond.",
+		"description": "A sunset view from the Baldwin Steps overlooks a Toronto street and the city skyline beyond.",
 		"size": "xs",
 		"focus": {
 			"y": 40
@@ -87,7 +255,7 @@
 		"camera": "iPhone 14 Pro Max",
 		"editor": "VSCO",
 		"tags": "indoor flatlay",
-		"description": "A collection of jewerly on a white marble background, including a slim dual-faced watch, pink sapphire rings, rainbow beads, and a bright green jade pendant",
+		"description": "A collection of jewelry arranged on a white marble surface, including a slim dual-faced watch, pink sapphire rings, rainbow beads, and a bright green jade pendant.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -105,7 +273,7 @@
 		"camera": "iPhone 14 Pro Max",
 		"editor": "VSCO",
 		"tags": "indoor people architecture art",
-		"description": "A person in a bright blue jacket facing away from the camera and looking towards a Roman statue made from white marble in a museum gallery."
+		"description": "A person in a bright blue jacket faces away from the camera while viewing a white marble Roman statue in a museum gallery."
 	},
 	{
 		"name": "bart",
@@ -114,7 +282,7 @@
 		"camera": "iPhone 14 Pro Max",
 		"editor": "VSCO",
 		"tags": "outdoor indoor landscape",
-		"description": "The inside of a BART train, with the window overlooking the Oakland raising cranes at sunrise",
+		"description": "The interior of a BART train at sunrise, with construction cranes visible through the window overlooking Oakland.",
 		"focus": {
 			"y": 65
 		}
@@ -126,7 +294,7 @@
 		"camera": "iPhone 14 Pro Max",
 		"editor": "VSCO",
 		"tags": "people portrait indoor",
-		"description": "A person with long bleached hair and a bright blue jacket sitting on a yellow rolling ladder in front of wood supplies at Home Depot.",
+		"description": "A person with long bleached hair and a bright blue jacket sits on a yellow rolling ladder in front of stacks of wood at Home Depot.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -141,7 +309,7 @@
 		"camera": "Panasonic Lumix DMC-GX85",
 		"editor": "VSCO",
 		"tags": "indoor architecture",
-		"description": "A person with long hair in a light top and gray wide-leg pants standing with their back to the camera in a large mint-green room with a glass roof and sunshine streaming through.",
+		"description": "A person with long hair stands with their back to the camera in the mint-green Winter Garden at Harold Washington Library, beneath a large glass roof with sunlight streaming through.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -157,7 +325,7 @@
 		"camera": "iPhone 14 Pro Max",
 		"editor": "VSCO",
 		"tags": "indoor architecture plants",
-		"description": "Golden hour sunlight streaming through the glass roof of a greenhouse filled with tropical plants."
+		"description": "Golden sunlight streams through the glass roof of a greenhouse filled with tropical plants at Garfield Park Conservatory."
 	},
 	{
 		"name": "selfie",
@@ -166,7 +334,7 @@
 		"camera": "iPhone 14 Pro Max",
 		"editor": "VSCO",
 		"tags": "outdoor landscape water portrait",
-		"description": "A woman in a beige cap and an orange/green scarf partially covering her face taking a selfie in front of Chicago’s waterfront.",
+		"description": "A person wearing a beige cap and an orange-and-green scarf takes a selfie in front of Chicago's waterfront.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -184,7 +352,7 @@
 		"camera": "Panasonic Lumix DMC-GX85",
 		"editor": "VSCO",
 		"tags": "outdoor landscape water",
-		"description": "The fire station on Chicago’s South Pier surrounded by blue water and blue sky.",
+		"description": "A fire station on Chicago's South Pier sits surrounded by blue water and sky.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -199,7 +367,7 @@
 		"camera": "iPhone 14 Pro Max",
 		"editor": "VSCO",
 		"tags": "cat animal portrait indoor",
-		"description": "A grey cat sitting on a fluffy cat tree surrounded by stuffed animals.",
+		"description": "A grey cat sits on a fluffy cat tree surrounded by stuffed animals.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -217,7 +385,7 @@
 		"camera": "iPhone 14 Pro Max",
 		"editor": "VSCO",
 		"tags": "plants cat indoor",
-		"description": "A person’s hand holding out a small variegated banana tree in a pot, with a grey cat relaxing on a blanket in the background.",
+		"description": "A hand holds out a small variegated banana plant in a pot, with a grey cat relaxing on a blanket in the background.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -235,7 +403,7 @@
 		"camera": "iPhone 14 Pro Max",
 		"editor": "VSCO",
 		"tags": "fog landscape city outdoor beach water bridge",
-		"description": "Fog rolling over Golden Gate Bridge in San Francisco.",
+		"description": "Fog rolls over the Golden Gate Bridge in San Francisco, partially obscuring the span and surrounding landscape.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -253,8 +421,7 @@
 		"camera": "iPhone 14 Pro Max",
 		"editor": "VSCO",
 		"tags": "indoor objects",
-		"description": "A collection of freshly polished wooden spoons and serving utensils.",
-		"size": "m"
+		"description": "A collection of freshly polished wooden spoons and serving utensils arranged together."
 	},
 	{
 		"name": "bangkok",
@@ -263,7 +430,7 @@
 		"camera": "iPhone 14 Pro Max",
 		"editor": "VSCO",
 		"tags": "city outdoor landscape",
-		"description": "Gridlocked roads filled with cars, mopeds, and people on an afternoon in Bangkok, Thailand.",
+		"description": "A busy street in Bangkok filled with cars, motorcycles, and pedestrians on an afternoon.",
 		"size": "xs"
 	},
 	{
@@ -273,7 +440,7 @@
 		"camera": "iPhone 14 Pro Max",
 		"editor": "VSCO",
 		"tags": "nature plants indoor landscape",
-		"description": "A panoramic view of the world’s tallest indoor waterfall inside Jewel Changi Airport.",
+		"description": "A panoramic view of the Rain Vortex, the world's tallest indoor waterfall, surrounded by lush greenery inside Jewel Changi Airport.",
 		"size": "m"
 	},
 	{
@@ -283,7 +450,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "cat animal portrait outdoor",
-		"description": "A grey cat with a grey harness sitting in a garden on an outdoor couch with orange cushions.",
+		"description": "A grey cat wearing a grey harness sits on an outdoor couch with orange cushions in a garden.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -299,7 +466,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "people portrait indoor food",
-		"description": "A person with long hair and beanie holding up pieces of bacon at a brunch restaurant in San Francisco.",
+		"description": "A person wearing a beanie holds up pieces of bacon at a brunch restaurant in San Francisco.",
 		"size": "xs"
 	},
 	{
@@ -309,7 +476,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "nature outdoor beach landscape",
-		"description": "Ocean waves crashing against the rocks and spraying the air at Kehoe Beach."
+		"description": "Ocean waves crash against rocks along the shoreline at Kehoe Beach, sending spray into the air."
 	},
 	{
 		"name": "hayden",
@@ -318,7 +485,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "nature outdoor beach portrait people",
-		"description": "A man in a waterproof poncho, sunglasses, and a hat sitting on a rock on Kehoe Beach.",
+		"description": "A person wearing a waterproof poncho, sunglasses, and a hat sits on a rock at Kehoe Beach.",
 		"size": "xs"
 	},
 	{
@@ -328,7 +495,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "nature outdoor park landscape city",
-		"description": "A wide shot of downtown San Francisco as seen from Twin Peaks.",
+		"description": "A wide view of downtown San Francisco and the surrounding cityscape from Twin Peaks.",
 		"size": "s"
 	},
 	{
@@ -353,7 +520,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "cat animal portrait indoor",
-		"description": "A grey kitten sitting inside a bright pink foldable cube on carpet."
+		"description": "A grey kitten sits inside a bright pink foldable cube on a carpeted floor."
 	},
 	{
 		"name": "alfie",
@@ -362,7 +529,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "cat animal portrait indoor",
-		"description": "A grey kitten sitting on top of a wood desk in front of a computer monitor with a bright desktop background."
+		"description": "A grey kitten sits on a wooden desk in front of a computer monitor displaying a bright desktop background."
 	},
 	{
 		"name": "alfie",
@@ -371,7 +538,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "cat animal portrait indoor",
-		"description": "A grey kitten lying down inside a cubby on a cat tower with his head sticking out.",
+		"description": "A grey kitten lies inside a cubby on a cat tower with his head poking out.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -386,7 +553,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "outdoor landscape city",
-		"description": "A wide shot of the San Francisco skyline as seen from Pier 14."
+		"description": "A wide view of the San Francisco skyline from Pier 14."
 	},
 	{
 		"name": "hayden",
@@ -395,7 +562,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "portrait people outdoor",
-		"description": "A man in a leather jacket, black hat, and black mask looking at his phone and earbuds leaning against a train station wall in SeaTac, Washington."
+		"description": "A person wearing a leather jacket, black hat, and black mask looks at a phone while leaning against a train station wall in SeaTac, Washington."
 	},
 	{
 		"name": "de-young",
@@ -404,7 +571,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "art indoor nature",
-		"description": "An art gallery empty of people in the de Young Museum in San Francisco.",
+		"description": "An empty art gallery inside the de Young Museum in San Francisco.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -420,7 +587,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "portrait people outdoor nature",
-		"description": "A blonde woman kneeling on a tree stump with her OneWheel in Sonora, California."
+		"description": "A person kneels on a tree stump with a OneWheel at Indigeny Reserve in Sonora, California."
 	},
 	{
 		"name": "two-trees",
@@ -429,7 +596,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "trees park plants outdoor nature",
-		"description": "A dark tree and a light tree growing next to each other in San Francisco’s Golden Gate Park"
+		"description": "A dark-colored tree and a lighter-colored tree grow beside each other in Golden Gate Park."
 	},
 	{
 		"name": "hills",
@@ -438,7 +605,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "hills landscape park plants outdoor nature",
-		"description": "Hills in the Marin Headlands in Sausalito, California.",
+		"description": "Rolling hills covered in vegetation in the Marin Headlands.",
 		"size": "s"
 	},
 	{
@@ -448,7 +615,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "park flower plants outdoor nature",
-		"description": "An orange flower in the Marin Headlands in Sausalito, California.",
+		"description": "An orange flower growing in the Marin Headlands.",
 		"size": "xs"
 	},
 	{
@@ -458,7 +625,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "park flower plants outdoor nature",
-		"description": "A white iris in the Marin Headlands in Sausalito, California.",
+		"description": "A white iris growing in the Marin Headlands.",
 		"size": "xs"
 	},
 	{
@@ -468,7 +635,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "sunset beach landscape outdoor water nature",
-		"description": "Sunset over Lands End Lookout in San Francisco.",
+		"description": "A colorful sunset viewed from a hilltop road at Lands End, with the road in the foreground and the ocean visible beyond.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -483,7 +650,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "trees flower plants outdoor nature",
-		"description": "Cherry blossoms lit by fairy lights during an evening in San Francisco’s Japantown.",
+		"description": "Cherry blossoms illuminated by fairy lights during an evening in San Francisco's Japantown.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -498,7 +665,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "trees plants outdoor nature",
-		"description": "An unknown fern tree with delicate red edges along the fronds."
+		"description": "Close-up of a fern-like plant with delicate red-edged fronds."
 	},
 	{
 		"name": "neddy",
@@ -507,7 +674,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "cat animal portrait indoor",
-		"description": "A black and white tuxedo cat sitting on a pink velvet chair next to a red tablecloth."
+		"description": "A black-and-white tuxedo cat sits on a pink velvet chair beside a red tablecloth."
 	},
 	{
 		"name": "home",
@@ -516,7 +683,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "sunset landscape city outdoor",
-		"description": "Sunset in San Francisco."
+		"description": "Sunset light over San Francisco."
 	},
 	{
 		"name": "agate-beach",
@@ -525,7 +692,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "beach landscape outdoor park nature",
-		"description": "Agate Beach at Patrick’s Point State Park in Trinidad, California."
+		"description": "Agate Beach at Patrick’s Point State Park, with rocky shoreline and ocean views."
 	},
 	{
 		"name": "sunset",
@@ -553,7 +720,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "sunset beach people landscape outdoor water nature",
-		"description": "Four people in the distance walking towards the camera from the water’s edge at a beach in Waldport, Oregon.",
+		"description": "Four people walk along the water's edge at a beach in Waldport, Oregon, with the sunset behind them.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -568,7 +735,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "portrait people beach outdoor",
-		"description": "A portrait of a man in a gray poncho at a beach in Waldport, Oregon.",
+		"description": "A person wearing a gray poncho stands at a beach in Waldport, Oregon.",
 		"size": "xs"
 	},
 	{
@@ -578,7 +745,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "sunset beach landscape outdoor water nature",
-		"description": "Sunset over a beach in Waldport, Oregon.",
+		"description": "A pastel sunset over a beach in Waldport, Oregon, with shrubs on a sandy incline and long shadows stretching across the foreground.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -593,7 +760,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "forest road trees plants landscape outdoor water nature",
-		"description": "Trees covered with moss by the side of a road in Cascadia, Oregon."
+		"description": "A forest road surrounded by tall moss-covered trees in Cascadia, Oregon."
 	},
 	{
 		"name": "snow-3",
@@ -602,7 +769,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "forest road trees snow landscape outdoor nature",
-		"description": "A snow-covered road in Willamette National Forest in Oregon.",
+		"description": "A snow-covered road winding through the trees in Willamette National Forest, Oregon.",
 		"size": "xs"
 	},
 	{
@@ -612,7 +779,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "forest road trees snow landscape outdoor nature",
-		"description": "A snow-covered road in Willamette National Forest in Oregon.",
+		"description": "A snow-covered road surrounded by evergreen trees in Willamette National Forest, Oregon.",
 		"size": "m"
 	},
 	{
@@ -622,7 +789,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "forest road trees snow landscape outdoor nature",
-		"description": "Snow-covered trees by the side of a road in Willamette National Forest in Oregon.",
+		"description": "Snow-covered evergreen trees beside a road in Willamette National Forest, Oregon.",
 		"size": "xs"
 	},
 	{
@@ -632,7 +799,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "portrait people beach indoor",
-		"description": "A man sitting in a vacation home by a beach in Waldport, Oregon."
+		"description": "A person sits inside a vacation home near the beach in Waldport, Oregon, with warm afternoon light streaming through the windows."
 	},
 	{
 		"name": "baby-kitty",
@@ -641,7 +808,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "cat animal portrait indoor",
-		"decsription": "A white and gray cat with green eyes laying down."
+		"description": "A white and grey cat with green eyes lies down."
 	},
 	{
 		"name": "twin-peaks",
@@ -650,7 +817,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "fog landscape city outdoor",
-		"description": "Fog coming towards the camera from the top of Twin Peaks in San Francisco.",
+		"description": "Fog rolls over Twin Peaks toward the camera, gradually obscuring the view of San Francisco.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -665,7 +832,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "park flower plants outdoor nature",
-		"description": "Unknown white flowers at Glen Canyon Park in San Francisco.",
+		"description": "Clusters of small white flowers growing in Glen Canyon Park.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -680,7 +847,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "portrait people outdoor city night",
-		"description": "A person with long hair and a Britney Spears face mask holding an iridescent umbrells over their head."
+		"description": "A person with long hair wears a Britney Spears face mask and holds an iridescent umbrella overhead on a rainy night."
 	},
 	{
 		"name": "chinatown",
@@ -689,7 +856,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "outdoor city night rain landscape water",
-		"description": "San Francsico Chinatown during a rainy night, decorated with red lanterns for Lunar New Year.",
+		"description": "A rainy night in San Francisco's Chinatown, with wet streets reflecting rows of red lanterns.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -704,7 +871,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "outdoor city bridge water",
-		"description": "The San Francisco side of the Bay Bridge."
+		"description": "The San Francisco side of the Bay Bridge viewed from the Embarcadero Waterfront."
 	},
 	{
 		"name": "ocean-beach",
@@ -713,7 +880,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "sunset landscape outdoor beach water nature people",
-		"description": "Sunset over Ocean Beach in San Francisco.",
+		"description": "A vivid bright orange and blue sunset over Ocean Beach.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -728,7 +895,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "forest sunset landscape park outdoor nature",
-		"description": "Sunset through the trees at Lands End in San Francisco.",
+		"description": "Sunset light filtering through trees along a hiking path at Lands End in San Francisco.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -743,7 +910,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "landscape city outdoor beach water bridge people",
-		"description": "A man with a helmet and protective gear with his back to the camera, facing an overlook for the Golden Gate Bridge in San Francisco."
+		"description": "A person wearing a helmet and protective gear stands with their back to the camera, looking toward the Golden Gate Bridge from an overlook."
 	},
 	{
 		"name": "home",
@@ -752,7 +919,7 @@
 		"camera": "iPhone 12 Pro Max",
 		"editor": "VSCO",
 		"tags": "sunset landscape city outdoor",
-		"description": "Clouds and golden light over San Francisco.",
+		"description": "Golden light breaks through clouds over San Francisco.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -763,11 +930,11 @@
 	{
 		"name": "hayden",
 		"date": "2021-01-10",
-		"location": "Point Lobos, San Francisco, CA, USA",
+		"location": "Lands End, San Francisco, CA, USA",
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
-		"tags": "landscape city outdoor water people",
-		"description": "A man with his back to the camera, facing a rocky overlook and white ocean waves.",
+		"tags": "landscape beach outdoor water people",
+		"description": "A person stands with their back to the camera overlooking a rocky shoreline and white ocean waves.",
 		"size": "m"
 	},
 	{
@@ -777,7 +944,7 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"tags": "sunset landscape city outdoor beach water bridge",
-		"description": "San Francisco’s Golden Gate Bridge at sunset facing Sausalito.",
+		"description": "The Golden Gate Bridge at sunset viewed from Marshall's Beach, with Sausalito in the distance.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -792,7 +959,7 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"tags": "landscape city outdoor",
-		"description": "San Francisco at golden hour from the top of Lone Mountain."
+		"description": "Golden hour light over San Francisco viewed from the top of Lone Mountain."
 	},
 	{
 		"name": "hayden",
@@ -801,7 +968,7 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"tags": "people indoor perspective",
-		"description": "A man in a striped shirt standing in the center of a long aisle of white metal storage units.",
+		"description": "A person in a striped shirt stands in the center of a long aisle of white metal storage units.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -817,7 +984,7 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"tags": "sunset landscape outdoor people",
-		"description": "Sunset over the salt ponds at Alviso Marina County Park in San Jose, California.",
+		"description": "Sunset light reflecting across the salt ponds at Alviso Marina County Park, with people navigating the narrow platform walkways across the ponds.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -833,7 +1000,7 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"tags": "landscape water plants nature architecture outdoor",
-		"description": "Kinkaku-ji, a golden Zen Buddhist shrine in Kyoko, surreounded by still water and green trees on a foggy day."
+		"description": "Kinkaku-ji, the golden Zen Buddhist temple, stands out against a grey overcast sky, reflected in still water and surrounded by trees."
 	},
 	{
 		"name": "fushimi-inari-taisha",
@@ -842,7 +1009,7 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"tags": "sunset landscape architecture outdoor",
-		"description": "A closeup of the architectural details and structure of Fushimi Inari-taisha in Kyoto, the head shrine of the Japanese fox deity Inari Ōkami.",
+		"description": "Close-up of the intricate wooden architectural details of Fushimi Inari-taisha in Kyoto.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -858,7 +1025,7 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"tags": "sunset landscape outdoor beach water nature people",
-		"description": "Sunset at Black Rock Beach in Kaanapali, Hawaii"
+		"description": "Silhouettes of people stand along the shoreline of Black Rock Beach during sunset in Kaanapali, Hawaii."
 	},
 	{
 		"name": "thoreau",
@@ -867,7 +1034,7 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"tags": "landscape outdoor aerial nature",
-		"description": "Red rock formations from a bird’s eye view of Thoreau, New Mexico.",
+		"description": "Aerial view of red rock formations and desert landscape in Thoreau, New Mexico.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -882,7 +1049,7 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"tags": "outdoor plants nature",
-		"description": "A vining philodendron Verrucosum climbing up a moss-covered wall."
+		"description": "A vining philodendron Verrucosum with velvet leaves climbing a moss-covered wall."
 	},
 	{
 		"name": "palm-trees",
@@ -891,7 +1058,7 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"tags": "landscape outdoor water trees plants nature",
-		"description": "Blue palm trees at Fairchild Tropical Botanic Garden in Coral Gables, Florida.",
+		"description": "Blue-green palm trees reflected in water at Fairchild Tropical Botanic Garden in Coral Gables, Florida.",
 		"external": [
 			{
 				"platform": "instagram",
@@ -906,7 +1073,7 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"tags": "landscape outdoor water plants nature",
-		"description": "The ocean waves crashing into the rocks along the shoreline of Point Lobos under a blue sky."
+		"description": "Ocean waves crash against rock formations jutting out from the shoreline at Point Lobos under a blue sky."
 	},
 	{
 		"name": "succulents",
@@ -915,7 +1082,7 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"tags": "indoor plants nature",
-		"description": "My hand holding a small round clear tray filled with colorful pink and violet succulents."
+		"description": "A hand holds a small clear tray filled with colorful pink and violet succulents."
 	},
 	{
 		"name": "succulents",
@@ -924,7 +1091,7 @@
 		"camera": "iPhone XS Max",
 		"editor": "VSCO",
 		"tags": "outdoor plants nature",
-		"description": "Hundreds of blue-green echeveria succulents."
+		"description": "Hundreds of blue-green echeveria succulents arranged closely together."
 	},
 	{
 		"name": "beach",
@@ -933,7 +1100,7 @@
 		"camera": "iPhone 8 Plus",
 		"editor": "VSCO",
 		"tags": "outdoor beach water plants nature",
-		"description": "The La Jolla shoreline with tidepools and seagulls and people in the distance."
+		"description": "The La Jolla shoreline with tide pools and seagulls, with people in the distance."
 	},
 	{
 		"name": "bird",
@@ -942,6 +1109,6 @@
 		"camera": "iPhone 8 Plus",
 		"editor": "VSCO",
 		"tags": "outdoor water plants animal bird nature",
-		"description": "A long necked white bird perched on top of the water surrounded by lush green plants in the Lousiana bayou."
+		"description": "A long-necked white bird stands on the water surrounded by lush green plants in the Louisiana bayou."
 	}
 ]
