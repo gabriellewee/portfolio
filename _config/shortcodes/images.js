@@ -24,13 +24,8 @@ export const findExtension = (src) => {
 		if (src.includes("@")) {
 			ext = src.split("@").pop().toLowerCase();
 		} else {
-			const pathname = new URL(src, "http://dummy").pathname;
-			const parts = pathname.split(".");
-			if (parts.length > 1) {
-				ext = parts.pop().toLowerCase();
-			} else {
-				ext = "";
-			}
+			const parts = new URL(src, "http://dummy").pathname.split(".");
+			ext = parts.length > 1 ? parts.pop().toLowerCase() : "";
 		}
 
 		switch (ext) {
@@ -88,39 +83,92 @@ process.on("SIGINT", () => {
 
 const normalize = (val) => (val > 255 ? val / 257 : val);
 
-export const stats = async (src, type, value) => {
-	const defaultColor = "var(--color-dark-grey)";
-	const defaultTheme = "dark";
-
+const getImageEntry = (src) => {
 	const images = loadImagesJson();
 	let imageEntry = images.find((img) => img.src === src);
-
 	if (!imageEntry) {
 		imageEntry = { src };
 		images.push(imageEntry);
 		cacheDirty = true;
 	}
+	return imageEntry;
+};
 
-	const image = src.startsWith("https://") ? await fetchImageBuffer(src) : src;
-	const sharpImage = Sharp(image);
-	const metadata = await sharpImage.metadata();
+const cachedImage = async (src, input, options) => {
+	const imageEntry = getImageEntry(src);
 
-	if (!imageEntry.width) { imageEntry.width = metadata.width; cacheDirty = true; }
-	if (!imageEntry.height) { imageEntry.height = metadata.height; cacheDirty = true; }
-	if (!imageEntry.orientation) {
-		imageEntry.orientation = metadata.width > metadata.height ? "landscape" : "portrait";
-		cacheDirty = true;
+	if (!imageEntry.outputs) imageEntry.outputs = {};
+
+	const key = JSON.stringify({
+		widths: options.widths,
+		formats: options.formats,
+		urlPath: options.urlPath,
+	});
+
+	const cached = imageEntry.outputs[key];
+	if (cached) {
+		const stillExists = Object.values(cached).every((format) =>
+			format.every((img) => fs.existsSync(path.join(process.cwd(), "_site", img.url)))
+		);
+		if (stillExists) return cached;
 	}
 
-	const reduce = (num, den) => {
-		const gcd = (a, b) => (b ? gcd(b, a % b) : a);
-		const factor = gcd(num, den);
-		return [num / factor, den / factor];
-	};
-	if (!imageEntry.ratio) {
-		const [w, h] = reduce(metadata.width, metadata.height);
-		imageEntry.ratio = `${w} / ${h}`;
-		cacheDirty = true;
+	const stat = await Image(input, options);
+
+	const trimmed = {};
+	for (const format of Object.keys(stat)) {
+		trimmed[format] = stat[format].map((img) => ({
+			url: img.url,
+			srcset: img.srcset,
+			width: img.width,
+			height: img.height,
+		}));
+	}
+
+	imageEntry.outputs[key] = trimmed;
+	cacheDirty = true;
+	return trimmed;
+};
+
+export const stats = async (src, type, value, preloaded) => {
+	const defaultColor = "var(--color-dark-grey)";
+	const defaultTheme = "dark";
+
+	const imageEntry = getImageEntry(src);
+
+	const needsMetadata = !imageEntry.width || !imageEntry.height || !imageEntry.orientation || !imageEntry.ratio;
+	const needsTheme = (type === "theme" || type === "color" || type === "both") && !imageEntry.theme;
+	const needsAverage = (type === "average" || type === "color" || type === "both") && !imageEntry.average;
+
+	let sharpImage = preloaded?.sharp ?? null;
+	let metadata = preloaded?.metadata ?? null;
+
+	if ((needsMetadata || needsTheme || needsAverage) && !sharpImage) {
+		const image = src.startsWith("https://") ? await fetchImageBuffer(src) : src;
+		sharpImage = Sharp(image);
+	}
+	if (needsMetadata && !metadata) {
+		metadata = await sharpImage.metadata();
+	}
+
+	if (metadata) {
+		if (!imageEntry.width) { imageEntry.width = metadata.width; cacheDirty = true; }
+		if (!imageEntry.height) { imageEntry.height = metadata.height; cacheDirty = true; }
+		if (!imageEntry.orientation) {
+			imageEntry.orientation = metadata.width > metadata.height ? "landscape" : "portrait";
+			cacheDirty = true;
+		}
+
+		const reduce = (num, den) => {
+			const gcd = (a, b) => (b ? gcd(b, a % b) : a);
+			const factor = gcd(num, den);
+			return [num / factor, den / factor];
+		};
+		if (!imageEntry.ratio) {
+			const [w, h] = reduce(metadata.width, metadata.height);
+			imageEntry.ratio = `${w} / ${h}`;
+			cacheDirty = true;
+		}
 	}
 
 	const getTheme = async () => {
@@ -128,8 +176,8 @@ export const stats = async (src, type, value) => {
 		let positionTop = 0;
 		let positionLeft = 0;
 
-		if (value?.includes("bottom")) positionTop = metadata.height - squareWidth;
-		if (value?.includes("right")) positionLeft = metadata.width - squareWidth;
+		if (value?.includes("bottom")) positionTop = imageEntry.height - squareWidth;
+		if (value?.includes("right")) positionLeft = imageEntry.width - squareWidth;
 
 		const extracted = sharpImage
 			.clone()
@@ -148,22 +196,16 @@ export const stats = async (src, type, value) => {
 		const stats = await sharpImage.toColourspace("rgb").stats();
 		if (!stats.channels || stats.channels.length < 1) return defaultColor;
 
-		if (stats.channels.length === 1) {
-			const gray = Math.round(normalize(stats.channels[0].mean));
-			return `#${gray.toString(16).padStart(2, "0").repeat(3)}`;
-		} else {
-			const r = Math.round(normalize(stats.channels[0].mean));
-			const g = Math.round(normalize(stats.channels[1].mean));
-			const b = Math.round(normalize(stats.channels[2].mean));
-			return `#${[r, g, b].map((v) => v.toString(16).padStart(2, "0")).join("")}`;
-		}
+		const toHex = (channel) => Math.round(normalize(channel.mean)).toString(16).padStart(2, "0");
+		if (stats.channels.length === 1) return `#${toHex(stats.channels[0]).repeat(3)}`;
+		return `#${stats.channels.slice(0, 3).map(toHex).join("")}`;
 	};
 
-	if ((type === "theme" || type === "color" || type === "both") && !imageEntry.theme) {
+	if (needsTheme) {
 		imageEntry.theme = await getTheme();
 		cacheDirty = true;
 	}
-	if ((type === "average" || type === "color" || type === "both") && !imageEntry.average) {
+	if (needsAverage) {
 		imageEntry.average = await getAverage();
 		cacheDirty = true;
 	}
@@ -176,8 +218,8 @@ export const stats = async (src, type, value) => {
 	if (type === "average") return imageEntry.average || defaultColor;
 	if (type === "color" || type === "both")
 		return { theme: imageEntry.theme || defaultTheme, average: imageEntry.average || defaultColor };
-	if (type === "width") return metadata.width;
-	if (type === "height") return metadata.height;
+	if (type === "width") return imageEntry.width;
+	if (type === "height") return imageEntry.height;
 	if (type === "orientation") return imageEntry.orientation || "portrait";
 	if (type === "ratio") return imageEntry.ratio;
 
@@ -191,20 +233,29 @@ export const external = async (src, alt = "", width, loading = "lazy") => {
 		alt = alt.replace(/ :(.*?):$/g, "");
 
 		let newWidths;
+		let preloaded;
 		if (!width) {
-			const metadata = await Sharp(image).metadata();
-			width = metadata.width;
-		}
-		newWidths = width > 1000 ? [width / 2, width] : [width, width * 2];
+			const sharpImage = Sharp(image);
+			const metadata = await sharpImage.metadata();
 
-		const stat = await Image(image, {
+			width = Math.min(metadata.width, 2144);
+			newWidths = [Math.round(width / 2), width];
+
+			preloaded = { sharp: sharpImage, metadata };
+		} else {
+			newWidths = width > 1000
+				? [Math.round(width / 2), width]
+				: [width, width * 2];
+		}
+
+		const stat = await cachedImage(src, image, {
 			widths: newWidths,
 			formats: ["webp", file],
 			urlPath: "/static/images/external",
 			outputDir: "./_site/static/images/external"
 		});
 
-		const average = await stats(src, "average");
+		const average = await stats(src, "average", undefined, preloaded);
 
 		const main = stat["webp"];
 		const fallback = stat[file];
@@ -229,7 +280,7 @@ export const external = async (src, alt = "", width, loading = "lazy") => {
 
 export const ogPhoto = async (src) => {
 	try {
-		const file = findExtension(src).toLowerCase();
+		const file = findExtension(src);
 		const basename = path.basename(src, path.extname(src));
 		const outputPath = `./_site/static/images/og/${basename}.${file}`;
 		const outputUrl = `/static/images/og/${basename}.${file}`;
@@ -261,14 +312,14 @@ export const image = async (src, alt = "", type = "default", option, figp) => {
 			newWidths = [50, type, type * 2];
 		}
 
-		const stat = await Image(src, {
+		const stat = await cachedImage(src, src, {
 			widths: newWidths,
 			formats: ["webp", file],
 			urlPath: `/static/images/${category}/built`,
 			outputDir: `./_site/static/images/${category}/built`,
 		});
 
-		const average = await stats(src, "average");
+		const average = await stats(src, "average", undefined, { sharp: Sharp(src) });
 		const loading = Number.isInteger(option) && option < 7 ? "eager" : "lazy";
 
 		const main = stat["webp"];
@@ -280,14 +331,9 @@ export const image = async (src, alt = "", type = "default", option, figp) => {
 		if (type === "default") {
 			const hasXL = main.length >= 5;
 
-			webpset = main
-				.slice(hasXL ? 1 : 1, hasXL ? 5 : 4)
-				.map((img) => img.srcset)
-				.join(", ");
-			regset = fallback
-				.slice(hasXL ? 1 : 1, hasXL ? 5 : 4)
-				.map((img) => img.srcset)
-				.join(", ");
+			const buildSet = (arr) => arr.slice(1, hasXL ? 5 : 4).map((img) => img.srcset).join(", ");
+			webpset = buildSet(main);
+			regset = buildSet(fallback);
 
 			sizes = hasXL
 				? `(max-width: 912px) ${main[1].width}px, (min-width: 913px) ${main[2].width}px, (min-width: 1183px) ${main[3].width}px, (min-width: 1549px) ${main[4].width}px`
