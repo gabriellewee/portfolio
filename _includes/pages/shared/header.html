@@ -1,3 +1,5 @@
+{% from "macros.njk" import indicator %}
+
 {% if category == "writing" or category == "cooking" %}<hr class="progress" hidden/>{% endif %}
 
 <header class="top" aria-label="Header">
@@ -13,11 +15,11 @@
 
 			{% if (loading and key != "home") or (loading and key == "home" and pagination.pageNumber == 0) %}
 				<p class="text message loading" aria-hidden="true" hidden>
-					<span>{{loading|nbsp|safe}}</span><span class="indicator"><span>.</span><span>.</span><span>.</span></span>
+					<span>{{loading|nbsp|safe}}</span>{{ indicator() }}</span>
 				</p>
 			{% elseif (key == "post") or (key == "home" and pagination.pageNumber != 0) %}{% else %}
 				<p class="text message loading" aria-hidden="true" hidden>
-					<span>Loading</span><span class="indicator"><span>.</span><span>.</span><span>.</span></span>
+					<span>Loading</span>{{ indicator() }}</span>
 				</p>
 			{% endif %}
 

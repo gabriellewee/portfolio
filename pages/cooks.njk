@@ -15,6 +15,8 @@ eleventyNavigation:
     order: 10
 ---
 
+{% from "macros.njk" import header, recipe %}
+
 <section class="content" aria-label="Posts">
 	<div class="posts" data-grid>
 		{% for post in collections.cooking | reverse %}
@@ -26,33 +28,10 @@ eleventyNavigation:
 						<div class="post-header-image">
 							{% image './static/images/' + post.data.key + '/' + post.page.fileSlug + '.jpg', 'Hero image showing ' + post.data.title, 'default' %}
 						</div>
-						<div class="post-header-content">
-							<h2>
-								{% if post.url %}
-									<a href="{{post.url|url}}" aria-label="Recipe for {{post.data.title|safe}}"><span>{{post.data.title|safe}}</span></a>
-								{% else %}
-									<a href="{{post.data.url|url}}"><span>{{post.data.title|safe}}</span></a>
-								{% endif %}
-							</h2>
-							<time class="time{% if post.data.category != 'code' %} time-default{% endif %}{% if post.data.category == 'social' %} time-external{% endif %}" datetime="{{post.page.date|iso|date('string')}}" data-time="{{post.page.date|iso}}" title="{{post.page.date|iso|date('readable')}}">{{post.page.date|iso|date('readable')}}</time>
-						</div>
+						{{ header(post.data, post.page, post.data.category) }}
 					</header>
 
-					<aside class="post-meta">
-						{% if post.data.servings %}
-							<p class="recipe-servings"><strong>Servings:</strong> <span>{{post.data.servings}}</span></p>
-						{% endif %}
-						{% if post.data.prep %}
-							<p class="recipe-prep"><strong>Prep:</strong> <span class="recipe-duration" data-duration="{{post.data.prep}}">{{post.data.prep}} minutes</span></p>
-						{% endif %}
-						{% if post.data.cook %}
-							<p class="recipe-cook"><strong>Cook:</strong> <span class="recipe-duration" data-duration="{{post.data.cook}}">{{post.data.cook}} minutes</span></p>
-						{% endif %}
-						{% if post.data.prep and post.data.cook %}
-							{% set total = [post.data.prep,post.data.cook] %}
-							<p class="recipe-total"><strong>Total:</strong> <span class="recipe-duration" data-duration="{{total|sum}}">{{total|sum}} minutes</span></p>
-						{% endif %}
-					</aside>
+					{{ recipe(post.data) }}
 
 					<div class="post-content post-text">
 						{% excerpt post %}

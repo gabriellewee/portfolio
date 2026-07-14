@@ -54,6 +54,12 @@
 	animation: blink 1s cubic-bezier(1,0,0,1) infinite forwards;
 }
 
+.has-placeholder {
+	&::after, .indicator {
+		display: none;
+	}
+}
+
 @media (prefers-reduced-motion: no-preference) {
 	.avatar-link .text.message {
 		translate: 0 0;

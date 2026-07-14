@@ -264,11 +264,6 @@ figure .indicator {
 		left: 0;
 		padding: 0 calc(var(--p)*2) calc(var(--p)*2);
 		font-size: 4rem;
-		span {
-			&::before {
-				content: ".";
-			}
-		}
 	}
 
 	&::after, .indicator {

@@ -17,7 +17,7 @@ eleventyNavigation:
 ---
 
 {% if pagination.pageNumber == 0 %}{% include 'pages/shared/contact.html' %}{% endif %}
-{% from "macros.njk" import indicator %}
+{% from "macros.njk" import indicator, header, upscale, meta, code, recipe %}
 
 <section class="content" aria-label="Posts">
 	<div class="posts" data-grid data-scroll>
@@ -27,8 +27,9 @@ eleventyNavigation:
 			{% elseif post.data.extension %}
 				{% set file = post.data.extension %}
 			{% endif %}
+			{% set key = post.page.fileSlug %}
 			<article
-				class="post{% if post.data.pagination.alias and post.data.pagination.alias != post.data.category %} post-{{post.data.category}} post-{{post.data.pagination.alias}}{% else %} post-{{post.data.category}}{% endif %}{% if post.data.tags %}{% for tag in post.data.tags %}{% if tag != 'entries' and tag != 'posts' %} post-{{tag}}{% endif %}{% endfor %}{% endif %}{% if post.data.size %} post-size-{{post.data.size}}{% endif %}{% if post.data.category == 'media' %} post-{{post.page.fileSlug}}{% endif %}" data-grid-item data-post-append{% if pagination.pageNumber == 0 %} data-anim{% endif %}{% if post.data.extension %} data-orientation="{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.' + file, 'orientation' %}"{% endif %}
+				class="post{% if post.data.pagination.alias and post.data.pagination.alias != post.data.category %} post-{{post.data.category}} post-{{post.data.pagination.alias}}{% else %} post-{{post.data.category}}{% endif %}{% if post.data.tags %}{% for tag in post.data.tags %}{% if tag != 'entries' and tag != 'posts' %} post-{{tag}}{% endif %}{% endfor %}{% endif %}{% if post.data.size %} post-size-{{post.data.size}}{% endif %}{% if post.data.category == 'media' %} post-{{key}}{% endif %}" data-grid-item data-post-append{% if pagination.pageNumber == 0 %} data-anim{% endif %}{% if post.data.extension %} data-orientation="{% stats './static/images/' + key + '/' + post.data.date + '-' + post.data.name + '.' + file, 'orientation' %}"{% endif %}
 				{% if post.data.width %}style="max-width: {{post.data.width}}"{% endif %}
 				{% if post.data.category == "social" %}aria-label="{{post.data.source|capitalize}} post"
 				{% elseif post.data.category == "media" %}data-media-container aria-label="{{post.data.type|capitalize}} post"{% endif %}
@@ -40,86 +41,31 @@ eleventyNavigation:
 					<header class="post-header{% if post.data.category == 'writing' or post.data.category == 'code' %} inline-header{% endif %}">
 						{% if post.data.category == "cooking" %}
 							<div class="post-header-image theme-{{post.data.headline}}">
-								{% image './static/images/' + post.data.key + '/' + post.page.fileSlug + '.jpg', 'Hero image showing ' + post.data.title, 'default', loop.index %}
+								{% image './static/images/' + post.data.key + '/' + key + '.jpg', 'Hero image showing ' + post.data.title, 'default', loop.index %}
 							</div>
 						{% endif %}
-						<div class="post-header-content">
-							{% if post.data.category == "writing" or post.data.category == "cooking" %}
-								<h2>
-									{% if post.url %}
-										<a href="{{post.url|url}}"{% if post.data.category == "cooking" %} aria-label="Recipe for {{post.data.title|safe}}"{% endif %}><span><span>{{post.data.title|safe}}</span></span></a>
-									{% else %}
-										<a href="{{post.data.url|url}}"><span><span>{{post.data.title|safe}}</span></span></a>
-									{% endif %}
-								</h2>
-							{% elseif post.data.category == "code" %}
-								<div class="post-header-left">
-									<h2 class="post-headline">
-										{% if post.data.uri %}
-											<a href="https://codepen.io/gabriellewee/pen/{{post.data.uri}}"><span>{{post.data.title|safe}}</span></a>
-										{% else %}
-											{{post.data.title|safe}}
-										{% endif %}
-									</h2>
-									{% if post.data.type %}
-										<div class="post-tags">
-											{% for type in post.data.type %}
-												<u class="tag-{{type}}">#{{type}}</u>
-											{% endfor %}
-										</div>
-									{% endif %}
-								</div>
-							{% endif %}
-							{% if post.data.category == "code" %}
-								<div class="post-header-right">
-									<time class="time{% if post.data.category != 'code' %} time-default{% endif %}{% if post.data.category == 'social' %} time-external{% endif %}" datetime="{{post.page.date|iso|date('string')}}" data-time="{{post.page.date|iso}}" title="{{post.page.date|iso|date('readable')}}">{{post.page.date|iso|date('readable')}}</time>
-									<a class="expand" id="{{post.page.date|iso|date('string')}}-{{post.page.fileSlug}}" role="button" aria-label="Expand preview of {{post.data.title}}" href="#{{post.page.date|iso|date('string')}}-{{post.page.fileSlug}}-lightbox" data-media-expand data-desktop></a>
-									<a class="external-expand" href="{{post.url|url}}" aria-label="View {{post.data.category}} in new window" target="_blank"></a>
-								</div>
-							{% elseif post.data.category != "media" and post.data.category != "code" %}
-								<time class="time{% if post.data.category != 'code' %} time-default{% endif %}{% if post.data.category == 'social' %} time-external{% endif %}" datetime="{{post.page.date|iso|date('string')}}" data-time="{{post.page.date|iso}}" title="{{post.page.date|iso|date('readable')}}">{{post.page.date|iso|date('readable')}}</time>
-							{% endif %}
-							{% if post.data.category == "media" %}
-								<time class="no-css" datetime="{{post.page.date|iso|date('string')}}">{{post.page.date|iso|date('readable')}}</time>
-							{% endif %}
-						</div>
+						{{ header(post.data, post, post.data.category) }}
 					</header>
 					{% if post.data.category == "cooking" %}
-						<aside class="post-meta">
-							{% if post.data.servings %}
-								<p class="recipe-servings"><strong>Servings:</strong> <span>{{post.data.servings}}</span></p>
-							{% endif %}
-							{% if post.data.prep %}
-								<p class="recipe-prep"><strong>Prep:</strong> <span class="recipe-duration" data-duration="{{post.data.prep}}">{{post.data.prep}} minutes</span></p>
-							{% endif %}
-							{% if post.data.cook %}
-								<p class="recipe-cook"><strong>Cook:</strong> <span class="recipe-duration" data-duration="{{post.data.cook}}">{{post.data.cook}} minutes</span></p>
-							{% endif %}
-							{% if post.data.prep and post.data.cook %}
-								{% set total = [post.data.prep,post.data.cook] %}
-								<p class="recipe-total"><strong>Total:</strong> <span class="recipe-duration" data-duration="{{total|sum}}">{{total|sum}} minutes</span></p>
-							{% endif %}
-						</aside>
+						{{ recipe(post.data) }}
 					{% endif %}
 					<div class="post-content{% if post.data.category == 'writing' or post.data.category == 'cooking' %} post-text{% endif %}"{% if post.data.background %} style="--background: {{post.data.background}}"{% endif %}>
 						{% if post.data.category == "media" %}
-							<figure id="{{post.data.date|safe}}-{{post.data.name}}" class="has-placeholder{% if file %} {% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.' + file, 'theme', 'top left' %}{% endif %}" aria-label="{{post.data.type|capitalize}}{% if post.data.location %}, {{post.data.location}}{% elseif post.data.title %}, {{post.data.title}}{% endif %}" data-alt="{% if post.data.description %}{{post.data.description}}{% elseif post.description %}{{post.description}}{% endif %}" style="aspect-ratio: {% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.' + file, 'ratio' %};">
+							<figure id="{{post.data.date|safe}}-{{post.data.name}}" class="has-placeholder{% if file %} {% stats './static/images/' + key + '/' + post.data.date + '-' + post.data.name + '.' + file, 'theme', 'top left' %}{% endif %}" aria-label="{{post.data.type|capitalize}}{% if post.data.location %}, {{post.data.location}}{% elseif post.data.title %}, {{post.data.title}}{% endif %}" data-alt="{% if post.data.description %}{{post.data.description}}{% elseif post.description %}{{post.description}}{% endif %}" style="aspect-ratio: {% stats './static/images/' + key + '/' + post.data.date + '-' + post.data.name + '.' + file, 'ratio' %};">
 								{% if post.data.upscale %}
-									<picture{% if post.data.color %} style="--background: {{post.color}}"{% endif %}>
-										<img class="upscale" src="{% include post.data.upscale %}"{% if post.data.upscaleWidth %} width="{{post.data.upscaleWidth}}"{% endif %}{% if post.data.upscaleHeight %} height="{{post.data.upscaleHeight}}"{% endif %} alt="{{post.data.description}}"/>
-									</picture>
+									{{ upscale(post.data) }}
 								{% elseif post.data.svg == true %}
-									<picture style="--background: {% if post.color %}{{post.color}}{% else %}{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.svg', 'average' %}{% endif %}">
-										<img src="/static/images/{{post.page.fileSlug}}/{{post.data.date}}-{{post.data.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.svg', 'width' %}" height="{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.svg', 'height' %}"/>
+									<picture style="--background: {% if post.color %}{{post.color}}{% else %}{% stats './static/images/' + key + '/' + post.data.date + '-' + post.data.name + '.svg', 'average' %}{% endif %}">
+										<img src="/static/images/{{key}}/{{post.data.date}}-{{post.data.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + key + '/' + post.data.date + '-' + post.data.name + '.svg', 'width' %}" height="{% stats './static/images/' + key + '/' + post.data.date + '-' + post.data.name + '.svg', 'height' %}"/>
 									</picture>
 								{% else %}
-									{% image './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 'default', loop.index %}
+									{% image './static/images/' + key + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 'default', loop.index %}
 								{% endif %}
 								{{ indicator() }}
 								<label class="media-view-hover" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true" data-media-label hidden>
 									<span class="button"><span>View info</span></span>
 								</label>
-								<label class="media-view-touch{% if file %} {% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.' + file, 'theme', 'bottom right' %}{% endif %}" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true" data-media-label hidden></label>
+								<label class="media-view-touch{% if file %} {% stats './static/images/' + key + '/' + post.data.date + '-' + post.data.name + '.' + file, 'theme', 'bottom right' %}{% endif %}" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true" data-media-label hidden></label>
 								<figcaption class="media-data" data-media-info>
 									<div class="media-data-wrapper">
 										<time class="time-default" datetime="{{post.page.date|iso|date('string')}}" title="{{post.page.date|iso|date('readable')}}" data-time="{{post.page.date|iso}}" hidden>{{post.page.date|iso|date('readable')}}</time>
@@ -127,70 +73,40 @@ eleventyNavigation:
 										<div class="media-thumbnail">
 											<a class="media-expand expand" href="#{{post.data.date|safe}}-{{post.data.name}}-lightbox" role="button" aria-label="Expand image" tabindex="-1" data-media-expand>
 												<span class="no-image" hidden><span>Expand</span></span>
-												<span class="has-image{% if file %} {% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.' + file, 'theme', 'top left' %}{% endif %}" aria-hidden="true" hidden>
+												<span class="has-image{% if file %} {% stats './static/images/' + key + '/' + post.data.date + '-' + post.data.name + '.' + file, 'theme', 'top left' %}{% endif %}" aria-hidden="true" hidden>
 													{% if post.data.upscale %}
-														<picture{% if post.data.color %} style="--background: {{post.color}}"{% endif %}>
-															<img class="upscale" src="{% include post.data.upscale %}"{% if post.data.upscaleWidth %} width="{{post.data.upscaleWidth}}"{% endif %}{% if post.data.upscaleHeight %} height="{{post.data.upscaleHeight}}"{% endif %} alt="{{post.data.description}}"/>
-														</picture>
+														{{ upscale(post.data) }}
 													{% elseif post.data.svg == true %}
-														<picture style="--background: {% if post.color %}{{post.color}}{% else %}{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.svg', 'average' %}{% endif %}">
-															<img src="/static/images/{{post.page.fileSlug}}/{{post.data.date}}-{{post.data.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.svg', 'width', 400 %}" height="{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.svg', 'height', 400 %}"/>
+														<picture style="--background: {% if post.color %}{{post.color}}{% else %}{% stats './static/images/' + key + '/' + post.data.date + '-' + post.data.name + '.svg', 'average' %}{% endif %}">
+															<img src="/static/images/{{key}}/{{post.data.date}}-{{post.data.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + key + '/' + post.data.date + '-' + post.data.name + '.svg', 'width', 400 %}" height="{% stats './static/images/' + key + '/' + post.data.date + '-' + post.data.name + '.svg', 'height', 400 %}"/>
 														</picture>
 													{% else %}
-														{% image './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 200, loop.index %}
+														{% image './static/images/' + key + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 200, loop.index %}
 													{% endif %}
 												</span>
 											</a>
 										</div>
-										{% if post.data.external %}
-											<div class="media-links">
-												{% for link in post.data.external %}
-													<a class="media-link external {{link.platform}}" href="{{link.url|url}}" tabindex="-1" aria-label="View on {{link.platform|capitalize}}" data-media-external><span><span class="no-css">View on </span>{{link.platform|capitalize}}</span></a>
-												{% endfor %}
-											</div>
-										{% endif %}
-										<dl class="media-meta">
-											{% if post.data.title %}
-												<div class="meta-title">
-													<dt>Title</dt><dd>{{post.data.title|nbsp|safe}}</dd>
-												</div>
-											{% endif %}
-											{% if post.data.location %}
-												<div class="meta-location">
-													<dt>Location</dt><dd>{{post.data.location}}</dd>
-												</div>
-											{% endif %}
-											{% if post.data.camera %}
-												<div class="meta-camera">
-													<dt>Camera</dt><dd>{{post.data.camera}}</dd>
-												</div>
-											{% endif %}
-											{% if post.data.editor %}
-												<div class="meta-editor">
-													<dt>Editor</dt><dd>{{post.data.editor}}</dd>
-												</div>
-											{% endif %}
-											{% if post.data.tools %}
-												<div class="meta-tools">
-													<dt>Tools</dt><dd>{{post.data.tools}}</dd>
-												</div>
-											{% endif %}
-										</dl>
+										{{ meta(post.data) }}
 									</div>
 								</figcaption>
 							</figure>
 						{% elseif post.data.category == "code" %}
-							{% if post.data.button %}
-								<button class="reload button" data-reload hidden><span>{{post.data.button|capitalize}}</span></button>
-							{% endif %}
-							<div class="frame-wrapper"{% if post.data.background %} style="--background: {{post.data.background}}"{% endif %}>
-								{% if post.url %}
-									<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}"><p><em>Please enable Javascript to view this code demo.</em></p></noscript>
-									<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title|safe}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"{% if post.data.background %} style="background: {{post.data.background}}"{% endif %}></iframe>
-								{% else %}
-									{{post.content|safe}}
+							{{ code(src) }}
+							{% if post.url %}
+								{% if post.data.mobile == false %}
+									<div class="post-mobile">
+										<picture>
+											<img src="/static/code/images/{{post.page.fileSlug}}/thumbnail.svg" alt="{{post.description}}" width="{% stats './static/code/images/' + post.page.fileSlug + '/thumbnail.svg', 'width' %}" height="{% stats './static/code/images/' + post.page.fileSlug + '/thumbnail.svg', 'height' %}"/>
+										</picture>
+									</div>
 								{% endif %}
-							</div>
+								<div class="frame-wrapper"{% if post.data.background %} style="--background: {{post.data.background}}"{% endif %}>
+									<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}"><p><em>Please enable Javascript to view this code demo.</em></p></noscript>
+									<iframe class="frame{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title|safe}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"></iframe>
+								</div>
+							{% else %}
+								{{post.content|safe}}
+							{% endif %}
 						{% elseif post.data.content %}
 							<blockquote>{{post.data.content|nbsp|md|safe}}</blockquote>
 							{%- set postIndex = loop.index %}
@@ -262,7 +178,7 @@ eleventyNavigation:
 								{% if post.data.full == true %}
 									{%- set postSlug = post.data.title %}
 								{% else %}
-									{%- set postSlug = post.page.fileSlug %}
+									{%- set postSlug = key %}
 								{% endif %}
 								<a class="button" href="{{site.url}}/v1/{{post.page.date|iso|date('archive')}}/{{postSlug|slugify}}" target="_blank"><span>View original</span></a>
 							{% endif %}
@@ -278,7 +194,7 @@ eleventyNavigation:
 			<div class="load">
 				<div class="page-load-status" hidden>
 					<p class="infinite-scroll-request">
-						<span><span>Loading</span><span class="indicator"><span>.</span><span>.</span><span>.</span></span></span>
+						<span><span>Loading</span>{{ indicator() }}</span>
 					</p>
 					<p class="infinite-scroll-last">
 						<span>You‘ve reached the end.</span>
@@ -304,20 +220,19 @@ eleventyNavigation:
 
 <div class="lightbox-group" data-lightbox-container hidden>
 	{% for post in pagination.items %}
+		{% set key = post.page.fileSlug %}
 		{% if post.data.category == "media" %}
 			<a class="lightbox" id="{{post.data.date|safe}}-{{post.data.name}}-lightbox" role="button" aria-label="Close image" href="#{{post.data.date|safe}}-{{post.data.name}}" tabindex="-1" data-lightbox data-lightbox-append></a>
 			<dialog class="lightbox-content image" aria-label="Image preview" autofocus data-lightbox-append>
 				<figure>
 					{% if post.data.upscale %}
-						<picture>
-							<img class="upscale" src="{% include post.data.upscale %}"{% if post.data.upscaleWidth %} width="{{post.data.upscaleWidth}}"{% endif %}{% if post.data.upscaleHeight %} height="{{post.data.upscaleHeight}}"{% endif %} alt="{{post.data.description}}"/>
-						</picture>
+						{{ upscale(post.data) }}
 					{% elseif post.data.svg == true %}
 						<picture>
-							<img src="/static/images/{{post.page.fileSlug}}/{{post.data.date}}-{{post.data.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.svg', 'width' %}" height="{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.svg', 'height' %}"/>
+							<img src="/static/images/{{key}}/{{post.data.date}}-{{post.data.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + key + '/' + post.data.date + '-' + post.data.name + '.svg', 'width' %}" height="{% stats './static/images/' + key + '/' + post.data.date + '-' + post.data.name + '.svg', 'height' %}"/>
 						</picture>
 					{% else %}
-						{% image './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 'screen' %}
+						{% image './static/images/' + key + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 'screen' %}
 					{% endif %}
 				</figure>
 			</dialog>
@@ -343,7 +258,7 @@ eleventyNavigation:
 		{% elseif post.data.category == "writing" %}
 			{% excerpt post, "lightbox" %}
 		{% elseif post.data.category == "code" %}
-			<a class="lightbox" id="{{post.page.date|iso|date('string')}}-{{post.page.fileSlug}}-lightbox" role="button" aria-label="Close preview of {{post.data.title}}" href="#{{post.page.date|iso|date('string')}}-{{post.page.fileSlug}}" tabindex="-1" data-lightbox data-lightbox-append data-desktop></a>
+			<a class="lightbox" id="{{post.page.date|iso|date('string')}}-{{key}}-lightbox" role="button" aria-label="Close preview of {{post.data.title}}" href="#{{post.page.date|iso|date('string')}}-{{key}}" tabindex="-1" data-lightbox data-lightbox-append data-desktop></a>
 			<dialog class="lightbox-content iframe" aria-label="Preview of {{post.data.title}}" autofocus data-lightbox-append>
 				<figure class="frame-wrapper"{% if post.data.background %} style="--background: {{post.data.background}}"{% endif %}>
 					{% if post.url %}

@@ -1,5 +1,6 @@
 ---js
 {
+	category: "media",
 	layout: "layouts/page.njk",
 	style: "css/media",
 	scripts: "media",
@@ -12,7 +13,7 @@
 }
 ---
 
-{% from "macros.njk" import indicator %}
+{% from "macros.njk" import indicator, header, upscale, meta %}
 
 <section class="content">
 	{% include 'pages/posts/tags.html' %}
@@ -27,12 +28,13 @@
 			<article class="post post-media post-{{key}}{% if post.size %} post-size-{{post.size}}{% endif %} {{post.tags|isoFilter}}" data-media-container data-grid-item data-anim data-orientation="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'orientation' %}">
 				<input class="media-trigger" id="{{post.date|safe}}-{{post.name}}-info" type="checkbox" tabindex="0" aria-label="View information about this {{type}}" role="switch" data-media-trigger hidden/>
 				<div class="post-inner">
+					<header class="post-header">
+						{{ header(post, post, category) }}
+					</header>
 					<div class="post-content">
 						<figure id="{{post.date|safe}}-{{post.name}}" class="has-placeholder{% if file %} {% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'theme', 'top left' %}{% endif %}" aria-label="{{type|capitalize}}{% if post.location %}, {{post.location}}{% elseif post.title %}, {{post.title}}{% endif %}" data-alt="{{post.description}}" style="aspect-ratio: {% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'ratio' %};">
 							{% if post.upscale %}
-								<picture{% if post.color %} style="--background: {{post.color}}"{% endif %}>
-									<img class="upscale" src="{% include post.upscale %}"{% if post.upscaleWidth %} width="{{post.upscaleWidth}}"{% endif %}{% if post.upscaleHeight %} height="{{post.upscaleHeight}}"{% endif %} alt="{{post.description}}"/>
-								</picture>
+								{{ upscale(post) }}
 							{% elseif post.svg == true %}
 								<picture style="--background: {% if post.color %}{{post.color}}{% else %}{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'average' %}{% endif %}">
 									<img src="/static/images/{{key}}/{{post.date}}-{{post.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'width' %}" height="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'height' %}"/>
@@ -47,16 +49,14 @@
 							<label class="media-view-touch" for="{{post.date|safe}}-{{post.name}}-info" aria-hidden="true" data-media-label hidden></label>
 							<figcaption class="media-data" data-media-info>
 								<div class="media-data-wrapper">
-									<time class="time-default" datetime="{{post.date}}" title="{{post.date|date('readable')}}" data-time="{{post.date|iso}}">{{post.date|date('readable')}}</time>
+									<time class="time-default" datetime="{{post.date}}" title="{{post.date|date('readable')}}" data-time="{{post.date|iso}}" hidden>{{post.date|date('readable')}}</time>
 									<label class="media-down media-icon" for="{{post.date|safe}}-{{post.name}}-info" data-media-label></label>
 									<div class="media-thumbnail">
 										<a class="media-expand expand" href="#{{post.date|safe}}-{{post.name}}-lightbox" role="button" aria-label="Expand image" tabindex="-1" hidden data-media-expand>
 											<span class="no-image" hidden><span>Expand</span></span>
 											<span class="has-image{% if file %} {% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'theme', 'top left' %}{% endif %}" aria-hidden="true">
 												{% if post.upscale %}
-													<picture{% if post.color %} style="--background: {{post.color}}"{% endif %}>
-														<img class="upscale" src="{% include post.upscale %}"{% if post.upscaleWidth %} width="{{post.upscaleWidth}}"{% endif %}{% if post.upscaleHeight %} height="{{post.upscaleHeight}}"{% endif %} alt="{{post.description}}"/>
-													</picture>
+													{{ upscale(post) }}
 												{% elseif post.svg == true %}
 													<picture style="--background: {% if post.color %}{{post.color}}{% else %}{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'average' %}{% endif %}">
 														<img src="/static/images/{{key}}/{{post.date}}-{{post.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'width', 400 %}" height="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'height', 400 %}"/>
@@ -67,40 +67,7 @@
 											</span>
 										</a>
 									</div>
-									{% if post.external %}
-										<div class="media-links">
-											{% for link in post.external %}
-												<a class="media-link external {{link.platform}}" href="{{link.url|url}}" tabindex="-1" aria-label="View on {{link.platform|capitalize}}" data-media-external><span><span class="no-css">View on </span>{{link.platform|capitalize}}</span></a>
-											{% endfor %}
-										</div>
-									{% endif %}
-									<dl class="media-meta">
-										{% if post.title %}
-											<div class="meta-title">
-												<dt>Title</dt><dd>{{post.title|nbsp|safe}}</dd>
-											</div>
-										{% endif %}
-										{% if post.location %}
-											<div class="meta-location">
-												<dt>Location</dt><dd>{{post.location}}</dd>
-											</div>
-										{% endif %}
-										{% if post.camera %}
-											<div class="meta-camera">
-												<dt>Camera</dt><dd>{{post.camera}}</dd>
-											</div>
-										{% endif %}
-										{% if post.editor %}
-											<div class="meta-editor">
-												<dt>Editor</dt><dd>{{post.editor}}</dd>
-											</div>
-										{% endif %}
-										{% if post.tools %}
-											<div class="meta-tools">
-												<dt>Tools</dt><dd>{{post.tools}}</dd>
-											</div>
-										{% endif %}
-									</dl>
+									{{ meta(post) }}
 								</div>
 							</figcaption>
 						</figure>
@@ -120,9 +87,7 @@
 		<dialog class="lightbox-content image" aria-label="Image preview" autofocus>
 			<figure>
 				{% if post.upscale %}
-					<picture>
-						<img class="upscale" src="{% include post.upscale %}"{% if post.upscaleWidth %} width="{{post.upscaleWidth}}"{% endif %}{% if post.upscaleHeight %} height="{{post.upscaleHeight}}"{% endif %} alt="{{post.description}}"/>
-					</picture>
+					{{ upscale(post) }}
 				{% elseif post.svg == true %}
 					<picture>
 						<img src="/static/images/{{key}}/{{post.date}}-{{post.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'width' %}" height="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'height' %}"/>

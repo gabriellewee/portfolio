@@ -149,6 +149,10 @@
 				animation-delay: .1s * $i;
 			}
 		}
+
+		&::before {
+			content: ".";
+		}
 	}
 
 	@keyframes fade-ish {
