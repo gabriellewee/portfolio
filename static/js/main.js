@@ -1,4 +1,4 @@
-import { showAllHidden, refreshIframes, enableClipboardButtons, targetBlankLinks, waitForGlobals } from './helpers/domHelpers.js';
+import { removePlaceholders, showAllHidden, refreshIframes, enableClipboardButtons, targetBlankLinks, waitForGlobals } from './helpers/domHelpers.js';
 import { timeAgo, durationFormat } from './helpers/timeHelpers.js';
 
 import { preferences } from './components/preferences.js';
@@ -7,6 +7,7 @@ import { mediaInfoToggle } from './components/mediaInfoToggle.js';
 import { popup } from './components/popup.js';
 
 // Call scripts
+removePlaceholders();
 showAllHidden();
 
 popup();
@@ -83,6 +84,7 @@ if (container) {
 				lightbox({scroll: scroll});
 
 				scroll.on("append", () => {
+					removePlaceholders();
 					durationFormat();
 					mediaInfoToggle();
 					refreshIframes();

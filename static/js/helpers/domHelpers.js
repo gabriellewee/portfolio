@@ -1,3 +1,18 @@
+// Remove placeholder text from images
+export const removePlaceholders = (images = ".has-placeholder img") => {
+	document.querySelectorAll(images).forEach((image) => {
+		const placeholder = image.closest(".has-placeholder");
+
+		if (image.complete && image.naturalWidth) {
+			placeholder.classList.remove("has-placeholder");
+		} else {
+			image.addEventListener("load", () => {
+				placeholder.classList.remove("has-placeholder");
+			});
+		}
+	});
+};
+
 // Remove `hidden`` attribute from all elements
 export const showAllHidden = (hidden = "[hidden]") => {
 	document.querySelectorAll(hidden).forEach((el) => el.removeAttribute("hidden"));

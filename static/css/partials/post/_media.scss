@@ -43,6 +43,10 @@
 			container-type: size;
 			container-name: metadata;
 		}
+
+		.has-placeholder::after {
+			@include placeholder;
+		}
 	}
 
 	.media-view-touch {

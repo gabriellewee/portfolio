@@ -261,7 +261,7 @@ export const external = async (src, alt = "", width, loading = "lazy") => {
 		const fallback = stat[file];
 
 		return `
-			<picture style="--background: ${average}">
+			<picture class="has-placeholder" style="--background: ${average}" data-alt="${alt}">
 				<source type="image/webp" srcset="${main[0].url}, ${main[1].url} 2x">
 				<img  
 					loading="${loading}" 
@@ -347,7 +347,7 @@ export const image = async (src, alt = "", type = "default", option, figp) => {
 
 		const img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${main[0].url}" srcset="${regset}"${sizes ? ` sizes="${sizes}"` : ""} width="${basic.width}" height="${basic.height}">`;
 
-		const picture = `<picture style="--background: ${average}">${source}${img}</picture>`;
+		const picture = `<picture class="has-placeholder" style="--background: ${average}" data-alt="${alt}">${source}${img}</picture>`;
 
 		if (option === "lightbox") {
 			const figcaption = figp ?? nbspFilter(2, 100)(alt);

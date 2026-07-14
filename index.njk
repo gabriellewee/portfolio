@@ -100,11 +100,11 @@ eleventyNavigation:
 						{% if post.data.category == "media" %}
 							<figure id="{{post.data.date|safe}}-{{post.data.name}}" aria-label="{{post.data.type|capitalize}}{% if post.data.location %}, {{post.data.location}}{% elseif post.data.title %}, {{post.data.title}}{% endif %}" style="aspect-ratio: {% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.' + file, 'ratio' %};">
 								{% if post.data.upscale %}
-									<picture{% if post.data.color %} style="--background: {{post.color}}"{% endif %}>
+									<picture class="has-placeholder"{% if post.data.color %} style="--background: {{post.color}}"{% endif %} data-alt="{{post.data.description}}">
 										<img class="upscale" src="{% include post.data.upscale %}"{% if post.data.upscaleWidth %} width="{{post.data.upscaleWidth}}"{% endif %}{% if post.data.upscaleHeight %} height="{{post.data.upscaleHeight}}"{% endif %} alt="{{post.data.description}}"/>
 									</picture>
 								{% elseif post.data.svg == true %}
-									<picture style="--background: {% if post.color %}{{post.color}}{% else %}{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.svg', 'average' %}{% endif %}">
+									<picture class="has-placeholder" style="--background: {% if post.color %}{{post.color}}{% else %}{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.svg', 'average' %}{% endif %}" data-alt="{{post.description}}">
 										<img src="/static/images/{{post.page.fileSlug}}/{{post.data.date}}-{{post.data.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.svg', 'width' %}" height="{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.svg', 'height' %}"/>
 									</picture>
 								{% else %}
