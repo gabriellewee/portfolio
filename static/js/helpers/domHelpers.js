@@ -1,7 +1,9 @@
 // Remove placeholder text from images
-export const removePlaceholders = (images = ".has-placeholder img") => {
-	document.querySelectorAll(images).forEach((image) => {
-		const placeholder = image.closest(".has-placeholder");
+export const removePlaceholders = (placeholders = ".has-placeholder") => {
+	document.querySelectorAll(placeholders).forEach((placeholder) => {
+		const image = placeholder.querySelector("img");
+
+		if (!image) return;
 
 		if (image.complete && image.naturalWidth) {
 			placeholder.classList.remove("has-placeholder");
@@ -13,7 +15,7 @@ export const removePlaceholders = (images = ".has-placeholder img") => {
 	});
 };
 
-// Remove `hidden`` attribute from all elements
+// Remove `hidden` attribute from all elements
 export const showAllHidden = (hidden = "[hidden]") => {
 	document.querySelectorAll(hidden).forEach((el) => el.removeAttribute("hidden"));
 };

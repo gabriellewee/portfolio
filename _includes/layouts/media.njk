@@ -12,17 +12,23 @@
 }
 ---
 
+{% from "macros.njk" import indicator %}
+
 <section class="content">
 	{% include 'pages/posts/tags.html' %}
 
 	<div class="posts" data-grid>
 		{% for post in media %}
-			{% if post.svg == true %}{%- set file = "svg" %}{% else %}{%- set file = extension %}{% endif %}
+			{% if post.svg == true %}
+				{% set file = "svg" %}
+			{% else %}
+				{% set file = extension %}
+			{% endif %}
 			<article class="post post-media post-{{key}}{% if post.size %} post-size-{{post.size}}{% endif %} {{post.tags|isoFilter}}" data-media-container data-grid-item data-anim data-orientation="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'orientation' %}">
 				<input class="media-trigger" id="{{post.date|safe}}-{{post.name}}-info" type="checkbox" tabindex="0" aria-label="View information about this {{type}}" role="switch" data-media-trigger hidden/>
 				<div class="post-inner">
 					<div class="post-content">
-						<figure id="{{post.date|safe}}-{{post.name}}" aria-label="{{type|capitalize}}{% if post.location %}, {{post.location}}{% elseif post.title %}, {{post.title}}{% endif %}" style="aspect-ratio: {% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'ratio' %};">
+						<figure id="{{post.date|safe}}-{{post.name}}" class="has-placeholder{% if file %} {% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'theme', 'top left' %}{% endif %}" aria-label="{{type|capitalize}}{% if post.location %}, {{post.location}}{% elseif post.title %}, {{post.title}}{% endif %}" data-alt="{{post.description}}" style="aspect-ratio: {% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'ratio' %};">
 							{% if post.upscale %}
 								<picture{% if post.color %} style="--background: {{post.color}}"{% endif %}>
 									<img class="upscale" src="{% include post.upscale %}"{% if post.upscaleWidth %} width="{{post.upscaleWidth}}"{% endif %}{% if post.upscaleHeight %} height="{{post.upscaleHeight}}"{% endif %} alt="{{post.description}}"/>
@@ -34,6 +40,7 @@
 							{% else %}
 								{% image './static/images/' + key + '/' + post.date + '-' + post.name + '.' + extension, post.description, 'default', loop.index %}
 							{% endif %}
+							{{ indicator() }}
 							<label class="media-view-hover" for="{{post.date|safe}}-{{post.name}}-info" aria-hidden="true" data-media-label hidden>
 								<span class="button"><span>View info</span></span>
 							</label>

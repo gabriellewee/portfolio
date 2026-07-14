@@ -43,10 +43,6 @@
 			container-type: size;
 			container-name: metadata;
 		}
-
-		.has-placeholder::after {
-			@include placeholder;
-		}
 	}
 
 	.media-view-touch {
@@ -139,18 +135,7 @@
 			justify-content: space-between;
 			padding: calc(var(--p)*2);
 			overflow-y: auto;
-			mask-image: linear-gradient(
-				to bottom,
-				rgba(black, 1),
-				rgba(black, 0)),
-			linear-gradient(
-				to bottom,
-				rgba(black, 1),
-				rgba(black, 1)
-			);
-			mask-position: bottom center, top center;
-			mask-repeat: no-repeat, no-repeat;
-			mask-size: 100% calc(var(--p)*2.5), 100% calc(100% - var(--p)*2.5);
+			@include mask-overflow;
 			@include full-size;
 		}
 		.time-default {

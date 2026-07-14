@@ -12,6 +12,8 @@ eleventyNavigation:
     footer: true
 ---
 
+{% from "macros.njk" import indicator %}
+
 <section class="content">
 	<div class="posts" data-grid>
 		<article class="post post-intro" data-grid-item>
@@ -127,10 +129,11 @@ eleventyNavigation:
 					<h2>I mod my keyboards and console controllers for fun.</h2>
 				</header>
 				<div class="post-content">
-					<figure id="2022-07-20-keyboard" aria-label="My pastel-themed custom mechanical keyboard and Logitech Lift Mouse.">
+					<figure id="2022-07-20-keyboard" class="has-placeholder {% stats './static/images/posts/2022-07-20-keyboard.jpg', 'theme', 'top left' %}" aria-label="My pastel-themed custom mechanical keyboard and Logitech Lift Mouse.">
 						<a class="post-thumbnail expand {% stats './static/images/posts/2022-07-20-keyboard.jpg', 'theme', 'top left' %}" href="#2022-07-20-keyboard-lightbox" role="button" aria-label="Expand image" data-media-expand>
 							{% image './static/images/posts/2022-07-20-keyboard.jpg', 'My pastel-themed custom mechanical keyboard and Logitech Lift Mouse', 700 %}
 						</a>
+						{{ indicator() }}
 					</figure>
 					<ul class="grid">
 						{% for controller in about.controllers %}

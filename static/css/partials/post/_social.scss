@@ -98,9 +98,6 @@
 		+ .media-attachment {
 			margin-top: calc(var(--p)*2);
 		}
-		&.has-placeholder::after {
-			@include placeholder(aria-label);
-		}
 		.expand {
 			transition: scale .2s ease-out;
 			display: block;

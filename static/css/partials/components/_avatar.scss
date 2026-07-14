@@ -142,7 +142,7 @@
 .indicator {
 	span {
 		display: inline-block;
-		animation: fade-in 1s cubic-bezier(1,0,0,1) infinite forwards;
+		animation: var(--animation-name, fade-ish) 1s cubic-bezier(1,0,0,1) infinite forwards;
 
 		@for $i from 1 through 3 {
 			&:nth-child(#{$i}) {
@@ -151,7 +151,7 @@
 		}
 	}
 
-	@keyframes fade-in {
-		from { opacity: 0 } to { opacity: 1 }
+	@keyframes fade-ish {
+		from { opacity: 0.25 } to { opacity: 1 }
 	}
 }

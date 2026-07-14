@@ -17,11 +17,16 @@ eleventyNavigation:
 ---
 
 {% if pagination.pageNumber == 0 %}{% include 'pages/shared/contact.html' %}{% endif %}
+{% from "macros.njk" import indicator %}
 
 <section class="content" aria-label="Posts">
 	<div class="posts" data-grid data-scroll>
 		{% for post in pagination.items %}
-			{% if post.data.svg == true %}{%- set file = "svg" %}{% elseif post.data.extension %}{%- set file = post.data.extension %}{% endif %}
+			{% if post.data.svg == true %}
+				{% set file = "svg" %}
+			{% elseif post.data.extension %}
+				{% set file = post.data.extension %}
+			{% endif %}
 			<article
 				class="post{% if post.data.pagination.alias and post.data.pagination.alias != post.data.category %} post-{{post.data.category}} post-{{post.data.pagination.alias}}{% else %} post-{{post.data.category}}{% endif %}{% if post.data.tags %}{% for tag in post.data.tags %}{% if tag != 'entries' and tag != 'posts' %} post-{{tag}}{% endif %}{% endfor %}{% endif %}{% if post.data.size %} post-size-{{post.data.size}}{% endif %}{% if post.data.category == 'media' %} post-{{post.page.fileSlug}}{% endif %}" data-grid-item data-post-append{% if pagination.pageNumber == 0 %} data-anim{% endif %}{% if post.data.extension %} data-orientation="{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.' + file, 'orientation' %}"{% endif %}
 				{% if post.data.width %}style="max-width: {{post.data.width}}"{% endif %}
@@ -98,18 +103,19 @@ eleventyNavigation:
 					{% endif %}
 					<div class="post-content{% if post.data.category == 'writing' or post.data.category == 'cooking' %} post-text{% endif %}"{% if post.data.background %} style="--background: {{post.data.background}}"{% endif %}>
 						{% if post.data.category == "media" %}
-							<figure id="{{post.data.date|safe}}-{{post.data.name}}" aria-label="{{post.data.type|capitalize}}{% if post.data.location %}, {{post.data.location}}{% elseif post.data.title %}, {{post.data.title}}{% endif %}" style="aspect-ratio: {% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.' + file, 'ratio' %};">
+							<figure id="{{post.data.date|safe}}-{{post.data.name}}" class="has-placeholder{% if file %} {% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.' + file, 'theme', 'top left' %}{% endif %}" aria-label="{{post.data.type|capitalize}}{% if post.data.location %}, {{post.data.location}}{% elseif post.data.title %}, {{post.data.title}}{% endif %}" data-alt="{% if post.data.description %}{{post.data.description}}{% elseif post.description %}{{post.description}}{% endif %}" style="aspect-ratio: {% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.' + file, 'ratio' %};">
 								{% if post.data.upscale %}
-									<picture class="has-placeholder"{% if post.data.color %} style="--background: {{post.color}}"{% endif %} data-alt="{{post.data.description}}">
+									<picture{% if post.data.color %} style="--background: {{post.color}}"{% endif %}>
 										<img class="upscale" src="{% include post.data.upscale %}"{% if post.data.upscaleWidth %} width="{{post.data.upscaleWidth}}"{% endif %}{% if post.data.upscaleHeight %} height="{{post.data.upscaleHeight}}"{% endif %} alt="{{post.data.description}}"/>
 									</picture>
 								{% elseif post.data.svg == true %}
-									<picture class="has-placeholder" style="--background: {% if post.color %}{{post.color}}{% else %}{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.svg', 'average' %}{% endif %}" data-alt="{{post.description}}">
+									<picture style="--background: {% if post.color %}{{post.color}}{% else %}{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.svg', 'average' %}{% endif %}">
 										<img src="/static/images/{{post.page.fileSlug}}/{{post.data.date}}-{{post.data.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.svg', 'width' %}" height="{% stats './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.svg', 'height' %}"/>
 									</picture>
 								{% else %}
 									{% image './static/images/' + post.page.fileSlug + '/' + post.data.date + '-' + post.data.name + '.' + post.data.extension, post.data.description, 'default', loop.index %}
 								{% endif %}
+								{{ indicator() }}
 								<label class="media-view-hover" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true" data-media-label hidden>
 									<span class="button"><span>View info</span></span>
 								</label>
@@ -197,10 +203,11 @@ eleventyNavigation:
 									</figure>
 								{% endif %}
 								{% if post.data.mediaType == "IMAGE" %}
-									<figure id="external-{{post.data.id}}" class="media-attachment" aria-label="{{post.data.mediaAlt}}">
+									<figure id="external-{{post.data.id}}" class="media-attachment has-placeholder {% stats post.data.mediaUrl, 'theme', 'top left' %}" aria-label="{{post.data.mediaAlt}}">
 										<a class="expand {% stats post.data.mediaUrl, 'theme', 'top left' %}" href="#external-{{post.data.id}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
 											{% external post.data.mediaUrl, '', 500, 'lazy' %}
 										</a>
+										{{ indicator() }}
 									</figure>
 								{% elseif post.data.mediaType == "VIDEO" %}
 									<figure id="external-{{post.data.id}}" class="media-attachment">
@@ -211,10 +218,11 @@ eleventyNavigation:
 								{% endif %}
 								{% for media in post.data.media %}
 									{% if media.thumb %}
-										<figure id="external-{{postIndex}}-{{post.data.cid|truncate(5, true, '')}}" class="media-attachment" aria-label="{{media.alt}}">
+										<figure id="external-{{postIndex}}-{{post.data.cid|truncate(5, true, '')}}" class="media-attachment has-placeholder {% stats media.thumb, 'theme', 'top left' %}" aria-label="{{media.alt}}">
 											<a class="expand {% stats media.thumb, 'theme', 'top left' %}" href="#external-{{postIndex}}-{{post.data.cid|truncate(5, true, '')}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
 												{% external media.thumb, '', 500, 'lazy' %}
 											</a>
+											{{ indicator() }}
 										</figure>
 									{% elseif media.url and media.type == "gifv" %}
 										<figure id="external-{{media.id}}" class="media-attachment">
@@ -223,10 +231,11 @@ eleventyNavigation:
 											</video>
 										</figure>
 									{% elseif media.url %}
-										<figure id="external-{{media.id}}" class="media-attachment" aria-label="{{media.description}}">
+										<figure id="external-{{media.id}}" class="media-attachment has-placeholder {% stats media.url, 'theme', 'top left' %}" aria-label="{{media.description}}">
 											<a class="expand {% stats media.url, 'theme', 'top left' %}" href="#external-{{media.id}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
 												{% external media.url, '', 500, 'lazy' %}
 											</a>
+											{{ indicator() }}
 										</figure>
 									{% endif %}
 								{% endfor %}
