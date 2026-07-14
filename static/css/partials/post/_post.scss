@@ -647,6 +647,20 @@ figure .indicator {
 		}
 	}
 
+	.has-placeholder .indicator {
+		z-index: 2;
+	}
+
+	> .has-placeholder,
+	[class*="row"]:not(.no-figcaption) .has-placeholder {
+		&::after {
+			top: calc(var(--p)*2.5);
+		}
+		.indicator {
+			top: calc(var(--p)/2);
+		}
+	}
+
 	figcaption, p.caption {
 		font-size: .875rem;
 		line-height: 1.286;

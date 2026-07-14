@@ -34,7 +34,7 @@ export const images = async (post, option) => {
 			} else {
 				const caption = `<figcaption>${title}</figcaption>`;
 				const link = `<a class="expand ${theme}" href="#${name}-lightbox" aria-label="${alt} Expand image" data-media-expand>${picture}</a>`;
-				const figure = `<figure id="${name}">${caption}${link}</figure>`;
+				const figure = `<figure id="${name}" class="has-placeholder ${theme}" data-alt="${alt}">${caption}${link}</figure>`;
 				post = post.replace(image[0], figure);
 			}
 			continue;
@@ -67,6 +67,7 @@ export const images = async (post, option) => {
 			? `(max-width: 912px) ${main[1].width}px, (min-width: 913px) ${main[2].width}px, (min-width: 1183px) ${main[3].width}px`
 			: undefined;
 
+		const indicator = `<span class="indicator"><span></span><span></span><span></span></span>`
 		const source = `<source type="image/webp" srcset="${webpset}"${sizes ? ` sizes="${sizes}"` : ""}>`;
 		const img = `<img loading="lazy" decoding="async" alt="${alt}" src="${main[0].url}" srcset="${regset}"${sizes ? ` sizes="${sizes}"` : ""} width="${basic.width}" height="${basic.height}">`;
 		const picture = `<picture style="--background: ${average}">${source}${img}</picture>`;
@@ -81,9 +82,9 @@ export const images = async (post, option) => {
 		} else {
 			const caption = `<figcaption id="${name}-caption" aria-hidden="true">${nbspFilter(2, 100)(title)}</figcaption>`;
 			const linkOrPlain = (main.length >= 4)
-				? `<a class="expand ${theme}" href="#${name}-lightbox" aria-label="${alt} Expand image" data-media-expand>${picture}</a>`
-				: picture;
-			const figure = `<figure id="${name}" aria-labelledby="${name}-caption">${caption}${linkOrPlain}</figure>`;
+				? `${indicator}<a class="expand ${theme}" href="#${name}-lightbox" aria-label="${alt} Expand image" data-media-expand>${picture}</a>`
+				: `${indicator}${picture}`;
+			const figure = `<figure id="${name}" class="has-placeholder ${theme}" data-alt="${alt}" aria-labelledby="${name}-caption">${caption}${linkOrPlain}</figure>`;
 			post = post.replace(image[0], figure);
 		}
 	}
