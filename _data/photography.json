@@ -358,7 +358,8 @@
 				"platform": "instagram",
 				"url": "https://www.instagram.com/p/C0M5O5hP-Um/"
 			}
-		]
+		],
+		"size": "m"
 	},
 	{
 		"name": "alfie",
@@ -441,7 +442,7 @@
 		"editor": "VSCO",
 		"tags": "nature plants indoor landscape",
 		"description": "A panoramic view of the Rain Vortex, the world's tallest indoor waterfall, surrounded by lush greenery inside Jewel Changi Airport.",
-		"size": "m"
+		"size": "l"
 	},
 	{
 		"name": "cat-garden",
