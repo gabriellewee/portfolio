@@ -21,7 +21,10 @@ export const mediaInfoToggle = (figures = "[data-media-container]") => {
 		};
 
 		trigger.addEventListener("focus", () => {
-			document.getElementById(name)?.scrollIntoView({ behavior: "smooth" });
+			document.getElementById(name)?.scrollIntoView({
+				behavior: "smooth",
+				block: "nearest"
+			});
 		});
 
 		trigger.addEventListener("click", () => {
