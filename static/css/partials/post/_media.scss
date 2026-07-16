@@ -414,22 +414,11 @@
 				margin-bottom: calc(var(--p)/2);
 				font-family: var(--font-serif-display);
 				font-feature-settings: "liga", "ss06" on;
-				font-size: 1.75rem;
+				font-size: 2rem;
 				line-height: 1.1;
 				@include font-weight-width(250, 75);
-				@supports not(container-type: inline-size) {
-					@media only screen and (min-width: 450px) {
-						font-size: 2.25rem;
-					}
-					@include viewport(medium) {
-						font-size: 1.75rem;
-					}
-					@include viewport($ipad-11) {
-						font-size: 2.25rem;
-					}
-				}
 				@container metadata (min-width: 400px) {
-					font-size: 2.25rem;
+					font-size: 2.5rem;
 				}
 				@container metadata (min-width: 700px) {
 					font-size: 2.75rem;
