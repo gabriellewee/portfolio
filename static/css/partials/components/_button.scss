@@ -224,8 +224,10 @@ a.button-reduced, button.button-reduced-outer > .button-reduced {
 		cursor: default;
 	}
 }
-a.button-reduced:hover, a.button-reduced:active,
-button.button-reduced-outer:hover > .button-reduced, button.button-reduced-outer:active > .button-reduced {
+a.button-reduced:hover, a.button-reduced:active, a.button-reduced:focus-visible,
+button.button-reduced-outer:hover > .button-reduced,
+button.button-reduced-outer:active > .button-reduced,
+button.button-reduced-outer:focus-visible > .button-reduced {
 	span {
 		background-color: var(--background-hover, var(--color-grey));
 	}
