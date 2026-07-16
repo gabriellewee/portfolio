@@ -6,11 +6,7 @@
 	<div class="post-header-content">
 		{% if category == "writing" or category == "cooking" %}
 			<h2>
-				{% if post.url %}
-					<a href="{{post.url|url}}"{% if category == "cooking" %} aria-label="Recipe for {{src.title|safe}}"{% endif %}><span><span>{{src.title|safe}}</span></span></a>
-				{% else %}
-					<a href="{{src.url|url}}"><span><span>{{src.title|safe}}</span></span></a>
-				{% endif %}
+				<a href="{{time.url|url}}"{% if category == "cooking" %} aria-label="Recipe for {{src.title|safe}}"{% endif %}><span><span>{{src.title|safe}}</span></span></a>
 			</h2>
 		{% elseif category == "code" %}
 			<div class="post-header-left">

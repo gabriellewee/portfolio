@@ -73,7 +73,7 @@
 			}
 		}
 	}
-	&.light picture {
+	&.theme-light picture {
 		@include icon-invert;
 		&::after {
 			--blend-mode: multiply;

@@ -274,7 +274,7 @@ figure .indicator {
 		line-height: 1.1;
 	}
 
-	&.light {
+	&.theme-light {
 		&::after, .indicator {
 			color: var(--color-dark-grey);
 		}
@@ -439,7 +439,7 @@ figure .indicator {
 		line-height: 1.5;
 		@include clip-path-edges(2px);
 
-		button.dark.tooltip {
+		button.theme-dark.tooltip {
 			--background: black;
 			cursor: pointer;
 			appearance: none;

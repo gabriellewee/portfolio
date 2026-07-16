@@ -142,7 +142,7 @@
 			position: relative;
 		}
 	}
-	&.dark {
+	&.theme-dark {
 		--background: light-dark(
 			var(--color-primary),
 			hsl(from var(--color-dark-grey) h s calc(l * .55))

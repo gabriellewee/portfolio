@@ -25,7 +25,7 @@ eleventyNavigation:
 			>
 				<div class="post-inner">
 					<header class="post-header">
-						<div class="post-header-image">
+						<div class="post-header-image theme-{% stats './static/images/' + post.data.key + '/' + post.page.fileSlug + '.jpg', 'theme', 'bottom left' %}">
 							{% image './static/images/' + post.data.key + '/' + post.page.fileSlug + '.jpg', 'Hero image showing ' + post.data.title, 'default' %}
 						</div>
 						{{ header(post.data, post.page, post.data.category) }}

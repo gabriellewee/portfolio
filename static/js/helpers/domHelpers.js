@@ -84,7 +84,7 @@ export const enableClipboardCode = (pres = "pre:has(code)") => {
 		button.innerHTML = `<span></span>`;
 		button.setAttribute("aria-label", "Copy code");
 		button.style.setProperty("--tooltip-label", `"Copied"`);
-		button.classList.add("tooltip", "tooltip-left", "dark", "hidden");
+		button.classList.add("tooltip", "tooltip-left", "theme-dark", "hidden");
 
 		pre.appendChild(button);
 

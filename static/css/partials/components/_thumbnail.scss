@@ -43,7 +43,7 @@
 
 	@include expand-hover(external, 23px, 23px, calc(var(--p)*1.25));
 
-	&.light, &.dark {
+	&.theme-light, &.theme-dark {
 		picture::after {
 			--gradient-color: var(--background);
 			top: calc(var(--p)/2);
