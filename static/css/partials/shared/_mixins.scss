@@ -43,7 +43,7 @@
 		z-index: 2;
 		background: radial-gradient(
 			farthest-corner at var(--position),
-			hsl(from var(--gradient-color) h s l / 0.8) 0,
+			hsl(from var(--gradient-color) h s l / 0.6) 0,
 			hsl(from var(--gradient-color) h s l / 0) calc(($width + $padding)*3)
 		);
 		mix-blend-mode: var(--blend-mode, multiply);
