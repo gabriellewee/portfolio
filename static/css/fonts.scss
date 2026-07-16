@@ -1,2 +1,26 @@
 @use 'partials/fonts/dank-mono';
-@use 'partials/fonts/mona-sans';
+
+@font-face {
+	font-family: 'Mona Sans';
+	src:
+		url('../fonts/mona-sans.woff2') format('woff2 supports variations'),
+		url('../fonts/mona-sans.woff2') format('woff2-variations');
+	font-weight: 200 900;
+	font-stretch: 75% 125%;
+	font-display: swap;
+	font-feature-settings: "liga", "ss05" on, "ss07" on;
+}
+@font-face {
+	font-family: 'Roslindale Display';
+	src: url('../fonts/roslindale-display.woff2') format('woff2');
+	font-weight: 200 900;
+	font-stretch: 75% 100%;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Roslindale Deck';
+	src: url('../fonts/roslindale-deck.woff2') format('woff2');
+	font-weight: 200 900;
+	font-stretch: 75% 100%;
+	font-display: swap;
+}

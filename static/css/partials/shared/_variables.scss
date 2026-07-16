@@ -7,8 +7,10 @@ $iron: #263238;
 	--p:12px;
 	--width:70rem;
 
-	--font-mono:'Dank Mono',ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+	--font-mono:"Dank Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
 	--font-default:"Mona Sans",system-ui,BlinkMacSystemFont,Roboto,Ubuntu,Cantarell,Helvetica,Arial,sans-serif;
+	--font-serif-display:"Roslindale Display",Baskerville,Times,serif;
+	--font-serif-text:"Roslindale Deck",Baskerville,Times,serif;
 
 	$colors: (
 		iron: $iron,

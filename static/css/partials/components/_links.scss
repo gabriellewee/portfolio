@@ -39,16 +39,19 @@
 		}
 		h3 {
 			margin-bottom: calc(var(--p)/2);
-			font-size: 1.5rem;
+			font-family: var(--font-serif-text);
+			font-feature-settings: "liga";
+			font-size: 1.75rem;
 			line-height: 1.25;
-			@include font-weight-width(600, 110);
+			@include font-weight-width(450, 75);
 		}
 		h3 a {
 			text-decoration: unset;
 			&:hover, &:focus, &:active {
 				span {
 					text-decoration: underline;
-					text-underline-offset: 2px;
+					text-decoration-thickness: 1px;
+					text-underline-offset: 3px;
 				}
 			}
 			&::after {

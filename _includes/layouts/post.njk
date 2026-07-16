@@ -17,7 +17,7 @@ eleventyComputed:
 			<div class="post-inner">
 				<header class="post-header inline-header">
 					<div class="post-header-content">
-						<h2><a class="u-url" href="{{page.url}}"><span><span class="p-name">{{title|nbsp|safe}}</span></span></a></h2>
+						<h2><a class="u-url" href="{{page.url}}"><span><span class="p-name">{{title|safe|nbsp}}</span></span></a></h2>
 						<time class="time-default dt-published" datetime="{{page.date|iso|date('string')}}" title="{{page.date|iso|date('readable')}}" data-time="{{page.date|iso}}">{{page.date|iso|date('readable')}}</time>
 					</div>
 				</header>

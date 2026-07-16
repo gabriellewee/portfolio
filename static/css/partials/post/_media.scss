@@ -107,25 +107,27 @@
 		min-height: 100%;
 		background-color: hsl(from var(--color-dark-grey) h s calc(l * .45) / .9);
 		color: white;
-		font-size: 1.125rem;
+		font-family: var(--font-serif-text);
+		font-feature-settings: "liga";
+		font-size: 1rem;
+		@include font-weight-width(300, 100);
 		@include full-offset(0);
-		@include font-weight-width(700, 120);
 		@media (prefers-reduced-motion: no-preference) {
 			translate: 0 50%;
 		}
 		@supports not(container-type: inline-size) {
 			@media only screen and (min-width: 450px) {
-				font-size: 1.25rem;
-			}
-			@include viewport(medium) {
 				font-size: 1.125rem;
 			}
+			@include viewport(medium) {
+				font-size: 1rem;
+			}
 			@include viewport($ipad-11) {
-				font-size: 1.25rem;
+				font-size: 1.125rem;
 			}
 		}
 		@container metadata (min-width: 400px) {
-			font-size: 1.25rem;
+			font-size: 1.125rem;
 		}
 		.media-data-wrapper {
 			display: flex;
@@ -140,6 +142,8 @@
 		}
 		.time-default {
 			background-color: hsl(from var(--color-dark-grey) h s calc(l * .35) / .9);
+			text-transform: unset;
+			@include font-weight-width(300, 90);
 			@include reduce-transparency {
 				background-color: var(--color-dark-grey);
 			}
@@ -355,6 +359,7 @@
 				opacity: .7;
 				transition: all .1s ease-out;
 				text-decoration: underline;
+				text-decoration-thickness: 1px;
 				text-underline-offset: 8px;
 				text-decoration-color: hsl(from white h s l / 0);
 				@include contrast {
@@ -404,6 +409,34 @@
 			}
 			@container metadata (min-width: #{$iphone-mini}) {
 				align-self: unset;
+			}
+			.meta-location, .meta-title {
+				margin-bottom: calc(var(--p)/2);
+				font-family: var(--font-serif-display);
+				font-feature-settings: "liga", "ss06" on;
+				font-size: 1.75rem;
+				line-height: 1.1;
+				@include font-weight-width(250, 75);
+				@supports not(container-type: inline-size) {
+					@media only screen and (min-width: 450px) {
+						font-size: 2.25rem;
+					}
+					@include viewport(medium) {
+						font-size: 1.75rem;
+					}
+					@include viewport($ipad-11) {
+						font-size: 2.25rem;
+					}
+				}
+				@container metadata (min-width: 400px) {
+					font-size: 2.25rem;
+				}
+				@container metadata (min-width: 700px) {
+					font-size: 2.75rem;
+				}
+				dt {
+					@include hide;
+				}
 			}
 			div {
 				position: relative;

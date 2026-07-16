@@ -25,7 +25,7 @@ eleventyNavigation:
 					<p>This website is built with <a href="https://www.11ty.dev">Eleventy</a>, hosted on <a href="https://github.com/gabriellewee/portfolio">Github</a>, and deployed via <a href="https://netlify.com/">Netlify</a>. The domain provider is <a href="https://www.netim.com">Netim</a>. Templates are built from a combination of <a href="https://mozilla.github.io/nunjucks/">Nunjucks</a>, <a href="https://github.com/markdown-it/markdown-it">Markdown</a>, and vanilla HTML. Styles are built with <a href="https://sass-lang.com">SASS</a> and <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>.</p>
 					<h3>Resources</h3>
 					<ul>
-						<li><a href="https://isotope.metafizzy.co">Isotope</a> and <a href="https://infinite-scroll.com">Infinite Scroll</a> by <a href="https://desandro.com">Dave DeSandro</a> of <a href="https://metafizzy.co">Metafizzy</a></li><li><a href="https://gumroad.com/l/dank-mono">Dank Mono</a> font by <a href="https://kitten.sh">Phil Pluckthun</a></li><li><a href="https://github.com/github/mona-sans">Mona Sans</a> font by <a href="https://github.com/github">Github</a></li><li><a href="https://greensock.com/">Greensock</a></li>
+						<li><a href="https://isotope.metafizzy.co">Isotope</a> and <a href="https://infinite-scroll.com">Infinite Scroll</a> by <a href="https://desandro.com">Dave DeSandro</a> of <a href="https://metafizzy.co">Metafizzy</a></li><li><a href="https://gumroad.com/l/dank-mono">Dank Mono</a> font by <a href="https://kitten.sh">Phil Pluckthun</a></li><li><a href="https://djr.com/roslindale">Roslindale</a> font by <a href="https://djr.com">David Jonathan Ross</a></li><li><a href="https://github.com/github/mona-sans">Mona Sans</a> font by <a href="https://github.com/github">Github</a></li><li><a href="https://greensock.com/">Greensock</a></li>
 					</ul>
 				</div>
 			</div>
@@ -160,7 +160,7 @@ eleventyNavigation:
 							<li>
 								<div class="link-item">
 									<strong>{{mention.publication}}</strong>
-									<a href="{{mention.url|url}}">{{mention.title|nbsp|safe}}</a>
+									<a href="{{mention.url|url}}">{{mention.title|safe|nbsp}}</a>
 								</div>
 							</li>
 						{% endfor %}
@@ -182,9 +182,9 @@ eleventyNavigation:
 								<div class="link-tile">
 									<h3>
 										{% if feature.url %}
-											<a href="{{feature.url|url}}"><span>{{feature.title|nbsp|safe}}</span></a>
+											<a href="{{feature.url|url}}"><span>{{feature.title|safe|nbsp}}</span></a>
 										{% elseif feature.external %}
-											<a href="{{feature.external[0].url|url}}"><span>{{feature.title|nbsp|safe}}</span></a>
+											<a href="{{feature.external[0].url|url}}"><span>{{feature.title|safe|nbsp}}</span></a>
 										{% endif %}
 									</h3>
 									<div>
