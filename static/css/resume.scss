@@ -79,7 +79,7 @@ header.top {
 }
 .post-resume {
 	h2 {
-		@include font-weight-width(800, 120);
+		@include font-settings(800, 120);
 		font-size: 1.5rem;
 	}
 
@@ -111,7 +111,7 @@ header.top {
 	h3, a, button {
 		font-size: 1.125rem;
 		line-height: 1.25;
-		@include font-weight-width(600, 110);
+		@include font-settings(600, 110);
 	}
 	a, button {
 		text-decoration: unset;

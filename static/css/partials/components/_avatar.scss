@@ -48,7 +48,7 @@
 			hsl(from white h s l / .8),
 			hsl(from var(--color-dark-grey) h s l / .8)
 		));
-		@include font-weight-width(600, 115);
+		@include font-settings(600, 115);
 		@include contrast {
 			outline: 1.5px solid var(--color-primary);
 		}

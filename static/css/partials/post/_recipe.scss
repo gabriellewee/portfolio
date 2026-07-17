@@ -16,7 +16,7 @@
 			order: 2;
 			font-size: 2.5rem;
 			line-height: 1.1;
-			@include font-weight-width(800, 130);
+			@include font-settings(800, 130);
 			@include container(recipe, medium, $medium) {
 				font-size: 3rem;
 			}

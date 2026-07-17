@@ -410,10 +410,24 @@ $x-large: 1280px;
 	}
 }
 
-@mixin font-weight-width($weight, $width) {
+@mixin font-settings($weight, $width) {
 	font-weight: $weight;
 	font-stretch: #{$width * 1%};
 	font-variation-settings: "wght" $weight, "wdth" $width;
+}
+
+@mixin font-settings($weight, $width, $features: null, $variations: null) {
+	font-weight: $weight;
+	font-stretch: #{$width * 1%};
+
+	@if $variations != null {
+		 font-variation-settings: "wght" $weight, "wdth" $width, $variations;
+	} @else {
+		font-variation-settings: "wght" $weight, "wdth" $width;
+	}
+	@if $features != null {
+		font-feature-settings: "liga", $features;
+	}
 }
 
 // reusable styles

@@ -12,7 +12,7 @@
 	width: fit-content;
 	background: none;
 	color: var(--color, white);
-	@include font-weight-width(700, 125);
+	@include font-settings(700, 125);
 
 	&, > span, > span::before {
 		transition: background .4s ease-out, scale .2s ease-out, opacity .2s ease-out;
@@ -177,7 +177,7 @@
 	position: relative;
 	margin-bottom: var(--p);
 	margin-right: var(--p);
-	@include font-weight-width(600, 115);
+	@include font-settings(600, 115);
 	span {
 		transition: background-color .2s ease-out;
 		display: inline-block;

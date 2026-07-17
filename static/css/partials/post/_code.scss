@@ -297,7 +297,7 @@
 			bottom: calc(var(--p)*2);
 			right: calc(var(--p)*2);
 
-			@include font-weight-width(600, 90);
+			@include font-settings(600, 90);
 
 			@include viewport(small) {
 				position: unset;

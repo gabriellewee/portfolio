@@ -83,7 +83,7 @@ $tones: pink, blue, yellow;
 			}
 		}
 		h4, li {
-			@include font-weight-width(500, 115);			
+			@include font-settings(500, 115);			
 		}
 		h4, p, menu, li:not(:has(.radio)) {
 			width: 100%;

@@ -12,7 +12,7 @@
 	.contact-social, .contact-messaging {
 		font-size: clamp(1.5rem, 3vw, 2rem);
 		line-height: 1.2;
-		@include font-weight-width(900, 125);
+		@include font-settings(900, 125);
 		@include viewport($ipad-mini) {
 			line-height: 1.1;
 		}
@@ -135,7 +135,7 @@
 				margin-top: 0;
 				margin-bottom: calc(var(--p)*.75);
 				font-size: 1.25rem;
-				@include font-weight-width(800, 120);
+				@include font-settings(800, 120);
 				@include viewport($ipad-mini) {
 					line-height: 1.2;
 				}

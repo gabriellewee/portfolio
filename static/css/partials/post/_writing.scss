@@ -12,7 +12,7 @@
 			width: 100%;
 			font-size: 2rem;
 			line-height: 1.1;
-			@include font-weight-width(800, 120);
+			@include font-settings(800, 120);
 			@include viewport(medium) {
 				order: 1;
 				width: unset;

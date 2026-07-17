@@ -142,7 +142,7 @@
 			background-color: hsl(from var(--color-dark-grey) h s calc(l * .95) / .75);
 			text-transform: uppercase;
 			line-height: 1.15;
-			@include font-weight-width(600, 90);
+			@include font-settings(600, 90);
 			@include button;
 			@include contrast {
 				background-color: unset !important;
@@ -246,7 +246,7 @@ figure .indicator {
 		padding: var(--placeholder-padding, calc(var(--p)*2));
 		font-family: var(--font-serif-display);
 		font-size: 3rem;
-		@include font-weight-width(500, 75);
+		@include font-settings(500, 75);
 		@include mask-overflow;
 	}
 	&:has(.indicator) {
@@ -266,7 +266,7 @@ figure .indicator {
 		left: 0;
 		padding: 0 calc(var(--p)*2) calc(var(--p)*2);
 		font-size: 4rem;
-		@include font-weight-width(800, 120);
+		@include font-settings(800, 120);
 	}
 
 	&::after, .indicator {
@@ -324,7 +324,7 @@ figure .indicator {
 
 .post-text {
 	h1, h2, h3, h4, h5, h6 {
-		@include font-weight-width(800, 120);
+		@include font-settings(800, 120);
 	}
 	h1 {
 		font-size: 2.25rem;
@@ -347,7 +347,7 @@ figure .indicator {
 		opacity: .3;
 		margin-left: var(--p);
 		color: var(--color-primary);
-		@include font-weight-width(800, 100);
+		@include font-settings(800, 100);
 		&:hover, &:focus {
 			opacity: 1;
 		}
@@ -479,7 +479,7 @@ figure .indicator {
 		position: relative;
 		font-size: 1.25rem;
 		line-height: 1.334;
-		@include font-weight-width(450, 110);
+		@include font-settings(450, 110);
 		@include viewport(medium) {
 			padding: 0 calc(var(--p)*2);
 		}
@@ -602,7 +602,7 @@ figure .indicator {
 			hsl(from var(--color-dark-grey) h s calc(l * .45) / .5)
 		);
 		line-height: 1.4;
-		@include font-weight-width(700, 115);
+		@include font-settings(700, 115);
 		@include clip-path-edges(2px);
 		span {
 			display: block;
