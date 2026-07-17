@@ -35,7 +35,7 @@
 		h2 {
 			font-size: 1.5rem;
 			line-height: 1.2;
-			@include font-settings(800, 120);
+			@include font-settings(800, var(--font-width-120));
 			@include viewport(medium) {
 				font-size: 1.75rem;
 			}
@@ -232,7 +232,7 @@
 		label {
 			margin-right: var(--p);
 			font-size: 1.25rem;
-			@include font-settings(450, 110);
+			@include font-settings(450, 110%);
 		}
 		input {
 			appearance: none;

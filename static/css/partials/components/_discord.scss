@@ -68,7 +68,7 @@
 				--background: black;
 				font-size: 0.875rem;
 				color: hsl(from white h s l / .6);
-				@include font-settings(600, 100);
+				@include font-settings(600);
 			}
 		}
 		.description {
@@ -86,7 +86,7 @@
 			color: #b9bbbe;
 			font-size: .75rem;
 			text-transform: uppercase;
-			@include font-settings(600, 100);
+			@include font-settings(600);
 		}
 		.about-content {
 			display: inline-block;
@@ -138,7 +138,7 @@
 				color: white;
 				font-size: 1rem;
 				text-align: left;
-				@include font-settings(600, 100);
+				@include font-settings(600);
 				@include contrast {
 					border-color: white;
 				}

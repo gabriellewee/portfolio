@@ -10,7 +10,7 @@
 	}
 	.post-text, .post-header {
 		h2, h3 {
-			@include font-settings(800, 120);
+			@include font-settings(800, var(--font-width-120));
 		}
 		h2 {
 			font-size: 2.25rem;
@@ -132,7 +132,7 @@
 			var(--color-dark)
 		);
 		--background-active: light-dark(var(--color-dark-grey),var(--background-body));
-		@include font-settings(500, 115);
+		@include font-settings(500, 115%);
 
 		&.current span {
 			background-color: light-dark(

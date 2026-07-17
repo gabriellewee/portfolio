@@ -34,7 +34,7 @@
 		margin-top: calc(var(--p)*2.5);
 		margin-bottom: calc(var(--p)*1.5);
 		grid-column: 1/-1;
-		@include font-settings(800, 120);
+		@include font-settings(800, var(--font-width-120));
 		@include viewport(medium) {
 			font-size: 2.25rem;
 		}
@@ -185,7 +185,7 @@
 		z-index: 1;
 		color: white;
 		font-size: .875rem;
-		@include font-settings(600, 90);
+		@include font-settings(600, var(--font-width-80));
 		&::before {
 			background-color: light-dark(
 				hsl(from var(--color-dark) h s l / .5),

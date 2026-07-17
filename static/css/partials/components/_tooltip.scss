@@ -33,7 +33,7 @@
 		line-height: 1;
 		text-transform: uppercase;
 		white-space: nowrap;
-		@include font-settings(600, 100);
+		@include font-settings(600);
 	}
 	> span:not([class]) {
 		&::before, &::after {
@@ -134,7 +134,7 @@
 	&.monospace {
 		&::after {
 			font-family: var(--font-mono);
-			@include font-settings(700, 100);
+			@include font-settings(700);
 		}
 	}
 	&.inline {

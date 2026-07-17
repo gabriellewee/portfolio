@@ -94,6 +94,16 @@ $iron: #263238;
 
 	--color-primary:light-dark(color-mix(in srgb,var(--color-dark-grey) 95%,white),color-mix(in srgb,var(--color-dark-grey) 5%,white));
 	--color-secondary:light-dark(white,var(--color-dark-grey));
+
+	--font-width-70:70%;
+	--font-width-80:80%;
+	--font-width-120:120%;
+
+	@include safari(false) {
+		--font-width-70:90%;
+		--font-width-80:90%;
+		--font-width-120:125%;
+	}
 }
 
 @include contrast(true) {

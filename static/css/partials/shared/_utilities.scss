@@ -1,4 +1,5 @@
 @use 'sass:color';
+@use "sass:math";
 @use 'sass:string';
 
 // viewports
@@ -410,20 +411,12 @@ $x-large: 1280px;
 	}
 }
 
-@mixin font-settings($weight, $width) {
+@mixin font-settings($weight, $width: 100%, $features: null, $variations: null) {
 	font-weight: $weight;
-	font-stretch: #{$width * 1%};
-	font-variation-settings: "wght" $weight, "wdth" $width;
-}
-
-@mixin font-settings($weight, $width, $features: null, $variations: null) {
-	font-weight: $weight;
-	font-stretch: #{$width * 1%};
+	font-stretch: $width;
 
 	@if $variations != null {
-		 font-variation-settings: "wght" $weight, "wdth" $width, $variations;
-	} @else {
-		font-variation-settings: "wght" $weight, "wdth" $width;
+		 font-variation-settings: $variations;
 	}
 	@if $features != null {
 		font-feature-settings: "liga", $features;

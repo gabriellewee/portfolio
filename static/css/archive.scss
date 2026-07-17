@@ -16,13 +16,13 @@
 	}
 	h2 {
 		font-size: 4rem;
-		@include font-settings(1000, 120);
+		@include font-settings(1000, var(--font-width-120));
 	}
 	h3 {
 		view-transition-name: title;
 		font-size: 2rem;
 		line-height: 1.1;
-		@include font-settings(800, 120);
+		@include font-settings(800, var(--font-width-120));
 		a {
 			text-decoration: underline;
 			text-underline-offset: 8px;
@@ -94,7 +94,7 @@
 		margin-top: calc(var(--p)/2);
 		white-space: nowrap;
 		text-transform: uppercase;
-		@include font-settings(600, 90);
+		@include font-settings(600, var(--font-width-80));
 	}
 	li {
 		view-transition-name: post;

@@ -8,7 +8,7 @@
 	margin-top: var(--p);
 	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
 	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
-	@include font-settings(600, 110);
+	@include font-settings(600, 110%);
 	@include viewport($iphone-max) {
 		padding-left: 0;
 		padding-right: 0;

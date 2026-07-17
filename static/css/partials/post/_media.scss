@@ -109,7 +109,7 @@
 		color: white;
 		font-family: var(--font-serif-text);
 		font-size: 1rem;
-		@include font-settings(300, 100, "ss06" on);
+		@include font-settings(300, 100%, "ss06" on);
 		@include full-offset(0);
 		@media (prefers-reduced-motion: no-preference) {
 			translate: 0 50%;
@@ -142,7 +142,7 @@
 		.time-default {
 			background-color: hsl(from var(--color-dark-grey) h s calc(l * .35) / .9);
 			text-transform: unset;
-			@include font-settings(300, 90);
+			@include font-settings(300, 90%);
 			@include reduce-transparency {
 				background-color: var(--color-dark-grey);
 			}
@@ -414,7 +414,7 @@
 				font-family: var(--font-serif-display);
 				font-size: 2rem;
 				line-height: 1.1;
-				@include font-settings(250, 75, "ss06" on);
+				@include font-settings(250, 75%, "ss06" on);
 				@container metadata (min-width: 400px) {
 					font-size: 2.5rem;
 				}

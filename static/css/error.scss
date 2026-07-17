@@ -33,7 +33,7 @@ main {
 	}
 	h1, p {
 		line-height: 1.2;
-		@include font-settings(900, 125);
+		@include font-settings(900, 125%);
 		@include viewport($ipad-mini) {
 			line-height: 1.1;
 		}

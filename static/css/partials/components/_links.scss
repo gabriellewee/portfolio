@@ -42,7 +42,7 @@
 			font-family: var(--font-serif-text);
 			font-size: 1.75rem;
 			line-height: 1.25;
-			@include font-settings(450, 75, "ss06" on);
+			@include font-settings(450, 75%, "ss06" on);
 		}
 		h3 a {
 			text-decoration: unset;
@@ -151,7 +151,7 @@
 		font-size: .875rem;
 		text-transform: uppercase;
 		line-height: 1.715;
-		@include font-settings(600, 90);
+		@include font-settings(600, var(--font-width-80));
 		@include clip-path-edges(2px);
 		@include viewport(medium) {
 			margin-bottom: unset;
@@ -192,7 +192,7 @@
 	a {
 		display: block;
 		line-height: 1.333;
-		@include font-settings(600, 115);
+		@include font-settings(600, 115%);
 		@include viewport(medium) {
 			display: inline;
 		}
@@ -262,7 +262,7 @@
 	h3, a {
 		font-size: 1.125rem;
 		line-height: 1.25;
-		@include font-settings(600, 110);
+		@include font-settings(600, 110%);
 	}
 	h3 a {
 		text-decoration: unset;
@@ -383,6 +383,6 @@
 		text-transform: uppercase;
 		background-color: hsl(from var(--background) h s l / .8);
 		@include full-offset(100%);
-		@include font-settings(600, 120);
+		@include font-settings(600, var(--font-width-120));
 	}
 }
