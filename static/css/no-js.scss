@@ -7,6 +7,10 @@
 	display: none;
 }
 
+.avatar-link .avatar .text.hidden {
+	display: block;
+}
+
 .contact .contact-messaging > ul > .discord-button + .no-css {
 	display: contents !important;
 	.button-reduced {
@@ -44,10 +48,6 @@
 .post-code .post-content iframe,
 .lightbox + .iframe iframe {
 	opacity: 1;
-}
-
-.post-code .post-content .frame-wrapper {
-	background-color: hsl(from var(--color-dark-grey) h s l / .95);
 }
 
 .cursor::after {
