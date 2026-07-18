@@ -230,7 +230,10 @@
 	.username {
 		margin-right: var(--p);
 		span {
-			background-color: var(--color-dark);
+			background-color: color-mix(
+				var(--color-dark) 80%,
+				var(--color-dark-grey) 20%
+			);
 		}
 		&:hover, &:focus {
 			span {

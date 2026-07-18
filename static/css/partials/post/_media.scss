@@ -209,6 +209,7 @@
 						opacity: .7;
 						display: inline-block;
 						text-decoration: underline;
+						text-decoration-thickness: 1px;
 						text-underline-offset: 8px;
 						text-decoration-color: hsl(from white h s l / 0);
 						@include contrast {

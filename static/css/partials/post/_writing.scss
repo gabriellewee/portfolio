@@ -23,8 +23,9 @@
 				> span {
 					transition: text-underline-offset .1s ease-out, text-decoration-color .1s ease-out;
 					text-decoration: underline;
+					text-decoration-thickness: 2px;
 					text-underline-offset: 8px;
-					text-decoration-color: hsl(from white h s l / 0);
+					text-decoration-color: var(--background-post);
 					@include contrast {
 						text-underline-offset: 4px;
 					}

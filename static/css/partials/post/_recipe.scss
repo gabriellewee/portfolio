@@ -33,6 +33,7 @@
 					hsl(from var(--color-primary) h s l / 0),
 					hsl(from var(--color-primary) h s l / 0)
 				);
+				text-decoration-thickness: 2px;
 				text-underline-offset: 8px;
 
 				@include contrast {

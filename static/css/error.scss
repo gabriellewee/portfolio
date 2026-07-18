@@ -45,13 +45,14 @@ main {
 	a {
 		display: inline-block;
 		text-decoration: underline;
-		text-: hsl(from white h s l / .4);
+		text-decoration-thickness: 2px;
 		text-underline-offset: 5px;
 		&:hover, &:focus {
 			background-color: hsl(from var(--color-dark-grey) h s l / .5);
 		}
 		&:focus-visible {
 			@include focus-shadow(hsl(from white h s l / .8));
+			text-decoration: none;
 		}
 		&:active {
 			background-color: var(--color-dark-grey);

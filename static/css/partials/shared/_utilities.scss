@@ -275,16 +275,6 @@ $x-large: 1280px;
 		} @else {
 			-webkit-text-fill-color: transparent;
 		}
-		@include theme(light) {
-			filter: unset;
-		}
-		@include theme(dark) {
-			@if $three {
-				filter: brightness(1.3);
-			} @else {
-				filter: brightness(1.2);
-			}
-		}
 	}
 }
 
@@ -301,9 +291,6 @@ $x-large: 1280px;
 		) $position 0% / 200% 100%;
 		background-clip: text;
 		-webkit-text-fill-color: transparent;
-		@include theme(dark) {
-			filter: brightness(1.2);
-		}
 	}
 }
 

@@ -33,8 +33,10 @@
 	--width: 100%;
 	--max-width: var(--width);
 	--min-width: initial;
-	--background-post: hsl(from var(--color-secondary) h s l / .9);
-	--background-contrast: var(--color-secondary);
+	--background-post: color-mix(
+		var(--background-body) 10%,
+		var(--color-secondary) 90%
+	);
 
 	position: relative;
 	width: var(--width);
@@ -130,7 +132,7 @@
 			background-color: var(--background-outline);
 		}
 		&::after {
-			background-color: var(--background-contrast);
+			background-color: var(--background-post);
 		}
 	}
 	time {
