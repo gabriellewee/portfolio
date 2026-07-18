@@ -11,6 +11,8 @@ eleventyComputed:
   year: "{{date|year}}"
 ---
 
+{% from "macros.njk" import date %}
+
 <section class="content post-single h-entry">
 	<div class="posts">
 		<article class="post post-{{category}}{% for tag in tags %}{% if tag != 'entries' %} post-{{tag}}{% endif %}{% endfor %}">
@@ -18,7 +20,7 @@ eleventyComputed:
 				<header class="post-header inline-header">
 					<div class="post-header-content">
 						<h2><a class="u-url" href="{{page.url}}"><span><span class="p-name">{{title|safe|nbsp}}</span></span></a></h2>
-						<time class="time-default dt-published" datetime="{{page.date|iso|date('string')}}" title="{{page.date|iso|date('readable')}}" data-time="{{page.date|iso}}">{{page.date|iso|date('readable')}}</time>
+						{{ date(page, category, "dt-published")}}
 					</div>
 				</header>
 

@@ -17,7 +17,7 @@ eleventyNavigation:
 ---
 
 {% if pagination.pageNumber == 0 %}{% include 'pages/shared/contact.html' %}{% endif %}
-{% from "macros.njk" import indicator, header, upscale, meta, code, recipe %}
+{% from "macros.njk" import indicator, date, header, upscale, meta, code, recipe %}
 
 <section class="content" aria-label="Posts">
 	<div class="posts" data-grid data-scroll>
@@ -68,7 +68,7 @@ eleventyNavigation:
 								<label class="media-view-touch{% if file %} {% stats './static/images/' + key + '/' + post.data.date + '-' + post.data.name + '.' + file, 'theme', 'bottom right' %}{% endif %}" for="{{post.data.date|safe}}-{{post.data.name}}-info" aria-hidden="true" data-media-label hidden></label>
 								<figcaption class="media-data" data-media-info>
 									<div class="media-data-wrapper">
-										<time class="time-default" datetime="{{post.page.date|iso|date('string')}}" title="{{post.page.date|iso|date('readable')}}" data-time="{{post.page.date|iso}}" hidden>{{post.page.date|iso|date('readable')}}</time>
+										{{ date(post.page) }}
 										<label class="media-down media-icon" for="{{post.data.date|safe}}-{{post.data.name}}-info" data-media-label></label>
 										<div class="media-thumbnail">
 											<a class="media-expand expand" href="#{{post.data.date|safe}}-{{post.data.name}}-lightbox" role="button" aria-label="Expand image" tabindex="-1" data-media-expand>

@@ -2,6 +2,10 @@
 	<span class="indicator"><span></span><span></span><span></span></span>
 {% endmacro %}
 
+{% macro date(src, category, class, external) %}
+	<time{% if category != 'code'  %} class="time-default{% if class %} {{class}}{% endif %}"{% endif %} datetime="{{src.date|iso|date('string')}}" title="{{src.date|iso|date('readable')}}" data-time="{{src.date|iso}}"{% if category == "social" %} data-time-external{% endif %}{% if category != "media" %} hidden{% endif %}>{{src.date|iso|date('readable')}}</time>
+{% endmacro %}
+
 {% macro header(src, time, category) %}
 	<div class="post-header-content">
 		{% if category == "writing" or category == "cooking" %}
@@ -28,15 +32,15 @@
 		{% endif %}
 		{% if category == "code" %}
 			<div class="post-header-right">
-				<time class="time{% if category != 'code' %} time-default{% endif %}{% if category == 'social' %} time-external{% endif %}" datetime="{{time.date|iso|date('string')}}" data-time="{{time.date|iso}}" title="{{time.date|iso|date('readable')}}">{{time.date|iso|date('readable')}}</time>
+				{{ date(time, category) }}
 				<a class="expand" id="{{time.date|iso|date('string')}}-{{key}}" role="button" aria-label="Expand preview of {{src.title}}" href="#{{time.date|iso|date('string')}}-{{key}}-lightbox" data-media-expand data-desktop></a>
 				<a class="external-expand" href="{{post.url|url}}" aria-label="View {{category}} in new window" target="_blank"></a>
 			</div>
 		{% elseif category != "media" and category != "code" %}
-			<time class="time{% if category != 'code' %} time-default{% endif %}{% if category == 'social' %} time-external{% endif %}" datetime="{{time.date|iso|date('string')}}" data-time="{{time.date|iso}}" title="{{time.date|iso|date('readable')}}">{{time.date|iso|date('readable')}}</time>
+			{{ date(time, category) }}
 		{% endif %}
 		{% if category == "media" %}
-			<time class="no-css" datetime="{{time.date|iso|date('string')}}">{{time.date|iso|date('readable')}}</time>
+			{{ date(time, category, "no-css") }}
 		{% endif %}
 	</div>
 {% endmacro %}

@@ -9,7 +9,7 @@ export const timeAgo = (dates = "[data-time]") => {
 			if (!iso) return;
 
 			const platform = date.querySelector("span");
-			const offset = date.classList.contains("time-external") ? 0 : 8;
+			const offset = date.hasAttribute("data-time-external") ? 0 : 8;
 
 			const relative = DateTime.fromISO(iso).plus({ hours: offset }).toRelative();
 
