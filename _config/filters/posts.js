@@ -50,3 +50,33 @@ export const nbspFilter = (words = 2, maxLength = 100) => (value = "") => {
 
 	return last.length <= maxLength ? [...pre, last].join(" ") : value;
 };
+
+export const description = (content) => {
+	if (!content || typeof content !== "string") return "";
+
+	const copy = content
+		.replace(/<pre\b[^>]*>[\s\S]*?<\/pre>/gi, " ")
+		.replace(/<figure\b[^>]*>[\s\S]*?<\/figure>/gi, " ")
+		.replace(/<img\b[^>]*>/gi, " ")
+		.replace(/<a\b[^>]*>([\s\S]*?)<\/a>/gi, "$1")
+		.replace(/<\/(?:p|div|section|article|blockquote|li|h[1-6])>/gi, " ")
+		.replace(/<br\s*\/?>/gi, " ")
+		.replace(/<[^>]+>/g, " ")
+		.replace(/&nbsp;/gi, " ")
+		.replace(/&amp;/gi, "&")
+		.replace(/&quot;/gi, '"')
+		.replace(/&#(?:39|x27);|&apos;/gi, "'")
+		.replace(/&lt;/gi, "<")
+		.replace(/&gt;/gi, ">")
+		.replace(/\s+/g, " ")
+		.trim();
+
+	if (!copy) return "";
+
+	return [...new Intl.Segmenter("en", {
+		granularity: "sentence",
+	}).segment(copy)]
+		.slice(0, 2)
+		.map(({ segment }) => segment.trim())
+		.join(" ");
+};

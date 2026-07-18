@@ -1,4 +1,8 @@
-{% if key == true %}{%- set key = title.toLowerCase() %}{% endif %}
+{% if key == true %}{% set key = title.toLowerCase() %}{% endif %}
+{% set metaDescription = description %}
+{% if category == "writing" %}
+	{% set metaDescription = page.rawInput | md | description %}
+{% endif %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -22,7 +26,7 @@
 	<link rel="manifest" href="/manifest.webmanifest">
 
 	<meta name="application-name" content="{{site.author}}">
-	<meta name="description" content="{{description}}">
+	<meta name="description" content="{{metaDescription}}">
 	<meta name="msapplication-config" content="/browserconfig.xml">
 
 	{% if blank != true %}
@@ -34,7 +38,7 @@
 	<title>{{site.author}} · {% if titleModifier %}{{titleModifier}}{% endif %}{{title}}</title>
 	<meta property="og:title" content="{% if titleModifier %}{{titleModifier}}{% endif %}{{title}}">
 
-	<meta property="og:description" content="{{description}}">
+	<meta property="og:description" content="{{metaDescription}}">
 	<meta property="og:site_name" content="{{site.author}}">
 	<meta property="og:type" content="website"/>
 	<meta property="og:url" content="{{site.url}}{{page.url}}">

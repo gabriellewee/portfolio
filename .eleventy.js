@@ -28,6 +28,7 @@ export default function (eleventyConfig) {
 	eleventyConfig.addFilter('platform', filters.platform);
 	eleventyConfig.addFilter('md', filters.md);
 	eleventyConfig.addFilter('stripAttr', filters.stripAttr);
+	eleventyConfig.addFilter('description', filters.description);
 
 	// plugins
 	eleventyConfig.addPlugin(plugins.eleventyNavigationPlugin);
