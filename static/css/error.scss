@@ -32,8 +32,12 @@ main {
 		font-size: clamp(3rem, 6vw, 5rem);
 	}
 	h1, p {
+		--font-width: 130%;
 		line-height: 1.2;
-		@include font-settings(900, 125%);
+		@include font-settings(900, 130%);
+		@include safari(false) {
+			--font-width: 125%;
+		}
 		@include viewport($ipad-mini) {
 			line-height: 1.1;
 		}
