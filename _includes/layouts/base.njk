@@ -3,6 +3,7 @@
 {% if category == "writing" %}
 	{% set metaDescription = page.rawInput | md | description %}
 {% endif %}
+{% set metaTitle %}{% if titleModifier %}{{titleModifier}}{% endif %}{{title}}{% endset %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -35,22 +36,23 @@
 		<meta name="theme-color" media="(prefers-color-scheme: light)" content="{{theme if theme else '#fae5e1'}}"{% if theme %} data-default="{{theme}}"{% endif %}>
 	{% endif %}
 
-	<title>{{site.author}} · {% if titleModifier %}{{titleModifier}}{% endif %}{{title}}</title>
-	<meta property="og:title" content="{% if titleModifier %}{{titleModifier}}{% endif %}{{title}}">
+	<title>{{site.author}} · {{metaTitle}}</title>
+	<meta property="og:title" content="{{metaTitle}}">
 
 	<meta property="og:description" content="{{metaDescription}}">
 	<meta property="og:site_name" content="{{site.author}}">
 	<meta property="og:type" content="website"/>
 	<meta property="og:url" content="{{site.url}}{{page.url}}">
 	{% if og == true %}
-		<meta property="og:image" content="{{site.url}}/static/images/og/{{key}}.jpg">
+		{% set ogImage %}{{site.url}}/static/images/og/{{key}}.jpg{% endset %}
 	{% elseif og == "image" %}
-		<meta property="og:image" content="{% ogPhoto './static/images/' + key + '/' + page.fileSlug + '.jpg' %}">
+		{% set ogImage %}{% ogPhoto './static/images/' + key + '/' + page.fileSlug + '.jpg' %}{% endset %}
 	{% elseif og != false %}
-		<meta property="og:image" content="{{site.url}}/static/images/og/{{og}}.jpg">
+		{% set ogImage %}{{site.url}}/static/images/og/{{og}}.jpg{% endset %}
 	{% else %}
-		<meta property="og:image" content="{{site.url}}/static/images/og/default.jpg">
+		{% set ogImage %}{{site.url}}/static/images/og/default.jpg{% endset %}
 	{% endif %}
+	<meta property="og:image" content="{{ogImage}}">
 	<meta property="og:image:type" content="image/jpg">
 	<meta property="og:image:width" content="1200">
 	<meta property="og:image:height" content="630">
@@ -67,15 +69,17 @@
 		<link rel="stylesheet" href="{{'/static/css/fonts.css'|url}}">
 		<link rel="stylesheet" href="{{'/static/css/style.css'|url}}">
 	{% endif %}
-	{% if style == true and blank == true %}
-		<link rel="stylesheet" href="{{'/static/' + key + '/css/' + page.fileSlug + '.css'|url}}">
-	{% elseif style == true and key %}
-		<link rel="stylesheet" href="{{'/static/css/' + key + '.css'|url}}">
+	{% set stylesheet = "/static/css/style.css" %}
+	{% if style == true %}
+		{% if blank == true %}
+			{% set stylesheet = "/static/" ~ key ~ "/css/" ~ page.fileSlug ~ ".css" %}
+		{% elseif key %}
+			{% set stylesheet = "/static/css/" ~ key ~ ".css" %}
+		{% endif %}
 	{% elseif style %}
-		<link rel="stylesheet" href="{{'/static/' + style + '.css'|url}}">
-	{% else %}
-		<link rel="stylesheet" href="{{'/static/css/style.css'|url}}">
+		{% set stylesheet = "/static/" ~ style ~ ".css" %}
 	{% endif %}
+	<link rel="stylesheet" href="{{stylesheet|url}}">
 
 	{% if blank != true %}
 		<noscript>
@@ -84,7 +88,7 @@
 	{% endif %}
 </head>
 <body class="{% if key %}page-{{key}}{% endif %}{% if pagination.pageNumber == 0 %} page-index{% endif %}{% if filters %} page-filters{% endif %}">
-	{% if blank != true %}{% if header != false %}{% include 'pages/shared/header.html' %}{% endif %}{% endif %}
+	{% if blank != true and header != false %}{% include 'pages/shared/header.html' %}{% endif %}
 
 	<main class="main">
 		{% block content %}{{content|safe}}{% endblock %}
@@ -115,9 +119,9 @@
 			<script type="module" src="{{'/static/js/main.js'|url}}"></script>
 		{% endif %}
 		{% if scripts == true %}
-			<script type="module" src="{{'/static/js/pages/' + key + '.js'|url}}"></script>
+			<script type="module" src="{{'/static/js/pages/' ~ key ~ '.js'|url}}"></script>
 		{% elseif scripts %}
-			<script type="module" src="{{'/static/js/pages/' + scripts + '.js'|url}}"></script>
+			<script type="module" src="{{'/static/js/pages/' ~ scripts ~ '.js'|url}}"></script>
 		{% endif %}
 		{% if key == "home" and pagination.pageNumber == 0 %}
 			<script type="module" src="{{'/static/js/pages/home.js'|url}}"></script>

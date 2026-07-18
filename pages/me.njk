@@ -12,7 +12,7 @@ eleventyNavigation:
     footer: true
 ---
 
-{% from "macros.njk" import indicator %}
+{% from "macros.njk" import author, contact, indicator %}
 
 <section class="content">
 	<div class="posts" data-grid>
@@ -78,7 +78,7 @@ eleventyNavigation:
 					{% for game in gamelog %}
 						{% if ((game.properties["Console/Platform"].multi_select[0].name == "Nintendo Switch") or (game.properties["Console/Platform"].multi_select[0].name == "Nintendo Switch 2")) and (game.properties.Status.status.name == "In progress") %}
 							<li>
-								{% if game.properties.Cover.files[0].file %}{%- set cover = game.properties.Cover.files[0].file.url %}{% else %}{%- set cover = game.properties.Cover.files[0].external.url %}{% endif %}
+								{% if game.properties.Cover.files[0].file %}{% set cover = game.properties.Cover.files[0].file.url %}{% else %}{% set cover = game.properties.Cover.files[0].external.url %}{% endif %}
 								<a class="post-thumbnail post-thumbnail-game game-{{game.properties.Title.title[0].plain_text|slugify}}" href="{{game.properties.Link.url}}" target="_blank" rel="noopener noreferrer">
 									{% external cover, game.properties.Title.title[0].plain_text, 600, "lazy" %}
 								</a>
@@ -97,7 +97,7 @@ eleventyNavigation:
 					{% for game in gamelog %}
 						{% if (game.properties["Console/Platform"].multi_select[0].name == "iOS") and (game.properties.Status.status.name == "In progress") %}
 							<li>
-								{% if game.properties.Cover.files[0].file %}{%- set cover = game.properties.Cover.files[0].file.url %}{% else %}{%- set cover = game.properties.Cover.files[0].external.url %}{% endif %}
+								{% if game.properties.Cover.files[0].file %}{% set cover = game.properties.Cover.files[0].file.url %}{% else %}{% set cover = game.properties.Cover.files[0].external.url %}{% endif %}
 								<a class="post-thumbnail post-thumbnail-game {{game.properties.Title.title[0].plain_text|slugify}}" href="{{game.properties.Link.url}}" target="_blank" rel="noopener noreferrer">
 									{% external cover, game.properties.Title.title[0].plain_text, 600, "lazy" %}
 								</a>
@@ -233,8 +233,8 @@ eleventyNavigation:
 		</article>
 	</div>
 
-	{% include 'pages/shared/contact.html' %}
-	{% include 'pages/posts/author.html' %}
+	{{ contact(key, site.links) }}
+	{{ author() }}
 </section>
 
 <div class="lightbox-group" data-lightbox-container hidden>

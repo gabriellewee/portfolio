@@ -19,10 +19,10 @@ eleventyNavigation:
     footer: true
 ---
 
-{% from "macros.njk" import header, code %}
+{% from "macros.njk" import author, code, header, tags %}
 
 <section class="content">
-	{% include 'pages/posts/tags.html' %}
+	{{ tags(filters) }}
 
 	<div class="posts" data-grid>
 		{% for post in collections.code | reverse %}
@@ -60,7 +60,7 @@ eleventyNavigation:
 	</nav>
 </section>
 
-{% include 'pages/posts/author.html' %}
+{{ author() }}
 
 <div class="lightbox-group" data-lightbox-container hidden>
 	{% for post in collections.code | reverse %}

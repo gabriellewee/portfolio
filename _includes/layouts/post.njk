@@ -11,7 +11,7 @@ eleventyComputed:
   year: "{{date|year}}"
 ---
 
-{% from "macros.njk" import date %}
+{% from "macros.njk" import author, date, pagination %}
 
 <section class="content post-single h-entry">
 	<div class="posts">
@@ -30,10 +30,9 @@ eleventyComputed:
 
 				<footer class="post-footer">
 					{% if archive == true %}
+						{% set pageUrl = page.fileSlug %}
 						{% if full == true %}
-							{%- set pageUrl = title %}
-						{% else %}
-							{%- set pageUrl = page.fileSlug %}
+							{% set pageUrl = title %}
 						{% endif %}
 						<a class="button" href="{{site.url}}/v1/{{page.date|iso|date('archive')}}/{{pageUrl|slugify}}" target="_blank"><span>View original</span></a>
 					{% endif %}
@@ -52,17 +51,14 @@ eleventyComputed:
 	{% include 'pages/posts/mentions.html' %}
 
 	<nav class="pagination" aria-label="Pagination">
-		{%- set nextPost = collections.posts|getNextCollectionItem(page) %}
-		{%- set previousPost = collections.posts|getPreviousCollectionItem(page) %}
-		{% include 'pages/posts/pagination.html' %}
-
-		{%- set nextPost = collections.archive|getNextCollectionItem(page) %}
-		{%- set previousPost = collections.archive|getPreviousCollectionItem(page) %}
-		{% include 'pages/posts/pagination.html' %}
+		{{ pagination(collections.posts|getNextCollectionItem(page), collections.posts|getPreviousCollectionItem(page)) }}
+		{{ pagination(collections.archive|getNextCollectionItem(page), collections.archive|getPreviousCollectionItem(page)) }}
 	</nav>
 </section>
 
-{% include 'pages/posts/author.html' %}
-{% include 'pages/posts/lightbox.html' %}
+{{ author() }}
+<div class="lightbox-group" data-lightbox-container hidden>
+	{{content|images("lightbox")|safe}}
+</div>
 
 {% if code == true %}<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>{% endif %}

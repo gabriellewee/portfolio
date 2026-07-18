@@ -16,8 +16,8 @@ eleventyNavigation:
     order: 1
 ---
 
-{% if pagination.pageNumber == 0 %}{% include 'pages/shared/contact.html' %}{% endif %}
-{% from "macros.njk" import indicator, date, header, upscale, meta, code, recipe %}
+{% from "macros.njk" import author, code, contact, date, header, indicator, meta, recipe, upscale, view %}
+{% if pagination.pageNumber == 0 %}{{ contact(key, site.links) }}{% endif %}
 
 <section class="content" aria-label="Posts">
 	<div class="posts" data-grid data-scroll>
@@ -51,7 +51,7 @@ eleventyNavigation:
 					{% endif %}
 					<div class="post-content{% if post.data.category == 'writing' or post.data.category == 'cooking' %} post-text{% endif %}"{% if post.data.background %} style="--background: {{post.data.background}}"{% endif %}>
 						{% if post.data.category == "media" %}
-							<figure id="{{post.data.date|safe}}-{{post.data.name}}" class="has-placeholder{% if file %} theme-{% stats './static/images/' + key + '/' + post.data.date + '-' + post.data.name + '.' + file, 'theme', 'top left' %}{% endif %}" aria-label="{{post.data.type|capitalize}}{% if post.data.location %}, {{post.data.location}}{% elseif post.data.title %}, {{post.data.title}}{% endif %}" data-alt="{% if post.data.description %}{{post.data.description}}{% elseif post.description %}{{post.description}}{% endif %}" style="aspect-ratio: {% stats './static/images/' + key + '/' + post.data.date + '-' + post.data.name + '.' + file, 'ratio' %};">
+							<figure id="{{post.data.date|safe}}-{{post.data.name}}" class="has-placeholder{% if file %} theme-{% stats './static/images/' + key + '/' + post.data.date + '-' + post.data.name + '.' + file, 'theme', 'top left' %}{% endif %}" aria-label="{{post.data.type|capitalize}}{% if post.data.location or post.data.title %}, {{post.data.location or post.data.title}}{% endif %}"{% if post.data.description %} data-alt="{{post.data.description}}"{% endif %} style="aspect-ratio: {% stats './static/images/' + key + '/' + post.data.date + '-' + post.data.name + '.' + file, 'ratio' %};">
 								{% if post.data.upscale %}
 									{{ upscale(post.data) }}
 								{% elseif post.data.svg == true %}
@@ -109,7 +109,7 @@ eleventyNavigation:
 							{% endif %}
 						{% elseif post.data.content %}
 							<blockquote>{{post.data.content|nbsp|md|safe}}</blockquote>
-							{%- set postIndex = loop.index %}
+							{% set postIndex = loop.index %}
 							{% if post.data.category == "social" %}
 								{% if post.data.video %}
 									<figure id="external-{{postIndex}}-{{post.data.video.cid|truncate(5, true, '')}}" class="media-attachment">
@@ -164,23 +164,25 @@ eleventyNavigation:
 						<footer class="post-footer">
 							{% if (post.data.category == "writing" and post.data.size != "s") or (post.data.category == "cooking") %}
 								{% if post.url %}
-									<a class="button" href="{{post.url|url}}"><span>Read{% if post.data.label %} {{post.data.label}}{% else %} post{% endif %}</span></a>
+									{{ view(post, post.data, title="Read " ~ (post.data.label or "post")) }}
 								{% elseif post.data.url %}
-									<a class="button button-reverse" href="{{post.data.url|url}}"><span>Read more{% if post.data.platform %} at {{post.data.platform}}{% endif %}</span></a>
+									{% set label %}Read more{% if post.data.platform %} on {{ post.data.platform }}{% endif %}{% endset %}
+									{{ view(post, post.data, title=label, type="reverse") }}
 								{% endif %}
 							{% elseif post.data.category == "social" %}
-								<a class="button button-icon button-{{post.data.source}}" href="{{post.data.url|url}}" aria-label="View post on {{post.data.source|capitalize}}"><span><span>View post on {{post.data.source|capitalize}}</span></span></a>
+								{{ view(link, post.data, true, 'View post on') }}
 							{% endif %}
 							{% for link in post.data.external %}
-								<a class="button{% if link.icon == true %} button-icon{% endif %} button-{{link.platform}}{% if link.gradient != true %} solid{% endif %}" href="{{link.url|url}}"{% if link.gradient != true %} style="--background: var(--color-{{link.platform}})"{% endif %}{% if link.icon == true %} aria-label="{% if post.data.type == 'audio' %}Listen on {% elseif post.data.type == 'writing' %}Read on {% else %}View on {% endif %}{% if link.title %}{{link.title}}{% else %}{{link.platform|capitalize}}{% endif %}"{% endif %}><span><span>{% if post.data.type == "audio" %}Listen on {% elseif post.data.type == "writing" %}Read on {% else %}View on {% endif %}{% if link.title %}{{link.title}}{% else %}{{link.platform|capitalize}}{% endif %}</span></span></a>
+								{{ view(link, post.data) }}
 							{% endfor %}
 							{% if post.data.archive == true %}
 								{% if post.data.full == true %}
-									{%- set postSlug = post.data.title %}
+									{% set postSlug = post.data.title %}
 								{% else %}
-									{%- set postSlug = key %}
+									{% set postSlug = key %}
 								{% endif %}
-								<a class="button" href="{{site.url}}/v1/{{post.page.date|iso|date('archive')}}/{{postSlug|slugify}}" target="_blank"><span>View original</span></a>
+								{% set url %}{{site.url}}/v1/{{post.page.date|iso|date('archive')}}/{{postSlug|slugify}}{% endset %}
+								{{ view(post, post.data, title="View original", url=url) }}
 							{% endif %}
 						</footer>
 					{% endif %}
@@ -216,7 +218,7 @@ eleventyNavigation:
 	<hr class="no-css"/>
 </section>
 
-{% include 'pages/posts/author.html' %}
+{{ author() }}
 
 <div class="lightbox-group" data-lightbox-container hidden>
 	{% for post in pagination.items %}
@@ -237,7 +239,7 @@ eleventyNavigation:
 				</figure>
 			</dialog>
 		{% elseif post.data.category == "social" and post.data.media %}
-			{%- set postIndex = loop.index %}
+			{% set postIndex = loop.index %}
 			{% for media in post.data.media %}
 				{% if media.thumb %}
 					<a class="lightbox" id="external-{{postIndex}}-{{post.data.cid|truncate(5, true, '')}}-lightbox" role="button" aria-label="Close image" href="#external-{{postIndex}}-{{post.data.cid|truncate(5, true, '')}}" tabindex="-1" data-lightbox data-lightbox-append></a>

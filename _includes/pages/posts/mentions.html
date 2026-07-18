@@ -22,9 +22,7 @@
 
 	{% for target, webmentions in webmentions.links | groupby("target") %}
 		{% for type, webmentions in webmentions | groupby("activity.type") | dictsort %}
-			{% if type == 'null' %}
-				{% set type = 'reply' %}
-			{% endif %}
+			{% if type == 'null' %}{% set type = 'reply' %}{% endif %}
 			{% if target == pageLink and ((type == 'reply') or (type == 'link')) %}
 				<div class="mentions-header-wrapper mentions-{{type}}-header-wrapper">
 					<h3 class="mentions-{{type}}-header mentions-header">{% if type == 'reply' %}Replies{% else %}{{type|capitalize}}s{% endif %}</h3>

@@ -1,5 +1,97 @@
-{% macro indicator() %}
-	<span class="indicator"><span></span><span></span><span></span></span>
+{% macro author() %}
+	<aside class="post-author post-text p-author h-card">
+		<h2>About the author</h2>
+		<p rel="author" hidden>{{site.author}}</p>
+		<picture>
+			<source type="image/webp" srcset="{{site.url}}/static/images/avatars/headshot.webp">
+			<img class="u-photo" src="{{site.url}}/static/images/avatars/headshot.jpg" alt="{{site.photo.professional}}" width="512" height="512"/>
+		</picture>
+		<p class="p-note"><a class="p-name u-url u-uid" rel="me" href="{{site.url}}">{{site.author}}</a> is a <span class="p-job-title">Front-end Developer</span> working at Apple . In her free time, she enjoys modding keyboards and controllers, taking photos, drawing, and reading fantasy/sci-fi books (but mostly updating her website). You can reach her at <a class="u-email" href="mailto:{{site.email}}">{{site.email}}</a>.</p>
+	</aside>
+	<hr class="no-css"/>
+{% endmacro %}
+
+{% macro code(src) %}
+	{% if src.mobile == false %}
+		<a class="post-mobile-button button" href="{{post.url|url}}" target="_blank"><span>View animation</span></a>
+	{% endif %}
+	{% if src.button %}
+		<button class="reload button" data-reload hidden><span>{{src.button|capitalize}}</span></button>
+	{% endif %}
+{% endmacro %}
+
+{% macro contact(key, links) %}
+	<aside class="contact"{% if eleventyNavigation.key == "About" or eleventyNavigation.key == "Me" %} data-anim{% endif %}>
+		{% for type in links %}
+			<div class="contact-{{type.name}}" aria-label="{{type.label}}"{% if key == "home" %} data-anim{% endif %}>
+				<h2>{{type.title}}</h2>
+				<address>
+					<ul{% if key != "home" %} class="button-reduced-group"{% endif %}>
+						{% for link in type.links %}
+							{% if ((key == "home") and (link.secondary != true)) or (key != "home") %}
+								<li{% if link.class %} class="{{link.class}}"{% endif %}>
+									<a class="{{link.name}}{% if key == 'home' %} link color{% else %} button-reduced{% endif %}{% if type.name == 'social' %} u-url{% endif %}" href="{{link.url}}" rel="me" style="--color-link: var(--color-{{link.name}}); --color-link-dark: var(--color-{{link.name}}{% if link.theme == true %}-dark{% endif %})">
+										<span>{% if link.title %}{{link.title}}{% else %}{{link.name | capitalize}}{% endif %}</span>
+									</a>
+								</li>
+							{% endif %}
+						{% endfor %}
+						{% if type.name == "messaging" %}
+							{% if key == "home" %}
+								<li hidden>{{ discord() }}</li>
+							{% else %}
+								<li hidden class="discord-button">
+									<button class="button-reduced-outer tooltip tooltip-bottom theme-dark hidden" data-clip="gabriellewee" style="--tooltip-label: 'Username copied'">
+										<span class="discord button-reduced" style="--color-link: var(--color-discord); --color-link-dark: var(--color-discord)"><span>Discord</span></span>
+									</button>
+								</li>
+							{% endif %}
+							<li class="no-css"><span class="discord button-reduced"><span>Discord: gabriellewee</span></span></li>
+						{% endif %}
+					</ul>
+				</address>
+			</div>
+		{% endfor %}
+	</aside>
+	<hr class="no-css"/>
+{% endmacro %}
+
+{% macro discord() %}
+	<div class="discord-popup popup" data-popup>
+		<input type="checkbox" id="discord" class="popup-button" tabindex="0" role="button" aria-pressed="false" aria-expanded="false" aria-haspopup="menu" aria-controls="discord-window" aria-labelledby="discord-label" data-popup-trigger/>
+		<label class="popup-label" for="discord" style="--color-link: var(--color-discord);" data-popup-label>
+			<span aria-hidden="true" id="discord-label">Discord</span>
+		</label>
+		<div id="discord-window" class="popup-window" role="menu" data-popup-window>
+			<div class="inside">
+				<div class="header">
+					<span class="avatar"></span>
+				</div>
+				<div class="username">
+					<p class="username-header" aria-label="Discord display name: Gabrielle">Gabrielle</p>
+					<p id="username-input" class="username-input tooltip tooltip-right small theme-dark hidden" aria-label="Discord username: gabriellewee" style="--tooltip-label: 'Copied'">gabriellewee</p>
+				</div>
+				<div class="description">
+					<p class="about-header">About Me</p>
+					<code class="about-content">I like to make pretty things with code 👩🏻‍💻</code>
+					<ul class="links">
+						<li class="no-touch">
+							<a href="discord://discordapp.com/users/694064940826230865" aria-label="Desktop Discord profile">Discord profile</a>
+						</li>
+						<li class="touch">
+							<a href="https://discordapp.com/users/694064940826230865" aria-label="Mobile Discord profile">Discord profile</a>
+						</li>
+						<li>
+							<button disabled class="copy-button" data-clip="#username-input" data-clip-target>
+								<span>Copy username</span>
+							</button>
+						</li>
+					</ul>
+				</div>
+				<label class="close" for="discord" tabindex="0" role="button" aria-pressed="true" aria-haspopup="true" aria-controls="discord-window" data-popup-close>{% include 'svg/icons/close.svg' %}</label>
+			</div>
+		</div>
+	</div>
 {% endmacro %}
 
 {% macro date(src, category, class, external) %}
@@ -45,10 +137,8 @@
 	</div>
 {% endmacro %}
 
-{% macro upscale(src) %}
-	<picture{% if src.color %} style="--background: {{post.color}}"{% endif %}>
-		<img class="upscale" src="{% include src.upscale %}"{% if src.upscaleWidth %} width="{{src.upscaleWidth}}"{% endif %}{% if src.upscaleHeight %} height="{{src.upscaleHeight}}"{% endif %} alt="{{src.description}}"/>
-	</picture>
+{% macro indicator() %}
+	<span class="indicator"><span></span><span></span><span></span></span>
 {% endmacro %}
 
 {% macro meta(src) %}
@@ -88,13 +178,68 @@
 	</dl>
 {% endmacro %}
 
-{% macro code(src) %}
-	{% if src.mobile == false %}
-		<a class="post-mobile-button button" href="{{post.url|url}}" target="_blank"><span>View animation</span></a>
+{% macro pagination(nextPost, previousPost) %}
+	{% if nextPost or previousPost %}
+		{% if nextPost %}
+			<a class="newer button button-reverse" href="{{nextPost.url|url}}"><span><span class="no-css">← </span>Newer</span></a>
+		{% else %}
+			<a class="button" href="/"><span>Back to home</span></a>
+		{% endif %}
+		{% if previousPost %}
+			<a class="older button" href="{{previousPost.url|url}}"><span>Older<span class="no-css"> →</span></span></a>
+		{% else %}
+			<a class="button" href="/archive/"><span>Back to archive</span></a>
+		{% endif %}
 	{% endif %}
-	{% if src.button %}
-		<button class="reload button" data-reload hidden><span>{{src.button|capitalize}}</span></button>
-	{% endif %}
+{% endmacro %}
+
+{% macro settings(preferences) %}
+	<div class="preferences-popup popup" data-popup hidden>
+		<input type="checkbox" id="preferences" class="popup-button" tabindex="0" role="button" aria-pressed="false" aria-expanded="false" aria-haspopup="menu" aria-controls="preferences-window" aria-labelledby="preferences-label" data-popup-trigger/>
+		<label id="preferences-button" class="popup-label" for="preferences" data-popup-label>
+			<span class="button"><span aria-hidden="true" id="preferences-label">Preferences</span></span>
+		</label>
+		<div id="preferences-window" class="popup-window" role="menu" data-popup-window>
+			<div class="inside">
+				<p class="option-no-js">Please turn on Javascript in order to keep your settings after refreshing or leaving the page.</p>
+				{% for category in preferences %}
+					<h4 class="{% if category.js == true %}option-js{% endif %}" aria-label="{{category.name|capitalize}}">{{category.name|capitalize}}</h4>
+					<menu class="{% if category.js == true %}option-js{% endif %}">
+						{% for item in category.items %}
+							{% if item.options %}
+								{% for option in item.options %}
+									{% if item.visibility == null or (item.visibility == "theme" and theme == null) %}
+										<li>
+											<input type="radio" class="option" id="option-{{option.name}}" name="tone" data-option="{{option.name}}"{% if option.color %} data-color="{{option.color}}"{% endif %} hidden tabindex="0" {% if option.default == true %} checked{% endif %}/>
+											<label class="option-label radio" for="option-{{option.name}}" aria-hidden="true" data-option-label>
+												<span>{{option.name|capitalize}}</span>
+											</label>
+										</li>
+									{% endif %}
+								{% endfor %}
+							{% else %}
+								{% if (item.visibility != "load" and pagination) or (item.visibility == "load" and pagination) or (item.visibility != "load" and pagination == null) %}
+									<li>
+										<input type="checkbox" class="option" id="option-{{item.name}}" name="{{item.name}}" data-option hidden tabindex="0" role="switch" {% if item.default == true %} checked{% endif %}/>
+										<label class="option-label" for="option-{{item.name}}" aria-hidden="true" data-option-label>
+											<span class="toggle"></span>
+											<span>{{item.label}}</span>
+										</label>
+									</li>
+								{% endif %}
+							{% endif %}
+						{% endfor %}
+					</menu>
+				{% endfor %}
+				<div class="option-js">
+					<button class="button" data-option="reset"><span>Reset</span></button>
+				</div>
+				<div>
+					<label class="close button" for="preferences" tabindex="0" role="button" aria-pressed="true" aria-haspopup="true" aria-controls="preferences-window" data-popup-close><span>Close</span></label>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endmacro %}
 
 {% macro recipe(src) %}
@@ -113,4 +258,58 @@
 			<p class="recipe-total"><strong>Total:</strong> <span class="recipe-duration" data-duration="{{total|sum}}">{{total|sum}} minutes</span></p>
 		{% endif %}
 	</aside>
+{% endmacro %}
+
+{% macro resume(jobs) %}
+	{% for job in jobs %}
+		{% set titleTemplate %}
+			{{job.title}}{% if job.company %} at {{job.company}}{% endif %}
+		{% endset %}
+		<li>
+			<div class="{% if resumeClass %}{{resumeClass}}{% else %}link-tile{% endif %}">
+				<h3>
+					{% if job.website %}
+						<a href="{{job.website}}"><span>{{titleTemplate}}</span></a>
+					{% else %}
+						{{titleTemplate}}
+					{% endif %}
+				</h3>
+				<div>
+					<p>{{job.start}} — {% if job.end%}{{job.end}}{% else %}Now{% endif %}</p>
+					<p>{{job.location}}</p>
+				</div>
+			</div>
+		</li>
+	{% endfor %}
+{% endmacro %}
+
+{% macro tags(filters) %}
+	<nav hidden class="filters" data-filter-container>
+		<h2>Tags</h2>
+		<ul>
+			{% for filter in filters %}
+				<li><a class="grid-filter{% if filter.emoji === true %} emoji{% endif %}" href="#" data-filter=".filter-{{filter.name}}" aria-label="Posts tagged “{{filter.label or filter.name}}”" data-anim><span><span>{{filter.label or filter.name}}</span></span></a></li>
+			{% endfor %}
+			<li><a class="grid-filter reset" href="#" data-filter="*" data-reset><span>reset</span></a></li>
+		</ul>
+	</nav>
+{% endmacro %}
+
+{% macro upscale(src) %}
+	<picture{% if src.color %} style="--background: {{post.color}}"{% endif %}>
+		<img class="upscale" src="{% include src.upscale %}"{% if src.upscaleWidth %} width="{{src.upscaleWidth}}"{% endif %}{% if src.upscaleHeight %} height="{{src.upscaleHeight}}"{% endif %} alt="{{src.description}}"/>
+	</picture>
+{% endmacro %}
+
+{% macro view(link, src, icon, pfx, title, url, type) %}
+	{% set prefix = "View on" %}
+	{% if pfx %}
+		{% set prefix = pfx %}
+	{% elseif src.type == "audio" %}
+		{% set prefix = "Listen on" %}
+	{% elseif src.type == "writing" %}
+		{% set prefix = "Read on" %}
+	{% endif %}
+	{% set label = prefix ~ " " ~ (link.title or (link.platform or src.source) | capitalize) %}
+	<a class="button{% if link.icon == true or icon == true %} button-icon{% endif %}{% if link.platform or src.source or type %} button-{{link.platform or src.source or type}}{% endif %}{% if link.gradient != true and link.platform %} solid{% endif %}" href="{{(url or link.url or src.url)|url}}"{% if link.gradient != true and link.platform %} style="--background: var(--color-{{link.platform}})"{% endif %}{% if link.icon == true or icon == true %} aria-label="{{title or label}}"{% endif %}><span><span>{{title or label}}</span></span></a>
 {% endmacro %}

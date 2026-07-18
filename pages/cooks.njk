@@ -15,7 +15,7 @@ eleventyNavigation:
     order: 10
 ---
 
-{% from "macros.njk" import header, recipe %}
+{% from "macros.njk" import author, header, recipe, view %}
 
 <section class="content" aria-label="Posts">
 	<div class="posts" data-grid>
@@ -38,9 +38,9 @@ eleventyNavigation:
 					</div>
 
 					<footer class="post-footer">
-						<a class="button" href="{{post.url|url}}"><span>Read recipe</span></a>
+						{{ view(post, post.data, title="Read recipe") }}
 						{% for link in post.data.external %}
-							<a class="button link-platform {{link.platform}}" href="{{link.url|url}}" style="--background: var(--color-{{link.platform}}"><span>{% if post.data.type == "audio" %}Listen on {% elseif post.data.type == "writing" %}Read on {% else %}View on {% endif %}{% if link.title %}{{link.title}}{% else %}{{link.platform|capitalize}}{% endif %}</span></a>
+							{{ view(link, post.data) }}
 						{% endfor %}
 					</footer>
 				</div>
@@ -49,5 +49,5 @@ eleventyNavigation:
 	</div>
 </section>
 
-{% include 'pages/posts/author.html' %}
+{{ author() }}
 

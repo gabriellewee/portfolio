@@ -13,17 +13,16 @@
 }
 ---
 
-{% from "macros.njk" import indicator, date, header, upscale, meta %}
+{% from "macros.njk" import author, date, header, indicator, meta, tags, upscale %}
 
 <section class="content">
-	{% include 'pages/posts/tags.html' %}
+	{{ tags(filters) }}
 
 	<div class="posts" data-grid>
 		{% for post in media %}
+			{% set file = extension %}
 			{% if post.svg == true %}
 				{% set file = "svg" %}
-			{% else %}
-				{% set file = extension %}
 			{% endif %}
 			<article class="post post-media post-{{key}}{% if post.size %} post-size-{{post.size}}{% endif %} {{post.tags|isoFilter}}" data-media-container data-grid-item data-anim data-orientation="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'orientation' %}">
 				<input class="media-trigger" id="{{post.date|safe}}-{{post.name}}-info" type="checkbox" tabindex="0" aria-label="View information about this {{type}}" role="switch" data-media-trigger hidden/>
@@ -32,7 +31,7 @@
 						{{ header(post, post, category) }}
 					</header>
 					<div class="post-content">
-						<figure id="{{post.date|safe}}-{{post.name}}" class="has-placeholder{% if file %} theme-{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'theme', 'top left' %}{% endif %}" aria-label="{{type|capitalize}}{% if post.location %}, {{post.location}}{% elseif post.title %}, {{post.title}}{% endif %}" data-alt="{{post.description}}" style="aspect-ratio: {% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'ratio' %};">
+						<figure id="{{post.date|safe}}-{{post.name}}" class="has-placeholder{% if file %} theme-{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'theme', 'top left' %}{% endif %}" aria-label="{{type|capitalize}}{% if post.location or post.title %}, {{post.location or post.title}}{% endif %}"{% if post.description %} data-alt="{{post.description}}"{% endif %} style="aspect-ratio: {% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'ratio' %};">
 							{% if post.upscale %}
 								{{ upscale(post) }}
 							{% elseif post.svg == true %}
@@ -79,7 +78,7 @@
 	</div>
 </section>
 
-{% include 'pages/posts/author.html' %}
+{{ author() }}
 
 <div class="lightbox-group" data-lightbox-container hidden>
 	{% for post in media %}

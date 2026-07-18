@@ -13,6 +13,8 @@ eleventyNavigation:
     footer: true
 ---
 
+{% from "macros.njk" import author %}
+
 <section class="content">
 	<article class="posts-archive">
 		{% for year, posts in collections.writing | groupby("data.year") | dictsort | reverse %}
@@ -30,4 +32,4 @@ eleventyNavigation:
 	<hr class="no-css"/>
 </section>
 
-{% include 'pages/posts/author.html' %}
+{{ author() }}

@@ -14,6 +14,8 @@ eleventyNavigation:
     footer: true
 ---
 
+{% from "macros.njk" import author, contact, resume %}
+
 <section class="content">
 	<div class="posts" data-grid>
 		<article class="post post-build post-size-m" data-grid-item>
@@ -111,7 +113,7 @@ eleventyNavigation:
 				</header>
 				<div class="post-content">
 					<ul class="grid">
-						{% include 'pages/shared/resume.html' %}
+						{{ resume(about.resume.experience) }}
 						<li>
 							<div class="buttons">
 								{% for link in about.resume.links %}
@@ -212,7 +214,6 @@ eleventyNavigation:
 		</article>
 	</div>
 
-	{% include 'pages/shared/contact.html' %}
+	{{ contact(key, site.links) }}
+	{{ author() }}
 </section>
-
-{% include 'pages/posts/author.html' %}

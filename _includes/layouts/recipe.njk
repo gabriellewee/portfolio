@@ -15,7 +15,7 @@ size: s
 label: recipe
 ---
 
-{% from "macros.njk" import date %}
+{% from "macros.njk" import author, date, view %}
 
 <section class="content post-single h-entry">
 	<div class="posts">
@@ -52,7 +52,7 @@ label: recipe
 				<footer class="post-footer">
 					<a class="button hide" href="#" data-task-list-reset hidden><span>Reset ingredients</span></a>
 					{% for link in external %}
-							<a class="button link-platform {{link.platform}}" href="{{link.url|url}}" style="--background: var(--color-{{link.platform}}"><span>{% if post.data.type == "audio" %}Listen on {% elseif post.data.type == "writing" %}Read on {% else %}View on {% endif %}{% if link.title %}{{link.title}}{% else %}{{link.platform|capitalize}}{% endif %}</span></a>
+							{{ view(link, post.data) }}
 						{% endfor %}
 					<div class="emoji" style="--emoji: '{{emoji}}'"></div>
 				</footer>
@@ -65,4 +65,4 @@ label: recipe
 	</nav>
 </section>
 
-{% include 'pages/posts/author.html' %}
+{{ author() }}

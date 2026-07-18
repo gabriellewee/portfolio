@@ -1,4 +1,4 @@
-{% from "macros.njk" import indicator %}
+{% from "macros.njk" import indicator, settings %}
 
 {% if category == "writing" or category == "cooking" %}<hr class="progress" hidden/>{% endif %}
 
@@ -13,24 +13,22 @@
 				</span>
 			</a>
 
-			{% if (loading and key != "home") or (loading and key == "home" and pagination.pageNumber == 0) %}
+			{% set showLoading = key != "post" and not (key == "home" and pagination.pageNumber != 0) %}
+			{% if showLoading %}
 				<p class="text message loading" aria-hidden="true" hidden>
-					<span>{{loading|safe|nbsp}}</span>{{ indicator() }}</span>
-				</p>
-			{% elseif (key == "post") or (key == "home" and pagination.pageNumber != 0) %}{% else %}
-				<p class="text message loading" aria-hidden="true" hidden>
-					<span>Loading</span>{{ indicator() }}</span>
+					<span>{{ (loading or "Loading") | safe | nbsp }}</span>
+					{{ indicator() }}
 				</p>
 			{% endif %}
 
-			{% if message == true %}
-				<h1 class="text message">{{description}}</h1>
-			{% elseif message %}
-				<h1 class="text message">{{message|safe|nbsp}}</h1>
+			{% if message %}
+				<h1 class="text message">
+					{{ (description if message == true else message) | safe | nbsp }}
+				</h1>
 			{% endif %}
 		</div>
 
-		{% if preferences != false %}{% include 'pages/home/preferences.html' %}{% endif %}
+		{% if preferences != false %}{{ settings(site.preferences) }}{% endif %}
 	</div>
 
 	{% if (key == "home") and (pagination.pageNumber == 0) %}
