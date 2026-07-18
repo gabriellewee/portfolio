@@ -24,6 +24,7 @@ export const lightbox = ({
 			const content = el.nextElementSibling;
 			if (el.classList.contains("active")) {
 				el.classList.remove("active");
+				el.setAttribute("aria-hidden", true);
 				content.classList.remove("active");
 				content.setAttribute("inert", true);
 				setTimeout(() => content.close(), 200);
@@ -37,6 +38,7 @@ export const lightbox = ({
 		const frame = content.querySelector("iframe");
 		if (frame) frame.src = frame.src;
 
+		lightbox.removeAttribute("aria-hidden");
 		lightbox.classList.add("active");
 		scrollPosition = $html.scrollTop;
 
@@ -108,6 +110,7 @@ export const lightbox = ({
 			const content = box.nextElementSibling;
 			const isImage = content.classList.contains("image");
 
+			box.setAttribute("aria-hidden", true);
 			box.addEventListener("click", (e) => {
 				e.preventDefault();
 				deactivate(box);
