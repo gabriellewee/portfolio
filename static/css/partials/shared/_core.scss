@@ -118,6 +118,7 @@ img {
 @media (prefers-reduced-motion: no-preference) {
 	@view-transition {
 		navigation: auto;
+		types: slide;
 	}
 	::view-transition-group(*) {
 		animation-duration: .5s;
