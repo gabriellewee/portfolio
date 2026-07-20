@@ -47,7 +47,7 @@
 					margin-right: .75rem;
 				}
 			}
-			.link, .popup-label, .popup-label span {
+			.link, .popup-button, .popup-button span {
 				transition: all .1s ease-out;
 				font-size: clamp(1.75rem, 3vw, 2rem);
 				line-height: 1.3;
@@ -55,7 +55,7 @@
 					line-height: 1.2;
 				}
 			}
-			.link, .popup-label span {
+			.link, .popup-button span {
 				text-decoration: underline;
 				text-decoration-thickness: 2px;
 				text-underline-offset: 8px;
@@ -63,7 +63,7 @@
 					text-underline-offset: 4px;
 				}
 			}
-			.link:not(:hover):not(:focus), .popup-label span {
+			.link:not(:hover):not(:focus), .popup-button span {
 				text-decoration-color: light-dark(
 					hsl(from var(--color-light) h s calc(l * 1.1) / 0),
 					hsl(from var(--color-dark-grey) h s calc(l * .73) / 0)
@@ -72,25 +72,27 @@
 					text-decoration-color: hsl(from var(--color-primary) h s l / .5);
 				}
 			}
-			.popup-label {
+			.popup-button {
 				color: var(--color-link);
 			}
-			.popup-label:hover span, .popup-button:focus + .popup-label span {
+			.popup-button:hover span, .popup-button:focus span {
 				text-decoration-color: var(--color-link);
 			}
-			.link:hover, .link:focus, .popup-label:hover span, .popup-button:focus ~ .popup-label span {
+			.link:hover, .link:focus,
+			.popup-button:hover span, .popup-button:focus span {
 				color: light-dark(var(--color-dark-grey), white);
 			}
-			.link:focus, .popup-button:focus ~ .popup-label span {
+			.link:focus, .popup-button:focus span {
 				@include contrast {
 					text-decoration-color: hsl(from var(--color-primary) h s l / 0);
 					@include focus-shadow(light-dark(var(--color-link-dark), var(--color-link)));
 				}
 			}
-			.link:hover, .link:focus, .popup-label:hover span, .popup-button:focus ~ .popup-label span, .link:active, .popup-button:active ~ .popup-label span {
+			.link:hover, .link:focus, .link:active,
+			.popup-button:hover span, .popup-button:focus span, .popup-button:active span {
 				text-underline-offset: 4px;
 			}
-			.link:active, .popup-button:not(:checked):active ~ .popup-label span {
+			.link:active, .popup-button:not(:checked):active ~ .popup-button span {
 				@media (prefers-reduced-motion: no-preference) {
 					scale: .95;
 				}

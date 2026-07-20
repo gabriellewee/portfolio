@@ -57,12 +57,11 @@
 {% endmacro %}
 
 {% macro discord() %}
-	<div class="discord-popup popup" data-popup>
-		<input type="checkbox" id="discord" class="popup-button" tabindex="0" role="button" aria-pressed="false" aria-expanded="false" aria-haspopup="menu" aria-controls="discord-window" aria-labelledby="discord-label" data-popup-trigger/>
-		<label class="popup-label" for="discord" style="--color-link: var(--color-discord);" data-popup-label>
-			<span aria-hidden="true" id="discord-label">Discord</span>
-		</label>
-		<div id="discord-window" class="popup-window" role="menu" data-popup-window>
+	<div class="discord-popup popup" style="--anchor-name: --discord-anchor">
+		<button class="popup-button" popovertarget="discord-window" popovertargetaction="toggle" style="--color-link: var(--color-discord);">
+			<span>Discord</span>
+		</button>
+		<div id="discord-window" class="popup-window" role="menu" popover>
 			<div class="inside">
 				<div class="header">
 					<span class="avatar"></span>
@@ -88,7 +87,7 @@
 						</li>
 					</ul>
 				</div>
-				<label class="close" for="discord" tabindex="0" role="button" aria-pressed="true" aria-haspopup="true" aria-controls="discord-window" data-popup-close>{% include 'svg/icons/close.svg' %}</label>
+				<button class="popup-close" popovertarget="discord-window" popovertargetaction="hide">{% include 'svg/icons/close.svg' %}</button>
 			</div>
 		</div>
 	</div>
@@ -194,12 +193,11 @@
 {% endmacro %}
 
 {% macro settings(preferences) %}
-	<div class="preferences-popup popup" data-popup hidden>
-		<input type="checkbox" id="preferences" class="popup-button" tabindex="0" role="button" aria-pressed="false" aria-expanded="false" aria-haspopup="menu" aria-controls="preferences-window" aria-labelledby="preferences-label" data-popup-trigger/>
-		<label id="preferences-button" class="popup-label" for="preferences" data-popup-label>
-			<span class="button"><span aria-hidden="true" id="preferences-label">Preferences</span></span>
-		</label>
-		<div id="preferences-window" class="popup-window" role="menu" data-popup-window>
+	<div class="preferences-popup popup" hidden style="--anchor-name: --preferences-anchor">
+		<button class="popup-button" popovertarget="preferences-window" popovertargetaction="toggle">
+			<span class="button"><span>Preferences</span></span>
+		</button>
+		<div id="preferences-window" class="popup-window" role="menu" popover>
 			<div class="inside">
 				<p class="option-no-js">Please turn on Javascript in order to keep your settings after refreshing or leaving the page.</p>
 				{% for category in preferences %}
@@ -235,7 +233,7 @@
 					<button class="button" data-option="reset"><span>Reset</span></button>
 				</div>
 				<div>
-					<label class="close button" for="preferences" tabindex="0" role="button" aria-pressed="true" aria-haspopup="true" aria-controls="preferences-window" data-popup-close><span>Close</span></label>
+					<button class="popup-close button" popovertarget="preferences-window" popovertargetaction="hide"><span>Close</span></button>
 				</div>
 			</div>
 		</div>

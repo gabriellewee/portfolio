@@ -4,22 +4,22 @@
 	--t: 16px;
 	--r: 3px;
 
+	anchor-name: var(--anchor-name);
 	display: inline-block;
+	position: relative;
 	z-index: 2;
-	@include viewport(970px) {
-		position: relative;
+	.popup-button, .popup-close {
+		all: unset;
+		cursor: pointer;
 	}
-	.popup-label {
+	.popup-button {
 		display: inline-flex;
 		justify-content: center;
 		position: relative;
-		cursor: pointer;
 		&::after {
 			clip-path: polygon(0 0, 0 100%, 100% 0);
 			rotate: 45deg;
 			opacity: 0;
-			visibility: hidden;
-			z-index: -1;
 			content: "";
 			display: block;
 			position: absolute;
@@ -27,7 +27,6 @@
 			transform-origin: center center;
 			@include square(var(--t));
 			@media (prefers-reduced-motion: no-preference) {
-				transition: translate .2s ease-out, opacity .1s ease-out;
 				translate: 0 calc(var(--p)*2);
 			}
 			@media (prefers-reduced-motion: reduce) {
@@ -39,18 +38,35 @@
 		}
 	}
 	.popup-window {
-		opacity: 0;
-		visibility: hidden;
-		z-index: -1;
-		transition: opacity .2s ease-out, translate .2s ease-out, visibility .2s ease-out, z-index .2s ease-out;
 		position: absolute;
-		left: 0;
-		display: block;
+		position-anchor: var(--anchor-name);
+		position-area: block-end center;
+		inset: auto;
+		margin: 0;
+		opacity: 0;
+		transition: opacity .2s ease-out, translate .2s ease-out;
 		width: calc(100vw - var(--p)*4 - env(safe-area-inset-left)*2);
+		background-color: transparent;
 		max-width: 500px;
 		border-radius: var(--r);
 		@media (prefers-reduced-motion: no-preference) {
 			translate: 0 calc(var(--p)*2);
+		}
+		&:popover-open {
+			opacity: 1;
+
+			@media (prefers-reduced-motion: no-preference) {
+				translate: 0;
+			}
+		}
+		@starting-style {
+			&:popover-open {
+				opacity: 0;
+
+				@media (prefers-reduced-motion: no-preference) {
+					translate: 0 calc(var(--p) * 2);
+				}
+			}
 		}
 		@include contrast {
 			outline: 1.5px solid white;
@@ -58,8 +74,7 @@
 		ul {
 			list-style: none;
 		}
-		.close:not(.button) {
-			cursor: pointer;
+		.popup-close:not(.button) {
 			box-sizing: content-box;
 			display: inline-flex;
 			position: absolute;
@@ -75,30 +90,14 @@
 			}
 		}
 	}
-	.popup-button {
-		@include hide;
-		&:active {
-			+ .popup-label::after {
-				@media (prefers-reduced-motion: no-preference) {
-					transition: translate .2s ease-out, opacity .1s ease-out .1s;
-				}
-				@media (prefers-reduced-motion: reduce) {
-					transition: opacity .1s ease-out .1s;
-				}
-				
-			}
+	.popup-button:has(+ .popup-window:popover-open)::after {
+		opacity: 1;
+		@media (prefers-reduced-motion: no-preference) {
+			transition: translate .2s ease-out, opacity .1s ease-out .1s;
+			translate: 0;
 		}
-		&:checked {
-			~ .popup-label::after, ~ .popup-window {
-				opacity: 1;
-				visibility: visible;
-				z-index: unset;
-			}
-			~ .popup-label::after, ~ .popup-window {
-				@media (prefers-reduced-motion: no-preference) {
-					translate: 0;
-				}
-			}
-		}
+		@media (prefers-reduced-motion: reduce) {
+			transition: opacity .1s ease-out .1s;
+		}	
 	}
 }

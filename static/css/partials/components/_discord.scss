@@ -2,15 +2,8 @@
 
 .discord-popup {
 	--m: 16px;
+
 	.popup-button {
-		width: 127px;
-		height: 36px;
-		@include viewport($large) {
-			width: 145px;
-			height: 38px;
-		}
-	}
-	.popup-label {
 		&::after {
 			background-color: var(--color-light);
 			bottom: calc(var(--t)*-1);
@@ -22,6 +15,13 @@
 	.popup-window {
 		color: white;
 		margin-top: calc(var(--p)/2);
+		position-area: block-end inline-start;
+		left: calc(var(--p)*2 - env(safe-area-inset-left));
+
+		@include viewport(medium) {
+			position-area: block-end center;
+			left: auto;
+		}
 		.inside {
 			display: block;
 			position: relative;

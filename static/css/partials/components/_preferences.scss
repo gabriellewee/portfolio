@@ -15,38 +15,34 @@ $tones: pink, blue, yellow;
 	right: 0;
 	opacity: 0;
 	z-index: -1;
+	transition: opacity .1s ease-out;
 	@include viewport(medium) {
 		position: relative;
 		right: unset;
 	}
-	&:has(.popup-button:checked),
+	&:focus-within,
+	&:has(.popup-button:hover),
 	&:has(.popup-button:focus),
 	&:has(.popup-button:active),
-	&:has(.popup-label:hover) {
+	&:has(.popup-window:popover-open) {
 		opacity: 1;
 		z-index: unset;
-		.popup-label {
-			pointer-events: unset;
-		}
+		pointer-events: unset;
 	}
 	.popup-button {
-		&:checked, &:focus, &:active {
-			~ .popup-label {
-				pointer-events: unset;
-			}
+		&:hover, &:focus, &:active, &:has(+ .popup-window:popover-open) {
+			pointer-events: unset;
 		}
-		&:focus, &:active {
-			~ .popup-label {
-				.button::before {
-					opacity: 1;
-				}
+		&:focus {
+			.button::before {
+				opacity: 1;
 			}
 		}
 	}
-	.popup-label::after, .popup-window .inside {
+	.popup-button::after, .popup-window .inside {
 		@include blur(10px, var(--color-dark-grey), .45, .9, .8);
 	}
-	.popup-label {
+	.popup-button {
 		pointer-events: none;
 		&::after {
 			bottom: -24px;
@@ -56,8 +52,7 @@ $tones: pink, blue, yellow;
 		}
 	}
 	.popup-window {
-		right: 0;
-		left: unset;
+		position-area: block-end span-inline-start;
 		max-width: 360px;
 		color: white;
 		margin-top: var(--t);
@@ -172,10 +167,14 @@ $tones: pink, blue, yellow;
 			--contrast: white;
 			text-align: center;
 			width: 100%;
+			position: relative;
+		}
+		.popup-close {
+			@include font-settings(700, 125%);
 		}
 	}
-	.popup-button:checked {
-		+ .popup-label::after {
+	.popup-button:has(+ .popup-window:popover-open) {
+		+ .popup-button::after {
 			rotate: 45deg;
 		}
 	}
