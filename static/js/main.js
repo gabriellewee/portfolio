@@ -1,9 +1,9 @@
 import { removePlaceholders, showAllHidden, refreshIframes, enableClipboardButtons, targetBlankLinks, waitForGlobals } from './helpers/domHelpers.js';
 import { timeAgo, durationFormat } from './helpers/timeHelpers.js';
+import { scrollToMedia } from './helpers/scrollToHelpers.js';
 
 import { preferences } from './components/preferences.js';
 import { lightbox } from './components/lightbox.js';
-import { scrollToMedia } from './components/scrollToMedia.js';
 import { popup } from './components/popup.js';
 
 // Call scripts

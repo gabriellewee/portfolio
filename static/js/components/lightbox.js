@@ -1,4 +1,5 @@
 import { waitForGlobals } from "../helpers/domHelpers.js";
+import { scrollToTarget } from '../helpers/scrollToHelpers.js';
 
 // Lightbox
 export const lightbox = ({
@@ -9,6 +10,8 @@ export const lightbox = ({
 	const $html = document.documentElement;
 	let scrollPosition = $html.scrollTop;
 	let controller;
+	let openingButton;
+	let openingLightbox;
 
 	const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -28,16 +31,6 @@ export const lightbox = ({
 		const expand = element?.querySelector("[data-media-expand]");
 
 		return { id, info, element, expand };
-	};
-
-	const scrollToTarget = (lightbox) => {
-		const { info, element } = getTargetElements(lightbox);
-		const target = info || element;
-
-		target?.scrollIntoView({
-			behavior: prefersReducedMotion.matches ? "instant" : "smooth",
-			block: "center"
-		});
 	};
 
 	const activateOverlay = (lightbox) => {
@@ -82,8 +75,18 @@ export const lightbox = ({
 
 	const deactivateAndRestore = (lightbox) => {
 		deactivate(lightbox, () => {
-			scrollToTarget(lightbox);
-			activateOverlay(lightbox);
+			if (lightbox === openingLightbox && openingButton) {
+				openingButton.focus({ preventScroll: true });
+			} else {
+				const { info, element } = getTargetElements(lightbox);
+				const target = info || element;
+
+				if (target) scrollToTarget(target);
+				activateOverlay(lightbox);
+			}
+
+			openingButton = null;
+			openingLightbox = null;
 		});
 	};
 
@@ -148,8 +151,14 @@ export const lightbox = ({
 		buttons.forEach((button, index) => {
 			button.addEventListener("click", (e) => {
 				e.preventDefault();
+
 				const selectedLightbox = lightboxes[index];
-				if (selectedLightbox) activate(selectedLightbox);
+				if (!selectedLightbox) return;
+
+				openingButton = button;
+				openingLightbox = selectedLightbox;
+
+				activate(selectedLightbox);
 			}, { signal });
 		});
 
