@@ -13,6 +13,40 @@ export const lightbox = ({
 	const getSiblings = (selector, isDesktop) =>
 		[...document.querySelectorAll(isDesktop ? selector : `${selector}:not([data-desktop])`)];
 
+	const scrollToTarget = (lightbox) => {
+		const id = lightbox.getAttribute("href").slice(1);
+		const info = document.getElementById(`${id}-info`);
+		const element = document.getElementById(id);
+		const target = info || element;
+
+		target?.scrollIntoView({
+			behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+				? "instant"
+				: "smooth",
+			block: "center"
+		});
+	};
+
+	const activateOverlay = (lightbox) => {
+		const id = lightbox.getAttribute("href").slice(1);
+		const info = document.getElementById(`${id}-info`);
+		const element = document.getElementById(id);
+		const expand = element?.querySelector("[data-media-expand]");
+
+		if (info) {
+			info.open = true;
+			requestAnimationFrame(() => {
+				info.querySelector("summary")?.focus({
+					preventScroll: true
+				});
+			});
+		} else if (element) {
+			requestAnimationFrame(() => {
+				(expand || element).focus();
+			});
+		}
+	};
+
 	const closeDialog = (e, lightbox) => {
 		const content = lightbox.nextElementSibling;
 		const id = lightbox.getAttribute("href").slice(1);
@@ -20,6 +54,7 @@ export const lightbox = ({
 		info.open = false;
 		if (!e.target.contains(content)) return;
 		deactivate(lightbox);
+		activateOverlay(lightbox);
 	};
 
 	const deactivate = (targets) => {
@@ -65,40 +100,13 @@ export const lightbox = ({
 		document.addEventListener("click", (e) => closeDialog(e, lightbox), { passive: true });
 	};
 
-	const scrollToTarget = (lightbox) => {
-		const id = lightbox.getAttribute("href").slice(1);
-		const info = document.getElementById(`${id}-info`);
-		const element = document.getElementById(id);
-		const expand = element?.querySelector("[data-media-expand]");
-		const target = info || element;
-
-		target?.scrollIntoView({
-			behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-				? "instant"
-				: "smooth",
-			block: "center"
-		});
-
-		if (info) {
-			info.open = true;
-			requestAnimationFrame(() => {
-				info.querySelector("summary")?.focus({
-					preventScroll: true
-				});
-			});
-		} else if (element) {
-			requestAnimationFrame(() => {
-				(expand || element).focus();
-			});
-		}
-	};
-
 	const handleShortcut = (e, current, lightboxes, index) => {
 		if (!current.classList.contains("active")) return;
 
 		if (e.key === "Escape") {
 			deactivate(current);
 			scrollToTarget(current);
+			activateOverlay(current);
 		} else if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
 			setTimeout(() => {
 				deactivate(current);
