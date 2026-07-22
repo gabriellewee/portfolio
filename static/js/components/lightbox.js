@@ -15,6 +15,9 @@ export const lightbox = ({
 
 	const closeDialog = (e, lightbox) => {
 		const content = lightbox.nextElementSibling;
+		const id = lightbox.getAttribute("href").slice(1);
+		const info = document.getElementById(`${id}-info`);
+		info.open = false;
 		if (!e.target.contains(content)) return;
 		deactivate(lightbox);
 	};
@@ -67,14 +70,26 @@ export const lightbox = ({
 		const info = document.getElementById(`${id}-info`);
 		const element = document.getElementById(id);
 		const expand = element?.querySelector("[data-media-expand]");
+		const target = info || element;
+
+		target?.scrollIntoView({
+			behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+				? "instant"
+				: "smooth",
+			block: "center"
+		});
 
 		if (info) {
-			info.scrollIntoView({ behavior: "smooth" });
-			info.focus();
-			if (!info.checked) info.click();
+			info.open = true;
+			requestAnimationFrame(() => {
+				info.querySelector("summary")?.focus({
+					preventScroll: true
+				});
+			});
 		} else if (element) {
-			element.scrollIntoView({ behavior: "smooth" });
-			(expand || element).focus();
+			requestAnimationFrame(() => {
+				(expand || element).focus();
+			});
 		}
 	};
 

@@ -124,7 +124,7 @@
 		{% if category == "code" %}
 			<div class="post-header-right">
 				{{ date(time, category) }}
-				<a class="expand" id="{{time.date|iso|date('string')}}-{{key}}" role="button" aria-label="Expand preview of {{src.title}}" href="#{{time.date|iso|date('string')}}-{{key}}-lightbox" data-media-expand data-desktop></a>
+				<a class="expand" id="{{time.date|iso|date('string')}}-{{key or time.fileSlug}}" role="button" aria-label="Expand preview of {{src.title}}" href="#{{time.date|iso|date('string')}}-{{key or time.fileSlug}}-lightbox" data-media-expand data-desktop></a>
 				<a class="external-expand" href="{{post.url|url}}" aria-label="View {{category}} in new window" target="_blank"></a>
 			</div>
 		{% elseif category != "media" and category != "code" %}
@@ -144,7 +144,7 @@
 	{% if src.external %}
 		<div class="media-links">
 			{% for link in src.external %}
-				<a class="media-link external {{link.platform}}" href="{{link.url|url}}" tabindex="-1" aria-label="View on {{link.platform|capitalize}}" data-media-external><span><span class="no-css">View on </span>{{link.platform|capitalize}}</span></a>
+				<a class="media-link external {{link.platform}}" href="{{link.url|url}}" aria-label="View on {{link.platform|capitalize}}" data-media-external><span><span class="no-css">View on </span>{{link.platform|capitalize}}</span></a>
 			{% endfor %}
 		</div>
 	{% endif %}

@@ -31,6 +31,33 @@
 				}
 			}
 		}
+
+		&:has(summary:hover) {
+			@media (prefers-reduced-motion: no-preference) {
+				@include viewport($iphone-max) {
+					scale: 1.01;
+				}
+			}
+			@media (prefers-reduced-motion: reduce) {
+				&::before {
+					opacity: 1;
+				}
+			}
+		}
+
+
+		&:has(summary:focus-visible) {
+			&::before {
+				opacity: 1;
+			}
+		}
+		&:has(summary:active) {
+			@media (prefers-reduced-motion: no-preference) {
+				@include viewport($iphone-max) {
+					scale: .99;
+				}
+			}
+		}
 	}
 
 	figure {
@@ -45,209 +72,240 @@
 		}
 	}
 
-	.media-view-touch {
-		transition: opacity .2s ease-out;
-		display: block;
+	.media-data {
+		@include full-offset(0);
 
-		@include icon-setup(info, $hover: false, $position: 100% 100%, $touch: 100% 100%);
-		@include hover {
+		.media-view-hover {
+			opacity: 0;
+			transition: opacity .2s ease-out;
 			display: none;
-		}
-
-		&::before {
-			transition: transform .2s ease-out .3s;
-		}
-		
-		&.theme-light {
-			@include icon-invert;
-			&::after {
-				--blend-mode: multiply;
-			}
-		}
-	}
-
-	.media-view-hover {
-		opacity: 0;
-		transition: opacity .2s ease-out;
-		display: none;
-		z-index: 10;
-		cursor: pointer;
-		@include full-offset(0);
-		@include hover {
-			display: flex;
-		}
-		&:before {
-			content: "";
-			display: block;
-			mix-blend-mode: multiply;
-			background: radial-gradient(
-				farthest-corner at 100% 0%,
-				hsl(from var(--color-dark-grey) h s calc(l * .45) / 0.2) 0,
-				hsl(from var(--color-dark-grey) h s calc(l * .45) / 0) 45%
-			);
+			z-index: 10;
+			cursor: pointer;
 			@include full-offset(0);
-		}
-		.button {
-			--contrast: white;
+			@include hover {
+				display: flex;
+			}
+			&:before {
+				content: "";
+				display: block;
+				mix-blend-mode: multiply;
+				background: radial-gradient(
+					farthest-corner at 100% 0%,
+					hsl(from var(--color-dark-grey) h s calc(l * .45) / 0.2) 0,
+					hsl(from var(--color-dark-grey) h s calc(l * .45) / 0) 45%
+				);
+				@include full-offset(0);
+			}
+			.button {
+				--contrast: white;
 
-			transition: translate .2s ease-out, scale .2s ease-out;
-			position: absolute;
-			display: inline-block;
-			top: calc(var(--p)*2);
-			right: calc(var(--p)*2);
-			@media (prefers-reduced-motion: no-preference) {
-				translate: 0 100%;
-			}
-		}
-	}
-
-	figcaption {
-		transition: opacity .3s ease-out, translate .3s ease-out;
-		opacity: 0;
-		min-height: 100%;
-		background-color: hsl(from var(--color-dark-grey) h s calc(l * .45) / .9);
-		color: white;
-		font-family: var(--font-serif-text);
-		font-size: 1rem;
-		@include font-settings(300, 100%, "ss06" on);
-		@include full-offset(0);
-		@media (prefers-reduced-motion: no-preference) {
-			translate: 0 50%;
-		}
-		@supports not(container-type: inline-size) {
-			@media only screen and (min-width: 450px) {
-				font-size: 1.125rem;
-			}
-			@include viewport(medium) {
-				font-size: 1rem;
-			}
-			@include viewport($ipad-11) {
-				font-size: 1.125rem;
-			}
-		}
-		@container metadata (min-width: 400px) {
-			font-size: 1.125rem;
-		}
-		.media-data-wrapper {
-			display: flex;
-			flex-wrap: wrap;
-			align-items: flex-start;
-			align-content: flex-start;
-			justify-content: space-between;
-			padding: calc(var(--p)*2);
-			overflow-y: auto;
-			@include mask-overflow;
-			@include full-size;
-		}
-		.time-default {
-			background-color: hsl(from var(--color-dark-grey) h s calc(l * .35) / .9);
-			text-transform: unset;
-			@include font-settings(300, 90%);
-			@include reduce-transparency {
-				background-color: var(--color-dark-grey);
-			}
-			&::before {
-				@include contrast {
-					background-color: light-dark(
-						var(--color-primary),
-						hsl(from white h s l / .8)
-					);
+				transition: translate .2s ease-out, scale .2s ease-out;
+				position: absolute;
+				display: inline-block;
+				top: calc(var(--p)*2);
+				right: calc(var(--p)*2);
+				@media (prefers-reduced-motion: no-preference) {
+					translate: 0 100%;
 				}
 			}
 		}
+
+		.media-view-touch {
+			transition: opacity .2s ease-out;
+			display: block;
+
+			@include icon-setup(info, $hover: false, $position: 100% 100%, $touch: 100% 100%);
+			@include hover {
+				display: none;
+			}
+
+			&::before {
+				transition: transform .2s ease-out .3s;
+			}
+			
+			&.theme-light {
+				@include icon-invert;
+				&::after {
+					--blend-mode: multiply;
+				}
+			}
+		}
+
 		.media-icon {
 			display: block;
 			@include square(25px);
 		}
-		label {
-			cursor: pointer;
-		}
-		.media-down {
+
+		.media-close {
+			--close-icon-size: #{40px + 18px + 8px};
+
+			transition: opacity .1s ease-out;
+			opacity: 0;
 			position: absolute;
 			top: 0;
 			right: 0;
-			@include square(40px + 18px + 8px);
+			z-index: 3;
+			@include square(var(--close-icon-size));
 			background: url(/static/images/svg/icons/caret-down.svg) center / 21px no-repeat;
 		}
-		.media-thumbnail {
-			display: flex;
-			position: relative;
-			width: 100%;
-			margin-top: calc(var(--p) * 1.5);
-			@include container(metadata, $iphone, "(min-width: #{$iphone-mini}) and (min-height: 400px)") {
-				margin-top: calc(var(--p)*2);
+
+		.media-data-overlay {
+			transition: opacity .3s ease-out;
+			opacity: 0;
+			min-height: 100%;
+			background-color: hsl(from var(--color-dark-grey) h s calc(l * .45) / .9);
+			color: white;
+			font-family: var(--font-serif-text);
+			font-size: 1rem;
+			@include font-settings(300, 100%, "ss06" on);
+			@include full-offset(0);
+			@supports not(container-type: inline-size) {
+				@media only screen and (min-width: 450px) {
+					font-size: 1.125rem;
+				}
+				@include viewport(medium) {
+					font-size: 1rem;
+				}
+				@include viewport($ipad-11) {
+					font-size: 1.125rem;
+				}
 			}
-			.media-expand {
-				transition: scale .2s ease-out;
-				position: relative;
+			@container metadata (min-width: 400px) {
+				font-size: 1.125rem;
+			}
+			.media-data-wrapper {
 				display: flex;
-				align-items: center;
-				color: white;
-
+				flex-wrap: wrap;
+				align-items: flex-start;
+				align-content: flex-start;
+				justify-content: space-between;
+				padding: calc(var(--p)*2);
+				overflow-y: auto;
+				@include mask-overflow;
+				@include full-size;
+			}
+			.time-default {
+				background-color: hsl(from var(--color-dark-grey) h s calc(l * .35) / .9);
+				text-transform: unset;
+				@include font-settings(300, 90%);
+				@include reduce-transparency {
+					background-color: var(--color-dark-grey);
+				}
 				&::before {
-					@include before(white);
+					@include contrast {
+						background-color: light-dark(
+							var(--color-primary),
+							hsl(from white h s l / .8)
+						);
+					}
 				}
-
-				.has-image {
-					display: block;
-					@include expand-hover($hover: false);
+			}
+			.media-thumbnail {
+				display: flex;
+				position: relative;
+				width: 100%;
+				margin-top: calc(var(--p) * 1.5);
+				@include container(metadata, $iphone, "(min-width: #{$iphone-mini}) and (min-height: 400px)") {
+					margin-top: calc(var(--p)*2);
 				}
-
-				.no-image {
+				.media-expand {
+					transition: scale .2s ease-out;
+					position: relative;
 					display: flex;
 					align-items: center;
-					align-content: center;
+					color: white;
+
 					&::before {
-						content: "";
-						display: inline-block;
-						background: url(/static/images/svg/icons/expand.svg) center / contain no-repeat;
-						margin-right: calc(var(--p) * .75);
-						@include square(23px);
+						@include before(white);
 					}
-					span {
-						transition: all .1s ease-out;
-						opacity: .7;
-						display: inline-block;
-						text-decoration: underline;
-						text-decoration-thickness: 1px;
-						text-underline-offset: 8px;
-						text-decoration-color: hsl(from white h s l / 0);
-						@include contrast {
+
+					.has-image {
+						display: block;
+						@include expand-hover($hover: false);
+					}
+
+					.no-image {
+						display: flex;
+						align-items: center;
+						align-content: center;
+						&::before {
+							content: "";
+							display: inline-block;
+							background: url(/static/images/svg/icons/expand.svg) center / contain no-repeat;
+							margin-right: calc(var(--p) * .75);
+							@include square(23px);
+						}
+						span {
+							transition: all .1s ease-out;
+							opacity: .7;
+							display: inline-block;
+							text-decoration: underline;
+							text-decoration-thickness: 1px;
+							text-underline-offset: 8px;
+							text-decoration-color: hsl(from white h s l / 0);
+							@include contrast {
+								text-underline-offset: 4px;
+								text-decoration-color: unset;
+							}
+						}
+					}
+
+					&:hover, &:focus {
+						.no-image span {
+							opacity: 1;
+							text-decoration-color: white;
+						}
+					}
+
+					&:focus-visible {
+						.no-image span {
+							@include contrast {
+								@include focus-shadow(hsl(from white h s l / .8));
+							}
+						}
+					}
+
+					&:hover, &:focus, &:active {
+						.no-image span {
 							text-underline-offset: 4px;
-							text-decoration-color: unset;
 						}
 					}
-				}
 
-				&:hover, &:focus {
-					.no-image span {
-						opacity: 1;
-						text-decoration-color: white;
-					}
-				}
-
-				&:focus-visible {
-					.no-image span {
-						@include contrast {
-							@include focus-shadow(hsl(from white h s l / .8));
+					&:active {
+						&::before, .no-image span {
+							opacity: .2;
 						}
 					}
-				}
 
-				&:hover, &:focus, &:active {
-					.no-image span {
-						text-underline-offset: 4px;
+					@supports not(container-type: size) {
+						@include viewport($iphone) {
+							&:hover {
+								@media (prefers-reduced-motion: no-preference) {
+									scale: 1.02;
+								}
+								@media (prefers-reduced-motion: reduce) {
+									&::after {
+										opacity: 1;
+									}
+								}
+							}
+							&:focus-visible {
+								&::before {
+									opacity: 1;
+								}
+							}
+							&:active {
+								@media (prefers-reduced-motion: no-preference) {
+									scale: .98;
+								}
+							}
+							.no-image {
+								display: none;
+							}
+						}
 					}
-				}
 
-				&:active {
-					&::before, .no-image span {
-						opacity: .2;
-					}
-				}
-
-				@supports not(container-type: size) {
-					@include viewport($iphone) {
+					@container metadata (min-width: #{$iphone-mini}) and (min-height: 400px) {
 						&:hover {
 							@media (prefers-reduced-motion: no-preference) {
 								scale: 1.02;
@@ -273,297 +331,214 @@
 						}
 					}
 				}
-
-				@container metadata (min-width: #{$iphone-mini}) and (min-height: 400px) {
-					&:hover {
-						@media (prefers-reduced-motion: no-preference) {
-							scale: 1.02;
+				picture {
+					position: relative;
+					z-index: 1;
+					width: 150px;
+					display: none;
+					@include clip-path-edges(2px);
+					@supports not(container-type: size) {
+						@include viewport($iphone) {
+							display: block;
 						}
-						@media (prefers-reduced-motion: reduce) {
+						@media only screen and (min-width: 450px) {
+							width: 200px;
+						}
+						@include viewport(medium) {
+							width: 150px;
+						}
+						@include viewport($ipad-11) {
+							width: 200px;
+						}
+					}
+					@container metadata (min-width: #{$iphone-mini}) and (min-height: 400px) {
+						display: block;
+					}
+					@container metadata (min-width: 400px) {
+						width: 200px;
+					}
+				}
+				+ * {
+					margin-top: var(--p);
+					@include container(metadata, $iphone, "(min-width: #{$iphone-mini}) and (min-height: 400px)") {
+						margin-top: calc(var(--p) * 1.5);
+					}
+					+ * {
+						margin-top: calc(var(--p) * 1.5);
+					}
+				}
+			}
+			.media-links {
+				display: flex;
+				flex-wrap: wrap;
+			}
+			.media-link {
+				display: flex;
+				align-items: center;
+				color: white;
+				line-height: 1.2;
+				margin-right: calc(var(--p)*1.25);
+				&::before {
+					content: "";
+					display: block;
+					box-sizing: content-box;
+					margin-right: calc(var(--p) * .5);
+					padding: 0;
+					@include square(25px);
+				}
+				> span {
+					opacity: .7;
+					transition: all .1s ease-out;
+					text-decoration: underline;
+					text-decoration-thickness: 1px;
+					text-underline-offset: 8px;
+					text-decoration-color: hsl(from white h s l / 0);
+					@include contrast {
+						text-underline-offset: 4px;
+						text-decoration-color: unset;
+					}
+				}
+				&:hover, &:focus {
+					> span {
+						opacity: 1;
+						text-decoration-color: white;
+					}
+				}
+				&:focus-visible {
+					> span {
+						@include contrast {
+							@include focus-shadow(hsl(from white h s l / .8));
+						}
+					}
+				}
+				&:hover, &:focus, &:active {
+					> span {
+						text-underline-offset: 4px;
+					}
+				}
+				&:active {
+					&::before, > span {
+						opacity: .2;
+					}
+				}
+
+				$platforms: instagram, dribbble, codepen;
+
+				@each $platform in $platforms {
+					&.#{$platform} {
+						&::before {
+							background: url("/static/images/svg/icons/#{$platform}.svg") no-repeat center / 25px;
+						}
+					}
+				}
+			}
+			.media-meta {
+				width: 100%;
+				line-height: 1.2;
+				@supports (container-type: size) {
+					align-self: center;
+				}
+				@container metadata (min-width: #{$iphone-mini}) {
+					align-self: unset;
+				}
+				.meta-location, .meta-title {
+					margin-bottom: calc(var(--p)/2);
+					font-family: var(--font-serif-display);
+					font-size: 2rem;
+					line-height: 1.1;
+					@include font-settings(250, 75%, "ss06" on);
+					@container metadata (min-width: 400px) {
+						font-size: 2.5rem;
+					}
+					@container metadata (min-width: 700px) {
+						font-size: 2.75rem;
+					}
+					dt {
+						@include hide;
+					}
+				}
+				div {
+					position: relative;
+					margin-bottom: .25rem;
+				}
+				dt, dd {
+					display: inline;
+				}
+				dt {
+					opacity: .7;
+					&::after {
+						content: ": ";
+					}
+				}
+			}
+		}
+
+		summary {
+			cursor: pointer;
+			display: block;
+			list-style: none;
+
+			&::-webkit-details-marker {
+				display: none;
+			}
+
+			&:hover, &:focus, &:active {
+				.media-view-hover {
+					opacity: 1;
+					.button {
+						translate: 0 0;
+						> span {
+							background-position-x: 0%;
+						}
+					}
+				}
+			}
+			&:active {
+				.media-view-hover {
+					.button {
+						@media (prefers-reduced-motion: no-preference) {
+							@include viewport($iphone-max) {
+								scale: .98;
+							}
+						}
+						&, > span, > span::before {
+							transition: background .2s ease-out, scale .2s ease-out, opacity .2s ease-out;
+						}
+						> span {
 							&::after {
 								opacity: 1;
 							}
 						}
 					}
-					&:focus-visible {
-						&::before {
-							opacity: 1;
-						}
+				}
+			}
+		}
+
+		details {
+			&::details-content {
+				transition: opacity .3s ease-out .1s, translate .3s ease-out .1s,
+					content-visibility .4s allow-discrete;
+				opacity: 0;
+				@include full-offset(0);
+				@media (prefers-reduced-motion: no-preference) {
+					translate: 0 50%;
+				}
+			}
+			&:is([open], :open) {
+				&::details-content {
+					transition: opacity .5s cubic-bezier(.64, 0, .78, 0), translate .5s cubic-bezier(.64, 0, .78, 0);
+					opacity: 1;
+
+					@media (prefers-reduced-motion: no-preference) {
+						translate: 0 0;
 					}
-					&:active {
+				}
+				.media-view-hover {
+					z-index: unset;
+					opacity: 0;
+					.button {
 						@media (prefers-reduced-motion: no-preference) {
-							scale: .98;
-						}
-					}
-					.no-image {
-						display: none;
-					}
-				}
-			}
-			picture {
-				position: relative;
-				z-index: 1;
-				width: 150px;
-				display: none;
-				@include clip-path-edges(2px);
-				@supports not(container-type: size) {
-					@include viewport($iphone) {
-						display: block;
-					}
-					@media only screen and (min-width: 450px) {
-						width: 200px;
-					}
-					@include viewport(medium) {
-						width: 150px;
-					}
-					@include viewport($ipad-11) {
-						width: 200px;
-					}
-				}
-				@container metadata (min-width: #{$iphone-mini}) and (min-height: 400px) {
-					display: block;
-				}
-				@container metadata (min-width: 400px) {
-					width: 200px;
-				}
-			}
-			+ * {
-				margin-top: var(--p);
-				@include container(metadata, $iphone, "(min-width: #{$iphone-mini}) and (min-height: 400px)") {
-					margin-top: calc(var(--p) * 1.5);
-				}
-				+ * {
-					margin-top: calc(var(--p) * 1.5);
-				}
-			}
-		}
-		.media-links {
-			display: flex;
-			flex-wrap: wrap;
-		}
-		.media-link {
-			display: flex;
-			align-items: center;
-			color: white;
-			line-height: 1.2;
-			margin-right: calc(var(--p)*1.25);
-			&::before {
-				content: "";
-				display: block;
-				box-sizing: content-box;
-				margin-right: calc(var(--p) * .5);
-				padding: 0;
-				@include square(25px);
-			}
-			> span {
-				opacity: .7;
-				transition: all .1s ease-out;
-				text-decoration: underline;
-				text-decoration-thickness: 1px;
-				text-underline-offset: 8px;
-				text-decoration-color: hsl(from white h s l / 0);
-				@include contrast {
-					text-underline-offset: 4px;
-					text-decoration-color: unset;
-				}
-			}
-			&:hover, &:focus {
-				> span {
-					opacity: 1;
-					text-decoration-color: white;
-				}
-			}
-			&:focus-visible {
-				> span {
-					@include contrast {
-						@include focus-shadow(hsl(from white h s l / .8));
-					}
-				}
-			}
-			&:hover, &:focus, &:active {
-				> span {
-					text-underline-offset: 4px;
-				}
-			}
-			&:active {
-				&::before, > span {
-					opacity: .2;
-				}
-			}
-
-			$platforms: instagram, dribbble, codepen;
-
-			@each $platform in $platforms {
-				&.#{$platform} {
-					&::before {
-						background: url("/static/images/svg/icons/#{$platform}.svg") no-repeat center / 25px;
-					}
-				}
-			}
-		}
-		.media-meta {
-			width: 100%;
-			line-height: 1.2;
-			@supports (container-type: size) {
-				align-self: center;
-			}
-			@container metadata (min-width: #{$iphone-mini}) {
-				align-self: unset;
-			}
-			.meta-location, .meta-title {
-				margin-bottom: calc(var(--p)/2);
-				font-family: var(--font-serif-display);
-				font-size: 2rem;
-				line-height: 1.1;
-				@include font-settings(250, 75%, "ss06" on);
-				@container metadata (min-width: 400px) {
-					font-size: 2.5rem;
-				}
-				@container metadata (min-width: 700px) {
-					font-size: 2.75rem;
-				}
-				dt {
-					@include hide;
-				}
-			}
-			div {
-				position: relative;
-				margin-bottom: .25rem;
-			}
-			dt, dd {
-				display: inline;
-			}
-			dt {
-				opacity: .7;
-				&::after {
-					content: ": ";
-				}
-			}
-		}
-	}
-
-	&[data-orientation="landscape"] {
-		figcaption {
-			picture {
-				width: 200px;
-				@supports not(container-type: size) {
-					@media only screen and (min-width: 450px) {
-						width: 250px;
-					}
-					@include viewport(medium) {
-						width: 200px;
-					}
-					@include viewport($ipad-11) {
-						width: 250px;
-					}
-				}
-				@container metadata (min-width: 400px) {
-					width: 250px;
-				}
-			}
-		}
-	}
-
-	.media-trigger {
-		cursor: pointer;
-		appearance: none;
-		z-index: 1;
-		margin: 0;
-		opacity: 0;
-		@include full-offset(0);
-		@include hover {
-			&:hover, &:focus, &:active {
-				+ .post-inner {
-					.media-view-hover {
-						opacity: 1;
-						.button {
-							translate: 0 0;
-							> span {
-								background-position-x: 0%;
-							}
-						}
-					}
-				}
-			}
-			&:active {
-				+ .post-inner {
-					.media-view-hover {
-						.button {
-							@media (prefers-reduced-motion: no-preference) {
-								@include viewport($iphone-max) {
-									scale: .98;
-								}
-							}
-							&, > span, > span::before {
-								transition: background .2s ease-out, scale .2s ease-out, opacity .2s ease-out;
-							}
-							> span {
-								&::after {
-									opacity: 1;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		&:hover {
-			+ .post-inner {
-				@media (prefers-reduced-motion: no-preference) {
-					@include viewport($iphone-max) {
-						scale: 1.01;
-					}
-				}
-				@media (prefers-reduced-motion: reduce) {
-					&::before {
-						opacity: 1;
-					}
-				}
-			}
-		}
-		&:focus-visible {
-			+ .post-inner {
-				&::before {
-					opacity: 1;
-				}
-			}
-		}
-		&:active {
-			+ .post-inner {
-				@media (prefers-reduced-motion: no-preference) {
-					@include viewport($iphone-max) {
-						scale: .99;
-					}
-				}
-			}
-		}
-		&:checked {
-			z-index: -1;
-			&:hover {
-				+ .post-inner {
-					@media (prefers-reduced-motion: no-preference) {
-						scale: 1;
-					}
-				}
-			}
-			&:active {
-				+ .post-inner {
-					@media (prefers-reduced-motion: no-preference) {
-						@include viewport($iphone-max) {
-							scale: .99;
-						}
-					}
-				}
-			}
-			+ .post-inner {
-				@include hover {
-					.media-view-hover {
-						z-index: unset;
-						opacity: 0;
-						.button {
-							@media (prefers-reduced-motion: no-preference) {
-								translate: 0 100%;
-							}
+							translate: 0 100%;
 						}
 					}
 				}
@@ -576,16 +551,35 @@
 						}
 					}
 				}
-				.post-content {
-					figcaption {
-						transition: opacity .5s cubic-bezier(.64, 0, .78, 0), translate .5s cubic-bezier(.64, 0, .78, 0);
-						opacity: 1;
-						@include blur(10px, var(--color-dark-grey), .45, .9, .7);
-						@media (prefers-reduced-motion: no-preference) {
-							translate: 0 0;
-						}
-					}
+				.media-close {
+					transition: opacity .1s ease-out .5s;
+					opacity: 1;
 				}
+				.media-data-overlay {
+					transition: opacity .3s ease-out;
+					opacity: 1;
+					@include blur(10px, var(--color-dark-grey), .45, .9, .7);
+				}
+			}
+		}
+	}
+
+	&[data-orientation="landscape"] {
+		.media-thumbnail picture {
+			width: 200px;
+			@supports not(container-type: size) {
+				@media only screen and (min-width: 450px) {
+					width: 250px;
+				}
+				@include viewport(medium) {
+					width: 200px;
+				}
+				@include viewport($ipad-11) {
+					width: 250px;
+				}
+			}
+			@container metadata (min-width: 400px) {
+				width: 250px;
 			}
 		}
 	}

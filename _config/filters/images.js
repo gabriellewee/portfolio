@@ -33,8 +33,8 @@ export const images = async (post, option) => {
 				lightboxes += figure;
 			} else {
 				const caption = `<figcaption>${title}</figcaption>`;
-				const link = `<a class="expand theme-${theme}" href="#${name}-lightbox" aria-label="${alt} Expand image" data-media-expand>${picture}</a>`;
-				const figure = `<figure id="${name}" class="has-placeholder theme-${theme}" data-alt="${alt}">${caption}${link}</figure>`;
+				const link = `<a class="expand theme-${theme}" id="${name}" href="#${name}-lightbox" aria-label="${alt} — Expand image" data-media-expand>${picture}</a>`;
+				const figure = `<figure class="has-placeholder theme-${theme}" data-alt="${alt}">${caption}${link}</figure>`;
 				post = post.replace(image[0], figure);
 			}
 			continue;
@@ -82,9 +82,9 @@ export const images = async (post, option) => {
 		} else {
 			const caption = `<figcaption id="${name}-caption" aria-hidden="true">${nbspFilter(2, 100)(title)}</figcaption>`;
 			const linkOrPlain = (main.length >= 4)
-				? `${indicator}<a class="expand theme-${theme}" href="#${name}-lightbox" aria-label="${alt} Expand image" data-media-expand>${picture}</a>`
+				? `${indicator}<a class="expand theme-${theme}" id="${name}" href="#${name}-lightbox" aria-label="${alt} Expand image" data-media-expand>${picture}</a>`
 				: `${indicator}${picture}`;
-			const figure = `<figure id="${name}" class="has-placeholder theme-${theme}" data-alt="${alt}" aria-labelledby="${name}-caption">${caption}${linkOrPlain}</figure>`;
+			const figure = `<figure class="has-placeholder theme-${theme}" data-alt="${alt}" aria-labelledby="${name}-caption">${caption}${linkOrPlain}</figure>`;
 			post = post.replace(image[0], figure);
 		}
 	}

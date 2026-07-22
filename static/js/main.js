@@ -3,7 +3,7 @@ import { timeAgo, durationFormat } from './helpers/timeHelpers.js';
 
 import { preferences } from './components/preferences.js';
 import { lightbox } from './components/lightbox.js';
-import { mediaInfoToggle } from './components/mediaInfoToggle.js';
+import { scrollToMedia } from './components/scrollToMedia.js';
 import { popup } from './components/popup.js';
 
 // Call scripts
@@ -16,7 +16,7 @@ enableClipboardButtons();
 
 // Recall for infinite scroll
 durationFormat();
-mediaInfoToggle();
+scrollToMedia();
 refreshIframes();
 targetBlankLinks();
 timeAgo();
@@ -86,7 +86,7 @@ if (container) {
 				scroll.on("append", () => {
 					removePlaceholders();
 					durationFormat();
-					mediaInfoToggle();
+					scrollToMedia();
 					refreshIframes();
 					targetBlankLinks();
 					timeAgo();
