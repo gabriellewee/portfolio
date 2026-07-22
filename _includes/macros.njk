@@ -192,7 +192,7 @@
 	{% endif %}
 {% endmacro %}
 
-{% macro settings(preferences) %}
+{% macro settings(preferences, pagination) %}
 	<div class="preferences-popup popup" hidden style="--anchor-name: --preferences-anchor">
 		<button class="popup-button" popovertarget="preferences-window" popovertargetaction="toggle">
 			<span class="button"><span>Preferences</span></span>
@@ -230,7 +230,9 @@
 					</menu>
 				{% endfor %}
 				<div class="option-js">
-					<button class="button" data-option="reset"><span>Reset</span></button>
+					<div class="option-reset" data-reset>
+						<button class="button" data-option="reset"><span>Reset</span></button>
+					</div>
 				</div>
 				<div>
 					<button class="popup-close button" popovertarget="preferences-window" popovertargetaction="hide"><span>Close</span></button>

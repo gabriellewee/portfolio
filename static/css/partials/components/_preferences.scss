@@ -64,7 +64,7 @@ $tones: pink, blue, yellow;
 			width: 100%;
 			padding: calc(var(--p)*2);
 			@include border-radius(3px);
-			div:has(.button) {
+			> div:has(.button) {
 				@include viewport($iphone) {
 					width: calc(50% - var(--p));
 				}
@@ -104,6 +104,18 @@ $tones: pink, blue, yellow;
 			display: none;
 			@media (scripting: enabled) {
 				display: flex;
+			}
+		}
+		.option-reset {
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity .1s ease-out, visibility .1s ease-out;
+			width: 100%;
+			&.active {
+				@media (scripting: enabled) {
+					opacity: 1;
+					visibility: visible;
+				}
 			}
 		}
 		.option-grouped {

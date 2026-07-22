@@ -1,11 +1,42 @@
-// preferences helpers
-import { setChecked, onToggle, onClickOnly } from '../helpers/preferencesHelpers.js';
+// Check and uncheck inputs
+export const setChecked = (checkbox, checked = true) => {
+	checkbox.checked = checked;
+	checked ? checkbox.setAttribute("checked", "") : checkbox.removeAttribute("checked");
+};
+
+// Event listeners for toggling option
+export const onToggle = (toggle, onTrue, onFalse) => {
+	toggle.addEventListener("click", () => (toggle.checked ? onTrue() : onFalse()));
+	toggle.addEventListener("keydown", (e) => {
+		if (e.key === "Enter") toggle.checked ? onFalse() : onTrue();
+	});
+};
+
+// Event listeners for radio inputs
+export const onClickOnly = (radio, handler) => {
+	radio.addEventListener("click", handler);
+	radio.addEventListener("keydown", (e) => {
+		if (e.key === "Enter") handler();
+	});
+};
 
 // Preferences popup
 export const preferences = (options = document.querySelectorAll("[data-option]")) => {
 	if (!window.matchMedia) return;
 
 	const $html = document.documentElement;
+	const resetButton = document.querySelector("[data-reset]");
+	const preferenceKeys = [...new Set([...options].map((el) => el.name).filter(Boolean))];
+
+	const resetButtonVisibility = () => {
+		const hasPreferences = preferenceKeys.some((key) => localStorage.getItem(key) !== null);
+		resetButton?.classList.toggle("active", hasPreferences);
+	};
+
+	const setPreference = (key, value) => {
+		localStorage.setItem(key, value);
+		resetButtonVisibility();
+	};
 
 	const applyThemeDark = () => {
 		$html.classList.remove("theme-light");
@@ -18,7 +49,7 @@ export const preferences = (options = document.querySelectorAll("[data-option]")
 			meta?.setAttribute("content", "#1c2429");
 		});
 
-		localStorage.setItem("theme", "dark");
+		setPreference("theme", "dark");
 	};
 
 	const applyThemeLight = () => {
@@ -34,7 +65,7 @@ export const preferences = (options = document.querySelectorAll("[data-option]")
 			meta?.setAttribute("content", color);
 		});
 
-		localStorage.setItem("theme", "light");
+		setPreference("theme", "light");
 	};
 
 	options.forEach((el) => {
@@ -57,17 +88,13 @@ export const preferences = (options = document.querySelectorAll("[data-option]")
 					setChecked(el, false);
 				}
 
-				onToggle(
-					el,
-					() => {
-						setChecked(el);
-						applyThemeDark();
-					},
-					() => {
-						setChecked(el, false);
-						applyThemeLight();
-					}
-				);
+				onToggle(el, () => {
+					setChecked(el);
+					applyThemeDark();
+				}, () => {
+					setChecked(el, false);
+					applyThemeLight();
+				});
 				break;
 			}
 
@@ -89,11 +116,9 @@ export const preferences = (options = document.querySelectorAll("[data-option]")
 					});
 
 					const themeMeta = document.querySelector('meta[content="#fae5e1"]');
-					if (themeMeta && !$html.classList.contains("theme-dark")) {
-						themeMeta.setAttribute("content", color);
-					}
+					if (themeMeta && !$html.classList.contains("theme-dark")) themeMeta.setAttribute("content", color);
 
-					localStorage.setItem("tone", tone);
+					setPreference("tone", tone);
 				};
 
 				if (storedTone === tone) applyTone();
@@ -112,19 +137,15 @@ export const preferences = (options = document.querySelectorAll("[data-option]")
 				}
 				if (stored === "false") setChecked(el, false);
 
-				onToggle(
-					el,
-					() => {
-						setChecked(el);
-						$html.classList.add("theme-contrast");
-						localStorage.setItem("contrast", "true");
-					},
-					() => {
-						setChecked(el, false);
-						$html.classList.remove("theme-contrast");
-						localStorage.setItem("contrast", "false");
-					}
-				);
+				onToggle(el, () => {
+					setChecked(el);
+					$html.classList.add("theme-contrast");
+					setPreference("contrast", "true");
+				}, () => {
+					setChecked(el, false);
+					$html.classList.remove("theme-contrast");
+					setPreference("contrast", "false");
+				});
 				break;
 			}
 
@@ -139,19 +160,15 @@ export const preferences = (options = document.querySelectorAll("[data-option]")
 				}
 				if (stored === "true") setChecked(el, false);
 
-				onToggle(
-					el,
-					() => {
-						setChecked(el);
-						$html.classList.add("theme-reduce-transparency");
-						localStorage.setItem("transparency", "false");
-					},
-					() => {
-						setChecked(el, false);
-						$html.classList.remove("theme-reduce-transparency");
-						localStorage.setItem("transparency", "true");
-					}
-				);
+				onToggle(el, () => {
+					setChecked(el);
+					$html.classList.add("theme-reduce-transparency");
+					setPreference("transparency", "false");
+				}, () => {
+					setChecked(el, false);
+					$html.classList.remove("theme-reduce-transparency");
+					setPreference("transparency", "true");
+				});
 				break;
 			}
 
@@ -161,36 +178,33 @@ export const preferences = (options = document.querySelectorAll("[data-option]")
 				if (stored === "true") {
 					setChecked(el);
 					$html.classList.remove("theme-no-load");
-				}
-				if (stored === "false") {
+				} else if (stored === "false") {
 					setChecked(el, false);
 					$html.classList.add("theme-no-load");
 				}
 
-				onToggle(
-					el,
-					() => {
-						setChecked(el);
-						$html.classList.remove("theme-no-load");
-						localStorage.setItem("load", "true");
-					},
-					() => {
-						setChecked(el, false);
-						$html.classList.add("theme-no-load");
-						localStorage.setItem("load", "false");
-					}
-				);
+				onToggle(el, () => {
+					setChecked(el);
+					$html.classList.remove("theme-no-load");
+					setPreference("load", "true");
+				}, () => {
+					setChecked(el, false);
+					$html.classList.add("theme-no-load");
+					setPreference("load", "false");
+				});
 				break;
 			}
 
 			default: {
 				if (option === "reset") {
 					el.addEventListener("click", () => {
-						localStorage.clear();
+						preferenceKeys.forEach((key) => localStorage.removeItem(key));
 						location.reload();
 					});
 				}
 			}
 		}
 	});
+
+	resetButtonVisibility();
 };

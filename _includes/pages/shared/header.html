@@ -28,7 +28,7 @@
 			{% endif %}
 		</div>
 
-		{% if preferences != false %}{{ settings(site.preferences) }}{% endif %}
+		{% if preferences != false %}{{ settings(site.preferences, pagination) }}{% endif %}
 	</div>
 
 	{% if (key == "home") and (pagination.pageNumber == 0) %}
