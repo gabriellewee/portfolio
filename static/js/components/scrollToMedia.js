@@ -14,9 +14,7 @@ export const scrollToMedia = (summaries = "[data-media-container] summary") => {
 
 			if (!fullyVisible) {
 				figure.scrollIntoView({
-					behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-						? "instant"
-						: "smooth",
+					behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
 					block: "center"
 				});
 			}

@@ -1,4 +1,4 @@
-import { waitForGlobals } from '../helpers/domHelpers.js';
+import { waitForGlobals } from "../helpers/domHelpers.js";
 
 // Lightbox
 export const lightbox = ({
@@ -10,31 +10,42 @@ export const lightbox = ({
 	let scrollPosition = $html.scrollTop;
 	let controller;
 
+	const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
 	const getSiblings = (selector, isDesktop) =>
 		[...document.querySelectorAll(isDesktop ? selector : `${selector}:not([data-desktop])`)];
 
-	const scrollToTarget = (lightbox) => {
-		const id = lightbox.getAttribute("href").slice(1);
+	const getTargetId = (lightbox) =>
+		lightbox.getAttribute("href")?.slice(1);
+
+	const getTargetElements = (lightbox) => {
+		const id = getTargetId(lightbox);
+
+		if (!id) return { id: null, info: null, element: null, expand: null };
+
 		const info = document.getElementById(`${id}-info`);
 		const element = document.getElementById(id);
+		const expand = element?.querySelector("[data-media-expand]");
+
+		return { id, info, element, expand };
+	};
+
+	const scrollToTarget = (lightbox) => {
+		const { info, element } = getTargetElements(lightbox);
 		const target = info || element;
 
 		target?.scrollIntoView({
-			behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-				? "instant"
-				: "smooth",
+			behavior: prefersReducedMotion.matches ? "instant" : "smooth",
 			block: "center"
 		});
 	};
 
 	const activateOverlay = (lightbox) => {
-		const id = lightbox.getAttribute("href").slice(1);
-		const info = document.getElementById(`${id}-info`);
-		const element = document.getElementById(id);
-		const expand = element?.querySelector("[data-media-expand]");
+		const { info, element, expand } = getTargetElements(lightbox);
 
 		if (info) {
 			info.open = true;
+
 			requestAnimationFrame(() => {
 				info.querySelector("summary")?.focus({
 					preventScroll: true
@@ -42,42 +53,51 @@ export const lightbox = ({
 			});
 		} else if (element) {
 			requestAnimationFrame(() => {
-				(expand || element).focus();
+				(expand || element).focus({
+					preventScroll: true
+				});
 			});
 		}
 	};
 
-	const closeDialog = (e, lightbox) => {
-		const content = lightbox.nextElementSibling;
-		const id = lightbox.getAttribute("href").slice(1);
-		const info = document.getElementById(`${id}-info`);
-		info.open = false;
-		if (!e.target.contains(content)) return;
-		deactivate(lightbox);
-		activateOverlay(lightbox);
+	const deactivate = (targets, callback) => {
+		const remove = (lightbox) => {
+			const content = lightbox?.nextElementSibling;
+			if (!content || !lightbox.classList.contains("active")) return;
+
+			lightbox.classList.remove("active");
+			lightbox.setAttribute("aria-hidden", "true");
+			content.classList.remove("active");
+			content.setAttribute("inert", "");
+
+			setTimeout(() => {
+				if (content.open) content.close();
+				callback?.(lightbox);
+			}, 200);
+		};
+
+		const targetList = Array.isArray(targets) ? targets : [targets];
+		targetList.forEach(remove);
 	};
 
-	const deactivate = (targets) => {
-		const remove = (el) => {
-			const content = el.nextElementSibling;
-			if (el.classList.contains("active")) {
-				el.classList.remove("active");
-				el.setAttribute("aria-hidden", true);
-				content.classList.remove("active");
-				content.setAttribute("inert", true);
-				setTimeout(() => content.close(), 200);
-			}
-		};
-		(Array.isArray(targets) ? targets : [targets]).forEach(remove);
+	const deactivateAndRestore = (lightbox) => {
+		deactivate(lightbox, () => {
+			scrollToTarget(lightbox);
+			activateOverlay(lightbox);
+		});
 	};
 
 	const activate = (lightbox) => {
 		const content = lightbox.nextElementSibling;
-		const frame = content.querySelector("iframe");
+		const frame = content?.querySelector("iframe");
+
+		if (!content) return;
+
 		if (frame) frame.src = frame.src;
 
 		lightbox.removeAttribute("aria-hidden");
 		lightbox.classList.add("active");
+
 		scrollPosition = $html.scrollTop;
 
 		imagesLoaded(content, () => {
@@ -94,95 +114,102 @@ export const lightbox = ({
 			once: true,
 			invalidateOnRefresh: true,
 			onLeave: () => deactivate(lightbox),
-			onLeaveBack: () => deactivate(lightbox),
+			onLeaveBack: () => deactivate(lightbox)
 		});
-
-		document.addEventListener("click", (e) => closeDialog(e, lightbox), { passive: true });
 	};
 
 	const handleShortcut = (e, current, lightboxes, index) => {
 		if (!current.classList.contains("active")) return;
 
 		if (e.key === "Escape") {
+			e.preventDefault();
+			deactivateAndRestore(current);
+			return;
+		}
+
+		if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+
+		e.preventDefault();
+
+		setTimeout(() => {
 			deactivate(current);
-			scrollToTarget(current);
-			activateOverlay(current);
-		} else if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
-			setTimeout(() => {
-				deactivate(current);
-				const next = e.key === "ArrowRight"
+			const next =
+				e.key === "ArrowRight"
 					? lightboxes[index + 1] || lightboxes[0]
 					: lightboxes[index - 1] || lightboxes[lightboxes.length - 1];
-				activate(next);
-			}, 100);
-		}
+			activate(next);
+		}, 100);
 	};
 
 	const bindLightboxes = (buttons, lightboxes) => {
 		controller = new AbortController();
 		const { signal } = controller;
 
-		buttons.forEach((btn, i) => {
-			btn.addEventListener("click", (e) => {
+		buttons.forEach((button, index) => {
+			button.addEventListener("click", (e) => {
 				e.preventDefault();
-				activate(lightboxes[i]);
+				const selectedLightbox = lightboxes[index];
+				if (selectedLightbox) activate(selectedLightbox);
 			}, { signal });
 		});
 
-		lightboxes.forEach((box, i) => {
+		lightboxes.forEach((box, index) => {
 			const content = box.nextElementSibling;
-			const isImage = content.classList.contains("image");
+			if (!content) return;
+			box.setAttribute("aria-hidden", "true");
 
-			box.setAttribute("aria-hidden", true);
 			box.addEventListener("click", (e) => {
 				e.preventDefault();
-				deactivate(box);
+				deactivateAndRestore(box);
 			}, { signal });
 
-			if (isImage) {
-				content.addEventListener("click", (e) => {
-					e.preventDefault();
-					deactivate(box);
-				}, { signal });
-			}
+			content.addEventListener("click", (e) => {
+				if (e.target !== content) return;
+				e.preventDefault();
+				deactivateAndRestore(box);
+			}, { signal });
+
+			content.addEventListener("cancel", (e) => {
+				e.preventDefault();
+				deactivateAndRestore(box);
+			}, { signal });
 
 			document.addEventListener("keydown", (e) => {
-				handleShortcut(e, box, lightboxes, i);
+				handleShortcut(e, box, lightboxes, index);
 			}, { signal });
 		});
 	};
 
-
 	waitForGlobals(["gsap"], (gsap) => {
 		const breakpoint = 768;
 		const mm = gsap.matchMedia();
-		mm.add(
-			{
-				desktop: `(min-width: ${breakpoint}px)`,
-				mobile: `(max-width: ${breakpoint - 1}px)`,
-			},
-			(context) => {
-				const isDesktop = context.conditions.desktop;
-				let buttons = getSiblings(buttonSelector, isDesktop);
-				let boxes = getSiblings(boxSelector, isDesktop);
 
-				bindLightboxes(buttons, boxes);
+		mm.add({
+			desktop: `(min-width: ${breakpoint}px)`,
+			mobile: `(max-width: ${breakpoint - 1}px)`
+		}, (context) => {
+			const isDesktop = context.conditions.desktop;
+			let buttons = getSiblings(buttonSelector, isDesktop);
+			let boxes = getSiblings(boxSelector, isDesktop);
 
-				if (scroll?.on) {
-					scroll.on("append", () => {
-						deactivate(boxes);
-						controller.abort();
-						buttons = getSiblings(buttonSelector, isDesktop);
-						boxes = getSiblings(boxSelector, isDesktop);
-						bindLightboxes(buttons, boxes);
-					});
-				}
+			bindLightboxes(buttons, boxes);
 
-				return () => {
+			if (scroll?.on) {
+				scroll.on("append", () => {
 					deactivate(boxes);
 					controller.abort();
-				};
+
+					buttons = getSiblings(buttonSelector, isDesktop);
+					boxes = getSiblings(boxSelector, isDesktop);
+
+					bindLightboxes(buttons, boxes);
+				});
 			}
-		);
+
+			return () => {
+				deactivate(boxes);
+				controller.abort();
+			};
+		});
 	});
 };
