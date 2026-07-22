@@ -56,7 +56,7 @@ eleventyComputed:
 	</nav>
 </section>
 
-{{ author() }}
+{{ author(site) }}
 <div class="lightbox-group" data-lightbox-container hidden>
 	{{content|images("lightbox")|safe}}
 	<div class="lightbox-background"></div>
