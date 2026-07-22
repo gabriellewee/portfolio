@@ -177,7 +177,7 @@ $x-large: 1280px;
 	@media (prefers-reduced-transparency: reduce) {
 		@content;
 	}
-	:root:has(#option-contrast:not(.inactive):checked) & {
+	:root:has(#option-transparency:not(.inactive):checked) & {
 		@content;
 	}
 	.theme-reduce-transparency & {
