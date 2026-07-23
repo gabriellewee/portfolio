@@ -284,11 +284,10 @@
 {% endmacro %}
 
 {% macro tags(filters) %}
-	<nav hidden class="filters" data-filter-container>
-		<h2>Tags</h2>
+	<nav hidden class="filters" aria-label="Tags" data-filter-container>
 		<ul>
 			{% for filter in filters %}
-				<li><a class="grid-filter{% if filter.emoji === true %} emoji{% endif %}" href="#" data-filter=".filter-{{filter.name}}" aria-label="Posts tagged “{{filter.label or filter.name}}”" data-anim><span><span>{{filter.label or filter.name}}</span></span></a></li>
+				<li><a class="grid-filter{% if filter.emoji === true %} emoji{% endif %}" href="?tag={{filter.name}}" data-filter="{{filter.name}}" aria-label="Posts tagged “{{filter.label or filter.name}}”" data-anim><span><span>{{filter.label or filter.name}}</span></span></a></li>
 			{% endfor %}
 			<li><a class="grid-filter reset" href="#" data-filter="*" data-reset><span>reset</span></a></li>
 		</ul>

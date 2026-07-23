@@ -99,6 +99,9 @@
 				hsl(from var(--color-middle) h calc(s * .9) l)
 			);
 			--color-mix-underline: var(--color-mix);
+
+			pointer-events: none;
+
 			span span {
 				@include gradient-headline(
 					var(--color-middle),
@@ -107,9 +110,6 @@
 					var(--color-grey)
 				);
 			}
-		}
-		&.active {
-			pointer-events: none;
 		}
 		&.reset {
 			display: none;
