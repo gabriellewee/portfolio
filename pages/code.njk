@@ -32,7 +32,7 @@ eleventyNavigation:
 						{{ header(post.data, post.page, post.data.category) }}
 					</header>
 					<div class="post-content">
-						{{ code(src) }}
+						{{ code(post.data, post.url) }}
 						{% if post.url %}
 							{% if post.data.mobile == false %}
 								<div class="post-mobile">

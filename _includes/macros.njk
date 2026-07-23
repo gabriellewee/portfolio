@@ -11,9 +11,9 @@
 	<hr class="no-css"/>
 {% endmacro %}
 
-{% macro code(src) %}
+{% macro code(src, url) %}
 	{% if src.mobile == false %}
-		<a class="post-mobile-button button" href="{{post.url|url}}" target="_blank"><span>View animation</span></a>
+		<a class="post-mobile-button button" href="{{url|url}}" target="_blank"><span>View animation</span></a>
 	{% endif %}
 	{% if src.button %}
 		<button class="reload button" data-reload hidden><span>{{src.button|capitalize}}</span></button>

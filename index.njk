@@ -95,7 +95,7 @@ eleventyNavigation:
 								</figcaption>
 							</figure>
 						{% elseif post.data.category == "code" %}
-							{{ code(src) }}
+							{{ code(post.data, post.url) }}
 							{% if post.url %}
 								{% if post.data.mobile == false %}
 									<div class="post-mobile">
