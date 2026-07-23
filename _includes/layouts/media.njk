@@ -30,7 +30,7 @@
 						{{ header(post, post, category) }}
 					</header>
 					<div class="post-content">
-						<figure id="{{post.date|safe}}-{{post.name}}" class="has-placeholder{% if file %} theme-{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'theme', 'top left' %}{% endif %}" aria-label="{{type|capitalize}}{% if post.location or post.title %}, {{post.location or post.title}}{% endif %}"{% if post.description %} data-alt="{{post.description}}"{% endif %} style="aspect-ratio: {% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'ratio' %};">
+						<figure id="{{post.date|safe}}-{{post.name}}" class="has-placeholder{% if file %} theme-{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'theme', 'top left' %}{% endif %}" aria-label="{{type|capitalize}}{% if post.location or post.title %}, {{post.location or post.title}}{% endif %}"{% if post.description %} data-alt="{{post.description}}"{% endif %} style="aspect-ratio:{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'ratio' %}">
 							{% if post.upscale %}
 								{{ upscale(post) }}
 							{% elseif post.svg == true %}

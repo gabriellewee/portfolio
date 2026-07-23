@@ -48,7 +48,7 @@ eleventyNavigation:
 					{% endif %}
 					<div class="post-content{% if post.data.category == 'writing' or post.data.category == 'cooking' %} post-text{% endif %}"{% if post.data.background %} style="--background: {{post.data.background}}"{% endif %}>
 						{% if post.data.category == "media" %}
-							<figure id="{{post.data.date|safe}}-{{post.data.name}}" class="has-placeholder{% if file %} theme-{% stats './static/images/' + key + '/' + post.data.date + '-' + post.data.name + '.' + file, 'theme', 'top left' %}{% endif %}" aria-label="{{post.data.type|capitalize}}{% if post.data.location or post.data.title %}, {{post.data.location or post.data.title}}{% endif %}"{% if post.data.description %} data-alt="{{post.data.description}}"{% endif %} style="aspect-ratio: {% stats './static/images/' + key + '/' + post.data.date + '-' + post.data.name + '.' + file, 'ratio' %};">
+							<figure id="{{post.data.date|safe}}-{{post.data.name}}" class="has-placeholder{% if file %} theme-{% stats './static/images/' + key + '/' + post.data.date + '-' + post.data.name + '.' + file, 'theme', 'top left' %}{% endif %}" aria-label="{{post.data.type|capitalize}}{% if post.data.location or post.data.title %}, {{post.data.location or post.data.title}}{% endif %}"{% if post.data.description %} data-alt="{{post.data.description}}"{% endif %} style="aspect-ratio:{% stats './static/images/' + key + '/' + post.data.date + '-' + post.data.name + '.' + file, 'ratio' %}">
 								{% if post.data.upscale %}
 									{{ upscale(post.data) }}
 								{% elseif post.data.svg == true %}
@@ -106,7 +106,7 @@ eleventyNavigation:
 								{% endif %}
 								<div class="frame-wrapper"{% if post.data.background %} style="--background: {{post.data.background}}"{% endif %}>
 									<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}"><p><em>Please enable Javascript to view this code demo.</em></p></noscript>
-									<iframe class="frame{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title|safe}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"></iframe>
+									<iframe class="frame{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title|safe}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1"></iframe>
 								</div>
 							{% else %}
 								{{post.content|safe}}
@@ -137,10 +137,10 @@ eleventyNavigation:
 									</figure>
 								{% endif %}
 								{% for media in post.data.media %}
-									{% if media.thumb %}
-										<figure id="external-{{postIndex}}-{{post.data.cid|truncate(5, true, '')}}" class="media-attachment has-placeholder theme-{% stats media.thumb, 'theme', 'top left' %}" aria-label="{{media.alt}}">
-											<a class="expand theme-{% stats media.thumb, 'theme', 'top left' %}" href="#external-{{postIndex}}-{{post.data.cid|truncate(5, true, '')}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
-												{% external media.thumb, '', 500, 'lazy' %}
+									{% if media.fullsize %}
+										<figure id="external-{{postIndex}}-{{post.data.cid|truncate(5, true, '')}}" class="media-attachment has-placeholder theme-{% stats media.fullsize, 'theme', 'top left' %}" aria-label="{{media.alt}}">
+											<a class="expand theme-{% stats media.fullsize, 'theme', 'top left' %}" href="#external-{{postIndex}}-{{post.data.cid|truncate(5, true, '')}}-lightbox" role="button" aria-label="Expand image" data-media-expand>
+												{% external media.fullsize, '', 500, 'lazy' %}
 											</a>
 											{{ indicator() }}
 										</figure>
@@ -245,7 +245,7 @@ eleventyNavigation:
 		{% elseif post.data.category == "social" and post.data.media %}
 			{% set postIndex = loop.index %}
 			{% for media in post.data.media %}
-				{% if media.thumb %}
+				{% if media.fullsize %}
 					<a class="lightbox" id="external-{{postIndex}}-{{post.data.cid|truncate(5, true, '')}}-lightbox" role="button" aria-label="Close image" href="#external-{{postIndex}}-{{post.data.cid|truncate(5, true, '')}}" tabindex="-1" data-lightbox data-lightbox-append></a>
 					<dialog class="lightbox-content image" aria-label="Image preview" autofocus data-lightbox-append>
 						<figure>
@@ -269,7 +269,7 @@ eleventyNavigation:
 				<figure class="frame-wrapper"{% if post.data.background %} style="--background: {{post.data.background}}"{% endif %}>
 					{% if post.url %}
 						<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}"><p><em>Please enable Javascript to view this code demo.</em></p></noscript>
-						<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1;"></iframe>
+						<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1"></iframe>
 					{% else %}
 						{{post.content|safe}}
 					{% endif %}

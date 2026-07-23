@@ -117,7 +117,7 @@ eleventyNavigation:
 				</header>
 
 				<div class="iframe">
-					<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/pl.u-d2b0kEBtMN5eGo" title="Apple Music Playlist"></iframe>
+					<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;overflow:hidden;background:transparent" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/pl.u-d2b0kEBtMN5eGo" title="Apple Music Playlist"></iframe>
 				</div>
 			</div>
 			<hr class="no-css"/>
@@ -185,7 +185,7 @@ eleventyNavigation:
 					{% for media in photography|limit(4) %}
 						<li>
 							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
-								<a class="post-thumbnail expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image" data-media-expand{% if media.focus %} style="--focus-x: {% if media.focus.x %}{{media.focus.x}}{% else %}0{% endif %}%; --focus-y: {% if media.focus.y %}{{media.focus.y}}{% else %}0{% endif %}%;"{% endif %}>
+								<a class="post-thumbnail expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image" data-media-expand{% if media.focus %} style="--focus-x: {% if media.focus.x %}{{media.focus.x}}{% else %}0{% endif %}%; --focus-y: {% if media.focus.y %}{{media.focus.y}}{% else %}0{% endif %}%"{% endif %}>
 									{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 350, loop.index %}
 								</a>
 							</figure>
@@ -200,7 +200,7 @@ eleventyNavigation:
 		</article>
 
 		<article class="post post-graphic post-size-s post-full-bleed" aria-label="Graphics" data-grid-item>
-			<div class="post-inner" data-anim style="aspect-ratio: {% stats './static/images/graphic/2017-05-10-crystal-carillon-large.svg', 'ratio' %};">
+			<div class="post-inner" data-anim style="aspect-ratio:{% stats './static/images/graphic/2017-05-10-crystal-carillon-large.svg', 'ratio' %}">
 				<header class="post-header">
 					<h2>I dabble in illustration and design.</h2>
 				</header>
@@ -217,7 +217,7 @@ eleventyNavigation:
 		</article>
 
 		<article class="post post-art post-size-s post-full-bleed" aria-label="Art and Plants" data-grid-item>
-			<div class="post-inner" data-anim style="aspect-ratio: {% stats './static/images/art/2020-03-12-melanochrysum.jpg', 'ratio' %};">
+			<div class="post-inner" data-anim style="aspect-ratio:{% stats './static/images/art/2020-03-12-melanochrysum.jpg', 'ratio' %}">
 				<header class="post-header">
 					<h2>I draw art and collect plants.</h2>
 				</header>
