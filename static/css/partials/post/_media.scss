@@ -272,7 +272,7 @@
 					}
 
 					&:active {
-						&::before, .no-image span {
+						.no-image::before, .no-image span {
 							opacity: .2;
 						}
 					}
