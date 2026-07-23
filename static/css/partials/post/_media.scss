@@ -32,20 +32,20 @@
 			}
 		}
 
-		&:has(summary:hover) {
+		&:has(details:not(:is([open], :open)) summary:hover) {
 			@media (prefers-reduced-motion: no-preference) {
 				@include viewport($iphone-max) {
 					scale: 1.01;
 				}
 			}
+		}
+		&:has(summary:hover) {
 			@media (prefers-reduced-motion: reduce) {
 				&::before {
 					opacity: 1;
 				}
 			}
 		}
-
-
 		&:has(summary:focus-visible) {
 			&::before {
 				opacity: 1;
@@ -556,7 +556,6 @@
 					opacity: 1;
 				}
 				.media-data-overlay {
-					transition: opacity .3s ease-out;
 					opacity: 1;
 					@include blur(10px, var(--color-dark-grey), .45, .9, .7);
 				}
