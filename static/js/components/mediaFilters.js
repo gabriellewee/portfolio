@@ -1,5 +1,4 @@
 // Media page filters list
-// Media page filters list
 export const mediaFilters = (filters = document.querySelector("[data-filter-container]")) => {
 	if (typeof iso === "undefined") return;
 
