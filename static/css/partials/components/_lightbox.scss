@@ -10,9 +10,25 @@
 
 .lightbox-group {
 	display: block;
+	&::before {
+		content: "";
+		transition: opacity .2s ease-out, visibility 0s .2s, z-index 0s .2s;
+		z-index: 998;
+		@include lightbox-overlay;
+		@include blur(10px, var(--color-dark-grey), .35, .98, .9);
+	}
+	&.active {
+		&::before {
+			transition: opacity .2s ease-out, visibility .2s ease-out;
+			opacity: 1;
+			visibility: visible;
+		}
+	}
 }
 
 .lightbox-content {
+	opacity: 0;
+	transition: all .2s ease-out .1s;
 	cursor: zoom-out;
 	inset: 0;
 	width: 100%;
@@ -23,14 +39,8 @@
 	border: 0;
 	margin: unset;
 	background-color: transparent;
-	&::backdrop {
-		@include blur(10px, var(--color-dark-grey), .35, .98, .9);
-	}
-	&, &::backdrop {
-		opacity: 0;
-		transition: all .2s ease-out .1s;
-	}
-	&.active, &.active::backdrop {
+
+	&.active {
 		opacity: 1;
 		@starting-style {
 			opacity: 0;
@@ -50,7 +60,7 @@
 	.lightbox-controls {
 		display: none;
 		@include viewport($ipad-11) {
-			@include hover(true) {
+			@include hover {
 				display: block;
 			}
 		}
@@ -186,25 +196,19 @@
 }
 
 @media (scripting: none) {
-	.lightbox, .lightbox-background {
-		cursor: zoom-out;
-		opacity: 0;
-		visibility: hidden;
-		display: flex;
-		align-items: center;
-		align-content: center;
-		justify-content: center;
-		bottom: 0;
-		right: 0;
-		@include full-offset(0, $p: fixed);
+	.lightbox {
+		@include lightbox-overlay;
 	}
 
-	.lightbox-background {
-		transition: opacity .2s ease-out, visibility 0s .2s, z-index 0s .2s;
-		z-index: -999;
-		@include blur(10px, var(--color-dark-grey), .35, .98, .9);
-		&:not(:last-child) {
-			display: none;
+	.lightbox-group {
+		&::before {
+			z-index: -999;
+		}
+		&:has(.lightbox:target)::before {
+			transition: opacity .2s ease-out, visibility .2s ease-out;
+			opacity: 1;
+			visibility: visible;
+			z-index: 998;
 		}
 	}
 
@@ -220,24 +224,22 @@
 			opacity: 1;
 			visibility: visible;
 			z-index: 999;
-			~ .lightbox-background {
-				transition: opacity .2s ease-out, visibility .2s ease-out;
-				opacity: 1;
-				visibility: visible;
-				z-index: 998;
-				&::before {
-					opacity: 1;
-				}
-			}
 			+ .lightbox-content {
 				z-index: 1000;
 				opacity: 1;
 				display: block;
-				&::backdrop {
-					opacity: 1;
-					visibility: visible;
-				}
 			}
+		}
+	}
+
+	.lightbox-content {
+		top: 50%;
+		left: 50%;
+		translate: -50% -50%;
+		height: min-content;
+		width: min-content;
+		figure {
+			all: unset;
 		}
 	}
 }

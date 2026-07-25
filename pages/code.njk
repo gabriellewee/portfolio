@@ -66,5 +66,4 @@ eleventyNavigation:
 		{% set slug %}{{ post.page.date | iso | date('string') }}-{{ key }}{% endset %}
 		{{ frame(post.data, post.url, "lightbox", slug) }}
 	{% endfor %}
-	<div class="lightbox-background"></div>
 </div>

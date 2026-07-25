@@ -14,15 +14,16 @@ export const lightbox = ({
 	let openingLightbox;
 
 	const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+	const backdrop = document.querySelector("[data-lightbox-container]");
+
+	const showBackdrop = () => backdrop?.classList.add("active");
+	const hideBackdrop = () => backdrop?.classList.remove("active");
 
 	const getSiblings = (selector, isDesktop) =>
 		[...document.querySelectorAll(isDesktop ? selector : `${selector}:not([data-desktop])`)];
 
-	const getTargetId = (lightbox) =>
-		lightbox.getAttribute("href")?.slice(1);
-
 	const getTargetElements = (lightbox) => {
-		const id = getTargetId(lightbox);
+		const id = lightbox.getAttribute("href")?.slice(1);
 
 		if (!id) return { id: null, info: null, element: null, expand: null };
 
@@ -35,25 +36,20 @@ export const lightbox = ({
 
 	const activateOverlay = (lightbox) => {
 		const { info, element, expand } = getTargetElements(lightbox);
-
 		if (info) {
 			info.open = true;
-
 			requestAnimationFrame(() => {
-				info.querySelector("summary")?.focus({
-					preventScroll: true
-				});
+				info.querySelector("summary")?.focus({ preventScroll: true });
 			});
 		} else if (element) {
 			requestAnimationFrame(() => {
-				(expand || element).focus({
-					preventScroll: true
-				});
+				(expand || element).focus({ preventScroll: true });
 			});
 		}
 	};
 
 	const deactivate = (targets, callback) => {
+		hideBackdrop();
 		const remove = (lightbox) => {
 			const content = lightbox?.nextElementSibling;
 			if (!content || !lightbox.classList.contains("active")) return;
@@ -78,7 +74,7 @@ export const lightbox = ({
 			if (lightbox === openingLightbox && openingButton) {
 				openingButton.focus({ preventScroll: true });
 			} else {
-				const { info, element } = getTargetElements(lightbox);
+				const { id, info, element } = getTargetElements(lightbox);
 				const target = info || element;
 
 				if (target) scrollToTarget(target);
@@ -94,8 +90,9 @@ export const lightbox = ({
 		const content = lightbox.nextElementSibling;
 		const frame = content?.querySelector("iframe");
 
-		if (!content) return;
+		showBackdrop();
 
+		if (!content) return;
 		if (frame) frame.src = frame.src;
 
 		lightbox.removeAttribute("aria-hidden");
@@ -146,6 +143,54 @@ export const lightbox = ({
 		setTimeout(() => {
 			navigate(e.key === "ArrowRight" ? "next" : "prev", current, lightboxes, index);
 		}, 100);
+	};
+
+	const bindTouchGestures = (box, content, lightboxes, index, signal) => {
+		const figure = content.querySelector("figure");
+		if (!figure) return;
+
+		const AXIS_LOCK_THRESHOLD = 10;
+		const SWIPE_DISMISS_THRESHOLD = 100;
+		const SWIPE_NAV_THRESHOLD = 50;
+
+		let startX = 0;
+		let startY = 0;
+		let axis = null;
+
+		figure.addEventListener("touchstart", (e) => {
+			const touch = e.touches[0];
+			startX = touch.clientX;
+			startY = touch.clientY;
+			axis = null;
+		}, { signal, passive: true });
+
+		figure.addEventListener("touchmove", (e) => {
+			const touch = e.touches[0];
+			const deltaX = touch.clientX - startX;
+			const deltaY = touch.clientY - startY;
+
+			if (!axis) {
+				const distance = Math.hypot(deltaX, deltaY);
+				if (distance < AXIS_LOCK_THRESHOLD) return;
+				axis = Math.abs(deltaX) > Math.abs(deltaY) ? "x" : "y";
+			}
+
+			e.preventDefault();
+		}, { signal, passive: false });
+
+		figure.addEventListener("touchend", (e) => {
+			const touch = e.changedTouches[0];
+			const deltaX = touch.clientX - startX;
+			const deltaY = touch.clientY - startY;
+
+			if (axis === "y" && deltaY > SWIPE_DISMISS_THRESHOLD) {
+				deactivateAndRestore(box);
+			} else if (axis === "x" && Math.abs(deltaX) > SWIPE_NAV_THRESHOLD) {
+				navigate(deltaX < 0 ? "next" : "prev", box, lightboxes, index);
+			}
+
+			axis = null;
+		}, { signal });
 	};
 
 	const bindLightboxes = (buttons, lightboxes) => {
@@ -209,6 +254,8 @@ export const lightbox = ({
 				e.preventDefault();
 				navigate("next", box, lightboxes, index);
 			}, { signal });
+
+			bindTouchGestures(box, content, lightboxes, index, signal);
 		});
 	};
 

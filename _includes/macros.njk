@@ -109,7 +109,7 @@
 	<time{% if category != 'code' %} class="time-default{% if class %} {{ class }}{% endif %}"{% endif %} datetime="{{ src.date | iso | date('string') }}" title="{{ src.date | iso | date('readable') }}" data-time="{{ src.date | iso }}"{% if category == "social" %} data-time-external{% endif %}{% if category != "media" %} hidden{% endif %}>{{ src.date | iso | date('readable') }}</time>
 {% endmacro %}
 
-{% macro frame(src, url, type, slug) %}
+{% macro frame(src, url, type, slug, append) %}
 	{% set iframe %}
 		<figure class="frame-wrapper"{% if src.background %} style="--background: {{ src.background }}"{% endif %}>
 			<noscript class="warning{% for type in src.type %} {{ type }}{% endfor %}"><p><em>Please enable Javascript to view this code demo.</em></p></noscript>
@@ -118,8 +118,8 @@
 	{% endset %}
 	
 	{% if type == "lightbox" %}
-		<a class="lightbox" id="{{ slug }}-lightbox" role="button" aria-label="Close preview of {{ src.title }}" href="#{{ slug }}" tabindex="-1" data-lightbox></a>
-		<dialog class="lightbox-content iframe" aria-label="Preview of {{ src.title }}" autofocus>
+		<a class="lightbox" id="{{ slug }}-lightbox" role="button" aria-label="Close preview of {{ src.title }}" href="#{{ slug }}" tabindex="-1" data-lightbox{% if append == true %} data-lightbox-append{% endif %}></a>
+		<dialog class="lightbox-content iframe" aria-label="Preview of {{ src.title }}" autofocus{% if append == true %} data-lightbox-append{% endif %}>
 			{{ iframe | safe }}
 			{{ controls() }}
 		</dialog>

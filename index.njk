@@ -157,11 +157,8 @@ eleventyNavigation:
 								{% for media in post.data.media %}
 									{% set image = media.fullsize or media.url %}
 									{% set alt = media.alt or media.description %}
-									{% if media.fullsize %}
-										{% set slug %}{{ postIndex }}-{{ post.data.cid | truncate(5, true, '') }}{% endset %}
-									{% elseif media.url and (media.type != "gifv") %}
-										{% set slug = media.id %}
-									{% endif %}
+									{% set slugLong %}{{ postIndex }}-{{ post.data.cid | truncate(5, true, '') }}{% endset %}
+									{% set slug = media.id or slugLong %}
 									{% if media.fullsize or (media.url and (media.type != "gifv")) %}
 										<figure id="external-{{ slug }}" class="media-attachment has-placeholder theme-{% stats image, 'theme', 'top left' %}" aria-label="{{ alt }}">
 											<a class="expand theme-{% stats image, 'theme', 'top left' %}" href="#external-{{ slug }}-lightbox" role="button" aria-label="Expand image" data-media-expand>
@@ -273,11 +270,8 @@ eleventyNavigation:
 				{% set image = media.fullsize or media.url %}
 				{% set alt = media.alt or media.description %}
 				{% set width = media.aspectRatio.width or media.meta.original.width %}
-				{% if media.fullSize %}
-					{% set slug %}{{ postIndex }}-{{ post.data.cid | truncate(5, true, '') }}{% endset %}
-				{% elseif media.url and media.type != "gifv" %}
-					{% set slug = media.id %}
-				{% endif %}
+				{% set slugLong %}{{ postIndex }}-{{ post.data.cid | truncate(5, true, '') }}{% endset %}
+				{% set slug = media.id or slugLong %}
 				<a class="lightbox" id="external-{{ slug }}-lightbox" role="button" aria-label="Close image" href="#external-{{ slug }}" tabindex="-1" data-lightbox data-lightbox-append></a>
 				<dialog class="lightbox-content image" aria-label="Image preview" autofocus data-lightbox-append>
 					<figure>
@@ -290,8 +284,7 @@ eleventyNavigation:
 			{% excerpt post, "lightbox" %}
 		{% elseif post.data.category == "code" %}
 			{% set slug %}{{ post.page.date | iso | date('string') }}-{{ key }}{% endset %}
-			{{ frame(post.data, post.url, "lightbox", slug) }}
+			{{ frame(post.data, post.url, "lightbox", slug, true) }}
 		{% endif %}
 	{% endfor %}
-	<div class="lightbox-background"></div>
 </div>

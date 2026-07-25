@@ -144,3 +144,16 @@
 	padding-inline: 2px;
 	background-color: hsl(from var(--color-primary) h s l / .1);
 }
+
+@mixin lightbox-overlay {
+	cursor: zoom-out;
+	opacity: 0;
+	visibility: hidden;
+	display: flex;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	bottom: 0;
+	right: 0;
+	@include full-offset(0, $p: fixed);
+}
