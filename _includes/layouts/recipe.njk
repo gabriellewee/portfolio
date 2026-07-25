@@ -15,15 +15,16 @@ size: s
 label: recipe
 ---
 
-{% from "macros.njk" import author, date, view %}
+{% from "macros.njk" import author, date, recipe, view %}
+{% set hero %}./static/images/{{ key }}/{{ page.fileSlug }}.jpg{% endset %}
 
 <section class="content post-single h-entry">
 	<div class="posts">
 		<article class="post post-{{ category }}{% for tag in tags %}{% if tag != 'entries' %} post-{{ tag }}{% endif %}{% endfor %}">
 			<div class="post-inner">
 				<header class="post-header">
-					<div class="post-header-image theme-{% stats './static/images/' ~ key ~ '/' ~ page.fileSlug ~ '.jpg', 'theme', 'bottom left' %}">
-						{% image './static/images/' ~ key ~ '/' ~ page.fileSlug ~ '.jpg', 'Hero image showing ' ~ title, 'default' %}
+					<div class="post-header-image theme-{% stats hero, 'theme', 'bottom left' %}">
+						{% image hero, 'Hero image showing ' ~ title, 'default' %}
 					</div>
 					<div class="post-header-content">
 						<h2><a class="u-url" href="{{ page.url }}" aria-label="Recipe for {{ title | safe }}"><span class="p-name"><span>{{ title | safe }}</span></span></a></h2>
@@ -31,19 +32,7 @@ label: recipe
 					</div>
 				</header>
 
-				<aside class="post-meta">
-					<p class="recipe-servings"><strong>Servings:</strong> <span>{{ servings }}</span></p>
-					{% if prep %}
-						<p class="recipe-prep"><strong>Prep:</strong> <span class="recipe-duration" data-duration="{{ prep }}">{{ prep }} minutes</span></p>
-					{% endif %}
-					{% if cook %}
-						<p class="recipe-cook"><strong>Cook:</strong> <span class="recipe-duration" data-duration="{{ cook }}">{{ cook }} minutes</span></p>
-					{% endif %}
-					{% if prep and cook %}
-						{% set total = [prep,cook] %}
-						<p class="recipe-total"><strong>Total:</strong> <span class="recipe-duration" data-duration="{{ total | sum }}">{{ total | sum }} minutes</span></p>
-					{% endif %}
-				</aside>
+				{{ recipe({ servings: servings, prep: prep, cook: cook }) }}
 
 				<div class="post-content post-text e-content">
 					{{ content | images | safe }}

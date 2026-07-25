@@ -21,28 +21,29 @@
 	<div class="posts" data-grid>
 		{% for post in media %}
 			{% set file = extension %}
-			{% if post.svg == true %}
-				{% set file = "svg" %}
-			{% endif %}
-			<article class="post post-media post-{{ key }}{% if post.size %} post-size-{{ post.size }}{% endif %} {{ post.tags | isoFilter }}" data-grid-item data-anim data-orientation="{% stats './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.' ~ file, 'orientation' %}">
+			{% if post.svg == true %}{% set file = "svg" %}{% endif %}
+			{% set slug %}{{ post.date | safe }}-{{ post.name }}{% endset %}
+			{% set mediaUrl %}/static/images/{{ key }}/{{ post.date }}-{{ post.name }}.{{ file }}{% endset %}
+			{% set media %}.{{ mediaUrl }}{% endset %}
+			<article class="post post-media post-{{ key }}{% if post.size %} post-size-{{ post.size }}{% endif %} {{ post.tags | isoFilter }}" data-grid-item data-anim data-orientation="{% stats media, 'orientation' %}">
 				<div class="post-inner">
 					<header class="post-header">
 						{{ header(post, post, category) }}
 					</header>
 					<div class="post-content">
-						<figure id="{{ post.date | safe }}-{{ post.name }}" class="has-placeholder{% if file %} theme-{% stats './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.' ~ file, 'theme', 'top left' %}{% endif %}" aria-label="{{ type | capitalize }}{% if post.location or post.title %}, {{ post.location or post.title }}{% endif %}"{% if post.description %} data-alt="{{ post.description }}"{% endif %} style="aspect-ratio:{% stats './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.' ~ file, 'ratio' %}">
+						<figure id="{{ slug }}" class="has-placeholder{% if file %} theme-{% stats media, 'theme', 'top left' %}{% endif %}" aria-label="{{ type | capitalize }}{% if post.location or post.title %}, {{ post.location or post.title }}{% endif %}"{% if post.description %} data-alt="{{ post.description }}"{% endif %} style="aspect-ratio:{% stats media, 'ratio' %}">
 							{% if post.upscale %}
 								{{ upscale(post) }}
 							{% elseif post.svg == true %}
-								<picture style="--background: {% if post.color %}{{ post.color }}{% else %}{% stats './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.svg', 'average' %}{% endif %}">
-									<img src="/static/images/{{ key }}/{{ post.date }}-{{ post.name }}.svg" alt="{{ post.description }}" width="{% stats './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.svg', 'width' %}" height="{% stats './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.svg', 'height' %}"/>
+								<picture style="--background: {% if post.color %}{{ post.color }}{% else %}{% stats media, 'average' %}{% endif %}">
+									<img src="{{ mediaUrl }}" alt="{{ post.description }}" width="{% stats media, 'width' %}" height="{% stats media, 'height' %}"/>
 								</picture>
 							{% else %}
-								{% image './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.' ~ extension, post.description, 'default', loop.index %}
+								{% image media, post.description, 'default', loop.index %}
 							{% endif %}
 							{{ indicator() }}
 							<figcaption class="media-data" data-focus-container>
-								<details id="{{ post.date | safe }}-{{ post.name }}-info" name="media-container" data-media-container>
+								<details id="{{ slug }}-info" name="media-container" data-media-container>
 									<summary data-focus>
 										<span class="media-view-hover"><span class="button">
 											<span aria-label="Information about this {{ type }}">View info</span>
@@ -54,17 +55,17 @@
 										<div class="media-data-wrapper">
 											{{ date(post, category) }}
 											<div class="media-thumbnail">
-												<a class="media-expand expand" href="#{{ post.date | safe }}-{{ post.name }}-lightbox" role="button" aria-label="Expand image" hidden data-media-expand>
+												<a class="media-expand expand" href="#{{ slug }}-lightbox" role="button" aria-label="Expand image" hidden data-media-expand>
 													<span class="no-image" hidden><span>Expand</span></span>
-													<span class="has-image{% if file %} theme-{% stats './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.' ~ file, 'theme', 'top left' %}{% endif %}" aria-hidden="true">
+													<span class="has-image{% if file %} theme-{% stats media, 'theme', 'top left' %}{% endif %}" aria-hidden="true">
 														{% if post.upscale %}
 															{{ upscale(post) }}
 														{% elseif post.svg == true %}
-															<picture style="--background: {% if post.color %}{{ post.color }}{% else %}{% stats './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.svg', 'average' %}{% endif %}">
-																<img src="/static/images/{{ key }}/{{ post.date }}-{{ post.name }}.svg" alt="{{ post.description }}" width="{% stats './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.svg', 'width', 400 %}" height="{% stats './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.svg', 'height', 400 %}"/>
+															<picture style="--background: {% if post.color %}{{ post.color }}{% else %}{% stats media, 'average' %}{% endif %}">
+																<img src="{{ mediaUrl }}" alt="{{ post.description }}" width="{% stats media, 'width', 400 %}" height="{% stats media, 'height', 400 %}"/>
 															</picture>
 														{% else %}
-															{% image './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.' ~ extension, post.description, 200, loop.index %}
+															{% image media, post.description, 200, loop.index %}
 														{% endif %}
 													</span>
 												</a>
@@ -87,17 +88,22 @@
 
 <div class="lightbox-group" data-lightbox-container hidden>
 	{% for post in media %}
-		<a class="lightbox" id="{{ post.date | safe }}-{{ post.name }}-lightbox" role="button" aria-label="Close image" href="#{{ post.date | safe }}-{{ post.name }}" tabindex="-1" data-lightbox></a>
+		{% set file = extension %}
+		{% if post.svg == true %}{% set file = "svg" %}{% endif %}
+		{% set slug %}{{ post.date | safe }}-{{ post.name }}{% endset %}
+		{% set mediaUrl %}/static/images/{{ key }}/{{ post.date }}-{{ post.name }}.{{ file }}{% endset %}
+		{% set media %}.{{ mediaUrl }}{% endset %}
+		<a class="lightbox" id="{{ slug }}-lightbox" role="button" aria-label="Close image" href="#{{ slug }}" tabindex="-1" data-lightbox></a>
 		<dialog class="lightbox-content image" aria-label="Image preview" autofocus>
 			<figure>
 				{% if post.upscale %}
 					{{ upscale(post) }}
 				{% elseif post.svg == true %}
 					<picture>
-						<img src="/static/images/{{ key }}/{{ post.date }}-{{ post.name }}.svg" alt="{{ post.description }}" width="{% stats './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.svg', 'width' %}" height="{% stats './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.svg', 'height' %}"/>
+						<img src="{{ mediaUrl }}" alt="{{ post.description }}" width="{% stats media, 'width' %}" height="{% stats media, 'height' %}"/>
 					</picture>
 				{% else %}
-					{% image './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.' ~ extension, post.description, 'screen' %}
+					{% image media, post.description, 'screen' %}
 				{% endif %}
 			</figure>
 		</dialog>

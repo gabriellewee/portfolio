@@ -1,6 +1,6 @@
 {% from "macros.njk" import indicator, settings %}
 
-{% if category == "writing" or category == "cooking" %}<hr class="progress" hidden/>{% endif %}
+{% if category in ["writing", "cooking"] %}<hr class="progress" hidden/>{% endif %}
 
 <header class="top" aria-label="Header">
 	<div class="top-content">
@@ -8,7 +8,7 @@
 			<a href="/" tabindex="0" aria-labelledby="avatar-message">
 				<span class="avatar avatar-{{ avatar if avatar else 'default' }}"></span>
 				<span class="avatar avatar-hm"></span>
-				<span id="avatar-message" aria-hidden="true" class="text go-home{% if not ((key == "home" and pagination.pageNumber != 0) or key == "post") %} hidden{% endif %}">
+				<span id="avatar-message" aria-hidden="true" class="text go-home{% if not ((key == "home" and pagination.pageNumber != 0) or key == "post" or key == "recipes") %} hidden{% endif %}">
 					{% if (key == "home") and (pagination.pageNumber == 0) %}Refresh?{% else %}Go home?{% endif %}
 				</span>
 			</a>

@@ -43,14 +43,13 @@
 	<meta property="og:site_name" content="{{ site.author }}">
 	<meta property="og:type" content="website"/>
 	<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+	{% set ogImage %}{{ site.url }}/static/images/og/default.jpg{% endset %}
 	{% if og == true %}
 		{% set ogImage %}{{ site.url }}/static/images/og/{{ key }}.jpg{% endset %}
 	{% elseif og == "image" %}
 		{% set ogImage %}{% ogPhoto './static/images/' ~ key ~ '/' ~ page.fileSlug ~ '.jpg' %}{% endset %}
 	{% elseif og != false %}
 		{% set ogImage %}{{ site.url }}/static/images/og/{{ og }}.jpg{% endset %}
-	{% else %}
-		{% set ogImage %}{{ site.url }}/static/images/og/default.jpg{% endset %}
 	{% endif %}
 	<meta property="og:image" content="{{ ogImage }}">
 	<meta property="og:image:type" content="image/jpg">

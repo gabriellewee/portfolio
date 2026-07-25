@@ -94,7 +94,7 @@
 {% endmacro %}
 
 {% macro date(src, category, class, external) %}
-	<time{% if category != 'code'  %} class="time-default{% if class %} {{ class }}{% endif %}"{% endif %} datetime="{{ src.date | iso | date('string') }}" title="{{ src.date | iso | date('readable') }}" data-time="{{ src.date | iso }}"{% if category == "social" %} data-time-external{% endif %}{% if category != "media" %} hidden{% endif %}>{{ src.date | iso | date('readable') }}</time>
+	<time{% if category != 'code' %} class="time-default{% if class %} {{ class }}{% endif %}"{% endif %} datetime="{{ src.date | iso | date('string') }}" title="{{ src.date | iso | date('readable') }}" data-time="{{ src.date | iso }}"{% if category == "social" %} data-time-external{% endif %}{% if category != "media" %} hidden{% endif %}>{{ src.date | iso | date('readable') }}</time>
 {% endmacro %}
 
 {% macro frame(src, url, type, slug) %}
@@ -117,7 +117,7 @@
 
 {% macro header(src, time, category, slug) %}
 	<div class="post-header-content">
-		{% if category == "writing" or category == "cooking" %}
+		{% if category in ["writing", "cooking"] %}
 			<h2>
 				<a href="{{ time.url | url }}"{% if category == "cooking" %} aria-label="Recipe for {{ src.title | safe }}"{% endif %}><span><span>{{ src.title | safe }}</span></span></a>
 			</h2>
@@ -145,17 +145,16 @@
 				<a class="expand" id="{{ slug }}" role="button" aria-label="Expand preview of {{ src.title }}" href="#{{ slug }}-lightbox" data-media-expand data-desktop></a>
 				<a class="external-expand" href="{{ post.url | url }}" aria-label="View {{ category }} in new window" target="_blank"></a>
 			</div>
-		{% elseif category != "media" and category != "code" %}
-			{{ date(time, category) }}
-		{% endif %}
-		{% if category == "media" %}
+		{% elseif category == "media" %}
 			{{ date(time, category, "no-css") }}
+		{% else %}
+			{{ date(time, category) }}
 		{% endif %}
 	</div>
 {% endmacro %}
 
 {% macro indicator() %}
-	<span class="indicator"><span></span><span></span><span></span></span>
+	<span class="indicator">{% for i in range(0, 3) %}<span></span>{% endfor %}</span>
 {% endmacro %}
 
 {% macro meta(src) %}
@@ -167,31 +166,15 @@
 		</div>
 	{% endif %}
 	<dl class="media-meta">
-		{% if src.title %}
-			<div class="meta-title">
-				<dt>Title</dt><dd>{{ src.title | safe | nbsp }}</dd>
-			</div>
-		{% endif %}
-		{% if src.location %}
-			<div class="meta-location">
-				<dt>Location</dt><dd>{{ src.location }}</dd>
-			</div>
-		{% endif %}
-		{% if src.camera %}
-			<div class="meta-camera">
-				<dt>Camera</dt><dd>{{ src.camera }}</dd>
-			</div>
-		{% endif %}
-		{% if src.editor %}
-			<div class="meta-editor">
-				<dt>Editor</dt><dd>{{ src.editor }}</dd>
-			</div>
-		{% endif %}
-		{% if src.tools %}
-			<div class="meta-tools">
-				<dt>Tools</dt><dd>{{ src.tools }}</dd>
-			</div>
-		{% endif %}
+		{% set metaFields = ["title", "location", "camera", "editor", "tools"] %}
+		{% for field in metaFields %}
+			{% if src[field] %}
+				<div class="meta-{{ field }}">
+					<dt>{{ field | capitalize }}</dt>
+					<dd>{{ src[field] | safe | nbsp }}</dd>
+				</div>
+			{% endif %}
+		{% endfor %}
 	</dl>
 {% endmacro %}
 
@@ -265,15 +248,18 @@
 		{% if src.servings %}
 			<p class="recipe-servings"><strong>Servings:</strong> <span>{{ src.servings }}</span></p>
 		{% endif %}
-		{% if src.prep %}
-			<p class="recipe-prep"><strong>Prep:</strong> <span class="recipe-duration" data-duration="{{ src.prep }}">{{ src.prep }} minutes</span></p>
-		{% endif %}
-		{% if src.cook %}
-			<p class="recipe-cook"><strong>Cook:</strong> <span class="recipe-duration" data-duration="{{ src.cook }}">{{ src.cook }} minutes</span></p>
-		{% endif %}
+		{% set durations = ["prep", "cook"] %}
+		{% for field in durations %}
+			{% if src[field] %}
+				<p class="recipe-{{ field }}">
+					<strong>{{ field | capitalize }}:</strong>
+					<span class="recipe-duration" data-duration="{{ src[field] }}">{{ src[field] }} minutes</span>
+				</p>
+			{% endif %}
+		{% endfor %}
 		{% if src.prep and src.cook %}
-			{% set total = [src.prep,src.cook] %}
-			<p class="recipe-total"><strong>Total:</strong> <span class="recipe-duration" data-duration="{{ total | sum }}">{{ total | sum }} minutes</span></p>
+			{% set total = [src.prep, src.cook] | sum %}
+			<p class="recipe-total"><strong>Total:</strong> <span class="recipe-duration" data-duration="{{ total }}">{{ total }} minutes</span></p>
 		{% endif %}
 	</aside>
 {% endmacro %}
@@ -302,27 +288,17 @@
 {% endmacro %}
 
 {% macro tablist(slug, src) %}
+	{% set tabs = ["demo", "markup", "styles"] %}
+	{% if src.scripts == true %}{% set tabs = tabs.concat(["scripts"]) %}{% endif %}
 	<fieldset class="post-tablist">
 		<legend>Source Code</legend>
 		<ul role="tablist">
-			<li role="presentation">
-				<input id="tab-{{ slug }}-demo" class="post-tab tab-demo" type="radio" role="tab" name="{{ slug }}" checked/>
-				<label for="tab-{{ slug }}-demo">Demo</label>
-			</li>
-			<li role="presentation">
-				<input id="tab-{{ slug }}-markup" class="post-tab tab-markup" type="radio" role="tab" name="{{ slug }}"/>
-				<label for="tab-{{ slug }}-markup">Markup</label>
-			</li>
-			<li role="presentation">
-				<input id="tab-{{ slug }}-styles" class="post-tab tab-styles" type="radio" role="tab" name="{{ slug }}"/>
-				<label for="tab-{{ slug }}-styles">Styles</label>
-			</li>
-			{% if src.scripts == true %}
+			{% for tab in tabs %}
 				<li role="presentation">
-					<input id="tab-{{ slug }}-scripts" class="post-tab tab-scripts" type="radio" role="tab" name="{{ slug }}"/>
-					<label for="tab-{{ slug }}-scripts">Scripts</label>
+					<input id="tab-{{ slug }}-{{ tab }}" class="post-tab tab-{{ tab }}" type="radio" role="tab" name="{{ slug }}" {% if loop.first %}checked{% endif %}/>
+					<label for="tab-{{ slug }}-{{ tab }}">{{ tab | capitalize }}</label>
 				</li>
-			{% endif %}
+			{% endfor %}
 		</ul>
 	</fieldset>
 {% endmacro %}
