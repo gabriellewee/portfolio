@@ -1,5 +1,5 @@
 @use 'sass:color';
-@use 'reset';
+@use 'reset'; // demo:hide
 
 $p: 12px;
 $easeOutCubic: cubic-bezier(0.215, 0.610, 0.355, 1.000);

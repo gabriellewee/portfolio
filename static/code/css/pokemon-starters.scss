@@ -1,6 +1,6 @@
 @use 'sass:list';
 @use 'sass:color';
-@use 'reset';
+@use 'reset'; // demo:hide
 
 $pokemon: bulbasaur, ivysaur, venusaur, charmander, charmeleon, charizard, squirtle, wartortle, blastoise;
 $colors: #78d9ad, #81bbc6, #8cc7c3, #efaf84, #ef8b78, #f4af63, #84c5d6, #75a4db, #94b7e1;

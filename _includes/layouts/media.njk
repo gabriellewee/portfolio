@@ -41,9 +41,9 @@
 								{% image './static/images/' + key + '/' + post.date + '-' + post.name + '.' + extension, post.description, 'default', loop.index %}
 							{% endif %}
 							{{ indicator() }}
-							<figcaption class="media-data">
+							<figcaption class="media-data" data-focus-container>
 								<details id="{{post.date|safe}}-{{post.name}}-info" name="media-container" data-media-container>
-									<summary>
+									<summary data-focus>
 										<span class="media-view-hover"><span class="button">
 											<span aria-label="Information about this {{type}}">View info</span>
 										</span></span>

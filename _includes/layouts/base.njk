@@ -46,7 +46,7 @@
 	{% if og == true %}
 		{% set ogImage %}{{site.url}}/static/images/og/{{key}}.jpg{% endset %}
 	{% elseif og == "image" %}
-		{% set ogImage %}{% ogPhoto './static/images/' + key + '/' + page.fileSlug + '.jpg' %}{% endset %}
+		{% set ogImage %}{% ogPhoto './static/images/' ~ key ~ '/' ~ page.fileSlug ~ '.jpg' %}{% endset %}
 	{% elseif og != false %}
 		{% set ogImage %}{{site.url}}/static/images/og/{{og}}.jpg{% endset %}
 	{% else %}

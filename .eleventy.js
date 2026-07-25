@@ -27,6 +27,7 @@ export default function (eleventyConfig) {
 	eleventyConfig.addFilter('removeEmoji', filters.removeEmoji);
 	eleventyConfig.addFilter('platform', filters.platform);
 	eleventyConfig.addFilter('md', filters.md);
+	eleventyConfig.addFilter('demo', filters.demo);
 	eleventyConfig.addFilter('stripAttr', filters.stripAttr);
 	eleventyConfig.addFilter('description', filters.description);
 

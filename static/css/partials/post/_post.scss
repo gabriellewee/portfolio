@@ -431,7 +431,6 @@ figure .indicator {
 		@include code;
 	}
 	pre {
-		padding: calc(var(--p)*1.5) calc(var(--p)*2);
 		background-color: light-dark(
 			var(--color-dark-grey),
 			hsl(from var(--color-dark-grey) h s calc(l * .55))

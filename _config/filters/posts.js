@@ -1,4 +1,6 @@
 import markdownIt from "markdown-it";
+import path from 'path';
+import fs from 'fs';
 
 const markdown = markdownIt({
 	html: true,
@@ -24,6 +26,26 @@ export const platform = (url = "") => {
 };
 
 export const md = (copy) => markdown.render(copy);
+
+export const demo = (slug, lang) => {
+	let filePath;
+
+	if(lang == "html") {
+		filePath = path.join(process.cwd(), 'code', `${slug}.njk`);
+	} else if(lang =="scss") {
+		filePath = path.join(process.cwd(), 'static/code/css', `${slug}.scss`);
+	} else {
+		filePath = path.join(process.cwd(), 'static/code/', `${lang}/`, `${slug}.${lang}`);
+	}
+
+	const stripFrontMatter = (content) => { return content.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, ''); };
+
+	const raw = fs.readFileSync(filePath, 'utf8');
+	const clean = stripFrontMatter(raw);
+	const code = clean.split('\n').filter(l => !l.includes('demo:hide')).join('\n').trim();
+
+	return code;
+};
 
 export const stripAttr = (stripped) => {
 	const removals = /<div class="lightbox-group" data-lightbox-container hidden>([\s\S]*?)<\/div>|<\/?a class="expand"[^>]*>|<\/?span[^>]*>|<\/?picture[^>]*>|<\/?source[^>]*>|<\/?div[^>]*>|<\/?script[^>]*>|\t|\r|\n/g;

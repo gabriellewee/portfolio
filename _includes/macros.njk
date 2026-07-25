@@ -11,7 +11,7 @@
 	<hr class="no-css"/>
 {% endmacro %}
 
-{% macro code(src, url) %}
+{% macro buttons(src, url) %}
 	{% if src.mobile == false %}
 		<a class="post-mobile-button button" href="{{url|url}}" target="_blank"><span>View animation</span></a>
 	{% endif %}
@@ -97,26 +97,44 @@
 	<time{% if category != 'code'  %} class="time-default{% if class %} {{class}}{% endif %}"{% endif %} datetime="{{src.date|iso|date('string')}}" title="{{src.date|iso|date('readable')}}" data-time="{{src.date|iso}}"{% if category == "social" %} data-time-external{% endif %}{% if category != "media" %} hidden{% endif %}>{{src.date|iso|date('readable')}}</time>
 {% endmacro %}
 
-{% macro header(src, time, category) %}
+{% macro frame(src, url, type, slug) %}
+	{% set iframe %}
+		<figure class="frame-wrapper"{% if src.background %} style="--background: {{src.background}}"{% endif %}>
+			<noscript class="warning{% for type in src.type %} {{type}}{% endfor %}"><p><em>Please enable Javascript to view this code demo.</em></p></noscript>
+			<iframe class="frame{% for type in src.type %} {{type}}{% endfor %}" src="{{url|url}}" width="600" height="{{src.height}}" title="{{src.title|safe}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1"></iframe>
+		</figure>
+	{% endset %}
+	
+	{% if type == "lightbox" %}
+		<a class="lightbox" id="{{slug}}-lightbox" role="button" aria-label="Close preview of {{src.title}}" href="#{{slug}}" tabindex="-1" data-lightbox></a>
+		<dialog class="lightbox-content iframe" aria-label="Preview of {{src.title}}" autofocus>
+			{{iframe|safe}}
+		</dialog>
+	{% else %}
+		{{iframe|safe}}
+	{% endif %}
+{% endmacro %}
+
+{% macro header(src, time, category, slug) %}
 	<div class="post-header-content">
 		{% if category == "writing" or category == "cooking" %}
 			<h2>
 				<a href="{{time.url|url}}"{% if category == "cooking" %} aria-label="Recipe for {{src.title|safe}}"{% endif %}><span><span>{{src.title|safe}}</span></span></a>
 			</h2>
 		{% elseif category == "code" %}
-			<div class="post-header-left">
+			<div class="post-header-left" data-focus-container>
 				<h2 class="post-headline">
 					{% if src.uri %}
-						<a href="https://codepen.io/gabriellewee/pen/{{src.uri}}"><span>{{src.title|safe}}</span></a>
+						<a href="https://codepen.io/gabriellewee/pen/{{src.uri}}" data-focus><span>{{src.title|safe}}</span></a>
 					{% else %}
 						{{src.title|safe}}
 					{% endif %}
 				</h2>
 				{% if src.type %}
 					<div class="post-tags">
-						{% for type in src.type %}
+						{% for type in src.type %}{% if type != "haml" %}
 							<u class="tag-{{type}}">#{{type}}</u>
-						{% endfor %}
+						{% endif %}{% endfor %}
 					</div>
 				{% endif %}
 			</div>
@@ -124,7 +142,7 @@
 		{% if category == "code" %}
 			<div class="post-header-right">
 				{{ date(time, category) }}
-				<a class="expand" id="{{time.date|iso|date('string')}}-{{key or time.fileSlug}}" role="button" aria-label="Expand preview of {{src.title}}" href="#{{time.date|iso|date('string')}}-{{key or time.fileSlug}}-lightbox" data-media-expand data-desktop></a>
+				<a class="expand" id="{{slug}}" role="button" aria-label="Expand preview of {{src.title}}" href="#{{slug}}-lightbox" data-media-expand data-desktop></a>
 				<a class="external-expand" href="{{post.url|url}}" aria-label="View {{category}} in new window" target="_blank"></a>
 			</div>
 		{% elseif category != "media" and category != "code" %}
@@ -281,6 +299,48 @@
 			</div>
 		</li>
 	{% endfor %}
+{% endmacro %}
+
+{% macro tablist(slug, src) %}
+	<fieldset class="post-tablist">
+		<legend>Source Code</legend>
+		<ul role="tablist">
+			<li role="presentation">
+				<input id="tab-{{slug}}-demo" class="post-tab tab-demo" type="radio" role="tab" name="{{slug}}" checked/>
+				<label for="tab-{{slug}}-demo">Demo</label>
+			</li>
+			<li role="presentation">
+				<input id="tab-{{slug}}-markup" class="post-tab tab-markup" type="radio" role="tab" name="{{slug}}"/>
+				<label for="tab-{{slug}}-markup">Markup</label>
+			</li>
+			<li role="presentation">
+				<input id="tab-{{slug}}-styles" class="post-tab tab-styles" type="radio" role="tab" name="{{slug}}"/>
+				<label for="tab-{{slug}}-styles">Styles</label>
+			</li>
+			{% if src.scripts == true %}
+				<li role="presentation">
+					<input id="tab-{{slug}}-scripts" class="post-tab tab-scripts" type="radio" role="tab" name="{{slug}}"/>
+					<label for="tab-{{slug}}-scripts">Scripts</label>
+				</li>
+			{% endif %}
+		</ul>
+	</fieldset>
+{% endmacro %}
+
+{% macro tabpanels(slug, src) %}
+	<div id="tabpanel-{{slug}}-markup" class="post-tabpanel tabpanel-markup" role="tabpanel" data-tabpanel style="--height: {{src.height}}px">
+		{% set markup = "html" %}
+		{% if src.type and "haml" in src.type %}{% set markup = "haml" %}{% endif %}
+		{% highlight markup %}{{ slug | demo(markup) | safe }}{% endhighlight %}
+	</div>
+	<div id="tabpanel-{{slug}}-styles" class="post-tabpanel tabpanel-styles" role="tabpanel" data-tabpanel style="--height: {{src.height}}px">
+		{% highlight "scss" %}{{ slug | demo("scss") | safe }}{% endhighlight %}
+	</div>
+	{% if src.scripts == true %}
+		<div id="tabpanel-{{slug}}-scripts" class="post-tabpanel tabpanel-scripts" role="tabpanel" data-tabpanel style="--height: {{src.height}}px">
+			{% highlight "js" %}{{ slug | demo("js") | safe }}{% endhighlight %}
+		</div>
+	{% endif %}
 {% endmacro %}
 
 {% macro tags(filters) %}

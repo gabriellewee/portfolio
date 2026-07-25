@@ -13,13 +13,13 @@ export const scrollToTarget = (target) => {
 	});
 };
 
-// Scroll to media when the tab focus is on its <summary> element
-export const scrollToMedia = (summaries = "[data-media-container] summary") => {
-	document.querySelectorAll(summaries).forEach((summary) => {
-		summary.addEventListener("focus", () => {
-			if (!summary.matches(":focus-visible")) return;
+// Scroll to post when the tab focus is on focus trigger
+export const scrollToFocus = (triggers = "[data-focus]") => {
+	document.querySelectorAll(triggers).forEach((trigger) => {
+		trigger.addEventListener("focus", () => {
+			if (!trigger.matches(":focus-visible")) return;
 
-			const target = summary.closest(".media-data");
+			const target = trigger.closest("[data-focus-container]");
 			if (!target) return;
 
 			scrollToTarget(target);

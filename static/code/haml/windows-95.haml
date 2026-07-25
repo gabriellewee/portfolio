@@ -1,0 +1,1012 @@
+- @diskFiles = [{"label" => "folder", "name" => "Dos", "for" => "explorer-dos"}, {"label" => "folder", "name" => "Program Files", "for" => "explorer-program-files"}, {"label" => "folder", "name" => "Windows", "for" => "explorer-windows"}, {"label" => "program-config", "name" => "Autoexec"}, {"label" => "document-windows", "name" => "Autoexec.dos"}, {"label" => "program", "name" => "Command"}, {"label" => "document-windows", "name" => "Command.dos"}, {"label" => "document-windows", "name" => "Config.dos"}, {"label" => "program-config", "name" => "Dbg"}, {"label" => "document-text", "name" => "Netlog"}, {"label" => "program", "name" => "Wdeb386"}]
+
+- @programFiles = ["Microsoft Exchange", "The Microsoft Network"]
+
+- @windowsFolders = ["Command", "Config", "Cursors", "Fonts", "Help", "Media", "SendTo", "Start Menu", "System", "Temp"]
+
+- @windowsFiles = [{"label" => "document-misc", "name" => "Accessor"}, { "label" => "document-windows", "name" => "Black Thatch"}, {"label" => "document-windows", "name" => "Blue Rivets"}, {"label" => "document-windows", "name" => "Bubbles"}, {"label" => "document-windows", "name" => "Carved Stone"}, {"label" => "document-windows", "name" => "Circles"}, {"label" => "program", "name" => "Command"}, {"label" => "document-text", "name" => "Config"}, {"label" => "program", "name" => "Control"}, {"label" => "document-text", "name" => "Control"}, {"label" => "document-misc", "name" => "Desktop"}, {"label" => "document-text", "name" => "Display"}, {"label" => "document-misc", "name" => "Document"}, {"label" => "program", "name" => "Dosprmpt"}, {"label" => "program", "name" => "Emm386"}, {"label" => "document-text", "name" => "Exchange"}, {"label" => "document-misc", "name" => "Exchng32"}, {"label" => "computer", "name" => "Explorer"}, {"label" => "document-text", "name" => "Extra"}, {"label" => "document-text", "name" => "Faq"}, {"label" => "document-font", "name" => "Fontview"}, {"label" => "document-text", "name" => "General"}, {"label" => "grpconv", "name" => "Grpconv"}]
+
+- @controlPanelItems = [{"label" => "hardware", "name" => "Add New Hardware"}, {"label" => "add-programs", "name" => "Add/Remove Programs"}, {"label" => "date-time", "name" => "Date/Time"}, {"label" => "computer-display", "name" => "Display"}, {"label" => "folder-fonts-link", "name" => "Fonts"}, {"label" => "internet", "name" => "Internet"}, {"label" => "joystick", "name" => "Joystick"}, {"label" => "keyboard", "name" => "Keyboard"}, {"label" => "inbox", "name" => "Mail"}, {"label" => "modems", "name" => "Modems"}, {"label" => "mouse", "name" => "Mouse"}, {"label" => "multimedia", "name" => "Multimedia"}, {"label" => "network", "name" => "Network"}, {"label" => "passwords", "name" => "Passwords"}, {"label" => "battery", "name" => "Power"}, {"label" => "folder-printers-link", "name" => "Printers", "for" => "explorer-printers"}, {"label" => "regional", "name" => "Regional Settings"}, {"label" => "computer-sounds", "name" => "Sounds"}, {"label" => "computer-mouse", "name" => "System"}]
+
+- @dosFiles = [{"label" => "document-windows", "name" => "4201.cpi"}, {"label" => "document-windows", "name" => "4208.cpi"}, {"label" => "document-windows", "name" => "5202.cpi"}, {"label" => "program", "name" => "Append"}, {"label" => "document-text", "name" => "Appnotes"}, {"label" => "program", "name" => "Assign"}, {"label" => "program", "name" => "Attrib"}, {"label" => "program", "name" => "Backup"}, {"label" => "program", "name" => "Chkdsk"}, {"label" => "program", "name" => "Command"}, {"label" => "program", "name" => "Comp"}, {"label" => "program-config", "name" => "Dblspace"}, {"label" => "program", "name" => "Debug"}, {"label" => "program-config", "name" => "Defrag"}, {"label" => "program", "name" => "Diskcomp"}, {"label" => "program", "name" => "Diskcopy"}, {"label" => "help", "name" => "Doshelp"}, {"label" => "program", "name" => "Doskey"}, {"label" => "program", "name" => "Dosshell"}, {"label" => "program", "name" => "Dosshell"}, {"label" => "document-windows", "name" => "Dosshell.grb"}, {"label" => "help", "name" => "Dosshell"}, {"label" => "document-text", "name" => "Dosshell"}, {"label" => "document-windows", "name" => "Dosshell.vid"}, {"label" => "program", "name" => "Dosswap"}, {"label" => "program-config", "name" => "Drvspace"}, {"label" => "program", "name" => "Edit"}]
+
+- @optionInputs = [{"name" => "always-on-top", "checked" => true}, {"name" => "auto-hide"}, {"name" => "show-small-icons"}, {"name" => "show-clock", "checked" => true}]
+
+- @editPartial = '<li><label class="label-disabled">Undo</label></li><li><hr></li><li><label class="label-disabled"><span><span>Cu</span><span class="line">t</span></span></label></li><li><label class="label-disabled">Copy</label></li><li><label class="label-disabled">Paste</label></li>'
+
+- @editMenu = '<li><label class="label-disabled"><span><span>Paste&nbsp;</span><span class="line">Shortcut</span></span></label></li><li><hr></li><li><label class="label-disabled"><span><span>Select&nbsp;</span><span class="line">All</span></span></label></li><li><label class="label-disabled">Invert Selection</label></li>'
+
+- @viewMenu = '<li><a class="label-nested"><span><span>Arrange&nbsp;</span><span class="line">Icons</span></span></a><menu class="sub-menu underline"><li><label class="label-disabled"><span><span>by&nbsp;</span><span class="line">Name</span></span></label></li><li><label class="label-disabled"><span><span>by&nbsp;</span><span class="line">Type</span></span></label></li><li><label class="label-disabled"><span><span>by&nbsp;Si</span><span class="line">ze</span></span></label></li><li><label class="label-disabled"><span><span>by&nbsp;</span><span class="line">Date</span></span></label></li><li><hr></li><li><label class="label-disabled">Auto Arrange</label></li></menu></li><li><label class="label-disabled"><span><span>Lin</span><span class="line">e up Icons</span></span></label></li><li><hr></li><li><label class="label-disabled">Refresh</label></li><li><label class="label-disabled">Options...</label></li>'
+
+- @helpMenu = '<menu class="sub-menu underline"><li><label class="label-disabled">Help Topics</label></li><li><hr></li><li><label class="label-disabled">About Windows 95</label></li></menu>'
+
+%input#start{:type => "checkbox", "data-start" => true, :hidden => true}
+
+- @optionInputs.each do |input|
+	- if (input['checked'] == true)
+		%input{:id => "global-option-#{input['name']}", :type => "checkbox", :hidden => true, "data-global-option" => true, :checked => true}
+	- else
+		%input{:id => "global-option-#{input['name']}", :type => "checkbox", :hidden => true, "data-global-option" => true}
+
+- @windowInputs = [{"name" => "welcome", "checked" => true, "static" => true}, {"name" => "taskbar", "static" => true}, {"name" => "printers"}, {"name" => "control-panel"}, {"name" => "computer"}, {"name" => "notepad"}, {"name" => "explorer"}]
+- @windowInputs.each do |input|
+	- if (input['static'] != true)
+		%input{:id => "#{input['name']}", :type => "checkbox", "data-window-trigger" => true, "data-name" => "#{input['name']}", :hidden => true}
+		%input{:id => "#{input['name']}-minimize", :type => "checkbox", "data-minimize" => true, "data-name" => "#{input['name']}", :hidden => true}
+		%input{:id => "#{input['name']}-maximize", :type => "checkbox", "data-maximize" => true, "data-name" => "#{input['name']}", :hidden => true}
+	- else
+		- if (input['checked'] == true)
+			%input.no-tab.active{:id => "#{input['name']}", :type => "checkbox", "data-window-trigger" => true, "data-name" => "#{input['name']}", :hidden => true, :checked => true}
+		- else
+			%input.no-tab{:id => "#{input['name']}", :type => "checkbox", "data-window-trigger" => true, "data-name" => "#{input['name']}", :hidden => true}
+
+- @explorerInputs = [{"name" => "desktop"}, {"name" => "computer"}, {"name" => "disk", "checked" => true}, {"name" => "dos"}, {"name" => "program-files"}, {"name" => "windows"}, {"name" => "control-panel"}, {"name" => "printers"}, {"name" => "recycle-bin"}]
+- @explorerInputs.each do |input|
+	- if input['checked']
+		%input{:id => "explorer-#{input['name']}", :type => "radio", :name => "explorer", :checked => true, :hidden => true}
+	- else
+		%input{:id => "explorer-#{input['name']}", :type => "radio", :name => "explorer", :hidden => true}
+
+%input#toggle-computer{:type => "checkbox", :checked => true, :hidden => true}
+%input#toggle-disk{:type => "checkbox", :checked => true, :hidden => true}
+%input#toggle-program-files{:type => "checkbox", :hidden => true}
+%input#toggle-windows{:type => "checkbox", :hidden => true}
+
+%input#error-diskette-a{:type => "checkbox", :hidden => true, "data-error-trigger" => true, "data-name" => "diskette-a"}
+%input#error-diskette-b{:type => "checkbox", :hidden => true, "data-error-trigger" => true, "data-name" => "diskette-b"}
+%input#error-blue-screen{:type => "checkbox", :hidden => true, "data-error-trigger" => true, "data-name" => "blue-screen"}
+
+%main
+	#desktop
+		#icons
+			%label.desktop-icon.label-computer{:tabindex => 0, :for => "computer"}
+				%span My Computer
+			%label.desktop-icon.label-inbox
+				%span Inbox
+			%label.desktop-icon.label-recycle-bin
+				%span Recycle Bin
+
+		#windows
+			#window-welcome.window{"data-window" => true}
+				.window-inside
+					%nav.window-nav
+						%h3
+							%span Welcome
+						.buttons
+							%label.close{:for => "welcome", :tabindex => 0}
+					.window-content
+						.information-container
+							.information
+								%h3 About this project
+								%p This ongoing web experiment by <a href="https://gabriellew.ee" target="_blank">Gabrielle Wee</a> is an attempt to get as close as possible to Windows&nbsp;95 using primarily CSS and HTML, with a little bit of Javascript magic.
+
+								%h3 Changelog
+								%ul
+									%li October 12, 2023 - Fix bug where window cannot maximize after resizing
+									%li September 19, 2023 - Launch first version!
+									%li March 10, 2023 - Begin experiment.
+
+								%h3 Caveats
+								%ul
+									%li The code is pretty convoluted and difficult to follow. It’s not really meant to be an example of best practices!
+									%li On that note, this demo works best in a desktop view. It may work on mobile devices but not all windows will function properly.
+									%li Items that are not selectable are not functional (yet).
+									%li There’s some weird sizing issues that mean that this demo is not 1:1 with actual Windows&nbsp;95 and that’s ok!
+									%li This demo may not be accessible or easy to navigate using the keyboard.
+									%li Most of the components work without Javascript, but everything works better with Javascript.
+									%li There are a few bugs that I haven’t ironed out yet. If you notice one, I’m probably in the process of fixing it!
+
+								%h3 To-do
+								%ul
+									%li Iron out bugs. Always.
+									%li Add documents to the Documents menu
+									%li Add Inbox and Recycle Bin windows
+									%li Add Find and Run options from Start menu
+									%li Enable buttons in Taskbar window on the Start Menu Programs tab
+									%li Enable tooltips in Taskbar window
+									%li Enabled status bar tips
+									%li Get window resizing working on most windows
+									%li Add window stacking when new windows are opened
+									%li Add shut down sequence
+
+								%h3 Credits
+								%ul
+									%li <a href="https://www.pcjs.org/software/pcx86/sys/windows/win95/4.00.950/" target="_blank">Windows 95 emulator</a>
+									%li <a href="https://codepen.io/louh/pen/oZJQvm" target="_blank">Windows&nbsp;95 scrollbars</a>
+									%li Icons are modified from the original Windows&nbsp;95 icons
+
+					.window-footer
+						%label.button{:for => "welcome", :tabindex => 0}
+							%span Close
+									
+									
+
+			#window-taskbar.window{"data-window" => true}
+				%input#taskbar-options{:type => "radio", :name => "taskbar", :hidden => true, :checked => true}
+				%input#start-menu-programs{:type => "radio", :name => "taskbar", :hidden => true}
+				
+				- @optionInputs.each do |input|
+					- if (input['checked'] == true)
+						%input{:id => "option-#{input['name']}", :type => "checkbox", :hidden => true, "data-option" => true, :checked => true}
+					- else
+						%input{:id => "option-#{input['name']}", :type => "checkbox", "data-option" => true, :hidden => true}
+
+				.window-inside
+					%nav.window-nav
+						%h3
+							%span Taskbar Properties
+						.buttons
+							%label.question{:tabindex => 0, :disabled => true}
+							%label.close{:for => "taskbar", :tabindex => 0}
+					.window-content
+						.tab-container
+							.tab-group
+								%label.tab.tab-taskbar-options{:for => "taskbar-options"}
+									%span Taskbar Options
+								%label.tab.tab-start-menu-programs{:for => "start-menu-programs"}
+									%span Start Menu Programs
+							.tabpanel-group
+								.tabpanel.taskbar-options
+									.preview-container
+										.preview
+											.window
+												.window-inside
+													.window-content
+														.list-container
+															%menu.list
+																%li
+																	%label{:class => "label-volume"} Sound Re
+																%li
+																	%label{:class => "label-wordpad"} Wordpad
+											.start-menu-outline
+											%nav.start-menu
+												%label.label-start Start
+												.menu-container
+													%menu.menu.main-menu.underline
+														%li
+															%a.label-settings.label-nested
+																%span Settings
+														%li
+															%a.label-find.label-nested
+																%span Find
+														%li
+															%label.label-help
+																%span Help
+														%li
+															%label.label-run
+																%span Run...
+														%li
+															%label.label-shut-down
+																%span
+																	%span> Sh
+																	%span.line> u
+																	%span> t Down
+												.time.label-printer-small
+													%time 12:45 PM
+									%menu.options.underline
+										%li
+											%label{:for => "option-always-on-top", :tabindex => 0}
+												%span
+													%span Always on
+													%span.line top
+										%li
+											%label{:for => "option-auto-hide", :tabindex => 0}
+												%span
+													%span> A
+													%span.line> u
+													%span> to hide
+										%li
+											%label{:for => "option-show-small-icons", :tabindex => 0}
+												%span
+													%span Show
+													%span.line small
+													%span icons in Start menu
+										%li
+											%label{:for => "option-show-clock", :tabindex => 0}
+												%span
+													%span Show
+													%span.line Clock
+								.tabpanel.start-menu-programs
+									%form
+										%fieldset.customize-start-menu
+											%legend Customize Start Menu
+											%p.label-customize-start-menu You may customize your Start Menu by adding or removing items from it.
+											%menu.menu-options.underline
+												%li
+													%label.button{:disabled => true, :tabindex => 0}
+														%span Add…
+												%li
+													%label.button{:disabled => true, :tabindex => 0}
+														%span Remove…
+												%li
+													%label.button{:disabled => true, :tabindex => 0}
+														%span
+															%span> A
+															%span.line> dvanced…
+										%fieldset.documents-menu
+											%legend Documents Menu
+											%p.label-recycle-bin-folder Click the clear button to remove the contents of the Documents Menu.
+											%menu.menu-options.underline
+												%li
+													%label.button{:disabled => true, :for => "clear-documents", :tabindex => 0}
+														%span Clear
+					.window-footer
+						%label.button{:for => "taskbar", :tabindex => 0, :disabled => true, "data-apply" => true, "data-close" => true}
+							%span OK
+						%label.button{:for => "taskbar", :tabindex => 0}
+							%span Cancel
+						%label.button.underline{:disabled => true, "data-apply" => true}
+							%span Apply
+
+			#window-printers.window{"data-window" => true}
+				%input.toggle-menu{:id => "printers-menu", :type => "checkbox", :hidden => true, "data-menu" => true}
+
+				%input#printers-menu-status-bar.menu-status-bar{:type => "checkbox", :checked => true, :hidden => true}
+
+				%input#printers-menu-large-icons.menu-large-icons{:type => "radio", :name => "printers-icon-size", :checked => true, :hidden => true}
+				%input#printers-menu-small-icons.menu-small-icons{:type => "radio", :name => "printers-icon-size", :hidden => true}
+				%input#printers-menu-list-icons.menu-list-icons{:type => "radio", :name => "printers-icon-size", :hidden => true}
+
+				.window-inside
+					%nav.window-nav
+						%h3.label-folder-printers-small
+							%span Printers
+						.buttons
+							%label.minimize{:for => "printers-minimize", :tabindex => 0}
+							%label.maximize{:for => "printers-maximize", :tabindex => 0}
+							%label.close{:for => "printers", :tabindex => 0}
+					%menu.window-menu.underline
+						%label.toggle-menu-label{:for => "printers-menu", "data-toggle" => true}
+						%li
+							%a.menu-item-file{:href => "#", "data-label" => true} File
+							%menu.sub-menu.underline
+								%li
+									%label.label-disabled
+										%span
+											%span> Create&nbsp;
+											%span.line> Shortcut
+								%li
+									%label.label-disabled Delete
+								%li
+									%label.label-disabled
+										%span
+											%span> Rena
+											%span.line> me
+								%li
+									%label.label-disabled Properties
+								%li
+									%hr
+								%li
+									%label{:for => "printers", :tabindex => 0} Close
+						%li
+							%a.menu-item-edit{:href => "#", "data-label" => true} Edit
+							%menu.sub-menu.underline
+								#{@editPartial}
+								#{@editMenu}
+						%li
+							%a.menu-item-view{:href => "#", "data-label" => true} View
+							%menu.sub-menu.underline
+								%li
+									%label.label-disabled Toolbar
+								%li
+									%label.label-check.label-status-bar{:for => "printers-menu-status-bar"}
+										%span
+											%span> Status&nbsp;
+											%span.line> Bar
+								%li
+									%hr
+								%li
+									%label.label-check.label-icon-size.label-large-icons{:for => "printers-menu-large-icons"}
+										%span
+											%span> Lar
+											%span.line> ge Icons
+								%li
+									%label.label-check.label-icon-size.label-small-icons{:for => "printers-menu-small-icons"}
+										%span
+											%span> S
+											%span.line> mall Icons
+								%li
+									%label.label-check.label-icon-size.label-list-icons{:for => "printers-menu-list-icons"}
+										%span.line List
+								#{@viewMenu}
+						%li
+							%a.menu-item-help{:href => "#", "data-label" => true} Help
+							#{@helpMenu}
+					.window-content
+						.list-container.above-footer
+							%menu.list
+								%li
+									%label.label-document-printer-small Add Printer
+						%footer.window-footer
+							%ul.number
+								%li.show 1 object(s)
+
+			#window-control-panel.window{"data-window" => true}
+				%input.toggle-menu{:id => "control-panel-menu", :type => "checkbox", :hidden => true, "data-menu" => true}
+
+				%input#control-panel-menu-status-bar.menu-status-bar{:type => "checkbox", :checked => true, :hidden => true}
+
+				%input#control-panel-menu-large-icons.menu-large-icons{:type => "radio", :name => "control-panel-icon-size", :checked => true, :hidden => true}
+				%input#control-panel-menu-small-icons.menu-small-icons{:type => "radio", :name => "control-panel-icon-size", :hidden => true}
+				%input#control-panel-menu-list-icons.menu-list-icons{:type => "radio", :name => "control-panel-icon-size", :hidden => true}
+				
+				.window-inside
+					%nav.window-nav
+						%h3.label-control-panel-small
+							%span Control Panel
+						.buttons
+							%label.minimize{:for => "control-panel-minimize", :tabindex => 0}
+							%label.maximize{:for => "control-panel-maximize", :tabindex => 0}
+							%label.close{:for => "control-panel", :tabindex => 0}
+					%menu.window-menu.underline
+						%label.toggle-menu-label{:for => "control-panel-menu", "data-toggle" => true}
+						%li
+							%a.menu-item-file{:href => "#", "data-label" => true} File
+							%menu.sub-menu.underline
+								%li
+									%label.label-disabled
+										%span
+											%span> Create&nbsp;
+											%span.line> Shortcut
+								%li
+									%label.label-disabled Delete
+								%li
+									%label.label-disabled
+										%span
+											%span> Rena
+											%span.line> me
+								%li
+									%label.label-disabled Properties
+								%li
+									%hr
+								%li
+									%label{:for => "control-panel", :tabindex => 0} Close
+						%li
+							%a.menu-item-edit{:href => "#", "data-label" => true} Edit
+							%menu.sub-menu.underline
+								#{@editPartial}
+								#{@editMenu}
+						%li
+							%a.menu-item-view{:href => "#", "data-label" => true} View
+							%menu.sub-menu.underline
+								%li
+									%label.label-disabled Toolbar
+								%li
+									%label.label-check.label-status-bar{:for => "control-panel-menu-status-bar"}
+										%span
+											%span> Status&nbsp;
+											%span.line> Bar
+								%li
+									%hr
+								%li
+									%label.label-check.label-icon-size.label-large-icons{:for => "control-panel-menu-large-icons"}
+										%span
+											%span> Lar
+											%span.line> ge Icons
+								%li
+									%label.label-check.label-icon-size.label-small-icons{:for => "control-panel-menu-small-icons"}
+										%span
+											%span> S
+											%span.line> mall Icons
+								%li
+									%label.label-check.label-icon-size.label-list-icons{:for => "control-panel-menu-list-icons"}
+										%span.line List
+								#{@viewMenu}
+						%li
+							%a.menu-item-help{:href => "#", "data-label" => true} Help
+							#{@helpMenu}
+					.window-content
+						.list-container.above-footer
+							%menu.list
+								- @controlPanelItems.each do |item|
+									%li
+										%label{:class => "label-#{item['label']}-small"} #{item['name']}
+						%footer.window-footer
+							%ul.number
+								%li.show 19 object(s)
+
+			#window-computer.window.window-default{"data-window" => true}
+				%input.toggle-menu{:id => "computer-menu", :type => "checkbox", :hidden => true, "data-menu" => true}
+
+				%input#computer-menu-status-bar.menu-status-bar{:type => "checkbox", :checked => true, :hidden => true}
+
+				%input#computer-menu-large-icons.menu-large-icons{:type => "radio", :name => "computer-icon-size", :checked => true, :hidden => true}
+				%input#computer-menu-small-icons.menu-small-icons{:type => "radio", :name => "computer-icon-size", :hidden => true}
+				%input#computer-menu-list-icons.menu-list-icons{:type => "radio", :name => "computer-icon-size", :hidden => true}
+
+				.window-inside
+					%nav.window-nav
+						%h3.label-disk-small
+							%span Ms-dos_5 (C:)
+						.buttons
+							%label.minimize{:for => "computer-minimize", :tabindex => 0}
+							%label.maximize{:for => "computer-maximize", :tabindex => 0}
+							%label.close{:for => "computer", :tabindex => 0}
+					%menu.window-menu.underline
+						%label.toggle-menu-label{:for => "computer-menu", "data-toggle" => true}
+						%li
+							%a.menu-item-file{:href => "#", "data-label" => true} File
+							%menu.sub-menu.underline
+								%li
+									%a.label-nested
+										%span
+											%span> Ne
+											%span.line> w
+									%menu.sub-menu.underline
+										%li
+											%label.label-disabled Folder
+										%li
+											%label.label-disabled Shortcut
+										%li
+											%hr
+										%li
+											%label.label-disabled.no-line Text Document
+								%li
+									%hr
+								%li
+									%label.label-disabled
+										%span
+											%span> Create&nbsp;
+											%span.line> Shortcut
+								%li
+									%label.label-disabled Delete
+								%li
+									%label.label-disabled
+										%span
+											%span> Rena
+											%span.line> me
+								%li
+									%label.label-disabled Properties
+								%li
+									%hr
+								%li
+									%label{:for => "computer", :tabindex => 0} Close
+						%li
+							%a.menu-item-edit{:href => "#", "data-label" => true} Edit
+							%menu.sub-menu.underline
+								#{@editPartial}
+								#{@editMenu}
+						%li
+							%a.menu-item-view{:href => "#", "data-label" => true} View
+							%menu.sub-menu.underline
+								%li
+									%label.label-disabled Toolbar
+								%li
+									%label.label-check.label-status-bar{:for => "computer-menu-status-bar"}
+										%span
+											%span> Status&nbsp;
+											%span.line> Bar
+								%li
+									%hr
+								%li
+									%label.label-check.label-icon-size.label-large-icons{:for => "computer-menu-large-icons"}
+										%span
+											%span> Lar
+											%span.line> ge Icons
+								%li
+									%label.label-check.label-icon-size.label-small-icons{:for => "computer-menu-small-icons"}
+										%span
+											%span> S
+											%span.line> mall Icons
+								%li
+									%label.label-check.label-icon-size.label-list-icons{:for => "computer-menu-list-icons"}
+										%span.line List
+								%li
+									%label.label-disabled Details
+								%li
+									%hr
+								#{@viewMenu}
+						%li
+							%a.menu-item-help{:href => "#", "data-label" => true} Help
+							#{@helpMenu}
+					.window-content
+						.list-container.above-footer
+							%menu.list
+								- @diskFiles.each do |file|
+									%li
+										%label{:class => "label-#{file['label']}-small"} #{file['name']}
+						%footer.window-footer
+							%ul.number
+								%li.show 11 object(s) (plus 14 hidden)
+							%ul.space
+								%li.show 954KB (Disk free space: 31.1MB)
+								
+			#window-notepad.window.window-default{"data-window" => true}
+				%input.toggle-menu{:id => "notepad-menu", :type => "checkbox", :hidden => true, "data-menu" => true}
+
+				.window-inside
+					%nav.window-nav
+						%h3.label-document-text-small
+							%span Untitled - Notepad
+						.buttons
+							%label.minimize{:for => "notepad-minimize", :tabindex => 0}
+							%label.maximize{:for => "notepad-maximize", :tabindex => 0}
+							%label.close{:for => "notepad", :tabindex => 0}
+					%menu.window-menu.underline
+						%label.toggle-menu-label{:for => "notepad-menu", "data-toggle" => true}
+						%li
+							%a.menu-item-file{:href => "#", "data-label" => true} File
+							%menu.sub-menu.underline
+								%li
+									%label.label-disabled New
+								%li
+									%label.label-disabled Open
+								%li
+									%label.label-disabled Save
+								%li
+									%label.label-disabled
+										%span
+											%span> Save&nbsp;
+											%span.line> As
+								%li
+									%hr
+								%li
+									%label.label-disabled
+										%span
+											%span> Page Se
+											%span.line> tup...
+								%li
+									%label.label-disabled Print
+								%li
+									%label{:for => "notepad"}
+										%span
+											%span> E
+											%span.line> xit
+						%li
+							%a.menu-item-edit{:href => "#", "data-label" => true} Edit
+							%menu.sub-menu.underline
+								#{@editPartial}
+								%li
+									%label.label-disabled
+										%span
+											%span> De
+											%span.line> lete
+								%li
+									%hr
+								%li
+									%label.label-disabled
+										%span
+											%span> Select&nbsp;
+											%span.line> All
+								%li
+									%label.label-disabled
+										%span
+											%span> Time/
+											%span.line> Date
+								%li
+									%hr
+								%li
+									%label.label-disabled Word Wrap
+						%li
+							%a.menu-item-search{:href => "#", "data-label" => true} Search
+							%menu.sub-menu.underline
+								%li
+									%label.label-disabled Find
+								%li
+									%label.label-disabled
+										%span
+											%span> Find&nbsp;
+											%span.line> Next
+						%li
+							%a.menu-item-help{:href => "#", "data-label" => true} Help
+							%menu.sub-menu.underline
+								%li
+									%label.label-disabled Help Topics
+								%li
+									%hr
+								%li
+									%label.label-disabled About Notepad
+					.window-content.textarea-container
+						%textarea
+
+			#window-explorer.window.window-default{"data-window" => true}
+				%input.toggle-menu{:id => "explorer-menu", :type => "checkbox", :hidden => true, "data-menu" => true}
+
+				%input#explorer-menu-status-bar.menu-status-bar{:type => "checkbox", :checked => true, :hidden => true}
+
+				%input#explorer-menu-large-icons.menu-large-icons{:type => "radio", :name => "explorer-icon-size", :hidden => true}
+				%input#explorer-menu-small-icons.menu-small-icons{:type => "radio", :name => "explorer-icon-size", :hidden => true}
+				%input#explorer-menu-list-icons.menu-list-icons{:type => "radio", :name => "explorer-icon-size", :checked => true, :hidden => true}
+
+				.window-inside
+					%nav.window-nav
+						%h3.label-folder-explorer-small
+							%span
+								%span.title-explorer-desktop Exploring - Desktop
+								%span.title-explorer-computer Exploring - Computer
+								%span.title-explorer-disk Exploring - Ms-dos_5 (C:)
+								%span.title-explorer-dos Exploring - Dos
+								%span.title-explorer-program-files Exploring - Program Files
+								%span.title-explorer-windows Exploring - Windows
+								%span.title-explorer-control-panel Exploring - Control Panel
+								%span.title-explorer-printers Exploring - Printers
+								%span.title-explorer-recycle-bin Exploring - Recycle Bin
+						.buttons
+							%label.minimize{:for => "explorer-minimize", :tabindex => 0}
+							%label.maximize{:for => "explorer-maximize", :tabindex => 0}
+							%label.close{:for => "explorer", :tabindex => 0}
+					%menu.window-menu.underline
+						%label.toggle-menu-label{:for => "explorer-menu", "data-toggle" => true}
+						%li
+							%a.menu-item-file{:href => "#", "data-label" => true} File
+							%menu.sub-menu.underline
+								%li
+									%a.label-nested
+										%span
+											%span> Ne
+											%span.line> w
+									%menu.sub-menu.underline
+										%li
+											%label.label-disabled Folder
+										%li
+											%label.label-disabled Shortcut
+										%li
+											%hr
+										%li
+											%label.label-disabled.no-line Text Document
+								%li
+									%hr
+								%li
+									%label.label-disabled
+										%span
+											%span> Create&nbsp;
+											%span.line> Shortcut
+								%li
+									%label.label-disabled Delete
+								%li
+									%label.label-disabled
+										%span
+											%span> Rena
+											%span.line> me
+								%li
+									%label.label-disabled Properties
+								%li
+									%hr
+								%li
+									%label{:for => "explorer", :tabindex => 0} Close
+						%li
+							%a.menu-item-edit{:href => "#", "data-label" => true} Edit
+							%menu.sub-menu.underline
+								#{@editPartial}
+								#{@editMenu}
+						%li
+							%a.menu-item-view{:href => "#", "data-label" => true} View
+							%menu.sub-menu.underline
+								%li
+									%label.label-disabled Toolbar
+								%li
+									%label.label-check.label-status-bar{:for => "explorer-menu-status-bar"}
+										%span
+											%span> Status&nbsp;
+											%span.line> Bar
+								%li
+									%hr
+								%li
+									%label.label-check.label-icon-size.label-large-icons{:for => "explorer-menu-large-icons"}
+										%span
+											%span> Lar
+											%span.line> ge Icons
+								%li
+									%label.label-check.label-icon-size.label-small-icons{:for => "explorer-menu-small-icons"}
+										%span
+											%span> S
+											%span.line> mall Icons
+								%li
+									%label.label-check.label-icon-size.label-list-icons{:for => "explorer-menu-list-icons"}
+										%span.line List
+								%li
+									%label.label-disabled Details
+								%li
+									%hr
+								#{@viewMenu}
+						%li
+							%a.menu-item-tools{:href => "#", "data-label" => true} Tools
+							%menu.sub-menu.underline
+								%li
+									%a.label-nested Find
+									%menu.sub-menu.underline
+										%li
+											%label.label-disabled Files or Folders
+								%li
+									%hr
+								%li
+									%label.label-disabled Go to...
+						%li
+							%a.menu-item-help{:href => "#", "data-label" => true} Help
+							#{@helpMenu}
+					.window-content
+						.folders.above-footer
+							%h4 All Folders
+							.list-container
+								%menu.list
+									%li
+										%label.label-desktop-small{:tabindex => 0, :for => "explorer-desktop"}
+											%span Desktop
+										%menu
+											%li
+												%label.label-toggle.toggle-computer{:for => "toggle-computer"}
+												%label.label-computer-small{:tabindex => 0, :for => "explorer-computer"}
+													%span My Computer
+												%menu
+													%li
+														%label.label-toggle.toggle-error-a{:for => "error-diskette-a"}
+														%label.label-diskette-small{:tabindex => 0, :for => "error-diskette-a"}
+															%span 5¼ Floppy (A:)
+													%li
+														%label.label-toggle.toggle-error-b{:for => "error-diskette-b"}
+														%label.label-diskette-small{:tabindex => 0, :for => "error-diskette-b"}
+															%span 5¼ Floppy (B:)
+													%li
+														%label.label-toggle.toggle-disk{:for => "toggle-disk"}
+														%label.label-disk-small{:tabindex => 0, :for => "explorer-disk"}
+															%span Ms-dos_5 (C:)
+														%menu
+															%li
+																%label.label-folder-small{:tabindex => 0, :for => "explorer-dos"}
+																	%span Dos
+															%li
+																%label.label-toggle.toggle-program-files{:for => "toggle-program-files"}
+																%label.label-folder-small{:tabindex => 0, :for => "explorer-program-files"}
+																	%span Program Files
+																%menu
+																	- @programFiles.each do |file|
+																		%li
+																			%label.label-folder-small.long #{file}
+															%li
+																%label.label-toggle.toggle-windows{:for => "toggle-windows"}
+																%label.label-folder-small{:tabindex => 0, :for => "explorer-windows"}
+																	%span Windows
+																%menu
+																	- @windowsFolders.each do |folder|
+																		%li
+																			%label.label-folder-small #{folder}
+													%li
+														%label.label-control-panel-small{:tabindex => 0, :for => "explorer-control-panel"}
+															%span Control Panel
+													%li
+														%label.label-folder-printers-small{:tabindex => 0, :for => "explorer-printers"}
+															%span Printers
+												%li
+													%label.label-recycle-bin-small{:tabindex => 0, :for => "explorer-recycle-bin"}
+														%span Recycle Bin
+						.folders-content.above-footer
+							.content.content-explorer-desktop
+								%h5 Contents of Desktop
+								.list-container
+									%menu.list
+										%li
+											%label.label-computer-small{:tabindex => 0, :for => "explorer-computer"}
+												%span My Computer
+										%li
+											%label.label-inbox-small
+												%span Inbox
+										%li
+											%label.label-recycle-bin-small
+												%span Recycle Bin
+							.content.content-explorer-computer
+								%h5 Contents of My Computer
+								.list-container
+									%menu.list
+										%li
+											%label.label-diskette-small{:tabindex => 0, :for => "error-diskette-a"}
+												%span 5¼ Floppy (A:)
+										%li
+											%label.label-diskette-small{:tabindex => 0, :for => "error-diskette-b"}
+												%span 5¼ Floppy (B:)
+										%li
+											%label.label-disk-small{:tabindex => 0, :for => "explorer-disk"}
+												%span Ms-dos_5 (C:)
+										%li
+											%label.label-control-panel-small{:tabindex => 0, :for => "explorer-control-panel"}
+												%span Control Panel
+										%li
+											%label.label-folder-printers-small{:tabindex => 0, :for => "explorer-printers"}
+												%span Printers
+							.content.content-explorer-disk
+								%h5 Contents of Ms-dos_5 (C:)
+								.list-container
+									%menu.list
+										- @diskFiles.each do |file|
+											- if file['for']
+												%li
+													%label{:tabindex => 0, :for => "#{file['for']}", :class => "label-#{file['label']}-small"}
+														%span #{file['name']}
+											- else
+												%li
+													%label{:class => "label-#{file['label']}-small"} #{file['name']}
+							.content.content-explorer-dos
+								%h5 Contents of Dos
+								.list-container
+									%menu.list
+										- @dosFiles.each do |file|
+											%li
+												%label{:class => "label-#{file['label']}-small"} #{file["name"]}
+							.content.content-explorer-program-files
+								%h5 Contents of Program Files
+								.list-container
+									%menu.list
+										- @programFiles.each do |file|
+											%li
+												%label.label-folder-small.long #{file}
+							.content.content-explorer-windows
+								%h5 Contents of Windows
+								.list-container
+									%menu.list
+										- @windowsFolders.each do |folder|
+											%li
+												%label.label-folder-small #{folder}
+										- @windowsFiles.each do |file|
+											%li
+												%label{:class => "label-#{file['label']}-small"} #{file["name"]}
+							.content.content-explorer-control-panel
+								%h5 Contents of Control Panel
+								.list-container
+									%menu.list
+										- @controlPanelItems.each do |item|
+											- if item['for']
+												%li
+													%label{:class => "label-#{item['label']}-small", :tabindex => 0, :for => "#{item['for']}"}
+														%span #{item["name"]}
+											- else
+												%li
+													%label{:class => "label-#{item['label']}-small"} #{item["name"]}
+							.content.content-explorer-printers
+								%h5 Contents of Printers
+								.list-container
+									%menu.list
+										%li
+											%label.label-document-printer-small Add Printer
+							.content.content-explorer-recycle-bin
+								%h5 Contents of Recycle Bin
+								.list-container
+									%menu.list
+						%footer.window-footer
+							%ul.number
+								%li.explorer-number-desktop 3 object(s)
+								%li.explorer-number-computer 0 object(s)
+								%li.explorer-number-disk 11 object(s) (plus 14 hidden)
+								%li.explorer-number-dos 27 object(s) (plus 57 hidden)
+								%li.explorer-number-program-files 2 object(s)
+								%li.explorer-number-windows 33 object(s) (plus 77 hidden)
+								%li.explorer-number-control-panel 15 object(s)
+								%li.explorer-number-printers 1 object(s)
+								%li.explorer-number-recycle-bin 0 object(s)
+							%ul.space
+								%li.explorer-space-disk 954KB (Disk free space: 31.1MB)
+								%li.explorer-space-dos 2.09MB (Disk free space: 31.1MB)
+								%li.explorer-space-program-files 0 bytes (Disk free space: 31.1MB)
+								%li.explorer-space-windows 8.09MB (Disk free space: 31.1MB)
+								%li.explorer-space-recycle-bin 0 bytes
+
+	#start-menu-outline.start-menu-outline
+	%nav#start-menu.start-menu
+		%label.label-start{:for => "start", :tabindex => 0} Start
+		.menu-container
+			%menu.menu.main-menu.underline
+				%li
+					%a.label-folder-programs.label-nested
+						%span Programs
+					%menu.menu.sub-menu
+						%li
+							%a.label-folder-programs-small.label-nested
+								%span Accessories
+							%menu.menu.sub-menu
+								%li
+									%label.label-notepad-small{:for => "notepad"}
+										%span Notepad
+						%li
+							%a.label-folder-programs-small.label-nested
+								%span Start Up
+							%menu.menu.sub-menu
+								%li
+									%a.label-empty
+										%span (Empty)
+						%li
+							%label.label-folder-explorer-small{:for => "explorer"}
+								%span Windows Explorer
+				%li
+					%a.label-folder-documents.label-nested
+						%span Documents
+					%menu.menu.sub-menu
+						%li
+							%a.label-empty
+								%span (Empty)
+				%li
+					%a.label-settings.label-nested
+						%span Settings
+					%menu.menu.sub-menu.underline
+						%li
+							%label.label-control-panel-small{:for => "control-panel"}
+								%span Control Panel
+						%li
+							%label.label-folder-printers-small{:for => "printers"}
+								%span Printers
+						%li
+							%label.label-taskbar{:for => "taskbar"}
+								%span Taskbar...
+				%li
+					%a.label-find.label-nested
+						%span Find
+					%menu.menu.sub-menu.underline
+						%li
+							%label.label-find-small.label-disabled
+								%span Files or Folders
+				%li
+					%label.label-help
+						%span Help
+				%li
+					%label.label-run
+						%span Run...
+				%li
+					%label.label-shut-down{:for => "error-blue-screen"}
+						%span
+							%span> Sh
+							%span.line> u
+							%span> t Down
+		%menu.tabs
+			%li.tab.tab-printers{"data-tab" => true}
+				%span.activate
+				%label.label-folder-printers-small{:for => "printers-minimize"}
+					%span Printers
+			%li.tab.tab-control-panel{"data-tab" => true}
+				%span.activate
+				%label.label-control-panel-small{:for => "control-panel-minimize"}
+					%span Control Panel
+			%li.tab.tab-computer{"data-tab" => true}
+				%span.activate
+				%label.label-disk-small{:for => "computer-minimize"}
+					%span Ms-dos_5 (C:)
+			%li.tab.tab-notepad{"data-tab" => true}
+				%span.activate
+				%label.label-document-text-small{:for => "notepad-minimize"}
+					%span Untitled - Notepad
+			%li.tab.tab-explorer{"data-tab" => true}
+				%span.activate
+				%label.label-folder-explorer-small{:for => "explorer-minimize"}
+					%span Exploring - Ms-dos_5 (C:)
+		.time
+			%time.clock 12:00 AM
+
+	#alerts
+		#alert-blue-screen
+			.content
+				%h3
+					%span Windows
+				%p An error has occured. To continue:
+				%p Press Enter to return to Windows, or
+				%p Press CTRL to restart your computer. If you do this, you will lose any unsaved information in all open applications.
+				%p Error: GABRIELLEWEE1
+				%p
+					Press any key to continue
+					%span.blink _
+		#alert-diskette-a.alert{"data-window" => true}
+			.alert-inside
+				.alert-nav
+					%h3
+						%span Exploring - 5¼ Floppy (A:)
+					.buttons
+						%label.close{:for => "error-diskette-a"}
+				.alert-content
+					%p A:\ is not accessible.
+					%p The device is not ready.
+				%footer.alert-footer
+					%button.button.underline{:tabindex => 0, "data-retry" => true}
+						%span Retry
+					%label.button{:for => "error-diskette-a", :tabindex => 0}
+						%span Cancel
+
+		#alert-diskette-b.alert{"data-window" => true}
+			.alert-inside
+				.alert-nav
+					%h3
+						%span Exploring - 5¼ Floppy (B:)
+					.buttons
+						%label.close{:for => "error-diskette-b"}
+				.alert-content
+					%p B:\ is not accessible.
+					%p The device is not ready.
+				%footer.alert-footer
+					%button.button.underline{:tabindex => 0, "data-retry" => true}
+						%span Retry
+					%label.button{:for => "error-diskette-b", :tabindex => 0}
+						%span Cancel

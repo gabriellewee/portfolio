@@ -1,0 +1,644 @@
+%main
+	%input#nav.nav{:type => "checkbox", :name => "nav"}
+	%input#normal.type{:type => "radio", :name => "type", :value => "normal"}
+	%input#fire.type{:type => "radio", :name => "type", :value => "fire"}
+	%input#water.type{:type => "radio", :name => "type", :value => "water"}
+	%input#grass.type{:type => "radio", :name => "type", :value => "grass"}
+	%input#electric.type{:type => "radio", :name => "type", :value => "electric"}
+	%input#ice.type{:type => "radio", :name => "type", :value => "ice"}
+	%input#fighting.type{:type => "radio", :name => "type", :value => "fighting"}
+	%input#poison.type{:type => "radio", :name => "type", :value => "poison"}
+	%input#ground.type{:type => "radio", :name => "type", :value => "ground"}
+	%input#flying.type{:type => "radio", :name => "type", :value => "flying"}
+	%input#psychic.type{:type => "radio", :name => "type", :value => "psychic"}
+	%input#bug.type{:type => "radio", :name => "type", :value => "bug"}
+	%input#rock.type{:type => "radio", :name => "type", :value => "rock"}
+	%input#ghost.type{:type => "radio", :name => "type", :value => "ghost"}
+	%input#dragon.type{:type => "radio", :name => "type", :value => "dragon"}
+	%input#steel.type{:type => "radio", :name => "type", :value => "steel"}
+	%input#fairy.type{:type => "radio", :name => "type", :value => "fairy"}
+	%input#reset.type{:type => "radio", :name => "type", :value => "reset"}
+
+	.pokemon
+		#bulbasaur.grass.poison
+			- 4.times do
+				%div
+		#ivysaur.grass.poison
+			- 5.times do
+				%div
+		#venusaur.grass.poison
+			- 7.times do
+				%div
+					%div
+		#charmander.fire
+			- 3.times do
+				%div
+					%div
+		#charmeleon.fire
+			- 3.times do
+				%div
+					%div
+		#charizard.fire.flying
+			- 4.times do
+				%div
+					%div
+		#squirtle.water
+			- 2.times do
+				%div
+					%div
+			%div
+		#wartortle.water
+			- 2.times do
+				%div
+					%div
+			- 2.times do
+				%div
+		#blastoise.water
+			- 4.times do
+				%div
+					%div
+		#caterpie.bug
+			%div
+			%div
+				%div
+		#metapod.bug
+			%div
+			%div
+				%div
+		#butterfree.bug.flying
+			- 3.times do
+				%div
+					%div
+			%div
+		#weedle.bug.poison
+			%div
+			%div
+				%div
+		#kakuna.bug.poison
+			- 2.times do
+				%div
+			- 2.times do
+				%div
+					%div
+		#beedrill.bug.poison
+			- 2.times do
+				%div
+					%div
+		#pidgey.normal.flying
+			- 3.times do
+				%div
+					%div
+		#pidgeotto.normal.flying
+			- 3.times do
+				%div
+					%div
+		#pidgeot.normal.flying
+			- 4.times do
+				%div
+					%div
+		#rattata.normal
+			- 3.times do
+				%div
+					%div
+		#raticate.normal
+			- 4.times do
+				%div
+					%div
+		#spearow.normal.flying
+			- 3.times do
+				%div
+					%div
+		#fearow.normal.flying
+			- 2.times do
+				%div
+		#ekans.poison
+			%div
+				%div
+		#arbok.poison
+			- 2.times do
+				%div
+					%div
+		#pikachu.electric
+			- 2.times do
+				%div
+			%div
+				%div
+		#raichu.electric
+			- 2.times do
+				%div
+			%div
+				%div
+		#sandshrew.ground
+			- 3.times do
+				%div
+					%div
+		#sandslash.ground
+			- 2.times do
+				%div
+		#nidoran-f.poison
+			- 3.times do
+				%div
+		#nidorina.poison
+			- 3.times do
+				%div
+		#nidoqueen.poison.ground
+			- 5.times do
+				%div
+		#nidoran-m.poison
+			- 2.times do
+				%div
+					%div
+			- 2.times do
+				%div
+		#nidorino.poison
+			- 4.times do
+				%div
+		#nidoking.poison.ground
+			- 4.times do
+				%div
+					%div
+		#clefairy.fairy
+			- 2.times do
+				%div
+			- 2.times do
+				%div
+					%div
+		#clefable.fairy
+			%div
+				%div
+			- 2.times do
+				%div
+		#vulpix.fire
+			- 3.times do
+				%div
+					%div
+		#ninetails.fire
+			- 2.times do
+				%div
+		#jigglypuff.normal.fairy
+			- 3.times do
+				%div
+					%div
+		#wigglytuff.normal.fairy
+			- 4.times do
+				%div
+					%div
+		#zubat.poison.flying
+			%div
+				%div
+		#golbat.poison.flying
+			- 3.times do
+				%div
+					%div
+		#oddish.grass.poison
+			%div
+		#gloom.grass.poison
+			%div
+				%div
+		#vileplume.grass.poison
+			%div
+				%div
+		#paras.bug.grass
+			- 6.times do
+				%div
+					%div
+		#parasect.bug.grass
+			%div
+				%div
+			%div
+		#venonat.bug.poison
+			- 3.times do
+				%div
+					%div
+			%div
+		#venomoth.bug.poison
+			- 3.times do
+				%div
+					%div
+			- 2.times do
+				%div
+		#diglett.ground
+			- 2.times do
+				%div
+		#dugtrio.ground
+			- 3.times do
+				%div
+					- 2.times do
+						%div
+		#meowth.normal
+			- 4.times do
+				%div
+					%div
+		#persian.normal
+			- 4.times do
+				%div
+					%div
+		#psyduck.water
+			- 3.times do
+				%div
+					%div
+		#golduck.water
+			- 3.times do
+				%div
+					%div
+		#mankey.fighting
+			- 3.times do
+				%div
+					%div
+		#primeape.fighting
+			- 4.times do
+				%div
+					%div
+		#growlithe.fire
+			- 3.times do
+				%div
+					%div
+		#arcanine.fire
+			- 4.times do
+				%div
+					%div
+		#poliwag.water
+			- 2.times do
+				%div
+					%div
+			%div
+		#poliwhirl.water
+			- 3.times do
+				%div
+					%div
+		#poliwrath.water.fighting
+			- 2.times do
+				%div
+			%div
+				%div
+		#abra.psychic
+			%div
+		#kadabra.psychic
+			- 4.times do
+				%div
+					%div
+		#alakazam.psychic
+			- 5.times do
+				%div
+					%div
+		#machop.fighting
+			- 3.times do
+				%div
+		#machoke.fighting
+			- 3.times do
+				%div
+		#machamp.fighting
+			- 3.times do
+				%div
+					%div
+		#bellsprout.grass.poison
+			- 2.times do
+				%div
+		#weepinbell.grass.poison
+			- 3.times do
+				%div
+		#victreebell.grass.poison
+			%div
+			%div
+				%div
+			- 2.times do
+				%div
+		#tentacool.water.poison
+			- 3.times do
+				%div
+					%div
+		#tentacruel.water.poison
+			- 2.times do
+				%div
+			- 2.times do
+				%div
+					%div
+		#geodude.rock.ground
+			- 2.times do
+				%div
+					%div
+			%div
+		#graveler.rock.ground
+			- 2.times do
+				%div
+					%div
+			%div
+		#golem.rock.ground
+			- 3.times do
+				%div
+					%div
+		#ponyta.fire
+			- 3.times do
+				%div
+		#rapidash.fire
+			- 3.times do
+				%div
+					%div
+		#slowpoke.water.psychic
+			- 2.times do
+				%div
+					%div
+		#slowbro.water.psychic
+			- 2.times do
+				%div
+					%div
+			%div
+				- 2.times do
+					%div
+						%div
+		#magnemite.electric.steel
+			- 2.times do
+				%div
+		#magneton.electric.steel
+			- 8.times do
+				%div
+		#farfetch-d.normal.flying
+			- 3.times do
+				%div
+					%div
+		#doduo.normal.flying
+			- 2.times do
+				%div
+					%div
+		#dodrio.normal.flying
+			%div
+			%div
+				%div
+			- 2.times do
+				%div
+		#seel.water
+			- 4.times do
+				%div
+					%div
+		#dewgong.water.ice
+			- 3.times do
+				%div
+					%div
+		#grimer.poison
+			%div
+				%div
+		#muk.poison
+			%div
+			- 2.times do
+				%div
+					%div
+		#shellder.water
+			- 2.times do
+				%div
+		#cloyster.water.ice
+			%div
+				%div
+			- 2.times do
+				%div
+		#gastly.ghost.poison
+			- 4.times do
+				%div
+					%div
+		#haunter.ghost.poison
+			- 3.times do
+				%div
+		#gengar.ghost.poison
+			- 3.times do
+				%div
+		#onix.rock.ground
+			- 3.times do
+				%div
+		#drowzee.psychic
+			- 3.times do
+				%div
+					%div
+		#hypno.psychic
+			- 3.times do
+				%div
+					%div
+		#krabby.water
+			- 2.times do
+				%div
+		#kingler.water
+			- 2.times do
+				%div
+		#voltorb.electric
+			- 4.times do
+				%div
+		#electrode.electric
+			- 3.times do
+				%div
+		#exeggcute.grass.psychic
+			- 2.times do
+				%div
+					%div
+		#exeggutor.grass.psychic
+			%div
+				%div
+			- 2.times do
+				%div
+		#cubone.ground
+			- 2.times do
+				%div
+		#marowak.ground
+			- 2.times do
+				%div
+		#hitmonlee.fighting
+			- 2.times do
+				%div
+		#hitmonchan.fighting
+			- 2.times do
+				%div
+		#lickitung.normal
+			- 3.times do
+				%div
+		#koffing.poison
+			- 2.times do
+				%div
+					%div
+		#weezing.poison
+			- 4.times do
+				%div
+					%div
+		#rhyhorn.ground.rock
+			- 3.times do
+				%div
+					%div
+		#rhydon.ground.rock
+			- 3.times do
+				%div
+					%div
+		#chansey.normal
+			- 2.times do
+				%div
+		#tangela.grass
+			- 2.times do
+				%div
+					%div
+		#kangaskhan.normal
+			- 4.times do
+				%div
+					%div
+		#horsey.water
+			- 2.times do
+				%div
+		#seadra.water
+			- 2.times do
+				%div
+					%div
+		#goldeen.water
+			- 2.times do
+				%div
+					%div
+			%div
+		#seaking.water
+			- 2.times do
+				%div
+			%div
+				%div
+		#staryu.water
+			%div
+				%div
+		#starmie.water.psychic
+			%div
+				%div
+		#mr-mime.psychic.fairy
+			- 2.times do
+				%div
+		#scyther.bug.flying
+			- 3.times do
+				%div
+					%div
+			%div
+		#jynx.ice.psychic
+			%div
+				%div
+			- 2.times do
+				%div
+		#electabuzz.electric
+			- 3.times do
+				%div
+		#magmar.fire
+			- 2.times do
+				%div
+		#pinsir.bug
+			- 3.times do
+				%div
+		#tauros.normal
+			- 5.times do
+				%div
+		#magikarp.water
+			- 3.times do
+				%div
+		#gyrados.water.flying
+			- 3.times do
+				%div
+		#lapras.water.ice
+			%div
+			%div
+				%div
+		#ditto.normal
+			%div
+		#eevee.normal
+			- 3.times do
+				%div
+		#vaporeon.water
+			- 3.times do
+				%div
+		#jolteon.electric
+			- 3.times do
+				%div
+		#flareon.fire
+			- 3.times do
+				%div
+		#porygon.normal
+			%div
+		#omanyte.rock.water
+			- 2.times do
+				%div
+		#omastar.rock.water
+			- 3.times do
+				%div
+		#kabuto.rock.water
+			- 2.times do
+				%div
+		#kabutops.rock.water
+			- 2.times do
+				%div
+		#aerodactyl.rock.flying
+			- 3.times do
+				%div
+					%div
+		#snorlax.normal
+			- 2.times do
+				%div
+		#articuno.ice.flying
+			- 3.times do
+				%div
+		#zapdos.electric.flying
+			- 3.times do
+				%div
+		#moltres.fire.flying
+			- 2.times do
+				%div
+					%div
+			%div
+		#dratini.dragon
+			- 2.times do
+				%div
+					%div
+		#dragonair.dragon
+			- 2.times do
+				%div
+					%div
+			%div
+		#dragonite.dragon.flying
+			- 3.times do
+				%div
+					%div
+		#mewtwo.psychic
+			- 2.times do
+				%div
+					%div
+		#mew.psychic
+			- 2.times do
+				%div
+					%div
+
+	%nav
+		.inside
+			%label.label-nav{:for => "nav"} Types
+			%ul
+				%li
+					%label.label-normal{:for => "normal"} Normal
+				%li
+					%label.label-fire{:for => "fire"} Fire
+				%li
+					%label.label-water{:for => "water"} Water
+				%li
+					%label.label-grass{:for => "grass"} Grass
+				%li
+					%label.label-electric{:for => "electric"} Electric
+				%li
+					%label.label-ice{:for => "ice"} Ice
+				%li
+					%label.label-fighting{:for => "fighting"} Fighting
+				%li
+					%label.label-poison{:for => "poison"} Poison
+				%li
+					%label.label-ground{:for => "ground"} Ground
+				%li
+					%label.label-flying{:for => "flying"} Flying
+				%li
+					%label.label-psychic{:for => "psychic"} Psychic
+				%li
+					%label.label-bug{:for => "bug"} Bug
+				%li
+					%label.label-rock{:for => "rock"} Rock
+				%li
+					%label.label-ghost{:for => "ghost"} Ghost
+				%li
+					%label.label-dragon{:for => "dragon"} Dragon
+				%li
+					%label.label-steel{:for => "steel"} Steel
+				%li
+					%label.label-fairy{:for => "fairy"} Fairy
+				%li
+					%label.label-reset{:for => "reset"} &times;
+	
+.warning Your browser does not support CSS clip-paths, sorry! Use the latest version of Chrome, Safari, Firefox, or another modern browser in order to view this pen.

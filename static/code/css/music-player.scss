@@ -1,7 +1,7 @@
 @use 'sass:color';
 @use 'sass:math';
-@use 'reset';
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;500&display=swap');
+@use 'reset'; // demo:hide
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;500&display=swap'); // demo:hide
 
 $red: #EB2045;
 $grey: #0B0B0B;

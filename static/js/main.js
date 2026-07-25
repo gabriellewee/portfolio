@@ -1,23 +1,35 @@
-import { removePlaceholders, showAllHidden, refreshIframes, enableClipboardButtons, targetBlankLinks, waitForGlobals } from './helpers/domHelpers.js';
-import { timeAgo, durationFormat } from './helpers/timeHelpers.js';
-import { scrollToMedia } from './helpers/scrollToHelpers.js';
+import {
+	enableClipboardButtons,
+	refreshIframes,
+	removePlaceholders,
+	showAllHidden,
+	targetBlankLinks,
+	waitForGlobals
+} from './helpers/domHelpers.js';
+import {
+	durationFormat,
+	timeAgo
+} from './helpers/timeHelpers.js';
+import { scrollToFocus } from './helpers/scrollToHelpers.js';
 
-import { preferences } from './components/preferences.js';
 import { lightbox } from './components/lightbox.js';
+import { preferences } from './components/preferences.js';
 import { popup } from './components/popup.js';
+import { tablist } from './components/tablist.js';
 
 // Call scripts
+enableClipboardButtons();
 removePlaceholders();
 showAllHidden();
 
 popup();
 preferences();
-enableClipboardButtons();
 
 // Recall for infinite scroll
 durationFormat();
-scrollToMedia();
 refreshIframes();
+scrollToFocus();
+tablist();
 targetBlankLinks();
 timeAgo();
 
@@ -84,10 +96,11 @@ if (container) {
 				lightbox({scroll: scroll});
 
 				scroll.on("append", () => {
-					removePlaceholders();
 					durationFormat();
-					scrollToMedia();
 					refreshIframes();
+					removePlaceholders();
+					scrollToFocus();
+					tablist();
 					targetBlankLinks();
 					timeAgo();
 				});

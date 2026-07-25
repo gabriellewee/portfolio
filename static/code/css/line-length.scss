@@ -1,8 +1,8 @@
 @use 'sass:color';
 @use 'sass:math';
-@use 'reset';
-@use 'presets' as *;
-@import url('https://use.typekit.net/ytd4ine.css');
+@use 'reset'; // demo:hide
+@use 'presets' as *; // demo:hide
+@import url('https://use.typekit.net/ytd4ine.css'); // demo:hide
 
 $p: $padding;
 

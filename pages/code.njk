@@ -19,35 +19,33 @@ eleventyNavigation:
     footer: true
 ---
 
-{% from "macros.njk" import author, code, header, tags %}
+{% from "macros.njk" import author, buttons, frame, header, tablist, tabpanels, tags %}
 
 <section class="content">
 	{{ tags(filters) }}
 
 	<div class="posts" data-grid>
 		{% for post in collections.code | reverse %}
-			<article class="post post-code {% if post.data.size %} post-size-{{post.data.size}}{% endif %} {% for filter in post.data.filters %} filter-{{filter}}{% endfor %}" data-anim data-grid-item{% if post.data.width %} style="max-width: {{post.data.width}}"{% endif %}>
-				<div class="post-inner">
+			{% set key = post.page.fileSlug %}
+			{% set slug %}{{post.page.date|iso|date('string')}}-{{key}}{% endset %}
+			<article class="post post-code {% if post.data.size %} post-size-{{post.data.size}}{% endif %} {% for filter in post.data.filters %} filter-{{filter}}{% endfor %}" data-anim data-grid-item{% if post.data.width %} style="--max-width: {{post.data.width}}"{% endif %}>
+				<div class="post-inner" data-tablist>
 					<header class="post-header inline-header">
-						{{ header(post.data, post.page, post.data.category) }}
+						{{ header(post.data, post.page, post.data.category, slug) }}
 					</header>
+					{{ tablist(key, post.data) }}
 					<div class="post-content">
-						{{ code(post.data, post.url) }}
-						{% if post.url %}
+						{{ buttons(post.data, post.url) }}
+						<div id="tabpanel-{{key}}-demo" class="post-tabpanel tabpanel-demo" role="tabpanel" data-tabpanel style="--height: {{post.data.height}}px">
+							{% set thumbnail %}/static/code/images/{{key}}/thumbnail.svg{% endset %}
 							{% if post.data.mobile == false %}
-								<div class="post-mobile">
-									<picture>
-										<img src="/static/code/images/{{post.page.fileSlug}}/thumbnail.svg" alt="{{post.description}}" width="{% stats './static/code/images/' + post.page.fileSlug + '/thumbnail.svg', 'width' %}" height="{% stats './static/code/images/' + post.page.fileSlug + '/thumbnail.svg', 'height' %}"/>
-									</picture>
-								</div>
+								<picture class="post-mobile">
+									<img src="{{thumbnail}}" alt="{{post.description}}" width="{% stats '.' ~ thumbnail, 'width' %}" height="{% stats '.' ~ thumbnail, 'height' %}"/>
+								</picture>
 							{% endif %}
-							<div class="frame-wrapper"{% if post.data.background %} style="--background: {{post.data.background}}"{% endif %}>
-								<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}"><p><em>Please enable Javascript to view this code demo.</em></p></noscript>
-								<iframe class="frame{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title|safe}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1"></iframe>
-							</div>
-						{% else %}
-							{{post.content|safe}}
-						{% endif %}
+							{{ frame(post.data, post.url) }}
+						</div>
+						{{ tabpanels(key, post.data) }}
 					</div>
 				</div>
 				<hr class="no-css"/>
@@ -64,17 +62,9 @@ eleventyNavigation:
 
 <div class="lightbox-group" data-lightbox-container hidden>
 	{% for post in collections.code | reverse %}
-		<a class="lightbox" id="{{post.page.date|iso|date('string')}}-{{post.page.fileSlug}}-lightbox" role="button" aria-label="Close preview of {{post.data.title}}" href="#{{post.page.date|iso|date('string')}}-{{post.page.fileSlug}}" tabindex="-1" data-lightbox></a>
-		<dialog class="lightbox-content iframe" aria-label="Preview of {{post.data.title}}" autofocus>
-			<figure class="frame-wrapper"{% if post.data.background %} style="--background: {{post.data.background}}"{% endif %}>
-				{% if post.url %}
-					<noscript class="warning{% for type in post.data.type %} {{type}}{% endfor %}"><p><em>Please enable Javascript to view this code demo.</em></p></noscript>
-					<iframe class="code{% for type in post.data.type %} {{type}}{% endfor %}" src="{{post.url|url}}" width="600" height="{{post.data.height}}" title="{{post.data.title}}" loading="lazy" tabindex="-1" onload="this.style.opacity = 1"></iframe>
-				{% else %}
-					{{post.content|safe}}
-				{% endif %}
-			</figure>
-		</dialog>
+		{% set key = post.page.fileSlug %}
+		{% set slug %}{{post.page.date|iso|date('string')}}-{{key}}{% endset %}
+		{{ frame(post.data, post.url, "lightbox", slug) }}
 	{% endfor %}
 	<div class="lightbox-background"></div>
 </div>

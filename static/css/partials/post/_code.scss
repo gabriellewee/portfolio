@@ -1,14 +1,17 @@
 @use 'partials/shared/utilities' as *;
+@use 'partials/post/syntax';
 
 .post-code {
-	.post-header.inline-header {
-		padding: calc(var(--p)*1.5) calc(var(--p)*2);
-		background-color: var(--color-dark-grey);
-		color: white;
+	color: white;
+	.post-header, .post-tablist, .post-tabpanel:not(.tabpanel-demo) {
 		font-family: var(--font-mono);
 		font-size: 1rem;
 		font-weight: 700;
 		line-height: 1.375;
+	}
+	.post-header.inline-header {
+		padding: calc(var(--p)*1.5) calc(var(--p)*2);
+		background-color: var(--color-dark-grey);
 		@include contrast {
 			@include clip-path-edges(2px, up);
 		}
@@ -80,7 +83,7 @@
 			}
 			a {
 				&::after {
-					content: "\2197";
+					content: "\2197" / "";
 					margin-left: calc(var(--p)/2);
 				}
 			}
@@ -345,6 +348,143 @@
 		}
 		.post-mobile ~ .frame-wrapper {
 			@include viewport(medium) {
+				display: block;
+			}
+		}
+	}
+
+	$tabs: demo, markup, styles, scripts;
+	.post-tablist {
+		background-color: hsl(from var(--color-dark-grey) h s calc(l*.8));
+		legend {
+			@include hide;
+		}
+		ul {
+			display: flex;
+			list-style: none;
+		}
+		li {
+			position: relative;
+		}
+		label {
+			--border-opacity: 0;
+			transition: color .1s ease-out, background-color .1s ease-out, box-shadow .1s ease-out;
+			display: block;
+			position: relative;
+			z-index: 0;
+			padding: var(--p) calc(var(--p)*1.5);
+			box-shadow: inset 0 0 0 2px hsl(from var(--color-rose) h s l / var(--border-opacity));
+			color: hsl(from white h s l / .5);
+			background-color: hsl(from black h s l / 0);
+			&::after {
+				transition: opacity .1s ease-out, scale .1s ease-out, background-color .1s ease-out;
+				opacity: 0;
+				scale: 0 1;
+				content: "";
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 2px;
+				background-color: var(--color-rose);
+			}
+		}
+		input {
+			opacity: 0;
+			all: unset;
+			z-index: 1;
+			@include full-offset(0);
+			&, label {
+				cursor: pointer;
+			}
+			&:hover, &:focus, &:active, &:checked {
+				+ label {
+					&::after {
+						opacity: 1;
+						scale: 1 1;
+					}
+				}
+			}
+			&:hover, &:focus, &:checked {
+				+ label {
+					color: white;
+				}
+			}
+			&:hover, &:focus {
+				+ label {
+					background-color: hsl(from white h s l / .1);
+					&::after {
+						background-color: hsl(from white h s l / .4);
+					}
+				}
+			}
+			&:active {
+				+ label {
+					background-color: hsl(from black h s l / .1);
+					color: hsl(from white h s l / .3);
+					&::after {
+						background-color: hsl(from white h s l / .2);
+					}
+				}
+			}
+			&:checked {
+				&, + label {
+					pointer-events: none;
+					cursor: default;
+				}
+				+ label {
+					&::after {
+						background-color: var(--color-rose);
+					}
+				}
+				&:hover, &:focus {
+					+ label {
+						background-color: hsl(from black h s l / 0);
+					}
+				}
+			}
+			&:focus-visible, &:checked:focus-visible {
+				+ label {
+					--border-opacity: 1;
+					background-color: hsl(from white h s l / .1);
+					&::after {
+						opacity: 0;
+					}
+				}
+			}
+		}
+	}
+	.post-tabpanel {
+		z-index: -1;
+		opacity: 0;
+		visibility: hidden;
+		content-visibility: auto;
+		contain-intrinsic-size: 0 var(--height, 400px);
+	}
+	.post-tabpanel:not(.tabpanel-demo) {
+		background-color: light-dark(var(--color-dark-grey), hsl(from var(--color-dark-grey) h s calc(l * 0.55)));
+		@include full-offset(0);
+
+		pre {
+			display: none;
+			height: 100%;
+		}
+	}
+	.tabpanel-demo {
+		position: relative;
+	}
+	.post-tablist:has(.post-tab:not(.tab-demo):checked) + .post-content .reload {
+		opacity: 0;
+		z-index: -1;
+		visibility: hidden;
+	}
+	@each $tab in $tabs {
+		.post-tablist:has(.tab-#{$tab}:checked) + .post-content .tabpanel-#{$tab} {
+			z-index: 2;
+			opacity: 1;
+			visibility: visible;
+
+			pre {
 				display: block;
 			}
 		}

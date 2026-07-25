@@ -1,0 +1,18 @@
+- @links = ['Blog','About','Contact']
+- @nested = ['Tops','Bottoms','Shoes','Accessories','Sale']
+
+%main{:ontouchstart => "true", :role => "main"}
+	%nav{:role => "menu"}
+		%input#link-top{:type => "checkbox", :tabindex => 1, :role => "button", :aria => {:haspopup => "true", :labelledby => "menu", :controls => "nav"}}
+		%label#menu.down{:for => "link-top", :role => "none", :tabindex => -1} Menu
+		%ul#nav{:role => "menu", :"aria-labelledby" => "menu"}
+			%li{:role => "none"}
+				%input#link-shop{:type => "checkbox", :tabindex => 2, :role => "menuitem", :aria => {:haspopup => "true", :labelledby => "shop", :controls => "nest"}}
+				%label#shop.right{:for => "link-shop", :role => "none", :tabindex => -1} Shop
+				%ul#nest{:role => "menu", :"aria-labelledby" => "shop"}
+					- @nested.each do |nested|
+						%li{:role => "none"}
+							%a{:role => "menuitem", :tabindex => 3} #{nested}
+			- @links.each do |links|
+				%li{:role => "none"}
+					%a{:role => "menuitem", :tabindex => 4} #{links}

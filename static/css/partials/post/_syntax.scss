@@ -3,48 +3,60 @@ pre[class$="js"], pre[class$="javascript"] {
 	&::before {
 		content: "JavaScript";
 	}
+	&::after {
+		--color-lang: #f1e05a;
+	}
 }
 pre[class$="css"] {
 	&::before {
 		content: "CSS";
+	}
+	&::after {
+		--color-lang: #563d7c;
 	}
 }
 pre[class$="scss"] {
 	&::before {
 		content: "SCSS";
 	}
+	&::after {
+		--color-lang: #c6538c;
+	}
 }
 pre[class$="html"] {
 	&::before {
 		content: "HTML";
+	}
+	&::after {
+		--color-lang: #e34c26;
 	}
 }
 pre[class$="haml"] {
 	&::before {
 		content: "Haml";
 	}
+	&::after {
+		--color-lang: #ece2a9;
+	}
 }
 pre[class$="markdown"] {
 	&::before {
 		content: "Markdown";
+	}
+	&::after {
+		--color-lang: #083fa1;
 	}
 }
 pre[class$="yaml"] {
 	&::before {
 		content: "YAML";
 	}
+	&::after {
+		--color-lang: #FBEE96;
+	}
 }
 
 pre {
-	&::before {
-		position: absolute;
-		top: calc(var(--p)/3);
-		right: calc(var(--p)/2);
-		color: var(--color-red);
-		font-size: .625rem;
-		font-weight: 500;
-		line-height: 1.4;
-	}
 	code {
 		white-space: initial;
 	}
@@ -58,13 +70,36 @@ pre[class*="language-"] {
 	word-spacing: normal;
 	word-break: break-all;
 	word-wrap: break-word;
-	tab-size: 3;
+	tab-size: 4;
 	hyphens: none;
 }
 
 pre[class*="language-"] {
+	padding: calc(var(--p)*2);
 	overflow: auto;
 	position: relative;
+	&::before {
+		position: relative;
+		inset: auto;
+		display: block;
+		width: fit-content;
+		margin-bottom: var(--p);
+		padding-left: 0.75rem;
+		color: white;
+		font-size: 0.8125rem;
+		line-height: 1;
+	}
+
+	&::after {
+		content: "\25CF";
+		display: block;
+		position: absolute;
+		top: calc(var(--p)*2);
+		left: calc(var(--p)*2);
+		color: var(--color-lang);
+		font-size: 0.625rem;
+		line-height: 0.875rem;
+	}
 }
 
 .language-css > code,
