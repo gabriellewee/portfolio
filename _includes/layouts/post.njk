@@ -8,24 +8,24 @@ tags:
 category: writing
 style: true
 eleventyComputed:
-  year: "{{date|year}}"
+  year: "{{ date | year }}"
 ---
 
 {% from "macros.njk" import author, date, pagination %}
 
 <section class="content post-single h-entry">
 	<div class="posts">
-		<article class="post post-{{category}}{% for tag in tags %}{% if tag != 'entries' %} post-{{tag}}{% endif %}{% endfor %}">
+		<article class="post post-{{ category }}{% for tag in tags %}{% if tag != 'entries' %} post-{{ tag }}{% endif %}{% endfor %}">
 			<div class="post-inner">
 				<header class="post-header inline-header">
 					<div class="post-header-content">
-						<h2><a class="u-url" href="{{page.url}}"><span><span class="p-name">{{title|safe|nbsp}}</span></span></a></h2>
-						{{ date(page, category, "dt-published")}}
+						<h2><a class="u-url" href="{{ page.url }}"><span><span class="p-name">{{ title | safe | nbsp }}</span></span></a></h2>
+						{{ date(page, category, "dt-published") }}
 					</div>
 				</header>
 
 				<div class="post-content post-text e-content">
-					{{content|images|safe}}
+					{{ content | images | safe }}
 				</div>
 
 				<footer class="post-footer">
@@ -34,11 +34,11 @@ eleventyComputed:
 						{% if full == true %}
 							{% set pageUrl = title %}
 						{% endif %}
-						<a class="button" href="{{site.url}}/v1/{{page.date|iso|date('archive')}}/{{pageUrl|slugify}}" target="_blank"><span>View original</span></a>
+						<a class="button" href="{{ site.url }}/v1/{{ page.date | iso | date('archive') }}/{{ pageUrl | slugify }}" target="_blank"><span>View original</span></a>
 					{% endif %}
 					{% if external %}
 						{% for link in external %}
-							<a rel="syndication" class="u-syndication button link-platform {{link.platform}}" href="{{link.url|url}}"><span>Read on {{link.platform|capitalize}}</span></a>
+							<a rel="syndication" class="u-syndication button link-platform {{ link.platform }}" href="{{ link.url | url }}"><span>Read on {{ link.platform | capitalize }}</span></a>
 						{% endfor %}
 					{% endif %}
 				</footer>
@@ -51,14 +51,14 @@ eleventyComputed:
 	{% include 'pages/posts/mentions.html' %}
 
 	<nav class="pagination" aria-label="Pagination">
-		{{ pagination(collections.posts|getNextCollectionItem(page), collections.posts|getPreviousCollectionItem(page)) }}
-		{{ pagination(collections.archive|getNextCollectionItem(page), collections.archive|getPreviousCollectionItem(page)) }}
+		{{ pagination(collections.posts | getNextCollectionItem(page), collections.posts | getPreviousCollectionItem(page)) }}
+		{{ pagination(collections.archive | getNextCollectionItem(page), collections.archive | getPreviousCollectionItem(page)) }}
 	</nav>
 </section>
 
 {{ author(site) }}
 <div class="lightbox-group" data-lightbox-container hidden>
-	{{content|images("lightbox")|safe}}
+	{{ content | images("lightbox") | safe }}
 	<div class="lightbox-background"></div>
 </div>
 

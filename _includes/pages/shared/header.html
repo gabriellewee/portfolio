@@ -6,7 +6,7 @@
 	<div class="top-content">
 		<div class="avatar-link">
 			<a href="/" tabindex="0" aria-labelledby="avatar-message">
-				<span class="avatar avatar-{{avatar if avatar else 'default'}}"></span>
+				<span class="avatar avatar-{{ avatar if avatar else 'default' }}"></span>
 				<span class="avatar avatar-hm"></span>
 				<span id="avatar-message" aria-hidden="true" class="text go-home{% if not ((key == "home" and pagination.pageNumber != 0) or key == "post") %} hidden{% endif %}">
 					{% if (key == "home") and (pagination.pageNumber == 0) %}Refresh?{% else %}Go home?{% endif %}

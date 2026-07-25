@@ -27,8 +27,8 @@ eleventyNavigation:
 	<div class="posts" data-grid>
 		{% for post in collections.code | reverse %}
 			{% set key = post.page.fileSlug %}
-			{% set slug %}{{post.page.date|iso|date('string')}}-{{key}}{% endset %}
-			<article class="post post-code {% if post.data.size %} post-size-{{post.data.size}}{% endif %} {% for filter in post.data.filters %} filter-{{filter}}{% endfor %}" data-anim data-grid-item{% if post.data.width %} style="--max-width: {{post.data.width}}"{% endif %}>
+			{% set slug %}{{ post.page.date | iso | date('string') }}-{{ key }}{% endset %}
+			<article class="post post-code {% if post.data.size %} post-size-{{ post.data.size }}{% endif %} {% for filter in post.data.filters %} filter-{{ filter }}{% endfor %}" data-anim data-grid-item{% if post.data.width %} style="--max-width: {{ post.data.width }}"{% endif %}>
 				<div class="post-inner" data-tablist>
 					<header class="post-header inline-header">
 						{{ header(post.data, post.page, post.data.category, slug) }}
@@ -36,11 +36,11 @@ eleventyNavigation:
 					{{ tablist(key, post.data) }}
 					<div class="post-content">
 						{{ buttons(post.data, post.url) }}
-						<div id="tabpanel-{{key}}-demo" class="post-tabpanel tabpanel-demo" role="tabpanel" data-tabpanel style="--height: {{post.data.height}}px">
-							{% set thumbnail %}/static/code/images/{{key}}/thumbnail.svg{% endset %}
+						<div id="tabpanel-{{ key }}-demo" class="post-tabpanel tabpanel-demo" role="tabpanel" data-tabpanel style="--height: {{ post.data.height }}px">
+							{% set thumbnail %}/static/code/images/{{ key }}/thumbnail.svg{% endset %}
 							{% if post.data.mobile == false %}
 								<picture class="post-mobile">
-									<img src="{{thumbnail}}" alt="{{post.description}}" width="{% stats '.' ~ thumbnail, 'width' %}" height="{% stats '.' ~ thumbnail, 'height' %}"/>
+									<img src="{{ thumbnail }}" alt="{{ post.description }}" width="{% stats '.' ~ thumbnail, 'width' %}" height="{% stats '.' ~ thumbnail, 'height' %}"/>
 								</picture>
 							{% endif %}
 							{{ frame(post.data, post.url) }}
@@ -63,7 +63,7 @@ eleventyNavigation:
 <div class="lightbox-group" data-lightbox-container hidden>
 	{% for post in collections.code | reverse %}
 		{% set key = post.page.fileSlug %}
-		{% set slug %}{{post.page.date|iso|date('string')}}-{{key}}{% endset %}
+		{% set slug %}{{ post.page.date | iso | date('string') }}-{{ key }}{% endset %}
 		{{ frame(post.data, post.url, "lightbox", slug) }}
 	{% endfor %}
 	<div class="lightbox-background"></div>

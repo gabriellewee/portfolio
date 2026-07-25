@@ -3,7 +3,7 @@
 		<menu class="button-reduced-group">
 			{% for link in collections.pages | eleventyNavigation %}
 				{% if link.footer == true %}
-					<li><a class="button-reduced{% if link.url == page.url %} current{% endif %}" href="{{link.url|url}}"{% if link.url == page.url %} tabindex="-1"{% endif %}><span>{{link.title}}</span></a></li>
+					<li><a class="button-reduced{% if link.url == page.url %} current{% endif %}" href="{{ link.url | url }}"{% if link.url == page.url %} tabindex="-1"{% endif %}><span>{{ link.title }}</span></a></li>
 				{% endif %}
 			{% endfor %}
 			{% if key not in ["about", "me"] and not (key == "home" and pagination.pageNumber == 0) %}
@@ -11,7 +11,7 @@
 			{% endif %}
 		</menu>
 		<p class="copyright button-reduced">
-			<span>&copy; {{site.author}} {% copyright 'start' %}–{% copyright 'current' %}</span>
+			<span>&copy; {{ site.author }} {% copyright 'start' %}–{% copyright 'current' %}</span>
 		</p>
 	</nav>
 </footer>

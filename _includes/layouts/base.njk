@@ -3,7 +3,7 @@
 {% if category == "writing" %}
 	{% set metaDescription = page.rawInput | md | description %}
 {% endif %}
-{% set metaTitle %}{% if titleModifier %}{{titleModifier}}{% endif %}{{title}}{% endset %}
+{% set metaTitle %}{% if titleModifier %}{{ titleModifier }}{% endif %}{{ title }}{% endset %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,8 +16,8 @@
 		<meta name="robots" content="noindex,nofollow">
 	{% endif %}
 
-	<link rel="canonical" href="{{site.url}}{{page.url}}">
-	<link rel="alternate" type="application/rss+xml" title="{{site.author}} · RSS" href="/posts/feed.xml">
+	<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+	<link rel="alternate" type="application/rss+xml" title="{{ site.author }} · RSS" href="/posts/feed.xml">
 	
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?update={% today %}">
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?update={% today %}">
@@ -26,48 +26,48 @@
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?update={% today %}">
 	<link rel="manifest" href="/manifest.webmanifest">
 
-	<meta name="application-name" content="{{site.author}}">
-	<meta name="description" content="{{metaDescription}}">
+	<meta name="application-name" content="{{ site.author }}">
+	<meta name="description" content="{{ metaDescription }}">
 	<meta name="msapplication-config" content="/browserconfig.xml">
 
 	{% if blank != true %}
 		<meta name="color-scheme" content="light dark">
 		<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1c2429">
-		<meta name="theme-color" media="(prefers-color-scheme: light)" content="{{theme if theme else '#fae5e1'}}"{% if theme %} data-default="{{theme}}"{% endif %}>
+		<meta name="theme-color" media="(prefers-color-scheme: light)" content="{{ theme if theme else '#fae5e1' }}"{% if theme %} data-default="{{ theme }}"{% endif %}>
 	{% endif %}
 
-	<title>{{site.author}} · {{metaTitle}}</title>
-	<meta property="og:title" content="{{metaTitle}}">
+	<title>{{ site.author }} · {{ metaTitle }}</title>
+	<meta property="og:title" content="{{ metaTitle }}">
 
-	<meta property="og:description" content="{{metaDescription}}">
-	<meta property="og:site_name" content="{{site.author}}">
+	<meta property="og:description" content="{{ metaDescription }}">
+	<meta property="og:site_name" content="{{ site.author }}">
 	<meta property="og:type" content="website"/>
-	<meta property="og:url" content="{{site.url}}{{page.url}}">
+	<meta property="og:url" content="{{ site.url }}{{ page.url }}">
 	{% if og == true %}
-		{% set ogImage %}{{site.url}}/static/images/og/{{key}}.jpg{% endset %}
+		{% set ogImage %}{{ site.url }}/static/images/og/{{ key }}.jpg{% endset %}
 	{% elseif og == "image" %}
 		{% set ogImage %}{% ogPhoto './static/images/' ~ key ~ '/' ~ page.fileSlug ~ '.jpg' %}{% endset %}
 	{% elseif og != false %}
-		{% set ogImage %}{{site.url}}/static/images/og/{{og}}.jpg{% endset %}
+		{% set ogImage %}{{ site.url }}/static/images/og/{{ og }}.jpg{% endset %}
 	{% else %}
-		{% set ogImage %}{{site.url}}/static/images/og/default.jpg{% endset %}
+		{% set ogImage %}{{ site.url }}/static/images/og/default.jpg{% endset %}
 	{% endif %}
-	<meta property="og:image" content="{{ogImage}}">
+	<meta property="og:image" content="{{ ogImage }}">
 	<meta property="og:image:type" content="image/jpg">
 	<meta property="og:image:width" content="1200">
 	<meta property="og:image:height" content="630">
 	
 	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:site" content="{{site.twitter}}">
-	<meta name="twitter:creator" content="{{site.twitter}}">
+	<meta name="twitter:site" content="{{ site.twitter }}">
+	<meta name="twitter:creator" content="{{ site.twitter }}">
 
-	<meta name="generator" content="{{eleventy.generator}}">
+	<meta name="generator" content="{{ eleventy.generator }}">
 
 	{% if blank != true %}
-		<link rel="preload" as="font" href="{{'/static/fonts/mona-sans.woff2'|url}}" crossorigin>
-		<link rel="preload" as="style" href="{{'/static/css/fonts.css'|url}}">
-		<link rel="stylesheet" href="{{'/static/css/fonts.css'|url}}">
-		<link rel="stylesheet" href="{{'/static/css/style.css'|url}}">
+		<link rel="preload" as="font" href="{{ '/static/fonts/mona-sans.woff2' | url }}" crossorigin>
+		<link rel="preload" as="style" href="{{ '/static/css/fonts.css' | url }}">
+		<link rel="stylesheet" href="{{ '/static/css/fonts.css' | url }}">
+		<link rel="stylesheet" href="{{ '/static/css/style.css' | url }}">
 	{% endif %}
 	{% set stylesheet = "/static/css/style.css" %}
 	{% if style == true %}
@@ -79,51 +79,51 @@
 	{% elseif style %}
 		{% set stylesheet = "/static/" ~ style ~ ".css" %}
 	{% endif %}
-	<link rel="stylesheet" href="{{stylesheet|url}}">
+	<link rel="stylesheet" href="{{ stylesheet | url }}">
 
 	{% if blank != true %}
 		<noscript>
-			<link rel="stylesheet" href="{{'/static/css/no-js.css'|url}}">
+			<link rel="stylesheet" href="{{ '/static/css/no-js.css' | url }}">
 		</noscript>
 	{% endif %}
 </head>
-<body class="{% if key %}page-{{key}}{% endif %}{% if pagination.pageNumber == 0 %} page-index{% endif %}{% if filters %} page-filters{% endif %}">
+<body class="{% if key %}page-{{ key }}{% endif %}{% if pagination.pageNumber == 0 %} page-index{% endif %}{% if filters %} page-filters{% endif %}">
 	{% if blank != true and header != false %}{% include 'pages/shared/header.html' %}{% endif %}
 
 	<main class="main">
-		{% block content %}{{content|safe}}{% endblock %}
+		{% block content %}{{ content | safe }}{% endblock %}
 	</main>
 
 	{% if blank != true %}
 		{% if footer != false %}{% include 'pages/shared/footer.html' %}{% endif %}
 
-		<script src="{{'/static/js/lib/luxon.min.js'|url}}"></script>
-		<script src="{{'/static/js/lib/gsap/gsap.min.js'|url}}"></script>
-		<script src="{{'/static/js/lib/gsap/scroll-trigger.min.js'|url}}"></script>
+		<script src="{{ '/static/js/lib/luxon.min.js' | url }}"></script>
+		<script src="{{ '/static/js/lib/gsap/gsap.min.js' | url }}"></script>
+		<script src="{{ '/static/js/lib/gsap/scroll-trigger.min.js' | url }}"></script>
 		{% if key == "home" and pagination.pageNumber == 0 %}
-			<script src="{{'/static/js/lib/gsap/text.min.js'|url}}"></script>
+			<script src="{{ '/static/js/lib/gsap/text.min.js' | url }}"></script>
 		{% endif %}
 		{% if isotope == true %}
-			<script src="{{'/static/js/lib/isotope.min.js'|url}}"></script>
-			<script src="{{'/static/js/lib/packery.min.js'|url}}"></script>
+			<script src="{{ '/static/js/lib/isotope.min.js' | url }}"></script>
+			<script src="{{ '/static/js/lib/packery.min.js' | url }}"></script>
 		{% endif %}
 		{% if key == "home" %}
-			<script src="{{'/static/js/lib/infinite-scroll.js'|url}}"></script>
+			<script src="{{ '/static/js/lib/infinite-scroll.js' | url }}"></script>
 		{% else %}
-			<script src="{{'/static/js/lib/imagesloaded.min.js'|url}}"></script>
+			<script src="{{ '/static/js/lib/imagesloaded.min.js' | url }}"></script>
 		{% endif %}
 		{% if key == "post" %}
-			<script type="module" src="{{'/static/js/post.js'|url}}"></script>
+			<script type="module" src="{{ '/static/js/post.js' | url }}"></script>
 		{% else %}
-			<script type="module" src="{{'/static/js/main.js'|url}}"></script>
+			<script type="module" src="{{ '/static/js/main.js' | url }}"></script>
 		{% endif %}
 		{% if scripts == true %}
-			<script type="module" src="{{'/static/js/pages/' ~ key ~ '.js'|url}}"></script>
+			<script type="module" src="{{ '/static/js/pages/' ~ key ~ '.js' | url }}"></script>
 		{% elseif scripts %}
-			<script type="module" src="{{'/static/js/pages/' ~ scripts ~ '.js'|url}}"></script>
+			<script type="module" src="{{ '/static/js/pages/' ~ scripts ~ '.js' | url }}"></script>
 		{% endif %}
 		{% if key == "home" and pagination.pageNumber == 0 %}
-			<script type="module" src="{{'/static/js/pages/home.js'|url}}"></script>
+			<script type="module" src="{{ '/static/js/pages/home.js' | url }}"></script>
 		{% endif %}
 	{% endif %}
 	<script>document.body.addEventListener('touchstart', function() {}, {passive: true});</script>

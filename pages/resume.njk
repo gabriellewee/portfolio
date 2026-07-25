@@ -27,13 +27,13 @@ eleventyNavigation:
 					<ul>
 						<li>
 							<div class="link-item">
-								<a href="{{site.url}}"><span>{{site.url}}</span></a>
+								<a href="{{ site.url }}"><span>{{ site.url }}</span></a>
 							</div>
 						</li>
 						{% for type in site.links %}{% if type.name == "messaging" %}{% for link in type.links %}{% if link.resume %}
 							<li>
 								<div class="link-item">
-									<a href="{{link.url}}"><span>{{link.resume}}</span></a>
+									<a href="{{ link.url }}"><span>{{ link.resume }}</span></a>
 								</div>
 							</li>
 						{% endif %}{% endfor %}{% endif %}{% endfor %}
@@ -52,22 +52,22 @@ eleventyNavigation:
 					<ul>
 						{% for job in about.resume.experience %}
 							{% set titleTemplate %}
-								{{job.title}}{% if job.company %} at {{job.company}}{% endif %}
+								{{ job.title }}{% if job.company %} at {{ job.company }}{% endif %}
 							{% endset %}
 							<li>
 								<div class="resume-item">
 									<div class="date">
-										<p>{{job.start}} — {% if job.end%}{{job.end}}{% else %}Now{% endif %}</p>
+										<p>{{ job.start }} — {% if job.end%}{{ job.end }}{% else %}Now{% endif %}</p>
 									</div>
 									<div class="description">
 										<h3>
 											{% if job.website %}
-												<a href="{{job.website}}"><span>{{titleTemplate}}</span></a>
+												<a href="{{ job.website }}"><span>{{ titleTemplate }}</span></a>
 											{% else %}
-												{{titleTemplate}}
+												{{ titleTemplate }}
 											{% endif %}
 										</h3>
-										<p>{{job.location}}</p>
+										<p>{{ job.location }}</p>
 									</div>
 								</div>
 							</li>
@@ -88,22 +88,22 @@ eleventyNavigation:
 						{% for degree in about.resume.education %}
 							<li>
 								{% set titleTemplate %}
-									{{degree.type}} at {{degree.school}}
+									{{ degree.type }} at {{ degree.school }}
 								{% endset %}
 								<div class="resume-item">
 									<div class="date">
-										<p>{{degree.start}} — {{degree.end}}</p>
+										<p>{{ degree.start }} — {{ degree.end }}</p>
 									</div>
 									<div class="description">
 										<h3>
 											{% if role.website %}
-												<a href="{{role.website}}"><span>{{titleTemplate}}</span></a>
+												<a href="{{ role.website }}"><span>{{ titleTemplate }}</span></a>
 											{% else %}
-												{{titleTemplate}}
+												{{ titleTemplate }}
 											{% endif %}
 										</h3>
-										<p>{{degree.major}}</p>
-										<p>{{degree.location}}</p>
+										<p>{{ degree.major }}</p>
+										<p>{{ degree.location }}</p>
 									</div>
 								</div>
 							</li>
@@ -123,22 +123,22 @@ eleventyNavigation:
 					<ul class="grid">
 						{% for role in about.resume.volunteering %}
 							{% set titleTemplate %}
-								{{role.title}}{% if role.organization %} at {{role.organization}}{% endif %}
+								{{ role.title }}{% if role.organization %} at {{ role.organization }}{% endif %}
 							{% endset %}
 							<li>
 								<div class="resume-item">
 									<div class="date">
-										<p>{{role.start}} — {{role.end}}</p>
+										<p>{{ role.start }} — {{ role.end }}</p>
 									</div>
 									<div class="description">
 										<h3>
 											{% if role.website %}
-												<a href="{{role.website}}"><span>{{titleTemplate}}</span></a>
+												<a href="{{ role.website }}"><span>{{ titleTemplate }}</span></a>
 											{% else %}
-												{{titleTemplate}}
+												{{ titleTemplate }}
 											{% endif %}
 										</h3>
-										<p>{{role.location}}</p>
+										<p>{{ role.location }}</p>
 									</div>
 								</div>
 							</li>
@@ -155,7 +155,7 @@ eleventyNavigation:
 			{% for action in about.resume.actions %}
 				<li>
 					<div class="link-item footer-item">
-						<{% if action.element %}{{action.element}}{% else %}a{% endif %} class="{% if action.class %}{{action.class}}{% else %}{{action.title.toLowerCase()}}{% endif %}" {% if action.function %}{{action.function}}{% else %}href="{{action.url}}"{% endif %}><span>{{action.title}}</span></{% if action.element %}{{action.element}}{% else %}a{% endif %}>
+						<{% if action.element %}{{ action.element }}{% else %}a{% endif %} class="{% if action.class %}{{ action.class }}{% else %}{{ action.title.toLowerCase() }}{% endif %}" {% if action.function %}{{ action.function }}{% else %}href="{{ action.url }}"{% endif %}><span>{{ action.title }}</span></{% if action.element %}{{ action.element }}{% else %}a{% endif %}>
 					</div>
 				</li>
 			{% endfor %}

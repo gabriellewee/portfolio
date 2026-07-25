@@ -21,10 +21,10 @@ eleventyNavigation:
 				<header class="post-header">
 					<h2>Hi there! 👋🏼 This is a recent photo of me.</h2>
 				</header>
-				<figure class="post-image" aria-label="{{site.photo.personal}}" role="img"></figure>
+				<figure class="post-image" aria-label="{{ site.photo.personal }}" role="img"></figure>
 				<picture class="no-css">
-					<source type="image/webp" srcset="{{site.url}}/static/images/avatars/intro@2x.webp">
-					<img class="u-photo" src="{{site.url}}/static/images/avatars/intro@2x.jpg" alt="{{site.photo.personal}}" width="512" height="512"/>
+					<source type="image/webp" srcset="{{ site.url }}/static/images/avatars/intro@2x.webp">
+					<img class="u-photo" src="{{ site.url }}/static/images/avatars/intro@2x.jpg" alt="{{ site.photo.personal }}" width="512" height="512"/>
 				</picture>
 			</div>
 			<hr class="no-css"/>
@@ -37,12 +37,12 @@ eleventyNavigation:
 				</header>
 
 				<ul class="grid">
-					{% for book in about.loans.timeline|limit(8) %}
+					{% for book in about.loans.timeline | limit(8) %}
 						<li>
-							<a class="post-thumbnail post-thumbnail-book book-{{book.title.text|slugify}} theme-{% stats book.cover.url, 'theme', 'top left' %}" href="{{book.title.url}}" target="_blank" style="--color: {{book.cover.color}}">
+							<a class="post-thumbnail post-thumbnail-book book-{{ book.title.text | slugify }} theme-{% stats book.cover.url, 'theme', 'top left' %}" href="{{ book.title.url }}" target="_blank" style="--color: {{ book.cover.color }}">
 								{% external book.cover.url, book.title.text ~ " by " ~ book.author, 300, "eager" %}
 							</a>
-							<p class="no-css"><a href="{{book.title.url}}" target="_blank">{{book.title.text}} by {{book.author}}</a></p>
+							<p class="no-css"><a href="{{ book.title.url }}" target="_blank">{{ book.title.text }} by {{ book.author }}</a></p>
 						</li>
 					{% endfor %}
 				</ul>
@@ -59,12 +59,12 @@ eleventyNavigation:
 
 				{% if steam.response.games[0] %}
 					<ul class="grid steam">
-						{% for game in steam.response.games|limit(4) %}
+						{% for game in steam.response.games | limit(4) %}
 							<li>
-								<a class="post-thumbnail post-thumbnail-game game-{{game.name|slugify}} theme-{% stats game.poster, 'theme', 'top left' %}" href="https://store.steampowered.com/app/{{game.appid}}/" target="_blank">
+								<a class="post-thumbnail post-thumbnail-game game-{{ game.name | slugify }} theme-{% stats game.poster, 'theme', 'top left' %}" href="https://store.steampowered.com/app/{{ game.appid }}/" target="_blank">
 									{% external game.poster, game.name, 300, "eager" %}
 								</a>
-								<p class="no-css"><a href="https://store.steampowered.com/app/{{game.appid}}/" target="_blank">{{game.name}}</a></p>
+								<p class="no-css"><a href="https://store.steampowered.com/app/{{ game.appid }}/" target="_blank">{{ game.name }}</a></p>
 							</li>
 						{% endfor %}
 					</ul>
@@ -79,10 +79,10 @@ eleventyNavigation:
 						{% if ((game.properties["Console/Platform"].multi_select[0].name == "Nintendo Switch") or (game.properties["Console/Platform"].multi_select[0].name == "Nintendo Switch 2")) and (game.properties.Status.status.name == "In progress") %}
 							<li>
 								{% if game.properties.Cover.files[0].file %}{% set cover = game.properties.Cover.files[0].file.url %}{% else %}{% set cover = game.properties.Cover.files[0].external.url %}{% endif %}
-								<a class="post-thumbnail post-thumbnail-game game-{{game.properties.Title.title[0].plain_text|slugify}}" href="{{game.properties.Link.url}}" target="_blank" rel="noopener noreferrer">
+								<a class="post-thumbnail post-thumbnail-game game-{{ game.properties.Title.title[0].plain_text | slugify }}" href="{{ game.properties.Link.url }}" target="_blank" rel="noopener noreferrer">
 									{% external cover, game.properties.Title.title[0].plain_text, 600, "lazy" %}
 								</a>
-								<p class="no-css"><a href="{{game.properties.Link.url}}" target="_blank" rel="noopener noreferrer">{{game.properties.Title.title[0].plain_text}}</a></p>
+								<p class="no-css"><a href="{{ game.properties.Link.url }}" target="_blank" rel="noopener noreferrer">{{ game.properties.Title.title[0].plain_text }}</a></p>
 							</li>
 						{% endif %}
 					{% endfor %}
@@ -98,10 +98,10 @@ eleventyNavigation:
 						{% if (game.properties["Console/Platform"].multi_select[0].name == "iOS") and (game.properties.Status.status.name == "In progress") %}
 							<li>
 								{% if game.properties.Cover.files[0].file %}{% set cover = game.properties.Cover.files[0].file.url %}{% else %}{% set cover = game.properties.Cover.files[0].external.url %}{% endif %}
-								<a class="post-thumbnail post-thumbnail-game {{game.properties.Title.title[0].plain_text|slugify}}" href="{{game.properties.Link.url}}" target="_blank" rel="noopener noreferrer">
+								<a class="post-thumbnail post-thumbnail-game {{ game.properties.Title.title[0].plain_text | slugify }}" href="{{ game.properties.Link.url }}" target="_blank" rel="noopener noreferrer">
 									{% external cover, game.properties.Title.title[0].plain_text, 600, "lazy" %}
 								</a>
-								<p class="no-css"><a href="{{game.properties.Link.url}}" target="_blank" rel="noopener noreferrer">{{game.properties.Title.title[0].plain_text}}</a></p>
+								<p class="no-css"><a href="{{ game.properties.Link.url }}" target="_blank" rel="noopener noreferrer">{{ game.properties.Title.title[0].plain_text }}</a></p>
 							</li>
 						{% endif %}
 					{% endfor %}
@@ -139,7 +139,7 @@ eleventyNavigation:
 						{% for controller in about.controllers %}
 							<li>
 								<picture>
-									<img src="/static/images/svg/controllers/{{controller.name}}.svg" width="156" height="156" alt="Icon rendition of modded {{controller.color}} {{controller.brand}} {{controller.type}}"/>
+									<img src="/static/images/svg/controllers/{{ controller.name }}.svg" width="156" height="156" alt="Icon rendition of modded {{ controller.color }} {{ controller.brand }} {{ controller.type }}"/>
 								</picture>
 							</li>
 						{% endfor %}
@@ -182,10 +182,10 @@ eleventyNavigation:
 					<h2>I enjoy taking photos of the world around me.</h2>
 				</header>
 				<ul class="flex">
-					{% for media in photography|limit(4) %}
+					{% for media in photography | limit(4) %}
 						<li>
-							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
-								<a class="post-thumbnail expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image" data-media-expand{% if media.focus %} style="--focus-x: {% if media.focus.x %}{{media.focus.x}}{% else %}0{% endif %}%; --focus-y: {% if media.focus.y %}{{media.focus.y}}{% else %}0{% endif %}%"{% endif %}>
+							<figure id="{{ media.date | safe }}-{{ media.name }}" aria-label="{{ media.description }}">
+								<a class="post-thumbnail expand" href="#{{ media.date | safe }}-{{ media.name }}-lightbox" role="button" aria-label="Expand image" data-media-expand{% if media.focus %} style="--focus-x: {% if media.focus.x %}{{ media.focus.x }}{% else %}0{% endif %}%; --focus-y: {% if media.focus.y %}{{ media.focus.y }}{% else %}0{% endif %}%"{% endif %}>
 									{% image './static/images/photography/' ~ media.date ~ '-' ~ media.name ~ '.jpg', media.description, 350, loop.index %}
 								</a>
 							</figure>
@@ -245,8 +245,8 @@ eleventyNavigation:
 		</figure>
 	</dialog>
 
-	{% for media in photography|limit(4) %}
-		<a class="lightbox" id="{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Close image" href="#{{media.date|safe}}-{{media.name}}" data-lightbox></a>
+	{% for media in photography | limit(4) %}
+		<a class="lightbox" id="{{ media.date | safe }}-{{ media.name }}-lightbox" role="button" aria-label="Close image" href="#{{ media.date | safe }}-{{ media.name }}" data-lightbox></a>
 		<dialog class="lightbox-content image" aria-label="Image preview" autofocus>
 			<figure>
 				{% image './static/images/photography/' ~ media.date ~ '-' ~ media.name ~ '.jpg', media.description, 'screen' %}

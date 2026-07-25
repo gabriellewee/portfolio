@@ -18,12 +18,12 @@ eleventyNavigation:
 <section class="content">
 	<article class="posts-archive">
 		{% for year, posts in collections.writing | groupby("data.year") | dictsort | reverse %}
-			<h2 data-anim>{{year}}</h2>
+			<h2 data-anim>{{ year }}</h2>
 			<ul>
 				{% for post in posts | reverse %}
 					<li data-anim>
-						<h3><a href="{{post.url|url}}"><span>{{post.data.title|safe}}</span></a></h3>
-						<time datetime="{{post.date|iso|date('string')}}">{{post.date|iso|date('readable')}}</time>
+						<h3><a href="{{ post.url | url }}"><span>{{ post.data.title | safe }}</span></a></h3>
+						<time datetime="{{ post.date | iso | date('string') }}">{{ post.date | iso | date('readable') }}</time>
 					</li>
 				{% endfor %}
 			</ul>

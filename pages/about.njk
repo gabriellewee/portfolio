@@ -42,7 +42,7 @@ eleventyNavigation:
 				<div class="post-links">
 					<menu class="button-reduced-group">
 						{% for link in collections.pages | eleventyNavigation %}{% if link.sitemap !== false %}
-							<li><a class="button-reduced" href="{{link.url|url}}"{% if link.url == page.url %} tabindex="-1"{% endif %}><span>{{link.title}}</span></a></li>
+							<li><a class="button-reduced" href="{{ link.url | url }}"{% if link.url == page.url %} tabindex="-1"{% endif %}><span>{{ link.title }}</span></a></li>
 						{% endif %}{% endfor %}
 					</menu>
 				</div>
@@ -60,20 +60,20 @@ eleventyNavigation:
 						{% for version in site.versions %}
 							<li>
 								<div class="link-thumbnail">
-									<a class="icon-wrapper" href="/v{{loop.index}}/" target="blank">
+									<a class="icon-wrapper" href="/v{{ loop.index }}/" target="blank">
 										<span class="icon">
 											<picture>
-												<img src="/static/images/svg/versions/v{{loop.index}}.svg" width="100" height="100" alt="Version {{loop.index}} - {{version}}"/>
+												<img src="/static/images/svg/versions/v{{ loop.index }}.svg" width="100" height="100" alt="Version {{ loop.index }} - {{ version }}"/>
 											</picture>
 											<span class="icon-copy" hidden aria-hidden="true">
 												<span>Version</span>
-												<span class="icon-{{loop.index}}"></span>
+												<span class="icon-{{ loop.index }}"></span>
 											</span>
 										</span>
 									</a>
-									<span class="tooltip tooltip-bottom large inline monospace" style="--tooltip-label: '{{version}}'" aria-hidden="true"><span></span></span>
+									<span class="tooltip tooltip-bottom large inline monospace" style="--tooltip-label: '{{ version }}'" aria-hidden="true"><span></span></span>
 								</div>
-								<p class="no-css"><a href="/v{{loop.index}}/" target="blank"><strong>Version {{loop.index}}</strong> ({{version}})</a></p>
+								<p class="no-css"><a href="/v{{ loop.index }}/" target="blank"><strong>Version {{ loop.index }}</strong> ({{ version }})</a></p>
 							</li>
 						{% endfor %}
 					</ol>
@@ -89,14 +89,14 @@ eleventyNavigation:
 				</header>
 				<div class="post-content">
 					{% for tone in site.preferences[0].items[0].options %}
-						<ul class="tone-{{tone.name}}"{% if tone.name != "pink" %} hidden{% endif %}>
+						<ul class="tone-{{ tone.name }}"{% if tone.name != "pink" %} hidden{% endif %}>
 							{% for swatch in tone.swatches %}
 								<li>
-									<div class="swatch-container" aria-label="{{swatch.name|capitalize}}" role="tooltip">
-										<span class="swatch" aria-hidden="true" style="--background: {{swatch.hex}}"></span>
-										<span class="tooltip tooltip-bottom large inline monospace" style="--tooltip-label: '{{swatch.hex}}'"><span></span></span>
+									<div class="swatch-container" aria-label="{{ swatch.name | capitalize }}" role="tooltip">
+										<span class="swatch" aria-hidden="true" style="--background: {{ swatch.hex }}"></span>
+										<span class="tooltip tooltip-bottom large inline monospace" style="--tooltip-label: '{{ swatch.hex }}'"><span></span></span>
 									</div>
-									<span class="no-css"><strong>{{swatch.name|capitalize}}:</strong> {{swatch.hex}}</span>
+									<span class="no-css"><strong>{{ swatch.name | capitalize }}:</strong> {{ swatch.hex }}</span>
 								</li>
 							{% endfor %}
 						</ul>
@@ -117,7 +117,7 @@ eleventyNavigation:
 						<li>
 							<div class="buttons">
 								{% for link in about.resume.links %}
-									<p><a class="button" href="{{link.url}}"><span>{{link.title}}</span></a></p>
+									<p><a class="button" href="{{ link.url }}"><span>{{ link.title }}</span></a></p>
 								{% endfor %}
 							</div>
 						</li>
@@ -138,9 +138,9 @@ eleventyNavigation:
 							<li>
 								<div class="link-award">
 									<div>
-										<h3><a href="{{award.url}}"><span>{{award.website}}</span></a></h3>
-										<p>{{award.year}} {{award.organization}} {{award.award}}</p>
-										<p>{{award.description}}</p>
+										<h3><a href="{{ award.url }}"><span>{{ award.website }}</span></a></h3>
+										<p>{{ award.year }} {{ award.organization }} {{ award.award }}</p>
+										<p>{{ award.description }}</p>
 									</div>
 								</div>
 							</li>
@@ -161,8 +161,8 @@ eleventyNavigation:
 						{% for mention in about.mentions %}
 							<li>
 								<div class="link-item">
-									<strong>{{mention.publication}}</strong>
-									<a href="{{mention.url|url}}">{{mention.title|safe|nbsp}}</a>
+									<strong>{{ mention.publication }}</strong>
+									<a href="{{ mention.url | url }}">{{ mention.title | safe | nbsp }}</a>
 								</div>
 							</li>
 						{% endfor %}
@@ -184,13 +184,13 @@ eleventyNavigation:
 								<div class="link-tile">
 									<h3>
 										{% if feature.url %}
-											<a href="{{feature.url|url}}"><span>{{feature.title|safe|nbsp}}</span></a>
+											<a href="{{ feature.url | url }}"><span>{{ feature.title | safe | nbsp }}</span></a>
 										{% elseif feature.external %}
-											<a href="{{feature.external[0].url|url}}"><span>{{feature.title|safe|nbsp}}</span></a>
+											<a href="{{ feature.external[0].url | url }}"><span>{{ feature.title | safe | nbsp }}</span></a>
 										{% endif %}
 									</h3>
 									<div>
-										<p>{{feature.platform}}</p>
+										<p>{{ feature.platform }}</p>
 									</div>
 								</div>
 							</li>

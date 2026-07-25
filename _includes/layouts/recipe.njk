@@ -19,34 +19,34 @@ label: recipe
 
 <section class="content post-single h-entry">
 	<div class="posts">
-		<article class="post post-{{category}}{% for tag in tags %}{% if tag != 'entries' %} post-{{tag}}{% endif %}{% endfor %}">
+		<article class="post post-{{ category }}{% for tag in tags %}{% if tag != 'entries' %} post-{{ tag }}{% endif %}{% endfor %}">
 			<div class="post-inner">
 				<header class="post-header">
 					<div class="post-header-image theme-{% stats './static/images/' ~ key ~ '/' ~ page.fileSlug ~ '.jpg', 'theme', 'bottom left' %}">
 						{% image './static/images/' ~ key ~ '/' ~ page.fileSlug ~ '.jpg', 'Hero image showing ' ~ title, 'default' %}
 					</div>
 					<div class="post-header-content">
-						<h2><a class="u-url" href="{{page.url}}" aria-label="Recipe for {{title|safe}}"><span class="p-name"><span>{{title|safe}}</span></span></a></h2>
-						{{ date(page, category, "dt-published")}}
+						<h2><a class="u-url" href="{{ page.url }}" aria-label="Recipe for {{ title | safe }}"><span class="p-name"><span>{{ title | safe }}</span></span></a></h2>
+						{{ date(page, category, "dt-published") }}
 					</div>
 				</header>
 
 				<aside class="post-meta">
-					<p class="recipe-servings"><strong>Servings:</strong> <span>{{servings}}</span></p>
+					<p class="recipe-servings"><strong>Servings:</strong> <span>{{ servings }}</span></p>
 					{% if prep %}
-						<p class="recipe-prep"><strong>Prep:</strong> <span class="recipe-duration" data-duration="{{prep}}">{{prep}} minutes</span></p>
+						<p class="recipe-prep"><strong>Prep:</strong> <span class="recipe-duration" data-duration="{{ prep }}">{{ prep }} minutes</span></p>
 					{% endif %}
 					{% if cook %}
-						<p class="recipe-cook"><strong>Cook:</strong> <span class="recipe-duration" data-duration="{{cook}}">{{cook}} minutes</span></p>
+						<p class="recipe-cook"><strong>Cook:</strong> <span class="recipe-duration" data-duration="{{ cook }}">{{ cook }} minutes</span></p>
 					{% endif %}
 					{% if prep and cook %}
 						{% set total = [prep,cook] %}
-						<p class="recipe-total"><strong>Total:</strong> <span class="recipe-duration" data-duration="{{total|sum}}">{{total|sum}} minutes</span></p>
+						<p class="recipe-total"><strong>Total:</strong> <span class="recipe-duration" data-duration="{{ total | sum }}">{{ total | sum }} minutes</span></p>
 					{% endif %}
 				</aside>
 
 				<div class="post-content post-text e-content">
-					{{content|images|safe}}
+					{{ content | images | safe }}
 				</div>
 
 				<footer class="post-footer">
@@ -54,7 +54,7 @@ label: recipe
 					{% for link in external %}
 							{{ view(link, post.data) }}
 						{% endfor %}
-					<div class="emoji" style="--emoji: '{{emoji}}'"></div>
+					<div class="emoji" style="--emoji: '{{ emoji }}'"></div>
 				</footer>
 			</div>
 		</article>
