@@ -40,7 +40,7 @@ eleventyNavigation:
 					{% for book in about.loans.timeline|limit(8) %}
 						<li>
 							<a class="post-thumbnail post-thumbnail-book book-{{book.title.text|slugify}} theme-{% stats book.cover.url, 'theme', 'top left' %}" href="{{book.title.url}}" target="_blank" style="--color: {{book.cover.color}}">
-								{% external book.cover.url, book.title.text + " by " + book.author, 300, "eager" %}
+								{% external book.cover.url, book.title.text ~ " by " ~ book.author, 300, "eager" %}
 							</a>
 							<p class="no-css"><a href="{{book.title.url}}" target="_blank">{{book.title.text}} by {{book.author}}</a></p>
 						</li>
@@ -186,7 +186,7 @@ eleventyNavigation:
 						<li>
 							<figure id="{{media.date|safe}}-{{media.name}}" aria-label="{{media.description}}">
 								<a class="post-thumbnail expand" href="#{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Expand image" data-media-expand{% if media.focus %} style="--focus-x: {% if media.focus.x %}{{media.focus.x}}{% else %}0{% endif %}%; --focus-y: {% if media.focus.y %}{{media.focus.y}}{% else %}0{% endif %}%"{% endif %}>
-									{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 350, loop.index %}
+									{% image './static/images/photography/' ~ media.date ~ '-' ~ media.name ~ '.jpg', media.description, 350, loop.index %}
 								</a>
 							</figure>
 						</li>
@@ -249,7 +249,7 @@ eleventyNavigation:
 		<a class="lightbox" id="{{media.date|safe}}-{{media.name}}-lightbox" role="button" aria-label="Close image" href="#{{media.date|safe}}-{{media.name}}" data-lightbox></a>
 		<dialog class="lightbox-content image" aria-label="Image preview" autofocus>
 			<figure>
-				{% image './static/images/photography/' + media.date + '-' + media.name + '.jpg', media.description, 'screen' %}
+				{% image './static/images/photography/' ~ media.date ~ '-' ~ media.name ~ '.jpg', media.description, 'screen' %}
 			</figure>
 		</dialog>
 	{% endfor %}

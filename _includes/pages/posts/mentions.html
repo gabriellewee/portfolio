@@ -1,4 +1,4 @@
-{% set pageLink = site.url + page.url %}
+{% set pageLink = site.url ~ page.url %}
 <aside class="mentions">
 	{% for target, webmentions in webmentions.links | groupby("target") %}
 		{% for type, webmentions in webmentions | groupby("activity.type") | dictsort %}

@@ -81,7 +81,7 @@ button: reset content
 		line.setAttribute("y1", y1);
 		line.setAttribute("y2", y2);
 		setTimeout(function(){
-			var length = Math.sqrt( (x2-=x1)*x2 + (y2-=y1)*y2 );
+			var length = Math.sqrt( (x2-=x1)*x2 ~ (y2-=y1)*y2 );
 			var total = round(length, 3);
 			console.log(total);
 			document.getElementById('line-output').value = total;

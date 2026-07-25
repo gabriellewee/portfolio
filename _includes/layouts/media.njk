@@ -24,21 +24,21 @@
 			{% if post.svg == true %}
 				{% set file = "svg" %}
 			{% endif %}
-			<article class="post post-media post-{{key}}{% if post.size %} post-size-{{post.size}}{% endif %} {{post.tags|isoFilter}}" data-grid-item data-anim data-orientation="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'orientation' %}">
+			<article class="post post-media post-{{key}}{% if post.size %} post-size-{{post.size}}{% endif %} {{post.tags|isoFilter}}" data-grid-item data-anim data-orientation="{% stats './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.' ~ file, 'orientation' %}">
 				<div class="post-inner">
 					<header class="post-header">
 						{{ header(post, post, category) }}
 					</header>
 					<div class="post-content">
-						<figure id="{{post.date|safe}}-{{post.name}}" class="has-placeholder{% if file %} theme-{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'theme', 'top left' %}{% endif %}" aria-label="{{type|capitalize}}{% if post.location or post.title %}, {{post.location or post.title}}{% endif %}"{% if post.description %} data-alt="{{post.description}}"{% endif %} style="aspect-ratio:{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'ratio' %}">
+						<figure id="{{post.date|safe}}-{{post.name}}" class="has-placeholder{% if file %} theme-{% stats './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.' ~ file, 'theme', 'top left' %}{% endif %}" aria-label="{{type|capitalize}}{% if post.location or post.title %}, {{post.location or post.title}}{% endif %}"{% if post.description %} data-alt="{{post.description}}"{% endif %} style="aspect-ratio:{% stats './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.' ~ file, 'ratio' %}">
 							{% if post.upscale %}
 								{{ upscale(post) }}
 							{% elseif post.svg == true %}
-								<picture style="--background: {% if post.color %}{{post.color}}{% else %}{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'average' %}{% endif %}">
-									<img src="/static/images/{{key}}/{{post.date}}-{{post.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'width' %}" height="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'height' %}"/>
+								<picture style="--background: {% if post.color %}{{post.color}}{% else %}{% stats './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.svg', 'average' %}{% endif %}">
+									<img src="/static/images/{{key}}/{{post.date}}-{{post.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.svg', 'width' %}" height="{% stats './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.svg', 'height' %}"/>
 								</picture>
 							{% else %}
-								{% image './static/images/' + key + '/' + post.date + '-' + post.name + '.' + extension, post.description, 'default', loop.index %}
+								{% image './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.' ~ extension, post.description, 'default', loop.index %}
 							{% endif %}
 							{{ indicator() }}
 							<figcaption class="media-data" data-focus-container>
@@ -56,15 +56,15 @@
 											<div class="media-thumbnail">
 												<a class="media-expand expand" href="#{{post.date|safe}}-{{post.name}}-lightbox" role="button" aria-label="Expand image" hidden data-media-expand>
 													<span class="no-image" hidden><span>Expand</span></span>
-													<span class="has-image{% if file %} theme-{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.' + file, 'theme', 'top left' %}{% endif %}" aria-hidden="true">
+													<span class="has-image{% if file %} theme-{% stats './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.' ~ file, 'theme', 'top left' %}{% endif %}" aria-hidden="true">
 														{% if post.upscale %}
 															{{ upscale(post) }}
 														{% elseif post.svg == true %}
-															<picture style="--background: {% if post.color %}{{post.color}}{% else %}{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'average' %}{% endif %}">
-																<img src="/static/images/{{key}}/{{post.date}}-{{post.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'width', 400 %}" height="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'height', 400 %}"/>
+															<picture style="--background: {% if post.color %}{{post.color}}{% else %}{% stats './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.svg', 'average' %}{% endif %}">
+																<img src="/static/images/{{key}}/{{post.date}}-{{post.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.svg', 'width', 400 %}" height="{% stats './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.svg', 'height', 400 %}"/>
 															</picture>
 														{% else %}
-															{% image './static/images/' + key + '/' + post.date + '-' + post.name + '.' + extension, post.description, 200, loop.index %}
+															{% image './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.' ~ extension, post.description, 200, loop.index %}
 														{% endif %}
 													</span>
 												</a>
@@ -94,10 +94,10 @@
 					{{ upscale(post) }}
 				{% elseif post.svg == true %}
 					<picture>
-						<img src="/static/images/{{key}}/{{post.date}}-{{post.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'width' %}" height="{% stats './static/images/' + key + '/' + post.date + '-' + post.name + '.svg', 'height' %}"/>
+						<img src="/static/images/{{key}}/{{post.date}}-{{post.name}}.svg" alt="{{post.description}}" width="{% stats './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.svg', 'width' %}" height="{% stats './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.svg', 'height' %}"/>
 					</picture>
 				{% else %}
-					{% image './static/images/' + key + '/' + post.date + '-' + post.name + '.' + extension, post.description, 'screen' %}
+					{% image './static/images/' ~ key ~ '/' ~ post.date ~ '-' ~ post.name ~ '.' ~ extension, post.description, 'screen' %}
 				{% endif %}
 			</figure>
 		</dialog>
