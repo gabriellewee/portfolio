@@ -93,7 +93,37 @@ if (container) {
 					history: false
 				});
 
-				lightbox({scroll: scroll});
+				const syncedScroll = (() => {
+					let postsReady = false;
+					let lightboxesReady = false;
+					const callbacks = [];
+
+					const fireIfReady = () => {
+						if (postsReady && lightboxesReady) {
+							postsReady = false;
+							lightboxesReady = false;
+							callbacks.forEach((cb) => cb());
+						}
+					};
+
+					scroll.on("append", () => {
+						postsReady = true;
+						fireIfReady();
+					});
+
+					lightboxScroll.on("append", () => {
+						lightboxesReady = true;
+						fireIfReady();
+					});
+
+					return {
+						on: (event, cb) => {
+							if (event === "append") callbacks.push(cb);
+						}
+					};
+				})();
+
+				lightbox({ scroll: syncedScroll });
 
 				scroll.on("append", () => {
 					durationFormat();

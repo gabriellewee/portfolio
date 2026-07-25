@@ -118,7 +118,7 @@
 	{% endset %}
 	
 	{% if type == "lightbox" %}
-		<a class="lightbox" id="{{ slug }}-lightbox" role="button" aria-label="Close preview of {{ src.title }}" href="#{{ slug }}" tabindex="-1" data-lightbox{% if append == true %} data-lightbox-append{% endif %}></a>
+		<a id="{{ slug }}-lightbox" class="lightbox" role="button" aria-label="Close preview of {{ src.title }}" href="#{{ slug }}" tabindex="-1" data-lightbox data-desktop{% if append == true %} data-lightbox-append{% endif %}></a>
 		<dialog class="lightbox-content iframe" aria-label="Preview of {{ src.title }}" autofocus{% if append == true %} data-lightbox-append{% endif %}>
 			{{ iframe | safe }}
 			{{ controls() }}

@@ -249,7 +249,7 @@ eleventyNavigation:
 			{% set slug %}{{ post.data.date | safe }}-{{ post.data.name }}{% endset %}
 			{% set mediaUrl %}/static/images/{{ key }}/{{ post.data.date }}-{{ post.data.name }}.{{ file }}{% endset %}
 			{% set media %}.{{ mediaUrl }}{% endset %}
-			<a class="lightbox" id="{{ slug }}-lightbox" role="button" aria-label="Close image" href="#{{ slug }}" tabindex="-1" data-lightbox data-lightbox-append></a>
+			<a id="{{ slug }}-lightbox" class="lightbox" role="button" aria-label="Close image" href="#{{ slug }}" tabindex="-1" data-lightbox data-lightbox-append></a>
 			<dialog class="lightbox-content image" aria-label="Image preview" autofocus data-lightbox-append>
 				<figure>
 					{% if post.data.upscale %}
@@ -272,7 +272,7 @@ eleventyNavigation:
 				{% set width = media.aspectRatio.width or media.meta.original.width %}
 				{% set slugLong %}{{ postIndex }}-{{ post.data.cid | truncate(5, true, '') }}{% endset %}
 				{% set slug = media.id or slugLong %}
-				<a class="lightbox" id="external-{{ slug }}-lightbox" role="button" aria-label="Close image" href="#external-{{ slug }}" tabindex="-1" data-lightbox data-lightbox-append></a>
+				<a id="external-{{ slug }}-lightbox" class="lightbox" role="button" aria-label="Close image" href="#external-{{ slug }}" tabindex="-1" data-lightbox data-lightbox-append></a>
 				<dialog class="lightbox-content image" aria-label="Image preview" autofocus data-lightbox-append>
 					<figure>
 						{% external image, alt, width %}
