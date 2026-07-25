@@ -56,6 +56,18 @@
 	<hr class="no-css"/>
 {% endmacro %}
 
+{% macro controls() %}
+	<div class="lightbox-controls" role="group">
+		<button class="lightbox-button lightbox-close" aria-label="Close" data-lightbox-close hidden></button>
+		<div class="lightbox-side">
+			<button class="lightbox-button lightbox-prev" aria-label="Previous" data-lightbox-prev hidden></button>
+		</div>
+		<div class="lightbox-side">
+			<button class="lightbox-button lightbox-next" aria-label="Next" data-lightbox-next hidden></button>
+		</div>
+	</div>
+{% endmacro %}
+
 {% macro discord() %}
 	<div class="discord-popup popup" style="--anchor-name: --discord-anchor">
 		<button class="popup-button" popovertarget="discord-window" popovertargetaction="toggle" style="--color-link: var(--color-discord)">
@@ -87,7 +99,7 @@
 						</li>
 					</ul>
 				</div>
-				<button class="popup-close" popovertarget="discord-window" popovertargetaction="hide">{% include 'svg/icons/close.svg' %}</button>
+				<button class="popup-close" popovertarget="discord-window" popovertargetaction="hide">{% include 'svg/icons/close-small.svg' %}</button>
 			</div>
 		</div>
 	</div>
@@ -109,6 +121,7 @@
 		<a class="lightbox" id="{{ slug }}-lightbox" role="button" aria-label="Close preview of {{ src.title }}" href="#{{ slug }}" tabindex="-1" data-lightbox></a>
 		<dialog class="lightbox-content iframe" aria-label="Preview of {{ src.title }}" autofocus>
 			{{ iframe | safe }}
+			{{ controls() }}
 		</dialog>
 	{% else %}
 		{{ iframe | safe }}

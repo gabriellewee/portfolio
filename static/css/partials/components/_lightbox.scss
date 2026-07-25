@@ -1,4 +1,5 @@
 @use 'partials/shared/utilities' as *;
+@use 'partials/shared/mixins' as *;
 
 .expand {
 	display: block;
@@ -13,11 +14,11 @@
 
 .lightbox-content {
 	cursor: zoom-out;
-	top: 50%;
-	left: 50%;
-	translate: -50% -50%;
-	height: min-content;
-	width: min-content;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	max-width: unset;
+	max-height: unset;
 	padding: 0;
 	border: 0;
 	margin: unset;
@@ -36,7 +37,85 @@
 		}
 	}
 	figure {
-		cursor: unset;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		translate: -50% -50%;
+		height: min-content;
+		width: min-content;
+		&, * {
+			cursor: default;
+		}
+	}
+	.lightbox-controls {
+		display: none;
+		@include viewport($ipad-11) {
+			@include hover(true) {
+				display: block;
+			}
+		}
+	}
+	button {
+		--button-size: 18px;
+		all: unset;
+		display: grid;
+		place-items: center;
+		cursor: pointer;
+		width: calc(var(--button-size) + var(--p)*2);
+		height: calc(var(--button-size) + var(--p)*2);
+		opacity: 0;
+		&::before {
+			content: "";
+			display: block;
+			width: calc(100% - var(--p)*2);
+			height: auto;
+			aspect-ratio: 1 / 1;
+		}
+		&:hover, &:focus, &:active {
+			opacity: 1;
+		}
+		&:active {
+			opacity: 0.5;
+		}
+		&:focus-visible {
+			@include focus-shadow(hsl(from white h s l / .5));
+		}
+	}
+	.lightbox-side {
+		display: grid;
+		place-items: center;
+		position: absolute;
+		top: 25%;
+		height: 50%;
+		&:has(.lightbox-prev) {
+			left: calc(var(--p)/3);
+		}
+		&:has(.lightbox-next) {
+			right: calc(var(--p)/3);
+		}
+		&:hover {
+			.lightbox-button {
+				opacity: 1;
+			}
+		}
+	}
+	.lightbox-prev {
+		&::before {
+			background: url(/static/images/svg/icons/caret-left.svg) center / contain no-repeat;
+		}
+	}
+	.lightbox-next {
+		&::before {
+			background: url(/static/images/svg/icons/caret-right.svg) center / contain no-repeat;
+		}
+	}
+	.lightbox-close {
+		position: absolute;
+		top: calc(var(--p)/3);
+		right: calc(var(--p)/3);
+		&::before {
+			background: url(/static/images/svg/icons/close.svg) center / contain no-repeat;
+		}
 	}
 	&.iframe, .warning, picture {
 		@include clip-path-edges(2px);
@@ -53,8 +132,8 @@
 			max-height: calc(100vh - (var(--p)*4));
 			@include full-size(screen);
 			@include viewport($ipad-11) {
-				max-width: calc(100vw - (var(--p)*8));
-				max-height: calc(100vh - (var(--p)*8));
+				max-width: calc(100vw - (var(--p)*9));
+				max-height: calc(100vh - (var(--p)*9));
 			}
 		}
 		.warning {
@@ -89,8 +168,8 @@
 			max-width: calc(100vw - (var(--p)*4));
 			max-height: calc(100vh - (var(--p)*4));
 			@include viewport($ipad-11) {
-				max-width: calc(100vw - (var(--p)*8));
-				max-height: calc(100vh - (var(--p)*8));
+				max-width: calc(100vw - (var(--p)*9));
+				max-height: calc(100vh - (var(--p)*9));
 			}
 			&.upscale {
 				@media screen and (orientation:portrait) {

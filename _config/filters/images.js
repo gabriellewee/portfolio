@@ -6,6 +6,15 @@ export const images = async (post, option) => {
 	const pattern = /<\s*p><img src="(?<src>[^<]*)" alt="(?<alt>[^<]*)" title="(?<title>[^<]*)"><\/p>/g;
 	const matches = post.matchAll(pattern);
 	let lightboxes = "";
+	const controls = `<div class="lightbox-controls" role="group">
+		<button class="lightbox-button lightbox-close" aria-label="Close" data-lightbox-close hidden></button>
+		<div class="lightbox-side">
+			<button class="lightbox-button lightbox-prev" aria-label="Previous" data-lightbox-prev hidden></button>
+		</div>
+		<div class="lightbox-side">
+			<button class="lightbox-button lightbox-next" aria-label="Next" data-lightbox-next hidden></button>
+		</div>
+	</div>`;
 
 	for (const image of matches) {
 		const src = image.groups.src;
@@ -29,6 +38,7 @@ export const images = async (post, option) => {
 					<a class="lightbox" id="${name}-lightbox" role="button" aria-label="Close image" href="#${name}" tabindex="-1" data-lightbox data-lightbox-append></a>
 					<dialog class="lightbox-content image" aria-label="Image preview" autofocus data-lightbox-append>
 						<figure>${picture}</figure>
+						${controls}
 					</dialog>`;
 				lightboxes += figure;
 			} else {
@@ -77,6 +87,7 @@ export const images = async (post, option) => {
 				<a class="lightbox" id="${name}-lightbox" role="button" aria-label="Close image" href="#${name}" tabindex="-1" data-lightbox data-lightbox-append></a>
 				<dialog class="lightbox-content image" aria-label="Image preview" autofocus data-lightbox-append>
 					<figure>${picture}</figure>
+					${controls}
 				</dialog>`;
 			lightboxes += figure;
 		} else {

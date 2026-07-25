@@ -16,7 +16,7 @@ eleventyNavigation:
     order: 1
 ---
 
-{% from "macros.njk" import author, buttons, contact, date, frame, header, indicator, meta, tablist, tabpanels, recipe, upscale, view %}
+{% from "macros.njk" import author, buttons, contact, controls, date, frame, header, indicator, meta, tablist, tabpanels, recipe, upscale, view %}
 {% if pagination.pageNumber == 0 %}{{ contact(key, site.links) }}{% endif %}
 
 <section class="content" aria-label="Posts">
@@ -265,6 +265,7 @@ eleventyNavigation:
 						{% image media, post.data.description, 'screen' %}
 					{% endif %}
 				</figure>
+				{{ controls() }}
 			</dialog>
 		{% elseif post.data.category == "social" and post.data.media %}
 			{% set postIndex = loop.index %}
@@ -282,6 +283,7 @@ eleventyNavigation:
 					<figure>
 						{% external image, alt, width %}
 					</figure>
+					{{ controls() }}
 				</dialog>
 			{% endfor %}
 		{% elseif post.data.category == "writing" %}

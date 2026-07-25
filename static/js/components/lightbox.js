@@ -121,6 +121,15 @@ export const lightbox = ({
 		});
 	};
 
+	const navigate = (direction, current, lightboxes, index) => {
+		deactivate(current);
+		const next =
+			direction === "next"
+				? lightboxes[index + 1] || lightboxes[0]
+				: lightboxes[index - 1] || lightboxes[lightboxes.length - 1];
+		activate(next);
+	};
+
 	const handleShortcut = (e, current, lightboxes, index) => {
 		if (!current.classList.contains("active")) return;
 
@@ -135,12 +144,7 @@ export const lightbox = ({
 		e.preventDefault();
 
 		setTimeout(() => {
-			deactivate(current);
-			const next =
-				e.key === "ArrowRight"
-					? lightboxes[index + 1] || lightboxes[0]
-					: lightboxes[index - 1] || lightboxes[lightboxes.length - 1];
-			activate(next);
+			navigate(e.key === "ArrowRight" ? "next" : "prev", current, lightboxes, index);
 		}, 100);
 	};
 
@@ -185,6 +189,25 @@ export const lightbox = ({
 
 			document.addEventListener("keydown", (e) => {
 				handleShortcut(e, box, lightboxes, index);
+			}, { signal });
+
+			const close = content.querySelector("[data-lightbox-close]");
+			const prev = content.querySelector("[data-lightbox-prev]");
+			const next = content.querySelector("[data-lightbox-next]");
+
+			close?.addEventListener("click", (e) => {
+				e.preventDefault();
+				deactivateAndRestore(box);
+			}, { signal });
+
+			prev?.addEventListener("click", (e) => {
+				e.preventDefault();
+				navigate("prev", box, lightboxes, index);
+			}, { signal });
+
+			next?.addEventListener("click", (e) => {
+				e.preventDefault();
+				navigate("next", box, lightboxes, index);
 			}, { signal });
 		});
 	};
