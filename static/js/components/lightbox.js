@@ -49,7 +49,6 @@ export const lightbox = ({
 	};
 
 	const deactivate = (targets, callback) => {
-		hideBackdrop();
 		const remove = (lightbox) => {
 			const content = lightbox?.nextElementSibling;
 			if (!content || !lightbox.classList.contains("active")) return;
@@ -71,6 +70,7 @@ export const lightbox = ({
 
 	const deactivateAndRestore = (lightbox) => {
 		deactivate(lightbox, () => {
+			hideBackdrop();
 			if (lightbox === openingLightbox && openingButton) {
 				openingButton.focus({ preventScroll: true });
 			} else {
@@ -113,8 +113,8 @@ export const lightbox = ({
 			end: `${scrollPosition + 240}`,
 			once: true,
 			invalidateOnRefresh: true,
-			onLeave: () => deactivate(lightbox),
-			onLeaveBack: () => deactivate(lightbox)
+			onLeave: () => { deactivate(lightbox); hideBackdrop(); },
+			onLeaveBack: () => { deactivate(lightbox); hideBackdrop(); }
 		});
 	};
 
