@@ -3,9 +3,7 @@ import markdownItAnchor from "markdown-it-anchor";
 import markdownItContainer from "markdown-it-container";
 import markdownItAttrs from "markdown-it-attrs";
 import markdownItTasks from "markdown-it-task-checkbox";
-import voca from "voca";
-
-const slugify = (s) => voca.slugify(s);
+import slugify from "slugify";
 
 const anchorPermalink = markdownItAnchor.permalink.ariaHidden({
 	class: "direct-link",

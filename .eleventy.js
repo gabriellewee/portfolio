@@ -10,7 +10,6 @@ import * as sass from 'sass'
 import path from 'path';
 import { minify } from 'terser';
 import htmlmin from 'html-minifier-terser';
-import voca from 'voca';
 
 export default function (eleventyConfig) {
 	eleventyConfig.setQuietMode(true);
@@ -86,7 +85,7 @@ export default function (eleventyConfig) {
 
 	const stripTags = (content) => {
 		if (content.startsWith("<")) {
-			return voca.stripTags(content);
+			return content.replace(/<\/?[^>]+(>|$)/g, "");
 		} else {
 			return content;
 		}
