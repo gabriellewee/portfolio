@@ -1,4 +1,6 @@
+@use "sass:map";
 @use 'partials/shared/utilities' as *;
+@use 'partials/shared/variables' as *;
 @use 'partials/post/syntax';
 
 .post-code {
@@ -353,7 +355,6 @@
 		}
 	}
 
-	$tabs: demo, markup, styles, scripts;
 	.post-tablist {
 		background-color: hsl(from var(--color-dark-grey) h s calc(l*.8));
 		legend {
@@ -362,48 +363,65 @@
 		ul {
 			display: flex;
 			list-style: none;
+			position: relative;
+			&::after {
+				--tab-border-color: var(--color-rose);
+				transition: translate .2s ease-out, background-color .2s ease-out, width .2s ease-out, opacity .2s ease-out;
+				content: "";
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: var(--tab-width);
+				height: 2px;
+				background-color: var(--tab-border-color);
+			}
+			&:has(.post-tab:not(:checked):hover, .post-tab:not(:checked):focus) {
+				&::after {
+					--tab-border-color: hsl(from white h s l / .4);
+				}
+				label {
+					--label-easing: .2s ease-out .1s;
+				}
+			}
+			&:has(.post-tab:not(:checked):active) {
+				&::after {
+					--tab-border-color: hsl(from white h s l / .2);
+				}
+			}
+			&:has(.post-tab:checked) {
+				&::after {
+					--tab-border-color: var(--color-rose);
+				}
+			}
+			&:has(.post-tab:focus-visible) {
+				&::after {
+					opacity: 0;
+				}
+			}
 		}
 		li {
 			position: relative;
 		}
 		label {
-			--border-opacity: 0;
-			transition: color .1s ease-out, background-color .1s ease-out, box-shadow .1s ease-out;
-			display: block;
+			--outline-opacity: 0;
+			--label-easing: .2s ease-out;
+			transition: color var(--label-easing), background-color var(--label-easing), box-shadow var(--label-easing);
+			display: grid;
+			place-items: center;
 			position: relative;
 			z-index: 0;
 			padding: var(--p) calc(var(--p)*1.5);
-			box-shadow: inset 0 0 0 2px hsl(from var(--color-rose) h s l / var(--border-opacity));
+			box-shadow: inset 0 0 0 2px hsl(from var(--color-rose) h s l / var(--outline-opacity));
 			color: hsl(from white h s l / .5);
 			background-color: hsl(from black h s l / 0);
-			&::after {
-				transition: opacity .1s ease-out, scale .1s ease-out, background-color .1s ease-out;
-				opacity: 0;
-				scale: 0 1;
-				content: "";
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				width: 100%;
-				height: 2px;
-				background-color: var(--color-rose);
-			}
 		}
-		input {
+		.post-tab {
 			opacity: 0;
 			all: unset;
 			z-index: 1;
 			@include full-offset(0);
 			&, label {
 				cursor: pointer;
-			}
-			&:hover, &:focus, &:active, &:checked {
-				+ label {
-					&::after {
-						opacity: 1;
-						scale: 1 1;
-					}
-				}
 			}
 			&:hover, &:focus, &:checked {
 				+ label {
@@ -413,29 +431,18 @@
 			&:hover, &:focus {
 				+ label {
 					background-color: hsl(from white h s l / .1);
-					&::after {
-						background-color: hsl(from white h s l / .4);
-					}
 				}
 			}
 			&:active {
 				+ label {
 					background-color: hsl(from black h s l / .1);
 					color: hsl(from white h s l / .3);
-					&::after {
-						background-color: hsl(from white h s l / .2);
-					}
 				}
 			}
 			&:checked {
 				&, + label {
 					pointer-events: none;
 					cursor: default;
-				}
-				+ label {
-					&::after {
-						background-color: var(--color-rose);
-					}
 				}
 				&:hover, &:focus {
 					+ label {
@@ -445,7 +452,7 @@
 			}
 			&:focus-visible, &:checked:focus-visible {
 				+ label {
-					--border-opacity: 1;
+					--outline-opacity: 1;
 					background-color: hsl(from white h s l / .1);
 					&::after {
 						opacity: 0;
@@ -481,14 +488,44 @@
 		z-index: -1;
 		visibility: hidden;
 	}
-	@each $tab in $tabs {
-		.post-tablist:has(.tab-#{$tab}:checked) + .post-content .tabpanel-#{$tab} {
-			z-index: 2;
-			opacity: 1;
-			visibility: visible;
 
-			pre {
-				display: block;
+	$tabs: (
+		demo: 35px + $p*3,
+		markup: 53px + $p*3,
+		styles: 53px + $p*3,
+		scripts: 62px + $p*3
+	);
+	$offset: 0;
+	.post-tablist ul::after {
+		--tab-width: #{map.get($tabs, demo)};
+	}
+	@each $tab, $width in $tabs {
+		.post-tablist ul:has(.tab-#{$tab}:checked) {
+			&::after {
+				--tab-width: #{$width};
+				translate: #{$offset} 0;
+			}
+		}
+		.post-tablist ul:has(
+			.tab-#{$tab}:not(:checked):hover,
+			.tab-#{$tab}:not(:checked):focus,
+			.tab-#{$tab}:not(:checked):active
+		) {
+			&::after {
+				--tab-width: #{$width};
+				translate: #{$offset} 0 !important;
+			}
+			$offset: $offset + $width;
+		}
+		.post-tablist:has(.tab-#{$tab}:checked, .tab-#{$tab}:checked:focus) {
+			+ .post-content .tabpanel-#{$tab} {
+				z-index: 2;
+				opacity: 1;
+				visibility: visible;
+
+				pre {
+					display: block;
+				}
 			}
 		}
 	}

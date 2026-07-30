@@ -2,9 +2,10 @@
 @use 'partials/shared/utilities' as *;
 
 $iron: #263238;
+$p: 12px;
 
 :root{
-	--p:12px;
+	--p:#{$p};
 	--width:70rem;
 
 	--font-mono:"Dank Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
