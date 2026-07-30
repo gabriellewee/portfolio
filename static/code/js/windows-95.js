@@ -1,5 +1,5 @@
 const start = document.querySelector("[data-start]");
-const windows =  [... document.querySelectorAll("[data-window]")];
+const windows = [... document.querySelectorAll("[data-window]")];
 const triggers = [... document.querySelectorAll("[data-window-trigger]")];
 const errors = [... document.querySelectorAll("[data-error-trigger]")];
 

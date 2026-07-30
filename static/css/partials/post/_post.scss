@@ -433,7 +433,7 @@ figure .indicator {
 	pre {
 		background-color: light-dark(
 			var(--color-dark-grey),
-			hsl(from var(--color-dark-grey) h s calc(l * .55))
+			hsl(from var(--color-dark-grey) h s calc(l * .625))
 		);
 		color: white;
 		font-size: 1rem;

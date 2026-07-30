@@ -462,7 +462,10 @@
 		contain-intrinsic-size: 0 var(--height, 400px);
 	}
 	.post-tabpanel:not(.tabpanel-demo) {
-		background-color: light-dark(var(--color-dark-grey), hsl(from var(--color-dark-grey) h s calc(l * 0.55)));
+		background-color: light-dark(
+			var(--color-dark-grey),
+			hsl(from var(--color-dark-grey) h s calc(l * .625))
+		);
 		@include full-offset(0);
 
 		pre {
