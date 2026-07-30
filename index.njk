@@ -182,27 +182,24 @@ eleventyNavigation:
 
 					{% if post.data.category in ["writing", "social", "cooking"] %}
 						<footer class="post-footer">
-							{% if (post.data.category == "writing" and post.data.size != "s") or (post.data.category == "cooking") %}
+							{% if post.data.category == "social" %}
+								{{ view(link, post.data, true, 'View post on') }}
+							{% elseif post.data.category == "cooking" or (post.data.category == "writing" and post.data.size != "s") %}
 								{% if post.url %}
 									{{ view(post, post.data, title="Read " ~ (post.data.label or "post")) }}
 								{% elseif post.data.url %}
-									{% set label %}Read more{% if post.data.platform %} on {{ post.data.platform }}{% endif %}{% endset %}
-									{{ view(post, post.data, title=label, type="reverse") }}
+									{{ view(post, post.data, title=("Read more on " ~ post.data.platform if post.data.platform else "Read more"), type="reverse") }}
 								{% endif %}
-							{% elseif post.data.category == "social" %}
-								{{ view(link, post.data, true, 'View post on') }}
 							{% endif %}
+
 							{% for link in post.data.external %}
 								{{ view(link, post.data) }}
 							{% endfor %}
-							{% if post.data.archive == true %}
-								{% if post.data.full == true %}
-									{% set postSlug = post.data.title %}
-								{% else %}
-									{% set postSlug = key %}
-								{% endif %}
-								{% set url %}{{ site.url }}/v1/{{ post.page.date | iso | date('archive') }}/{{ postSlug | slugify }}{% endset %}
-								{{ view(post, post.data, title="View original", url=url) }}
+
+							{% if post.data.archive %}
+								{% set postSlug = post.data.title if post.data.full else key %}
+								{% set archiveUrl %}{{ site.url }}/v1/{{ post.page.date | iso | date('archive') }}/{{ postSlug | slugify }}{% endset %}
+								{{ view(post, post.data, title="View original", url=archiveUrl) }}
 							{% endif %}
 						</footer>
 					{% endif %}
