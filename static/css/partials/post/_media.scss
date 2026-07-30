@@ -204,7 +204,7 @@
 				display: flex;
 				position: relative;
 				width: 100%;
-				margin-top: calc(var(--p) * 1.5);
+				margin-top: calc(var(--p)*1.5);
 				@include container(metadata, $iphone, "(min-width: #{$iphone-mini}) and (min-height: 400px)") {
 					margin-top: calc(var(--p)*2);
 				}
@@ -232,7 +232,7 @@
 							content: "";
 							display: inline-block;
 							background: url(/static/images/svg/icons/expand.svg) center / contain no-repeat;
-							margin-right: calc(var(--p) * .75);
+							margin-right: calc(var(--p)*.75);
 							@include square(23px);
 						}
 						span {
@@ -361,10 +361,10 @@
 				+ * {
 					margin-top: var(--p);
 					@include container(metadata, $iphone, "(min-width: #{$iphone-mini}) and (min-height: 400px)") {
-						margin-top: calc(var(--p) * 1.5);
+						margin-top: calc(var(--p)*1.5);
 					}
 					+ * {
-						margin-top: calc(var(--p) * 1.5);
+						margin-top: calc(var(--p)*1.5);
 					}
 				}
 			}
@@ -382,7 +382,7 @@
 					content: "";
 					display: block;
 					box-sizing: content-box;
-					margin-right: calc(var(--p) * .5);
+					margin-right: calc(var(--p)*.5);
 					padding: 0;
 					@include square(25px);
 				}

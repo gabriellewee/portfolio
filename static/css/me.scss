@@ -115,7 +115,7 @@
 	--width: 100%;
 
 	@include viewport(medium) {
-		--width: calc(100% - var(--width-intro) - var(--p) * 2);
+		--width: calc(100% - var(--width-intro) - var(--p)*2);
 	}
 
 	.grid {
@@ -166,10 +166,10 @@
 .post-game {
 	--width: 100%;
 	@include viewport(medium) {
-		--width: calc(100% - var(--width-music) - var(--p) * 2);
+		--width: calc(100% - var(--width-music) - var(--p)*2);
 	}
 	.grid {
-		margin-top: calc(var(--p) * 1.75);
+		margin-top: calc(var(--p)*1.75);
 		grid-template-columns: repeat(2, 1fr);
 		&:empty {
 			margin-top: unset;
@@ -331,7 +331,7 @@
 		position: relative;
 		z-index: 2;
 		background: linear-gradient(to bottom, var(--highlight), hsl(from var(--highlight) h s l / 0));
-		padding: calc(var(--p)*2) calc(var(--p)*2) calc(var(--p) * 3);
+		padding: calc(var(--p)*2) calc(var(--p)*2) calc(var(--p)*3);
 	}
 	footer {
 		padding: calc(var(--p)*2);
@@ -363,7 +363,7 @@
 	}
 
 	@include viewport(medium) {
-		--max-width: calc(100% - var(--width-photos) - var(--p) * 2);
+		--max-width: calc(100% - var(--width-photos) - var(--p)*2);
 	}
 
 	.button {

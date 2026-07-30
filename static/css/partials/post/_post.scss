@@ -73,7 +73,7 @@
 				grid-column-end: span 4;
 			}
 			.posts[data-grid="true"] & {
-				--width: calc((100% - (var(--p) * 4)) / 3);
+				--width: calc((100% - (var(--p)*4)) / 3);
 			}
 		}
 	}

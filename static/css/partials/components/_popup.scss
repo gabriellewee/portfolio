@@ -64,7 +64,7 @@
 				opacity: 0;
 
 				@media (prefers-reduced-motion: no-preference) {
-					translate: 0 calc(var(--p) * 2);
+					translate: 0 calc(var(--p)*2);
 				}
 			}
 		}

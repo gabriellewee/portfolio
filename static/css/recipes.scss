@@ -214,9 +214,9 @@
 						display: block;
 						position: absolute;
 						top: calc(var(--p) / -2.75);
-						left: calc(var(--p) * -1);
+						left: calc(var(--p)*-1);
 						z-index: -1;
-						width: calc(100% + (var(--p) * 2));
+						width: calc(100% + (var(--p)*2));
 						height: calc(100% + var(--p));
 						background-color: hsl(from white h s l / .95);
 						@include clip-path-edges(2px);

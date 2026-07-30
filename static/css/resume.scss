@@ -30,7 +30,7 @@ body {
 
 ul, menu {
 	display: grid;
-	gap: calc(var(--p) * 2);
+	gap: calc(var(--p)*2);
 	list-style: none;
 }
 
@@ -84,7 +84,7 @@ header.top {
 	}
 
 	ul {
-		margin-block: calc(var(--p) * 2);
+		margin-block: calc(var(--p)*2);
 		@include viewport(medium) {
 			margin-block: var(--p);
 		}
@@ -182,7 +182,7 @@ header.top {
 .resume-item {
 	@include viewport(medium) {
 		display: flex;
-		gap: calc(var(--p) * 2);
+		gap: calc(var(--p)*2);
 	}
 
 	a {
@@ -204,8 +204,8 @@ header.top {
 }
 
 .footer-links {
-	margin-top: calc(var(--p) * 3);
-	margin-bottom: calc(var(--p) * 2);
+	margin-top: calc(var(--p)*3);
+	margin-bottom: calc(var(--p)*2);
 	@media print {
 		display: none;
 	}
