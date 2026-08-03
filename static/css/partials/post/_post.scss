@@ -1,6 +1,7 @@
 @use 'partials/shared/utilities' as *;
 @use 'partials/shared/mixins' as *;
 @use 'partials/components/tooltip';
+@use 'partials/components/time';
 
 .posts {
 	display: grid;
@@ -56,7 +57,7 @@
 		);
 	}
 
-	&[data-orientation="portrait"] {
+	&:where([data-orientation="portrait"]) {
 		@include viewport(medium) {
 			.posts:not([data-grid="true"]) & {
 				grid-column-end: span 6;
@@ -67,7 +68,7 @@
 		}
 	}
 
-	&.post-size-xs {
+	&:where(.post-size-xs) {
 		@include viewport(medium) {
 			.posts:not([data-grid="true"]) & {
 				grid-column-end: span 4;
@@ -77,7 +78,7 @@
 			}
 		}
 	}
-	&.post-size-s {
+	&:where(.post-size-s) {
 		@include viewport(medium) {
 			.posts:not([data-grid="true"]) & {
 				grid-column-end: span 6;
@@ -87,7 +88,7 @@
 			}
 		}
 	}
-	&.post-size-m {
+	&:where(.post-size-m) {
 		@include viewport(medium) {
 			.posts:not([data-grid="true"]) & {
 				grid-column-end: span 8;
@@ -117,13 +118,13 @@
 					position: absolute;
 				}
 				&::before {
+					inset: -1.5px;
 					z-index: -2;
-					@include full-offset(1.5px);
 					@include clip-path-edges(3px);
 				}
 				&::after {
+					inset: 0;
 					z-index: -1;
-					@include full-offset(0);
 					@include clip-path-edges(2px);
 				}
 			}
@@ -138,55 +139,6 @@
 	time {
 		display: block;
 		white-space: nowrap;
-		&.time-default {
-			position: relative;
-			color: white;
-			background-color: hsl(from var(--color-dark-grey) h s calc(l * .95) / .75);
-			text-transform: uppercase;
-			line-height: 1.15;
-			@include font-settings(600, var(--font-width-80));
-			@include button;
-			@include contrast {
-				background-color: unset !important;
-				isolation: isolate;
-				@include clip-path(false) {
-					border-radius: unset;
-				}
-				@include clip-path {
-					clip-path: unset;
-				}
-				&::before, &::after {
-					content: "";
-					display: block;
-				}
-				&::before {
-					position: absolute;
-					z-index: -2;
-					top: calc(var(--p)/-8);
-					left: calc(var(--p)/-8);
-					width: calc(100% + var(--p)/4);
-					height: calc(100% + var(--p)/4);
-					background-color: var(--color-primary);
-					@include clip-path(false) {
-						@include border-radius(calc(var(--p)/4));
-					}
-					@include clip-path {
-						@include button-shape(1.3125, 6%);
-					}
-				}
-				&::after {
-					z-index: -1;
-					background-color: var(--color-dark-grey);
-					@include full-offset(0);
-					@include clip-path(false) {
-						@include border-radius(calc(var(--p)/2));
-					}
-					@include clip-path {
-						@include button-shape;
-					}
-				}
-			}
-		}
 	}
 	.inline-header {
 		padding: calc(var(--p)*2);
@@ -286,7 +238,7 @@ figure .indicator {
 .post-text, .post-color {
 	p, figcaption, ul, ol {
 		a {
-			transition: all .1s ease-out;
+			transition: background .1s ease-out;
 			position: relative;
 			@include gradient-text(
 				var(--color-dark),
@@ -297,7 +249,8 @@ figure .indicator {
 				@include gradient-text(
 					var(--color-middle),
 					var(--color-dark),
-					hsl(from var(--color-middle) h s l / .5)
+					hsl(from var(--color-middle) h s l / .5),
+					true
 				);
 			}
 			&:active {
@@ -317,7 +270,8 @@ figure .indicator {
 					light-dark(
 						hsl(from var(--color-dark-grey) h s calc(l * .95) / .5),
 						hsl(from var(--color-grey) h s l / .5)
-					)
+					),
+					true
 				);
 			}
 		}
@@ -554,8 +508,9 @@ figure .indicator {
 	}
 
 	.expand {
-		position: relative;
+		scale: var(--scale, 1);
 		transition: scale .2s ease-out;
+		position: relative;
 		@include expand-hover;
 		&::before {
 			background: radial-gradient(
@@ -574,12 +529,12 @@ figure .indicator {
 		&:focus-visible {
 			box-shadow: none;
 			&::before {
-				opacity: 1;
+				--opacity: 1;
 			}
 		}
 		&:active {
 			@media (prefers-reduced-motion: no-preference) {
-				scale: .98;
+				--scale: .98;
 			}
 		}
 	}

@@ -76,8 +76,8 @@ eleventyNavigation:
 								{% endif %}
 								{{ indicator() }}
 								<figcaption class="media-data" data-focus-container>
-									<details id="{{ slug }}-info" name="media-container" data-media-container>
-										<summary data-focus>
+									<details id="{{ slug }}-info" class="media-container" name="media-container" data-media-container>
+										<summary class="media-summary" data-focus>
 											<span class="media-view-hover"><span class="button">
 												<span aria-label="Information about this {{ post.data.type }}">View info</span>
 											</span></span>

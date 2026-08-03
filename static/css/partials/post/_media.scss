@@ -3,6 +3,7 @@
 
 .post-media {
 	.post-inner {
+		scale: var(--post-scale, 1);
 		transition: scale .2s ease-out;
 		clip-path: unset;
 		overflow: unset;
@@ -24,37 +25,38 @@
 		&::after {
 			@include viewport($iphone-max) {
 				@include contrast {
+					position: absolute;
+					inset: -1.5px;
 					z-index: -2;
 					background-color: var(--color-primary);
-					@include full-offset(1.5px);
 					@include clip-path-edges(3px);
 				}
 			}
 		}
 
-		&:has(details:not(:is([open], :open)) summary:hover) {
+		&:has(details:not(:is([open], :open)) summary:hover:not(:active)) {
 			@media (prefers-reduced-motion: no-preference) {
 				@include viewport($iphone-max) {
-					scale: 1.01;
+					--post-scale: 1.01;
 				}
 			}
 		}
 		&:has(summary:hover) {
 			@media (prefers-reduced-motion: reduce) {
 				&::before {
-					opacity: 1;
+					--opacity: 1;
 				}
 			}
 		}
 		&:has(summary:focus-visible) {
 			&::before {
-				opacity: 1;
+				--opacity: 1;
 			}
 		}
 		&:has(summary:active) {
 			@media (prefers-reduced-motion: no-preference) {
 				@include viewport($iphone-max) {
-					scale: .99;
+					--post-scale: .99;
 				}
 			}
 		}
@@ -71,514 +73,501 @@
 			container-name: metadata;
 		}
 	}
+}
 
-	.media-data {
-		@include full-offset(0);
+.media-data {
+	position: absolute;
+	inset: 0;
+}
 
-		.media-view-hover {
-			opacity: 0;
-			transition: opacity .2s ease-out;
-			display: none;
-			z-index: 10;
-			cursor: pointer;
-			@include full-offset(0);
-			@include hover {
-				display: flex;
-			}
-			&:before {
-				content: "";
-				display: block;
-				mix-blend-mode: multiply;
-				background: radial-gradient(
-					farthest-corner at 100% 0%,
-					hsl(from var(--color-dark-grey) h s calc(l * .45) / 0.2) 0,
-					hsl(from var(--color-dark-grey) h s calc(l * .45) / 0) 45%
-				);
-				@include full-offset(0);
-			}
-			.button {
-				--contrast: white;
+.media-view-hover {
+	opacity: var(--hover-opacity, 0);
+	transition: opacity .2s ease-out;
+	display: none;
+	z-index: var(--hover-index, 10);
+	cursor: pointer;
+	@include hover {
+		display: flex;
+	}
+	&, &::before {
+		position: absolute;
+		inset: 0;
+	}
+	&::before {
+		content: "";
+		display: block;
+		mix-blend-mode: multiply;
+		background: radial-gradient(
+			farthest-corner at 100% 0%,
+			hsl(from var(--color-dark-grey) h s calc(l * .45) / 0.2) 0,
+			hsl(from var(--color-dark-grey) h s calc(l * .45) / 0) 45%
+		);
+	}
+	.button {
+		--contrast: white;
 
-				transition: translate .2s ease-out, scale .2s ease-out;
-				position: absolute;
-				display: inline-block;
-				top: calc(var(--p)*2);
-				right: calc(var(--p)*2);
-				@media (prefers-reduced-motion: no-preference) {
-					translate: 0 100%;
-				}
-			}
+		transition: translate .2s ease-out, scale .2s ease-out;
+		position: absolute;
+		display: inline-block;
+		top: calc(var(--p)*2);
+		right: calc(var(--p)*2);
+		@media (prefers-reduced-motion: no-preference) {
+			translate: 0 var(--hover-position, 100%);
+		}
+	}
+}
+
+.media-view-touch {
+	opacity: var(--touch-opacity, 1);
+	transition: opacity .2s ease-out;
+	display: block;
+
+	@include icon-setup(info, $hover: false, $position: 100% 100%, $touch: 100% 100%);
+	@include hover {
+		display: none;
+	}
+
+	&::before {
+		transition: transform var(--touch-easing, .2s ease-out .3s);
+		@media (prefers-reduced-motion: no-preference) {
+			translate: 0 var(--touch-position, 0);
+		}
+	}
+	
+	&.theme-light {
+		@include icon-invert;
+		&::after {
+			--blend-mode: multiply;
+		}
+	}
+}
+
+.media-icon {
+	display: block;
+	@include square(25px);
+}
+
+.media-close {
+	--close-icon-size: #{40px + 18px + 8px};
+
+	transition: opacity var(--close-easing, .1s ease-out);
+	opacity: var(--close-opacity, 0);
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 3;
+	@include square(var(--close-icon-size));
+	background: url(/static/images/svg/icons/caret-down.svg) center / 21px no-repeat;
+}
+
+.media-data-overlay {
+	transition: opacity .3s ease-out;
+	opacity: var(--overlay-opacity, 0);
+	position: absolute;
+	inset: 0;
+	min-height: 100%;
+	background-color: hsl(from var(--color-dark-grey) h s calc(l * .45) / .9);
+	color: white;
+	font-family: var(--font-serif-text);
+	font-size: var(--overlay-font-size, 1rem);
+	@include font-settings(300, 100%, "ss06" on);
+	@supports not(container-type: inline-size) {
+		@media only screen and (min-width: 450px) {
+			--overlay-font-size: 1.125rem;
+		}
+		@include viewport(medium) {
+			--overlay-font-size: 1rem;
+		}
+		@include viewport($ipad-11) {
+			--overlay-font-size: 1.125rem;
+		}
+	}
+	@container metadata (min-width: 400px) {
+		--overlay-font-size: 1.125rem;
+	}
+}
+
+.media-data-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	align-content: flex-start;
+	justify-content: space-between;
+	padding: calc(var(--p)*2);
+	overflow-y: auto;
+	@include mask-overflow;
+	@include full-size;
+
+	.time-default {
+		--background: hsl(from var(--color-dark-grey) h s calc(l * .35) / .9);
+		--font-weight: 300;
+		--font-width: 90%;
+		--text-transform: none;
+		--border: light-dark(
+			var(--color-primary),
+			hsl(from white h s l / .8)
+		);
+		@include reduce-transparency {
+			--background: var(--color-dark-grey);
+		}
+	}
+}
+
+.media-thumbnail {
+	display: flex;
+	position: relative;
+	width: 100%;
+	margin-top: calc(var(--p)*1.5);
+	@include container(metadata, $iphone, "(min-width: #{$iphone-mini}) and (min-height: 400px)") {
+		margin-top: calc(var(--p)*2);
+	}
+	.media-expand {
+		scale: var(--scale, 1);
+		transition: scale .2s ease-out;
+		position: relative;
+		display: flex;
+		align-items: center;
+		color: white;
+
+		&::before {
+			@include before(white);
 		}
 
-		.media-view-touch {
-			transition: opacity .2s ease-out;
+		.has-image {
 			display: block;
+			@include expand-hover($hover: false);
+		}
 
-			@include icon-setup(info, $hover: false, $position: 100% 100%, $touch: 100% 100%);
-			@include hover {
-				display: none;
-			}
-
+		.no-image {
+			display: flex;
+			align-items: center;
+			align-content: center;
 			&::before {
-				transition: transform .2s ease-out .3s;
+				opacity: var(--label-opacity, 1);
+				content: "";
+				display: inline-block;
+				background: url(/static/images/svg/icons/expand.svg) center / contain no-repeat;
+				margin-right: calc(var(--p)*.75);
+				@include square(23px);
 			}
-			
-			&.theme-light {
-				@include icon-invert;
-				&::after {
-					--blend-mode: multiply;
+			span {
+				transition:
+					opacity .1s ease-out,
+					text-decoration .1s ease-out,
+					text-underline-offset .1s ease-out;
+				opacity: var(--label-opacity, .7);
+				display: inline-block;
+				text-decoration: underline var(--underline-color, hsl(from white h s l / 0)) solid 1px;
+				text-underline-offset: var(--underline-offset, 8px);
+				@include contrast {
+					--underline-offset: 4px;
+					--underline-color: white;
 				}
 			}
 		}
 
-		.media-icon {
-			display: block;
-			@include square(25px);
+		&:hover, &:focus, &:active {
+			.no-image span {
+				--label-opacity: 1;
+				--underline-color: white;
+				--underline-offset: 4px;
+			}
 		}
 
-		.media-close {
-			--close-icon-size: #{40px + 18px + 8px};
-
-			transition: opacity .1s ease-out;
-			opacity: 0;
-			position: absolute;
-			top: 0;
-			right: 0;
-			z-index: 3;
-			@include square(var(--close-icon-size));
-			background: url(/static/images/svg/icons/caret-down.svg) center / 21px no-repeat;
+		&:focus-visible {
+			.no-image span {
+				@include contrast {
+					@include focus-shadow(hsl(from white h s l / .8));
+				}
+			}
 		}
 
-		.media-data-overlay {
-			transition: opacity .3s ease-out;
-			opacity: 0;
-			min-height: 100%;
-			background-color: hsl(from var(--color-dark-grey) h s calc(l * .45) / .9);
-			color: white;
-			font-family: var(--font-serif-text);
-			font-size: 1rem;
-			@include font-settings(300, 100%, "ss06" on);
-			@include full-offset(0);
-			@supports not(container-type: inline-size) {
-				@media only screen and (min-width: 450px) {
-					font-size: 1.125rem;
-				}
-				@include viewport(medium) {
-					font-size: 1rem;
-				}
-				@include viewport($ipad-11) {
-					font-size: 1.125rem;
-				}
+		&:active {
+			.no-image::before, .no-image span {
+				--label-opacity: .2;
 			}
-			@container metadata (min-width: 400px) {
-				font-size: 1.125rem;
-			}
-			.media-data-wrapper {
-				display: flex;
-				flex-wrap: wrap;
-				align-items: flex-start;
-				align-content: flex-start;
-				justify-content: space-between;
-				padding: calc(var(--p)*2);
-				overflow-y: auto;
-				@include mask-overflow;
-				@include full-size;
-			}
-			.time-default {
-				background-color: hsl(from var(--color-dark-grey) h s calc(l * .35) / .9);
-				text-transform: unset;
-				@include font-settings(300, 90%);
-				@include reduce-transparency {
-					background-color: var(--color-dark-grey);
-				}
-				&::before {
-					@include contrast {
-						background-color: light-dark(
-							var(--color-primary),
-							hsl(from white h s l / .8)
-						);
-					}
-				}
-			}
-			.media-thumbnail {
-				display: flex;
-				position: relative;
-				width: 100%;
-				margin-top: calc(var(--p)*1.5);
-				@include container(metadata, $iphone, "(min-width: #{$iphone-mini}) and (min-height: 400px)") {
-					margin-top: calc(var(--p)*2);
-				}
-				.media-expand {
-					transition: scale .2s ease-out;
-					position: relative;
-					display: flex;
-					align-items: center;
-					color: white;
+		}
 
-					&::before {
-						@include before(white);
+		@supports not(container-type: size) {
+			@include viewport($iphone) {
+				&:hover {
+					@media (prefers-reduced-motion: no-preference) {
+						--scale: 1.02;
 					}
-
-					.has-image {
-						display: block;
-						@include expand-hover($hover: false);
-					}
-
-					.no-image {
-						display: flex;
-						align-items: center;
-						align-content: center;
-						&::before {
-							content: "";
-							display: inline-block;
-							background: url(/static/images/svg/icons/expand.svg) center / contain no-repeat;
-							margin-right: calc(var(--p)*.75);
-							@include square(23px);
-						}
-						span {
-							transition: all .1s ease-out;
-							opacity: .7;
-							display: inline-block;
-							text-decoration: underline;
-							text-decoration-thickness: 1px;
-							text-underline-offset: 8px;
-							text-decoration-color: hsl(from white h s l / 0);
-							@include contrast {
-								text-underline-offset: 4px;
-								text-decoration-color: unset;
-							}
-						}
-					}
-
-					&:hover, &:focus {
-						.no-image span {
+					@media (prefers-reduced-motion: reduce) {
+						&::after {
 							opacity: 1;
-							text-decoration-color: white;
 						}
-					}
-
-					&:focus-visible {
-						.no-image span {
-							@include contrast {
-								@include focus-shadow(hsl(from white h s l / .8));
-							}
-						}
-					}
-
-					&:hover, &:focus, &:active {
-						.no-image span {
-							text-underline-offset: 4px;
-						}
-					}
-
-					&:active {
-						.no-image::before, .no-image span {
-							opacity: .2;
-						}
-					}
-
-					@supports not(container-type: size) {
-						@include viewport($iphone) {
-							&:hover {
-								@media (prefers-reduced-motion: no-preference) {
-									scale: 1.02;
-								}
-								@media (prefers-reduced-motion: reduce) {
-									&::after {
-										opacity: 1;
-									}
-								}
-							}
-							&:focus-visible {
-								&::before {
-									opacity: 1;
-								}
-							}
-							&:active {
-								@media (prefers-reduced-motion: no-preference) {
-									scale: .98;
-								}
-							}
-							.no-image {
-								display: none;
-							}
-						}
-					}
-
-					@container metadata (min-width: #{$iphone-mini}) and (min-height: 400px) {
-						&:hover {
-							@media (prefers-reduced-motion: no-preference) {
-								scale: 1.02;
-							}
-							@media (prefers-reduced-motion: reduce) {
-								&::after {
-									opacity: 1;
-								}
-							}
-						}
-						&:focus-visible {
-							&::before {
-								opacity: 1;
-							}
-						}
-						&:active {
-							@media (prefers-reduced-motion: no-preference) {
-								scale: .98;
-							}
-						}
-						.no-image {
-							display: none;
-						}
-					}
-				}
-				picture {
-					position: relative;
-					z-index: 1;
-					width: 150px;
-					display: none;
-					@include clip-path-edges(2px);
-					@supports not(container-type: size) {
-						@include viewport($iphone) {
-							display: block;
-						}
-						@media only screen and (min-width: 450px) {
-							width: 200px;
-						}
-						@include viewport(medium) {
-							width: 150px;
-						}
-						@include viewport($ipad-11) {
-							width: 200px;
-						}
-					}
-					@container metadata (min-width: #{$iphone-mini}) and (min-height: 400px) {
-						display: block;
-					}
-					@container metadata (min-width: 400px) {
-						width: 200px;
-					}
-				}
-				+ * {
-					margin-top: var(--p);
-					@include container(metadata, $iphone, "(min-width: #{$iphone-mini}) and (min-height: 400px)") {
-						margin-top: calc(var(--p)*1.5);
-					}
-					+ * {
-						margin-top: calc(var(--p)*1.5);
-					}
-				}
-			}
-			.media-links {
-				display: flex;
-				flex-wrap: wrap;
-			}
-			.media-link {
-				display: flex;
-				align-items: center;
-				color: white;
-				line-height: 1.2;
-				margin-right: calc(var(--p)*1.25);
-				&::before {
-					content: "";
-					display: block;
-					box-sizing: content-box;
-					margin-right: calc(var(--p)*.5);
-					padding: 0;
-					@include square(25px);
-				}
-				> span {
-					opacity: .7;
-					transition: all .1s ease-out;
-					text-decoration: underline;
-					text-decoration-thickness: 1px;
-					text-underline-offset: 8px;
-					text-decoration-color: hsl(from white h s l / 0);
-					@include contrast {
-						text-underline-offset: 4px;
-						text-decoration-color: unset;
-					}
-				}
-				&:hover, &:focus {
-					> span {
-						opacity: 1;
-						text-decoration-color: white;
 					}
 				}
 				&:focus-visible {
-					> span {
-						@include contrast {
-							@include focus-shadow(hsl(from white h s l / .8));
-						}
-					}
-				}
-				&:hover, &:focus, &:active {
-					> span {
-						text-underline-offset: 4px;
+					&::before {
+						--opacity: 1;
 					}
 				}
 				&:active {
-					&::before, > span {
-						opacity: .2;
+					@media (prefers-reduced-motion: no-preference) {
+						--scale: .98;
 					}
 				}
-
-				$platforms: instagram, dribbble, codepen;
-
-				@each $platform in $platforms {
-					&.#{$platform} {
-						&::before {
-							background: url("/static/images/svg/icons/#{$platform}.svg") no-repeat center / 25px;
-						}
-					}
-				}
-			}
-			.media-meta {
-				width: 100%;
-				line-height: 1.2;
-				@supports (container-type: size) {
-					align-self: center;
-				}
-				@container metadata (min-width: #{$iphone-mini}) {
-					align-self: unset;
-				}
-				.meta-location, .meta-title {
-					margin-bottom: 0.25em;
-					font-family: var(--font-serif-display);
-					font-size: 2rem;
-					line-height: 1.1;
-					@include font-settings(250, 75%, "ss06" on);
-					@container metadata (min-width: 400px) {
-						font-size: 2.5rem;
-					}
-					@container metadata (min-width: 700px) {
-						font-size: 2.75rem;
-					}
-					dt {
-						@include hide;
-					}
-				}
-				div {
-					position: relative;
-					margin-bottom: .25rem;
-				}
-				dt, dd {
-					display: inline;
-				}
-				dt {
-					opacity: .7;
-					&::after {
-						content: ": ";
-					}
+				.no-image {
+					display: none;
 				}
 			}
 		}
 
-		summary {
-			cursor: pointer;
-			display: block;
-			list-style: none;
-
-			&::-webkit-details-marker {
-				display: none;
-			}
-
-			&:hover, &:focus, &:active {
-				.media-view-hover {
-					opacity: 1;
-					.button {
-						translate: 0 0;
-						> span {
-							background-position-x: 0%;
-						}
+		@container metadata (min-width: #{$iphone-mini}) and (min-height: 400px) {
+			&:hover {
+				@media (prefers-reduced-motion: no-preference) {
+					--scale: 1.02;
+				}
+				@media (prefers-reduced-motion: reduce) {
+					&::after {
+						--opacity: 1;
 					}
+				}
+			}
+			&:focus-visible {
+				&::before {
+					--opacity: 1;
 				}
 			}
 			&:active {
-				.media-view-hover {
-					.button {
-						@media (prefers-reduced-motion: no-preference) {
-							@include viewport($iphone-max) {
-								scale: .98;
-							}
-						}
-						&, > span, > span::before {
-							transition: background .2s ease-out, scale .2s ease-out, opacity .2s ease-out;
-						}
-						> span {
-							&::after {
-								opacity: 1;
-							}
-						}
-					}
-				}
-			}
-		}
-
-		details {
-			&::details-content {
-				transition: opacity .3s ease-out .1s, translate .3s ease-out .1s,
-					content-visibility .4s allow-discrete;
-				opacity: 0;
-				@include full-offset(0);
 				@media (prefers-reduced-motion: no-preference) {
-					translate: 0 50%;
+					--scale: .98;
 				}
 			}
-			&:is([open], :open) {
-				&::details-content {
-					transition: opacity .5s cubic-bezier(.64, 0, .78, 0), translate .5s cubic-bezier(.64, 0, .78, 0);
-					opacity: 1;
-
-					@media (prefers-reduced-motion: no-preference) {
-						translate: 0 0;
-					}
-				}
-				.media-view-hover {
-					z-index: unset;
-					opacity: 0;
-					.button {
-						@media (prefers-reduced-motion: no-preference) {
-							translate: 0 100%;
-						}
-					}
-				}
-				.media-view-touch {
-					opacity: 0;
-					&::before {
-						transition: transform .2s ease-out;
-						@media (prefers-reduced-motion: no-preference) {
-							translate: 0 100%;
-						}
-					}
-				}
-				.media-close {
-					transition: opacity .1s ease-out .5s;
-					opacity: 1;
-				}
-				.media-data-overlay {
-					opacity: 1;
-					@include blur(10px, var(--color-dark-grey), .45, .9, .7);
-				}
+			.no-image {
+				display: none;
 			}
 		}
 	}
+	picture {
+		position: relative;
+		z-index: 1;
+		width: var(--thumbnail-width, 150px);
+		display: none;
+		@include clip-path-edges(2px);
+		@supports not(container-type: size) {
+			@include viewport($iphone) {
+				display: block;
+			}
+			@media only screen and (min-width: 450px) {
+				--thumbnail-width: 200px;
+			}
+			@include viewport(medium) {
+				--thumbnail-width: 150px;
+			}
+			@include viewport($ipad-11) {
+				--thumbnail-width: 200px;
+			}
+		}
+		@container metadata (min-width: #{$iphone-mini}) and (min-height: 400px) {
+			display: block;
+		}
+		@container metadata (min-width: 400px) {
+			--thumbnail-width: 200px;
+		}
 
-	&[data-orientation="landscape"] {
-		.media-thumbnail picture {
-			width: 200px;
+		[data-orientation="landscape"] & {
+			--thumbnail-width: 200px;
 			@supports not(container-type: size) {
 				@media only screen and (min-width: 450px) {
-					width: 250px;
+					--thumbnail-width: 250px;
 				}
 				@include viewport(medium) {
-					width: 200px;
+					--thumbnail-width: 200px;
 				}
 				@include viewport($ipad-11) {
-					width: 250px;
+					--thumbnail-width: 250px;
 				}
 			}
 			@container metadata (min-width: 400px) {
-				width: 250px;
+				--thumbnail-width: 250px;
+			}
+		}
+	}
+	+ * {
+		margin-top: var(--p);
+		@include container(metadata, $iphone, "(min-width: #{$iphone-mini}) and (min-height: 400px)") {
+			margin-top: calc(var(--p)*1.5);
+		}
+		+ * {
+			margin-top: calc(var(--p)*1.5);
+		}
+	}
+}
+
+.media-links {
+	display: flex;
+	flex-wrap: wrap;
+}
+.media-link {
+	display: flex;
+	align-items: center;
+	color: white;
+	line-height: 1.2;
+	margin-right: calc(var(--p)*1.25);
+	&::before {
+		opacity: var(--opacity, 1);
+		transition: opacity .1s ease-out;
+		content: "";
+		display: block;
+		box-sizing: content-box;
+		margin-right: calc(var(--p)*.5);
+		padding: 0;
+		@include square(25px);
+	}
+	> span {
+		opacity: var(--opacity, .7);
+		transition:
+			opacity .1s ease-out,
+			text-decoration .1s ease-out,
+			text-underline-offset .1s ease-out;
+		text-decoration: underline hsl(from white h s l / var(--opacity, 0)) solid 1px;
+		text-underline-offset: var(--underline-offset, 8px);
+		@include contrast {
+			--underline-offset: 4px;
+			--opacity: 1;
+		}
+	}
+	&:hover, &:focus {
+		--opacity: 1;
+	}
+	&:focus-visible {
+		> span {
+			@include contrast {
+				@include focus-shadow(hsl(from white h s l / .8));
+			}
+		}
+	}
+	&:hover, &:focus, &:active {
+		--underline-offset: 4px;
+	}
+	&:active {
+		--opacity: .2;
+	}
+
+	$platforms: instagram, dribbble, codepen;
+
+	@each $platform in $platforms {
+		&.#{$platform} {
+			&::before {
+				background: url("/static/images/svg/icons/#{$platform}.svg") no-repeat center / 25px;
+			}
+		}
+	}
+}
+
+.media-meta {
+	width: 100%;
+	line-height: 1.2;
+	@supports (container-type: size) {
+		align-self: center;
+	}
+	@container metadata (min-width: #{$iphone-mini}) {
+		align-self: unset;
+	}
+	.meta-location, .meta-title {
+		margin-bottom: 0.25em;
+		font-family: var(--font-serif-display);
+		font-size: 2rem;
+		line-height: 1.1;
+		@include font-settings(250, 75%, "ss06" on);
+		@container metadata (min-width: 400px) {
+			font-size: 2.5rem;
+		}
+		@container metadata (min-width: 700px) {
+			font-size: 2.75rem;
+		}
+		dt {
+			@include hide;
+		}
+	}
+	div {
+		position: relative;
+		margin-bottom: .25rem;
+	}
+	dt, dd {
+		display: inline;
+	}
+	dt {
+		opacity: .7;
+		&::after {
+			content: ": ";
+		}
+	}
+}
+
+.media-summary {
+	cursor: pointer;
+	display: block;
+	list-style: none;
+
+	&::-webkit-details-marker {
+		display: none;
+	}
+
+	&:hover, &:focus, &:active {
+		--hover-opacity: 1;
+		--hover-position: 0;
+		--background-position: 0%;
+	}
+	&:active {
+		--active-opacity: 1;
+		--background-duration: .2s;
+		@media (prefers-reduced-motion: no-preference) {
+			@include viewport($iphone-max) {
+				--scale: .98;
+			}
+		}
+	}
+}
+
+.media-container {
+	&::details-content {
+		transition: opacity var(--overlay-opacity-easing, .3s ease-out .1s),
+			translate var(--overlay-position-easing, .3s ease-out .1s),
+			content-visibility .4s allow-discrete;
+		opacity: var(--overlay-opacity, 0);
+		position: absolute;
+		inset: 0;
+		@media (prefers-reduced-motion: no-preference) {
+			translate: 0 var(--overlay-position, 50%);
+		}
+	}
+	&:is([open], :open) {
+		&::details-content {
+			--overlay-opacity: 1;
+			--overlay-position: 0;
+			--overlay-opacity-easing: .5s cubic-bezier(.64, 0, .78, 0);
+			--overlay-position-easing: .5s cubic-bezier(.64, 0, .78, 0);
+		}
+		.media-view-hover {
+			--hover-opacity: 0;
+			--background-position: 100%;
+			--hover-index: 0;
+
+			.button {
+				@media (prefers-reduced-motion: no-preference) {
+					translate: 0 var(--background-position, 100%);
+				}
+			}
+		}
+		.media-view-touch {
+			--touch-opacity: 0;
+			--touch-easing: .2s ease-out;
+			--touch-position: 100%;
+		}
+		.media-close {
+			--close-easing: .1s ease-out .5s;
+			--close-opacity: 1;
+		}
+		.media-data-overlay {
+			--overlay-opacity: 1;
+			@include blur(10px, var(--color-dark-grey), .45, .9, var(--overlay-background-opacity, .7));
+			@include contrast {
+				--overlay-background-opacity: .9;
 			}
 		}
 	}

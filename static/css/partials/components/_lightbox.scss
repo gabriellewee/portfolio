@@ -19,15 +19,15 @@
 	}
 	&.active {
 		&::before {
+			--opacity: 1;
+			--visibility: visible;
 			transition: opacity .2s ease-out, visibility .2s ease-out;
-			opacity: 1;
-			visibility: visible;
 		}
 	}
 }
 
 .lightbox-content {
-	opacity: 0;
+	opacity: var(--opacity, 0);
 	transition: all .2s ease-out .1s;
 	cursor: zoom-out;
 	inset: 0;
@@ -76,7 +76,7 @@
 		cursor: pointer;
 		width: calc(var(--button-size) + var(--p)*2);
 		height: calc(var(--button-size) + var(--p)*2);
-		opacity: 0;
+		opacity: var(--opacity, 0);
 		&::before {
 			content: "";
 			display: block;
@@ -85,10 +85,10 @@
 			aspect-ratio: 1 / 1;
 		}
 		&:hover, &:focus, &:active {
-			opacity: 1;
+			--opacity: 1;
 		}
 		&:active {
-			opacity: 0.5;
+			--opacity: 0.5;
 		}
 		&:focus-visible {
 			@include focus-shadow(hsl(from white h s l / .5));
@@ -108,7 +108,7 @@
 		}
 		&:hover {
 			.lightbox-button {
-				opacity: 1;
+				--opacity: 1;
 			}
 		}
 	}
@@ -205,31 +205,31 @@
 
 	.lightbox-group {
 		&::before {
-			z-index: -999;
+			z-index: var(--z-index, -999);
 		}
 		&:has(.lightbox:target)::before {
+			--opacity: 1;
+			--visibility: visible;
+			--z-index: 998;
 			transition: opacity .2s ease-out, visibility .2s ease-out;
-			opacity: 1;
-			visibility: visible;
-			z-index: 998;
 		}
 	}
 
 	.lightbox {
+		--z-index: -998;
 		transition: visibility 0s .2s, z-index 0s .2s;
-		z-index: -998;
 		+ .lightbox-content {
+			--z-index: 1;
 			position: fixed;
-			z-index: 1;
 		}
 		&:target {
+			--opacity: 1;
+			--visibility: visible;
+			--z-index: 999;
 			transition: opacity .2s ease-out, visibility .2s ease-out;
-			opacity: 1;
-			visibility: visible;
-			z-index: 999;
 			+ .lightbox-content {
-				z-index: 1000;
-				opacity: 1;
+				--z-index: 1000;
+				--opacity: 1;
 				display: block;
 			}
 		}

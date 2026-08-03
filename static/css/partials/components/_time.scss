@@ -1,0 +1,51 @@
+@use 'partials/shared/utilities' as *;
+
+.time-default {
+	display: block;
+	white-space: nowrap;
+	position: relative;
+	color: var(--color, white);
+	background-color: var(--background, hsl(from var(--color-dark-grey) h s calc(l * .95) / .75));
+	text-transform: var(--text-transform, uppercase);
+	line-height: 1.15;
+	@include font-settings(var(--font-weight, 600), var(--font-width, var(--font-width-80)));
+	@include button;
+	@include contrast {
+		background-color: unset;
+		isolation: isolate;
+		@include clip-path(false) {
+			border-radius: unset;
+		}
+		@include clip-path {
+			clip-path: unset;
+		}
+		&::before, &::after {
+			content: "";
+			display: block;
+		}
+		&::before {
+			position: absolute;
+			inset: calc(var(--p)/-8);
+			z-index: -2;
+			background-color: var(--border, var(--color-primary));
+			@include clip-path(false) {
+				@include border-radius(calc(var(--p)/4));
+			}
+			@include clip-path {
+				@include button-shape(1.3125, 6%);
+			}
+		}
+		&::after {
+			position: absolute;
+			inset: 0;
+			z-index: -1;
+			background-color: var(--background-contrast, var(--color-dark-grey));
+			@include clip-path(false) {
+				@include border-radius(calc(var(--p)/2));
+			}
+			@include clip-path {
+				@include button-shape;
+			}
+		}
+	}
+}

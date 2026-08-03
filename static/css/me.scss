@@ -225,12 +225,11 @@
 		gap: calc(var(--p)*2);
 	}
 	.friend-code-container {
-		@include viewport(medium) {
-			display: inline-flex;
-			align-items: center;
-		}
+		display: inline-flex;
+		flex-wrap: wrap;
+		gap: var(--p);
+		align-items: center;
 		label {
-			margin-right: var(--p);
 			font-size: 1.25rem;
 			@include font-settings(450, 110%);
 		}
@@ -242,35 +241,32 @@
 			font-family: var(--font-mono);
 			font-size: 1.125rem;
 			color: var(--color-primary);
-			background-color: light-dark(
+			background-color: var(--input-background, light-dark(
 				hsl(from var(--color-primary) h s l / .1),
 				hsl(from var(--color-dark-grey) h s calc(l * .55) / .4)
-			);
+			));
 			@include clip-path-edges(2px);
 			@include contrast {
-				background-color: light-dark(
-					hsl(from var(--color-dark-grey) h s l / .7),
+				--input-background: light-dark(
 					color-mix(
 						in srgb,
 						var(--color-dark-grey) 10%,
 						white
-					)
+					),
+					hsl(from var(--color-dark-grey) h s calc(l * .55))
 				);
 			}
 		}
 		.friend-code-border {
 			position: relative;
-			margin-top: var(--p);
-			@include viewport(medium) {
-				margin-top: 0;
-			}
+			width: fit-content;
 			&::before {
 				@include contrast {
 					content: "";
 					display: block;
 					position: absolute;
+					inset: -1.5px;
 					background-color: var(--color-primary);
-					@include full-offset(1.5px);
 					@include clip-path-edges(3px);
 				}
 			}
@@ -294,26 +290,14 @@
 		}
 	}
 	.post-thumbnail {
+		--scale-hover: 1.01;
 		@include expand-hover($touch: 100% 100%);
-		&:hover {
-			@media (prefers-reduced-motion: no-preference) {
-				scale: 1.01;
-			}
-		}
-		&:active {
-			@media (prefers-reduced-motion: no-preference) {
-				scale: .98;
-			}
-		}
 	}
 	picture {
-		background-color: var(--color-mix, hsl(from var(--color-primary) h s l / .05));
+		background-color: hsl(from var(--color-primary) h s l / var(--opacity, .05));
 		@include clip-path-edges(2px);
 		@include contrast {
-			background-color: light-dark(
-				var(--color-mix),
-				hsl(from var(--color-primary) h s l / .2)
-			);
+			--opacity: .2;
 		}
 	}
 }
@@ -355,7 +339,7 @@
 	--color-post: var(--color-mix);
 
 	@include contrast {
-		--background-contrast: light-dark(
+		--background-post: light-dark(
 			hsl(from var(--color-oak) h calc(s*.3) calc(l*1.4)),
 			hsl(from var(--color-oak) h calc(s*.3) calc(l*0.4))
 		);
@@ -472,6 +456,13 @@
 	li {
 		transition: z-index .2s ease-out, rotate .4s ease-out, translate .4s ease-out;
 		transform-origin: center bottom;
+		z-index: var(--index, 0);
+		@media (prefers-reduced-motion: no-preference) {
+			@starting-style {
+				rotate: 0;
+				translate: 0;
+			}
+		}
 		&:first-child {
 			position: relative;
 		}
@@ -479,56 +470,35 @@
 			position: absolute;
 		}
 		&:nth-child(1) {
-			z-index: 4;
+			--index: 4;
 			rotate: 15deg;
 			translate: 75px 0;
-			@media (prefers-reduced-motion: no-preference) {
-				@starting-style {
-					rotate: 0;
-					translate: 0;
-				}
-			}
 		}
 		&:nth-child(2) {
-			z-index: 3;
+			--index: 3;
 			rotate: 5deg;
 			translate: 25px -20px;
-			@media (prefers-reduced-motion: no-preference) {
-				@starting-style {
-					rotate: 0;
-					translate: 0;
-				}
-			}
 		}
 		&:nth-child(3) {
-			z-index: 2;
+			--index: 2;
 			rotate: -5deg;
 			translate: -25px -20px;
-			@media (prefers-reduced-motion: no-preference) {
-				@starting-style {
-					rotate: 0;
-					translate: 0;
-				}
-			}
 		}
 		&:nth-child(4) {
-			z-index: 1;
+			--index: 1;
 			rotate: -15deg;
 			translate: -75px 0;
-			@media (prefers-reduced-motion: no-preference) {
-				@starting-style {
-					rotate: 0;
-					translate: 0;
-				}
-			}
 		}
 		&:has(.expand:hover), &:has(.expand:focus) {
-			z-index: 5;
+			--index: 5;
 		}
 	}
 	.expand {
 		transition: transform .2s ease-out;
 		box-shadow: 0 0 20px hsl(from var(--color-dark-grey) h s l / .05);
+		@media (prefers-reduced-motion: no-preference) {
+			transform: perspective(var(--perspective, 500px)) translateZ(var(--translate, 0px));
+		}
 		&::after {
 			@include before(var(--color-mix, color-mix(
 				in srgb,
@@ -544,13 +514,13 @@
 		}
 		&:hover, &:focus {
 			@media (prefers-reduced-motion: no-preference) {
-				transform: perspective(500px) translateZ(10px);
+				--translate: 10px;
 			}
 		}
 		&:active {
 			@media (prefers-reduced-motion: no-preference) {
-				transform: perspective(500px) translateZ(0px);
-				scale: 1;
+				--translate: 0px;
+				--scale-active: 1;
 			}
 		}
 	}

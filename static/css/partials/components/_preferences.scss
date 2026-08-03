@@ -13,8 +13,8 @@ $tones: pink, blue, yellow;
 .preferences-popup {
 	position: absolute;
 	right: 0;
-	opacity: 0;
-	z-index: -1;
+	opacity: var(--opacity, 0);
+	z-index: var(--z-index, -1);
 	transition: opacity .1s ease-out;
 	@include viewport(medium) {
 		position: relative;
@@ -25,17 +25,17 @@ $tones: pink, blue, yellow;
 	&:has(.popup-button:focus),
 	&:has(.popup-button:active),
 	&:has(.popup-window:popover-open) {
-		opacity: 1;
-		z-index: unset;
+		--opacity: 1;
+		--z-index: unset;
 		pointer-events: unset;
 	}
 	.popup-button {
 		&:hover, &:focus, &:active, &:has(+ .popup-window:popover-open) {
 			pointer-events: unset;
 		}
-		&:focus {
+		&:focus-visible {
 			.button::before {
-				opacity: 1;
+				--focus-opacity: 1;
 			}
 		}
 	}
@@ -130,10 +130,8 @@ $tones: pink, blue, yellow;
 		}
 		.option:checked + label {
 			.toggle {
-				background-color: var(--background-active);
-				&::after {
-					translate: 100% 0;
-				}
+				--background: var(--background-active);
+				--translate: 100%;
 			}
 		}
 		.radio {

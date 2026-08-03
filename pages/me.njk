@@ -61,7 +61,7 @@ eleventyNavigation:
 					<ul class="grid steam">
 						{% for game in steam.response.games | limit(4) %}
 							<li>
-								<a class="post-thumbnail post-thumbnail-game game-{{ game.name | slugify }} theme-{% stats game.poster, 'theme', 'top left' %}" href="https://store.steampowered.com/app/{{ game.appid }}/" target="_blank">
+								<a class="post-thumbnail game-{{ game.name | slugify }} theme-{% stats game.poster, 'theme', 'top left' %}" href="https://store.steampowered.com/app/{{ game.appid }}/" target="_blank">
 									{% external game.poster, game.name, 300, "eager" %}
 								</a>
 								<p class="no-css"><a href="https://store.steampowered.com/app/{{ game.appid }}/" target="_blank">{{ game.name }}</a></p>

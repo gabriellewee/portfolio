@@ -100,16 +100,17 @@
 					&::before, &::after {
 						content: "";
 						display: block;
+						position: absolute;
 					}
 					&::before {
 						z-index: -2;
 						background-color: var(--color-primary);
-						@include full-offset(1.5px);
+						inset: -1.5px;
 						@include clip-path-edges(3px);
 					}
 					&::after {
+						inset: 0;
 						z-index: -1;
-						@include full-offset(0);
 						@include clip-path-edges(2px);
 					}
 				}
@@ -153,6 +154,7 @@
 		}
 	}
 	.avatar {
+		scale: var(--scale, 1);
 		&::before {
 			background: radial-gradient(
 				circle at center left,
@@ -163,12 +165,12 @@
 		}
 		&:hover {
 			@media (prefers-reduced-motion: no-preference) {
-				scale: 1.05;
+				--scale: 1.05;
 			}
 		}
 		&:active {
 			@media (prefers-reduced-motion: no-preference) {
-				scale: .95;
+				--scale: .95;
 			}
 		}
 		picture {
@@ -204,20 +206,21 @@
 			@include contrast {
 				content: "";
 				display: block;
+				position: absolute;
+				inset: -1.5px;
 				z-index: -1;
 				background-color: var(--color-primary);
-				@include full-offset(1.5px);
 				@include clip-path-edges(3px);
 			}
 		}
 		&:focus-visible {
 			&::before {
-				opacity: 1;
+				--opacity: 1;
 			}
 		}
 		&:active {
 			@media (prefers-reduced-motion: no-preference) {
-				scale: .95;
+				--scale: .95;
 			}
 		}
 		> * {
@@ -230,43 +233,35 @@
 	.username {
 		margin-right: var(--p);
 		span {
-			background-color: color-mix(
+			background-color: var(--background, color-mix(
 				var(--color-dark) 80%,
 				var(--color-dark-grey) 20%
-			);
+			));
 		}
 		&:hover, &:focus {
-			span {
-				background-color: var(--color-grey);
-			}
+			--background: var(--color-grey);
 		}
 		&:active {
-			span {
-				background-color: var(--color-dark-grey);
-			}
+			--background: var(--color-dark-grey);
 		}
 	}
 	.time {
 		time {
-			background-color: color-mix(
+			background-color: var(--background, color-mix(
 				in srgb,
 				var(--color-dark-grey) 70%,
 				white
-			);
+			));
 		}
 		&:hover, &:focus {
-			time {
-				background-color: var(--color-grey);
-			}
+			--background: var(--color-grey);
 		}
 		&:active {
-			time {
-				background-color: color-mix(
-					in srgb,
-					var(--color-dark-grey) 90%,
-					white
-				);
-			}
+			--background: color-mix(
+				in srgb,
+				var(--color-dark-grey) 90%,
+				white
+			);
 		}
 	}
 	.reply {

@@ -40,11 +40,14 @@ header.top {
 }
 
 .bottom {
-	padding-top: calc(var(--p)*2);
+	margin-top: calc(var(--p)*2);
 	padding-bottom: calc(var(--p) + env(safe-area-inset-bottom));
 	@include font-settings(500, 115%);
 	.page-home:not(.page-index) &, .page-post &, .page-code &, .page-recipe & {
 		opacity: 1;
+	}
+	main:has(.pagination) + & {
+		margin-top: 0;
 	}
 	a.button-reduced {
 		@include tone(yellow) {
@@ -136,19 +139,11 @@ header.top {
 .pagination {
 	display: flex;
 	justify-content: space-between;
-	margin-top: calc(var(--p)*2);
+	margin: calc(var(--p)*2) 0;
 	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
 	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
 	@include viewport($iphone-max) {
 		padding-inline: 0;
-	}
-	@include contrast {
-		margin-bottom: calc(var(--p)*2);
-	}
-	.main:has(&) + .bottom {
-		@include contrast {
-			margin-top: calc(var(--p)*-2);
-		}
 	}
 	&:empty {
 		display: none;

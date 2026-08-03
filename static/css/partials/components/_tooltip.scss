@@ -50,10 +50,11 @@
 			}
 		}
 		&::after {
+			position: absolute;
+			inset: 0;
 			z-index: 0;
 			border-radius: calc(var(--r) - 1px);
 			outline: 1.5px solid transparent;
-			@include full-offset(0, bottom);
 			@include contrast {
 				outline-color: var(--color-primary);
 			}

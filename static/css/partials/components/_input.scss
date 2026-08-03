@@ -21,14 +21,16 @@
 		@include contrast {
 			content: "";
 			display: block;
+			position: absolute;
+			inset: -2px;
 			z-index: -1;
 			background-color: var(--contrast, white);
 			border-radius: calc(var(--height)*1.5);
-			@include full-offset(2px);
 		}
 	}
 	&::after {
 		transition: translate .3s ease-out;
+		translate: var(--translate) 0;
 		content: "";
 		display: block;
 		width: auto;
@@ -44,7 +46,7 @@
 	&.active {
 		background-color: var(--background-active, var(--color-mint));
 		&::after {
-			translate: 100% 0;
+			--translate: 100%;
 		}
 	}
 }
@@ -70,7 +72,7 @@
 		}
 	}
 	&::after {
-		opacity: 0;
+		opacity: var(--checked-opacity, 0);
 		border-radius: calc(var(--p)/3*4);
 		position: absolute;
 		left: calc(var(--p)/3);

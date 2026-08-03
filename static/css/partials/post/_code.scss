@@ -49,7 +49,7 @@
 			}
 		}
 		a {
-			color: var(--color-aqua);
+			color: var(--color-header, var(--color-aqua));
 			span {
 				@include contrast {
 					text-decoration: underline;
@@ -57,7 +57,7 @@
 				}
 			}
 			&:hover, &:focus {
-				color: var(--color-peach);
+				--color-header: var(--color-peach);
 				> span {
 					text-decoration: underline;
 					text-underline-offset: 4px;
@@ -69,7 +69,7 @@
 				}
 			}
 			&:active {
-				color: var(--color-periwinkle);
+				--color-header: var(--color-periwinkle);
 			}
 			&::after {
 				display: inline;
@@ -127,14 +127,16 @@
 						display: block;
 					}
 					&::before {
+						position: absolute;
+						inset: -1.5px;
 						z-index: -2;
 						background-color: hsl(from var(--color-primary) h s l / .7);
-						@include full-offset(1.5px);
 						@include clip-path-edges(3px);
 					}
 					&::after {
+						position: absolute;
+						inset: 0;
 						z-index: -1;
-						@include full-offset(0);
 						@include clip-path-edges(2px);
 					}
 					&.tag-css-only {
@@ -366,6 +368,7 @@
 			position: relative;
 			&::after {
 				--tab-border-color: var(--color-rose);
+				translate: var(--tab-translate, 0) 0;
 				transition: translate .2s ease-out, background-color .2s ease-out, width .2s ease-out, opacity .2s ease-out;
 				content: "";
 				position: absolute;
@@ -412,31 +415,32 @@
 			z-index: 0;
 			padding: var(--p) calc(var(--p)*1.5);
 			box-shadow: inset 0 0 0 2px hsl(from var(--color-rose) h s l / var(--outline-opacity));
-			color: hsl(from white h s l / .5);
-			background-color: hsl(from black h s l / 0);
+			color: var(--tab-color, hsl(from white h s l / .5));
+			background-color: var(--tab-background, hsl(from black h s l / 0));
 		}
 		.post-tab {
 			opacity: 0;
 			all: unset;
+			position: absolute;
+			inset: 0;
 			z-index: 1;
-			@include full-offset(0);
 			&, label {
 				cursor: pointer;
 			}
 			&:hover, &:focus, &:checked {
 				+ label {
-					color: white;
+					--tab-color: white;
 				}
 			}
 			&:hover, &:focus {
 				+ label {
-					background-color: hsl(from white h s l / .1);
+					--tab-background: hsl(from white h s l / .1);
 				}
 			}
 			&:active {
 				+ label {
-					background-color: hsl(from black h s l / .1);
-					color: hsl(from white h s l / .3);
+					--tab-background: hsl(from black h s l / .1);
+					--tab-color: hsl(from white h s l / .3);
 				}
 			}
 			&:checked {
@@ -446,14 +450,14 @@
 				}
 				&:hover, &:focus {
 					+ label {
-						background-color: hsl(from black h s l / 0);
+						--tab-background: hsl(from black h s l / 0);
 					}
 				}
 			}
 			&:focus-visible, &:checked:focus-visible {
 				+ label {
 					--outline-opacity: 1;
-					background-color: hsl(from white h s l / .1);
+					--tab-background: hsl(from white h s l / .1);
 					&::after {
 						opacity: 0;
 					}
@@ -462,21 +466,21 @@
 		}
 	}
 	.post-tabpanel {
-		z-index: -1;
-		opacity: 0;
-		visibility: hidden;
+		z-index: var(--tab-z-index, -1);
+		opacity: var(--tab-opacity, 0);
+		visibility: var(--tab-visibility, hidden);
 		content-visibility: auto;
 		contain-intrinsic-size: 0 var(--height, 400px);
 	}
 	.post-tabpanel:not(.tabpanel-demo) {
+		position: absolute;
+		inset: 0;
 		background-color: light-dark(
 			var(--color-dark-grey),
 			hsl(from var(--color-dark-grey) h s calc(l * .625))
 		);
-		@include full-offset(0);
-
 		pre {
-			display: none;
+			display: var(--tab-display, none);
 			height: 100%;
 		}
 	}
@@ -503,7 +507,7 @@
 		.post-tablist ul:has(.tab-#{$tab}:checked) {
 			&::after {
 				--tab-width: #{$width};
-				translate: #{$offset} 0;
+				--tab-translate: #{$offset};
 			}
 		}
 		.post-tablist ul:has(
@@ -513,18 +517,18 @@
 		) {
 			&::after {
 				--tab-width: #{$width};
-				translate: #{$offset} 0 !important;
+				--tab-translate: #{$offset};
 			}
 			$offset: $offset + $width;
 		}
 		.post-tablist:has(.tab-#{$tab}:checked, .tab-#{$tab}:checked:focus) {
 			+ .post-content .tabpanel-#{$tab} {
-				z-index: 2;
-				opacity: 1;
-				visibility: visible;
+				--tab-z-index: 2;
+				--tab-opacity: 1;
+				--tab-visibility: visible;
 
 				pre {
-					display: block;
+					--tab-display: block;
 				}
 			}
 		}

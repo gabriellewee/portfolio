@@ -25,16 +25,22 @@
 		@include font-settings(800, var(--font-width-120));
 		a {
 			display: block;
+			width: fit-content;
 			margin-bottom: -0.25em;
 			text-decoration: underline;
-			text-underline-offset: 8px;
+			text-underline-offset: var(--underline-offset, 8px);
 			text-decoration-thickness: 2px;
-			text-decoration-color: var(--background-body);
+			text-decoration-color: var(--underline-color, var(--background-body));
 			@include contrast {
-				text-underline-offset: 4px;
+				--underline-offset: 4px;
 			}
 			&, span {
-				transition: all .1s ease-out, box-shadow 0s;
+				transition:
+					text-underline-offset .1s ease-out,
+					text-decoration-color .1s ease-out,
+					color .1s ease-out,
+					background .1s ease-out,
+					box-shadow 0s;
 			}
 			span {
 				display: block;
@@ -45,10 +51,10 @@
 				);
 			}
 			&:hover, &:focus, &:active {
-				text-underline-offset: 4px;
+				--underline-offset: 4px;
 			}
 			&:hover, &:focus {
-				text-decoration-color: color-mix(
+				--underline-color: color-mix(
 					in hsl,
 					hsl(from var(--color-dark) h calc(s * .9) l) 30%,
 					hsl(from var(--color-middle) h calc(s * .9) l)
@@ -56,7 +62,8 @@
 				span {
 					@include gradient-text(
 						var(--color-middle),
-						var(--color-dark)
+						var(--color-dark),
+						$vars-only: true
 					);
 				}
 			}
@@ -66,7 +73,7 @@
 				}
 			}
 			&:active {
-				text-decoration-color: light-dark(
+				--underline-color: light-dark(
 					hsl(from var(--color-dark-grey) h s calc(l * .95)),
 					var(--color-grey)
 				);
@@ -83,7 +90,8 @@
 								var(--color-dark-grey) 80%,
 								white
 							)
-						)
+						),
+						$vars-only: true
 					);
 				}
 			}

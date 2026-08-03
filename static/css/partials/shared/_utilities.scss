@@ -264,33 +264,48 @@ $x-large: 1280px;
 	}
 }
 
-@mixin gradient-text($one, $two, $three: null) {
-	color: $one;
-	@supports (-webkit-text-fill-color: transparent) {
-		background-color: $one;
-		background: linear-gradient(135deg, $one, $two);
-		background-clip: text;
-		@if $three {
-			-webkit-text-fill-color: $three;
-		} @else {
-			-webkit-text-fill-color: transparent;
+@mixin gradient-text($one, $two, $fill: null, $vars-only: false) {
+	--gradient-text-start: #{$one};
+	--gradient-text-end: #{$two};
+	@if $fill {
+		--gradient-text-fill: #{$fill};
+	}
+	@if $vars-only == false {
+		color: $one;
+		@supports (-webkit-text-fill-color: transparent) {
+			background-color: var(--gradient-text-start);
+			background: linear-gradient(135deg, var(--gradient-text-start), var(--gradient-text-end));
+			background-clip: text;
+			@if $fill {
+				-webkit-text-fill-color: var(--gradient-text-fill);
+			} @else {
+				-webkit-text-fill-color: transparent;
+			}
 		}
 	}
 }
 
-@mixin gradient-headline($one, $two, $three, $four, $position: 50%) {
-	color: $one;
-	@supports (-webkit-text-fill-color: transparent) {
-		background-color: $one;
-		background: linear-gradient(
-			135deg,
-			$one,
-			$two,
-			$three,
-			$four
-		) $position 0% / 200% 100%;
-		background-clip: text;
-		-webkit-text-fill-color: transparent;
+@mixin gradient-headline($one, $two, $three, $four, $position: 50%, $vars-only: false) {
+	--gradient-one: #{$one};
+	--gradient-two: #{$two};
+	--gradient-three: #{$three};
+	--gradient-four: #{$four};
+	--gradient-position: #{$position};
+
+	@if $vars-only == false {
+		color: $one;
+		@supports (-webkit-text-fill-color: transparent) {
+			background-color: $one;
+			background: linear-gradient(
+				135deg,
+				var(--gradient-one),
+				var(--gradient-two),
+				var(--gradient-three),
+				var(--gradient-four)
+			) var(--gradient-position) 0% / 200% 100%;
+			background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
 	}
 }
 
@@ -306,25 +321,6 @@ $x-large: 1280px;
 	} @else if $type == null {
 		height: 100%;
 		width: 100%;
-	}
-}
-
-@mixin full-offset($offset, $y: top, $x: left, $p: absolute) {
-	position: #{$p};
-	@if $offset == screen {
-		#{$y}: 0;
-		#{$x}: 0;
-	} @else {
-		#{$y}: $offset * -1;
-		#{$x}: $offset * -1;
-	}
-	@if $offset == 0 {
-		@include full-size;
-	} @else if $offset == screen {
-		@include full-size(screen);
-	} @else {
-		height: calc(100% + #{$offset * 2});
-		width: calc(100% + #{$offset * 2});
 	}
 }
 
@@ -421,7 +417,7 @@ $x-large: 1280px;
 }
 
 @mixin before($color: null, $border: 3px, $bezel: #{$border}, $opacity: 0) {
-	opacity: $opacity;
+	opacity: var(--opacity, #{$opacity});
 	content: "";
 	display: block;
 	position: absolute;

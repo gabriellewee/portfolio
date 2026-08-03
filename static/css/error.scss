@@ -11,9 +11,10 @@ body {
 header {
 	&::before {
 		content: "";
+		position: fixed;
+		inset: 0;
 		display: block;
 		background-color: hsl(from var(--color-dark-grey) h s l / .2);
-		@include full-offset(screen, $p: fixed);
 	}
 }
 
@@ -51,8 +52,9 @@ main {
 		text-decoration: underline;
 		text-decoration-thickness: 2px;
 		text-underline-offset: 5px;
+		background-color: hsl(from var(--color-dark-grey) h s l / var(--link-opacity, 0));
 		&:hover, &:focus {
-			background-color: hsl(from var(--color-dark-grey) h s l / .5);
+			--link-opacity: .5;
 		}
 		&:focus-visible {
 			@include focus-shadow(hsl(from white h s l / .8));
@@ -66,21 +68,10 @@ main {
 
 .bottom {
 	opacity: 1;
-	a {
-		span {
-			background-color: var(--color-dark-grey);
-		}
-		&:hover, &:focus {
-			span {
-				background-color: var(--color-grey);
-			}
-		}
-		&:active {
-			span {
-				background-color: hsl(from var(--color-dark-grey) h s calc(l * .35));
-			}
-		}
-	}
+	--background: var(--color-dark-grey);
+	--background-hover: var(--color-grey);
+	--background-active: hsl(from var(--color-dark-grey) h s calc(l * .35));
+
 	.copyright {
 		color: var(--color-dark-grey);
 	}

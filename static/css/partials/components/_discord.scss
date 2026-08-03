@@ -133,8 +133,8 @@
 				margin: 0;
 				padding: 8px;
 				border-radius: 3px;
-				border: 1px solid hsl(from white h s l / .1);
-				background: none;
+				border: 1px solid hsl(from white h s l / var(--border-opacity, .1));
+				background-color: var(--background, hsl(from white h s l / var(--background-opacity, 0)));
 				color: white;
 				font-size: 1rem;
 				text-align: left;
@@ -146,26 +146,26 @@
 					transition: opacity .1s ease-out;
 					content: "";
 					display: block;
-					opacity: .8;
+					opacity: var(--opacity, .8);
 					background-position: center;
 					background-repeat: no-repeat;
 					@include square(20px);
 				}
 				&:hover, &:focus {
-					background-color: hsl(from white h s l / .1);
-					border-color: transparent;
+					--background-opacity: .1;
+					--border-opacity: 0;
 					@include contrast {
-						border-color: white;
+						--border-opacity: 1;
 					}
 					&::after {
-						opacity: 1;
+						--opacity: 1;
 					}
 				}
 				&:focus-visible {
 					@include focus-shadow;
 				}
 				&:active {
-					background-color: hsl(from var(--color-dark-grey) h s calc(l * .45));
+					--background: hsl(from var(--color-dark-grey) h s calc(l * .45) / .9);
 				}
 			}
 			a {
@@ -176,8 +176,8 @@
 			}
 			button {
 				&:disabled {
+					--opacity: .5;
 					pointer-events: none;
-					opacity: 0.5;
 				}
 				&::after {
 					background-image: url(/static/images/svg/icons/copy.svg);

@@ -5,6 +5,7 @@
 	transition: opacity .2s ease-out, scale .2s ease-out;
 	display: block;
 	position: relative;
+	scale: var(--scale, 1);
 	&::before {
 		background: var(--outline, radial-gradient(
 			circle at center left,
@@ -18,17 +19,17 @@
 	}
 	&:hover {
 		@media (prefers-reduced-motion: no-preference) {
-			scale: 1.02;
+			--scale: var(--scale-hover, 1.02);
 		}
 	}
 	&:focus-visible {
 		&::before {
-			opacity: 1;
+			--opacity: 1;
 		}
 	}
 	&:active {
 		@media (prefers-reduced-motion: no-preference) {
-			scale: 0.98;
+			--scale: var(--scale-active, 0.98);
 		}
 	}
 }

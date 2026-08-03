@@ -48,10 +48,12 @@
 			text-decoration: unset;
 			&:hover, &:focus, &:active {
 				span {
-					text-decoration: underline;
-					text-decoration-thickness: 1px;
+					text-decoration: underline 1px;
 					text-underline-offset: 3px;
 				}
+			}
+			&:focus-visible {
+				@include focus-shadow(hsl(from var(--focus, var(--color-rose)) h s l / .75));
 			}
 			&::after {
 				content: "\2197";
@@ -109,25 +111,27 @@
 					display: block;
 				}
 				&::before {
+					position: absolute;
+					inset: -1.5px;
 					z-index: -2;
-					background-color: hsl(from var(--background) h s l / 1);
-					@include full-offset(1.5px);
+					background-color: var(--background);
 					@include clip-path-edges(3px, down);
 				}
 				&::after {
+					position: absolute;
+					inset: 0;
 					z-index: -1;
 					background-color: color-mix(
 						in srgb,
-						hsl(from var(--background) h s l / 1) 15%,
+						var(--background) 15%,
 						var(--background-contrast)
 					);
-					@include full-offset(0);
 					@include clip-path-edges(2px, down);
 				}
 
 				span {
-					text-decoration: underline;
-					text-underline-offset: 2px;
+					text-decoration: underline 1px;
+					text-underline-offset: 3px;
 				}
 			}
 		}
@@ -166,15 +170,18 @@
 				display: block;
 			}
 			&::before {
+				position: absolute;
+				inset: -1.5px;
 				z-index: -2;
 				background-color: light-dark(
 					hsl(from var(--color-primary) h s l / .5),
 					hsl(from var(--color-primary) h s l / .7)
 				);
-				@include full-offset(1.5px);
 				@include clip-path-edges(3px);
 			}
 			&::after {
+				position: absolute;
+				inset: 0;
 				z-index: -1;
 				background-color: light-dark(
 					color-mix(
@@ -182,9 +189,8 @@
 						var(--color-dark-grey) 10%,
 						white
 					),
-					hsl(from var(--color-dark-grey) h s l / .7)
+					hsl(from var(--color-dark-grey) h s calc(l * .55))
 				);
-				@include full-offset(0);
 				@include clip-path-edges(2px);
 			}
 		}
@@ -200,7 +206,6 @@
 }
 
 .link-tile {
-	--active-color: hsl(from var(--color-primary) h s calc(l * .7));
 	--background: light-dark(
 		color-mix(
 			in srgb,
@@ -213,7 +218,6 @@
 			var(--color-dark-grey)
 		)
 	);
-
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -235,15 +239,17 @@
 			display: block;
 		}
 		&::before {
+			position: absolute;
+			inset: -1.5px;
 			z-index: -2;
 			background: var(--contrast);
-			@include full-offset(1.5px);
 			@include clip-path-edges(3px);
 		}
 		&::after {
+			position: absolute;
+			inset: 0;
 			z-index: -1;
 			background: var(--background);
-			@include full-offset(0);
 			@include clip-path-edges(2px);
 		}
 		span {
@@ -267,13 +273,16 @@
 	h3 a {
 		text-decoration: unset;
 		&:active {
-			--color: var(--active-color);
+			--color: var(--active-color, hsl(from var(--color-primary) h s calc(l * .7)));
 		}
 		&:hover, &:focus, &:active {
 			span {
 				text-decoration: underline;
 				text-underline-offset: 2px;
 			}
+		}
+		&:focus-visible {
+			@include focus-shadow(hsl(from var(--focus, var(--color-primary)) h s l / .75));
 		}
 		&::after {
 			content: "\2197";
@@ -313,10 +322,6 @@
 .link-thumbnail {
 	--focus: var(--color-light);
 	--contrast: var(--color-primary);
-	--radius: 3px;
-	--radius-outline: 4px;
-	--background: var(--color-dark);
-	--background-active: var(--color-grey);
 
 	display: flex;
 	flex-direction: column;
@@ -327,7 +332,7 @@
 	.icon-wrapper {
 		transition: scale .2s ease-out;
 		display: block;
-		border-radius: var(--radius-outline);
+		border-radius: var(--radius-outline, 4px);
 
 		@include contrast {
 			background-color: var(--contrast);
@@ -357,7 +362,7 @@
 				scale: .98;
 			}
 			.icon-copy {
-				@include blur(4px, var(--background-active), 1, .98, .9);
+				@include blur(4px, var(--background-active, var(--color-grey)), 1, .98, .9);
 			}
 		}
 	}
@@ -366,7 +371,7 @@
 		display: block;
 		position: relative;
 		@include full-size;
-		@include border-radius(var(--radius));
+		@include border-radius(var(--radius, 3px));
 	}
 
 	.icon-copy {
@@ -377,12 +382,13 @@
 		align-items: center;
 		align-content: center;
 		justify-content: center;
+		position: absolute;
+		inset: -100%;
 		font-size: 0.75rem;
 		color: white;
 		text-align: center;
 		text-transform: uppercase;
-		background-color: hsl(from var(--background) h s l / .8);
-		@include full-offset(100%);
+		background-color: hsl(from var(--background, var(--color-dark)) h s l / .8);
 		@include font-settings(600, var(--font-width-120));
 	}
 }

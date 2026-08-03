@@ -22,30 +22,24 @@
 				transition: color .1s ease-out;
 				> span {
 					transition: text-underline-offset .1s ease-out, text-decoration-color .1s ease-out;
-					text-decoration: underline;
-					text-decoration-thickness: 2px;
-					text-underline-offset: 8px;
-					text-decoration-color: var(--background-post);
+					text-decoration: underline var(--underline-color, var(--background-post)) solid 2px;
+					text-underline-offset: var(--underline-offset, 8px);
 					@include contrast {
-						text-underline-offset: 4px;
+						--underline-offset: 4px;
 					}
 					span {
 						transition: background-position .4s ease-out;
 					}
 				}
 				&:hover, &:focus, &:active {
-					> span {
-						text-underline-offset: 4px;
-					}
+					--underline-offset: 4px;
 				}
 				&:hover, &:focus {
-					> span {
-						text-decoration-color: color-mix(
-							in hsl,
-							hsl(from var(--color-dark) h calc(s * .9) l) 30%,
-							hsl(from var(--color-middle) h calc(s * .9) l)
-						);
-					}
+					--underline-color: color-mix(
+						in hsl,
+						hsl(from var(--color-dark) h calc(s * .9) l) 30%,
+						hsl(from var(--color-middle) h calc(s * .9) l)
+					);
 				}
 				&:focus-visible {
 					@include contrast {
@@ -53,16 +47,14 @@
 					}
 				}
 				&:active {
-					> span {
-						text-decoration-color: light-dark(
-							hsl(from var(--color-dark-grey) h s calc(l * .95)),
-							var(--color-grey)
-						);
-					}
+					--underline-color: light-dark(
+						hsl(from var(--color-dark-grey) h s calc(l * .95)),
+						var(--color-grey)
+					);
 				}
 			}
 		}
-		time {
+		.time-default {
 			view-transition-name: date;
 			@include container(header, medium, $iphone-max) {
 				margin-left: var(--p);
@@ -70,14 +62,12 @@
 		}
 	}
 
-	&.post-current {
+	&:where(.post-current) {
 		.post-header {
 			h2 {
 				a {
 					@include contrast {
-						> span {
-							text-decoration-color: var(--color-dark);
-						}
+						--underline-color: var(--color-dark);
 					}
 					span span {
 						@include gradient-headline(
@@ -89,7 +79,7 @@
 					}
 					&:hover, &:focus {
 						span span {
-							background-position-x: 0%;
+							--gradient-position: 0%;
 						}
 					}
 					&:active {
@@ -112,29 +102,23 @@
 					}
 				}
 			}
-			time {
+			.time-default {
 				--color-mix: hsl(from var(--color-grey) h calc(s * .75) l);
-				background-color: var(--color-mix);
+				--background: var(--color-mix);
+				--background-contrast: var(--color-mix);
 				@include tone(blue) {
 					--color-mix: hsl(from var(--color-grey) h calc(s * .75) calc(l * .8));
-				}
-				&::after {
-					@include contrast {
-						background-color: var(--color-mix);
-					}
 				}
 			}
 		}
 	}
 
-	&.post-feature {
+	&:where(.post-feature) {
 		.post-header {
 			h2 {
 				a {
 					@include contrast {
-						> span {
-							text-decoration-color: var(--color-grey);
-						}
+						--underline-color: var(--color-grey);
 					}
 					span span {
 						@include gradient-headline(
@@ -151,18 +135,18 @@
 						top: 2px;
 						margin-left: calc(var(--p)/3*2);
 						line-height: 1;
-						color: color-mix(
+						color: var(--color-arrow, color-mix(
 							in hsl,
 							var(--color-dark) 30%,
 							var(--color-middle)
-						);
+						));
 					}
 					&:hover, &:focus {
 						span span {
-							background-position-x: 50%;
+							--gradient-position: 50%;
 						}
 						&::after {
-							color: var(--color-middle);
+							--color-arrow: var(--color-middle);
 						}
 					}
 					&:active {
@@ -183,7 +167,7 @@
 							);
 						}
 						&::after {
-							color: light-dark(
+							--color-arrow: light-dark(
 								hsl(from var(--color-dark-grey) h s calc(l * .95)),
 								var(--color-grey)
 							);
@@ -197,26 +181,24 @@
 					hsl(from var(--color-dark) h calc(s * .75) l),
 					hsl(from var(--color-grey) h s calc(l * .8))
 				);
-				background-color: var(--color-mix);
-				&::after {
-					@include contrast {
-						background-color: var(--color-mix);
-					}
-				}
+				--background: var(--color-mix);
+				--background-contrast: var(--color-mix);
 			}
 		}
-		p, figcaption, ul, ol {
+		.post-content {
 			a {
 				@include gradient-text(
 					var(--color-grey),
 					var(--color-dark),
-					hsl(from var(--color-grey) h s l / .5)
+					hsl(from var(--color-grey) h s l / .5),
+					true
 				);
 				&:hover, &:focus {
 					@include gradient-text(
 						var(--color-dark),
 						var(--color-middle),
-						hsl(from var(--color-dark) h s l / .5)
+						hsl(from var(--color-dark) h s l / .5),
+						true
 					);
 				}
 				&:active {
@@ -240,14 +222,15 @@
 								hsl(from var(--color-dark-grey) h s l / .5) 80%,
 								hsl(from white h s l / .5)
 							)
-						)
+						),
+						true
 					);
 				}
 			}
 		}
 	}
 
-	&.post-archive {
+	&:where(.post-archive) {
 		.post-header {
 			h2 {
 				a {
@@ -265,9 +248,7 @@
 					);
 					color: var(--color-mix);
 					&:hover, &:focus, &:active {
-						> span {
-							text-decoration-color: var(--color-mix);
-						}
+						--underline-color: var(--color-mix);
 					}
 					&:hover, &:focus {
 						--color-mix: light-dark(
@@ -295,18 +276,14 @@
 					}
 				}
 			}
-			time {
+			.time-default {
 				--color-mix: color-mix(
 					in srgb,
 					var(--color-dark-grey) 60%,
 					white
 				);
-				background-color: var(--color-mix);
-				&::after {
-					@include contrast {
-						background-color: var(--color-mix);
-					}
-				}
+				--background: var(--color-mix);
+				--background-contrast: var(--color-mix);
 			}
 		}
 		.post-footer {

@@ -8,7 +8,7 @@
 			<a href="/" tabindex="0" aria-labelledby="avatar-message">
 				<span class="avatar avatar-{{ avatar if avatar else 'default' }}"></span>
 				<span class="avatar avatar-hm"></span>
-				<span id="avatar-message" aria-hidden="true" class="text go-home{% if not ((key == "home" and pagination.pageNumber != 0) or key == "post" or key == "recipes") %} hidden{% endif %}">
+				<span id="avatar-message" aria-hidden="true" class="text go-home{% if not ((key == "home" and pagination.pageNumber != 0) or key == "post" or key == "recipes") %} hide{% endif %}">
 					{% if (key == "home") and (pagination.pageNumber == 0) %}Refresh?{% else %}Go home?{% endif %}
 				</span>
 			</a>

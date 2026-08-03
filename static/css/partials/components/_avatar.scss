@@ -9,6 +9,7 @@
 	position: relative;
 	margin-bottom: var(--p);
 	.avatar {
+		opacity: var(--opacity, 1);
 		display: block;
 		width: var(--width);
 		height: var(--height);
@@ -17,7 +18,7 @@
 			@include background-image(avatars/memoji, png);
 		}
 		&-hm {
-			opacity: 0;
+			--opacity: 0;
 			left: 0;
 			top: 0;
 			background-size: var(--width) var(--height);
@@ -36,7 +37,8 @@
 		}
 	}
 	.text {
-		opacity: 0;
+		opacity: var(--opacity, 0);
+		translate: 0 var(--translate);
 		transition: opacity .2s ease-out, translate .2s ease-out;
 		order: 1;
 		display: inline-block;
@@ -54,10 +56,10 @@
 		}
 		&.message {
 			@media (prefers-reduced-motion: no-preference) {
-				translate: 0 100%;
+				--translate: 100%;
 			}
 			@media (prefers-reduced-motion: reduce) {
-				opacity: 1;
+				--opacity: 1;
 			}
 		}
 		&.loading {
@@ -70,7 +72,7 @@
 			left: calc(var(--width) + var(--p));
 			white-space: nowrap;
 			@media (prefers-reduced-motion: no-preference) {
-				translate: 0 100%;
+				--translate: 100%;
 			}
 			@media (prefers-reduced-motion: reduce) {
 				display: none;
@@ -83,14 +85,18 @@
 			left: calc(var(--width) + var(--p));
 			z-index: 2;
 			@media (prefers-reduced-motion: no-preference) {
-				translate: 0 50%;
+				--translate: 50%;
 			}
 			@media (prefers-reduced-motion: reduce) {
-				translate: 0 -50%;
+				--translate: -50%;
 			}
 		}
-		&.hidden {
+		&.hide {
 			display: none;
+		}
+		&.show {
+			--opacity: 1;
+			--translate: 0;
 		}
 	}
 	a {
@@ -111,28 +117,28 @@
 			@include focus-shadow(var(--focus, light-dark(hsl(from var(--color-dark) h s l / .5), var(--color-dark))));
 			.avatar {
 				&:not(.avatar-hm) {
-					opacity: 0;
+					--opacity: 0;
 				}
 				&-hm {
-					opacity: 1;
+					--opacity: 1;
 				}
 			}
 		}
 		&:hover, &:focus, &:active {
 			.go-home {
 				pointer-events: unset;
-				opacity: 1;
+				--opacity: 1;
 				@media (prefers-reduced-motion: no-preference) {
-					translate: 0 -50%;
+					--translate: -50%;
 				}
 			}
 			~ .text.message:not(.hidden):not(.loading) {
 				@media (prefers-reduced-motion: no-preference) {
-					opacity: .3 !important;
-					translate: 0 calc(-100% - 5px) !important;
+					--opacity: .3;
+					--translate: calc(-100% - 5px);
 				}
 				@media (prefers-reduced-motion: reduce) {
-					opacity: 0 !important;
+					--opacity: 0;
 				}
 			}
 		}

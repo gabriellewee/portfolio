@@ -37,7 +37,7 @@ waitForGlobals(["gsap", "TextPlugin"], (gsap, TextPlugin) => {
 		y: "-100%",
 		ease: "power1.out",
 		onComplete() {
-			loading.classList.add("hidden");
+			loading.classList.add("hide");
 		}
 	});
 	posts.forEach(post => {
@@ -50,7 +50,7 @@ waitForGlobals(["gsap", "TextPlugin"], (gsap, TextPlugin) => {
 			y: 0,
 			onComplete() {
 				if (post.hasAttribute("data-anim")) post.removeAttribute("data-anim");
-				if (refresh) refresh.classList.remove("hidden");
+				if (refresh) refresh.classList.remove("hide");
 			}
 		}, "<.1");
 	});

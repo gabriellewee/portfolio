@@ -74,14 +74,18 @@ export const animateItems = (
 				y: "-100%",
 				ease: "power1.out",
 				onComplete() {
-					loading.classList.add("hidden");
+					loading.classList.add("hide");
 				}
 			});
 			timeline.to(loaded, {
 				duration: .2,
 				opacity: 1,
 				y: 0,
-				ease: "power1.out"
+				ease: "power1.out",
+				onComplete() {
+					loaded.classList.add("show");
+					loaded.removeAttribute("style");
+				}
 			});
 		}
 
@@ -95,7 +99,7 @@ export const animateItems = (
 				y: 0,
 				onComplete() {
 					if (item.hasAttribute("data-anim")) item.removeAttribute("data-anim");
-					if (refresh) refresh.classList.remove("hidden");
+					if (refresh) refresh.classList.remove("hide");
 				}
 			}, "<.1");
 		});

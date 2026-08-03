@@ -1,6 +1,7 @@
 @use 'partials/shared/utilities' as *;
 
 .button {
+	scale: var(--scale, 1);
 	cursor: pointer;
 	appearance: none;
 	display: block;
@@ -15,7 +16,7 @@
 	@include font-settings(700, 125%);
 
 	&, > span, > span::before {
-		transition: background .4s ease-out, scale .2s ease-out, opacity .2s ease-out;
+		transition: background var(--background-duration, .4s) ease-out, scale .2s ease-out, opacity .2s ease-out;
 	}
 	&::before, &::after {
 		content: "";
@@ -23,7 +24,7 @@
 		position: absolute;
 	}
 	&::before {
-		opacity: 0;
+		opacity: var(--focus-opacity, 0);
 		z-index: -1;
 		top: calc(var(--p)/-4);
 		left: calc(var(--p)/-4);
@@ -67,13 +68,16 @@
 			var(--color-dark),
 			var(--color-grey),
 			var(--color-grey)
-		)) 50% 0% / 200% 100%;
+		)) var(--background-position, 50%) 0% / 200% 100%;
 		@include button;
+
 		&::after {
-			opacity: 0;
+			opacity: var(--active-opacity, 0);
 			content: "";
 			display: block;
 			z-index: -1;
+			position: absolute;
+			inset: 0;
 			background: var(--background-active-color, light-dark(var(--color-dark-grey), var(--color-grey)))
 				var(--background-active-gradient, radial-gradient(
 					circle at center left,
@@ -87,40 +91,29 @@
 					)
 				)
 			);
-			@include full-offset(0);
 		}
 	}
 	&:hover {
 		@media (prefers-reduced-motion: no-preference) {
-			scale: 1.02;
+			--scale: 1.02;
 		}
 	}
 	&:hover, &:focus {
-		> span {
-			background-position-x: var(--background-hover-position, 0%);
-		}
+		--background-position: var(--background-hover-position, 0%);
 	}
 	&:focus-visible {
 		@include clip-path(false) {
 			@include focus-shadow(var(--color-grey));
 		}
 		@include clip-path(true) {
-			&::before {
-				opacity: 1;
-			}
+			--focus-opacity: 1;
 		}
 	}
 	&:active {
+		--background-duration: .2s;
+		--active-opacity: 1;
 		@media (prefers-reduced-motion: no-preference) {
-			scale: .98;
-		}
-		&, > span, > span::before {
-			transition: background .2s ease-out, scale .2s ease-out, opacity .2s ease-out;
-		}
-		> span {
-			&::after {
-				opacity: 1;
-			}
+			--scale: .98;
 		}
 	}
 
@@ -160,18 +153,19 @@
 		&:hover, &:focus {
 			--outline: color-mix(in srgb, var(--background), white);
 			> span {
-				background: color-mix(in srgb, var(--color-dark-grey) 70%, white);
+				--background: color-mix(in srgb, var(--color-dark-grey) 70%, white);
 			}
 		}
 		&:active {
 			> span {
-				background: hsl(from var(--color-dark-grey) h s calc(l * .35));
+				--background: hsl(from var(--color-dark-grey) h s calc(l * .35));
 			}
 		}
 	}
 }
 
 .button-reduced {
+	scale: var(--scale, 1);
 	transition: scale .2s ease-out;
 	display: inline-block;
 	position: relative;
@@ -196,9 +190,10 @@
 		@include contrast {
 			content: "";
 			display: block;
+			position: absolute;
+			inset: -1.5px;
 			z-index: 0;
 			background-color: var(--contrast, var(--color-primary));
-			@include full-offset(1.5px);
 			@include clip-path-edges(3px);
 		}
 	}
@@ -214,9 +209,9 @@ a.button-reduced, button.button-reduced-outer > .button-reduced {
 	&::before {
 		z-index: 1;
 		@include before(var(--outline, color-mix(
-				in srgb,
-				var(--color-light),
-				var(--color-middle)
+			in srgb,
+			var(--color-light),
+			var(--color-middle)
 		)));
 	}
 	&.current {
@@ -229,22 +224,22 @@ button.button-reduced-outer:hover > .button-reduced,
 button.button-reduced-outer:active > .button-reduced,
 button.button-reduced-outer:focus-visible > .button-reduced {
 	span {
-		background-color: var(--background-hover, var(--color-grey));
+		--background: var(--background-hover, var(--color-grey));
 	}
 }
 a.button-reduced:focus-visible,
 button.button-reduced-outer:focus-visible > .button-reduced {
 	&::before {
-		opacity: 1;
+		--opacity: 1;
 	}
 }
 a.button-reduced:active,
 button.button-reduced-outer:active > .button-reduced {
 	@media (prefers-reduced-motion: no-preference) {
-		scale: .98;
+		--scale: .98;
 	}
 	span {
-		background-color: var(--background-active, var(--color-dark-grey));
+		--background: var(--background-active, var(--color-dark-grey));
 	}
 }
 

@@ -197,6 +197,7 @@
 
 .post-features {
 	.link-tile {
+		--focus: var(--color-rose);
 		--active-color: var(--color-grey);
 		--background: light-dark(white, var(--color-dark-grey)) linear-gradient(
 			135deg,
