@@ -41,13 +41,24 @@ header.top {
 
 .bottom {
 	margin-top: calc(var(--p)*2);
-	padding-bottom: calc(var(--p) + env(safe-area-inset-bottom));
+	padding-bottom: calc(var(--p)*2 + env(safe-area-inset-bottom));
 	@include font-settings(500, 115%);
 	.page-home:not(.page-index) &, .page-post &, .page-code &, .page-recipe & {
 		opacity: 1;
 	}
 	main:has(.pagination) + & {
 		margin-top: 0;
+	}
+	nav {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--p);
+	}
+	.button-reduced-group {
+		display: contents;
+	}
+	.button-reduced {
+		--margin: initial;
 	}
 	a.button-reduced {
 		@include tone(yellow) {

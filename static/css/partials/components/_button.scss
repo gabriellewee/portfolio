@@ -169,8 +169,6 @@
 	transition: scale .2s ease-out;
 	display: inline-block;
 	position: relative;
-	margin-bottom: var(--p);
-	margin-right: var(--p);
 	@include font-settings(600, 115%);
 	span {
 		transition: background-color .2s ease-out;
@@ -244,7 +242,10 @@ button.button-reduced-outer:active > .button-reduced {
 }
 
 .button-reduced-group {
-	&, li {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--p);
+	li {
 		display: contents;
 	}
 }

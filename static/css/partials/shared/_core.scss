@@ -14,17 +14,10 @@
 }
 
 html {
-	text-size-adjust: 100%;
-	height: 100vh;
-	height: -webkit-fill-available;
 	scroll-behavior: smooth;
 	@media (prefers-reduced-motion: reduce) {
 		scroll-behavior: auto;
 	}
-}
-
-html, body {
-	width: 100vw;
 }
 
 body {
@@ -34,7 +27,7 @@ body {
 		var(--background-dark, hsl(from var(--color-dark-grey) h s calc(l * .73)))
 	);
 
-	min-height: 100vh;
+	min-height: 100svh;
 	min-height: -webkit-fill-available;
 	overflow-x: hidden;
 	text-rendering: optimizeLegibility;
@@ -43,6 +36,7 @@ body {
 	-webkit-overflow-scrolling: touch;
 	font-family: -apple-system, var(--font-default);
 	font-feature-settings: "liga";
+	text-size-adjust: 100%;
 	background-color: var(--background-body);
 	color: var(--color-body);
 

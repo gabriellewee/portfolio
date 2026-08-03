@@ -1,14 +1,23 @@
 @use 'partials/shared/utilities' as *;
 
 body {
+	display: flex;
+	flex-direction: column;
 	background: url('../images/error.gif') center center / cover;
+	width: 100%;
+	overflow: hidden;
 }
 
 * {
 	color: white;
 }
 
-header {
+.top, .main, .bottom {
+	width: var(--width);
+	max-width: 100%;
+}
+
+.top {
 	&::before {
 		content: "";
 		position: fixed;
@@ -18,14 +27,13 @@ header {
 	}
 }
 
-main, .bottom {
+.main, .bottom {
 	position: relative;
 	z-index: 2;
 }
 
-main {
-	height: calc(100vh - 104px - 82px);
-	max-width: var(--width);
+.main {
+	flex-grow: 1;
 	margin-inline: auto;
 	padding-left: calc((var(--p)*2) + env(safe-area-inset-left));
 	padding-right: calc((var(--p)*2) + env(safe-area-inset-right));
@@ -67,10 +75,12 @@ main {
 }
 
 .bottom {
-	opacity: 1;
 	--background: var(--color-dark-grey);
 	--background-hover: var(--color-grey);
 	--background-active: hsl(from var(--color-dark-grey) h s calc(l * .35));
+	opacity: 1;
+	margin-top: 0;
+	padding-top: calc(var(--p)*2);
 
 	.copyright {
 		color: var(--color-dark-grey);

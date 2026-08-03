@@ -109,7 +109,7 @@
 		grid-gap: var(--p);
 		grid-template-columns: 1fr;
 		position: relative;
-		padding: calc(var(--p)*2) calc(var(--p)*2) var(--p);
+		padding: calc(var(--p)*2);
 		margin-top: calc(var(--p)*2);
 		&::before {
 			content: "";
