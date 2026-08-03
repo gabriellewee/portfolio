@@ -6,7 +6,9 @@ import plugins from './_config/plugins.js';
 import shortcodes from './_config/shortcodes.js';
 
 // trqnsform
-import * as sass from 'sass'
+import * as sass from 'sass';
+import postcss from "postcss";
+import autoprefixer from "autoprefixer";
 import path from 'path';
 import { minify } from 'terser';
 import htmlmin from 'html-minifier-terser';
@@ -202,7 +204,11 @@ export default function (eleventyConfig) {
 						parsed.dir || "."
 					]
 				});
-				return result.css.toString("utf8");
+				let prefixed = await postcss([autoprefixer]).process(result.css.toString("utf8"), {
+					from: inputPath,
+					to: undefined
+				});
+				return prefixed.css;
 			}
 		}
 	});
