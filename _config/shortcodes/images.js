@@ -321,6 +321,7 @@ export const image = async (src, alt = "", type = "default", option, figp) => {
 
 		const average = await stats(src, "average", undefined, { sharp: Sharp(src) });
 		const loading = Number.isInteger(option) && option < 7 ? "eager" : "lazy";
+		const priority = Number.isInteger(option) && option < 7 ? "high" : "auto";
 
 		const main = stat["webp"];
 		const fallback = stat[file];
@@ -345,7 +346,7 @@ export const image = async (src, alt = "", type = "default", option, figp) => {
 
 		const source = `<source type="image/webp" srcset="${webpset}"${sizes ? ` sizes="${sizes}"` : ""}>`;
 
-		const img = `<img loading="${loading}" decoding="async" alt="${alt}" src="${main[0].url}" srcset="${regset}"${sizes ? ` sizes="${sizes}"` : ""} width="${basic.width}" height="${basic.height}">`;
+		const img = `<img loading="${loading}" fetchpriority="${priority}" dcoding="async" alt="${alt}" src="${main[0].url}" srcset="${regset}"${sizes ? ` sizes="${sizes}"` : ""} width="${basic.width}" height="${basic.height}">`;
 
 		const picture = `<picture style="--background: ${average}">${source}${img}</picture>`;
 
