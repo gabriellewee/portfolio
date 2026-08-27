@@ -79,8 +79,9 @@ header.top {
 }
 .post-resume {
 	h2 {
-		font-size: 1.5rem;
-		@include font-settings(800, var(--font-width-120));
+		font-family: var(--font-serif-display);
+		font-size: 3rem;
+		@include font-settings(350, 75%, "ss06" on);
 	}
 
 	ul {
