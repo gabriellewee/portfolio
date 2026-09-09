@@ -3,7 +3,7 @@ VERSION:3.0
 PRODID:-//Apple Inc.//macOS 15.4.1//EN
 N:Wee;Gabrielle;;;
 FN:Gabrielle Wee
-item1.EMAIL;type=INTERNET;type=pref:mail@gabriellew.ee
+item1.EMAIL;type=INTERNET;type=pref:hello@gabriellew.ee
 item1.X-ABLabel:iCloud
 item2.TEL;type=pref:+1 (510) 214-2241
 item2.X-ABLabel:Google Voice

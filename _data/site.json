@@ -1,7 +1,7 @@
 {
 	"url": "https://gabriellew.ee",
 	"author": "Gabrielle Wee",
-	"email": "mail@gabriellew.ee",
+	"email": "hello@gabriellew.ee",
 	"photo": {
 		"personal": "An Asian woman with shoulder-length wavy black hair wearing a tan sweatshirt and taupe acetate glasses, smiling in front of a pink wall.",
 		"professional": "A professional headshot of an Asian woman with wavy shoulder-length hair. She is wearing rose gold metal glasses, a white collared shirt, a light pink overcoat with a grey and green crane print, and a jade pendant necklace."
@@ -162,8 +162,8 @@
 			"links": [
 				{
 					"name": "email",
-					"resume": "mail@gabriellew.ee",
-					"url": "mailto:mail@gabriellew.ee",
+					"resume": "hello@gabriellew.ee",
+					"url": "mailto:hello@gabriellew.ee",
 					"theme": true
 				},
 				{
@@ -175,7 +175,7 @@
 				{
 					"name": "imessage",
 					"title": "iMessage",
-					"url": "sms:mail@gabriellew.ee"
+					"url": "sms:hello@gabriellew.ee"
 				}
 			]
 		}
